@@ -4,11 +4,11 @@ import '../v2models_intent_confirmation_setting_failure_conditional_conditional_
 import '../v2models_intent_confirmation_setting_failure_conditional_conditional_branch_next_step_intent/v2models_intent_confirmation_setting_failure_conditional_conditional_branch_next_step_intent.dart';
 
 class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStep {
-  /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See <span pulumi-lang-nodejs="`dialogAction`" pulumi-lang-dotnet="`DialogAction`" pulumi-lang-go="`dialogAction`" pulumi-lang-python="`dialog_action`" pulumi-lang-yaml="`dialogAction`" pulumi-lang-java="`dialogAction`">`dialog_action`</span>.
+  /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialog_action`.
   final V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepDialogAction?
       dialogAction;
 
-  /// Configuration block for override settings to configure the intent state. See <span pulumi-lang-nodejs="`intent`" pulumi-lang-dotnet="`Intent`" pulumi-lang-go="`intent`" pulumi-lang-python="`intent`" pulumi-lang-yaml="`intent`" pulumi-lang-java="`intent`">`intent`</span>.
+  /// Configuration block for override settings to configure the intent state. See `intent`.
   final V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntent?
       intent;
 

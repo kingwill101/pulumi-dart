@@ -1,3 +1,0 @@
-library module_medialive_channel_destination_multiplex_settings;
-
-export 'channel_destination_multiplex_settings.dart';

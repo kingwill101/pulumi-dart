@@ -10,7 +10,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction {
   /// Name for the function.
   final String name;
 
-  /// Parameters that the agent elicits from the user to fulfill the function. See <span pulumi-lang-nodejs="`parameters`" pulumi-lang-dotnet="`Parameters`" pulumi-lang-go="`parameters`" pulumi-lang-python="`parameters`" pulumi-lang-yaml="`parameters`" pulumi-lang-java="`parameters`">`parameters`</span> Block for details.
+  /// Parameters that the agent elicits from the user to fulfill the function. See `parameters` Block for details.
   final List<
           AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter>?
       parameters;

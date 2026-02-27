@@ -8,7 +8,7 @@ class V2modelsSlotSubSlotSetting {
   final String? expression;
 
   /// Specifications for the constituent sub slots of a composite slot.
-  /// See the <span pulumi-lang-nodejs="`slotSpecification`" pulumi-lang-dotnet="`SlotSpecification`" pulumi-lang-go="`slotSpecification`" pulumi-lang-python="`slot_specification`" pulumi-lang-yaml="`slotSpecification`" pulumi-lang-java="`slotSpecification`">`slot_specification`</span> argument reference below.
+  /// See the `slot_specification` argument reference below.
   final List<V2modelsSlotSubSlotSettingSlotSpecification>? slotSpecifications;
 
   V2modelsSlotSubSlotSetting({

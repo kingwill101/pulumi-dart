@@ -19,7 +19,7 @@ class DomainRuleBasedMatching {
   /// A block that specifies the configuration for exporting Identity Resolution results. Documented below.
   final DomainRuleBasedMatchingExportingConfig? exportingConfig;
 
-  /// A block that configures how the rule-based matching process should match profiles. You can have up to 15 <span pulumi-lang-nodejs="`rule`" pulumi-lang-dotnet="`Rule`" pulumi-lang-go="`rule`" pulumi-lang-python="`rule`" pulumi-lang-yaml="`rule`" pulumi-lang-java="`rule`">`rule`</span> in the <span pulumi-lang-nodejs="`natchingRules`" pulumi-lang-dotnet="`NatchingRules`" pulumi-lang-go="`natchingRules`" pulumi-lang-python="`natching_rules`" pulumi-lang-yaml="`natchingRules`" pulumi-lang-java="`natchingRules`">`natching_rules`</span>. Documented below.
+  /// A block that configures how the rule-based matching process should match profiles. You can have up to 15 `rule` in the `natching_rules`. Documented below.
   final List<DomainRuleBasedMatchingMatchingRule>? matchingRules;
 
   /// Indicates the maximum allowed rule level for matching.

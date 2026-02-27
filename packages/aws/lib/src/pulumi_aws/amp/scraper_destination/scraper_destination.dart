@@ -3,7 +3,7 @@
 import '../scraper_destination_amp/scraper_destination_amp.dart';
 
 class ScraperDestination {
-  /// Configuration block for an Amazon Managed Prometheus workspace destination. See <span pulumi-lang-nodejs="`amp`" pulumi-lang-dotnet="`Amp`" pulumi-lang-go="`amp`" pulumi-lang-python="`amp`" pulumi-lang-yaml="`amp`" pulumi-lang-java="`amp`">`amp`</span>.
+  /// Configuration block for an Amazon Managed Prometheus workspace destination. See `amp`.
   final ScraperDestinationAmp? amp;
 
   ScraperDestination({

@@ -11,7 +11,7 @@ class GetBrokerArgs {
   final Input<String>? brokerName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// > **Note:** Either <span pulumi-lang-nodejs="`brokerId`" pulumi-lang-dotnet="`BrokerId`" pulumi-lang-go="`brokerId`" pulumi-lang-python="`broker_id`" pulumi-lang-yaml="`brokerId`" pulumi-lang-java="`brokerId`">`broker_id`</span> or <span pulumi-lang-nodejs="`brokerName`" pulumi-lang-dotnet="`BrokerName`" pulumi-lang-go="`brokerName`" pulumi-lang-python="`broker_name`" pulumi-lang-yaml="`brokerName`" pulumi-lang-java="`brokerName`">`broker_name`</span> must be specified.
+  /// > **Note:** Either `broker_id` or `broker_name` must be specified.
   final Input<String>? region;
 
   /// Map of tags assigned to the broker.

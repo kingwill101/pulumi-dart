@@ -3,7 +3,7 @@
 import '../connector_kafka_cluster_apache_kafka_cluster/connector_kafka_cluster_apache_kafka_cluster.dart';
 
 class ConnectorKafkaCluster {
-  /// The Apache Kafka cluster to which the connector is connected. See <span pulumi-lang-nodejs="`apacheKafkaCluster`" pulumi-lang-dotnet="`ApacheKafkaCluster`" pulumi-lang-go="`apacheKafkaCluster`" pulumi-lang-python="`apache_kafka_cluster`" pulumi-lang-yaml="`apacheKafkaCluster`" pulumi-lang-java="`apacheKafkaCluster`">`apache_kafka_cluster`</span> Block for details.
+  /// The Apache Kafka cluster to which the connector is connected. See `apache_kafka_cluster` Block for details.
   final ConnectorKafkaClusterApacheKafkaCluster apacheKafkaCluster;
 
   ConnectorKafkaCluster({

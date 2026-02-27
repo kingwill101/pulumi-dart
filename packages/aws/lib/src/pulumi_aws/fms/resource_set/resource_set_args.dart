@@ -9,7 +9,7 @@ class ResourceSetArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Details about the resource set to be created or updated. See <span pulumi-lang-nodejs="`resourceSet`" pulumi-lang-dotnet="`ResourceSet`" pulumi-lang-go="`resourceSet`" pulumi-lang-python="`resource_set`" pulumi-lang-yaml="`resourceSet`" pulumi-lang-java="`resourceSet`">`resource_set`</span> Attribute Reference below.
+  /// Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
   final Input<List<ResourceSetResourceSet>>? resourceSets;
   final Input<Map<String, String>>? tags;
   final Input<ResourceSetTimeouts>? timeouts;

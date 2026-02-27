@@ -7,7 +7,7 @@ class ApplicationAssignmentConfigurationArgs {
   /// ARN of the application.
   final Input<String> applicationArn;
 
-  /// Indicates whether users must have an explicit assignment to access the application. If <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, all users have access to the application.
+  /// Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
   final Input<bool> assignmentRequired;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

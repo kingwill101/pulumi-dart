@@ -6,13 +6,13 @@ import '../notification_channel_sns/notification_channel_sns.dart';
 
 /// The set of arguments for NotificationChannel.
 class NotificationChannelArgs {
-  /// Filter configurations for the Amazon SNS notification topic. See the <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`">`filters`</span> argument reference below.
+  /// Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
   final Input<NotificationChannelFilters>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// SNS noficiation channel configurations. See the <span pulumi-lang-nodejs="`sns`" pulumi-lang-dotnet="`Sns`" pulumi-lang-go="`sns`" pulumi-lang-python="`sns`" pulumi-lang-yaml="`sns`" pulumi-lang-java="`sns`">`sns`</span> argument reference below.
+  /// SNS noficiation channel configurations. See the `sns` argument reference below.
   ///
   /// The following arguments are optional:
   final Input<NotificationChannelSns> sns;

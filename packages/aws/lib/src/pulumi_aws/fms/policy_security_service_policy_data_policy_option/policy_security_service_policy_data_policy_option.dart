@@ -5,11 +5,11 @@ import '../policy_security_service_policy_data_policy_option_network_firewall_po
 import '../policy_security_service_policy_data_policy_option_third_party_firewall_policy/policy_security_service_policy_data_policy_option_third_party_firewall_policy.dart';
 
 class PolicySecurityServicePolicyDataPolicyOption {
-  /// Defines NACL rules across accounts in their AWS Organization. See the <span pulumi-lang-nodejs="`networkAclCommonPolicy`" pulumi-lang-dotnet="`NetworkAclCommonPolicy`" pulumi-lang-go="`networkAclCommonPolicy`" pulumi-lang-python="`network_acl_common_policy`" pulumi-lang-yaml="`networkAclCommonPolicy`" pulumi-lang-java="`networkAclCommonPolicy`">`network_acl_common_policy`</span> block.
+  /// Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
   final PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy?
       networkAclCommonPolicy;
 
-  /// Defines the deployment model to use for the firewall policy.  See the <span pulumi-lang-nodejs="`networkFirewallPolicy`" pulumi-lang-dotnet="`NetworkFirewallPolicy`" pulumi-lang-go="`networkFirewallPolicy`" pulumi-lang-python="`network_firewall_policy`" pulumi-lang-yaml="`networkFirewallPolicy`" pulumi-lang-java="`networkFirewallPolicy`">`network_firewall_policy`</span> block.
+  /// Defines the deployment model to use for the firewall policy.  See the `network_firewall_policy` block.
   final PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy?
       networkFirewallPolicy;
   final PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy?

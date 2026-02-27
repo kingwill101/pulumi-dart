@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class JobDefinitionTimeout {
-  /// Time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> seconds.
+  /// Time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
   final int? attemptDurationSeconds;
 
   JobDefinitionTimeout({

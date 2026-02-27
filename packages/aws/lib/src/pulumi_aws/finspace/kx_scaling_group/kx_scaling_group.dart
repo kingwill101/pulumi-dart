@@ -7,115 +7,11 @@ import 'kx_scaling_group_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.finspace.KxScalingGroup("example", {
-/// name: "my-tf-kx-scalinggroup",
-/// environmentId: exampleAwsFinspaceKxEnvironment.id,
-/// availabilityZoneId: "use1-az2",
-/// hostType: "kx.sg.4xlarge",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.finspace.KxScalingGroup("example",
-/// name="my-tf-kx-scalinggroup",
-/// environment_id=example_aws_finspace_kx_environment["id"],
-/// availability_zone_id="use1-az2",
-/// host_type="kx.sg.4xlarge")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.FinSpace.KxScalingGroup("example", new()
-/// {
-/// Name = "my-tf-kx-scalinggroup",
-/// EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
-/// AvailabilityZoneId = "use1-az2",
-/// HostType = "kx.sg.4xlarge",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/finspace"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := finspace.NewKxScalingGroup(ctx, "example", &finspace.KxScalingGroupArgs{
-/// Name:               pulumi.String("my-tf-kx-scalinggroup"),
-/// EnvironmentId:      pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
-/// AvailabilityZoneId: pulumi.String("use1-az2"),
-/// HostType:           pulumi.String("kx.sg.4xlarge"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.finspace.KxScalingGroup;
-/// import com.pulumi.aws.finspace.KxScalingGroupArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new KxScalingGroup("example", KxScalingGroupArgs.builder()
-/// .name("my-tf-kx-scalinggroup")
-/// .environmentId(exampleAwsFinspaceKxEnvironment.id())
-/// .availabilityZoneId("use1-az2")
-/// .hostType("kx.sg.4xlarge")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:finspace:KxScalingGroup
-/// properties:
-/// name: my-tf-kx-scalinggroup
-/// environmentId: ${exampleAwsFinspaceKxEnvironment.id}
-/// availabilityZoneId: use1-az2
-/// hostType: kx.sg.4xlarge
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an AWS FinSpace Kx Scaling Group using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> (environment ID and scaling group name, comma-delimited). For example:
+/// Using `pulumi import`, import an AWS FinSpace Kx Scaling Group using the `id` (environment ID and scaling group name, comma-delimited). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:finspace/kxScalingGroup:KxScalingGroup example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-scalinggroup
@@ -164,10 +60,10 @@ class KxScalingGroup extends CustomResource {
   /// The error message when a failed state occurs.
   late final Output<String> statusReason;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level. You can add up to 50 tags to a scaling group.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. You can add up to 50 tags to a scaling group.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   KxScalingGroup(

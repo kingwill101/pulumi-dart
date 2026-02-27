@@ -3,7 +3,7 @@
 import '../gateway_route_spec_http2_route_match_header_match/gateway_route_spec_http2_route_match_header_match.dart';
 
 class GatewayRouteSpecHttp2RouteMatchHeader {
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the match is on the opposite of the <span pulumi-lang-nodejs="`match`" pulumi-lang-dotnet="`Match`" pulumi-lang-go="`match`" pulumi-lang-python="`match`" pulumi-lang-yaml="`match`" pulumi-lang-java="`match`">`match`</span> method and value. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If `true`, the match is on the opposite of the `match` method and value. Default is `false`.
   final bool? invert;
 
   /// Method and value to match the header value sent with a request. Specify one match method.

@@ -1,3 +1,0 @@
-library module_apprunner_service_source_configuration;
-
-export 'service_source_configuration.dart';

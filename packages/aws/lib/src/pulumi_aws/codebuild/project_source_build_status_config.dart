@@ -1,0 +1,3 @@
+library module_codebuild_project_source_build_status_config;
+
+export 'project_source_build_status_config/project_source_build_status_config.dart';

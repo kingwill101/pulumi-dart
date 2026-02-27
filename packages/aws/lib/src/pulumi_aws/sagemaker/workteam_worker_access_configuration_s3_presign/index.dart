@@ -1,3 +1,0 @@
-library module_sagemaker_workteam_worker_access_configuration_s3_presign;
-
-export 'workteam_worker_access_configuration_s3_presign.dart';

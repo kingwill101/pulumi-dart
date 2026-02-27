@@ -53,13 +53,13 @@ class ApplicationArgs5 {
   /// A configuration specification to be used when provisioning an application. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file.
   final Input<List<ApplicationRuntimeConfiguration>>? runtimeConfigurations;
 
-  /// Scheduler configuration for batch and streaming jobs running on this application. Supported with release labels `emr-7.0.0` and above. See<span pulumi-lang-nodejs=" schedulerConfiguration " pulumi-lang-dotnet=" SchedulerConfiguration " pulumi-lang-go=" schedulerConfiguration " pulumi-lang-python=" scheduler_configuration " pulumi-lang-yaml=" schedulerConfiguration " pulumi-lang-java=" schedulerConfiguration "> scheduler_configuration </span>Arguments below.
+  /// Scheduler configuration for batch and streaming jobs running on this application. Supported with release labels `emr-7.0.0` and above. See scheduler_configuration Arguments below.
   final Input<ApplicationSchedulerConfiguration>? schedulerConfiguration;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// The type of application you want to start, such as <span pulumi-lang-nodejs="`spark`" pulumi-lang-dotnet="`Spark`" pulumi-lang-go="`spark`" pulumi-lang-python="`spark`" pulumi-lang-yaml="`spark`" pulumi-lang-java="`spark`">`spark`</span> or <span pulumi-lang-nodejs="`hive`" pulumi-lang-dotnet="`Hive`" pulumi-lang-go="`hive`" pulumi-lang-python="`hive`" pulumi-lang-yaml="`hive`" pulumi-lang-java="`hive`">`hive`</span>.
+  /// The type of application you want to start, such as `spark` or `hive`.
   final Input<String> type;
 
   ApplicationArgs5({

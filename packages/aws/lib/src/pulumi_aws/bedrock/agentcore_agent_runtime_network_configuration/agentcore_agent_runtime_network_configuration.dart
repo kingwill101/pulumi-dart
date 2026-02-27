@@ -6,7 +6,7 @@ class AgentcoreAgentRuntimeNetworkConfiguration {
   /// Network mode for the agent runtime. Valid values: `PUBLIC`, `VPC`.
   final String networkMode;
 
-  /// Network mode configuration. See <span pulumi-lang-nodejs="`networkModeConfig`" pulumi-lang-dotnet="`NetworkModeConfig`" pulumi-lang-go="`networkModeConfig`" pulumi-lang-python="`network_mode_config`" pulumi-lang-yaml="`networkModeConfig`" pulumi-lang-java="`networkModeConfig`">`network_mode_config`</span> below.
+  /// Network mode configuration. See `network_mode_config` below.
   final AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig?
       networkModeConfig;
 

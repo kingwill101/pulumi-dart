@@ -1,3 +1,0 @@
-library module_memorydb_multi_region_cluster_timeouts;
-
-export 'multi_region_cluster_timeouts.dart';

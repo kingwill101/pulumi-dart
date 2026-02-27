@@ -1,3 +1,0 @@
-library module_quicksight_theme_configuration_sheet;
-
-export 'theme_configuration_sheet.dart';

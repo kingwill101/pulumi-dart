@@ -1,0 +1,3 @@
+library module_appflow_flow_metadata_catalog_config_glue_data_catalog;
+
+export 'flow_metadata_catalog_config_glue_data_catalog/flow_metadata_catalog_config_glue_data_catalog.dart';

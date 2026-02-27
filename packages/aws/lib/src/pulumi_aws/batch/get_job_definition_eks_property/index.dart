@@ -1,3 +1,0 @@
-library module_batch_get_job_definition_eks_property;
-
-export 'get_job_definition_eks_property.dart';

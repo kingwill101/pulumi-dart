@@ -1,3 +1,0 @@
-library module_quicksight_data_source_parameters_rds;
-
-export 'data_source_parameters_rds.dart';

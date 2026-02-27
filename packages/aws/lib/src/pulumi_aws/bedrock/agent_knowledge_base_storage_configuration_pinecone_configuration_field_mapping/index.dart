@@ -1,3 +1,0 @@
-library module_bedrock_agent_knowledge_base_storage_configuration_pinecone_configuration_field_mapping;
-
-export 'agent_knowledge_base_storage_configuration_pinecone_configuration_field_mapping.dart';

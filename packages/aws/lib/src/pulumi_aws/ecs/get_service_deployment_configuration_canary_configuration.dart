@@ -1,0 +1,3 @@
+library module_ecs_get_service_deployment_configuration_canary_configuration;
+
+export 'get_service_deployment_configuration_canary_configuration/get_service_deployment_configuration_canary_configuration.dart';

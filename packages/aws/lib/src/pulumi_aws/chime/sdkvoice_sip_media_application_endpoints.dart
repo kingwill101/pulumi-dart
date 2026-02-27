@@ -1,0 +1,3 @@
+library module_chime_sdkvoice_sip_media_application_endpoints;
+
+export 'sdkvoice_sip_media_application_endpoints/sdkvoice_sip_media_application_endpoints.dart';

@@ -4,7 +4,7 @@ import '../table_bucket_maintenance_configuration_iceberg_unreferenced_file_remo
 
 class TableBucketMaintenanceConfiguration {
   /// A single Iceberg unreferenced file removal settings object.
-  /// See <span pulumi-lang-nodejs="`icebergUnreferencedFileRemoval`" pulumi-lang-dotnet="`IcebergUnreferencedFileRemoval`" pulumi-lang-go="`icebergUnreferencedFileRemoval`" pulumi-lang-python="`iceberg_unreferenced_file_removal`" pulumi-lang-yaml="`icebergUnreferencedFileRemoval`" pulumi-lang-java="`icebergUnreferencedFileRemoval`">`iceberg_unreferenced_file_removal`</span> below.
+  /// See `iceberg_unreferenced_file_removal` below.
   final TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval
       icebergUnreferencedFileRemoval;
 

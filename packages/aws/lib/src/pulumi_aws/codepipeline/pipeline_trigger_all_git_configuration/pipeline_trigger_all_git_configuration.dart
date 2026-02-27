@@ -5,10 +5,10 @@ import '../pipeline_trigger_all_git_configuration_pull_request/pipeline_trigger_
 import '../pipeline_trigger_all_git_configuration_push/pipeline_trigger_all_git_configuration_push.dart';
 
 class PipelineTriggerAllGitConfiguration {
-  /// The field where the repository event that will start the pipeline is specified as pull requests. A <span pulumi-lang-nodejs="`pullRequest`" pulumi-lang-dotnet="`PullRequest`" pulumi-lang-go="`pullRequest`" pulumi-lang-python="`pull_request`" pulumi-lang-yaml="`pullRequest`" pulumi-lang-java="`pullRequest`">`pull_request`</span> block is documented below.
+  /// The field where the repository event that will start the pipeline is specified as pull requests. A `pull_request` block is documented below.
   final List<PipelineTriggerAllGitConfigurationPullRequest>? pullRequests;
 
-  /// The field where the repository event that will start the pipeline, such as pushing Git tags, is specified with details. A <span pulumi-lang-nodejs="`push`" pulumi-lang-dotnet="`Push`" pulumi-lang-go="`push`" pulumi-lang-python="`push`" pulumi-lang-yaml="`push`" pulumi-lang-java="`push`">`push`</span> block is documented below.
+  /// The field where the repository event that will start the pipeline, such as pushing Git tags, is specified with details. A `push` block is documented below.
   final List<PipelineTriggerAllGitConfigurationPush>? pushes;
 
   /// The name of the pipeline source action where the trigger configuration, such as Git tags, is specified. The trigger configuration will start the pipeline upon the specified change only.

@@ -1,3 +1,0 @@
-library module_ec2_get_launch_template_instance_requirement_network_bandwidth_gbp;
-
-export 'get_launch_template_instance_requirement_network_bandwidth_gbp.dart';

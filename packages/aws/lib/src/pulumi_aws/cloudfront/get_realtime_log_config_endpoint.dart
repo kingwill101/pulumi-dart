@@ -1,0 +1,3 @@
+library module_cloudfront_get_realtime_log_config_endpoint;
+
+export 'get_realtime_log_config_endpoint/get_realtime_log_config_endpoint.dart';

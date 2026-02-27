@@ -1,0 +1,3 @@
+library module_ec2_default_network_acl_ingress;
+
+export 'default_network_acl_ingress/default_network_acl_ingress.dart';

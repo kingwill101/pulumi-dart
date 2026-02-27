@@ -5,7 +5,7 @@ class GetUserGroupResult {
   /// Description of the user group.
   final String description;
 
-  /// A comma-delimited string concatenating <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`userPoolId`" pulumi-lang-dotnet="`UserPoolId`" pulumi-lang-go="`userPoolId`" pulumi-lang-python="`user_pool_id`" pulumi-lang-yaml="`userPoolId`" pulumi-lang-java="`userPoolId`">`user_pool_id`</span>.
+  /// A comma-delimited string concatenating `name` and `user_pool_id`.
   final String id;
   final String name;
 

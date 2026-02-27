@@ -1,3 +1,0 @@
-library module_route53_resolver_rule_target_ip;
-
-export 'resolver_rule_target_ip.dart';

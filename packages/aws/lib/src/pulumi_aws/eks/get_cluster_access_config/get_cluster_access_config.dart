@@ -4,7 +4,7 @@ class GetClusterAccessConfig {
   /// Values returned are `CONFIG_MAP`, `API` or `API_AND_CONFIG_MAP`
   final String authenticationMode;
 
-  /// Default to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Default to `true`.
   final bool bootstrapClusterCreatorAdminPermissions;
 
   GetClusterAccessConfig({

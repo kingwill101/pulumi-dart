@@ -16,11 +16,11 @@ class BucketReplicationConfigArgs {
 
   /// List of configuration blocks describing the rules managing the replication. See below.
   ///
-  /// > **NOTE:** Replication to multiple destination buckets requires that <span pulumi-lang-nodejs="`priority`" pulumi-lang-dotnet="`Priority`" pulumi-lang-go="`priority`" pulumi-lang-python="`priority`" pulumi-lang-yaml="`priority`" pulumi-lang-java="`priority`">`priority`</span> is specified in the <span pulumi-lang-nodejs="`rule`" pulumi-lang-dotnet="`Rule`" pulumi-lang-go="`rule`" pulumi-lang-python="`rule`" pulumi-lang-yaml="`rule`" pulumi-lang-java="`rule`">`rule`</span> object. If the corresponding rule requires no filter, an empty configuration block `filter {}` must be specified.
+  /// > **NOTE:** Replication to multiple destination buckets requires that `priority` is specified in the `rule` object. If the corresponding rule requires no filter, an empty configuration block `filter {}` must be specified.
   ///
-  /// > **NOTE:** Amazon S3's latest version of the replication configuration is V2, which includes the <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> attribute for replication rules.
+  /// > **NOTE:** Amazon S3's latest version of the replication configuration is V2, which includes the `filter` attribute for replication rules.
   ///
-  /// > **NOTE:** The <span pulumi-lang-nodejs="`existingObjectReplication`" pulumi-lang-dotnet="`ExistingObjectReplication`" pulumi-lang-go="`existingObjectReplication`" pulumi-lang-python="`existing_object_replication`" pulumi-lang-yaml="`existingObjectReplication`" pulumi-lang-java="`existingObjectReplication`">`existing_object_replication`</span> parameter is not supported by Amazon S3 at this time and should not be included in your <span pulumi-lang-nodejs="`rule`" pulumi-lang-dotnet="`Rule`" pulumi-lang-go="`rule`" pulumi-lang-python="`rule`" pulumi-lang-yaml="`rule`" pulumi-lang-java="`rule`">`rule`</span> configurations. Specifying this parameter will result in `MalformedXML` errors.
+  /// > **NOTE:** The `existing_object_replication` parameter is not supported by Amazon S3 at this time and should not be included in your `rule` configurations. Specifying this parameter will result in `MalformedXML` errors.
   /// To replicate existing objects, please refer to the [Replicating existing objects with S3 Batch Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html) documentation in the Amazon S3 User Guide.
   final Input<List<BucketReplicationConfigRule>> rules;
 

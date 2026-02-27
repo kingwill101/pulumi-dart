@@ -7,7 +7,7 @@ class GetApplicationProvidersApplicationProvider {
   /// ARN of the application provider.
   final String applicationProviderArn;
 
-  /// An object describing how IAM Identity Center represents the application provider in the portal. See <span pulumi-lang-nodejs="`displayData`" pulumi-lang-dotnet="`DisplayData`" pulumi-lang-go="`displayData`" pulumi-lang-python="`display_data`" pulumi-lang-yaml="`displayData`" pulumi-lang-java="`displayData`">`display_data`</span> below.
+  /// An object describing how IAM Identity Center represents the application provider in the portal. See `display_data` below.
   final List<GetApplicationProvidersApplicationProviderDisplayData>
       displayDatas;
 

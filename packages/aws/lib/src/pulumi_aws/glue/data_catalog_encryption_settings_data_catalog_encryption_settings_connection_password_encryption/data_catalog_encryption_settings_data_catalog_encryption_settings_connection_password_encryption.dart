@@ -4,7 +4,7 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswo
   /// A KMS key ARN that is used to encrypt the connection password. If connection password protection is enabled, the caller of CreateConnection and UpdateConnection needs at least `kms:Encrypt` permission on the specified AWS KMS key, to encrypt passwords before storing them in the Data Catalog.
   final String? awsKmsKeyId;
 
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently of the catalog encryption.
+  /// When set to `true`, passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently of the catalog encryption.
   final bool returnConnectionPasswordEncrypted;
 
   DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption({

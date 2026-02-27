@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation {
-  /// ASN of the Core Network Edge in an AWS Region. By default, the ASN will be a single integer automatically assigned from <span pulumi-lang-nodejs="`asnRanges`" pulumi-lang-dotnet="`AsnRanges`" pulumi-lang-go="`asnRanges`" pulumi-lang-python="`asn_ranges`" pulumi-lang-yaml="`asnRanges`" pulumi-lang-java="`asnRanges`">`asn_ranges`</span>
+  /// ASN of the Core Network Edge in an AWS Region. By default, the ASN will be a single integer automatically assigned from `asn_ranges`
   final String? asn;
 
-  /// The local CIDR blocks for this Core Network Edge for AWS Transit Gateway Connect attachments. By default, this CIDR block will be one or more optional IPv4 and IPv6 CIDR prefixes auto-assigned from <span pulumi-lang-nodejs="`insideCidrBlocks`" pulumi-lang-dotnet="`InsideCidrBlocks`" pulumi-lang-go="`insideCidrBlocks`" pulumi-lang-python="`inside_cidr_blocks`" pulumi-lang-yaml="`insideCidrBlocks`" pulumi-lang-java="`insideCidrBlocks`">`inside_cidr_blocks`</span>.
+  /// The local CIDR blocks for this Core Network Edge for AWS Transit Gateway Connect attachments. By default, this CIDR block will be one or more optional IPv4 and IPv6 CIDR prefixes auto-assigned from `inside_cidr_blocks`.
   final List<String>? insideCidrBlocks;
   final String location;
 

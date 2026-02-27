@@ -6,7 +6,7 @@ import '../default_network_acl_ingress/default_network_acl_ingress.dart';
 
 /// The set of arguments for DefaultNetworkAcl.
 class DefaultNetworkAclArgs {
-  /// Network ACL ID to manage. This attribute is exported from <span pulumi-lang-nodejs="`aws.ec2.Vpc`" pulumi-lang-dotnet="`aws.ec2.Vpc`" pulumi-lang-go="`ec2.Vpc`" pulumi-lang-python="`ec2.Vpc`" pulumi-lang-yaml="`aws.ec2.Vpc`" pulumi-lang-java="`aws.ec2.Vpc`">`aws.ec2.Vpc`</span>, or manually found via the AWS Console.
+  /// Network ACL ID to manage. This attribute is exported from `aws.ec2.Vpc`, or manually found via the AWS Console.
   ///
   /// The following arguments are optional:
   final Input<String> defaultNetworkAclId;
@@ -23,7 +23,7 @@ class DefaultNetworkAclArgs {
   /// List of Subnet IDs to apply the ACL to. See the notes above on Managing Subnets in the Default Network ACL
   final Input<List<String>>? subnetIds;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   DefaultNetworkAclArgs({

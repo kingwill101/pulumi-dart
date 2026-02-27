@@ -1,0 +1,4 @@
+library module_workspacesweb_user_settings_association;
+
+export 'user_settings_association/user_settings_association.dart';
+export 'user_settings_association/user_settings_association_args.dart';

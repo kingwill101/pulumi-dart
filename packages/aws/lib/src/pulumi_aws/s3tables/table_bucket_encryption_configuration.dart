@@ -1,0 +1,3 @@
+library module_s3tables_table_bucket_encryption_configuration;
+
+export 'table_bucket_encryption_configuration/table_bucket_encryption_configuration.dart';

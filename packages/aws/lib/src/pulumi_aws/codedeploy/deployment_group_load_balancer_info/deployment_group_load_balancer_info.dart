@@ -6,13 +6,13 @@ import '../deployment_group_load_balancer_info_target_group_info/deployment_grou
 import '../deployment_group_load_balancer_info_target_group_pair_info/deployment_group_load_balancer_info_target_group_pair_info.dart';
 
 class DeploymentGroupLoadBalancerInfo {
-  /// The Classic Elastic Load Balancer to use in a deployment. Conflicts with <span pulumi-lang-nodejs="`targetGroupInfo`" pulumi-lang-dotnet="`TargetGroupInfo`" pulumi-lang-go="`targetGroupInfo`" pulumi-lang-python="`target_group_info`" pulumi-lang-yaml="`targetGroupInfo`" pulumi-lang-java="`targetGroupInfo`">`target_group_info`</span> and <span pulumi-lang-nodejs="`targetGroupPairInfo`" pulumi-lang-dotnet="`TargetGroupPairInfo`" pulumi-lang-go="`targetGroupPairInfo`" pulumi-lang-python="`target_group_pair_info`" pulumi-lang-yaml="`targetGroupPairInfo`" pulumi-lang-java="`targetGroupPairInfo`">`target_group_pair_info`</span>.
+  /// The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
   final List<DeploymentGroupLoadBalancerInfoElbInfo>? elbInfos;
 
-  /// The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with <span pulumi-lang-nodejs="`elbInfo`" pulumi-lang-dotnet="`ElbInfo`" pulumi-lang-go="`elbInfo`" pulumi-lang-python="`elb_info`" pulumi-lang-yaml="`elbInfo`" pulumi-lang-java="`elbInfo`">`elb_info`</span> and <span pulumi-lang-nodejs="`targetGroupPairInfo`" pulumi-lang-dotnet="`TargetGroupPairInfo`" pulumi-lang-go="`targetGroupPairInfo`" pulumi-lang-python="`target_group_pair_info`" pulumi-lang-yaml="`targetGroupPairInfo`" pulumi-lang-java="`targetGroupPairInfo`">`target_group_pair_info`</span>.
+  /// The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
   final List<DeploymentGroupLoadBalancerInfoTargetGroupInfo>? targetGroupInfos;
 
-  /// The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with <span pulumi-lang-nodejs="`elbInfo`" pulumi-lang-dotnet="`ElbInfo`" pulumi-lang-go="`elbInfo`" pulumi-lang-python="`elb_info`" pulumi-lang-yaml="`elbInfo`" pulumi-lang-java="`elbInfo`">`elb_info`</span> and <span pulumi-lang-nodejs="`targetGroupInfo`" pulumi-lang-dotnet="`TargetGroupInfo`" pulumi-lang-go="`targetGroupInfo`" pulumi-lang-python="`target_group_info`" pulumi-lang-yaml="`targetGroupInfo`" pulumi-lang-java="`targetGroupInfo`">`target_group_info`</span>.
+  /// The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elb_info` and `target_group_info`.
   final DeploymentGroupLoadBalancerInfoTargetGroupPairInfo? targetGroupPairInfo;
 
   DeploymentGroupLoadBalancerInfo({

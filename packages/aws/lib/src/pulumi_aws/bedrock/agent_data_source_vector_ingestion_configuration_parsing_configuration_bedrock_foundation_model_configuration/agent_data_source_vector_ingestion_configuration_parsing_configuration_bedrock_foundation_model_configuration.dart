@@ -9,7 +9,7 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
   /// Specifies whether to enable parsing of multimodal data, including both text and images. Valid values: `MULTIMODAL`.
   final String? parsingModality;
 
-  /// Instructions for interpreting the contents of the document. See <span pulumi-lang-nodejs="`parsingPrompt`" pulumi-lang-dotnet="`ParsingPrompt`" pulumi-lang-go="`parsingPrompt`" pulumi-lang-python="`parsing_prompt`" pulumi-lang-yaml="`parsingPrompt`" pulumi-lang-java="`parsingPrompt`">`parsing_prompt`</span> block for details.
+  /// Instructions for interpreting the contents of the document. See `parsing_prompt` block for details.
   final AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt?
       parsingPrompt;
 

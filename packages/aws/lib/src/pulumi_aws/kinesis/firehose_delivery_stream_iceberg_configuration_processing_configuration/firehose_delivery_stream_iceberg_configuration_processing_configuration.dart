@@ -7,7 +7,7 @@ class FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final bool? enabled;
 
-  /// Specifies the data processors as multiple blocks. See <span pulumi-lang-nodejs="`processors`" pulumi-lang-dotnet="`Processors`" pulumi-lang-go="`processors`" pulumi-lang-python="`processors`" pulumi-lang-yaml="`processors`" pulumi-lang-java="`processors`">`processors`</span> block below for details.
+  /// Specifies the data processors as multiple blocks. See `processors` block below for details.
   final List<
           FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor>?
       processors;

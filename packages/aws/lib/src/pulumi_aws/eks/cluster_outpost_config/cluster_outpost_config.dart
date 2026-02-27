@@ -15,7 +15,7 @@ class ClusterOutpostConfig {
   final String controlPlaneInstanceType;
 
   /// An object representing the placement configuration for all the control plane instances of your local Amazon EKS cluster on AWS Outpost.
-  /// The <span pulumi-lang-nodejs="`controlPlanePlacement`" pulumi-lang-dotnet="`ControlPlanePlacement`" pulumi-lang-go="`controlPlanePlacement`" pulumi-lang-python="`control_plane_placement`" pulumi-lang-yaml="`controlPlanePlacement`" pulumi-lang-java="`controlPlanePlacement`">`control_plane_placement`</span> configuration block supports the following arguments:
+  /// The `control_plane_placement` configuration block supports the following arguments:
   final ClusterOutpostConfigControlPlanePlacement? controlPlanePlacement;
 
   /// The ARN of the Outpost that you want to use for your local Amazon EKS cluster on Outposts. This argument is a list of arns, but only a single Outpost ARN is supported currently.

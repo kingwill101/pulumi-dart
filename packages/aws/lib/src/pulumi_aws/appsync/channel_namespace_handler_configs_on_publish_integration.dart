@@ -1,0 +1,3 @@
+library module_appsync_channel_namespace_handler_configs_on_publish_integration;
+
+export 'channel_namespace_handler_configs_on_publish_integration/channel_namespace_handler_configs_on_publish_integration.dart';

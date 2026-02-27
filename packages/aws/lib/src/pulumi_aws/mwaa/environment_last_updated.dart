@@ -1,0 +1,3 @@
+library module_mwaa_environment_last_updated;
+
+export 'environment_last_updated/environment_last_updated.dart';

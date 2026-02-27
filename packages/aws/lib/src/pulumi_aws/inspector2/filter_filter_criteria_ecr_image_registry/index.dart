@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_ecr_image_registry;
-
-export 'filter_filter_criteria_ecr_image_registry.dart';

@@ -3,7 +3,7 @@
 import '../agent_data_source_data_source_configuration_web_configuration_crawler_configuration_crawler_limits/agent_data_source_data_source_configuration_web_configuration_crawler_configuration_crawler_limits.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration {
-  /// Configuration of crawl limits for the web URLs. See <span pulumi-lang-nodejs="`crawlerLimits`" pulumi-lang-dotnet="`CrawlerLimits`" pulumi-lang-go="`crawlerLimits`" pulumi-lang-python="`crawler_limits`" pulumi-lang-yaml="`crawlerLimits`" pulumi-lang-java="`crawlerLimits`">`crawler_limits`</span> block for details.
+  /// Configuration of crawl limits for the web URLs. See `crawler_limits` block for details.
   final AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits?
       crawlerLimits;
 

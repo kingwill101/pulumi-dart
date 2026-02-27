@@ -1,0 +1,3 @@
+library module_appmesh_virtual_gateway_spec_listener_port_mapping;
+
+export 'virtual_gateway_spec_listener_port_mapping/virtual_gateway_spec_listener_port_mapping.dart';

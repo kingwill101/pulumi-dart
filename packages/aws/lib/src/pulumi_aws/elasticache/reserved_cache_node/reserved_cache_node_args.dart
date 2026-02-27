@@ -6,19 +6,19 @@ import '../reserved_cache_node_timeouts/reserved_cache_node_timeouts.dart';
 /// The set of arguments for ReservedCacheNode.
 class ReservedCacheNodeArgs {
   /// Number of cache node instances to reserve.
-  /// Default value is <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Default value is `1`.
   final Input<int>? cacheNodeCount;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
   /// ID of the reserved cache node offering to purchase.
-  /// To determine an <span pulumi-lang-nodejs="`reservedCacheNodesOfferingId`" pulumi-lang-dotnet="`ReservedCacheNodesOfferingId`" pulumi-lang-go="`reservedCacheNodesOfferingId`" pulumi-lang-python="`reserved_cache_nodes_offering_id`" pulumi-lang-yaml="`reservedCacheNodesOfferingId`" pulumi-lang-java="`reservedCacheNodesOfferingId`">`reserved_cache_nodes_offering_id`</span>, see the <span pulumi-lang-nodejs="`aws.elasticache.getReservedCacheNodeOffering`" pulumi-lang-dotnet="`aws.elasticache.getReservedCacheNodeOffering`" pulumi-lang-go="`elasticache.getReservedCacheNodeOffering`" pulumi-lang-python="`elasticache_get_reserved_cache_node_offering`" pulumi-lang-yaml="`aws.elasticache.getReservedCacheNodeOffering`" pulumi-lang-java="`aws.elasticache.getReservedCacheNodeOffering`">`aws.elasticache.getReservedCacheNodeOffering`</span> data source.
+  /// To determine an `reserved_cache_nodes_offering_id`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
   final Input<String> reservedCacheNodesOfferingId;
 
-  /// Map of tags to assign to the reservation. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<ReservedCacheNodeTimeouts>? timeouts;
 

@@ -10,118 +10,11 @@ import 'profile_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.customerprofiles.Domain("example", {domainName: "example"});
-/// const exampleProfile = new aws.customerprofiles.Profile("example", {domainName: example.domainName});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.customerprofiles.Domain("example", domain_name="example")
-/// example_profile = aws.customerprofiles.Profile("example", domain_name=example.domain_name)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.CustomerProfiles.Domain("example", new()
-/// {
-/// DomainName = "example",
-/// });
-///
-/// var exampleProfile = new Aws.CustomerProfiles.Profile("example", new()
-/// {
-/// DomainName = example.DomainName,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/customerprofiles"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := customerprofiles.NewDomain(ctx, "example", &customerprofiles.DomainArgs{
-/// DomainName: pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = customerprofiles.NewProfile(ctx, "example", &customerprofiles.ProfileArgs{
-/// DomainName: example.DomainName,
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.customerprofiles.Domain;
-/// import com.pulumi.aws.customerprofiles.DomainArgs;
-/// import com.pulumi.aws.customerprofiles.Profile;
-/// import com.pulumi.aws.customerprofiles.ProfileArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Domain("example", DomainArgs.builder()
-/// .domainName("example")
-/// .build());
-///
-/// var exampleProfile = new Profile("exampleProfile", ProfileArgs.builder()
-/// .domainName(example.domainName())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:customerprofiles:Domain
-/// properties:
-/// domainName: example
-/// exampleProfile:
-/// type: aws:customerprofiles:Profile
-/// name: example
-/// properties:
-/// domainName: ${example.domainName}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Customer Profiles Profile using the resource <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Amazon Customer Profiles Profile using the resource `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:customerprofiles/profile:Profile example domain-name/5f2f473dfbe841eb8d05cfc2a4c926df

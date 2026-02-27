@@ -1,3 +1,0 @@
-library module_dms_endpoint_elasticsearch_settings;
-
-export 'endpoint_elasticsearch_settings.dart';

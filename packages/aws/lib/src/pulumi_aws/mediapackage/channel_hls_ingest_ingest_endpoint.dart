@@ -1,0 +1,3 @@
+library module_mediapackage_channel_hls_ingest_ingest_endpoint;
+
+export 'channel_hls_ingest_ingest_endpoint/channel_hls_ingest_ingest_endpoint.dart';

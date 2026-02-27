@@ -1,0 +1,3 @@
+library module_transfer_web_app_identity_provider_details_identity_center_config;
+
+export 'web_app_identity_provider_details_identity_center_config/web_app_identity_provider_details_identity_center_config.dart';

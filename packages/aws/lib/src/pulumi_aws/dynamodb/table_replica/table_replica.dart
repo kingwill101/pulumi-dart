@@ -7,7 +7,7 @@ class TableReplica {
   /// Whether this global table will be using `STRONG` consistency mode or `EVENTUAL` consistency mode. Default value is `EVENTUAL`.
   final String? consistencyMode;
 
-  /// Whether deletion protection is enabled (true) or disabled (false) on the replica. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether deletion protection is enabled (true) or disabled (false) on the replica. Default is `false`.
   final bool? deletionProtectionEnabled;
 
   /// ARN of the CMK that should be used for the AWS KMS encryption.
@@ -16,24 +16,24 @@ class TableReplica {
   /// **Note:** Changing this value will recreate the replica.
   final String? kmsKeyArn;
 
-  /// Whether to enable Point In Time Recovery for the replica. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable Point In Time Recovery for the replica. Default is `false`.
   final bool? pointInTimeRecovery;
 
   /// Whether to propagate the global table's tags to a replica.
-  /// Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Default is `false`.
   /// Changes to tags only move in one direction: from global (source) to replica.
   /// Tag drift on a replica will not trigger an update.
   /// Tag changes on the global table are propagated to replicas.
-  /// Changing from <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> on a subsequent <span pulumi-lang-nodejs="`apply`" pulumi-lang-dotnet="`Apply`" pulumi-lang-go="`apply`" pulumi-lang-python="`apply`" pulumi-lang-yaml="`apply`" pulumi-lang-java="`apply`">`apply`</span> leaves replica tags as-is and no longer manages them.
+  /// Changing from `true` to `false` on a subsequent `apply` leaves replica tags as-is and no longer manages them.
   final bool? propagateTags;
 
   /// Region name of the replica.
   final String regionName;
 
-  /// ARN of the Table Stream. Only available when <span pulumi-lang-nodejs="`streamEnabled " pulumi-lang-dotnet="`StreamEnabled " pulumi-lang-go="`streamEnabled " pulumi-lang-python="`stream_enabled " pulumi-lang-yaml="`streamEnabled " pulumi-lang-java="`streamEnabled ">`stream_enabled </span>= true`
+  /// ARN of the Table Stream. Only available when `stream_enabled = true`
   final String? streamArn;
 
-  /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when <span pulumi-lang-nodejs="`streamEnabled " pulumi-lang-dotnet="`StreamEnabled " pulumi-lang-go="`streamEnabled " pulumi-lang-python="`stream_enabled " pulumi-lang-yaml="`streamEnabled " pulumi-lang-java="`streamEnabled ">`stream_enabled </span>= true`.
+  /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
   final String? streamLabel;
 
   TableReplica({

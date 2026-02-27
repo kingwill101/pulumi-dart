@@ -3,7 +3,7 @@
 import '../invocation_logging_configuration_logging_config_cloudwatch_config_large_data_delivery_s3_config/invocation_logging_configuration_logging_config_cloudwatch_config_large_data_delivery_s3_config.dart';
 
 class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
-  /// S3 configuration for delivering a large amount of data. See <span pulumi-lang-nodejs="`largeDataDeliveryS3Config`" pulumi-lang-dotnet="`LargeDataDeliveryS3Config`" pulumi-lang-go="`largeDataDeliveryS3Config`" pulumi-lang-python="`large_data_delivery_s3_config`" pulumi-lang-yaml="`largeDataDeliveryS3Config`" pulumi-lang-java="`largeDataDeliveryS3Config`">`large_data_delivery_s3_config`</span> Block for details.
+  /// S3 configuration for delivering a large amount of data. See `large_data_delivery_s3_config` Block for details.
   final InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config?
       largeDataDeliveryS3Config;
 

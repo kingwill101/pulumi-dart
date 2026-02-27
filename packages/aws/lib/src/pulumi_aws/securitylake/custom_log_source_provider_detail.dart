@@ -1,0 +1,3 @@
+library module_securitylake_custom_log_source_provider_detail;
+
+export 'custom_log_source_provider_detail/custom_log_source_provider_detail.dart';

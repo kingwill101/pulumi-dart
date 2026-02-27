@@ -9,7 +9,7 @@ class GetQueueArgs {
 
   /// Returns information on a specific Queue by name
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`queueId`" pulumi-lang-dotnet="`QueueId`" pulumi-lang-go="`queueId`" pulumi-lang-python="`queue_id`" pulumi-lang-yaml="`queueId`" pulumi-lang-java="`queueId`">`queue_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `queue_id` is required.
   final Input<String>? name;
 
   /// Returns information on a specific Queue by Queue id

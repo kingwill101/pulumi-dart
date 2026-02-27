@@ -1,3 +1,0 @@
-library module_glue_mltransform_input_record_table;
-
-export 'mltransform_input_record_table.dart';

@@ -1,0 +1,3 @@
+library module_devopsguru_service_integration_kms_server_side_encryption;
+
+export 'service_integration_kms_server_side_encryption/service_integration_kms_server_side_encryption.dart';

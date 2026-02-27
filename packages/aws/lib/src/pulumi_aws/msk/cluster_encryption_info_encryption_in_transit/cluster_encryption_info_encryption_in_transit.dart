@@ -4,7 +4,7 @@ class ClusterEncryptionInfoEncryptionInTransit {
   /// Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`. Default value is `TLS`.
   final String? clientBroker;
 
-  /// Whether data communication among broker nodes is encrypted. Default value: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether data communication among broker nodes is encrypted. Default value: `true`.
   final bool? inCluster;
 
   ClusterEncryptionInfoEncryptionInTransit({

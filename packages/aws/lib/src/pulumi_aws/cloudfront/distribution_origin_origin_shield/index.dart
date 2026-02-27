@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_origin_origin_shield;
-
-export 'distribution_origin_origin_shield.dart';

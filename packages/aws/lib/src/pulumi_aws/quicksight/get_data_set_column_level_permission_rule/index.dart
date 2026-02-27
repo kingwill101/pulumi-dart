@@ -1,3 +1,0 @@
-library module_quicksight_get_data_set_column_level_permission_rule;
-
-export 'get_data_set_column_level_permission_rule.dart';

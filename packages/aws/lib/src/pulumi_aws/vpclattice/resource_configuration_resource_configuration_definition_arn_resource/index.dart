@@ -1,3 +1,0 @@
-library module_vpclattice_resource_configuration_resource_configuration_definition_arn_resource;
-
-export 'resource_configuration_resource_configuration_definition_arn_resource.dart';

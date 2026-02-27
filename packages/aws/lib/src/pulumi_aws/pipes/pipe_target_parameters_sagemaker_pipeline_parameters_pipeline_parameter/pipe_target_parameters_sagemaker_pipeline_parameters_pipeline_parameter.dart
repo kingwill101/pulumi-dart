@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PipeTargetParametersSagemakerPipelineParametersPipelineParameter {
-  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final String name;
 
   /// Value of parameter to start execution of a SageMaker AI Model Building Pipeline. Maximum length of 1024.

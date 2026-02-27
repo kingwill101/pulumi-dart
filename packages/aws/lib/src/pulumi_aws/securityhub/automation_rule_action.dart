@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_action;
+
+export 'automation_rule_action/automation_rule_action.dart';

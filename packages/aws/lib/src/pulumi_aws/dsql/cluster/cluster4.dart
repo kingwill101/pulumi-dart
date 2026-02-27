@@ -10,113 +10,11 @@ import 'cluster_args4.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.dsql.Cluster("example", {
-/// deletionProtectionEnabled: true,
-/// tags: {
-/// Name: "TestCluster",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.dsql.Cluster("example",
-/// deletion_protection_enabled=True,
-/// tags={
-/// "Name": "TestCluster",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Dsql.Cluster("example", new()
-/// {
-/// DeletionProtectionEnabled = true,
-/// Tags =
-/// {
-/// { "Name", "TestCluster" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/dsql"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := dsql.NewCluster(ctx, "example", &dsql.ClusterArgs{
-/// DeletionProtectionEnabled: pulumi.Bool(true),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("TestCluster"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.dsql.Cluster;
-/// import com.pulumi.aws.dsql.ClusterArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Cluster("example", ClusterArgs.builder()
-/// .deletionProtectionEnabled(true)
-/// .tags(Map.of("Name", "TestCluster"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:dsql:Cluster
-/// properties:
-/// deletionProtectionEnabled: true
-/// tags:
-/// Name: TestCluster
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import DSQL Cluster using the <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span>. For example:
+/// Using `pulumi import`, import DSQL Cluster using the `identifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dsql/cluster:Cluster example abcde1f234ghijklmnop5qr6st
@@ -126,14 +24,14 @@ class Cluster4 extends CustomResource {
   late final Output<String> arn;
 
   /// Whether deletion protection is enabled in this cluster.
-  /// Default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Default value is `false`.
   late final Output<bool> deletionProtectionEnabled;
 
   /// Encryption configuration details for the DSQL Cluster.
   late final Output<List<ClusterEncryptionDetail>> encryptionDetails;
 
-  /// Destroys cluster even if <span pulumi-lang-nodejs="`deletionProtectionEnabled`" pulumi-lang-dotnet="`DeletionProtectionEnabled`" pulumi-lang-go="`deletionProtectionEnabled`" pulumi-lang-python="`deletion_protection_enabled`" pulumi-lang-yaml="`deletionProtectionEnabled`" pulumi-lang-java="`deletionProtectionEnabled`">`deletion_protection_enabled`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
-  /// Default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Destroys cluster even if `deletion_protection_enabled` is set to `true`.
+  /// Default value is `false`.
   late final Output<bool> forceDestroy;
 
   /// Cluster Identifier.
@@ -151,7 +49,7 @@ class Cluster4 extends CustomResource {
   /// Set of tags to be associated with the AWS DSQL Cluster resource.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
   late final Output<ClusterTimeouts?> timeouts;
 

@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_captcha_config_immunity_time_property;
+
+export 'web_acl_rule_captcha_config_immunity_time_property/web_acl_rule_captcha_config_immunity_time_property.dart';

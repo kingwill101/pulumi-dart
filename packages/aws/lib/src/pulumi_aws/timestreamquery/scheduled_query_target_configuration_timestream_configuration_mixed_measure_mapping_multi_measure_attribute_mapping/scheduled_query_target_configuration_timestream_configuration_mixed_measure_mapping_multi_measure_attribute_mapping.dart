@@ -7,7 +7,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
   /// Source column from where the attribute value is to be read.
   final String sourceColumn;
 
-  /// Custom name to be used for attribute name in derived table. If not provided, <span pulumi-lang-nodejs="`sourceColumn`" pulumi-lang-dotnet="`SourceColumn`" pulumi-lang-go="`sourceColumn`" pulumi-lang-python="`source_column`" pulumi-lang-yaml="`sourceColumn`" pulumi-lang-java="`sourceColumn`">`source_column`</span> is used.
+  /// Custom name to be used for attribute name in derived table. If not provided, `source_column` is used.
   final String? targetMultiMeasureAttributeName;
 
   ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping({

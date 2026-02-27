@@ -1,3 +1,0 @@
-library module_route53_get_profiles_profiles_profile;
-
-export 'get_profiles_profiles_profile.dart';

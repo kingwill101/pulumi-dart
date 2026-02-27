@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_copy_value;
-
-export 'log_transformer_transformer_config_copy_value.dart';

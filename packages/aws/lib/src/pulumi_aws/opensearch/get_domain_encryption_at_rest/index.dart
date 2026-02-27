@@ -1,3 +1,0 @@
-library module_opensearch_get_domain_encryption_at_rest;
-
-export 'get_domain_encryption_at_rest2.dart';

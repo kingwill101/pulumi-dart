@@ -3,7 +3,7 @@
 import '../data_source_relational_database_config_http_endpoint_config/data_source_relational_database_config_http_endpoint_config.dart';
 
 class DataSourceRelationalDatabaseConfig {
-  /// Amazon RDS HTTP endpoint configuration. See <span pulumi-lang-nodejs="`httpEndpointConfig`" pulumi-lang-dotnet="`HttpEndpointConfig`" pulumi-lang-go="`httpEndpointConfig`" pulumi-lang-python="`http_endpoint_config`" pulumi-lang-yaml="`httpEndpointConfig`" pulumi-lang-java="`httpEndpointConfig`">`http_endpoint_config`</span> Block for details.
+  /// Amazon RDS HTTP endpoint configuration. See `http_endpoint_config` Block for details.
   final DataSourceRelationalDatabaseConfigHttpEndpointConfig?
       httpEndpointConfig;
 

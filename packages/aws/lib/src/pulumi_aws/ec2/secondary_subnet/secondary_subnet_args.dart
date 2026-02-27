@@ -5,10 +5,10 @@ import '../secondary_subnet_timeouts/secondary_subnet_timeouts.dart';
 
 /// The set of arguments for SecondarySubnet.
 class SecondarySubnetArgs {
-  /// Availability Zone for the secondary subnet. Cannot be specified with <span pulumi-lang-nodejs="`availabilityZoneId`" pulumi-lang-dotnet="`AvailabilityZoneId`" pulumi-lang-go="`availabilityZoneId`" pulumi-lang-python="`availability_zone_id`" pulumi-lang-yaml="`availabilityZoneId`" pulumi-lang-java="`availabilityZoneId`">`availability_zone_id`</span>.
+  /// Availability Zone for the secondary subnet. Cannot be specified with `availability_zone_id`.
   final Input<String>? availabilityZone;
 
-  /// ID of the Availability Zone for the secondary subnet. This option is preferred over <span pulumi-lang-nodejs="`availabilityZone`" pulumi-lang-dotnet="`AvailabilityZone`" pulumi-lang-go="`availabilityZone`" pulumi-lang-python="`availability_zone`" pulumi-lang-yaml="`availabilityZone`" pulumi-lang-java="`availabilityZone`">`availability_zone`</span> as it provides a consistent identifier across AWS accounts. Cannot be specified with <span pulumi-lang-nodejs="`availabilityZone`" pulumi-lang-dotnet="`AvailabilityZone`" pulumi-lang-go="`availabilityZone`" pulumi-lang-python="`availability_zone`" pulumi-lang-yaml="`availabilityZone`" pulumi-lang-java="`availabilityZone`">`availability_zone`</span>.
+  /// ID of the Availability Zone for the secondary subnet. This option is preferred over `availability_zone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availability_zone`.
   final Input<String>? availabilityZoneId;
 
   /// IPv4 CIDR block for the secondary subnet. The CIDR block size must be between `/12` and `/28`.
@@ -20,7 +20,7 @@ class SecondarySubnetArgs {
   /// ID of the secondary network in which to create the secondary subnet.
   final Input<String> secondaryNetworkId;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<SecondarySubnetTimeouts>? timeouts;
 

@@ -1,0 +1,3 @@
+library module_sagemaker_feature_group_offline_store_config_data_catalog_config;
+
+export 'feature_group_offline_store_config_data_catalog_config/feature_group_offline_store_config_data_catalog_config.dart';

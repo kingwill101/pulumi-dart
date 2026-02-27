@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class EndpointKinesisSettings {
-  /// Shows detailed control information for table definition, column definition, and table and column changes in the Kinesis message output. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Shows detailed control information for table definition, column definition, and table and column changes in the Kinesis message output. Default is `false`.
   final bool? includeControlDetails;
 
-  /// Include NULL and empty columns in the target. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Include NULL and empty columns in the target. Default is `false`.
   final bool? includeNullAndEmpty;
 
-  /// Shows the partition value within the Kinesis message output, unless the partition type is schema-table-type. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Shows the partition value within the Kinesis message output, unless the partition type is schema-table-type. Default is `false`.
   final bool? includePartitionValue;
 
-  /// Includes any data definition language (DDL) operations that change the table in the control data. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Includes any data definition language (DDL) operations that change the table in the control data. Default is `false`.
   final bool? includeTableAlterOperations;
 
-  /// Provides detailed transaction information from the source database. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Provides detailed transaction information from the source database. Default is `false`.
   final bool? includeTransactionDetails;
 
-  /// Output format for the records created. Default is <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span>. Valid values are <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span> and `json-unformatted` (a single line with no tab).
+  /// Output format for the records created. Default is `json`. Valid values are `json` and `json-unformatted` (a single line with no tab).
   final String? messageFormat;
 
-  /// Prefixes schema and table names to partition values, when the partition type is primary-key-type. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Prefixes schema and table names to partition values, when the partition type is primary-key-type. Default is `false`.
   final bool? partitionIncludeSchemaTable;
 
   /// ARN of the IAM Role with permissions to write to the Kinesis data stream.
@@ -28,7 +28,7 @@ class EndpointKinesisSettings {
   /// ARN of the Kinesis data stream.
   final String? streamArn;
 
-  /// Use up to 18 digit int instead of casting ints as doubles, available from AWS DMS version 3.5.4. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Use up to 18 digit int instead of casting ints as doubles, available from AWS DMS version 3.5.4. Default is `false`.
   final bool? useLargeIntegerValue;
 
   EndpointKinesisSettings({

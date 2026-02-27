@@ -5,7 +5,7 @@ import '../delivery_channel_snapshot_delivery_properties/delivery_channel_snapsh
 
 /// The set of arguments for DeliveryChannel.
 class DeliveryChannelArgs {
-  /// The name of the delivery channel. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>. Changing it recreates the resource.
+  /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
   final Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

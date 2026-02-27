@@ -13,16 +13,16 @@ class ClusterEndpointArgs2 {
   /// The type of the endpoint. One of: READER , ANY .
   final Input<String> customEndpointType;
 
-  /// List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with <span pulumi-lang-nodejs="`staticMembers`" pulumi-lang-dotnet="`StaticMembers`" pulumi-lang-go="`staticMembers`" pulumi-lang-python="`static_members`" pulumi-lang-yaml="`staticMembers`" pulumi-lang-java="`staticMembers`">`static_members`</span>.
+  /// List of DB instance identifiers that aren't part of the custom endpoint group. All other eligible instances are reachable through the custom endpoint. Only relevant if the list of static members is empty. Conflicts with `static_members`.
   final Input<List<String>>? excludedMembers;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// List of DB instance identifiers that are part of the custom endpoint group. Conflicts with <span pulumi-lang-nodejs="`excludedMembers`" pulumi-lang-dotnet="`ExcludedMembers`" pulumi-lang-go="`excludedMembers`" pulumi-lang-python="`excluded_members`" pulumi-lang-yaml="`excludedMembers`" pulumi-lang-java="`excludedMembers`">`excluded_members`</span>.
+  /// List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excluded_members`.
   final Input<List<String>>? staticMembers;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-cluster-endpoint.html).

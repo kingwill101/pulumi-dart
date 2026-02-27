@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TrailAdvancedEventSelectorFieldSelector {
-  /// A list of values that includes events that match the last few characters of the event record field specified as the value of <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span>.
+  /// A list of values that includes events that match the last few characters of the event record field specified as the value of `field`.
   final List<String>? endsWiths;
 
-  /// A list of values that includes events that match the exact value of the event record field specified as the value of <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span>. This is the only valid operator that you can use with the `readOnly`, `eventCategory`, and `resources.type` fields.
+  /// A list of values that includes events that match the exact value of the event record field specified as the value of `field`. This is the only valid operator that you can use with the `readOnly`, `eventCategory`, and `resources.type` fields.
   final List<String>? equals;
 
   /// Field in an event record on which to filter events to be logged. You can specify only the following values: `readOnly`, `eventSource`, `eventName`, `eventCategory`, `resources.type`, `resources.ARN`.
   final String field;
 
-  /// A list of values that excludes events that match the last few characters of the event record field specified as the value of <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span>.
+  /// A list of values that excludes events that match the last few characters of the event record field specified as the value of `field`.
   final List<String>? notEndsWiths;
 
-  /// A list of values that excludes events that match the exact value of the event record field specified as the value of <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span>.
+  /// A list of values that excludes events that match the exact value of the event record field specified as the value of `field`.
   final List<String>? notEquals;
 
-  /// A list of values that excludes events that match the first few characters of the event record field specified as the value of <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span>.
+  /// A list of values that excludes events that match the first few characters of the event record field specified as the value of `field`.
   final List<String>? notStartsWiths;
 
-  /// A list of values that includes events that match the first few characters of the event record field specified as the value of <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span>.
+  /// A list of values that includes events that match the first few characters of the event record field specified as the value of `field`.
   final List<String>? startsWiths;
 
   TrailAdvancedEventSelectorFieldSelector({

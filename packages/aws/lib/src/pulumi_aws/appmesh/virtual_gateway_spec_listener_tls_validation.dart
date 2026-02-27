@@ -1,0 +1,3 @@
+library module_appmesh_virtual_gateway_spec_listener_tls_validation;
+
+export 'virtual_gateway_spec_listener_tls_validation/virtual_gateway_spec_listener_tls_validation.dart';

@@ -4,7 +4,7 @@ import '../launch_template_network_interface_connection_tracking_specification/l
 import '../launch_template_network_interface_ena_srd_specification/launch_template_network_interface_ena_srd_specification.dart';
 
 class LaunchTemplateNetworkInterface {
-  /// Associate a Carrier IP address with <span pulumi-lang-nodejs="`eth0`" pulumi-lang-dotnet="`Eth0`" pulumi-lang-go="`eth0`" pulumi-lang-python="`eth0`" pulumi-lang-yaml="`eth0`" pulumi-lang-java="`eth0`">`eth0`</span> for a new network interface. Use this option when you launch an instance in a Wavelength Zone and want to associate a Carrier IP address with the network interface. Boolean value, can be left unset.
+  /// Associate a Carrier IP address with `eth0` for a new network interface. Use this option when you launch an instance in a Wavelength Zone and want to associate a Carrier IP address with the network interface. Boolean value, can be left unset.
   final String? associateCarrierIpAddress;
 
   /// Associate a public ip address with the network interface. Boolean value, can be left unset.
@@ -26,31 +26,31 @@ class LaunchTemplateNetworkInterface {
   /// Configuration for Elastic Network Adapter (ENA) Express settings. Applies to network interfaces that use the [ena Express](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking-ena-express.html) feature. See details below.
   final LaunchTemplateNetworkInterfaceEnaSrdSpecification? enaSrdSpecification;
 
-  /// The type of network interface. To create an Elastic Fabric Adapter (EFA), specify <span pulumi-lang-nodejs="`efa`" pulumi-lang-dotnet="`Efa`" pulumi-lang-go="`efa`" pulumi-lang-python="`efa`" pulumi-lang-yaml="`efa`" pulumi-lang-java="`efa`">`efa`</span>.
+  /// The type of network interface. To create an Elastic Fabric Adapter (EFA), specify `efa`.
   final String? interfaceType;
 
-  /// The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with <span pulumi-lang-nodejs="`ipv4Addresses`" pulumi-lang-dotnet="`Ipv4Addresses`" pulumi-lang-go="`ipv4Addresses`" pulumi-lang-python="`ipv4_addresses`" pulumi-lang-yaml="`ipv4Addresses`" pulumi-lang-java="`ipv4Addresses`">`ipv4_addresses`</span>
+  /// The number of secondary private IPv4 addresses to assign to a network interface. Conflicts with `ipv4_addresses`
   final int? ipv4AddressCount;
 
-  /// One or more private IPv4 addresses to associate. Conflicts with <span pulumi-lang-nodejs="`ipv4AddressCount`" pulumi-lang-dotnet="`Ipv4AddressCount`" pulumi-lang-go="`ipv4AddressCount`" pulumi-lang-python="`ipv4_address_count`" pulumi-lang-yaml="`ipv4AddressCount`" pulumi-lang-java="`ipv4AddressCount`">`ipv4_address_count`</span>
+  /// One or more private IPv4 addresses to associate. Conflicts with `ipv4_address_count`
   final List<String>? ipv4Addresses;
 
-  /// The number of IPv4 prefixes to be automatically assigned to the network interface. Conflicts with <span pulumi-lang-nodejs="`ipv4Prefixes`" pulumi-lang-dotnet="`Ipv4Prefixes`" pulumi-lang-go="`ipv4Prefixes`" pulumi-lang-python="`ipv4_prefixes`" pulumi-lang-yaml="`ipv4Prefixes`" pulumi-lang-java="`ipv4Prefixes`">`ipv4_prefixes`</span>
+  /// The number of IPv4 prefixes to be automatically assigned to the network interface. Conflicts with `ipv4_prefixes`
   final int? ipv4PrefixCount;
 
-  /// One or more IPv4 prefixes to be assigned to the network interface. Conflicts with <span pulumi-lang-nodejs="`ipv4PrefixCount`" pulumi-lang-dotnet="`Ipv4PrefixCount`" pulumi-lang-go="`ipv4PrefixCount`" pulumi-lang-python="`ipv4_prefix_count`" pulumi-lang-yaml="`ipv4PrefixCount`" pulumi-lang-java="`ipv4PrefixCount`">`ipv4_prefix_count`</span>
+  /// One or more IPv4 prefixes to be assigned to the network interface. Conflicts with `ipv4_prefix_count`
   final List<String>? ipv4Prefixes;
 
-  /// The number of IPv6 addresses to assign to a network interface. Conflicts with <span pulumi-lang-nodejs="`ipv6Addresses`" pulumi-lang-dotnet="`Ipv6Addresses`" pulumi-lang-go="`ipv6Addresses`" pulumi-lang-python="`ipv6_addresses`" pulumi-lang-yaml="`ipv6Addresses`" pulumi-lang-java="`ipv6Addresses`">`ipv6_addresses`</span>
+  /// The number of IPv6 addresses to assign to a network interface. Conflicts with `ipv6_addresses`
   final int? ipv6AddressCount;
 
-  /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with <span pulumi-lang-nodejs="`ipv6AddressCount`" pulumi-lang-dotnet="`Ipv6AddressCount`" pulumi-lang-go="`ipv6AddressCount`" pulumi-lang-python="`ipv6_address_count`" pulumi-lang-yaml="`ipv6AddressCount`" pulumi-lang-java="`ipv6AddressCount`">`ipv6_address_count`</span>
+  /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Conflicts with `ipv6_address_count`
   final List<String>? ipv6Addresses;
 
-  /// The number of IPv6 prefixes to be automatically assigned to the network interface. Conflicts with <span pulumi-lang-nodejs="`ipv6Prefixes`" pulumi-lang-dotnet="`Ipv6Prefixes`" pulumi-lang-go="`ipv6Prefixes`" pulumi-lang-python="`ipv6_prefixes`" pulumi-lang-yaml="`ipv6Prefixes`" pulumi-lang-java="`ipv6Prefixes`">`ipv6_prefixes`</span>
+  /// The number of IPv6 prefixes to be automatically assigned to the network interface. Conflicts with `ipv6_prefixes`
   final int? ipv6PrefixCount;
 
-  /// One or more IPv6 prefixes to be assigned to the network interface. Conflicts with <span pulumi-lang-nodejs="`ipv6PrefixCount`" pulumi-lang-dotnet="`Ipv6PrefixCount`" pulumi-lang-go="`ipv6PrefixCount`" pulumi-lang-python="`ipv6_prefix_count`" pulumi-lang-yaml="`ipv6PrefixCount`" pulumi-lang-java="`ipv6PrefixCount`">`ipv6_prefix_count`</span>
+  /// One or more IPv6 prefixes to be assigned to the network interface. Conflicts with `ipv6_prefix_count`
   final List<String>? ipv6Prefixes;
 
   /// The index of the network card. Some instance types support multiple network cards. The primary network interface must be assigned to network card index 0. The default is network card index 0.

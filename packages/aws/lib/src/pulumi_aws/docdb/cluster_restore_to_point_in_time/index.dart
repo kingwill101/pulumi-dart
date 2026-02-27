@@ -1,3 +1,0 @@
-library module_docdb_cluster_restore_to_point_in_time;
-
-export 'cluster_restore_to_point_in_time.dart';

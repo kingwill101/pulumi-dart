@@ -20,7 +20,7 @@ class GetCapacityBlockOfferingResult {
   final String region;
   final String startDateRange;
 
-  /// Indicates the tenancy of the Capacity Reservation. Specify either <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> or <span pulumi-lang-nodejs="`dedicated`" pulumi-lang-dotnet="`Dedicated`" pulumi-lang-go="`dedicated`" pulumi-lang-python="`dedicated`" pulumi-lang-yaml="`dedicated`" pulumi-lang-java="`dedicated`">`dedicated`</span>.
+  /// Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   final String tenancy;
 
   /// The total price to be paid up front.

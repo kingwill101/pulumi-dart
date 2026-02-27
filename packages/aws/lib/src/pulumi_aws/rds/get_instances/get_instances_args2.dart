@@ -5,7 +5,7 @@ import '../get_instances_filter/get_instances_filter2.dart';
 
 /// Arguments for getInstances.
 class GetInstancesArgs2 {
-  /// Configuration block(s) used to filter instances with AWS supported attributes, such as <span pulumi-lang-nodejs="`engine`" pulumi-lang-dotnet="`Engine`" pulumi-lang-go="`engine`" pulumi-lang-python="`engine`" pulumi-lang-yaml="`engine`" pulumi-lang-java="`engine`">`engine`</span>, `db-cluster-id` or `db-instance-id` for example. Detailed below.
+  /// Configuration block(s) used to filter instances with AWS supported attributes, such as `engine`, `db-cluster-id` or `db-instance-id` for example. Detailed below.
   final Input<List<GetInstancesFilter2>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

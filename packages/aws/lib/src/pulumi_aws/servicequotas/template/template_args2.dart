@@ -7,13 +7,13 @@ class TemplateArgs2 {
   /// AWS Region to which the template applies.
   final Input<String>? awsRegion;
 
-  /// Quota identifier. To find the quota code for a specific quota, use the<span pulumi-lang-nodejs=" aws.servicequotas.ServiceQuota " pulumi-lang-dotnet=" aws.servicequotas.ServiceQuota " pulumi-lang-go=" servicequotas.ServiceQuota " pulumi-lang-python=" servicequotas.ServiceQuota " pulumi-lang-yaml=" aws.servicequotas.ServiceQuota " pulumi-lang-java=" aws.servicequotas.ServiceQuota "> aws.servicequotas.ServiceQuota </span>data source.
+  /// Quota identifier. To find the quota code for a specific quota, use the aws.servicequotas.ServiceQuota data source.
   final Input<String> quotaCode;
 
-  /// AWS Region to which the template applies. Use <span pulumi-lang-nodejs="`aws.getRegion`" pulumi-lang-dotnet="`aws.getRegion`" pulumi-lang-go="`getRegion`" pulumi-lang-python="`get_region`" pulumi-lang-yaml="`aws.getRegion`" pulumi-lang-java="`aws.getRegion`">`aws.getRegion`</span> instead.
+  /// AWS Region to which the template applies. Use `aws.getRegion` instead.
   final Input<String>? region;
 
-  /// Service identifier. To find the service code value for an AWS service, use the<span pulumi-lang-nodejs=" aws.servicequotas.getService " pulumi-lang-dotnet=" aws.servicequotas.getService " pulumi-lang-go=" servicequotas.getService " pulumi-lang-python=" servicequotas_get_service " pulumi-lang-yaml=" aws.servicequotas.getService " pulumi-lang-java=" aws.servicequotas.getService "> aws.servicequotas.getService </span>data source.
+  /// Service identifier. To find the service code value for an AWS service, use the aws.servicequotas.getService data source.
   final Input<String> serviceCode;
 
   /// The new, increased value for the quota.

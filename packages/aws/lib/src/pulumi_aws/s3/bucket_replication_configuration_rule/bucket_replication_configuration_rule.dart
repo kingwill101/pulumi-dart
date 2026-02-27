@@ -5,7 +5,7 @@ import '../bucket_replication_configuration_rule_filter/bucket_replication_confi
 import '../bucket_replication_configuration_rule_source_selection_criteria/bucket_replication_configuration_rule_source_selection_criteria.dart';
 
 class BucketReplicationConfigurationRule {
-  /// Whether delete markers are replicated. The only valid value is `Enabled`. To disable, omit this argument. This argument is only valid with V2 replication configurations (i.e., when <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> is used).
+  /// Whether delete markers are replicated. The only valid value is `Enabled`. To disable, omit this argument. This argument is only valid with V2 replication configurations (i.e., when `filter` is used).
   final String? deleteMarkerReplicationStatus;
 
   /// Specifies the destination for the rule (documented below).
@@ -20,7 +20,7 @@ class BucketReplicationConfigurationRule {
   /// Object keyname prefix identifying one or more objects to which the rule applies. Must be less than or equal to 1024 characters in length.
   final String? prefix;
 
-  /// Priority associated with the rule. Priority should only be set if <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> is configured. If not provided, defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>. Priority must be unique between multiple rules.
+  /// Priority associated with the rule. Priority should only be set if `filter` is configured. If not provided, defaults to `0`. Priority must be unique between multiple rules.
   final int? priority;
 
   /// Specifies special object selection criteria (documented below).

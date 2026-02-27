@@ -1,3 +1,0 @@
-library module_wafregional_rate_based_rule_predicate;
-
-export 'rate_based_rule_predicate2.dart';

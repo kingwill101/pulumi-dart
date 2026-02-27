@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for KeyPair.
 class KeyPairArgs2 {
-  /// Name of the Lightsail Key Pair. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the Lightsail Key Pair. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final Input<String>? name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// PGP key to encrypt the resulting private key material. Only used when creating a new key pair.
@@ -19,9 +19,9 @@ class KeyPairArgs2 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// > **Note:** A PGP key is not required, however it is strongly encouraged. Without a PGP key, the private key material will be stored in state unencrypted. <span pulumi-lang-nodejs="`pgpKey`" pulumi-lang-dotnet="`PgpKey`" pulumi-lang-go="`pgpKey`" pulumi-lang-python="`pgp_key`" pulumi-lang-yaml="`pgpKey`" pulumi-lang-java="`pgpKey`">`pgp_key`</span> is ignored if <span pulumi-lang-nodejs="`publicKey`" pulumi-lang-dotnet="`PublicKey`" pulumi-lang-go="`publicKey`" pulumi-lang-python="`public_key`" pulumi-lang-yaml="`publicKey`" pulumi-lang-java="`publicKey`">`public_key`</span> is supplied.
+  /// > **Note:** A PGP key is not required, however it is strongly encouraged. Without a PGP key, the private key material will be stored in state unencrypted. `pgp_key` is ignored if `public_key` is supplied.
   final Input<Map<String, String>>? tags;
 
   KeyPairArgs2({

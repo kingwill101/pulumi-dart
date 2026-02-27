@@ -1,3 +1,0 @@
-library module_codebuild_report_group_export_config;
-
-export 'report_group_export_config.dart';

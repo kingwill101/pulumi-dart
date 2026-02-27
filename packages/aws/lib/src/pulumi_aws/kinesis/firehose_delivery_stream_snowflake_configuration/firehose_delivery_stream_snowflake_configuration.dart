@@ -8,7 +8,7 @@ import '../firehose_delivery_stream_snowflake_configuration_snowflake_role_confi
 import '../firehose_delivery_stream_snowflake_configuration_snowflake_vpc_configuration/firehose_delivery_stream_snowflake_configuration_snowflake_vpc_configuration.dart';
 
 class FirehoseDeliveryStreamSnowflakeConfiguration {
-  /// The URL of the Snowflake account. Format: https://<span pulumi-lang-nodejs="[accountIdentifier]" pulumi-lang-dotnet="[AccountIdentifier]" pulumi-lang-go="[accountIdentifier]" pulumi-lang-python="[account_identifier]" pulumi-lang-yaml="[accountIdentifier]" pulumi-lang-java="[accountIdentifier]">[account_identifier]</span>.snowflakecomputing.com.
+  /// The URL of the Snowflake account. Format: https://[account_identifier].snowflakecomputing.com.
   final String accountUrl;
 
   /// Buffer incoming data for the specified period of time, in seconds between 0 to 900, before delivering it to the destination.  The default value is 0s.
@@ -17,7 +17,7 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   /// Buffer incoming data to the specified size, in MBs between 1 to 128, before delivering it to the destination.  The default value is 1MB.
   final int? bufferingSize;
 
-  /// The CloudWatch Logging Options for the delivery stream. See <span pulumi-lang-nodejs="`cloudwatchLoggingOptions`" pulumi-lang-dotnet="`CloudwatchLoggingOptions`" pulumi-lang-go="`cloudwatchLoggingOptions`" pulumi-lang-python="`cloudwatch_logging_options`" pulumi-lang-yaml="`cloudwatchLoggingOptions`" pulumi-lang-java="`cloudwatchLoggingOptions`">`cloudwatch_logging_options`</span> block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
   final FirehoseDeliveryStreamSnowflakeConfigurationCloudwatchLoggingOptions?
       cloudwatchLoggingOptions;
 
@@ -36,10 +36,10 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   /// The name of the metadata column.
   final String? metadataColumnName;
 
-  /// The private key for authentication. This value is required if <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> is not provided.
+  /// The private key for authentication. This value is required if `secrets_manager_configuration` is not provided.
   final String? privateKey;
 
-  /// The processing configuration. See <span pulumi-lang-nodejs="`processingConfiguration`" pulumi-lang-dotnet="`ProcessingConfiguration`" pulumi-lang-go="`processingConfiguration`" pulumi-lang-python="`processing_configuration`" pulumi-lang-yaml="`processingConfiguration`" pulumi-lang-java="`processingConfiguration`">`processing_configuration`</span> block below for details.
+  /// The processing configuration. See `processing_configuration` block below for details.
   final FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration?
       processingConfiguration;
 
@@ -52,14 +52,14 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   /// The S3 backup mode.
   final String? s3BackupMode;
 
-  /// The S3 configuration. See <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span> block below for details.
+  /// The S3 configuration. See `s3_configuration` block below for details.
   final FirehoseDeliveryStreamSnowflakeConfigurationS3Configuration
       s3Configuration;
 
   /// The Snowflake schema name.
   final String schema;
 
-  /// The Secrets Manager configuration. See <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> block below for details. This value is required if <span pulumi-lang-nodejs="`user`" pulumi-lang-dotnet="`User`" pulumi-lang-go="`user`" pulumi-lang-python="`user`" pulumi-lang-yaml="`user`" pulumi-lang-java="`user`">`user`</span> and <span pulumi-lang-nodejs="`privateKey`" pulumi-lang-dotnet="`PrivateKey`" pulumi-lang-go="`privateKey`" pulumi-lang-python="`private_key`" pulumi-lang-yaml="`privateKey`" pulumi-lang-java="`privateKey`">`private_key`</span> are not provided.
+  /// The Secrets Manager configuration. See `secrets_manager_configuration` block below for details. This value is required if `user` and `private_key` are not provided.
   final FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration?
       secretsManagerConfiguration;
 
@@ -74,7 +74,7 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   /// The Snowflake table name.
   final String table;
 
-  /// The user for authentication. This value is required if <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> is not provided.
+  /// The user for authentication. This value is required if `secrets_manager_configuration` is not provided.
   final String? user;
 
   FirehoseDeliveryStreamSnowflakeConfiguration({

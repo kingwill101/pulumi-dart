@@ -1,0 +1,5 @@
+library module_cloudwatch_get_log_data_protection_policy_document;
+
+export 'get_log_data_protection_policy_document/get_log_data_protection_policy_document.dart';
+export 'get_log_data_protection_policy_document/get_log_data_protection_policy_document_args.dart';
+export 'get_log_data_protection_policy_document/get_log_data_protection_policy_document_result.dart';

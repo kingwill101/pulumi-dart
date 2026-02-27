@@ -1,0 +1,3 @@
+library module_mwaa_environment_logging_configuration_scheduler_logs;
+
+export 'environment_logging_configuration_scheduler_logs/environment_logging_configuration_scheduler_logs.dart';

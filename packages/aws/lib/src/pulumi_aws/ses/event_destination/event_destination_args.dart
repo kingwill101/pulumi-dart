@@ -31,7 +31,7 @@ class EventDestinationArgs {
 
   /// Send the events to an SNS Topic destination
   ///
-  /// > **NOTE:** You can specify `<span pulumi-lang-nodejs=""cloudwatchDestination"" pulumi-lang-dotnet=""CloudwatchDestination"" pulumi-lang-go=""cloudwatchDestination"" pulumi-lang-python=""cloudwatch_destination"" pulumi-lang-yaml=""cloudwatchDestination"" pulumi-lang-java=""cloudwatchDestination"">"cloudwatch_destination"</span>` or `<span pulumi-lang-nodejs=""kinesisDestination"" pulumi-lang-dotnet=""KinesisDestination"" pulumi-lang-go=""kinesisDestination"" pulumi-lang-python=""kinesis_destination"" pulumi-lang-yaml=""kinesisDestination"" pulumi-lang-java=""kinesisDestination"">"kinesis_destination"</span>` but not both
+  /// > **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
   final Input<EventDestinationSnsDestination>? snsDestination;
 
   EventDestinationArgs({

@@ -5,7 +5,7 @@ import '../get_access_points_access_point/get_access_points_access_point.dart';
 
 /// Result data returned by getAccessPoints.
 class GetAccessPointsResult2 {
-  /// A list of access points matching the search criteria. See <span pulumi-lang-nodejs="`accessPoints`" pulumi-lang-dotnet="`AccessPoints`" pulumi-lang-go="`accessPoints`" pulumi-lang-python="`access_points`" pulumi-lang-yaml="`accessPoints`" pulumi-lang-java="`accessPoints`">`access_points`</span> below.
+  /// A list of access points matching the search criteria. See `access_points` below.
   final List<GetAccessPointsAccessPoint> accessPoints;
   final String? accountId;
 

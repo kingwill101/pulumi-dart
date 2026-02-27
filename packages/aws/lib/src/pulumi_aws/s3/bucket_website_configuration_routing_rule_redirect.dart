@@ -1,0 +1,3 @@
+library module_s3_bucket_website_configuration_routing_rule_redirect;
+
+export 'bucket_website_configuration_routing_rule_redirect/bucket_website_configuration_routing_rule_redirect.dart';

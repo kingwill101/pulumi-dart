@@ -1,5 +1,0 @@
-library module_organizations_get_organizational_unit_descendant_organizational_units;
-
-export 'get_organizational_unit_descendant_organizational_units.dart';
-export 'get_organizational_unit_descendant_organizational_units_args.dart';
-export 'get_organizational_unit_descendant_organizational_units_result.dart';

@@ -1,0 +1,3 @@
+library module_sagemaker_labeling_job_input_config_data_source_sns_data_source;
+
+export 'labeling_job_input_config_data_source_sns_data_source/labeling_job_input_config_data_source_sns_data_source.dart';

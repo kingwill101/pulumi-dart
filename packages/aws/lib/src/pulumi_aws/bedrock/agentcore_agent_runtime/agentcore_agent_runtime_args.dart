@@ -11,13 +11,13 @@ import '../agentcore_agent_runtime_timeouts/agentcore_agent_runtime_timeouts.dar
 
 /// The set of arguments for AgentcoreAgentRuntime.
 class AgentcoreAgentRuntimeArgs {
-  /// Container artifact configuration. See <span pulumi-lang-nodejs="`agentRuntimeArtifact`" pulumi-lang-dotnet="`AgentRuntimeArtifact`" pulumi-lang-go="`agentRuntimeArtifact`" pulumi-lang-python="`agent_runtime_artifact`" pulumi-lang-yaml="`agentRuntimeArtifact`" pulumi-lang-java="`agentRuntimeArtifact`">`agent_runtime_artifact`</span> below.
+  /// Container artifact configuration. See `agent_runtime_artifact` below.
   final Input<AgentcoreAgentRuntimeAgentRuntimeArtifact> agentRuntimeArtifact;
 
   /// Name of the agent runtime.
   final Input<String> agentRuntimeName;
 
-  /// Authorization configuration for authenticating incoming requests. See <span pulumi-lang-nodejs="`authorizerConfiguration`" pulumi-lang-dotnet="`AuthorizerConfiguration`" pulumi-lang-go="`authorizerConfiguration`" pulumi-lang-python="`authorizer_configuration`" pulumi-lang-yaml="`authorizerConfiguration`" pulumi-lang-java="`authorizerConfiguration`">`authorizer_configuration`</span> below.
+  /// Authorization configuration for authenticating incoming requests. See `authorizer_configuration` below.
   final Input<AgentcoreAgentRuntimeAuthorizerConfiguration>?
       authorizerConfiguration;
 
@@ -27,30 +27,30 @@ class AgentcoreAgentRuntimeArgs {
   /// Map of environment variables to pass to the container.
   final Input<Map<String, String>>? environmentVariables;
 
-  /// Runtime session and resource lifecycle configuration for the agent runtime. See <span pulumi-lang-nodejs="`lifecycleConfiguration`" pulumi-lang-dotnet="`LifecycleConfiguration`" pulumi-lang-go="`lifecycleConfiguration`" pulumi-lang-python="`lifecycle_configuration`" pulumi-lang-yaml="`lifecycleConfiguration`" pulumi-lang-java="`lifecycleConfiguration`">`lifecycle_configuration`</span> below.
+  /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycle_configuration` below.
   final Input<List<AgentcoreAgentRuntimeLifecycleConfiguration>>?
       lifecycleConfigurations;
 
-  /// Network configuration for the agent runtime. See <span pulumi-lang-nodejs="`networkConfiguration`" pulumi-lang-dotnet="`NetworkConfiguration`" pulumi-lang-go="`networkConfiguration`" pulumi-lang-python="`network_configuration`" pulumi-lang-yaml="`networkConfiguration`" pulumi-lang-java="`networkConfiguration`">`network_configuration`</span> below.
+  /// Network configuration for the agent runtime. See `network_configuration` below.
   ///
   /// The following arguments are optional:
   final Input<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
 
-  /// Protocol configuration for the agent runtime. See <span pulumi-lang-nodejs="`protocolConfiguration`" pulumi-lang-dotnet="`ProtocolConfiguration`" pulumi-lang-go="`protocolConfiguration`" pulumi-lang-python="`protocol_configuration`" pulumi-lang-yaml="`protocolConfiguration`" pulumi-lang-java="`protocolConfiguration`">`protocol_configuration`</span> below.
+  /// Protocol configuration for the agent runtime. See `protocol_configuration` below.
   final Input<AgentcoreAgentRuntimeProtocolConfiguration>?
       protocolConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Configuration for HTTP request headers that will be passed through to the runtime. See <span pulumi-lang-nodejs="`requestHeaderConfiguration`" pulumi-lang-dotnet="`RequestHeaderConfiguration`" pulumi-lang-go="`requestHeaderConfiguration`" pulumi-lang-python="`request_header_configuration`" pulumi-lang-yaml="`requestHeaderConfiguration`" pulumi-lang-java="`requestHeaderConfiguration`">`request_header_configuration`</span> below.
+  /// Configuration for HTTP request headers that will be passed through to the runtime. See `request_header_configuration` below.
   final Input<AgentcoreAgentRuntimeRequestHeaderConfiguration>?
       requestHeaderConfiguration;
 
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
   final Input<String> roleArn;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<AgentcoreAgentRuntimeTimeouts>? timeouts;
 

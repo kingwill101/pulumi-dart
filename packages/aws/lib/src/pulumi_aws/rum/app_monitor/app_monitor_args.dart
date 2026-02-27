@@ -6,13 +6,13 @@ import '../app_monitor_custom_events/app_monitor_custom_events.dart';
 
 /// The set of arguments for AppMonitor.
 class AppMonitorArgs {
-  /// configuration data for the app monitor. See<span pulumi-lang-nodejs=" appMonitorConfiguration " pulumi-lang-dotnet=" AppMonitorConfiguration " pulumi-lang-go=" appMonitorConfiguration " pulumi-lang-python=" app_monitor_configuration " pulumi-lang-yaml=" appMonitorConfiguration " pulumi-lang-java=" appMonitorConfiguration "> app_monitor_configuration </span>below.
+  /// configuration data for the app monitor. See app_monitor_configuration below.
   final Input<AppMonitorAppMonitorConfiguration>? appMonitorConfiguration;
 
-  /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See<span pulumi-lang-nodejs=" customEvents " pulumi-lang-dotnet=" CustomEvents " pulumi-lang-go=" customEvents " pulumi-lang-python=" custom_events " pulumi-lang-yaml=" customEvents " pulumi-lang-java=" customEvents "> custom_events </span>below.
+  /// Specifies whether this app monitor allows the web client to define and send custom events. If you omit this parameter, custom events are `DISABLED`. See custom_events below.
   final Input<AppMonitorCustomEvents>? customEvents;
 
-  /// Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges. Default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to Amazon CloudWatch Logs in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur Amazon CloudWatch Logs charges. Default value is `false`.
   final Input<bool>? cwLogEnabled;
   final Input<String>? domain;
   final Input<List<String>>? domainLists;
@@ -23,7 +23,7 @@ class AppMonitorArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   AppMonitorArgs({

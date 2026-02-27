@@ -8,124 +8,7 @@ import 'efs_location_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.datasync.EfsLocation("example", {
-/// efsFileSystemArn: exampleAwsEfsMountTarget.fileSystemArn,
-/// ec2Config: {
-/// securityGroupArns: [exampleAwsSecurityGroup.arn],
-/// subnetArn: exampleAwsSubnet.arn,
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.datasync.EfsLocation("example",
-/// efs_file_system_arn=example_aws_efs_mount_target["fileSystemArn"],
-/// ec2_config={
-/// "security_group_arns": [example_aws_security_group["arn"]],
-/// "subnet_arn": example_aws_subnet["arn"],
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.DataSync.EfsLocation("example", new()
-/// {
-/// EfsFileSystemArn = exampleAwsEfsMountTarget.FileSystemArn,
-/// Ec2Config = new Aws.DataSync.Inputs.EfsLocationEc2ConfigArgs
-/// {
-/// SecurityGroupArns = new[]
-/// {
-/// exampleAwsSecurityGroup.Arn,
-/// },
-/// SubnetArn = exampleAwsSubnet.Arn,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/datasync"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := datasync.NewEfsLocation(ctx, "example", &datasync.EfsLocationArgs{
-/// EfsFileSystemArn: pulumi.Any(exampleAwsEfsMountTarget.FileSystemArn),
-/// Ec2Config: &datasync.EfsLocationEc2ConfigArgs{
-/// SecurityGroupArns: pulumi.StringArray{
-/// exampleAwsSecurityGroup.Arn,
-/// },
-/// SubnetArn: pulumi.Any(exampleAwsSubnet.Arn),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.datasync.EfsLocation;
-/// import com.pulumi.aws.datasync.EfsLocationArgs;
-/// import com.pulumi.aws.datasync.inputs.EfsLocationEc2ConfigArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new EfsLocation("example", EfsLocationArgs.builder()
-/// .efsFileSystemArn(exampleAwsEfsMountTarget.fileSystemArn())
-/// .ec2Config(EfsLocationEc2ConfigArgs.builder()
-/// .securityGroupArns(exampleAwsSecurityGroup.arn())
-/// .subnetArn(exampleAwsSubnet.arn())
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:datasync:EfsLocation
-/// properties:
-/// efsFileSystemArn: ${exampleAwsEfsMountTarget.fileSystemArn}
-/// ec2Config:
-/// securityGroupArns:
-/// - ${exampleAwsSecurityGroup.arn}
-/// subnetArn: ${exampleAwsSubnet.arn}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -133,10 +16,10 @@ import 'efs_location_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the DataSync EFS location.
+/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync EFS location.
 ///
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.datasync.EfsLocation`" pulumi-lang-dotnet="`aws.datasync.EfsLocation`" pulumi-lang-go="`datasync.EfsLocation`" pulumi-lang-python="`datasync.EfsLocation`" pulumi-lang-yaml="`aws.datasync.EfsLocation`" pulumi-lang-java="`aws.datasync.EfsLocation`">`aws.datasync.EfsLocation`</span> using the DataSync Task Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.EfsLocation` using the DataSync Task Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/efsLocation:EfsLocation example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
@@ -166,10 +49,10 @@ class EfsLocation extends CustomResource {
   /// Subdirectory to perform actions as source or destination. Default `/`.
   late final Output<String?> subdirectory;
 
-  /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
   late final Output<String> uri;
 

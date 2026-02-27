@@ -4,7 +4,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// Example natural language query.
   final String naturalLanguage;
 
-  /// SQL equivalent of <span pulumi-lang-nodejs="`naturalLanguage`" pulumi-lang-dotnet="`NaturalLanguage`" pulumi-lang-go="`naturalLanguage`" pulumi-lang-python="`natural_language`" pulumi-lang-yaml="`naturalLanguage`" pulumi-lang-java="`naturalLanguage`">`natural_language`</span>.
+  /// SQL equivalent of `natural_language`.
   final String sql;
 
   AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery({

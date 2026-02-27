@@ -8,7 +8,7 @@ class GetRegionsResult2 {
   final bool? allRegions;
   final List<GetRegionsFilter>? filters;
 
-  /// Identifier of the current partition (e.g., <span pulumi-lang-nodejs="`aws`" pulumi-lang-dotnet="`Aws`" pulumi-lang-go="`aws`" pulumi-lang-python="`aws`" pulumi-lang-yaml="`aws`" pulumi-lang-java="`aws`">`aws`</span> in AWS Commercial, `aws-cn` in AWS China).
+  /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String id;
 
   /// Names of regions that meets the criteria.

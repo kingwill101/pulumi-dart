@@ -1,0 +1,3 @@
+library module_sagemaker_space_ownership_settings;
+
+export 'space_ownership_settings/space_ownership_settings.dart';

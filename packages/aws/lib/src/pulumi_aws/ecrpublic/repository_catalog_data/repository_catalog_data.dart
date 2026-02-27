@@ -4,7 +4,7 @@ class RepositoryCatalogData {
   /// A detailed description of the contents of the repository. It is publicly visible in the Amazon ECR Public Gallery. The text must be in markdown format.
   final String? aboutText;
 
-  /// The system architecture that the images in the repository are compatible with. On the Amazon ECR Public Gallery, the following supported architectures will appear as badges on the repository and are used as search filters: `ARM`, `ARM 64`, <span pulumi-lang-nodejs="`x86`" pulumi-lang-dotnet="`X86`" pulumi-lang-go="`x86`" pulumi-lang-python="`x86`" pulumi-lang-yaml="`x86`" pulumi-lang-java="`x86`">`x86`</span>, `x86-64`
+  /// The system architecture that the images in the repository are compatible with. On the Amazon ECR Public Gallery, the following supported architectures will appear as badges on the repository and are used as search filters: `ARM`, `ARM 64`, `x86`, `x86-64`
   final List<String>? architectures;
 
   /// A short description of the contents of the repository. This text appears in both the image details and also when searching for repositories on the Amazon ECR Public Gallery.

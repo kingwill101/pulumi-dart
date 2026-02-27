@@ -1,5 +1,0 @@
-library module_ssoadmin_get_principal_application_assignments;
-
-export 'get_principal_application_assignments.dart';
-export 'get_principal_application_assignments_args.dart';
-export 'get_principal_application_assignments_result.dart';

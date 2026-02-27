@@ -1,0 +1,3 @@
+library module_chime_sdkvoice_global_settings_voice_connector;
+
+export 'sdkvoice_global_settings_voice_connector/sdkvoice_global_settings_voice_connector.dart';

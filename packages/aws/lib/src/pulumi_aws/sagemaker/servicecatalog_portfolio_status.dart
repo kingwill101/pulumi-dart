@@ -1,0 +1,4 @@
+library module_sagemaker_servicecatalog_portfolio_status;
+
+export 'servicecatalog_portfolio_status/servicecatalog_portfolio_status.dart';
+export 'servicecatalog_portfolio_status/servicecatalog_portfolio_status_args.dart';

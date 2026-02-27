@@ -1,0 +1,3 @@
+library module_quicksight_get_quicksight_analysis_permission;
+
+export 'get_quicksight_analysis_permission/get_quicksight_analysis_permission.dart';

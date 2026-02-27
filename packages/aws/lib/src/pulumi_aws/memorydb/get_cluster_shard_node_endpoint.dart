@@ -1,0 +1,3 @@
+library module_memorydb_get_cluster_shard_node_endpoint;
+
+export 'get_cluster_shard_node_endpoint/get_cluster_shard_node_endpoint.dart';

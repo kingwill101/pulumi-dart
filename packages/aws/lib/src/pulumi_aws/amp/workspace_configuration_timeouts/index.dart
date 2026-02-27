@@ -1,3 +1,0 @@
-library module_amp_workspace_configuration_timeouts;
-
-export 'workspace_configuration_timeouts.dart';

@@ -3,14 +3,14 @@
 import '../target_group_config_health_check_matcher/target_group_config_health_check_matcher.dart';
 
 class TargetGroupConfigHealthCheck {
-  /// Indicates whether health checking is enabled. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Indicates whether health checking is enabled. Defaults to `true`.
   final bool? enabled;
 
   /// The approximate amount of time, in seconds, between health checks of an individual target. The range is 5–300 seconds. The default is 30 seconds.
   final int? healthCheckIntervalSeconds;
 
   /// The amount of time, in seconds, to wait before reporting a target as unhealthy. The range is 1–120 seconds. The default is 5 seconds.
-  /// * <span pulumi-lang-nodejs="`healthyThresholdCount " pulumi-lang-dotnet="`HealthyThresholdCount " pulumi-lang-go="`healthyThresholdCount " pulumi-lang-python="`healthy_threshold_count " pulumi-lang-yaml="`healthyThresholdCount " pulumi-lang-java="`healthyThresholdCount ">`healthy_threshold_count </span>` - (Optional) The number of consecutive successful health checks required before considering an unhealthy target healthy. The range is 2–10. The default is 5.
+  /// * `healthy_threshold_count ` - (Optional) The number of consecutive successful health checks required before considering an unhealthy target healthy. The range is 2–10. The default is 5.
   final int? healthCheckTimeoutSeconds;
   final int? healthyThresholdCount;
 

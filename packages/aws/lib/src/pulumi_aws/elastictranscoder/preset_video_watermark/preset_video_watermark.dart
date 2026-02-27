@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PresetVideoWatermark {
-  /// The horizontal position of the watermark unless you specify a nonzero value for <span pulumi-lang-nodejs="`horzontalOffset`" pulumi-lang-dotnet="`HorzontalOffset`" pulumi-lang-go="`horzontalOffset`" pulumi-lang-python="`horzontal_offset`" pulumi-lang-yaml="`horzontalOffset`" pulumi-lang-java="`horzontalOffset`">`horzontal_offset`</span>.
+  /// The horizontal position of the watermark unless you specify a nonzero value for `horzontal_offset`.
   final String? horizontalAlign;
 
-  /// The amount by which you want the horizontal position of the watermark to be offset from the position specified by <span pulumi-lang-nodejs="`horizontalAlign`" pulumi-lang-dotnet="`HorizontalAlign`" pulumi-lang-go="`horizontalAlign`" pulumi-lang-python="`horizontal_align`" pulumi-lang-yaml="`horizontalAlign`" pulumi-lang-java="`horizontalAlign`">`horizontal_align`</span>.
+  /// The amount by which you want the horizontal position of the watermark to be offset from the position specified by `horizontal_align`.
   final String? horizontalOffset;
 
   /// A unique identifier for the settings for one watermark. The value of Id can be up to 40 characters long. You can specify settings for up to four watermarks.
@@ -25,10 +25,10 @@ class PresetVideoWatermark {
   /// A value that determines how Elastic Transcoder interprets values that you specified for `video_watermarks.horizontal_offset`, `video_watermarks.vertical_offset`, `video_watermarks.max_width`, and `video_watermarks.max_height`. Valid values are `Content` and `Frame`.
   final String? target;
 
-  /// The vertical position of the watermark unless you specify a nonzero value for <span pulumi-lang-nodejs="`verticalAlign`" pulumi-lang-dotnet="`VerticalAlign`" pulumi-lang-go="`verticalAlign`" pulumi-lang-python="`vertical_align`" pulumi-lang-yaml="`verticalAlign`" pulumi-lang-java="`verticalAlign`">`vertical_align`</span>. Valid values are `Top`, `Bottom`, `Center`.
+  /// The vertical position of the watermark unless you specify a nonzero value for `vertical_align`. Valid values are `Top`, `Bottom`, `Center`.
   final String? verticalAlign;
 
-  /// The amount by which you want the vertical position of the watermark to be offset from the position specified by <span pulumi-lang-nodejs="`verticalAlign`" pulumi-lang-dotnet="`VerticalAlign`" pulumi-lang-go="`verticalAlign`" pulumi-lang-python="`vertical_align`" pulumi-lang-yaml="`verticalAlign`" pulumi-lang-java="`verticalAlign`">`vertical_align`</span>
+  /// The amount by which you want the vertical position of the watermark to be offset from the position specified by `vertical_align`
   final String? verticalOffset;
 
   PresetVideoWatermark({

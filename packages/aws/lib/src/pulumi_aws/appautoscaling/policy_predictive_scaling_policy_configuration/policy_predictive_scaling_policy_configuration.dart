@@ -7,7 +7,7 @@ class PolicyPredictiveScalingPolicyConfiguration {
   /// The behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity. Valid values are `HonorMaxCapacity` and `IncreaseMaxCapacity`.
   final String? maxCapacityBreachBehavior;
 
-  /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the <span pulumi-lang-nodejs="`maxCapacityBreachBehavior`" pulumi-lang-dotnet="`MaxCapacityBreachBehavior`" pulumi-lang-go="`maxCapacityBreachBehavior`" pulumi-lang-python="`max_capacity_breach_behavior`" pulumi-lang-yaml="`maxCapacityBreachBehavior`" pulumi-lang-java="`maxCapacityBreachBehavior`">`max_capacity_breach_behavior`</span> argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
+  /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. The value is specified as a percentage relative to the forecast capacity. Required if the `max_capacity_breach_behavior` argument is set to `IncreaseMaxCapacity`, and cannot be used otherwise.
   final int? maxCapacityBuffer;
 
   /// Metrics and target utilization to use for predictive scaling. See supported fields below.

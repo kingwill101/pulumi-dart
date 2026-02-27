@@ -1,3 +1,0 @@
-library module_quicksight_data_source_parameters_athena;
-
-export 'data_source_parameters_athena.dart';

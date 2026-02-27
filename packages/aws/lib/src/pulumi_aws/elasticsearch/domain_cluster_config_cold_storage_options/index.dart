@@ -1,3 +1,0 @@
-library module_elasticsearch_domain_cluster_config_cold_storage_options;
-
-export 'domain_cluster_config_cold_storage_options.dart';

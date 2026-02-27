@@ -10,7 +10,7 @@ class GetServerlessSecurityPolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Type of security policy. One of <span pulumi-lang-nodejs="`encryption`" pulumi-lang-dotnet="`Encryption`" pulumi-lang-go="`encryption`" pulumi-lang-python="`encryption`" pulumi-lang-yaml="`encryption`" pulumi-lang-java="`encryption`">`encryption`</span> or <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span>.
+  /// Type of security policy. One of `encryption` or `network`.
   final Input<String> type;
 
   GetServerlessSecurityPolicyArgs({

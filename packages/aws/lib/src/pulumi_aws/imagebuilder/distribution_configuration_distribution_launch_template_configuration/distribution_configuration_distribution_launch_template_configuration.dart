@@ -4,7 +4,7 @@ class DistributionConfigurationDistributionLaunchTemplateConfiguration {
   /// The account ID that this configuration applies to.
   final String? accountId;
 
-  /// Indicates whether to set the specified Amazon EC2 launch template as the default launch template. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Indicates whether to set the specified Amazon EC2 launch template as the default launch template. Defaults to `true`.
   final bool? default_;
 
   /// The ID of the Amazon EC2 launch template to use.

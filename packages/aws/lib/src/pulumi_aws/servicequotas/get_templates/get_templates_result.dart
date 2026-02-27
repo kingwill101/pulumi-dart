@@ -11,7 +11,7 @@ class GetTemplatesResult {
   /// AWS Region to which the template applies.
   final String? region;
 
-  /// A list of quota increase templates for specified region. See <span pulumi-lang-nodejs="`templates`" pulumi-lang-dotnet="`Templates`" pulumi-lang-go="`templates`" pulumi-lang-python="`templates`" pulumi-lang-yaml="`templates`" pulumi-lang-java="`templates`">`templates`</span>.
+  /// A list of quota increase templates for specified region. See `templates`.
   final List<GetTemplatesTemplate> templates;
 
   GetTemplatesResult({

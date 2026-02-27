@@ -6,7 +6,7 @@ class S3AccessPointAttachmentS3AccessPoint {
   /// Access policy associated with the S3 access point configuration.
   final String? policy;
 
-  /// Amazon S3 restricts access to the S3 access point to requests made from the specified VPC. See <span pulumi-lang-nodejs="`vpcConfiguration`" pulumi-lang-dotnet="`VpcConfiguration`" pulumi-lang-go="`vpcConfiguration`" pulumi-lang-python="`vpc_configuration`" pulumi-lang-yaml="`vpcConfiguration`" pulumi-lang-java="`vpcConfiguration`">`vpc_configuration`</span> Block for details.
+  /// Amazon S3 restricts access to the S3 access point to requests made from the specified VPC. See `vpc_configuration` Block for details.
   final S3AccessPointAttachmentS3AccessPointVpcConfiguration? vpcConfiguration;
 
   S3AccessPointAttachmentS3AccessPoint({

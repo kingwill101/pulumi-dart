@@ -1,3 +1,0 @@
-library module_acmpca_get_certificate_authority_revocation_configuration_ocsp_configuration;
-
-export 'get_certificate_authority_revocation_configuration_ocsp_configuration.dart';

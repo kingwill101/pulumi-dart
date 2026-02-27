@@ -1,3 +1,0 @@
-library module_ecs_get_task_execution_network_configuration;
-
-export 'get_task_execution_network_configuration.dart';

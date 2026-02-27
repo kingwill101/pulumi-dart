@@ -5,7 +5,7 @@ import '../resolver_rule_target_ip/resolver_rule_target_ip.dart';
 
 /// The set of arguments for ResolverRule.
 class ResolverRuleArgs {
-  /// DNS queries for this domain name are forwarded to the IP addresses that are specified using <span pulumi-lang-nodejs="`targetIp`" pulumi-lang-dotnet="`TargetIp`" pulumi-lang-go="`targetIp`" pulumi-lang-python="`target_ip`" pulumi-lang-yaml="`targetIp`" pulumi-lang-java="`targetIp`">`target_ip`</span>.
+  /// DNS queries for this domain name are forwarded to the IP addresses that are specified using `target_ip`.
   final Input<String> domainName;
 
   /// Friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
@@ -14,14 +14,14 @@ class ResolverRuleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using <span pulumi-lang-nodejs="`targetIp`" pulumi-lang-dotnet="`TargetIp`" pulumi-lang-go="`targetIp`" pulumi-lang-python="`target_ip`" pulumi-lang-yaml="`targetIp`" pulumi-lang-java="`targetIp`">`target_ip`</span>.
+  /// ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
   /// This argument should only be specified for `FORWARD` type rules.
   final Input<String>? resolverEndpointId;
 
   /// Rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
   final Input<String> ruleType;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).

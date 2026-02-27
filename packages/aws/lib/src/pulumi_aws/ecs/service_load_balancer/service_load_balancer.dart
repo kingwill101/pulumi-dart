@@ -17,7 +17,7 @@ class ServiceLoadBalancer {
 
   /// ARN of the Load Balancer target group to associate with the service.
   ///
-  /// > **Version note:** Multiple <span pulumi-lang-nodejs="`loadBalancer`" pulumi-lang-dotnet="`LoadBalancer`" pulumi-lang-go="`loadBalancer`" pulumi-lang-python="`load_balancer`" pulumi-lang-yaml="`loadBalancer`" pulumi-lang-java="`loadBalancer`">`load_balancer`</span> configuration block support was added in version 2.22.0 of the provider. This allows configuration of [ECS service support for multiple target groups](https://aws.amazon.com/about-aws/whats-new/2019/07/amazon-ecs-services-now-support-multiple-load-balancer-target-groups/).
+  /// > **Version note:** Multiple `load_balancer` configuration block support was added in version 2.22.0 of the provider. This allows configuration of [ECS service support for multiple target groups](https://aws.amazon.com/about-aws/whats-new/2019/07/amazon-ecs-services-now-support-multiple-load-balancer-target-groups/).
   final String? targetGroupArn;
 
   ServiceLoadBalancer({

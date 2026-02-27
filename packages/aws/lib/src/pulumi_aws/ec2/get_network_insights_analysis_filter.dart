@@ -1,0 +1,3 @@
+library module_ec2_get_network_insights_analysis_filter;
+
+export 'get_network_insights_analysis_filter/get_network_insights_analysis_filter.dart';

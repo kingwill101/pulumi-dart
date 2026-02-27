@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_group_association_timeouts;
+
+export 'web_acl_rule_group_association_timeouts/web_acl_rule_group_association_timeouts.dart';

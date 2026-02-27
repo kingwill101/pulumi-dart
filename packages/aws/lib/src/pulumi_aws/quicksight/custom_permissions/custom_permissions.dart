@@ -6,12 +6,12 @@ import 'custom_permissions_args.dart';
 ///
 /// ## Example Usage
 ///
-/// resource <span pulumi-lang-nodejs=""aws.quicksight.CustomPermissions"" pulumi-lang-dotnet=""aws.quicksight.CustomPermissions"" pulumi-lang-go=""quicksight.CustomPermissions"" pulumi-lang-python=""quicksight.CustomPermissions"" pulumi-lang-yaml=""aws.quicksight.CustomPermissions"" pulumi-lang-java=""aws.quicksight.CustomPermissions"">"aws.quicksight.CustomPermissions"</span> "example" {
-/// <span pulumi-lang-nodejs=" customPermissionsName " pulumi-lang-dotnet=" CustomPermissionsName " pulumi-lang-go=" customPermissionsName " pulumi-lang-python=" custom_permissions_name " pulumi-lang-yaml=" customPermissionsName " pulumi-lang-java=" customPermissionsName "> custom_permissions_name </span>= "example-permissions"
+/// resource "aws.quicksight.CustomPermissions" "example" {
+/// custom_permissions_name = "example-permissions"
 ///
 /// capabilities {
-/// <span pulumi-lang-nodejs=" printReports " pulumi-lang-dotnet=" PrintReports " pulumi-lang-go=" printReports " pulumi-lang-python=" print_reports " pulumi-lang-yaml=" printReports " pulumi-lang-java=" printReports "> print_reports </span>   = "DENY"
-/// <span pulumi-lang-nodejs=" shareDashboards " pulumi-lang-dotnet=" ShareDashboards " pulumi-lang-go=" shareDashboards " pulumi-lang-python=" share_dashboards " pulumi-lang-yaml=" shareDashboards " pulumi-lang-java=" shareDashboards "> share_dashboards </span>= "DENY"
+/// print_reports    = "DENY"
+/// share_dashboards = "DENY"
 /// }
 /// }
 ///
@@ -40,10 +40,10 @@ class CustomPermissions extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   CustomPermissions(

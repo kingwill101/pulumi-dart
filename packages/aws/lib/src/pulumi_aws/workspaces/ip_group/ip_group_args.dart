@@ -17,7 +17,7 @@ class IpGroupArgs {
   /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
   final Input<List<IpGroupRule>>? rules;
 
-  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   IpGroupArgs({

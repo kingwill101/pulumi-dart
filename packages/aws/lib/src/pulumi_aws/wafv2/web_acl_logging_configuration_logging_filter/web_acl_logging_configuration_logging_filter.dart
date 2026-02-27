@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../web_acl_logging_configuration_logging_filter_filter/web_acl_logging_configuration_logging_filter_filter.dart';
 
 class WebAclLoggingConfigurationLoggingFilter {
-  /// Default handling for logs that don't match any of the specified filtering conditions. Valid values for <span pulumi-lang-nodejs="`defaultBehavior`" pulumi-lang-dotnet="`DefaultBehavior`" pulumi-lang-go="`defaultBehavior`" pulumi-lang-python="`default_behavior`" pulumi-lang-yaml="`defaultBehavior`" pulumi-lang-java="`defaultBehavior`">`default_behavior`</span> are `KEEP` or `DROP`.
+  /// Default handling for logs that don't match any of the specified filtering conditions. Valid values for `default_behavior` are `KEEP` or `DROP`.
   final String defaultBehavior;
 
   /// Filter(s) that you want to apply to the logs. See Filter below for more details.

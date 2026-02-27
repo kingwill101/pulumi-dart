@@ -1,3 +1,0 @@
-library module_amp_resource_policy_timeouts;
-
-export 'resource_policy_timeouts.dart';

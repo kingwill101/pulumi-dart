@@ -13,10 +13,10 @@ class SearchResult {
   /// Amazon Web Services Region in which the resource was created and exists.
   final String region;
 
-  /// Number of resources that match the query. See <span pulumi-lang-nodejs="`resourceCount`" pulumi-lang-dotnet="`ResourceCount`" pulumi-lang-go="`resourceCount`" pulumi-lang-python="`resource_count`" pulumi-lang-yaml="`resourceCount`" pulumi-lang-java="`resourceCount`">`resource_count`</span> below.
+  /// Number of resources that match the query. See `resource_count` below.
   final List<SearchResourceCount> resourceCounts;
 
-  /// List of structures that describe the resources that match the query. See <span pulumi-lang-nodejs="`resources`" pulumi-lang-dotnet="`Resources`" pulumi-lang-go="`resources`" pulumi-lang-python="`resources`" pulumi-lang-yaml="`resources`" pulumi-lang-java="`resources`">`resources`</span> below.
+  /// List of structures that describe the resources that match the query. See `resources` below.
   final List<SearchResource> resources;
   final String viewArn;
 

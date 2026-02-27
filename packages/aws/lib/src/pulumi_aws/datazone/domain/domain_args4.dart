@@ -26,7 +26,7 @@ class DomainArgs4 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// ARN of the service role used by DataZone. Required when <span pulumi-lang-nodejs="`domainVersion`" pulumi-lang-dotnet="`DomainVersion`" pulumi-lang-go="`domainVersion`" pulumi-lang-python="`domain_version`" pulumi-lang-yaml="`domainVersion`" pulumi-lang-java="`domainVersion`">`domain_version`</span> is set to `V2`.
+  /// ARN of the service role used by DataZone. Required when `domain_version` is set to `V2`.
   final Input<String>? serviceRole;
 
   /// Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.

@@ -17,7 +17,7 @@ class ScheduledQueryArgs {
   /// ARN for the IAM role that Timestream will assume when running the scheduled query.
   final Input<String> executionRoleArn;
 
-  /// Amazon KMS key used to encrypt the scheduled query resource, at-rest. If not specified, the scheduled query resource will be encrypted with a Timestream owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix the name with "alias/". If <span pulumi-lang-nodejs="`errorReportConfiguration`" pulumi-lang-dotnet="`ErrorReportConfiguration`" pulumi-lang-go="`errorReportConfiguration`" pulumi-lang-python="`error_report_configuration`" pulumi-lang-yaml="`errorReportConfiguration`" pulumi-lang-java="`errorReportConfiguration`">`error_report_configuration`</span> uses `SSE_KMS` as the encryption type, the same <span pulumi-lang-nodejs="`kmsKeyId`" pulumi-lang-dotnet="`KmsKeyId`" pulumi-lang-go="`kmsKeyId`" pulumi-lang-python="`kms_key_id`" pulumi-lang-yaml="`kmsKeyId`" pulumi-lang-java="`kmsKeyId`">`kms_key_id`</span> is used to encrypt the error report at rest.
+  /// Amazon KMS key used to encrypt the scheduled query resource, at-rest. If not specified, the scheduled query resource will be encrypted with a Timestream owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix the name with "alias/". If `error_report_configuration` uses `SSE_KMS` as the encryption type, the same `kms_key_id` is used to encrypt the error report at rest.
   final Input<String>? kmsKeyId;
 
   /// Runtime summary for the last scheduled query run.
@@ -30,7 +30,7 @@ class ScheduledQueryArgs {
   final Input<ScheduledQueryNotificationConfiguration>
       notificationConfiguration;
 
-  /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the <span pulumi-lang-nodejs="`scheduleConfiguration`" pulumi-lang-dotnet="`ScheduleConfiguration`" pulumi-lang-go="`scheduleConfiguration`" pulumi-lang-python="`schedule_configuration`" pulumi-lang-yaml="`scheduleConfiguration`" pulumi-lang-java="`scheduleConfiguration`">`schedule_configuration`</span> parameter, will be the value of `@scheduled_runtime` paramater for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
+  /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the `schedule_configuration` parameter, will be the value of `@scheduled_runtime` paramater for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
   final Input<String> queryString;
 
   /// Runtime summary for the last five failed scheduled query runs.
@@ -42,7 +42,7 @@ class ScheduledQueryArgs {
   /// Configuration block for schedule configuration for the query. See below.
   final Input<ScheduledQueryScheduleConfiguration> scheduleConfiguration;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Configuration block for writing the result of a query. See below.

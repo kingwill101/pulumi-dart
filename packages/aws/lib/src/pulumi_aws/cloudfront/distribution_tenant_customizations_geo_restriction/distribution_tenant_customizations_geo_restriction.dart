@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DistributionTenantCustomizationsGeoRestriction {
-  /// Set of ISO 3166-1-alpha-2 country codes for the restriction. Required if <span pulumi-lang-nodejs="`restrictionType`" pulumi-lang-dotnet="`RestrictionType`" pulumi-lang-go="`restrictionType`" pulumi-lang-python="`restriction_type`" pulumi-lang-yaml="`restrictionType`" pulumi-lang-java="`restrictionType`">`restriction_type`</span> is <span pulumi-lang-nodejs="`whitelist`" pulumi-lang-dotnet="`Whitelist`" pulumi-lang-go="`whitelist`" pulumi-lang-python="`whitelist`" pulumi-lang-yaml="`whitelist`" pulumi-lang-java="`whitelist`">`whitelist`</span> or <span pulumi-lang-nodejs="`blacklist`" pulumi-lang-dotnet="`Blacklist`" pulumi-lang-go="`blacklist`" pulumi-lang-python="`blacklist`" pulumi-lang-yaml="`blacklist`" pulumi-lang-java="`blacklist`">`blacklist`</span>.
+  /// Set of ISO 3166-1-alpha-2 country codes for the restriction. Required if `restriction_type` is `whitelist` or `blacklist`.
   final List<String>? locations;
 
-  /// Method to restrict distribution by country: <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, <span pulumi-lang-nodejs="`whitelist`" pulumi-lang-dotnet="`Whitelist`" pulumi-lang-go="`whitelist`" pulumi-lang-python="`whitelist`" pulumi-lang-yaml="`whitelist`" pulumi-lang-java="`whitelist`">`whitelist`</span>, or <span pulumi-lang-nodejs="`blacklist`" pulumi-lang-dotnet="`Blacklist`" pulumi-lang-go="`blacklist`" pulumi-lang-python="`blacklist`" pulumi-lang-yaml="`blacklist`" pulumi-lang-java="`blacklist`">`blacklist`</span>.
+  /// Method to restrict distribution by country: `none`, `whitelist`, or `blacklist`.
   final String? restrictionType;
 
   DistributionTenantCustomizationsGeoRestriction({

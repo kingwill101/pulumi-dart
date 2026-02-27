@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for Ledger.
 class LedgerArgs {
-  /// The deletion protection for the QLDB Ledger instance. By default it is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. To delete this resource via the provider, this value must be configured to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> and applied first before attempting deletion.
+  /// The deletion protection for the QLDB Ledger instance. By default it is `true`. To delete this resource via the provider, this value must be configured to `false` and applied first before attempting deletion.
   final Input<bool>? deletionProtection;
 
   /// The key in AWS Key Management Service (AWS KMS) to use for encryption of data at rest in the ledger. For more information, see the [AWS documentation](https://docs.aws.amazon.com/qldb/latest/developerguide/encryption-at-rest.html). Valid values are `"AWS_OWNED_KMS_KEY"` to use an AWS KMS key that is owned and managed by AWS on your behalf, or the ARN of a valid symmetric customer managed KMS key.
@@ -19,7 +19,7 @@ class LedgerArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   LedgerArgs({

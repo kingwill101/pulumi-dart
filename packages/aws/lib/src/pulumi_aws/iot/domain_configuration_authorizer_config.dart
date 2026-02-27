@@ -1,0 +1,3 @@
+library module_iot_domain_configuration_authorizer_config;
+
+export 'domain_configuration_authorizer_config/domain_configuration_authorizer_config.dart';

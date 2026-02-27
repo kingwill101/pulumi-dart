@@ -1,3 +1,0 @@
-library module_ecr_lifecycle_policy_action_type;
-
-export 'lifecycle_policy_action_type.dart';

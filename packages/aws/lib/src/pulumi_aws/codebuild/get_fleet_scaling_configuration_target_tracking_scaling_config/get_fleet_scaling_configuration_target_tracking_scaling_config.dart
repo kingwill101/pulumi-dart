@@ -4,7 +4,7 @@ class GetFleetScalingConfigurationTargetTrackingScalingConfig {
   /// The metric type to determine auto-scaling.
   final String metricType;
 
-  /// The value of<span pulumi-lang-nodejs=" metricType " pulumi-lang-dotnet=" MetricType " pulumi-lang-go=" metricType " pulumi-lang-python=" metric_type " pulumi-lang-yaml=" metricType " pulumi-lang-java=" metricType "> metric_type </span>when to start scaling.
+  /// The value of metric_type when to start scaling.
   final double targetValue;
 
   GetFleetScalingConfigurationTargetTrackingScalingConfig({

@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_statement_regex_match_statement_field_to_match_json_body;
-
-export 'rule_group_rule_statement_regex_match_statement_field_to_match_json_body.dart';

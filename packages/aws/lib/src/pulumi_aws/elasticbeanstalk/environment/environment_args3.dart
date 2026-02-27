@@ -26,7 +26,7 @@ class EnvironmentArgs3 {
 
   /// The time between polling the AWS API to
   /// check if changes have been applied. Use this to adjust the rate of API calls
-  /// for any <span pulumi-lang-nodejs="`create`" pulumi-lang-dotnet="`Create`" pulumi-lang-go="`create`" pulumi-lang-python="`create`" pulumi-lang-yaml="`create`" pulumi-lang-java="`create`">`create`</span> or <span pulumi-lang-nodejs="`update`" pulumi-lang-dotnet="`Update`" pulumi-lang-go="`update`" pulumi-lang-python="`update`" pulumi-lang-yaml="`update`" pulumi-lang-java="`update`">`update`</span> action. Minimum <span pulumi-lang-nodejs="`10s`" pulumi-lang-dotnet="`10s`" pulumi-lang-go="`10s`" pulumi-lang-python="`10s`" pulumi-lang-yaml="`10s`" pulumi-lang-java="`10s`">`10s`</span>, maximum <span pulumi-lang-nodejs="`180s`" pulumi-lang-dotnet="`180s`" pulumi-lang-go="`180s`" pulumi-lang-python="`180s`" pulumi-lang-yaml="`180s`" pulumi-lang-java="`180s`">`180s`</span>. Omit this to
+  /// for any `create` or `update` action. Minimum `10s`, maximum `180s`. Omit this to
   /// use the default behavior, which is an exponential backoff
   final Input<String>? pollInterval;
 
@@ -42,7 +42,7 @@ class EnvironmentArgs3 {
   /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
   final Input<String>? solutionStackName;
 
-  /// A set of tags to apply to the Environment. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A set of tags to apply to the Environment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The name of the Elastic Beanstalk Configuration

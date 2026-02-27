@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_data_protection_config_data_protection;
-
-export 'web_acl_data_protection_config_data_protection.dart';

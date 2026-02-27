@@ -1,3 +1,0 @@
-library module_globalaccelerator_get_custom_routing_accelerator_ip_set;
-
-export 'get_custom_routing_accelerator_ip_set.dart';

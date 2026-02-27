@@ -7,10 +7,10 @@ class VpnGatewayRoutePropagationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The id of the <span pulumi-lang-nodejs="`aws.ec2.RouteTable`" pulumi-lang-dotnet="`aws.ec2.RouteTable`" pulumi-lang-go="`ec2.RouteTable`" pulumi-lang-python="`ec2.RouteTable`" pulumi-lang-yaml="`aws.ec2.RouteTable`" pulumi-lang-java="`aws.ec2.RouteTable`">`aws.ec2.RouteTable`</span> to propagate routes into.
+  /// The id of the `aws.ec2.RouteTable` to propagate routes into.
   final Input<String> routeTableId;
 
-  /// The id of the <span pulumi-lang-nodejs="`aws.ec2.VpnGateway`" pulumi-lang-dotnet="`aws.ec2.VpnGateway`" pulumi-lang-go="`ec2.VpnGateway`" pulumi-lang-python="`ec2.VpnGateway`" pulumi-lang-yaml="`aws.ec2.VpnGateway`" pulumi-lang-java="`aws.ec2.VpnGateway`">`aws.ec2.VpnGateway`</span> to propagate routes from.
+  /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
   final Input<String> vpnGatewayId;
 
   VpnGatewayRoutePropagationArgs({

@@ -1,3 +1,0 @@
-library module_sagemaker_user_profile_user_settings_jupyter_server_app_settings_default_resource_spec;
-
-export 'user_profile_user_settings_jupyter_server_app_settings_default_resource_spec.dart';

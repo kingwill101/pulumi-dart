@@ -5,15 +5,15 @@ import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_storage_configuration/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_storage_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration {
-  /// Configurations for an Amazon Redshift query engine. See <span pulumi-lang-nodejs="`queryEngineConfiguration`" pulumi-lang-dotnet="`QueryEngineConfiguration`" pulumi-lang-go="`queryEngineConfiguration`" pulumi-lang-python="`query_engine_configuration`" pulumi-lang-yaml="`queryEngineConfiguration`" pulumi-lang-java="`queryEngineConfiguration`">`query_engine_configuration`</span> block for details.
+  /// Configurations for an Amazon Redshift query engine. See `query_engine_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration
       queryEngineConfiguration;
 
-  /// Configurations for generating queries. See <span pulumi-lang-nodejs="`queryGenerationConfiguration`" pulumi-lang-dotnet="`QueryGenerationConfiguration`" pulumi-lang-go="`queryGenerationConfiguration`" pulumi-lang-python="`query_generation_configuration`" pulumi-lang-yaml="`queryGenerationConfiguration`" pulumi-lang-java="`queryGenerationConfiguration`">`query_generation_configuration`</span> block for details.
+  /// Configurations for generating queries. See `query_generation_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration?
       queryGenerationConfiguration;
 
-  /// Configurations for Amazon Redshift database storage. See <span pulumi-lang-nodejs="`storageConfiguration`" pulumi-lang-dotnet="`StorageConfiguration`" pulumi-lang-go="`storageConfiguration`" pulumi-lang-python="`storage_configuration`" pulumi-lang-yaml="`storageConfiguration`" pulumi-lang-java="`storageConfiguration`">`storage_configuration`</span> block for details.
+  /// Configurations for Amazon Redshift database storage. See `storage_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration
       storageConfiguration;
 

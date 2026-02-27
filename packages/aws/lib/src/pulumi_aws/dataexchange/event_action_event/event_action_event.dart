@@ -4,7 +4,7 @@ import '../event_action_event_revision_published/event_action_event_revision_pub
 
 class EventActionEvent {
   /// Configuration for a Revision Published event.
-  /// Described in <span pulumi-lang-nodejs="`revisionPublished`" pulumi-lang-dotnet="`RevisionPublished`" pulumi-lang-go="`revisionPublished`" pulumi-lang-python="`revision_published`" pulumi-lang-yaml="`revisionPublished`" pulumi-lang-java="`revisionPublished`">`revision_published`</span> Configuration Block below.
+  /// Described in `revision_published` Configuration Block below.
   final EventActionEventRevisionPublished revisionPublished;
 
   EventActionEvent({

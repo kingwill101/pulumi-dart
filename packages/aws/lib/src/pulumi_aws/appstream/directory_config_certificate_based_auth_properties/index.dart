@@ -1,3 +1,0 @@
-library module_appstream_directory_config_certificate_based_auth_properties;
-
-export 'directory_config_certificate_based_auth_properties.dart';

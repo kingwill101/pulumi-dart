@@ -1,3 +1,0 @@
-library module_mskconnect_connector_capacity_provisioned_capacity;
-
-export 'connector_capacity_provisioned_capacity.dart';

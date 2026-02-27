@@ -18,13 +18,13 @@ class ClassificationJobArgs {
   /// The status for the job. Valid values are: `CANCELLED`, `RUNNING` and `USER_PAUSED`
   final Input<String>? jobStatus;
 
-  /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the <span pulumi-lang-nodejs="`scheduleFrequency`" pulumi-lang-dotnet="`ScheduleFrequency`" pulumi-lang-go="`scheduleFrequency`" pulumi-lang-python="`schedule_frequency`" pulumi-lang-yaml="`scheduleFrequency`" pulumi-lang-java="`scheduleFrequency`">`schedule_frequency`</span> property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the <span pulumi-lang-nodejs="`scheduleFrequency`" pulumi-lang-dotnet="`ScheduleFrequency`" pulumi-lang-go="`scheduleFrequency`" pulumi-lang-python="`schedule_frequency`" pulumi-lang-yaml="`scheduleFrequency`" pulumi-lang-java="`scheduleFrequency`">`schedule_frequency`</span> property to define the recurrence pattern for the job.
+  /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `schedule_frequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `schedule_frequency` property to define the recurrence pattern for the job.
   final Input<String> jobType;
 
-  /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final Input<String>? name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -36,10 +36,10 @@ class ClassificationJobArgs {
   /// The sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
   final Input<int>? samplingPercentage;
 
-  /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the <span pulumi-lang-nodejs="`jobType`" pulumi-lang-dotnet="`JobType`" pulumi-lang-go="`jobType`" pulumi-lang-python="`job_type`" pulumi-lang-yaml="`jobType`" pulumi-lang-java="`jobType`">`job_type`</span> property to `ONE_TIME`. (documented below)
+  /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `job_type` property to `ONE_TIME`. (documented below)
   final Input<ClassificationJobScheduleFrequency>? scheduleFrequency;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ClassificationJobArgs({

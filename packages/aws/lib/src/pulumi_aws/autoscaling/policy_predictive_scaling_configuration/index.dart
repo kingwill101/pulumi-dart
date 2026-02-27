@@ -1,3 +1,0 @@
-library module_autoscaling_policy_predictive_scaling_configuration;
-
-export 'policy_predictive_scaling_configuration.dart';

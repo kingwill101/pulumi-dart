@@ -115,7 +115,7 @@ class GetCloudExadataInfrastructureResult {
   /// The software version of the storage servers on the Exadata infrastructure.
   final String storageServerVersion;
 
-  /// (Optional) A map of tags to assign to the exadata infrastructure. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// (Optional) A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String> tags;
 
   /// The total amount of storage, in gigabytes (GB), on the Exadata infrastructure.

@@ -1,0 +1,3 @@
+library module_customerprofiles_domain_rule_based_matching_exporting_config_s3_exporting;
+
+export 'domain_rule_based_matching_exporting_config_s3_exporting/domain_rule_based_matching_exporting_config_s3_exporting.dart';

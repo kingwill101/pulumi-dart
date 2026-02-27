@@ -1,0 +1,3 @@
+library module_lightsail_distribution_cache_behavior_settings;
+
+export 'distribution_cache_behavior_settings/distribution_cache_behavior_settings.dart';

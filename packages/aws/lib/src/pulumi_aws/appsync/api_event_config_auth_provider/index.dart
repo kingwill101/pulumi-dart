@@ -1,3 +1,0 @@
-library module_appsync_api_event_config_auth_provider;
-
-export 'api_event_config_auth_provider.dart';

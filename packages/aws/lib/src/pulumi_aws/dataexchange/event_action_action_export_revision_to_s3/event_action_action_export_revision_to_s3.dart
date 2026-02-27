@@ -5,11 +5,11 @@ import '../event_action_action_export_revision_to_s3_revision_destination/event_
 
 class EventActionActionExportRevisionToS3 {
   /// Configures server-side encryption of the exported revision.
-  /// Described in <span pulumi-lang-nodejs="`encryption`" pulumi-lang-dotnet="`Encryption`" pulumi-lang-go="`encryption`" pulumi-lang-python="`encryption`" pulumi-lang-yaml="`encryption`" pulumi-lang-java="`encryption`">`encryption`</span> Configuration Block below.
+  /// Described in `encryption` Configuration Block below.
   final EventActionActionExportRevisionToS3Encryption? encryption;
 
   /// Configures the S3 destination of the exported revision.
-  /// Described in <span pulumi-lang-nodejs="`revisionDestination`" pulumi-lang-dotnet="`RevisionDestination`" pulumi-lang-go="`revisionDestination`" pulumi-lang-python="`revision_destination`" pulumi-lang-yaml="`revisionDestination`" pulumi-lang-java="`revisionDestination`">`revision_destination`</span> Configuration Block below.
+  /// Described in `revision_destination` Configuration Block below.
   final EventActionActionExportRevisionToS3RevisionDestination
       revisionDestination;
 

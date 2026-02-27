@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart';
 import 'get_secret_args.dart';
 import 'get_secret_result.dart';
 
-/// !> **WARNING:** This data source's functionality was removed in version 2.0.0 of the AWS Provider. You can migrate existing configurations to the <span pulumi-lang-nodejs="`aws.kms.getSecrets`" pulumi-lang-dotnet="`aws.kms.getSecrets`" pulumi-lang-go="`kms.getSecrets`" pulumi-lang-python="`kms_get_secrets`" pulumi-lang-yaml="`aws.kms.getSecrets`" pulumi-lang-java="`aws.kms.getSecrets`">`aws.kms.getSecrets`</span> data source following instructions available in the Version 2 Upgrade Guide. This data source will be removed in a future version.
+/// !> **WARNING:** This data source's functionality was removed in version 2.0.0 of the AWS Provider. You can migrate existing configurations to the `aws.kms.getSecrets` data source following instructions available in the Version 2 Upgrade Guide. This data source will be removed in a future version.
 Future<GetSecretResult> getSecret(
   GetSecretArgs args, {
   InvokeOptions? options,

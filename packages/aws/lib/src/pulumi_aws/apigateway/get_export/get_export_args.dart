@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getExport.
 class GetExportArgs {
-  /// Content-type of the export. Valid values are `application/json` and `application/yaml` are supported for <span pulumi-lang-nodejs="`exportType`" pulumi-lang-dotnet="`ExportType`" pulumi-lang-go="`exportType`" pulumi-lang-python="`export_type`" pulumi-lang-yaml="`exportType`" pulumi-lang-java="`exportType`">`export_type`</span> <span pulumi-lang-nodejs="`ofoas30`" pulumi-lang-dotnet="`Ofoas30`" pulumi-lang-go="`ofoas30`" pulumi-lang-python="`ofoas30`" pulumi-lang-yaml="`ofoas30`" pulumi-lang-java="`ofoas30`">`ofoas30`</span> and <span pulumi-lang-nodejs="`swagger`" pulumi-lang-dotnet="`Swagger`" pulumi-lang-go="`swagger`" pulumi-lang-python="`swagger`" pulumi-lang-yaml="`swagger`" pulumi-lang-java="`swagger`">`swagger`</span>.
+  /// Content-type of the export. Valid values are `application/json` and `application/yaml` are supported for `export_type` `ofoas30` and `swagger`.
   final Input<String>? accepts;
 
-  /// Type of export. Acceptable values are <span pulumi-lang-nodejs="`oas30`" pulumi-lang-dotnet="`Oas30`" pulumi-lang-go="`oas30`" pulumi-lang-python="`oas30`" pulumi-lang-yaml="`oas30`" pulumi-lang-java="`oas30`">`oas30`</span> for OpenAPI 3.0.x and <span pulumi-lang-nodejs="`swagger`" pulumi-lang-dotnet="`Swagger`" pulumi-lang-go="`swagger`" pulumi-lang-python="`swagger`" pulumi-lang-yaml="`swagger`" pulumi-lang-java="`swagger`">`swagger`</span> for Swagger/OpenAPI 2.0.
+  /// Type of export. Acceptable values are `oas30` for OpenAPI 3.0.x and `swagger` for Swagger/OpenAPI 2.0.
   final Input<String> exportType;
 
   /// Key-value map of query string parameters that specify properties of the export. the following parameters are supported: `extensions='integrations'` or `extensions='apigateway'` will export the API with x-amazon-apigateway-integration extensions. `extensions='authorizers'` will export the API with x-amazon-apigateway-authorizer extensions.

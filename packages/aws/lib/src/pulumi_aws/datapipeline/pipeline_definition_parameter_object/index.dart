@@ -1,3 +1,0 @@
-library module_datapipeline_pipeline_definition_parameter_object;
-
-export 'pipeline_definition_parameter_object.dart';

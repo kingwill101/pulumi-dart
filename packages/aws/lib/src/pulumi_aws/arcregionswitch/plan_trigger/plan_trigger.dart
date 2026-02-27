@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../plan_trigger_condition/plan_trigger_condition.dart';
 
 class PlanTrigger {
-  /// Action to trigger. Valid values: <span pulumi-lang-nodejs="`activate`" pulumi-lang-dotnet="`Activate`" pulumi-lang-go="`activate`" pulumi-lang-python="`activate`" pulumi-lang-yaml="`activate`" pulumi-lang-java="`activate`">`activate`</span>, <span pulumi-lang-nodejs="`deactivate`" pulumi-lang-dotnet="`Deactivate`" pulumi-lang-go="`deactivate`" pulumi-lang-python="`deactivate`" pulumi-lang-yaml="`deactivate`" pulumi-lang-java="`deactivate`">`deactivate`</span>.
+  /// Action to trigger. Valid values: `activate`, `deactivate`.
   final String action;
 
   /// List of conditions that must be met. See Conditions below.

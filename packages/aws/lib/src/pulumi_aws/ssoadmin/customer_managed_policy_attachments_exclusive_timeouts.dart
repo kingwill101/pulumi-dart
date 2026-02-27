@@ -1,0 +1,3 @@
+library module_ssoadmin_customer_managed_policy_attachments_exclusive_timeouts;
+
+export 'customer_managed_policy_attachments_exclusive_timeouts/customer_managed_policy_attachments_exclusive_timeouts.dart';

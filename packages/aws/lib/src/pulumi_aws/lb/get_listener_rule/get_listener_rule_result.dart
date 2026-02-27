@@ -7,7 +7,7 @@ import '../get_listener_rule_transform/get_listener_rule_transform.dart';
 
 /// Result data returned by getListenerRule.
 class GetListenerRuleResult {
-  /// List of actions associated with the rule, sorted by <span pulumi-lang-nodejs="`order`" pulumi-lang-dotnet="`Order`" pulumi-lang-go="`order`" pulumi-lang-python="`order`" pulumi-lang-yaml="`order`" pulumi-lang-java="`order`">`order`</span>.
+  /// List of actions associated with the rule, sorted by `order`.
   /// Detailed below.
   final List<GetListenerRuleAction>? actions;
 

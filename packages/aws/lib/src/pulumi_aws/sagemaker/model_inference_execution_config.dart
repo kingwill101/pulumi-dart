@@ -1,0 +1,3 @@
+library module_sagemaker_model_inference_execution_config;
+
+export 'model_inference_execution_config/model_inference_execution_config.dart';

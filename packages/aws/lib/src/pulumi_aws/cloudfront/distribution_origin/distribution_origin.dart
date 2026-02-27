@@ -14,10 +14,10 @@ class DistributionOrigin {
   /// Number of seconds that CloudFront waits when trying to establish a connection to the origin. Must be between 1-10. Defaults to 10.
   final int? connectionTimeout;
 
-  /// One or more sub-resources with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> parameters that specify header data that will be sent to the origin (multiples allowed).
+  /// One or more sub-resources with `name` and `value` parameters that specify header data that will be sent to the origin (multiples allowed).
   final List<DistributionOriginCustomHeader>? customHeaders;
 
-  /// The CloudFront custom origin configuration information. If an S3 origin is required, use <span pulumi-lang-nodejs="`originAccessControlId`" pulumi-lang-dotnet="`OriginAccessControlId`" pulumi-lang-go="`originAccessControlId`" pulumi-lang-python="`origin_access_control_id`" pulumi-lang-yaml="`originAccessControlId`" pulumi-lang-java="`originAccessControlId`">`origin_access_control_id`</span> or <span pulumi-lang-nodejs="`s3OriginConfig`" pulumi-lang-dotnet="`S3OriginConfig`" pulumi-lang-go="`s3OriginConfig`" pulumi-lang-python="`s3_origin_config`" pulumi-lang-yaml="`s3OriginConfig`" pulumi-lang-java="`s3OriginConfig`">`s3_origin_config`</span> instead.
+  /// The CloudFront custom origin configuration information. If an S3 origin is required, use `origin_access_control_id` or `s3_origin_config` instead.
   final DistributionOriginCustomOriginConfig? customOriginConfig;
 
   /// Domain name corresponding to the distribution. For example: `d604721fxaaqy9.cloudfront.net`.
@@ -33,10 +33,10 @@ class DistributionOrigin {
   /// CloudFront Origin Shield configuration information. Using Origin Shield can help reduce the load on your origin. For more information, see [Using Origin Shield](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/origin-shield.html) in the Amazon CloudFront Developer Guide.
   final DistributionOriginOriginShield? originShield;
 
-  /// Time (in seconds) that a request from CloudFront to the origin can stay open and wait for a response. Must be integer greater than or equal to the value of <span pulumi-lang-nodejs="`originReadTimeout`" pulumi-lang-dotnet="`OriginReadTimeout`" pulumi-lang-go="`originReadTimeout`" pulumi-lang-python="`origin_read_timeout`" pulumi-lang-yaml="`originReadTimeout`" pulumi-lang-java="`originReadTimeout`">`origin_read_timeout`</span>. If omitted or explicitly set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>, no maximum value is enforced.
+  /// Time (in seconds) that a request from CloudFront to the origin can stay open and wait for a response. Must be integer greater than or equal to the value of `origin_read_timeout`. If omitted or explicitly set to `0`, no maximum value is enforced.
   final int? responseCompletionTimeout;
 
-  /// CloudFront S3 origin configuration information. If a custom origin is required, use <span pulumi-lang-nodejs="`customOriginConfig`" pulumi-lang-dotnet="`CustomOriginConfig`" pulumi-lang-go="`customOriginConfig`" pulumi-lang-python="`custom_origin_config`" pulumi-lang-yaml="`customOriginConfig`" pulumi-lang-java="`customOriginConfig`">`custom_origin_config`</span> instead.
+  /// CloudFront S3 origin configuration information. If a custom origin is required, use `custom_origin_config` instead.
   final DistributionOriginS3OriginConfig? s3OriginConfig;
 
   /// The VPC origin configuration.

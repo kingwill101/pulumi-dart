@@ -17,8 +17,8 @@ class GlobalReplicationGroupArgs {
   /// The name of the cache engine to be used for the clusters in this global replication group.
   /// When creating, by default the Global Replication Group inherits the engine of the primary replication group.
   /// If an engine is specified, the Global Replication Group and all member replication groups will be upgraded to this engine.
-  /// Valid values are <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span> or <span pulumi-lang-nodejs="`valkey`" pulumi-lang-dotnet="`Valkey`" pulumi-lang-go="`valkey`" pulumi-lang-python="`valkey`" pulumi-lang-yaml="`valkey`" pulumi-lang-java="`valkey`">`valkey`</span>.
-  /// Default is <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span> if <span pulumi-lang-nodejs="`engineVersion`" pulumi-lang-dotnet="`EngineVersion`" pulumi-lang-go="`engineVersion`" pulumi-lang-python="`engine_version`" pulumi-lang-yaml="`engineVersion`" pulumi-lang-java="`engineVersion`">`engine_version`</span> is specified.
+  /// Valid values are `redis` or `valkey`.
+  /// Default is `redis` if `engine_version` is specified.
   final Input<String>? engine;
 
   /// Engine version to use for the Global Replication Group.
@@ -28,13 +28,13 @@ class GlobalReplicationGroupArgs {
   /// When the version is 7 or higher, the major and minor version should be set, e.g., `7.2`.
   /// When the version is 6, the major and minor version can be set, e.g., `6.2`,
   /// or the minor version can be unspecified which will use the latest version at creation time, e.g., `6.x`.
-  /// The actual engine version used is returned in the attribute <span pulumi-lang-nodejs="`engineVersionActual`" pulumi-lang-dotnet="`EngineVersionActual`" pulumi-lang-go="`engineVersionActual`" pulumi-lang-python="`engine_version_actual`" pulumi-lang-yaml="`engineVersionActual`" pulumi-lang-java="`engineVersionActual`">`engine_version_actual`</span>, see Attribute Reference below.
+  /// The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below.
   final Input<String>? engineVersion;
 
   /// A user-created description for the global replication group.
   final Input<String>? globalReplicationGroupDescription;
 
-  /// The suffix name of a Global Datastore. If <span pulumi-lang-nodejs="`globalReplicationGroupIdSuffix`" pulumi-lang-dotnet="`GlobalReplicationGroupIdSuffix`" pulumi-lang-go="`globalReplicationGroupIdSuffix`" pulumi-lang-python="`global_replication_group_id_suffix`" pulumi-lang-yaml="`globalReplicationGroupIdSuffix`" pulumi-lang-java="`globalReplicationGroupIdSuffix`">`global_replication_group_id_suffix`</span> is changed, creates a new resource.
+  /// The suffix name of a Global Datastore. If `global_replication_group_id_suffix` is changed, creates a new resource.
   final Input<String> globalReplicationGroupIdSuffix;
 
   /// The number of node groups (shards) on the global replication group.
@@ -46,7 +46,7 @@ class GlobalReplicationGroupArgs {
   /// Note that ElastiCache creates a copy of this parameter group for each member replication group.
   final Input<String>? parameterGroupName;
 
-  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If <span pulumi-lang-nodejs="`primaryReplicationGroupId`" pulumi-lang-dotnet="`PrimaryReplicationGroupId`" pulumi-lang-go="`primaryReplicationGroupId`" pulumi-lang-python="`primary_replication_group_id`" pulumi-lang-yaml="`primaryReplicationGroupId`" pulumi-lang-java="`primaryReplicationGroupId`">`primary_replication_group_id`</span> is changed, creates a new resource.
+  /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primary_replication_group_id` is changed, creates a new resource.
   final Input<String> primaryReplicationGroupId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

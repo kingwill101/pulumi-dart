@@ -1,3 +1,0 @@
-library module_bedrock_agent_flow_definition_node_input;
-
-export 'agent_flow_definition_node_input.dart';

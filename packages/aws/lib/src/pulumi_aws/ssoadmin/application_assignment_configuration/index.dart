@@ -1,4 +1,0 @@
-library module_ssoadmin_application_assignment_configuration;
-
-export 'application_assignment_configuration.dart';
-export 'application_assignment_configuration_args.dart';

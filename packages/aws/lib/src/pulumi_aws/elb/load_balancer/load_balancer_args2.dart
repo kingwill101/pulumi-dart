@@ -13,22 +13,22 @@ class LoadBalancerArgs2 {
   /// The AZ's to serve traffic in.
   final Input<List<String>>? availabilityZones;
 
-  /// Boolean to enable connection draining. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Boolean to enable connection draining. Default: `false`
   final Input<bool>? connectionDraining;
 
-  /// The time in seconds to allow for connections to drain. Default: <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span>
+  /// The time in seconds to allow for connections to drain. Default: `300`
   final Input<int>? connectionDrainingTimeout;
 
-  /// Enable cross-zone load balancing. Default: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>
+  /// Enable cross-zone load balancing. Default: `true`
   final Input<bool>? crossZoneLoadBalancing;
 
-  /// Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are <span pulumi-lang-nodejs="`monitor`" pulumi-lang-dotnet="`Monitor`" pulumi-lang-go="`monitor`" pulumi-lang-python="`monitor`" pulumi-lang-yaml="`monitor`" pulumi-lang-java="`monitor`">`monitor`</span>, <span pulumi-lang-nodejs="`defensive`" pulumi-lang-dotnet="`Defensive`" pulumi-lang-go="`defensive`" pulumi-lang-python="`defensive`" pulumi-lang-yaml="`defensive`" pulumi-lang-java="`defensive`">`defensive`</span> (default), <span pulumi-lang-nodejs="`strictest`" pulumi-lang-dotnet="`Strictest`" pulumi-lang-go="`strictest`" pulumi-lang-python="`strictest`" pulumi-lang-yaml="`strictest`" pulumi-lang-java="`strictest`">`strictest`</span>.
+  /// Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
   final Input<String>? desyncMitigationMode;
 
-  /// A<span pulumi-lang-nodejs=" healthCheck " pulumi-lang-dotnet=" HealthCheck " pulumi-lang-go=" healthCheck " pulumi-lang-python=" health_check " pulumi-lang-yaml=" healthCheck " pulumi-lang-java=" healthCheck "> health_check </span>block. Health Check documented below.
+  /// A health_check block. Health Check documented below.
   final Input<LoadBalancerHealthCheck>? healthCheck;
 
-  /// The time in seconds that the connection is allowed to be idle. Default: <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>
+  /// The time in seconds that the connection is allowed to be idle. Default: `60`
   final Input<int>? idleTimeout;
 
   /// A list of instance ids to place in the ELB pool.
@@ -44,7 +44,7 @@ class LoadBalancerArgs2 {
   final Input<String>? name;
 
   /// Creates a unique name beginning with the specified
-  /// prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -62,9 +62,9 @@ class LoadBalancerArgs2 {
   /// A list of subnet IDs to attach to the ELB. When an update to subnets will remove all current subnets, this will force a new resource.
   final Input<List<String>>? subnets;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Exactly one of <span pulumi-lang-nodejs="`availabilityZones`" pulumi-lang-dotnet="`AvailabilityZones`" pulumi-lang-go="`availabilityZones`" pulumi-lang-python="`availability_zones`" pulumi-lang-yaml="`availabilityZones`" pulumi-lang-java="`availabilityZones`">`availability_zones`</span> or <span pulumi-lang-nodejs="`subnets`" pulumi-lang-dotnet="`Subnets`" pulumi-lang-go="`subnets`" pulumi-lang-python="`subnets`" pulumi-lang-yaml="`subnets`" pulumi-lang-java="`subnets`">`subnets`</span> must be specified: this
+  /// Exactly one of `availability_zones` or `subnets` must be specified: this
   /// determines if the ELB exists in a VPC or in EC2-classic.
   final Input<Map<String, String>>? tags;
 

@@ -1,3 +1,0 @@
-library module_ecs_capacity_provider_auto_scaling_group_provider;
-
-export 'capacity_provider_auto_scaling_group_provider.dart';

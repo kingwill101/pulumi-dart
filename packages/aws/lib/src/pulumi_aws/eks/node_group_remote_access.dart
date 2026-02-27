@@ -1,0 +1,3 @@
+library module_eks_node_group_remote_access;
+
+export 'node_group_remote_access/node_group_remote_access.dart';

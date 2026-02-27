@@ -23,7 +23,7 @@ class KxVolumeArgs {
   /// Unique name for the volumr that you want to create.
   final Input<String>? name;
 
-  /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when <span pulumi-lang-nodejs="`volumeType`" pulumi-lang-dotnet="`VolumeType`" pulumi-lang-go="`volumeType`" pulumi-lang-python="`volume_type`" pulumi-lang-yaml="`volumeType`" pulumi-lang-java="`volumeType`">`volume_type`</span> is `NAS_1`. See <span pulumi-lang-nodejs="`nas1Configuration`" pulumi-lang-dotnet="`Nas1Configuration`" pulumi-lang-go="`nas1Configuration`" pulumi-lang-python="`nas1_configuration`" pulumi-lang-yaml="`nas1Configuration`" pulumi-lang-java="`nas1Configuration`">`nas1_configuration`</span> Argument Reference below.
+  /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
   final Input<List<KxVolumeNas1Configuration>>? nas1Configurations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -32,7 +32,7 @@ class KxVolumeArgs {
   /// A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
   final Input<Map<String, String>>? tags;
 
-  /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide <span pulumi-lang-nodejs="`nas1Configuration`" pulumi-lang-dotnet="`Nas1Configuration`" pulumi-lang-go="`nas1Configuration`" pulumi-lang-python="`nas1_configuration`" pulumi-lang-yaml="`nas1Configuration`" pulumi-lang-java="`nas1Configuration`">`nas1_configuration`</span>.
+  /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
   final Input<String> type;
 
   KxVolumeArgs({

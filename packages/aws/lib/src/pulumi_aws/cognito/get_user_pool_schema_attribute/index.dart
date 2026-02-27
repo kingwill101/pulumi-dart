@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_schema_attribute;
-
-export 'get_user_pool_schema_attribute.dart';

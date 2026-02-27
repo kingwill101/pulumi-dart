@@ -10,105 +10,7 @@ import 'image_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.imagebuilder.Image("example", {
-/// distributionConfigurationArn: exampleAwsImagebuilderDistributionConfiguration.arn,
-/// imageRecipeArn: exampleAwsImagebuilderImageRecipe.arn,
-/// infrastructureConfigurationArn: exampleAwsImagebuilderInfrastructureConfiguration.arn,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.imagebuilder.Image("example",
-/// distribution_configuration_arn=example_aws_imagebuilder_distribution_configuration["arn"],
-/// image_recipe_arn=example_aws_imagebuilder_image_recipe["arn"],
-/// infrastructure_configuration_arn=example_aws_imagebuilder_infrastructure_configuration["arn"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.ImageBuilder.Image("example", new()
-/// {
-/// DistributionConfigurationArn = exampleAwsImagebuilderDistributionConfiguration.Arn,
-/// ImageRecipeArn = exampleAwsImagebuilderImageRecipe.Arn,
-/// InfrastructureConfigurationArn = exampleAwsImagebuilderInfrastructureConfiguration.Arn,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/imagebuilder"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := imagebuilder.NewImage(ctx, "example", &imagebuilder.ImageArgs{
-/// DistributionConfigurationArn:   pulumi.Any(exampleAwsImagebuilderDistributionConfiguration.Arn),
-/// ImageRecipeArn:                 pulumi.Any(exampleAwsImagebuilderImageRecipe.Arn),
-/// InfrastructureConfigurationArn: pulumi.Any(exampleAwsImagebuilderInfrastructureConfiguration.Arn),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.imagebuilder.Image;
-/// import com.pulumi.aws.imagebuilder.ImageArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Image("example", ImageArgs.builder()
-/// .distributionConfigurationArn(exampleAwsImagebuilderDistributionConfiguration.arn())
-/// .imageRecipeArn(exampleAwsImagebuilderImageRecipe.arn())
-/// .infrastructureConfigurationArn(exampleAwsImagebuilderInfrastructureConfiguration.arn())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:imagebuilder:Image
-/// properties:
-/// distributionConfigurationArn: ${exampleAwsImagebuilderDistributionConfiguration.arn}
-/// imageRecipeArn: ${exampleAwsImagebuilderImageRecipe.arn}
-/// infrastructureConfigurationArn: ${exampleAwsImagebuilderInfrastructureConfiguration.arn}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -116,10 +18,10 @@ import 'image_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the Image Builder image.
+/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder image.
 ///
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.imagebuilder.Image`" pulumi-lang-dotnet="`aws.imagebuilder.Image`" pulumi-lang-go="`imagebuilder.Image`" pulumi-lang-python="`imagebuilder.Image`" pulumi-lang-yaml="`aws.imagebuilder.Image`" pulumi-lang-java="`aws.imagebuilder.Image`">`aws.imagebuilder.Image`</span> resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.Image` resources using the Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/image:Image example arn:aws:imagebuilder:us-east-1:123456789012:image/example/1.0.0/1
@@ -137,7 +39,7 @@ class Image extends CustomResource {
   /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
   late final Output<String?> distributionConfigurationArn;
 
-  /// Whether additional information about the image being created is collected. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether additional information about the image being created is collected. Defaults to `true`.
   late final Output<bool?> enhancedImageMetadataEnabled;
 
   /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
@@ -175,10 +77,10 @@ class Image extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// Key-value map of resource tags for the Image Builder Image. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the Image Builder Image. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Version of the image.

@@ -1,0 +1,3 @@
+library module_glue_catalog_table_optimizer_configuration_retention_configuration;
+
+export 'catalog_table_optimizer_configuration_retention_configuration/catalog_table_optimizer_configuration_retention_configuration.dart';

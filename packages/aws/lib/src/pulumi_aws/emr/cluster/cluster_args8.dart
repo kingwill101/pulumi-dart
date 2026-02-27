@@ -34,180 +34,10 @@ class ClusterArgs8 {
 
   /// JSON string for supplying list of configurations for the EMR cluster.
   ///
-  /// > **NOTE on <span pulumi-lang-nodejs="`configurationsJson`" pulumi-lang-dotnet="`ConfigurationsJson`" pulumi-lang-go="`configurationsJson`" pulumi-lang-python="`configurations_json`" pulumi-lang-yaml="`configurationsJson`" pulumi-lang-java="`configurationsJson`">`configurations_json`</span>:** If the `Configurations` value is empty then you should skip the `Configurations` field instead of providing an empty list as a value, `"Configurations": []`.
-  ///
-  /// <!--Start PulumiCodeChooser -->
-  /// ```typescript
-  /// import * as pulumi from "@pulumi/pulumi";
-  /// import * as aws from "@pulumi/aws";
-  ///
-  /// const cluster = new aws.emr.Cluster("cluster", {configurationsJson: `[
-  /// {
-  /// \\"Classification\\": \\"hadoop-env\\",
-  /// \\"Configurations\\": [
-  /// {
-  /// \\"Classification\\": \\"export\\",
-  /// \\"Properties\\": {
-  /// \\"JAVA_HOME\\": \\"/usr/lib/jvm/java-1.8.0\\"
-  /// }
-  /// }
-  /// ],
-  /// \\"Properties\\": {}
-  /// }
-  /// ]
-  /// `});
-  /// ```
-  /// ```python
-  /// import pulumi
-  /// import pulumi_aws as aws
-  ///
-  /// cluster = aws.emr.Cluster("cluster", configurations_json="""[
-  /// {
-  /// \"Classification\": \"hadoop-env\",
-  /// \"Configurations\": [
-  /// {
-  /// \"Classification\": \"export\",
-  /// \"Properties\": {
-  /// \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
-  /// }
-  /// }
-  /// ],
-  /// \"Properties\": {}
-  /// }
-  /// ]
-  /// """)
-  /// ```
-  /// ```csharp
-  /// using System.Collections.Generic;
-  /// using System.Linq;
-  /// using Pulumi;
-  /// using Aws = Pulumi.Aws;
-  ///
-  /// return await Deployment.RunAsync(() =>
-  /// {
-  /// var cluster = new Aws.Emr.Cluster("cluster", new()
-  /// {
-  /// ConfigurationsJson = @"[
-  /// {
-  /// \""Classification\"": \""hadoop-env\"",
-  /// \""Configurations\"": [
-  /// {
-  /// \""Classification\"": \""export\"",
-  /// \""Properties\"": {
-  /// \""JAVA_HOME\"": \""/usr/lib/jvm/java-1.8.0\""
-  /// }
-  /// }
-  /// ],
-  /// \""Properties\"": {}
-  /// }
-  /// ]
-  /// ",
-  /// });
-  ///
-  /// });
-  /// ```
-  /// ```go
-  /// package main
-  ///
-  /// import (
-  /// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/emr"
-  /// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-  /// )
-  ///
-  /// func main() {
-  /// pulumi.Run(func(ctx *pulumi.Context) error {
-  /// _, err := emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
-  /// ConfigurationsJson: pulumi.String(`[
-  /// {
-  /// \"Classification\": \"hadoop-env\",
-  /// \"Configurations\": [
-  /// {
-  /// \"Classification\": \"export\",
-  /// \"Properties\": {
-  /// \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
-  /// }
-  /// }
-  /// ],
-  /// \"Properties\": {}
-  /// }
-  /// ]
-  /// `),
-  /// })
-  /// if err != nil {
-  /// return err
-  /// }
-  /// return nil
-  /// })
-  /// }
-  /// ```
-  /// ```java
-  /// package generated_program;
-  ///
-  /// import com.pulumi.Context;
-  /// import com.pulumi.Pulumi;
-  /// import com.pulumi.core.Output;
-  /// import com.pulumi.aws.emr.Cluster;
-  /// import com.pulumi.aws.emr.ClusterArgs;
-  /// import java.util.List;
-  /// import java.util.ArrayList;
-  /// import java.util.Map;
-  /// import java.io.File;
-  /// import java.nio.file.Files;
-  /// import java.nio.file.Paths;
-  ///
-  /// public class App {
-  /// public static void main(String[] args) {
-  /// Pulumi.run(App::stack);
-  /// }
-  ///
-  /// public static void stack(Context ctx) {
-  /// var cluster = new Cluster("cluster", ClusterArgs.builder()
-  /// .configurationsJson("""
-  /// [
-  /// {
-  /// \"Classification\": \"hadoop-env\",
-  /// \"Configurations\": [
-  /// {
-  /// \"Classification\": \"export\",
-  /// \"Properties\": {
-  /// \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
-  /// }
-  /// }
-  /// ],
-  /// \"Properties\": {}
-  /// }
-  /// ]
-  /// """)
-  /// .build());
-  ///
-  /// }
-  /// }
-  /// ```
-  /// ```yaml
-  /// resources:
-  /// cluster:
-  /// type: aws:emr:Cluster
-  /// properties:
-  /// configurationsJson: |
-  /// [
-  /// {
-  /// \"Classification\": \"hadoop-env\",
-  /// \"Configurations\": [
-  /// {
-  /// \"Classification\": \"export\",
-  /// \"Properties\": {
-  /// \"JAVA_HOME\": \"/usr/lib/jvm/java-1.8.0\"
-  /// }
-  /// }
-  /// ],
-  /// \"Properties\": {}
-  /// }
-  /// ]
-  /// ```
-  /// <!--End PulumiCodeChooser -->
+  /// > **NOTE on `configurations_json`:** If the `Configurations` value is empty then you should skip the `Configurations` field instead of providing an empty list as a value, `"Configurations": []`.
   final Input<String>? configurationsJson;
 
-  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any <span pulumi-lang-nodejs="`coreInstanceGroup`" pulumi-lang-dotnet="`CoreInstanceGroup`" pulumi-lang-go="`coreInstanceGroup`" pulumi-lang-python="`core_instance_group`" pulumi-lang-yaml="`coreInstanceGroup`" pulumi-lang-java="`coreInstanceGroup`">`core_instance_group`</span> configuration blocks are set. Detailed below.
+  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `core_instance_group` configuration blocks are set. Detailed below.
   final Input<ClusterCoreInstanceFleet>? coreInstanceFleet;
 
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
@@ -237,7 +67,7 @@ class ClusterArgs8 {
   /// S3 bucket to write the log files of the job flow. If a value is not provided, logs are not created.
   final Input<String>? logUri;
 
-  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any <span pulumi-lang-nodejs="`masterInstanceGroup`" pulumi-lang-dotnet="`MasterInstanceGroup`" pulumi-lang-go="`masterInstanceGroup`" pulumi-lang-python="`master_instance_group`" pulumi-lang-yaml="`masterInstanceGroup`" pulumi-lang-java="`masterInstanceGroup`">`master_instance_group`</span> configuration blocks are set. Detailed below.
+  /// Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the master node type. Cannot be specified if any `master_instance_group` configuration blocks are set. Detailed below.
   final Input<ClusterMasterInstanceFleet>? masterInstanceFleet;
 
   /// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [master node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-master).
@@ -261,7 +91,7 @@ class ClusterArgs8 {
   /// Way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an `instance group` is resized.
   final Input<String>? scaleDownBehavior;
 
-  /// Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with <span pulumi-lang-nodejs="`releaseLabel`" pulumi-lang-dotnet="`ReleaseLabel`" pulumi-lang-go="`releaseLabel`" pulumi-lang-python="`release_label`" pulumi-lang-yaml="`releaseLabel`" pulumi-lang-java="`releaseLabel`">`release_label`</span> 4.8.0 or greater.
+  /// Security configuration name to attach to the EMR cluster. Only valid for EMR clusters with `release_label` 4.8.0 or greater.
   final Input<String>? securityConfiguration;
 
   /// IAM role that will be assumed by the Amazon EMR service to access AWS resources.
@@ -269,24 +99,24 @@ class ClusterArgs8 {
   /// The following arguments are optional:
   final Input<String> serviceRole;
 
-  /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with <span pulumi-lang-nodejs="`releaseLabel`" pulumi-lang-dotnet="`ReleaseLabel`" pulumi-lang-go="`releaseLabel`" pulumi-lang-python="`release_label`" pulumi-lang-yaml="`releaseLabel`" pulumi-lang-java="`releaseLabel`">`release_label`</span> 5.28.0 or greater (default is 1).
+  /// Number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `release_label` 5.28.0 or greater (default is 1).
   final Input<int>? stepConcurrencyLevel;
 
   /// List of steps to run when creating the cluster. See below. It is highly recommended to utilize the lifecycle resource options block with `ignoreChanges` if other steps are being managed outside of this provider.
   final Input<List<ClusterStep>>? steps;
 
-  /// list of tags to apply to the EMR Cluster. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Switch on/off termination protection (default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
   final Input<bool>? terminationProtection;
 
-  /// Whether whether Amazon EMR should gracefully replace core nodes that have degraded within the cluster. Default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether whether Amazon EMR should gracefully replace core nodes that have degraded within the cluster. Default value is `false`.
   final Input<bool>? unhealthyNodeReplacement;
 
-  /// Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. Default value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. Default value is `true`.
   ///
-  /// **NOTE:** As per the [Amazon EMR API Reference](https://docs.aws.amazon.com/emr/latest/APIReference/API_RunJobFlow.html#EMR-RunJobFlow-request-VisibleToAllUsers), this argument is no longer supported. Do not set this argument, particularly to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, as it would lead to perpetual differences.
+  /// **NOTE:** As per the [Amazon EMR API Reference](https://docs.aws.amazon.com/emr/latest/APIReference/API_RunJobFlow.html#EMR-RunJobFlow-request-VisibleToAllUsers), this argument is no longer supported. Do not set this argument, particularly to `false`, as it would lead to perpetual differences.
   final Input<bool>? visibleToAllUsers;
 
   ClusterArgs8({

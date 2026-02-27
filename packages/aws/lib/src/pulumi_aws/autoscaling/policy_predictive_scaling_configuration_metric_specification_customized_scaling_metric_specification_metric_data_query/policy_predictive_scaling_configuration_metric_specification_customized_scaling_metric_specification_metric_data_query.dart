@@ -3,7 +3,7 @@
 import '../policy_predictive_scaling_configuration_metric_specification_customized_scaling_metric_specification_metric_data_query_metric_stat/policy_predictive_scaling_configuration_metric_specification_customized_scaling_metric_specification_metric_data_query_metric_stat.dart';
 
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQuery {
-  /// Math expression used on the returned metric. You must specify either <span pulumi-lang-nodejs="`expression`" pulumi-lang-dotnet="`Expression`" pulumi-lang-go="`expression`" pulumi-lang-python="`expression`" pulumi-lang-yaml="`expression`" pulumi-lang-java="`expression`">`expression`</span> or <span pulumi-lang-nodejs="`metricStat`" pulumi-lang-dotnet="`MetricStat`" pulumi-lang-go="`metricStat`" pulumi-lang-python="`metric_stat`" pulumi-lang-yaml="`metricStat`" pulumi-lang-java="`metricStat`">`metric_stat`</span>, but not both.
+  /// Math expression used on the returned metric. You must specify either `expression` or `metric_stat`, but not both.
   final String? expression;
 
   /// Short name for the metric used in predictive scaling policy.
@@ -12,7 +12,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMe
   /// Human-readable label for this metric or expression.
   final String? label;
 
-  /// Structure that defines CloudWatch metric to be used in predictive scaling policy. You must specify either <span pulumi-lang-nodejs="`expression`" pulumi-lang-dotnet="`Expression`" pulumi-lang-go="`expression`" pulumi-lang-python="`expression`" pulumi-lang-yaml="`expression`" pulumi-lang-java="`expression`">`expression`</span> or <span pulumi-lang-nodejs="`metricStat`" pulumi-lang-dotnet="`MetricStat`" pulumi-lang-go="`metricStat`" pulumi-lang-python="`metric_stat`" pulumi-lang-yaml="`metricStat`" pulumi-lang-java="`metricStat`">`metric_stat`</span>, but not both.
+  /// Structure that defines CloudWatch metric to be used in predictive scaling policy. You must specify either `expression` or `metric_stat`, but not both.
   final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat?
       metricStat;
 

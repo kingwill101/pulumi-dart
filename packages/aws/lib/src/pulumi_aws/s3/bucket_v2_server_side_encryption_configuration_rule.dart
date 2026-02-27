@@ -1,0 +1,3 @@
+library module_s3_bucket_v2_server_side_encryption_configuration_rule;
+
+export 'bucket_v2_server_side_encryption_configuration_rule/bucket_v2_server_side_encryption_configuration_rule.dart';

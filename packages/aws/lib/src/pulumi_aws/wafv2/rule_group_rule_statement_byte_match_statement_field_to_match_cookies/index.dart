@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_statement_byte_match_statement_field_to_match_cookies;
-
-export 'rule_group_rule_statement_byte_match_statement_field_to_match_cookies.dart';

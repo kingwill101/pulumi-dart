@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TriggerPredicateCondition {
-  /// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, <span pulumi-lang-nodejs="`crawlerName`" pulumi-lang-dotnet="`CrawlerName`" pulumi-lang-go="`crawlerName`" pulumi-lang-python="`crawler_name`" pulumi-lang-yaml="`crawlerName`" pulumi-lang-java="`crawlerName`">`crawler_name`</span> must also be specified. Conflicts with <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span>.
+  /// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawler_name` must also be specified. Conflicts with `state`.
   final String? crawlState;
 
-  /// The name of the crawler to watch. If this is specified, <span pulumi-lang-nodejs="`crawlState`" pulumi-lang-dotnet="`CrawlState`" pulumi-lang-go="`crawlState`" pulumi-lang-python="`crawl_state`" pulumi-lang-yaml="`crawlState`" pulumi-lang-java="`crawlState`">`crawl_state`</span> must also be specified. Conflicts with <span pulumi-lang-nodejs="`jobName`" pulumi-lang-dotnet="`JobName`" pulumi-lang-go="`jobName`" pulumi-lang-python="`job_name`" pulumi-lang-yaml="`jobName`" pulumi-lang-java="`jobName`">`job_name`</span>.
+  /// The name of the crawler to watch. If this is specified, `crawl_state` must also be specified. Conflicts with `job_name`.
   final String? crawlerName;
 
-  /// The name of the job to watch. If this is specified, <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> must also be specified. Conflicts with <span pulumi-lang-nodejs="`crawlerName`" pulumi-lang-dotnet="`CrawlerName`" pulumi-lang-go="`crawlerName`" pulumi-lang-python="`crawler_name`" pulumi-lang-yaml="`crawlerName`" pulumi-lang-java="`crawlerName`">`crawler_name`</span>.
+  /// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawler_name`.
   final String? jobName;
 
   /// A logical operator. Defaults to `EQUALS`.
   final String? logicalOperator;
 
-  /// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, <span pulumi-lang-nodejs="`jobName`" pulumi-lang-dotnet="`JobName`" pulumi-lang-go="`jobName`" pulumi-lang-python="`job_name`" pulumi-lang-yaml="`jobName`" pulumi-lang-java="`jobName`">`job_name`</span> must also be specified. Conflicts with <span pulumi-lang-nodejs="`crawlerState`" pulumi-lang-dotnet="`CrawlerState`" pulumi-lang-go="`crawlerState`" pulumi-lang-python="`crawler_state`" pulumi-lang-yaml="`crawlerState`" pulumi-lang-java="`crawlerState`">`crawler_state`</span>.
+  /// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `job_name` must also be specified. Conflicts with `crawler_state`.
   final String? state;
 
   TriggerPredicateCondition({

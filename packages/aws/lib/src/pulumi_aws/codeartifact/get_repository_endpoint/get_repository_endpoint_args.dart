@@ -10,7 +10,7 @@ class GetRepositoryEndpointArgs {
   /// Account number of the AWS account that owns the domain.
   final Input<String>? domainOwner;
 
-  /// Which endpoint of a repository to return. A repository has one endpoint for each package format: <span pulumi-lang-nodejs="`npm`" pulumi-lang-dotnet="`Npm`" pulumi-lang-go="`npm`" pulumi-lang-python="`npm`" pulumi-lang-yaml="`npm`" pulumi-lang-java="`npm`">`npm`</span>, <span pulumi-lang-nodejs="`pypi`" pulumi-lang-dotnet="`Pypi`" pulumi-lang-go="`pypi`" pulumi-lang-python="`pypi`" pulumi-lang-yaml="`pypi`" pulumi-lang-java="`pypi`">`pypi`</span>, <span pulumi-lang-nodejs="`maven`" pulumi-lang-dotnet="`Maven`" pulumi-lang-go="`maven`" pulumi-lang-python="`maven`" pulumi-lang-yaml="`maven`" pulumi-lang-java="`maven`">`maven`</span>, and <span pulumi-lang-nodejs="`nuget`" pulumi-lang-dotnet="`Nuget`" pulumi-lang-go="`nuget`" pulumi-lang-python="`nuget`" pulumi-lang-yaml="`nuget`" pulumi-lang-java="`nuget`">`nuget`</span>.
+  /// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
   final Input<String> format;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

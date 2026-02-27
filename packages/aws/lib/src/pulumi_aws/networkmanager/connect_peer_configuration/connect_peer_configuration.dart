@@ -9,7 +9,7 @@ class ConnectPeerConfiguration {
   /// Connect peer core network address.
   final String? coreNetworkAddress;
 
-  /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See <span pulumi-lang-nodejs="`aws.networkmanager.ConnectAttachment`" pulumi-lang-dotnet="`aws.networkmanager.ConnectAttachment`" pulumi-lang-go="`networkmanager.ConnectAttachment`" pulumi-lang-python="`networkmanager.ConnectAttachment`" pulumi-lang-yaml="`aws.networkmanager.ConnectAttachment`" pulumi-lang-java="`aws.networkmanager.ConnectAttachment`">`aws.networkmanager.ConnectAttachment`</span> for details.
+  /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
   final List<String>? insideCidrBlocks;
 
   /// Connect peer address.

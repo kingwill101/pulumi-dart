@@ -1,0 +1,3 @@
+library module_kendra_get_index_document_metadata_configuration_update_relevance;
+
+export 'get_index_document_metadata_configuration_update_relevance/get_index_document_metadata_configuration_update_relevance.dart';

@@ -5,7 +5,7 @@ import '../get_user_hierarchy_structure_hierarchy_structure/get_user_hierarchy_s
 
 /// Result data returned by getUserHierarchyStructure.
 class GetUserHierarchyStructureResult {
-  /// Block that defines the hierarchy structure's levels. The <span pulumi-lang-nodejs="`hierarchyStructure`" pulumi-lang-dotnet="`HierarchyStructure`" pulumi-lang-go="`hierarchyStructure`" pulumi-lang-python="`hierarchy_structure`" pulumi-lang-yaml="`hierarchyStructure`" pulumi-lang-java="`hierarchyStructure`">`hierarchy_structure`</span> block is documented below.
+  /// Block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
   final List<GetUserHierarchyStructureHierarchyStructure> hierarchyStructures;
 
   /// The provider-assigned unique ID for this managed resource.

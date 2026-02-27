@@ -5,10 +5,10 @@ import '../stream_processor_regions_of_interest_bounding_box/stream_processor_re
 import '../stream_processor_regions_of_interest_polygon/stream_processor_regions_of_interest_polygon.dart';
 
 class StreamProcessorRegionsOfInterest {
-  /// Box representing a region of interest on screen. Only 1 per region is allowed. See <span pulumi-lang-nodejs="`boundingBox`" pulumi-lang-dotnet="`BoundingBox`" pulumi-lang-go="`boundingBox`" pulumi-lang-python="`bounding_box`" pulumi-lang-yaml="`boundingBox`" pulumi-lang-java="`boundingBox`">`bounding_box`</span>.
+  /// Box representing a region of interest on screen. Only 1 per region is allowed. See `bounding_box`.
   final StreamProcessorRegionsOfInterestBoundingBox? boundingBox;
 
-  /// Shape made up of up to 10 Point objects to define a region of interest. See <span pulumi-lang-nodejs="`polygon`" pulumi-lang-dotnet="`Polygon`" pulumi-lang-go="`polygon`" pulumi-lang-python="`polygon`" pulumi-lang-yaml="`polygon`" pulumi-lang-java="`polygon`">`polygon`</span>.
+  /// Shape made up of up to 10 Point objects to define a region of interest. See `polygon`.
   final List<StreamProcessorRegionsOfInterestPolygon>? polygons;
 
   StreamProcessorRegionsOfInterest({

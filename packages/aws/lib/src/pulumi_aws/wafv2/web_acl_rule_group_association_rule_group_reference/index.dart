@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_rule_group_association_rule_group_reference;
-
-export 'web_acl_rule_group_association_rule_group_reference.dart';

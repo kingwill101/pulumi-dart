@@ -9,7 +9,7 @@ class CentralizationRuleForOrganizationRuleSource {
   /// Scope defining which resources to include. Use organization ID format: `OrganizationId = 'o-example123456'`.
   final String scope;
 
-  /// Configuration block for source logs settings. See <span pulumi-lang-nodejs="`sourceLogsConfiguration`" pulumi-lang-dotnet="`SourceLogsConfiguration`" pulumi-lang-go="`sourceLogsConfiguration`" pulumi-lang-python="`source_logs_configuration`" pulumi-lang-yaml="`sourceLogsConfiguration`" pulumi-lang-java="`sourceLogsConfiguration`">`source_logs_configuration`</span> below.
+  /// Configuration block for source logs settings. See `source_logs_configuration` below.
   final CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration?
       sourceLogsConfiguration;
 

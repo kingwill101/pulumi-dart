@@ -4,10 +4,10 @@ class CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergCo
   /// Specifies a directory in which to look for files. You may choose a sub-directory rather than the top-level table location. Defaults to the table's location.
   final String? location;
 
-  /// The number of days that orphan files should be retained before file deletion. Defaults to <span pulumi-lang-nodejs="`3`" pulumi-lang-dotnet="`3`" pulumi-lang-go="`3`" pulumi-lang-python="`3`" pulumi-lang-yaml="`3`" pulumi-lang-java="`3`">`3`</span>.
+  /// The number of days that orphan files should be retained before file deletion. Defaults to `3`.
   final int? orphanFileRetentionPeriodInDays;
 
-  /// interval in hours between orphan file deletion job runs. Defaults to <span pulumi-lang-nodejs="`24`" pulumi-lang-dotnet="`24`" pulumi-lang-go="`24`" pulumi-lang-python="`24`" pulumi-lang-yaml="`24`" pulumi-lang-java="`24`">`24`</span>.
+  /// interval in hours between orphan file deletion job runs. Defaults to `24`.
   final int? runRateInHours;
 
   CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration({

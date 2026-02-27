@@ -7,10 +7,10 @@ import '../web_acl_rule_group_association_timeouts/web_acl_rule_group_associatio
 
 /// The set of arguments for WebAclRuleGroupAssociation.
 class WebAclRuleGroupAssociationArgs {
-  /// Managed Rule Group configuration. One of <span pulumi-lang-nodejs="`ruleGroupReference`" pulumi-lang-dotnet="`RuleGroupReference`" pulumi-lang-go="`ruleGroupReference`" pulumi-lang-python="`rule_group_reference`" pulumi-lang-yaml="`ruleGroupReference`" pulumi-lang-java="`ruleGroupReference`">`rule_group_reference`</span> or <span pulumi-lang-nodejs="`managedRuleGroup`" pulumi-lang-dotnet="`ManagedRuleGroup`" pulumi-lang-go="`managedRuleGroup`" pulumi-lang-python="`managed_rule_group`" pulumi-lang-yaml="`managedRuleGroup`" pulumi-lang-java="`managedRuleGroup`">`managed_rule_group`</span> is required. Conflicts with <span pulumi-lang-nodejs="`ruleGroupReference`" pulumi-lang-dotnet="`RuleGroupReference`" pulumi-lang-go="`ruleGroupReference`" pulumi-lang-python="`rule_group_reference`" pulumi-lang-yaml="`ruleGroupReference`" pulumi-lang-java="`ruleGroupReference`">`rule_group_reference`</span>. See below.
+  /// Managed Rule Group configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `rule_group_reference`. See below.
   final Input<WebAclRuleGroupAssociationManagedRuleGroup>? managedRuleGroup;
 
-  /// Override action for the rule group. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span> and <span pulumi-lang-nodejs="`count`" pulumi-lang-dotnet="`Count`" pulumi-lang-go="`count`" pulumi-lang-python="`count`" pulumi-lang-yaml="`count`" pulumi-lang-java="`count`">`count`</span>. Defaults to <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>. When set to <span pulumi-lang-nodejs="`count`" pulumi-lang-dotnet="`Count`" pulumi-lang-go="`count`" pulumi-lang-python="`count`" pulumi-lang-yaml="`count`" pulumi-lang-java="`count`">`count`</span>, the actions defined in the rule group rules are overridden to count matches instead of blocking or allowing requests.
+  /// Override action for the rule group. Valid values are `none` and `count`. Defaults to `none`. When set to `count`, the actions defined in the rule group rules are overridden to count matches instead of blocking or allowing requests.
   final Input<String>? overrideAction;
 
   /// Priority of the rule within the Web ACL. Rules are evaluated in order of priority, with lower numbers evaluated first.
@@ -19,7 +19,7 @@ class WebAclRuleGroupAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Custom Rule Group reference configuration. One of <span pulumi-lang-nodejs="`ruleGroupReference`" pulumi-lang-dotnet="`RuleGroupReference`" pulumi-lang-go="`ruleGroupReference`" pulumi-lang-python="`rule_group_reference`" pulumi-lang-yaml="`ruleGroupReference`" pulumi-lang-java="`ruleGroupReference`">`rule_group_reference`</span> or <span pulumi-lang-nodejs="`managedRuleGroup`" pulumi-lang-dotnet="`ManagedRuleGroup`" pulumi-lang-go="`managedRuleGroup`" pulumi-lang-python="`managed_rule_group`" pulumi-lang-yaml="`managedRuleGroup`" pulumi-lang-java="`managedRuleGroup`">`managed_rule_group`</span> is required. Conflicts with <span pulumi-lang-nodejs="`managedRuleGroup`" pulumi-lang-dotnet="`ManagedRuleGroup`" pulumi-lang-go="`managedRuleGroup`" pulumi-lang-python="`managed_rule_group`" pulumi-lang-yaml="`managedRuleGroup`" pulumi-lang-java="`managedRuleGroup`">`managed_rule_group`</span>. See below.
+  /// Custom Rule Group reference configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `managed_rule_group`. See below.
   final Input<WebAclRuleGroupAssociationRuleGroupReference>? ruleGroupReference;
 
   /// Name of the rule to create in the Web ACL that references the rule group. Must be between 1 and 128 characters.

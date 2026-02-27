@@ -1,0 +1,3 @@
+library module_lakeformation_data_lake_settings_create_table_default_permission;
+
+export 'data_lake_settings_create_table_default_permission/data_lake_settings_create_table_default_permission.dart';

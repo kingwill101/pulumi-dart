@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfiguration {
   /// Buffer incoming data to the specified size, in MBs between 1 to 100, before delivering it to the destination.  The default value is 5MB.
   final int? bufferingSize;
 
-  /// The CloudWatch Logging Options for the delivery stream. See <span pulumi-lang-nodejs="`cloudwatchLoggingOptions`" pulumi-lang-dotnet="`CloudwatchLoggingOptions`" pulumi-lang-go="`cloudwatchLoggingOptions`" pulumi-lang-python="`cloudwatch_logging_options`" pulumi-lang-yaml="`cloudwatchLoggingOptions`" pulumi-lang-java="`cloudwatchLoggingOptions`">`cloudwatch_logging_options`</span> block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
   final FirehoseDeliveryStreamOpensearchserverlessConfigurationCloudwatchLoggingOptions?
       cloudwatchLoggingOptions;
 
@@ -22,7 +22,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfiguration {
   /// The Serverless offering for Amazon OpenSearch Service index name.
   final String indexName;
 
-  /// The data processing configuration.  See <span pulumi-lang-nodejs="`processingConfiguration`" pulumi-lang-dotnet="`ProcessingConfiguration`" pulumi-lang-go="`processingConfiguration`" pulumi-lang-python="`processing_configuration`" pulumi-lang-yaml="`processingConfiguration`" pulumi-lang-java="`processingConfiguration`">`processing_configuration`</span> block below for details.
+  /// The data processing configuration.  See `processing_configuration` block below for details.
   final FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration?
       processingConfiguration;
 
@@ -35,11 +35,11 @@ class FirehoseDeliveryStreamOpensearchserverlessConfiguration {
   /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedDocumentsOnly` and `AllDocuments`.  Default value is `FailedDocumentsOnly`.
   final String? s3BackupMode;
 
-  /// The S3 Configuration. See <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span> block below for details.
+  /// The S3 Configuration. See `s3_configuration` block below for details.
   final FirehoseDeliveryStreamOpensearchserverlessConfigurationS3Configuration
       s3Configuration;
 
-  /// The VPC configuration for the delivery stream to connect to OpenSearch Serverless associated with the VPC. See <span pulumi-lang-nodejs="`vpcConfig`" pulumi-lang-dotnet="`VpcConfig`" pulumi-lang-go="`vpcConfig`" pulumi-lang-python="`vpc_config`" pulumi-lang-yaml="`vpcConfig`" pulumi-lang-java="`vpcConfig`">`vpc_config`</span> block below for details.
+  /// The VPC configuration for the delivery stream to connect to OpenSearch Serverless associated with the VPC. See `vpc_config` block below for details.
   final FirehoseDeliveryStreamOpensearchserverlessConfigurationVpcConfig?
       vpcConfig;
 

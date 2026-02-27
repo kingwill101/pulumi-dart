@@ -7,121 +7,17 @@ import 'component_args.dart';
 ///
 /// ### URI Document
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.imagebuilder.Component("example", {
-/// name: "example",
-/// platform: "Linux",
-/// uri: `s3://${exampleAwsS3Object.bucket}/${exampleAwsS3Object.key}`,
-/// version: "1.0.0",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.imagebuilder.Component("example",
-/// name="example",
-/// platform="Linux",
-/// uri=f"s3://{example_aws_s3_object['bucket']}/{example_aws_s3_object['key']}",
-/// version="1.0.0")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.ImageBuilder.Component("example", new()
-/// {
-/// Name = "example",
-/// Platform = "Linux",
-/// Uri = $"s3://{exampleAwsS3Object.Bucket}/{exampleAwsS3Object.Key}",
-/// Version = "1.0.0",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/imagebuilder"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := imagebuilder.NewComponent(ctx, "example", &imagebuilder.ComponentArgs{
-/// Name:     pulumi.String("example"),
-/// Platform: pulumi.String("Linux"),
-/// Uri:      pulumi.Sprintf("s3://%v/%v", exampleAwsS3Object.Bucket, exampleAwsS3Object.Key),
-/// Version:  pulumi.String("1.0.0"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.imagebuilder.Component;
-/// import com.pulumi.aws.imagebuilder.ComponentArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Component("example", ComponentArgs.builder()
-/// .name("example")
-/// .platform("Linux")
-/// .uri(String.format("s3://%s/%s", exampleAwsS3Object.bucket(),exampleAwsS3Object.key()))
-/// .version("1.0.0")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:imagebuilder:Component
-/// properties:
-/// name: example
-/// platform: Linux
-/// uri: s3://${exampleAwsS3Object.bucket}/${exampleAwsS3Object.key}
-/// version: 1.0.0
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.imagebuilder.getComponents`" pulumi-lang-dotnet="`aws.imagebuilder.getComponents`" pulumi-lang-go="`imagebuilder.getComponents`" pulumi-lang-python="`imagebuilder_get_components`" pulumi-lang-yaml="`aws.imagebuilder.getComponents`" pulumi-lang-java="`aws.imagebuilder.getComponents`">`aws.imagebuilder.getComponents`</span> resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.getComponents` resources using the Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/component:Component example arn:aws:imagebuilder:us-east-1:123456789012:component/example/1.0.0/1
 /// ```
 ///
-/// Certain resource arguments, such as <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span>, cannot be read via the API and imported into the provider. The provider will display a difference for these arguments the first run after import if declared in the the provider configuration for an imported resource.
+/// Certain resource arguments, such as `uri`, cannot be read via the API and imported into the provider. The provider will display a difference for these arguments the first run after import if declared in the the provider configuration for an imported resource.
 class Component extends CustomResource {
   /// (Required) Amazon Resource Name (ARN) of the component.
   late final Output<String> arn;
@@ -129,7 +25,7 @@ class Component extends CustomResource {
   /// Change description of the component.
   late final Output<String?> changeDescription;
 
-  /// Inline YAML string with data of the component. Exactly one of <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> and <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> can be specified. the provider will only perform drift detection of its value when present in a configuration.
+  /// Inline YAML string with data of the component. Exactly one of `data` and `uri` can be specified. the provider will only perform drift detection of its value when present in a configuration.
   late final Output<String> data;
 
   /// Date the component was created.
@@ -156,24 +52,24 @@ class Component extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// Whether to retain the old version when the resource is destroyed or replacement is necessary. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to retain the old version when the resource is destroyed or replacement is necessary. Defaults to `false`.
   late final Output<bool?> skipDestroy;
 
   /// Set of Operating Systems (OS) supported by the component.
   late final Output<List<String>?> supportedOsVersions;
 
-  /// Key-value map of resource tags for the component. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the component. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Type of the component.
   late final Output<String> type;
 
-  /// S3 URI with data of the component. Exactly one of <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> and <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> can be specified.
+  /// S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   ///
-  /// > **NOTE:** Updating <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> or <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> requires specifying a new <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>. This causes replacement of the resource. The <span pulumi-lang-nodejs="`skipDestroy`" pulumi-lang-dotnet="`SkipDestroy`" pulumi-lang-go="`skipDestroy`" pulumi-lang-python="`skip_destroy`" pulumi-lang-yaml="`skipDestroy`" pulumi-lang-java="`skipDestroy`">`skip_destroy`</span> argument can be used to retain the old version.
+  /// > **NOTE:** Updating `data` or `uri` requires specifying a new `version`. This causes replacement of the resource. The `skip_destroy` argument can be used to retain the old version.
   late final Output<String?> uri;
 
   /// Version of the component.

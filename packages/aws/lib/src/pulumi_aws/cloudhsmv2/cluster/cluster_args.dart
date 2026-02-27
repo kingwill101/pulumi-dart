@@ -7,7 +7,7 @@ class ClusterArgs {
   /// The type of HSM module in the cluster. Currently, `hsm1.medium` and `hsm2m.medium` are supported.
   final Input<String> hsmType;
 
-  /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if <span pulumi-lang-nodejs="`hsmType`" pulumi-lang-dotnet="`HsmType`" pulumi-lang-go="`hsmType`" pulumi-lang-python="`hsm_type`" pulumi-lang-yaml="`hsmType`" pulumi-lang-java="`hsmType`">`hsm_type`</span> is `hsm2m.medium`.
+  /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsm_type` is `hsm2m.medium`.
   final Input<String>? mode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -19,7 +19,7 @@ class ClusterArgs {
   /// The IDs of subnets in which cluster will operate.
   final Input<List<String>> subnetIds;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ClusterArgs({

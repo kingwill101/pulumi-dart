@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_mysql;
+
+export 'data_source_parameters_mysql/data_source_parameters_mysql.dart';

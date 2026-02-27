@@ -1,3 +1,0 @@
-library module_scheduler_schedule_target_eventbridge_parameters;
-
-export 'schedule_target_eventbridge_parameters.dart';

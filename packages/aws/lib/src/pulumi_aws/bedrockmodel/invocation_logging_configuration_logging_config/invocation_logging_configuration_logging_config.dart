@@ -4,23 +4,23 @@ import '../invocation_logging_configuration_logging_config_cloudwatch_config/inv
 import '../invocation_logging_configuration_logging_config_s3_config/invocation_logging_configuration_logging_config_s3_config.dart';
 
 class InvocationLoggingConfigurationLoggingConfig {
-  /// CloudWatch logging configuration. See <span pulumi-lang-nodejs="`cloudwatchConfig`" pulumi-lang-dotnet="`CloudwatchConfig`" pulumi-lang-go="`cloudwatchConfig`" pulumi-lang-python="`cloudwatch_config`" pulumi-lang-yaml="`cloudwatchConfig`" pulumi-lang-java="`cloudwatchConfig`">`cloudwatch_config`</span> Block for details.
+  /// CloudWatch logging configuration. See `cloudwatch_config` Block for details.
   final InvocationLoggingConfigurationLoggingConfigCloudwatchConfig?
       cloudwatchConfig;
 
-  /// Set to include embeddings data in the log delivery. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Set to include embeddings data in the log delivery. Defaults to `true`.
   final bool? embeddingDataDeliveryEnabled;
 
-  /// Set to include image data in the log delivery. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Set to include image data in the log delivery. Defaults to `true`.
   final bool? imageDataDeliveryEnabled;
 
-  /// S3 configuration for storing log data. See <span pulumi-lang-nodejs="`s3Config`" pulumi-lang-dotnet="`S3Config`" pulumi-lang-go="`s3Config`" pulumi-lang-python="`s3_config`" pulumi-lang-yaml="`s3Config`" pulumi-lang-java="`s3Config`">`s3_config`</span> Block for details.
+  /// S3 configuration for storing log data. See `s3_config` Block for details.
   final InvocationLoggingConfigurationLoggingConfigS3Config? s3Config;
 
-  /// Set to include text data in the log delivery. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Set to include text data in the log delivery. Defaults to `true`.
   final bool? textDataDeliveryEnabled;
 
-  /// Set to include text data in the log delivery. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Set to include text data in the log delivery. Defaults to `true`.
   final bool? videoDataDeliveryEnabled;
 
   InvocationLoggingConfigurationLoggingConfig({

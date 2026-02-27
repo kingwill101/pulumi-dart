@@ -8,7 +8,7 @@ class PolicyTargetTrackingScalingPolicyConfiguration {
   final PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification?
       customizedMetricSpecification;
 
-  /// Whether scale in by the target tracking policy is disabled. If the value is true, scale in is disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether scale in by the target tracking policy is disabled. If the value is true, scale in is disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in is enabled and the target tracking policy can remove capacity from the scalable resource. The default value is `false`.
   final bool? disableScaleIn;
 
   /// Predefined metric. See supported fields below.

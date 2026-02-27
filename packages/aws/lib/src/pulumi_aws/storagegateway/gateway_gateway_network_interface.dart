@@ -1,0 +1,3 @@
+library module_storagegateway_gateway_gateway_network_interface;
+
+export 'gateway_gateway_network_interface/gateway_gateway_network_interface.dart';

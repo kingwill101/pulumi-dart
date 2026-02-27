@@ -7,7 +7,7 @@ class GetImageApplication {
   /// The app block ARN of the application.
   final String appBlockArn;
 
-  /// ARN of the image being searched for. Cannot be used with <span pulumi-lang-nodejs="`nameRegex`" pulumi-lang-dotnet="`NameRegex`" pulumi-lang-go="`nameRegex`" pulumi-lang-python="`name_regex`" pulumi-lang-yaml="`nameRegex`" pulumi-lang-java="`nameRegex`">`name_regex`</span> or <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// ARN of the image being searched for. Cannot be used with `name_regex` or `name`.
   final String arn;
 
   /// Time at which this image was created.
@@ -22,7 +22,7 @@ class GetImageApplication {
   /// Bool based on if the application is enabled.
   final bool enabled;
 
-  /// A list named<span pulumi-lang-nodejs=" iconS3Location " pulumi-lang-dotnet=" IconS3Location " pulumi-lang-go=" iconS3Location " pulumi-lang-python=" icon_s3_location " pulumi-lang-yaml=" iconS3Location " pulumi-lang-java=" iconS3Location "> icon_s3_location </span>that contains the following:
+  /// A list named icon_s3_location that contains the following:
   final List<GetImageApplicationIconS3Location> iconS3Locations;
 
   /// URL of the application icon. This URL may be time-limited.
@@ -41,7 +41,7 @@ class GetImageApplication {
   /// * `Name` - Name of the application.
   final Map<String, String> metadata;
 
-  /// Name of the image being searched for. Cannot be used with <span pulumi-lang-nodejs="`nameRegex`" pulumi-lang-dotnet="`NameRegex`" pulumi-lang-go="`nameRegex`" pulumi-lang-python="`name_regex`" pulumi-lang-yaml="`nameRegex`" pulumi-lang-java="`nameRegex`">`name_regex`</span> or <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>.
+  /// Name of the image being searched for. Cannot be used with `name_regex` or `arn`.
   final String name;
 
   /// Array of strings describing the platforms on which the application can run.

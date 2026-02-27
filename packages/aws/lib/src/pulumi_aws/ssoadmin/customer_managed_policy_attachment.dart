@@ -1,0 +1,4 @@
+library module_ssoadmin_customer_managed_policy_attachment;
+
+export 'customer_managed_policy_attachment/customer_managed_policy_attachment.dart';
+export 'customer_managed_policy_attachment/customer_managed_policy_attachment_args.dart';

@@ -1,0 +1,3 @@
+library module_cloudwatch_log_transformer_transformer_config_parse_route53;
+
+export 'log_transformer_transformer_config_parse_route53/log_transformer_transformer_config_parse_route53.dart';

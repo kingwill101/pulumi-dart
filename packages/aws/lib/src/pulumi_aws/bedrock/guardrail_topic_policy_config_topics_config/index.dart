@@ -1,3 +1,0 @@
-library module_bedrock_guardrail_topic_policy_config_topics_config;
-
-export 'guardrail_topic_policy_config_topics_config.dart';

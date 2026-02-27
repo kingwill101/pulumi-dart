@@ -1,0 +1,3 @@
+library module_cloudfront_get_distribution_tenant_customization;
+
+export 'get_distribution_tenant_customization/get_distribution_tenant_customization.dart';

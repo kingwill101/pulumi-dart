@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for MacsecKeyAssociation.
 class MacsecKeyAssociationArgs {
-  /// The MAC Security (MACsec) CAK to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using <span pulumi-lang-nodejs="`ckn`" pulumi-lang-dotnet="`Ckn`" pulumi-lang-go="`ckn`" pulumi-lang-python="`ckn`" pulumi-lang-yaml="`ckn`" pulumi-lang-java="`ckn`">`ckn`</span>.
+  /// The MAC Security (MACsec) CAK to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `ckn`.
   final Input<String>? cak;
 
-  /// The MAC Security (MACsec) CKN to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using <span pulumi-lang-nodejs="`cak`" pulumi-lang-dotnet="`Cak`" pulumi-lang-go="`cak`" pulumi-lang-python="`cak`" pulumi-lang-yaml="`cak`" pulumi-lang-java="`cak`">`cak`</span>.
+  /// The MAC Security (MACsec) CKN to associate with the dedicated connection. The valid values are 64 hexadecimal characters (0-9, A-E). Required if using `cak`.
   final Input<String>? ckn;
 
   /// The ID of the dedicated Direct Connect connection. The connection must be a dedicated connection in the `AVAILABLE` state.
@@ -18,7 +18,7 @@ class MacsecKeyAssociationArgs {
 
   /// The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   ///
-  /// > **Note:** <span pulumi-lang-nodejs="`ckn`" pulumi-lang-dotnet="`Ckn`" pulumi-lang-go="`ckn`" pulumi-lang-python="`ckn`" pulumi-lang-yaml="`ckn`" pulumi-lang-java="`ckn`">`ckn`</span> and <span pulumi-lang-nodejs="`cak`" pulumi-lang-dotnet="`Cak`" pulumi-lang-go="`cak`" pulumi-lang-python="`cak`" pulumi-lang-yaml="`cak`" pulumi-lang-java="`cak`">`cak`</span> are mutually exclusive with <span pulumi-lang-nodejs="`secretArn`" pulumi-lang-dotnet="`SecretArn`" pulumi-lang-go="`secretArn`" pulumi-lang-python="`secret_arn`" pulumi-lang-yaml="`secretArn`" pulumi-lang-java="`secretArn`">`secret_arn`</span> - these arguments cannot be used together. If you use <span pulumi-lang-nodejs="`ckn`" pulumi-lang-dotnet="`Ckn`" pulumi-lang-go="`ckn`" pulumi-lang-python="`ckn`" pulumi-lang-yaml="`ckn`" pulumi-lang-java="`ckn`">`ckn`</span> and <span pulumi-lang-nodejs="`cak`" pulumi-lang-dotnet="`Cak`" pulumi-lang-go="`cak`" pulumi-lang-python="`cak`" pulumi-lang-yaml="`cak`" pulumi-lang-java="`cak`">`cak`</span>, you should not use <span pulumi-lang-nodejs="`secretArn`" pulumi-lang-dotnet="`SecretArn`" pulumi-lang-go="`secretArn`" pulumi-lang-python="`secret_arn`" pulumi-lang-yaml="`secretArn`" pulumi-lang-java="`secretArn`">`secret_arn`</span>. If you use the <span pulumi-lang-nodejs="`secretArn`" pulumi-lang-dotnet="`SecretArn`" pulumi-lang-go="`secretArn`" pulumi-lang-python="`secret_arn`" pulumi-lang-yaml="`secretArn`" pulumi-lang-java="`secretArn`">`secret_arn`</span> argument to reference an existing MAC Security (MACSec) secret key, you should not use <span pulumi-lang-nodejs="`ckn`" pulumi-lang-dotnet="`Ckn`" pulumi-lang-go="`ckn`" pulumi-lang-python="`ckn`" pulumi-lang-yaml="`ckn`" pulumi-lang-java="`ckn`">`ckn`</span> or <span pulumi-lang-nodejs="`cak`" pulumi-lang-dotnet="`Cak`" pulumi-lang-go="`cak`" pulumi-lang-python="`cak`" pulumi-lang-yaml="`cak`" pulumi-lang-java="`cak`">`cak`</span>.
+  /// > **Note:** `ckn` and `cak` are mutually exclusive with `secret_arn` - these arguments cannot be used together. If you use `ckn` and `cak`, you should not use `secret_arn`. If you use the `secret_arn` argument to reference an existing MAC Security (MACSec) secret key, you should not use `ckn` or `cak`.
   final Input<String>? secretArn;
 
   MacsecKeyAssociationArgs({

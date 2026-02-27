@@ -14,7 +14,7 @@ class GetThesaurusResult {
   /// Description of the Thesaurus.
   final String description;
 
-  /// When the <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`">`status`</span> field value is `FAILED`, this contains a message that explains why.
+  /// When the `status` field value is `FAILED`, this contains a message that explains why.
   final String errorMessage;
 
   /// Size of the Thesaurus file in bytes.

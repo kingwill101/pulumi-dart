@@ -1,0 +1,3 @@
+library module_ssm_get_contacts_rotation_recurrence_weekly_setting_hand_off_time;
+
+export 'get_contacts_rotation_recurrence_weekly_setting_hand_off_time/get_contacts_rotation_recurrence_weekly_setting_hand_off_time.dart';

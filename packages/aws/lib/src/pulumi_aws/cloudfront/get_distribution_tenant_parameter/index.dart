@@ -1,3 +1,0 @@
-library module_cloudfront_get_distribution_tenant_parameter;
-
-export 'get_distribution_tenant_parameter.dart';

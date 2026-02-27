@@ -4,7 +4,7 @@ class BucketWebsiteConfigurationV2RedirectAllRequestsTo {
   /// Name of the host where requests are redirected.
   final String hostName;
 
-  /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`https`" pulumi-lang-dotnet="`Https`" pulumi-lang-go="`https`" pulumi-lang-python="`https`" pulumi-lang-yaml="`https`" pulumi-lang-java="`https`">`https`</span>.
+  /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
   final String? protocol;
 
   BucketWebsiteConfigurationV2RedirectAllRequestsTo({

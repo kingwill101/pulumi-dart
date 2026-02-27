@@ -20,10 +20,10 @@ class DataIntegrationArgs {
   /// A block that defines the name of the data and how often it should be pulled from the source. The Schedule Config block is documented below.
   final Input<DataIntegrationScheduleConfig> scheduleConfig;
 
-  /// Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where <span pulumi-lang-nodejs="`example`" pulumi-lang-dotnet="`Example`" pulumi-lang-go="`example`" pulumi-lang-python="`example`" pulumi-lang-yaml="`example`" pulumi-lang-java="`example`">`example`</span> is the name of the AppFlow Connector Profile.
+  /// Specifies the URI of the data source. Create an AppFlow Connector Profile and reference the name of the profile in the URL. An example of this value for Salesforce is `Salesforce://AppFlow/example` where `example` is the name of the AppFlow Connector Profile.
   final Input<String> sourceUri;
 
-  /// Tags to apply to the Data Integration. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Data Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   DataIntegrationArgs({

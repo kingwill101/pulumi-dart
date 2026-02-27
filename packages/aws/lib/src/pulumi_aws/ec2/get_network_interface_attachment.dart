@@ -1,0 +1,3 @@
+library module_ec2_get_network_interface_attachment;
+
+export 'get_network_interface_attachment/get_network_interface_attachment.dart';

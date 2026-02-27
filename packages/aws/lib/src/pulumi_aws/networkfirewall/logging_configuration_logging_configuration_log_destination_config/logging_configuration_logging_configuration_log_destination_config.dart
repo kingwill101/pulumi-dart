@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LoggingConfigurationLoggingConfigurationLogDestinationConfig {
-  /// A map describing the logging destination for the chosen <span pulumi-lang-nodejs="`logDestinationType`" pulumi-lang-dotnet="`LogDestinationType`" pulumi-lang-go="`logDestinationType`" pulumi-lang-python="`log_destination_type`" pulumi-lang-yaml="`logDestinationType`" pulumi-lang-java="`logDestinationType`">`log_destination_type`</span>.
-  /// * For an Amazon S3 bucket, specify the key `bucketName` with the name of the bucket and optionally specify the key <span pulumi-lang-nodejs="`prefix`" pulumi-lang-dotnet="`Prefix`" pulumi-lang-go="`prefix`" pulumi-lang-python="`prefix`" pulumi-lang-yaml="`prefix`" pulumi-lang-java="`prefix`">`prefix`</span> with a path (Do not add a leading / in the <span pulumi-lang-nodejs="`prefix`" pulumi-lang-dotnet="`Prefix`" pulumi-lang-go="`prefix`" pulumi-lang-python="`prefix`" pulumi-lang-yaml="`prefix`" pulumi-lang-java="`prefix`">`prefix`</span> as the configuration will have two // when applied).
+  /// A map describing the logging destination for the chosen `log_destination_type`.
+  /// * For an Amazon S3 bucket, specify the key `bucketName` with the name of the bucket and optionally specify the key `prefix` with a path (Do not add a leading / in the `prefix` as the configuration will have two // when applied).
   /// * For a CloudWatch log group, specify the key `logGroup` with the name of the CloudWatch log group.
   /// * For a Kinesis Data Firehose delivery stream, specify the key `deliveryStream` with the name of the delivery stream.
   final Map<String, String> logDestination;

@@ -7,7 +7,7 @@ class VpcEndpointSubnetConfiguration {
   /// The IPv6 address to assign to the endpoint network interface in the subnet. You must provide an IPv6 address if the VPC endpoint supports IPv6.
   final String? ipv6;
 
-  /// The ID of the subnet. Must have a corresponding subnet in the <span pulumi-lang-nodejs="`subnetIds`" pulumi-lang-dotnet="`SubnetIds`" pulumi-lang-go="`subnetIds`" pulumi-lang-python="`subnet_ids`" pulumi-lang-yaml="`subnetIds`" pulumi-lang-java="`subnetIds`">`subnet_ids`</span> argument.
+  /// The ID of the subnet. Must have a corresponding subnet in the `subnet_ids` argument.
   final String? subnetId;
 
   VpcEndpointSubnetConfiguration({

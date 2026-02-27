@@ -1,0 +1,3 @@
+library module_qbusiness_application_encryption_configuration;
+
+export 'application_encryption_configuration/application_encryption_configuration.dart';

@@ -1,4 +1,0 @@
-library module_verifiedaccess_instance_trust_provider_attachment;
-
-export 'instance_trust_provider_attachment.dart';
-export 'instance_trust_provider_attachment_args.dart';

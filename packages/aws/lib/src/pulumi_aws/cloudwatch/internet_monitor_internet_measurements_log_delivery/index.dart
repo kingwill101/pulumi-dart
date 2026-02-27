@@ -1,3 +1,0 @@
-library module_cloudwatch_internet_monitor_internet_measurements_log_delivery;
-
-export 'internet_monitor_internet_measurements_log_delivery.dart';

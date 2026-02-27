@@ -1,3 +1,0 @@
-library module_ses_event_destination_kinesis_destination;
-
-export 'event_destination_kinesis_destination.dart';

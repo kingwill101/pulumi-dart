@@ -1,3 +1,0 @@
-library module_opensearchingest_pipeline_log_publishing_options_cloudwatch_log_destination;
-
-export 'pipeline_log_publishing_options_cloudwatch_log_destination.dart';

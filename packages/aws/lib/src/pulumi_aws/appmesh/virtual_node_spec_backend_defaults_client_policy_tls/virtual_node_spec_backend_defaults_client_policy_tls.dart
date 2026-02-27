@@ -7,7 +7,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTls {
   /// Listener's TLS certificate.
   final VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate? certificate;
 
-  /// Whether the policy is enforced. Default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the policy is enforced. Default is `true`.
   final bool? enforce;
 
   /// One or more ports that the policy is enforced for.

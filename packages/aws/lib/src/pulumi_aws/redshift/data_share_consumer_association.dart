@@ -1,0 +1,4 @@
+library module_redshift_data_share_consumer_association;
+
+export 'data_share_consumer_association/data_share_consumer_association.dart';
+export 'data_share_consumer_association/data_share_consumer_association_args.dart';

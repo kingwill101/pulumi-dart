@@ -1,0 +1,3 @@
+library module_s3tables_table_bucket_replication_rule;
+
+export 'table_bucket_replication_rule/table_bucket_replication_rule.dart';

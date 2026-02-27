@@ -1,3 +1,0 @@
-library module_imagebuilder_lifecycle_policy_policy_detail_action_include_resources;
-
-export 'lifecycle_policy_policy_detail_action_include_resources.dart';

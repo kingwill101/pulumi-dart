@@ -7,7 +7,7 @@ class GetPermissionsLfTagPolicy {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String catalogId;
 
-  /// List of tag conditions that apply to the resource's tag policy. Configuration block for tag conditions that apply to the policy. See <span pulumi-lang-nodejs="`expression`" pulumi-lang-dotnet="`Expression`" pulumi-lang-go="`expression`" pulumi-lang-python="`expression`" pulumi-lang-yaml="`expression`" pulumi-lang-java="`expression`">`expression`</span> below.
+  /// List of tag conditions that apply to the resource's tag policy. Configuration block for tag conditions that apply to the policy. See `expression` below.
   ///
   /// The following argument is optional:
   final List<GetPermissionsLfTagPolicyExpression> expressions;

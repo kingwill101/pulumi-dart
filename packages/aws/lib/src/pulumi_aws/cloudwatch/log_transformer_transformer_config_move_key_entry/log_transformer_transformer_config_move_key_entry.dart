@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LogTransformerTransformerConfigMoveKeyEntry {
-  /// Specifies whether to overwrite the value if the destination key already exists. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
   final bool? overwriteIfExists;
 

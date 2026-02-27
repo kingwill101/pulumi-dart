@@ -1,0 +1,3 @@
+library module_guardduty_organization_configuration_datasources_kubernetes;
+
+export 'organization_configuration_datasources_kubernetes/organization_configuration_datasources_kubernetes.dart';

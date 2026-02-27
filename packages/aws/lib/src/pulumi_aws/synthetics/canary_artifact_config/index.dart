@@ -1,3 +1,0 @@
-library module_synthetics_canary_artifact_config;
-
-export 'canary_artifact_config.dart';

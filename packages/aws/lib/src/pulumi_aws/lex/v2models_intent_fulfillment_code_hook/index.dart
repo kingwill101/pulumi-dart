@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_fulfillment_code_hook;
-
-export 'v2models_intent_fulfillment_code_hook.dart';

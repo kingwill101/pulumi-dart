@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_network_destination_domain;
+
+export 'insight_filters_network_destination_domain/insight_filters_network_destination_domain.dart';

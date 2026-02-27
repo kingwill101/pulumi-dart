@@ -4,11 +4,11 @@ import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_engine_configuration_serverless_configuration/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_engine_configuration_serverless_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration {
-  /// Configurations for a provisioned Amazon Redshift query engine. See <span pulumi-lang-nodejs="`provisionedConfiguration`" pulumi-lang-dotnet="`ProvisionedConfiguration`" pulumi-lang-go="`provisionedConfiguration`" pulumi-lang-python="`provisioned_configuration`" pulumi-lang-yaml="`provisionedConfiguration`" pulumi-lang-java="`provisionedConfiguration`">`provisioned_configuration`</span> block for details.
+  /// Configurations for a provisioned Amazon Redshift query engine. See `provisioned_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration?
       provisionedConfiguration;
 
-  /// Configurations for a serverless Amazon Redshift query engine. See <span pulumi-lang-nodejs="`serverlessConfiguration`" pulumi-lang-dotnet="`ServerlessConfiguration`" pulumi-lang-go="`serverlessConfiguration`" pulumi-lang-python="`serverless_configuration`" pulumi-lang-yaml="`serverlessConfiguration`" pulumi-lang-java="`serverlessConfiguration`">`serverless_configuration`</span> block for details.
+  /// Configurations for a serverless Amazon Redshift query engine. See `serverless_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfiguration?
       serverlessConfiguration;
 

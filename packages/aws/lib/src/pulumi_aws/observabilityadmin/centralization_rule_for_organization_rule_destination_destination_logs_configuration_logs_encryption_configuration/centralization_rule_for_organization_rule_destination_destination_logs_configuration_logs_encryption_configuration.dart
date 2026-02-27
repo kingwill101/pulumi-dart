@@ -7,7 +7,7 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
   /// Encryption strategy for logs. Valid values: `AWS_OWNED`, `CUSTOMER_MANAGED`.
   final String encryptionStrategy;
 
-  /// ARN of the KMS key to use for encryption when <span pulumi-lang-nodejs="`encryptionStrategy`" pulumi-lang-dotnet="`EncryptionStrategy`" pulumi-lang-go="`encryptionStrategy`" pulumi-lang-python="`encryption_strategy`" pulumi-lang-yaml="`encryptionStrategy`" pulumi-lang-java="`encryptionStrategy`">`encryption_strategy`</span> is `CUSTOMER_MANAGED`.
+  /// ARN of the KMS key to use for encryption when `encryption_strategy` is `CUSTOMER_MANAGED`.
   final String? kmsKeyArn;
 
   CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration({

@@ -17,34 +17,34 @@ class DataSourceArgs {
   /// Description of the data source.
   final Input<String>? description;
 
-  /// DynamoDB settings. See <span pulumi-lang-nodejs="`dynamodbConfig`" pulumi-lang-dotnet="`DynamodbConfig`" pulumi-lang-go="`dynamodbConfig`" pulumi-lang-python="`dynamodb_config`" pulumi-lang-yaml="`dynamodbConfig`" pulumi-lang-java="`dynamodbConfig`">`dynamodb_config`</span> Block for details.
+  /// DynamoDB settings. See `dynamodb_config` Block for details.
   final Input<DataSourceDynamodbConfig>? dynamodbConfig;
 
-  /// Amazon Elasticsearch settings. See <span pulumi-lang-nodejs="`elasticsearchConfig`" pulumi-lang-dotnet="`ElasticsearchConfig`" pulumi-lang-go="`elasticsearchConfig`" pulumi-lang-python="`elasticsearch_config`" pulumi-lang-yaml="`elasticsearchConfig`" pulumi-lang-java="`elasticsearchConfig`">`elasticsearch_config`</span> Block for details.
+  /// Amazon Elasticsearch settings. See `elasticsearch_config` Block for details.
   final Input<DataSourceElasticsearchConfig>? elasticsearchConfig;
 
-  /// AWS EventBridge settings. See <span pulumi-lang-nodejs="`eventBridgeConfig`" pulumi-lang-dotnet="`EventBridgeConfig`" pulumi-lang-go="`eventBridgeConfig`" pulumi-lang-python="`event_bridge_config`" pulumi-lang-yaml="`eventBridgeConfig`" pulumi-lang-java="`eventBridgeConfig`">`event_bridge_config`</span> Block for details.
+  /// AWS EventBridge settings. See `event_bridge_config` Block for details.
   final Input<DataSourceEventBridgeConfig>? eventBridgeConfig;
 
-  /// HTTP settings. See <span pulumi-lang-nodejs="`httpConfig`" pulumi-lang-dotnet="`HttpConfig`" pulumi-lang-go="`httpConfig`" pulumi-lang-python="`http_config`" pulumi-lang-yaml="`httpConfig`" pulumi-lang-java="`httpConfig`">`http_config`</span> Block for details.
+  /// HTTP settings. See `http_config` Block for details.
   final Input<DataSourceHttpConfig>? httpConfig;
 
-  /// AWS Lambda settings. See <span pulumi-lang-nodejs="`lambdaConfig`" pulumi-lang-dotnet="`LambdaConfig`" pulumi-lang-go="`lambdaConfig`" pulumi-lang-python="`lambda_config`" pulumi-lang-yaml="`lambdaConfig`" pulumi-lang-java="`lambdaConfig`">`lambda_config`</span> Block for details.
+  /// AWS Lambda settings. See `lambda_config` Block for details.
   final Input<DataSourceLambdaConfig>? lambdaConfig;
 
   /// User-supplied name for the data source.
   final Input<String>? name;
 
-  /// Amazon OpenSearch Service settings. See <span pulumi-lang-nodejs="`opensearchserviceConfig`" pulumi-lang-dotnet="`OpensearchserviceConfig`" pulumi-lang-go="`opensearchserviceConfig`" pulumi-lang-python="`opensearchservice_config`" pulumi-lang-yaml="`opensearchserviceConfig`" pulumi-lang-java="`opensearchserviceConfig`">`opensearchservice_config`</span> Block for details.
+  /// Amazon OpenSearch Service settings. See `opensearchservice_config` Block for details.
   final Input<DataSourceOpensearchserviceConfig>? opensearchserviceConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// AWS RDS settings. See <span pulumi-lang-nodejs="`relationalDatabaseConfig`" pulumi-lang-dotnet="`RelationalDatabaseConfig`" pulumi-lang-go="`relationalDatabaseConfig`" pulumi-lang-python="`relational_database_config`" pulumi-lang-yaml="`relationalDatabaseConfig`" pulumi-lang-java="`relationalDatabaseConfig`">`relational_database_config`</span> Block for details.
+  /// AWS RDS settings. See `relational_database_config` Block for details.
   final Input<DataSourceRelationalDatabaseConfig>? relationalDatabaseConfig;
 
-  /// IAM service role ARN for the data source. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
+  /// IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
   final Input<String>? serviceRoleArn;
 
   /// Type of the Data Source. Valid values: `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `HTTP`, `NONE`, `RELATIONAL_DATABASE`, `AMAZON_EVENTBRIDGE`, `AMAZON_OPENSEARCH_SERVICE`.

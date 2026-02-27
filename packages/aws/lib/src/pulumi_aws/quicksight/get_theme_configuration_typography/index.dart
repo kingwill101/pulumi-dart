@@ -1,3 +1,0 @@
-library module_quicksight_get_theme_configuration_typography;
-
-export 'get_theme_configuration_typography.dart';

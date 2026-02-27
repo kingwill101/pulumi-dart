@@ -1,0 +1,3 @@
+library module_autoscaling_group_initial_lifecycle_hook;
+
+export 'group_initial_lifecycle_hook/group_initial_lifecycle_hook.dart';

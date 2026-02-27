@@ -56,17 +56,17 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
 
   /// List of instance types to apply your specified attributes against. All other instance types are ignored, even if they match your specified attributes. You can use strings with one or more wild cards, represented by an asterisk (\*), to allow an instance type, size, or generation. The following are examples: `m5.8xlarge`, `c5*.*`, `m5a.*`, `r*`, `*3*`. For example, if you specify `c5*`, you are allowing the entire C5 instance family, which includes all C5a and C5n instance types. If you specify `m5a.*`, you are allowing all the M5a instance types, but not the M5n instance types. Maximum of 400 entries in the list; each entry is limited to 30 characters. Default is all instance types.
   ///
-  /// > **NOTE:** If you specify <span pulumi-lang-nodejs="`allowedInstanceTypes`" pulumi-lang-dotnet="`AllowedInstanceTypes`" pulumi-lang-go="`allowedInstanceTypes`" pulumi-lang-python="`allowed_instance_types`" pulumi-lang-yaml="`allowedInstanceTypes`" pulumi-lang-java="`allowedInstanceTypes`">`allowed_instance_types`</span>, you can't specify <span pulumi-lang-nodejs="`excludedInstanceTypes`" pulumi-lang-dotnet="`ExcludedInstanceTypes`" pulumi-lang-go="`excludedInstanceTypes`" pulumi-lang-python="`excluded_instance_types`" pulumi-lang-yaml="`excludedInstanceTypes`" pulumi-lang-java="`excludedInstanceTypes`">`excluded_instance_types`</span>.
+  /// > **NOTE:** If you specify `allowed_instance_types`, you can't specify `excluded_instance_types`.
   final List<String>? allowedInstanceTypes;
 
-  /// Indicate whether bare metal instace types should be <span pulumi-lang-nodejs="`included`" pulumi-lang-dotnet="`Included`" pulumi-lang-go="`included`" pulumi-lang-python="`included`" pulumi-lang-yaml="`included`" pulumi-lang-java="`included`">`included`</span>, <span pulumi-lang-nodejs="`excluded`" pulumi-lang-dotnet="`Excluded`" pulumi-lang-go="`excluded`" pulumi-lang-python="`excluded`" pulumi-lang-yaml="`excluded`" pulumi-lang-java="`excluded`">`excluded`</span>, or <span pulumi-lang-nodejs="`required`" pulumi-lang-dotnet="`Required`" pulumi-lang-go="`required`" pulumi-lang-python="`required`" pulumi-lang-yaml="`required`" pulumi-lang-java="`required`">`required`</span>. Default is <span pulumi-lang-nodejs="`excluded`" pulumi-lang-dotnet="`Excluded`" pulumi-lang-go="`excluded`" pulumi-lang-python="`excluded`" pulumi-lang-yaml="`excluded`" pulumi-lang-java="`excluded`">`excluded`</span>.
+  /// Indicate whether bare metal instace types should be `included`, `excluded`, or `required`. Default is `excluded`.
   final String? bareMetal;
 
   /// Block describing the minimum and maximum baseline EBS bandwidth, in Mbps. Default is no minimum or maximum.
   final GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsBaselineEbsBandwidthMbps?
       baselineEbsBandwidthMbps;
 
-  /// Indicate whether burstable performance instance types should be <span pulumi-lang-nodejs="`included`" pulumi-lang-dotnet="`Included`" pulumi-lang-go="`included`" pulumi-lang-python="`included`" pulumi-lang-yaml="`included`" pulumi-lang-java="`included`">`included`</span>, <span pulumi-lang-nodejs="`excluded`" pulumi-lang-dotnet="`Excluded`" pulumi-lang-go="`excluded`" pulumi-lang-python="`excluded`" pulumi-lang-yaml="`excluded`" pulumi-lang-java="`excluded`">`excluded`</span>, or <span pulumi-lang-nodejs="`required`" pulumi-lang-dotnet="`Required`" pulumi-lang-go="`required`" pulumi-lang-python="`required`" pulumi-lang-yaml="`required`" pulumi-lang-java="`required`">`required`</span>. Default is <span pulumi-lang-nodejs="`excluded`" pulumi-lang-dotnet="`Excluded`" pulumi-lang-go="`excluded`" pulumi-lang-python="`excluded`" pulumi-lang-yaml="`excluded`" pulumi-lang-java="`excluded`">`excluded`</span>.
+  /// Indicate whether burstable performance instance types should be `included`, `excluded`, or `required`. Default is `excluded`.
   final String? burstablePerformance;
 
   /// List of CPU manufacturer names. Default is any manufacturer.
@@ -83,7 +83,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
 
   /// List of instance types to exclude. You can use strings with one or more wild cards, represented by an asterisk (\*), to exclude an instance type, size, or generation. The following are examples: `m5.8xlarge`, `c5*.*`, `m5a.*`, `r*`, `*3*`. For example, if you specify `c5*`, you are excluding the entire C5 instance family, which includes all C5a and C5n instance types. If you specify `m5a.*`, you are excluding all the M5a instance types, but not the M5n instance types. Maximum of 400 entries in the list; each entry is limited to 30 characters. Default is no excluded instance types.
   ///
-  /// > **NOTE:** If you specify <span pulumi-lang-nodejs="`excludedInstanceTypes`" pulumi-lang-dotnet="`ExcludedInstanceTypes`" pulumi-lang-go="`excludedInstanceTypes`" pulumi-lang-python="`excluded_instance_types`" pulumi-lang-yaml="`excludedInstanceTypes`" pulumi-lang-java="`excludedInstanceTypes`">`excluded_instance_types`</span>, you can't specify <span pulumi-lang-nodejs="`allowedInstanceTypes`" pulumi-lang-dotnet="`AllowedInstanceTypes`" pulumi-lang-go="`allowedInstanceTypes`" pulumi-lang-python="`allowed_instance_types`" pulumi-lang-yaml="`allowedInstanceTypes`" pulumi-lang-java="`allowedInstanceTypes`">`allowed_instance_types`</span>.
+  /// > **NOTE:** If you specify `excluded_instance_types`, you can't specify `allowed_instance_types`.
   final List<String>? excludedInstanceTypes;
 
   /// List of instance generation names. Default is any generation.
@@ -95,7 +95,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   /// ```
   final List<String>? instanceGenerations;
 
-  /// Indicate whether instance types with local storage volumes are <span pulumi-lang-nodejs="`included`" pulumi-lang-dotnet="`Included`" pulumi-lang-go="`included`" pulumi-lang-python="`included`" pulumi-lang-yaml="`included`" pulumi-lang-java="`included`">`included`</span>, <span pulumi-lang-nodejs="`excluded`" pulumi-lang-dotnet="`Excluded`" pulumi-lang-go="`excluded`" pulumi-lang-python="`excluded`" pulumi-lang-yaml="`excluded`" pulumi-lang-java="`excluded`">`excluded`</span>, or <span pulumi-lang-nodejs="`required`" pulumi-lang-dotnet="`Required`" pulumi-lang-go="`required`" pulumi-lang-python="`required`" pulumi-lang-yaml="`required`" pulumi-lang-java="`required`">`required`</span>. Default is <span pulumi-lang-nodejs="`included`" pulumi-lang-dotnet="`Included`" pulumi-lang-go="`included`" pulumi-lang-python="`included`" pulumi-lang-yaml="`included`" pulumi-lang-java="`included`">`included`</span>.
+  /// Indicate whether instance types with local storage volumes are `included`, `excluded`, or `required`. Default is `included`.
   final String? localStorage;
 
   /// List of local storage type names. Default any storage type.
@@ -107,7 +107,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   /// ```
   final List<String>? localStorageTypes;
 
-  /// The price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Conflicts with <span pulumi-lang-nodejs="`spotMaxPricePercentageOverLowestPrice`" pulumi-lang-dotnet="`SpotMaxPricePercentageOverLowestPrice`" pulumi-lang-go="`spotMaxPricePercentageOverLowestPrice`" pulumi-lang-python="`spot_max_price_percentage_over_lowest_price`" pulumi-lang-yaml="`spotMaxPricePercentageOverLowestPrice`" pulumi-lang-java="`spotMaxPricePercentageOverLowestPrice`">`spot_max_price_percentage_over_lowest_price`</span>
+  /// The price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Conflicts with `spot_max_price_percentage_over_lowest_price`
   final int? maxSpotPriceAsPercentageOfOptimalOnDemandPrice;
 
   /// Block describing the minimum and maximum amount of memory (GiB) per vCPU. Default is no minimum or maximum.
@@ -131,10 +131,10 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements {
   /// If you set DesiredCapacityType to vcpu or memory-mib, the price protection threshold is applied based on the per vCPU or per memory price instead of the per instance price.
   final int? onDemandMaxPricePercentageOverLowestPrice;
 
-  /// Indicate whether instance types must support On-Demand Instance Hibernation, either <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicate whether instance types must support On-Demand Instance Hibernation, either `true` or `false`. Default is `false`.
   final bool? requireHibernateSupport;
 
-  /// Price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 100. Conflicts with <span pulumi-lang-nodejs="`maxSpotPriceAsPercentageOfOptimalOnDemandPrice`" pulumi-lang-dotnet="`MaxSpotPriceAsPercentageOfOptimalOnDemandPrice`" pulumi-lang-go="`maxSpotPriceAsPercentageOfOptimalOnDemandPrice`" pulumi-lang-python="`max_spot_price_as_percentage_of_optimal_on_demand_price`" pulumi-lang-yaml="`maxSpotPriceAsPercentageOfOptimalOnDemandPrice`" pulumi-lang-java="`maxSpotPriceAsPercentageOfOptimalOnDemandPrice`">`max_spot_price_as_percentage_of_optimal_on_demand_price`</span>
+  /// Price protection threshold for Spot Instances. This is the maximum you’ll pay for a Spot Instance, expressed as a percentage higher than the cheapest M, C, or R instance type with your specified attributes. When Amazon EC2 Auto Scaling selects instance types with your attributes, we will exclude instance types whose price is higher than your threshold. The parameter accepts an integer, which Amazon EC2 Auto Scaling interprets as a percentage. To turn off price protection, specify a high value, such as 999999. Default is 100. Conflicts with `max_spot_price_as_percentage_of_optimal_on_demand_price`
   ///
   /// If you set DesiredCapacityType to vcpu or memory-mib, the price protection threshold is applied based on the per vCPU or per memory price instead of the per instance price.
   final int? spotMaxPricePercentageOverLowestPrice;

@@ -1,0 +1,3 @@
+library module_amp_workspace_logging_configuration;
+
+export 'workspace_logging_configuration/workspace_logging_configuration.dart';

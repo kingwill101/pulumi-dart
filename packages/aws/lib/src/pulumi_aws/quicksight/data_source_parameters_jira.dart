@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_jira;
+
+export 'data_source_parameters_jira/data_source_parameters_jira.dart';

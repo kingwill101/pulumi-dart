@@ -1,3 +1,0 @@
-library module_arcregionswitch_plan_workflow_step_parallel_config_step;
-
-export 'plan_workflow_step_parallel_config_step.dart';

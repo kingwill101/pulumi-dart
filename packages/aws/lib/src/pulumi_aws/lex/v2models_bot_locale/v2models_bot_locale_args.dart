@@ -30,7 +30,7 @@ class V2modelsBotLocaleArgs {
   final Input<String>? region;
   final Input<V2modelsBotLocaleTimeouts>? timeouts;
 
-  /// Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See <span pulumi-lang-nodejs="`voiceSettings`" pulumi-lang-dotnet="`VoiceSettings`" pulumi-lang-go="`voiceSettings`" pulumi-lang-python="`voice_settings`" pulumi-lang-yaml="`voiceSettings`" pulumi-lang-java="`voiceSettings`">`voice_settings`</span>.
+  /// Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voice_settings`.
   final Input<V2modelsBotLocaleVoiceSettings>? voiceSettings;
 
   V2modelsBotLocaleArgs({

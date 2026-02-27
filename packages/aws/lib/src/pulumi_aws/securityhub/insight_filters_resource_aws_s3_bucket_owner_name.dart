@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_resource_aws_s3_bucket_owner_name;
+
+export 'insight_filters_resource_aws_s3_bucket_owner_name/insight_filters_resource_aws_s3_bucket_owner_name.dart';

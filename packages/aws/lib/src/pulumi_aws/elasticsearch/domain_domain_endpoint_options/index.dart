@@ -1,3 +1,0 @@
-library module_elasticsearch_domain_domain_endpoint_options;
-
-export 'domain_domain_endpoint_options.dart';

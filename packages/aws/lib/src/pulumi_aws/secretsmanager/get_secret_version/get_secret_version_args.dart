@@ -10,7 +10,7 @@ class GetSecretVersionArgs {
   /// Specifies the secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
   final Input<String> secretId;
 
-  /// Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides <span pulumi-lang-nodejs="`versionStage`" pulumi-lang-dotnet="`VersionStage`" pulumi-lang-go="`versionStage`" pulumi-lang-python="`version_stage`" pulumi-lang-yaml="`versionStage`" pulumi-lang-java="`versionStage`">`version_stage`</span>.
+  /// Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `version_stage`.
   final Input<String>? versionId;
 
   /// Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.

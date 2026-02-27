@@ -1,0 +1,3 @@
+library module_cloudwatch_log_transformer_transformer_config_type_converter;
+
+export 'log_transformer_transformer_config_type_converter/log_transformer_transformer_config_type_converter.dart';

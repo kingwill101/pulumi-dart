@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class GetSubscribedRuleGroupArgs {
   /// Name of the WAF rule group.
   ///
-  /// At least one of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`metricName`" pulumi-lang-dotnet="`MetricName`" pulumi-lang-go="`metricName`" pulumi-lang-python="`metric_name`" pulumi-lang-yaml="`metricName`" pulumi-lang-java="`metricName`">`metric_name`</span> must be configured.
+  /// At least one of `name` or `metric_name` must be configured.
   final Input<String>? metricName;
 
   /// Name of the WAF rule group.

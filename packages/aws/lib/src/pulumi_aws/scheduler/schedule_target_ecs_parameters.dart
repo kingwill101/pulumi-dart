@@ -1,0 +1,3 @@
+library module_scheduler_schedule_target_ecs_parameters;
+
+export 'schedule_target_ecs_parameters/schedule_target_ecs_parameters.dart';

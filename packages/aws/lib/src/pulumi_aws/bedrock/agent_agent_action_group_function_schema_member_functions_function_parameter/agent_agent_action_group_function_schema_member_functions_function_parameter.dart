@@ -6,13 +6,13 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
 
   /// Name of the parameter.
   ///
-  /// **Note:** The argument name <span pulumi-lang-nodejs="`mapBlockKey`" pulumi-lang-dotnet="`MapBlockKey`" pulumi-lang-go="`mapBlockKey`" pulumi-lang-python="`map_block_key`" pulumi-lang-yaml="`mapBlockKey`" pulumi-lang-java="`mapBlockKey`">`map_block_key`</span> may seem out of context, but is necessary for backward compatibility reasons in the provider.
+  /// **Note:** The argument name `map_block_key` may seem out of context, but is necessary for backward compatibility reasons in the provider.
   final String mapBlockKey;
 
   /// Whether the parameter is required for the agent to complete the function for action group invocation.
   final bool? required;
 
-  /// Data type of the parameter. Valid values: <span pulumi-lang-nodejs="`string`" pulumi-lang-dotnet="`String`" pulumi-lang-go="`string`" pulumi-lang-python="`string`" pulumi-lang-yaml="`string`" pulumi-lang-java="`string`">`string`</span>, <span pulumi-lang-nodejs="`number`" pulumi-lang-dotnet="`Number`" pulumi-lang-go="`number`" pulumi-lang-python="`number`" pulumi-lang-yaml="`number`" pulumi-lang-java="`number`">`number`</span>, <span pulumi-lang-nodejs="`integer`" pulumi-lang-dotnet="`Integer`" pulumi-lang-go="`integer`" pulumi-lang-python="`integer`" pulumi-lang-yaml="`integer`" pulumi-lang-java="`integer`">`integer`</span>, <span pulumi-lang-nodejs="`boolean`" pulumi-lang-dotnet="`Boolean`" pulumi-lang-go="`boolean`" pulumi-lang-python="`boolean`" pulumi-lang-yaml="`boolean`" pulumi-lang-java="`boolean`">`boolean`</span>, <span pulumi-lang-nodejs="`array`" pulumi-lang-dotnet="`Array`" pulumi-lang-go="`array`" pulumi-lang-python="`array`" pulumi-lang-yaml="`array`" pulumi-lang-java="`array`">`array`</span>.
+  /// Data type of the parameter. Valid values: `string`, `number`, `integer`, `boolean`, `array`.
   final String type;
 
   AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter({

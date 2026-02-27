@@ -1,0 +1,3 @@
+library module_cloudfront_multitenant_distribution_tenant_config;
+
+export 'multitenant_distribution_tenant_config/multitenant_distribution_tenant_config.dart';

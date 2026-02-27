@@ -7,10 +7,10 @@ class TrailEventSelector {
   /// Configuration block for data events. See details below.
   final List<TrailEventSelectorDataResource>? dataResources;
 
-  /// A set of event sources to exclude. Valid values include: `kms.amazonaws.com` and `rdsdata.amazonaws.com`. <span pulumi-lang-nodejs="`includeManagementEvents`" pulumi-lang-dotnet="`IncludeManagementEvents`" pulumi-lang-go="`includeManagementEvents`" pulumi-lang-python="`include_management_events`" pulumi-lang-yaml="`includeManagementEvents`" pulumi-lang-java="`includeManagementEvents`">`include_management_events`</span> must be set to<span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to allow this.
+  /// A set of event sources to exclude. Valid values include: `kms.amazonaws.com` and `rdsdata.amazonaws.com`. `include_management_events` must be set to`true` to allow this.
   final List<String>? excludeManagementEventSources;
 
-  /// Whether to include management events for your trail. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether to include management events for your trail. Defaults to `true`.
   final bool? includeManagementEvents;
 
   /// Type of events to log. Valid values are `ReadOnly`, `WriteOnly`, `All`. Default value is `All`.

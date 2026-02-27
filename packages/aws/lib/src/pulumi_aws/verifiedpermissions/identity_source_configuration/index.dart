@@ -1,3 +1,0 @@
-library module_verifiedpermissions_identity_source_configuration;
-
-export 'identity_source_configuration.dart';

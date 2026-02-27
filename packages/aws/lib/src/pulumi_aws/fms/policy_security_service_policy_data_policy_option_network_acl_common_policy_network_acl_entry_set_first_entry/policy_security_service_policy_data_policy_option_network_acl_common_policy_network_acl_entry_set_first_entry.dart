@@ -11,7 +11,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   /// A boolean value, if true Firewall Manager creates egress rule. If false Firewall Manager creates ingress rule.
   final bool egress;
 
-  /// A configuration block for ICMP protocol: The ICMP type and code. See the <span pulumi-lang-nodejs="`icmpTypeCode`" pulumi-lang-dotnet="`IcmpTypeCode`" pulumi-lang-go="`icmpTypeCode`" pulumi-lang-python="`icmp_type_code`" pulumi-lang-yaml="`icmpTypeCode`" pulumi-lang-java="`icmpTypeCode`">`icmp_type_code`</span> block.
+  /// A configuration block for ICMP protocol: The ICMP type and code. See the `icmp_type_code` block.
   final List<
           PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryIcmpTypeCode>?
       icmpTypeCodes;
@@ -19,7 +19,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   /// A string value containing the IPv6 network range to allow or deny, in CIDR notation.
   final String? ipv6CidrBlock;
 
-  /// A configuration block for PortRange. See the <span pulumi-lang-nodejs="`portRange`" pulumi-lang-dotnet="`PortRange`" pulumi-lang-go="`portRange`" pulumi-lang-python="`port_range`" pulumi-lang-yaml="`portRange`" pulumi-lang-java="`portRange`">`port_range`</span> block.
+  /// A configuration block for PortRange. See the `port_range` block.
   final List<
           PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange>?
       portRanges;
@@ -27,7 +27,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   /// The protocol number. A value of "-1" means all protocols.
   final String protocol;
 
-  /// A string value that indicates whether to allow or deny the traffic that matches the rule. Valid values: <span pulumi-lang-nodejs="`allow`" pulumi-lang-dotnet="`Allow`" pulumi-lang-go="`allow`" pulumi-lang-python="`allow`" pulumi-lang-yaml="`allow`" pulumi-lang-java="`allow`">`allow`</span>, <span pulumi-lang-nodejs="`deny`" pulumi-lang-dotnet="`Deny`" pulumi-lang-go="`deny`" pulumi-lang-python="`deny`" pulumi-lang-yaml="`deny`" pulumi-lang-java="`deny`">`deny`</span>.
+  /// A string value that indicates whether to allow or deny the traffic that matches the rule. Valid values: `allow`, `deny`.
   final String ruleAction;
 
   PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry({

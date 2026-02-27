@@ -1,3 +1,0 @@
-library module_sagemaker_domain_default_user_settings_studio_web_portal_settings;
-
-export 'domain_default_user_settings_studio_web_portal_settings.dart';

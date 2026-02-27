@@ -15,7 +15,7 @@ class RouteSpecHttpRouteRetryPolicy {
 
   /// List of TCP retry events. The only valid value is `connection-error`.
   ///
-  /// You must specify at least one value for <span pulumi-lang-nodejs="`httpRetryEvents`" pulumi-lang-dotnet="`HttpRetryEvents`" pulumi-lang-go="`httpRetryEvents`" pulumi-lang-python="`http_retry_events`" pulumi-lang-yaml="`httpRetryEvents`" pulumi-lang-java="`httpRetryEvents`">`http_retry_events`</span>, or at least one value for <span pulumi-lang-nodejs="`tcpRetryEvents`" pulumi-lang-dotnet="`TcpRetryEvents`" pulumi-lang-go="`tcpRetryEvents`" pulumi-lang-python="`tcp_retry_events`" pulumi-lang-yaml="`tcpRetryEvents`" pulumi-lang-java="`tcpRetryEvents`">`tcp_retry_events`</span>.
+  /// You must specify at least one value for `http_retry_events`, or at least one value for `tcp_retry_events`.
   final List<String>? tcpRetryEvents;
 
   RouteSpecHttpRouteRetryPolicy({

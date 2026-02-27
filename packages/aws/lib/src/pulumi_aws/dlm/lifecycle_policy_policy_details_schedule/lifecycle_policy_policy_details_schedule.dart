@@ -10,30 +10,30 @@ import '../lifecycle_policy_policy_details_schedule_retain_rule/lifecycle_policy
 import '../lifecycle_policy_policy_details_schedule_share_rule/lifecycle_policy_policy_details_schedule_share_rule.dart';
 
 class LifecyclePolicyPolicyDetailsSchedule {
-  /// Specifies a snapshot archiving rule for a schedule. See <span pulumi-lang-nodejs="`archiveRule`" pulumi-lang-dotnet="`ArchiveRule`" pulumi-lang-go="`archiveRule`" pulumi-lang-python="`archive_rule`" pulumi-lang-yaml="`archiveRule`" pulumi-lang-java="`archiveRule`">`archive_rule`</span> block.
+  /// Specifies a snapshot archiving rule for a schedule. See `archive_rule` block.
   final LifecyclePolicyPolicyDetailsScheduleArchiveRule? archiveRule;
   final bool? copyTags;
 
-  /// See the <span pulumi-lang-nodejs="`createRule`" pulumi-lang-dotnet="`CreateRule`" pulumi-lang-go="`createRule`" pulumi-lang-python="`create_rule`" pulumi-lang-yaml="`createRule`" pulumi-lang-java="`createRule`">`create_rule`</span> block. Max of 1 per schedule.
+  /// See the `create_rule` block. Max of 1 per schedule.
   final LifecyclePolicyPolicyDetailsScheduleCreateRule createRule;
 
-  /// See the <span pulumi-lang-nodejs="`crossRegionCopyRule`" pulumi-lang-dotnet="`CrossRegionCopyRule`" pulumi-lang-go="`crossRegionCopyRule`" pulumi-lang-python="`cross_region_copy_rule`" pulumi-lang-yaml="`crossRegionCopyRule`" pulumi-lang-java="`crossRegionCopyRule`">`cross_region_copy_rule`</span> block. Max of 3 per schedule.
+  /// See the `cross_region_copy_rule` block. Max of 3 per schedule.
   final List<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule>?
       crossRegionCopyRules;
   final LifecyclePolicyPolicyDetailsScheduleDeprecateRule? deprecateRule;
 
-  /// See the <span pulumi-lang-nodejs="`fastRestoreRule`" pulumi-lang-dotnet="`FastRestoreRule`" pulumi-lang-go="`fastRestoreRule`" pulumi-lang-python="`fast_restore_rule`" pulumi-lang-yaml="`fastRestoreRule`" pulumi-lang-java="`fastRestoreRule`">`fast_restore_rule`</span> block. Max of 1 per schedule.
+  /// See the `fast_restore_rule` block. Max of 1 per schedule.
   final LifecyclePolicyPolicyDetailsScheduleFastRestoreRule? fastRestoreRule;
   final String name;
   final LifecyclePolicyPolicyDetailsScheduleRetainRule retainRule;
 
-  /// See the <span pulumi-lang-nodejs="`shareRule`" pulumi-lang-dotnet="`ShareRule`" pulumi-lang-go="`shareRule`" pulumi-lang-python="`share_rule`" pulumi-lang-yaml="`shareRule`" pulumi-lang-java="`shareRule`">`share_rule`</span> block. Max of 1 per schedule.
+  /// See the `share_rule` block. Max of 1 per schedule.
   final LifecyclePolicyPolicyDetailsScheduleShareRule? shareRule;
 
   /// A map of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
   final Map<String, String>? tagsToAdd;
 
-  /// A map of tag keys and variable values, where the values are determined when the policy is executed. Only `$(instance-id)` or `$(timestamp)` are valid values. Can only be used when <span pulumi-lang-nodejs="`resourceTypes`" pulumi-lang-dotnet="`ResourceTypes`" pulumi-lang-go="`resourceTypes`" pulumi-lang-python="`resource_types`" pulumi-lang-yaml="`resourceTypes`" pulumi-lang-java="`resourceTypes`">`resource_types`</span> is `INSTANCE`.
+  /// A map of tag keys and variable values, where the values are determined when the policy is executed. Only `$(instance-id)` or `$(timestamp)` are valid values. Can only be used when `resource_types` is `INSTANCE`.
   final Map<String, String>? variableTags;
 
   LifecyclePolicyPolicyDetailsSchedule({

@@ -10,7 +10,7 @@ class CapacityProviderCapacityProviderScalingConfig {
   /// The scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
   final String scalingMode;
 
-  /// List of scaling policies. Only required if <span pulumi-lang-nodejs="`scalingMode`" pulumi-lang-dotnet="`ScalingMode`" pulumi-lang-go="`scalingMode`" pulumi-lang-python="`scaling_mode`" pulumi-lang-yaml="`scalingMode`" pulumi-lang-java="`scalingMode`">`scaling_mode`</span> is set to `"Manual"`. See Scaling Policies below.
+  /// List of scaling policies. Only required if `scaling_mode` is set to `"Manual"`. See Scaling Policies below.
   final List<CapacityProviderCapacityProviderScalingConfigScalingPolicy>
       scalingPolicies;
 

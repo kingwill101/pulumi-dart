@@ -11,34 +11,34 @@ import '../domain_default_user_settings_canvas_app_settings_time_series_forecast
 import '../domain_default_user_settings_canvas_app_settings_workspace_settings/domain_default_user_settings_canvas_app_settings_workspace_settings.dart';
 
 class DomainDefaultUserSettingsCanvasAppSettings {
-  /// The model deployment settings for the SageMaker AI Canvas application. See <span pulumi-lang-nodejs="`directDeploySettings`" pulumi-lang-dotnet="`DirectDeploySettings`" pulumi-lang-go="`directDeploySettings`" pulumi-lang-python="`direct_deploy_settings`" pulumi-lang-yaml="`directDeploySettings`" pulumi-lang-java="`directDeploySettings`">`direct_deploy_settings`</span> Block below.
+  /// The model deployment settings for the SageMaker AI Canvas application. See `direct_deploy_settings` Block below.
   final DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings?
       directDeploySettings;
 
-  /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See <span pulumi-lang-nodejs="`emrServerlessSettings`" pulumi-lang-dotnet="`EmrServerlessSettings`" pulumi-lang-go="`emrServerlessSettings`" pulumi-lang-python="`emr_serverless_settings`" pulumi-lang-yaml="`emrServerlessSettings`" pulumi-lang-java="`emrServerlessSettings`">`emr_serverless_settings`</span> Block below.
+  /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emr_serverless_settings` Block below.
   final DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings?
       emrServerlessSettings;
   final DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings?
       generativeAiSettings;
 
-  /// The settings for connecting to an external data source with OAuth. See <span pulumi-lang-nodejs="`identityProviderOauthSettings`" pulumi-lang-dotnet="`IdentityProviderOauthSettings`" pulumi-lang-go="`identityProviderOauthSettings`" pulumi-lang-python="`identity_provider_oauth_settings`" pulumi-lang-yaml="`identityProviderOauthSettings`" pulumi-lang-java="`identityProviderOauthSettings`">`identity_provider_oauth_settings`</span> Block below.
+  /// The settings for connecting to an external data source with OAuth. See `identity_provider_oauth_settings` Block below.
   final List<
           DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>?
       identityProviderOauthSettings;
 
-  /// The settings for document querying. See <span pulumi-lang-nodejs="`kendraSettings`" pulumi-lang-dotnet="`KendraSettings`" pulumi-lang-go="`kendraSettings`" pulumi-lang-python="`kendra_settings`" pulumi-lang-yaml="`kendraSettings`" pulumi-lang-java="`kendraSettings`">`kendra_settings`</span> Block below.
+  /// The settings for document querying. See `kendra_settings` Block below.
   final DomainDefaultUserSettingsCanvasAppSettingsKendraSettings?
       kendraSettings;
 
-  /// The model registry settings for the SageMaker AI Canvas application. See <span pulumi-lang-nodejs="`modelRegisterSettings`" pulumi-lang-dotnet="`ModelRegisterSettings`" pulumi-lang-go="`modelRegisterSettings`" pulumi-lang-python="`model_register_settings`" pulumi-lang-yaml="`modelRegisterSettings`" pulumi-lang-java="`modelRegisterSettings`">`model_register_settings`</span> Block below.
+  /// The model registry settings for the SageMaker AI Canvas application. See `model_register_settings` Block below.
   final DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings?
       modelRegisterSettings;
 
-  /// Time series forecast settings for the Canvas app. See <span pulumi-lang-nodejs="`timeSeriesForecastingSettings`" pulumi-lang-dotnet="`TimeSeriesForecastingSettings`" pulumi-lang-go="`timeSeriesForecastingSettings`" pulumi-lang-python="`time_series_forecasting_settings`" pulumi-lang-yaml="`timeSeriesForecastingSettings`" pulumi-lang-java="`timeSeriesForecastingSettings`">`time_series_forecasting_settings`</span> Block below.
+  /// Time series forecast settings for the Canvas app. See `time_series_forecasting_settings` Block below.
   final DomainDefaultUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings?
       timeSeriesForecastingSettings;
 
-  /// The workspace settings for the SageMaker AI Canvas application. See <span pulumi-lang-nodejs="`workspaceSettings`" pulumi-lang-dotnet="`WorkspaceSettings`" pulumi-lang-go="`workspaceSettings`" pulumi-lang-python="`workspace_settings`" pulumi-lang-yaml="`workspaceSettings`" pulumi-lang-java="`workspaceSettings`">`workspace_settings`</span> Block below.
+  /// The workspace settings for the SageMaker AI Canvas application. See `workspace_settings` Block below.
   final DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings?
       workspaceSettings;
 

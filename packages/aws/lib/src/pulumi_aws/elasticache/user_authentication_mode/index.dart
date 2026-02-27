@@ -1,3 +1,0 @@
-library module_elasticache_user_authentication_mode;
-
-export 'user_authentication_mode.dart';

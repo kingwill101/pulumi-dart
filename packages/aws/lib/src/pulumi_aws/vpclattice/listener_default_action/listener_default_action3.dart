@@ -9,7 +9,7 @@ class ListenerDefaultAction3 {
 
   /// Route requests to one or more target groups. See Forward blocks below.
   ///
-  /// > **NOTE:** You must specify exactly one of the following argument blocks: <span pulumi-lang-nodejs="`fixedResponse`" pulumi-lang-dotnet="`FixedResponse`" pulumi-lang-go="`fixedResponse`" pulumi-lang-python="`fixed_response`" pulumi-lang-yaml="`fixedResponse`" pulumi-lang-java="`fixedResponse`">`fixed_response`</span> or <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span>.
+  /// > **NOTE:** You must specify exactly one of the following argument blocks: `fixed_response` or `forward`.
   final List<ListenerDefaultActionForward3>? forwards;
 
   ListenerDefaultAction3({

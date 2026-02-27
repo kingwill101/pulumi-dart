@@ -1,0 +1,3 @@
+library module_cloudwatch_event_bus_dead_letter_config;
+
+export 'event_bus_dead_letter_config/event_bus_dead_letter_config.dart';

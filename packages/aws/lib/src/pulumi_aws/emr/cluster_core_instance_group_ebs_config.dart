@@ -1,0 +1,3 @@
+library module_emr_cluster_core_instance_group_ebs_config;
+
+export 'cluster_core_instance_group_ebs_config/cluster_core_instance_group_ebs_config.dart';

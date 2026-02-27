@@ -1,3 +1,0 @@
-library module_autoscaling_policy_step_adjustment;
-
-export 'policy_step_adjustment.dart';

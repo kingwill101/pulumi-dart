@@ -1,3 +1,0 @@
-library module_kinesis_firehose_delivery_stream_splunk_configuration_secrets_manager_configuration;
-
-export 'firehose_delivery_stream_splunk_configuration_secrets_manager_configuration.dart';

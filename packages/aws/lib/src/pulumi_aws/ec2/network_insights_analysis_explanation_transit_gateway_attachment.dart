@@ -1,0 +1,3 @@
+library module_ec2_network_insights_analysis_explanation_transit_gateway_attachment;
+
+export 'network_insights_analysis_explanation_transit_gateway_attachment/network_insights_analysis_explanation_transit_gateway_attachment.dart';

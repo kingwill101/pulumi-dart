@@ -1,3 +1,0 @@
-library module_workspacesweb_user_settings_toolbar_configuration;
-
-export 'user_settings_toolbar_configuration.dart';

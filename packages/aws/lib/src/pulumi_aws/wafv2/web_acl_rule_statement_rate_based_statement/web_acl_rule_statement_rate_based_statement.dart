@@ -9,22 +9,22 @@ class WebAclRuleStatementRateBasedStatement {
   /// Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP`, or `IP`. Default: `IP`.
   final String? aggregateKeyType;
 
-  /// Aggregate the request counts using one or more web request components as the aggregate keys. See <span pulumi-lang-nodejs="`customKey`" pulumi-lang-dotnet="`CustomKey`" pulumi-lang-go="`customKey`" pulumi-lang-python="`custom_key`" pulumi-lang-yaml="`customKey`" pulumi-lang-java="`customKey`">`custom_key`</span> below for details.
+  /// Aggregate the request counts using one or more web request components as the aggregate keys. See `custom_key` below for details.
   final List<WebAclRuleStatementRateBasedStatementCustomKey>? customKeys;
 
-  /// The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>, <span pulumi-lang-nodejs="`120`" pulumi-lang-dotnet="`120`" pulumi-lang-go="`120`" pulumi-lang-python="`120`" pulumi-lang-yaml="`120`" pulumi-lang-java="`120`">`120`</span>, <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span>, and <span pulumi-lang-nodejs="`600`" pulumi-lang-dotnet="`600`" pulumi-lang-go="`600`" pulumi-lang-python="`600`" pulumi-lang-yaml="`600`" pulumi-lang-java="`600`">`600`</span>. Defaults to <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span> (5 minutes).
+  /// The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are `60`, `120`, `300`, and `600`. Defaults to `300` (5 minutes).
   ///
   /// **NOTE:** This setting doesn't determine how often AWS WAF checks the rate, but how far back it looks each time it checks. AWS WAF checks the rate about every 10 seconds.
   final int? evaluationWindowSec;
 
-  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If <span pulumi-lang-nodejs="`aggregateKeyType`" pulumi-lang-dotnet="`AggregateKeyType`" pulumi-lang-go="`aggregateKeyType`" pulumi-lang-python="`aggregate_key_type`" pulumi-lang-yaml="`aggregateKeyType`" pulumi-lang-java="`aggregateKeyType`">`aggregate_key_type`</span> is set to `FORWARDED_IP`, this block is required. See <span pulumi-lang-nodejs="`forwardedIpConfig`" pulumi-lang-dotnet="`ForwardedIpConfig`" pulumi-lang-go="`forwardedIpConfig`" pulumi-lang-python="`forwarded_ip_config`" pulumi-lang-yaml="`forwardedIpConfig`" pulumi-lang-java="`forwardedIpConfig`">`forwarded_ip_config`</span> below for details.
+  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If `aggregate_key_type` is set to `FORWARDED_IP`, this block is required. See `forwarded_ip_config` below for details.
   final WebAclRuleStatementRateBasedStatementForwardedIpConfig?
       forwardedIpConfig;
 
   /// Limit on requests during the specified evaluation window for a single aggregation instance.
   final int limit;
 
-  /// Optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See <span pulumi-lang-nodejs="`statement`" pulumi-lang-dotnet="`Statement`" pulumi-lang-go="`statement`" pulumi-lang-python="`statement`" pulumi-lang-yaml="`statement`" pulumi-lang-java="`statement`">`statement`</span> above for details. If <span pulumi-lang-nodejs="`aggregateKeyType`" pulumi-lang-dotnet="`AggregateKeyType`" pulumi-lang-go="`aggregateKeyType`" pulumi-lang-python="`aggregate_key_type`" pulumi-lang-yaml="`aggregateKeyType`" pulumi-lang-java="`aggregateKeyType`">`aggregate_key_type`</span> is set to `CONSTANT`, this block is required.
+  /// Optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See `statement` above for details. If `aggregate_key_type` is set to `CONSTANT`, this block is required.
   final WebAclRuleStatementRateBasedStatementScopeDownStatement?
       scopeDownStatement;
 

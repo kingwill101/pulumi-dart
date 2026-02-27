@@ -17,7 +17,7 @@ import '../spot_instance_request_secondary_network_interface/spot_instance_reque
 
 /// The set of arguments for SpotInstanceRequest.
 class SpotInstanceRequestArgs {
-  /// AMI to use for the instance. Required unless <span pulumi-lang-nodejs="`launchTemplate`" pulumi-lang-dotnet="`LaunchTemplate`" pulumi-lang-go="`launchTemplate`" pulumi-lang-python="`launch_template`" pulumi-lang-yaml="`launchTemplate`" pulumi-lang-java="`launchTemplate`">`launch_template`</span> is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting <span pulumi-lang-nodejs="`ami`" pulumi-lang-dotnet="`Ami`" pulumi-lang-go="`ami`" pulumi-lang-python="`ami`" pulumi-lang-yaml="`ami`" pulumi-lang-java="`ami`">`ami`</span> will override the AMI specified in the Launch Template.
+  /// AMI to use for the instance. Required unless `launch_template` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
   final Input<String>? ami;
 
   /// Whether to associate a public IP address with an instance in a VPC.
@@ -48,7 +48,7 @@ class SpotInstanceRequestArgs {
   /// If true, the launched EC2 instance will be EBS-optimized. Note that if this is not set on an instance type that is optimized by default then this will show as disabled but if the instance type is optimized by default then there is no need to set this and there is no effect to disabling it. See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
   final Input<bool>? ebsOptimized;
 
-  /// Whether to assign a primary IPv6 Global Unicast Address (GUA) to the instance when launched in a dual-stack or IPv6-only subnet. A primary IPv6 address ensures a consistent IPv6 address for the instance and is automatically assigned by AWS to the ENI. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains until the instance is terminated or the ENI is detached. Disabling <span pulumi-lang-nodejs="`enablePrimaryIpv6`" pulumi-lang-dotnet="`EnablePrimaryIpv6`" pulumi-lang-go="`enablePrimaryIpv6`" pulumi-lang-python="`enable_primary_ipv6`" pulumi-lang-yaml="`enablePrimaryIpv6`" pulumi-lang-java="`enablePrimaryIpv6`">`enable_primary_ipv6`</span> after it has been enabled forces recreation of the instance.
+  /// Whether to assign a primary IPv6 Global Unicast Address (GUA) to the instance when launched in a dual-stack or IPv6-only subnet. A primary IPv6 address ensures a consistent IPv6 address for the instance and is automatically assigned by AWS to the ENI. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains until the instance is terminated or the ENI is detached. Disabling `enable_primary_ipv6` after it has been enabled forces recreation of the instance.
   final Input<bool>? enablePrimaryIpv6;
 
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
@@ -58,10 +58,10 @@ class SpotInstanceRequestArgs {
   final Input<List<SpotInstanceRequestEphemeralBlockDevice>>?
       ephemeralBlockDevices;
 
-  /// Destroys instance even if <span pulumi-lang-nodejs="`disableApiTermination`" pulumi-lang-dotnet="`DisableApiTermination`" pulumi-lang-go="`disableApiTermination`" pulumi-lang-python="`disable_api_termination`" pulumi-lang-yaml="`disableApiTermination`" pulumi-lang-java="`disableApiTermination`">`disable_api_termination`</span> or <span pulumi-lang-nodejs="`disableApiStop`" pulumi-lang-dotnet="`DisableApiStop`" pulumi-lang-go="`disableApiStop`" pulumi-lang-python="`disable_api_stop`" pulumi-lang-yaml="`disableApiStop`" pulumi-lang-java="`disableApiStop`">`disable_api_stop`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Once this parameter is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the instance or destroying the instance, this flag will not work. Additionally when importing an instance, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
+  /// Destroys instance even if `disable_api_termination` or `disable_api_stop` is set to `true`. Defaults to `false`. Once this parameter is set to `true`, a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the instance or destroying the instance, this flag will not work. Additionally when importing an instance, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   final Input<bool>? forceDestroy;
 
-  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the <span pulumi-lang-nodejs="`passwordData`" pulumi-lang-dotnet="`PasswordData`" pulumi-lang-go="`passwordData`" pulumi-lang-python="`password_data`" pulumi-lang-yaml="`passwordData`" pulumi-lang-java="`passwordData`">`password_data`</span> attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   final Input<bool>? getPasswordData;
 
   /// If true, the launched EC2 instance will support hibernation.
@@ -70,19 +70,19 @@ class SpotInstanceRequestArgs {
   /// ID of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host.
   final Input<String>? hostId;
 
-  /// ARN of the host resource group in which to launch the instances. If you specify an ARN, omit the <span pulumi-lang-nodejs="`tenancy`" pulumi-lang-dotnet="`Tenancy`" pulumi-lang-go="`tenancy`" pulumi-lang-python="`tenancy`" pulumi-lang-yaml="`tenancy`" pulumi-lang-java="`tenancy`">`tenancy`</span> parameter or set it to <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span>.
+  /// ARN of the host resource group in which to launch the instances. If you specify an ARN, omit the `tenancy` parameter or set it to `host`.
   final Input<String>? hostResourceGroupArn;
 
   /// IAM Instance Profile to launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
   final Input<String>? iamInstanceProfile;
 
-  /// Shutdown behavior for the instance. Amazon defaults this to <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span> for EBS-backed instances and <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span> for instance-store instances. Cannot be set on instance-store instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
+  /// Shutdown behavior for the instance. Amazon defaults this to `stop` for EBS-backed instances and `terminate` for instance-store instances. Cannot be set on instance-store instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
   final Input<String>? instanceInitiatedShutdownBehavior;
 
-  /// Indicates Spot instance behavior when it is interrupted. Valid values are <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>, <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span>, or <span pulumi-lang-nodejs="`hibernate`" pulumi-lang-dotnet="`Hibernate`" pulumi-lang-go="`hibernate`" pulumi-lang-python="`hibernate`" pulumi-lang-yaml="`hibernate`" pulumi-lang-java="`hibernate`">`hibernate`</span>. Default value is <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>.
+  /// Indicates Spot instance behavior when it is interrupted. Valid values are `terminate`, `stop`, or `hibernate`. Default value is `terminate`.
   final Input<String>? instanceInterruptionBehavior;
 
-  /// Instance type to use for the instance. Required unless <span pulumi-lang-nodejs="`launchTemplate`" pulumi-lang-dotnet="`LaunchTemplate`" pulumi-lang-go="`launchTemplate`" pulumi-lang-python="`launch_template`" pulumi-lang-yaml="`launchTemplate`" pulumi-lang-java="`launchTemplate`">`launch_template`</span> is specified and the Launch Template specifies an instance type. If an instance type is specified in the Launch Template, setting <span pulumi-lang-nodejs="`instanceType`" pulumi-lang-dotnet="`InstanceType`" pulumi-lang-go="`instanceType`" pulumi-lang-python="`instance_type`" pulumi-lang-yaml="`instanceType`" pulumi-lang-java="`instanceType`">`instance_type`</span> will override the instance type specified in the Launch Template. Updates to this field will trigger a stop/start of the EC2 instance.
+  /// Instance type to use for the instance. Required unless `launch_template` is specified and the Launch Template specifies an instance type. If an instance type is specified in the Launch Template, setting `instance_type` will override the instance type specified in the Launch Template. Updates to this field will trigger a stop/start of the EC2 instance.
   final Input<String>? instanceType;
 
   /// Number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet.
@@ -91,7 +91,7 @@ class SpotInstanceRequestArgs {
   /// Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
   final Input<List<String>>? ipv6Addresses;
 
-  /// Key name of the Key Pair to use for the instance; which can be managed using the <span pulumi-lang-nodejs="`aws.ec2.KeyPair`" pulumi-lang-dotnet="`aws.ec2.KeyPair`" pulumi-lang-go="`ec2.KeyPair`" pulumi-lang-python="`ec2.KeyPair`" pulumi-lang-yaml="`aws.ec2.KeyPair`" pulumi-lang-java="`aws.ec2.KeyPair`">`aws.ec2.KeyPair`</span> resource.
+  /// Key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
   final Input<String>? keyName;
 
   /// A launch group is a group of spot instances that launch together and terminate together.
@@ -113,13 +113,13 @@ class SpotInstanceRequestArgs {
   /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
   final Input<List<SpotInstanceRequestNetworkInterface>>? networkInterfaces;
 
-  /// Placement Group to start the instance in. Conflicts with <span pulumi-lang-nodejs="`placementGroupId`" pulumi-lang-dotnet="`PlacementGroupId`" pulumi-lang-go="`placementGroupId`" pulumi-lang-python="`placement_group_id`" pulumi-lang-yaml="`placementGroupId`" pulumi-lang-java="`placementGroupId`">`placement_group_id`</span>.
+  /// Placement Group to start the instance in. Conflicts with `placement_group_id`.
   final Input<String>? placementGroup;
 
-  /// Placement Group ID to start the instance in. Conflicts with <span pulumi-lang-nodejs="`placementGroup`" pulumi-lang-dotnet="`PlacementGroup`" pulumi-lang-go="`placementGroup`" pulumi-lang-python="`placement_group`" pulumi-lang-yaml="`placementGroup`" pulumi-lang-java="`placementGroup`">`placement_group`</span>.
+  /// Placement Group ID to start the instance in. Conflicts with `placement_group`.
   final Input<String>? placementGroupId;
 
-  /// Number of the partition the instance is in. Valid only if the <span pulumi-lang-nodejs="`aws.ec2.PlacementGroup`" pulumi-lang-dotnet="`aws.ec2.PlacementGroup`" pulumi-lang-go="`ec2.PlacementGroup`" pulumi-lang-python="`ec2.PlacementGroup`" pulumi-lang-yaml="`aws.ec2.PlacementGroup`" pulumi-lang-java="`aws.ec2.PlacementGroup`">`aws.ec2.PlacementGroup`</span> resource's <span pulumi-lang-nodejs="`strategy`" pulumi-lang-dotnet="`Strategy`" pulumi-lang-go="`strategy`" pulumi-lang-python="`strategy`" pulumi-lang-yaml="`strategy`" pulumi-lang-java="`strategy`">`strategy`</span> argument is set to `"partition"`.
+  /// Number of the partition the instance is in. Valid only if the `aws.ec2.PlacementGroup` resource's `strategy` argument is set to `"partition"`.
   final Input<int>? placementPartitionNumber;
 
   /// Options for the instance hostname. The default values are inherited from the subnet. See Private DNS Name Options below for more details.
@@ -138,12 +138,12 @@ class SpotInstanceRequestArgs {
   final Input<List<SpotInstanceRequestSecondaryNetworkInterface>>?
       secondaryNetworkInterfaces;
 
-  /// List of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e., referenced in a <span pulumi-lang-nodejs="`networkInterface`" pulumi-lang-dotnet="`NetworkInterface`" pulumi-lang-go="`networkInterface`" pulumi-lang-python="`network_interface`" pulumi-lang-yaml="`networkInterface`" pulumi-lang-java="`networkInterface`">`network_interface`</span> block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
+  /// List of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e., referenced in a `network_interface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
   final Input<List<String>>? secondaryPrivateIps;
 
   /// List of security group names to associate with.
   ///
-  /// > **NOTE:** If you are creating Instances in a VPC, use <span pulumi-lang-nodejs="`vpcSecurityGroupIds`" pulumi-lang-dotnet="`VpcSecurityGroupIds`" pulumi-lang-go="`vpcSecurityGroupIds`" pulumi-lang-python="`vpc_security_group_ids`" pulumi-lang-yaml="`vpcSecurityGroupIds`" pulumi-lang-java="`vpcSecurityGroupIds`">`vpc_security_group_ids`</span> instead.
+  /// > **NOTE:** If you are creating Instances in a VPC, use `vpc_security_group_ids` instead.
   final Input<List<String>>? securityGroups;
 
   /// Controls if traffic is routed to the instance when the destination address does not match the instance. Used for NAT or VPNs. Defaults true.
@@ -159,19 +159,19 @@ class SpotInstanceRequestArgs {
   /// VPC Subnet ID to launch in.
   final Input<String>? subnetId;
 
-  /// Map of tags to assign to the resource. Note that these tags apply to the instance and not block storage devices. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. Note that these tags apply to the instance and not block storage devices. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of <span pulumi-lang-nodejs="`dedicated`" pulumi-lang-dotnet="`Dedicated`" pulumi-lang-go="`dedicated`" pulumi-lang-python="`dedicated`" pulumi-lang-yaml="`dedicated`" pulumi-lang-java="`dedicated`">`dedicated`</span> runs on single-tenant hardware. The <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span> tenancy is not supported for the import-instance command. Valid values are <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, <span pulumi-lang-nodejs="`dedicated`" pulumi-lang-dotnet="`Dedicated`" pulumi-lang-go="`dedicated`" pulumi-lang-python="`dedicated`" pulumi-lang-yaml="`dedicated`" pulumi-lang-java="`dedicated`">`dedicated`</span>, and <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span>.
+  /// Tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of `dedicated` runs on single-tenant hardware. The `host` tenancy is not supported for the import-instance command. Valid values are `default`, `dedicated`, and `host`.
   final Input<String>? tenancy;
 
-  /// User data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see <span pulumi-lang-nodejs="`userDataBase64`" pulumi-lang-dotnet="`UserDataBase64`" pulumi-lang-go="`userDataBase64`" pulumi-lang-python="`user_data_base64`" pulumi-lang-yaml="`userDataBase64`" pulumi-lang-java="`userDataBase64`">`user_data_base64`</span> instead. Updates to this field will trigger a stop/start of the EC2 instance by default. If the <span pulumi-lang-nodejs="`userDataReplaceOnChange`" pulumi-lang-dotnet="`UserDataReplaceOnChange`" pulumi-lang-go="`userDataReplaceOnChange`" pulumi-lang-python="`user_data_replace_on_change`" pulumi-lang-yaml="`userDataReplaceOnChange`" pulumi-lang-java="`userDataReplaceOnChange`">`user_data_replace_on_change`</span> is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
+  /// User data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `user_data_base64` instead. Updates to this field will trigger a stop/start of the EC2 instance by default. If the `user_data_replace_on_change` is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
   final Input<String>? userData;
 
-  /// Can be used instead of <span pulumi-lang-nodejs="`userData`" pulumi-lang-dotnet="`UserData`" pulumi-lang-go="`userData`" pulumi-lang-python="`user_data`" pulumi-lang-yaml="`userData`" pulumi-lang-java="`userData`">`user_data`</span> to pass base64-encoded binary data directly. Use this instead of <span pulumi-lang-nodejs="`userData`" pulumi-lang-dotnet="`UserData`" pulumi-lang-go="`userData`" pulumi-lang-python="`user_data`" pulumi-lang-yaml="`userData`" pulumi-lang-java="`userData`">`user_data`</span> whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption. Updates to this field will trigger a stop/start of the EC2 instance by default. If the <span pulumi-lang-nodejs="`userDataReplaceOnChange`" pulumi-lang-dotnet="`UserDataReplaceOnChange`" pulumi-lang-go="`userDataReplaceOnChange`" pulumi-lang-python="`user_data_replace_on_change`" pulumi-lang-yaml="`userDataReplaceOnChange`" pulumi-lang-java="`userDataReplaceOnChange`">`user_data_replace_on_change`</span> is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
+  /// Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption. Updates to this field will trigger a stop/start of the EC2 instance by default. If the `user_data_replace_on_change` is set then updates to this field will trigger a destroy and recreate of the EC2 instance.
   final Input<String>? userDataBase64;
 
-  /// When used in combination with <span pulumi-lang-nodejs="`userData`" pulumi-lang-dotnet="`UserData`" pulumi-lang-go="`userData`" pulumi-lang-python="`user_data`" pulumi-lang-yaml="`userData`" pulumi-lang-java="`userData`">`user_data`</span> or <span pulumi-lang-nodejs="`userDataBase64`" pulumi-lang-dotnet="`UserDataBase64`" pulumi-lang-go="`userDataBase64`" pulumi-lang-python="`user_data_base64`" pulumi-lang-yaml="`userDataBase64`" pulumi-lang-java="`userDataBase64`">`user_data_base64`</span> will trigger a destroy and recreate of the EC2 instance when set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if not set.
+  /// When used in combination with `user_data` or `user_data_base64` will trigger a destroy and recreate of the EC2 instance when set to `true`. Defaults to `false` if not set.
   final Input<bool>? userDataReplaceOnChange;
 
   /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
@@ -182,7 +182,7 @@ class SpotInstanceRequestArgs {
 
   /// Map of tags to assign, at instance-creation time, to root and EBS volumes.
   ///
-  /// > **NOTE:** Do not use <span pulumi-lang-nodejs="`volumeTags`" pulumi-lang-dotnet="`VolumeTags`" pulumi-lang-go="`volumeTags`" pulumi-lang-python="`volume_tags`" pulumi-lang-yaml="`volumeTags`" pulumi-lang-java="`volumeTags`">`volume_tags`</span> if you plan to manage block device tags outside the <span pulumi-lang-nodejs="`aws.ec2.Instance`" pulumi-lang-dotnet="`aws.ec2.Instance`" pulumi-lang-go="`ec2.Instance`" pulumi-lang-python="`ec2.Instance`" pulumi-lang-yaml="`aws.ec2.Instance`" pulumi-lang-java="`aws.ec2.Instance`">`aws.ec2.Instance`</span> configuration, such as using <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span> in an <span pulumi-lang-nodejs="`aws.ebs.Volume`" pulumi-lang-dotnet="`aws.ebs.Volume`" pulumi-lang-go="`ebs.Volume`" pulumi-lang-python="`ebs.Volume`" pulumi-lang-yaml="`aws.ebs.Volume`" pulumi-lang-java="`aws.ebs.Volume`">`aws.ebs.Volume`</span> resource attached via <span pulumi-lang-nodejs="`aws.ec2.VolumeAttachment`" pulumi-lang-dotnet="`aws.ec2.VolumeAttachment`" pulumi-lang-go="`ec2.VolumeAttachment`" pulumi-lang-python="`ec2.VolumeAttachment`" pulumi-lang-yaml="`aws.ec2.VolumeAttachment`" pulumi-lang-java="`aws.ec2.VolumeAttachment`">`aws.ec2.VolumeAttachment`</span>. Doing so will result in resource cycling and inconsistent behavior.
+  /// > **NOTE:** Do not use `volume_tags` if you plan to manage block device tags outside the `aws.ec2.Instance` configuration, such as using `tags` in an `aws.ebs.Volume` resource attached via `aws.ec2.VolumeAttachment`. Doing so will result in resource cycling and inconsistent behavior.
   final Input<Map<String, String>>? volumeTags;
 
   /// List of security group IDs to associate with.

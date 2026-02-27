@@ -1,3 +1,0 @@
-library module_macie2_classification_job_s3_job_definition_scoping_excludes_and_tag_scope_term_tag_value;
-
-export 'classification_job_s3_job_definition_scoping_excludes_and_tag_scope_term_tag_value.dart';

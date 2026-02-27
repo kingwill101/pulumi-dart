@@ -4,7 +4,7 @@ class GetCatalogTableStorageDescriptorSortColumn {
   /// Name of the column.
   final String column;
 
-  /// Whether the column is sorted in ascending (<span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>) or descending order (<span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>).
+  /// Whether the column is sorted in ascending (`1`) or descending order (`0`).
   final int sortOrder;
 
   GetCatalogTableStorageDescriptorSortColumn({

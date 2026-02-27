@@ -10,7 +10,7 @@ class GetPeeringAttachmentsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the <span pulumi-lang-nodejs="[aws.ec2transitgateway.PeeringAttachment]" pulumi-lang-dotnet="[aws.ec2transitgateway.PeeringAttachment]" pulumi-lang-go="[ec2transitgateway.PeeringAttachment]" pulumi-lang-python="[ec2transitgateway.PeeringAttachment]" pulumi-lang-yaml="[aws.ec2transitgateway.PeeringAttachment]" pulumi-lang-java="[aws.ec2transitgateway.PeeringAttachment]">[aws.ec2transitgateway.PeeringAttachment]</span>[2] data source, searching by identifier.
+  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.PeeringAttachment][2] data source, searching by identifier.
   final List<String> ids;
   final String region;
 

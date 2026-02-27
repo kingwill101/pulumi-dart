@@ -1,0 +1,3 @@
+library module_mq_get_instance_type_offerings_broker_instance_option;
+
+export 'get_instance_type_offerings_broker_instance_option/get_instance_type_offerings_broker_instance_option.dart';

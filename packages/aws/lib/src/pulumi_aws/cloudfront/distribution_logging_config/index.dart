@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_logging_config;
-
-export 'distribution_logging_config.dart';

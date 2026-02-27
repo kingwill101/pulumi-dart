@@ -1,3 +1,0 @@
-library module_ec2_get_instance_type_offerings_filter;
-
-export 'get_instance_type_offerings_filter.dart';

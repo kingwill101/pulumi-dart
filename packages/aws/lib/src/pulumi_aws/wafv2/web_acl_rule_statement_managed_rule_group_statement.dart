@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_statement_managed_rule_group_statement;
+
+export 'web_acl_rule_statement_managed_rule_group_statement/web_acl_rule_statement_managed_rule_group_statement.dart';

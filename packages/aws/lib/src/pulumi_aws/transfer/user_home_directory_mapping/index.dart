@@ -1,3 +1,0 @@
-library module_transfer_user_home_directory_mapping;
-
-export 'user_home_directory_mapping.dart';

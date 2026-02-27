@@ -4,19 +4,19 @@ class UserPoolVerificationMessageTemplate {
   /// Default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
   final String? defaultEmailOption;
 
-  /// Email message template. Must contain the `{####}` placeholder. Conflicts with <span pulumi-lang-nodejs="`emailVerificationMessage`" pulumi-lang-dotnet="`EmailVerificationMessage`" pulumi-lang-go="`emailVerificationMessage`" pulumi-lang-python="`email_verification_message`" pulumi-lang-yaml="`emailVerificationMessage`" pulumi-lang-java="`emailVerificationMessage`">`email_verification_message`</span> argument.
+  /// Email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
   final String? emailMessage;
 
   /// Email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
   final String? emailMessageByLink;
 
-  /// Subject line for the email message template. Conflicts with <span pulumi-lang-nodejs="`emailVerificationSubject`" pulumi-lang-dotnet="`EmailVerificationSubject`" pulumi-lang-go="`emailVerificationSubject`" pulumi-lang-python="`email_verification_subject`" pulumi-lang-yaml="`emailVerificationSubject`" pulumi-lang-java="`emailVerificationSubject`">`email_verification_subject`</span> argument.
+  /// Subject line for the email message template. Conflicts with `email_verification_subject` argument.
   final String? emailSubject;
 
   /// Subject line for the email message template for sending a confirmation link to the user.
   final String? emailSubjectByLink;
 
-  /// SMS message template. Must contain the `{####}` placeholder. Conflicts with <span pulumi-lang-nodejs="`smsVerificationMessage`" pulumi-lang-dotnet="`SmsVerificationMessage`" pulumi-lang-go="`smsVerificationMessage`" pulumi-lang-python="`sms_verification_message`" pulumi-lang-yaml="`smsVerificationMessage`" pulumi-lang-java="`smsVerificationMessage`">`sms_verification_message`</span> argument.
+  /// SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
   final String? smsMessage;
 
   UserPoolVerificationMessageTemplate({

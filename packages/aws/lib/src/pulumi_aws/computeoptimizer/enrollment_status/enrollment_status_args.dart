@@ -5,7 +5,7 @@ import '../enrollment_status_timeouts/enrollment_status_timeouts.dart';
 
 /// The set of arguments for EnrollmentStatus.
 class EnrollmentStatusArgs {
-  /// Whether to enroll member accounts of the organization if the account is the management account of an organization. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enroll member accounts of the organization if the account is the management account of an organization. Default is `false`.
   final Input<bool>? includeMemberAccounts;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

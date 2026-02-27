@@ -1,0 +1,4 @@
+library module_connect_phone_number_contact_flow_association;
+
+export 'phone_number_contact_flow_association/phone_number_contact_flow_association.dart';
+export 'phone_number_contact_flow_association/phone_number_contact_flow_association_args.dart';

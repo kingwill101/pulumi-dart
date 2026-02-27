@@ -10,7 +10,7 @@ class EnvironmentArgs4 {
   final Input<bool>? applyChangesDuringMaintenanceWindow;
   final Input<String>? description;
 
-  /// Engine type must be <span pulumi-lang-nodejs="`microfocus`" pulumi-lang-dotnet="`Microfocus`" pulumi-lang-go="`microfocus`" pulumi-lang-python="`microfocus`" pulumi-lang-yaml="`microfocus`" pulumi-lang-java="`microfocus`">`microfocus`</span> or <span pulumi-lang-nodejs="`bluage`" pulumi-lang-dotnet="`Bluage`" pulumi-lang-go="`bluage`" pulumi-lang-python="`bluage`" pulumi-lang-yaml="`bluage`" pulumi-lang-java="`bluage`">`bluage`</span>.
+  /// Engine type must be `microfocus` or `bluage`.
   final Input<String> engineType;
 
   /// The specific version of the engine for the Environment.
@@ -47,7 +47,7 @@ class EnvironmentArgs4 {
   /// List of subnet ids to deploy environment to.
   final Input<List<String>>? subnetIds;
 
-  /// Key-value tags for the place index. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<EnvironmentTimeouts2>? timeouts;
 

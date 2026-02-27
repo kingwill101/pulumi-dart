@@ -9,13 +9,13 @@ class ServiceDeploymentConfiguration {
   /// Number of minutes to wait after a new deployment is fully provisioned before terminating the old deployment. Valid range: 0-1440 minutes. Used with `BLUE_GREEN`, `LINEAR`, and `CANARY` strategies.
   final String? bakeTimeInMinutes;
 
-  /// Configuration block for canary deployment strategy. Required when <span pulumi-lang-nodejs="`strategy`" pulumi-lang-dotnet="`Strategy`" pulumi-lang-go="`strategy`" pulumi-lang-python="`strategy`" pulumi-lang-yaml="`strategy`" pulumi-lang-java="`strategy`">`strategy`</span> is set to `CANARY`. See below.
+  /// Configuration block for canary deployment strategy. Required when `strategy` is set to `CANARY`. See below.
   final ServiceDeploymentConfigurationCanaryConfiguration? canaryConfiguration;
 
   /// Configuration block for lifecycle hooks that are invoked during deployments. See below.
   final List<ServiceDeploymentConfigurationLifecycleHook>? lifecycleHooks;
 
-  /// Configuration block for linear deployment strategy. Required when <span pulumi-lang-nodejs="`strategy`" pulumi-lang-dotnet="`Strategy`" pulumi-lang-go="`strategy`" pulumi-lang-python="`strategy`" pulumi-lang-yaml="`strategy`" pulumi-lang-java="`strategy`">`strategy`</span> is set to `LINEAR`. See below.
+  /// Configuration block for linear deployment strategy. Required when `strategy` is set to `LINEAR`. See below.
   final ServiceDeploymentConfigurationLinearConfiguration? linearConfiguration;
 
   /// Type of deployment strategy. Valid values: `ROLLING`, `BLUE_GREEN`, `LINEAR`, `CANARY`. Default: `ROLLING`.

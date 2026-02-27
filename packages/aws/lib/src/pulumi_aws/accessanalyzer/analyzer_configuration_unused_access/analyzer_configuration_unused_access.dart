@@ -3,7 +3,7 @@
 import '../analyzer_configuration_unused_access_analysis_rule/analyzer_configuration_unused_access_analysis_rule.dart';
 
 class AnalyzerConfigurationUnusedAccess {
-  /// Information about analysis rules for the analyzer. Analysis rules determine which entities will generate findings based on the criteria you define when you create the rule. See <span pulumi-lang-nodejs="`analysisRule`" pulumi-lang-dotnet="`AnalysisRule`" pulumi-lang-go="`analysisRule`" pulumi-lang-python="`analysis_rule`" pulumi-lang-yaml="`analysisRule`" pulumi-lang-java="`analysisRule`">`analysis_rule`</span> Block for Unused Access Analyzer for details.
+  /// Information about analysis rules for the analyzer. Analysis rules determine which entities will generate findings based on the criteria you define when you create the rule. See `analysis_rule` Block for Unused Access Analyzer for details.
   final AnalyzerConfigurationUnusedAccessAnalysisRule? analysisRule;
 
   /// Specified access age in days for which to generate findings for unused access.

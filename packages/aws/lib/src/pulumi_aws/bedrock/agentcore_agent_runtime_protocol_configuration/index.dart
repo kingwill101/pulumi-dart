@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_agent_runtime_protocol_configuration;
-
-export 'agentcore_agent_runtime_protocol_configuration.dart';

@@ -3,7 +3,7 @@
 import '../rule_group_rule_group_rule_variables_port_set_port_set/rule_group_rule_group_rule_variables_port_set_port_set.dart';
 
 class RuleGroupRuleGroupRuleVariablesPortSet {
-  /// An unique alphanumeric string to identify the <span pulumi-lang-nodejs="`portSet`" pulumi-lang-dotnet="`PortSet`" pulumi-lang-go="`portSet`" pulumi-lang-python="`port_set`" pulumi-lang-yaml="`portSet`" pulumi-lang-java="`portSet`">`port_set`</span>.
+  /// An unique alphanumeric string to identify the `port_set`.
   final String key;
 
   /// A configuration block that defines a set of port ranges. See Port Set below for details.

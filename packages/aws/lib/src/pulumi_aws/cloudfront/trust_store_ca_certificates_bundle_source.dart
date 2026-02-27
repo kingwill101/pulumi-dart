@@ -1,0 +1,3 @@
+library module_cloudfront_trust_store_ca_certificates_bundle_source;
+
+export 'trust_store_ca_certificates_bundle_source/trust_store_ca_certificates_bundle_source.dart';

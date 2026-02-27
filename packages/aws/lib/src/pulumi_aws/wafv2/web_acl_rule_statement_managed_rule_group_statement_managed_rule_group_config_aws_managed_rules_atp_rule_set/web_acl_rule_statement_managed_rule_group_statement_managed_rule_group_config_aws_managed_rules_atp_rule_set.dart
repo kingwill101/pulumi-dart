@@ -10,11 +10,11 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   /// The path of the login endpoint for your application.
   final String loginPath;
 
-  /// The criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See <span pulumi-lang-nodejs="`requestInspection`" pulumi-lang-dotnet="`RequestInspection`" pulumi-lang-go="`requestInspection`" pulumi-lang-python="`request_inspection`" pulumi-lang-yaml="`requestInspection`" pulumi-lang-java="`requestInspection`">`request_inspection`</span> for more details.
+  /// The criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See `request_inspection` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection?
       requestInspection;
 
-  /// The criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See <span pulumi-lang-nodejs="`responseInspection`" pulumi-lang-dotnet="`ResponseInspection`" pulumi-lang-go="`responseInspection`" pulumi-lang-python="`response_inspection`" pulumi-lang-yaml="`responseInspection`" pulumi-lang-java="`responseInspection`">`response_inspection`</span> for more details.
+  /// The criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See `response_inspection` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection?
       responseInspection;
 

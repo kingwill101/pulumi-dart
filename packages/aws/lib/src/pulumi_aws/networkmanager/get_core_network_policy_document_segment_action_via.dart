@@ -1,0 +1,3 @@
+library module_networkmanager_get_core_network_policy_document_segment_action_via;
+
+export 'get_core_network_policy_document_segment_action_via/get_core_network_policy_document_segment_action_via.dart';

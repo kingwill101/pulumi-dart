@@ -1,0 +1,3 @@
+library module_opensearch_get_domain_auto_tune_option;
+
+export 'get_domain_auto_tune_option/get_domain_auto_tune_option2.dart';

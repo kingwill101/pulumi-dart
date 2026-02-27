@@ -5,7 +5,7 @@ import '../replication_configuration_replication_configuration_rule_destination/
 import '../replication_configuration_replication_configuration_rule_repository_filter/replication_configuration_replication_configuration_rule_repository_filter.dart';
 
 class ReplicationConfigurationReplicationConfigurationRule {
-  /// the details of a replication destination. A maximum of 25 are allowed per <span pulumi-lang-nodejs="`rule`" pulumi-lang-dotnet="`Rule`" pulumi-lang-go="`rule`" pulumi-lang-python="`rule`" pulumi-lang-yaml="`rule`" pulumi-lang-java="`rule`">`rule`</span>. See Destination.
+  /// the details of a replication destination. A maximum of 25 are allowed per `rule`. See Destination.
   final List<ReplicationConfigurationReplicationConfigurationRuleDestination>
       destinations;
 

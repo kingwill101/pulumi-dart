@@ -12,7 +12,7 @@ class GetQuicksightGroupArgs {
   /// The following arguments are optional:
   final Input<String> groupName;
 
-  /// QuickSight namespace. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  /// QuickSight namespace. Defaults to `default`.
   final Input<String>? namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

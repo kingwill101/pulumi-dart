@@ -1,0 +1,3 @@
+library module_ec2_get_vpc_ipam_pool_cidrs_ipam_pool_cidr;
+
+export 'get_vpc_ipam_pool_cidrs_ipam_pool_cidr/get_vpc_ipam_pool_cidrs_ipam_pool_cidr.dart';

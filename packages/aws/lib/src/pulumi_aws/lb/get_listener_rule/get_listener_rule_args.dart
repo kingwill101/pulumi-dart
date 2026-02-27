@@ -7,12 +7,12 @@ import '../get_listener_rule_transform/get_listener_rule_transform.dart';
 
 /// Arguments for getListenerRule.
 class GetListenerRuleArgs {
-  /// List of actions associated with the rule, sorted by <span pulumi-lang-nodejs="`order`" pulumi-lang-dotnet="`Order`" pulumi-lang-go="`order`" pulumi-lang-python="`order`" pulumi-lang-yaml="`order`" pulumi-lang-java="`order`">`order`</span>.
+  /// List of actions associated with the rule, sorted by `order`.
   /// Detailed below.
   final Input<List<GetListenerRuleAction>>? actions;
 
   /// ARN of the Listener Rule.
-  /// Either <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> or <span pulumi-lang-nodejs="`listenerArn`" pulumi-lang-dotnet="`ListenerArn`" pulumi-lang-go="`listenerArn`" pulumi-lang-python="`listener_arn`" pulumi-lang-yaml="`listenerArn`" pulumi-lang-java="`listenerArn`">`listener_arn`</span> must be set.
+  /// Either `arn` or `listener_arn` must be set.
   final Input<String>? arn;
 
   /// Set of conditions associated with the rule.
@@ -20,11 +20,11 @@ class GetListenerRuleArgs {
   final Input<List<GetListenerRuleCondition>>? conditions;
 
   /// ARN of the associated Listener.
-  /// Either <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> or <span pulumi-lang-nodejs="`listenerArn`" pulumi-lang-dotnet="`ListenerArn`" pulumi-lang-go="`listenerArn`" pulumi-lang-python="`listener_arn`" pulumi-lang-yaml="`listenerArn`" pulumi-lang-java="`listenerArn`">`listener_arn`</span> must be set.
+  /// Either `arn` or `listener_arn` must be set.
   final Input<String>? listenerArn;
 
   /// Priority of the Listener Rule within the Listener.
-  /// Must be set if <span pulumi-lang-nodejs="`listenerArn`" pulumi-lang-dotnet="`ListenerArn`" pulumi-lang-go="`listenerArn`" pulumi-lang-python="`listener_arn`" pulumi-lang-yaml="`listenerArn`" pulumi-lang-java="`listenerArn`">`listener_arn`</span> is set, otherwise must not be set.
+  /// Must be set if `listener_arn` is set, otherwise must not be set.
   final Input<int>? priority;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -7,14 +7,14 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload 
   /// Description of what the tool does.
   final String description;
 
-  /// Schema for the tool's input. See <span pulumi-lang-nodejs="`schemaDefinition`" pulumi-lang-dotnet="`SchemaDefinition`" pulumi-lang-go="`schemaDefinition`" pulumi-lang-python="`schema_definition`" pulumi-lang-yaml="`schemaDefinition`" pulumi-lang-java="`schemaDefinition`">`schema_definition`</span> below.
+  /// Schema for the tool's input. See `schema_definition` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema
       inputSchema;
 
   /// Name of the tool.
   final String name;
 
-  /// Schema for the tool's output. See <span pulumi-lang-nodejs="`schemaDefinition`" pulumi-lang-dotnet="`SchemaDefinition`" pulumi-lang-go="`schemaDefinition`" pulumi-lang-python="`schema_definition`" pulumi-lang-yaml="`schemaDefinition`" pulumi-lang-java="`schemaDefinition`">`schema_definition`</span> below.
+  /// Schema for the tool's output. See `schema_definition` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema?
       outputSchema;
 

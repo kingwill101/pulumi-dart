@@ -4,11 +4,11 @@ import '../bucket_metadata_configuration_metadata_configuration_journal_table_co
 import '../bucket_metadata_configuration_metadata_configuration_journal_table_configuration_record_expiration/bucket_metadata_configuration_metadata_configuration_journal_table_configuration_record_expiration.dart';
 
 class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration {
-  /// Encryption configuration for the journal table. See <span pulumi-lang-nodejs="`encryptionConfiguration`" pulumi-lang-dotnet="`EncryptionConfiguration`" pulumi-lang-go="`encryptionConfiguration`" pulumi-lang-python="`encryption_configuration`" pulumi-lang-yaml="`encryptionConfiguration`" pulumi-lang-java="`encryptionConfiguration`">`encryption_configuration`</span> Block for details.
+  /// Encryption configuration for the journal table. See `encryption_configuration` Block for details.
   final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration?
       encryptionConfiguration;
 
-  /// Journal table record expiration settings. See <span pulumi-lang-nodejs="`recordExpiration`" pulumi-lang-dotnet="`RecordExpiration`" pulumi-lang-go="`recordExpiration`" pulumi-lang-python="`record_expiration`" pulumi-lang-yaml="`recordExpiration`" pulumi-lang-java="`recordExpiration`">`record_expiration`</span> Block for details.
+  /// Journal table record expiration settings. See `record_expiration` Block for details.
   final BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration
       recordExpiration;
 

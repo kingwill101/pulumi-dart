@@ -9,7 +9,7 @@ class DefaultVpcArgs {
   final Input<bool>? enableDnsSupport;
   final Input<bool>? enableNetworkAddressUsageMetrics;
 
-  /// Whether destroying the resource deletes the default VPC. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Whether destroying the resource deletes the default VPC. Default: `false`
   final Input<bool>? forceDestroy;
   final Input<String>? ipv6CidrBlock;
   final Input<String>? ipv6CidrBlockNetworkBorderGroup;

@@ -1,3 +1,0 @@
-library module_sagemaker_feature_group_offline_store_config_s3_storage_config;
-
-export 'feature_group_offline_store_config_s3_storage_config.dart';

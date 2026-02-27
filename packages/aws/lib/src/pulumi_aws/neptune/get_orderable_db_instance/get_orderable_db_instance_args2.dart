@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getOrderableDbInstance.
 class GetOrderableDbInstanceArgs2 {
-  /// DB engine. (Default: <span pulumi-lang-nodejs="`neptune`" pulumi-lang-dotnet="`Neptune`" pulumi-lang-go="`neptune`" pulumi-lang-python="`neptune`" pulumi-lang-yaml="`neptune`" pulumi-lang-java="`neptune`">`neptune`</span>)
+  /// DB engine. (Default: `neptune`)
   final Input<String>? engine;
 
   /// Version of the DB engine. For example, `1.0.1.0`, `1.0.1.2`, `1.0.2.2`, and `1.0.3.0`.

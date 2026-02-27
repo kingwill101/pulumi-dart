@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../cluster_shard_node/cluster_shard_node.dart';
 
 class ClusterShard {
-  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final String? name;
 
   /// Set of nodes in this shard.

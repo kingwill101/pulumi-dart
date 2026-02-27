@@ -1,0 +1,3 @@
+library module_elasticsearch_get_domain_advanced_security_option;
+
+export 'get_domain_advanced_security_option/get_domain_advanced_security_option.dart';

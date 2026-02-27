@@ -1,0 +1,3 @@
+library module_appconfig_event_integration_event_filter;
+
+export 'event_integration_event_filter/event_integration_event_filter.dart';

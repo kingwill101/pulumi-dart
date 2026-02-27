@@ -10,7 +10,7 @@ import '../budget_planned_limit/budget_planned_limit.dart';
 
 /// The set of arguments for Budget.
 class BudgetArgs {
-  /// The ID of the target account for budget. Will use current user's<span pulumi-lang-nodejs=" accountId " pulumi-lang-dotnet=" AccountId " pulumi-lang-go=" accountId " pulumi-lang-python=" account_id " pulumi-lang-yaml=" accountId " pulumi-lang-java=" accountId "> account_id </span>by default if omitted.
+  /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
   final Input<String>? accountId;
 
   /// Object containing AutoAdjustData which determines the budget amount for an auto-adjusting budget.
@@ -22,13 +22,13 @@ class BudgetArgs {
   /// Whether this budget tracks monetary cost or usage.
   final Input<String> budgetType;
 
-  /// A list of CostFilter name/values pair to apply to budget. Conflicts with <span pulumi-lang-nodejs="`filterExpression`" pulumi-lang-dotnet="`FilterExpression`" pulumi-lang-go="`filterExpression`" pulumi-lang-python="`filter_expression`" pulumi-lang-yaml="`filterExpression`" pulumi-lang-java="`filterExpression`">`filter_expression`</span>.
+  /// A list of CostFilter name/values pair to apply to budget. Conflicts with `filter_expression`.
   final Input<List<BudgetCostFilter>>? costFilters;
 
   /// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions.
   final Input<BudgetCostTypes>? costTypes;
 
-  /// Object containing Filter Expression to apply to budget. Conflicts with <span pulumi-lang-nodejs="`costFilter`" pulumi-lang-dotnet="`CostFilter`" pulumi-lang-go="`costFilter`" pulumi-lang-python="`cost_filter`" pulumi-lang-yaml="`costFilter`" pulumi-lang-java="`costFilter`">`cost_filter`</span>.
+  /// Object containing Filter Expression to apply to budget. Conflicts with `cost_filter`.
   final Input<BudgetFilterExpression>? filterExpression;
 
   /// The amount of cost or usage being measured for a budget.
@@ -49,7 +49,7 @@ class BudgetArgs {
   /// Object containing Planned Budget Limits. Can be used multiple times to plan more than one budget limit. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
   final Input<List<BudgetPlannedLimit>>? plannedLimits;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.

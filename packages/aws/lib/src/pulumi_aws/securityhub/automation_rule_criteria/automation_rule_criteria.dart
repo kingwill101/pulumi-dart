@@ -61,7 +61,7 @@ class AutomationRuleCriteria {
   /// The result of a security check. This field is only used for findings generated from controls. Documented below.
   final List<AutomationRuleCriteriaComplianceStatus>? complianceStatuses;
 
-  /// The likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. `Confidence` is scored on a 0–100 basis using a ratio scale. A value of <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> means 0 percent confidence, and a value of <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span> means 100 percent confidence. Documented below.
+  /// The likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. `Confidence` is scored on a 0–100 basis using a ratio scale. A value of `0` means 0 percent confidence, and a value of `100` means 100 percent confidence. Documented below.
   final List<AutomationRuleCriteriaConfidence>? confidences;
 
   /// A timestamp that indicates when this finding record was created. Documented below.

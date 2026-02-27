@@ -1,0 +1,3 @@
+library module_workspaces_get_directory_self_service_permission;
+
+export 'get_directory_self_service_permission/get_directory_self_service_permission.dart';

@@ -8,7 +8,7 @@ class ProjectLogsConfigS3Logs {
   /// allows CodeBuild to modify the access control list for the bucket.
   final String? bucketOwnerAccess;
 
-  /// Whether to disable encrypting S3 logs. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to disable encrypting S3 logs. Defaults to `false`.
   final bool? encryptionDisabled;
 
   /// Name of the S3 bucket and the path prefix for S3 logs. Must be set if status is `ENABLED`,

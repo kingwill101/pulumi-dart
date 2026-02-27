@@ -1,3 +1,0 @@
-library module_quicksight_get_data_set_physical_table_map_s3_source_upload_setting;
-
-export 'get_data_set_physical_table_map_s3_source_upload_setting.dart';

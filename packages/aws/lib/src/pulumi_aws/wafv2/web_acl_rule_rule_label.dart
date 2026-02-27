@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_rule_label;
+
+export 'web_acl_rule_rule_label/web_acl_rule_rule_label.dart';

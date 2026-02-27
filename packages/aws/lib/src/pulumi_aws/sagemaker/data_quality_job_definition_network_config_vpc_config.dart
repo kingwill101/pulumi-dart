@@ -1,0 +1,3 @@
+library module_sagemaker_data_quality_job_definition_network_config_vpc_config;
+
+export 'data_quality_job_definition_network_config_vpc_config/data_quality_job_definition_network_config_vpc_config.dart';

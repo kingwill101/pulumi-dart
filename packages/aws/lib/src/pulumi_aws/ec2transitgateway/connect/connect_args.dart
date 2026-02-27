@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for Connect.
 class ConnectArgs {
-  /// The tunnel protocol. Valid values: <span pulumi-lang-nodejs="`gre`" pulumi-lang-dotnet="`Gre`" pulumi-lang-go="`gre`" pulumi-lang-python="`gre`" pulumi-lang-yaml="`gre`" pulumi-lang-java="`gre`">`gre`</span>. Default is <span pulumi-lang-nodejs="`gre`" pulumi-lang-dotnet="`Gre`" pulumi-lang-go="`gre`" pulumi-lang-python="`gre`" pulumi-lang-yaml="`gre`" pulumi-lang-java="`gre`">`gre`</span>.
+  /// The tunnel protocol. Valid values: `gre`. Default is `gre`.
   final Input<String>? protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value tags for the EC2 Transit Gateway Connect. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the EC2 Transit Gateway Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Boolean whether the Connect should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Boolean whether the Connect should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   final Input<bool>? transitGatewayDefaultRouteTableAssociation;
 
-  /// Boolean whether the Connect should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Boolean whether the Connect should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   final Input<bool>? transitGatewayDefaultRouteTablePropagation;
 
   /// Identifier of EC2 Transit Gateway.

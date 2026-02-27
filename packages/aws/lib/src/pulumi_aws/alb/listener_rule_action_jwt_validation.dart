@@ -1,0 +1,3 @@
+library module_alb_listener_rule_action_jwt_validation;
+
+export 'listener_rule_action_jwt_validation/listener_rule_action_jwt_validation.dart';

@@ -10,7 +10,7 @@ class LayerVersionPermissionArgs {
   /// Name or ARN of the Lambda Layer.
   final Input<String> layerName;
 
-  /// AWS Organization ID that should be able to use your Lambda Layer. <span pulumi-lang-nodejs="`principal`" pulumi-lang-dotnet="`Principal`" pulumi-lang-go="`principal`" pulumi-lang-python="`principal`" pulumi-lang-yaml="`principal`" pulumi-lang-java="`principal`">`principal`</span> should be set to `*` when <span pulumi-lang-nodejs="`organizationId`" pulumi-lang-dotnet="`OrganizationId`" pulumi-lang-go="`organizationId`" pulumi-lang-python="`organization_id`" pulumi-lang-yaml="`organizationId`" pulumi-lang-java="`organizationId`">`organization_id`</span> is provided.
+  /// AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organization_id` is provided.
   final Input<String>? organizationId;
 
   /// AWS account ID that should be able to use your Lambda Layer. Use `*` to share with all AWS accounts.
@@ -19,7 +19,7 @@ class LayerVersionPermissionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Whether to retain the permission when the resource is destroyed. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to retain the permission when the resource is destroyed. Default is `false`.
   final Input<bool>? skipDestroy;
 
   /// Unique identifier for the permission statement.

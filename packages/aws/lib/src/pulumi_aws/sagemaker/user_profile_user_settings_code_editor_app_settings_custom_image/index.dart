@@ -1,3 +1,0 @@
-library module_sagemaker_user_profile_user_settings_code_editor_app_settings_custom_image;
-
-export 'user_profile_user_settings_code_editor_app_settings_custom_image.dart';

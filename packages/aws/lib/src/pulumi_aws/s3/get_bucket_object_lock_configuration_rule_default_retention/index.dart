@@ -1,3 +1,0 @@
-library module_s3_get_bucket_object_lock_configuration_rule_default_retention;
-
-export 'get_bucket_object_lock_configuration_rule_default_retention.dart';

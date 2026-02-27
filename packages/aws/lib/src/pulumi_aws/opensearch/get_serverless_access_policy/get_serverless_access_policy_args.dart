@@ -10,7 +10,7 @@ class GetServerlessAccessPolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Type of access policy. Must be <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span>.
+  /// Type of access policy. Must be `data`.
   final Input<String> type;
 
   GetServerlessAccessPolicyArgs({

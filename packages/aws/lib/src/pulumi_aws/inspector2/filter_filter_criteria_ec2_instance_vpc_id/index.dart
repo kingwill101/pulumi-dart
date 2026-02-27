@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_ec2_instance_vpc_id;
-
-export 'filter_filter_criteria_ec2_instance_vpc_id.dart';

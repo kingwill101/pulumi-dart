@@ -1,3 +1,0 @@
-library module_fsx_data_repository_association_s3;
-
-export 'data_repository_association_s3.dart';

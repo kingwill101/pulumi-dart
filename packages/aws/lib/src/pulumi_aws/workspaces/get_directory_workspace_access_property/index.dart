@@ -1,3 +1,0 @@
-library module_workspaces_get_directory_workspace_access_property;
-
-export 'get_directory_workspace_access_property.dart';

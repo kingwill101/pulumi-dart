@@ -1,0 +1,3 @@
+library module_costexplorer_get_tags_filter_cost_category;
+
+export 'get_tags_filter_cost_category/get_tags_filter_cost_category.dart';

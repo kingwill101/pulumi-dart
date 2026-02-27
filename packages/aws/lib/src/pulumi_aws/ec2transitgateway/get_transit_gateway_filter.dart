@@ -1,0 +1,3 @@
+library module_ec2transitgateway_get_transit_gateway_filter;
+
+export 'get_transit_gateway_filter/get_transit_gateway_filter.dart';

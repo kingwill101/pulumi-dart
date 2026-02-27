@@ -1,3 +1,0 @@
-library module_accessanalyzer_analyzer_configuration_unused_access_analysis_rule;
-
-export 'analyzer_configuration_unused_access_analysis_rule.dart';

@@ -6,9 +6,9 @@ class GroupTrafficSource {
 
   /// Provides additional context for the value of Identifier.
   /// The following lists the valid values:
-  /// <span pulumi-lang-nodejs="`elb`" pulumi-lang-dotnet="`Elb`" pulumi-lang-go="`elb`" pulumi-lang-python="`elb`" pulumi-lang-yaml="`elb`" pulumi-lang-java="`elb`">`elb`</span> if <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span> is the name of a Classic Load Balancer.
-  /// <span pulumi-lang-nodejs="`elbv2`" pulumi-lang-dotnet="`Elbv2`" pulumi-lang-go="`elbv2`" pulumi-lang-python="`elbv2`" pulumi-lang-yaml="`elbv2`" pulumi-lang-java="`elbv2`">`elbv2`</span> if <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span> is the ARN of an Application Load Balancer, Gateway Load Balancer, or Network Load Balancer target group.
-  /// `vpc-lattice` if <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span> is the ARN of a VPC Lattice target group.
+  /// `elb` if `identifier` is the name of a Classic Load Balancer.
+  /// `elbv2` if `identifier` is the ARN of an Application Load Balancer, Gateway Load Balancer, or Network Load Balancer target group.
+  /// `vpc-lattice` if `identifier` is the ARN of a VPC Lattice target group.
   final String? type;
 
   GroupTrafficSource({

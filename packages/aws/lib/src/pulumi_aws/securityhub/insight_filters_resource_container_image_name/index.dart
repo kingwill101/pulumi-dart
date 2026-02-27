@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_resource_container_image_name;
-
-export 'insight_filters_resource_container_image_name.dart';

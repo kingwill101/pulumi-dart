@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_parse_to_ocsf;
-
-export 'log_transformer_transformer_config_parse_to_ocsf.dart';

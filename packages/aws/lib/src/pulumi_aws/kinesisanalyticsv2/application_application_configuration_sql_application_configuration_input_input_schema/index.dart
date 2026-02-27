@@ -1,3 +1,0 @@
-library module_kinesisanalyticsv2_application_application_configuration_sql_application_configuration_input_input_schema;
-
-export 'application_application_configuration_sql_application_configuration_input_input_schema.dart';

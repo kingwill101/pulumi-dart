@@ -5,7 +5,7 @@ import '../get_availability_zone_filter/get_availability_zone_filter.dart';
 
 /// Arguments for getAvailabilityZone.
 class GetAvailabilityZoneArgs {
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to include all Availability Zones and Local Zones regardless of your opt in status.
+  /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
   final Input<bool>? allAvailabilityZones;
 
   /// Configuration block(s) for filtering. Detailed below.

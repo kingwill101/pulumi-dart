@@ -1,0 +1,3 @@
+library module_codepipeline_pipeline_artifact_store;
+
+export 'pipeline_artifact_store/pipeline_artifact_store.dart';

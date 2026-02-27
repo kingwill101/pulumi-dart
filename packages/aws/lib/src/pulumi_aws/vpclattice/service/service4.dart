@@ -8,109 +8,11 @@ import 'service_args4.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.vpclattice.Service("example", {
-/// name: "example",
-/// authType: "AWS_IAM",
-/// customDomainName: "example.com",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.vpclattice.Service("example",
-/// name="example",
-/// auth_type="AWS_IAM",
-/// custom_domain_name="example.com")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.VpcLattice.Service("example", new()
-/// {
-/// Name = "example",
-/// AuthType = "AWS_IAM",
-/// CustomDomainName = "example.com",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := vpclattice.NewService(ctx, "example", &vpclattice.ServiceArgs{
-/// Name:             pulumi.String("example"),
-/// AuthType:         pulumi.String("AWS_IAM"),
-/// CustomDomainName: pulumi.String("example.com"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.vpclattice.Service;
-/// import com.pulumi.aws.vpclattice.ServiceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Service("example", ServiceArgs.builder()
-/// .name("example")
-/// .authType("AWS_IAM")
-/// .customDomainName("example.com")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:vpclattice:Service
-/// properties:
-/// name: example
-/// authType: AWS_IAM
-/// customDomainName: example.com
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC Lattice Service using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import VPC Lattice Service using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpclattice/service:Service example svc-06728e2357ea55f8a
@@ -142,10 +44,10 @@ class Service4 extends CustomResource {
   /// Status of the service.
   late final Output<String> status;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   Service4(

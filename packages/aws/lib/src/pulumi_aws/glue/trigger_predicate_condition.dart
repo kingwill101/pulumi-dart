@@ -1,0 +1,3 @@
+library module_glue_trigger_predicate_condition;
+
+export 'trigger_predicate_condition/trigger_predicate_condition.dart';

@@ -1,3 +1,0 @@
-library module_connect_user_hierarchy_group_hierarchy_path_level_four;
-
-export 'user_hierarchy_group_hierarchy_path_level_four.dart';

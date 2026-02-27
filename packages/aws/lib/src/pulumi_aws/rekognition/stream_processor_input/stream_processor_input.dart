@@ -3,7 +3,7 @@
 import '../stream_processor_input_kinesis_video_stream/stream_processor_input_kinesis_video_stream.dart';
 
 class StreamProcessorInput {
-  /// Kinesis input stream. See <span pulumi-lang-nodejs="`kinesisVideoStream`" pulumi-lang-dotnet="`KinesisVideoStream`" pulumi-lang-go="`kinesisVideoStream`" pulumi-lang-python="`kinesis_video_stream`" pulumi-lang-yaml="`kinesisVideoStream`" pulumi-lang-java="`kinesisVideoStream`">`kinesis_video_stream`</span>.
+  /// Kinesis input stream. See `kinesis_video_stream`.
   final StreamProcessorInputKinesisVideoStream kinesisVideoStream;
 
   StreamProcessorInput({

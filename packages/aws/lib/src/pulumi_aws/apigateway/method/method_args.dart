@@ -27,14 +27,14 @@ class MethodArgs {
 
   /// Map of the API models used for the request's content type
   /// where key is the content type (e.g., `application/json`)
-  /// and value is either `Error`, `Empty` (built-in models) or <span pulumi-lang-nodejs="`aws.apigateway.Model`" pulumi-lang-dotnet="`aws.apigateway.Model`" pulumi-lang-go="`apigateway.Model`" pulumi-lang-python="`apigateway.Model`" pulumi-lang-yaml="`aws.apigateway.Model`" pulumi-lang-java="`aws.apigateway.Model`">`aws.apigateway.Model`</span>'s <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
   final Input<Map<String, String>>? requestModels;
 
-  /// Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (<span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>) or optional (<span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>).
-  /// For example: <span pulumi-lang-nodejs="`requestParameters " pulumi-lang-dotnet="`RequestParameters " pulumi-lang-go="`requestParameters " pulumi-lang-python="`request_parameters " pulumi-lang-yaml="`requestParameters " pulumi-lang-java="`requestParameters ">`request_parameters </span>= {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
+  /// Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`).
+  /// For example: `request_parameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
   final Input<Map<String, bool>>? requestParameters;
 
-  /// ID of a <span pulumi-lang-nodejs="`aws.apigateway.RequestValidator`" pulumi-lang-dotnet="`aws.apigateway.RequestValidator`" pulumi-lang-go="`apigateway.RequestValidator`" pulumi-lang-python="`apigateway.RequestValidator`" pulumi-lang-yaml="`aws.apigateway.RequestValidator`" pulumi-lang-java="`aws.apigateway.RequestValidator`">`aws.apigateway.RequestValidator`</span>
+  /// ID of a `aws.apigateway.RequestValidator`
   final Input<String>? requestValidatorId;
 
   /// API resource ID

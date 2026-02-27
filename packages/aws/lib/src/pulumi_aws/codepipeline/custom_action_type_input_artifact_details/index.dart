@@ -1,3 +1,0 @@
-library module_codepipeline_custom_action_type_input_artifact_details;
-
-export 'custom_action_type_input_artifact_details.dart';

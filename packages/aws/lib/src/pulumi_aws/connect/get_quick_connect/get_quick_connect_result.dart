@@ -16,7 +16,7 @@ class GetQuickConnectResult {
   final String instanceId;
   final String name;
 
-  /// A block that defines the configuration information for the Quick Connect: <span pulumi-lang-nodejs="`quickConnectType`" pulumi-lang-dotnet="`QuickConnectType`" pulumi-lang-go="`quickConnectType`" pulumi-lang-python="`quick_connect_type`" pulumi-lang-yaml="`quickConnectType`" pulumi-lang-java="`quickConnectType`">`quick_connect_type`</span> and one of <span pulumi-lang-nodejs="`phoneConfig`" pulumi-lang-dotnet="`PhoneConfig`" pulumi-lang-go="`phoneConfig`" pulumi-lang-python="`phone_config`" pulumi-lang-yaml="`phoneConfig`" pulumi-lang-java="`phoneConfig`">`phone_config`</span>, <span pulumi-lang-nodejs="`queueConfig`" pulumi-lang-dotnet="`QueueConfig`" pulumi-lang-go="`queueConfig`" pulumi-lang-python="`queue_config`" pulumi-lang-yaml="`queueConfig`" pulumi-lang-java="`queueConfig`">`queue_config`</span>, <span pulumi-lang-nodejs="`userConfig`" pulumi-lang-dotnet="`UserConfig`" pulumi-lang-go="`userConfig`" pulumi-lang-python="`user_config`" pulumi-lang-yaml="`userConfig`" pulumi-lang-java="`userConfig`">`user_config`</span> . The Quick Connect Config block is documented below.
+  /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
   final List<GetQuickConnectQuickConnectConfig> quickConnectConfigs;
 
   /// Identifier for the Quick Connect.

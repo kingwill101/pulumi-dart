@@ -7,7 +7,7 @@ class GetBudgetAutoAdjustData {
   /// (Required) - The string that defines whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`,`HISTORICAL`.
   final String autoAdjustType;
 
-  /// (Optional) - Configuration block of Historical Options. Required for <span pulumi-lang-nodejs="`autoAdjustType`" pulumi-lang-dotnet="`AutoAdjustType`" pulumi-lang-go="`autoAdjustType`" pulumi-lang-python="`auto_adjust_type`" pulumi-lang-yaml="`autoAdjustType`" pulumi-lang-java="`autoAdjustType`">`auto_adjust_type`</span> of `HISTORICAL` Configuration block that defines the historical data that your auto-adjusting budget is based on.
+  /// (Optional) - Configuration block of Historical Options. Required for `auto_adjust_type` of `HISTORICAL` Configuration block that defines the historical data that your auto-adjusting budget is based on.
   final List<GetBudgetAutoAdjustDataHistoricalOption> historicalOptions;
 
   /// (Optional) - The last time that your budget was auto-adjusted.

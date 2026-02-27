@@ -7,14 +7,14 @@ import '../service_integration_ops_center/service_integration_ops_center.dart';
 
 /// The set of arguments for ServiceIntegration.
 class ServiceIntegrationArgs {
-  /// Information about whether DevOps Guru is configured to encrypt server-side data using KMS. See <span pulumi-lang-nodejs="`kmsServerSideEncryption`" pulumi-lang-dotnet="`KmsServerSideEncryption`" pulumi-lang-go="`kmsServerSideEncryption`" pulumi-lang-python="`kms_server_side_encryption`" pulumi-lang-yaml="`kmsServerSideEncryption`" pulumi-lang-java="`kmsServerSideEncryption`">`kms_server_side_encryption`</span> below.
+  /// Information about whether DevOps Guru is configured to encrypt server-side data using KMS. See `kms_server_side_encryption` below.
   final Input<ServiceIntegrationKmsServerSideEncryption>
       kmsServerSideEncryption;
 
-  /// Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See <span pulumi-lang-nodejs="`logsAnomalyDetection`" pulumi-lang-dotnet="`LogsAnomalyDetection`" pulumi-lang-go="`logsAnomalyDetection`" pulumi-lang-python="`logs_anomaly_detection`" pulumi-lang-yaml="`logsAnomalyDetection`" pulumi-lang-java="`logsAnomalyDetection`">`logs_anomaly_detection`</span> below.
+  /// Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See `logs_anomaly_detection` below.
   final Input<ServiceIntegrationLogsAnomalyDetection> logsAnomalyDetection;
 
-  /// Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See <span pulumi-lang-nodejs="`opsCenter`" pulumi-lang-dotnet="`OpsCenter`" pulumi-lang-go="`opsCenter`" pulumi-lang-python="`ops_center`" pulumi-lang-yaml="`opsCenter`" pulumi-lang-java="`opsCenter`">`ops_center`</span> below.
+  /// Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See `ops_center` below.
   final Input<ServiceIntegrationOpsCenter> opsCenter;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

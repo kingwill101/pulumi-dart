@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_action_allow;
-
-export 'rule_group_rule_action_allow.dart';

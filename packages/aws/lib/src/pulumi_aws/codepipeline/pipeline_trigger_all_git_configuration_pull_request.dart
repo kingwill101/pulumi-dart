@@ -1,0 +1,3 @@
+library module_codepipeline_pipeline_trigger_all_git_configuration_pull_request;
+
+export 'pipeline_trigger_all_git_configuration_pull_request/pipeline_trigger_all_git_configuration_pull_request.dart';

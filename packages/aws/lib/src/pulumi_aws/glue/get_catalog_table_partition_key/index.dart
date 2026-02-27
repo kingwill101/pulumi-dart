@@ -1,3 +1,0 @@
-library module_glue_get_catalog_table_partition_key;
-
-export 'get_catalog_table_partition_key.dart';

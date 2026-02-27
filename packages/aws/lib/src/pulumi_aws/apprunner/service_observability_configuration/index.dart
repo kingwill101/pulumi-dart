@@ -1,3 +1,0 @@
-library module_apprunner_service_observability_configuration;
-
-export 'service_observability_configuration.dart';

@@ -2,7 +2,7 @@
 
 class GetListenerRuleActionForwardTargetGroup {
   /// ARN of the Listener Rule.
-  /// Either <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> or <span pulumi-lang-nodejs="`listenerArn`" pulumi-lang-dotnet="`ListenerArn`" pulumi-lang-go="`listenerArn`" pulumi-lang-python="`listener_arn`" pulumi-lang-yaml="`listenerArn`" pulumi-lang-java="`listenerArn`">`listener_arn`</span> must be set.
+  /// Either `arn` or `listener_arn` must be set.
   final String arn;
 
   /// Weight of the target group.

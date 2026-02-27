@@ -8,10 +8,10 @@ class RestApiPutArgs {
   /// PUT request body containing external API definitions. Currently, only OpenAPI definition JSON/YAML files are supported. The maximum size of the API definition file is 6MB.
   final Input<String> body;
 
-  /// Whether to rollback the API update when a warning is encountered. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to rollback the API update when a warning is encountered. The default value is `false`.
   final Input<bool>? failOnWarnings;
 
-  /// Map of customizations for importing the specification in the <span pulumi-lang-nodejs="`body`" pulumi-lang-dotnet="`Body`" pulumi-lang-go="`body`" pulumi-lang-python="`body`" pulumi-lang-yaml="`body`" pulumi-lang-java="`body`">`body`</span> argument. For example, to exclude DocumentationParts from an imported API, use `ignore = "documentation"`. Additional documentation, including other parameters such as <span pulumi-lang-nodejs="`basepath`" pulumi-lang-dotnet="`Basepath`" pulumi-lang-go="`basepath`" pulumi-lang-python="`basepath`" pulumi-lang-yaml="`basepath`" pulumi-lang-java="`basepath`">`basepath`</span>, can be found in the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api.html).
+  /// Map of customizations for importing the specification in the `body` argument. For example, to exclude DocumentationParts from an imported API, use `ignore = "documentation"`. Additional documentation, including other parameters such as `basepath`, can be found in the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api.html).
   final Input<Map<String, String>>? parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

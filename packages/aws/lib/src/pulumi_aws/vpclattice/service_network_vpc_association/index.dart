@@ -1,4 +1,0 @@
-library module_vpclattice_service_network_vpc_association;
-
-export 'service_network_vpc_association.dart';
-export 'service_network_vpc_association_args.dart';

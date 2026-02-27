@@ -1,0 +1,3 @@
+library module_batch_compute_environment_update_policy;
+
+export 'compute_environment_update_policy/compute_environment_update_policy.dart';

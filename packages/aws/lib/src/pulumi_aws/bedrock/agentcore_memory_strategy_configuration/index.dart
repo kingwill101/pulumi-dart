@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_memory_strategy_configuration;
-
-export 'agentcore_memory_strategy_configuration.dart';

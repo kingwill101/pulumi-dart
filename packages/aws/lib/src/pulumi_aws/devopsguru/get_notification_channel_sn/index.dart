@@ -1,3 +1,0 @@
-library module_devopsguru_get_notification_channel_sn;
-
-export 'get_notification_channel_sn.dart';

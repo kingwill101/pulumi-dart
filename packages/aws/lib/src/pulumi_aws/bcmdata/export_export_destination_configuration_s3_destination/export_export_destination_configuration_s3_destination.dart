@@ -7,7 +7,7 @@ class ExportExportDestinationConfigurationS3Destination {
   /// Name of the Amazon S3 bucket used as the destination of a data export file.
   final String s3Bucket;
 
-  /// Output configuration for the data export. See the <span pulumi-lang-nodejs="`s3OutputConfigurations`" pulumi-lang-dotnet="`S3OutputConfigurations`" pulumi-lang-go="`s3OutputConfigurations`" pulumi-lang-python="`s3_output_configurations`" pulumi-lang-yaml="`s3OutputConfigurations`" pulumi-lang-java="`s3OutputConfigurations`">`s3_output_configurations`</span> argument reference below.
+  /// Output configuration for the data export. See the `s3_output_configurations` argument reference below.
   final List<
           ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>?
       s3OutputConfigurations;

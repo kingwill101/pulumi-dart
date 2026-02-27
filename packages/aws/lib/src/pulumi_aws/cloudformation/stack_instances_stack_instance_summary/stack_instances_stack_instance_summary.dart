@@ -10,7 +10,7 @@ class StackInstancesStackInstanceSummary {
   /// Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the stack set to which it belongs. Values include `DRIFTED`, `IN_SYNC`, `UNKNOWN`, `NOT_CHECKED`.
   final String? driftStatus;
 
-  /// Organization root ID or organizational unit (OU) IDs that you specified for <span pulumi-lang-nodejs="`deploymentTargets`" pulumi-lang-dotnet="`DeploymentTargets`" pulumi-lang-go="`deploymentTargets`" pulumi-lang-python="`deployment_targets`" pulumi-lang-yaml="`deploymentTargets`" pulumi-lang-java="`deploymentTargets`">`deployment_targets`</span>.
+  /// Organization root ID or organizational unit (OU) IDs that you specified for `deployment_targets`.
   final String? organizationalUnitId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

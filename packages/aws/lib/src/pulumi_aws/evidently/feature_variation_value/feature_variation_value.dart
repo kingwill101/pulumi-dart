@@ -7,10 +7,10 @@ class FeatureVariationValue {
   /// If this feature uses the double integer variation type, this field contains the double integer value of this variation.
   final String? doubleValue;
 
-  /// If this feature uses the long variation type, this field contains the long value of this variation. Minimum value of `-9007199254740991`. Maximum value of <span pulumi-lang-nodejs="`9007199254740991`" pulumi-lang-dotnet="`9007199254740991`" pulumi-lang-go="`9007199254740991`" pulumi-lang-python="`9007199254740991`" pulumi-lang-yaml="`9007199254740991`" pulumi-lang-java="`9007199254740991`">`9007199254740991`</span>.
+  /// If this feature uses the long variation type, this field contains the long value of this variation. Minimum value of `-9007199254740991`. Maximum value of `9007199254740991`.
   final String? longValue;
 
-  /// If this feature uses the string variation type, this field contains the string value of this variation. Minimum length of <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>. Maximum length of <span pulumi-lang-nodejs="`512`" pulumi-lang-dotnet="`512`" pulumi-lang-go="`512`" pulumi-lang-python="`512`" pulumi-lang-yaml="`512`" pulumi-lang-java="`512`">`512`</span>.
+  /// If this feature uses the string variation type, this field contains the string value of this variation. Minimum length of `0`. Maximum length of `512`.
   final String? stringValue;
 
   FeatureVariationValue({

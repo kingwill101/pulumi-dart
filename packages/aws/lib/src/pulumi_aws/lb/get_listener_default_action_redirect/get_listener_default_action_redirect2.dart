@@ -4,7 +4,7 @@ class GetListenerDefaultActionRedirect2 {
   final String host;
   final String path;
 
-  /// Port of the listener. Required if <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> is not set.
+  /// Port of the listener. Required if `arn` is not set.
   final String port;
   final String protocol;
   final String query;

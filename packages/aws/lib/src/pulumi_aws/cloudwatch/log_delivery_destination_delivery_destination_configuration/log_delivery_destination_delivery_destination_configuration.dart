@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LogDeliveryDestinationDeliveryDestinationConfiguration {
-  /// The ARN of the AWS destination that this delivery destination represents. Required when <span pulumi-lang-nodejs="`deliveryDestinationConfiguration`" pulumi-lang-dotnet="`DeliveryDestinationConfiguration`" pulumi-lang-go="`deliveryDestinationConfiguration`" pulumi-lang-python="`delivery_destination_configuration`" pulumi-lang-yaml="`deliveryDestinationConfiguration`" pulumi-lang-java="`deliveryDestinationConfiguration`">`delivery_destination_configuration`</span> is specified.
+  /// The ARN of the AWS destination that this delivery destination represents. Required when `delivery_destination_configuration` is specified.
   final String? destinationResourceArn;
 
   LogDeliveryDestinationDeliveryDestinationConfiguration({

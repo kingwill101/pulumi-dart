@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_logging;
-
-export 'virtual_node_spec_logging.dart';

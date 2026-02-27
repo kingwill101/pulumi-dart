@@ -5,18 +5,18 @@ import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_
 import '../agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration/agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfiguration {
-  /// Settings for an Amazon Kendra knowledge base. See <span pulumi-lang-nodejs="`kendraKnowledgeBaseConfiguration`" pulumi-lang-dotnet="`KendraKnowledgeBaseConfiguration`" pulumi-lang-go="`kendraKnowledgeBaseConfiguration`" pulumi-lang-python="`kendra_knowledge_base_configuration`" pulumi-lang-yaml="`kendraKnowledgeBaseConfiguration`" pulumi-lang-java="`kendraKnowledgeBaseConfiguration`">`kendra_knowledge_base_configuration`</span> block for details.
+  /// Settings for an Amazon Kendra knowledge base. See `kendra_knowledge_base_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration?
       kendraKnowledgeBaseConfiguration;
 
-  /// Configurations for a knowledge base connected to an SQL database. See <span pulumi-lang-nodejs="`sqlKnowledgeBaseConfiguration`" pulumi-lang-dotnet="`SqlKnowledgeBaseConfiguration`" pulumi-lang-go="`sqlKnowledgeBaseConfiguration`" pulumi-lang-python="`sql_knowledge_base_configuration`" pulumi-lang-yaml="`sqlKnowledgeBaseConfiguration`" pulumi-lang-java="`sqlKnowledgeBaseConfiguration`">`sql_knowledge_base_configuration`</span> block for details.
+  /// Configurations for a knowledge base connected to an SQL database. See `sql_knowledge_base_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration?
       sqlKnowledgeBaseConfiguration;
 
   /// Type of data that the data source is converted into for the knowledge base. Valid Values: `VECTOR`, `KENDRA`, `SQL`.
   final String type;
 
-  /// Details about the model that's used to convert the data source into vector embeddings. See <span pulumi-lang-nodejs="`vectorKnowledgeBaseConfiguration`" pulumi-lang-dotnet="`VectorKnowledgeBaseConfiguration`" pulumi-lang-go="`vectorKnowledgeBaseConfiguration`" pulumi-lang-python="`vector_knowledge_base_configuration`" pulumi-lang-yaml="`vectorKnowledgeBaseConfiguration`" pulumi-lang-java="`vectorKnowledgeBaseConfiguration`">`vector_knowledge_base_configuration`</span> block for details.
+  /// Details about the model that's used to convert the data source into vector embeddings. See `vector_knowledge_base_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration?
       vectorKnowledgeBaseConfiguration;
 

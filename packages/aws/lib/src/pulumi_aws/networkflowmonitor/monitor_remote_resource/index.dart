@@ -1,3 +1,0 @@
-library module_networkflowmonitor_monitor_remote_resource;
-
-export 'monitor_remote_resource.dart';

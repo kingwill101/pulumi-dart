@@ -1,3 +1,0 @@
-library module_sagemaker_labeling_job_input_config;
-
-export 'labeling_job_input_config.dart';

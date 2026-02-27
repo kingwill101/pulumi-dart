@@ -9,12 +9,12 @@ import '../v2models_slot_value_elicitation_setting_wait_and_continue_specificati
 
 class V2modelsSlotValueElicitationSetting {
   /// List of default values for a slot.
-  /// See the <span pulumi-lang-nodejs="`defaultValueSpecification`" pulumi-lang-dotnet="`DefaultValueSpecification`" pulumi-lang-go="`defaultValueSpecification`" pulumi-lang-python="`default_value_specification`" pulumi-lang-yaml="`defaultValueSpecification`" pulumi-lang-java="`defaultValueSpecification`">`default_value_specification`</span> argument reference below.
+  /// See the `default_value_specification` argument reference below.
   final List<V2modelsSlotValueElicitationSettingDefaultValueSpecification>?
       defaultValueSpecifications;
 
   /// Prompt that Amazon Lex uses to elicit the slot value from the user.
-  /// See the <span pulumi-lang-nodejs="`aws.lex.V2modelsIntent`" pulumi-lang-dotnet="`aws.lex.V2modelsIntent`" pulumi-lang-go="`lex.V2modelsIntent`" pulumi-lang-python="`lex.V2modelsIntent`" pulumi-lang-yaml="`aws.lex.V2modelsIntent`" pulumi-lang-java="`aws.lex.V2modelsIntent`">`aws.lex.V2modelsIntent`</span> resource for details on the <span pulumi-lang-nodejs="`promptSpecification`" pulumi-lang-dotnet="`PromptSpecification`" pulumi-lang-go="`promptSpecification`" pulumi-lang-python="`prompt_specification`" pulumi-lang-yaml="`promptSpecification`" pulumi-lang-java="`promptSpecification`">`prompt_specification`</span> argument reference - they are identical.
+  /// See the `aws.lex.V2modelsIntent` resource for details on the `prompt_specification` argument reference - they are identical.
   final V2modelsSlotValueElicitationSettingPromptSpecification?
       promptSpecification;
   final List<V2modelsSlotValueElicitationSettingSampleUtterance>?
@@ -24,12 +24,12 @@ class V2modelsSlotValueElicitationSetting {
   final String slotConstraint;
 
   /// Information about whether assisted slot resolution is turned on for the slot or not.
-  /// See the <span pulumi-lang-nodejs="`slotResolutionSetting`" pulumi-lang-dotnet="`SlotResolutionSetting`" pulumi-lang-go="`slotResolutionSetting`" pulumi-lang-python="`slot_resolution_setting`" pulumi-lang-yaml="`slotResolutionSetting`" pulumi-lang-java="`slotResolutionSetting`">`slot_resolution_setting`</span> argument reference below.
+  /// See the `slot_resolution_setting` argument reference below.
   final List<V2modelsSlotValueElicitationSettingSlotResolutionSetting>?
       slotResolutionSettings;
 
   /// Specifies the prompts that Amazon Lex uses while a bot is waiting for customer input.
-  /// See the <span pulumi-lang-nodejs="`waitAndContinueSpecification`" pulumi-lang-dotnet="`WaitAndContinueSpecification`" pulumi-lang-go="`waitAndContinueSpecification`" pulumi-lang-python="`wait_and_continue_specification`" pulumi-lang-yaml="`waitAndContinueSpecification`" pulumi-lang-java="`waitAndContinueSpecification`">`wait_and_continue_specification`</span> argument reference below.
+  /// See the `wait_and_continue_specification` argument reference below.
   final List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecification>?
       waitAndContinueSpecifications;
 

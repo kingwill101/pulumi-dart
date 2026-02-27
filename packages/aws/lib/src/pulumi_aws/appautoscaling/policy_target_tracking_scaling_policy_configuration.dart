@@ -1,0 +1,3 @@
+library module_appautoscaling_policy_target_tracking_scaling_policy_configuration;
+
+export 'policy_target_tracking_scaling_policy_configuration/policy_target_tracking_scaling_policy_configuration.dart';

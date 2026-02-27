@@ -13,7 +13,7 @@ class PolicyArgs2 {
   /// Policy type. Valid values are `StepScaling`, `TargetTrackingScaling`, and `PredictiveScaling`. Defaults to `StepScaling`. Certain services only support only one policy type. For more information see the [Target Tracking Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html), [Step Scaling Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html), and [Predictive Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-predictive-scaling.html) documentation.
   final Input<String>? policyType;
 
-  /// Predictive scaling policy configuration, requires <span pulumi-lang-nodejs="`policyType " pulumi-lang-dotnet="`PolicyType " pulumi-lang-go="`policyType " pulumi-lang-python="`policy_type " pulumi-lang-yaml="`policyType " pulumi-lang-java="`policyType ">`policy_type </span>= "PredictiveScaling"`. See supported fields below.
+  /// Predictive scaling policy configuration, requires `policy_type = "PredictiveScaling"`. See supported fields below.
   final Input<PolicyPredictiveScalingPolicyConfiguration>?
       predictiveScalingPolicyConfiguration;
 
@@ -29,11 +29,11 @@ class PolicyArgs2 {
   /// AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
   final Input<String> serviceNamespace;
 
-  /// Step scaling policy configuration, requires <span pulumi-lang-nodejs="`policyType " pulumi-lang-dotnet="`PolicyType " pulumi-lang-go="`policyType " pulumi-lang-python="`policy_type " pulumi-lang-yaml="`policyType " pulumi-lang-java="`policyType ">`policy_type </span>= "StepScaling"` (default). See supported fields below.
+  /// Step scaling policy configuration, requires `policy_type = "StepScaling"` (default). See supported fields below.
   final Input<PolicyStepScalingPolicyConfiguration>?
       stepScalingPolicyConfiguration;
 
-  /// Target tracking policy configuration, requires <span pulumi-lang-nodejs="`policyType " pulumi-lang-dotnet="`PolicyType " pulumi-lang-go="`policyType " pulumi-lang-python="`policy_type " pulumi-lang-yaml="`policyType " pulumi-lang-java="`policyType ">`policy_type </span>= "TargetTrackingScaling"`. See supported fields below.
+  /// Target tracking policy configuration, requires `policy_type = "TargetTrackingScaling"`. See supported fields below.
   final Input<PolicyTargetTrackingScalingPolicyConfiguration>?
       targetTrackingScalingPolicyConfiguration;
 

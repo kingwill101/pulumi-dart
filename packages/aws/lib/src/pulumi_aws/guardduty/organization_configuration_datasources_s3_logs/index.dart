@@ -1,3 +1,0 @@
-library module_guardduty_organization_configuration_datasources_s3_logs;
-
-export 'organization_configuration_datasources_s3_logs.dart';

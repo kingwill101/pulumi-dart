@@ -20,10 +20,10 @@ class AgentAgentAliasArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Details about the routing configuration of the alias. See <span pulumi-lang-nodejs="`routingConfiguration`" pulumi-lang-dotnet="`RoutingConfiguration`" pulumi-lang-go="`routingConfiguration`" pulumi-lang-python="`routing_configuration`" pulumi-lang-yaml="`routingConfiguration`" pulumi-lang-java="`routingConfiguration`">`routing_configuration`</span> Block for details.
+  /// Details about the routing configuration of the alias. See `routing_configuration` Block for details.
   final Input<List<AgentAgentAliasRoutingConfiguration>>? routingConfigurations;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<AgentAgentAliasTimeouts>? timeouts;
 

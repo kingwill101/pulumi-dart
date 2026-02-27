@@ -8,7 +8,7 @@ class TableMaintenanceConfigurationIcebergCompaction {
   final TableMaintenanceConfigurationIcebergCompactionSettings settings;
 
   /// Whether the configuration is enabled.
-  /// Valid values are <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`">`enabled`</span> and <span pulumi-lang-nodejs="`disabled`" pulumi-lang-dotnet="`Disabled`" pulumi-lang-go="`disabled`" pulumi-lang-python="`disabled`" pulumi-lang-yaml="`disabled`" pulumi-lang-java="`disabled`">`disabled`</span>.
+  /// Valid values are `enabled` and `disabled`.
   final String status;
 
   TableMaintenanceConfigurationIcebergCompaction({

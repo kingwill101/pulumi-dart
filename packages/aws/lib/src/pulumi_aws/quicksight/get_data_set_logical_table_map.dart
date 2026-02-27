@@ -1,0 +1,3 @@
+library module_quicksight_get_data_set_logical_table_map;
+
+export 'get_data_set_logical_table_map/get_data_set_logical_table_map.dart';

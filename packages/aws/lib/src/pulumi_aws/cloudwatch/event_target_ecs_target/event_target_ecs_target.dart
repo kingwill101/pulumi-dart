@@ -7,7 +7,7 @@ import '../event_target_ecs_target_ordered_placement_strategy/event_target_ecs_t
 import '../event_target_ecs_target_placement_constraint/event_target_ecs_target_placement_constraint.dart';
 
 class EventTargetEcsTarget {
-  /// The capacity provider strategy to use for the task. If a <span pulumi-lang-nodejs="`capacityProviderStrategy`" pulumi-lang-dotnet="`CapacityProviderStrategy`" pulumi-lang-go="`capacityProviderStrategy`" pulumi-lang-python="`capacity_provider_strategy`" pulumi-lang-yaml="`capacityProviderStrategy`" pulumi-lang-java="`capacityProviderStrategy`">`capacity_provider_strategy`</span> specified, the <span pulumi-lang-nodejs="`launchType`" pulumi-lang-dotnet="`LaunchType`" pulumi-lang-go="`launchType`" pulumi-lang-python="`launch_type`" pulumi-lang-yaml="`launchType`" pulumi-lang-java="`launchType`">`launch_type`</span> parameter must be omitted. If no <span pulumi-lang-nodejs="`capacityProviderStrategy`" pulumi-lang-dotnet="`CapacityProviderStrategy`" pulumi-lang-go="`capacityProviderStrategy`" pulumi-lang-python="`capacity_provider_strategy`" pulumi-lang-yaml="`capacityProviderStrategy`" pulumi-lang-java="`capacityProviderStrategy`">`capacity_provider_strategy`</span> or <span pulumi-lang-nodejs="`launchType`" pulumi-lang-dotnet="`LaunchType`" pulumi-lang-go="`launchType`" pulumi-lang-python="`launch_type`" pulumi-lang-yaml="`launchType`" pulumi-lang-java="`launchType`">`launch_type`</span> is specified, the default capacity provider strategy for the cluster is used. Can be one or more. See below.
+  /// The capacity provider strategy to use for the task. If a `capacity_provider_strategy` specified, the `launch_type` parameter must be omitted. If no `capacity_provider_strategy` or `launch_type` is specified, the default capacity provider strategy for the cluster is used. Can be one or more. See below.
   final List<EventTargetEcsTargetCapacityProviderStrategy>?
       capacityProviderStrategies;
 
@@ -23,7 +23,7 @@ class EventTargetEcsTarget {
   /// Specifies the launch type on which your task is running. The launch type that you specify here must match one of the launch type (compatibilities) of the target task. Valid values include: `EC2`, `EXTERNAL`, or `FARGATE`.
   final String? launchType;
 
-  /// Use this if the ECS task uses the awsvpc network mode. This specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. Required if <span pulumi-lang-nodejs="`launchType`" pulumi-lang-dotnet="`LaunchType`" pulumi-lang-go="`launchType`" pulumi-lang-python="`launch_type`" pulumi-lang-yaml="`launchType`" pulumi-lang-java="`launchType`">`launch_type`</span> is `FARGATE` because the awsvpc mode is required for Fargate tasks.
+  /// Use this if the ECS task uses the awsvpc network mode. This specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. Required if `launch_type` is `FARGATE` because the awsvpc mode is required for Fargate tasks.
   final EventTargetEcsTargetNetworkConfiguration? networkConfiguration;
 
   /// An array of placement strategy objects to use for the task. You can specify a maximum of five strategy rules per task.
@@ -42,7 +42,7 @@ class EventTargetEcsTarget {
   /// A map of tags to assign to ecs resources.
   final Map<String, String>? tags;
 
-  /// The number of tasks to create based on the TaskDefinition. Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// The number of tasks to create based on the TaskDefinition. Defaults to `1`.
   final int? taskCount;
 
   /// The ARN of the task definition to use if the event target is an Amazon ECS cluster.

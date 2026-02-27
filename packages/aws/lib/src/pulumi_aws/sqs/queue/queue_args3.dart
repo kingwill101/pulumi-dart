@@ -7,13 +7,13 @@ class QueueArgs3 {
   /// Enables content-based deduplication for FIFO queues. For more information, see the [related documentation](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing).
   final Input<bool>? contentBasedDeduplication;
 
-  /// Specifies whether message deduplication occurs at the message group or queue level. Valid values are `messageGroup` and <span pulumi-lang-nodejs="`queue`" pulumi-lang-dotnet="`Queue`" pulumi-lang-go="`queue`" pulumi-lang-python="`queue`" pulumi-lang-yaml="`queue`" pulumi-lang-java="`queue`">`queue`</span> (default).
+  /// Specifies whether message deduplication occurs at the message group or queue level. Valid values are `messageGroup` and `queue` (default).
   final Input<String>? deduplicationScope;
 
   /// Time in seconds that the delivery of all messages in the queue will be delayed. An integer from 0 to 900 (15 minutes). The default for this attribute is 0 seconds.
   final Input<int>? delaySeconds;
 
-  /// Boolean designating a FIFO queue. If not set, it defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> making it standard.
+  /// Boolean designating a FIFO queue. If not set, it defaults to `false` making it standard.
   final Input<bool>? fifoQueue;
 
   /// Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group. Valid values are `perQueue` (default) and `perMessageGroupId`.
@@ -31,22 +31,22 @@ class QueueArgs3 {
   /// Number of seconds Amazon SQS retains a message. Integer representing seconds, from 60 (1 minute) to 1209600 (14 days). The default for this attribute is 345600 (4 days).
   final Input<int>? messageRetentionSeconds;
 
-  /// Name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 80 characters long. For a FIFO (first-in-first-out) queue, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the queue. Queue names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 80 characters long. For a FIFO (first-in-first-out) queue, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final Input<String>? name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
-  /// JSON policy for the SQS queue. For more information about building AWS IAM policy documents see the AWS IAM Policy Document Guide. The provider will only perform drift detection of its value when present in a configuration. It is preferred to use the <span pulumi-lang-nodejs="`aws.sqs.QueuePolicy`" pulumi-lang-dotnet="`aws.sqs.QueuePolicy`" pulumi-lang-go="`sqs.QueuePolicy`" pulumi-lang-python="`sqs.QueuePolicy`" pulumi-lang-yaml="`aws.sqs.QueuePolicy`" pulumi-lang-java="`aws.sqs.QueuePolicy`">`aws.sqs.QueuePolicy`</span> resource instead.
+  /// JSON policy for the SQS queue. For more information about building AWS IAM policy documents see the AWS IAM Policy Document Guide. The provider will only perform drift detection of its value when present in a configuration. It is preferred to use the `aws.sqs.QueuePolicy` resource instead.
   final Input<String>? policy;
 
   /// Time for which a ReceiveMessage call will wait for a message to arrive (long polling) before returning. An integer from 0 to 20 (seconds). The default for this attribute is 0, meaning that the call will return immediately.
   final Input<int>? receiveWaitTimeSeconds;
 
-  /// JSON policy to set up the Dead Letter Queue redrive permission, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). The provider will only perform drift detection of its value when present in a configuration. It is preferred to use the <span pulumi-lang-nodejs="`aws.sqs.RedriveAllowPolicy`" pulumi-lang-dotnet="`aws.sqs.RedriveAllowPolicy`" pulumi-lang-go="`sqs.RedriveAllowPolicy`" pulumi-lang-python="`sqs.RedriveAllowPolicy`" pulumi-lang-yaml="`aws.sqs.RedriveAllowPolicy`" pulumi-lang-java="`aws.sqs.RedriveAllowPolicy`">`aws.sqs.RedriveAllowPolicy`</span> resource instead.
+  /// JSON policy to set up the Dead Letter Queue redrive permission, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). The provider will only perform drift detection of its value when present in a configuration. It is preferred to use the `aws.sqs.RedriveAllowPolicy` resource instead.
   final Input<String>? redriveAllowPolicy;
 
-  /// JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). The provider will only perform drift detection of its value when present in a configuration. It is preferred to use the <span pulumi-lang-nodejs="`aws.sqs.RedrivePolicy`" pulumi-lang-dotnet="`aws.sqs.RedrivePolicy`" pulumi-lang-go="`sqs.RedrivePolicy`" pulumi-lang-python="`sqs.RedrivePolicy`" pulumi-lang-yaml="`aws.sqs.RedrivePolicy`" pulumi-lang-java="`aws.sqs.RedrivePolicy`">`aws.sqs.RedrivePolicy`</span> resource instead. **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (<span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>), and not a string (`"5"`).
+  /// JSON policy to set up the Dead Letter Queue, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/SQSDeadLetterQueue.html). The provider will only perform drift detection of its value when present in a configuration. It is preferred to use the `aws.sqs.RedrivePolicy` resource instead. **Note:** when specifying `maxReceiveCount`, you must specify it as an integer (`5`), and not a string (`"5"`).
   final Input<String>? redrivePolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -55,7 +55,7 @@ class QueueArgs3 {
   /// Boolean to enable server-side encryption (SSE) of message content with SQS-owned encryption keys. See [Encryption at rest](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html). The provider will only perform drift detection of its value when present in a configuration.
   final Input<bool>? sqsManagedSseEnabled;
 
-  /// Map of tags to assign to the queue. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).

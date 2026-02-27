@@ -21,16 +21,16 @@ class HealthCheckArgs {
   /// * For calculated health checks, Route 53 stops aggregating the status of the referenced health checks.
   /// * For health checks that monitor CloudWatch alarms, Route 53 stops monitoring the corresponding CloudWatch metrics.
   ///
-  /// > **Note:** After you disable a health check, Route 53 considers the status of the health check to always be healthy. If you configured DNS failover, Route 53 continues to route traffic to the corresponding resources. If you want to stop routing traffic to a resource, change the value of <span pulumi-lang-nodejs="`invertHealthcheck`" pulumi-lang-dotnet="`InvertHealthcheck`" pulumi-lang-go="`invertHealthcheck`" pulumi-lang-python="`invert_healthcheck`" pulumi-lang-yaml="`invertHealthcheck`" pulumi-lang-java="`invertHealthcheck`">`invert_healthcheck`</span>.
+  /// > **Note:** After you disable a health check, Route 53 considers the status of the health check to always be healthy. If you configured DNS failover, Route 53 continues to route traffic to the corresponding resources. If you want to stop routing traffic to a resource, change the value of `invert_healthcheck`.
   final Input<bool>? disabled;
 
-  /// A boolean value that indicates whether Route53 should send the <span pulumi-lang-nodejs="`fqdn`" pulumi-lang-dotnet="`Fqdn`" pulumi-lang-go="`fqdn`" pulumi-lang-python="`fqdn`" pulumi-lang-yaml="`fqdn`" pulumi-lang-java="`fqdn`">`fqdn`</span> to the endpoint when performing the health check. This defaults to AWS' defaults: when the <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is "HTTPS" <span pulumi-lang-nodejs="`enableSni`" pulumi-lang-dotnet="`EnableSni`" pulumi-lang-go="`enableSni`" pulumi-lang-python="`enable_sni`" pulumi-lang-yaml="`enableSni`" pulumi-lang-java="`enableSni`">`enable_sni`</span> defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is anything else <span pulumi-lang-nodejs="`enableSni`" pulumi-lang-dotnet="`EnableSni`" pulumi-lang-go="`enableSni`" pulumi-lang-python="`enable_sni`" pulumi-lang-yaml="`enableSni`" pulumi-lang-java="`enableSni`">`enable_sni`</span> defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// A boolean value that indicates whether Route53 should send the `fqdn` to the endpoint when performing the health check. This defaults to AWS' defaults: when the `type` is "HTTPS" `enable_sni` defaults to `true`, when `type` is anything else `enable_sni` defaults to `false`.
   final Input<bool>? enableSni;
 
   /// The number of consecutive health checks that an endpoint must pass or fail.
   final Input<int>? failureThreshold;
 
-  /// The fully qualified domain name of the endpoint to be checked. If a value is set for <span pulumi-lang-nodejs="`ipAddress`" pulumi-lang-dotnet="`IpAddress`" pulumi-lang-go="`ipAddress`" pulumi-lang-python="`ip_address`" pulumi-lang-yaml="`ipAddress`" pulumi-lang-java="`ipAddress`">`ip_address`</span>, the value set for <span pulumi-lang-nodejs="`fqdn`" pulumi-lang-dotnet="`Fqdn`" pulumi-lang-go="`fqdn`" pulumi-lang-python="`fqdn`" pulumi-lang-yaml="`fqdn`" pulumi-lang-java="`fqdn`">`fqdn`</span> will be passed in the `Host` header.
+  /// The fully qualified domain name of the endpoint to be checked. If a value is set for `ip_address`, the value set for `fqdn` will be passed in the `Host` header.
   final Input<String>? fqdn;
 
   /// The status of the health check when CloudWatch has insufficient data about the state of associated alarm. Valid values are `Healthy` , `Unhealthy` and `LastKnownStatus`.
@@ -49,7 +49,7 @@ class HealthCheckArgs {
   final Input<int>? port;
 
   /// This is a reference name used in Caller Reference
-  /// (helpful for identifying single<span pulumi-lang-nodejs=" healthCheck " pulumi-lang-dotnet=" HealthCheck " pulumi-lang-go=" healthCheck " pulumi-lang-python=" health_check " pulumi-lang-yaml=" healthCheck " pulumi-lang-java=" healthCheck "> health_check </span>set amongst others)
+  /// (helpful for identifying single health_check set amongst others)
   final Input<String>? referenceName;
 
   /// List of AWS Regions from which Amazon Route 53 health checkers check the specified endpoint. Valid values are `us-east-1`, `us-west-1`, `us-west-2`, `eu-west-1`, `ap-southeast-1`, `ap-southeast-2`, `ap-northeast-1`, and `sa-east-1`. If not specified, all of the regions listed under **Valid values** are used by default. Once this argument is set, removing it has no effect.
@@ -67,7 +67,7 @@ class HealthCheckArgs {
   /// String searched in the first 5120 bytes of the response body for check to be considered healthy. Only valid with `HTTP_STR_MATCH` and `HTTPS_STR_MATCH`.
   final Input<String>? searchString;
 
-  /// A map of tags to assign to the health check. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the health check. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Map of arbitrary keys and values that, when changed, will trigger an in-place update of the CloudWatch alarm arguments. Use this argument to synchronize the health check when an alarm is changed. See example above.

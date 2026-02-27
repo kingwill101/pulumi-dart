@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration {
-  /// Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified <span pulumi-lang-nodejs="`logLevel`" pulumi-lang-dotnet="`LogLevel`" pulumi-lang-go="`logLevel`" pulumi-lang-python="`log_level`" pulumi-lang-yaml="`logLevel`" pulumi-lang-java="`logLevel`">`log_level`</span> or <span pulumi-lang-nodejs="`metricsLevel`" pulumi-lang-dotnet="`MetricsLevel`" pulumi-lang-go="`metricsLevel`" pulumi-lang-python="`metrics_level`" pulumi-lang-yaml="`metricsLevel`" pulumi-lang-java="`metricsLevel`">`metrics_level`</span> attribute values to be effective.
+  /// Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `log_level` or `metrics_level` attribute values to be effective.
   final String configurationType;
 
   /// Describes the verbosity of the CloudWatch Logs for an application. Valid values: `DEBUG`, `ERROR`, `INFO`, `WARN`.

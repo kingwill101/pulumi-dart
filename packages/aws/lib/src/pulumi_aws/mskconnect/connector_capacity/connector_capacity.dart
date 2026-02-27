@@ -4,10 +4,10 @@ import '../connector_capacity_autoscaling/connector_capacity_autoscaling.dart';
 import '../connector_capacity_provisioned_capacity/connector_capacity_provisioned_capacity.dart';
 
 class ConnectorCapacity {
-  /// Information about the auto scaling parameters for the connector. See <span pulumi-lang-nodejs="`autoscaling`" pulumi-lang-dotnet="`Autoscaling`" pulumi-lang-go="`autoscaling`" pulumi-lang-python="`autoscaling`" pulumi-lang-yaml="`autoscaling`" pulumi-lang-java="`autoscaling`">`autoscaling`</span> Block for details.
+  /// Information about the auto scaling parameters for the connector. See `autoscaling` Block for details.
   final ConnectorCapacityAutoscaling? autoscaling;
 
-  /// Details about a fixed capacity allocated to a connector. See <span pulumi-lang-nodejs="`provisionedCapacity`" pulumi-lang-dotnet="`ProvisionedCapacity`" pulumi-lang-go="`provisionedCapacity`" pulumi-lang-python="`provisioned_capacity`" pulumi-lang-yaml="`provisionedCapacity`" pulumi-lang-java="`provisionedCapacity`">`provisioned_capacity`</span> Block for details.
+  /// Details about a fixed capacity allocated to a connector. See `provisioned_capacity` Block for details.
   final ConnectorCapacityProvisionedCapacity? provisionedCapacity;
 
   ConnectorCapacity({

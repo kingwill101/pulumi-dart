@@ -1,3 +1,0 @@
-library module_iot_ca_certificate_registration_config;
-
-export 'ca_certificate_registration_config.dart';

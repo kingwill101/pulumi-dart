@@ -12,7 +12,7 @@ class CapabilityArgs {
   /// Name of the EKS cluster.
   final Input<String> clusterName;
 
-  /// Configuration for the capability. See <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`">`configuration`</span> below.
+  /// Configuration for the capability. See `configuration` below.
   final Input<CapabilityConfiguration>? configuration;
 
   /// Delete propagation policy for the capability. Valid values: `RETAIN`.

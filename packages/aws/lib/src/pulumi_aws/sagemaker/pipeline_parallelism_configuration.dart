@@ -1,0 +1,3 @@
+library module_sagemaker_pipeline_parallelism_configuration;
+
+export 'pipeline_parallelism_configuration/pipeline_parallelism_configuration.dart';

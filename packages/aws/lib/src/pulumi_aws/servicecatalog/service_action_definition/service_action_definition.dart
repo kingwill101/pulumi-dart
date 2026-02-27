@@ -13,7 +13,7 @@ class ServiceActionDefinition {
   /// Service action definition type. Valid value is `SSM_AUTOMATION`. Default is `SSM_AUTOMATION`.
   final String? type;
 
-  /// SSM document version. For example, <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// SSM document version. For example, `1`.
   final String version;
 
   ServiceActionDefinition({

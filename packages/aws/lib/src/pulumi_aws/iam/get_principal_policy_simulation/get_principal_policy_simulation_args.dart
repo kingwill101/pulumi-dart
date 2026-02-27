@@ -10,13 +10,13 @@ class GetPrincipalPolicySimulationArgs {
   /// Action names consist of a service prefix and an action verb separated by a colon, such as `s3:GetObject`. Refer to [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html) to see the full set of possible IAM action names across all AWS services.
   final Input<List<String>> actionNames;
 
-  /// A set of additional principal policy documents to include in the simulation. The simulator will behave as if each of these policies were associated with the object specified in <span pulumi-lang-nodejs="`policySourceArn`" pulumi-lang-dotnet="`PolicySourceArn`" pulumi-lang-go="`policySourceArn`" pulumi-lang-python="`policy_source_arn`" pulumi-lang-yaml="`policySourceArn`" pulumi-lang-java="`policySourceArn`">`policy_source_arn`</span>, allowing you to test the effect of hypothetical policies not yet created.
+  /// A set of additional principal policy documents to include in the simulation. The simulator will behave as if each of these policies were associated with the object specified in `policy_source_arn`, allowing you to test the effect of hypothetical policies not yet created.
   final Input<List<String>>? additionalPoliciesJsons;
 
-  /// The ARN of an user that will appear as the "caller" of the simulated requests. If you do not specify <span pulumi-lang-nodejs="`callerArn`" pulumi-lang-dotnet="`CallerArn`" pulumi-lang-go="`callerArn`" pulumi-lang-python="`caller_arn`" pulumi-lang-yaml="`callerArn`" pulumi-lang-java="`callerArn`">`caller_arn`</span> then the simulation will use the <span pulumi-lang-nodejs="`policySourceArn`" pulumi-lang-dotnet="`PolicySourceArn`" pulumi-lang-go="`policySourceArn`" pulumi-lang-python="`policy_source_arn`" pulumi-lang-yaml="`policySourceArn`" pulumi-lang-java="`policySourceArn`">`policy_source_arn`</span> instead, if it contains a user ARN.
+  /// The ARN of an user that will appear as the "caller" of the simulated requests. If you do not specify `caller_arn` then the simulation will use the `policy_source_arn` instead, if it contains a user ARN.
   final Input<String>? callerArn;
 
-  /// Each <span pulumi-lang-nodejs="`context`" pulumi-lang-dotnet="`Context`" pulumi-lang-go="`context`" pulumi-lang-python="`context`" pulumi-lang-yaml="`context`" pulumi-lang-java="`context`">`context`</span> block defines an entry in the table of additional context keys in the simulated request.
+  /// Each `context` block defines an entry in the table of additional context keys in the simulated request.
   ///
   /// IAM uses context keys for both custom conditions and for interpolating dynamic request-specific values into policy values. If you use policies that include those features then you will need to provide suitable example values for those keys to achieve a realistic simulation.
   final Input<List<GetPrincipalPolicySimulationContext>>? contexts;
@@ -33,7 +33,7 @@ class GetPrincipalPolicySimulationArgs {
   ///
   /// This argument is important for actions that have either required or optional resource types listed in [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html), and you must provide ARNs that identify AWS objects of the appropriate types for the chosen actions.
   ///
-  /// The policy simulator only automatically loads policies associated with the <span pulumi-lang-nodejs="`policySourceArn`" pulumi-lang-dotnet="`PolicySourceArn`" pulumi-lang-go="`policySourceArn`" pulumi-lang-python="`policy_source_arn`" pulumi-lang-yaml="`policySourceArn`" pulumi-lang-java="`policySourceArn`">`policy_source_arn`</span>, so if your given resources have their own resource-level policy then you'll also need to provide that explicitly using the <span pulumi-lang-nodejs="`resourcePolicyJson`" pulumi-lang-dotnet="`ResourcePolicyJson`" pulumi-lang-go="`resourcePolicyJson`" pulumi-lang-python="`resource_policy_json`" pulumi-lang-yaml="`resourcePolicyJson`" pulumi-lang-java="`resourcePolicyJson`">`resource_policy_json`</span> argument to achieve a realistic simulation.
+  /// The policy simulator only automatically loads policies associated with the `policy_source_arn`, so if your given resources have their own resource-level policy then you'll also need to provide that explicitly using the `resource_policy_json` argument to achieve a realistic simulation.
   final Input<List<String>>? resourceArns;
 
   /// Specifies a special simulation type to run. Some EC2 actions require special simulation behaviors and a particular set of resource ARNs to achieve a realistic result.
@@ -41,12 +41,12 @@ class GetPrincipalPolicySimulationArgs {
   /// For more details, see the `ResourceHandlingOption` request parameter for [the underlying `iam:SimulatePrincipalPolicy` action](https://docs.aws.amazon.com/IAM/latest/APIReference/API_SimulatePrincipalPolicy.html).
   final Input<String>? resourceHandlingOption;
 
-  /// An AWS account ID to use for any resource ARN in <span pulumi-lang-nodejs="`resourceArns`" pulumi-lang-dotnet="`ResourceArns`" pulumi-lang-go="`resourceArns`" pulumi-lang-python="`resource_arns`" pulumi-lang-yaml="`resourceArns`" pulumi-lang-java="`resourceArns`">`resource_arns`</span> that doesn't include its own AWS account ID. If unspecified, the simulator will use the account ID from the <span pulumi-lang-nodejs="`callerArn`" pulumi-lang-dotnet="`CallerArn`" pulumi-lang-go="`callerArn`" pulumi-lang-python="`caller_arn`" pulumi-lang-yaml="`callerArn`" pulumi-lang-java="`callerArn`">`caller_arn`</span> argument as a placeholder.
+  /// An AWS account ID to use for any resource ARN in `resource_arns` that doesn't include its own AWS account ID. If unspecified, the simulator will use the account ID from the `caller_arn` argument as a placeholder.
   final Input<String>? resourceOwnerAccountId;
 
-  /// An IAM policy document representing the resource-level policy of all of the resources specified in <span pulumi-lang-nodejs="`resourceArns`" pulumi-lang-dotnet="`ResourceArns`" pulumi-lang-go="`resourceArns`" pulumi-lang-python="`resource_arns`" pulumi-lang-yaml="`resourceArns`" pulumi-lang-java="`resourceArns`">`resource_arns`</span>.
+  /// An IAM policy document representing the resource-level policy of all of the resources specified in `resource_arns`.
   ///
-  /// The policy simulator cannot automatically load policies that are associated with individual resources, as described in the documentation for <span pulumi-lang-nodejs="`resourceArns`" pulumi-lang-dotnet="`ResourceArns`" pulumi-lang-go="`resourceArns`" pulumi-lang-python="`resource_arns`" pulumi-lang-yaml="`resourceArns`" pulumi-lang-java="`resourceArns`">`resource_arns`</span> above.
+  /// The policy simulator cannot automatically load policies that are associated with individual resources, as described in the documentation for `resource_arns` above.
   final Input<String>? resourcePolicyJson;
 
   GetPrincipalPolicySimulationArgs({

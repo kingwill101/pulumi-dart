@@ -13,18 +13,18 @@ class FirehoseDeliveryStreamOpensearchConfiguration {
   /// Buffer incoming data to the specified size, in MBs between 1 to 100, before delivering it to the destination.  The default value is 5MB.
   final int? bufferingSize;
 
-  /// The CloudWatch Logging Options for the delivery stream. See <span pulumi-lang-nodejs="`cloudwatchLoggingOptions`" pulumi-lang-dotnet="`CloudwatchLoggingOptions`" pulumi-lang-go="`cloudwatchLoggingOptions`" pulumi-lang-python="`cloudwatch_logging_options`" pulumi-lang-yaml="`cloudwatchLoggingOptions`" pulumi-lang-java="`cloudwatchLoggingOptions`">`cloudwatch_logging_options`</span> block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
   final FirehoseDeliveryStreamOpensearchConfigurationCloudwatchLoggingOptions?
       cloudwatchLoggingOptions;
 
-  /// The endpoint to use when communicating with the cluster. Conflicts with <span pulumi-lang-nodejs="`domainArn`" pulumi-lang-dotnet="`DomainArn`" pulumi-lang-go="`domainArn`" pulumi-lang-python="`domain_arn`" pulumi-lang-yaml="`domainArn`" pulumi-lang-java="`domainArn`">`domain_arn`</span>.
+  /// The endpoint to use when communicating with the cluster. Conflicts with `domain_arn`.
   final String? clusterEndpoint;
 
-  /// The method for setting up document ID. See [<span pulumi-lang-nodejs="`documentIdOptions`" pulumi-lang-dotnet="`DocumentIdOptions`" pulumi-lang-go="`documentIdOptions`" pulumi-lang-python="`document_id_options`" pulumi-lang-yaml="`documentIdOptions`" pulumi-lang-java="`documentIdOptions`">`document_id_options`</span> block] below for details.
+  /// The method for setting up document ID. See [`document_id_options` block] below for details.
   final FirehoseDeliveryStreamOpensearchConfigurationDocumentIdOptions?
       documentIdOptions;
 
-  /// The ARN of the Amazon ES domain.  The pattern needs to be `arn:.*`.  Conflicts with <span pulumi-lang-nodejs="`clusterEndpoint`" pulumi-lang-dotnet="`ClusterEndpoint`" pulumi-lang-go="`clusterEndpoint`" pulumi-lang-python="`cluster_endpoint`" pulumi-lang-yaml="`clusterEndpoint`" pulumi-lang-java="`clusterEndpoint`">`cluster_endpoint`</span>.
+  /// The ARN of the Amazon ES domain.  The pattern needs to be `arn:.*`.  Conflicts with `cluster_endpoint`.
   final String? domainArn;
 
   /// The OpenSearch index name.
@@ -33,7 +33,7 @@ class FirehoseDeliveryStreamOpensearchConfiguration {
   /// The OpenSearch index rotation period.  Index rotation appends a timestamp to the IndexName to facilitate expiration of old data.  Valid values are `NoRotation`, `OneHour`, `OneDay`, `OneWeek`, and `OneMonth`.  The default value is `OneDay`.
   final String? indexRotationPeriod;
 
-  /// The data processing configuration. See <span pulumi-lang-nodejs="`processingConfiguration`" pulumi-lang-dotnet="`ProcessingConfiguration`" pulumi-lang-go="`processingConfiguration`" pulumi-lang-python="`processing_configuration`" pulumi-lang-yaml="`processingConfiguration`" pulumi-lang-java="`processingConfiguration`">`processing_configuration`</span> block below for details.
+  /// The data processing configuration. See `processing_configuration` block below for details.
   final FirehoseDeliveryStreamOpensearchConfigurationProcessingConfiguration?
       processingConfiguration;
 
@@ -46,14 +46,14 @@ class FirehoseDeliveryStreamOpensearchConfiguration {
   /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedDocumentsOnly` and `AllDocuments`.  Default value is `FailedDocumentsOnly`.
   final String? s3BackupMode;
 
-  /// The S3 Configuration. See <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span> block below for details.
+  /// The S3 Configuration. See `s3_configuration` block below for details.
   final FirehoseDeliveryStreamOpensearchConfigurationS3Configuration
       s3Configuration;
 
   /// The Elasticsearch type name with maximum length of 100 characters. Types are deprecated in OpenSearch_1.1. TypeName must be empty.
   final String? typeName;
 
-  /// The VPC configuration for the delivery stream to connect to OpenSearch associated with the VPC. See <span pulumi-lang-nodejs="`vpcConfig`" pulumi-lang-dotnet="`VpcConfig`" pulumi-lang-go="`vpcConfig`" pulumi-lang-python="`vpc_config`" pulumi-lang-yaml="`vpcConfig`" pulumi-lang-java="`vpcConfig`">`vpc_config`</span> block below for details.
+  /// The VPC configuration for the delivery stream to connect to OpenSearch associated with the VPC. See `vpc_config` block below for details.
   final FirehoseDeliveryStreamOpensearchConfigurationVpcConfig? vpcConfig;
 
   FirehoseDeliveryStreamOpensearchConfiguration({

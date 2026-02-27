@@ -4,10 +4,10 @@ class DomainDefaultUserSettingsSharingSettings {
   /// Whether to include the notebook cell output when sharing the notebook. The default is `Disabled`. Valid values are `Allowed` and `Disabled`.
   final String? notebookOutputOption;
 
-  /// When <span pulumi-lang-nodejs="`notebookOutputOption`" pulumi-lang-dotnet="`NotebookOutputOption`" pulumi-lang-go="`notebookOutputOption`" pulumi-lang-python="`notebook_output_option`" pulumi-lang-yaml="`notebookOutputOption`" pulumi-lang-java="`notebookOutputOption`">`notebook_output_option`</span> is Allowed, the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
+  /// When `notebook_output_option` is Allowed, the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
   final String? s3KmsKeyId;
 
-  /// When <span pulumi-lang-nodejs="`notebookOutputOption`" pulumi-lang-dotnet="`NotebookOutputOption`" pulumi-lang-go="`notebookOutputOption`" pulumi-lang-python="`notebook_output_option`" pulumi-lang-yaml="`notebookOutputOption`" pulumi-lang-java="`notebookOutputOption`">`notebook_output_option`</span> is Allowed, the Amazon S3 bucket used to save the notebook cell output.
+  /// When `notebook_output_option` is Allowed, the Amazon S3 bucket used to save the notebook cell output.
   final String? s3OutputPath;
 
   DomainDefaultUserSettingsSharingSettings({

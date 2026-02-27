@@ -1,3 +1,0 @@
-library module_sagemaker_labeling_job_stopping_condition;
-
-export 'labeling_job_stopping_condition.dart';

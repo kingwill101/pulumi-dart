@@ -3,7 +3,7 @@
 import '../catalog_table_open_table_format_input_iceberg_input/catalog_table_open_table_format_input_iceberg_input.dart';
 
 class CatalogTableOpenTableFormatInput {
-  /// Configuration block for iceberg table config. See <span pulumi-lang-nodejs="`icebergInput`" pulumi-lang-dotnet="`IcebergInput`" pulumi-lang-go="`icebergInput`" pulumi-lang-python="`iceberg_input`" pulumi-lang-yaml="`icebergInput`" pulumi-lang-java="`icebergInput`">`iceberg_input`</span> below.
+  /// Configuration block for iceberg table config. See `iceberg_input` below.
   final CatalogTableOpenTableFormatInputIcebergInput icebergInput;
 
   CatalogTableOpenTableFormatInput({

@@ -1,3 +1,0 @@
-library module_ecs_service_service_connect_configuration_service;
-
-export 'service_service_connect_configuration_service.dart';

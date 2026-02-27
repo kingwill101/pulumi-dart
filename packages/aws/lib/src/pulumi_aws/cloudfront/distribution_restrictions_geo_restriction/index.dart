@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_restrictions_geo_restriction;
-
-export 'distribution_restrictions_geo_restriction.dart';

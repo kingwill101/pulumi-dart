@@ -1,0 +1,3 @@
+library module_cloudfront_get_origin_request_policy_cookies_config_cookie;
+
+export 'get_origin_request_policy_cookies_config_cookie/get_origin_request_policy_cookies_config_cookie.dart';

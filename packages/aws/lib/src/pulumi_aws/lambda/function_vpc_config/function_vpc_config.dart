@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FunctionVpcConfig {
-  /// Whether to allow outbound IPv6 traffic on VPC functions connected to dual-stack subnets. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to allow outbound IPv6 traffic on VPC functions connected to dual-stack subnets. Default: `false`.
   final bool? ipv6AllowedForDualStack;
 
   /// List of security group IDs associated with the Lambda function.

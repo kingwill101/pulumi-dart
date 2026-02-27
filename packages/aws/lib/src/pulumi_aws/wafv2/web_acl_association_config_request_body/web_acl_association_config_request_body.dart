@@ -7,19 +7,19 @@ import '../web_acl_association_config_request_body_cognito_user_pool/web_acl_ass
 import '../web_acl_association_config_request_body_verified_access_instance/web_acl_association_config_request_body_verified_access_instance.dart';
 
 class WebAclAssociationConfigRequestBody {
-  /// Customizes the request body that your protected Amazon API Gateway REST APIs forward to AWS WAF for inspection. Applicable only when <span pulumi-lang-nodejs="`scope`" pulumi-lang-dotnet="`Scope`" pulumi-lang-go="`scope`" pulumi-lang-python="`scope`" pulumi-lang-yaml="`scope`" pulumi-lang-java="`scope`">`scope`</span> is set to `CLOUDFRONT`. See <span pulumi-lang-nodejs="`apiGateway`" pulumi-lang-dotnet="`ApiGateway`" pulumi-lang-go="`apiGateway`" pulumi-lang-python="`api_gateway`" pulumi-lang-yaml="`apiGateway`" pulumi-lang-java="`apiGateway`">`api_gateway`</span> below for details.
+  /// Customizes the request body that your protected Amazon API Gateway REST APIs forward to AWS WAF for inspection. Applicable only when `scope` is set to `CLOUDFRONT`. See `api_gateway` below for details.
   final WebAclAssociationConfigRequestBodyApiGateway? apiGateway;
 
-  /// Customizes the request body that your protected Amazon App Runner services forward to AWS WAF for inspection. Applicable only when <span pulumi-lang-nodejs="`scope`" pulumi-lang-dotnet="`Scope`" pulumi-lang-go="`scope`" pulumi-lang-python="`scope`" pulumi-lang-yaml="`scope`" pulumi-lang-java="`scope`">`scope`</span> is set to `REGIONAL`. See <span pulumi-lang-nodejs="`appRunnerService`" pulumi-lang-dotnet="`AppRunnerService`" pulumi-lang-go="`appRunnerService`" pulumi-lang-python="`app_runner_service`" pulumi-lang-yaml="`appRunnerService`" pulumi-lang-java="`appRunnerService`">`app_runner_service`</span> below for details.
+  /// Customizes the request body that your protected Amazon App Runner services forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `app_runner_service` below for details.
   final WebAclAssociationConfigRequestBodyAppRunnerService? appRunnerService;
 
-  /// Customizes the request body that your protected Amazon CloudFront distributions forward to AWS WAF for inspection. Applicable only when <span pulumi-lang-nodejs="`scope`" pulumi-lang-dotnet="`Scope`" pulumi-lang-go="`scope`" pulumi-lang-python="`scope`" pulumi-lang-yaml="`scope`" pulumi-lang-java="`scope`">`scope`</span> is set to `REGIONAL`. See <span pulumi-lang-nodejs="`cloudfront`" pulumi-lang-dotnet="`Cloudfront`" pulumi-lang-go="`cloudfront`" pulumi-lang-python="`cloudfront`" pulumi-lang-yaml="`cloudfront`" pulumi-lang-java="`cloudfront`">`cloudfront`</span> below for details.
+  /// Customizes the request body that your protected Amazon CloudFront distributions forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `cloudfront` below for details.
   final WebAclAssociationConfigRequestBodyCloudfront? cloudfront;
 
-  /// Customizes the request body that your protected Amazon Cognito user pools forward to AWS WAF for inspection. Applicable only when <span pulumi-lang-nodejs="`scope`" pulumi-lang-dotnet="`Scope`" pulumi-lang-go="`scope`" pulumi-lang-python="`scope`" pulumi-lang-yaml="`scope`" pulumi-lang-java="`scope`">`scope`</span> is set to `REGIONAL`. See <span pulumi-lang-nodejs="`cognitoUserPool`" pulumi-lang-dotnet="`CognitoUserPool`" pulumi-lang-go="`cognitoUserPool`" pulumi-lang-python="`cognito_user_pool`" pulumi-lang-yaml="`cognitoUserPool`" pulumi-lang-java="`cognitoUserPool`">`cognito_user_pool`</span> below for details.
+  /// Customizes the request body that your protected Amazon Cognito user pools forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `cognito_user_pool` below for details.
   final WebAclAssociationConfigRequestBodyCognitoUserPool? cognitoUserPool;
 
-  /// Customizes the request body that your protected AWS Verfied Access instances forward to AWS WAF for inspection. Applicable only when <span pulumi-lang-nodejs="`scope`" pulumi-lang-dotnet="`Scope`" pulumi-lang-go="`scope`" pulumi-lang-python="`scope`" pulumi-lang-yaml="`scope`" pulumi-lang-java="`scope`">`scope`</span> is set to `REGIONAL`. See <span pulumi-lang-nodejs="`verifiedAccessInstance`" pulumi-lang-dotnet="`VerifiedAccessInstance`" pulumi-lang-go="`verifiedAccessInstance`" pulumi-lang-python="`verified_access_instance`" pulumi-lang-yaml="`verifiedAccessInstance`" pulumi-lang-java="`verifiedAccessInstance`">`verified_access_instance`</span> below for details.
+  /// Customizes the request body that your protected AWS Verfied Access instances forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `verified_access_instance` below for details.
   final WebAclAssociationConfigRequestBodyVerifiedAccessInstance?
       verifiedAccessInstance;
 

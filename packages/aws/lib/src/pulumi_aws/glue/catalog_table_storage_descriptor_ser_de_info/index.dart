@@ -1,3 +1,0 @@
-library module_glue_catalog_table_storage_descriptor_ser_de_info;
-
-export 'catalog_table_storage_descriptor_ser_de_info.dart';

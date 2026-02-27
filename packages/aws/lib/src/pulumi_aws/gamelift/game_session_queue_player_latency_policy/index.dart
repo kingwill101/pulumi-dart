@@ -1,3 +1,0 @@
-library module_gamelift_game_session_queue_player_latency_policy;
-
-export 'game_session_queue_player_latency_policy.dart';

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_success_response_message_group_message_image_response_card_button/v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_success_response_message_group_message_image_response_card_button.dart';
 
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponseMessageGroupMessageImageResponseCard {
-  /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See <span pulumi-lang-nodejs="`button`" pulumi-lang-dotnet="`Button`" pulumi-lang-go="`button`" pulumi-lang-python="`button`" pulumi-lang-yaml="`button`" pulumi-lang-java="`button`">`button`</span>.
+  /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
   final List<
           V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponseMessageGroupMessageImageResponseCardButton>?
       buttons;

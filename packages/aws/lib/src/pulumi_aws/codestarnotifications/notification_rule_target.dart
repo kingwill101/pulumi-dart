@@ -1,0 +1,3 @@
+library module_codestarnotifications_notification_rule_target;
+
+export 'notification_rule_target/notification_rule_target.dart';

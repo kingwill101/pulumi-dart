@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings {
-  /// The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> and <span pulumi-lang-nodejs="`525600`" pulumi-lang-dotnet="`525600`" pulumi-lang-go="`525600`" pulumi-lang-python="`525600`" pulumi-lang-yaml="`525600`" pulumi-lang-java="`525600`">`525600`</span>.
+  /// The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
   final int? idleTimeoutInMinutes;
 
   SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings({

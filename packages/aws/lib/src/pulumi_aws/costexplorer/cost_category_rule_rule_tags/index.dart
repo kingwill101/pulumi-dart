@@ -1,3 +1,0 @@
-library module_costexplorer_cost_category_rule_rule_tags;
-
-export 'cost_category_rule_rule_tags.dart';

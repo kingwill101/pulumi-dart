@@ -1,0 +1,3 @@
+library module_dynamodb_global_secondary_index_timeouts;
+
+export 'global_secondary_index_timeouts/global_secondary_index_timeouts.dart';

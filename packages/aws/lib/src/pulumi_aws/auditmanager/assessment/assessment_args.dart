@@ -7,7 +7,7 @@ import '../assessment_scope/assessment_scope.dart';
 
 /// The set of arguments for Assessment.
 class AssessmentArgs {
-  /// Assessment report storage destination configuration. See <span pulumi-lang-nodejs="`assessmentReportsDestination`" pulumi-lang-dotnet="`AssessmentReportsDestination`" pulumi-lang-go="`assessmentReportsDestination`" pulumi-lang-python="`assessment_reports_destination`" pulumi-lang-yaml="`assessmentReportsDestination`" pulumi-lang-java="`assessmentReportsDestination`">`assessment_reports_destination`</span> below.
+  /// Assessment report storage destination configuration. See `assessment_reports_destination` below.
   final Input<AssessmentAssessmentReportsDestination>?
       assessmentReportsDestination;
 
@@ -23,15 +23,15 @@ class AssessmentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// List of roles for the assessment. See <span pulumi-lang-nodejs="`roles`" pulumi-lang-dotnet="`Roles`" pulumi-lang-go="`roles`" pulumi-lang-python="`roles`" pulumi-lang-yaml="`roles`" pulumi-lang-java="`roles`">`roles`</span> below.
+  /// List of roles for the assessment. See `roles` below.
   final Input<List<AssessmentRole>> roles;
 
-  /// Amazon Web Services accounts and services that are in scope for the assessment. See <span pulumi-lang-nodejs="`scope`" pulumi-lang-dotnet="`Scope`" pulumi-lang-go="`scope`" pulumi-lang-python="`scope`" pulumi-lang-yaml="`scope`" pulumi-lang-java="`scope`">`scope`</span> below.
+  /// Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
   ///
   /// The following arguments are optional:
   final Input<AssessmentScope>? scope;
 
-  /// A map of tags to assign to the assessment. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   AssessmentArgs({

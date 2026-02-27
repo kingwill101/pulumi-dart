@@ -7,7 +7,7 @@ class DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPer
   /// Set of AWS Organizational Unit ARNs to assign.
   final List<String>? organizationalUnitArns;
 
-  /// Set of EC2 launch permission user groups to assign. Use <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span> to distribute a public AMI.
+  /// Set of EC2 launch permission user groups to assign. Use `all` to distribute a public AMI.
   final List<String>? userGroups;
 
   /// Set of AWS Account identifiers to assign.

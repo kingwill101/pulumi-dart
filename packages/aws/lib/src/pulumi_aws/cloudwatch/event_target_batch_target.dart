@@ -1,0 +1,3 @@
+library module_cloudwatch_event_target_batch_target;
+
+export 'event_target_batch_target/event_target_batch_target.dart';

@@ -1,0 +1,3 @@
+library module_networkmanager_connect_peer_configuration;
+
+export 'connect_peer_configuration/connect_peer_configuration.dart';

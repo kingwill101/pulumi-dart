@@ -6,16 +6,16 @@ import '../capability_configuration_argo_cd_network_access/capability_configurat
 import '../capability_configuration_argo_cd_rbac_role_mapping/capability_configuration_argo_cd_rbac_role_mapping.dart';
 
 class CapabilityConfigurationArgoCd {
-  /// AWS IAM Identity Center configuration. See <span pulumi-lang-nodejs="`awsIdc`" pulumi-lang-dotnet="`AwsIdc`" pulumi-lang-go="`awsIdc`" pulumi-lang-python="`aws_idc`" pulumi-lang-yaml="`awsIdc`" pulumi-lang-java="`awsIdc`">`aws_idc`</span> below.
+  /// AWS IAM Identity Center configuration. See `aws_idc` below.
   final CapabilityConfigurationArgoCdAwsIdc awsIdc;
 
   /// Kubernetes namespace for ArgoCD.
   final String? namespace;
 
-  /// Network access configuration. See <span pulumi-lang-nodejs="`networkAccess`" pulumi-lang-dotnet="`NetworkAccess`" pulumi-lang-go="`networkAccess`" pulumi-lang-python="`network_access`" pulumi-lang-yaml="`networkAccess`" pulumi-lang-java="`networkAccess`">`network_access`</span> below.
+  /// Network access configuration. See `network_access` below.
   final CapabilityConfigurationArgoCdNetworkAccess? networkAccess;
 
-  /// RBAC role mappings. See <span pulumi-lang-nodejs="`rbacRoleMapping`" pulumi-lang-dotnet="`RbacRoleMapping`" pulumi-lang-go="`rbacRoleMapping`" pulumi-lang-python="`rbac_role_mapping`" pulumi-lang-yaml="`rbacRoleMapping`" pulumi-lang-java="`rbacRoleMapping`">`rbac_role_mapping`</span> below.
+  /// RBAC role mappings. See `rbac_role_mapping` below.
   final List<CapabilityConfigurationArgoCdRbacRoleMapping>? rbacRoleMappings;
 
   /// URL of the Argo CD server.

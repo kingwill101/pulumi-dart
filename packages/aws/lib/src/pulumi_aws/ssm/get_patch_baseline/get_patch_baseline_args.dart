@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getPatchBaseline.
 class GetPatchBaselineArgs {
-  /// Filters the results against the baselines<span pulumi-lang-nodejs=" defaultBaseline " pulumi-lang-dotnet=" DefaultBaseline " pulumi-lang-go=" defaultBaseline " pulumi-lang-python=" default_baseline " pulumi-lang-yaml=" defaultBaseline " pulumi-lang-java=" defaultBaseline "> default_baseline </span>field.
+  /// Filters the results against the baselines default_baseline field.
   final Input<bool>? defaultBaseline;
 
   /// Filter results by the baseline name prefix.

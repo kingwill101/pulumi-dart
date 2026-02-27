@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../framework_control_set_control/framework_control_set_control.dart';
 
 class FrameworkControlSet {
-  /// Configuration block(s) for the controls within the control set. See <span pulumi-lang-nodejs="`controls`" pulumi-lang-dotnet="`Controls`" pulumi-lang-go="`controls`" pulumi-lang-python="`controls`" pulumi-lang-yaml="`controls`" pulumi-lang-java="`controls`">`controls`</span> Block below for details.
+  /// Configuration block(s) for the controls within the control set. See `controls` Block below for details.
   final List<FrameworkControlSetControl>? controls;
 
   /// Unique identifier for the framework.

@@ -7,7 +7,7 @@ class WorkflowArgs2 {
   /// Change description of the workflow.
   final Input<String>? changeDescription;
 
-  /// Inline YAML string with data of the workflow. Exactly one of <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> and <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> can be specified.
+  /// Inline YAML string with data of the workflow. Exactly one of `data` and `uri` can be specified.
   final Input<String>? data;
 
   /// Description of the workflow.
@@ -22,13 +22,13 @@ class WorkflowArgs2 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value map of resource tags for the workflow. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the workflow. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Type of the workflow. Valid values: `BUILD`, `TEST`.
   final Input<String> type;
 
-  /// S3 URI with data of the workflow. Exactly one of <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> and <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> can be specified.
+  /// S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
   final Input<String>? uri;
 
   /// Version of the workflow.

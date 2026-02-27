@@ -1,3 +1,0 @@
-library module_cognito_risk_configuration_compromised_credentials_risk_configuration;
-
-export 'risk_configuration_compromised_credentials_risk_configuration.dart';

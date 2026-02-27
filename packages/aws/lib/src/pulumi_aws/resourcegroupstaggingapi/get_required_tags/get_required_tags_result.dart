@@ -9,7 +9,7 @@ class GetRequiredTagsResult {
   final String id;
   final String region;
 
-  /// List of required tag configurations. See <span pulumi-lang-nodejs="`requiredTags`" pulumi-lang-dotnet="`RequiredTags`" pulumi-lang-go="`requiredTags`" pulumi-lang-python="`required_tags`" pulumi-lang-yaml="`requiredTags`" pulumi-lang-java="`requiredTags`">`required_tags`</span> below.
+  /// List of required tag configurations. See `required_tags` below.
   final List<GetRequiredTagsRequiredTag> requiredTags;
 
   GetRequiredTagsResult({

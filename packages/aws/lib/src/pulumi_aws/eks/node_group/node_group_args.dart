@@ -19,7 +19,7 @@ class NodeGroupArgs {
   /// Name of the EKS Cluster.
   final Input<String> clusterName;
 
-  /// Disk size in GiB for worker nodes. Defaults to <span pulumi-lang-nodejs="`50`" pulumi-lang-dotnet="`50`" pulumi-lang-go="`50`" pulumi-lang-python="`50`" pulumi-lang-yaml="`50`" pulumi-lang-java="`50`">`50`</span> for Windows, <span pulumi-lang-nodejs="`20`" pulumi-lang-dotnet="`20`" pulumi-lang-go="`20`" pulumi-lang-python="`20`" pulumi-lang-yaml="`20`" pulumi-lang-java="`20`">`20`</span> all other node groups. The provider will only perform drift detection if a configuration value is provided.
+  /// Disk size in GiB for worker nodes. Defaults to `50` for Windows, `20` all other node groups. The provider will only perform drift detection if a configuration value is provided.
   final Input<int>? diskSize;
 
   /// Force version update if existing pods are unable to be drained due to a pod disruption budget issue.
@@ -31,16 +31,16 @@ class NodeGroupArgs {
   /// Key-value map of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed.
   final Input<Map<String, String>>? labels;
 
-  /// Configuration block with Launch Template settings. See <span pulumi-lang-nodejs="`launchTemplate`" pulumi-lang-dotnet="`LaunchTemplate`" pulumi-lang-go="`launchTemplate`" pulumi-lang-python="`launch_template`" pulumi-lang-yaml="`launchTemplate`" pulumi-lang-java="`launchTemplate`">`launch_template`</span> below for details. Conflicts with <span pulumi-lang-nodejs="`remoteAccess`" pulumi-lang-dotnet="`RemoteAccess`" pulumi-lang-go="`remoteAccess`" pulumi-lang-python="`remote_access`" pulumi-lang-yaml="`remoteAccess`" pulumi-lang-java="`remoteAccess`">`remote_access`</span>.
+  /// Configuration block with Launch Template settings. See `launch_template` below for details. Conflicts with `remote_access`.
   final Input<NodeGroupLaunchTemplate>? launchTemplate;
 
-  /// Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`nodeGroupNamePrefix`" pulumi-lang-dotnet="`NodeGroupNamePrefix`" pulumi-lang-go="`nodeGroupNamePrefix`" pulumi-lang-python="`node_group_name_prefix`" pulumi-lang-yaml="`nodeGroupNamePrefix`" pulumi-lang-java="`nodeGroupNamePrefix`">`node_group_name_prefix`</span>. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
+  /// Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with `node_group_name_prefix`. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
   final Input<String>? nodeGroupName;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`nodeGroupName`" pulumi-lang-dotnet="`NodeGroupName`" pulumi-lang-go="`nodeGroupName`" pulumi-lang-python="`node_group_name`" pulumi-lang-yaml="`nodeGroupName`" pulumi-lang-java="`nodeGroupName`">`node_group_name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `node_group_name`.
   final Input<String>? nodeGroupNamePrefix;
 
-  /// The node auto repair configuration for the node group. See <span pulumi-lang-nodejs="`nodeRepairConfig`" pulumi-lang-dotnet="`NodeRepairConfig`" pulumi-lang-go="`nodeRepairConfig`" pulumi-lang-python="`node_repair_config`" pulumi-lang-yaml="`nodeRepairConfig`" pulumi-lang-java="`nodeRepairConfig`">`node_repair_config`</span> below for details.
+  /// The node auto repair configuration for the node group. See `node_repair_config` below for details.
   final Input<NodeGroupNodeRepairConfig>? nodeRepairConfig;
 
   /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
@@ -52,10 +52,10 @@ class NodeGroupArgs {
   /// AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
   final Input<String>? releaseVersion;
 
-  /// Configuration block with remote access settings. See <span pulumi-lang-nodejs="`remoteAccess`" pulumi-lang-dotnet="`RemoteAccess`" pulumi-lang-go="`remoteAccess`" pulumi-lang-python="`remote_access`" pulumi-lang-yaml="`remoteAccess`" pulumi-lang-java="`remoteAccess`">`remote_access`</span> below for details. Conflicts with <span pulumi-lang-nodejs="`launchTemplate`" pulumi-lang-dotnet="`LaunchTemplate`" pulumi-lang-go="`launchTemplate`" pulumi-lang-python="`launch_template`" pulumi-lang-yaml="`launchTemplate`" pulumi-lang-java="`launchTemplate`">`launch_template`</span>.
+  /// Configuration block with remote access settings. See `remote_access` below for details. Conflicts with `launch_template`.
   final Input<NodeGroupRemoteAccess>? remoteAccess;
 
-  /// Configuration block with scaling settings. See <span pulumi-lang-nodejs="`scalingConfig`" pulumi-lang-dotnet="`ScalingConfig`" pulumi-lang-go="`scalingConfig`" pulumi-lang-python="`scaling_config`" pulumi-lang-yaml="`scalingConfig`" pulumi-lang-java="`scalingConfig`">`scaling_config`</span> below for details.
+  /// Configuration block with scaling settings. See `scaling_config` below for details.
   final Input<NodeGroupScalingConfig> scalingConfig;
 
   /// Identifiers of EC2 Subnets to associate with the EKS Node Group.
@@ -63,13 +63,13 @@ class NodeGroupArgs {
   /// The following arguments are optional:
   final Input<List<String>> subnetIds;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group. See taint below for details.
   final Input<List<NodeGroupTaint>>? taints;
 
-  /// Configuration block with update settings. See <span pulumi-lang-nodejs="`updateConfig`" pulumi-lang-dotnet="`UpdateConfig`" pulumi-lang-go="`updateConfig`" pulumi-lang-python="`update_config`" pulumi-lang-yaml="`updateConfig`" pulumi-lang-java="`updateConfig`">`update_config`</span> below for details.
+  /// Configuration block with update settings. See `update_config` below for details.
   final Input<NodeGroupUpdateConfig>? updateConfig;
 
   /// Kubernetes version. Defaults to EKS Cluster Kubernetes version. The provider will only perform drift detection if a configuration value is provided.

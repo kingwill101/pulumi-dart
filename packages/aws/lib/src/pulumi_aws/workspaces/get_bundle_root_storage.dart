@@ -1,0 +1,3 @@
+library module_workspaces_get_bundle_root_storage;
+
+export 'get_bundle_root_storage/get_bundle_root_storage.dart';

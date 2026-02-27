@@ -7,182 +7,24 @@ import 'ami_args.dart';
 /// *Amazon Machine Image* (AMI).
 ///
 /// If you just want to duplicate an existing AMI, possibly copying it to another
-/// region, it's better to use <span pulumi-lang-nodejs="`aws.ec2.AmiCopy`" pulumi-lang-dotnet="`aws.ec2.AmiCopy`" pulumi-lang-go="`ec2.AmiCopy`" pulumi-lang-python="`ec2.AmiCopy`" pulumi-lang-yaml="`aws.ec2.AmiCopy`" pulumi-lang-java="`aws.ec2.AmiCopy`">`aws.ec2.AmiCopy`</span> instead.
+/// region, it's better to use `aws.ec2.AmiCopy` instead.
 ///
 /// If you just want to share an existing AMI with another AWS account,
-/// it's better to use <span pulumi-lang-nodejs="`aws.ec2.AmiLaunchPermission`" pulumi-lang-dotnet="`aws.ec2.AmiLaunchPermission`" pulumi-lang-go="`ec2.AmiLaunchPermission`" pulumi-lang-python="`ec2.AmiLaunchPermission`" pulumi-lang-yaml="`aws.ec2.AmiLaunchPermission`" pulumi-lang-java="`aws.ec2.AmiLaunchPermission`">`aws.ec2.AmiLaunchPermission`</span> instead.
+/// it's better to use `aws.ec2.AmiLaunchPermission` instead.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// // Create an AMI that will start a machine whose root device is backed by
-/// // an EBS volume populated from a snapshot. We assume that such a snapshot
-/// // already exists with the id "snap-xxxxxxxx".
-/// const example = new aws.ec2.Ami("example", {
-/// name: "example",
-/// virtualizationType: "hvm",
-/// rootDeviceName: "/dev/xvda",
-/// imdsSupport: "v2.0",
-/// ebsBlockDevices: [{
-/// deviceName: "/dev/xvda",
-/// snapshotId: "snap-xxxxxxxx",
-/// volumeSize: 8,
-/// }],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// # Create an AMI that will start a machine whose root device is backed by
-/// # an EBS volume populated from a snapshot. We assume that such a snapshot
-/// # already exists with the id "snap-xxxxxxxx".
-/// example = aws.ec2.Ami("example",
-/// name="example",
-/// virtualization_type="hvm",
-/// root_device_name="/dev/xvda",
-/// imds_support="v2.0",
-/// ebs_block_devices=[{
-/// "device_name": "/dev/xvda",
-/// "snapshot_id": "snap-xxxxxxxx",
-/// "volume_size": 8,
-/// }])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// // Create an AMI that will start a machine whose root device is backed by
-/// // an EBS volume populated from a snapshot. We assume that such a snapshot
-/// // already exists with the id "snap-xxxxxxxx".
-/// var example = new Aws.Ec2.Ami("example", new()
-/// {
-/// Name = "example",
-/// VirtualizationType = "hvm",
-/// RootDeviceName = "/dev/xvda",
-/// ImdsSupport = "v2.0",
-/// EbsBlockDevices = new[]
-/// {
-/// new Aws.Ec2.Inputs.AmiEbsBlockDeviceArgs
-/// {
-/// DeviceName = "/dev/xvda",
-/// SnapshotId = "snap-xxxxxxxx",
-/// VolumeSize = 8,
-/// },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// // Create an AMI that will start a machine whose root device is backed by
-/// // an EBS volume populated from a snapshot. We assume that such a snapshot
-/// // already exists with the id "snap-xxxxxxxx".
-/// _, err := ec2.NewAmi(ctx, "example", &ec2.AmiArgs{
-/// Name:               pulumi.String("example"),
-/// VirtualizationType: pulumi.String("hvm"),
-/// RootDeviceName:     pulumi.String("/dev/xvda"),
-/// ImdsSupport:        pulumi.String("v2.0"),
-/// EbsBlockDevices: ec2.AmiEbsBlockDeviceArray{
-/// &ec2.AmiEbsBlockDeviceArgs{
-/// DeviceName: pulumi.String("/dev/xvda"),
-/// SnapshotId: pulumi.String("snap-xxxxxxxx"),
-/// VolumeSize: pulumi.Int(8),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.ec2.Ami;
-/// import com.pulumi.aws.ec2.AmiArgs;
-/// import com.pulumi.aws.ec2.inputs.AmiEbsBlockDeviceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// // Create an AMI that will start a machine whose root device is backed by
-/// // an EBS volume populated from a snapshot. We assume that such a snapshot
-/// // already exists with the id "snap-xxxxxxxx".
-/// var example = new Ami("example", AmiArgs.builder()
-/// .name("example")
-/// .virtualizationType("hvm")
-/// .rootDeviceName("/dev/xvda")
-/// .imdsSupport("v2.0")
-/// .ebsBlockDevices(AmiEbsBlockDeviceArgs.builder()
-/// .deviceName("/dev/xvda")
-/// .snapshotId("snap-xxxxxxxx")
-/// .volumeSize(8)
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// # Create an AMI that will start a machine whose root device is backed by
-/// # an EBS volume populated from a snapshot. We assume that such a snapshot
-/// # already exists with the id "snap-xxxxxxxx".
-/// example:
-/// type: aws:ec2:Ami
-/// properties:
-/// name: example
-/// virtualizationType: hvm
-/// rootDeviceName: /dev/xvda
-/// imdsSupport: v2.0
-/// ebsBlockDevices:
-/// - deviceName: /dev/xvda
-/// snapshotId: snap-xxxxxxxx
-/// volumeSize: 8
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.ec2.Ami`" pulumi-lang-dotnet="`aws.ec2.Ami`" pulumi-lang-go="`ec2.Ami`" pulumi-lang-python="`ec2.Ami`" pulumi-lang-yaml="`aws.ec2.Ami`" pulumi-lang-java="`aws.ec2.Ami`">`aws.ec2.Ami`</span> using the ID of the AMI. For example:
+/// Using `pulumi import`, import `aws.ec2.Ami` using the ID of the AMI. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/ami:Ami example ami-12345678
 /// ```
 class Ami extends CustomResource {
-  /// Machine architecture for created instances. Defaults to <span pulumi-lang-nodejs="`x8664`" pulumi-lang-dotnet="`X8664`" pulumi-lang-go="`x8664`" pulumi-lang-python="`x86_64`" pulumi-lang-yaml="`x8664`" pulumi-lang-java="`x8664`">`x86_64`</span>.
+  /// Machine architecture for created instances. Defaults to `x86_64`.
   late final Output<String?> architecture;
 
   /// ARN of the AMI.
@@ -201,7 +43,7 @@ class Ami extends CustomResource {
   /// attached to created instances. The structure of this block is described below.
   late final Output<List<AmiEbsBlockDevice>> ebsBlockDevices;
 
-  /// Whether enhanced networking with ENA is enabled. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
   late final Output<bool?> enaSupport;
 
   /// Nested block describing an ephemeral block device that
@@ -252,10 +94,10 @@ class Ami extends CustomResource {
   late final Output<String> rootSnapshotId;
   late final Output<String?> sriovNetSupport;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.

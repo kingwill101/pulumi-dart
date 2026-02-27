@@ -1,0 +1,3 @@
+library module_opensearch_outbound_connection_connection_properties;
+
+export 'outbound_connection_connection_properties/outbound_connection_connection_properties.dart';

@@ -31,7 +31,7 @@ class BucketLifecycleConfigurationRule {
   final List<BucketLifecycleConfigurationRuleNoncurrentVersionTransition>?
       noncurrentVersionTransitions;
 
-  /// **DEPRECATED** Use <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> instead.
+  /// **DEPRECATED** Use `filter` instead.
   /// This has been deprecated by Amazon S3.
   /// Prefix identifying one or more objects to which the rule applies.
   final String? prefix;

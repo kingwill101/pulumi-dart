@@ -1,3 +1,0 @@
-library module_finspace_kx_environment_custom_dns_configuration;
-
-export 'kx_environment_custom_dns_configuration.dart';

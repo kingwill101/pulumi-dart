@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class SpotInstanceRequestSecondaryNetworkInterface {
-  /// Whether the network interface should be destroyed when the instance is terminated. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Forces replacement.
+  /// Whether the network interface should be destroyed when the instance is terminated. Defaults to `true`. Forces replacement.
   final bool? deleteOnTermination;
 
-  /// Device index for the network interface attachment. Defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>. Forces replacement.
+  /// Device index for the network interface attachment. Defaults to `0`. Forces replacement.
   final int? deviceIndex;
 
-  /// Type of network interface. Currently only <span pulumi-lang-nodejs="`secondary`" pulumi-lang-dotnet="`Secondary`" pulumi-lang-go="`secondary`" pulumi-lang-python="`secondary`" pulumi-lang-yaml="`secondary`" pulumi-lang-java="`secondary`">`secondary`</span> is supported. Defaults to <span pulumi-lang-nodejs="`secondary`" pulumi-lang-dotnet="`Secondary`" pulumi-lang-go="`secondary`" pulumi-lang-python="`secondary`" pulumi-lang-yaml="`secondary`" pulumi-lang-java="`secondary`">`secondary`</span>. Forces replacement.
+  /// Type of network interface. Currently only `secondary` is supported. Defaults to `secondary`. Forces replacement.
   final String? interfaceType;
   final String? macAddress;
 
   /// Network card index for the interface. Each network card can have one secondary interface. Forces replacement.
   final int networkCardIndex;
 
-  /// Number of private IP addresses to assign to the network interface. Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. Forces replacement.
+  /// Number of private IP addresses to assign to the network interface. Defaults to `1`. Forces replacement.
   final int? privateIpAddressCount;
 
-  /// List of private IP addresses to assign to the network interface. If not specified, AWS will automatically assign IP addresses based on <span pulumi-lang-nodejs="`privateIpAddressCount`" pulumi-lang-dotnet="`PrivateIpAddressCount`" pulumi-lang-go="`privateIpAddressCount`" pulumi-lang-python="`private_ip_address_count`" pulumi-lang-yaml="`privateIpAddressCount`" pulumi-lang-java="`privateIpAddressCount`">`private_ip_address_count`</span>. Forces replacement.
+  /// List of private IP addresses to assign to the network interface. If not specified, AWS will automatically assign IP addresses based on `private_ip_address_count`. Forces replacement.
   final List<String>? privateIpAddresses;
   final String? secondaryInterfaceId;
   final String? secondaryNetworkId;

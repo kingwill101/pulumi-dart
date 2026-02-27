@@ -9,10 +9,10 @@ class ContainerRecipeInstanceConfigurationBlockDeviceMapping {
   /// Configuration block with Elastic Block Storage (EBS) block device mapping settings. Detailed below.
   final ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs? ebs;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to remove a mapping from the parent image.
+  /// Set to `true` to remove a mapping from the parent image.
   final bool? noDevice;
 
-  /// Virtual device name. For example, <span pulumi-lang-nodejs="`ephemeral0`" pulumi-lang-dotnet="`Ephemeral0`" pulumi-lang-go="`ephemeral0`" pulumi-lang-python="`ephemeral0`" pulumi-lang-yaml="`ephemeral0`" pulumi-lang-java="`ephemeral0`">`ephemeral0`</span>. Instance store volumes are numbered starting from 0.
+  /// Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
   final String? virtualName;
 
   ContainerRecipeInstanceConfigurationBlockDeviceMapping({

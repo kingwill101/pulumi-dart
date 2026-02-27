@@ -1,3 +1,0 @@
-library module_backup_get_plan_rule_scan_action;
-
-export 'get_plan_rule_scan_action.dart';

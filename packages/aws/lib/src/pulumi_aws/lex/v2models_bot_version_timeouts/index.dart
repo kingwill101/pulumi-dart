@@ -1,3 +1,0 @@
-library module_lex_v2models_bot_version_timeouts;
-
-export 'v2models_bot_version_timeouts.dart';

@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_network_source_ipv6;
-
-export 'insight_filters_network_source_ipv6.dart';

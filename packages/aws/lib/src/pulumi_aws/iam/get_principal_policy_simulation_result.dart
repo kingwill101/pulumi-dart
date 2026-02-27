@@ -1,0 +1,3 @@
+library module_iam_get_principal_policy_simulation_result;
+
+export 'get_principal_policy_simulation_result/get_principal_policy_simulation_result.dart';

@@ -1,3 +1,0 @@
-library module_iot_billing_group_properties;
-
-export 'billing_group_properties.dart';

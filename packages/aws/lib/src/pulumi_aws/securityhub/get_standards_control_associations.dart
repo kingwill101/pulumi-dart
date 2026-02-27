@@ -1,0 +1,5 @@
+library module_securityhub_get_standards_control_associations;
+
+export 'get_standards_control_associations/get_standards_control_associations.dart';
+export 'get_standards_control_associations/get_standards_control_associations_args.dart';
+export 'get_standards_control_associations/get_standards_control_associations_result.dart';

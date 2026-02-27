@@ -10,11 +10,11 @@ import '../stack_user_setting/stack_user_setting.dart';
 /// The set of arguments for Stack.
 class StackArgs {
   /// Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints.
-  /// See <span pulumi-lang-nodejs="`accessEndpoints`" pulumi-lang-dotnet="`AccessEndpoints`" pulumi-lang-go="`accessEndpoints`" pulumi-lang-python="`access_endpoints`" pulumi-lang-yaml="`accessEndpoints`" pulumi-lang-java="`accessEndpoints`">`access_endpoints`</span> below.
+  /// See `access_endpoints` below.
   final Input<List<StackAccessEndpoint>>? accessEndpoints;
 
   /// Settings for application settings persistence.
-  /// See <span pulumi-lang-nodejs="`applicationSettings`" pulumi-lang-dotnet="`ApplicationSettings`" pulumi-lang-go="`applicationSettings`" pulumi-lang-python="`application_settings`" pulumi-lang-yaml="`applicationSettings`" pulumi-lang-java="`applicationSettings`">`application_settings`</span> below.
+  /// See `application_settings` below.
   final Input<StackApplicationSettings>? applicationSettings;
 
   /// Description for the AppStream stack.
@@ -41,18 +41,18 @@ class StackArgs {
   final Input<String>? region;
 
   /// Configuration block for the storage connectors to enable.
-  /// See <span pulumi-lang-nodejs="`storageConnectors`" pulumi-lang-dotnet="`StorageConnectors`" pulumi-lang-go="`storageConnectors`" pulumi-lang-python="`storage_connectors`" pulumi-lang-yaml="`storageConnectors`" pulumi-lang-java="`storageConnectors`">`storage_connectors`</span> below.
+  /// See `storage_connectors` below.
   final Input<List<StackStorageConnector>>? storageConnectors;
 
   /// The streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client.
-  /// See <span pulumi-lang-nodejs="`streamingExperienceSettings`" pulumi-lang-dotnet="`StreamingExperienceSettings`" pulumi-lang-go="`streamingExperienceSettings`" pulumi-lang-python="`streaming_experience_settings`" pulumi-lang-yaml="`streamingExperienceSettings`" pulumi-lang-java="`streamingExperienceSettings`">`streaming_experience_settings`</span> below.
+  /// See `streaming_experience_settings` below.
   final Input<StackStreamingExperienceSettings>? streamingExperienceSettings;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action.
-  /// See <span pulumi-lang-nodejs="`userSettings`" pulumi-lang-dotnet="`UserSettings`" pulumi-lang-go="`userSettings`" pulumi-lang-python="`user_settings`" pulumi-lang-yaml="`userSettings`" pulumi-lang-java="`userSettings`">`user_settings`</span> below.
+  /// See `user_settings` below.
   final Input<List<StackUserSetting>>? userSettings;
 
   StackArgs({

@@ -16,7 +16,7 @@ class ListenerRuleActionAuthenticateOidc {
   /// The OIDC issuer identifier of the IdP.
   final String issuer;
 
-  /// The behavior if the user is not authenticated. Valid values: <span pulumi-lang-nodejs="`deny`" pulumi-lang-dotnet="`Deny`" pulumi-lang-go="`deny`" pulumi-lang-python="`deny`" pulumi-lang-yaml="`deny`" pulumi-lang-java="`deny`">`deny`</span>, <span pulumi-lang-nodejs="`allow`" pulumi-lang-dotnet="`Allow`" pulumi-lang-go="`allow`" pulumi-lang-python="`allow`" pulumi-lang-yaml="`allow`" pulumi-lang-java="`allow`">`allow`</span> and <span pulumi-lang-nodejs="`authenticate`" pulumi-lang-dotnet="`Authenticate`" pulumi-lang-go="`authenticate`" pulumi-lang-python="`authenticate`" pulumi-lang-yaml="`authenticate`" pulumi-lang-java="`authenticate`">`authenticate`</span>
+  /// The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
   final String? onUnauthenticatedRequest;
 
   /// The set of user claims to be requested from the IdP.

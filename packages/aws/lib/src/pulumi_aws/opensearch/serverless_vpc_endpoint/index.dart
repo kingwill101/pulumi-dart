@@ -1,4 +1,0 @@
-library module_opensearch_serverless_vpc_endpoint;
-
-export 'serverless_vpc_endpoint.dart';
-export 'serverless_vpc_endpoint_args.dart';

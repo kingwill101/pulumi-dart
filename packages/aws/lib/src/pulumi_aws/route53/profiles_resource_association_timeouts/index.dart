@@ -1,3 +1,0 @@
-library module_route53_profiles_resource_association_timeouts;
-
-export 'profiles_resource_association_timeouts.dart';

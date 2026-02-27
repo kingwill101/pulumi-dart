@@ -39,10 +39,10 @@ class WorkgroupArgs2 {
   /// An array of VPC subnet IDs to associate with the workgroup. When set, must contain at least three subnets spanning three Availability Zones. A minimum number of IP addresses is required and scales with the Base Capacity. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-known-issues.html).
   final Input<List<String>>? subnetIds;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// The name of the track for the workgroup. If it is <span pulumi-lang-nodejs="`current`" pulumi-lang-dotnet="`Current`" pulumi-lang-go="`current`" pulumi-lang-python="`current`" pulumi-lang-yaml="`current`" pulumi-lang-java="`current`">`current`</span>, you get the most up-to-date certified release version with the latest features, security updates, and performance enhancements. If it is <span pulumi-lang-nodejs="`trailing`" pulumi-lang-dotnet="`Trailing`" pulumi-lang-go="`trailing`" pulumi-lang-python="`trailing`" pulumi-lang-yaml="`trailing`" pulumi-lang-java="`trailing`">`trailing`</span>, you will be on the previous certified release. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/tracks.html).
+  /// The name of the track for the workgroup. If it is `current`, you get the most up-to-date certified release version with the latest features, security updates, and performance enhancements. If it is `trailing`, you will be on the previous certified release. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/tracks.html).
   final Input<String>? trackName;
 
   /// The name of the workgroup.

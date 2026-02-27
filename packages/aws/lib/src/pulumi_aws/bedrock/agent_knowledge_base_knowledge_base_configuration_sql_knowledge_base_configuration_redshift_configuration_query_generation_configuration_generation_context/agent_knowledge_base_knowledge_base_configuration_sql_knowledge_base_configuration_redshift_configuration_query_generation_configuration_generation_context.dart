@@ -5,12 +5,12 @@ import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext {
-  /// Information about example queries to help the query engine generate appropriate SQL queries. See <span pulumi-lang-nodejs="`curatedQuery`" pulumi-lang-dotnet="`CuratedQuery`" pulumi-lang-go="`curatedQuery`" pulumi-lang-python="`curated_query`" pulumi-lang-yaml="`curatedQuery`" pulumi-lang-java="`curatedQuery`">`curated_query`</span> block for details.
+  /// Information about example queries to help the query engine generate appropriate SQL queries. See `curated_query` block for details.
   final List<
           AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery>?
       curatedQueries;
 
-  /// Information about a table in the database. See <span pulumi-lang-nodejs="`table`" pulumi-lang-dotnet="`Table`" pulumi-lang-go="`table`" pulumi-lang-python="`table`" pulumi-lang-yaml="`table`" pulumi-lang-java="`table`">`table`</span> block for details.
+  /// Information about a table in the database. See `table` block for details.
   final List<
           AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable>?
       tables;

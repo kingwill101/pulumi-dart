@@ -1,3 +1,0 @@
-library module_iam_get_principal_policy_simulation_context;
-
-export 'get_principal_policy_simulation_context.dart';

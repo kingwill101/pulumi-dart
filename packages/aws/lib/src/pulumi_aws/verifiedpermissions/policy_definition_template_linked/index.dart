@@ -1,3 +1,0 @@
-library module_verifiedpermissions_policy_definition_template_linked;
-
-export 'policy_definition_template_linked.dart';

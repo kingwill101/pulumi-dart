@@ -1,0 +1,3 @@
+library module_timestreamquery_scheduled_query_last_run_summary_error_report_location;
+
+export 'scheduled_query_last_run_summary_error_report_location/scheduled_query_last_run_summary_error_report_location.dart';

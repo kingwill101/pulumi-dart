@@ -12,7 +12,7 @@ class StageArgs {
   /// Whether a cache cluster is enabled for the stage
   final Input<bool>? cacheClusterEnabled;
 
-  /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, <span pulumi-lang-nodejs="`118`" pulumi-lang-dotnet="`118`" pulumi-lang-go="`118`" pulumi-lang-python="`118`" pulumi-lang-yaml="`118`" pulumi-lang-java="`118`">`118`</span> and <span pulumi-lang-nodejs="`237`" pulumi-lang-dotnet="`237`" pulumi-lang-go="`237`" pulumi-lang-python="`237`" pulumi-lang-yaml="`237`" pulumi-lang-java="`237`">`237`</span>.
+  /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
   final Input<String>? cacheClusterSize;
 
   /// Configuration settings of a canary deployment. See Canary Settings below.
@@ -39,13 +39,13 @@ class StageArgs {
   /// Name of the stage
   final Input<String> stageName;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Map that defines the stage variables.
   final Input<Map<String, String>>? variables;
 
-  /// Whether active tracing with X-ray is enabled. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether active tracing with X-ray is enabled. Defaults to `false`.
   final Input<bool>? xrayTracingEnabled;
 
   StageArgs({

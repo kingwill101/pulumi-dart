@@ -8,7 +8,7 @@ class RouteArgs {
   /// API identifier.
   final Input<String> apiId;
 
-  /// Boolean whether an API key is required for the route. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Supported only for WebSocket APIs.
+  /// Boolean whether an API key is required for the route. Defaults to `false`. Supported only for WebSocket APIs.
   final Input<bool>? apiKeyRequired;
 
   /// Authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
@@ -20,7 +20,7 @@ class RouteArgs {
   /// Defaults to `NONE`.
   final Input<String>? authorizationType;
 
-  /// Identifier of the <span pulumi-lang-nodejs="`aws.apigatewayv2.Authorizer`" pulumi-lang-dotnet="`aws.apigatewayv2.Authorizer`" pulumi-lang-go="`apigatewayv2.Authorizer`" pulumi-lang-python="`apigatewayv2.Authorizer`" pulumi-lang-yaml="`aws.apigatewayv2.Authorizer`" pulumi-lang-java="`aws.apigatewayv2.Authorizer`">`aws.apigatewayv2.Authorizer`</span> resource to be associated with this route.
+  /// Identifier of the `aws.apigatewayv2.Authorizer` resource to be associated with this route.
   final Input<String>? authorizerId;
 
   /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route. Supported only for WebSocket APIs.
@@ -44,7 +44,7 @@ class RouteArgs {
   /// The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
   final Input<String>? routeResponseSelectionExpression;
 
-  /// Target for the route, of the form `integrations/`*`IntegrationID`*, where *`IntegrationID`* is the identifier of an <span pulumi-lang-nodejs="`aws.apigatewayv2.Integration`" pulumi-lang-dotnet="`aws.apigatewayv2.Integration`" pulumi-lang-go="`apigatewayv2.Integration`" pulumi-lang-python="`apigatewayv2.Integration`" pulumi-lang-yaml="`aws.apigatewayv2.Integration`" pulumi-lang-java="`aws.apigatewayv2.Integration`">`aws.apigatewayv2.Integration`</span> resource.
+  /// Target for the route, of the form `integrations/`*`IntegrationID`*, where *`IntegrationID`* is the identifier of an `aws.apigatewayv2.Integration` resource.
   final Input<String>? target;
 
   RouteArgs({

@@ -7,14 +7,14 @@ import '../listener_rule_match_http_match_path_match/listener_rule_match_http_ma
 class ListenerRuleMatchHttpMatch {
   /// The header matches.
   /// Matches incoming requests with rule based on request header value before applying rule action.
-  /// See <span pulumi-lang-nodejs="`headerMatches`" pulumi-lang-dotnet="`HeaderMatches`" pulumi-lang-go="`headerMatches`" pulumi-lang-python="`header_matches`" pulumi-lang-yaml="`headerMatches`" pulumi-lang-java="`headerMatches`">`header_matches`</span> Block for details.
+  /// See `header_matches` Block for details.
   final List<ListenerRuleMatchHttpMatchHeaderMatch>? headerMatches;
 
   /// The HTTP method type.
   final String? method;
 
   /// The path match.
-  /// See <span pulumi-lang-nodejs="`pathMatch`" pulumi-lang-dotnet="`PathMatch`" pulumi-lang-go="`pathMatch`" pulumi-lang-python="`path_match`" pulumi-lang-yaml="`pathMatch`" pulumi-lang-java="`pathMatch`">`path_match`</span> Block for details.
+  /// See `path_match` Block for details.
   final ListenerRuleMatchHttpMatchPathMatch? pathMatch;
 
   ListenerRuleMatchHttpMatch({

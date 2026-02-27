@@ -1,0 +1,3 @@
+library module_connect_get_instance_storage_config_storage_config_kinesis_stream_config;
+
+export 'get_instance_storage_config_storage_config_kinesis_stream_config/get_instance_storage_config_storage_config_kinesis_stream_config.dart';

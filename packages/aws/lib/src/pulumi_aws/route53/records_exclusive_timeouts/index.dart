@@ -1,3 +1,0 @@
-library module_route53_records_exclusive_timeouts;
-
-export 'records_exclusive_timeouts.dart';

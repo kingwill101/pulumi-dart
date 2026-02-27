@@ -21,7 +21,7 @@ class DistributionTenantArgs {
   /// Set of domains associated with the distribution tenant.
   final Input<List<DistributionTenantDomain>>? domains;
 
-  /// Whether the distribution tenant is enabled to serve traffic. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the distribution tenant is enabled to serve traffic. Defaults to `true`.
   final Input<bool>? enabled;
 
   /// Managed certificate request for CloudFront managed ACM certificate (maximum one).
@@ -34,11 +34,11 @@ class DistributionTenantArgs {
   /// Set of parameter values for the distribution tenant.
   final Input<List<DistributionTenantParameter>>? parameters;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<DistributionTenantTimeouts>? timeouts;
 
-  /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> will skip the process. Default: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
   final Input<bool>? waitForDeployment;
 
   DistributionTenantArgs({

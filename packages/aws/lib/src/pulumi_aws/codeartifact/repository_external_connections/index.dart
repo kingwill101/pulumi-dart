@@ -1,3 +1,0 @@
-library module_codeartifact_repository_external_connections;
-
-export 'repository_external_connections.dart';

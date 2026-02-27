@@ -29,7 +29,7 @@ class GetEngineVersionResult3 {
   final List<String>? preferredVersions;
   final String region;
 
-  /// Status of the engine version, either <span pulumi-lang-nodejs="`available`" pulumi-lang-dotnet="`Available`" pulumi-lang-go="`available`" pulumi-lang-python="`available`" pulumi-lang-yaml="`available`" pulumi-lang-java="`available`">`available`</span> or <span pulumi-lang-nodejs="`deprecated`" pulumi-lang-dotnet="`Deprecated`" pulumi-lang-go="`deprecated`" pulumi-lang-python="`deprecated`" pulumi-lang-yaml="`deprecated`" pulumi-lang-java="`deprecated`">`deprecated`</span>.
+  /// Status of the engine version, either `available` or `deprecated`.
   final String status;
 
   /// Set of character sets supported by th engine version.
@@ -59,7 +59,7 @@ class GetEngineVersionResult3 {
   /// Whether the engine version supports local write forwarding or not.
   final bool supportsLocalWriteForwarding;
 
-  /// Whether the engine version supports exporting the log types specified by <span pulumi-lang-nodejs="`exportableLogTypes`" pulumi-lang-dotnet="`ExportableLogTypes`" pulumi-lang-go="`exportableLogTypes`" pulumi-lang-python="`exportable_log_types`" pulumi-lang-yaml="`exportableLogTypes`" pulumi-lang-java="`exportableLogTypes`">`exportable_log_types`</span> to CloudWatch Logs.
+  /// Whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
   final bool supportsLogExportsToCloudwatch;
 
   /// Whether you can use Aurora parallel query with the engine version.

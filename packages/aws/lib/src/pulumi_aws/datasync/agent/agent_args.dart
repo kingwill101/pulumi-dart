@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for Agent.
 class AgentArgs {
-  /// DataSync Agent activation key during resource creation. Conflicts with <span pulumi-lang-nodejs="`ipAddress`" pulumi-lang-dotnet="`IpAddress`" pulumi-lang-go="`ipAddress`" pulumi-lang-python="`ip_address`" pulumi-lang-yaml="`ipAddress`" pulumi-lang-java="`ipAddress`">`ip_address`</span>. If an <span pulumi-lang-nodejs="`ipAddress`" pulumi-lang-dotnet="`IpAddress`" pulumi-lang-go="`ipAddress`" pulumi-lang-python="`ip_address`" pulumi-lang-yaml="`ipAddress`" pulumi-lang-java="`ipAddress`">`ip_address`</span> is provided instead, the provider will retrieve the <span pulumi-lang-nodejs="`activationKey`" pulumi-lang-dotnet="`ActivationKey`" pulumi-lang-go="`activationKey`" pulumi-lang-python="`activation_key`" pulumi-lang-yaml="`activationKey`" pulumi-lang-java="`activationKey`">`activation_key`</span> as part of the resource creation.
+  /// DataSync Agent activation key during resource creation. Conflicts with `ip_address`. If an `ip_address` is provided instead, the provider will retrieve the `activation_key` as part of the resource creation.
   final Input<String>? activationKey;
 
-  /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with <span pulumi-lang-nodejs="`activationKey`" pulumi-lang-dotnet="`ActivationKey`" pulumi-lang-go="`activationKey`" pulumi-lang-python="`activation_key`" pulumi-lang-yaml="`activationKey`" pulumi-lang-java="`activationKey`">`activation_key`</span>. DataSync Agent must be accessible on port 80 from where the provider is running.
+  /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activation_key`. DataSync Agent must be accessible on port 80 from where the provider is running.
   final Input<String>? ipAddress;
 
   /// Name of the DataSync Agent.
   final Input<String>? name;
 
-  /// The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with <span pulumi-lang-nodejs="`activationKey`" pulumi-lang-dotnet="`ActivationKey`" pulumi-lang-go="`activationKey`" pulumi-lang-python="`activation_key`" pulumi-lang-yaml="`activationKey`" pulumi-lang-java="`activationKey`">`activation_key`</span>.
+  /// The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with `activation_key`.
   final Input<String>? privateLinkEndpoint;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -25,7 +25,7 @@ class AgentArgs {
   /// The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
   final Input<List<String>>? subnetArns;
 
-  /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The ID of the VPC (virtual private cloud) endpoint that the agent has access to.

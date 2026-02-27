@@ -10,404 +10,17 @@ import 'instance_args3.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Instance("example", {
-/// name: "example",
-/// availabilityZone: "us-east-1b",
-/// blueprintId: "amazon_linux_2",
-/// bundleId: "nano_3_0",
-/// keyPairName: "some_key_name",
-/// tags: {
-/// foo: "bar",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Instance("example",
-/// name="example",
-/// availability_zone="us-east-1b",
-/// blueprint_id="amazon_linux_2",
-/// bundle_id="nano_3_0",
-/// key_pair_name="some_key_name",
-/// tags={
-/// "foo": "bar",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Instance("example", new()
-/// {
-/// Name = "example",
-/// AvailabilityZone = "us-east-1b",
-/// BlueprintId = "amazon_linux_2",
-/// BundleId = "nano_3_0",
-/// KeyPairName = "some_key_name",
-/// Tags =
-/// {
-/// { "foo", "bar" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewInstance(ctx, "example", &lightsail.InstanceArgs{
-/// Name:             pulumi.String("example"),
-/// AvailabilityZone: pulumi.String("us-east-1b"),
-/// BlueprintId:      pulumi.String("amazon_linux_2"),
-/// BundleId:         pulumi.String("nano_3_0"),
-/// KeyPairName:      pulumi.String("some_key_name"),
-/// Tags: pulumi.StringMap{
-/// "foo": pulumi.String("bar"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Instance;
-/// import com.pulumi.aws.lightsail.InstanceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Instance("example", InstanceArgs.builder()
-/// .name("example")
-/// .availabilityZone("us-east-1b")
-/// .blueprintId("amazon_linux_2")
-/// .bundleId("nano_3_0")
-/// .keyPairName("some_key_name")
-/// .tags(Map.of("foo", "bar"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Instance
-/// properties:
-/// name: example
-/// availabilityZone: us-east-1b
-/// blueprintId: amazon_linux_2
-/// bundleId: nano_3_0
-/// keyPairName: some_key_name
-/// tags:
-/// foo: bar
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Example With User Data
 ///
 /// Lightsail user data is handled differently than EC2 user data. Lightsail user data only accepts a single lined string. The below example shows installing apache and creating the index page.
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Instance("example", {
-/// name: "example",
-/// availabilityZone: "us-east-1b",
-/// blueprintId: "amazon_linux_2",
-/// bundleId: "nano_3_0",
-/// userData: "sudo yum install -y httpd && sudo systemctl start httpd && sudo systemctl enable httpd && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Instance("example",
-/// name="example",
-/// availability_zone="us-east-1b",
-/// blueprint_id="amazon_linux_2",
-/// bundle_id="nano_3_0",
-/// user_data="sudo yum install -y httpd && sudo systemctl start httpd && sudo systemctl enable httpd && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Instance("example", new()
-/// {
-/// Name = "example",
-/// AvailabilityZone = "us-east-1b",
-/// BlueprintId = "amazon_linux_2",
-/// BundleId = "nano_3_0",
-/// UserData = "sudo yum install -y httpd && sudo systemctl start httpd && sudo systemctl enable httpd && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewInstance(ctx, "example", &lightsail.InstanceArgs{
-/// Name:             pulumi.String("example"),
-/// AvailabilityZone: pulumi.String("us-east-1b"),
-/// BlueprintId:      pulumi.String("amazon_linux_2"),
-/// BundleId:         pulumi.String("nano_3_0"),
-/// UserData:         pulumi.String("sudo yum install -y httpd && sudo systemctl start httpd && sudo systemctl enable httpd && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Instance;
-/// import com.pulumi.aws.lightsail.InstanceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Instance("example", InstanceArgs.builder()
-/// .name("example")
-/// .availabilityZone("us-east-1b")
-/// .blueprintId("amazon_linux_2")
-/// .bundleId("nano_3_0")
-/// .userData("sudo yum install -y httpd && sudo systemctl start httpd && sudo systemctl enable httpd && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Instance
-/// properties:
-/// name: example
-/// availabilityZone: us-east-1b
-/// blueprintId: amazon_linux_2
-/// bundleId: nano_3_0
-/// userData: sudo yum install -y httpd && sudo systemctl start httpd && sudo systemctl enable httpd && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Enable Auto Snapshots
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Instance("example", {
-/// name: "example",
-/// availabilityZone: "us-east-1b",
-/// blueprintId: "amazon_linux_2",
-/// bundleId: "nano_3_0",
-/// addOn: {
-/// type: "AutoSnapshot",
-/// snapshotTime: "06:00",
-/// status: "Enabled",
-/// },
-/// tags: {
-/// foo: "bar",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Instance("example",
-/// name="example",
-/// availability_zone="us-east-1b",
-/// blueprint_id="amazon_linux_2",
-/// bundle_id="nano_3_0",
-/// add_on={
-/// "type": "AutoSnapshot",
-/// "snapshot_time": "06:00",
-/// "status": "Enabled",
-/// },
-/// tags={
-/// "foo": "bar",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Instance("example", new()
-/// {
-/// Name = "example",
-/// AvailabilityZone = "us-east-1b",
-/// BlueprintId = "amazon_linux_2",
-/// BundleId = "nano_3_0",
-/// AddOn = new Aws.LightSail.Inputs.InstanceAddOnArgs
-/// {
-/// Type = "AutoSnapshot",
-/// SnapshotTime = "06:00",
-/// Status = "Enabled",
-/// },
-/// Tags =
-/// {
-/// { "foo", "bar" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewInstance(ctx, "example", &lightsail.InstanceArgs{
-/// Name:             pulumi.String("example"),
-/// AvailabilityZone: pulumi.String("us-east-1b"),
-/// BlueprintId:      pulumi.String("amazon_linux_2"),
-/// BundleId:         pulumi.String("nano_3_0"),
-/// AddOn: &lightsail.InstanceAddOnArgs{
-/// Type:         pulumi.String("AutoSnapshot"),
-/// SnapshotTime: pulumi.String("06:00"),
-/// Status:       pulumi.String("Enabled"),
-/// },
-/// Tags: pulumi.StringMap{
-/// "foo": pulumi.String("bar"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Instance;
-/// import com.pulumi.aws.lightsail.InstanceArgs;
-/// import com.pulumi.aws.lightsail.inputs.InstanceAddOnArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Instance("example", InstanceArgs.builder()
-/// .name("example")
-/// .availabilityZone("us-east-1b")
-/// .blueprintId("amazon_linux_2")
-/// .bundleId("nano_3_0")
-/// .addOn(InstanceAddOnArgs.builder()
-/// .type("AutoSnapshot")
-/// .snapshotTime("06:00")
-/// .status("Enabled")
-/// .build())
-/// .tags(Map.of("foo", "bar"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Instance
-/// properties:
-/// name: example
-/// availabilityZone: us-east-1b
-/// blueprintId: amazon_linux_2
-/// bundleId: nano_3_0
-/// addOn:
-/// type: AutoSnapshot
-/// snapshotTime: 06:00
-/// status: Enabled
-/// tags:
-/// foo: bar
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -420,7 +33,7 @@ class Instance3 extends CustomResource {
   /// Add-on configuration for the instance. See below.
   late final Output<InstanceAddOn?> addOn;
 
-  /// ARN of the Lightsail instance (matches <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>).
+  /// ARN of the Lightsail instance (matches `id`).
   late final Output<String> arn;
 
   /// Availability Zone in which to create your instance. A list of available zones can be obtained using the AWS CLI command: [`aws lightsail get-regions --include-availability-zones`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lightsail/get-regions.html).
@@ -438,7 +51,7 @@ class Instance3 extends CustomResource {
   /// Timestamp when the instance was created.
   late final Output<String> createdAt;
 
-  /// IP address type of the Lightsail Instance. Valid values: <span pulumi-lang-nodejs="`dualstack`" pulumi-lang-dotnet="`Dualstack`" pulumi-lang-go="`dualstack`" pulumi-lang-python="`dualstack`" pulumi-lang-yaml="`dualstack`" pulumi-lang-java="`dualstack`">`dualstack`</span>, <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span>, <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span>. Default: <span pulumi-lang-nodejs="`dualstack`" pulumi-lang-dotnet="`Dualstack`" pulumi-lang-go="`dualstack`" pulumi-lang-python="`dualstack`" pulumi-lang-yaml="`dualstack`" pulumi-lang-java="`dualstack`">`dualstack`</span>.
+  /// IP address type of the Lightsail Instance. Valid values: `dualstack`, `ipv4`, `ipv6`. Default: `dualstack`.
   late final Output<String?> ipAddressType;
 
   /// List of IPv6 addresses for the Lightsail instance.
@@ -447,7 +60,7 @@ class Instance3 extends CustomResource {
   /// Whether this instance has a static IP assigned to it.
   late final Output<bool> isStaticIp;
 
-  /// Name of your key pair. Created in the Lightsail console (cannot use <span pulumi-lang-nodejs="`aws.ec2.KeyPair`" pulumi-lang-dotnet="`aws.ec2.KeyPair`" pulumi-lang-go="`ec2.KeyPair`" pulumi-lang-python="`ec2.KeyPair`" pulumi-lang-yaml="`aws.ec2.KeyPair`" pulumi-lang-java="`aws.ec2.KeyPair`">`aws.ec2.KeyPair`</span> at this time).
+  /// Name of your key pair. Created in the Lightsail console (cannot use `aws.ec2.KeyPair` at this time).
   late final Output<String?> keyPairName;
 
   /// Name of the Lightsail Instance. Names must be unique within each AWS Region in your Lightsail account.
@@ -467,10 +80,10 @@ class Instance3 extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Single lined launch script as a string to configure server with additional user data.

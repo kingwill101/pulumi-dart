@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GroupLaunchTemplate {
-  /// ID of the launch template. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// ID of the launch template. Conflicts with `name`.
   final String? id;
 
-  /// Name of the launch template. Conflicts with <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>.
+  /// Name of the launch template. Conflicts with `id`.
   final String? name;
 
   /// Template version. Can be version number, `$Latest`, or `$Default`. (Default: `$Default`).

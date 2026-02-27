@@ -1,3 +1,0 @@
-library module_rekognition_stream_processor_regions_of_interest_bounding_box;
-
-export 'stream_processor_regions_of_interest_bounding_box.dart';

@@ -4,13 +4,13 @@ import '../agentcore_gateway_target_credential_provider_configuration_api_key/ag
 import '../agentcore_gateway_target_credential_provider_configuration_oauth/agentcore_gateway_target_credential_provider_configuration_oauth.dart';
 
 class AgentcoreGatewayTargetCredentialProviderConfiguration {
-  /// API key-based authentication configuration. See <span pulumi-lang-nodejs="`apiKey`" pulumi-lang-dotnet="`ApiKey`" pulumi-lang-go="`apiKey`" pulumi-lang-python="`api_key`" pulumi-lang-yaml="`apiKey`" pulumi-lang-java="`apiKey`">`api_key`</span> below.
+  /// API key-based authentication configuration. See `api_key` below.
   final AgentcoreGatewayTargetCredentialProviderConfigurationApiKey? apiKey;
 
   /// Use the gateway's IAM role for authentication. This is an empty configuration block.
   final Map<String, dynamic>? gatewayIamRole;
 
-  /// OAuth-based authentication configuration. See <span pulumi-lang-nodejs="`oauth`" pulumi-lang-dotnet="`Oauth`" pulumi-lang-go="`oauth`" pulumi-lang-python="`oauth`" pulumi-lang-yaml="`oauth`" pulumi-lang-java="`oauth`">`oauth`</span> below.
+  /// OAuth-based authentication configuration. See `oauth` below.
   final AgentcoreGatewayTargetCredentialProviderConfigurationOauth? oauth;
 
   AgentcoreGatewayTargetCredentialProviderConfiguration({

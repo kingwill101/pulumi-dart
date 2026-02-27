@@ -18,16 +18,16 @@ class FirehoseDeliveryStreamIcebergConfiguration {
   /// Glue catalog ARN identifier of the destination Apache Iceberg Tables. You must specify the ARN in the format `arn:aws:glue:region:account-id:catalog`
   final String catalogArn;
 
-  /// The CloudWatch Logging Options for the delivery stream. See <span pulumi-lang-nodejs="`cloudwatchLoggingOptions`" pulumi-lang-dotnet="`CloudwatchLoggingOptions`" pulumi-lang-go="`cloudwatchLoggingOptions`" pulumi-lang-python="`cloudwatch_logging_options`" pulumi-lang-yaml="`cloudwatchLoggingOptions`" pulumi-lang-java="`cloudwatchLoggingOptions`">`cloudwatch_logging_options`</span> block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
   final FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions?
       cloudwatchLoggingOptions;
 
-  /// Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See <span pulumi-lang-nodejs="`destinationTableConfiguration`" pulumi-lang-dotnet="`DestinationTableConfiguration`" pulumi-lang-go="`destinationTableConfiguration`" pulumi-lang-python="`destination_table_configuration`" pulumi-lang-yaml="`destinationTableConfiguration`" pulumi-lang-java="`destinationTableConfiguration`">`destination_table_configuration`</span> block below for details.
+  /// Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See `destination_table_configuration` block below for details.
   final List<
           FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration>?
       destinationTableConfigurations;
 
-  /// The data processing configuration.  See <span pulumi-lang-nodejs="`processingConfiguration`" pulumi-lang-dotnet="`ProcessingConfiguration`" pulumi-lang-go="`processingConfiguration`" pulumi-lang-python="`processing_configuration`" pulumi-lang-yaml="`processingConfiguration`" pulumi-lang-java="`processingConfiguration`">`processing_configuration`</span> block below for details.
+  /// The data processing configuration.  See `processing_configuration` block below for details.
   final FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration?
       processingConfiguration;
 
@@ -38,7 +38,7 @@ class FirehoseDeliveryStreamIcebergConfiguration {
   final String roleArn;
   final String? s3BackupMode;
 
-  /// The S3 Configuration. See <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span> block below for details.
+  /// The S3 Configuration. See `s3_configuration` block below for details.
   final FirehoseDeliveryStreamIcebergConfigurationS3Configuration
       s3Configuration;
 

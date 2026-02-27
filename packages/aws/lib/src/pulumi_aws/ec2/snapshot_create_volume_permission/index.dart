@@ -1,4 +1,0 @@
-library module_ec2_snapshot_create_volume_permission;
-
-export 'snapshot_create_volume_permission.dart';
-export 'snapshot_create_volume_permission_args.dart';

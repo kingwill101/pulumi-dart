@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_rule_statement_geo_match_statement;
-
-export 'web_acl_rule_statement_geo_match_statement.dart';

@@ -4,7 +4,7 @@ import '../bucket_lifecycle_configuration_rule_filter_and/bucket_lifecycle_confi
 import '../bucket_lifecycle_configuration_rule_filter_tag/bucket_lifecycle_configuration_rule_filter_tag.dart';
 
 class BucketLifecycleConfigurationRuleFilter {
-  /// Configuration block used to apply a logical `AND` to two or more predicates. See below. The Lifecycle Rule will apply to any object matching all the predicates configured inside the <span pulumi-lang-nodejs="`and`" pulumi-lang-dotnet="`And`" pulumi-lang-go="`and`" pulumi-lang-python="`and`" pulumi-lang-yaml="`and`" pulumi-lang-java="`and`">`and`</span> block.
+  /// Configuration block used to apply a logical `AND` to two or more predicates. See below. The Lifecycle Rule will apply to any object matching all the predicates configured inside the `and` block.
   final BucketLifecycleConfigurationRuleFilterAnd? and;
 
   /// Minimum object size (in bytes) to which the rule applies.

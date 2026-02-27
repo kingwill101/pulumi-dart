@@ -1,4 +1,0 @@
-library module_ec2transitgateway_prefix_list_reference;
-
-export 'prefix_list_reference.dart';
-export 'prefix_list_reference_args.dart';

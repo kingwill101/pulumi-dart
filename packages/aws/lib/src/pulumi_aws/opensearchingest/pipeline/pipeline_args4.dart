@@ -9,13 +9,13 @@ import '../pipeline_vpc_options/pipeline_vpc_options.dart';
 
 /// The set of arguments for Pipeline.
 class PipelineArgs4 {
-  /// Key-value pairs to configure persistent buffering for the pipeline. See <span pulumi-lang-nodejs="`bufferOptions`" pulumi-lang-dotnet="`BufferOptions`" pulumi-lang-go="`bufferOptions`" pulumi-lang-python="`buffer_options`" pulumi-lang-yaml="`bufferOptions`" pulumi-lang-java="`bufferOptions`">`buffer_options`</span> below.
+  /// Key-value pairs to configure persistent buffering for the pipeline. See `buffer_options` below.
   final Input<PipelineBufferOptions>? bufferOptions;
 
-  /// Key-value pairs to configure encryption for data that is written to a persistent buffer. See <span pulumi-lang-nodejs="`encryptionAtRestOptions`" pulumi-lang-dotnet="`EncryptionAtRestOptions`" pulumi-lang-go="`encryptionAtRestOptions`" pulumi-lang-python="`encryption_at_rest_options`" pulumi-lang-yaml="`encryptionAtRestOptions`" pulumi-lang-java="`encryptionAtRestOptions`">`encryption_at_rest_options`</span> below.
+  /// Key-value pairs to configure encryption for data that is written to a persistent buffer. See `encryption_at_rest_options` below.
   final Input<PipelineEncryptionAtRestOptions>? encryptionAtRestOptions;
 
-  /// Key-value pairs to configure log publishing. See <span pulumi-lang-nodejs="`logPublishingOptions`" pulumi-lang-dotnet="`LogPublishingOptions`" pulumi-lang-go="`logPublishingOptions`" pulumi-lang-python="`log_publishing_options`" pulumi-lang-yaml="`logPublishingOptions`" pulumi-lang-java="`logPublishingOptions`">`log_publishing_options`</span> below.
+  /// Key-value pairs to configure log publishing. See `log_publishing_options` below.
   final Input<PipelineLogPublishingOptions>? logPublishingOptions;
 
   /// The maximum pipeline capacity, in Ingestion Compute Units (ICUs).
@@ -38,11 +38,11 @@ class PipelineArgs4 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the pipeline. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<PipelineTimeouts>? timeouts;
 
-  /// Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See <span pulumi-lang-nodejs="`vpcOptions`" pulumi-lang-dotnet="`VpcOptions`" pulumi-lang-go="`vpcOptions`" pulumi-lang-python="`vpc_options`" pulumi-lang-yaml="`vpcOptions`" pulumi-lang-java="`vpcOptions`">`vpc_options`</span> below.
+  /// Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpc_options` below.
   final Input<PipelineVpcOptions>? vpcOptions;
 
   PipelineArgs4({

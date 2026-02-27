@@ -1,4 +1,0 @@
-library module_servicediscovery_private_dns_namespace;
-
-export 'private_dns_namespace.dart';
-export 'private_dns_namespace_args.dart';

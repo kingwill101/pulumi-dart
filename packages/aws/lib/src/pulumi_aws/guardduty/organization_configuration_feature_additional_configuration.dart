@@ -1,0 +1,3 @@
+library module_guardduty_organization_configuration_feature_additional_configuration;
+
+export 'organization_configuration_feature_additional_configuration/organization_configuration_feature_additional_configuration.dart';

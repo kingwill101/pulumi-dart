@@ -9,115 +9,11 @@ import 'view_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.billing.View("example", {
-/// name: "example",
-/// description: "example description",
-/// sourceViews: ["arn:aws:billing::123456789012:billingview/example"],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.billing.View("example",
-/// name="example",
-/// description="example description",
-/// source_views=["arn:aws:billing::123456789012:billingview/example"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Billing.View("example", new()
-/// {
-/// Name = "example",
-/// Description = "example description",
-/// SourceViews = new[]
-/// {
-/// "arn:aws:billing::123456789012:billingview/example",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/billing"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := billing.NewView(ctx, "example", &billing.ViewArgs{
-/// Name:        pulumi.String("example"),
-/// Description: pulumi.String("example description"),
-/// SourceViews: pulumi.StringArray{
-/// pulumi.String("arn:aws:billing::123456789012:billingview/example"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.billing.View;
-/// import com.pulumi.aws.billing.ViewArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new View("example", ViewArgs.builder()
-/// .name("example")
-/// .description("example description")
-/// .sourceViews("arn:aws:billing::123456789012:billingview/example")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:billing:View
-/// properties:
-/// name: example
-/// description: example description
-/// sourceViews:
-/// - arn:aws:billing::123456789012:billingview/example
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Billing View using the <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>. For example:
+/// Using `pulumi import`, import Billing View using the `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:billing/view:View example arn:aws:billing::123456789012:billing-view/example

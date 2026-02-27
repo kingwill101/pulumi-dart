@@ -1,0 +1,4 @@
+library module_bedrock_provisioned_model_throughput;
+
+export 'provisioned_model_throughput/provisioned_model_throughput.dart';
+export 'provisioned_model_throughput/provisioned_model_throughput_args.dart';

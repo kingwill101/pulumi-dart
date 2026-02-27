@@ -1,3 +1,0 @@
-library module_ssm_get_patch_baseline_source;
-
-export 'get_patch_baseline_source.dart';

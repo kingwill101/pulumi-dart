@@ -1,3 +1,0 @@
-library module_savingsplans_savings_plan_timeouts;
-
-export 'savings_plan_timeouts.dart';

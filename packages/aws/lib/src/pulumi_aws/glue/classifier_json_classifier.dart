@@ -1,0 +1,3 @@
+library module_glue_classifier_json_classifier;
+
+export 'classifier_json_classifier/classifier_json_classifier.dart';

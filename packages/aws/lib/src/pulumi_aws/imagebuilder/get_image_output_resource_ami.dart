@@ -1,0 +1,3 @@
+library module_imagebuilder_get_image_output_resource_ami;
+
+export 'get_image_output_resource_ami/get_image_output_resource_ami.dart';

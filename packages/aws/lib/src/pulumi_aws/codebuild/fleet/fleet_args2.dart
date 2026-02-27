@@ -10,7 +10,7 @@ class FleetArgs2 {
   /// Number of machines allocated to the ﬂeet.
   final Input<int> baseCapacity;
 
-  /// The compute configuration of the compute fleet. This is only required if <span pulumi-lang-nodejs="`computeType`" pulumi-lang-dotnet="`ComputeType`" pulumi-lang-go="`computeType`" pulumi-lang-python="`compute_type`" pulumi-lang-yaml="`computeType`" pulumi-lang-java="`computeType`">`compute_type`</span> is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See <span pulumi-lang-nodejs="`computeConfiguration`" pulumi-lang-dotnet="`ComputeConfiguration`" pulumi-lang-go="`computeConfiguration`" pulumi-lang-python="`compute_configuration`" pulumi-lang-yaml="`computeConfiguration`" pulumi-lang-java="`computeConfiguration`">`compute_configuration`</span> below.
+  /// The compute configuration of the compute fleet. This is only required if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE` or `CUSTOM_INSTANCE_TYPE`. See `compute_configuration` below.
   final Input<FleetComputeConfiguration>? computeConfiguration;
 
   /// Compute resources the compute fleet uses. See [compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types) for more information and valid values.
@@ -36,13 +36,13 @@ class FleetArgs2 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See <span pulumi-lang-nodejs="`scalingConfiguration`" pulumi-lang-dotnet="`ScalingConfiguration`" pulumi-lang-go="`scalingConfiguration`" pulumi-lang-python="`scaling_configuration`" pulumi-lang-yaml="`scalingConfiguration`" pulumi-lang-java="`scalingConfiguration`">`scaling_configuration`</span> below.
+  /// Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scaling_configuration` below.
   final Input<FleetScalingConfiguration>? scalingConfiguration;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Configuration block. See <span pulumi-lang-nodejs="`vpcConfig`" pulumi-lang-dotnet="`VpcConfig`" pulumi-lang-go="`vpcConfig`" pulumi-lang-python="`vpc_config`" pulumi-lang-yaml="`vpcConfig`" pulumi-lang-java="`vpcConfig`">`vpc_config`</span> below.
+  /// Configuration block. See `vpc_config` below.
   final Input<List<FleetVpcConfig2>>? vpcConfigs;
 
   FleetArgs2({

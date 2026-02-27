@@ -1,3 +1,0 @@
-library module_dms_get_endpoint_kafka_setting;
-
-export 'get_endpoint_kafka_setting.dart';

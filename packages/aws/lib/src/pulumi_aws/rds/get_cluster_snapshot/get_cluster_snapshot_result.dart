@@ -26,7 +26,7 @@ class GetClusterSnapshotResult {
   final bool? includePublic;
   final bool? includeShared;
 
-  /// If<span pulumi-lang-nodejs=" storageEncrypted " pulumi-lang-dotnet=" StorageEncrypted " pulumi-lang-go=" storageEncrypted " pulumi-lang-python=" storage_encrypted " pulumi-lang-yaml=" storageEncrypted " pulumi-lang-java=" storageEncrypted "> storage_encrypted </span>is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
+  /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DB cluster snapshot.
   final String kmsKeyId;
 
   /// License model information for the restored DB cluster.

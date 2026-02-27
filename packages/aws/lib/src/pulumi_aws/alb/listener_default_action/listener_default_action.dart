@@ -8,31 +8,31 @@ import '../listener_default_action_jwt_validation/listener_default_action_jwt_va
 import '../listener_default_action_redirect/listener_default_action_redirect.dart';
 
 class ListenerDefaultAction {
-  /// Configuration block for using Amazon Cognito to authenticate users. Specify only when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `authenticate-cognito`. See below.
+  /// Configuration block for using Amazon Cognito to authenticate users. Specify only when `type` is `authenticate-cognito`. See below.
   final ListenerDefaultActionAuthenticateCognito? authenticateCognito;
 
-  /// Configuration block for an identity provider that is compliant with OpenID Connect (OIDC). Specify only when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `authenticate-oidc`. See below.
+  /// Configuration block for an identity provider that is compliant with OpenID Connect (OIDC). Specify only when `type` is `authenticate-oidc`. See below.
   final ListenerDefaultActionAuthenticateOidc? authenticateOidc;
 
-  /// Information for creating an action that returns a custom HTTP response. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `fixed-response`.
+  /// Information for creating an action that returns a custom HTTP response. Required if `type` is `fixed-response`.
   final ListenerDefaultActionFixedResponse? fixedResponse;
 
-  /// Configuration block for creating an action that distributes requests among one or more target groups. Specify only if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span>. See below.
+  /// Configuration block for creating an action that distributes requests among one or more target groups. Specify only if `type` is `forward`. See below.
   final ListenerDefaultActionForward? forward;
 
-  /// Configuration block for creating a JWT validation action. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `jwt-validation`.
+  /// Configuration block for creating a JWT validation action. Required if `type` is `jwt-validation`.
   final ListenerDefaultActionJwtValidation? jwtValidation;
 
-  /// Order for the action. The action with the lowest value for order is performed first. Valid values are between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`50000`" pulumi-lang-dotnet="`50000`" pulumi-lang-go="`50000`" pulumi-lang-python="`50000`" pulumi-lang-yaml="`50000`" pulumi-lang-java="`50000`">`50000`</span>. Defaults to the position in the list of actions.
+  /// Order for the action. The action with the lowest value for order is performed first. Valid values are between `1` and `50000`. Defaults to the position in the list of actions.
   final int? order;
 
-  /// Configuration block for creating a redirect action. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>. See below.
+  /// Configuration block for creating a redirect action. Required if `type` is `redirect`. See below.
   final ListenerDefaultActionRedirect? redirect;
 
-  /// ARN of the Target Group to which to route traffic. Specify only if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span> and you want to route to a single target group. To route to one or more target groups, use a <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span> block instead. Can be specified with <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span> but ARNs must match.
+  /// ARN of the Target Group to which to route traffic. Specify only if `type` is `forward` and you want to route to a single target group. To route to one or more target groups, use a `forward` block instead. Can be specified with `forward` but ARNs must match.
   final String? targetGroupArn;
 
-  /// Type of routing action. Valid values are <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span>, <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>, `fixed-response`, `authenticate-cognito`, `authenticate-oidc` and `jwt-validation`.
+  /// Type of routing action. Valid values are `forward`, `redirect`, `fixed-response`, `authenticate-cognito`, `authenticate-oidc` and `jwt-validation`.
   ///
   /// The following arguments are optional:
   final String type;

@@ -4,7 +4,7 @@ class ClusterComputeConfig {
   /// Request to enable or disable the compute capability on your EKS Auto Mode cluster. If the compute capability is enabled, EKS Auto Mode will create and delete EC2 Managed Instances in your Amazon Web Services account.
   final bool? enabled;
 
-  /// Configuration for node pools that defines the compute resources for your EKS Auto Mode cluster. Valid options are `general-purpose` and <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`">`system`</span>.
+  /// Configuration for node pools that defines the compute resources for your EKS Auto Mode cluster. Valid options are `general-purpose` and `system`.
   final List<String>? nodePools;
 
   /// The ARN of the IAM Role EKS will assign to EC2 Managed Instances in your EKS Auto Mode cluster. This value cannot be changed after the compute capability of EKS Auto Mode is enabled..

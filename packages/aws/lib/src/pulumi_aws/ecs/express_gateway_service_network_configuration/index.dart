@@ -1,3 +1,0 @@
-library module_ecs_express_gateway_service_network_configuration;
-
-export 'express_gateway_service_network_configuration.dart';

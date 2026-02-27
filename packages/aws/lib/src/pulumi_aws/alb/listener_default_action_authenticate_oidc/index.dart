@@ -1,3 +1,0 @@
-library module_alb_listener_default_action_authenticate_oidc;
-
-export 'listener_default_action_authenticate_oidc.dart';

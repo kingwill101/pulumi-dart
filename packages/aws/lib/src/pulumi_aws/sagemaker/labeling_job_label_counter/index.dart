@@ -1,3 +1,0 @@
-library module_sagemaker_labeling_job_label_counter;
-
-export 'labeling_job_label_counter.dart';

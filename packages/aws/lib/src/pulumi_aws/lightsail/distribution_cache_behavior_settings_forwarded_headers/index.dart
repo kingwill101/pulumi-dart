@@ -1,3 +1,0 @@
-library module_lightsail_distribution_cache_behavior_settings_forwarded_headers;
-
-export 'distribution_cache_behavior_settings_forwarded_headers.dart';

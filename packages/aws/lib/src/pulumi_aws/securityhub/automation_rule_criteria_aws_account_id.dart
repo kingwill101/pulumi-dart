@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_criteria_aws_account_id;
+
+export 'automation_rule_criteria_aws_account_id/automation_rule_criteria_aws_account_id.dart';

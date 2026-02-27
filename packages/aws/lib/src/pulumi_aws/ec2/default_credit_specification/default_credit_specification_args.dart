@@ -5,10 +5,10 @@ import '../default_credit_specification_timeouts/default_credit_specification_ti
 
 /// The set of arguments for DefaultCreditSpecification.
 class DefaultCreditSpecificationArgs {
-  /// Credit option for CPU usage of the instance family. Valid values: <span pulumi-lang-nodejs="`standard`" pulumi-lang-dotnet="`Standard`" pulumi-lang-go="`standard`" pulumi-lang-python="`standard`" pulumi-lang-yaml="`standard`" pulumi-lang-java="`standard`">`standard`</span>, <span pulumi-lang-nodejs="`unlimited`" pulumi-lang-dotnet="`Unlimited`" pulumi-lang-go="`unlimited`" pulumi-lang-python="`unlimited`" pulumi-lang-yaml="`unlimited`" pulumi-lang-java="`unlimited`">`unlimited`</span>.
+  /// Credit option for CPU usage of the instance family. Valid values: `standard`, `unlimited`.
   final Input<String> cpuCredits;
 
-  /// Instance family. Valid values are <span pulumi-lang-nodejs="`t2`" pulumi-lang-dotnet="`T2`" pulumi-lang-go="`t2`" pulumi-lang-python="`t2`" pulumi-lang-yaml="`t2`" pulumi-lang-java="`t2`">`t2`</span>, <span pulumi-lang-nodejs="`t3`" pulumi-lang-dotnet="`T3`" pulumi-lang-go="`t3`" pulumi-lang-python="`t3`" pulumi-lang-yaml="`t3`" pulumi-lang-java="`t3`">`t3`</span>, <span pulumi-lang-nodejs="`t3a`" pulumi-lang-dotnet="`T3a`" pulumi-lang-go="`t3a`" pulumi-lang-python="`t3a`" pulumi-lang-yaml="`t3a`" pulumi-lang-java="`t3a`">`t3a`</span>, <span pulumi-lang-nodejs="`t4g`" pulumi-lang-dotnet="`T4g`" pulumi-lang-go="`t4g`" pulumi-lang-python="`t4g`" pulumi-lang-yaml="`t4g`" pulumi-lang-java="`t4g`">`t4g`</span>.
+  /// Instance family. Valid values are `t2`, `t3`, `t3a`, `t4g`.
   final Input<String> instanceFamily;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -68,7 +68,7 @@ class GetWindowsFileSystemResult {
   /// The tags to associate with the file system.
   final Map<String, String> tags;
 
-  /// Throughput (megabytes per second) of the file system in power of 2 increments. Minimum of <span pulumi-lang-nodejs="`8`" pulumi-lang-dotnet="`8`" pulumi-lang-go="`8`" pulumi-lang-python="`8`" pulumi-lang-yaml="`8`" pulumi-lang-java="`8`">`8`</span> and maximum of <span pulumi-lang-nodejs="`2048`" pulumi-lang-dotnet="`2048`" pulumi-lang-go="`2048`" pulumi-lang-python="`2048`" pulumi-lang-yaml="`2048`" pulumi-lang-java="`2048`">`2048`</span>.
+  /// Throughput (megabytes per second) of the file system in power of 2 increments. Minimum of `8` and maximum of `2048`.
   final int throughputCapacity;
 
   /// The ID of the primary virtual private cloud (VPC) for the file system.

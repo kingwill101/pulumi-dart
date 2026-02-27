@@ -1,3 +1,0 @@
-library module_globalaccelerator_get_accelerator_attribute;
-
-export 'get_accelerator_attribute.dart';

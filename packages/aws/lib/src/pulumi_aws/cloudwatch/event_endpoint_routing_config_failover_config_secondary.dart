@@ -1,0 +1,3 @@
+library module_cloudwatch_event_endpoint_routing_config_failover_config_secondary;
+
+export 'event_endpoint_routing_config_failover_config_secondary/event_endpoint_routing_config_failover_config_secondary.dart';

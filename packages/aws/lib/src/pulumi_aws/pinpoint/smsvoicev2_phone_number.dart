@@ -1,0 +1,4 @@
+library module_pinpoint_smsvoicev2_phone_number;
+
+export 'smsvoicev2_phone_number/smsvoicev2_phone_number.dart';
+export 'smsvoicev2_phone_number/smsvoicev2_phone_number_args.dart';

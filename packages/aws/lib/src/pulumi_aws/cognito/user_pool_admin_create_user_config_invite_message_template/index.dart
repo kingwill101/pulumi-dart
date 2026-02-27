@@ -1,3 +1,0 @@
-library module_cognito_user_pool_admin_create_user_config_invite_message_template;
-
-export 'user_pool_admin_create_user_config_invite_message_template.dart';

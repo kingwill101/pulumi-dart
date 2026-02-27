@@ -5,7 +5,7 @@ import '../event_sources_config_event_source/event_sources_config_event_source.d
 
 /// The set of arguments for EventSourcesConfig.
 class EventSourcesConfigArgs {
-  /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See <span pulumi-lang-nodejs="`eventSources`" pulumi-lang-dotnet="`EventSources`" pulumi-lang-go="`eventSources`" pulumi-lang-python="`event_sources`" pulumi-lang-yaml="`eventSources`" pulumi-lang-java="`eventSources`">`event_sources`</span> below.
+  /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
   final Input<List<EventSourcesConfigEventSource>> eventSources;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

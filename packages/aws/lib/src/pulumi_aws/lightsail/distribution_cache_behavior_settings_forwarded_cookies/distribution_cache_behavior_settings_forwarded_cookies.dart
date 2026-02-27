@@ -4,7 +4,7 @@ class DistributionCacheBehaviorSettingsForwardedCookies {
   /// Specific cookies to forward to your distribution's origin.
   final List<String>? cookiesAllowLists;
 
-  /// Which cookies to forward to the distribution's origin for a cache behavior. Valid values: <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, `allow-list`.
+  /// Which cookies to forward to the distribution's origin for a cache behavior. Valid values: `all`, `none`, `allow-list`.
   final String? option;
 
   DistributionCacheBehaviorSettingsForwardedCookies({

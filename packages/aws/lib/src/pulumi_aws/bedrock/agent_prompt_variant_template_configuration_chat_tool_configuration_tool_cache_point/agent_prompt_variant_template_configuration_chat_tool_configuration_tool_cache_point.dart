@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint {
-  /// Indicates that the CachePointBlock is of the default type. Valid values: <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  /// Indicates that the CachePointBlock is of the default type. Valid values: `default`.
   final String type;
 
   AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint({

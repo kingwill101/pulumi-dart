@@ -1,0 +1,3 @@
+library module_identitystore_get_users_user_phone_number;
+
+export 'get_users_user_phone_number/get_users_user_phone_number.dart';

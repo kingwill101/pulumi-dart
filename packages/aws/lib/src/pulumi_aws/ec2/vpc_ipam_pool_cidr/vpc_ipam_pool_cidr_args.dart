@@ -5,17 +5,17 @@ import '../vpc_ipam_pool_cidr_cidr_authorization_context/vpc_ipam_pool_cidr_cidr
 
 /// The set of arguments for VpcIpamPoolCidr.
 class VpcIpamPoolCidrArgs {
-  /// The CIDR you want to assign to the pool. Conflicts with <span pulumi-lang-nodejs="`netmaskLength`" pulumi-lang-dotnet="`NetmaskLength`" pulumi-lang-go="`netmaskLength`" pulumi-lang-python="`netmask_length`" pulumi-lang-yaml="`netmaskLength`" pulumi-lang-java="`netmaskLength`">`netmask_length`</span>.
+  /// The CIDR you want to assign to the pool. Conflicts with `netmask_length`.
   final Input<String>? cidr;
 
-  /// A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP. This is not stored in the state file. See<span pulumi-lang-nodejs=" cidrAuthorizationContext " pulumi-lang-dotnet=" CidrAuthorizationContext " pulumi-lang-go=" cidrAuthorizationContext " pulumi-lang-python=" cidr_authorization_context " pulumi-lang-yaml=" cidrAuthorizationContext " pulumi-lang-java=" cidrAuthorizationContext "> cidr_authorization_context </span>for more information.
+  /// A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP. This is not stored in the state file. See cidr_authorization_context for more information.
   final Input<VpcIpamPoolCidrCidrAuthorizationContext>?
       cidrAuthorizationContext;
 
   /// The ID of the pool to which you want to assign a CIDR.
   final Input<String> ipamPoolId;
 
-  /// If provided, the cidr provisioned into the specified pool will be the next available cidr given this declared netmask length. Conflicts with <span pulumi-lang-nodejs="`cidr`" pulumi-lang-dotnet="`Cidr`" pulumi-lang-go="`cidr`" pulumi-lang-python="`cidr`" pulumi-lang-yaml="`cidr`" pulumi-lang-java="`cidr`">`cidr`</span>.
+  /// If provided, the cidr provisioned into the specified pool will be the next available cidr given this declared netmask length. Conflicts with `cidr`.
   final Input<int>? netmaskLength;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

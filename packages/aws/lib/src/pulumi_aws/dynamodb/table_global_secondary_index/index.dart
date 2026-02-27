@@ -1,3 +1,0 @@
-library module_dynamodb_table_global_secondary_index;
-
-export 'table_global_secondary_index.dart';

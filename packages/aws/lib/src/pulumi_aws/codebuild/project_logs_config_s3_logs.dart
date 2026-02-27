@@ -1,0 +1,3 @@
+library module_codebuild_project_logs_config_s3_logs;
+
+export 'project_logs_config_s3_logs/project_logs_config_s3_logs.dart';

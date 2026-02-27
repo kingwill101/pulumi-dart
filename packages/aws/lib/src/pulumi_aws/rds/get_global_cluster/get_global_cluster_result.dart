@@ -11,7 +11,7 @@ class GetGlobalClusterResult {
   /// Name of the automatically created database on cluster creation.
   final String databaseName;
 
-  /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`.
   final bool deletionProtection;
 
   /// The endpoint for the Global Cluster.

@@ -7,7 +7,7 @@ import '../records_exclusive_timeouts/records_exclusive_timeouts.dart';
 /// The set of arguments for RecordsExclusive.
 class RecordsExclusiveArgs {
   /// A list of all resource record sets associated with the hosted zone.
-  /// See <span pulumi-lang-nodejs="`resourceRecordSet`" pulumi-lang-dotnet="`ResourceRecordSet`" pulumi-lang-go="`resourceRecordSet`" pulumi-lang-python="`resource_record_set`" pulumi-lang-yaml="`resourceRecordSet`" pulumi-lang-java="`resourceRecordSet`">`resource_record_set`</span> below.
+  /// See `resource_record_set` below.
   final Input<List<RecordsExclusiveResourceRecordSet>>? resourceRecordSets;
   final Input<RecordsExclusiveTimeouts>? timeouts;
 

@@ -15,7 +15,7 @@ class GetVoicesResult {
   final String? languageCode;
   final String region;
 
-  /// List of voices with their properties. See <span pulumi-lang-nodejs="`voices`" pulumi-lang-dotnet="`Voices`" pulumi-lang-go="`voices`" pulumi-lang-python="`voices`" pulumi-lang-yaml="`voices`" pulumi-lang-java="`voices`">`voices`</span> Attribute Reference below.
+  /// List of voices with their properties. See `voices` Attribute Reference below.
   final List<GetVoicesVoice>? voices;
 
   GetVoicesResult({

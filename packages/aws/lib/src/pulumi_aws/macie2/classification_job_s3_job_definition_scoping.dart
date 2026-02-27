@@ -1,0 +1,3 @@
+library module_macie2_classification_job_s3_job_definition_scoping;
+
+export 'classification_job_s3_job_definition_scoping/classification_job_s3_job_definition_scoping.dart';

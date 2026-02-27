@@ -1,0 +1,3 @@
+library module_directoryservice_get_directory_radius_setting;
+
+export 'get_directory_radius_setting/get_directory_radius_setting.dart';

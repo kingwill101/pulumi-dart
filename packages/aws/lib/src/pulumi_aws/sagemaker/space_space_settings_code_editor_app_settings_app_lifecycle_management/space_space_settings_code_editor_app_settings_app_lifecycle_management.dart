@@ -3,7 +3,7 @@
 import '../space_space_settings_code_editor_app_settings_app_lifecycle_management_idle_settings/space_space_settings_code_editor_app_settings_app_lifecycle_management_idle_settings.dart';
 
 class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
-  /// Settings related to idle shutdown of Studio applications. See <span pulumi-lang-nodejs="`idleSettings`" pulumi-lang-dotnet="`IdleSettings`" pulumi-lang-go="`idleSettings`" pulumi-lang-python="`idle_settings`" pulumi-lang-yaml="`idleSettings`" pulumi-lang-java="`idleSettings`">`idle_settings`</span> Block below.
+  /// Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
   final SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings?
       idleSettings;
 

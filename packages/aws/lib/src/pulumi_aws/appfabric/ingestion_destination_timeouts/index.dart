@@ -1,3 +1,0 @@
-library module_appfabric_ingestion_destination_timeouts;
-
-export 'ingestion_destination_timeouts.dart';

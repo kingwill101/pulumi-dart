@@ -16,7 +16,7 @@ class RouteResponseArgs {
   /// Response models for the route response.
   final Input<Map<String, String>>? responseModels;
 
-  /// Identifier of the <span pulumi-lang-nodejs="`aws.apigatewayv2.Route`" pulumi-lang-dotnet="`aws.apigatewayv2.Route`" pulumi-lang-go="`apigatewayv2.Route`" pulumi-lang-python="`apigatewayv2.Route`" pulumi-lang-yaml="`aws.apigatewayv2.Route`" pulumi-lang-java="`aws.apigatewayv2.Route`">`aws.apigatewayv2.Route`</span>.
+  /// Identifier of the `aws.apigatewayv2.Route`.
   final Input<String> routeId;
 
   /// Route response key.

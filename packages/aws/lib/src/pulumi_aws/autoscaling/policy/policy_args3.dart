@@ -16,7 +16,7 @@ class PolicyArgs3 {
   /// Amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
   final Input<int>? cooldown;
 
-  /// Whether the scaling policy is enabled or disabled. Default: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the scaling policy is enabled or disabled. Default: `true`.
   ///
   /// The following argument is only available to "SimpleScaling" and "StepScaling" type policies:
   final Input<bool>? enabled;
@@ -27,7 +27,7 @@ class PolicyArgs3 {
   /// Aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
   final Input<String>? metricAggregationType;
 
-  /// Minimum value to scale by when <span pulumi-lang-nodejs="`adjustmentType`" pulumi-lang-dotnet="`AdjustmentType`" pulumi-lang-go="`adjustmentType`" pulumi-lang-python="`adjustment_type`" pulumi-lang-yaml="`adjustmentType`" pulumi-lang-java="`adjustmentType`">`adjustment_type`</span> is set to `PercentChangeInCapacity`.
+  /// Minimum value to scale by when `adjustment_type` is set to `PercentChangeInCapacity`.
   ///
   /// The following arguments are only available to "SimpleScaling" type policies:
   final Input<int>? minAdjustmentMagnitude;
@@ -53,276 +53,14 @@ class PolicyArgs3 {
   /// Set of adjustments that manage
   /// group scaling. These have the following structure:
   ///
-  /// <!--Start PulumiCodeChooser -->
-  /// ```typescript
-  /// import * as pulumi from "@pulumi/pulumi";
-  /// import * as aws from "@pulumi/aws";
   ///
-  /// const example = new aws.autoscaling.Policy("example", {stepAdjustments: [
-  /// {
-  /// scalingAdjustment: -1,
-  /// metricIntervalLowerBound: "1",
-  /// metricIntervalUpperBound: "2",
-  /// },
-  /// {
-  /// scalingAdjustment: 1,
-  /// metricIntervalLowerBound: "2",
-  /// metricIntervalUpperBound: "3",
-  /// },
-  /// ]});
-  /// ```
-  /// ```python
-  /// import pulumi
-  /// import pulumi_aws as aws
-  ///
-  /// example = aws.autoscaling.Policy("example", step_adjustments=[
-  /// {
-  /// "scaling_adjustment": -1,
-  /// "metric_interval_lower_bound": "1",
-  /// "metric_interval_upper_bound": "2",
-  /// },
-  /// {
-  /// "scaling_adjustment": 1,
-  /// "metric_interval_lower_bound": "2",
-  /// "metric_interval_upper_bound": "3",
-  /// },
-  /// ])
-  /// ```
-  /// ```csharp
-  /// using System.Collections.Generic;
-  /// using System.Linq;
-  /// using Pulumi;
-  /// using Aws = Pulumi.Aws;
-  ///
-  /// return await Deployment.RunAsync(() =>
-  /// {
-  /// var example = new Aws.AutoScaling.Policy("example", new()
-  /// {
-  /// StepAdjustments = new[]
-  /// {
-  /// new Aws.AutoScaling.Inputs.PolicyStepAdjustmentArgs
-  /// {
-  /// ScalingAdjustment = -1,
-  /// MetricIntervalLowerBound = "1",
-  /// MetricIntervalUpperBound = "2",
-  /// },
-  /// new Aws.AutoScaling.Inputs.PolicyStepAdjustmentArgs
-  /// {
-  /// ScalingAdjustment = 1,
-  /// MetricIntervalLowerBound = "2",
-  /// MetricIntervalUpperBound = "3",
-  /// },
-  /// },
-  /// });
-  ///
-  /// });
-  /// ```
-  /// ```go
-  /// package main
-  ///
-  /// import (
-  /// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/autoscaling"
-  /// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-  /// )
-  ///
-  /// func main() {
-  /// pulumi.Run(func(ctx *pulumi.Context) error {
-  /// _, err := autoscaling.NewPolicy(ctx, "example", &autoscaling.PolicyArgs{
-  /// StepAdjustments: autoscaling.PolicyStepAdjustmentArray{
-  /// &autoscaling.PolicyStepAdjustmentArgs{
-  /// ScalingAdjustment:        pulumi.Int(-1),
-  /// MetricIntervalLowerBound: pulumi.String("1"),
-  /// MetricIntervalUpperBound: pulumi.String("2"),
-  /// },
-  /// &autoscaling.PolicyStepAdjustmentArgs{
-  /// ScalingAdjustment:        pulumi.Int(1),
-  /// MetricIntervalLowerBound: pulumi.String("2"),
-  /// MetricIntervalUpperBound: pulumi.String("3"),
-  /// },
-  /// },
-  /// })
-  /// if err != nil {
-  /// return err
-  /// }
-  /// return nil
-  /// })
-  /// }
-  /// ```
-  /// ```java
-  /// package generated_program;
-  ///
-  /// import com.pulumi.Context;
-  /// import com.pulumi.Pulumi;
-  /// import com.pulumi.core.Output;
-  /// import com.pulumi.aws.autoscaling.Policy;
-  /// import com.pulumi.aws.autoscaling.PolicyArgs;
-  /// import com.pulumi.aws.autoscaling.inputs.PolicyStepAdjustmentArgs;
-  /// import java.util.List;
-  /// import java.util.ArrayList;
-  /// import java.util.Map;
-  /// import java.io.File;
-  /// import java.nio.file.Files;
-  /// import java.nio.file.Paths;
-  ///
-  /// public class App {
-  /// public static void main(String[] args) {
-  /// Pulumi.run(App::stack);
-  /// }
-  ///
-  /// public static void stack(Context ctx) {
-  /// var example = new Policy("example", PolicyArgs.builder()
-  /// .stepAdjustments(
-  /// PolicyStepAdjustmentArgs.builder()
-  /// .scalingAdjustment(-1)
-  /// .metricIntervalLowerBound("1")
-  /// .metricIntervalUpperBound("2")
-  /// .build(),
-  /// PolicyStepAdjustmentArgs.builder()
-  /// .scalingAdjustment(1)
-  /// .metricIntervalLowerBound("2")
-  /// .metricIntervalUpperBound("3")
-  /// .build())
-  /// .build());
-  ///
-  /// }
-  /// }
-  /// ```
-  /// ```yaml
-  /// resources:
-  /// example:
-  /// type: aws:autoscaling:Policy
-  /// properties:
-  /// stepAdjustments:
-  /// - scalingAdjustment: -1
-  /// metricIntervalLowerBound: 1
-  /// metricIntervalUpperBound: 2
-  /// - scalingAdjustment: 1
-  /// metricIntervalLowerBound: 2
-  /// metricIntervalUpperBound: 3
-  /// ```
-  /// <!--End PulumiCodeChooser -->
   ///
   /// The following fields are available in step adjustments:
   final Input<List<PolicyStepAdjustment>>? stepAdjustments;
 
   /// Target tracking policy. These have the following structure:
   ///
-  /// <!--Start PulumiCodeChooser -->
-  /// ```typescript
-  /// import * as pulumi from "@pulumi/pulumi";
-  /// import * as aws from "@pulumi/aws";
   ///
-  /// const example = new aws.autoscaling.Policy("example", {targetTrackingConfiguration: {
-  /// predefinedMetricSpecification: {
-  /// predefinedMetricType: "ASGAverageCPUUtilization",
-  /// },
-  /// targetValue: 40,
-  /// }});
-  /// ```
-  /// ```python
-  /// import pulumi
-  /// import pulumi_aws as aws
-  ///
-  /// example = aws.autoscaling.Policy("example", target_tracking_configuration={
-  /// "predefined_metric_specification": {
-  /// "predefined_metric_type": "ASGAverageCPUUtilization",
-  /// },
-  /// "target_value": 40,
-  /// })
-  /// ```
-  /// ```csharp
-  /// using System.Collections.Generic;
-  /// using System.Linq;
-  /// using Pulumi;
-  /// using Aws = Pulumi.Aws;
-  ///
-  /// return await Deployment.RunAsync(() =>
-  /// {
-  /// var example = new Aws.AutoScaling.Policy("example", new()
-  /// {
-  /// TargetTrackingConfiguration = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationArgs
-  /// {
-  /// PredefinedMetricSpecification = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs
-  /// {
-  /// PredefinedMetricType = "ASGAverageCPUUtilization",
-  /// },
-  /// TargetValue = 40,
-  /// },
-  /// });
-  ///
-  /// });
-  /// ```
-  /// ```go
-  /// package main
-  ///
-  /// import (
-  /// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/autoscaling"
-  /// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-  /// )
-  ///
-  /// func main() {
-  /// pulumi.Run(func(ctx *pulumi.Context) error {
-  /// _, err := autoscaling.NewPolicy(ctx, "example", &autoscaling.PolicyArgs{
-  /// TargetTrackingConfiguration: &autoscaling.PolicyTargetTrackingConfigurationArgs{
-  /// PredefinedMetricSpecification: &autoscaling.PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs{
-  /// PredefinedMetricType: pulumi.String("ASGAverageCPUUtilization"),
-  /// },
-  /// TargetValue: pulumi.Float64(40),
-  /// },
-  /// })
-  /// if err != nil {
-  /// return err
-  /// }
-  /// return nil
-  /// })
-  /// }
-  /// ```
-  /// ```java
-  /// package generated_program;
-  ///
-  /// import com.pulumi.Context;
-  /// import com.pulumi.Pulumi;
-  /// import com.pulumi.core.Output;
-  /// import com.pulumi.aws.autoscaling.Policy;
-  /// import com.pulumi.aws.autoscaling.PolicyArgs;
-  /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationArgs;
-  /// import com.pulumi.aws.autoscaling.inputs.PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs;
-  /// import java.util.List;
-  /// import java.util.ArrayList;
-  /// import java.util.Map;
-  /// import java.io.File;
-  /// import java.nio.file.Files;
-  /// import java.nio.file.Paths;
-  ///
-  /// public class App {
-  /// public static void main(String[] args) {
-  /// Pulumi.run(App::stack);
-  /// }
-  ///
-  /// public static void stack(Context ctx) {
-  /// var example = new Policy("example", PolicyArgs.builder()
-  /// .targetTrackingConfiguration(PolicyTargetTrackingConfigurationArgs.builder()
-  /// .predefinedMetricSpecification(PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs.builder()
-  /// .predefinedMetricType("ASGAverageCPUUtilization")
-  /// .build())
-  /// .targetValue(40.0)
-  /// .build())
-  /// .build());
-  ///
-  /// }
-  /// }
-  /// ```
-  /// ```yaml
-  /// resources:
-  /// example:
-  /// type: aws:autoscaling:Policy
-  /// properties:
-  /// targetTrackingConfiguration:
-  /// predefinedMetricSpecification:
-  /// predefinedMetricType: ASGAverageCPUUtilization
-  /// targetValue: 40
-  /// ```
-  /// <!--End PulumiCodeChooser -->
   ///
   /// The following fields are available in target tracking configuration:
   final Input<PolicyTargetTrackingConfiguration>? targetTrackingConfiguration;

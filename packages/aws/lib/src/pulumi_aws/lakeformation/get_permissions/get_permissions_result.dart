@@ -24,7 +24,7 @@ class GetPermissionsResult {
   /// List of permissions granted to the principal. For details on permissions, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   final List<String> permissions;
 
-  /// Subset of <span pulumi-lang-nodejs="`permissions`" pulumi-lang-dotnet="`Permissions`" pulumi-lang-go="`permissions`" pulumi-lang-python="`permissions`" pulumi-lang-yaml="`permissions`" pulumi-lang-java="`permissions`">`permissions`</span> which the principal can pass.
+  /// Subset of `permissions` which the principal can pass.
   final List<String> permissionsWithGrantOptions;
   final String principal;
   final String region;

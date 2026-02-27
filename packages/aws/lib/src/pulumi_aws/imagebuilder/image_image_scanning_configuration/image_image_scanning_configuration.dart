@@ -6,7 +6,7 @@ class ImageImageScanningConfiguration {
   /// Configuration block with ECR configuration. Detailed below.
   final ImageImageScanningConfigurationEcrConfiguration? ecrConfiguration;
 
-  /// Indicates whether Image Builder keeps a snapshot of the vulnerability scans that Amazon Inspector runs against the build instance when you create a new image. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether Image Builder keeps a snapshot of the vulnerability scans that Amazon Inspector runs against the build instance when you create a new image. Defaults to `false`.
   final bool? imageScanningEnabled;
 
   ImageImageScanningConfiguration({

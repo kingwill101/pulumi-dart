@@ -11,13 +11,13 @@ import '../record_weighted_routing_policy/record_weighted_routing_policy.dart';
 
 /// The set of arguments for Record.
 class RecordArgs {
-  /// An alias block. Conflicts with <span pulumi-lang-nodejs="`ttl`" pulumi-lang-dotnet="`Ttl`" pulumi-lang-go="`ttl`" pulumi-lang-python="`ttl`" pulumi-lang-yaml="`ttl`" pulumi-lang-java="`ttl`">`ttl`</span> & <span pulumi-lang-nodejs="`records`" pulumi-lang-dotnet="`Records`" pulumi-lang-go="`records`" pulumi-lang-python="`records`" pulumi-lang-yaml="`records`" pulumi-lang-java="`records`">`records`</span>.
+  /// An alias block. Conflicts with `ttl` & `records`.
   /// Documented below.
   final Input<List<RecordAlias>>? aliases;
 
-  /// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> by default. This configuration is not recommended for most environments.
+  /// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
   ///
-  /// Exactly one of <span pulumi-lang-nodejs="`records`" pulumi-lang-dotnet="`Records`" pulumi-lang-go="`records`" pulumi-lang-python="`records`" pulumi-lang-yaml="`records`" pulumi-lang-java="`records`">`records`</span> or <span pulumi-lang-nodejs="`alias`" pulumi-lang-dotnet="`Alias`" pulumi-lang-go="`alias`" pulumi-lang-python="`alias`" pulumi-lang-yaml="`alias`" pulumi-lang-java="`alias`">`alias`</span> must be specified: this determines whether it's an alias record.
+  /// Exactly one of `records` or `alias` must be specified: this determines whether it's an alias record.
   final Input<bool>? allowOverwrite;
 
   /// A block indicating a routing policy based on the IP network ranges of requestors. Conflicts with any other routing policy. Documented below.
@@ -38,7 +38,7 @@ class RecordArgs {
   /// A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
   final Input<List<RecordLatencyRoutingPolicy>>? latencyRoutingPolicies;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
+  /// Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
   final Input<bool>? multivalueAnswerRoutingPolicy;
 
   /// The name of the record.
@@ -47,7 +47,7 @@ class RecordArgs {
   /// A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
   final Input<List<String>>? records;
 
-  /// Unique identifier to differentiate records with routing policies from one another. Required if using <span pulumi-lang-nodejs="`cidrRoutingPolicy`" pulumi-lang-dotnet="`CidrRoutingPolicy`" pulumi-lang-go="`cidrRoutingPolicy`" pulumi-lang-python="`cidr_routing_policy`" pulumi-lang-yaml="`cidrRoutingPolicy`" pulumi-lang-java="`cidrRoutingPolicy`">`cidr_routing_policy`</span>, <span pulumi-lang-nodejs="`failoverRoutingPolicy`" pulumi-lang-dotnet="`FailoverRoutingPolicy`" pulumi-lang-go="`failoverRoutingPolicy`" pulumi-lang-python="`failover_routing_policy`" pulumi-lang-yaml="`failoverRoutingPolicy`" pulumi-lang-java="`failoverRoutingPolicy`">`failover_routing_policy`</span>, <span pulumi-lang-nodejs="`geolocationRoutingPolicy`" pulumi-lang-dotnet="`GeolocationRoutingPolicy`" pulumi-lang-go="`geolocationRoutingPolicy`" pulumi-lang-python="`geolocation_routing_policy`" pulumi-lang-yaml="`geolocationRoutingPolicy`" pulumi-lang-java="`geolocationRoutingPolicy`">`geolocation_routing_policy`</span>,<span pulumi-lang-nodejs="`geoproximityRoutingPolicy`" pulumi-lang-dotnet="`GeoproximityRoutingPolicy`" pulumi-lang-go="`geoproximityRoutingPolicy`" pulumi-lang-python="`geoproximity_routing_policy`" pulumi-lang-yaml="`geoproximityRoutingPolicy`" pulumi-lang-java="`geoproximityRoutingPolicy`">`geoproximity_routing_policy`</span>, <span pulumi-lang-nodejs="`latencyRoutingPolicy`" pulumi-lang-dotnet="`LatencyRoutingPolicy`" pulumi-lang-go="`latencyRoutingPolicy`" pulumi-lang-python="`latency_routing_policy`" pulumi-lang-yaml="`latencyRoutingPolicy`" pulumi-lang-java="`latencyRoutingPolicy`">`latency_routing_policy`</span>, <span pulumi-lang-nodejs="`multivalueAnswerRoutingPolicy`" pulumi-lang-dotnet="`MultivalueAnswerRoutingPolicy`" pulumi-lang-go="`multivalueAnswerRoutingPolicy`" pulumi-lang-python="`multivalue_answer_routing_policy`" pulumi-lang-yaml="`multivalueAnswerRoutingPolicy`" pulumi-lang-java="`multivalueAnswerRoutingPolicy`">`multivalue_answer_routing_policy`</span>, or <span pulumi-lang-nodejs="`weightedRoutingPolicy`" pulumi-lang-dotnet="`WeightedRoutingPolicy`" pulumi-lang-go="`weightedRoutingPolicy`" pulumi-lang-python="`weighted_routing_policy`" pulumi-lang-yaml="`weightedRoutingPolicy`" pulumi-lang-java="`weightedRoutingPolicy`">`weighted_routing_policy`</span>.
+  /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidr_routing_policy`, `failover_routing_policy`, `geolocation_routing_policy`,`geoproximity_routing_policy`, `latency_routing_policy`, `multivalue_answer_routing_policy`, or `weighted_routing_policy`.
   final Input<String>? setIdentifier;
 
   /// The TTL of the record.

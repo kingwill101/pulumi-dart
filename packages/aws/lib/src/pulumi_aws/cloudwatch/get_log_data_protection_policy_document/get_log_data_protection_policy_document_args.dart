@@ -14,7 +14,7 @@ class GetLogDataProtectionPolicyDocumentArgs {
 
   /// Configures the data protection policy.
   ///
-  /// > There must be exactly two statements: the first with an <span pulumi-lang-nodejs="`audit`" pulumi-lang-dotnet="`Audit`" pulumi-lang-go="`audit`" pulumi-lang-python="`audit`" pulumi-lang-yaml="`audit`" pulumi-lang-java="`audit`">`audit`</span> operation, and the second with a <span pulumi-lang-nodejs="`deidentify`" pulumi-lang-dotnet="`Deidentify`" pulumi-lang-go="`deidentify`" pulumi-lang-python="`deidentify`" pulumi-lang-yaml="`deidentify`" pulumi-lang-java="`deidentify`">`deidentify`</span> operation.
+  /// > There must be exactly two statements: the first with an `audit` operation, and the second with a `deidentify` operation.
   ///
   /// The following arguments are optional:
   final Input<List<GetLogDataProtectionPolicyDocumentStatement>> statements;

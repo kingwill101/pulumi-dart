@@ -10,137 +10,11 @@ import 'teams_channel_configuration_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.chatbot.TeamsChannelConfiguration("test", {
-/// channelId: "C07EZ1ABC23",
-/// configurationName: "mitt-lags-kanal",
-/// iamRoleArn: testAwsIamRole.arn,
-/// teamId: "74361522-da01-538d-aa2e-ac7918c6bb92",
-/// tenantId: "1234",
-/// tags: {
-/// Name: "mitt-lags-kanal",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// test = aws.chatbot.TeamsChannelConfiguration("test",
-/// channel_id="C07EZ1ABC23",
-/// configuration_name="mitt-lags-kanal",
-/// iam_role_arn=test_aws_iam_role["arn"],
-/// team_id="74361522-da01-538d-aa2e-ac7918c6bb92",
-/// tenant_id="1234",
-/// tags={
-/// "Name": "mitt-lags-kanal",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var test = new Aws.Chatbot.TeamsChannelConfiguration("test", new()
-/// {
-/// ChannelId = "C07EZ1ABC23",
-/// ConfigurationName = "mitt-lags-kanal",
-/// IamRoleArn = testAwsIamRole.Arn,
-/// TeamId = "74361522-da01-538d-aa2e-ac7918c6bb92",
-/// TenantId = "1234",
-/// Tags =
-/// {
-/// { "Name", "mitt-lags-kanal" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/chatbot"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := chatbot.NewTeamsChannelConfiguration(ctx, "test", &chatbot.TeamsChannelConfigurationArgs{
-/// ChannelId:         pulumi.String("C07EZ1ABC23"),
-/// ConfigurationName: pulumi.String("mitt-lags-kanal"),
-/// IamRoleArn:        pulumi.Any(testAwsIamRole.Arn),
-/// TeamId:            pulumi.String("74361522-da01-538d-aa2e-ac7918c6bb92"),
-/// TenantId:          pulumi.String("1234"),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("mitt-lags-kanal"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.chatbot.TeamsChannelConfiguration;
-/// import com.pulumi.aws.chatbot.TeamsChannelConfigurationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var test = new TeamsChannelConfiguration("test", TeamsChannelConfigurationArgs.builder()
-/// .channelId("C07EZ1ABC23")
-/// .configurationName("mitt-lags-kanal")
-/// .iamRoleArn(testAwsIamRole.arn())
-/// .teamId("74361522-da01-538d-aa2e-ac7918c6bb92")
-/// .tenantId("1234")
-/// .tags(Map.of("Name", "mitt-lags-kanal"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// test:
-/// type: aws:chatbot:TeamsChannelConfiguration
-/// properties:
-/// channelId: C07EZ1ABC23
-/// configurationName: mitt-lags-kanal
-/// iamRoleArn: ${testAwsIamRole.arn}
-/// teamId: 74361522-da01-538d-aa2e-ac7918c6bb92
-/// tenantId: '1234'
-/// tags:
-/// Name: mitt-lags-kanal
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chatbot Microsoft Teams Channel Configuration using the <span pulumi-lang-nodejs="`teamId`" pulumi-lang-dotnet="`TeamId`" pulumi-lang-go="`teamId`" pulumi-lang-python="`team_id`" pulumi-lang-yaml="`teamId`" pulumi-lang-java="`teamId`">`team_id`</span>. For example:
+/// Using `pulumi import`, import Chatbot Microsoft Teams Channel Configuration using the `team_id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration example 5f4f15d2-b958-522a-8333-124aa8bf0925
@@ -176,7 +50,7 @@ class TeamsChannelConfiguration extends CustomResource {
   /// Map of tags assigned to the resource.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// ID of the Microsoft Team authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.

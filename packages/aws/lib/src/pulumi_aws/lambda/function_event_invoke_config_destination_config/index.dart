@@ -1,3 +1,0 @@
-library module_lambda_function_event_invoke_config_destination_config;
-
-export 'function_event_invoke_config_destination_config.dart';

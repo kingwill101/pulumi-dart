@@ -1,3 +1,0 @@
-library module_scheduler_schedule_target_ecs_parameters_capacity_provider_strategy;
-
-export 'schedule_target_ecs_parameters_capacity_provider_strategy.dart';

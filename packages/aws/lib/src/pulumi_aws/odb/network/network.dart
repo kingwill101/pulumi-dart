@@ -10,7 +10,7 @@ import 'network_args.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Odb Network using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Odb Network using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:odb/network:Network example example
@@ -19,7 +19,7 @@ class Network extends CustomResource {
   /// Amazon Resource Name (ARN) of the odb network resource.
   late final Output<String> arn;
 
-  /// The name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure<span pulumi-lang-nodejs=" availabilityZone " pulumi-lang-dotnet=" AvailabilityZone " pulumi-lang-go=" availabilityZone " pulumi-lang-python=" availability_zone " pulumi-lang-yaml=" availabilityZone " pulumi-lang-java=" availabilityZone "> availability_zone </span>maps correctly with availability_zone_id.
+  /// The name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure availability_zone maps correctly with availability_zone_id.
   late final Output<String> availabilityZone;
 
   /// The AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
@@ -34,7 +34,7 @@ class Network extends CustomResource {
   /// The date and time when the ODB network was created.
   late final Output<String> createdAt;
 
-  /// The name of the custom domain that the network is located. Custom_domain_name and<span pulumi-lang-nodejs=" defaultDnsPrefix " pulumi-lang-dotnet=" DefaultDnsPrefix " pulumi-lang-go=" defaultDnsPrefix " pulumi-lang-python=" default_dns_prefix " pulumi-lang-yaml=" defaultDnsPrefix " pulumi-lang-java=" defaultDnsPrefix "> default_dns_prefix </span>both can't be given. Changing this will force terraform to create new resource.
+  /// The name of the custom domain that the network is located. Custom_domain_name and default_dns_prefix both can't be given. Changing this will force terraform to create new resource.
   late final Output<String?> customDomainName;
 
   /// The default DNS prefix for the network resource. Changing this will force terraform to create new resource. Changing this will force terraform to create new resource.
@@ -101,7 +101,7 @@ class Network extends CustomResource {
   /// Specifies the endpoint policy for STS access from the ODB network.
   late final Output<String?> stsPolicyDocument;
 
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
   late final Output<NetworkTimeouts?> timeouts;

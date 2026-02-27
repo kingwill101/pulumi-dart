@@ -1,0 +1,3 @@
+library module_ec2_network_interface_permission_timeouts;
+
+export 'network_interface_permission_timeouts/network_interface_permission_timeouts.dart';

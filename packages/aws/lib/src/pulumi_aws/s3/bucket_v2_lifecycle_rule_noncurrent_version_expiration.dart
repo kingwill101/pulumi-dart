@@ -1,0 +1,3 @@
+library module_s3_bucket_v2_lifecycle_rule_noncurrent_version_expiration;
+
+export 'bucket_v2_lifecycle_rule_noncurrent_version_expiration/bucket_v2_lifecycle_rule_noncurrent_version_expiration.dart';

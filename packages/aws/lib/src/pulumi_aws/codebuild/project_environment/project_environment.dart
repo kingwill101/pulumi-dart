@@ -38,7 +38,7 @@ class ProjectEnvironment {
   final String? imagePullCredentialsType;
 
   /// Whether to enable running the Docker daemon inside a Docker container. Defaults to
-  /// <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// `false`.
   final bool? privilegedMode;
 
   /// Configuration block. Detailed below.

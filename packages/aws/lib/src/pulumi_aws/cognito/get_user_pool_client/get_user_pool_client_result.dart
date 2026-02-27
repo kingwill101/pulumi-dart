@@ -7,7 +7,7 @@ import '../get_user_pool_client_token_validity_unit/get_user_pool_client_token_v
 
 /// Result data returned by getUserPoolClient.
 class GetUserPoolClientResult {
-  /// (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in <span pulumi-lang-nodejs="`tokenValidityUnits`" pulumi-lang-dotnet="`TokenValidityUnits`" pulumi-lang-go="`tokenValidityUnits`" pulumi-lang-python="`token_validity_units`" pulumi-lang-yaml="`tokenValidityUnits`" pulumi-lang-java="`tokenValidityUnits`">`token_validity_units`</span>.
+  /// (Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
   final int accessTokenValidity;
 
   /// (Optional) List of allowed OAuth flows (code, implicit, client_credentials).
@@ -45,7 +45,7 @@ class GetUserPoolClientResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in <span pulumi-lang-nodejs="`tokenValidityUnits`" pulumi-lang-dotnet="`TokenValidityUnits`" pulumi-lang-go="`tokenValidityUnits`" pulumi-lang-python="`token_validity_units`" pulumi-lang-yaml="`tokenValidityUnits`" pulumi-lang-java="`tokenValidityUnits`">`token_validity_units`</span>.
+  /// (Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in `token_validity_units`.
   final int idTokenValidity;
 
   /// (Optional) List of allowed logout URLs for the identity providers.
@@ -65,7 +65,7 @@ class GetUserPoolClientResult {
   final int refreshTokenValidity;
   final String region;
 
-  /// (Optional) List of provider names for the identity providers that are supported on this client. Uses the <span pulumi-lang-nodejs="`providerName`" pulumi-lang-dotnet="`ProviderName`" pulumi-lang-go="`providerName`" pulumi-lang-python="`provider_name`" pulumi-lang-yaml="`providerName`" pulumi-lang-java="`providerName`">`provider_name`</span> attribute of <span pulumi-lang-nodejs="`aws.cognito.IdentityProvider`" pulumi-lang-dotnet="`aws.cognito.IdentityProvider`" pulumi-lang-go="`cognito.IdentityProvider`" pulumi-lang-python="`cognito.IdentityProvider`" pulumi-lang-yaml="`aws.cognito.IdentityProvider`" pulumi-lang-java="`aws.cognito.IdentityProvider`">`aws.cognito.IdentityProvider`</span> resource(s), or the equivalent string(s).
+  /// (Optional) List of provider names for the identity providers that are supported on this client. Uses the `provider_name` attribute of `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
   final List<String> supportedIdentityProviders;
 
   /// (Optional) Configuration block for units in which the validity times are represented in. Detailed below.

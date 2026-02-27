@@ -9,11 +9,11 @@ class ContinuousDeploymentPolicyArgs {
   /// Whether this continuous deployment policy is enabled.
   final Input<bool> enabled;
 
-  /// CloudFront domain name of the staging distribution. See <span pulumi-lang-nodejs="`stagingDistributionDnsNames`" pulumi-lang-dotnet="`StagingDistributionDnsNames`" pulumi-lang-go="`stagingDistributionDnsNames`" pulumi-lang-python="`staging_distribution_dns_names`" pulumi-lang-yaml="`stagingDistributionDnsNames`" pulumi-lang-java="`stagingDistributionDnsNames`">`staging_distribution_dns_names`</span>.
+  /// CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
   final Input<ContinuousDeploymentPolicyStagingDistributionDnsNames>
       stagingDistributionDnsNames;
 
-  /// Parameters for routing production traffic from primary to staging distributions. See <span pulumi-lang-nodejs="`trafficConfig`" pulumi-lang-dotnet="`TrafficConfig`" pulumi-lang-go="`trafficConfig`" pulumi-lang-python="`traffic_config`" pulumi-lang-yaml="`trafficConfig`" pulumi-lang-java="`trafficConfig`">`traffic_config`</span>.
+  /// Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
   final Input<ContinuousDeploymentPolicyTrafficConfig>? trafficConfig;
 
   ContinuousDeploymentPolicyArgs({

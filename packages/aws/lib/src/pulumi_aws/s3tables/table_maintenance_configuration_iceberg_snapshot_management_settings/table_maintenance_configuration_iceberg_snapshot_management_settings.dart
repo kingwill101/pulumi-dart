@@ -2,11 +2,11 @@
 
 class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
   /// Snapshots older than this will be marked for deletiion.
-  /// Must be at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Must be at least `1`.
   final int maxSnapshotAgeHours;
 
   /// Minimum number of snapshots to keep.
-  /// Must be at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Must be at least `1`.
   final int minSnapshotsToKeep;
 
   TableMaintenanceConfigurationIcebergSnapshotManagementSettings({

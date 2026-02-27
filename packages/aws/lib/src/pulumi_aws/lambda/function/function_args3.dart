@@ -16,16 +16,16 @@ import '../function_vpc_config/function_vpc_config.dart';
 
 /// The set of arguments for Function.
 class FunctionArgs3 {
-  /// Instruction set architecture for your Lambda function. Valid values are `[<span pulumi-lang-nodejs=""x8664"" pulumi-lang-dotnet=""X8664"" pulumi-lang-go=""x8664"" pulumi-lang-python=""x86_64"" pulumi-lang-yaml=""x8664"" pulumi-lang-java=""x8664"">"x86_64"</span>]` and `["arm64"]`. Default is `[<span pulumi-lang-nodejs=""x8664"" pulumi-lang-dotnet=""X8664"" pulumi-lang-go=""x8664"" pulumi-lang-python=""x86_64"" pulumi-lang-yaml=""x8664"" pulumi-lang-java=""x8664"">"x86_64"</span>]`. Removing this attribute, function's architecture stays the same.
+  /// Instruction set architecture for your Lambda function. Valid values are `["x86_64"]` and `["arm64"]`. Default is `["x86_64"]`. Removing this attribute, function's architecture stays the same.
   final Input<List<String>>? architectures;
 
   /// Configuration block for Lambda Capacity Provider. See below.
   final Input<FunctionCapacityProviderConfig>? capacityProviderConfig;
 
-  /// Path to the function's deployment package within the local filesystem. Conflicts with <span pulumi-lang-nodejs="`imageUri`" pulumi-lang-dotnet="`ImageUri`" pulumi-lang-go="`imageUri`" pulumi-lang-python="`image_uri`" pulumi-lang-yaml="`imageUri`" pulumi-lang-java="`imageUri`">`image_uri`</span> and <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span>. One of <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span>, <span pulumi-lang-nodejs="`imageUri`" pulumi-lang-dotnet="`ImageUri`" pulumi-lang-go="`imageUri`" pulumi-lang-python="`image_uri`" pulumi-lang-yaml="`imageUri`" pulumi-lang-java="`imageUri`">`image_uri`</span>, or <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span> must be specified.
+  /// Path to the function's deployment package within the local filesystem. Conflicts with `image_uri` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
   final Input<dynamic>? code;
 
-  /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the <span pulumi-lang-nodejs="`sourceCodeHash`" pulumi-lang-dotnet="`SourceCodeHash`" pulumi-lang-go="`sourceCodeHash`" pulumi-lang-python="`source_code_hash`" pulumi-lang-yaml="`sourceCodeHash`" pulumi-lang-java="`sourceCodeHash`">`source_code_hash`</span> argument instead.
+  /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `source_code_hash` argument instead.
   final Input<String>? codeSha256;
 
   /// ARN of a code-signing configuration to enable code signing for this function.
@@ -37,7 +37,7 @@ class FunctionArgs3 {
   /// Description of what your Lambda Function does.
   final Input<String>? description;
 
-  /// Configuration block for durable function settings. See below. <span pulumi-lang-nodejs="`durableConfig`" pulumi-lang-dotnet="`DurableConfig`" pulumi-lang-go="`durableConfig`" pulumi-lang-python="`durable_config`" pulumi-lang-yaml="`durableConfig`" pulumi-lang-java="`durableConfig`">`durable_config`</span> may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
+  /// Configuration block for durable function settings. See below. `durable_config` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
   final Input<FunctionDurableConfig>? durableConfig;
 
   /// Configuration block for environment variables. See below.
@@ -49,13 +49,13 @@ class FunctionArgs3 {
   /// Configuration block for EFS file system. See below.
   final Input<FunctionFileSystemConfig>? fileSystemConfig;
 
-  /// Function entry point in your code. Required if <span pulumi-lang-nodejs="`packageType`" pulumi-lang-dotnet="`PackageType`" pulumi-lang-go="`packageType`" pulumi-lang-python="`package_type`" pulumi-lang-yaml="`packageType`" pulumi-lang-java="`packageType`">`package_type`</span> is `Zip`.
+  /// Function entry point in your code. Required if `package_type` is `Zip`.
   final Input<String>? handler;
 
   /// Container image configuration values. See below.
   final Input<FunctionImageConfig>? imageConfig;
 
-  /// ECR image URI containing the function's deployment package. Conflicts with <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span> and <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span>. One of <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span>, <span pulumi-lang-nodejs="`imageUri`" pulumi-lang-dotnet="`ImageUri`" pulumi-lang-go="`imageUri`" pulumi-lang-python="`image_uri`" pulumi-lang-yaml="`imageUri`" pulumi-lang-java="`imageUri`">`image_uri`</span>, or <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span> must be specified.
+  /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
   final Input<String>? imageUri;
 
   /// ARN of the AWS Key Management Service key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
@@ -76,7 +76,7 @@ class FunctionArgs3 {
   /// Lambda deployment package type. Valid values are `Zip` and `Image`. Defaults to `Zip`.
   final Input<String>? packageType;
 
-  /// Whether to publish creation/change as new Lambda Function Version. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
   final Input<bool>? publish;
 
   /// Whether to publish to a alias or version number. Omit for regular version publishing. Option is `LATEST_PUBLISHED`.
@@ -85,13 +85,13 @@ class FunctionArgs3 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Whether to replace the security groups on the function's VPC configuration prior to destruction. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to replace the security groups on the function's VPC configuration prior to destruction. Default is `false`.
   final Input<bool>? replaceSecurityGroupsOnDestroy;
 
-  /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if <span pulumi-lang-nodejs="`replaceSecurityGroupsOnDestroy`" pulumi-lang-dotnet="`ReplaceSecurityGroupsOnDestroy`" pulumi-lang-go="`replaceSecurityGroupsOnDestroy`" pulumi-lang-python="`replace_security_groups_on_destroy`" pulumi-lang-yaml="`replaceSecurityGroupsOnDestroy`" pulumi-lang-java="`replaceSecurityGroupsOnDestroy`">`replace_security_groups_on_destroy`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replace_security_groups_on_destroy` is `true`.
   final Input<List<String>>? replacementSecurityGroupIds;
 
-  /// Amount of reserved concurrent executions for this lambda function. A value of <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`.
+  /// Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`.
   final Input<int>? reservedConcurrentExecutions;
 
   /// ARN of the function's execution role. The role provides the function's identity and access to AWS services and resources.
@@ -99,31 +99,31 @@ class FunctionArgs3 {
   /// The following arguments are optional:
   final Input<String> role;
 
-  /// Identifier of the function's runtime. Required if <span pulumi-lang-nodejs="`packageType`" pulumi-lang-dotnet="`PackageType`" pulumi-lang-go="`packageType`" pulumi-lang-python="`package_type`" pulumi-lang-yaml="`packageType`" pulumi-lang-java="`packageType`">`package_type`</span> is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
+  /// Identifier of the function's runtime. Required if `package_type` is `Zip`. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
   final Input<String>? runtime;
 
-  /// S3 bucket location containing the function's deployment package. Conflicts with <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span> and <span pulumi-lang-nodejs="`imageUri`" pulumi-lang-dotnet="`ImageUri`" pulumi-lang-go="`imageUri`" pulumi-lang-python="`image_uri`" pulumi-lang-yaml="`imageUri`" pulumi-lang-java="`imageUri`">`image_uri`</span>. One of <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span>, <span pulumi-lang-nodejs="`imageUri`" pulumi-lang-dotnet="`ImageUri`" pulumi-lang-go="`imageUri`" pulumi-lang-python="`image_uri`" pulumi-lang-yaml="`imageUri`" pulumi-lang-java="`imageUri`">`image_uri`</span>, or <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span> must be specified.
+  /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `image_uri`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
   final Input<String>? s3Bucket;
 
-  /// S3 key of an object containing the function's deployment package. Required if <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span> is set.
+  /// S3 key of an object containing the function's deployment package. Required if `s3_bucket` is set.
   final Input<String>? s3Key;
 
-  /// Object version containing the function's deployment package. Conflicts with <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span> and <span pulumi-lang-nodejs="`imageUri`" pulumi-lang-dotnet="`ImageUri`" pulumi-lang-go="`imageUri`" pulumi-lang-python="`image_uri`" pulumi-lang-yaml="`imageUri`" pulumi-lang-java="`imageUri`">`image_uri`</span>.
+  /// Object version containing the function's deployment package. Conflicts with `filename` and `image_uri`.
   final Input<String>? s3ObjectVersion;
 
-  /// Whether to retain the old version of a previously deployed Lambda Layer. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`.
   final Input<bool>? skipDestroy;
 
   /// Configuration block for snap start settings. See below.
   final Input<FunctionSnapStart>? snapStart;
 
-  /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the <span pulumi-lang-nodejs="`codeSha256`" pulumi-lang-dotnet="`CodeSha256`" pulumi-lang-go="`codeSha256`" pulumi-lang-python="`code_sha256`" pulumi-lang-yaml="`codeSha256`" pulumi-lang-java="`codeSha256`">`code_sha256`</span> argument instead.
+  /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `code_sha256` argument instead.
   final Input<String>? sourceCodeHash;
 
-  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with <span pulumi-lang-nodejs="`imageUri`" pulumi-lang-dotnet="`ImageUri`" pulumi-lang-go="`imageUri`" pulumi-lang-python="`image_uri`" pulumi-lang-yaml="`imageUri`" pulumi-lang-java="`imageUri`">`image_uri`</span>.
+  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `image_uri`.
   final Input<String>? sourceKmsKeyArn;
 
-  /// Key-value map of tags for the Lambda function. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags for the Lambda function. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Configuration block for Tenancy. See below.

@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_amazon_elasticsearch;
+
+export 'data_source_parameters_amazon_elasticsearch/data_source_parameters_amazon_elasticsearch.dart';

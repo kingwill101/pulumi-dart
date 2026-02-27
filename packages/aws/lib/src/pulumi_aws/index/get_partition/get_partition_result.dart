@@ -5,10 +5,10 @@ class GetPartitionResult {
   /// Base DNS domain name for the current partition (e.g., `amazonaws.com` in AWS Commercial, `amazonaws.com.cn` in AWS China).
   final String dnsSuffix;
 
-  /// Identifier of the current partition (e.g., <span pulumi-lang-nodejs="`aws`" pulumi-lang-dotnet="`Aws`" pulumi-lang-go="`aws`" pulumi-lang-python="`aws`" pulumi-lang-yaml="`aws`" pulumi-lang-java="`aws`">`aws`</span> in AWS Commercial, `aws-cn` in AWS China).
+  /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String id;
 
-  /// Identifier of the current partition (e.g., <span pulumi-lang-nodejs="`aws`" pulumi-lang-dotnet="`Aws`" pulumi-lang-go="`aws`" pulumi-lang-python="`aws`" pulumi-lang-yaml="`aws`" pulumi-lang-java="`aws`">`aws`</span> in AWS Commercial, `aws-cn` in AWS China).
+  /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
   final String partition;
 
   /// Prefix of service names (e.g., `com.amazonaws` in AWS Commercial, `cn.com.amazonaws` in AWS China).

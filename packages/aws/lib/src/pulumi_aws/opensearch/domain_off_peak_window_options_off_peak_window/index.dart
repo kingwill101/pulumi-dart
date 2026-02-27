@@ -1,3 +1,0 @@
-library module_opensearch_domain_off_peak_window_options_off_peak_window;
-
-export 'domain_off_peak_window_options_off_peak_window.dart';

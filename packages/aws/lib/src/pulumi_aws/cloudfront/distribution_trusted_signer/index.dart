@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_trusted_signer;
-
-export 'distribution_trusted_signer.dart';

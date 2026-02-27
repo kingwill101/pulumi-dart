@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PlanAssociatedAlarm {
-  /// Type of alarm. Valid values: `applicationHealth`, <span pulumi-lang-nodejs="`trigger`" pulumi-lang-dotnet="`Trigger`" pulumi-lang-go="`trigger`" pulumi-lang-python="`trigger`" pulumi-lang-yaml="`trigger`" pulumi-lang-java="`trigger`">`trigger`</span>.
+  /// Type of alarm. Valid values: `applicationHealth`, `trigger`.
   final String alarmType;
 
   /// ARN of the cross-account role to assume.

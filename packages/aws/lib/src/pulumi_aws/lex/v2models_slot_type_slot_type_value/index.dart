@@ -1,3 +1,0 @@
-library module_lex_v2models_slot_type_slot_type_value;
-
-export 'v2models_slot_type_slot_type_value.dart';

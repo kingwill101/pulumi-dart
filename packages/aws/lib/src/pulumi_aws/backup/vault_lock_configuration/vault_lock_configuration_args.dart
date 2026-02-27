@@ -7,7 +7,7 @@ class VaultLockConfigurationArgs {
   /// Name of the backup vault to add a lock configuration for.
   final Input<String> backupVaultName;
 
-  /// The number of days before the lock date. If omitted creates a vault lock in <span pulumi-lang-nodejs="`governance`" pulumi-lang-dotnet="`Governance`" pulumi-lang-go="`governance`" pulumi-lang-python="`governance`" pulumi-lang-yaml="`governance`" pulumi-lang-java="`governance`">`governance`</span> mode, otherwise it will create a vault lock in <span pulumi-lang-nodejs="`compliance`" pulumi-lang-dotnet="`Compliance`" pulumi-lang-go="`compliance`" pulumi-lang-python="`compliance`" pulumi-lang-yaml="`compliance`" pulumi-lang-java="`compliance`">`compliance`</span> mode.
+  /// The number of days before the lock date. If omitted creates a vault lock in `governance` mode, otherwise it will create a vault lock in `compliance` mode.
   final Input<int>? changeableForDays;
 
   /// The maximum retention period that the vault retains its recovery points.

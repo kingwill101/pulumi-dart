@@ -21,19 +21,19 @@ class GetKeyResult2 {
   /// A unique identifier for the custom key store that contains the KMS key.
   final String customKeyStoreId;
 
-  /// See <span pulumi-lang-nodejs="`keySpec`" pulumi-lang-dotnet="`KeySpec`" pulumi-lang-go="`keySpec`" pulumi-lang-python="`key_spec`" pulumi-lang-yaml="`keySpec`" pulumi-lang-java="`keySpec`">`key_spec`</span>.
+  /// See `key_spec`.
   final String customerMasterKeySpec;
 
-  /// The date and time after which AWS KMS deletes the key. This value is present only when <span pulumi-lang-nodejs="`keyState`" pulumi-lang-dotnet="`KeyState`" pulumi-lang-go="`keyState`" pulumi-lang-python="`key_state`" pulumi-lang-yaml="`keyState`" pulumi-lang-java="`keyState`">`key_state`</span> is `PendingDeletion`, otherwise this value is 0
+  /// The date and time after which AWS KMS deletes the key. This value is present only when `key_state` is `PendingDeletion`, otherwise this value is 0
   final String deletionDate;
 
   /// The description of the key.
   final String description;
 
-  /// Specifies whether the key is enabled. When <span pulumi-lang-nodejs="`keyState`" pulumi-lang-dotnet="`KeyState`" pulumi-lang-go="`keyState`" pulumi-lang-python="`key_state`" pulumi-lang-yaml="`keyState`" pulumi-lang-java="`keyState`">`key_state`</span> is `Enabled` this value is true, otherwise it is false
+  /// Specifies whether the key is enabled. When `key_state` is `Enabled` this value is true, otherwise it is false
   final bool enabled;
 
-  /// Specifies whether the Key's key material expires. This value is present only when <span pulumi-lang-nodejs="`origin`" pulumi-lang-dotnet="`Origin`" pulumi-lang-go="`origin`" pulumi-lang-python="`origin`" pulumi-lang-yaml="`origin`" pulumi-lang-java="`origin`">`origin`</span> is `EXTERNAL`, otherwise this value is empty
+  /// Specifies whether the Key's key material expires. This value is present only when `origin` is `EXTERNAL`, otherwise this value is empty
   final String expirationModel;
   final List<String>? grantTokens;
 
@@ -53,10 +53,10 @@ class GetKeyResult2 {
   /// Specifies the intended use of the key
   final String keyUsage;
 
-  /// Indicates whether the KMS key is a multi-Region (<span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>) or regional (<span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>) key.
+  /// Indicates whether the KMS key is a multi-Region (`true`) or regional (`false`) key.
   final bool multiRegion;
 
-  /// Lists the primary and replica keys in same multi-Region key. Present only when the value of <span pulumi-lang-nodejs="`multiRegion`" pulumi-lang-dotnet="`MultiRegion`" pulumi-lang-go="`multiRegion`" pulumi-lang-python="`multi_region`" pulumi-lang-yaml="`multiRegion`" pulumi-lang-java="`multiRegion`">`multi_region`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Lists the primary and replica keys in same multi-Region key. Present only when the value of `multi_region` is `true`.
   final List<GetKeyMultiRegionConfiguration> multiRegionConfigurations;
 
   /// When this value is `AWS_KMS`, AWS KMS created the key material. When this value is `EXTERNAL`, the key material was imported from your existing key management infrastructure or the CMK lacks key material
@@ -68,7 +68,7 @@ class GetKeyResult2 {
   /// The AWS Region of a primary or replica key in a multi-Region key.
   final String region;
 
-  /// The time at which the imported key material expires. This value is present only when <span pulumi-lang-nodejs="`origin`" pulumi-lang-dotnet="`Origin`" pulumi-lang-go="`origin`" pulumi-lang-python="`origin`" pulumi-lang-yaml="`origin`" pulumi-lang-java="`origin`">`origin`</span> is `EXTERNAL` and whose <span pulumi-lang-nodejs="`expirationModel`" pulumi-lang-dotnet="`ExpirationModel`" pulumi-lang-go="`expirationModel`" pulumi-lang-python="`expiration_model`" pulumi-lang-yaml="`expirationModel`" pulumi-lang-java="`expirationModel`">`expiration_model`</span> is `KEY_MATERIAL_EXPIRES`, otherwise this value is 0
+  /// The time at which the imported key material expires. This value is present only when `origin` is `EXTERNAL` and whose `expiration_model` is `KEY_MATERIAL_EXPIRES`, otherwise this value is 0
   final String validTo;
 
   /// Information about the external key that is associated with a KMS key in an external key store.

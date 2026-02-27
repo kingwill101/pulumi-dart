@@ -1,3 +1,0 @@
-library module_appsync_data_source_dynamodb_config_delta_sync_config;
-
-export 'data_source_dynamodb_config_delta_sync_config.dart';

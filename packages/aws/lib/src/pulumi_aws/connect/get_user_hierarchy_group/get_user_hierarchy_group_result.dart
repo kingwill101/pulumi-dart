@@ -9,7 +9,7 @@ class GetUserHierarchyGroupResult {
   final String arn;
   final String hierarchyGroupId;
 
-  /// Block that contains information about the levels in the hierarchy group. The <span pulumi-lang-nodejs="`hierarchyPath`" pulumi-lang-dotnet="`HierarchyPath`" pulumi-lang-go="`hierarchyPath`" pulumi-lang-python="`hierarchy_path`" pulumi-lang-yaml="`hierarchyPath`" pulumi-lang-java="`hierarchyPath`">`hierarchy_path`</span> block is documented below.
+  /// Block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
   final List<GetUserHierarchyGroupHierarchyPath> hierarchyPaths;
 
   /// The provider-assigned unique ID for this managed resource.

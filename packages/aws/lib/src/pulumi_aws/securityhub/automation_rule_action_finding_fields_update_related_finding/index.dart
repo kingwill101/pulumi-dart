@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_action_finding_fields_update_related_finding;
-
-export 'automation_rule_action_finding_fields_update_related_finding.dart';

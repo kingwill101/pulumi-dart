@@ -1,0 +1,3 @@
+library module_cloudwatch_log_transformer_transformer_config_rename_key;
+
+export 'log_transformer_transformer_config_rename_key/log_transformer_transformer_config_rename_key.dart';

@@ -1,3 +1,0 @@
-library module_backup_restore_testing_selection_protected_resource_conditions;
-
-export 'restore_testing_selection_protected_resource_conditions.dart';

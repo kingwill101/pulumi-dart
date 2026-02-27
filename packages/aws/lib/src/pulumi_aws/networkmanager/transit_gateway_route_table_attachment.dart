@@ -1,0 +1,4 @@
+library module_networkmanager_transit_gateway_route_table_attachment;
+
+export 'transit_gateway_route_table_attachment/transit_gateway_route_table_attachment.dart';
+export 'transit_gateway_route_table_attachment/transit_gateway_route_table_attachment_args.dart';

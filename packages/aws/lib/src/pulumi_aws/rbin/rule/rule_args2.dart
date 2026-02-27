@@ -11,22 +11,22 @@ class RuleArgs2 {
   /// Retention rule description.
   final Input<String>? description;
 
-  /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See <span pulumi-lang-nodejs="`excludeResourceTags`" pulumi-lang-dotnet="`ExcludeResourceTags`" pulumi-lang-go="`excludeResourceTags`" pulumi-lang-python="`exclude_resource_tags`" pulumi-lang-yaml="`excludeResourceTags`" pulumi-lang-java="`excludeResourceTags`">`exclude_resource_tags`</span> below.
+  /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `exclude_resource_tags` below.
   final Input<List<RuleExcludeResourceTag>>? excludeResourceTags;
 
-  /// Information about the retention rule lock configuration. See <span pulumi-lang-nodejs="`lockConfiguration`" pulumi-lang-dotnet="`LockConfiguration`" pulumi-lang-go="`lockConfiguration`" pulumi-lang-python="`lock_configuration`" pulumi-lang-yaml="`lockConfiguration`" pulumi-lang-java="`lockConfiguration`">`lock_configuration`</span> below.
+  /// Information about the retention rule lock configuration. See `lock_configuration` below.
   final Input<RuleLockConfiguration>? lockConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See <span pulumi-lang-nodejs="`resourceTags`" pulumi-lang-dotnet="`ResourceTags`" pulumi-lang-go="`resourceTags`" pulumi-lang-python="`resource_tags`" pulumi-lang-yaml="`resourceTags`" pulumi-lang-java="`resourceTags`">`resource_tags`</span> below.
+  /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resource_tags` below.
   final Input<List<RuleResourceTag>>? resourceTags;
 
   /// Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
   final Input<String> resourceType;
 
-  /// Information about the retention period for which the retention rule is to retain resources. See <span pulumi-lang-nodejs="`retentionPeriod`" pulumi-lang-dotnet="`RetentionPeriod`" pulumi-lang-go="`retentionPeriod`" pulumi-lang-python="`retention_period`" pulumi-lang-yaml="`retentionPeriod`" pulumi-lang-java="`retentionPeriod`">`retention_period`</span> below.
+  /// Information about the retention period for which the retention rule is to retain resources. See `retention_period` below.
   ///
   /// The following arguments are optional:
   final Input<RuleRetentionPeriod> retentionPeriod;

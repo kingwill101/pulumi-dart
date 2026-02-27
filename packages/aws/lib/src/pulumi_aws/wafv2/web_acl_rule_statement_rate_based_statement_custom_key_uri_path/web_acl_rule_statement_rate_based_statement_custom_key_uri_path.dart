@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../web_acl_rule_statement_rate_based_statement_custom_key_uri_path_text_transformation/web_acl_rule_statement_rate_based_statement_custom_key_uri_path_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementCustomKeyUriPath {
-  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required. See <span pulumi-lang-nodejs="`textTransformation`" pulumi-lang-dotnet="`TextTransformation`" pulumi-lang-go="`textTransformation`" pulumi-lang-python="`text_transformation`" pulumi-lang-yaml="`textTransformation`" pulumi-lang-java="`textTransformation`">`text_transformation`</span> above for details.
+  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required. See `text_transformation` above for details.
   final List<
           WebAclRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation>
       textTransformations;

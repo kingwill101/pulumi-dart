@@ -1,0 +1,3 @@
+library module_servicediscovery_service_dns_config_dns_record;
+
+export 'service_dns_config_dns_record/service_dns_config_dns_record.dart';

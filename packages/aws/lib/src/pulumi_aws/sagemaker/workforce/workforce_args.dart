@@ -8,10 +8,10 @@ import '../workforce_workforce_vpc_config/workforce_workforce_vpc_config.dart';
 
 /// The set of arguments for Workforce.
 class WorkforceArgs {
-  /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with <span pulumi-lang-nodejs="`oidcConfig`" pulumi-lang-dotnet="`OidcConfig`" pulumi-lang-go="`oidcConfig`" pulumi-lang-python="`oidc_config`" pulumi-lang-yaml="`oidcConfig`" pulumi-lang-java="`oidcConfig`">`oidc_config`</span>. see Cognito Config details below.
+  /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidc_config`. see Cognito Config details below.
   final Input<WorkforceCognitoConfig>? cognitoConfig;
 
-  /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with <span pulumi-lang-nodejs="`cognitoConfig`" pulumi-lang-dotnet="`CognitoConfig`" pulumi-lang-go="`cognitoConfig`" pulumi-lang-python="`cognito_config`" pulumi-lang-yaml="`cognitoConfig`" pulumi-lang-java="`cognitoConfig`">`cognito_config`</span>. see OIDC Config details below.
+  /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognito_config`. see OIDC Config details below.
   final Input<WorkforceOidcConfig>? oidcConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LogTransformerTransformerConfigListToMap {
-  /// Specifies whether the list will be flattened into single items. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether the list will be flattened into single items. Defaults to `false`.
   final bool? flatten;
 
-  /// Required if <span pulumi-lang-nodejs="`flatten`" pulumi-lang-dotnet="`Flatten`" pulumi-lang-go="`flatten`" pulumi-lang-python="`flatten`" pulumi-lang-yaml="`flatten`" pulumi-lang-java="`flatten`">`flatten`</span> is set to true. Specifies the element to keep. Allowed values are <span pulumi-lang-nodejs="`first`" pulumi-lang-dotnet="`First`" pulumi-lang-go="`first`" pulumi-lang-python="`first`" pulumi-lang-yaml="`first`" pulumi-lang-java="`first`">`first`</span> and <span pulumi-lang-nodejs="`last`" pulumi-lang-dotnet="`Last`" pulumi-lang-go="`last`" pulumi-lang-python="`last`" pulumi-lang-yaml="`last`" pulumi-lang-java="`last`">`last`</span>.
+  /// Required if `flatten` is set to true. Specifies the element to keep. Allowed values are `first` and `last`.
   final String? flattenedElement;
 
   /// Specifies the key of the field to be extracted as keys in the generated map.

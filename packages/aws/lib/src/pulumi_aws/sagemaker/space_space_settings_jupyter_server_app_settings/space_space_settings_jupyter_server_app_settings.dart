@@ -5,11 +5,11 @@ import '../space_space_settings_jupyter_server_app_settings_code_repository/spac
 import '../space_space_settings_jupyter_server_app_settings_default_resource_spec/space_space_settings_jupyter_server_app_settings_default_resource_spec.dart';
 
 class SpaceSpaceSettingsJupyterServerAppSettings {
-  /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. See <span pulumi-lang-nodejs="`codeRepository`" pulumi-lang-dotnet="`CodeRepository`" pulumi-lang-go="`codeRepository`" pulumi-lang-python="`code_repository`" pulumi-lang-yaml="`codeRepository`" pulumi-lang-java="`codeRepository`">`code_repository`</span> Block below.
+  /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. See `code_repository` Block below.
   final List<SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository>?
       codeRepositories;
 
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See <span pulumi-lang-nodejs="`defaultResourceSpec`" pulumi-lang-dotnet="`DefaultResourceSpec`" pulumi-lang-go="`defaultResourceSpec`" pulumi-lang-python="`default_resource_spec`" pulumi-lang-yaml="`defaultResourceSpec`" pulumi-lang-java="`defaultResourceSpec`">`default_resource_spec`</span> Block below.
+  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `default_resource_spec` Block below.
   final SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec
       defaultResourceSpec;
 

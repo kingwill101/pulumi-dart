@@ -3,342 +3,29 @@ import 'caches_iscsi_volume_args.dart';
 
 /// Manages an AWS Storage Gateway cached iSCSI volume.
 ///
-/// > **NOTE:** The gateway must have cache added (e.g., via the <span pulumi-lang-nodejs="`aws.storagegateway.Cache`" pulumi-lang-dotnet="`aws.storagegateway.Cache`" pulumi-lang-go="`storagegateway.Cache`" pulumi-lang-python="`storagegateway.Cache`" pulumi-lang-yaml="`aws.storagegateway.Cache`" pulumi-lang-java="`aws.storagegateway.Cache`">`aws.storagegateway.Cache`</span> resource) before creating volumes otherwise the Storage Gateway API will return an error.
+/// > **NOTE:** The gateway must have cache added (e.g., via the `aws.storagegateway.Cache` resource) before creating volumes otherwise the Storage Gateway API will return an error.
 ///
-/// > **NOTE:** The gateway must have an upload buffer added (e.g., via the <span pulumi-lang-nodejs="`aws.storagegateway.UploadBuffer`" pulumi-lang-dotnet="`aws.storagegateway.UploadBuffer`" pulumi-lang-go="`storagegateway.UploadBuffer`" pulumi-lang-python="`storagegateway.UploadBuffer`" pulumi-lang-yaml="`aws.storagegateway.UploadBuffer`" pulumi-lang-java="`aws.storagegateway.UploadBuffer`">`aws.storagegateway.UploadBuffer`</span> resource) before the volume is operational to clients, however the Storage Gateway API will allow volume creation without error in that case and return volume status as `UPLOAD BUFFER NOT CONFIGURED`.
+/// > **NOTE:** The gateway must have an upload buffer added (e.g., via the `aws.storagegateway.UploadBuffer` resource) before the volume is operational to clients, however the Storage Gateway API will allow volume creation without error in that case and return volume status as `UPLOAD BUFFER NOT CONFIGURED`.
 ///
 /// ## Example Usage
 ///
-/// > **NOTE:** These examples are referencing the <span pulumi-lang-nodejs="`aws.storagegateway.Cache`" pulumi-lang-dotnet="`aws.storagegateway.Cache`" pulumi-lang-go="`storagegateway.Cache`" pulumi-lang-python="`storagegateway.Cache`" pulumi-lang-yaml="`aws.storagegateway.Cache`" pulumi-lang-java="`aws.storagegateway.Cache`">`aws.storagegateway.Cache`</span> resource <span pulumi-lang-nodejs="`gatewayArn`" pulumi-lang-dotnet="`GatewayArn`" pulumi-lang-go="`gatewayArn`" pulumi-lang-python="`gateway_arn`" pulumi-lang-yaml="`gatewayArn`" pulumi-lang-java="`gatewayArn`">`gateway_arn`</span> attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via <span pulumi-lang-nodejs="`dependsOn " pulumi-lang-dotnet="`DependsOn " pulumi-lang-go="`dependsOn " pulumi-lang-python="`depends_on " pulumi-lang-yaml="`dependsOn " pulumi-lang-java="`dependsOn ">`depends_on </span>= [aws_storagegateway_cache.example]`) to ensure proper ordering.
+/// > **NOTE:** These examples are referencing the `aws.storagegateway.Cache` resource `gateway_arn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `depends_on = [aws_storagegateway_cache.example]`) to ensure proper ordering.
 ///
 /// ### Create Empty Cached iSCSI Volume
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.storagegateway.CachesIscsiVolume("example", {
-/// gatewayArn: exampleAwsStoragegatewayCache.gatewayArn,
-/// networkInterfaceId: exampleAwsInstance.privateIp,
-/// targetName: "example",
-/// volumeSizeInBytes: 5368709120,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.storagegateway.CachesIscsiVolume("example",
-/// gateway_arn=example_aws_storagegateway_cache["gatewayArn"],
-/// network_interface_id=example_aws_instance["privateIp"],
-/// target_name="example",
-/// volume_size_in_bytes=5368709120)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.StorageGateway.CachesIscsiVolume("example", new()
-/// {
-/// GatewayArn = exampleAwsStoragegatewayCache.GatewayArn,
-/// NetworkInterfaceId = exampleAwsInstance.PrivateIp,
-/// TargetName = "example",
-/// VolumeSizeInBytes = 5368709120,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/storagegateway"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
-/// GatewayArn:         pulumi.Any(exampleAwsStoragegatewayCache.GatewayArn),
-/// NetworkInterfaceId: pulumi.Any(exampleAwsInstance.PrivateIp),
-/// TargetName:         pulumi.String("example"),
-/// VolumeSizeInBytes:  pulumi.Int(5368709120),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.storagegateway.CachesIscsiVolume;
-/// import com.pulumi.aws.storagegateway.CachesIscsiVolumeArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new CachesIscsiVolume("example", CachesIscsiVolumeArgs.builder()
-/// .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-/// .networkInterfaceId(exampleAwsInstance.privateIp())
-/// .targetName("example")
-/// .volumeSizeInBytes(5368709120)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:storagegateway:CachesIscsiVolume
-/// properties:
-/// gatewayArn: ${exampleAwsStoragegatewayCache.gatewayArn}
-/// networkInterfaceId: ${exampleAwsInstance.privateIp}
-/// targetName: example
-/// volumeSizeInBytes: 5.36870912e+09 # 5 GB
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Create Cached iSCSI Volume From Snapshot
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.storagegateway.CachesIscsiVolume("example", {
-/// gatewayArn: exampleAwsStoragegatewayCache.gatewayArn,
-/// networkInterfaceId: exampleAwsInstance.privateIp,
-/// snapshotId: exampleAwsEbsSnapshot.id,
-/// targetName: "example",
-/// volumeSizeInBytes: exampleAwsEbsSnapshot.volumeSize * 1024 * 1024 * 1024,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.storagegateway.CachesIscsiVolume("example",
-/// gateway_arn=example_aws_storagegateway_cache["gatewayArn"],
-/// network_interface_id=example_aws_instance["privateIp"],
-/// snapshot_id=example_aws_ebs_snapshot["id"],
-/// target_name="example",
-/// volume_size_in_bytes=example_aws_ebs_snapshot["volumeSize"] * 1024 * 1024 * 1024)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.StorageGateway.CachesIscsiVolume("example", new()
-/// {
-/// GatewayArn = exampleAwsStoragegatewayCache.GatewayArn,
-/// NetworkInterfaceId = exampleAwsInstance.PrivateIp,
-/// SnapshotId = exampleAwsEbsSnapshot.Id,
-/// TargetName = "example",
-/// VolumeSizeInBytes = exampleAwsEbsSnapshot.VolumeSize * 1024 * 1024 * 1024,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/storagegateway"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
-/// GatewayArn:         pulumi.Any(exampleAwsStoragegatewayCache.GatewayArn),
-/// NetworkInterfaceId: pulumi.Any(exampleAwsInstance.PrivateIp),
-/// SnapshotId:         pulumi.Any(exampleAwsEbsSnapshot.Id),
-/// TargetName:         pulumi.String("example"),
-/// VolumeSizeInBytes:  int(exampleAwsEbsSnapshot.VolumeSize * 1024 * 1024 * 1024),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.storagegateway.CachesIscsiVolume;
-/// import com.pulumi.aws.storagegateway.CachesIscsiVolumeArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new CachesIscsiVolume("example", CachesIscsiVolumeArgs.builder()
-/// .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-/// .networkInterfaceId(exampleAwsInstance.privateIp())
-/// .snapshotId(exampleAwsEbsSnapshot.id())
-/// .targetName("example")
-/// .volumeSizeInBytes(exampleAwsEbsSnapshot.volumeSize() * 1024 * 1024 * 1024)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Create Cached iSCSI Volume From Source Volume
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.storagegateway.CachesIscsiVolume("example", {
-/// gatewayArn: exampleAwsStoragegatewayCache.gatewayArn,
-/// networkInterfaceId: exampleAwsInstance.privateIp,
-/// sourceVolumeArn: existing.arn,
-/// targetName: "example",
-/// volumeSizeInBytes: existing.volumeSizeInBytes,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.storagegateway.CachesIscsiVolume("example",
-/// gateway_arn=example_aws_storagegateway_cache["gatewayArn"],
-/// network_interface_id=example_aws_instance["privateIp"],
-/// source_volume_arn=existing["arn"],
-/// target_name="example",
-/// volume_size_in_bytes=existing["volumeSizeInBytes"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.StorageGateway.CachesIscsiVolume("example", new()
-/// {
-/// GatewayArn = exampleAwsStoragegatewayCache.GatewayArn,
-/// NetworkInterfaceId = exampleAwsInstance.PrivateIp,
-/// SourceVolumeArn = existing.Arn,
-/// TargetName = "example",
-/// VolumeSizeInBytes = existing.VolumeSizeInBytes,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/storagegateway"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
-/// GatewayArn:         pulumi.Any(exampleAwsStoragegatewayCache.GatewayArn),
-/// NetworkInterfaceId: pulumi.Any(exampleAwsInstance.PrivateIp),
-/// SourceVolumeArn:    pulumi.Any(existing.Arn),
-/// TargetName:         pulumi.String("example"),
-/// VolumeSizeInBytes:  pulumi.Any(existing.VolumeSizeInBytes),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.storagegateway.CachesIscsiVolume;
-/// import com.pulumi.aws.storagegateway.CachesIscsiVolumeArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new CachesIscsiVolume("example", CachesIscsiVolumeArgs.builder()
-/// .gatewayArn(exampleAwsStoragegatewayCache.gatewayArn())
-/// .networkInterfaceId(exampleAwsInstance.privateIp())
-/// .sourceVolumeArn(existing.arn())
-/// .targetName("example")
-/// .volumeSizeInBytes(existing.volumeSizeInBytes())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:storagegateway:CachesIscsiVolume
-/// properties:
-/// gatewayArn: ${exampleAwsStoragegatewayCache.gatewayArn}
-/// networkInterfaceId: ${exampleAwsInstance.privateIp}
-/// sourceVolumeArn: ${existing.arn}
-/// targetName: example
-/// volumeSizeInBytes: ${existing.volumeSizeInBytes}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.storagegateway.CachesIscsiVolume`" pulumi-lang-dotnet="`aws.storagegateway.CachesIscsiVolume`" pulumi-lang-go="`storagegateway.CachesIscsiVolume`" pulumi-lang-python="`storagegateway.CachesIscsiVolume`" pulumi-lang-yaml="`aws.storagegateway.CachesIscsiVolume`" pulumi-lang-java="`aws.storagegateway.CachesIscsiVolume`">`aws.storagegateway.CachesIscsiVolume`</span> using the volume Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.storagegateway.CachesIscsiVolume` using the volume Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/cachesIscsiVolume:CachesIscsiVolume example arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678
@@ -353,10 +40,10 @@ class CachesIscsiVolume extends CustomResource {
   /// The Amazon Resource Name (ARN) of the gateway.
   late final Output<String> gatewayArn;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to use Amazon S3 server side encryption with your own AWS KMS key, or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> to use a key managed by Amazon S3.
+  /// Set to `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3.
   late final Output<bool?> kmsEncrypted;
 
-  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. Is required when <span pulumi-lang-nodejs="`kmsEncrypted`" pulumi-lang-dotnet="`KmsEncrypted`" pulumi-lang-go="`kmsEncrypted`" pulumi-lang-python="`kms_encrypted`" pulumi-lang-yaml="`kmsEncrypted`" pulumi-lang-java="`kmsEncrypted`">`kms_encrypted`</span> is set.
+  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. Is required when `kms_encrypted` is set.
   late final Output<String?> kmsKey;
 
   /// Logical disk number.
@@ -374,13 +61,13 @@ class CachesIscsiVolume extends CustomResource {
   /// The snapshot ID of the snapshot to restore as the new cached volumeE.g., `snap-1122aabb`.
   late final Output<String?> snapshotId;
 
-  /// The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The <span pulumi-lang-nodejs="`volumeSizeInBytes`" pulumi-lang-dotnet="`VolumeSizeInBytes`" pulumi-lang-go="`volumeSizeInBytes`" pulumi-lang-python="`volume_size_in_bytes`" pulumi-lang-yaml="`volumeSizeInBytes`" pulumi-lang-java="`volumeSizeInBytes`">`volume_size_in_bytes`</span> value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
+  /// The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The `volume_size_in_bytes` value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
   late final Output<String?> sourceVolumeArn;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Target Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.

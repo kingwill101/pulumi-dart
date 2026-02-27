@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_oracle;
+
+export 'data_source_parameters_oracle/data_source_parameters_oracle.dart';

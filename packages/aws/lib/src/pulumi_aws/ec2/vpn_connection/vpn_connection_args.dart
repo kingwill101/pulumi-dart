@@ -36,7 +36,7 @@ class VpnConnectionArgs {
   /// Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP.
   final Input<bool>? staticRoutesOnly;
 
-  /// Tags to apply to the connection. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The ID of the EC2 Transit Gateway.
@@ -48,7 +48,7 @@ class VpnConnectionArgs {
   /// The action to take after DPD timeout occurs for the first VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are `clear | none | restart`.
   final Input<String>? tunnel1DpdTimeoutAction;
 
-  /// The number of seconds after which a DPD timeout occurs for the first VPN tunnel. Valid value is equal or higher than <span pulumi-lang-nodejs="`30`" pulumi-lang-dotnet="`30`" pulumi-lang-go="`30`" pulumi-lang-python="`30`" pulumi-lang-yaml="`30`" pulumi-lang-java="`30`">`30`</span>.
+  /// The number of seconds after which a DPD timeout occurs for the first VPN tunnel. Valid value is equal or higher than `30`.
   final Input<int>? tunnel1DpdTimeoutSeconds;
 
   /// Turn on or off tunnel endpoint lifecycle control feature for the first VPN tunnel. Valid values are `true | false`.
@@ -75,7 +75,7 @@ class VpnConnectionArgs {
   /// One or more integrity algorithms that are permitted for the first VPN tunnel for phase 1 IKE negotiations. Valid values are `SHA1 | SHA2-256 | SHA2-384 | SHA2-512`.
   final Input<List<String>>? tunnel1Phase1IntegrityAlgorithms;
 
-  /// The lifetime for phase 1 of the IKE negotiation for the first VPN tunnel, in seconds. Valid value is between <span pulumi-lang-nodejs="`900`" pulumi-lang-dotnet="`900`" pulumi-lang-go="`900`" pulumi-lang-python="`900`" pulumi-lang-yaml="`900`" pulumi-lang-java="`900`">`900`</span> and <span pulumi-lang-nodejs="`28800`" pulumi-lang-dotnet="`28800`" pulumi-lang-go="`28800`" pulumi-lang-python="`28800`" pulumi-lang-yaml="`28800`" pulumi-lang-java="`28800`">`28800`</span>.
+  /// The lifetime for phase 1 of the IKE negotiation for the first VPN tunnel, in seconds. Valid value is between `900` and `28800`.
   final Input<int>? tunnel1Phase1LifetimeSeconds;
 
   /// List of one or more Diffie-Hellman group numbers that are permitted for the first VPN tunnel for phase 2 IKE negotiations. Valid values are `2 | 5 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24`.
@@ -87,19 +87,19 @@ class VpnConnectionArgs {
   /// List of one or more integrity algorithms that are permitted for the first VPN tunnel for phase 2 IKE negotiations. Valid values are `SHA1 | SHA2-256 | SHA2-384 | SHA2-512`.
   final Input<List<String>>? tunnel1Phase2IntegrityAlgorithms;
 
-  /// The lifetime for phase 2 of the IKE negotiation for the first VPN tunnel, in seconds. Valid value is between <span pulumi-lang-nodejs="`900`" pulumi-lang-dotnet="`900`" pulumi-lang-go="`900`" pulumi-lang-python="`900`" pulumi-lang-yaml="`900`" pulumi-lang-java="`900`">`900`</span> and <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
+  /// The lifetime for phase 2 of the IKE negotiation for the first VPN tunnel, in seconds. Valid value is between `900` and `3600`.
   final Input<int>? tunnel1Phase2LifetimeSeconds;
 
   /// The preshared key of the first VPN tunnel. The preshared key must be between 8 and 64 characters in length and cannot start with zero(0). Allowed characters are alphanumeric characters, periods(.) and underscores(_).
   final Input<String>? tunnel1PresharedKey;
 
-  /// The percentage of the rekey window for the first VPN tunnel (determined by <span pulumi-lang-nodejs="`tunnel1RekeyMarginTimeSeconds`" pulumi-lang-dotnet="`Tunnel1RekeyMarginTimeSeconds`" pulumi-lang-go="`tunnel1RekeyMarginTimeSeconds`" pulumi-lang-python="`tunnel1_rekey_margin_time_seconds`" pulumi-lang-yaml="`tunnel1RekeyMarginTimeSeconds`" pulumi-lang-java="`tunnel1RekeyMarginTimeSeconds`">`tunnel1_rekey_margin_time_seconds`</span>) during which the rekey time is randomly selected. Valid value is between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>.
+  /// The percentage of the rekey window for the first VPN tunnel (determined by `tunnel1_rekey_margin_time_seconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
   final Input<int>? tunnel1RekeyFuzzPercentage;
 
-  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the first VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for <span pulumi-lang-nodejs="`tunnel1RekeyFuzzPercentage`" pulumi-lang-dotnet="`Tunnel1RekeyFuzzPercentage`" pulumi-lang-go="`tunnel1RekeyFuzzPercentage`" pulumi-lang-python="`tunnel1_rekey_fuzz_percentage`" pulumi-lang-yaml="`tunnel1RekeyFuzzPercentage`" pulumi-lang-java="`tunnel1RekeyFuzzPercentage`">`tunnel1_rekey_fuzz_percentage`</span>. Valid value is between <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> and half of <span pulumi-lang-nodejs="`tunnel1Phase2LifetimeSeconds`" pulumi-lang-dotnet="`Tunnel1Phase2LifetimeSeconds`" pulumi-lang-go="`tunnel1Phase2LifetimeSeconds`" pulumi-lang-python="`tunnel1_phase2_lifetime_seconds`" pulumi-lang-yaml="`tunnel1Phase2LifetimeSeconds`" pulumi-lang-java="`tunnel1Phase2LifetimeSeconds`">`tunnel1_phase2_lifetime_seconds`</span>.
+  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the first VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel1_rekey_fuzz_percentage`. Valid value is between `60` and half of `tunnel1_phase2_lifetime_seconds`.
   final Input<int>? tunnel1RekeyMarginTimeSeconds;
 
-  /// The number of packets in an IKE replay window for the first VPN tunnel. Valid value is between <span pulumi-lang-nodejs="`64`" pulumi-lang-dotnet="`64`" pulumi-lang-go="`64`" pulumi-lang-python="`64`" pulumi-lang-yaml="`64`" pulumi-lang-java="`64`">`64`</span> and <span pulumi-lang-nodejs="`2048`" pulumi-lang-dotnet="`2048`" pulumi-lang-go="`2048`" pulumi-lang-python="`2048`" pulumi-lang-yaml="`2048`" pulumi-lang-java="`2048`">`2048`</span>.
+  /// The number of packets in an IKE replay window for the first VPN tunnel. Valid value is between `64` and `2048`.
   final Input<int>? tunnel1ReplayWindowSize;
 
   /// The action to take when the establishing the tunnel for the first VPN connection. By default, your customer gateway device must initiate the IKE negotiation and bring up the tunnel. Specify start for AWS to initiate the IKE negotiation. Valid values are `add | start`.
@@ -108,7 +108,7 @@ class VpnConnectionArgs {
   /// The action to take after DPD timeout occurs for the second VPN tunnel. Specify restart to restart the IKE initiation. Specify clear to end the IKE session. Valid values are `clear | none | restart`.
   final Input<String>? tunnel2DpdTimeoutAction;
 
-  /// The number of seconds after which a DPD timeout occurs for the second VPN tunnel. Valid value is equal or higher than <span pulumi-lang-nodejs="`30`" pulumi-lang-dotnet="`30`" pulumi-lang-go="`30`" pulumi-lang-python="`30`" pulumi-lang-yaml="`30`" pulumi-lang-java="`30`">`30`</span>.
+  /// The number of seconds after which a DPD timeout occurs for the second VPN tunnel. Valid value is equal or higher than `30`.
   final Input<int>? tunnel2DpdTimeoutSeconds;
 
   /// Turn on or off tunnel endpoint lifecycle control feature for the second VPN tunnel. Valid values are `true | false`.
@@ -135,7 +135,7 @@ class VpnConnectionArgs {
   /// One or more integrity algorithms that are permitted for the second VPN tunnel for phase 1 IKE negotiations. Valid values are `SHA1 | SHA2-256 | SHA2-384 | SHA2-512`.
   final Input<List<String>>? tunnel2Phase1IntegrityAlgorithms;
 
-  /// The lifetime for phase 1 of the IKE negotiation for the second VPN tunnel, in seconds. Valid value is between <span pulumi-lang-nodejs="`900`" pulumi-lang-dotnet="`900`" pulumi-lang-go="`900`" pulumi-lang-python="`900`" pulumi-lang-yaml="`900`" pulumi-lang-java="`900`">`900`</span> and <span pulumi-lang-nodejs="`28800`" pulumi-lang-dotnet="`28800`" pulumi-lang-go="`28800`" pulumi-lang-python="`28800`" pulumi-lang-yaml="`28800`" pulumi-lang-java="`28800`">`28800`</span>.
+  /// The lifetime for phase 1 of the IKE negotiation for the second VPN tunnel, in seconds. Valid value is between `900` and `28800`.
   final Input<int>? tunnel2Phase1LifetimeSeconds;
 
   /// List of one or more Diffie-Hellman group numbers that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are `2 | 5 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24`.
@@ -147,28 +147,28 @@ class VpnConnectionArgs {
   /// List of one or more integrity algorithms that are permitted for the second VPN tunnel for phase 2 IKE negotiations. Valid values are `SHA1 | SHA2-256 | SHA2-384 | SHA2-512`.
   final Input<List<String>>? tunnel2Phase2IntegrityAlgorithms;
 
-  /// The lifetime for phase 2 of the IKE negotiation for the second VPN tunnel, in seconds. Valid value is between <span pulumi-lang-nodejs="`900`" pulumi-lang-dotnet="`900`" pulumi-lang-go="`900`" pulumi-lang-python="`900`" pulumi-lang-yaml="`900`" pulumi-lang-java="`900`">`900`</span> and <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
+  /// The lifetime for phase 2 of the IKE negotiation for the second VPN tunnel, in seconds. Valid value is between `900` and `3600`.
   final Input<int>? tunnel2Phase2LifetimeSeconds;
 
   /// The preshared key of the second VPN tunnel. The preshared key must be between 8 and 64 characters in length and cannot start with zero(0). Allowed characters are alphanumeric characters, periods(.) and underscores(_).
   final Input<String>? tunnel2PresharedKey;
 
-  /// The percentage of the rekey window for the second VPN tunnel (determined by <span pulumi-lang-nodejs="`tunnel2RekeyMarginTimeSeconds`" pulumi-lang-dotnet="`Tunnel2RekeyMarginTimeSeconds`" pulumi-lang-go="`tunnel2RekeyMarginTimeSeconds`" pulumi-lang-python="`tunnel2_rekey_margin_time_seconds`" pulumi-lang-yaml="`tunnel2RekeyMarginTimeSeconds`" pulumi-lang-java="`tunnel2RekeyMarginTimeSeconds`">`tunnel2_rekey_margin_time_seconds`</span>) during which the rekey time is randomly selected. Valid value is between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>.
+  /// The percentage of the rekey window for the second VPN tunnel (determined by `tunnel2_rekey_margin_time_seconds`) during which the rekey time is randomly selected. Valid value is between `0` and `100`.
   final Input<int>? tunnel2RekeyFuzzPercentage;
 
-  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the second VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for <span pulumi-lang-nodejs="`tunnel2RekeyFuzzPercentage`" pulumi-lang-dotnet="`Tunnel2RekeyFuzzPercentage`" pulumi-lang-go="`tunnel2RekeyFuzzPercentage`" pulumi-lang-python="`tunnel2_rekey_fuzz_percentage`" pulumi-lang-yaml="`tunnel2RekeyFuzzPercentage`" pulumi-lang-java="`tunnel2RekeyFuzzPercentage`">`tunnel2_rekey_fuzz_percentage`</span>. Valid value is between <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> and half of <span pulumi-lang-nodejs="`tunnel2Phase2LifetimeSeconds`" pulumi-lang-dotnet="`Tunnel2Phase2LifetimeSeconds`" pulumi-lang-go="`tunnel2Phase2LifetimeSeconds`" pulumi-lang-python="`tunnel2_phase2_lifetime_seconds`" pulumi-lang-yaml="`tunnel2Phase2LifetimeSeconds`" pulumi-lang-java="`tunnel2Phase2LifetimeSeconds`">`tunnel2_phase2_lifetime_seconds`</span>.
+  /// The margin time, in seconds, before the phase 2 lifetime expires, during which the AWS side of the second VPN connection performs an IKE rekey. The exact time of the rekey is randomly selected based on the value for `tunnel2_rekey_fuzz_percentage`. Valid value is between `60` and half of `tunnel2_phase2_lifetime_seconds`.
   final Input<int>? tunnel2RekeyMarginTimeSeconds;
 
-  /// The number of packets in an IKE replay window for the second VPN tunnel. Valid value is between <span pulumi-lang-nodejs="`64`" pulumi-lang-dotnet="`64`" pulumi-lang-go="`64`" pulumi-lang-python="`64`" pulumi-lang-yaml="`64`" pulumi-lang-java="`64`">`64`</span> and <span pulumi-lang-nodejs="`2048`" pulumi-lang-dotnet="`2048`" pulumi-lang-go="`2048`" pulumi-lang-python="`2048`" pulumi-lang-yaml="`2048`" pulumi-lang-java="`2048`">`2048`</span>.
+  /// The number of packets in an IKE replay window for the second VPN tunnel. Valid value is between `64` and `2048`.
   final Input<int>? tunnel2ReplayWindowSize;
 
   /// The action to take when the establishing the tunnel for the second VPN connection. By default, your customer gateway device must initiate the IKE negotiation and bring up the tunnel. Specify start for AWS to initiate the IKE negotiation. Valid values are `add | start`.
   final Input<String>? tunnel2StartupAction;
 
-  /// Desired bandwidth specification for the VPN tunnel. Valid values are `standard | large`. <span pulumi-lang-nodejs="`standard`" pulumi-lang-dotnet="`Standard`" pulumi-lang-go="`standard`" pulumi-lang-python="`standard`" pulumi-lang-yaml="`standard`" pulumi-lang-java="`standard`">`standard`</span> supports up to 1.25 Gbps per tunnel, while <span pulumi-lang-nodejs="`large`" pulumi-lang-dotnet="`Large`" pulumi-lang-go="`large`" pulumi-lang-python="`large`" pulumi-lang-yaml="`large`" pulumi-lang-java="`large`">`large`</span> supports up to 5 Gbps per tunnel. Not supported when <span pulumi-lang-nodejs="`vpnGatewayId`" pulumi-lang-dotnet="`VpnGatewayId`" pulumi-lang-go="`vpnGatewayId`" pulumi-lang-python="`vpn_gateway_id`" pulumi-lang-yaml="`vpnGatewayId`" pulumi-lang-java="`vpnGatewayId`">`vpn_gateway_id`</span> is specified, or <span pulumi-lang-nodejs="`enableAcceleration`" pulumi-lang-dotnet="`EnableAcceleration`" pulumi-lang-go="`enableAcceleration`" pulumi-lang-python="`enable_acceleration`" pulumi-lang-yaml="`enableAcceleration`" pulumi-lang-java="`enableAcceleration`">`enable_acceleration`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Desired bandwidth specification for the VPN tunnel. Valid values are `standard | large`. `standard` supports up to 1.25 Gbps per tunnel, while `large` supports up to 5 Gbps per tunnel. Not supported when `vpn_gateway_id` is specified, or `enable_acceleration` is `true`.
   final Input<String>? tunnelBandwidth;
 
-  /// Indicate whether the VPN tunnels process IPv4 or IPv6 traffic. Valid values are `ipv4 | ipv6`. <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span> Supports only EC2 Transit Gateway.
+  /// Indicate whether the VPN tunnels process IPv4 or IPv6 traffic. Valid values are `ipv4 | ipv6`. `ipv6` Supports only EC2 Transit Gateway.
   final Input<String>? tunnelInsideIpVersion;
 
   /// The type of VPN connection. The only type AWS supports at this time is "ipsec.1".

@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_action_finding_fields_update;
+
+export 'automation_rule_action_finding_fields_update/automation_rule_action_finding_fields_update.dart';

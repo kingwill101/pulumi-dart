@@ -1,0 +1,3 @@
+library module_globalaccelerator_custom_routing_endpoint_group_endpoint_configuration;
+
+export 'custom_routing_endpoint_group_endpoint_configuration/custom_routing_endpoint_group_endpoint_configuration.dart';

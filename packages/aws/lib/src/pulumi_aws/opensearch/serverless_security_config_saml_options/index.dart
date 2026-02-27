@@ -1,3 +1,0 @@
-library module_opensearch_serverless_security_config_saml_options;
-
-export 'serverless_security_config_saml_options.dart';

@@ -1,0 +1,3 @@
+library module_networkmanager_connect_attachment_options;
+
+export 'connect_attachment_options/connect_attachment_options.dart';

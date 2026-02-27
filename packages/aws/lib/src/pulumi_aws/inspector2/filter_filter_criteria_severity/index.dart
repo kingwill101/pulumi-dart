@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_severity;
-
-export 'filter_filter_criteria_severity.dart';

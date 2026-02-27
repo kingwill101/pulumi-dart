@@ -4,10 +4,10 @@ import '../link_link_configuration_log_group_configuration/link_link_configurati
 import '../link_link_configuration_metric_configuration/link_link_configuration_metric_configuration.dart';
 
 class LinkLinkConfiguration {
-  /// Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See <span pulumi-lang-nodejs="`logGroupConfiguration`" pulumi-lang-dotnet="`LogGroupConfiguration`" pulumi-lang-go="`logGroupConfiguration`" pulumi-lang-python="`log_group_configuration`" pulumi-lang-yaml="`logGroupConfiguration`" pulumi-lang-java="`logGroupConfiguration`">`log_group_configuration`</span> Block for details.
+  /// Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `log_group_configuration` Block for details.
   final LinkLinkConfigurationLogGroupConfiguration? logGroupConfiguration;
 
-  /// Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See <span pulumi-lang-nodejs="`metricConfiguration`" pulumi-lang-dotnet="`MetricConfiguration`" pulumi-lang-go="`metricConfiguration`" pulumi-lang-python="`metric_configuration`" pulumi-lang-yaml="`metricConfiguration`" pulumi-lang-java="`metricConfiguration`">`metric_configuration`</span> Block for details.
+  /// Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metric_configuration` Block for details.
   final LinkLinkConfigurationMetricConfiguration? metricConfiguration;
 
   LinkLinkConfiguration({

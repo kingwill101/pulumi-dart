@@ -10,7 +10,7 @@ class GetNamedQueryArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The workgroup to which the query belongs. Defaults to <span pulumi-lang-nodejs="`primary`" pulumi-lang-dotnet="`Primary`" pulumi-lang-go="`primary`" pulumi-lang-python="`primary`" pulumi-lang-yaml="`primary`" pulumi-lang-java="`primary`">`primary`</span>.
+  /// The workgroup to which the query belongs. Defaults to `primary`.
   final Input<String>? workgroup;
 
   GetNamedQueryArgs({

@@ -5,7 +5,7 @@ import '../backup_policy_backup_policy/backup_policy_backup_policy.dart';
 
 /// The set of arguments for BackupPolicy.
 class BackupPolicyArgs {
-  /// A<span pulumi-lang-nodejs=" backupPolicy " pulumi-lang-dotnet=" BackupPolicy " pulumi-lang-go=" backupPolicy " pulumi-lang-python=" backup_policy " pulumi-lang-yaml=" backupPolicy " pulumi-lang-java=" backupPolicy "> backup_policy </span>object (documented below).
+  /// A backup_policy object (documented below).
   final Input<BackupPolicyBackupPolicy> backupPolicy;
 
   /// The ID of the EFS file system.

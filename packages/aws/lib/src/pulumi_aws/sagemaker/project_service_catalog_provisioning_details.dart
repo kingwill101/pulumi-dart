@@ -1,0 +1,3 @@
+library module_sagemaker_project_service_catalog_provisioning_details;
+
+export 'project_service_catalog_provisioning_details/project_service_catalog_provisioning_details.dart';

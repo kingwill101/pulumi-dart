@@ -12,7 +12,7 @@ class GetPublicIpv4PoolResult {
   final String id;
 
   /// Name of the location from which the address pool is advertised.
-  /// *<span pulumi-lang-nodejs=" poolAddressRanges`" pulumi-lang-dotnet=" PoolAddressRanges`" pulumi-lang-go=" poolAddressRanges`" pulumi-lang-python=" pool_address_ranges`" pulumi-lang-yaml=" poolAddressRanges`" pulumi-lang-java=" poolAddressRanges`"> pool_address_ranges`</span> - List of Address Ranges in the Pool; each address range record contains:
+  /// * pool_address_ranges` - List of Address Ranges in the Pool; each address range record contains:
   final String networkBorderGroup;
   final List<GetPublicIpv4PoolPoolAddressRange> poolAddressRanges;
   final String poolId;

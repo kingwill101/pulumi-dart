@@ -5,7 +5,7 @@ import '../logging_configuration_logging_configuration/logging_configuration_log
 
 /// The set of arguments for LoggingConfiguration.
 class LoggingConfigurationArgs2 {
-  /// Whether to enable the detailed firewall monitoring dashboard on the firewall. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable the detailed firewall monitoring dashboard on the firewall. Defaults to `false`.
   final Input<bool>? enableMonitoringDashboard;
 
   /// The Amazon Resource Name (ARN) of the Network Firewall firewall.

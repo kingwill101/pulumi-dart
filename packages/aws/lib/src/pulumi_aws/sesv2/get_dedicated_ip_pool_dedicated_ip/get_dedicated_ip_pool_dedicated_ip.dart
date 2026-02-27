@@ -4,7 +4,7 @@ class GetDedicatedIpPoolDedicatedIp {
   /// IPv4 address.
   final String ip;
 
-  /// Indicates how complete the dedicated IP warm-up process is. When this value equals <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>, the address has completed the warm-up process and is ready for use.
+  /// Indicates how complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
   final int warmupPercentage;
 
   /// The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FlowLogDestinationOptions {
-  /// File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, <span pulumi-lang-nodejs="`parquet`" pulumi-lang-dotnet="`Parquet`" pulumi-lang-go="`parquet`" pulumi-lang-python="`parquet`" pulumi-lang-yaml="`parquet`" pulumi-lang-java="`parquet`">`parquet`</span>.
+  /// File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.
   final String? fileFormat;
 
-  /// Indicates whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
   final bool? hiveCompatiblePartitions;
 
-  /// Indicates whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
   final bool? perHourPartition;
 
   FlowLogDestinationOptions({

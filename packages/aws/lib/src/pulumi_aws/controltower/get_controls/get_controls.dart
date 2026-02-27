@@ -3,53 +3,6 @@ import 'get_controls_args.dart';
 import 'get_controls_result.dart';
 
 /// List of Control Tower controls applied to an OU.
-///
-/// ## Example Usage
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const _this = aws.organizations.getOrganization({});
-/// const thisGetOrganizationalUnits = _this.then(_this => aws.organizations.getOrganizationalUnits({
-/// parentId: _this.roots?.[0]?.id,
-/// }));
-/// const thisGetControls = thisGetOrganizationalUnits.then(thisGetOrganizationalUnits => aws.controltower.getControls({
-/// targetIdentifier: .filter(x => x.name == "Security").map(x => (x.arn))[0],
-/// }));
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// this = aws.organizations.get_organization()
-/// this_get_organizational_units = aws.organizations.get_organizational_units(parent_id=this.roots[0].id)
-/// this_get_controls = aws.controltower.get_controls(target_identifier=[x.arn for x in this_get_organizational_units.children if x.name == "Security"][0])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @this = Aws.Organizations.GetOrganization.Invoke();
-///
-/// var thisGetOrganizationalUnits = Aws.Organizations.GetOrganizationalUnits.Invoke(new()
-/// {
-/// ParentId = @this.Apply(getOrganizationResult => getOrganizationResult.Roots[0]?.Id),
-/// });
-///
-/// var thisGetControls = Aws.ControlTower.GetControls.Invoke(new()
-/// {
-/// TargetIdentifier = [0],
-/// });
-///
-/// });
-/// ```
-/// <!--End PulumiCodeChooser -->
 Future<GetControlsResult> getControls(
   GetControlsArgs args, {
   InvokeOptions? options,

@@ -15,20 +15,20 @@ class RoutingProfileArgs {
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final Input<String> instanceId;
 
-  /// One or more <span pulumi-lang-nodejs="`mediaConcurrencies`" pulumi-lang-dotnet="`MediaConcurrencies`" pulumi-lang-go="`mediaConcurrencies`" pulumi-lang-python="`media_concurrencies`" pulumi-lang-yaml="`mediaConcurrencies`" pulumi-lang-java="`mediaConcurrencies`">`media_concurrencies`</span> blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The <span pulumi-lang-nodejs="`mediaConcurrencies`" pulumi-lang-dotnet="`MediaConcurrencies`" pulumi-lang-go="`mediaConcurrencies`" pulumi-lang-python="`media_concurrencies`" pulumi-lang-yaml="`mediaConcurrencies`" pulumi-lang-java="`mediaConcurrencies`">`media_concurrencies`</span> block is documented below.
+  /// One or more `media_concurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `media_concurrencies` block is documented below.
   final Input<List<RoutingProfileMediaConcurrency>> mediaConcurrencies;
 
   /// Specifies the name of the Routing Profile.
   final Input<String>? name;
 
-  /// One or more <span pulumi-lang-nodejs="`queueConfigs`" pulumi-lang-dotnet="`QueueConfigs`" pulumi-lang-go="`queueConfigs`" pulumi-lang-python="`queue_configs`" pulumi-lang-yaml="`queueConfigs`" pulumi-lang-java="`queueConfigs`">`queue_configs`</span> blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The <span pulumi-lang-nodejs="`queueConfigs`" pulumi-lang-dotnet="`QueueConfigs`" pulumi-lang-go="`queueConfigs`" pulumi-lang-python="`queue_configs`" pulumi-lang-yaml="`queueConfigs`" pulumi-lang-java="`queueConfigs`">`queue_configs`</span> block is documented below.
+  /// One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
   final Input<List<RoutingProfileQueueConfig>>? queueConfigs;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
   /// Tags to apply to the Routing Profile. If configured with a provider
-  /// <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   RoutingProfileArgs({

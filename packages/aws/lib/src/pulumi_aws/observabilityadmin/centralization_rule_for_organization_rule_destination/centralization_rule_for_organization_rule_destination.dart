@@ -6,7 +6,7 @@ class CentralizationRuleForOrganizationRuleDestination {
   /// AWS account ID where logs will be centralized.
   final String account;
 
-  /// Configuration block for destination logs settings. See <span pulumi-lang-nodejs="`destinationLogsConfiguration`" pulumi-lang-dotnet="`DestinationLogsConfiguration`" pulumi-lang-go="`destinationLogsConfiguration`" pulumi-lang-python="`destination_logs_configuration`" pulumi-lang-yaml="`destinationLogsConfiguration`" pulumi-lang-java="`destinationLogsConfiguration`">`destination_logs_configuration`</span> below.
+  /// Configuration block for destination logs settings. See `destination_logs_configuration` below.
   final CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration?
       destinationLogsConfiguration;
 

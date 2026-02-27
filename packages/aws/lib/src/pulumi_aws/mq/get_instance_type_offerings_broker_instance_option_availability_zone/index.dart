@@ -1,3 +1,0 @@
-library module_mq_get_instance_type_offerings_broker_instance_option_availability_zone;
-
-export 'get_instance_type_offerings_broker_instance_option_availability_zone.dart';

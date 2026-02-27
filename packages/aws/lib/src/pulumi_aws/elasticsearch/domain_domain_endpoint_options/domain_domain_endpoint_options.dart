@@ -10,7 +10,7 @@ class DomainDomainEndpointOptions {
   /// Whether to enable custom endpoint for the Elasticsearch domain.
   final bool? customEndpointEnabled;
 
-  /// Whether or not to require HTTPS. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether or not to require HTTPS. Defaults to `true`.
   final bool? enforceHttps;
 
   /// Name of the TLS security policy that needs to be applied to the HTTPS endpoint. Valid values:  `Policy-Min-TLS-1-0-2019-07`, `Policy-Min-TLS-1-2-2019-07`, and `Policy-Min-TLS-1-2-PFS-2023-10`. Pulumi will only perform drift detection if a configuration value is provided.

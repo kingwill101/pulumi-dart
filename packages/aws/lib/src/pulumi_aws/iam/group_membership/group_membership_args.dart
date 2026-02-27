@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for GroupMembership.
 class GroupMembershipArgs {
-  /// The IAM Group name to attach the list of <span pulumi-lang-nodejs="`users`" pulumi-lang-dotnet="`Users`" pulumi-lang-go="`users`" pulumi-lang-python="`users`" pulumi-lang-yaml="`users`" pulumi-lang-java="`users`">`users`</span> to
+  /// The IAM Group name to attach the list of `users` to
   final Input<String> group;
 
   /// The name to identify the Group Membership

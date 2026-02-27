@@ -1,0 +1,3 @@
+library module_vpclattice_service_network_resource_association_timeouts;
+
+export 'service_network_resource_association_timeouts/service_network_resource_association_timeouts.dart';

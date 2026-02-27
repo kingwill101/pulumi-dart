@@ -1,0 +1,3 @@
+library module_quicksight_theme_configuration_typography_font_family;
+
+export 'theme_configuration_typography_font_family/theme_configuration_typography_font_family.dart';

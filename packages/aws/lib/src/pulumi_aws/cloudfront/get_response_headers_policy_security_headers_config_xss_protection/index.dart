@@ -1,3 +1,0 @@
-library module_cloudfront_get_response_headers_policy_security_headers_config_xss_protection;
-
-export 'get_response_headers_policy_security_headers_config_xss_protection.dart';

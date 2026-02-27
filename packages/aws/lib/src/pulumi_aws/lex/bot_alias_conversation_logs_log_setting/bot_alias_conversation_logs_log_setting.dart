@@ -4,7 +4,7 @@ class BotAliasConversationLogsLogSetting {
   /// The destination where logs are delivered. Options are `CLOUDWATCH_LOGS` or `S3`.
   final String destination;
 
-  /// The Amazon Resource Name (ARN) of the key used to encrypt audio logs in an S3 bucket. This can only be specified when <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span> is set to `S3`. Must be between 20 and 2048 characters in length.
+  /// The Amazon Resource Name (ARN) of the key used to encrypt audio logs in an S3 bucket. This can only be specified when `destination` is set to `S3`. Must be between 20 and 2048 characters in length.
   final String? kmsKeyArn;
 
   /// The type of logging that is enabled. Options are `AUDIO` or `TEXT`.

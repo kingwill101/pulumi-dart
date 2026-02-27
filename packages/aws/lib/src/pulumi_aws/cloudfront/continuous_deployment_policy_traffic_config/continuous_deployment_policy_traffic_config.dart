@@ -4,11 +4,11 @@ import '../continuous_deployment_policy_traffic_config_single_header_config/cont
 import '../continuous_deployment_policy_traffic_config_single_weight_config/continuous_deployment_policy_traffic_config_single_weight_config.dart';
 
 class ContinuousDeploymentPolicyTrafficConfig {
-  /// Determines which HTTP requests are sent to the staging distribution. See <span pulumi-lang-nodejs="`singleHeaderConfig`" pulumi-lang-dotnet="`SingleHeaderConfig`" pulumi-lang-go="`singleHeaderConfig`" pulumi-lang-python="`single_header_config`" pulumi-lang-yaml="`singleHeaderConfig`" pulumi-lang-java="`singleHeaderConfig`">`single_header_config`</span>.
+  /// Determines which HTTP requests are sent to the staging distribution. See `single_header_config`.
   final ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig?
       singleHeaderConfig;
 
-  /// Contains the percentage of traffic to send to the staging distribution. See <span pulumi-lang-nodejs="`singleWeightConfig`" pulumi-lang-dotnet="`SingleWeightConfig`" pulumi-lang-go="`singleWeightConfig`" pulumi-lang-python="`single_weight_config`" pulumi-lang-yaml="`singleWeightConfig`" pulumi-lang-java="`singleWeightConfig`">`single_weight_config`</span>.
+  /// Contains the percentage of traffic to send to the staging distribution. See `single_weight_config`.
   final ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig?
       singleWeightConfig;
 

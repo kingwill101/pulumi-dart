@@ -1,0 +1,3 @@
+library module_rolesanywhere_trust_anchor_source_source_data;
+
+export 'trust_anchor_source_source_data/trust_anchor_source_source_data.dart';

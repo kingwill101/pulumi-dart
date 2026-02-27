@@ -7,8 +7,8 @@ class DefaultSubnetArgs {
   final Input<bool>? assignIpv6AddressOnCreation;
 
   /// is required
-  /// * The <span pulumi-lang-nodejs="`availabilityZoneId`" pulumi-lang-dotnet="`AvailabilityZoneId`" pulumi-lang-go="`availabilityZoneId`" pulumi-lang-python="`availability_zone_id`" pulumi-lang-yaml="`availabilityZoneId`" pulumi-lang-java="`availabilityZoneId`">`availability_zone_id`</span>, <span pulumi-lang-nodejs="`cidrBlock`" pulumi-lang-dotnet="`CidrBlock`" pulumi-lang-go="`cidrBlock`" pulumi-lang-python="`cidr_block`" pulumi-lang-yaml="`cidrBlock`" pulumi-lang-java="`cidrBlock`">`cidr_block`</span> and <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span> arguments become computed attributes
-  /// * The default value for <span pulumi-lang-nodejs="`mapPublicIpOnLaunch`" pulumi-lang-dotnet="`MapPublicIpOnLaunch`" pulumi-lang-go="`mapPublicIpOnLaunch`" pulumi-lang-python="`map_public_ip_on_launch`" pulumi-lang-yaml="`mapPublicIpOnLaunch`" pulumi-lang-java="`mapPublicIpOnLaunch`">`map_public_ip_on_launch`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>
+  /// * The `availability_zone_id`, `cidr_block` and `vpc_id` arguments become computed attributes
+  /// * The default value for `map_public_ip_on_launch` is `true`
   ///
   /// This resource supports the following additional arguments:
   final Input<String> availabilityZone;
@@ -17,7 +17,7 @@ class DefaultSubnetArgs {
   final Input<bool>? enableResourceNameDnsARecordOnLaunch;
   final Input<bool>? enableResourceNameDnsAaaaRecordOnLaunch;
 
-  /// Whether destroying the resource deletes the default subnet. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Whether destroying the resource deletes the default subnet. Default: `false`
   final Input<bool>? forceDestroy;
   final Input<String>? ipv6CidrBlock;
   final Input<bool>? ipv6Native;

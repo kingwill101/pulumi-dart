@@ -7,7 +7,7 @@ class GetPatchBaselineApprovalRule {
   /// Number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.
   final int approveAfterDays;
 
-  /// Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with <span pulumi-lang-nodejs="`approveAfterDays`" pulumi-lang-dotnet="`ApproveAfterDays`" pulumi-lang-go="`approveAfterDays`" pulumi-lang-python="`approve_after_days`" pulumi-lang-yaml="`approveAfterDays`" pulumi-lang-java="`approveAfterDays`">`approve_after_days`</span>
+  /// Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with `approve_after_days`
   final String approveUntilDate;
 
   /// Compliance level for patches approved by this rule.

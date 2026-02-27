@@ -6,7 +6,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStat
   /// List of Autonomous System Numbers (ASNs).
   final List<int> asnLists;
 
-  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See <span pulumi-lang-nodejs="`forwardedIpConfig`" pulumi-lang-dotnet="`ForwardedIpConfig`" pulumi-lang-go="`forwardedIpConfig`" pulumi-lang-python="`forwarded_ip_config`" pulumi-lang-yaml="`forwardedIpConfig`" pulumi-lang-java="`forwardedIpConfig`">`forwarded_ip_config`</span> below for more details.
+  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `forwarded_ip_config` below for more details.
   final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatementForwardedIpConfig?
       forwardedIpConfig;
 

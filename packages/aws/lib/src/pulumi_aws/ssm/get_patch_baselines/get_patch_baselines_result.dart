@@ -6,7 +6,7 @@ import '../get_patch_baselines_filter/get_patch_baselines_filter.dart';
 
 /// Result data returned by getPatchBaselines.
 class GetPatchBaselinesResult {
-  /// List of baseline identities. See <span pulumi-lang-nodejs="`baselineIdentities`" pulumi-lang-dotnet="`BaselineIdentities`" pulumi-lang-go="`baselineIdentities`" pulumi-lang-python="`baseline_identities`" pulumi-lang-yaml="`baselineIdentities`" pulumi-lang-java="`baselineIdentities`">`baseline_identities`</span> below.
+  /// List of baseline identities. See `baseline_identities` below.
   final List<GetPatchBaselinesBaselineIdentity> baselineIdentities;
   final bool? defaultBaselines;
   final List<GetPatchBaselinesFilter>? filters;

@@ -5,7 +5,7 @@ import '../table_metadata_iceberg_schema_field/table_metadata_iceberg_schema_fie
 
 class TableMetadataIcebergSchema {
   /// List of schema fields for the Iceberg table. Each field defines a column in the table schema.
-  /// See <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span> below.
+  /// See `field` below.
   final List<TableMetadataIcebergSchemaField> fields;
 
   TableMetadataIcebergSchema({

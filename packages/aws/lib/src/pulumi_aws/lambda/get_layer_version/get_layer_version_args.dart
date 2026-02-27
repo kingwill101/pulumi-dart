@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getLayerVersion.
 class GetLayerVersionArgs {
-  /// Specific architecture the layer version must support. Conflicts with <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>. If specified, the latest available layer version supporting the provided architecture will be used.
+  /// Specific architecture the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided architecture will be used.
   final Input<String>? compatibleArchitecture;
 
-  /// Specific runtime the layer version must support. Conflicts with <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>. If specified, the latest available layer version supporting the provided runtime will be used.
+  /// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
   final Input<String>? compatibleRuntime;
 
   /// Name of the Lambda layer.
@@ -18,7 +18,7 @@ class GetLayerVersionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Specific layer version. Conflicts with <span pulumi-lang-nodejs="`compatibleRuntime`" pulumi-lang-dotnet="`CompatibleRuntime`" pulumi-lang-go="`compatibleRuntime`" pulumi-lang-python="`compatible_runtime`" pulumi-lang-yaml="`compatibleRuntime`" pulumi-lang-java="`compatibleRuntime`">`compatible_runtime`</span> and <span pulumi-lang-nodejs="`compatibleArchitecture`" pulumi-lang-dotnet="`CompatibleArchitecture`" pulumi-lang-go="`compatibleArchitecture`" pulumi-lang-python="`compatible_architecture`" pulumi-lang-yaml="`compatibleArchitecture`" pulumi-lang-java="`compatibleArchitecture`">`compatible_architecture`</span>. If omitted, the latest available layer version will be used.
+  /// Specific layer version. Conflicts with `compatible_runtime` and `compatible_architecture`. If omitted, the latest available layer version will be used.
   final Input<int>? version;
 
   GetLayerVersionArgs({

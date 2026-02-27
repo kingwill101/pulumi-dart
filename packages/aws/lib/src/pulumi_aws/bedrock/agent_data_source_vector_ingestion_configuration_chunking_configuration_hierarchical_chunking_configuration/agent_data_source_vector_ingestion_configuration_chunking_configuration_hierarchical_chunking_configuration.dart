@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../agent_data_source_vector_ingestion_configuration_chunking_configuration_hierarchical_chunking_configuration_level_configuration/agent_data_source_vector_ingestion_configuration_chunking_configuration_hierarchical_chunking_configuration_level_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration {
-  /// Maximum number of tokens to include in a chunk. Must contain two <span pulumi-lang-nodejs="`levelConfigurations`" pulumi-lang-dotnet="`LevelConfigurations`" pulumi-lang-go="`levelConfigurations`" pulumi-lang-python="`level_configurations`" pulumi-lang-yaml="`levelConfigurations`" pulumi-lang-java="`levelConfigurations`">`level_configurations`</span>. See <span pulumi-lang-nodejs="`levelConfigurations`" pulumi-lang-dotnet="`LevelConfigurations`" pulumi-lang-go="`levelConfigurations`" pulumi-lang-python="`level_configurations`" pulumi-lang-yaml="`levelConfigurations`" pulumi-lang-java="`levelConfigurations`">`level_configurations`</span> for details.
+  /// Maximum number of tokens to include in a chunk. Must contain two `level_configurations`. See `level_configurations` for details.
   final List<
           AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>?
       levelConfigurations;

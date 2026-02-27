@@ -1,4 +1,0 @@
-library module_s3_bucket_request_payment_configuration;
-
-export 'bucket_request_payment_configuration.dart';
-export 'bucket_request_payment_configuration_args.dart';

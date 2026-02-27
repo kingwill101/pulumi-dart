@@ -1,3 +1,0 @@
-library module_ivschat_logging_configuration_destination_configuration_cloudwatch_logs;
-
-export 'logging_configuration_destination_configuration_cloudwatch_logs.dart';

@@ -1,0 +1,3 @@
+library module_ec2_allowed_images_settings_image_criterion_deprecation_time_condition;
+
+export 'allowed_images_settings_image_criterion_deprecation_time_condition/allowed_images_settings_image_criterion_deprecation_time_condition.dart';

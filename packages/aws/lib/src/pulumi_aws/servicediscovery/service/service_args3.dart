@@ -10,16 +10,16 @@ class ServiceArgs3 {
   /// The description of the service.
   final Input<String>? description;
 
-  /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See <span pulumi-lang-nodejs="`dnsConfig`" pulumi-lang-dotnet="`DnsConfig`" pulumi-lang-go="`dnsConfig`" pulumi-lang-python="`dns_config`" pulumi-lang-yaml="`dnsConfig`" pulumi-lang-java="`dnsConfig`">`dns_config`</span> Block for details.
+  /// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance. See `dns_config` Block for details.
   final Input<ServiceDnsConfig>? dnsConfig;
 
-  /// A boolean that indicates all instances should be deleted from the service so that the service can be destroyed without error. These instances are not recoverable. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// A boolean that indicates all instances should be deleted from the service so that the service can be destroyed without error. These instances are not recoverable. Defaults to `false`.
   final Input<bool>? forceDestroy;
 
-  /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See <span pulumi-lang-nodejs="`healthCheckConfig`" pulumi-lang-dotnet="`HealthCheckConfig`" pulumi-lang-go="`healthCheckConfig`" pulumi-lang-python="`health_check_config`" pulumi-lang-yaml="`healthCheckConfig`" pulumi-lang-java="`healthCheckConfig`">`health_check_config`</span> Block for details.
+  /// A complex type that contains settings for an optional health check. Only for Public DNS namespaces. See `health_check_config` Block for details.
   final Input<ServiceHealthCheckConfig>? healthCheckConfig;
 
-  /// Please use <span pulumi-lang-nodejs="`healthCheckConfig`" pulumi-lang-dotnet="`HealthCheckConfig`" pulumi-lang-go="`healthCheckConfig`" pulumi-lang-python="`health_check_config`" pulumi-lang-yaml="`healthCheckConfig`" pulumi-lang-java="`healthCheckConfig`">`health_check_config`</span> instead. See <span pulumi-lang-nodejs="`healthCheckCustomConfig`" pulumi-lang-dotnet="`HealthCheckCustomConfig`" pulumi-lang-go="`healthCheckCustomConfig`" pulumi-lang-python="`health_check_custom_config`" pulumi-lang-yaml="`healthCheckCustomConfig`" pulumi-lang-java="`healthCheckCustomConfig`">`health_check_custom_config`</span> Block for details.
+  /// Please use `health_check_config` instead. See `health_check_custom_config` Block for details.
   final Input<ServiceHealthCheckCustomConfig>? healthCheckCustomConfig;
 
   /// The name of the service.
@@ -31,7 +31,7 @@ class ServiceArgs3 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the service. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.

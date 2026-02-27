@@ -1,0 +1,3 @@
+library module_glue_trigger_action_notification_property;
+
+export 'trigger_action_notification_property/trigger_action_notification_property.dart';

@@ -1,3 +1,0 @@
-library module_msk_replicator_replication_info_list_topic_replication_topic_name_configuration;
-
-export 'replicator_replication_info_list_topic_replication_topic_name_configuration.dart';

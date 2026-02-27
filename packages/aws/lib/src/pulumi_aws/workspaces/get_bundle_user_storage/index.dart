@@ -1,3 +1,0 @@
-library module_workspaces_get_bundle_user_storage;
-
-export 'get_bundle_user_storage.dart';

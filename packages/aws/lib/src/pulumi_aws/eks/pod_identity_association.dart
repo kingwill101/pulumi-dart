@@ -1,0 +1,4 @@
+library module_eks_pod_identity_association;
+
+export 'pod_identity_association/pod_identity_association.dart';
+export 'pod_identity_association/pod_identity_association_args.dart';

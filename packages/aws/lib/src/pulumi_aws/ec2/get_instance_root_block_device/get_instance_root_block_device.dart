@@ -10,7 +10,7 @@ class GetInstanceRootBlockDevice {
   /// If the EBS volume is encrypted.
   final bool encrypted;
 
-  /// <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
+  /// `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
   final int iops;
   final String kmsKeyId;
 

@@ -8,241 +8,7 @@ import 'image_recipe_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.imagebuilder.ImageRecipe("example", {
-/// blockDeviceMappings: [{
-/// deviceName: "/dev/xvdb",
-/// ebs: {
-/// deleteOnTermination: "true",
-/// volumeSize: 100,
-/// volumeType: "gp2",
-/// },
-/// }],
-/// components: [{
-/// componentArn: exampleAwsImagebuilderComponent.arn,
-/// parameters: [
-/// {
-/// name: "Parameter1",
-/// value: "Value1",
-/// },
-/// {
-/// name: "Parameter2",
-/// value: "Value2",
-/// },
-/// ],
-/// }],
-/// name: "example",
-/// parentImage: `arn:${current.partition}:imagebuilder:${currentAwsRegion.region}:aws:image/amazon-linux-2-x86/x.x.x`,
-/// version: "1.0.0",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.imagebuilder.ImageRecipe("example",
-/// block_device_mappings=[{
-/// "device_name": "/dev/xvdb",
-/// "ebs": {
-/// "delete_on_termination": "true",
-/// "volume_size": 100,
-/// "volume_type": "gp2",
-/// },
-/// }],
-/// components=[{
-/// "component_arn": example_aws_imagebuilder_component["arn"],
-/// "parameters": [
-/// {
-/// "name": "Parameter1",
-/// "value": "Value1",
-/// },
-/// {
-/// "name": "Parameter2",
-/// "value": "Value2",
-/// },
-/// ],
-/// }],
-/// name="example",
-/// parent_image=f"arn:{current['partition']}:imagebuilder:{current_aws_region['region']}:aws:image/amazon-linux-2-x86/x.x.x",
-/// version="1.0.0")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.ImageBuilder.ImageRecipe("example", new()
-/// {
-/// BlockDeviceMappings = new[]
-/// {
-/// new Aws.ImageBuilder.Inputs.ImageRecipeBlockDeviceMappingArgs
-/// {
-/// DeviceName = "/dev/xvdb",
-/// Ebs = new Aws.ImageBuilder.Inputs.ImageRecipeBlockDeviceMappingEbsArgs
-/// {
-/// DeleteOnTermination = "true",
-/// VolumeSize = 100,
-/// VolumeType = "gp2",
-/// },
-/// },
-/// },
-/// Components = new[]
-/// {
-/// new Aws.ImageBuilder.Inputs.ImageRecipeComponentArgs
-/// {
-/// ComponentArn = exampleAwsImagebuilderComponent.Arn,
-/// Parameters = new[]
-/// {
-/// new Aws.ImageBuilder.Inputs.ImageRecipeComponentParameterArgs
-/// {
-/// Name = "Parameter1",
-/// Value = "Value1",
-/// },
-/// new Aws.ImageBuilder.Inputs.ImageRecipeComponentParameterArgs
-/// {
-/// Name = "Parameter2",
-/// Value = "Value2",
-/// },
-/// },
-/// },
-/// },
-/// Name = "example",
-/// ParentImage = $"arn:{current.Partition}:imagebuilder:{currentAwsRegion.Region}:aws:image/amazon-linux-2-x86/x.x.x",
-/// Version = "1.0.0",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/imagebuilder"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := imagebuilder.NewImageRecipe(ctx, "example", &imagebuilder.ImageRecipeArgs{
-/// BlockDeviceMappings: imagebuilder.ImageRecipeBlockDeviceMappingArray{
-/// &imagebuilder.ImageRecipeBlockDeviceMappingArgs{
-/// DeviceName: pulumi.String("/dev/xvdb"),
-/// Ebs: &imagebuilder.ImageRecipeBlockDeviceMappingEbsArgs{
-/// DeleteOnTermination: pulumi.String("true"),
-/// VolumeSize:          pulumi.Int(100),
-/// VolumeType:          pulumi.String("gp2"),
-/// },
-/// },
-/// },
-/// Components: imagebuilder.ImageRecipeComponentArray{
-/// &imagebuilder.ImageRecipeComponentArgs{
-/// ComponentArn: pulumi.Any(exampleAwsImagebuilderComponent.Arn),
-/// Parameters: imagebuilder.ImageRecipeComponentParameterArray{
-/// &imagebuilder.ImageRecipeComponentParameterArgs{
-/// Name:  pulumi.String("Parameter1"),
-/// Value: pulumi.String("Value1"),
-/// },
-/// &imagebuilder.ImageRecipeComponentParameterArgs{
-/// Name:  pulumi.String("Parameter2"),
-/// Value: pulumi.String("Value2"),
-/// },
-/// },
-/// },
-/// },
-/// Name:        pulumi.String("example"),
-/// ParentImage: pulumi.Sprintf("arn:%v:imagebuilder:%v:aws:image/amazon-linux-2-x86/x.x.x", current.Partition, currentAwsRegion.Region),
-/// Version:     pulumi.String("1.0.0"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.imagebuilder.ImageRecipe;
-/// import com.pulumi.aws.imagebuilder.ImageRecipeArgs;
-/// import com.pulumi.aws.imagebuilder.inputs.ImageRecipeBlockDeviceMappingArgs;
-/// import com.pulumi.aws.imagebuilder.inputs.ImageRecipeBlockDeviceMappingEbsArgs;
-/// import com.pulumi.aws.imagebuilder.inputs.ImageRecipeComponentArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new ImageRecipe("example", ImageRecipeArgs.builder()
-/// .blockDeviceMappings(ImageRecipeBlockDeviceMappingArgs.builder()
-/// .deviceName("/dev/xvdb")
-/// .ebs(ImageRecipeBlockDeviceMappingEbsArgs.builder()
-/// .deleteOnTermination("true")
-/// .volumeSize(100)
-/// .volumeType("gp2")
-/// .build())
-/// .build())
-/// .components(ImageRecipeComponentArgs.builder()
-/// .componentArn(exampleAwsImagebuilderComponent.arn())
-/// .parameters(
-/// ImageRecipeComponentParameterArgs.builder()
-/// .name("Parameter1")
-/// .value("Value1")
-/// .build(),
-/// ImageRecipeComponentParameterArgs.builder()
-/// .name("Parameter2")
-/// .value("Value2")
-/// .build())
-/// .build())
-/// .name("example")
-/// .parentImage(String.format("arn:%s:imagebuilder:%s:aws:image/amazon-linux-2-x86/x.x.x", current.partition(),currentAwsRegion.region()))
-/// .version("1.0.0")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:imagebuilder:ImageRecipe
-/// properties:
-/// blockDeviceMappings:
-/// - deviceName: /dev/xvdb
-/// ebs:
-/// deleteOnTermination: true
-/// volumeSize: 100
-/// volumeType: gp2
-/// components:
-/// - componentArn: ${exampleAwsImagebuilderComponent.arn}
-/// parameters:
-/// - name: Parameter1
-/// value: Value1
-/// - name: Parameter2
-/// value: Value2
-/// name: example
-/// parentImage: arn:${current.partition}:imagebuilder:${currentAwsRegion.region}:aws:image/amazon-linux-2-x86/x.x.x
-/// version: 1.0.0
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -250,10 +16,10 @@ import 'image_recipe_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the Image Builder image recipe.
+/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder image recipe.
 ///
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.imagebuilder.ImageRecipe`" pulumi-lang-dotnet="`aws.imagebuilder.ImageRecipe`" pulumi-lang-go="`imagebuilder.ImageRecipe`" pulumi-lang-python="`imagebuilder.ImageRecipe`" pulumi-lang-yaml="`aws.imagebuilder.ImageRecipe`" pulumi-lang-java="`aws.imagebuilder.ImageRecipe`">`aws.imagebuilder.ImageRecipe`</span> resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.ImageRecipe` resources using the Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/imageRecipe:ImageRecipe example arn:aws:imagebuilder:us-east-1:123456789012:image-recipe/example/1.0.0
@@ -295,10 +61,10 @@ class ImageRecipe extends CustomResource {
   /// Configuration block for the Systems Manager Agent installed by default by Image Builder. Detailed below.
   late final Output<ImageRecipeSystemsManagerAgent> systemsManagerAgent;
 
-  /// Key-value map of resource tags for the image recipe. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the image recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Base64 encoded user data. Use this to provide commands or a command script to run when you launch your build instance.

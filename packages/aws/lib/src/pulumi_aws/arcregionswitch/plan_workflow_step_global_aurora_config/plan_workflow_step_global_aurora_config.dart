@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../plan_workflow_step_global_aurora_config_ungraceful/plan_workflow_step_global_aurora_config_ungraceful.dart';
 
 class PlanWorkflowStepGlobalAuroraConfig {
-  /// Behavior for Aurora operations. Valid values: `switchoverOnly`, <span pulumi-lang-nodejs="`failover`" pulumi-lang-dotnet="`Failover`" pulumi-lang-go="`failover`" pulumi-lang-python="`failover`" pulumi-lang-yaml="`failover`" pulumi-lang-java="`failover`">`failover`</span>.
+  /// Behavior for Aurora operations. Valid values: `switchoverOnly`, `failover`.
   final String behavior;
 
   /// ARN of the cross-account role to assume.

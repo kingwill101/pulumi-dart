@@ -5,7 +5,7 @@ import '../document_attachments_source/document_attachments_source.dart';
 
 /// The set of arguments for Document.
 class DocumentArgs {
-  /// One or more configuration blocks describing attachments sources to a version of a document. See <span pulumi-lang-nodejs="`attachmentsSource`" pulumi-lang-dotnet="`AttachmentsSource`" pulumi-lang-go="`attachmentsSource`" pulumi-lang-python="`attachments_source`" pulumi-lang-yaml="`attachmentsSource`" pulumi-lang-java="`attachmentsSource`">`attachments_source`</span> block below for details.
+  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
   final Input<List<DocumentAttachmentsSource>>? attachmentsSources;
 
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
@@ -26,7 +26,7 @@ class DocumentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the object. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).

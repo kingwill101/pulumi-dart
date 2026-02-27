@@ -6,7 +6,7 @@ import '../slot_type_enumeration_value/slot_type_enumeration_value.dart';
 /// The set of arguments for SlotType.
 class SlotTypeArgs {
   /// Determines if a new slot type version is created when the initial resource is created and on each
-  /// update. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// update. Defaults to `false`.
   final Input<bool>? createVersion;
 
   /// A description of the slot type. Must be less than or equal to 200 characters in length.

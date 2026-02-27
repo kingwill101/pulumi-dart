@@ -4,14 +4,14 @@ import '../policy_target_tracking_configuration_customized_metric_specification/
 import '../policy_target_tracking_configuration_predefined_metric_specification/policy_target_tracking_configuration_predefined_metric_specification.dart';
 
 class PolicyTargetTrackingConfiguration {
-  /// Customized metric. Conflicts with <span pulumi-lang-nodejs="`predefinedMetricSpecification`" pulumi-lang-dotnet="`PredefinedMetricSpecification`" pulumi-lang-go="`predefinedMetricSpecification`" pulumi-lang-python="`predefined_metric_specification`" pulumi-lang-yaml="`predefinedMetricSpecification`" pulumi-lang-java="`predefinedMetricSpecification`">`predefined_metric_specification`</span>.
+  /// Customized metric. Conflicts with `predefined_metric_specification`.
   final PolicyTargetTrackingConfigurationCustomizedMetricSpecification?
       customizedMetricSpecification;
 
   /// Whether scale in by the target tracking policy is disabled.
   final bool? disableScaleIn;
 
-  /// Predefined metric. Conflicts with <span pulumi-lang-nodejs="`customizedMetricSpecification`" pulumi-lang-dotnet="`CustomizedMetricSpecification`" pulumi-lang-go="`customizedMetricSpecification`" pulumi-lang-python="`customized_metric_specification`" pulumi-lang-yaml="`customizedMetricSpecification`" pulumi-lang-java="`customizedMetricSpecification`">`customized_metric_specification`</span>.
+  /// Predefined metric. Conflicts with `customized_metric_specification`.
   final PolicyTargetTrackingConfigurationPredefinedMetricSpecification?
       predefinedMetricSpecification;
 

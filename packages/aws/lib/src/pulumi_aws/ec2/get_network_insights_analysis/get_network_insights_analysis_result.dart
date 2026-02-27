@@ -33,7 +33,7 @@ class GetNetworkInsightsAnalysisResult {
   /// The ID of the path.
   final String networkInsightsPathId;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the destination was reachable.
+  /// Set to `true` if the destination was reachable.
   final bool pathFound;
   final String region;
 
@@ -44,10 +44,10 @@ class GetNetworkInsightsAnalysisResult {
   /// Date/time the analysis was started.
   final String startDate;
 
-  /// Status of the analysis. <span pulumi-lang-nodejs="`succeeded`" pulumi-lang-dotnet="`Succeeded`" pulumi-lang-go="`succeeded`" pulumi-lang-python="`succeeded`" pulumi-lang-yaml="`succeeded`" pulumi-lang-java="`succeeded`">`succeeded`</span> means the analysis was completed, not that a path was found, for that see <span pulumi-lang-nodejs="`pathFound`" pulumi-lang-dotnet="`PathFound`" pulumi-lang-go="`pathFound`" pulumi-lang-python="`path_found`" pulumi-lang-yaml="`pathFound`" pulumi-lang-java="`pathFound`">`path_found`</span>.
+  /// Status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `path_found`.
   final String status;
 
-  /// Message to provide more context when the <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`">`status`</span> is <span pulumi-lang-nodejs="`failed`" pulumi-lang-dotnet="`Failed`" pulumi-lang-go="`failed`" pulumi-lang-python="`failed`" pulumi-lang-yaml="`failed`" pulumi-lang-java="`failed`">`failed`</span>.
+  /// Message to provide more context when the `status` is `failed`.
   final String statusMessage;
   final Map<String, String> tags;
 

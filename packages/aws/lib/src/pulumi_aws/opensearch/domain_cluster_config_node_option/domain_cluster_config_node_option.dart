@@ -6,7 +6,7 @@ class DomainClusterConfigNodeOption {
   /// Container to specify sizing of a node type.
   final DomainClusterConfigNodeOptionNodeConfig? nodeConfig;
 
-  /// Type of node this configuration describes. Valid values: <span pulumi-lang-nodejs="`coordinator`" pulumi-lang-dotnet="`Coordinator`" pulumi-lang-go="`coordinator`" pulumi-lang-python="`coordinator`" pulumi-lang-yaml="`coordinator`" pulumi-lang-java="`coordinator`">`coordinator`</span>.
+  /// Type of node this configuration describes. Valid values: `coordinator`.
   final String? nodeType;
 
   DomainClusterConfigNodeOption({

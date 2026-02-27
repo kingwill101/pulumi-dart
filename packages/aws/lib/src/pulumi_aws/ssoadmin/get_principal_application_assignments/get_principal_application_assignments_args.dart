@@ -5,7 +5,7 @@ import '../get_principal_application_assignments_application_assignment/get_prin
 
 /// Arguments for getPrincipalApplicationAssignments.
 class GetPrincipalApplicationAssignmentsArgs {
-  /// List of principals assigned to the application. See the <span pulumi-lang-nodejs="`applicationAssignments`" pulumi-lang-dotnet="`ApplicationAssignments`" pulumi-lang-go="`applicationAssignments`" pulumi-lang-python="`application_assignments`" pulumi-lang-yaml="`applicationAssignments`" pulumi-lang-java="`applicationAssignments`">`application_assignments`</span> attribute reference below.
+  /// List of principals assigned to the application. See the `application_assignments` attribute reference below.
   final Input<List<GetPrincipalApplicationAssignmentsApplicationAssignment>>?
       applicationAssignments;
 

@@ -1,0 +1,3 @@
+library module_appmesh_virtual_node_spec_listener_tls_certificate;
+
+export 'virtual_node_spec_listener_tls_certificate/virtual_node_spec_listener_tls_certificate.dart';

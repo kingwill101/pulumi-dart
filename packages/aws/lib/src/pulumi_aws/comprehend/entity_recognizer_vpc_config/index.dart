@@ -1,3 +1,0 @@
-library module_comprehend_entity_recognizer_vpc_config;
-
-export 'entity_recognizer_vpc_config.dart';

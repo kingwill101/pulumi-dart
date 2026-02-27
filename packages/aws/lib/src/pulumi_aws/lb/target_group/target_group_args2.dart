@@ -9,7 +9,7 @@ import '../target_group_target_health_state/target_group_target_health_state2.da
 
 /// The set of arguments for TargetGroup.
 class TargetGroupArgs2 {
-  /// Whether to terminate connections at the end of the deregistration timeout on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay) for more information. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to terminate connections at the end of the deregistration timeout on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay) for more information. Default is `false`.
   final Input<bool>? connectionTermination;
 
   /// Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
@@ -18,28 +18,28 @@ class TargetGroupArgs2 {
   /// Health Check configuration block. Detailed below.
   final Input<TargetGroupHealthCheck2>? healthCheck;
 
-  /// The type of IP addresses used by the target group, only supported when target type is set to <span pulumi-lang-nodejs="`ip`" pulumi-lang-dotnet="`Ip`" pulumi-lang-go="`ip`" pulumi-lang-python="`ip`" pulumi-lang-yaml="`ip`" pulumi-lang-java="`ip`">`ip`</span>. Possible values are <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span> or <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span>.
+  /// The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`.
   final Input<String>? ipAddressType;
 
-  /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `target_type` is `lambda`. Default is `false`.
   final Input<bool>? lambdaMultiValueHeadersEnabled;
 
-  /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is <span pulumi-lang-nodejs="`roundRobin`" pulumi-lang-dotnet="`RoundRobin`" pulumi-lang-go="`roundRobin`" pulumi-lang-python="`round_robin`" pulumi-lang-yaml="`roundRobin`" pulumi-lang-java="`roundRobin`">`round_robin`</span>, <span pulumi-lang-nodejs="`leastOutstandingRequests`" pulumi-lang-dotnet="`LeastOutstandingRequests`" pulumi-lang-go="`leastOutstandingRequests`" pulumi-lang-python="`least_outstanding_requests`" pulumi-lang-yaml="`leastOutstandingRequests`" pulumi-lang-java="`leastOutstandingRequests`">`least_outstanding_requests`</span>, or <span pulumi-lang-nodejs="`weightedRandom`" pulumi-lang-dotnet="`WeightedRandom`" pulumi-lang-go="`weightedRandom`" pulumi-lang-python="`weighted_random`" pulumi-lang-yaml="`weightedRandom`" pulumi-lang-java="`weightedRandom`">`weighted_random`</span>. The default is <span pulumi-lang-nodejs="`roundRobin`" pulumi-lang-dotnet="`RoundRobin`" pulumi-lang-go="`roundRobin`" pulumi-lang-python="`round_robin`" pulumi-lang-yaml="`roundRobin`" pulumi-lang-java="`roundRobin`">`round_robin`</span>.
+  /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `round_robin`, `least_outstanding_requests`, or `weighted_random`. The default is `round_robin`.
   final Input<String>? loadBalancingAlgorithmType;
 
-  /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the <span pulumi-lang-nodejs="`weightedRandom`" pulumi-lang-dotnet="`WeightedRandom`" pulumi-lang-go="`weightedRandom`" pulumi-lang-python="`weighted_random`" pulumi-lang-yaml="`weightedRandom`" pulumi-lang-java="`weightedRandom`">`weighted_random`</span> load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
+  /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weighted_random` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
   final Input<String>? loadBalancingAnomalyMitigation;
 
-  /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `<span pulumi-lang-nodejs=""useLoadBalancerConfiguration"" pulumi-lang-dotnet=""UseLoadBalancerConfiguration"" pulumi-lang-go=""useLoadBalancerConfiguration"" pulumi-lang-python=""use_load_balancer_configuration"" pulumi-lang-yaml=""useLoadBalancerConfiguration"" pulumi-lang-java=""useLoadBalancerConfiguration"">"use_load_balancer_configuration"</span>`. The default is `<span pulumi-lang-nodejs=""useLoadBalancerConfiguration"" pulumi-lang-dotnet=""UseLoadBalancerConfiguration"" pulumi-lang-go=""useLoadBalancerConfiguration"" pulumi-lang-python=""use_load_balancer_configuration"" pulumi-lang-yaml=""useLoadBalancerConfiguration"" pulumi-lang-java=""useLoadBalancerConfiguration"">"use_load_balancer_configuration"</span>`.
+  /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"use_load_balancer_configuration"`. The default is `"use_load_balancer_configuration"`.
   final Input<String>? loadBalancingCrossZoneEnabled;
 
   /// Name of the target group. If omitted, this provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   final Input<String>? name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. Cannot be longer than 6 characters.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
   final Input<String>? namePrefix;
 
-  /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`instance`" pulumi-lang-dotnet="`Instance`" pulumi-lang-go="`instance`" pulumi-lang-python="`instance`" pulumi-lang-yaml="`instance`" pulumi-lang-java="`instance`">`instance`</span>, <span pulumi-lang-nodejs="`ip`" pulumi-lang-dotnet="`Ip`" pulumi-lang-go="`ip`" pulumi-lang-python="`ip`" pulumi-lang-yaml="`ip`" pulumi-lang-java="`ip`">`ip`</span> or <span pulumi-lang-nodejs="`alb`" pulumi-lang-dotnet="`Alb`" pulumi-lang-go="`alb`" pulumi-lang-python="`alb`" pulumi-lang-yaml="`alb`" pulumi-lang-java="`alb`">`alb`</span>. Does not apply when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>.
+  /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
   final Input<int>? port;
 
   /// Whether client IP preservation is enabled. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) for more information.
@@ -47,14 +47,14 @@ class TargetGroupArgs2 {
 
   /// Protocol to use for routing traffic to the targets.
   /// Should be one of `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, `UDP`, `QUIC`, or `TCP_QUIC`.
-  /// Required when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`instance`" pulumi-lang-dotnet="`Instance`" pulumi-lang-go="`instance`" pulumi-lang-python="`instance`" pulumi-lang-yaml="`instance`" pulumi-lang-java="`instance`">`instance`</span>, <span pulumi-lang-nodejs="`ip`" pulumi-lang-dotnet="`Ip`" pulumi-lang-go="`ip`" pulumi-lang-python="`ip`" pulumi-lang-yaml="`ip`" pulumi-lang-java="`ip`">`ip`</span>, or <span pulumi-lang-nodejs="`alb`" pulumi-lang-dotnet="`Alb`" pulumi-lang-go="`alb`" pulumi-lang-python="`alb`" pulumi-lang-yaml="`alb`" pulumi-lang-java="`alb`">`alb`</span>.
-  /// Does not apply when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>.
+  /// Required when `target_type` is `instance`, `ip`, or `alb`.
+  /// Does not apply when `target_type` is `lambda`.
   final Input<String>? protocol;
 
-  /// Only applicable when <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
+  /// Only applicable when `protocol` is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
   final Input<String>? protocolVersion;
 
-  /// Whether to enable support for proxy protocol v2 on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#proxy-protocol) for more information. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable support for proxy protocol v2 on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#proxy-protocol) for more information. Default is `false`.
   final Input<bool>? proxyProtocolV2;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -66,35 +66,35 @@ class TargetGroupArgs2 {
   /// Stickiness configuration block. Detailed below.
   final Input<TargetGroupStickiness2>? stickiness;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`instance`" pulumi-lang-dotnet="`Instance`" pulumi-lang-go="`instance`" pulumi-lang-python="`instance`" pulumi-lang-yaml="`instance`" pulumi-lang-java="`instance`">`instance`</span> or <span pulumi-lang-nodejs="`ip`" pulumi-lang-dotnet="`Ip`" pulumi-lang-go="`ip`" pulumi-lang-python="`ip`" pulumi-lang-yaml="`ip`" pulumi-lang-java="`ip`">`ip`</span>.
+  /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `target_type` is `instance` or `ip`.
   final Input<int>? targetControlPort;
 
-  /// Target failover block. Only applicable for Gateway Load Balancer target groups. See<span pulumi-lang-nodejs=" targetFailover " pulumi-lang-dotnet=" TargetFailover " pulumi-lang-go=" targetFailover " pulumi-lang-python=" target_failover " pulumi-lang-yaml=" targetFailover " pulumi-lang-java=" targetFailover "> target_failover </span>for more information.
+  /// Target failover block. Only applicable for Gateway Load Balancer target groups. See target_failover for more information.
   final Input<List<TargetGroupTargetFailover2>>? targetFailovers;
 
-  /// Target health requirements block. See<span pulumi-lang-nodejs=" targetGroupHealth " pulumi-lang-dotnet=" TargetGroupHealth " pulumi-lang-go=" targetGroupHealth " pulumi-lang-python=" target_group_health " pulumi-lang-yaml=" targetGroupHealth " pulumi-lang-java=" targetGroupHealth "> target_group_health </span>for more information.
+  /// Target health requirements block. See target_group_health for more information.
   final Input<TargetGroupTargetGroupHealth2>? targetGroupHealth;
 
-  /// Target health state block. Only applicable for Network Load Balancer target groups when <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is `TCP` or `TLS`. See<span pulumi-lang-nodejs=" targetHealthState " pulumi-lang-dotnet=" TargetHealthState " pulumi-lang-go=" targetHealthState " pulumi-lang-python=" target_health_state " pulumi-lang-yaml=" targetHealthState " pulumi-lang-java=" targetHealthState "> target_health_state </span>for more information.
+  /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
   final Input<List<TargetGroupTargetHealthState2>>? targetHealthStates;
 
   /// Type of target that you must specify when registering targets with this target group.
   /// See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_CreateTargetGroup.html) for supported values.
-  /// The default is <span pulumi-lang-nodejs="`instance`" pulumi-lang-dotnet="`Instance`" pulumi-lang-go="`instance`" pulumi-lang-python="`instance`" pulumi-lang-yaml="`instance`" pulumi-lang-java="`instance`">`instance`</span>.
+  /// The default is `instance`.
   ///
   /// Note that you can't specify targets for a target group using both instance IDs and IP addresses.
   ///
-  /// If the target type is <span pulumi-lang-nodejs="`ip`" pulumi-lang-dotnet="`Ip`" pulumi-lang-go="`ip`" pulumi-lang-python="`ip`" pulumi-lang-yaml="`ip`" pulumi-lang-java="`ip`">`ip`</span>, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
+  /// If the target type is `ip`, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
   ///
-  /// Network Load Balancers do not support the <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span> target type.
+  /// Network Load Balancers do not support the `lambda` target type.
   ///
-  /// Application Load Balancers do not support the <span pulumi-lang-nodejs="`alb`" pulumi-lang-dotnet="`Alb`" pulumi-lang-go="`alb`" pulumi-lang-python="`alb`" pulumi-lang-yaml="`alb`" pulumi-lang-java="`alb`">`alb`</span> target type.
+  /// Application Load Balancers do not support the `alb` target type.
   final Input<String>? targetType;
 
-  /// Identifier of the VPC in which to create the target group. Required when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`instance`" pulumi-lang-dotnet="`Instance`" pulumi-lang-go="`instance`" pulumi-lang-python="`instance`" pulumi-lang-yaml="`instance`" pulumi-lang-java="`instance`">`instance`</span>, <span pulumi-lang-nodejs="`ip`" pulumi-lang-dotnet="`Ip`" pulumi-lang-go="`ip`" pulumi-lang-python="`ip`" pulumi-lang-yaml="`ip`" pulumi-lang-java="`ip`">`ip`</span> or <span pulumi-lang-nodejs="`alb`" pulumi-lang-dotnet="`Alb`" pulumi-lang-go="`alb`" pulumi-lang-python="`alb`" pulumi-lang-yaml="`alb`" pulumi-lang-java="`alb`">`alb`</span>. Does not apply when <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>.
+  /// Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
   final Input<String>? vpcId;
 
   TargetGroupArgs2({

@@ -5,7 +5,7 @@ import '../organization_conformance_pack_input_parameter/organization_conformanc
 
 /// The set of arguments for OrganizationConformancePack.
 class OrganizationConformancePackArgs {
-  /// Amazon S3 bucket where AWS Config stores conformance pack templates. Delivery bucket must begin with <span pulumi-lang-nodejs="`awsconfigconforms`" pulumi-lang-dotnet="`Awsconfigconforms`" pulumi-lang-go="`awsconfigconforms`" pulumi-lang-python="`awsconfigconforms`" pulumi-lang-yaml="`awsconfigconforms`" pulumi-lang-java="`awsconfigconforms`">`awsconfigconforms`</span> prefix. Maximum length of 63.
+  /// Amazon S3 bucket where AWS Config stores conformance pack templates. Delivery bucket must begin with `awsconfigconforms` prefix. Maximum length of 63.
   final Input<String>? deliveryS3Bucket;
 
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
@@ -14,7 +14,7 @@ class OrganizationConformancePackArgs {
   /// Set of AWS accounts to be excluded from an organization conformance pack while deploying a conformance pack. Maximum of 1000 accounts.
   final Input<List<String>>? excludedAccounts;
 
-  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the <span pulumi-lang-nodejs="`templateBody`" pulumi-lang-dotnet="`TemplateBody`" pulumi-lang-go="`templateBody`" pulumi-lang-python="`template_body`" pulumi-lang-yaml="`templateBody`" pulumi-lang-java="`templateBody`">`template_body`</span> or in the template stored in Amazon S3 if using <span pulumi-lang-nodejs="`templateS3Uri`" pulumi-lang-dotnet="`TemplateS3Uri`" pulumi-lang-go="`templateS3Uri`" pulumi-lang-python="`template_s3_uri`" pulumi-lang-yaml="`templateS3Uri`" pulumi-lang-java="`templateS3Uri`">`template_s3_uri`</span>.
+  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `template_body` or in the template stored in Amazon S3 if using `template_s3_uri`.
   final Input<List<OrganizationConformancePackInputParameter>>? inputParameters;
 
   /// The name of the organization conformance pack. Must begin with a letter and contain from 1 to 128 alphanumeric characters and hyphens.

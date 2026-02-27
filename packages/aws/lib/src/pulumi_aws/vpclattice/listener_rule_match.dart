@@ -1,0 +1,3 @@
+library module_vpclattice_listener_rule_match;
+
+export 'listener_rule_match/listener_rule_match.dart';

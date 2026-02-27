@@ -1,3 +1,0 @@
-library module_licensemanager_get_received_license_consumption_configuration;
-
-export 'get_received_license_consumption_configuration.dart';

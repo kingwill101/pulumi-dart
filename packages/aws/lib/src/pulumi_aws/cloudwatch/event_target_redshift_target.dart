@@ -1,0 +1,3 @@
+library module_cloudwatch_event_target_redshift_target;
+
+export 'event_target_redshift_target/event_target_redshift_target.dart';

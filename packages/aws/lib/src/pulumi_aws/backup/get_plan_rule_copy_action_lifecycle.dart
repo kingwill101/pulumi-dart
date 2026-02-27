@@ -1,0 +1,3 @@
+library module_backup_get_plan_rule_copy_action_lifecycle;
+
+export 'get_plan_rule_copy_action_lifecycle/get_plan_rule_copy_action_lifecycle.dart';

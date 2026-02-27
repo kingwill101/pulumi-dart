@@ -1,0 +1,3 @@
+library module_appautoscaling_scheduled_action_scalable_target_action;
+
+export 'scheduled_action_scalable_target_action/scheduled_action_scalable_target_action.dart';

@@ -11,7 +11,7 @@ class GetNamespaceResult {
   /// The name of the first database created in the namespace.
   final String dbName;
 
-  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying <span pulumi-lang-nodejs="`defaultIamRoleArn`" pulumi-lang-dotnet="`DefaultIamRoleArn`" pulumi-lang-go="`defaultIamRoleArn`" pulumi-lang-python="`default_iam_role_arn`" pulumi-lang-yaml="`defaultIamRoleArn`" pulumi-lang-java="`defaultIamRoleArn`">`default_iam_role_arn`</span>, it also must be part of <span pulumi-lang-nodejs="`iamRoles`" pulumi-lang-dotnet="`IamRoles`" pulumi-lang-go="`iamRoles`" pulumi-lang-python="`iam_roles`" pulumi-lang-yaml="`iamRoles`" pulumi-lang-java="`iamRoles`">`iam_roles`</span>.
+  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `default_iam_role_arn`, it also must be part of `iam_roles`.
   final String defaultIamRoleArn;
 
   /// A list of IAM roles to associate with the namespace.
@@ -23,7 +23,7 @@ class GetNamespaceResult {
   /// The ARN of the Amazon Web Services Key Management Service key used to encrypt your data.
   final String kmsKeyId;
 
-  /// The types of logs the namespace can export. Available export types are <span pulumi-lang-nodejs="`userlog`" pulumi-lang-dotnet="`Userlog`" pulumi-lang-go="`userlog`" pulumi-lang-python="`userlog`" pulumi-lang-yaml="`userlog`" pulumi-lang-java="`userlog`">`userlog`</span>, <span pulumi-lang-nodejs="`connectionlog`" pulumi-lang-dotnet="`Connectionlog`" pulumi-lang-go="`connectionlog`" pulumi-lang-python="`connectionlog`" pulumi-lang-yaml="`connectionlog`" pulumi-lang-java="`connectionlog`">`connectionlog`</span>, and <span pulumi-lang-nodejs="`useractivitylog`" pulumi-lang-dotnet="`Useractivitylog`" pulumi-lang-go="`useractivitylog`" pulumi-lang-python="`useractivitylog`" pulumi-lang-yaml="`useractivitylog`" pulumi-lang-java="`useractivitylog`">`useractivitylog`</span>.
+  /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   final List<String> logExports;
 
   /// The Redshift Namespace ID.

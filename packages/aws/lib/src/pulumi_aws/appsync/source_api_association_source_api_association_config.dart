@@ -1,0 +1,3 @@
+library module_appsync_source_api_association_source_api_association_config;
+
+export 'source_api_association_source_api_association_config/source_api_association_source_api_association_config.dart';

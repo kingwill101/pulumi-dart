@@ -7,7 +7,7 @@ class GetTemplatesArgs {
   /// AWS Region to which the quota increases apply.
   final Input<String>? awsRegion;
 
-  /// AWS Region to which the quota increases apply. Use <span pulumi-lang-nodejs="`aws.getRegion`" pulumi-lang-dotnet="`aws.getRegion`" pulumi-lang-go="`getRegion`" pulumi-lang-python="`get_region`" pulumi-lang-yaml="`aws.getRegion`" pulumi-lang-java="`aws.getRegion`">`aws.getRegion`</span> instead.
+  /// AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
   final Input<String>? region;
 
   GetTemplatesArgs({

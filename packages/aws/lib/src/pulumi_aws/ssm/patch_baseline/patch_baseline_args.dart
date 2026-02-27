@@ -7,10 +7,10 @@ import '../patch_baseline_source/patch_baseline_source.dart';
 
 /// The set of arguments for PatchBaseline.
 class PatchBaselineArgs {
-  /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See <span pulumi-lang-nodejs="`approvalRule`" pulumi-lang-dotnet="`ApprovalRule`" pulumi-lang-go="`approvalRule`" pulumi-lang-python="`approval_rule`" pulumi-lang-yaml="`approvalRule`" pulumi-lang-java="`approvalRule`">`approval_rule`</span> below.
+  /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approval_rule` below.
   final Input<List<PatchBaselineApprovalRule>>? approvalRules;
 
-  /// List of explicitly approved patches for the baseline. Cannot be specified with <span pulumi-lang-nodejs="`approvalRule`" pulumi-lang-dotnet="`ApprovalRule`" pulumi-lang-go="`approvalRule`" pulumi-lang-python="`approval_rule`" pulumi-lang-yaml="`approvalRule`" pulumi-lang-java="`approvalRule`">`approval_rule`</span>.
+  /// List of explicitly approved patches for the baseline. Cannot be specified with `approval_rule`.
   final Input<List<String>>? approvedPatches;
 
   /// Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
@@ -42,13 +42,13 @@ class PatchBaselineArgs {
   /// List of rejected patches.
   final Input<List<String>>? rejectedPatches;
 
-  /// Action for Patch Manager to take on patches included in the <span pulumi-lang-nodejs="`rejectedPatches`" pulumi-lang-dotnet="`RejectedPatches`" pulumi-lang-go="`rejectedPatches`" pulumi-lang-python="`rejected_patches`" pulumi-lang-yaml="`rejectedPatches`" pulumi-lang-java="`rejectedPatches`">`rejected_patches`</span> list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
+  /// Action for Patch Manager to take on patches included in the `rejected_patches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
   final Input<String>? rejectedPatchesAction;
 
-  /// Configuration block with alternate sources for patches. Applies to Linux instances only. See <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> below.
+  /// Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
   final Input<List<PatchBaselineSource>>? sources;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   PatchBaselineArgs({

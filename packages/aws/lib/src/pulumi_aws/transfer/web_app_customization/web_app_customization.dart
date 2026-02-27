@@ -7,7 +7,7 @@ import 'web_app_customization_args.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer Family Web App Customization using the <span pulumi-lang-nodejs="`webAppId`" pulumi-lang-dotnet="`WebAppId`" pulumi-lang-go="`webAppId`" pulumi-lang-python="`web_app_id`" pulumi-lang-yaml="`webAppId`" pulumi-lang-java="`webAppId`">`web_app_id`</span>. For example:
+/// Using `pulumi import`, import Transfer Family Web App Customization using the `web_app_id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/webAppCustomization:WebAppCustomization example webapp-12345678901234567890

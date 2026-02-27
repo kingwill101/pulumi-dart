@@ -1,0 +1,3 @@
+library module_ecs_get_task_definition_volume_efs_volume_configuration;
+
+export 'get_task_definition_volume_efs_volume_configuration/get_task_definition_volume_efs_volume_configuration.dart';

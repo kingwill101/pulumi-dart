@@ -1,0 +1,3 @@
+library module_emrserverless_application_initial_capacity_initial_capacity_config;
+
+export 'application_initial_capacity_initial_capacity_config/application_initial_capacity_initial_capacity_config.dart';

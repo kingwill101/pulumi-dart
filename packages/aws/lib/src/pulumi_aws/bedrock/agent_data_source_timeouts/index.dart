@@ -1,3 +1,0 @@
-library module_bedrock_agent_data_source_timeouts;
-
-export 'agent_data_source_timeouts.dart';

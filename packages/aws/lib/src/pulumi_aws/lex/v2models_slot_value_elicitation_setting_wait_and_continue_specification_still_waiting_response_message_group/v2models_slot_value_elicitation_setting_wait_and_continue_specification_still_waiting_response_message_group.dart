@@ -6,13 +6,13 @@ import '../v2models_slot_value_elicitation_setting_wait_and_continue_specificati
 
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user.
-  /// See the <span pulumi-lang-nodejs="`aws.lex.V2modelsIntent`" pulumi-lang-dotnet="`aws.lex.V2modelsIntent`" pulumi-lang-go="`lex.V2modelsIntent`" pulumi-lang-python="`lex.V2modelsIntent`" pulumi-lang-yaml="`aws.lex.V2modelsIntent`" pulumi-lang-java="`aws.lex.V2modelsIntent`">`aws.lex.V2modelsIntent`</span> resource for details on the <span pulumi-lang-nodejs="`message`" pulumi-lang-dotnet="`Message`" pulumi-lang-go="`message`" pulumi-lang-python="`message`" pulumi-lang-yaml="`message`" pulumi-lang-java="`message`">`message`</span> argument reference - they are identical.
+  /// See the `aws.lex.V2modelsIntent` resource for details on the `message` argument reference - they are identical.
   final V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupMessage?
       message;
 
   /// Configuration blocks for message variations to send to the user.
   /// When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user.
-  /// See the <span pulumi-lang-nodejs="`aws.lex.V2modelsIntent`" pulumi-lang-dotnet="`aws.lex.V2modelsIntent`" pulumi-lang-go="`lex.V2modelsIntent`" pulumi-lang-python="`lex.V2modelsIntent`" pulumi-lang-yaml="`aws.lex.V2modelsIntent`" pulumi-lang-java="`aws.lex.V2modelsIntent`">`aws.lex.V2modelsIntent`</span> resource for details on the <span pulumi-lang-nodejs="`variation`" pulumi-lang-dotnet="`Variation`" pulumi-lang-go="`variation`" pulumi-lang-python="`variation`" pulumi-lang-yaml="`variation`" pulumi-lang-java="`variation`">`variation`</span> argument reference - they are identical.
+  /// See the `aws.lex.V2modelsIntent` resource for details on the `variation` argument reference - they are identical.
   final List<
           V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariation>?
       variations;

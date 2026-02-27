@@ -6,7 +6,7 @@ import '../service_service_connect_configuration_service_timeout/service_service
 import '../service_service_connect_configuration_service_tls/service_service_connect_configuration_service_tls.dart';
 
 class ServiceServiceConnectConfigurationService {
-  /// List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one <span pulumi-lang-nodejs="`clientAlias`" pulumi-lang-dotnet="`ClientAlias`" pulumi-lang-go="`clientAlias`" pulumi-lang-python="`client_alias`" pulumi-lang-yaml="`clientAlias`" pulumi-lang-java="`clientAlias`">`client_alias`</span> with one <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> should be specified. See below.
+  /// List of client aliases for this Service Connect service. You use these to assign names that can be used by client applications. For each service block where enabled is true, exactly one `client_alias` with one `port` should be specified. See below.
   final List<ServiceServiceConnectConfigurationServiceClientAlias>? clientAlias;
 
   /// Name of the new AWS Cloud Map service that Amazon ECS creates for this Amazon ECS service.

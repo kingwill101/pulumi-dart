@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ScheduledActionTargetActionResizeCluster {
-  /// A boolean value indicating whether the resize operation is using the classic resize process. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// A boolean value indicating whether the resize operation is using the classic resize process. Default: `false`.
   final bool? classic;
 
   /// The unique identifier for the cluster to resize.

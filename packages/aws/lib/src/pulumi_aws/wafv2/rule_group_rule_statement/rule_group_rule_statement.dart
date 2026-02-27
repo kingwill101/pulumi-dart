@@ -19,7 +19,7 @@ class RuleGroupRuleStatement {
   /// A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
   final RuleGroupRuleStatementAndStatement? andStatement;
 
-  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See <span pulumi-lang-nodejs="`asnMatchStatement`" pulumi-lang-dotnet="`AsnMatchStatement`" pulumi-lang-go="`asnMatchStatement`" pulumi-lang-python="`asn_match_statement`" pulumi-lang-yaml="`asnMatchStatement`" pulumi-lang-java="`asnMatchStatement`">`asn_match_statement`</span> below for details.
+  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asn_match_statement` below for details.
   final RuleGroupRuleStatementAsnMatchStatement? asnMatchStatement;
 
   /// A rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.

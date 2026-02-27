@@ -26,7 +26,7 @@ class ResolverArgs {
   /// Resolver type. Valid values are `UNIT` and `PIPELINE`.
   final Input<String>? kind;
 
-  /// Maximum batching size for a resolver. Valid values are between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`2000`" pulumi-lang-dotnet="`2000`" pulumi-lang-go="`2000`" pulumi-lang-python="`2000`" pulumi-lang-yaml="`2000`" pulumi-lang-java="`2000`">`2000`</span>.
+  /// Maximum batching size for a resolver. Valid values are between `0` and `2000`.
   final Input<int>? maxBatchSize;
 
   /// The caching configuration for the resolver. See Pipeline Config.

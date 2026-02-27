@@ -4,7 +4,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib {
   /// The maximum amount of memory, in MiB. To specify no maximum limit, omit this parameter.
   final int? max;
 
-  /// The minimum amount of memory, in MiB. To specify no minimum limit, specify <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
+  /// The minimum amount of memory, in MiB. To specify no minimum limit, specify `0`.
   final int min;
 
   FleetLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib({

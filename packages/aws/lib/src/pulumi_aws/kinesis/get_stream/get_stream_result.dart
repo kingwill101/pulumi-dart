@@ -5,7 +5,7 @@ import '../get_stream_stream_mode_detail/get_stream_stream_mode_detail.dart';
 
 /// Result data returned by getStream.
 class GetStreamResult {
-  /// ARN of the Kinesis Stream (same as <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>).
+  /// ARN of the Kinesis Stream (same as `id`).
   final String arn;
 
   /// List of shard ids in the CLOSED state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.

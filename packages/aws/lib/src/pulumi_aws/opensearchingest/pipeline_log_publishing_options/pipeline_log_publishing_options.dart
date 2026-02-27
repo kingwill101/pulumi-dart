@@ -3,7 +3,7 @@
 import '../pipeline_log_publishing_options_cloudwatch_log_destination/pipeline_log_publishing_options_cloudwatch_log_destination.dart';
 
 class PipelineLogPublishingOptions {
-  /// The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs. This parameter is required if IsLoggingEnabled is set to true. See <span pulumi-lang-nodejs="`cloudwatchLogDestination`" pulumi-lang-dotnet="`CloudwatchLogDestination`" pulumi-lang-go="`cloudwatchLogDestination`" pulumi-lang-python="`cloudwatch_log_destination`" pulumi-lang-yaml="`cloudwatchLogDestination`" pulumi-lang-java="`cloudwatchLogDestination`">`cloudwatch_log_destination`</span> below.
+  /// The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs. This parameter is required if IsLoggingEnabled is set to true. See `cloudwatch_log_destination` below.
   final PipelineLogPublishingOptionsCloudwatchLogDestination?
       cloudwatchLogDestination;
 

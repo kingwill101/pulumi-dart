@@ -1,3 +1,0 @@
-library module_autoscaling_traffic_source_attachment_traffic_source;
-
-export 'traffic_source_attachment_traffic_source.dart';

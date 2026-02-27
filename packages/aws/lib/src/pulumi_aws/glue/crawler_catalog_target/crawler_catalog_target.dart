@@ -9,9 +9,9 @@ class CrawlerCatalogTarget {
 
   /// A valid Amazon SQS ARN.
   ///
-  /// > **Note:** <span pulumi-lang-nodejs="`deletionBehavior`" pulumi-lang-dotnet="`DeletionBehavior`" pulumi-lang-go="`deletionBehavior`" pulumi-lang-python="`deletion_behavior`" pulumi-lang-yaml="`deletionBehavior`" pulumi-lang-java="`deletionBehavior`">`deletion_behavior`</span> of catalog target doesn't support `DEPRECATE_IN_DATABASE`.
+  /// > **Note:** `deletion_behavior` of catalog target doesn't support `DEPRECATE_IN_DATABASE`.
   ///
-  /// > **Note:** <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`">`configuration`</span> for catalog target crawlers will have `{ ... "Grouping": { "TableGroupingPolicy": "CombineCompatibleSchemas"} }` by default.
+  /// > **Note:** `configuration` for catalog target crawlers will have `{ ... "Grouping": { "TableGroupingPolicy": "CombineCompatibleSchemas"} }` by default.
   final String? dlqEventQueueArn;
 
   /// A valid Amazon SQS ARN.

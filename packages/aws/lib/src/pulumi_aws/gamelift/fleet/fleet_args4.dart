@@ -8,7 +8,7 @@ import '../fleet_runtime_configuration/fleet_runtime_configuration.dart';
 
 /// The set of arguments for Fleet.
 class FleetArgs4 {
-  /// ID of the GameLift Build to be deployed on the fleet. Conflicts with <span pulumi-lang-nodejs="`scriptId`" pulumi-lang-dotnet="`ScriptId`" pulumi-lang-go="`scriptId`" pulumi-lang-python="`script_id`" pulumi-lang-yaml="`scriptId`" pulumi-lang-java="`scriptId`">`script_id`</span>.
+  /// ID of the GameLift Build to be deployed on the fleet. Conflicts with `script_id`.
   final Input<String>? buildId;
 
   /// Prompts GameLift to generate a TLS/SSL certificate for the fleet. See certificate_configuration.
@@ -29,7 +29,7 @@ class FleetArgs4 {
   /// ARN of an IAM role that instances in the fleet can assume.
   final Input<String>? instanceRoleArn;
 
-  /// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  /// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
   final Input<List<String>>? metricGroups;
 
   /// The name of the fleet.
@@ -47,10 +47,10 @@ class FleetArgs4 {
   /// Instructions for launching server processes on each instance in the fleet. See below.
   final Input<FleetRuntimeConfiguration>? runtimeConfiguration;
 
-  /// ID of the GameLift Script to be deployed on the fleet. Conflicts with <span pulumi-lang-nodejs="`buildId`" pulumi-lang-dotnet="`BuildId`" pulumi-lang-go="`buildId`" pulumi-lang-python="`build_id`" pulumi-lang-yaml="`buildId`" pulumi-lang-java="`buildId`">`build_id`</span>.
+  /// ID of the GameLift Script to be deployed on the fleet. Conflicts with `build_id`.
   final Input<String>? scriptId;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   FleetArgs4({

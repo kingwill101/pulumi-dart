@@ -7,7 +7,7 @@ class AuthorizerArgs3 {
   /// The ARN of the authorizer's Lambda function.
   final Input<String> authorizerFunctionArn;
 
-  /// Specifies whether the HTTP caching is enabled or not. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether the HTTP caching is enabled or not. Default: `false`.
   final Input<bool>? enableCachingForHttp;
 
   /// The name of the authorizer.
@@ -16,13 +16,13 @@ class AuthorizerArgs3 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Specifies whether AWS IoT validates the token signature in an authorization request. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether AWS IoT validates the token signature in an authorization request. Default: `false`.
   final Input<bool>? signingDisabled;
 
   /// The status of Authorizer request at creation. Valid values: `ACTIVE`, `INACTIVE`. Default: `ACTIVE`.
   final Input<String>? status;
 
-  /// Map of tags to assign to this resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The name of the token key used to extract the token from the HTTP headers. This value is required if signing is enabled in your authorizer.

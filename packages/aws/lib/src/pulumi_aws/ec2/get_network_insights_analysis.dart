@@ -1,0 +1,5 @@
+library module_ec2_get_network_insights_analysis;
+
+export 'get_network_insights_analysis/get_network_insights_analysis.dart';
+export 'get_network_insights_analysis/get_network_insights_analysis_args.dart';
+export 'get_network_insights_analysis/get_network_insights_analysis_result.dart';

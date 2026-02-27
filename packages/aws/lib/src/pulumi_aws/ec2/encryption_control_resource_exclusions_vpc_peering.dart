@@ -1,0 +1,3 @@
+library module_ec2_encryption_control_resource_exclusions_vpc_peering;
+
+export 'encryption_control_resource_exclusions_vpc_peering/encryption_control_resource_exclusions_vpc_peering.dart';

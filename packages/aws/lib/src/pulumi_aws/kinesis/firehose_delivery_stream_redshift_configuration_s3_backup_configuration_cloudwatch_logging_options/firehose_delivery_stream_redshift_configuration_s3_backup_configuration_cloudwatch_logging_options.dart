@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions {
-  /// Enables or disables the logging. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables or disables the logging. Defaults to `false`.
   final bool? enabled;
 
-  /// The CloudWatch group name for logging. This value is required if <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`">`enabled`</span> is true.
+  /// The CloudWatch group name for logging. This value is required if `enabled` is true.
   final String? logGroupName;
 
-  /// The CloudWatch log stream name for logging. This value is required if <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`">`enabled`</span> is true.
+  /// The CloudWatch log stream name for logging. This value is required if `enabled` is true.
   final String? logStreamName;
 
   FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions({

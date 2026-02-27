@@ -5,10 +5,10 @@ import '../get_tags_filter_or_dimension/get_tags_filter_or_dimension.dart';
 import '../get_tags_filter_or_tags/get_tags_filter_or_tags.dart';
 
 class GetTagsFilterOr {
-  /// Configuration block for the filter that's based on `CostCategory` values. See <span pulumi-lang-nodejs="`costCategory`" pulumi-lang-dotnet="`CostCategory`" pulumi-lang-go="`costCategory`" pulumi-lang-python="`cost_category`" pulumi-lang-yaml="`costCategory`" pulumi-lang-java="`costCategory`">`cost_category`</span> block below for details.
+  /// Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
   final GetTagsFilterOrCostCategory? costCategory;
 
-  /// Configuration block for the specific `Dimension` to use for `Expression`. See <span pulumi-lang-nodejs="`dimension`" pulumi-lang-dotnet="`Dimension`" pulumi-lang-go="`dimension`" pulumi-lang-python="`dimension`" pulumi-lang-yaml="`dimension`" pulumi-lang-java="`dimension`">`dimension`</span> block below for details.
+  /// Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   final GetTagsFilterOrDimension? dimension;
 
   /// Tags that match your request.

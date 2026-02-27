@@ -1,3 +1,0 @@
-library module_cloudfront_keyvaluestore_keys_exclusive_resource_key_value_pair;
-
-export 'keyvaluestore_keys_exclusive_resource_key_value_pair.dart';

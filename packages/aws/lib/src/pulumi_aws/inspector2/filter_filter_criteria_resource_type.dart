@@ -1,0 +1,3 @@
+library module_inspector2_filter_filter_criteria_resource_type;
+
+export 'filter_filter_criteria_resource_type/filter_filter_criteria_resource_type.dart';

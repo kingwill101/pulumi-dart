@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FleetTargetCapacitySpecification {
-  /// Default target capacity type. Valid values: `on-demand`, <span pulumi-lang-nodejs="`spot`" pulumi-lang-dotnet="`Spot`" pulumi-lang-go="`spot`" pulumi-lang-python="`spot`" pulumi-lang-yaml="`spot`" pulumi-lang-java="`spot`">`spot`</span>.
+  /// Default target capacity type. Valid values: `on-demand`, `spot`.
   final String defaultTargetCapacityType;
 
   /// The number of On-Demand units to request.
@@ -11,10 +11,10 @@ class FleetTargetCapacitySpecification {
   final int? spotTargetCapacity;
 
   /// The unit for the target capacity.
-  /// If you specify <span pulumi-lang-nodejs="`targetCapacityUnitType`" pulumi-lang-dotnet="`TargetCapacityUnitType`" pulumi-lang-go="`targetCapacityUnitType`" pulumi-lang-python="`target_capacity_unit_type`" pulumi-lang-yaml="`targetCapacityUnitType`" pulumi-lang-java="`targetCapacityUnitType`">`target_capacity_unit_type`</span>, <span pulumi-lang-nodejs="`instanceRequirements`" pulumi-lang-dotnet="`InstanceRequirements`" pulumi-lang-go="`instanceRequirements`" pulumi-lang-python="`instance_requirements`" pulumi-lang-yaml="`instanceRequirements`" pulumi-lang-java="`instanceRequirements`">`instance_requirements`</span> must be specified.
+  /// If you specify `target_capacity_unit_type`, `instance_requirements` must be specified.
   final String? targetCapacityUnitType;
 
-  /// The number of units to request, filled using <span pulumi-lang-nodejs="`defaultTargetCapacityType`" pulumi-lang-dotnet="`DefaultTargetCapacityType`" pulumi-lang-go="`defaultTargetCapacityType`" pulumi-lang-python="`default_target_capacity_type`" pulumi-lang-yaml="`defaultTargetCapacityType`" pulumi-lang-java="`defaultTargetCapacityType`">`default_target_capacity_type`</span>.
+  /// The number of units to request, filled using `default_target_capacity_type`.
   final int totalTargetCapacity;
 
   FleetTargetCapacitySpecification({

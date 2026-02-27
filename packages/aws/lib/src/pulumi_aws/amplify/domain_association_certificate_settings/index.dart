@@ -1,3 +1,0 @@
-library module_amplify_domain_association_certificate_settings;
-
-export 'domain_association_certificate_settings.dart';

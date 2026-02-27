@@ -1,3 +1,0 @@
-library module_budgets_get_budget_notification;
-
-export 'get_budget_notification.dart';

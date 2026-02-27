@@ -1,0 +1,3 @@
+library module_workspaces_directory_certificate_based_auth_properties;
+
+export 'directory_certificate_based_auth_properties/directory_certificate_based_auth_properties.dart';

@@ -15,22 +15,22 @@ import '../table_warm_throughput/table_warm_throughput.dart';
 
 /// The set of arguments for Table.
 class TableArgs {
-  /// Set of nested attribute definitions. Only required for <span pulumi-lang-nodejs="`hashKey`" pulumi-lang-dotnet="`HashKey`" pulumi-lang-go="`hashKey`" pulumi-lang-python="`hash_key`" pulumi-lang-yaml="`hashKey`" pulumi-lang-java="`hashKey`">`hash_key`</span> and <span pulumi-lang-nodejs="`rangeKey`" pulumi-lang-dotnet="`RangeKey`" pulumi-lang-go="`rangeKey`" pulumi-lang-python="`range_key`" pulumi-lang-yaml="`rangeKey`" pulumi-lang-java="`rangeKey`">`range_key`</span> attributes. See below.
+  /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
   final Input<List<TableAttribute>>? attributes;
 
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   final Input<String>? billingMode;
 
-  /// Enables deletion protection for table. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables deletion protection for table. Defaults to `false`.
   final Input<bool>? deletionProtectionEnabled;
 
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
   final Input<List<TableGlobalSecondaryIndex>>? globalSecondaryIndexes;
 
-  /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single <span pulumi-lang-nodejs="`replica`" pulumi-lang-dotnet="`Replica`" pulumi-lang-go="`replica`" pulumi-lang-python="`replica`" pulumi-lang-yaml="`replica`" pulumi-lang-java="`replica`">`replica`</span> with <span pulumi-lang-nodejs="`consistencyMode`" pulumi-lang-dotnet="`ConsistencyMode`" pulumi-lang-go="`consistencyMode`" pulumi-lang-python="`consistency_mode`" pulumi-lang-yaml="`consistencyMode`" pulumi-lang-java="`consistencyMode`">`consistency_mode`</span> set to `STRONG`. Other combinations will fail to provision. See below.
+  /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
   final Input<TableGlobalTableWitness>? globalTableWitness;
 
-  /// Attribute to use as the hash (partition) key. Must also be defined as an <span pulumi-lang-nodejs="`attribute`" pulumi-lang-dotnet="`Attribute`" pulumi-lang-go="`attribute`" pulumi-lang-python="`attribute`" pulumi-lang-yaml="`attribute`" pulumi-lang-java="`attribute`">`attribute`</span>. See below.
+  /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
   final Input<String>? hashKey;
 
   /// Import Amazon S3 data into a new table. See below.
@@ -50,10 +50,10 @@ class TableArgs {
   /// Enable point-in-time recovery options. See below.
   final Input<TablePointInTimeRecovery>? pointInTimeRecovery;
 
-  /// Attribute to use as the range (sort) key. Must also be defined as an <span pulumi-lang-nodejs="`attribute`" pulumi-lang-dotnet="`Attribute`" pulumi-lang-go="`attribute`" pulumi-lang-python="`attribute`" pulumi-lang-yaml="`attribute`" pulumi-lang-java="`attribute`">`attribute`</span>, see below.
+  /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
   final Input<String>? rangeKey;
 
-  /// Number of read units for this table. If the <span pulumi-lang-nodejs="`billingMode`" pulumi-lang-dotnet="`BillingMode`" pulumi-lang-go="`billingMode`" pulumi-lang-python="`billing_mode`" pulumi-lang-yaml="`billingMode`" pulumi-lang-java="`billingMode`">`billing_mode`</span> is `PROVISIONED`, this field is required.
+  /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   final Input<int>? readCapacity;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -82,7 +82,7 @@ class TableArgs {
 
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
-  /// Only valid when <span pulumi-lang-nodejs="`streamEnabled`" pulumi-lang-dotnet="`StreamEnabled`" pulumi-lang-go="`streamEnabled`" pulumi-lang-python="`stream_enabled`" pulumi-lang-yaml="`streamEnabled`" pulumi-lang-java="`streamEnabled`">`stream_enabled`</span> is true.
+  /// Only valid when `stream_enabled` is true.
   final Input<String>? streamViewType;
 
   /// Storage class of the table.
@@ -90,7 +90,7 @@ class TableArgs {
   /// Default value is `STANDARD`.
   final Input<String>? tableClass;
 
-  /// A map of tags to populate on the created table. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Configuration block for TTL. See below.
@@ -99,7 +99,7 @@ class TableArgs {
   /// Sets the number of warm read and write units for the specified table. See below.
   final Input<TableWarmThroughput>? warmThroughput;
 
-  /// Number of write units for this table. If the <span pulumi-lang-nodejs="`billingMode`" pulumi-lang-dotnet="`BillingMode`" pulumi-lang-go="`billingMode`" pulumi-lang-python="`billing_mode`" pulumi-lang-yaml="`billingMode`" pulumi-lang-java="`billingMode`">`billing_mode`</span> is `PROVISIONED`, this field is required.
+  /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   final Input<int>? writeCapacity;
 
   TableArgs({

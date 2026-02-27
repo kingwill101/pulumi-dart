@@ -30,19 +30,19 @@ class DomainClusterConfig2 {
   /// List of node options for the domain.
   final List<DomainClusterConfigNodeOption>? nodeOptions;
 
-  /// Number of warm nodes in the cluster. Valid values are between <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span> and <span pulumi-lang-nodejs="`150`" pulumi-lang-dotnet="`150`" pulumi-lang-go="`150`" pulumi-lang-python="`150`" pulumi-lang-yaml="`150`" pulumi-lang-java="`150`">`150`</span>. <span pulumi-lang-nodejs="`warmCount`" pulumi-lang-dotnet="`WarmCount`" pulumi-lang-go="`warmCount`" pulumi-lang-python="`warm_count`" pulumi-lang-yaml="`warmCount`" pulumi-lang-java="`warmCount`">`warm_count`</span> can be only and must be set when <span pulumi-lang-nodejs="`warmEnabled`" pulumi-lang-dotnet="`WarmEnabled`" pulumi-lang-go="`warmEnabled`" pulumi-lang-python="`warm_enabled`" pulumi-lang-yaml="`warmEnabled`" pulumi-lang-java="`warmEnabled`">`warm_enabled`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Number of warm nodes in the cluster. Valid values are between `2` and `150`. `warm_count` can be only and must be set when `warm_enabled` is set to `true`.
   final int? warmCount;
 
   /// Whether to enable warm storage.
   final bool? warmEnabled;
 
-  /// Instance type for the OpenSearch cluster's warm nodes. Valid values are `ultrawarm1.medium.search`, `ultrawarm1.large.search` and `ultrawarm1.xlarge.search`. <span pulumi-lang-nodejs="`warmType`" pulumi-lang-dotnet="`WarmType`" pulumi-lang-go="`warmType`" pulumi-lang-python="`warm_type`" pulumi-lang-yaml="`warmType`" pulumi-lang-java="`warmType`">`warm_type`</span> can be only and must be set when <span pulumi-lang-nodejs="`warmEnabled`" pulumi-lang-dotnet="`WarmEnabled`" pulumi-lang-go="`warmEnabled`" pulumi-lang-python="`warm_enabled`" pulumi-lang-yaml="`warmEnabled`" pulumi-lang-java="`warmEnabled`">`warm_enabled`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Instance type for the OpenSearch cluster's warm nodes. Valid values are `ultrawarm1.medium.search`, `ultrawarm1.large.search` and `ultrawarm1.xlarge.search`. `warm_type` can be only and must be set when `warm_enabled` is set to `true`.
   final String? warmType;
 
   /// Configuration block containing zone awareness settings. Detailed below.
   final DomainClusterConfigZoneAwarenessConfig2? zoneAwarenessConfig;
 
-  /// Whether zone awareness is enabled, set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> for multi-az deployment. To enable awareness with three Availability Zones, the <span pulumi-lang-nodejs="`availabilityZoneCount`" pulumi-lang-dotnet="`AvailabilityZoneCount`" pulumi-lang-go="`availabilityZoneCount`" pulumi-lang-python="`availability_zone_count`" pulumi-lang-yaml="`availabilityZoneCount`" pulumi-lang-java="`availabilityZoneCount`">`availability_zone_count`</span> within the <span pulumi-lang-nodejs="`zoneAwarenessConfig`" pulumi-lang-dotnet="`ZoneAwarenessConfig`" pulumi-lang-go="`zoneAwarenessConfig`" pulumi-lang-python="`zone_awareness_config`" pulumi-lang-yaml="`zoneAwarenessConfig`" pulumi-lang-java="`zoneAwarenessConfig`">`zone_awareness_config`</span> must be set to <span pulumi-lang-nodejs="`3`" pulumi-lang-dotnet="`3`" pulumi-lang-go="`3`" pulumi-lang-python="`3`" pulumi-lang-yaml="`3`" pulumi-lang-java="`3`">`3`</span>.
+  /// Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availability_zone_count` within the `zone_awareness_config` must be set to `3`.
   final bool? zoneAwarenessEnabled;
 
   DomainClusterConfig2({

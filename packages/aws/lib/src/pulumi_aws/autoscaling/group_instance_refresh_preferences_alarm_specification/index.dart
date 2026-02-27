@@ -1,3 +1,0 @@
-library module_autoscaling_group_instance_refresh_preferences_alarm_specification;
-
-export 'group_instance_refresh_preferences_alarm_specification.dart';

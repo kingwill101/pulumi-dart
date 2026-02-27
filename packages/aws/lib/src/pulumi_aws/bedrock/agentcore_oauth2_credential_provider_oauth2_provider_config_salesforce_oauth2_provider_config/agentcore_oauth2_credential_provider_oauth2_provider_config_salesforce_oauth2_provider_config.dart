@@ -14,7 +14,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2Provi
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   final String? clientSecretWo;
 
-  /// OAuth discovery configuration. See <span pulumi-lang-nodejs="`oauthDiscovery`" pulumi-lang-dotnet="`OauthDiscovery`" pulumi-lang-go="`oauthDiscovery`" pulumi-lang-python="`oauth_discovery`" pulumi-lang-yaml="`oauthDiscovery`" pulumi-lang-java="`oauthDiscovery`">`oauth_discovery`</span> below.
+  /// OAuth discovery configuration. See `oauth_discovery` below.
   final List<
           AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>?
       oauthDiscoveries;

@@ -10,7 +10,7 @@ import '../get_directory_workspace_creation_property/get_directory_workspace_cre
 
 /// Result data returned by getDirectory.
 class GetDirectoryResult2 {
-  /// Configuration for Active Directory integration when <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `POOLS`.
+  /// Configuration for Active Directory integration when `workspace_type` is set to `POOLS`.
   final List<GetDirectoryActiveDirectoryConfig> activeDirectoryConfigs;
 
   /// Directory alias.
@@ -66,10 +66,10 @@ class GetDirectoryResult2 {
   /// The default properties that are used for creating WorkSpaces.
   final List<GetDirectoryWorkspaceCreationProperty> workspaceCreationProperties;
 
-  /// The description of the WorkSpaces directory when <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `POOLS`.
+  /// The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   final String workspaceDirectoryDescription;
 
-  /// The name of the WorkSpaces directory when <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `POOLS`.
+  /// The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   final String workspaceDirectoryName;
 
   /// The identifier of the security group that is assigned to new WorkSpaces.

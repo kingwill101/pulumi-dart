@@ -1,0 +1,3 @@
+library module_odb_network_managed_service_s3_access;
+
+export 'network_managed_service_s3_access/network_managed_service_s3_access.dart';

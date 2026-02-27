@@ -49,7 +49,7 @@ class GetClusterResult3 {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the <span pulumi-lang-nodejs="`aws.eks.Cluster`" pulumi-lang-dotnet="`aws.eks.Cluster`" pulumi-lang-go="`eks.Cluster`" pulumi-lang-python="`eks.Cluster`" pulumi-lang-yaml="`aws.eks.Cluster`" pulumi-lang-java="`aws.eks.Cluster`">`aws.eks.Cluster`</span> resource documentation.
+  /// Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the `aws.eks.Cluster` resource documentation.
   final List<GetClusterIdentity> identities;
 
   /// Nested list containing Kubernetes Network Configuration.

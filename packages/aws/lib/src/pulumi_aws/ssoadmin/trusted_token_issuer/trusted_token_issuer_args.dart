@@ -17,10 +17,10 @@ class TrustedTokenIssuerArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in <span pulumi-lang-nodejs="`trustedTokenIssuerType`" pulumi-lang-dotnet="`TrustedTokenIssuerType`" pulumi-lang-go="`trustedTokenIssuerType`" pulumi-lang-python="`trusted_token_issuer_type`" pulumi-lang-yaml="`trustedTokenIssuerType`" pulumi-lang-java="`trustedTokenIssuerType`">`trusted_token_issuer_type`</span>. Documented below.
+  /// A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in `trusted_token_issuer_type`. Documented below.
   final Input<TrustedTokenIssuerTrustedTokenIssuerConfiguration>
       trustedTokenIssuerConfiguration;
 

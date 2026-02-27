@@ -1,0 +1,3 @@
+library module_lb_get_target_group_stickiness;
+
+export 'get_target_group_stickiness/get_target_group_stickiness2.dart';

@@ -4,7 +4,7 @@ class ExperienceConfigurationContentSourceConfiguration {
   /// The identifiers of the data sources you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   final List<String>? dataSourceIds;
 
-  /// Whether to use documents you indexed directly using the `BatchPutDocument API`. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to use documents you indexed directly using the `BatchPutDocument API`. Defaults to `false`.
   final bool? directPutContent;
 
   /// The identifier of the FAQs that you want to use for your Amazon Kendra experience. Maximum number of 100 items.

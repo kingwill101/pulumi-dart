@@ -1,0 +1,3 @@
+library module_ses_receipt_rule_add_header_action;
+
+export 'receipt_rule_add_header_action/receipt_rule_add_header_action.dart';

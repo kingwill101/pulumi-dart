@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LaunchTemplateInstanceRequirementsAcceleratorCount {
-  /// Maximum. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to exclude instance types with accelerators.
+  /// Maximum. Set to `0` to exclude instance types with accelerators.
   final int? max;
 
   /// Minimum.

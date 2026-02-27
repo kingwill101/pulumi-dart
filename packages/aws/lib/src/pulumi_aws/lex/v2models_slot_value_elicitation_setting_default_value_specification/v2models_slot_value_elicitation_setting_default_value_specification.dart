@@ -6,7 +6,7 @@ import '../v2models_slot_value_elicitation_setting_default_value_specification_d
 class V2modelsSlotValueElicitationSettingDefaultValueSpecification {
   /// List of default values.
   /// Amazon Lex chooses the default value to use in the order that they are presented in the list.
-  /// See the <span pulumi-lang-nodejs="`defaultValueList`" pulumi-lang-dotnet="`DefaultValueList`" pulumi-lang-go="`defaultValueList`" pulumi-lang-python="`default_value_list`" pulumi-lang-yaml="`defaultValueList`" pulumi-lang-java="`defaultValueList`">`default_value_list`</span> argument reference below.
+  /// See the `default_value_list` argument reference below.
   final List<
           V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList>
       defaultValueLists;

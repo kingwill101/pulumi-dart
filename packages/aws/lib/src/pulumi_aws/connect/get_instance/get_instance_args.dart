@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class GetInstanceArgs {
   /// Returns information on a specific connect instance by alias
   ///
-  /// > **NOTE:** One of either <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> or <span pulumi-lang-nodejs="`instanceAlias`" pulumi-lang-dotnet="`InstanceAlias`" pulumi-lang-go="`instanceAlias`" pulumi-lang-python="`instance_alias`" pulumi-lang-yaml="`instanceAlias`" pulumi-lang-java="`instanceAlias`">`instance_alias`</span> is required.
+  /// > **NOTE:** One of either `instance_id` or `instance_alias` is required.
   final Input<String>? instanceAlias;
 
   /// Returns information on a specific connect instance by id

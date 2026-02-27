@@ -4,7 +4,7 @@ import '../v2models_intent_fulfillment_code_hook_fulfillment_updates_specificati
 import '../v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_update_response/v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_update_response.dart';
 
 class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
-  /// Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the <span pulumi-lang-nodejs="`startResponse`" pulumi-lang-dotnet="`StartResponse`" pulumi-lang-go="`startResponse`" pulumi-lang-python="`start_response`" pulumi-lang-yaml="`startResponse`" pulumi-lang-java="`startResponse`">`start_response`</span>, <span pulumi-lang-nodejs="`updateResponse`" pulumi-lang-dotnet="`UpdateResponse`" pulumi-lang-go="`updateResponse`" pulumi-lang-python="`update_response`" pulumi-lang-yaml="`updateResponse`" pulumi-lang-java="`updateResponse`">`update_response`</span>, and <span pulumi-lang-nodejs="`timeoutInSeconds`" pulumi-lang-dotnet="`TimeoutInSeconds`" pulumi-lang-go="`timeoutInSeconds`" pulumi-lang-python="`timeout_in_seconds`" pulumi-lang-yaml="`timeoutInSeconds`" pulumi-lang-java="`timeoutInSeconds`">`timeout_in_seconds`</span> fields are required.
+  /// Whether fulfillment updates are sent to the user. When this field is true, updates are sent. If the active field is set to true, the `start_response`, `update_response`, and `timeout_in_seconds` fields are required.
   final bool active;
 
   /// Configuration block for the message sent to users when the fulfillment Lambda functions starts running.

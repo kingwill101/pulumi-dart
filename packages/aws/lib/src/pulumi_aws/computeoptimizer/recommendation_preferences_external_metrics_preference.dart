@@ -1,0 +1,3 @@
+library module_computeoptimizer_recommendation_preferences_external_metrics_preference;
+
+export 'recommendation_preferences_external_metrics_preference/recommendation_preferences_external_metrics_preference.dart';

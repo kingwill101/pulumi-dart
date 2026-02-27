@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority {
-  /// ARN of the <span pulumi-lang-nodejs="`aws.acmpca.CertificateAuthority`" pulumi-lang-dotnet="`aws.acmpca.CertificateAuthority`" pulumi-lang-go="`acmpca.CertificateAuthority`" pulumi-lang-python="`acmpca.CertificateAuthority`" pulumi-lang-yaml="`aws.acmpca.CertificateAuthority`" pulumi-lang-java="`aws.acmpca.CertificateAuthority`">`aws.acmpca.CertificateAuthority`</span> used to create the TLS Certificates.
+  /// ARN of the `aws.acmpca.CertificateAuthority` used to create the TLS Certificates.
   final String awsPcaAuthorityArn;
 
   ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority({

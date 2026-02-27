@@ -1,3 +1,0 @@
-library module_servicequotas_get_service_quota_usage_metric;
-
-export 'get_service_quota_usage_metric.dart';

@@ -1,0 +1,3 @@
+library module_emrserverless_application_image_configuration;
+
+export 'application_image_configuration/application_image_configuration.dart';

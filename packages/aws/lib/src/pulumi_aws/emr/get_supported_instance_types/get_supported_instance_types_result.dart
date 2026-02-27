@@ -9,7 +9,7 @@ class GetSupportedInstanceTypesResult {
   final String region;
   final String releaseLabel;
 
-  /// List of supported instance types. See <span pulumi-lang-nodejs="`supportedInstanceTypes`" pulumi-lang-dotnet="`SupportedInstanceTypes`" pulumi-lang-go="`supportedInstanceTypes`" pulumi-lang-python="`supported_instance_types`" pulumi-lang-yaml="`supportedInstanceTypes`" pulumi-lang-java="`supportedInstanceTypes`">`supported_instance_types`</span> below.
+  /// List of supported instance types. See `supported_instance_types` below.
   final List<GetSupportedInstanceTypesSupportedInstanceType>
       supportedInstanceTypes;
 

@@ -12,16 +12,16 @@ class GroupArgs5 {
   /// A description of the resource group.
   final Input<String>? description;
 
-  /// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or <span pulumi-lang-nodejs="`aws`" pulumi-lang-dotnet="`Aws`" pulumi-lang-go="`aws`" pulumi-lang-python="`aws`" pulumi-lang-yaml="`aws`" pulumi-lang-java="`aws`">`aws`</span>.
+  /// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
   final Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A <span pulumi-lang-nodejs="`resourceQuery`" pulumi-lang-dotnet="`ResourceQuery`" pulumi-lang-go="`resourceQuery`" pulumi-lang-python="`resource_query`" pulumi-lang-yaml="`resourceQuery`" pulumi-lang-java="`resourceQuery`">`resource_query`</span> block. Resource queries are documented below.
+  /// A `resource_query` block. Resource queries are documented below.
   final Input<GroupResourceQuery>? resourceQuery;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   GroupArgs5({

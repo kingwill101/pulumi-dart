@@ -1,3 +1,0 @@
-library module_autoscaling_get_group_launch_template;
-
-export 'get_group_launch_template.dart';

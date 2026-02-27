@@ -9,7 +9,7 @@ class WebAclLoggingConfigurationRedactedField {
   /// Whether to redact the query string. It must be specified as an empty configuration block `{}`. The query string is the part of a URL that appears after a `?` character, if any.
   final Map<String, dynamic>? queryString;
 
-  /// <span pulumi-lang-nodejs=""singleHeader"" pulumi-lang-dotnet=""SingleHeader"" pulumi-lang-go=""singleHeader"" pulumi-lang-python=""single_header"" pulumi-lang-yaml=""singleHeader"" pulumi-lang-java=""singleHeader"">"single_header"</span> refers to the redaction of a single header. For more information, please see the details below under Single Header.
+  /// "single_header" refers to the redaction of a single header. For more information, please see the details below under Single Header.
   final WebAclLoggingConfigurationRedactedFieldSingleHeader? singleHeader;
 
   /// Configuration block that redacts the request URI path. It should be specified as an empty configuration block `{}`. The URI path is the part of a web request that identifies a resource, such as `/images/daily-ad.jpg`.

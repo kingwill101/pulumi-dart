@@ -9,675 +9,29 @@ import 'database_args2.dart';
 ///
 /// ### Basic MySQL Blueprint
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Database("example", {
-/// relationalDatabaseName: "example-database",
-/// availabilityZone: "us-east-1a",
-/// masterDatabaseName: "exampledb",
-/// masterPassword: "examplepassword123",
-/// masterUsername: "exampleuser",
-/// blueprintId: "mysql_8_0",
-/// bundleId: "micro_1_0",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Database("example",
-/// relational_database_name="example-database",
-/// availability_zone="us-east-1a",
-/// master_database_name="exampledb",
-/// master_password="examplepassword123",
-/// master_username="exampleuser",
-/// blueprint_id="mysql_8_0",
-/// bundle_id="micro_1_0")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Database("example", new()
-/// {
-/// RelationalDatabaseName = "example-database",
-/// AvailabilityZone = "us-east-1a",
-/// MasterDatabaseName = "exampledb",
-/// MasterPassword = "examplepassword123",
-/// MasterUsername = "exampleuser",
-/// BlueprintId = "mysql_8_0",
-/// BundleId = "micro_1_0",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewDatabase(ctx, "example", &lightsail.DatabaseArgs{
-/// RelationalDatabaseName: pulumi.String("example-database"),
-/// AvailabilityZone:       pulumi.String("us-east-1a"),
-/// MasterDatabaseName:     pulumi.String("exampledb"),
-/// MasterPassword:         pulumi.String("examplepassword123"),
-/// MasterUsername:         pulumi.String("exampleuser"),
-/// BlueprintId:            pulumi.String("mysql_8_0"),
-/// BundleId:               pulumi.String("micro_1_0"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Database;
-/// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Database("example", DatabaseArgs.builder()
-/// .relationalDatabaseName("example-database")
-/// .availabilityZone("us-east-1a")
-/// .masterDatabaseName("exampledb")
-/// .masterPassword("examplepassword123")
-/// .masterUsername("exampleuser")
-/// .blueprintId("mysql_8_0")
-/// .bundleId("micro_1_0")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Database
-/// properties:
-/// relationalDatabaseName: example-database
-/// availabilityZone: us-east-1a
-/// masterDatabaseName: exampledb
-/// masterPassword: examplepassword123
-/// masterUsername: exampleuser
-/// blueprintId: mysql_8_0
-/// bundleId: micro_1_0
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Basic PostgreSQL Blueprint
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Database("example", {
-/// relationalDatabaseName: "example-database",
-/// availabilityZone: "us-east-1a",
-/// masterDatabaseName: "exampledb",
-/// masterPassword: "examplepassword123",
-/// masterUsername: "exampleuser",
-/// blueprintId: "postgres_12",
-/// bundleId: "micro_1_0",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Database("example",
-/// relational_database_name="example-database",
-/// availability_zone="us-east-1a",
-/// master_database_name="exampledb",
-/// master_password="examplepassword123",
-/// master_username="exampleuser",
-/// blueprint_id="postgres_12",
-/// bundle_id="micro_1_0")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Database("example", new()
-/// {
-/// RelationalDatabaseName = "example-database",
-/// AvailabilityZone = "us-east-1a",
-/// MasterDatabaseName = "exampledb",
-/// MasterPassword = "examplepassword123",
-/// MasterUsername = "exampleuser",
-/// BlueprintId = "postgres_12",
-/// BundleId = "micro_1_0",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewDatabase(ctx, "example", &lightsail.DatabaseArgs{
-/// RelationalDatabaseName: pulumi.String("example-database"),
-/// AvailabilityZone:       pulumi.String("us-east-1a"),
-/// MasterDatabaseName:     pulumi.String("exampledb"),
-/// MasterPassword:         pulumi.String("examplepassword123"),
-/// MasterUsername:         pulumi.String("exampleuser"),
-/// BlueprintId:            pulumi.String("postgres_12"),
-/// BundleId:               pulumi.String("micro_1_0"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Database;
-/// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Database("example", DatabaseArgs.builder()
-/// .relationalDatabaseName("example-database")
-/// .availabilityZone("us-east-1a")
-/// .masterDatabaseName("exampledb")
-/// .masterPassword("examplepassword123")
-/// .masterUsername("exampleuser")
-/// .blueprintId("postgres_12")
-/// .bundleId("micro_1_0")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Database
-/// properties:
-/// relationalDatabaseName: example-database
-/// availabilityZone: us-east-1a
-/// masterDatabaseName: exampledb
-/// masterPassword: examplepassword123
-/// masterUsername: exampleuser
-/// blueprintId: postgres_12
-/// bundleId: micro_1_0
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Custom Backup and Maintenance Windows
 ///
 /// Below is an example that sets a custom backup and maintenance window. Times are specified in UTC. This example will allow daily backups to take place between 16:00 and 16:30 each day. This example also requires any maintenance tasks (anything that would cause an outage, including changing some attributes) to take place on Tuesdays between 17:00 and 17:30. An action taken against this database that would cause an outage will wait until this time window to make the requested changes.
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Database("example", {
-/// relationalDatabaseName: "example-database",
-/// availabilityZone: "us-east-1a",
-/// masterDatabaseName: "exampledb",
-/// masterPassword: "examplepassword123",
-/// masterUsername: "exampleuser",
-/// blueprintId: "postgres_12",
-/// bundleId: "micro_1_0",
-/// preferredBackupWindow: "16:00-16:30",
-/// preferredMaintenanceWindow: "Tue:17:00-Tue:17:30",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Database("example",
-/// relational_database_name="example-database",
-/// availability_zone="us-east-1a",
-/// master_database_name="exampledb",
-/// master_password="examplepassword123",
-/// master_username="exampleuser",
-/// blueprint_id="postgres_12",
-/// bundle_id="micro_1_0",
-/// preferred_backup_window="16:00-16:30",
-/// preferred_maintenance_window="Tue:17:00-Tue:17:30")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Database("example", new()
-/// {
-/// RelationalDatabaseName = "example-database",
-/// AvailabilityZone = "us-east-1a",
-/// MasterDatabaseName = "exampledb",
-/// MasterPassword = "examplepassword123",
-/// MasterUsername = "exampleuser",
-/// BlueprintId = "postgres_12",
-/// BundleId = "micro_1_0",
-/// PreferredBackupWindow = "16:00-16:30",
-/// PreferredMaintenanceWindow = "Tue:17:00-Tue:17:30",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewDatabase(ctx, "example", &lightsail.DatabaseArgs{
-/// RelationalDatabaseName:     pulumi.String("example-database"),
-/// AvailabilityZone:           pulumi.String("us-east-1a"),
-/// MasterDatabaseName:         pulumi.String("exampledb"),
-/// MasterPassword:             pulumi.String("examplepassword123"),
-/// MasterUsername:             pulumi.String("exampleuser"),
-/// BlueprintId:                pulumi.String("postgres_12"),
-/// BundleId:                   pulumi.String("micro_1_0"),
-/// PreferredBackupWindow:      pulumi.String("16:00-16:30"),
-/// PreferredMaintenanceWindow: pulumi.String("Tue:17:00-Tue:17:30"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Database;
-/// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Database("example", DatabaseArgs.builder()
-/// .relationalDatabaseName("example-database")
-/// .availabilityZone("us-east-1a")
-/// .masterDatabaseName("exampledb")
-/// .masterPassword("examplepassword123")
-/// .masterUsername("exampleuser")
-/// .blueprintId("postgres_12")
-/// .bundleId("micro_1_0")
-/// .preferredBackupWindow("16:00-16:30")
-/// .preferredMaintenanceWindow("Tue:17:00-Tue:17:30")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Database
-/// properties:
-/// relationalDatabaseName: example-database
-/// availabilityZone: us-east-1a
-/// masterDatabaseName: exampledb
-/// masterPassword: examplepassword123
-/// masterUsername: exampleuser
-/// blueprintId: postgres_12
-/// bundleId: micro_1_0
-/// preferredBackupWindow: 16:00-16:30
-/// preferredMaintenanceWindow: Tue:17:00-Tue:17:30
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Final Snapshots
 ///
-/// To enable creating a final snapshot of your database on deletion, use the <span pulumi-lang-nodejs="`finalSnapshotName`" pulumi-lang-dotnet="`FinalSnapshotName`" pulumi-lang-go="`finalSnapshotName`" pulumi-lang-python="`final_snapshot_name`" pulumi-lang-yaml="`finalSnapshotName`" pulumi-lang-java="`finalSnapshotName`">`final_snapshot_name`</span> argument to provide a name to be used for the snapshot.
+/// To enable creating a final snapshot of your database on deletion, use the `final_snapshot_name` argument to provide a name to be used for the snapshot.
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Database("example", {
-/// relationalDatabaseName: "example-database",
-/// availabilityZone: "us-east-1a",
-/// masterDatabaseName: "exampledb",
-/// masterPassword: "examplepassword123",
-/// masterUsername: "exampleuser",
-/// blueprintId: "postgres_12",
-/// bundleId: "micro_1_0",
-/// preferredBackupWindow: "16:00-16:30",
-/// preferredMaintenanceWindow: "Tue:17:00-Tue:17:30",
-/// finalSnapshotName: "example-final-snapshot",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Database("example",
-/// relational_database_name="example-database",
-/// availability_zone="us-east-1a",
-/// master_database_name="exampledb",
-/// master_password="examplepassword123",
-/// master_username="exampleuser",
-/// blueprint_id="postgres_12",
-/// bundle_id="micro_1_0",
-/// preferred_backup_window="16:00-16:30",
-/// preferred_maintenance_window="Tue:17:00-Tue:17:30",
-/// final_snapshot_name="example-final-snapshot")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Database("example", new()
-/// {
-/// RelationalDatabaseName = "example-database",
-/// AvailabilityZone = "us-east-1a",
-/// MasterDatabaseName = "exampledb",
-/// MasterPassword = "examplepassword123",
-/// MasterUsername = "exampleuser",
-/// BlueprintId = "postgres_12",
-/// BundleId = "micro_1_0",
-/// PreferredBackupWindow = "16:00-16:30",
-/// PreferredMaintenanceWindow = "Tue:17:00-Tue:17:30",
-/// FinalSnapshotName = "example-final-snapshot",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewDatabase(ctx, "example", &lightsail.DatabaseArgs{
-/// RelationalDatabaseName:     pulumi.String("example-database"),
-/// AvailabilityZone:           pulumi.String("us-east-1a"),
-/// MasterDatabaseName:         pulumi.String("exampledb"),
-/// MasterPassword:             pulumi.String("examplepassword123"),
-/// MasterUsername:             pulumi.String("exampleuser"),
-/// BlueprintId:                pulumi.String("postgres_12"),
-/// BundleId:                   pulumi.String("micro_1_0"),
-/// PreferredBackupWindow:      pulumi.String("16:00-16:30"),
-/// PreferredMaintenanceWindow: pulumi.String("Tue:17:00-Tue:17:30"),
-/// FinalSnapshotName:          pulumi.String("example-final-snapshot"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Database;
-/// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Database("example", DatabaseArgs.builder()
-/// .relationalDatabaseName("example-database")
-/// .availabilityZone("us-east-1a")
-/// .masterDatabaseName("exampledb")
-/// .masterPassword("examplepassword123")
-/// .masterUsername("exampleuser")
-/// .blueprintId("postgres_12")
-/// .bundleId("micro_1_0")
-/// .preferredBackupWindow("16:00-16:30")
-/// .preferredMaintenanceWindow("Tue:17:00-Tue:17:30")
-/// .finalSnapshotName("example-final-snapshot")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Database
-/// properties:
-/// relationalDatabaseName: example-database
-/// availabilityZone: us-east-1a
-/// masterDatabaseName: exampledb
-/// masterPassword: examplepassword123
-/// masterUsername: exampleuser
-/// blueprintId: postgres_12
-/// bundleId: micro_1_0
-/// preferredBackupWindow: 16:00-16:30
-/// preferredMaintenanceWindow: Tue:17:00-Tue:17:30
-/// finalSnapshotName: example-final-snapshot
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Apply Immediately
 ///
-/// To enable applying changes immediately instead of waiting for a maintenance window, use the <span pulumi-lang-nodejs="`applyImmediately`" pulumi-lang-dotnet="`ApplyImmediately`" pulumi-lang-go="`applyImmediately`" pulumi-lang-python="`apply_immediately`" pulumi-lang-yaml="`applyImmediately`" pulumi-lang-java="`applyImmediately`">`apply_immediately`</span> argument.
+/// To enable applying changes immediately instead of waiting for a maintenance window, use the `apply_immediately` argument.
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.lightsail.Database("example", {
-/// relationalDatabaseName: "example-database",
-/// availabilityZone: "us-east-1a",
-/// masterDatabaseName: "exampledb",
-/// masterPassword: "examplepassword123",
-/// masterUsername: "exampleuser",
-/// blueprintId: "postgres_12",
-/// bundleId: "micro_1_0",
-/// applyImmediately: true,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.lightsail.Database("example",
-/// relational_database_name="example-database",
-/// availability_zone="us-east-1a",
-/// master_database_name="exampledb",
-/// master_password="examplepassword123",
-/// master_username="exampleuser",
-/// blueprint_id="postgres_12",
-/// bundle_id="micro_1_0",
-/// apply_immediately=True)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.LightSail.Database("example", new()
-/// {
-/// RelationalDatabaseName = "example-database",
-/// AvailabilityZone = "us-east-1a",
-/// MasterDatabaseName = "exampledb",
-/// MasterPassword = "examplepassword123",
-/// MasterUsername = "exampleuser",
-/// BlueprintId = "postgres_12",
-/// BundleId = "micro_1_0",
-/// ApplyImmediately = true,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lightsail"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := lightsail.NewDatabase(ctx, "example", &lightsail.DatabaseArgs{
-/// RelationalDatabaseName: pulumi.String("example-database"),
-/// AvailabilityZone:       pulumi.String("us-east-1a"),
-/// MasterDatabaseName:     pulumi.String("exampledb"),
-/// MasterPassword:         pulumi.String("examplepassword123"),
-/// MasterUsername:         pulumi.String("exampleuser"),
-/// BlueprintId:            pulumi.String("postgres_12"),
-/// BundleId:               pulumi.String("micro_1_0"),
-/// ApplyImmediately:       pulumi.Bool(true),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.lightsail.Database;
-/// import com.pulumi.aws.lightsail.DatabaseArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Database("example", DatabaseArgs.builder()
-/// .relationalDatabaseName("example-database")
-/// .availabilityZone("us-east-1a")
-/// .masterDatabaseName("exampledb")
-/// .masterPassword("examplepassword123")
-/// .masterUsername("exampleuser")
-/// .blueprintId("postgres_12")
-/// .bundleId("micro_1_0")
-/// .applyImmediately(true)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:lightsail:Database
-/// properties:
-/// relationalDatabaseName: example-database
-/// availabilityZone: us-east-1a
-/// masterDatabaseName: exampledb
-/// masterPassword: examplepassword123
-/// masterUsername: exampleuser
-/// blueprintId: postgres_12
-/// bundleId: micro_1_0
-/// applyImmediately: true
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Blueprint IDs
 ///
@@ -685,8 +39,8 @@ import 'database_args2.dart';
 ///
 /// ### Examples
 ///
-/// - <span pulumi-lang-nodejs="`mysql80`" pulumi-lang-dotnet="`Mysql80`" pulumi-lang-go="`mysql80`" pulumi-lang-python="`mysql_8_0`" pulumi-lang-yaml="`mysql80`" pulumi-lang-java="`mysql80`">`mysql_8_0`</span>
-/// - <span pulumi-lang-nodejs="`postgres12`" pulumi-lang-dotnet="`Postgres12`" pulumi-lang-go="`postgres12`" pulumi-lang-python="`postgres_12`" pulumi-lang-yaml="`postgres12`" pulumi-lang-java="`postgres12`">`postgres_12`</span>
+/// - `mysql_8_0`
+/// - `postgres_12`
 ///
 /// ### Prefix
 ///
@@ -702,10 +56,10 @@ import 'database_args2.dart';
 ///
 /// ### Examples
 ///
-/// - <span pulumi-lang-nodejs="`small10`" pulumi-lang-dotnet="`Small10`" pulumi-lang-go="`small10`" pulumi-lang-python="`small_1_0`" pulumi-lang-yaml="`small10`" pulumi-lang-java="`small10`">`small_1_0`</span>
-/// - <span pulumi-lang-nodejs="`smallHa10`" pulumi-lang-dotnet="`SmallHa10`" pulumi-lang-go="`smallHa10`" pulumi-lang-python="`small_ha_1_0`" pulumi-lang-yaml="`smallHa10`" pulumi-lang-java="`smallHa10`">`small_ha_1_0`</span>
-/// - <span pulumi-lang-nodejs="`large10`" pulumi-lang-dotnet="`Large10`" pulumi-lang-go="`large10`" pulumi-lang-python="`large_1_0`" pulumi-lang-yaml="`large10`" pulumi-lang-java="`large10`">`large_1_0`</span>
-/// - <span pulumi-lang-nodejs="`largeHa10`" pulumi-lang-dotnet="`LargeHa10`" pulumi-lang-go="`largeHa10`" pulumi-lang-python="`large_ha_1_0`" pulumi-lang-yaml="`largeHa10`" pulumi-lang-java="`largeHa10`">`large_ha_1_0`</span>
+/// - `small_1_0`
+/// - `small_ha_1_0`
+/// - `large_1_0`
+/// - `large_ha_1_0`
 ///
 /// ### Prefix
 ///
@@ -724,7 +78,7 @@ import 'database_args2.dart';
 ///
 /// ### Suffix
 ///
-/// A Bundle ID ends with one of the following suffix: <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`1_0`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`1_0`</span>
+/// A Bundle ID ends with one of the following suffix: `1_0`
 ///
 /// ## Import
 ///
@@ -737,7 +91,7 @@ class Database2 extends CustomResource {
   /// Whether to apply changes immediately. When false, applies changes during the preferred maintenance window. Some changes may cause an outage.
   late final Output<bool> applyImmediately;
 
-  /// ARN of the database (matches <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>).
+  /// ARN of the database (matches `id`).
   late final Output<String> arn;
 
   /// Availability Zone in which to create your database. Use the us-east-2a case-sensitive format.
@@ -817,10 +171,10 @@ class Database2 extends CustomResource {
   /// Support code for the database. Include this code in your email to support when you have questions about a database in Lightsail. This code enables our support team to look up your Lightsail information more easily.
   late final Output<String> supportCode;
 
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   Database2(

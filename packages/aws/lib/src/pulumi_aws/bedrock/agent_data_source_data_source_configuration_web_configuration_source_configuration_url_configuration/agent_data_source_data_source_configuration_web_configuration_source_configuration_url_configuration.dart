@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../agent_data_source_data_source_configuration_web_configuration_source_configuration_url_configuration_seed_url/agent_data_source_data_source_configuration_web_configuration_source_configuration_url_configuration_seed_url.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration {
-  /// List of one or more seed URLs to crawl. See <span pulumi-lang-nodejs="`seedUrls`" pulumi-lang-dotnet="`SeedUrls`" pulumi-lang-go="`seedUrls`" pulumi-lang-python="`seed_urls`" pulumi-lang-yaml="`seedUrls`" pulumi-lang-java="`seedUrls`">`seed_urls`</span> block for details.
+  /// List of one or more seed URLs to crawl. See `seed_urls` block for details.
   final List<
           AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl>?
       seedUrls;

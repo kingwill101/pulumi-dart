@@ -1,0 +1,4 @@
+library module_ec2_vpc_endpoint_connection_notification;
+
+export 'vpc_endpoint_connection_notification/vpc_endpoint_connection_notification.dart';
+export 'vpc_endpoint_connection_notification/vpc_endpoint_connection_notification_args.dart';

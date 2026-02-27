@@ -11,15 +11,15 @@ class ProjectSecondarySource {
 
   /// Configuration block that contains information that defines how the build project
   /// reports the build status to the source provider. This option is only used when the source provider is GitHub, GitHub
-  /// Enterprise, GitLab, GitLab Self Managed, or Bitbucket. <span pulumi-lang-nodejs="`buildStatusConfig`" pulumi-lang-dotnet="`BuildStatusConfig`" pulumi-lang-go="`buildStatusConfig`" pulumi-lang-python="`build_status_config`" pulumi-lang-yaml="`buildStatusConfig`" pulumi-lang-java="`buildStatusConfig`">`build_status_config`</span> blocks are documented below.
+  /// Enterprise, GitLab, GitLab Self Managed, or Bitbucket. `build_status_config` blocks are documented below.
   final ProjectSecondarySourceBuildStatusConfig? buildStatusConfig;
 
   /// The build spec declaration to use for this build project's related builds. This must be set
-  /// when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `NO_SOURCE`. It can either be a path to a file residing in the repository to be built or a local file
+  /// when `type` is `NO_SOURCE`. It can either be a path to a file residing in the repository to be built or a local file
   /// path leveraging the `file()` built-in.
   final String? buildspec;
 
-  /// Truncate git history to this many commits. Use <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> for a `Full` checkout which you need
+  /// Truncate git history to this many commits. Use `0` for a `Full` checkout which you need
   /// to run commands like `git branch --show-current`.
   /// See [AWS CodePipeline User Guide: Tutorial: Use full clone with a GitHub pipeline source](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-github-gitclone.html)
   /// for details.

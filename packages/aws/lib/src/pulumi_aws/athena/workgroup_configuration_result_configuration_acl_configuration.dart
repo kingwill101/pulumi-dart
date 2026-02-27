@@ -1,0 +1,3 @@
+library module_athena_workgroup_configuration_result_configuration_acl_configuration;
+
+export 'workgroup_configuration_result_configuration_acl_configuration/workgroup_configuration_result_configuration_acl_configuration.dart';

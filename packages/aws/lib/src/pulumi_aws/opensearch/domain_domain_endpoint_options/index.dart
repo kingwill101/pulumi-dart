@@ -1,3 +1,0 @@
-library module_opensearch_domain_domain_endpoint_options;
-
-export 'domain_domain_endpoint_options2.dart';

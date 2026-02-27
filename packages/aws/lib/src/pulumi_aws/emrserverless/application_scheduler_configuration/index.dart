@@ -1,3 +1,0 @@
-library module_emrserverless_application_scheduler_configuration;
-
-export 'application_scheduler_configuration.dart';

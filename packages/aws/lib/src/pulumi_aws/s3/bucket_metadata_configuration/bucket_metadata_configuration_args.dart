@@ -12,7 +12,7 @@ class BucketMetadataConfigurationArgs {
   /// Account ID of the expected bucket owner.
   final Input<String>? expectedBucketOwner;
 
-  /// Metadata configuration. See <span pulumi-lang-nodejs="`metadataConfiguration`" pulumi-lang-dotnet="`MetadataConfiguration`" pulumi-lang-go="`metadataConfiguration`" pulumi-lang-python="`metadata_configuration`" pulumi-lang-yaml="`metadataConfiguration`" pulumi-lang-java="`metadataConfiguration`">`metadata_configuration`</span> Block for details.
+  /// Metadata configuration. See `metadata_configuration` Block for details.
   ///
   /// The following arguments are optional:
   final Input<BucketMetadataConfigurationMetadataConfiguration>

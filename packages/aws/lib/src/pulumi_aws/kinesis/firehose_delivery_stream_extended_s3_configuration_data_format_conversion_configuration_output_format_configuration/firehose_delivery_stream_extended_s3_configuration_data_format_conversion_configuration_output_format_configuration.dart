@@ -3,7 +3,7 @@
 import '../firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_output_format_configuration_serializer/firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_output_format_configuration_serializer.dart';
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration {
-  /// Specifies which serializer to use. You can choose either the ORC SerDe or the Parquet SerDe. See <span pulumi-lang-nodejs="`serializer`" pulumi-lang-dotnet="`Serializer`" pulumi-lang-go="`serializer`" pulumi-lang-python="`serializer`" pulumi-lang-yaml="`serializer`" pulumi-lang-java="`serializer`">`serializer`</span> block below for details.
+  /// Specifies which serializer to use. You can choose either the ORC SerDe or the Parquet SerDe. See `serializer` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer
       serializer;
 

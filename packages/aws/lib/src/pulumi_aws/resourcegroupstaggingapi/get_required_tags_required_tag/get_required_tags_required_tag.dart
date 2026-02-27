@@ -4,7 +4,7 @@ class GetRequiredTagsRequiredTag {
   /// CloudFormation resource types assigned the required tag keys.
   final List<String> cloudFormationResourceTypes;
 
-  /// Tag keys marked as required in the <span pulumi-lang-nodejs="`reportRequiredTagFor`" pulumi-lang-dotnet="`ReportRequiredTagFor`" pulumi-lang-go="`reportRequiredTagFor`" pulumi-lang-python="`report_required_tag_for`" pulumi-lang-yaml="`reportRequiredTagFor`" pulumi-lang-java="`reportRequiredTagFor`">`report_required_tag_for`</span> block of the effective tag policy.
+  /// Tag keys marked as required in the `report_required_tag_for` block of the effective tag policy.
   final List<String> reportingTagKeys;
 
   /// Resource type for the required tag keys.

@@ -1,0 +1,3 @@
+library module_ecs_get_service_network_configuration;
+
+export 'get_service_network_configuration/get_service_network_configuration.dart';

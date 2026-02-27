@@ -4,7 +4,7 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelis
   /// Describes whether the Kinesis Data Analytics service can increase the parallelism of the application in response to increased throughput.
   final bool? autoScalingEnabled;
 
-  /// Describes whether the application uses the default parallelism for the Kinesis Data Analytics service. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified <span pulumi-lang-nodejs="`autoScalingEnabled`" pulumi-lang-dotnet="`AutoScalingEnabled`" pulumi-lang-go="`autoScalingEnabled`" pulumi-lang-python="`auto_scaling_enabled`" pulumi-lang-yaml="`autoScalingEnabled`" pulumi-lang-java="`autoScalingEnabled`">`auto_scaling_enabled`</span>, <span pulumi-lang-nodejs="`parallelism`" pulumi-lang-dotnet="`Parallelism`" pulumi-lang-go="`parallelism`" pulumi-lang-python="`parallelism`" pulumi-lang-yaml="`parallelism`" pulumi-lang-java="`parallelism`">`parallelism`</span>, or <span pulumi-lang-nodejs="`parallelismPerKpu`" pulumi-lang-dotnet="`ParallelismPerKpu`" pulumi-lang-go="`parallelismPerKpu`" pulumi-lang-python="`parallelism_per_kpu`" pulumi-lang-yaml="`parallelismPerKpu`" pulumi-lang-java="`parallelismPerKpu`">`parallelism_per_kpu`</span> attribute values to be effective.
+  /// Describes whether the application uses the default parallelism for the Kinesis Data Analytics service. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `auto_scaling_enabled`, `parallelism`, or `parallelism_per_kpu` attribute values to be effective.
   final String configurationType;
 
   /// Describes the initial number of parallel tasks that a Flink-based Kinesis Data Analytics application can perform.

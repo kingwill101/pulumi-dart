@@ -1,3 +1,0 @@
-library module_lex_intent_slot_value_elicitation_prompt_message;
-
-export 'intent_slot_value_elicitation_prompt_message.dart';

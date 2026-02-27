@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_gateway_spec_backend_default_client_policy_tl_validation_trust_file;
-
-export 'get_virtual_gateway_spec_backend_default_client_policy_tl_validation_trust_file.dart';

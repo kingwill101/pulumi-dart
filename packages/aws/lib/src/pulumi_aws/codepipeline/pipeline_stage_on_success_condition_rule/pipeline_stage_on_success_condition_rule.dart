@@ -21,7 +21,7 @@ class PipelineStageOnSuccessConditionRule {
   /// The pipeline role ARN associated with the rule.
   final String? roleArn;
 
-  /// The ID for the rule type, which is made up of the combined values for <span pulumi-lang-nodejs="`category`" pulumi-lang-dotnet="`Category`" pulumi-lang-go="`category`" pulumi-lang-python="`category`" pulumi-lang-yaml="`category`" pulumi-lang-java="`category`">`category`</span>, <span pulumi-lang-nodejs="`owner`" pulumi-lang-dotnet="`Owner`" pulumi-lang-go="`owner`" pulumi-lang-python="`owner`" pulumi-lang-yaml="`owner`" pulumi-lang-java="`owner`">`owner`</span>, <span pulumi-lang-nodejs="`provider`" pulumi-lang-dotnet="`Provider`" pulumi-lang-go="`provider`" pulumi-lang-python="`provider`" pulumi-lang-yaml="`provider`" pulumi-lang-java="`provider`">`provider`</span>, and <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>. Defined as an <span pulumi-lang-nodejs="`ruleTypeId`" pulumi-lang-dotnet="`RuleTypeId`" pulumi-lang-go="`ruleTypeId`" pulumi-lang-python="`rule_type_id`" pulumi-lang-yaml="`ruleTypeId`" pulumi-lang-java="`ruleTypeId`">`rule_type_id`</span> block below.
+  /// The ID for the rule type, which is made up of the combined values for `category`, `owner`, `provider`, and `version`. Defined as an `rule_type_id` block below.
   final PipelineStageOnSuccessConditionRuleRuleTypeId ruleTypeId;
 
   /// The action timeout for the rule.

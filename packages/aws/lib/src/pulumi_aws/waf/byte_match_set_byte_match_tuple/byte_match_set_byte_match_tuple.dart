@@ -13,13 +13,13 @@ class ByteMatchSetByteMatchTuple {
   /// for all supported values.
   final String positionalConstraint;
 
-  /// The value that you want to search for within the field specified by <span pulumi-lang-nodejs="`fieldToMatch`" pulumi-lang-dotnet="`FieldToMatch`" pulumi-lang-go="`fieldToMatch`" pulumi-lang-python="`field_to_match`" pulumi-lang-yaml="`fieldToMatch`" pulumi-lang-java="`fieldToMatch`">`field_to_match`</span>, e.g., <span pulumi-lang-nodejs="`badrefer1`" pulumi-lang-dotnet="`Badrefer1`" pulumi-lang-go="`badrefer1`" pulumi-lang-python="`badrefer1`" pulumi-lang-yaml="`badrefer1`" pulumi-lang-java="`badrefer1`">`badrefer1`</span>.
+  /// The value that you want to search for within the field specified by `field_to_match`, e.g., `badrefer1`.
   /// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_waf_ByteMatchTuple.html)
   /// for all supported values.
   final String? targetString;
 
   /// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
-  /// If you specify a transformation, AWS WAF performs the transformation on <span pulumi-lang-nodejs="`targetString`" pulumi-lang-dotnet="`TargetString`" pulumi-lang-go="`targetString`" pulumi-lang-python="`target_string`" pulumi-lang-yaml="`targetString`" pulumi-lang-java="`targetString`">`target_string`</span> before inspecting a request for a match.
+  /// If you specify a transformation, AWS WAF performs the transformation on `target_string` before inspecting a request for a match.
   /// e.g., `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
   /// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
   /// for all supported values.

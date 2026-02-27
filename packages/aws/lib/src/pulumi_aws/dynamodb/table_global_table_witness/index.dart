@@ -1,3 +1,0 @@
-library module_dynamodb_table_global_table_witness;
-
-export 'table_global_table_witness.dart';

@@ -1,3 +1,0 @@
-library module_cloudfront_response_headers_policy_custom_headers_config_item;
-
-export 'response_headers_policy_custom_headers_config_item.dart';

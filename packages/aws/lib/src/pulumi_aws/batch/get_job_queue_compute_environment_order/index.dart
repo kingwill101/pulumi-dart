@@ -1,3 +1,0 @@
-library module_batch_get_job_queue_compute_environment_order;
-
-export 'get_job_queue_compute_environment_order.dart';

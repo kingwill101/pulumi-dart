@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_exclusions;
+
+export 'lifecycle_policy_policy_details_exclusions/lifecycle_policy_policy_details_exclusions.dart';

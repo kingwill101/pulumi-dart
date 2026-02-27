@@ -10,13 +10,13 @@ class FunctionArgs2 {
   /// Comment.
   final Input<String>? comment;
 
-  /// List of <span pulumi-lang-nodejs="`aws.cloudfront.KeyValueStore`" pulumi-lang-dotnet="`aws.cloudfront.KeyValueStore`" pulumi-lang-go="`cloudfront.KeyValueStore`" pulumi-lang-python="`cloudfront.KeyValueStore`" pulumi-lang-yaml="`aws.cloudfront.KeyValueStore`" pulumi-lang-java="`aws.cloudfront.KeyValueStore`">`aws.cloudfront.KeyValueStore`</span> ARNs to be associated to the function. AWS limits associations to one key value store per function.
+  /// List of `aws.cloudfront.KeyValueStore` ARNs to be associated to the function. AWS limits associations to one key value store per function.
   final Input<List<String>>? keyValueStoreAssociations;
 
   /// Unique name for your CloudFront Function.
   final Input<String>? name;
 
-  /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   final Input<bool>? publish;
 
   /// Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.

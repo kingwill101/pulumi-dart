@@ -15,13 +15,13 @@ class ResponseHeadersPolicyArgs {
   /// A configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
   final Input<ResponseHeadersPolicyCorsConfig>? corsConfig;
 
-  /// Object that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> that contains a list of custom headers. See Custom Header for more information.
+  /// Object that contains an attribute `items` that contains a list of custom headers. See Custom Header for more information.
   final Input<ResponseHeadersPolicyCustomHeadersConfig>? customHeadersConfig;
 
   /// A unique name to identify the response headers policy.
   final Input<String>? name;
 
-  /// A configuration for a set of HTTP headers to remove from the HTTP response. Object that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> that contains a list of headers. See Remove Header for more information.
+  /// A configuration for a set of HTTP headers to remove from the HTTP response. Object that contains an attribute `items` that contains a list of headers. See Remove Header for more information.
   final Input<ResponseHeadersPolicyRemoveHeadersConfig>? removeHeadersConfig;
 
   /// A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.

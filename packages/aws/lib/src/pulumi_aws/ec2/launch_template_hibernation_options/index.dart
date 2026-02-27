@@ -1,3 +1,0 @@
-library module_ec2_launch_template_hibernation_options;
-
-export 'launch_template_hibernation_options.dart';

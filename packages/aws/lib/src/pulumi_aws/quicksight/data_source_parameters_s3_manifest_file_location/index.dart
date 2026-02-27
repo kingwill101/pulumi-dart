@@ -1,3 +1,0 @@
-library module_quicksight_data_source_parameters_s3_manifest_file_location;
-
-export 'data_source_parameters_s3_manifest_file_location.dart';

@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_resource_region;
-
-export 'automation_rule_criteria_resource_region.dart';

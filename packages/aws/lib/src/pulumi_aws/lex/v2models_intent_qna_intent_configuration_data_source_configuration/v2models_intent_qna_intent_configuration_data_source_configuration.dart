@@ -5,15 +5,15 @@ import '../v2models_intent_qna_intent_configuration_data_source_configuration_ke
 import '../v2models_intent_qna_intent_configuration_data_source_configuration_opensearch_configuration/v2models_intent_qna_intent_configuration_data_source_configuration_opensearch_configuration.dart';
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfiguration {
-  /// Configuration block for Amazon Bedrock Knowledge Base as a data source. See <span pulumi-lang-nodejs="`bedrockKnowledgeStoreConfiguration`" pulumi-lang-dotnet="`BedrockKnowledgeStoreConfiguration`" pulumi-lang-go="`bedrockKnowledgeStoreConfiguration`" pulumi-lang-python="`bedrock_knowledge_store_configuration`" pulumi-lang-yaml="`bedrockKnowledgeStoreConfiguration`" pulumi-lang-java="`bedrockKnowledgeStoreConfiguration`">`bedrock_knowledge_store_configuration`</span>.
+  /// Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrock_knowledge_store_configuration`.
   final V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration?
       bedrockKnowledgeStoreConfiguration;
 
-  /// Configuration block for Amazon Kendra as a data source. See <span pulumi-lang-nodejs="`kendraConfiguration`" pulumi-lang-dotnet="`KendraConfiguration`" pulumi-lang-go="`kendraConfiguration`" pulumi-lang-python="`kendra_configuration`" pulumi-lang-yaml="`kendraConfiguration`" pulumi-lang-java="`kendraConfiguration`">`kendra_configuration`</span>.
+  /// Configuration block for Amazon Kendra as a data source. See `kendra_configuration`.
   final V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration?
       kendraConfiguration;
 
-  /// Configuration block for OpenSearch as a data source. See <span pulumi-lang-nodejs="`opensearchConfiguration`" pulumi-lang-dotnet="`OpensearchConfiguration`" pulumi-lang-go="`opensearchConfiguration`" pulumi-lang-python="`opensearch_configuration`" pulumi-lang-yaml="`opensearchConfiguration`" pulumi-lang-java="`opensearchConfiguration`">`opensearch_configuration`</span>.
+  /// Configuration block for OpenSearch as a data source. See `opensearch_configuration`.
   final V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration?
       opensearchConfiguration;
 

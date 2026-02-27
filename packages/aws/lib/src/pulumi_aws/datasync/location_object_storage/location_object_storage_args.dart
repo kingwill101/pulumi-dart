@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for LocationObjectStorage.
 class LocationObjectStorageArgs {
-  /// The access key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use <span pulumi-lang-nodejs="`accessKey`" pulumi-lang-dotnet="`AccessKey`" pulumi-lang-go="`accessKey`" pulumi-lang-python="`access_key`" pulumi-lang-yaml="`accessKey`" pulumi-lang-java="`accessKey`">`access_key`</span> and <span pulumi-lang-nodejs="`secretKey`" pulumi-lang-dotnet="`SecretKey`" pulumi-lang-go="`secretKey`" pulumi-lang-python="`secret_key`" pulumi-lang-yaml="`secretKey`" pulumi-lang-java="`secretKey`">`secret_key`</span> to provide the user name and password, respectively.
+  /// The access key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
   final Input<String>? accessKey;
 
   /// A list of DataSync Agent ARNs with which this location will be associated. For agentless cross-cloud transfers, this parameter does not need to be specified.
@@ -16,7 +16,7 @@ class LocationObjectStorageArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The secret key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use <span pulumi-lang-nodejs="`accessKey`" pulumi-lang-dotnet="`AccessKey`" pulumi-lang-go="`accessKey`" pulumi-lang-python="`access_key`" pulumi-lang-yaml="`accessKey`" pulumi-lang-java="`accessKey`">`access_key`</span> and <span pulumi-lang-nodejs="`secretKey`" pulumi-lang-dotnet="`SecretKey`" pulumi-lang-go="`secretKey`" pulumi-lang-python="`secret_key`" pulumi-lang-yaml="`secretKey`" pulumi-lang-java="`secretKey`">`secret_key`</span> to provide the user name and password, respectively.
+  /// The secret key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
   final Input<String>? secretKey;
 
   /// Specifies a certificate to authenticate with an object storage system that uses a private or self-signed certificate authority (CA). You must specify a Base64-encoded .pem string. The certificate can be up to 32768 bytes (before Base64 encoding).
@@ -34,7 +34,7 @@ class LocationObjectStorageArgs {
   /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
   final Input<String>? subdirectory;
 
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   LocationObjectStorageArgs({

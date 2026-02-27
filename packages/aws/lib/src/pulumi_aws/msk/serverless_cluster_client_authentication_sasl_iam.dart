@@ -1,0 +1,3 @@
+library module_msk_serverless_cluster_client_authentication_sasl_iam;
+
+export 'serverless_cluster_client_authentication_sasl_iam/serverless_cluster_client_authentication_sasl_iam.dart';

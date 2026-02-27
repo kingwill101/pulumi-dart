@@ -6,7 +6,7 @@ import '../environment_network_configuration/environment_network_configuration.d
 
 /// The set of arguments for Environment.
 class EnvironmentArgs5 {
-  /// The <span pulumi-lang-nodejs="`airflowConfigurationOptions`" pulumi-lang-dotnet="`AirflowConfigurationOptions`" pulumi-lang-go="`airflowConfigurationOptions`" pulumi-lang-python="`airflow_configuration_options`" pulumi-lang-yaml="`airflowConfigurationOptions`" pulumi-lang-java="`airflowConfigurationOptions`">`airflow_configuration_options`</span> parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
+  /// The `airflow_configuration_options` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
   final Input<Map<String, String>>? airflowConfigurationOptions;
 
   /// Airflow version of your environment, will be set by default to the latest version that MWAA supports.
@@ -27,31 +27,31 @@ class EnvironmentArgs5 {
   /// The Amazon Resource Name (ARN) of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key `aws/airflow` by default. Please check the [Official Documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/custom-keys-certs.html) for more information.
   final Input<String>? kmsKey;
 
-  /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See <span pulumi-lang-nodejs="`loggingConfiguration`" pulumi-lang-dotnet="`LoggingConfiguration`" pulumi-lang-go="`loggingConfiguration`" pulumi-lang-python="`logging_configuration`" pulumi-lang-yaml="`loggingConfiguration`" pulumi-lang-java="`loggingConfiguration`">`logging_configuration`</span> Block for details.
+  /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `logging_configuration` Block for details.
   final Input<EnvironmentLoggingConfiguration>? loggingConfiguration;
 
-  /// The maximum number of web servers that you want to run in your environment. Value need to be between <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span> and <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span> if <span pulumi-lang-nodejs="`environmentClass`" pulumi-lang-dotnet="`EnvironmentClass`" pulumi-lang-go="`environmentClass`" pulumi-lang-python="`environment_class`" pulumi-lang-yaml="`environmentClass`" pulumi-lang-java="`environmentClass`">`environment_class`</span> is not `mw1.micro`, <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> otherwise.
+  /// The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
   final Input<int>? maxWebservers;
 
-  /// The maximum number of workers that can be automatically scaled up. Value need to be between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`25`" pulumi-lang-dotnet="`25`" pulumi-lang-go="`25`" pulumi-lang-python="`25`" pulumi-lang-yaml="`25`" pulumi-lang-java="`25`">`25`</span>. Will be <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span> by default.
+  /// The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`. Will be `10` by default.
   final Input<int>? maxWorkers;
 
-  /// The minimum number of web servers that you want to run in your environment. Value need to be between <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span> and <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span> if <span pulumi-lang-nodejs="`environmentClass`" pulumi-lang-dotnet="`EnvironmentClass`" pulumi-lang-go="`environmentClass`" pulumi-lang-python="`environment_class`" pulumi-lang-yaml="`environmentClass`" pulumi-lang-java="`environmentClass`">`environment_class`</span> is not `mw1.micro`, <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> otherwise.
+  /// The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environment_class` is not `mw1.micro`, `1` otherwise.
   final Input<int>? minWebservers;
 
-  /// The minimum number of workers that you want to run in your environment. Will be <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> by default.
+  /// The minimum number of workers that you want to run in your environment. Will be `1` by default.
   final Input<int>? minWorkers;
 
   /// The name of the Apache Airflow Environment
   final Input<String>? name;
 
-  /// Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See <span pulumi-lang-nodejs="`networkConfiguration`" pulumi-lang-dotnet="`NetworkConfiguration`" pulumi-lang-go="`networkConfiguration`" pulumi-lang-python="`network_configuration`" pulumi-lang-yaml="`networkConfiguration`" pulumi-lang-java="`networkConfiguration`">`network_configuration`</span> Block for details.
+  /// Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `network_configuration` Block for details.
   final Input<EnvironmentNetworkConfiguration> networkConfiguration;
 
   /// The plugins.zip file version you want to use.
   final Input<String>? pluginsS3ObjectVersion;
 
-  /// The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then<span pulumi-lang-nodejs=" pluginsS3ObjectVersion " pulumi-lang-dotnet=" PluginsS3ObjectVersion " pulumi-lang-go=" pluginsS3ObjectVersion " pulumi-lang-python=" plugins_s3_object_version " pulumi-lang-yaml=" pluginsS3ObjectVersion " pulumi-lang-java=" pluginsS3ObjectVersion "> plugins_s3_object_version </span>is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then plugins_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   final Input<String>? pluginsS3Path;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -60,10 +60,10 @@ class EnvironmentArgs5 {
   /// The requirements.txt file version you want to use.
   final Input<String>? requirementsS3ObjectVersion;
 
-  /// The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then<span pulumi-lang-nodejs=" requirementsS3ObjectVersion " pulumi-lang-dotnet=" RequirementsS3ObjectVersion " pulumi-lang-go=" requirementsS3ObjectVersion " pulumi-lang-python=" requirements_s3_object_version " pulumi-lang-yaml=" requirementsS3ObjectVersion " pulumi-lang-java=" requirementsS3ObjectVersion "> requirements_s3_object_version </span>is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirements_s3_object_version is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   final Input<String>? requirementsS3Path;
 
-  /// The number of schedulers that you want to run in your environment. v2.0.2 and above accepts <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span> - <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>, default <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span>. v1.10.12 accepts <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.
   final Input<int>? schedulers;
 
   /// The Amazon Resource Name (ARN) of your Amazon S3 storage bucket. For example, arn:aws:s3:::airflow-mybucketname.
@@ -75,7 +75,7 @@ class EnvironmentArgs5 {
   /// The relative path to the script hosted in your bucket. The script runs as your environment starts before starting the Apache Airflow process. Use this script to install dependencies, modify configuration options, and set environment variables. See [Using a startup script](https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html). Supported for environment versions 2.x and later.
   final Input<String>? startupScriptS3Path;
 
-  /// A map of resource tags to associate with the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default) and `PUBLIC_ONLY`.

@@ -6,56 +6,56 @@ import 'package:pulumi/pulumi.dart';
 class SubnetArgs {
   /// Specify true to indicate
   /// that network interfaces created in the specified subnet should be
-  /// assigned an IPv6 address. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// assigned an IPv6 address. Default is `false`
   final Input<bool>? assignIpv6AddressOnCreation;
 
   /// AZ for the subnet.
   final Input<String>? availabilityZone;
 
-  /// AZ ID of the subnet. This argument is not supported in all regions or partitions. If necessary, use <span pulumi-lang-nodejs="`availabilityZone`" pulumi-lang-dotnet="`AvailabilityZone`" pulumi-lang-go="`availabilityZone`" pulumi-lang-python="`availability_zone`" pulumi-lang-yaml="`availabilityZone`" pulumi-lang-java="`availabilityZone`">`availability_zone`</span> instead.
+  /// AZ ID of the subnet. This argument is not supported in all regions or partitions. If necessary, use `availability_zone` instead.
   final Input<String>? availabilityZoneId;
 
   /// The IPv4 CIDR block for the subnet.
   final Input<String>? cidrBlock;
 
-  /// The customer owned IPv4 address pool. Typically used with the <span pulumi-lang-nodejs="`mapCustomerOwnedIpOnLaunch`" pulumi-lang-dotnet="`MapCustomerOwnedIpOnLaunch`" pulumi-lang-go="`mapCustomerOwnedIpOnLaunch`" pulumi-lang-python="`map_customer_owned_ip_on_launch`" pulumi-lang-yaml="`mapCustomerOwnedIpOnLaunch`" pulumi-lang-java="`mapCustomerOwnedIpOnLaunch`">`map_customer_owned_ip_on_launch`</span> argument. The <span pulumi-lang-nodejs="`outpostArn`" pulumi-lang-dotnet="`OutpostArn`" pulumi-lang-go="`outpostArn`" pulumi-lang-python="`outpost_arn`" pulumi-lang-yaml="`outpostArn`" pulumi-lang-java="`outpostArn`">`outpost_arn`</span> argument must be specified when configured.
+  /// The customer owned IPv4 address pool. Typically used with the `map_customer_owned_ip_on_launch` argument. The `outpost_arn` argument must be specified when configured.
   final Input<String>? customerOwnedIpv4Pool;
 
-  /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations. Default: `false`.
   final Input<bool>? enableDns64;
 
   /// Indicates the device position for local network interfaces in this subnet. For example, 1 indicates local network interfaces in this subnet are the secondary network interface (eth1). A local network interface cannot be the primary network interface (eth0).
   final Input<int>? enableLniAtDeviceIndex;
 
-  /// Indicates whether to respond to DNS queries for instance hostnames with DNS A records. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether to respond to DNS queries for instance hostnames with DNS A records. Default: `false`.
   final Input<bool>? enableResourceNameDnsARecordOnLaunch;
 
-  /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records. Default: `false`.
   final Input<bool>? enableResourceNameDnsAaaaRecordOnLaunch;
 
   /// ID of an IPv4 VPC Resource Planning IPAM Pool. The CIDR of this pool is used to allocate the CIDR for the subnet.
   final Input<String>? ipv4IpamPoolId;
 
-  /// Netmask. Requires specifying a <span pulumi-lang-nodejs="`ipv4IpamPoolId`" pulumi-lang-dotnet="`Ipv4IpamPoolId`" pulumi-lang-go="`ipv4IpamPoolId`" pulumi-lang-python="`ipv4_ipam_pool_id`" pulumi-lang-yaml="`ipv4IpamPoolId`" pulumi-lang-java="`ipv4IpamPoolId`">`ipv4_ipam_pool_id`</span>.
+  /// Netmask. Requires specifying a `ipv4_ipam_pool_id`.
   final Input<int>? ipv4NetmaskLength;
 
   /// The IPv6 network range for the subnet,
-  /// in CIDR notation. The subnet size must use a /64 prefix length. If the existing IPv6 subnet was created with <span pulumi-lang-nodejs="`assignIpv6AddressOnCreation " pulumi-lang-dotnet="`AssignIpv6AddressOnCreation " pulumi-lang-go="`assignIpv6AddressOnCreation " pulumi-lang-python="`assign_ipv6_address_on_creation " pulumi-lang-yaml="`assignIpv6AddressOnCreation " pulumi-lang-java="`assignIpv6AddressOnCreation ">`assign_ipv6_address_on_creation </span>= true`, changing this value will force resource recreation.
+  /// in CIDR notation. The subnet size must use a /64 prefix length. If the existing IPv6 subnet was created with `assign_ipv6_address_on_creation = true`, changing this value will force resource recreation.
   final Input<String>? ipv6CidrBlock;
 
   /// ID of an IPv6 VPC Resource Planning IPAM Pool. The CIDR of this pool is used to allocate the CIDR for the subnet.
   final Input<String>? ipv6IpamPoolId;
 
-  /// Indicates whether to create an IPv6-only subnet. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether to create an IPv6-only subnet. Default: `false`.
   final Input<bool>? ipv6Native;
 
-  /// Netmask. Requires specifying a <span pulumi-lang-nodejs="`ipv6IpamPoolId`" pulumi-lang-dotnet="`Ipv6IpamPoolId`" pulumi-lang-go="`ipv6IpamPoolId`" pulumi-lang-python="`ipv6_ipam_pool_id`" pulumi-lang-yaml="`ipv6IpamPoolId`" pulumi-lang-java="`ipv6IpamPoolId`">`ipv6_ipam_pool_id`</span>. Valid values are from 44 to 64 in increments of 4.
+  /// Netmask. Requires specifying a `ipv6_ipam_pool_id`. Valid values are from 44 to 64 in increments of 4.
   final Input<int>? ipv6NetmaskLength;
 
-  /// Specify <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to indicate that network interfaces created in the subnet should be assigned a customer owned IP address. The <span pulumi-lang-nodejs="`customerOwnedIpv4Pool`" pulumi-lang-dotnet="`CustomerOwnedIpv4Pool`" pulumi-lang-go="`customerOwnedIpv4Pool`" pulumi-lang-python="`customer_owned_ipv4_pool`" pulumi-lang-yaml="`customerOwnedIpv4Pool`" pulumi-lang-java="`customerOwnedIpv4Pool`">`customer_owned_ipv4_pool`</span> and <span pulumi-lang-nodejs="`outpostArn`" pulumi-lang-dotnet="`OutpostArn`" pulumi-lang-go="`outpostArn`" pulumi-lang-python="`outpost_arn`" pulumi-lang-yaml="`outpostArn`" pulumi-lang-java="`outpostArn`">`outpost_arn`</span> arguments must be specified when set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specify `true` to indicate that network interfaces created in the subnet should be assigned a customer owned IP address. The `customer_owned_ipv4_pool` and `outpost_arn` arguments must be specified when set to `true`. Default is `false`.
   final Input<bool>? mapCustomerOwnedIpOnLaunch;
 
-  /// Specify true to indicate that instances launched into the subnet should be assigned a public IP address. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specify true to indicate that instances launched into the subnet should be assigned a public IP address. Default is `false`.
   final Input<bool>? mapPublicIpOnLaunch;
 
   /// The Amazon Resource Name (ARN) of the Outpost.
@@ -67,7 +67,7 @@ class SubnetArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The VPC ID.

@@ -1,0 +1,3 @@
+library module_cloudwatch_event_target_ecs_target_ordered_placement_strategy;
+
+export 'event_target_ecs_target_ordered_placement_strategy/event_target_ecs_target_ordered_placement_strategy.dart';

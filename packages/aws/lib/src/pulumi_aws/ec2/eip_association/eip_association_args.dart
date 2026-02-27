@@ -9,7 +9,7 @@ class EipAssociationArgs {
   final Input<String>? allocationId;
 
   /// Whether to allow an Elastic IP address to be re-associated.
-  /// Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Defaults to `true`.
   final Input<bool>? allowReassociation;
 
   /// ID of the instance.

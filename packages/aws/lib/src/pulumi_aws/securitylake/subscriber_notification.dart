@@ -1,0 +1,4 @@
+library module_securitylake_subscriber_notification;
+
+export 'subscriber_notification/subscriber_notification.dart';
+export 'subscriber_notification/subscriber_notification_args.dart';

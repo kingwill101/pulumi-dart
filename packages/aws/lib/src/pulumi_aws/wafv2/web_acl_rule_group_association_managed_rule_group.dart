@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_group_association_managed_rule_group;
+
+export 'web_acl_rule_group_association_managed_rule_group/web_acl_rule_group_association_managed_rule_group.dart';

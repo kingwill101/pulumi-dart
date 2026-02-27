@@ -16,7 +16,7 @@ class IntegrationResponseArgs {
   /// API resource ID.
   final Input<String> resourceId;
 
-  /// Map of response parameters that can be read from the backend response. For example: <span pulumi-lang-nodejs="`responseParameters " pulumi-lang-dotnet="`ResponseParameters " pulumi-lang-go="`responseParameters " pulumi-lang-python="`response_parameters " pulumi-lang-yaml="`responseParameters " pulumi-lang-java="`responseParameters ">`response_parameters </span>= { "method.response.header.X-Some-Header" = "integration.response.header.X-Some-Other-Header" }`.
+  /// Map of response parameters that can be read from the backend response. For example: `response_parameters = { "method.response.header.X-Some-Header" = "integration.response.header.X-Some-Other-Header" }`.
   final Input<Map<String, String>>? responseParameters;
 
   /// Map of templates used to transform the integration response body.

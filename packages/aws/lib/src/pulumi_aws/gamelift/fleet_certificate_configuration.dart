@@ -1,0 +1,3 @@
+library module_gamelift_fleet_certificate_configuration;
+
+export 'fleet_certificate_configuration/fleet_certificate_configuration.dart';

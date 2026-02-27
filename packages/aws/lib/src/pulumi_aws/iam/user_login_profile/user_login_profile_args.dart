@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for UserLoginProfile.
 class UserLoginProfileArgs {
-  /// The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument. Default value is <span pulumi-lang-nodejs="`20`" pulumi-lang-dotnet="`20`" pulumi-lang-go="`20`" pulumi-lang-python="`20`" pulumi-lang-yaml="`20`" pulumi-lang-java="`20`">`20`</span>.
+  /// The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument. Default value is `20`.
   final Input<int>? passwordLength;
 
   /// Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation.

@@ -1,0 +1,3 @@
+library module_s3_get_access_point_public_access_block_configuration;
+
+export 'get_access_point_public_access_block_configuration/get_access_point_public_access_block_configuration.dart';

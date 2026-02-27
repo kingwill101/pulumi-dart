@@ -18,7 +18,7 @@ class GetVocabularyArgs {
 
   /// Returns information on a specific Vocabulary by Vocabulary id
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`vocabularyId`" pulumi-lang-dotnet="`VocabularyId`" pulumi-lang-go="`vocabularyId`" pulumi-lang-python="`vocabulary_id`" pulumi-lang-yaml="`vocabularyId`" pulumi-lang-java="`vocabularyId`">`vocabulary_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `vocabulary_id` is required.
   final Input<String>? vocabularyId;
 
   GetVocabularyArgs({

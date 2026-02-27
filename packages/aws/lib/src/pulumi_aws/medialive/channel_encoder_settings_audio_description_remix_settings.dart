@@ -1,0 +1,3 @@
+library module_medialive_channel_encoder_settings_audio_description_remix_settings;
+
+export 'channel_encoder_settings_audio_description_remix_settings/channel_encoder_settings_audio_description_remix_settings.dart';

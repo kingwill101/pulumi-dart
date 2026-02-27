@@ -10,7 +10,7 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
   final String slotTypeId;
 
   /// Elicitation setting details for constituent sub slots of a composite slot.
-  /// See the <span pulumi-lang-nodejs="`valueElicitationSetting`" pulumi-lang-dotnet="`ValueElicitationSetting`" pulumi-lang-go="`valueElicitationSetting`" pulumi-lang-python="`value_elicitation_setting`" pulumi-lang-yaml="`valueElicitationSetting`" pulumi-lang-java="`valueElicitationSetting`">`value_elicitation_setting`</span> argument reference below.
+  /// See the `value_elicitation_setting` argument reference below.
   final List<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>?
       valueElicitationSettings;

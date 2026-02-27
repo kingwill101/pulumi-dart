@@ -68,7 +68,7 @@ class GetClusterResult5 {
   /// Set of shards in this cluster.
   final List<GetClusterShard> shards;
 
-  /// The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>, automatic backups are disabled.
+  /// The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
   final int snapshotRetentionLimit;
 
   /// Daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: `05:00-09:00`.

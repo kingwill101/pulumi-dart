@@ -7,19 +7,19 @@ import '../get_tags_time_period/get_tags_time_period.dart';
 
 /// Arguments for getTags.
 class GetTagsArgs {
-  /// Configuration block for the `Expression` object used to categorize costs. See <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> block below for details.
+  /// Configuration block for the `Expression` object used to categorize costs. See `filter` block below for details.
   final Input<GetTagsFilter>? filter;
 
   /// Value that you want to search for.
   final Input<String>? searchString;
 
-  /// Configuration block for the value by which you want to sort the data. <span pulumi-lang-nodejs="`sortBy`" pulumi-lang-dotnet="`SortBy`" pulumi-lang-go="`sortBy`" pulumi-lang-python="`sort_by`" pulumi-lang-yaml="`sortBy`" pulumi-lang-java="`sortBy`">`sort_by`</span> block below for details.
+  /// Configuration block for the value by which you want to sort the data. `sort_by` block below for details.
   final Input<List<GetTagsSortBy>>? sortBies;
 
   /// Key of the tag that you want to return values for.
   final Input<String>? tagKey;
 
-  /// Configuration block for the start and end dates for retrieving the dimension values. See <span pulumi-lang-nodejs="`timePeriod`" pulumi-lang-dotnet="`TimePeriod`" pulumi-lang-go="`timePeriod`" pulumi-lang-python="`time_period`" pulumi-lang-yaml="`timePeriod`" pulumi-lang-java="`timePeriod`">`time_period`</span> block below for details.
+  /// Configuration block for the start and end dates for retrieving the dimension values. See `time_period` block below for details.
   final Input<GetTagsTimePeriod> timePeriod;
 
   GetTagsArgs({

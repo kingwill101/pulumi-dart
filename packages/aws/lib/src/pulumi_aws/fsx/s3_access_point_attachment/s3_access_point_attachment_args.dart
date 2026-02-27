@@ -10,13 +10,13 @@ class S3AccessPointAttachmentArgs {
   /// Name of the S3 access point.
   final Input<String>? name;
 
-  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See <span pulumi-lang-nodejs="`openzfsConfiguration`" pulumi-lang-dotnet="`OpenzfsConfiguration`" pulumi-lang-go="`openzfsConfiguration`" pulumi-lang-python="`openzfs_configuration`" pulumi-lang-yaml="`openzfsConfiguration`" pulumi-lang-java="`openzfsConfiguration`">`openzfs_configuration`</span> Block for details.
+  /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
   final Input<S3AccessPointAttachmentOpenzfsConfiguration> openzfsConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// S3 access point configuration. See <span pulumi-lang-nodejs="`s3AccessPoint`" pulumi-lang-dotnet="`S3AccessPoint`" pulumi-lang-go="`s3AccessPoint`" pulumi-lang-python="`s3_access_point`" pulumi-lang-yaml="`s3AccessPoint`" pulumi-lang-java="`s3AccessPoint`">`s3_access_point`</span> Block for details.
+  /// S3 access point configuration. See `s3_access_point` Block for details.
   final Input<S3AccessPointAttachmentS3AccessPoint>? s3AccessPoint;
   final Input<S3AccessPointAttachmentTimeouts>? timeouts;
 

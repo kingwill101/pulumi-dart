@@ -1,3 +1,0 @@
-library module_bedrock_agent_flow_definition_node_configuration_prompt_guardrail_configuration;
-
-export 'agent_flow_definition_node_configuration_prompt_guardrail_configuration.dart';

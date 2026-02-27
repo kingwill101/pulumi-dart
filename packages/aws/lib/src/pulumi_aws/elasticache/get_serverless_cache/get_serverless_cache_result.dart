@@ -9,7 +9,7 @@ class GetServerlessCacheResult {
   /// The Amazon Resource Name (ARN) of the serverless cache.
   final String arn;
 
-  /// The cache usage limits for storage and ElastiCache Processing Units for the cache. See <span pulumi-lang-nodejs="`cacheUsageLimits`" pulumi-lang-dotnet="`CacheUsageLimits`" pulumi-lang-go="`cacheUsageLimits`" pulumi-lang-python="`cache_usage_limits`" pulumi-lang-yaml="`cacheUsageLimits`" pulumi-lang-java="`cacheUsageLimits`">`cache_usage_limits`</span> Block for details.
+  /// The cache usage limits for storage and ElastiCache Processing Units for the cache. See `cache_usage_limits` Block for details.
   final GetServerlessCacheCacheUsageLimits cacheUsageLimits;
 
   /// Timestamp of when the serverless cache was created.
@@ -21,7 +21,7 @@ class GetServerlessCacheResult {
   /// Description of the serverless cache.
   final String description;
 
-  /// Represents the information required for client programs to connect to the cache. See <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`">`endpoint`</span> Block for details.
+  /// Represents the information required for client programs to connect to the cache. See `endpoint` Block for details.
   final GetServerlessCacheEndpoint endpoint;
 
   /// Name of the cache engine.
@@ -40,7 +40,7 @@ class GetServerlessCacheResult {
   final String majorEngineVersion;
   final String name;
 
-  /// Represents the information required for client programs to connect to a cache node. See <span pulumi-lang-nodejs="`readerEndpoint`" pulumi-lang-dotnet="`ReaderEndpoint`" pulumi-lang-go="`readerEndpoint`" pulumi-lang-python="`reader_endpoint`" pulumi-lang-yaml="`readerEndpoint`" pulumi-lang-java="`readerEndpoint`">`reader_endpoint`</span> Block for details.
+  /// Represents the information required for client programs to connect to a cache node. See `reader_endpoint` Block for details.
   final GetServerlessCacheReaderEndpoint readerEndpoint;
   final String region;
 

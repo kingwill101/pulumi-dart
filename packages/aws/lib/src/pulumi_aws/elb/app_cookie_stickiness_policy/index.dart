@@ -1,4 +1,0 @@
-library module_elb_app_cookie_stickiness_policy;
-
-export 'app_cookie_stickiness_policy.dart';
-export 'app_cookie_stickiness_policy_args.dart';

@@ -2,7 +2,7 @@
 
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult2 {
-  /// (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then <span pulumi-lang-nodejs="`organizationalUnits`" pulumi-lang-dotnet="`OrganizationalUnits`" pulumi-lang-go="`organizationalUnits`" pulumi-lang-python="`organizational_units`" pulumi-lang-yaml="`organizationalUnits`" pulumi-lang-java="`organizationalUnits`">`organizational_units`</span> must also be present.
+  /// (Required) Type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
   final String accountAccessType;
 
   /// ARN of the Grafana workspace.

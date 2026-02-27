@@ -1,3 +1,0 @@
-library module_s3_inventory_destination_bucket_encryption;
-
-export 'inventory_destination_bucket_encryption.dart';

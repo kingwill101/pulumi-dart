@@ -1,3 +1,0 @@
-library module_autoscaling_get_group_mixed_instances_policy_instances_distribution;
-
-export 'get_group_mixed_instances_policy_instances_distribution.dart';

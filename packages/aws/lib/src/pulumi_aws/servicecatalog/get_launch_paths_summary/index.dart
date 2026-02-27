@@ -1,3 +1,0 @@
-library module_servicecatalog_get_launch_paths_summary;
-
-export 'get_launch_paths_summary.dart';

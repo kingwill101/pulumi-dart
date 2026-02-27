@@ -17,7 +17,7 @@ class GetParametersByPathResult {
   /// A list that contains the types (`String`, `StringList`, or `SecureString`) of retrieved parameters.
   final List<String> types;
 
-  /// A list that contains the retrieved parameter values. **Note:** This value is always marked as sensitive in the pulumi preview output, regardless of whether any retrieved parameters are of `SecureString` type. Use the <span pulumi-lang-nodejs="`nonsensitive`" pulumi-lang-dotnet="`Nonsensitive`" pulumi-lang-go="`nonsensitive`" pulumi-lang-python="`nonsensitive`" pulumi-lang-yaml="`nonsensitive`" pulumi-lang-java="`nonsensitive`">`nonsensitive`</span> function to override the behavior at your own risk and discretion, if you are certain that there are no sensitive values being retrieved.
+  /// A list that contains the retrieved parameter values. **Note:** This value is always marked as sensitive in the pulumi preview output, regardless of whether any retrieved parameters are of `SecureString` type. Use the `nonsensitive` function to override the behavior at your own risk and discretion, if you are certain that there are no sensitive values being retrieved.
   final List<String> values;
   final bool? withDecryption;
 

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DataCellsFilterTableDataRowFilter {
-  /// (Optional) A wildcard that matches all rows. Required when applying column-level filtering without row-level filtering. Use an empty block: <span pulumi-lang-nodejs="`allRowsWildcard " pulumi-lang-dotnet="`AllRowsWildcard " pulumi-lang-go="`allRowsWildcard " pulumi-lang-python="`all_rows_wildcard " pulumi-lang-yaml="`allRowsWildcard " pulumi-lang-java="`allRowsWildcard ">`all_rows_wildcard </span>{}`.
+  /// (Optional) A wildcard that matches all rows. Required when applying column-level filtering without row-level filtering. Use an empty block: `all_rows_wildcard {}`.
   final Map<String, dynamic>? allRowsWildcard;
 
   /// (Optional) A PartiQL predicate expression for row-level filtering.

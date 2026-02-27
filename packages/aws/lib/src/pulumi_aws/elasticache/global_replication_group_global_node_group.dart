@@ -1,0 +1,3 @@
+library module_elasticache_global_replication_group_global_node_group;
+
+export 'global_replication_group_global_node_group/global_replication_group_global_node_group.dart';

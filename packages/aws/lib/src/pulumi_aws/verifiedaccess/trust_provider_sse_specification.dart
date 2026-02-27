@@ -1,0 +1,3 @@
+library module_verifiedaccess_trust_provider_sse_specification;
+
+export 'trust_provider_sse_specification/trust_provider_sse_specification.dart';

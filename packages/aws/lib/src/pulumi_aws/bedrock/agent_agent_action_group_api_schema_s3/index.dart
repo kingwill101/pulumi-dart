@@ -1,3 +1,0 @@
-library module_bedrock_agent_agent_action_group_api_schema_s3;
-
-export 'agent_agent_action_group_api_schema_s3.dart';

@@ -12,7 +12,7 @@ class GetSecretsSecret {
 
   /// Specifies the KMS key that AWS KMS uses to decrypt the ciphertext. This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key.
   ///
-  /// For more information on <span pulumi-lang-nodejs="`context`" pulumi-lang-dotnet="`Context`" pulumi-lang-go="`context`" pulumi-lang-python="`context`" pulumi-lang-yaml="`context`" pulumi-lang-java="`context`">`context`</span> and <span pulumi-lang-nodejs="`grantTokens`" pulumi-lang-dotnet="`GrantTokens`" pulumi-lang-go="`grantTokens`" pulumi-lang-python="`grant_tokens`" pulumi-lang-yaml="`grantTokens`" pulumi-lang-java="`grantTokens`">`grant_tokens`</span> see the [KMS
+  /// For more information on `context` and `grant_tokens` see the [KMS
   /// Concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html)
   final String? keyId;
 

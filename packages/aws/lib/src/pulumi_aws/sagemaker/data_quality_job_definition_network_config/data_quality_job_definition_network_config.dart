@@ -3,7 +3,7 @@
 import '../data_quality_job_definition_network_config_vpc_config/data_quality_job_definition_network_config_vpc_config.dart';
 
 class DataQualityJobDefinitionNetworkConfig {
-  /// Whether to encrypt all communications between the instances used for the monitoring jobs. Choose <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to encrypt communications. Encryption provides greater security for distributed jobs, but the processing might take longer.
+  /// Whether to encrypt all communications between the instances used for the monitoring jobs. Choose `true` to encrypt communications. Encryption provides greater security for distributed jobs, but the processing might take longer.
   final bool? enableInterContainerTrafficEncryption;
 
   /// Whether to allow inbound and outbound network calls to and from the containers used for the monitoring job.

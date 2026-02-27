@@ -1,0 +1,3 @@
+library module_cognito_user_pool_password_policy;
+
+export 'user_pool_password_policy/user_pool_password_policy.dart';

@@ -1,0 +1,4 @@
+library module_sagemaker_app_image_config;
+
+export 'app_image_config/app_image_config.dart';
+export 'app_image_config/app_image_config_args.dart';

@@ -8,7 +8,7 @@ class GetPublicKeyResult {
   /// Type of the public key that was downloaded.
   final String customerMasterKeySpec;
 
-  /// Encryption algorithms that AWS KMS supports for this key. Only set when the <span pulumi-lang-nodejs="`keyUsage`" pulumi-lang-dotnet="`KeyUsage`" pulumi-lang-go="`keyUsage`" pulumi-lang-python="`key_usage`" pulumi-lang-yaml="`keyUsage`" pulumi-lang-java="`keyUsage`">`key_usage`</span> of the public key is `ENCRYPT_DECRYPT`.
+  /// Encryption algorithms that AWS KMS supports for this key. Only set when the `key_usage` of the public key is `ENCRYPT_DECRYPT`.
   final List<String> encryptionAlgorithms;
   final List<String>? grantTokens;
 
@@ -26,7 +26,7 @@ class GetPublicKeyResult {
   final String publicKeyPem;
   final String region;
 
-  /// Signing algorithms that AWS KMS supports for this key. Only set when the <span pulumi-lang-nodejs="`keyUsage`" pulumi-lang-dotnet="`KeyUsage`" pulumi-lang-go="`keyUsage`" pulumi-lang-python="`key_usage`" pulumi-lang-yaml="`keyUsage`" pulumi-lang-java="`keyUsage`">`key_usage`</span> of the public key is `SIGN_VERIFY`.
+  /// Signing algorithms that AWS KMS supports for this key. Only set when the `key_usage` of the public key is `SIGN_VERIFY`.
   final List<String> signingAlgorithms;
 
   GetPublicKeyResult({

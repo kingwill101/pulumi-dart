@@ -7,14 +7,14 @@ import '../listener_rule_match/listener_rule_match.dart';
 /// The set of arguments for ListenerRule.
 class ListenerRuleArgs3 {
   /// The action for the listener rule.
-  /// See <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> Block for details.
+  /// See `action` Block for details.
   final Input<ListenerRuleAction3> action;
 
   /// The ID or Amazon Resource Name (ARN) of the listener.
   final Input<String> listenerIdentifier;
 
   /// The rule match.
-  /// See <span pulumi-lang-nodejs="`match`" pulumi-lang-dotnet="`Match`" pulumi-lang-go="`match`" pulumi-lang-python="`match`" pulumi-lang-yaml="`match`" pulumi-lang-java="`match`">`match`</span> Block
+  /// See `match` Block
   final Input<ListenerRuleMatch> match;
 
   /// The name of the rule. The name must be unique within the listener. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
@@ -31,7 +31,7 @@ class ListenerRuleArgs3 {
   /// The ID or Amazon Resource Identifier (ARN) of the service.
   final Input<String> serviceIdentifier;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ListenerRuleArgs3({

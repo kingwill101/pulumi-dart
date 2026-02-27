@@ -1,0 +1,3 @@
+library module_sesv2_get_configuration_set_suppression_option;
+
+export 'get_configuration_set_suppression_option/get_configuration_set_suppression_option.dart';

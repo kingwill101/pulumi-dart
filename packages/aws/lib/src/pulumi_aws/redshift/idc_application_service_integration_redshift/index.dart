@@ -1,3 +1,0 @@
-library module_redshift_idc_application_service_integration_redshift;
-
-export 'idc_application_service_integration_redshift.dart';

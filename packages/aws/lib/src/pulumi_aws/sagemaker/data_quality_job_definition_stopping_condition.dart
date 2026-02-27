@@ -1,0 +1,3 @@
+library module_sagemaker_data_quality_job_definition_stopping_condition;
+
+export 'data_quality_job_definition_stopping_condition/data_quality_job_definition_stopping_condition.dart';

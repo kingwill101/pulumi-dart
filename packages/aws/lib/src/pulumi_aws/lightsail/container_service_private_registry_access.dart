@@ -1,0 +1,3 @@
+library module_lightsail_container_service_private_registry_access;
+
+export 'container_service_private_registry_access/container_service_private_registry_access.dart';

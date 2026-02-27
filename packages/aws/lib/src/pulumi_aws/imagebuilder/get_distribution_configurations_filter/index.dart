@@ -1,3 +1,0 @@
-library module_imagebuilder_get_distribution_configurations_filter;
-
-export 'get_distribution_configurations_filter.dart';

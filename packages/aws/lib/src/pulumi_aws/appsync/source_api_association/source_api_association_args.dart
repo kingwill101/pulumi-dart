@@ -9,21 +9,21 @@ class SourceApiAssociationArgs {
   /// Description of the source API being merged.
   final Input<String>? description;
 
-  /// ARN of the merged API. One of <span pulumi-lang-nodejs="`mergedApiArn`" pulumi-lang-dotnet="`MergedApiArn`" pulumi-lang-go="`mergedApiArn`" pulumi-lang-python="`merged_api_arn`" pulumi-lang-yaml="`mergedApiArn`" pulumi-lang-java="`mergedApiArn`">`merged_api_arn`</span> or <span pulumi-lang-nodejs="`mergedApiId`" pulumi-lang-dotnet="`MergedApiId`" pulumi-lang-go="`mergedApiId`" pulumi-lang-python="`merged_api_id`" pulumi-lang-yaml="`mergedApiId`" pulumi-lang-java="`mergedApiId`">`merged_api_id`</span> must be specified.
+  /// ARN of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
   final Input<String>? mergedApiArn;
 
-  /// ID of the merged API. One of <span pulumi-lang-nodejs="`mergedApiArn`" pulumi-lang-dotnet="`MergedApiArn`" pulumi-lang-go="`mergedApiArn`" pulumi-lang-python="`merged_api_arn`" pulumi-lang-yaml="`mergedApiArn`" pulumi-lang-java="`mergedApiArn`">`merged_api_arn`</span> or <span pulumi-lang-nodejs="`mergedApiId`" pulumi-lang-dotnet="`MergedApiId`" pulumi-lang-go="`mergedApiId`" pulumi-lang-python="`merged_api_id`" pulumi-lang-yaml="`mergedApiId`" pulumi-lang-java="`mergedApiId`">`merged_api_id`</span> must be specified.
+  /// ID of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
   final Input<String>? mergedApiId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// ARN of the source API. One of <span pulumi-lang-nodejs="`sourceApiArn`" pulumi-lang-dotnet="`SourceApiArn`" pulumi-lang-go="`sourceApiArn`" pulumi-lang-python="`source_api_arn`" pulumi-lang-yaml="`sourceApiArn`" pulumi-lang-java="`sourceApiArn`">`source_api_arn`</span> or <span pulumi-lang-nodejs="`sourceApiId`" pulumi-lang-dotnet="`SourceApiId`" pulumi-lang-go="`sourceApiId`" pulumi-lang-python="`source_api_id`" pulumi-lang-yaml="`sourceApiId`" pulumi-lang-java="`sourceApiId`">`source_api_id`</span> must be specified.
+  /// ARN of the source API. One of `source_api_arn` or `source_api_id` must be specified.
   final Input<String>? sourceApiArn;
   final Input<List<SourceApiAssociationSourceApiAssociationConfig>>?
       sourceApiAssociationConfigs;
 
-  /// ID of the source API. One of <span pulumi-lang-nodejs="`sourceApiArn`" pulumi-lang-dotnet="`SourceApiArn`" pulumi-lang-go="`sourceApiArn`" pulumi-lang-python="`source_api_arn`" pulumi-lang-yaml="`sourceApiArn`" pulumi-lang-java="`sourceApiArn`">`source_api_arn`</span> or <span pulumi-lang-nodejs="`sourceApiId`" pulumi-lang-dotnet="`SourceApiId`" pulumi-lang-go="`sourceApiId`" pulumi-lang-python="`source_api_id`" pulumi-lang-yaml="`sourceApiId`" pulumi-lang-java="`sourceApiId`">`source_api_id`</span> must be specified.
+  /// ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
   final Input<String>? sourceApiId;
   final Input<SourceApiAssociationTimeouts>? timeouts;
 

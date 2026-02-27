@@ -1,0 +1,4 @@
+library module_bedrock_agent_agent_action_group;
+
+export 'agent_agent_action_group/agent_agent_action_group.dart';
+export 'agent_agent_action_group/agent_agent_action_group_args.dart';

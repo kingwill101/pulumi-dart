@@ -1,0 +1,3 @@
+library module_bedrock_agent_data_source_vector_ingestion_configuration;
+
+export 'agent_data_source_vector_ingestion_configuration/agent_data_source_vector_ingestion_configuration.dart';

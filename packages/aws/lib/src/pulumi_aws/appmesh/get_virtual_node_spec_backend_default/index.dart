@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_node_spec_backend_default;
-
-export 'get_virtual_node_spec_backend_default.dart';

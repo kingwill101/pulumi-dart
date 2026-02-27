@@ -1,3 +1,0 @@
-library module_workspaces_connection_alias_timeouts;
-
-export 'connection_alias_timeouts.dart';

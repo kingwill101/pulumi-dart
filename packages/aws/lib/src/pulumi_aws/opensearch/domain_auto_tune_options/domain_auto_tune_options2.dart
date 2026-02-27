@@ -9,13 +9,13 @@ class DomainAutoTuneOptions2 {
 
   /// Configuration block for Auto-Tune maintenance windows. Can be specified multiple times for each maintenance window. Detailed below.
   ///
-  /// **NOTE:** Maintenance windows are deprecated and have been replaced with [off-peak windows](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/off-peak.html). Consequently, <span pulumi-lang-nodejs="`maintenanceSchedule`" pulumi-lang-dotnet="`MaintenanceSchedule`" pulumi-lang-go="`maintenanceSchedule`" pulumi-lang-python="`maintenance_schedule`" pulumi-lang-yaml="`maintenanceSchedule`" pulumi-lang-java="`maintenanceSchedule`">`maintenance_schedule`</span> configuration blocks cannot be specified when <span pulumi-lang-nodejs="`useOffPeakWindow`" pulumi-lang-dotnet="`UseOffPeakWindow`" pulumi-lang-go="`useOffPeakWindow`" pulumi-lang-python="`use_off_peak_window`" pulumi-lang-yaml="`useOffPeakWindow`" pulumi-lang-java="`useOffPeakWindow`">`use_off_peak_window`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// **NOTE:** Maintenance windows are deprecated and have been replaced with [off-peak windows](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/off-peak.html). Consequently, `maintenance_schedule` configuration blocks cannot be specified when `use_off_peak_window` is set to `true`.
   final List<DomainAutoTuneOptionsMaintenanceSchedule2>? maintenanceSchedules;
 
   /// Whether to roll back to default Auto-Tune settings when disabling Auto-Tune. Valid values: `DEFAULT_ROLLBACK` or `NO_ROLLBACK`.
   final String? rollbackOnDisable;
 
-  /// Whether to schedule Auto-Tune optimizations that require blue/green deployments during the domain's configured daily off-peak window. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to schedule Auto-Tune optimizations that require blue/green deployments during the domain's configured daily off-peak window. Defaults to `false`.
   final bool? useOffPeakWindow;
 
   DomainAutoTuneOptions2({

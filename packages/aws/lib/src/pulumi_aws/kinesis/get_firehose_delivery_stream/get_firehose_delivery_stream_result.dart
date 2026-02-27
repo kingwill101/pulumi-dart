@@ -2,7 +2,7 @@
 
 /// Result data returned by getFirehoseDeliveryStream.
 class GetFirehoseDeliveryStreamResult {
-  /// ARN of the Kinesis Firehose Delivery Stream (same as <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>).
+  /// ARN of the Kinesis Firehose Delivery Stream (same as `id`).
   final String arn;
 
   /// The provider-assigned unique ID for this managed resource.

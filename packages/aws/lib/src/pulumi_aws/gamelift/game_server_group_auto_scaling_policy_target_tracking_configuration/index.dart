@@ -1,3 +1,0 @@
-library module_gamelift_game_server_group_auto_scaling_policy_target_tracking_configuration;
-
-export 'game_server_group_auto_scaling_policy_target_tracking_configuration.dart';

@@ -1,0 +1,3 @@
+library module_lakeformation_opt_in_resource_data_lf_tag_policy;
+
+export 'opt_in_resource_data_lf_tag_policy/opt_in_resource_data_lf_tag_policy.dart';

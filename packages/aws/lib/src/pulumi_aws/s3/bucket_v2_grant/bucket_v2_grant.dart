@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class BucketV2Grant {
-  /// Canonical user id to grant for. Used only when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `CanonicalUser`.
+  /// Canonical user id to grant for. Used only when `type` is `CanonicalUser`.
   final String? id;
 
   /// List of permissions to apply for grantee. Valid values are `READ`, `WRITE`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
@@ -10,7 +10,7 @@ class BucketV2Grant {
   /// Type of grantee to apply for. Valid values are `CanonicalUser` and `Group`. `AmazonCustomerByEmail` is not supported.
   final String type;
 
-  /// Uri address to grant for. Used only when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `Group`.
+  /// Uri address to grant for. Used only when `type` is `Group`.
   final String? uri;
 
   BucketV2Grant({

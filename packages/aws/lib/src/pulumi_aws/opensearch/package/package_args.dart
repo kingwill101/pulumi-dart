@@ -5,7 +5,7 @@ import '../package_package_source/package_package_source.dart';
 
 /// The set of arguments for Package.
 class PackageArgs {
-  /// Engine version that the package is compatible with. This argument is required and only valid when <span pulumi-lang-nodejs="`packageType`" pulumi-lang-dotnet="`PackageType`" pulumi-lang-go="`packageType`" pulumi-lang-python="`package_type`" pulumi-lang-yaml="`packageType`" pulumi-lang-java="`packageType`">`package_type`</span> is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
+  /// Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
   final Input<String>? engineVersion;
 
   /// Description of the package.

@@ -5,131 +5,11 @@ import 'transit_gateway_peering_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.networkmanager.TransitGatewayPeering("example", {
-/// coreNetworkId: exampleAwsccNetworkmanagerCoreNetwork.id,
-/// transitGatewayArn: exampleAwsEc2TransitGateway.arn,
-/// }, {
-/// dependsOn: [
-/// exampleAwsEc2TransitGatewayPolicyTable,
-/// exampleAwsNetworkmanagerCoreNetworkPolicyAttachment,
-/// ],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.networkmanager.TransitGatewayPeering("example",
-/// core_network_id=example_awscc_networkmanager_core_network["id"],
-/// transit_gateway_arn=example_aws_ec2_transit_gateway["arn"],
-/// opts = pulumi.ResourceOptions(depends_on=[
-/// example_aws_ec2_transit_gateway_policy_table,
-/// example_aws_networkmanager_core_network_policy_attachment,
-/// ]))
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.NetworkManager.TransitGatewayPeering("example", new()
-/// {
-/// CoreNetworkId = exampleAwsccNetworkmanagerCoreNetwork.Id,
-/// TransitGatewayArn = exampleAwsEc2TransitGateway.Arn,
-/// }, new CustomResourceOptions
-/// {
-/// DependsOn =
-/// {
-/// exampleAwsEc2TransitGatewayPolicyTable,
-/// exampleAwsNetworkmanagerCoreNetworkPolicyAttachment,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/networkmanager"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := networkmanager.NewTransitGatewayPeering(ctx, "example", &networkmanager.TransitGatewayPeeringArgs{
-/// CoreNetworkId:     pulumi.Any(exampleAwsccNetworkmanagerCoreNetwork.Id),
-/// TransitGatewayArn: pulumi.Any(exampleAwsEc2TransitGateway.Arn),
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// exampleAwsEc2TransitGatewayPolicyTable,
-/// exampleAwsNetworkmanagerCoreNetworkPolicyAttachment,
-/// }))
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.networkmanager.TransitGatewayPeering;
-/// import com.pulumi.aws.networkmanager.TransitGatewayPeeringArgs;
-/// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new TransitGatewayPeering("example", TransitGatewayPeeringArgs.builder()
-/// .coreNetworkId(exampleAwsccNetworkmanagerCoreNetwork.id())
-/// .transitGatewayArn(exampleAwsEc2TransitGateway.arn())
-/// .build(), CustomResourceOptions.builder()
-/// .dependsOn(
-/// exampleAwsEc2TransitGatewayPolicyTable,
-/// exampleAwsNetworkmanagerCoreNetworkPolicyAttachment)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:networkmanager:TransitGatewayPeering
-/// properties:
-/// coreNetworkId: ${exampleAwsccNetworkmanagerCoreNetwork.id}
-/// transitGatewayArn: ${exampleAwsEc2TransitGateway.arn}
-/// options:
-/// dependsOn:
-/// - ${exampleAwsEc2TransitGatewayPolicyTable}
-/// - ${exampleAwsNetworkmanagerCoreNetworkPolicyAttachment}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.networkmanager.TransitGatewayPeering`" pulumi-lang-dotnet="`aws.networkmanager.TransitGatewayPeering`" pulumi-lang-go="`networkmanager.TransitGatewayPeering`" pulumi-lang-python="`networkmanager.TransitGatewayPeering`" pulumi-lang-yaml="`aws.networkmanager.TransitGatewayPeering`" pulumi-lang-java="`aws.networkmanager.TransitGatewayPeering`">`aws.networkmanager.TransitGatewayPeering`</span> using the peering ID. For example:
+/// Using `pulumi import`, import `aws.networkmanager.TransitGatewayPeering` using the peering ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:networkmanager/transitGatewayPeering:TransitGatewayPeering example peering-444555aaabbb11223
@@ -156,10 +36,10 @@ class TransitGatewayPeering extends CustomResource {
   /// Resource ARN of the peer.
   late final Output<String> resourceArn;
 
-  /// Key-value tags for the peering. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// ARN of the transit gateway for the peering request.

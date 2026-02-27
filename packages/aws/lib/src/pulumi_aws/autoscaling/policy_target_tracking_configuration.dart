@@ -1,0 +1,3 @@
+library module_autoscaling_policy_target_tracking_configuration;
+
+export 'policy_target_tracking_configuration/policy_target_tracking_configuration.dart';

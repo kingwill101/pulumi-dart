@@ -1,0 +1,3 @@
+library module_fis_experiment_template_target_filter;
+
+export 'experiment_template_target_filter/experiment_template_target_filter.dart';

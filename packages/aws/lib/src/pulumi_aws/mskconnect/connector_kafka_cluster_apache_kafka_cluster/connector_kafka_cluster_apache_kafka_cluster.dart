@@ -6,7 +6,7 @@ class ConnectorKafkaClusterApacheKafkaCluster {
   /// The bootstrap servers of the cluster.
   final String bootstrapServers;
 
-  /// Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster. See <span pulumi-lang-nodejs="`vpc`" pulumi-lang-dotnet="`Vpc`" pulumi-lang-go="`vpc`" pulumi-lang-python="`vpc`" pulumi-lang-yaml="`vpc`" pulumi-lang-java="`vpc`">`vpc`</span> Block for details.
+  /// Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster. See `vpc` Block for details.
   final ConnectorKafkaClusterApacheKafkaClusterVpc vpc;
 
   ConnectorKafkaClusterApacheKafkaCluster({

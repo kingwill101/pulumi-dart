@@ -1,3 +1,0 @@
-library module_servicecatalog_product_provisioning_artifact_parameters;
-
-export 'product_provisioning_artifact_parameters.dart';

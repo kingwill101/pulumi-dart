@@ -3,7 +3,7 @@
 import '../rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_custom_action_action_definition/rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_custom_action_action_definition.dart';
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
-  /// A configuration block describing the custom action associated with the <span pulumi-lang-nodejs="`actionName`" pulumi-lang-dotnet="`ActionName`" pulumi-lang-go="`actionName`" pulumi-lang-python="`action_name`" pulumi-lang-yaml="`actionName`" pulumi-lang-java="`actionName`">`action_name`</span>. See Action Definition below for details.
+  /// A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
   final RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition
       actionDefinition;
 

@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_criteria;
+
+export 'automation_rule_criteria/automation_rule_criteria.dart';

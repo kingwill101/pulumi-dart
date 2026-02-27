@@ -9,7 +9,7 @@ class GetQuickConnectArgs {
 
   /// Returns information on a specific Quick Connect by name
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`quickConnectId`" pulumi-lang-dotnet="`QuickConnectId`" pulumi-lang-go="`quickConnectId`" pulumi-lang-python="`quick_connect_id`" pulumi-lang-yaml="`quickConnectId`" pulumi-lang-java="`quickConnectId`">`quick_connect_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `quick_connect_id` is required.
   final Input<String>? name;
 
   /// Returns information on a specific Quick Connect by Quick Connect id

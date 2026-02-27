@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_resource_tag;
-
-export 'automation_rule_criteria_resource_tag.dart';

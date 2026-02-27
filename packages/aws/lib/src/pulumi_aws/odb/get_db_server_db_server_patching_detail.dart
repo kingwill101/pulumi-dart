@@ -1,0 +1,3 @@
+library module_odb_get_db_server_db_server_patching_detail;
+
+export 'get_db_server_db_server_patching_detail/get_db_server_db_server_patching_detail.dart';

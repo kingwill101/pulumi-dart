@@ -1,0 +1,3 @@
+library module_ec2_spot_instance_request_enclave_options;
+
+export 'spot_instance_request_enclave_options/spot_instance_request_enclave_options.dart';

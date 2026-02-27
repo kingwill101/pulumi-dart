@@ -1,0 +1,3 @@
+library module_connect_instance_storage_config_storage_config_kinesis_firehose_config;
+
+export 'instance_storage_config_storage_config_kinesis_firehose_config/instance_storage_config_storage_config_kinesis_firehose_config.dart';

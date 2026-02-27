@@ -10,7 +10,7 @@ import '../directory_workspace_creation_properties/directory_workspace_creation_
 
 /// The set of arguments for Directory.
 class DirectoryArgs2 {
-  /// Configuration for Active Directory integration when <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `POOLS`. Defined below.
+  /// Configuration for Active Directory integration when `workspace_type` is set to `POOLS`. Defined below.
   final Input<DirectoryActiveDirectoryConfig>? activeDirectoryConfig;
 
   /// Configuration of certificate-based authentication (CBA) integration. Requires SAML authentication to be enabled. Defined below.
@@ -29,13 +29,13 @@ class DirectoryArgs2 {
   /// Configuration of SAML authentication integration. Defined below.
   final Input<DirectorySamlProperties>? samlProperties;
 
-  /// Permissions to enable or disable self-service capabilities when <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `PERSONAL`.. Defined below.
+  /// Permissions to enable or disable self-service capabilities when `workspace_type` is set to `PERSONAL`.. Defined below.
   final Input<DirectorySelfServicePermissions>? selfServicePermissions;
 
   /// The identifiers of the subnets where the directory resides.
   final Input<List<String>>? subnetIds;
 
-  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Tenancy of the WorkSpaces directory. Valid values are `DEDICATED` or `SHARED`.
@@ -43,7 +43,7 @@ class DirectoryArgs2 {
 
   /// Specifies the user identity type for the WorkSpaces directory. Valid values are `CUSTOMER_MANAGED`, `AWS_DIRECTORY_SERVICE`, `AWS_IAM_IDENTITY_CENTER`.
   ///
-  /// > **Note:** When <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `POOLS`, the <span pulumi-lang-nodejs="`directoryId`" pulumi-lang-dotnet="`DirectoryId`" pulumi-lang-go="`directoryId`" pulumi-lang-python="`directory_id`" pulumi-lang-yaml="`directoryId`" pulumi-lang-java="`directoryId`">`directory_id`</span> is automatically generated and cannot be manually set.
+  /// > **Note:** When `workspace_type` is set to `POOLS`, the `directory_id` is automatically generated and cannot be manually set.
   final Input<String>? userIdentityType;
 
   /// Specifies which devices and operating systems users can use to access their WorkSpaces. Defined below.
@@ -53,10 +53,10 @@ class DirectoryArgs2 {
   final Input<DirectoryWorkspaceCreationProperties>?
       workspaceCreationProperties;
 
-  /// The description of the WorkSpaces directory when <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `POOLS`.
+  /// The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   final Input<String>? workspaceDirectoryDescription;
 
-  /// The name of the WorkSpaces directory when <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `POOLS`.
+  /// The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   final Input<String>? workspaceDirectoryName;
 
   /// Specifies the type of WorkSpaces directory. Valid values are `PERSONAL` and `POOLS`. Default is `PERSONAL`.

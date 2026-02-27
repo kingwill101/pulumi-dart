@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_agent_runtime_agent_runtime_artifact;
-
-export 'agentcore_agent_runtime_agent_runtime_artifact.dart';

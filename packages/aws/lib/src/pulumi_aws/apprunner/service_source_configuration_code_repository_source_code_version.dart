@@ -1,0 +1,3 @@
+library module_apprunner_service_source_configuration_code_repository_source_code_version;
+
+export 'service_source_configuration_code_repository_source_code_version/service_source_configuration_code_repository_source_code_version.dart';

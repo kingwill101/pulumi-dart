@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_statement_ip_set_reference_statement;
-
-export 'rule_group_rule_statement_ip_set_reference_statement.dart';

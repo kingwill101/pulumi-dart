@@ -4,7 +4,7 @@ class EnvironmentMonitor {
   /// ARN of the Amazon CloudWatch alarm.
   final String alarmArn;
 
-  /// ARN of an IAM role for AWS AppConfig to monitor <span pulumi-lang-nodejs="`alarmArn`" pulumi-lang-dotnet="`AlarmArn`" pulumi-lang-go="`alarmArn`" pulumi-lang-python="`alarm_arn`" pulumi-lang-yaml="`alarmArn`" pulumi-lang-java="`alarmArn`">`alarm_arn`</span>.
+  /// ARN of an IAM role for AWS AppConfig to monitor `alarm_arn`.
   final String? alarmRoleArn;
 
   EnvironmentMonitor({

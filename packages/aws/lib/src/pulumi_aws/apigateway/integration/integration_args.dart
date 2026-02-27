@@ -11,7 +11,7 @@ class IntegrationArgs {
   /// Integration's cache namespace.
   final Input<String>? cacheNamespace;
 
-  /// ID of the VpcLink used for the integration. **Required** if <span pulumi-lang-nodejs="`connectionType`" pulumi-lang-dotnet="`ConnectionType`" pulumi-lang-go="`connectionType`" pulumi-lang-python="`connection_type`" pulumi-lang-yaml="`connectionType`" pulumi-lang-java="`connectionType`">`connection_type`</span> is `VPC_LINK`
+  /// ID of the VpcLink used for the integration. **Required** if `connection_type` is `VPC_LINK`
   final Input<String>? connectionId;
 
   /// Integration input's [connectionType](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionType). Valid values are `INTERNET` (default for connections through the public routable internet), and `VPC_LINK` (for private connections between API Gateway and a network load balancer in a VPC).
@@ -29,22 +29,22 @@ class IntegrationArgs {
 
   /// Integration HTTP method
   /// (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONs`, `ANY`, `PATCH`) specifying how API Gateway will interact with the back end.
-  /// **Required** if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`.
+  /// **Required** if `type` is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`.
   /// Not all methods are compatible with all `AWS` integrations.
   /// e.g., Lambda function [can only be invoked](https://github.com/awslabs/aws-apigateway-importer/issues/9#issuecomment-129651005) via `POST`.
   final Input<String>? integrationHttpMethod;
 
-  /// The ALB or NLB ARN to send the request to. Used for private integrations with VPC Link V2. When using VPC Link V2, this parameter specifies the load balancer ARN, while <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> is used to set the Host header.
+  /// The ALB or NLB ARN to send the request to. Used for private integrations with VPC Link V2. When using VPC Link V2, this parameter specifies the load balancer ARN, while `uri` is used to set the Host header.
   final Input<String>? integrationTarget;
 
-  /// Integration passthrough behavior (`WHEN_NO_MATCH`, `WHEN_NO_TEMPLATES`, `NEVER`).  **Required** if <span pulumi-lang-nodejs="`requestTemplates`" pulumi-lang-dotnet="`RequestTemplates`" pulumi-lang-go="`requestTemplates`" pulumi-lang-python="`request_templates`" pulumi-lang-yaml="`requestTemplates`" pulumi-lang-java="`requestTemplates`">`request_templates`</span> is used.
+  /// Integration passthrough behavior (`WHEN_NO_MATCH`, `WHEN_NO_TEMPLATES`, `NEVER`).  **Required** if `request_templates` is used.
   final Input<String>? passthroughBehavior;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
   /// Map of request query string parameters and headers that should be passed to the backend responder.
-  /// For example: <span pulumi-lang-nodejs="`requestParameters " pulumi-lang-dotnet="`RequestParameters " pulumi-lang-go="`requestParameters " pulumi-lang-python="`request_parameters " pulumi-lang-yaml="`requestParameters " pulumi-lang-java="`requestParameters ">`request_parameters </span>= { "integration.request.header.X-Some-Other-Header" = "method.request.header.X-Some-Header" }`
+  /// For example: `request_parameters = { "integration.request.header.X-Some-Other-Header" = "method.request.header.X-Some-Header" }`
   final Input<Map<String, String>>? requestParameters;
 
   /// Map of the integration's request templates.
@@ -60,17 +60,17 @@ class IntegrationArgs {
   /// ID of the associated REST API.
   final Input<String> restApi;
 
-  /// Custom timeout in milliseconds. The minimum value is 50. The maximum value is 300,000 when <span pulumi-lang-nodejs="`responseTransferMode`" pulumi-lang-dotnet="`ResponseTransferMode`" pulumi-lang-go="`responseTransferMode`" pulumi-lang-python="`response_transfer_mode`" pulumi-lang-yaml="`responseTransferMode`" pulumi-lang-java="`responseTransferMode`">`response_transfer_mode`</span> is `BUFFERED`, and 900,000 when <span pulumi-lang-nodejs="`responseTransferMode`" pulumi-lang-dotnet="`ResponseTransferMode`" pulumi-lang-go="`responseTransferMode`" pulumi-lang-python="`response_transfer_mode`" pulumi-lang-yaml="`responseTransferMode`" pulumi-lang-java="`responseTransferMode`">`response_transfer_mode`</span> is `STREAM`. The default value is 29,000 milliseconds. You need to raise a [Service Quota Ticket](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to increase time beyond 29,000 milliseconds for `BUFFERED` mode.
+  /// Custom timeout in milliseconds. The minimum value is 50. The maximum value is 300,000 when `response_transfer_mode` is `BUFFERED`, and 900,000 when `response_transfer_mode` is `STREAM`. The default value is 29,000 milliseconds. You need to raise a [Service Quota Ticket](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to increase time beyond 29,000 milliseconds for `BUFFERED` mode.
   final Input<int>? timeoutMilliseconds;
 
   /// TLS configuration. See below.
   final Input<IntegrationTlsConfig>? tlsConfig;
 
-  /// Integration input's [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/). Valid values are `HTTP` (for HTTP backends), `MOCK` (not calling any real backend), `AWS` (for AWS services), `AWS_PROXY` (for Lambda proxy integration) and `HTTP_PROXY` (for HTTP proxy integration). An `HTTP` or `HTTP_PROXY` integration with a <span pulumi-lang-nodejs="`connectionType`" pulumi-lang-dotnet="`ConnectionType`" pulumi-lang-go="`connectionType`" pulumi-lang-python="`connection_type`" pulumi-lang-yaml="`connectionType`" pulumi-lang-java="`connectionType`">`connection_type`</span> of `VPC_LINK` is referred to as a private integration and uses a VpcLink to connect API Gateway to a network load balancer of a VPC.
+  /// Integration input's [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/). Valid values are `HTTP` (for HTTP backends), `MOCK` (not calling any real backend), `AWS` (for AWS services), `AWS_PROXY` (for Lambda proxy integration) and `HTTP_PROXY` (for HTTP proxy integration). An `HTTP` or `HTTP_PROXY` integration with a `connection_type` of `VPC_LINK` is referred to as a private integration and uses a VpcLink to connect API Gateway to a network load balancer of a VPC.
   final Input<String> type;
 
-  /// Input's URI. **Required** if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`.
-  /// For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the RFC-3986 specification . For AWS integrations, the URI should be of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}`. <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span>, <span pulumi-lang-nodejs="`subdomain`" pulumi-lang-dotnet="`Subdomain`" pulumi-lang-go="`subdomain`" pulumi-lang-python="`subdomain`" pulumi-lang-yaml="`subdomain`" pulumi-lang-java="`subdomain`">`subdomain`</span> and <span pulumi-lang-nodejs="`service`" pulumi-lang-dotnet="`Service`" pulumi-lang-go="`service`" pulumi-lang-python="`service`" pulumi-lang-yaml="`service`" pulumi-lang-java="`service`">`service`</span> are used to determine the right endpoint.
+  /// Input's URI. **Required** if `type` is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`.
+  /// For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the RFC-3986 specification . For AWS integrations, the URI should be of the form `arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}`. `region`, `subdomain` and `service` are used to determine the right endpoint.
   /// e.g., `arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:123456789012:function:my-func/invocations`. For private integrations, the URI parameter is not used for routing requests to your endpoint, but is used for setting the Host header and for certificate validation.
   final Input<String>? uri;
 

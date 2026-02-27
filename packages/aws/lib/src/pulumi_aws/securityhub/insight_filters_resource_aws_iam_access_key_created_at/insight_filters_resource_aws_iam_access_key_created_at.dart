@@ -3,13 +3,13 @@
 import '../insight_filters_resource_aws_iam_access_key_created_at_date_range/insight_filters_resource_aws_iam_access_key_created_at_date_range.dart';
 
 class InsightFiltersResourceAwsIamAccessKeyCreatedAt {
-  /// A configuration block of the date range for the date filter. See<span pulumi-lang-nodejs=" dateRange " pulumi-lang-dotnet=" DateRange " pulumi-lang-go=" dateRange " pulumi-lang-python=" date_range " pulumi-lang-yaml=" dateRange " pulumi-lang-java=" dateRange "> date_range </span>below for more details.
+  /// A configuration block of the date range for the date filter. See date_range below for more details.
   final InsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange? dateRange;
 
-  /// An end date for the date filter. Required with <span pulumi-lang-nodejs="`start`" pulumi-lang-dotnet="`Start`" pulumi-lang-go="`start`" pulumi-lang-python="`start`" pulumi-lang-yaml="`start`" pulumi-lang-java="`start`">`start`</span> if <span pulumi-lang-nodejs="`dateRange`" pulumi-lang-dotnet="`DateRange`" pulumi-lang-go="`dateRange`" pulumi-lang-python="`date_range`" pulumi-lang-yaml="`dateRange`" pulumi-lang-java="`dateRange`">`date_range`</span> is not specified.
+  /// An end date for the date filter. Required with `start` if `date_range` is not specified.
   final String? end;
 
-  /// A start date for the date filter. Required with <span pulumi-lang-nodejs="`end`" pulumi-lang-dotnet="`End`" pulumi-lang-go="`end`" pulumi-lang-python="`end`" pulumi-lang-yaml="`end`" pulumi-lang-java="`end`">`end`</span> if <span pulumi-lang-nodejs="`dateRange`" pulumi-lang-dotnet="`DateRange`" pulumi-lang-go="`dateRange`" pulumi-lang-python="`date_range`" pulumi-lang-yaml="`dateRange`" pulumi-lang-java="`dateRange`">`date_range`</span> is not specified.
+  /// A start date for the date filter. Required with `end` if `date_range` is not specified.
   final String? start;
 
   InsightFiltersResourceAwsIamAccessKeyCreatedAt({

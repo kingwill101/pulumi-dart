@@ -8,7 +8,7 @@ import '../user_profile_user_settings_jupyter_lab_app_settings_default_resource_
 import '../user_profile_user_settings_jupyter_lab_app_settings_emr_settings/user_profile_user_settings_jupyter_lab_app_settings_emr_settings.dart';
 
 class UserProfileUserSettingsJupyterLabAppSettings {
-  /// Indicates whether idle shutdown is activated for JupyterLab applications. see <span pulumi-lang-nodejs="`appLifecycleManagement`" pulumi-lang-dotnet="`AppLifecycleManagement`" pulumi-lang-go="`appLifecycleManagement`" pulumi-lang-python="`app_lifecycle_management`" pulumi-lang-yaml="`appLifecycleManagement`" pulumi-lang-java="`appLifecycleManagement`">`app_lifecycle_management`</span> Block below.
+  /// Indicates whether idle shutdown is activated for JupyterLab applications. see `app_lifecycle_management` Block below.
   final UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement?
       appLifecycleManagement;
 
@@ -25,7 +25,7 @@ class UserProfileUserSettingsJupyterLabAppSettings {
   final UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec?
       defaultResourceSpec;
 
-  /// The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see <span pulumi-lang-nodejs="`emrSettings`" pulumi-lang-dotnet="`EmrSettings`" pulumi-lang-go="`emrSettings`" pulumi-lang-python="`emr_settings`" pulumi-lang-yaml="`emrSettings`" pulumi-lang-java="`emrSettings`">`emr_settings`</span> Block below.
+  /// The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emr_settings` Block below.
   final UserProfileUserSettingsJupyterLabAppSettingsEmrSettings? emrSettings;
 
   /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.

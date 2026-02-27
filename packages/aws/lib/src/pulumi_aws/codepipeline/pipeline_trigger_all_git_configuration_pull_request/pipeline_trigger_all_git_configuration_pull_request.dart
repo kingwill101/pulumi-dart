@@ -5,13 +5,13 @@ import '../pipeline_trigger_all_git_configuration_pull_request_branch/pipeline_t
 import '../pipeline_trigger_all_git_configuration_pull_request_file_path/pipeline_trigger_all_git_configuration_pull_request_file_path.dart';
 
 class PipelineTriggerAllGitConfigurationPullRequest {
-  /// The field that specifies to filter on branches for the pull request trigger configuration. A <span pulumi-lang-nodejs="`branches`" pulumi-lang-dotnet="`Branches`" pulumi-lang-go="`branches`" pulumi-lang-python="`branches`" pulumi-lang-yaml="`branches`" pulumi-lang-java="`branches`">`branches`</span> block is documented below.
+  /// The field that specifies to filter on branches for the pull request trigger configuration. A `branches` block is documented below.
   final List<PipelineTriggerAllGitConfigurationPullRequestBranch>? branches;
 
   /// A list that specifies which pull request events to filter on (opened, updated, closed) for the trigger configuration. Possible values are `OPEN`, `UPDATED ` and `CLOSED`.
   final List<String>? events;
 
-  /// The field that specifies to filter on file paths for the pull request trigger configuration. A <span pulumi-lang-nodejs="`filePaths`" pulumi-lang-dotnet="`FilePaths`" pulumi-lang-go="`filePaths`" pulumi-lang-python="`file_paths`" pulumi-lang-yaml="`filePaths`" pulumi-lang-java="`filePaths`">`file_paths`</span> block is documented below.
+  /// The field that specifies to filter on file paths for the pull request trigger configuration. A `file_paths` block is documented below.
   final List<PipelineTriggerAllGitConfigurationPullRequestFilePath>? filePaths;
 
   PipelineTriggerAllGitConfigurationPullRequest({

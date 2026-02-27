@@ -1,0 +1,3 @@
+library module_connect_queue_outbound_caller_config;
+
+export 'queue_outbound_caller_config/queue_outbound_caller_config.dart';

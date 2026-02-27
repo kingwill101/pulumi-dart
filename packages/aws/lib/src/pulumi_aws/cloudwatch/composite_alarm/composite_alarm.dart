@@ -4,173 +4,21 @@ import 'composite_alarm_args.dart';
 
 /// Provides a CloudWatch Composite Alarm resource.
 ///
-/// > **NOTE:** An alarm (composite or metric) cannot be destroyed when there are other composite alarms depending on it. This can lead to a cyclical dependency on update, as the provider will unsuccessfully attempt to destroy alarms before updating the rule. Consider using <span pulumi-lang-nodejs="`dependsOn`" pulumi-lang-dotnet="`DependsOn`" pulumi-lang-go="`dependsOn`" pulumi-lang-python="`depends_on`" pulumi-lang-yaml="`dependsOn`" pulumi-lang-java="`dependsOn`">`depends_on`</span>, references to alarm names, and two-stage updates.
+/// > **NOTE:** An alarm (composite or metric) cannot be destroyed when there are other composite alarms depending on it. This can lead to a cyclical dependency on update, as the provider will unsuccessfully attempt to destroy alarms before updating the rule. Consider using `depends_on`, references to alarm names, and two-stage updates.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.cloudwatch.CompositeAlarm("example", {
-/// alarmDescription: "This is a composite alarm!",
-/// alarmName: "example-composite-alarm",
-/// alarmActions: exampleAwsSnsTopic.arn,
-/// okActions: exampleAwsSnsTopic.arn,
-/// alarmRule: `ALARM(${alpha.alarmName}) OR
-/// ALARM(${bravo.alarmName})
-/// `,
-/// actionsSuppressor: {
-/// alarm: "suppressor-alarm",
-/// extensionPeriod: 10,
-/// waitPeriod: 20,
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.cloudwatch.CompositeAlarm("example",
-/// alarm_description="This is a composite alarm!",
-/// alarm_name="example-composite-alarm",
-/// alarm_actions=example_aws_sns_topic["arn"],
-/// ok_actions=example_aws_sns_topic["arn"],
-/// alarm_rule=f"""ALARM({alpha["alarmName"]}) OR
-/// ALARM({bravo["alarmName"]})
-/// """,
-/// actions_suppressor={
-/// "alarm": "suppressor-alarm",
-/// "extension_period": 10,
-/// "wait_period": 20,
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.CloudWatch.CompositeAlarm("example", new()
-/// {
-/// AlarmDescription = "This is a composite alarm!",
-/// AlarmName = "example-composite-alarm",
-/// AlarmActions = exampleAwsSnsTopic.Arn,
-/// OkActions = exampleAwsSnsTopic.Arn,
-/// AlarmRule = @$"ALARM({alpha.AlarmName}) OR
-/// ALARM({bravo.AlarmName})
-/// ",
-/// ActionsSuppressor = new Aws.CloudWatch.Inputs.CompositeAlarmActionsSuppressorArgs
-/// {
-/// Alarm = "suppressor-alarm",
-/// ExtensionPeriod = 10,
-/// WaitPeriod = 20,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := cloudwatch.NewCompositeAlarm(ctx, "example", &cloudwatch.CompositeAlarmArgs{
-/// AlarmDescription: pulumi.String("This is a composite alarm!"),
-/// AlarmName:        pulumi.String("example-composite-alarm"),
-/// AlarmActions:     pulumi.Any(exampleAwsSnsTopic.Arn),
-/// OkActions:        pulumi.Any(exampleAwsSnsTopic.Arn),
-/// AlarmRule:        pulumi.Sprintf("ALARM(%v) OR\nALARM(%v)\n", alpha.AlarmName, bravo.AlarmName),
-/// ActionsSuppressor: &cloudwatch.CompositeAlarmActionsSuppressorArgs{
-/// Alarm:           pulumi.String("suppressor-alarm"),
-/// ExtensionPeriod: pulumi.Int(10),
-/// WaitPeriod:      pulumi.Int(20),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.cloudwatch.CompositeAlarm;
-/// import com.pulumi.aws.cloudwatch.CompositeAlarmArgs;
-/// import com.pulumi.aws.cloudwatch.inputs.CompositeAlarmActionsSuppressorArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new CompositeAlarm("example", CompositeAlarmArgs.builder()
-/// .alarmDescription("This is a composite alarm!")
-/// .alarmName("example-composite-alarm")
-/// .alarmActions(exampleAwsSnsTopic.arn())
-/// .okActions(exampleAwsSnsTopic.arn())
-/// .alarmRule("""
-/// ALARM(%s) OR
-/// ALARM(%s)
-/// ", alpha.alarmName(),bravo.alarmName()))
-/// .actionsSuppressor(CompositeAlarmActionsSuppressorArgs.builder()
-/// .alarm("suppressor-alarm")
-/// .extensionPeriod(10)
-/// .waitPeriod(20)
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:cloudwatch:CompositeAlarm
-/// properties:
-/// alarmDescription: This is a composite alarm!
-/// alarmName: example-composite-alarm
-/// alarmActions: ${exampleAwsSnsTopic.arn}
-/// okActions: ${exampleAwsSnsTopic.arn}
-/// alarmRule: |
-/// ALARM(${alpha.alarmName}) OR
-/// ALARM(${bravo.alarmName})
-/// actionsSuppressor:
-/// alarm: suppressor-alarm
-/// extensionPeriod: 10
-/// waitPeriod: 20
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a CloudWatch Composite Alarm using the <span pulumi-lang-nodejs="`alarmName`" pulumi-lang-dotnet="`AlarmName`" pulumi-lang-go="`alarmName`" pulumi-lang-python="`alarm_name`" pulumi-lang-yaml="`alarmName`" pulumi-lang-java="`alarmName`">`alarm_name`</span>. For example:
+/// Using `pulumi import`, import a CloudWatch Composite Alarm using the `alarm_name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/compositeAlarm:CompositeAlarm test my-alarm
 /// ```
 class CompositeAlarm extends CustomResource {
-  /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. Defaults to `true`.
   late final Output<bool?> actionsEnabled;
 
   /// Actions will be suppressed if the suppressor alarm is in the ALARM state.
@@ -200,10 +48,10 @@ class CompositeAlarm extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// A map of tags to associate with the alarm. Up to 50 tags are allowed. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to associate with the alarm. Up to 50 tags are allowed. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   CompositeAlarm(

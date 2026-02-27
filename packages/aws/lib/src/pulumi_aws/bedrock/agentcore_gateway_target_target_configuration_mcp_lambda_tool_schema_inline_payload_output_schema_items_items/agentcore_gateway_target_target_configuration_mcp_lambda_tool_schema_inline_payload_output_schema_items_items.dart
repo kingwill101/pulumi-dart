@@ -4,10 +4,10 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   /// Description of the array items.
   final String? description;
 
-  /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with <span pulumi-lang-nodejs="`propertiesJson`" pulumi-lang-dotnet="`PropertiesJson`" pulumi-lang-go="`propertiesJson`" pulumi-lang-python="`properties_json`" pulumi-lang-yaml="`propertiesJson`" pulumi-lang-java="`propertiesJson`">`properties_json`</span>.
+  /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
   final String? itemsJson;
 
-  /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with <span pulumi-lang-nodejs="`itemsJson`" pulumi-lang-dotnet="`ItemsJson`" pulumi-lang-go="`itemsJson`" pulumi-lang-python="`items_json`" pulumi-lang-yaml="`itemsJson`" pulumi-lang-java="`itemsJson`">`items_json`</span>.
+  /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
   final String? propertiesJson;
 
   /// Data type of the array items.

@@ -1,3 +1,0 @@
-library module_amp_query_logging_configuration_destination;
-
-export 'query_logging_configuration_destination.dart';

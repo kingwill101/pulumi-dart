@@ -1,3 +1,0 @@
-library module_emrcontainers_virtual_cluster_container_provider_info_eks_info;
-
-export 'virtual_cluster_container_provider_info_eks_info.dart';

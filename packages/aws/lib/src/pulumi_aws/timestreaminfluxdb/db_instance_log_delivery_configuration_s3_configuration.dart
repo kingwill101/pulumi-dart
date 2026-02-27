@@ -1,0 +1,3 @@
+library module_timestreaminfluxdb_db_instance_log_delivery_configuration_s3_configuration;
+
+export 'db_instance_log_delivery_configuration_s3_configuration/db_instance_log_delivery_configuration_s3_configuration.dart';

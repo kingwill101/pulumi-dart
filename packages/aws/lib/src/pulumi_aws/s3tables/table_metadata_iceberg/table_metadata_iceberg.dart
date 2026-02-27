@@ -4,7 +4,7 @@ import '../table_metadata_iceberg_schema/table_metadata_iceberg_schema.dart';
 
 class TableMetadataIceberg {
   /// Schema configuration for the Iceberg table.
-  /// See <span pulumi-lang-nodejs="`schema`" pulumi-lang-dotnet="`Schema`" pulumi-lang-go="`schema`" pulumi-lang-python="`schema`" pulumi-lang-yaml="`schema`" pulumi-lang-java="`schema`">`schema`</span> below.
+  /// See `schema` below.
   final TableMetadataIcebergSchema schema;
 
   TableMetadataIceberg({

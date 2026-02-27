@@ -12,7 +12,7 @@ class GetHoursOfOperationArgs {
 
   /// Returns information on a specific Hours of Operation by name
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`hoursOfOperationId`" pulumi-lang-dotnet="`HoursOfOperationId`" pulumi-lang-go="`hoursOfOperationId`" pulumi-lang-python="`hours_of_operation_id`" pulumi-lang-yaml="`hoursOfOperationId`" pulumi-lang-java="`hoursOfOperationId`">`hours_of_operation_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `hours_of_operation_id` is required.
   final Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

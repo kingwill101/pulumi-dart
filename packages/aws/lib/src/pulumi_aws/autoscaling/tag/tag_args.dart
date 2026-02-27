@@ -11,7 +11,7 @@ class TagArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Tag to create. The <span pulumi-lang-nodejs="`tag`" pulumi-lang-dotnet="`Tag`" pulumi-lang-go="`tag`" pulumi-lang-python="`tag`" pulumi-lang-yaml="`tag`" pulumi-lang-java="`tag`">`tag`</span> block is documented below.
+  /// Tag to create. The `tag` block is documented below.
   final Input<TagTag> tag;
 
   TagArgs({

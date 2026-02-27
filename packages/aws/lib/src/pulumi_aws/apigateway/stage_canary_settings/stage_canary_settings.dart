@@ -7,7 +7,7 @@ class StageCanarySettings {
   /// Percent `0.0` - `100.0` of traffic to divert to the canary deployment.
   final double? percentTraffic;
 
-  /// Map of overridden stage <span pulumi-lang-nodejs="`variables`" pulumi-lang-dotnet="`Variables`" pulumi-lang-go="`variables`" pulumi-lang-python="`variables`" pulumi-lang-yaml="`variables`" pulumi-lang-java="`variables`">`variables`</span> (including new variables) for the canary deployment.
+  /// Map of overridden stage `variables` (including new variables) for the canary deployment.
   final Map<String, String>? stageVariableOverrides;
 
   /// Whether the canary deployment uses the stage cache. Defaults to false.

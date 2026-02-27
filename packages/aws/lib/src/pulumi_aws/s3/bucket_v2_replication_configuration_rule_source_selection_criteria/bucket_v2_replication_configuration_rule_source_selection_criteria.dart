@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart';
 import '../bucket_v2_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_object/bucket_v2_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_object.dart';
 
 class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
-  /// Match SSE-KMS encrypted objects (documented below). If specified, <span pulumi-lang-nodejs="`replicaKmsKeyId`" pulumi-lang-dotnet="`ReplicaKmsKeyId`" pulumi-lang-go="`replicaKmsKeyId`" pulumi-lang-python="`replica_kms_key_id`" pulumi-lang-yaml="`replicaKmsKeyId`" pulumi-lang-java="`replicaKmsKeyId`">`replica_kms_key_id`</span>
-  /// in <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span> must be specified as well.
+  /// Match SSE-KMS encrypted objects (documented below). If specified, `replica_kms_key_id`
+  /// in `destination` must be specified as well.
   final List<
           BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>?
       sseKmsEncryptedObjects;

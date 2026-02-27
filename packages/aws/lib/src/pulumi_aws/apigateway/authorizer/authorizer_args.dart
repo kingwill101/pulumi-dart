@@ -7,7 +7,7 @@ class AuthorizerArgs {
   /// Credentials required for the authorizer. To specify an IAM Role for API Gateway to assume, use the IAM Role ARN.
   final Input<String>? authorizerCredentials;
 
-  /// TTL of cached authorizer results in seconds. Defaults to <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span>.
+  /// TTL of cached authorizer results in seconds. Defaults to `300`.
   final Input<int>? authorizerResultTtlInSeconds;
 
   /// Authorizer's Uniform Resource Identifier (URI). This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`,

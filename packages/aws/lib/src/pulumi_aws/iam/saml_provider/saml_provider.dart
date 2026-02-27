@@ -5,123 +5,7 @@ import 'saml_provider_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-/// import * as std from "@pulumi/std";
 ///
-/// const _default = new aws.iam.SamlProvider("default", {
-/// name: "myprovider",
-/// samlMetadataDocument: std.file({
-/// input: "saml-metadata.xml",
-/// }).then(invoke => invoke.result),
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-/// import pulumi_std as std
-///
-/// default = aws.iam.SamlProvider("default",
-/// name="myprovider",
-/// saml_metadata_document=std.file(input="saml-metadata.xml").result)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-/// using Std = Pulumi.Std;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Aws.Iam.SamlProvider("default", new()
-/// {
-/// Name = "myprovider",
-/// SamlMetadataDocument = Std.File.Invoke(new()
-/// {
-/// Input = "saml-metadata.xml",
-/// }).Apply(invoke => invoke.Result),
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
-/// "github.com/pulumi/pulumi-std/sdk/go/std"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// invokeFile, err := std.File(ctx, &std.FileArgs{
-/// Input: "saml-metadata.xml",
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = iam.NewSamlProvider(ctx, "default", &iam.SamlProviderArgs{
-/// Name:                 pulumi.String("myprovider"),
-/// SamlMetadataDocument: pulumi.String(invokeFile.Result),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.iam.SamlProvider;
-/// import com.pulumi.aws.iam.SamlProviderArgs;
-/// import com.pulumi.std.StdFunctions;
-/// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new SamlProvider("default", SamlProviderArgs.builder()
-/// .name("myprovider")
-/// .samlMetadataDocument(StdFunctions.file(FileArgs.builder()
-/// .input("saml-metadata.xml")
-/// .build()).result())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: aws:iam:SamlProvider
-/// properties:
-/// name: myprovider
-/// samlMetadataDocument:
-/// fn::invoke:
-/// function: std:file
-/// arguments:
-/// input: saml-metadata.xml
-/// return: result
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -129,10 +13,10 @@ import 'saml_provider_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the IAM SAML provider.
+/// - `arn` (String) Amazon Resource Name (ARN) of the IAM SAML provider.
 ///
 ///
-/// Using `pulumi import`, import IAM SAML Providers using the <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>. For example:
+/// Using `pulumi import`, import IAM SAML Providers using the `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iam/samlProvider:SamlProvider default arn:aws:iam::123456789012:saml-provider/SAMLADFS
@@ -150,10 +34,10 @@ class SamlProvider extends CustomResource {
   /// Unique identifier assigned to the SAML provider.
   late final Output<String> samlProviderUuid;
 
-  /// Map of resource tags for the IAM SAML provider. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the IAM SAML provider. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// The expiration date and time for the SAML provider in RFC1123 format, e.g., `Mon, 02 Jan 2006 15:04:05 MST`.

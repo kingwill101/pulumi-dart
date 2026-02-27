@@ -1,3 +1,0 @@
-library module_licensemanager_get_received_licenses_filter;
-
-export 'get_received_licenses_filter.dart';

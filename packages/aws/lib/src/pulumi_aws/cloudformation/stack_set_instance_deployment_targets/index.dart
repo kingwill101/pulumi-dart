@@ -1,3 +1,0 @@
-library module_cloudformation_stack_set_instance_deployment_targets;
-
-export 'stack_set_instance_deployment_targets.dart';

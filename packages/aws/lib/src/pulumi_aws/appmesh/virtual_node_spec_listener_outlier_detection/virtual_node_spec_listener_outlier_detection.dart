@@ -12,10 +12,10 @@ class VirtualNodeSpecListenerOutlierDetection {
   final VirtualNodeSpecListenerOutlierDetectionInterval interval;
 
   /// Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value.
-  /// Minimum value of <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>. Maximum value of <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>.
+  /// Minimum value of `0`. Maximum value of `100`.
   final int maxEjectionPercent;
 
-  /// Number of consecutive <span pulumi-lang-nodejs="`5xx`" pulumi-lang-dotnet="`5xx`" pulumi-lang-go="`5xx`" pulumi-lang-python="`5xx`" pulumi-lang-yaml="`5xx`" pulumi-lang-java="`5xx`">`5xx`</span> errors required for ejection. Minimum value of <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Number of consecutive `5xx` errors required for ejection. Minimum value of `1`.
   final int maxServerErrors;
 
   VirtualNodeSpecListenerOutlierDetection({

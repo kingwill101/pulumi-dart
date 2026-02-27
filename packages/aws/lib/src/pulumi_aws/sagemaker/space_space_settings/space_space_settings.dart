@@ -12,22 +12,22 @@ class SpaceSpaceSettings {
   /// The type of app created within the space.
   final String? appType;
 
-  /// The Code Editor application settings. See <span pulumi-lang-nodejs="`codeEditorAppSettings`" pulumi-lang-dotnet="`CodeEditorAppSettings`" pulumi-lang-go="`codeEditorAppSettings`" pulumi-lang-python="`code_editor_app_settings`" pulumi-lang-yaml="`codeEditorAppSettings`" pulumi-lang-java="`codeEditorAppSettings`">`code_editor_app_settings`</span> Block below.
+  /// The Code Editor application settings. See `code_editor_app_settings` Block below.
   final SpaceSpaceSettingsCodeEditorAppSettings? codeEditorAppSettings;
 
-  /// A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. See <span pulumi-lang-nodejs="`customFileSystem`" pulumi-lang-dotnet="`CustomFileSystem`" pulumi-lang-go="`customFileSystem`" pulumi-lang-python="`custom_file_system`" pulumi-lang-yaml="`customFileSystem`" pulumi-lang-java="`customFileSystem`">`custom_file_system`</span> Block below.
+  /// A file system, created by you, that you assign to a space for an Amazon SageMaker AI Domain. See `custom_file_system` Block below.
   final List<SpaceSpaceSettingsCustomFileSystem>? customFileSystems;
 
-  /// The settings for the JupyterLab application. See <span pulumi-lang-nodejs="`jupyterLabAppSettings`" pulumi-lang-dotnet="`JupyterLabAppSettings`" pulumi-lang-go="`jupyterLabAppSettings`" pulumi-lang-python="`jupyter_lab_app_settings`" pulumi-lang-yaml="`jupyterLabAppSettings`" pulumi-lang-java="`jupyterLabAppSettings`">`jupyter_lab_app_settings`</span> Block below.
+  /// The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
   final SpaceSpaceSettingsJupyterLabAppSettings? jupyterLabAppSettings;
 
-  /// The Jupyter server's app settings. See <span pulumi-lang-nodejs="`jupyterServerAppSettings`" pulumi-lang-dotnet="`JupyterServerAppSettings`" pulumi-lang-go="`jupyterServerAppSettings`" pulumi-lang-python="`jupyter_server_app_settings`" pulumi-lang-yaml="`jupyterServerAppSettings`" pulumi-lang-java="`jupyterServerAppSettings`">`jupyter_server_app_settings`</span> Block below.
+  /// The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
   final SpaceSpaceSettingsJupyterServerAppSettings? jupyterServerAppSettings;
 
-  /// The kernel gateway app settings. See <span pulumi-lang-nodejs="`kernelGatewayAppSettings`" pulumi-lang-dotnet="`KernelGatewayAppSettings`" pulumi-lang-go="`kernelGatewayAppSettings`" pulumi-lang-python="`kernel_gateway_app_settings`" pulumi-lang-yaml="`kernelGatewayAppSettings`" pulumi-lang-java="`kernelGatewayAppSettings`">`kernel_gateway_app_settings`</span> Block below.
+  /// The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
   final SpaceSpaceSettingsKernelGatewayAppSettings? kernelGatewayAppSettings;
 
-  /// The storage settings. See <span pulumi-lang-nodejs="`spaceStorageSettings`" pulumi-lang-dotnet="`SpaceStorageSettings`" pulumi-lang-go="`spaceStorageSettings`" pulumi-lang-python="`space_storage_settings`" pulumi-lang-yaml="`spaceStorageSettings`" pulumi-lang-java="`spaceStorageSettings`">`space_storage_settings`</span> Block below.
+  /// The storage settings. See `space_storage_settings` Block below.
   final SpaceSpaceSettingsSpaceStorageSettings? spaceStorageSettings;
 
   SpaceSpaceSettings({

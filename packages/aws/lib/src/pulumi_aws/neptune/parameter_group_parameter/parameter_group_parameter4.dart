@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ParameterGroupParameter4 {
-  /// The apply method of the Neptune parameter. Valid values are <span pulumi-lang-nodejs="`immediate`" pulumi-lang-dotnet="`Immediate`" pulumi-lang-go="`immediate`" pulumi-lang-python="`immediate`" pulumi-lang-yaml="`immediate`" pulumi-lang-java="`immediate`">`immediate`</span> and `pending-reboot`. Defaults to `pending-reboot`.
+  /// The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
   final String? applyMethod;
 
   /// The name of the Neptune parameter.

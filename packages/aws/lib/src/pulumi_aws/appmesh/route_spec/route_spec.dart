@@ -15,8 +15,8 @@ class RouteSpec {
   /// HTTP routing information for the route.
   final RouteSpecHttpRoute? httpRoute;
 
-  /// Priority for the route, between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`1000`" pulumi-lang-dotnet="`1000`" pulumi-lang-go="`1000`" pulumi-lang-python="`1000`" pulumi-lang-yaml="`1000`" pulumi-lang-java="`1000`">`1000`</span>.
-  /// Routes are matched based on the specified value, where <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> is the highest priority.
+  /// Priority for the route, between `0` and `1000`.
+  /// Routes are matched based on the specified value, where `0` is the highest priority.
   final int? priority;
 
   /// TCP routing information for the route.

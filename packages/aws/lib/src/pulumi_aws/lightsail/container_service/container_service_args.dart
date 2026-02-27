@@ -6,13 +6,13 @@ import '../container_service_public_domain_names/container_service_public_domain
 
 /// The set of arguments for ContainerService.
 class ContainerServiceArgs {
-  /// Whether to disable the container service. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to disable the container service. Defaults to `false`.
   final Input<bool>? isDisabled;
 
   /// Name of the container service. Names must be of length 1 to 63, and be unique within each AWS Region in your Lightsail account.
   final Input<String>? name;
 
-  /// Power specification for the container service. The power specifies the amount of memory, the number of vCPUs, and the monthly price of each node of the container service. Possible values: <span pulumi-lang-nodejs="`nano`" pulumi-lang-dotnet="`Nano`" pulumi-lang-go="`nano`" pulumi-lang-python="`nano`" pulumi-lang-yaml="`nano`" pulumi-lang-java="`nano`">`nano`</span>, <span pulumi-lang-nodejs="`micro`" pulumi-lang-dotnet="`Micro`" pulumi-lang-go="`micro`" pulumi-lang-python="`micro`" pulumi-lang-yaml="`micro`" pulumi-lang-java="`micro`">`micro`</span>, <span pulumi-lang-nodejs="`small`" pulumi-lang-dotnet="`Small`" pulumi-lang-go="`small`" pulumi-lang-python="`small`" pulumi-lang-yaml="`small`" pulumi-lang-java="`small`">`small`</span>, <span pulumi-lang-nodejs="`medium`" pulumi-lang-dotnet="`Medium`" pulumi-lang-go="`medium`" pulumi-lang-python="`medium`" pulumi-lang-yaml="`medium`" pulumi-lang-java="`medium`">`medium`</span>, <span pulumi-lang-nodejs="`large`" pulumi-lang-dotnet="`Large`" pulumi-lang-go="`large`" pulumi-lang-python="`large`" pulumi-lang-yaml="`large`" pulumi-lang-java="`large`">`large`</span>, <span pulumi-lang-nodejs="`xlarge`" pulumi-lang-dotnet="`Xlarge`" pulumi-lang-go="`xlarge`" pulumi-lang-python="`xlarge`" pulumi-lang-yaml="`xlarge`" pulumi-lang-java="`xlarge`">`xlarge`</span>.
+  /// Power specification for the container service. The power specifies the amount of memory, the number of vCPUs, and the monthly price of each node of the container service. Possible values: `nano`, `micro`, `small`, `medium`, `large`, `xlarge`.
   final Input<String> power;
 
   /// Configuration for the container service to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.
@@ -29,7 +29,7 @@ class ContainerServiceArgs {
   /// The following arguments are optional:
   final Input<int> scale;
 
-  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ContainerServiceArgs({

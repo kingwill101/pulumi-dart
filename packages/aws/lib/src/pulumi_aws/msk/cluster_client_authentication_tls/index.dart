@@ -1,3 +1,0 @@
-library module_msk_cluster_client_authentication_tls;
-
-export 'cluster_client_authentication_tls.dart';

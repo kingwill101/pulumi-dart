@@ -7,10 +7,10 @@ class LaunchTemplatePlacement {
   /// The Availability Zone for the instance.
   final String? availabilityZone;
 
-  /// The ID of the placement group for the instance. Conflicts with <span pulumi-lang-nodejs="`groupName`" pulumi-lang-dotnet="`GroupName`" pulumi-lang-go="`groupName`" pulumi-lang-python="`group_name`" pulumi-lang-yaml="`groupName`" pulumi-lang-java="`groupName`">`group_name`</span>.
+  /// The ID of the placement group for the instance. Conflicts with `group_name`.
   final String? groupId;
 
-  /// The name of the placement group for the instance. Conflicts with <span pulumi-lang-nodejs="`groupId`" pulumi-lang-dotnet="`GroupId`" pulumi-lang-go="`groupId`" pulumi-lang-python="`group_id`" pulumi-lang-yaml="`groupId`" pulumi-lang-java="`groupId`">`group_id`</span>.
+  /// The name of the placement group for the instance. Conflicts with `group_id`.
   final String? groupName;
 
   /// The ID of the Dedicated Host for the instance.
@@ -25,7 +25,7 @@ class LaunchTemplatePlacement {
   /// Reserved for future use.
   final String? spreadDomain;
 
-  /// The tenancy of the instance (if the instance is running in a VPC). Can be <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, <span pulumi-lang-nodejs="`dedicated`" pulumi-lang-dotnet="`Dedicated`" pulumi-lang-go="`dedicated`" pulumi-lang-python="`dedicated`" pulumi-lang-yaml="`dedicated`" pulumi-lang-java="`dedicated`">`dedicated`</span>, or <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span>.
+  /// The tenancy of the instance (if the instance is running in a VPC). Can be `default`, `dedicated`, or `host`.
   final String? tenancy;
 
   LaunchTemplatePlacement({

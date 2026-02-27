@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ListenerRuleConditionHostHeader2 {
-  /// List of regular expressions to compare against the host header. The maximum length of each string is 128 characters. Conflicts with <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`">`values`</span>.
+  /// List of regular expressions to compare against the host header. The maximum length of each string is 128 characters. Conflicts with `values`.
   final List<String>? regexValues;
 
-  /// List of host header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case-insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). Only one pattern needs to match for the condition to be satisfied. Conflicts with <span pulumi-lang-nodejs="`regexValues`" pulumi-lang-dotnet="`RegexValues`" pulumi-lang-go="`regexValues`" pulumi-lang-python="`regex_values`" pulumi-lang-yaml="`regexValues`" pulumi-lang-java="`regexValues`">`regex_values`</span>.
+  /// List of host header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case-insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). Only one pattern needs to match for the condition to be satisfied. Conflicts with `regex_values`.
   final List<String>? values;
 
   ListenerRuleConditionHostHeader2({

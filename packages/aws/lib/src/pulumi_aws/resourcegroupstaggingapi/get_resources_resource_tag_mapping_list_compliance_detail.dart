@@ -1,0 +1,3 @@
+library module_resourcegroupstaggingapi_get_resources_resource_tag_mapping_list_compliance_detail;
+
+export 'get_resources_resource_tag_mapping_list_compliance_detail/get_resources_resource_tag_mapping_list_compliance_detail.dart';

@@ -1,0 +1,3 @@
+library module_licensemanager_get_received_license_issuer;
+
+export 'get_received_license_issuer/get_received_license_issuer.dart';

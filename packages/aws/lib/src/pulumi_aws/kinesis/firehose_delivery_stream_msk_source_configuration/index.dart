@@ -1,3 +1,0 @@
-library module_kinesis_firehose_delivery_stream_msk_source_configuration;
-
-export 'firehose_delivery_stream_msk_source_configuration.dart';

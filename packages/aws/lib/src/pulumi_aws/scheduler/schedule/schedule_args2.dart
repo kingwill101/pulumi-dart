@@ -18,16 +18,16 @@ class ScheduleArgs2 {
   /// Configures a time window during which EventBridge Scheduler invokes the schedule. Detailed below.
   final Input<ScheduleFlexibleTimeWindow> flexibleTimeWindow;
 
-  /// Name of the schedule group to associate with this schedule. When omitted, the <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> schedule group is used.
+  /// Name of the schedule group to associate with this schedule. When omitted, the `default` schedule group is used.
   final Input<String>? groupName;
 
   /// ARN for the customer managed KMS key that EventBridge Scheduler will use to encrypt and decrypt your data.
   final Input<String>? kmsKeyArn;
 
-  /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final Input<String>? name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

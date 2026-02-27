@@ -1,3 +1,0 @@
-library module_cognito_user_pool_schema_number_attribute_constraints;
-
-export 'user_pool_schema_number_attribute_constraints.dart';

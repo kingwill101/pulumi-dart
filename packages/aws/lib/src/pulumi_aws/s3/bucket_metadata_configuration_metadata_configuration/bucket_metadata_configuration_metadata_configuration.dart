@@ -10,11 +10,11 @@ class BucketMetadataConfigurationMetadataConfiguration {
   final List<BucketMetadataConfigurationMetadataConfigurationDestination>?
       destinations;
 
-  /// Inventory table configuration. See <span pulumi-lang-nodejs="`inventoryTableConfiguration`" pulumi-lang-dotnet="`InventoryTableConfiguration`" pulumi-lang-go="`inventoryTableConfiguration`" pulumi-lang-python="`inventory_table_configuration`" pulumi-lang-yaml="`inventoryTableConfiguration`" pulumi-lang-java="`inventoryTableConfiguration`">`inventory_table_configuration`</span> Block for details.
+  /// Inventory table configuration. See `inventory_table_configuration` Block for details.
   final BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration
       inventoryTableConfiguration;
 
-  /// Journal table configuration. See <span pulumi-lang-nodejs="`journalTableConfiguration`" pulumi-lang-dotnet="`JournalTableConfiguration`" pulumi-lang-go="`journalTableConfiguration`" pulumi-lang-python="`journal_table_configuration`" pulumi-lang-yaml="`journalTableConfiguration`" pulumi-lang-java="`journalTableConfiguration`">`journal_table_configuration`</span> Block for details.
+  /// Journal table configuration. See `journal_table_configuration` Block for details.
   final BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration
       journalTableConfiguration;
 

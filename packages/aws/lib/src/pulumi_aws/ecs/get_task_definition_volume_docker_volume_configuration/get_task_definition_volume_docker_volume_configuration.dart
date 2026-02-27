@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetTaskDefinitionVolumeDockerVolumeConfiguration {
-  /// If this value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`">`shared`</span>.
+  /// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
   final bool autoprovision;
 
   /// Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
@@ -13,7 +13,7 @@ class GetTaskDefinitionVolumeDockerVolumeConfiguration {
   /// Map of custom metadata to add to your Docker volume.
   final Map<String, String> labels;
 
-  /// Scope for the Docker volume, which determines its lifecycle, either <span pulumi-lang-nodejs="`task`" pulumi-lang-dotnet="`Task`" pulumi-lang-go="`task`" pulumi-lang-python="`task`" pulumi-lang-yaml="`task`" pulumi-lang-java="`task`">`task`</span> or <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`">`shared`</span>.  Docker volumes that are scoped to a <span pulumi-lang-nodejs="`task`" pulumi-lang-dotnet="`Task`" pulumi-lang-go="`task`" pulumi-lang-python="`task`" pulumi-lang-yaml="`task`" pulumi-lang-java="`task`">`task`</span> are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are scoped as <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`">`shared`</span> persist after the task stops.
+  /// Scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are scoped as `shared` persist after the task stops.
   final String scope;
 
   GetTaskDefinitionVolumeDockerVolumeConfiguration({

@@ -6,7 +6,7 @@ class ListenerDefaultActionForwardStickiness {
   /// The following arguments are optional:
   final int duration;
 
-  /// Whether target group stickiness is enabled. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether target group stickiness is enabled. Default is `false`.
   final bool? enabled;
 
   ListenerDefaultActionForwardStickiness({

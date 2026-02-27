@@ -1,0 +1,3 @@
+library module_appmesh_gateway_route_spec_http_route_action_rewrite_hostname;
+
+export 'gateway_route_spec_http_route_action_rewrite_hostname/gateway_route_spec_http_route_action_rewrite_hostname.dart';

@@ -8,169 +8,11 @@ import 'image_builder_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const testFleet = new aws.appstream.ImageBuilder("test_fleet", {
-/// name: "Name",
-/// description: "Description of a ImageBuilder",
-/// displayName: "Display name of a ImageBuilder",
-/// enableDefaultInternetAccess: false,
-/// imageName: "AppStream-WinServer2019-10-05-2022",
-/// instanceType: "stream.standard.large",
-/// vpcConfig: {
-/// subnetIds: [example.id],
-/// },
-/// tags: {
-/// Name: "Example Image Builder",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// test_fleet = aws.appstream.ImageBuilder("test_fleet",
-/// name="Name",
-/// description="Description of a ImageBuilder",
-/// display_name="Display name of a ImageBuilder",
-/// enable_default_internet_access=False,
-/// image_name="AppStream-WinServer2019-10-05-2022",
-/// instance_type="stream.standard.large",
-/// vpc_config={
-/// "subnet_ids": [example["id"]],
-/// },
-/// tags={
-/// "Name": "Example Image Builder",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var testFleet = new Aws.AppStream.ImageBuilder("test_fleet", new()
-/// {
-/// Name = "Name",
-/// Description = "Description of a ImageBuilder",
-/// DisplayName = "Display name of a ImageBuilder",
-/// EnableDefaultInternetAccess = false,
-/// ImageName = "AppStream-WinServer2019-10-05-2022",
-/// InstanceType = "stream.standard.large",
-/// VpcConfig = new Aws.AppStream.Inputs.ImageBuilderVpcConfigArgs
-/// {
-/// SubnetIds = new[]
-/// {
-/// example.Id,
-/// },
-/// },
-/// Tags =
-/// {
-/// { "Name", "Example Image Builder" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/appstream"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := appstream.NewImageBuilder(ctx, "test_fleet", &appstream.ImageBuilderArgs{
-/// Name:                        pulumi.String("Name"),
-/// Description:                 pulumi.String("Description of a ImageBuilder"),
-/// DisplayName:                 pulumi.String("Display name of a ImageBuilder"),
-/// EnableDefaultInternetAccess: pulumi.Bool(false),
-/// ImageName:                   pulumi.String("AppStream-WinServer2019-10-05-2022"),
-/// InstanceType:                pulumi.String("stream.standard.large"),
-/// VpcConfig: &appstream.ImageBuilderVpcConfigArgs{
-/// SubnetIds: pulumi.StringArray{
-/// example.Id,
-/// },
-/// },
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("Example Image Builder"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.appstream.ImageBuilder;
-/// import com.pulumi.aws.appstream.ImageBuilderArgs;
-/// import com.pulumi.aws.appstream.inputs.ImageBuilderVpcConfigArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var testFleet = new ImageBuilder("testFleet", ImageBuilderArgs.builder()
-/// .name("Name")
-/// .description("Description of a ImageBuilder")
-/// .displayName("Display name of a ImageBuilder")
-/// .enableDefaultInternetAccess(false)
-/// .imageName("AppStream-WinServer2019-10-05-2022")
-/// .instanceType("stream.standard.large")
-/// .vpcConfig(ImageBuilderVpcConfigArgs.builder()
-/// .subnetIds(example.id())
-/// .build())
-/// .tags(Map.of("Name", "Example Image Builder"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// testFleet:
-/// type: aws:appstream:ImageBuilder
-/// name: test_fleet
-/// properties:
-/// name: Name
-/// description: Description of a ImageBuilder
-/// displayName: Display name of a ImageBuilder
-/// enableDefaultInternetAccess: false
-/// imageName: AppStream-WinServer2019-10-05-2022
-/// instanceType: stream.standard.large
-/// vpcConfig:
-/// subnetIds:
-/// - ${example.id}
-/// tags:
-/// Name: Example Image Builder
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.appstream.ImageBuilder`" pulumi-lang-dotnet="`aws.appstream.ImageBuilder`" pulumi-lang-go="`appstream.ImageBuilder`" pulumi-lang-python="`appstream.ImageBuilder`" pulumi-lang-yaml="`aws.appstream.ImageBuilder`" pulumi-lang-java="`aws.appstream.ImageBuilder`">`aws.appstream.ImageBuilder`</span> using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+/// Using `pulumi import`, import `aws.appstream.ImageBuilder` using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appstream/imageBuilder:ImageBuilder example imageBuilderExample
@@ -223,10 +65,10 @@ class ImageBuilder extends CustomResource {
   /// State of the image builder. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_ImageBuilder.html#AppStream2-Type-ImageBuilder-State).
   late final Output<String> state;
 
-  /// Map of tags to assign to the instance. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Configuration block for the VPC configuration for the image builder. See below.

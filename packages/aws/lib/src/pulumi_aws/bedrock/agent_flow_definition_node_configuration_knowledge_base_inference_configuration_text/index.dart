@@ -1,3 +1,0 @@
-library module_bedrock_agent_flow_definition_node_configuration_knowledge_base_inference_configuration_text;
-
-export 'agent_flow_definition_node_configuration_knowledge_base_inference_configuration_text.dart';

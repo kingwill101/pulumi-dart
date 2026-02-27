@@ -7,11 +7,11 @@ import '../event_action_event/event_action_event.dart';
 /// The set of arguments for EventAction.
 class EventActionArgs {
   /// Describes the action to take.
-  /// Described in <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> Configuration Block below.
+  /// Described in `action` Configuration Block below.
   final Input<EventActionAction> action;
 
-  /// Describes the event that triggers the <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span>.
-  /// Described in <span pulumi-lang-nodejs="`event`" pulumi-lang-dotnet="`Event`" pulumi-lang-go="`event`" pulumi-lang-python="`event`" pulumi-lang-yaml="`event`" pulumi-lang-java="`event`">`event`</span> Configuration Block below.
+  /// Describes the event that triggers the `action`.
+  /// Described in `event` Configuration Block below.
   final Input<EventActionEvent> event;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

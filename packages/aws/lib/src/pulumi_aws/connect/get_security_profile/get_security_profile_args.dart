@@ -9,7 +9,7 @@ class GetSecurityProfileArgs {
 
   /// Returns information on a specific Security Profile by name
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`securityProfileId`" pulumi-lang-dotnet="`SecurityProfileId`" pulumi-lang-go="`securityProfileId`" pulumi-lang-python="`security_profile_id`" pulumi-lang-yaml="`securityProfileId`" pulumi-lang-java="`securityProfileId`">`security_profile_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `security_profile_id` is required.
   final Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

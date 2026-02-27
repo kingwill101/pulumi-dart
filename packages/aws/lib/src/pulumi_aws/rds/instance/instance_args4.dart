@@ -7,7 +7,7 @@ import '../instance_s3_import/instance_s3_import.dart';
 
 /// The set of arguments for Instance.
 class InstanceArgs4 {
-  /// The allocated storage in gibibytes. If <span pulumi-lang-nodejs="`maxAllocatedStorage`" pulumi-lang-dotnet="`MaxAllocatedStorage`" pulumi-lang-go="`maxAllocatedStorage`" pulumi-lang-python="`max_allocated_storage`" pulumi-lang-yaml="`maxAllocatedStorage`" pulumi-lang-java="`maxAllocatedStorage`">`max_allocated_storage`</span> is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs. If <span pulumi-lang-nodejs="`replicateSourceDb`" pulumi-lang-dotnet="`ReplicateSourceDb`" pulumi-lang-go="`replicateSourceDb`" pulumi-lang-python="`replicate_source_db`" pulumi-lang-yaml="`replicateSourceDb`" pulumi-lang-java="`replicateSourceDb`">`replicate_source_db`</span> is set, the value is ignored during the creation of the instance.
+  /// The allocated storage in gibibytes. If `max_allocated_storage` is configured, this argument represents the initial storage allocation and differences from the configuration will be ignored automatically when Storage Autoscaling occurs. If `replicate_source_db` is set, the value is ignored during the creation of the instance.
   final Input<int>? allocatedStorage;
 
   /// Indicates that major version
@@ -17,7 +17,7 @@ class InstanceArgs4 {
 
   /// Specifies whether any database modifications
   /// are applied immediately, or during the next maintenance window. Default is
-  /// <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. See [Amazon RDS Documentation for more
+  /// `false`. See [Amazon RDS Documentation for more
   /// information.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html)
   final Input<bool>? applyImmediately;
 
@@ -30,22 +30,22 @@ class InstanceArgs4 {
   final Input<String>? availabilityZone;
 
   /// The days to retain backups for.
-  /// Must be between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`35`" pulumi-lang-dotnet="`35`" pulumi-lang-go="`35`" pulumi-lang-python="`35`" pulumi-lang-yaml="`35`" pulumi-lang-java="`35`">`35`</span>.
-  /// Default is <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
-  /// Must be greater than <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> if the database is used as a source for a [Read Replica][instance-replication],
+  /// Must be between `0` and `35`.
+  /// Default is `0`.
+  /// Must be greater than `0` if the database is used as a source for a [Read Replica][instance-replication],
   /// uses low-downtime updates,
   /// or will use [RDS Blue/Green deployments][blue-green].
   final Input<int>? backupRetentionPeriod;
 
-  /// Specifies where automated backups and manual snapshots are stored. Possible values are <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span> (default) and <span pulumi-lang-nodejs="`outposts`" pulumi-lang-dotnet="`Outposts`" pulumi-lang-go="`outposts`" pulumi-lang-python="`outposts`" pulumi-lang-yaml="`outposts`" pulumi-lang-java="`outposts`">`outposts`</span>. See [Working with Amazon RDS on AWS Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html) for more information.
+  /// Specifies where automated backups and manual snapshots are stored. Possible values are `region` (default) and `outposts`. See [Working with Amazon RDS on AWS Outposts](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html) for more information.
   final Input<String>? backupTarget;
 
   /// The daily time range (in UTC) during which automated backups are created if they are enabled.
-  /// Example: "09:46-10:16". Must not overlap with <span pulumi-lang-nodejs="`maintenanceWindow`" pulumi-lang-dotnet="`MaintenanceWindow`" pulumi-lang-go="`maintenanceWindow`" pulumi-lang-python="`maintenance_window`" pulumi-lang-yaml="`maintenanceWindow`" pulumi-lang-java="`maintenanceWindow`">`maintenance_window`</span>.
+  /// Example: "09:46-10:16". Must not overlap with `maintenance_window`.
   final Input<String>? backupWindow;
 
   /// Enables low-downtime updates using [RDS Blue/Green deployments][blue-green].
-  /// See <span pulumi-lang-nodejs="`blueGreenUpdate`" pulumi-lang-dotnet="`BlueGreenUpdate`" pulumi-lang-go="`blueGreenUpdate`" pulumi-lang-python="`blue_green_update`" pulumi-lang-yaml="`blueGreenUpdate`" pulumi-lang-java="`blueGreenUpdate`">`blue_green_update`</span> below.
+  /// See `blue_green_update` below.
   final Input<InstanceBlueGreenUpdate>? blueGreenUpdate;
 
   /// The identifier of the CA certificate for the DB instance.
@@ -55,10 +55,10 @@ class InstanceArgs4 {
   /// This can't be changed.
   /// See [Oracle Character Sets Supported in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCharacterSets.html) or
   /// [Server-Level Collation for Microsoft SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.CommonDBATasks.Collation.html) for more information.
-  /// Cannot be set  with <span pulumi-lang-nodejs="`replicateSourceDb`" pulumi-lang-dotnet="`ReplicateSourceDb`" pulumi-lang-go="`replicateSourceDb`" pulumi-lang-python="`replicate_source_db`" pulumi-lang-yaml="`replicateSourceDb`" pulumi-lang-java="`replicateSourceDb`">`replicate_source_db`</span>, <span pulumi-lang-nodejs="`restoreToPointInTime`" pulumi-lang-dotnet="`RestoreToPointInTime`" pulumi-lang-go="`restoreToPointInTime`" pulumi-lang-python="`restore_to_point_in_time`" pulumi-lang-yaml="`restoreToPointInTime`" pulumi-lang-java="`restoreToPointInTime`">`restore_to_point_in_time`</span>, <span pulumi-lang-nodejs="`s3Import`" pulumi-lang-dotnet="`S3Import`" pulumi-lang-go="`s3Import`" pulumi-lang-python="`s3_import`" pulumi-lang-yaml="`s3Import`" pulumi-lang-java="`s3Import`">`s3_import`</span>, or <span pulumi-lang-nodejs="`snapshotIdentifier`" pulumi-lang-dotnet="`SnapshotIdentifier`" pulumi-lang-go="`snapshotIdentifier`" pulumi-lang-python="`snapshot_identifier`" pulumi-lang-yaml="`snapshotIdentifier`" pulumi-lang-java="`snapshotIdentifier`">`snapshot_identifier`</span>.
+  /// Cannot be set  with `replicate_source_db`, `restore_to_point_in_time`, `s3_import`, or `snapshot_identifier`.
   final Input<String>? characterSetName;
 
-  /// Copy all Instance <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span> to snapshots. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Copy all Instance `tags` to snapshots. Default is `false`.
   final Input<bool>? copyTagsToSnapshot;
 
   /// The instance profile associated with the underlying Amazon EC2 instance of an RDS Custom DB instance.
@@ -69,12 +69,12 @@ class InstanceArgs4 {
   /// For more detailed documentation about each argument, refer to the [AWS official
   /// documentation](http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html).
   ///
-  /// > **NOTE:** Removing the <span pulumi-lang-nodejs="`replicateSourceDb`" pulumi-lang-dotnet="`ReplicateSourceDb`" pulumi-lang-go="`replicateSourceDb`" pulumi-lang-python="`replicate_source_db`" pulumi-lang-yaml="`replicateSourceDb`" pulumi-lang-java="`replicateSourceDb`">`replicate_source_db`</span> attribute from an existing RDS
+  /// > **NOTE:** Removing the `replicate_source_db` attribute from an existing RDS
   /// Replicate database managed by the provider will promote the database to a fully
   /// standalone database.
   final Input<bool>? customerOwnedIpEnabled;
 
-  /// The mode of Database Insights that is enabled for the instance. Valid values: <span pulumi-lang-nodejs="`standard`" pulumi-lang-dotnet="`Standard`" pulumi-lang-go="`standard`" pulumi-lang-python="`standard`" pulumi-lang-yaml="`standard`" pulumi-lang-java="`standard`">`standard`</span>, <span pulumi-lang-nodejs="`advanced`" pulumi-lang-dotnet="`Advanced`" pulumi-lang-go="`advanced`" pulumi-lang-python="`advanced`" pulumi-lang-yaml="`advanced`" pulumi-lang-java="`advanced`">`advanced`</span> .
+  /// The mode of Database Insights that is enabled for the instance. Valid values: `standard`, `advanced` .
   final Input<String>? databaseInsightsMode;
 
   /// The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance. Note that this does not apply for Oracle or SQL Server engines. See the [AWS documentation](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/rds/create-db-instance.html) for more details on what applies for those engines. If you are providing an Oracle db name, it needs to be in all upper case. Cannot be specified for a replica.
@@ -82,37 +82,37 @@ class InstanceArgs4 {
 
   /// Name of DB subnet group.
   /// DB instance will be created in the VPC associated with the DB subnet group.
-  /// If unspecified, will be created in the <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> Subnet Group.
+  /// If unspecified, will be created in the `default` Subnet Group.
   /// When working with read replicas created in the same region, defaults to the Subnet Group Name of the source DB.
-  /// When working with read replicas created in a different region, defaults to the <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> Subnet Group.
+  /// When working with read replicas created in a different region, defaults to the `default` Subnet Group.
   /// See [DBSubnetGroupName in API action CreateDBInstanceReadReplica](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstanceReadReplica.html) for additional read replica constraints.
   final Input<String>? dbSubnetGroupName;
 
   /// Use a dedicated log volume (DLV) for the DB instance. Requires Provisioned IOPS. See the [AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.dlv) for more details.
   final Input<bool>? dedicatedLogVolume;
 
-  /// Specifies whether to remove automated backups immediately after the DB instance is deleted. Default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Specifies whether to remove automated backups immediately after the DB instance is deleted. Default is `true`.
   final Input<bool>? deleteAutomatedBackups;
 
-  /// If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
   final Input<bool>? deletionProtection;
 
-  /// The ID of the Directory Service Active Directory domain to create the instance in. Conflicts with <span pulumi-lang-nodejs="`domainFqdn`" pulumi-lang-dotnet="`DomainFqdn`" pulumi-lang-go="`domainFqdn`" pulumi-lang-python="`domain_fqdn`" pulumi-lang-yaml="`domainFqdn`" pulumi-lang-java="`domainFqdn`">`domain_fqdn`</span>, <span pulumi-lang-nodejs="`domainOu`" pulumi-lang-dotnet="`DomainOu`" pulumi-lang-go="`domainOu`" pulumi-lang-python="`domain_ou`" pulumi-lang-yaml="`domainOu`" pulumi-lang-java="`domainOu`">`domain_ou`</span>, <span pulumi-lang-nodejs="`domainAuthSecretArn`" pulumi-lang-dotnet="`DomainAuthSecretArn`" pulumi-lang-go="`domainAuthSecretArn`" pulumi-lang-python="`domain_auth_secret_arn`" pulumi-lang-yaml="`domainAuthSecretArn`" pulumi-lang-java="`domainAuthSecretArn`">`domain_auth_secret_arn`</span> and a <span pulumi-lang-nodejs="`domainDnsIps`" pulumi-lang-dotnet="`DomainDnsIps`" pulumi-lang-go="`domainDnsIps`" pulumi-lang-python="`domain_dns_ips`" pulumi-lang-yaml="`domainDnsIps`" pulumi-lang-java="`domainDnsIps`">`domain_dns_ips`</span>.
+  /// The ID of the Directory Service Active Directory domain to create the instance in. Conflicts with `domain_fqdn`, `domain_ou`, `domain_auth_secret_arn` and a `domain_dns_ips`.
   final Input<String>? domain;
 
-  /// The ARN for the Secrets Manager secret with the self managed Active Directory credentials for the user joining the domain. Conflicts with <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> and <span pulumi-lang-nodejs="`domainIamRoleName`" pulumi-lang-dotnet="`DomainIamRoleName`" pulumi-lang-go="`domainIamRoleName`" pulumi-lang-python="`domain_iam_role_name`" pulumi-lang-yaml="`domainIamRoleName`" pulumi-lang-java="`domainIamRoleName`">`domain_iam_role_name`</span>.
+  /// The ARN for the Secrets Manager secret with the self managed Active Directory credentials for the user joining the domain. Conflicts with `domain` and `domain_iam_role_name`.
   final Input<String>? domainAuthSecretArn;
 
-  /// The IPv4 DNS IP addresses of your primary and secondary self managed Active Directory domain controllers. Two IP addresses must be provided. If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list. Conflicts with <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> and <span pulumi-lang-nodejs="`domainIamRoleName`" pulumi-lang-dotnet="`DomainIamRoleName`" pulumi-lang-go="`domainIamRoleName`" pulumi-lang-python="`domain_iam_role_name`" pulumi-lang-yaml="`domainIamRoleName`" pulumi-lang-java="`domainIamRoleName`">`domain_iam_role_name`</span>.
+  /// The IPv4 DNS IP addresses of your primary and secondary self managed Active Directory domain controllers. Two IP addresses must be provided. If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list. Conflicts with `domain` and `domain_iam_role_name`.
   final Input<List<String>>? domainDnsIps;
 
-  /// The fully qualified domain name (FQDN) of the self managed Active Directory domain. Conflicts with <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> and <span pulumi-lang-nodejs="`domainIamRoleName`" pulumi-lang-dotnet="`DomainIamRoleName`" pulumi-lang-go="`domainIamRoleName`" pulumi-lang-python="`domain_iam_role_name`" pulumi-lang-yaml="`domainIamRoleName`" pulumi-lang-java="`domainIamRoleName`">`domain_iam_role_name`</span>.
+  /// The fully qualified domain name (FQDN) of the self managed Active Directory domain. Conflicts with `domain` and `domain_iam_role_name`.
   final Input<String>? domainFqdn;
 
-  /// The name of the IAM role to be used when making API calls to the Directory Service. Conflicts with <span pulumi-lang-nodejs="`domainFqdn`" pulumi-lang-dotnet="`DomainFqdn`" pulumi-lang-go="`domainFqdn`" pulumi-lang-python="`domain_fqdn`" pulumi-lang-yaml="`domainFqdn`" pulumi-lang-java="`domainFqdn`">`domain_fqdn`</span>, <span pulumi-lang-nodejs="`domainOu`" pulumi-lang-dotnet="`DomainOu`" pulumi-lang-go="`domainOu`" pulumi-lang-python="`domain_ou`" pulumi-lang-yaml="`domainOu`" pulumi-lang-java="`domainOu`">`domain_ou`</span>, <span pulumi-lang-nodejs="`domainAuthSecretArn`" pulumi-lang-dotnet="`DomainAuthSecretArn`" pulumi-lang-go="`domainAuthSecretArn`" pulumi-lang-python="`domain_auth_secret_arn`" pulumi-lang-yaml="`domainAuthSecretArn`" pulumi-lang-java="`domainAuthSecretArn`">`domain_auth_secret_arn`</span> and a <span pulumi-lang-nodejs="`domainDnsIps`" pulumi-lang-dotnet="`DomainDnsIps`" pulumi-lang-go="`domainDnsIps`" pulumi-lang-python="`domain_dns_ips`" pulumi-lang-yaml="`domainDnsIps`" pulumi-lang-java="`domainDnsIps`">`domain_dns_ips`</span>.
+  /// The name of the IAM role to be used when making API calls to the Directory Service. Conflicts with `domain_fqdn`, `domain_ou`, `domain_auth_secret_arn` and a `domain_dns_ips`.
   final Input<String>? domainIamRoleName;
 
-  /// The self managed Active Directory organizational unit for your DB instance to join. Conflicts with <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> and <span pulumi-lang-nodejs="`domainIamRoleName`" pulumi-lang-dotnet="`DomainIamRoleName`" pulumi-lang-go="`domainIamRoleName`" pulumi-lang-python="`domain_iam_role_name`" pulumi-lang-yaml="`domainIamRoleName`" pulumi-lang-java="`domainIamRoleName`">`domain_iam_role_name`</span>.
+  /// The self managed Active Directory organizational unit for your DB instance to join. Conflicts with `domain` and `domain_iam_role_name`.
   final Input<String>? domainOu;
 
   /// Set of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. For supported values, see the EnableCloudwatchLogsExports.member.N parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html).
@@ -124,36 +124,30 @@ class InstanceArgs4 {
   /// The life cycle type for this DB instance. This setting applies only to RDS for MySQL and RDS for PostgreSQL. Valid values are `open-source-rds-extended-support`, `open-source-rds-extended-support-disabled`. Default value is `open-source-rds-extended-support`. [Using Amazon RDS Extended Support]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html
   final Input<String>? engineLifecycleSupport;
 
-  /// The engine version to use. If <span pulumi-lang-nodejs="`autoMinorVersionUpgrade`" pulumi-lang-dotnet="`AutoMinorVersionUpgrade`" pulumi-lang-go="`autoMinorVersionUpgrade`" pulumi-lang-python="`auto_minor_version_upgrade`" pulumi-lang-yaml="`autoMinorVersionUpgrade`" pulumi-lang-java="`autoMinorVersionUpgrade`">`auto_minor_version_upgrade`</span> is enabled, you can provide a prefix of the version such as `8.0` (for `8.0.36`). The actual engine version used is returned in the attribute <span pulumi-lang-nodejs="`engineVersionActual`" pulumi-lang-dotnet="`EngineVersionActual`" pulumi-lang-go="`engineVersionActual`" pulumi-lang-python="`engine_version_actual`" pulumi-lang-yaml="`engineVersionActual`" pulumi-lang-java="`engineVersionActual`">`engine_version_actual`</span>, see Attribute Reference below. For supported values, see the EngineVersion parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html). Note that for Amazon Aurora instances the engine version must match the DB cluster's engine version'.
+  /// The engine version to use. If `auto_minor_version_upgrade` is enabled, you can provide a prefix of the version such as `8.0` (for `8.0.36`). The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below. For supported values, see the EngineVersion parameter in [API action CreateDBInstance](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html). Note that for Amazon Aurora instances the engine version must match the DB cluster's engine version'.
   final Input<String>? engineVersion;
 
   /// The name of your final DB snapshot
-  /// when this DB instance is deleted. Must be provided if <span pulumi-lang-nodejs="`skipFinalSnapshot`" pulumi-lang-dotnet="`SkipFinalSnapshot`" pulumi-lang-go="`skipFinalSnapshot`" pulumi-lang-python="`skip_final_snapshot`" pulumi-lang-yaml="`skipFinalSnapshot`" pulumi-lang-java="`skipFinalSnapshot`">`skip_final_snapshot`</span> is
-  /// set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. The value must begin with a letter, only contain alphanumeric characters and hyphens, and not end with a hyphen or contain two consecutive hyphens. Must not be provided when deleting a read replica.
+  /// when this DB instance is deleted. Must be provided if `skip_final_snapshot` is
+  /// set to `false`. The value must begin with a letter, only contain alphanumeric characters and hyphens, and not end with a hyphen or contain two consecutive hyphens. Must not be provided when deleting a read replica.
   final Input<String>? finalSnapshotIdentifier;
 
   /// Specifies whether mappings of AWS Identity and Access Management (IAM) accounts to database
   /// accounts is enabled.
   final Input<bool>? iamDatabaseAuthenticationEnabled;
 
-  /// The name of the RDS instance, if omitted, this provider will assign a random, unique identifier. Required if <span pulumi-lang-nodejs="`restoreToPointInTime`" pulumi-lang-dotnet="`RestoreToPointInTime`" pulumi-lang-go="`restoreToPointInTime`" pulumi-lang-python="`restore_to_point_in_time`" pulumi-lang-yaml="`restoreToPointInTime`" pulumi-lang-java="`restoreToPointInTime`">`restore_to_point_in_time`</span> is specified.
+  /// The name of the RDS instance, if omitted, this provider will assign a random, unique identifier. Required if `restore_to_point_in_time` is specified.
   final Input<String>? identifier;
 
-  /// Creates a unique identifier beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span>.
+  /// Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
   final Input<String>? identifierPrefix;
 
   /// The instance type of the RDS instance.
   final Input<String> instanceClass;
 
-  /// The amount of provisioned IOPS. Setting this implies a<span pulumi-lang-nodejs="
-  /// storageType " pulumi-lang-dotnet="
-  /// StorageType " pulumi-lang-go="
-  /// storageType " pulumi-lang-python="
-  /// storage_type " pulumi-lang-yaml="
-  /// storageType " pulumi-lang-java="
-  /// storageType ">
-  /// storage_type </span>of "io1" or "io2". Can only be set when <span pulumi-lang-nodejs="`storageType`" pulumi-lang-dotnet="`StorageType`" pulumi-lang-go="`storageType`" pulumi-lang-python="`storage_type`" pulumi-lang-yaml="`storageType`" pulumi-lang-java="`storageType`">`storage_type`</span> is `"io1"`, `"io2` or `"gp3"`.
-  /// Cannot be specified for gp3 storage if the <span pulumi-lang-nodejs="`allocatedStorage`" pulumi-lang-dotnet="`AllocatedStorage`" pulumi-lang-go="`allocatedStorage`" pulumi-lang-python="`allocated_storage`" pulumi-lang-yaml="`allocatedStorage`" pulumi-lang-java="`allocatedStorage`">`allocated_storage`</span> value is below a per-<span pulumi-lang-nodejs="`engine`" pulumi-lang-dotnet="`Engine`" pulumi-lang-go="`engine`" pulumi-lang-python="`engine`" pulumi-lang-yaml="`engine`" pulumi-lang-java="`engine`">`engine`</span> threshold.
+  /// The amount of provisioned IOPS. Setting this implies a
+  /// storage_type of "io1" or "io2". Can only be set when `storage_type` is `"io1"`, `"io2` or `"gp3"`.
+  /// Cannot be specified for gp3 storage if the `allocated_storage` value is below a per-`engine` threshold.
   /// See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
   final Input<int>? iops;
 
@@ -176,13 +170,13 @@ class InstanceArgs4 {
   /// for more information.
   final Input<String>? maintenanceWindow;
 
-  /// Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span> or <span pulumi-lang-nodejs="`passwordWo`" pulumi-lang-dotnet="`PasswordWo`" pulumi-lang-go="`passwordWo`" pulumi-lang-python="`password_wo`" pulumi-lang-yaml="`passwordWo`" pulumi-lang-java="`passwordWo`">`password_wo`</span> is provided.
+  /// Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if `password` or `password_wo` is provided.
   final Input<bool>? manageMasterUserPassword;
 
   /// The Amazon Web Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. To use a KMS key in a different Amazon Web Services account, specify the key ARN or alias ARN. If not specified, the default KMS key for your Amazon Web Services account is used.
   final Input<String>? masterUserSecretKmsKeyId;
 
-  /// Specifies the maximum storage (in GiB) that Amazon RDS can automatically scale to for this DB instance. By default, Storage Autoscaling is disabled. To enable Storage Autoscaling, set <span pulumi-lang-nodejs="`maxAllocatedStorage`" pulumi-lang-dotnet="`MaxAllocatedStorage`" pulumi-lang-go="`maxAllocatedStorage`" pulumi-lang-python="`max_allocated_storage`" pulumi-lang-yaml="`maxAllocatedStorage`" pulumi-lang-java="`maxAllocatedStorage`">`max_allocated_storage`</span> to **greater than or equal to** <span pulumi-lang-nodejs="`allocatedStorage`" pulumi-lang-dotnet="`AllocatedStorage`" pulumi-lang-go="`allocatedStorage`" pulumi-lang-python="`allocated_storage`" pulumi-lang-yaml="`allocatedStorage`" pulumi-lang-java="`allocatedStorage`">`allocated_storage`</span>. Setting <span pulumi-lang-nodejs="`maxAllocatedStorage`" pulumi-lang-dotnet="`MaxAllocatedStorage`" pulumi-lang-go="`maxAllocatedStorage`" pulumi-lang-python="`max_allocated_storage`" pulumi-lang-yaml="`maxAllocatedStorage`" pulumi-lang-java="`maxAllocatedStorage`">`max_allocated_storage`</span> to 0 explicitly disables Storage Autoscaling. When configured, changes to <span pulumi-lang-nodejs="`allocatedStorage`" pulumi-lang-dotnet="`AllocatedStorage`" pulumi-lang-go="`allocatedStorage`" pulumi-lang-python="`allocated_storage`" pulumi-lang-yaml="`allocatedStorage`" pulumi-lang-java="`allocatedStorage`">`allocated_storage`</span> will be automatically ignored as the storage can dynamically scale.
+  /// Specifies the maximum storage (in GiB) that Amazon RDS can automatically scale to for this DB instance. By default, Storage Autoscaling is disabled. To enable Storage Autoscaling, set `max_allocated_storage` to **greater than or equal to** `allocated_storage`. Setting `max_allocated_storage` to 0 explicitly disables Storage Autoscaling. When configured, changes to `allocated_storage` will be automatically ignored as the storage can dynamically scale.
   final Input<int>? maxAllocatedStorage;
 
   /// The interval, in seconds, between points
@@ -214,49 +208,49 @@ class InstanceArgs4 {
   /// Name of the DB parameter group to associate.
   final Input<String>? parameterGroupName;
 
-  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if <span pulumi-lang-nodejs="`manageMasterUserPassword`" pulumi-lang-dotnet="`ManageMasterUserPassword`" pulumi-lang-go="`manageMasterUserPassword`" pulumi-lang-python="`manage_master_user_password`" pulumi-lang-yaml="`manageMasterUserPassword`" pulumi-lang-java="`manageMasterUserPassword`">`manage_master_user_password`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manage_master_user_password` is set to `true`.
   final Input<String>? password;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if <span pulumi-lang-nodejs="`manageMasterUserPassword`" pulumi-lang-dotnet="`ManageMasterUserPassword`" pulumi-lang-go="`manageMasterUserPassword`" pulumi-lang-python="`manage_master_user_password`" pulumi-lang-yaml="`manageMasterUserPassword`" pulumi-lang-java="`manageMasterUserPassword`">`manage_master_user_password`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Cannot be set if `manage_master_user_password` is set to `true`.
   final Input<String>? passwordWo;
 
-  /// Used together with <span pulumi-lang-nodejs="`passwordWo`" pulumi-lang-dotnet="`PasswordWo`" pulumi-lang-go="`passwordWo`" pulumi-lang-python="`password_wo`" pulumi-lang-yaml="`passwordWo`" pulumi-lang-java="`passwordWo`">`password_wo`</span> to trigger an update. Increment this value when an update to <span pulumi-lang-nodejs="`passwordWo`" pulumi-lang-dotnet="`PasswordWo`" pulumi-lang-go="`passwordWo`" pulumi-lang-python="`password_wo`" pulumi-lang-yaml="`passwordWo`" pulumi-lang-java="`passwordWo`">`password_wo`</span> is required.
+  /// Used together with `password_wo` to trigger an update. Increment this value when an update to `password_wo` is required.
   final Input<int>? passwordWoVersion;
 
   /// Specifies whether Performance Insights are enabled. Defaults to false.
   final Input<bool>? performanceInsightsEnabled;
 
-  /// The ARN for the KMS key to encrypt Performance Insights data. When specifying <span pulumi-lang-nodejs="`performanceInsightsKmsKeyId`" pulumi-lang-dotnet="`PerformanceInsightsKmsKeyId`" pulumi-lang-go="`performanceInsightsKmsKeyId`" pulumi-lang-python="`performance_insights_kms_key_id`" pulumi-lang-yaml="`performanceInsightsKmsKeyId`" pulumi-lang-java="`performanceInsightsKmsKeyId`">`performance_insights_kms_key_id`</span>, <span pulumi-lang-nodejs="`performanceInsightsEnabled`" pulumi-lang-dotnet="`PerformanceInsightsEnabled`" pulumi-lang-go="`performanceInsightsEnabled`" pulumi-lang-python="`performance_insights_enabled`" pulumi-lang-yaml="`performanceInsightsEnabled`" pulumi-lang-java="`performanceInsightsEnabled`">`performance_insights_enabled`</span> needs to be set to true. Once KMS key is set, it can never be changed.
+  /// The ARN for the KMS key to encrypt Performance Insights data. When specifying `performance_insights_kms_key_id`, `performance_insights_enabled` needs to be set to true. Once KMS key is set, it can never be changed.
   final Input<String>? performanceInsightsKmsKeyId;
 
-  /// Amount of time in days to retain Performance Insights data. Valid values are <span pulumi-lang-nodejs="`7`" pulumi-lang-dotnet="`7`" pulumi-lang-go="`7`" pulumi-lang-python="`7`" pulumi-lang-yaml="`7`" pulumi-lang-java="`7`">`7`</span>, <span pulumi-lang-nodejs="`731`" pulumi-lang-dotnet="`731`" pulumi-lang-go="`731`" pulumi-lang-python="`731`" pulumi-lang-yaml="`731`" pulumi-lang-java="`731`">`731`</span> (2 years) or a multiple of <span pulumi-lang-nodejs="`31`" pulumi-lang-dotnet="`31`" pulumi-lang-go="`31`" pulumi-lang-python="`31`" pulumi-lang-yaml="`31`" pulumi-lang-java="`31`">`31`</span>. When specifying <span pulumi-lang-nodejs="`performanceInsightsRetentionPeriod`" pulumi-lang-dotnet="`PerformanceInsightsRetentionPeriod`" pulumi-lang-go="`performanceInsightsRetentionPeriod`" pulumi-lang-python="`performance_insights_retention_period`" pulumi-lang-yaml="`performanceInsightsRetentionPeriod`" pulumi-lang-java="`performanceInsightsRetentionPeriod`">`performance_insights_retention_period`</span>, <span pulumi-lang-nodejs="`performanceInsightsEnabled`" pulumi-lang-dotnet="`PerformanceInsightsEnabled`" pulumi-lang-go="`performanceInsightsEnabled`" pulumi-lang-python="`performance_insights_enabled`" pulumi-lang-yaml="`performanceInsightsEnabled`" pulumi-lang-java="`performanceInsightsEnabled`">`performance_insights_enabled`</span> needs to be set to true. Defaults to '7'.
+  /// Amount of time in days to retain Performance Insights data. Valid values are `7`, `731` (2 years) or a multiple of `31`. When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
   final Input<int>? performanceInsightsRetentionPeriod;
 
   /// The port on which the DB accepts connections.
   final Input<int>? port;
 
   /// Bool to control if instance is publicly
-  /// accessible. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// accessible. Default is `false`.
   final Input<bool>? publiclyAccessible;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Specifies whether the replica is in either <span pulumi-lang-nodejs="`mounted`" pulumi-lang-dotnet="`Mounted`" pulumi-lang-go="`mounted`" pulumi-lang-python="`mounted`" pulumi-lang-yaml="`mounted`" pulumi-lang-java="`mounted`">`mounted`</span> or `open-read-only` mode. This attribute
+  /// Specifies whether the replica is in either `mounted` or `open-read-only` mode. This attribute
   /// is only supported by Oracle instances. Oracle replicas operate in `open-read-only` mode unless otherwise specified. See [Working with Oracle Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html) for more information.
   final Input<String>? replicaMode;
 
   /// Specifies that this resource is a Replica database, and to use this value as the source database.
-  /// If replicating an Amazon RDS Database Instance in the same region, use the <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span> of the source DB, unless also specifying the <span pulumi-lang-nodejs="`dbSubnetGroupName`" pulumi-lang-dotnet="`DbSubnetGroupName`" pulumi-lang-go="`dbSubnetGroupName`" pulumi-lang-python="`db_subnet_group_name`" pulumi-lang-yaml="`dbSubnetGroupName`" pulumi-lang-java="`dbSubnetGroupName`">`db_subnet_group_name`</span>.
-  /// If specifying the <span pulumi-lang-nodejs="`dbSubnetGroupName`" pulumi-lang-dotnet="`DbSubnetGroupName`" pulumi-lang-go="`dbSubnetGroupName`" pulumi-lang-python="`db_subnet_group_name`" pulumi-lang-yaml="`dbSubnetGroupName`" pulumi-lang-java="`dbSubnetGroupName`">`db_subnet_group_name`</span> in the same region, use the <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> of the source DB.
-  /// If replicating an Instance in a different region, use the <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> of the source DB.
-  /// Note that if you are creating a cross-region replica of an encrypted database you will also need to specify a <span pulumi-lang-nodejs="`kmsKeyId`" pulumi-lang-dotnet="`KmsKeyId`" pulumi-lang-go="`kmsKeyId`" pulumi-lang-python="`kms_key_id`" pulumi-lang-yaml="`kmsKeyId`" pulumi-lang-java="`kmsKeyId`">`kms_key_id`</span>.
+  /// If replicating an Amazon RDS Database Instance in the same region, use the `identifier` of the source DB, unless also specifying the `db_subnet_group_name`.
+  /// If specifying the `db_subnet_group_name` in the same region, use the `arn` of the source DB.
+  /// If replicating an Instance in a different region, use the `arn` of the source DB.
+  /// Note that if you are creating a cross-region replica of an encrypted database you will also need to specify a `kms_key_id`.
   /// See [DB Instance Replication][instance-replication] and [Working with PostgreSQL and MySQL Read Replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html) for more information on using Replication.
   final Input<String>? replicateSourceDb;
 
   /// A configuration block for restoring a DB instance to an arbitrary point in time.
-  /// Requires the <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span> argument to be set with the name of the new DB instance to be created.
+  /// Requires the `identifier` argument to be set with the name of the new DB instance to be created.
   /// See Restore To Point In Time below for details.
   final Input<InstanceRestoreToPointInTime>? restoreToPointInTime;
 
@@ -266,8 +260,8 @@ class InstanceArgs4 {
   /// Determines whether a final DB snapshot is
   /// created before the DB instance is deleted. If true is specified, no DBSnapshot
   /// is created. If false is specified, a DB snapshot is created before the DB
-  /// instance is deleted, using the value from <span pulumi-lang-nodejs="`finalSnapshotIdentifier`" pulumi-lang-dotnet="`FinalSnapshotIdentifier`" pulumi-lang-go="`finalSnapshotIdentifier`" pulumi-lang-python="`final_snapshot_identifier`" pulumi-lang-yaml="`finalSnapshotIdentifier`" pulumi-lang-java="`finalSnapshotIdentifier`">`final_snapshot_identifier`</span>. Default
-  /// is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// instance is deleted, using the value from `final_snapshot_identifier`. Default
+  /// is `false`.
   final Input<bool>? skipFinalSnapshot;
 
   /// Specifies whether or not to create this database from a snapshot.
@@ -276,34 +270,34 @@ class InstanceArgs4 {
 
   /// Specifies whether the DB instance is
   /// encrypted. Note that if you are creating a cross-region read replica this field
-  /// is ignored and you should instead declare <span pulumi-lang-nodejs="`kmsKeyId`" pulumi-lang-dotnet="`KmsKeyId`" pulumi-lang-go="`kmsKeyId`" pulumi-lang-python="`kms_key_id`" pulumi-lang-yaml="`kmsKeyId`" pulumi-lang-java="`kmsKeyId`">`kms_key_id`</span> with a valid ARN. The
-  /// default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if not specified.
+  /// is ignored and you should instead declare `kms_key_id` with a valid ARN. The
+  /// default is `false` if not specified.
   final Input<bool>? storageEncrypted;
 
-  /// The storage throughput value for the DB instance. Can only be set when <span pulumi-lang-nodejs="`storageType`" pulumi-lang-dotnet="`StorageType`" pulumi-lang-go="`storageType`" pulumi-lang-python="`storage_type`" pulumi-lang-yaml="`storageType`" pulumi-lang-java="`storageType`">`storage_type`</span> is `"gp3"`. Cannot be specified if the <span pulumi-lang-nodejs="`allocatedStorage`" pulumi-lang-dotnet="`AllocatedStorage`" pulumi-lang-go="`allocatedStorage`" pulumi-lang-python="`allocated_storage`" pulumi-lang-yaml="`allocatedStorage`" pulumi-lang-java="`allocatedStorage`">`allocated_storage`</span> value is below a per-<span pulumi-lang-nodejs="`engine`" pulumi-lang-dotnet="`Engine`" pulumi-lang-go="`engine`" pulumi-lang-python="`engine`" pulumi-lang-yaml="`engine`" pulumi-lang-java="`engine`">`engine`</span> threshold. See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
+  /// The storage throughput value for the DB instance. Can only be set when `storage_type` is `"gp3"`. Cannot be specified if the `allocated_storage` value is below a per-`engine` threshold. See the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#gp3-storage) for details.
   final Input<int>? storageThroughput;
 
   /// One of "standard" (magnetic), "gp2" (general
-  /// purpose SSD), "gp3" (general purpose SSD that needs <span pulumi-lang-nodejs="`iops`" pulumi-lang-dotnet="`Iops`" pulumi-lang-go="`iops`" pulumi-lang-python="`iops`" pulumi-lang-yaml="`iops`" pulumi-lang-java="`iops`">`iops`</span> independently)
+  /// purpose SSD), "gp3" (general purpose SSD that needs `iops` independently)
   /// "io1" (provisioned IOPS SSD) or "io2" (block express storage provisioned IOPS
-  /// SSD). The default is "io1" if <span pulumi-lang-nodejs="`iops`" pulumi-lang-dotnet="`Iops`" pulumi-lang-go="`iops`" pulumi-lang-python="`iops`" pulumi-lang-yaml="`iops`" pulumi-lang-java="`iops`">`iops`</span> is specified, "gp2" if not.
+  /// SSD). The default is "io1" if `iops` is specified, "gp2" if not.
   final Input<String>? storageType;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Time zone of the DB instance. <span pulumi-lang-nodejs="`timezone`" pulumi-lang-dotnet="`Timezone`" pulumi-lang-go="`timezone`" pulumi-lang-python="`timezone`" pulumi-lang-yaml="`timezone`" pulumi-lang-java="`timezone`">`timezone`</span> is currently
-  /// only supported by Microsoft SQL Server. The <span pulumi-lang-nodejs="`timezone`" pulumi-lang-dotnet="`Timezone`" pulumi-lang-go="`timezone`" pulumi-lang-python="`timezone`" pulumi-lang-yaml="`timezone`" pulumi-lang-java="`timezone`">`timezone`</span> can only be set on
+  /// Time zone of the DB instance. `timezone` is currently
+  /// only supported by Microsoft SQL Server. The `timezone` can only be set on
   /// creation. See [MSSQL User
   /// Guide](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone)
   /// for more information.
   final Input<String>? timezone;
 
   /// Whether to upgrade the storage file system configuration on the read replica.
-  /// Can only be set with <span pulumi-lang-nodejs="`replicateSourceDb`" pulumi-lang-dotnet="`ReplicateSourceDb`" pulumi-lang-go="`replicateSourceDb`" pulumi-lang-python="`replicate_source_db`" pulumi-lang-yaml="`replicateSourceDb`" pulumi-lang-java="`replicateSourceDb`">`replicate_source_db`</span>.
+  /// Can only be set with `replicate_source_db`.
   final Input<bool>? upgradeStorageConfig;
 
-  /// (Required unless a <span pulumi-lang-nodejs="`snapshotIdentifier`" pulumi-lang-dotnet="`SnapshotIdentifier`" pulumi-lang-go="`snapshotIdentifier`" pulumi-lang-python="`snapshot_identifier`" pulumi-lang-yaml="`snapshotIdentifier`" pulumi-lang-java="`snapshotIdentifier`">`snapshot_identifier`</span> or <span pulumi-lang-nodejs="`replicateSourceDb`" pulumi-lang-dotnet="`ReplicateSourceDb`" pulumi-lang-go="`replicateSourceDb`" pulumi-lang-python="`replicate_source_db`" pulumi-lang-yaml="`replicateSourceDb`" pulumi-lang-java="`replicateSourceDb`">`replicate_source_db`</span>
+  /// (Required unless a `snapshot_identifier` or `replicate_source_db`
   /// is provided) Username for the master DB user. Cannot be specified for a replica.
   final Input<String>? username;
 

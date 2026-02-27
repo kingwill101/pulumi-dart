@@ -18,7 +18,7 @@ class GetUserArgs {
 
   /// Returns information on a specific User by User id
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`">`user_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `user_id` is required.
   final Input<String>? userId;
 
   GetUserArgs({

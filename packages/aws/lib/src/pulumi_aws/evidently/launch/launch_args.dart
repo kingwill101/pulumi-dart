@@ -16,7 +16,7 @@ class LaunchArgs {
   /// One or up to three blocks that define the metrics that will be used to monitor the launch performance. Detailed below.
   final Input<List<LaunchMetricMonitor>>? metricMonitors;
 
-  /// The name for the new launch. Minimum length of <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. Maximum length of <span pulumi-lang-nodejs="`127`" pulumi-lang-dotnet="`127`" pulumi-lang-go="`127`" pulumi-lang-python="`127`" pulumi-lang-yaml="`127`" pulumi-lang-java="`127`">`127`</span>.
+  /// The name for the new launch. Minimum length of `1`. Maximum length of `127`.
   final Input<String>? name;
 
   /// The name or ARN of the project that is to contain the new launch.
@@ -31,7 +31,7 @@ class LaunchArgs {
   /// A block that defines the traffic allocation percentages among the feature variations during each step of the launch. Detailed below.
   final Input<LaunchScheduledSplitsConfig>? scheduledSplitsConfig;
 
-  /// Tags to apply to the launch. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the launch. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   LaunchArgs({

@@ -1,3 +1,0 @@
-library module_lakeformation_resource_lf_tag_table_with_columns;
-
-export 'resource_lf_tag_table_with_columns.dart';

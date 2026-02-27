@@ -15,7 +15,7 @@ class GetRoutingProfileArgs {
 
   /// Returns information on a specific Routing Profile by Routing Profile id
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`routingProfileId`" pulumi-lang-dotnet="`RoutingProfileId`" pulumi-lang-go="`routingProfileId`" pulumi-lang-python="`routing_profile_id`" pulumi-lang-yaml="`routingProfileId`" pulumi-lang-java="`routingProfileId`">`routing_profile_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `routing_profile_id` is required.
   final Input<String>? routingProfileId;
 
   /// Map of tags to assign to the Routing Profile.

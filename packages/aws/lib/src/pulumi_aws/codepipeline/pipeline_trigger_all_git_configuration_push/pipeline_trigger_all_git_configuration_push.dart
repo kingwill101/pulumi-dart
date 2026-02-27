@@ -6,13 +6,13 @@ import '../pipeline_trigger_all_git_configuration_push_file_path/pipeline_trigge
 import '../pipeline_trigger_all_git_configuration_push_tag/pipeline_trigger_all_git_configuration_push_tag.dart';
 
 class PipelineTriggerAllGitConfigurationPush {
-  /// The field that specifies to filter on branches for the push trigger configuration. A <span pulumi-lang-nodejs="`branches`" pulumi-lang-dotnet="`Branches`" pulumi-lang-go="`branches`" pulumi-lang-python="`branches`" pulumi-lang-yaml="`branches`" pulumi-lang-java="`branches`">`branches`</span> block is documented below.
+  /// The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.
   final List<PipelineTriggerAllGitConfigurationPushBranch>? branches;
 
-  /// The field that specifies to filter on file paths for the push trigger configuration. A <span pulumi-lang-nodejs="`filePaths`" pulumi-lang-dotnet="`FilePaths`" pulumi-lang-go="`filePaths`" pulumi-lang-python="`file_paths`" pulumi-lang-yaml="`filePaths`" pulumi-lang-java="`filePaths`">`file_paths`</span> block is documented below.
+  /// The field that specifies to filter on file paths for the push trigger configuration. A `file_paths` block is documented below.
   final List<PipelineTriggerAllGitConfigurationPushFilePath>? filePaths;
 
-  /// The field that contains the details for the Git tags trigger configuration. A <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span> block is documented below.
+  /// The field that contains the details for the Git tags trigger configuration. A `tags` block is documented below.
   final List<PipelineTriggerAllGitConfigurationPushTag>? tags;
 
   PipelineTriggerAllGitConfigurationPush({

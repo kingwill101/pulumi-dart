@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class RecordGeolocationRoutingPolicy {
-  /// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either <span pulumi-lang-nodejs="`continent`" pulumi-lang-dotnet="`Continent`" pulumi-lang-go="`continent`" pulumi-lang-python="`continent`" pulumi-lang-yaml="`continent`" pulumi-lang-java="`continent`">`continent`</span> or <span pulumi-lang-nodejs="`country`" pulumi-lang-dotnet="`Country`" pulumi-lang-go="`country`" pulumi-lang-python="`country`" pulumi-lang-yaml="`country`" pulumi-lang-java="`country`">`country`</span> must be specified.
+  /// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
   final String? continent;
 
   /// A two-character country code or `*` to indicate a default resource record set.

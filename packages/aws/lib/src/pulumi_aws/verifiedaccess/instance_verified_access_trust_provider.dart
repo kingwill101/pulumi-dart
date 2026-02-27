@@ -1,0 +1,3 @@
+library module_verifiedaccess_instance_verified_access_trust_provider;
+
+export 'instance_verified_access_trust_provider/instance_verified_access_trust_provider.dart';

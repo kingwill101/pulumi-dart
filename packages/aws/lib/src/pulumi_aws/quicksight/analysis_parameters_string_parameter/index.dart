@@ -1,3 +1,0 @@
-library module_quicksight_analysis_parameters_string_parameter;
-
-export 'analysis_parameters_string_parameter.dart';

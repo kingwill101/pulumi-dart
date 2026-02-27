@@ -1,4 +1,0 @@
-library module_cfg_organization_custom_policy_rule;
-
-export 'organization_custom_policy_rule.dart';
-export 'organization_custom_policy_rule_args.dart';

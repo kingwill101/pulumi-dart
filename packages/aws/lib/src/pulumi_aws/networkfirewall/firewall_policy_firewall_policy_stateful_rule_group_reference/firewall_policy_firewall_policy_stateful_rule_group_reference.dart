@@ -12,7 +12,7 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   final FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride?
       override;
 
-  /// An integer setting that indicates the order in which to apply the stateful rule groups in a single policy. This argument must be specified if the policy has a <span pulumi-lang-nodejs="`statefulEngineOptions`" pulumi-lang-dotnet="`StatefulEngineOptions`" pulumi-lang-go="`statefulEngineOptions`" pulumi-lang-python="`stateful_engine_options`" pulumi-lang-yaml="`statefulEngineOptions`" pulumi-lang-java="`statefulEngineOptions`">`stateful_engine_options`</span> block with a <span pulumi-lang-nodejs="`ruleOrder`" pulumi-lang-dotnet="`RuleOrder`" pulumi-lang-go="`ruleOrder`" pulumi-lang-python="`rule_order`" pulumi-lang-yaml="`ruleOrder`" pulumi-lang-java="`ruleOrder`">`rule_order`</span> value of `STRICT_ORDER`. AWS Network Firewall applies each stateful rule group to a packet starting with the group that has the lowest priority setting.
+  /// An integer setting that indicates the order in which to apply the stateful rule groups in a single policy. This argument must be specified if the policy has a `stateful_engine_options` block with a `rule_order` value of `STRICT_ORDER`. AWS Network Firewall applies each stateful rule group to a packet starting with the group that has the lowest priority setting.
   final int? priority;
 
   /// The Amazon Resource Name (ARN) of the stateful rule group.

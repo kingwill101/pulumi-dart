@@ -15,7 +15,7 @@ class MLTransformArgs {
   /// A list of AWS Glue table definitions used by the transform. see Input Record Tables.
   final Input<List<MLTransformInputRecordTable>> inputRecordTables;
 
-  /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span> to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span> DPUs; the default is <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span>. <span pulumi-lang-nodejs="`maxCapacity`" pulumi-lang-dotnet="`MaxCapacity`" pulumi-lang-go="`maxCapacity`" pulumi-lang-python="`max_capacity`" pulumi-lang-yaml="`maxCapacity`" pulumi-lang-java="`maxCapacity`">`max_capacity`</span> is a mutually exclusive option with <span pulumi-lang-nodejs="`numberOfWorkers`" pulumi-lang-dotnet="`NumberOfWorkers`" pulumi-lang-go="`numberOfWorkers`" pulumi-lang-python="`number_of_workers`" pulumi-lang-yaml="`numberOfWorkers`" pulumi-lang-java="`numberOfWorkers`">`number_of_workers`</span> and <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span>.
+  /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `max_capacity` is a mutually exclusive option with `number_of_workers` and `worker_type`.
   final Input<double>? maxCapacity;
 
   /// The maximum number of times to retry this ML Transform if it fails.
@@ -24,7 +24,7 @@ class MLTransformArgs {
   /// The name you assign to this ML Transform. It must be unique in your account.
   final Input<String>? name;
 
-  /// The number of workers of a defined <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span> that are allocated when an ML Transform runs. Required with <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span>.
+  /// The number of workers of a defined `worker_type` that are allocated when an ML Transform runs. Required with `worker_type`.
   final Input<int>? numberOfWorkers;
 
   /// The algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. see Parameters.
@@ -36,13 +36,13 @@ class MLTransformArgs {
   /// The ARN of the IAM role associated with this ML Transform.
   final Input<String> roleArn;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
   final Input<int>? timeout;
 
-  /// The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with <span pulumi-lang-nodejs="`numberOfWorkers`" pulumi-lang-dotnet="`NumberOfWorkers`" pulumi-lang-go="`numberOfWorkers`" pulumi-lang-python="`number_of_workers`" pulumi-lang-yaml="`numberOfWorkers`" pulumi-lang-java="`numberOfWorkers`">`number_of_workers`</span>.
+  /// The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `number_of_workers`.
   final Input<String>? workerType;
 
   MLTransformArgs({

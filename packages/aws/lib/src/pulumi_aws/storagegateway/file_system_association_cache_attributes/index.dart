@@ -1,3 +1,0 @@
-library module_storagegateway_file_system_association_cache_attributes;
-
-export 'file_system_association_cache_attributes.dart';

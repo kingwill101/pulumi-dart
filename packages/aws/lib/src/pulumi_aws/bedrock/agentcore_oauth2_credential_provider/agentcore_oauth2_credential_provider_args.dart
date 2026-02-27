@@ -11,7 +11,7 @@ class AgentcoreOauth2CredentialProviderArgs {
   /// Name of the OAuth2 credential provider.
   final Input<String>? name;
 
-  /// OAuth2 provider configuration. Must contain exactly one provider type. See <span pulumi-lang-nodejs="`oauth2ProviderConfig`" pulumi-lang-dotnet="`Oauth2ProviderConfig`" pulumi-lang-go="`oauth2ProviderConfig`" pulumi-lang-python="`oauth2_provider_config`" pulumi-lang-yaml="`oauth2ProviderConfig`" pulumi-lang-java="`oauth2ProviderConfig`">`oauth2_provider_config`</span> below.
+  /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2_provider_config` below.
   ///
   /// The following arguments are optional:
   final Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>?

@@ -1,5 +1,0 @@
-library module_lakeformation_get_data_lake_settings;
-
-export 'get_data_lake_settings.dart';
-export 'get_data_lake_settings_args.dart';
-export 'get_data_lake_settings_result.dart';

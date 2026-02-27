@@ -1,0 +1,8 @@
+library module_resourcegroupstaggingapi;
+
+export 'resourcegroupstaggingapi/get_required_tags.dart';
+export 'resourcegroupstaggingapi/get_required_tags_required_tag.dart';
+export 'resourcegroupstaggingapi/get_resources.dart';
+export 'resourcegroupstaggingapi/get_resources_resource_tag_mapping_list.dart';
+export 'resourcegroupstaggingapi/get_resources_resource_tag_mapping_list_compliance_detail.dart';
+export 'resourcegroupstaggingapi/get_resources_tag_filter.dart';

@@ -1,3 +1,0 @@
-library module_ecs_task_definition_volume_efs_volume_configuration_authorization_config;
-
-export 'task_definition_volume_efs_volume_configuration_authorization_config.dart';

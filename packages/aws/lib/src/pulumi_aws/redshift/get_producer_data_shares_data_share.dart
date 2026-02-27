@@ -1,0 +1,3 @@
+library module_redshift_get_producer_data_shares_data_share;
+
+export 'get_producer_data_shares_data_share/get_producer_data_shares_data_share.dart';

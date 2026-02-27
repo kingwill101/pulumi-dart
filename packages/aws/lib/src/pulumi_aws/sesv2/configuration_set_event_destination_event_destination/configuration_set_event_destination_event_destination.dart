@@ -7,29 +7,29 @@ import '../configuration_set_event_destination_event_destination_pinpoint_destin
 import '../configuration_set_event_destination_event_destination_sns_destination/configuration_set_event_destination_event_destination_sns_destination.dart';
 
 class ConfigurationSetEventDestinationEventDestination {
-  /// An object that defines an Amazon CloudWatch destination for email events. See <span pulumi-lang-nodejs="`cloudWatchDestination`" pulumi-lang-dotnet="`CloudWatchDestination`" pulumi-lang-go="`cloudWatchDestination`" pulumi-lang-python="`cloud_watch_destination`" pulumi-lang-yaml="`cloudWatchDestination`" pulumi-lang-java="`cloudWatchDestination`">`cloud_watch_destination`</span> Block for details.
+  /// An object that defines an Amazon CloudWatch destination for email events. See `cloud_watch_destination` Block for details.
   final ConfigurationSetEventDestinationEventDestinationCloudWatchDestination?
       cloudWatchDestination;
 
-  /// When the event destination is enabled, the specified event types are sent to the destinations. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// When the event destination is enabled, the specified event types are sent to the destinations. Default: `false`.
   final bool? enabled;
 
-  /// An object that defines an Amazon EventBridge destination for email events. You can use Amazon EventBridge to send notifications when certain email events occur. See <span pulumi-lang-nodejs="`eventBridgeDestination`" pulumi-lang-dotnet="`EventBridgeDestination`" pulumi-lang-go="`eventBridgeDestination`" pulumi-lang-python="`event_bridge_destination`" pulumi-lang-yaml="`eventBridgeDestination`" pulumi-lang-java="`eventBridgeDestination`">`event_bridge_destination`</span> Block for details.
+  /// An object that defines an Amazon EventBridge destination for email events. You can use Amazon EventBridge to send notifications when certain email events occur. See `event_bridge_destination` Block for details.
   final ConfigurationSetEventDestinationEventDestinationEventBridgeDestination?
       eventBridgeDestination;
 
-  /// An object that defines an Amazon Kinesis Data Firehose destination for email events. See <span pulumi-lang-nodejs="`kinesisFirehoseDestination`" pulumi-lang-dotnet="`KinesisFirehoseDestination`" pulumi-lang-go="`kinesisFirehoseDestination`" pulumi-lang-python="`kinesis_firehose_destination`" pulumi-lang-yaml="`kinesisFirehoseDestination`" pulumi-lang-java="`kinesisFirehoseDestination`">`kinesis_firehose_destination`</span> Block for details.
+  /// An object that defines an Amazon Kinesis Data Firehose destination for email events. See `kinesis_firehose_destination` Block for details.
   final ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination?
       kinesisFirehoseDestination;
 
   /// An array that specifies which events the Amazon SES API v2 should send to the destinations. Valid values: `SEND`, `REJECT`, `BOUNCE`, `COMPLAINT`, `DELIVERY`, `OPEN`, `CLICK`, `RENDERING_FAILURE`, `DELIVERY_DELAY`, `SUBSCRIPTION`.
   final List<String> matchingEventTypes;
 
-  /// An object that defines an Amazon Pinpoint project destination for email events. See <span pulumi-lang-nodejs="`pinpointDestination`" pulumi-lang-dotnet="`PinpointDestination`" pulumi-lang-go="`pinpointDestination`" pulumi-lang-python="`pinpoint_destination`" pulumi-lang-yaml="`pinpointDestination`" pulumi-lang-java="`pinpointDestination`">`pinpoint_destination`</span> Block for details.
+  /// An object that defines an Amazon Pinpoint project destination for email events. See `pinpoint_destination` Block for details.
   final ConfigurationSetEventDestinationEventDestinationPinpointDestination?
       pinpointDestination;
 
-  /// An object that defines an Amazon SNS destination for email events. See <span pulumi-lang-nodejs="`snsDestination`" pulumi-lang-dotnet="`SnsDestination`" pulumi-lang-go="`snsDestination`" pulumi-lang-python="`sns_destination`" pulumi-lang-yaml="`snsDestination`" pulumi-lang-java="`snsDestination`">`sns_destination`</span> Block for details.
+  /// An object that defines an Amazon SNS destination for email events. See `sns_destination` Block for details.
   final ConfigurationSetEventDestinationEventDestinationSnsDestination?
       snsDestination;
 

@@ -16,10 +16,10 @@ class IamPolicyAssignmentArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final Input<String>? awsAccountId;
 
-  /// Amazon QuickSight users, groups, or both to assign the policy to. See <span pulumi-lang-nodejs="`identities`" pulumi-lang-dotnet="`Identities`" pulumi-lang-go="`identities`" pulumi-lang-python="`identities`" pulumi-lang-yaml="`identities`" pulumi-lang-java="`identities`">`identities`</span> block.
+  /// Amazon QuickSight users, groups, or both to assign the policy to. See `identities` block.
   final Input<IamPolicyAssignmentIdentities>? identities;
 
-  /// Namespace that contains the assignment. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  /// Namespace that contains the assignment. Defaults to `default`.
   final Input<String>? namespace;
 
   /// ARN of the IAM policy to apply to the Amazon QuickSight users and groups specified in this assignment.

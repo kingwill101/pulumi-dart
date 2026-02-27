@@ -10,13 +10,13 @@ class ParameterArgs {
   /// ARN of the parameter.
   final Input<String>? arn;
 
-  /// Data type of the parameter. Valid values: <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span>, `aws:ssm:integration` and `aws:ec2:image` for AMI format, see the [Native parameter support for Amazon Machine Image IDs](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html).
+  /// Data type of the parameter. Valid values: `text`, `aws:ssm:integration` and `aws:ec2:image` for AMI format, see the [Native parameter support for Amazon Machine Image IDs](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html).
   final Input<String>? dataType;
 
   /// Description of the parameter.
   final Input<String>? description;
 
-  /// Value of the parameter. **Use caution:** This value is _never_ marked as sensitive in the pulumi preview output. This argument is not valid with a <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> of `SecureString`.
+  /// Value of the parameter. **Use caution:** This value is _never_ marked as sensitive in the pulumi preview output. This argument is not valid with a `type` of `SecureString`.
   final Input<String>? insecureValue;
 
   /// KMS key ID or ARN for encrypting a SecureString.
@@ -25,13 +25,13 @@ class ParameterArgs {
   /// Name of the parameter. If the name contains a path (e.g., any forward slashes (`/`)), it must be fully qualified with a leading forward slash (`/`). For additional requirements and constraints, see the [AWS SSM User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html).
   final Input<String>? name;
 
-  /// Overwrite an existing parameter. If not specified, defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> during create operations to avoid overwriting existing resources and then <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> for all subsequent operations once the resource is managed by IAC. Lifecycle rules should be used to manage non-standard update behavior.
+  /// Overwrite an existing parameter. If not specified, defaults to `false` during create operations to avoid overwriting existing resources and then `true` for all subsequent operations once the resource is managed by IAC. Lifecycle rules should be used to manage non-standard update behavior.
   final Input<bool>? overwrite;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Map of tags to assign to the object. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Parameter tier to assign to the parameter. If not specified, will use the default parameter tier for the region. Valid tiers are `Standard`, `Advanced`, and `Intelligent-Tiering`. Downgrading an `Advanced` tier parameter to `Standard` will recreate the resource. For more information on parameter tiers, see the [AWS SSM Parameter tier comparison and guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html).
@@ -46,12 +46,12 @@ class ParameterArgs {
   final Input<String>? value;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span>. Additionally, `write-only` values are never stored to state. <span pulumi-lang-nodejs="`valueWoVersion`" pulumi-lang-dotnet="`ValueWoVersion`" pulumi-lang-go="`valueWoVersion`" pulumi-lang-python="`value_wo_version`" pulumi-lang-yaml="`valueWoVersion`" pulumi-lang-java="`valueWoVersion`">`value_wo_version`</span> can be used to trigger an update and is required with this argument.
+  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`. Additionally, `write-only` values are never stored to state. `value_wo_version` can be used to trigger an update and is required with this argument.
   final Input<String>? valueWo;
 
-  /// Used together with <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> to trigger an update. Increment this value when an update to the <span pulumi-lang-nodejs="`valueWo`" pulumi-lang-dotnet="`ValueWo`" pulumi-lang-go="`valueWo`" pulumi-lang-python="`value_wo`" pulumi-lang-yaml="`valueWo`" pulumi-lang-java="`valueWo`">`value_wo`</span> is required.
+  /// Used together with `value_wo` to trigger an update. Increment this value when an update to the `value_wo` is required.
   ///
-  /// > **NOTE:** `aws:ssm:integration`<span pulumi-lang-nodejs=" dataType " pulumi-lang-dotnet=" DataType " pulumi-lang-go=" dataType " pulumi-lang-python=" data_type " pulumi-lang-yaml=" dataType " pulumi-lang-java=" dataType "> data_type </span>parameters must be of the type `SecureString` and the name must start with the prefix `/d9d01087-4a3f-49e0-b0b4-d568d7826553/ssm/integrations/webhook/`. See [here](https://docs.aws.amazon.com/systems-manager/latest/userguide/creating-integrations.html) for information on the usage of `aws:ssm:integration` parameters.
+  /// > **NOTE:** `aws:ssm:integration` data_type parameters must be of the type `SecureString` and the name must start with the prefix `/d9d01087-4a3f-49e0-b0b4-d568d7826553/ssm/integrations/webhook/`. See [here](https://docs.aws.amazon.com/systems-manager/latest/userguide/creating-integrations.html) for information on the usage of `aws:ssm:integration` parameters.
   final Input<int>? valueWoVersion;
 
   ParameterArgs({

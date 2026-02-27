@@ -5,20 +5,20 @@ import '../domain_domain_settings_rstudio_server_pro_domain_settings/domain_doma
 import '../domain_domain_settings_trusted_identity_propagation_settings/domain_domain_settings_trusted_identity_propagation_settings.dart';
 
 class DomainDomainSettings {
-  /// A collection of settings that configure the domain’s Docker interaction. see <span pulumi-lang-nodejs="`dockerSettings`" pulumi-lang-dotnet="`DockerSettings`" pulumi-lang-go="`dockerSettings`" pulumi-lang-python="`docker_settings`" pulumi-lang-yaml="`dockerSettings`" pulumi-lang-java="`dockerSettings`">`docker_settings`</span> Block below.
+  /// A collection of settings that configure the domain’s Docker interaction. see `docker_settings` Block below.
   final DomainDomainSettingsDockerSettings? dockerSettings;
 
   /// The configuration for attaching a SageMaker AI user profile name to the execution role as a sts:SourceIdentity key [AWS Docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html). Valid values are `USER_PROFILE_NAME` and `DISABLED`.
   final String? executionRoleIdentityConfig;
 
-  /// A collection of settings that configure the RStudioServerPro Domain-level app. see <span pulumi-lang-nodejs="`rStudioServerProDomainSettings`" pulumi-lang-dotnet="`RStudioServerProDomainSettings`" pulumi-lang-go="`rStudioServerProDomainSettings`" pulumi-lang-python="`r_studio_server_pro_domain_settings`" pulumi-lang-yaml="`rStudioServerProDomainSettings`" pulumi-lang-java="`rStudioServerProDomainSettings`">`r_studio_server_pro_domain_settings`</span> Block below.
+  /// A collection of settings that configure the RStudioServerPro Domain-level app. see `r_studio_server_pro_domain_settings` Block below.
   final DomainDomainSettingsRStudioServerProDomainSettings?
       rStudioServerProDomainSettings;
 
   /// The security groups for the Amazon Virtual Private Cloud that the Domain uses for communication between Domain-level apps and user apps.
   final List<String>? securityGroupIds;
 
-  /// Configuration for trusted identity propagation. See the <span pulumi-lang-nodejs="`trustedIdentityPropagationSettings`" pulumi-lang-dotnet="`TrustedIdentityPropagationSettings`" pulumi-lang-go="`trustedIdentityPropagationSettings`" pulumi-lang-python="`trusted_identity_propagation_settings`" pulumi-lang-yaml="`trustedIdentityPropagationSettings`" pulumi-lang-java="`trustedIdentityPropagationSettings`">`trusted_identity_propagation_settings`</span> Block below.
+  /// Configuration for trusted identity propagation. See the `trusted_identity_propagation_settings` Block below.
   final DomainDomainSettingsTrustedIdentityPropagationSettings?
       trustedIdentityPropagationSettings;
 

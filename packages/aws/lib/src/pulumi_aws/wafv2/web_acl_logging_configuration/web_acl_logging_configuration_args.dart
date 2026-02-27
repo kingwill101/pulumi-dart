@@ -12,13 +12,13 @@ class WebAclLoggingConfigurationArgs {
   /// Configuration block that specifies which web requests are kept in the logs and which are dropped. It allows filtering based on the rule action and the web request labels applied by matching rules during web ACL evaluation. For more details, refer to the Logging Filter section below.
   final Input<WebAclLoggingConfigurationLoggingFilter>? loggingFilter;
 
-  /// Configuration for parts of the request that you want to keep out of the logs. Up to 100 <span pulumi-lang-nodejs="`redactedFields`" pulumi-lang-dotnet="`RedactedFields`" pulumi-lang-go="`redactedFields`" pulumi-lang-python="`redacted_fields`" pulumi-lang-yaml="`redactedFields`" pulumi-lang-java="`redactedFields`">`redacted_fields`</span> blocks are supported. See Redacted Fields below for more details.
+  /// Configuration for parts of the request that you want to keep out of the logs. Up to 100 `redacted_fields` blocks are supported. See Redacted Fields below for more details.
   final Input<List<WebAclLoggingConfigurationRedactedField>>? redactedFields;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Amazon Resource Name (ARN) of the web ACL that you want to associate with <span pulumi-lang-nodejs="`logDestinationConfigs`" pulumi-lang-dotnet="`LogDestinationConfigs`" pulumi-lang-go="`logDestinationConfigs`" pulumi-lang-python="`log_destination_configs`" pulumi-lang-yaml="`logDestinationConfigs`" pulumi-lang-java="`logDestinationConfigs`">`log_destination_configs`</span>.
+  /// Amazon Resource Name (ARN) of the web ACL that you want to associate with `log_destination_configs`.
   final Input<String> resourceArn;
 
   WebAclLoggingConfigurationArgs({

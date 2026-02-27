@@ -1,0 +1,3 @@
+library module_codebuild_project_secondary_source_auth;
+
+export 'project_secondary_source_auth/project_secondary_source_auth.dart';

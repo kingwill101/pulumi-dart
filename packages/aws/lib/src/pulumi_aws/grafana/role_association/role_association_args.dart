@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for RoleAssociation.
 class RoleAssociationArgs {
-  /// The AWS SSO group ids to be assigned the role given in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// The AWS SSO group ids to be assigned the role given in `role`.
   final Input<List<String>>? groupIds;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -13,7 +13,7 @@ class RoleAssociationArgs {
   /// The grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
   final Input<String> role;
 
-  /// The AWS SSO user ids to be assigned the role given in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// The AWS SSO user ids to be assigned the role given in `role`.
   final Input<List<String>>? userIds;
 
   /// The workspace id.

@@ -1,0 +1,3 @@
+library module_networkmanager_get_device_aws_location;
+
+export 'get_device_aws_location/get_device_aws_location.dart';

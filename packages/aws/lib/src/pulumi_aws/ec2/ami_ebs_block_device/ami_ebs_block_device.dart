@@ -8,7 +8,7 @@ class AmiEbsBlockDevice {
   /// Path at which the device is exposed to created instances.
   final String deviceName;
 
-  /// Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with <span pulumi-lang-nodejs="`snapshotId`" pulumi-lang-dotnet="`SnapshotId`" pulumi-lang-go="`snapshotId`" pulumi-lang-python="`snapshot_id`" pulumi-lang-yaml="`snapshotId`" pulumi-lang-java="`snapshotId`">`snapshot_id`</span>.
+  /// Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshot_id`.
   final bool? encrypted;
 
   /// Number of I/O operations per second the
@@ -17,23 +17,23 @@ class AmiEbsBlockDevice {
 
   /// ARN of the Outpost on which the snapshot is stored.
   ///
-  /// > **Note:** You can specify <span pulumi-lang-nodejs="`encrypted`" pulumi-lang-dotnet="`Encrypted`" pulumi-lang-go="`encrypted`" pulumi-lang-python="`encrypted`" pulumi-lang-yaml="`encrypted`" pulumi-lang-java="`encrypted`">`encrypted`</span> or <span pulumi-lang-nodejs="`snapshotId`" pulumi-lang-dotnet="`SnapshotId`" pulumi-lang-go="`snapshotId`" pulumi-lang-python="`snapshot_id`" pulumi-lang-yaml="`snapshotId`" pulumi-lang-java="`snapshotId`">`snapshot_id`</span> but not both.
+  /// > **Note:** You can specify `encrypted` or `snapshot_id` but not both.
   final String? outpostArn;
 
   /// ID of an EBS snapshot that will be used to initialize the created
-  /// EBS volumes. If set, the <span pulumi-lang-nodejs="`volumeSize`" pulumi-lang-dotnet="`VolumeSize`" pulumi-lang-go="`volumeSize`" pulumi-lang-python="`volume_size`" pulumi-lang-yaml="`volumeSize`" pulumi-lang-java="`volumeSize`">`volume_size`</span> attribute must be at least as large as the referenced
+  /// EBS volumes. If set, the `volume_size` attribute must be at least as large as the referenced
   /// snapshot.
   final String? snapshotId;
 
-  /// Throughput that the EBS volume supports, in MiB/s. Only valid for <span pulumi-lang-nodejs="`volumeType`" pulumi-lang-dotnet="`VolumeType`" pulumi-lang-go="`volumeType`" pulumi-lang-python="`volume_type`" pulumi-lang-yaml="`volumeType`" pulumi-lang-java="`volumeType`">`volume_type`</span> of <span pulumi-lang-nodejs="`gp3`" pulumi-lang-dotnet="`Gp3`" pulumi-lang-go="`gp3`" pulumi-lang-python="`gp3`" pulumi-lang-yaml="`gp3`" pulumi-lang-java="`gp3`">`gp3`</span>.
+  /// Throughput that the EBS volume supports, in MiB/s. Only valid for `volume_type` of `gp3`.
   final int? throughput;
 
   /// Size of created volumes in GiB.
-  /// If <span pulumi-lang-nodejs="`snapshotId`" pulumi-lang-dotnet="`SnapshotId`" pulumi-lang-go="`snapshotId`" pulumi-lang-python="`snapshot_id`" pulumi-lang-yaml="`snapshotId`" pulumi-lang-java="`snapshotId`">`snapshot_id`</span> is set and <span pulumi-lang-nodejs="`volumeSize`" pulumi-lang-dotnet="`VolumeSize`" pulumi-lang-go="`volumeSize`" pulumi-lang-python="`volume_size`" pulumi-lang-yaml="`volumeSize`" pulumi-lang-java="`volumeSize`">`volume_size`</span> is omitted then the volume will have the same size
+  /// If `snapshot_id` is set and `volume_size` is omitted then the volume will have the same size
   /// as the selected snapshot.
   final int? volumeSize;
 
-  /// Type of EBS volume to create. Can be <span pulumi-lang-nodejs="`standard`" pulumi-lang-dotnet="`Standard`" pulumi-lang-go="`standard`" pulumi-lang-python="`standard`" pulumi-lang-yaml="`standard`" pulumi-lang-java="`standard`">`standard`</span>, <span pulumi-lang-nodejs="`gp2`" pulumi-lang-dotnet="`Gp2`" pulumi-lang-go="`gp2`" pulumi-lang-python="`gp2`" pulumi-lang-yaml="`gp2`" pulumi-lang-java="`gp2`">`gp2`</span>, <span pulumi-lang-nodejs="`gp3`" pulumi-lang-dotnet="`Gp3`" pulumi-lang-go="`gp3`" pulumi-lang-python="`gp3`" pulumi-lang-yaml="`gp3`" pulumi-lang-java="`gp3`">`gp3`</span>, <span pulumi-lang-nodejs="`io1`" pulumi-lang-dotnet="`Io1`" pulumi-lang-go="`io1`" pulumi-lang-python="`io1`" pulumi-lang-yaml="`io1`" pulumi-lang-java="`io1`">`io1`</span>, <span pulumi-lang-nodejs="`io2`" pulumi-lang-dotnet="`Io2`" pulumi-lang-go="`io2`" pulumi-lang-python="`io2`" pulumi-lang-yaml="`io2`" pulumi-lang-java="`io2`">`io2`</span>, <span pulumi-lang-nodejs="`sc1`" pulumi-lang-dotnet="`Sc1`" pulumi-lang-go="`sc1`" pulumi-lang-python="`sc1`" pulumi-lang-yaml="`sc1`" pulumi-lang-java="`sc1`">`sc1`</span> or <span pulumi-lang-nodejs="`st1`" pulumi-lang-dotnet="`St1`" pulumi-lang-go="`st1`" pulumi-lang-python="`st1`" pulumi-lang-yaml="`st1`" pulumi-lang-java="`st1`">`st1`</span> (Default: <span pulumi-lang-nodejs="`standard`" pulumi-lang-dotnet="`Standard`" pulumi-lang-go="`standard`" pulumi-lang-python="`standard`" pulumi-lang-yaml="`standard`" pulumi-lang-java="`standard`">`standard`</span>).
+  /// Type of EBS volume to create. Can be `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1` or `st1` (Default: `standard`).
   final String? volumeType;
 
   AmiEbsBlockDevice({

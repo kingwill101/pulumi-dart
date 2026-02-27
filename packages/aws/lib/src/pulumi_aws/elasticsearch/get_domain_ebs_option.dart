@@ -1,0 +1,3 @@
+library module_elasticsearch_get_domain_ebs_option;
+
+export 'get_domain_ebs_option/get_domain_ebs_option.dart';

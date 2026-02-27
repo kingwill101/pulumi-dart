@@ -1,0 +1,3 @@
+library module_cognito_managed_user_pool_client_token_validity_units;
+
+export 'managed_user_pool_client_token_validity_units/managed_user_pool_client_token_validity_units.dart';

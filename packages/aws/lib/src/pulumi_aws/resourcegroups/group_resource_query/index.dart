@@ -1,3 +1,0 @@
-library module_resourcegroups_group_resource_query;
-
-export 'group_resource_query.dart';

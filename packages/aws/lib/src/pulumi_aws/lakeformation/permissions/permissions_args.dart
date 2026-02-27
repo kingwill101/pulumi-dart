@@ -14,7 +14,7 @@ class PermissionsArgs {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
   final Input<String>? catalogId;
 
-  /// Whether the permissions are to be granted for the Data Catalog. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether the permissions are to be granted for the Data Catalog. Defaults to `false`.
   final Input<bool>? catalogResource;
 
   /// Configuration block for a data cells filter resource. Detailed below.
@@ -35,12 +35,12 @@ class PermissionsArgs {
   /// List of permissions granted to the principal. Valid values may include `ALL`, `ALTER`, `ASSOCIATE`, `CREATE_DATABASE`, `CREATE_TABLE`, `DATA_LOCATION_ACCESS`, `DELETE`, `DESCRIBE`, `DROP`, `INSERT`, and `SELECT`. For details on each permission, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   final Input<List<String>> permissions;
 
-  /// Subset of <span pulumi-lang-nodejs="`permissions`" pulumi-lang-dotnet="`Permissions`" pulumi-lang-go="`permissions`" pulumi-lang-python="`permissions`" pulumi-lang-yaml="`permissions`" pulumi-lang-java="`permissions`">`permissions`</span> which the principal can pass.
+  /// Subset of `permissions` which the principal can pass.
   final Input<List<String>>? permissionsWithGrantOptions;
 
   /// Principal to be granted the permissions on the resource. Supported principals include `IAM_ALLOWED_PRINCIPALS` (see Default Behavior and `IAMAllowedPrincipals` above), IAM roles, users, groups, Federated Users, SAML groups and users, QuickSight groups, OUs, and organizations as well as AWS account IDs for cross-account permissions. For more information, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   ///
-  /// > **NOTE:** We highly recommend that the <span pulumi-lang-nodejs="`principal`" pulumi-lang-dotnet="`Principal`" pulumi-lang-go="`principal`" pulumi-lang-python="`principal`" pulumi-lang-yaml="`principal`" pulumi-lang-java="`principal`">`principal`</span> _NOT_ be a Lake Formation administrator (granted using <span pulumi-lang-nodejs="`aws.lakeformation.DataLakeSettings`" pulumi-lang-dotnet="`aws.lakeformation.DataLakeSettings`" pulumi-lang-go="`lakeformation.DataLakeSettings`" pulumi-lang-python="`lakeformation.DataLakeSettings`" pulumi-lang-yaml="`aws.lakeformation.DataLakeSettings`" pulumi-lang-java="`aws.lakeformation.DataLakeSettings`">`aws.lakeformation.DataLakeSettings`</span>). The entity (e.g., IAM role) running the deployment will most likely need to be a Lake Formation administrator. As such, the entity will have implicit permissions and does not need permissions granted through this resource.
+  /// > **NOTE:** We highly recommend that the `principal` _NOT_ be a Lake Formation administrator (granted using `aws.lakeformation.DataLakeSettings`). The entity (e.g., IAM role) running the deployment will most likely need to be a Lake Formation administrator. As such, the entity will have implicit permissions and does not need permissions granted through this resource.
   ///
   /// One of the following is required:
   final Input<String> principal;

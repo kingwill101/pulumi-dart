@@ -21,11 +21,11 @@ class FileCacheDataRepositoryAssociation {
   final String? fileSystemPath;
   final int? importedFileChunkSize;
 
-  /// (Optional) See the <span pulumi-lang-nodejs="`nfs`" pulumi-lang-dotnet="`Nfs`" pulumi-lang-go="`nfs`" pulumi-lang-python="`nfs`" pulumi-lang-yaml="`nfs`" pulumi-lang-java="`nfs`">`nfs`</span> configuration block.
+  /// (Optional) See the `nfs` configuration block.
   final List<FileCacheDataRepositoryAssociationNf>? nfs;
   final String? resourceArn;
 
-  /// A map of tags to assign to the file cache. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the file cache. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String>? tags;
 
   FileCacheDataRepositoryAssociation({

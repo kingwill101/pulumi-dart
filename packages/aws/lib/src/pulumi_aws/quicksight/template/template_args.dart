@@ -18,10 +18,10 @@ class TemplateArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The entity that you are using as a source when you create the template (analysis or template). Only one of <span pulumi-lang-nodejs="`definition`" pulumi-lang-dotnet="`Definition`" pulumi-lang-go="`definition`" pulumi-lang-python="`definition`" pulumi-lang-yaml="`definition`" pulumi-lang-java="`definition`">`definition`</span> or <span pulumi-lang-nodejs="`sourceEntity`" pulumi-lang-dotnet="`SourceEntity`" pulumi-lang-go="`sourceEntity`" pulumi-lang-python="`source_entity`" pulumi-lang-yaml="`sourceEntity`" pulumi-lang-java="`sourceEntity`">`source_entity`</span> should be configured. See source_entity.
+  /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `source_entity` should be configured. See source_entity.
   final Input<TemplateSourceEntity>? sourceEntity;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Identifier for the template.

@@ -1,3 +1,0 @@
-library module_connect_get_hours_of_operation_config_start_time;
-
-export 'get_hours_of_operation_config_start_time.dart';

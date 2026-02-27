@@ -7,12 +7,12 @@ class GetClusterCredentialsResult {
   final List<String>? dbGroups;
   final String? dbName;
 
-  /// Temporary password that authorizes the user name returned by <span pulumi-lang-nodejs="`dbUser`" pulumi-lang-dotnet="`DbUser`" pulumi-lang-go="`dbUser`" pulumi-lang-python="`db_user`" pulumi-lang-yaml="`dbUser`" pulumi-lang-java="`dbUser`">`db_user`</span> to log on to the database <span pulumi-lang-nodejs="`dbName`" pulumi-lang-dotnet="`DbName`" pulumi-lang-go="`dbName`" pulumi-lang-python="`db_name`" pulumi-lang-yaml="`dbName`" pulumi-lang-java="`dbName`">`db_name`</span>.
+  /// Temporary password that authorizes the user name returned by `db_user` to log on to the database `db_name`.
   final String dbPassword;
   final String dbUser;
   final int? durationSeconds;
 
-  /// Date and time the password in <span pulumi-lang-nodejs="`dbPassword`" pulumi-lang-dotnet="`DbPassword`" pulumi-lang-go="`dbPassword`" pulumi-lang-python="`db_password`" pulumi-lang-yaml="`dbPassword`" pulumi-lang-java="`dbPassword`">`db_password`</span> expires.
+  /// Date and time the password in `db_password` expires.
   final String expiration;
 
   /// The provider-assigned unique ID for this managed resource.

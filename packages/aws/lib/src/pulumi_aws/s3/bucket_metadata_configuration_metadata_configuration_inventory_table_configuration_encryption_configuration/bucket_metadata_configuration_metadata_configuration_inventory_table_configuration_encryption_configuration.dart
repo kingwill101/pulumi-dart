@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration {
-  /// KMS key ARN when <span pulumi-lang-nodejs="`sseAlgorithm`" pulumi-lang-dotnet="`SseAlgorithm`" pulumi-lang-go="`sseAlgorithm`" pulumi-lang-python="`sse_algorithm`" pulumi-lang-yaml="`sseAlgorithm`" pulumi-lang-java="`sseAlgorithm`">`sse_algorithm`</span> is `aws:kms`.
+  /// KMS key ARN when `sse_algorithm` is `aws:kms`.
   final String? kmsKeyArn;
 
   /// Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.

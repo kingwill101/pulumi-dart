@@ -1,3 +1,0 @@
-library module_devopsguru_event_sources_config_event_source;
-
-export 'event_sources_config_event_source.dart';

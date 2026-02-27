@@ -4,7 +4,7 @@ class ExpressGatewayServiceScalingTarget {
   /// Metric to use for auto-scaling. Valid values are `CPU` and `MEMORY`.
   final String autoScalingMetric;
 
-  /// Target value for the auto-scaling metric (as a percentage). Defaults to <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>.
+  /// Target value for the auto-scaling metric (as a percentage). Defaults to `60`.
   final int autoScalingTargetValue;
 
   /// Maximum number of tasks to run.

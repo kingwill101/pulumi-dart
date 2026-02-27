@@ -1,109 +1,11 @@
 import 'package:pulumi/pulumi.dart';
 import 'gateway_association_proposal_args.dart';
 
-/// Manages a Direct Connect Gateway Association Proposal, typically for enabling cross-account associations. For single account associations, see the <span pulumi-lang-nodejs="`aws.directconnect.GatewayAssociation`" pulumi-lang-dotnet="`aws.directconnect.GatewayAssociation`" pulumi-lang-go="`directconnect.GatewayAssociation`" pulumi-lang-python="`directconnect.GatewayAssociation`" pulumi-lang-yaml="`aws.directconnect.GatewayAssociation`" pulumi-lang-java="`aws.directconnect.GatewayAssociation`">`aws.directconnect.GatewayAssociation`</span> resource.
+/// Manages a Direct Connect Gateway Association Proposal, typically for enabling cross-account associations. For single account associations, see the `aws.directconnect.GatewayAssociation` resource.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.directconnect.GatewayAssociationProposal("example", {
-/// dxGatewayId: exampleAwsDxGateway.id,
-/// dxGatewayOwnerAccountId: exampleAwsDxGateway.ownerAccountId,
-/// associatedGatewayId: exampleAwsVpnGateway.id,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.directconnect.GatewayAssociationProposal("example",
-/// dx_gateway_id=example_aws_dx_gateway["id"],
-/// dx_gateway_owner_account_id=example_aws_dx_gateway["ownerAccountId"],
-/// associated_gateway_id=example_aws_vpn_gateway["id"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.DirectConnect.GatewayAssociationProposal("example", new()
-/// {
-/// DxGatewayId = exampleAwsDxGateway.Id,
-/// DxGatewayOwnerAccountId = exampleAwsDxGateway.OwnerAccountId,
-/// AssociatedGatewayId = exampleAwsVpnGateway.Id,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/directconnect"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := directconnect.NewGatewayAssociationProposal(ctx, "example", &directconnect.GatewayAssociationProposalArgs{
-/// DxGatewayId:             pulumi.Any(exampleAwsDxGateway.Id),
-/// DxGatewayOwnerAccountId: pulumi.Any(exampleAwsDxGateway.OwnerAccountId),
-/// AssociatedGatewayId:     pulumi.Any(exampleAwsVpnGateway.Id),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.directconnect.GatewayAssociationProposal;
-/// import com.pulumi.aws.directconnect.GatewayAssociationProposalArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new GatewayAssociationProposal("example", GatewayAssociationProposalArgs.builder()
-/// .dxGatewayId(exampleAwsDxGateway.id())
-/// .dxGatewayOwnerAccountId(exampleAwsDxGateway.ownerAccountId())
-/// .associatedGatewayId(exampleAwsVpnGateway.id())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:directconnect:GatewayAssociationProposal
-/// properties:
-/// dxGatewayId: ${exampleAwsDxGateway.id}
-/// dxGatewayOwnerAccountId: ${exampleAwsDxGateway.ownerAccountId}
-/// associatedGatewayId: ${exampleAwsVpnGateway.id}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -125,7 +27,7 @@ import 'gateway_association_proposal_args.dart';
 /// ```
 ///
 /// The latter case is useful when a previous proposal has been accepted and deleted by AWS.
-/// The <span pulumi-lang-nodejs="`aws.directconnect.GatewayAssociationProposal`" pulumi-lang-dotnet="`aws.directconnect.GatewayAssociationProposal`" pulumi-lang-go="`directconnect.GatewayAssociationProposal`" pulumi-lang-python="`directconnect.GatewayAssociationProposal`" pulumi-lang-yaml="`aws.directconnect.GatewayAssociationProposal`" pulumi-lang-java="`aws.directconnect.GatewayAssociationProposal`">`aws.directconnect.GatewayAssociationProposal`</span> resource will then represent a pseudo-proposal for the same Direct Connect Gateway and associated gateway. If no previous proposal is available, use a tool like [<span pulumi-lang-nodejs="`uuidgen`" pulumi-lang-dotnet="`Uuidgen`" pulumi-lang-go="`uuidgen`" pulumi-lang-python="`uuidgen`" pulumi-lang-yaml="`uuidgen`" pulumi-lang-java="`uuidgen`">`uuidgen`</span>](http://manpages.ubuntu.com/manpages/bionic/man1/uuidgen.1.html) to generate a new random pseudo-proposal ID.
+/// The `aws.directconnect.GatewayAssociationProposal` resource will then represent a pseudo-proposal for the same Direct Connect Gateway and associated gateway. If no previous proposal is available, use a tool like [`uuidgen`](http://manpages.ubuntu.com/manpages/bionic/man1/uuidgen.1.html) to generate a new random pseudo-proposal ID.
 class GatewayAssociationProposal extends CustomResource {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
   late final Output<List<String>> allowedPrefixes;

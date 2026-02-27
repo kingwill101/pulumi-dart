@@ -1,0 +1,3 @@
+library module_route53_get_records_resource_record_set_geoproximity_location_coordinates;
+
+export 'get_records_resource_record_set_geoproximity_location_coordinates/get_records_resource_record_set_geoproximity_location_coordinates.dart';

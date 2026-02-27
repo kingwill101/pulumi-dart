@@ -1,0 +1,3 @@
+library module_ec2_launch_template_instance_requirements_vcpu_count;
+
+export 'launch_template_instance_requirements_vcpu_count/launch_template_instance_requirements_vcpu_count.dart';

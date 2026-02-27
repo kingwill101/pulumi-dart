@@ -1,0 +1,3 @@
+library module_elastictranscoder_pipeline_thumbnail_config;
+
+export 'pipeline_thumbnail_config/pipeline_thumbnail_config.dart';

@@ -1,0 +1,3 @@
+library module_lambda_event_source_mapping_provisioned_poller_config;
+
+export 'event_source_mapping_provisioned_poller_config/event_source_mapping_provisioned_poller_config.dart';

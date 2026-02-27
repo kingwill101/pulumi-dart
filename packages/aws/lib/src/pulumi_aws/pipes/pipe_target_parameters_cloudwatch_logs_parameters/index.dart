@@ -1,3 +1,0 @@
-library module_pipes_pipe_target_parameters_cloudwatch_logs_parameters;
-
-export 'pipe_target_parameters_cloudwatch_logs_parameters.dart';

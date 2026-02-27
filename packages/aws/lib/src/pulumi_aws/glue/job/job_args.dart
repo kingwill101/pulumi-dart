@@ -38,7 +38,7 @@ class JobArgs {
   /// Specifies the day of the week and hour for the maintenance window for streaming jobs.
   final Input<String>? maintenanceWindow;
 
-  /// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when <span pulumi-lang-nodejs="`pythonshell`" pulumi-lang-dotnet="`Pythonshell`" pulumi-lang-go="`pythonshell`" pulumi-lang-python="`pythonshell`" pulumi-lang-yaml="`pythonshell`" pulumi-lang-java="`pythonshell`">`pythonshell`</span> is set, accept either `0.0625` or `1.0`. Use <span pulumi-lang-nodejs="`numberOfWorkers`" pulumi-lang-dotnet="`NumberOfWorkers`" pulumi-lang-go="`numberOfWorkers`" pulumi-lang-python="`number_of_workers`" pulumi-lang-yaml="`numberOfWorkers`" pulumi-lang-java="`numberOfWorkers`">`number_of_workers`</span> and <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span> arguments instead with <span pulumi-lang-nodejs="`glueVersion`" pulumi-lang-dotnet="`GlueVersion`" pulumi-lang-go="`glueVersion`" pulumi-lang-python="`glue_version`" pulumi-lang-yaml="`glueVersion`" pulumi-lang-java="`glueVersion`">`glue_version`</span> `2.0` and above.
+  /// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`. Use `number_of_workers` and `worker_type` arguments instead with `glue_version` `2.0` and above.
   final Input<double>? maxCapacity;
 
   /// The maximum number of times to retry this job if it fails.
@@ -68,10 +68,10 @@ class JobArgs {
   /// The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository. Defined below.
   final Input<JobSourceControlDetails>? sourceControlDetails;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// The job timeout in minutes. The default is 2880 minutes (48 hours) for <span pulumi-lang-nodejs="`glueetl`" pulumi-lang-dotnet="`Glueetl`" pulumi-lang-go="`glueetl`" pulumi-lang-python="`glueetl`" pulumi-lang-yaml="`glueetl`" pulumi-lang-java="`glueetl`">`glueetl`</span> and <span pulumi-lang-nodejs="`pythonshell`" pulumi-lang-dotnet="`Pythonshell`" pulumi-lang-go="`pythonshell`" pulumi-lang-python="`pythonshell`" pulumi-lang-yaml="`pythonshell`" pulumi-lang-java="`pythonshell`">`pythonshell`</span> jobs, and 0 (unlimited) for <span pulumi-lang-nodejs="`gluestreaming`" pulumi-lang-dotnet="`Gluestreaming`" pulumi-lang-go="`gluestreaming`" pulumi-lang-python="`gluestreaming`" pulumi-lang-yaml="`gluestreaming`" pulumi-lang-java="`gluestreaming`">`gluestreaming`</span> jobs. Leave this attribute argumnet unconfigured for <span pulumi-lang-nodejs="`glueray`" pulumi-lang-dotnet="`Glueray`" pulumi-lang-go="`glueray`" pulumi-lang-python="`glueray`" pulumi-lang-yaml="`glueray`" pulumi-lang-java="`glueray`">`glueray`</span> jobs.
+  /// The job timeout in minutes. The default is 2880 minutes (48 hours) for `glueetl` and `pythonshell` jobs, and 0 (unlimited) for `gluestreaming` jobs. Leave this attribute argumnet unconfigured for `glueray` jobs.
   final Input<int>? timeout;
 
   /// The type of predefined worker that is allocated when a job runs. Valid values: `Standard`, `G.1X`, `G.2X`, `G.025X`, `G.4X`, `G.8X`, `G.12X`, `G.16X`, `R.1X`, `R.2X`, `R.4X`, `R.8X`, `Z.2X` (Ray jobs). See the [AWS documentation](https://docs.aws.amazon.com/glue/latest/dg/worker-types.html) for details.

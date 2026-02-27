@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration {
-  /// Whether to return exact responses from Kendra. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to return exact responses from Kendra. Defaults to `false`.
   final bool? exactResponse;
 
   /// ARN of the Kendra index.

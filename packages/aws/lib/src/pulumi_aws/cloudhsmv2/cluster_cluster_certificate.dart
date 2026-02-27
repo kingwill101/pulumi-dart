@@ -1,0 +1,3 @@
+library module_cloudhsmv2_cluster_cluster_certificate;
+
+export 'cluster_cluster_certificate/cluster_cluster_certificate.dart';

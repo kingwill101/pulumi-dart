@@ -1,0 +1,3 @@
+library module_rekognition_stream_processor_output_kinesis_data_stream;
+
+export 'stream_processor_output_kinesis_data_stream/stream_processor_output_kinesis_data_stream.dart';

@@ -1,3 +1,0 @@
-library module_scheduler_schedule_target_ecs_parameters_network_configuration;
-
-export 'schedule_target_ecs_parameters_network_configuration.dart';

@@ -8,7 +8,7 @@ import '../table_metadata/table_metadata.dart';
 /// The set of arguments for Table.
 class TableArgs3 {
   /// A single table bucket encryption configuration object.
-  /// See <span pulumi-lang-nodejs="`encryptionConfiguration`" pulumi-lang-dotnet="`EncryptionConfiguration`" pulumi-lang-go="`encryptionConfiguration`" pulumi-lang-python="`encryption_configuration`" pulumi-lang-yaml="`encryptionConfiguration`" pulumi-lang-java="`encryptionConfiguration`">`encryption_configuration`</span> below.
+  /// See `encryption_configuration` below.
   final Input<TableEncryptionConfiguration>? encryptionConfiguration;
 
   /// Format of the table.
@@ -16,11 +16,11 @@ class TableArgs3 {
   final Input<String> format;
 
   /// A single table bucket maintenance configuration object.
-  /// See <span pulumi-lang-nodejs="`maintenanceConfiguration`" pulumi-lang-dotnet="`MaintenanceConfiguration`" pulumi-lang-go="`maintenanceConfiguration`" pulumi-lang-python="`maintenance_configuration`" pulumi-lang-yaml="`maintenanceConfiguration`" pulumi-lang-java="`maintenanceConfiguration`">`maintenance_configuration`</span> below.
+  /// See `maintenance_configuration` below.
   final Input<TableMaintenanceConfiguration>? maintenanceConfiguration;
 
   /// Contains details about the table metadata. This configuration specifies the metadata format and schema for the table. Currently only supports Iceberg format.
-  /// See <span pulumi-lang-nodejs="`metadata`" pulumi-lang-dotnet="`Metadata`" pulumi-lang-go="`metadata`" pulumi-lang-python="`metadata`" pulumi-lang-yaml="`metadata`" pulumi-lang-java="`metadata`">`metadata`</span> below.
+  /// See `metadata` below.
   final Input<TableMetadata>? metadata;
 
   /// Name of the table.
@@ -42,7 +42,7 @@ class TableArgs3 {
   /// The following arguments are optional:
   final Input<String> tableBucketArn;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   TableArgs3({

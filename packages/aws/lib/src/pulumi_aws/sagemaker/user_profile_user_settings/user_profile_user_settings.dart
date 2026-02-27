@@ -68,7 +68,7 @@ class UserProfileUserSettings {
   /// Whether the user can access Studio. If this value is set to `DISABLED`, the user cannot access Studio, even if that is the default experience for the domain. Valid values are `ENABLED` and `DISABLED`.
   final String? studioWebPortal;
 
-  /// The Studio Web Portal settings. See <span pulumi-lang-nodejs="`studioWebPortalSettings`" pulumi-lang-dotnet="`StudioWebPortalSettings`" pulumi-lang-go="`studioWebPortalSettings`" pulumi-lang-python="`studio_web_portal_settings`" pulumi-lang-yaml="`studioWebPortalSettings`" pulumi-lang-java="`studioWebPortalSettings`">`studio_web_portal_settings`</span> Block below.
+  /// The Studio Web Portal settings. See `studio_web_portal_settings` Block below.
   final UserProfileUserSettingsStudioWebPortalSettings? studioWebPortalSettings;
 
   /// The TensorBoard app settings. See TensorBoard App Settings below.

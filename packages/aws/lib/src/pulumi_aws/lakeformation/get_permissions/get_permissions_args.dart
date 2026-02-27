@@ -14,7 +14,7 @@ class GetPermissionsArgs {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
   final Input<String>? catalogId;
 
-  /// Whether the permissions are to be granted for the Data Catalog. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether the permissions are to be granted for the Data Catalog. Defaults to `false`.
   final Input<bool>? catalogResource;
 
   /// Configuration block for a data cells filter resource. Detailed below.

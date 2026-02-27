@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DomainNameDomainNameConfiguration {
-  /// ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source. Use the <span pulumi-lang-nodejs="`aws.acm.Certificate`" pulumi-lang-dotnet="`aws.acm.Certificate`" pulumi-lang-go="`acm.Certificate`" pulumi-lang-python="`acm.Certificate`" pulumi-lang-yaml="`aws.acm.Certificate`" pulumi-lang-java="`aws.acm.Certificate`">`aws.acm.Certificate`</span> resource to configure an ACM certificate.
+  /// ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source. Use the `aws.acm.Certificate` resource to configure an ACM certificate.
   final String certificateArn;
 
   /// Endpoint type. Valid values: `REGIONAL`.
@@ -10,10 +10,10 @@ class DomainNameDomainNameConfiguration {
   /// Amazon Route 53 Hosted Zone ID of the endpoint.
   final String? hostedZoneId;
 
-  /// The IP address types that can invoke the domain name. Valid values: <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span>, <span pulumi-lang-nodejs="`dualstack`" pulumi-lang-dotnet="`Dualstack`" pulumi-lang-go="`dualstack`" pulumi-lang-python="`dualstack`" pulumi-lang-yaml="`dualstack`" pulumi-lang-java="`dualstack`">`dualstack`</span>. Use <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span> to allow only IPv4 addresses to invoke your domain name, or use <span pulumi-lang-nodejs="`dualstack`" pulumi-lang-dotnet="`Dualstack`" pulumi-lang-go="`dualstack`" pulumi-lang-python="`dualstack`" pulumi-lang-yaml="`dualstack`" pulumi-lang-java="`dualstack`">`dualstack`</span> to allow both IPv4 and IPv6 addresses to invoke your domain name. Defaults to <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span>.
+  /// The IP address types that can invoke the domain name. Valid values: `ipv4`, `dualstack`. Use `ipv4` to allow only IPv4 addresses to invoke your domain name, or use `dualstack` to allow both IPv4 and IPv6 addresses to invoke your domain name. Defaults to `ipv4`.
   final String? ipAddressType;
 
-  /// ARN of the AWS-issued certificate used to validate custom domain ownership (when <span pulumi-lang-nodejs="`certificateArn`" pulumi-lang-dotnet="`CertificateArn`" pulumi-lang-go="`certificateArn`" pulumi-lang-python="`certificate_arn`" pulumi-lang-yaml="`certificateArn`" pulumi-lang-java="`certificateArn`">`certificate_arn`</span> is issued via an ACM Private CA or <span pulumi-lang-nodejs="`mutualTlsAuthentication`" pulumi-lang-dotnet="`MutualTlsAuthentication`" pulumi-lang-go="`mutualTlsAuthentication`" pulumi-lang-python="`mutual_tls_authentication`" pulumi-lang-yaml="`mutualTlsAuthentication`" pulumi-lang-java="`mutualTlsAuthentication`">`mutual_tls_authentication`</span> is configured with an ACM-imported certificate.)
+  /// ARN of the AWS-issued certificate used to validate custom domain ownership (when `certificate_arn` is issued via an ACM Private CA or `mutual_tls_authentication` is configured with an ACM-imported certificate.)
   final String? ownershipVerificationCertificateArn;
 
   /// Transport Layer Security (TLS) version of the [security policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html) for the domain name. Valid values: `TLS_1_2`.

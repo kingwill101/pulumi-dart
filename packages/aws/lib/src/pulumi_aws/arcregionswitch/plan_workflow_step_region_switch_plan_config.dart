@@ -1,0 +1,3 @@
+library module_arcregionswitch_plan_workflow_step_region_switch_plan_config;
+
+export 'plan_workflow_step_region_switch_plan_config/plan_workflow_step_region_switch_plan_config.dart';

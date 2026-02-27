@@ -1,3 +1,0 @@
-library module_appmesh_virtual_gateway_spec_listener_tls_validation_subject_alternative_names;
-
-export 'virtual_gateway_spec_listener_tls_validation_subject_alternative_names.dart';

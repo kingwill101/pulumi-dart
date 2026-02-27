@@ -1,3 +1,0 @@
-library module_ec2_launch_template_enclave_options;
-
-export 'launch_template_enclave_options.dart';

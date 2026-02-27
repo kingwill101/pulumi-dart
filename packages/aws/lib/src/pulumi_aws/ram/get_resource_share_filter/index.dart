@@ -1,3 +1,0 @@
-library module_ram_get_resource_share_filter;
-
-export 'get_resource_share_filter.dart';

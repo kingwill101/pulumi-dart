@@ -1,0 +1,3 @@
+library module_ec2_get_launch_template_placement;
+
+export 'get_launch_template_placement/get_launch_template_placement.dart';

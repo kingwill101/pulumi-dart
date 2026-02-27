@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_move_key;
-
-export 'log_transformer_transformer_config_move_key.dart';

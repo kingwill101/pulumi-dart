@@ -1,0 +1,3 @@
+library module_sagemaker_domain_default_user_settings;
+
+export 'domain_default_user_settings/domain_default_user_settings.dart';

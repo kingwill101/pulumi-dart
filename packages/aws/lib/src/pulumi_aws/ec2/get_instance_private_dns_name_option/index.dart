@@ -1,3 +1,0 @@
-library module_ec2_get_instance_private_dns_name_option;
-
-export 'get_instance_private_dns_name_option.dart';

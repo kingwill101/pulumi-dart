@@ -3,7 +3,7 @@
 import '../agentcore_gateway_interceptor_configuration_interceptor_lambda/agentcore_gateway_interceptor_configuration_interceptor_lambda.dart';
 
 class AgentcoreGatewayInterceptorConfigurationInterceptor {
-  /// Lambda function configuration for the interceptor. See <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span> below.
+  /// Lambda function configuration for the interceptor. See `lambda` below.
   final AgentcoreGatewayInterceptorConfigurationInterceptorLambda? lambda;
 
   AgentcoreGatewayInterceptorConfigurationInterceptor({

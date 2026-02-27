@@ -1,3 +1,0 @@
-library module_appmesh_get_route_spec_http2_route_action_weighted_target;
-
-export 'get_route_spec_http2_route_action_weighted_target.dart';

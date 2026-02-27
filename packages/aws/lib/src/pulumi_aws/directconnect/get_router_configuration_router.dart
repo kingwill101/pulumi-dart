@@ -1,0 +1,3 @@
+library module_directconnect_get_router_configuration_router;
+
+export 'get_router_configuration_router/get_router_configuration_router.dart';

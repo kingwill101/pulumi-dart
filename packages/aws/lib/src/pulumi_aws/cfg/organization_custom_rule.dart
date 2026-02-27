@@ -1,0 +1,4 @@
+library module_cfg_organization_custom_rule;
+
+export 'organization_custom_rule/organization_custom_rule.dart';
+export 'organization_custom_rule/organization_custom_rule_args.dart';

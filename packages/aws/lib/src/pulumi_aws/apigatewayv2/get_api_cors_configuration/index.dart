@@ -1,3 +1,0 @@
-library module_apigatewayv2_get_api_cors_configuration;
-
-export 'get_api_cors_configuration.dart';

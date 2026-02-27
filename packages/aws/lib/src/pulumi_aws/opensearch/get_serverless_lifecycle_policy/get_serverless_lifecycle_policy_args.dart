@@ -10,7 +10,7 @@ class GetServerlessLifecyclePolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Type of lifecycle policy. Must be <span pulumi-lang-nodejs="`retention`" pulumi-lang-dotnet="`Retention`" pulumi-lang-go="`retention`" pulumi-lang-python="`retention`" pulumi-lang-yaml="`retention`" pulumi-lang-java="`retention`">`retention`</span>.
+  /// Type of lifecycle policy. Must be `retention`.
   final Input<String> type;
 
   GetServerlessLifecyclePolicyArgs({

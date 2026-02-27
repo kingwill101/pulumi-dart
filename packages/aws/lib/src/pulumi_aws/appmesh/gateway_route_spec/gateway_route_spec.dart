@@ -14,7 +14,7 @@ class GatewayRouteSpec {
   /// Specification of an HTTP gateway route.
   final GatewayRouteSpecHttpRoute? httpRoute;
 
-  /// Priority for the gateway route, between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`1000`" pulumi-lang-dotnet="`1000`" pulumi-lang-go="`1000`" pulumi-lang-python="`1000`" pulumi-lang-yaml="`1000`" pulumi-lang-java="`1000`">`1000`</span>.
+  /// Priority for the gateway route, between `0` and `1000`.
   final int? priority;
 
   GatewayRouteSpec({

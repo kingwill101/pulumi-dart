@@ -1,0 +1,4 @@
+library module_elasticbeanstalk_configuration_template;
+
+export 'configuration_template/configuration_template.dart';
+export 'configuration_template/configuration_template_args.dart';

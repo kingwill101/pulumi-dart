@@ -8,7 +8,7 @@ class ConnectionFunctionArgs {
   /// Code for the connection function. Maximum length is 40960 characters.
   final Input<String> connectionFunctionCode;
 
-  /// Configuration information for the connection function. See <span pulumi-lang-nodejs="`connectionFunctionConfig`" pulumi-lang-dotnet="`ConnectionFunctionConfig`" pulumi-lang-go="`connectionFunctionConfig`" pulumi-lang-python="`connection_function_config`" pulumi-lang-yaml="`connectionFunctionConfig`" pulumi-lang-java="`connectionFunctionConfig`">`connection_function_config`</span> below.
+  /// Configuration information for the connection function. See `connection_function_config` below.
   final Input<ConnectionFunctionConnectionFunctionConfig>
       connectionFunctionConfig;
 
@@ -17,10 +17,10 @@ class ConnectionFunctionArgs {
   /// The following arguments are optional:
   final Input<String>? name;
 
-  /// Whether to publish the function to the `LIVE` stage after creation or update. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
   final Input<bool>? publish;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ConnectionFunctionArgs({

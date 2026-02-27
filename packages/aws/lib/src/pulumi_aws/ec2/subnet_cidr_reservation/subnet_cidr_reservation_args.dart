@@ -13,7 +13,7 @@ class SubnetCidrReservationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The type of reservation to create. Valid values: <span pulumi-lang-nodejs="`explicit`" pulumi-lang-dotnet="`Explicit`" pulumi-lang-go="`explicit`" pulumi-lang-python="`explicit`" pulumi-lang-yaml="`explicit`" pulumi-lang-java="`explicit`">`explicit`</span>, <span pulumi-lang-nodejs="`prefix`" pulumi-lang-dotnet="`Prefix`" pulumi-lang-go="`prefix`" pulumi-lang-python="`prefix`" pulumi-lang-yaml="`prefix`" pulumi-lang-java="`prefix`">`prefix`</span>
+  /// The type of reservation to create. Valid values: `explicit`, `prefix`
   final Input<String> reservationType;
 
   /// The ID of the subnet to create the reservation for.

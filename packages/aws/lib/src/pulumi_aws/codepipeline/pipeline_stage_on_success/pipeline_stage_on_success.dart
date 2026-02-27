@@ -3,7 +3,7 @@
 import '../pipeline_stage_on_success_condition/pipeline_stage_on_success_condition.dart';
 
 class PipelineStageOnSuccess {
-  /// The conditions that are success conditions. Defined as a <span pulumi-lang-nodejs="`condition`" pulumi-lang-dotnet="`Condition`" pulumi-lang-go="`condition`" pulumi-lang-python="`condition`" pulumi-lang-yaml="`condition`" pulumi-lang-java="`condition`">`condition`</span> block below.
+  /// The conditions that are success conditions. Defined as a `condition` block below.
   final PipelineStageOnSuccessCondition condition;
 
   PipelineStageOnSuccess({

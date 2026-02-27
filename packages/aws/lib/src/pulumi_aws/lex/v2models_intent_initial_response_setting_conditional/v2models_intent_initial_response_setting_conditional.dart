@@ -8,11 +8,11 @@ class V2modelsIntentInitialResponseSettingConditional {
   /// Whether a conditional branch is active. When active is false, the conditions are not evaluated.
   final bool active;
 
-  /// Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See <span pulumi-lang-nodejs="`conditionalBranch`" pulumi-lang-dotnet="`ConditionalBranch`" pulumi-lang-go="`conditionalBranch`" pulumi-lang-python="`conditional_branch`" pulumi-lang-yaml="`conditionalBranch`" pulumi-lang-java="`conditionalBranch`">`conditional_branch`</span>.
+  /// Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditional_branch`.
   final List<V2modelsIntentInitialResponseSettingConditionalConditionalBranch>?
       conditionalBranches;
 
-  /// Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See <span pulumi-lang-nodejs="`defaultBranch`" pulumi-lang-dotnet="`DefaultBranch`" pulumi-lang-go="`defaultBranch`" pulumi-lang-python="`default_branch`" pulumi-lang-yaml="`defaultBranch`" pulumi-lang-java="`defaultBranch`">`default_branch`</span>.
+  /// Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `default_branch`.
   final V2modelsIntentInitialResponseSettingConditionalDefaultBranch?
       defaultBranch;
 

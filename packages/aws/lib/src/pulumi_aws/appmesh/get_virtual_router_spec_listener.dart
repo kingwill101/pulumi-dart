@@ -1,0 +1,3 @@
+library module_appmesh_get_virtual_router_spec_listener;
+
+export 'get_virtual_router_spec_listener/get_virtual_router_spec_listener.dart';

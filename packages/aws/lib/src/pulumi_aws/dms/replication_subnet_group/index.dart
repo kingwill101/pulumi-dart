@@ -1,4 +1,0 @@
-library module_dms_replication_subnet_group;
-
-export 'replication_subnet_group.dart';
-export 'replication_subnet_group_args.dart';

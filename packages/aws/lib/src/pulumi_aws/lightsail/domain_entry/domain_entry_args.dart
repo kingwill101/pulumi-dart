@@ -7,7 +7,7 @@ class DomainEntryArgs {
   /// Name of the Lightsail domain in which to create the entry.
   final Input<String> domainName;
 
-  /// Whether the entry should be an alias. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether the entry should be an alias. Default: `false`.
   final Input<bool>? isAlias;
 
   /// Name of the entry record.

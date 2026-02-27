@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 import '../service_volume_configuration_managed_ebs_volume_tag_specification/service_volume_configuration_managed_ebs_volume_tag_specification.dart';
 
 class ServiceVolumeConfigurationManagedEbsVolume {
-  /// Whether the volume should be encrypted. Default value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the volume should be encrypted. Default value is `true`.
   final bool? encrypted;
 
-  /// Linux filesystem type for the volume. For volumes created from a snapshot, same filesystem type must be specified that the volume was using when the snapshot was created. Valid values are <span pulumi-lang-nodejs="`ext3`" pulumi-lang-dotnet="`Ext3`" pulumi-lang-go="`ext3`" pulumi-lang-python="`ext3`" pulumi-lang-yaml="`ext3`" pulumi-lang-java="`ext3`">`ext3`</span>, <span pulumi-lang-nodejs="`ext4`" pulumi-lang-dotnet="`Ext4`" pulumi-lang-go="`ext4`" pulumi-lang-python="`ext4`" pulumi-lang-yaml="`ext4`" pulumi-lang-java="`ext4`">`ext4`</span>, <span pulumi-lang-nodejs="`xfs`" pulumi-lang-dotnet="`Xfs`" pulumi-lang-go="`xfs`" pulumi-lang-python="`xfs`" pulumi-lang-yaml="`xfs`" pulumi-lang-java="`xfs`">`xfs`</span>. Default value is <span pulumi-lang-nodejs="`xfs`" pulumi-lang-dotnet="`Xfs`" pulumi-lang-go="`xfs`" pulumi-lang-python="`xfs`" pulumi-lang-yaml="`xfs`" pulumi-lang-java="`xfs`">`xfs`</span>.
+  /// Linux filesystem type for the volume. For volumes created from a snapshot, same filesystem type must be specified that the volume was using when the snapshot was created. Valid values are `ext3`, `ext4`, `xfs`. Default value is `xfs`.
   final String? fileSystemType;
 
   /// Number of I/O operations per second (IOPS).
@@ -19,10 +19,10 @@ class ServiceVolumeConfigurationManagedEbsVolume {
   /// Amazon ECS infrastructure IAM role that is used to manage your Amazon Web Services infrastructure. Recommended using the Amazon ECS-managed `AmazonECSInfrastructureRolePolicyForVolumes` IAM policy with this role.
   final String roleArn;
 
-  /// Size of the volume in GiB. You must specify either a <span pulumi-lang-nodejs="`sizeInGb`" pulumi-lang-dotnet="`SizeInGb`" pulumi-lang-go="`sizeInGb`" pulumi-lang-python="`size_in_gb`" pulumi-lang-yaml="`sizeInGb`" pulumi-lang-java="`sizeInGb`">`size_in_gb`</span> or a <span pulumi-lang-nodejs="`snapshotId`" pulumi-lang-dotnet="`SnapshotId`" pulumi-lang-go="`snapshotId`" pulumi-lang-python="`snapshot_id`" pulumi-lang-yaml="`snapshotId`" pulumi-lang-java="`snapshotId`">`snapshot_id`</span>. You can optionally specify a volume size greater than or equal to the snapshot size.
+  /// Size of the volume in GiB. You must specify either a `size_in_gb` or a `snapshot_id`. You can optionally specify a volume size greater than or equal to the snapshot size.
   final int? sizeInGb;
 
-  /// Snapshot that Amazon ECS uses to create the volume. You must specify either a <span pulumi-lang-nodejs="`sizeInGb`" pulumi-lang-dotnet="`SizeInGb`" pulumi-lang-go="`sizeInGb`" pulumi-lang-python="`size_in_gb`" pulumi-lang-yaml="`sizeInGb`" pulumi-lang-java="`sizeInGb`">`size_in_gb`</span> or a <span pulumi-lang-nodejs="`snapshotId`" pulumi-lang-dotnet="`SnapshotId`" pulumi-lang-go="`snapshotId`" pulumi-lang-python="`snapshot_id`" pulumi-lang-yaml="`snapshotId`" pulumi-lang-java="`snapshotId`">`snapshot_id`</span>.
+  /// Snapshot that Amazon ECS uses to create the volume. You must specify either a `size_in_gb` or a `snapshot_id`.
   final String? snapshotId;
 
   /// The tags to apply to the volume. See below.
@@ -32,7 +32,7 @@ class ServiceVolumeConfigurationManagedEbsVolume {
   /// Throughput to provision for a volume, in MiB/s, with a maximum of 1,000 MiB/s.
   final int? throughput;
 
-  /// Volume Initialization Rate in MiB/s. You must also specify a <span pulumi-lang-nodejs="`snapshotId`" pulumi-lang-dotnet="`SnapshotId`" pulumi-lang-go="`snapshotId`" pulumi-lang-python="`snapshot_id`" pulumi-lang-yaml="`snapshotId`" pulumi-lang-java="`snapshotId`">`snapshot_id`</span>.
+  /// Volume Initialization Rate in MiB/s. You must also specify a `snapshot_id`.
   final int? volumeInitializationRate;
 
   /// Volume type.

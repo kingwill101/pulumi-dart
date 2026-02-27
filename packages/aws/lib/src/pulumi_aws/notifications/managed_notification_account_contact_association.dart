@@ -1,0 +1,4 @@
+library module_notifications_managed_notification_account_contact_association;
+
+export 'managed_notification_account_contact_association/managed_notification_account_contact_association.dart';
+export 'managed_notification_account_contact_association/managed_notification_account_contact_association_args.dart';

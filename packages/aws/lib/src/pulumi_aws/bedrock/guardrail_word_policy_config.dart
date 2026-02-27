@@ -1,0 +1,3 @@
+library module_bedrock_guardrail_word_policy_config;
+
+export 'guardrail_word_policy_config/guardrail_word_policy_config.dart';

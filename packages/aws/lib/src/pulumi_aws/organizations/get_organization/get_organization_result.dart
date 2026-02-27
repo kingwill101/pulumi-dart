@@ -7,16 +7,16 @@ import '../get_organization_root/get_organization_root.dart';
 
 /// Result data returned by getOrganization.
 class GetOrganizationResult {
-  /// List of organization accounts including the master account. For a list excluding the master account, see the <span pulumi-lang-nodejs="`nonMasterAccounts`" pulumi-lang-dotnet="`NonMasterAccounts`" pulumi-lang-go="`nonMasterAccounts`" pulumi-lang-python="`non_master_accounts`" pulumi-lang-yaml="`nonMasterAccounts`" pulumi-lang-java="`nonMasterAccounts`">`non_master_accounts`</span> attribute. All elements have these attributes:
+  /// List of organization accounts including the master account. For a list excluding the master account, see the `non_master_accounts` attribute. All elements have these attributes:
   final List<GetOrganizationAccount> accounts;
 
   /// ARN of the root.
   final String arn;
 
-  /// A list of AWS service principal names that have integration enabled with your organization. Organization must have <span pulumi-lang-nodejs="`featureSet`" pulumi-lang-dotnet="`FeatureSet`" pulumi-lang-go="`featureSet`" pulumi-lang-python="`feature_set`" pulumi-lang-yaml="`featureSet`" pulumi-lang-java="`featureSet`">`feature_set`</span> set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
+  /// A list of AWS service principal names that have integration enabled with your organization. Organization must have `feature_set` set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
   final List<String> awsServiceAccessPrincipals;
 
-  /// A list of Organizations policy types that are enabled in the Organization Root. Organization must have <span pulumi-lang-nodejs="`featureSet`" pulumi-lang-dotnet="`FeatureSet`" pulumi-lang-go="`featureSet`" pulumi-lang-python="`feature_set`" pulumi-lang-yaml="`featureSet`" pulumi-lang-java="`featureSet`">`feature_set`</span> set to `ALL`. For additional information about valid policy types (e.g., `SERVICE_CONTROL_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
+  /// A list of Organizations policy types that are enabled in the Organization Root. Organization must have `feature_set` set to `ALL`. For additional information about valid policy types (e.g., `SERVICE_CONTROL_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
   final List<String> enabledPolicyTypes;
 
   /// FeatureSet of the organization.
@@ -37,7 +37,7 @@ class GetOrganizationResult {
   /// Name of the master account of an organization.
   final String masterAccountName;
 
-  /// List of organization accounts excluding the master account. For a list including the master account, see the <span pulumi-lang-nodejs="`accounts`" pulumi-lang-dotnet="`Accounts`" pulumi-lang-go="`accounts`" pulumi-lang-python="`accounts`" pulumi-lang-yaml="`accounts`" pulumi-lang-java="`accounts`">`accounts`</span> attribute. All elements have these attributes:
+  /// List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
   final List<GetOrganizationNonMasterAccount> nonMasterAccounts;
   final bool? returnOrganizationOnly;
 

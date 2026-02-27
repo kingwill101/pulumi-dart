@@ -13,10 +13,10 @@ class RequestValidatorArgs {
   /// ID of the associated Rest API
   final Input<String> restApi;
 
-  /// Boolean whether to validate request body. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean whether to validate request body. Defaults to `false`.
   final Input<bool>? validateRequestBody;
 
-  /// Boolean whether to validate request parameters. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean whether to validate request parameters. Defaults to `false`.
   final Input<bool>? validateRequestParameters;
 
   RequestValidatorArgs({

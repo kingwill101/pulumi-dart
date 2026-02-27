@@ -12,11 +12,11 @@ class AnalyticsApplicationInputs {
   /// The ARN of the Kinesis Analytics Application.
   final String? id;
 
-  /// The Kinesis Firehose configuration for the streaming source. Conflicts with <span pulumi-lang-nodejs="`kinesisStream`" pulumi-lang-dotnet="`KinesisStream`" pulumi-lang-go="`kinesisStream`" pulumi-lang-python="`kinesis_stream`" pulumi-lang-yaml="`kinesisStream`" pulumi-lang-java="`kinesisStream`">`kinesis_stream`</span>.
+  /// The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesis_stream`.
   /// See Kinesis Firehose below for more details.
   final AnalyticsApplicationInputsKinesisFirehose? kinesisFirehose;
 
-  /// The Kinesis Stream configuration for the streaming source. Conflicts with <span pulumi-lang-nodejs="`kinesisFirehose`" pulumi-lang-dotnet="`KinesisFirehose`" pulumi-lang-go="`kinesisFirehose`" pulumi-lang-python="`kinesis_firehose`" pulumi-lang-yaml="`kinesisFirehose`" pulumi-lang-java="`kinesisFirehose`">`kinesis_firehose`</span>.
+  /// The Kinesis Stream configuration for the streaming source. Conflicts with `kinesis_firehose`.
   /// See Kinesis Stream below for more details.
   final AnalyticsApplicationInputsKinesisStream? kinesisStream;
 

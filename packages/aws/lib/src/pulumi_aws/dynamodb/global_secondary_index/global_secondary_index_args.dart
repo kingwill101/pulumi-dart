@@ -15,23 +15,23 @@ class GlobalSecondaryIndexArgs {
 
   /// Set of nested attribute definitions.
   /// At least 1 element defining a `HASH` is required.
-  /// All elements with the <span pulumi-lang-nodejs="`keyType`" pulumi-lang-dotnet="`KeyType`" pulumi-lang-go="`keyType`" pulumi-lang-python="`key_type`" pulumi-lang-yaml="`keyType`" pulumi-lang-java="`keyType`">`key_type`</span> of `HASH` must precede elements with <span pulumi-lang-nodejs="`keyType`" pulumi-lang-dotnet="`KeyType`" pulumi-lang-go="`keyType`" pulumi-lang-python="`key_type`" pulumi-lang-yaml="`keyType`" pulumi-lang-java="`keyType`">`key_type`</span> of `RANGE`.
-  /// Changing any values in <span pulumi-lang-nodejs="`keySchema`" pulumi-lang-dotnet="`KeySchema`" pulumi-lang-go="`keySchema`" pulumi-lang-python="`key_schema`" pulumi-lang-yaml="`keySchema`" pulumi-lang-java="`keySchema`">`key_schema`</span> will re-create the resource.
-  /// See <span pulumi-lang-nodejs="`keySchema`" pulumi-lang-dotnet="`KeySchema`" pulumi-lang-go="`keySchema`" pulumi-lang-python="`key_schema`" pulumi-lang-yaml="`keySchema`" pulumi-lang-java="`keySchema`">`key_schema`</span> below.
+  /// All elements with the `key_type` of `HASH` must precede elements with `key_type` of `RANGE`.
+  /// Changing any values in `key_schema` will re-create the resource.
+  /// See `key_schema` below.
   final Input<List<GlobalSecondaryIndexKeySchema>>? keySchemas;
 
   /// Sets the maximum number of read and write units for the index.
-  /// See <span pulumi-lang-nodejs="`onDemandThroughput`" pulumi-lang-dotnet="`OnDemandThroughput`" pulumi-lang-go="`onDemandThroughput`" pulumi-lang-python="`on_demand_throughput`" pulumi-lang-yaml="`onDemandThroughput`" pulumi-lang-java="`onDemandThroughput`">`on_demand_throughput`</span> below.
-  /// Only valid if the table's <span pulumi-lang-nodejs="`billingMode`" pulumi-lang-dotnet="`BillingMode`" pulumi-lang-go="`billingMode`" pulumi-lang-python="`billing_mode`" pulumi-lang-yaml="`billingMode`" pulumi-lang-java="`billingMode`">`billing_mode`</span> is `PAY_PER_REQUEST`.
+  /// See `on_demand_throughput` below.
+  /// Only valid if the table's `billing_mode` is `PAY_PER_REQUEST`.
   final Input<GlobalSecondaryIndexOnDemandThroughput>? onDemandThroughput;
 
   /// Describes which attributes from the table are represented in the index.
-  /// See <span pulumi-lang-nodejs="`projection`" pulumi-lang-dotnet="`Projection`" pulumi-lang-go="`projection`" pulumi-lang-python="`projection`" pulumi-lang-yaml="`projection`" pulumi-lang-java="`projection`">`projection`</span> below.
+  /// See `projection` below.
   final Input<GlobalSecondaryIndexProjection>? projection;
 
   /// Provisioned throughput for the index.
-  /// See <span pulumi-lang-nodejs="`provisionedThroughput`" pulumi-lang-dotnet="`ProvisionedThroughput`" pulumi-lang-go="`provisionedThroughput`" pulumi-lang-python="`provisioned_throughput`" pulumi-lang-yaml="`provisionedThroughput`" pulumi-lang-java="`provisionedThroughput`">`provisioned_throughput`</span> below.
-  /// Required if the table's <span pulumi-lang-nodejs="`billingMode`" pulumi-lang-dotnet="`BillingMode`" pulumi-lang-go="`billingMode`" pulumi-lang-python="`billing_mode`" pulumi-lang-yaml="`billingMode`" pulumi-lang-java="`billingMode`">`billing_mode`</span> is `PROVISIONED`.
+  /// See `provisioned_throughput` below.
+  /// Required if the table's `billing_mode` is `PROVISIONED`.
   final Input<GlobalSecondaryIndexProvisionedThroughput>? provisionedThroughput;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -44,7 +44,7 @@ class GlobalSecondaryIndexArgs {
   final Input<GlobalSecondaryIndexTimeouts>? timeouts;
 
   /// Sets the number of warm read and write units for this index.
-  /// See <span pulumi-lang-nodejs="`warmThroughput`" pulumi-lang-dotnet="`WarmThroughput`" pulumi-lang-go="`warmThroughput`" pulumi-lang-python="`warm_throughput`" pulumi-lang-yaml="`warmThroughput`" pulumi-lang-java="`warmThroughput`">`warm_throughput`</span> below.
+  /// See `warm_throughput` below.
   final Input<GlobalSecondaryIndexWarmThroughput>? warmThroughput;
 
   GlobalSecondaryIndexArgs({

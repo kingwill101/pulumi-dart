@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class AllowedImagesSettingsImageCriterionDeprecationTimeCondition {
-  /// Maximum number of days since the AMI was deprecated. Setting this to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> means no deprecated images are allowed.
+  /// Maximum number of days since the AMI was deprecated. Setting this to `0` means no deprecated images are allowed.
   final int? maximumDaysSinceDeprecated;
 
   AllowedImagesSettingsImageCriterionDeprecationTimeCondition({

@@ -8,39 +8,39 @@ import '../listener_rule_action_jwt_validation/listener_rule_action_jwt_validati
 import '../listener_rule_action_redirect/listener_rule_action_redirect.dart';
 
 class ListenerRuleAction {
-  /// Information for creating an authenticate action using Cognito. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `authenticate-cognito`.
+  /// Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
   final ListenerRuleActionAuthenticateCognito? authenticateCognito;
 
-  /// Information for creating an authenticate action using OIDC. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `authenticate-oidc`.
+  /// Information for creating an authenticate action using OIDC. Required if `type` is `authenticate-oidc`.
   final ListenerRuleActionAuthenticateOidc? authenticateOidc;
 
-  /// Information for creating an action that returns a custom HTTP response. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `fixed-response`.
+  /// Information for creating an action that returns a custom HTTP response. Required if `type` is `fixed-response`.
   final ListenerRuleActionFixedResponse? fixedResponse;
 
   /// Configuration block for creating an action that distributes requests among one or more target groups.
-  /// Specify only if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span>.
-  /// Cannot be specified with <span pulumi-lang-nodejs="`targetGroupArn`" pulumi-lang-dotnet="`TargetGroupArn`" pulumi-lang-go="`targetGroupArn`" pulumi-lang-python="`target_group_arn`" pulumi-lang-yaml="`targetGroupArn`" pulumi-lang-java="`targetGroupArn`">`target_group_arn`</span>.
+  /// Specify only if `type` is `forward`.
+  /// Cannot be specified with `target_group_arn`.
   final ListenerRuleActionForward? forward;
 
-  /// Information for creating a JWT validation action. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `jwt-validation`.
+  /// Information for creating a JWT validation action. Required if `type` is `jwt-validation`.
   final ListenerRuleActionJwtValidation? jwtValidation;
 
   /// Order for the action.
   /// The action with the lowest value for order is performed first.
-  /// Valid values are between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`50000`" pulumi-lang-dotnet="`50000`" pulumi-lang-go="`50000`" pulumi-lang-python="`50000`" pulumi-lang-yaml="`50000`" pulumi-lang-java="`50000`">`50000`</span>.
+  /// Valid values are between `1` and `50000`.
   /// Defaults to the position in the list of actions.
   final int? order;
 
-  /// Information for creating a redirect action. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>.
+  /// Information for creating a redirect action. Required if `type` is `redirect`.
   final ListenerRuleActionRedirect? redirect;
 
   /// ARN of the Target Group to which to route traffic.
-  /// Specify only if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span> and you want to route to a single target group.
-  /// To route to one or more target groups, use a <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span> block instead.
-  /// Cannot be specified with <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span>.
+  /// Specify only if `type` is `forward` and you want to route to a single target group.
+  /// To route to one or more target groups, use a `forward` block instead.
+  /// Cannot be specified with `forward`.
   final String? targetGroupArn;
 
-  /// The type of routing action. Valid values are <span pulumi-lang-nodejs="`forward`" pulumi-lang-dotnet="`Forward`" pulumi-lang-go="`forward`" pulumi-lang-python="`forward`" pulumi-lang-yaml="`forward`" pulumi-lang-java="`forward`">`forward`</span>, <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>, `fixed-response`, `authenticate-cognito`, `authenticate-oidc` and `jwt-validation`.
+  /// The type of routing action. Valid values are `forward`, `redirect`, `fixed-response`, `authenticate-cognito`, `authenticate-oidc` and `jwt-validation`.
   final String type;
 
   ListenerRuleAction({

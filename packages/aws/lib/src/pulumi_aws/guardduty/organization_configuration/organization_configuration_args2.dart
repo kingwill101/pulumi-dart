@@ -9,9 +9,9 @@ class OrganizationConfigurationArgs2 {
   /// Valid values are `ALL`, `NEW`, `NONE`.
   final Input<String> autoEnableOrganizationMembers;
 
-  /// Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of <span pulumi-lang-nodejs="`aws.guardduty.OrganizationConfigurationFeature`" pulumi-lang-dotnet="`aws.guardduty.OrganizationConfigurationFeature`" pulumi-lang-go="`guardduty.OrganizationConfigurationFeature`" pulumi-lang-python="`guardduty.OrganizationConfigurationFeature`" pulumi-lang-yaml="`aws.guardduty.OrganizationConfigurationFeature`" pulumi-lang-java="`aws.guardduty.OrganizationConfigurationFeature`">`aws.guardduty.OrganizationConfigurationFeature`</span> resources.
+  /// Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
   ///
-  /// > **NOTE:** One of <span pulumi-lang-nodejs="`autoEnable`" pulumi-lang-dotnet="`AutoEnable`" pulumi-lang-go="`autoEnable`" pulumi-lang-python="`auto_enable`" pulumi-lang-yaml="`autoEnable`" pulumi-lang-java="`autoEnable`">`auto_enable`</span> or <span pulumi-lang-nodejs="`autoEnableOrganizationMembers`" pulumi-lang-dotnet="`AutoEnableOrganizationMembers`" pulumi-lang-go="`autoEnableOrganizationMembers`" pulumi-lang-python="`auto_enable_organization_members`" pulumi-lang-yaml="`autoEnableOrganizationMembers`" pulumi-lang-java="`autoEnableOrganizationMembers`">`auto_enable_organization_members`</span> must be specified.
+  /// > **NOTE:** One of `auto_enable` or `auto_enable_organization_members` must be specified.
   final Input<OrganizationConfigurationDatasources>? datasources;
 
   /// The detector ID of the GuardDuty account.

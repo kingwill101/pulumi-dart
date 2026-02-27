@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LaunchTemplateSecondaryInterface {
-  /// Whether the secondary interface is deleted when the instance is terminated. The only supported value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the secondary interface is deleted when the instance is terminated. The only supported value is `true`.
   final bool? deleteOnTermination;
 
   /// Device index for the secondary interface attachment.
   final int? deviceIndex;
 
-  /// Type of secondary interface. The only supported value is: <span pulumi-lang-nodejs="`secondary`" pulumi-lang-dotnet="`Secondary`" pulumi-lang-go="`secondary`" pulumi-lang-python="`secondary`" pulumi-lang-yaml="`secondary`" pulumi-lang-java="`secondary`">`secondary`</span>.
+  /// Type of secondary interface. The only supported value is: `secondary`.
   final String? interfaceType;
 
   /// Index of the network card.

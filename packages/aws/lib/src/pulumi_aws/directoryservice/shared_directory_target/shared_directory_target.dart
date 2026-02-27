@@ -4,7 +4,7 @@ class SharedDirectoryTarget {
   /// Identifier of the directory consumer account.
   final String id;
 
-  /// Type of identifier to be used in the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> field. Valid value is `ACCOUNT`. Default is `ACCOUNT`.
+  /// Type of identifier to be used in the `id` field. Valid value is `ACCOUNT`. Default is `ACCOUNT`.
   final String? type;
 
   SharedDirectoryTarget({

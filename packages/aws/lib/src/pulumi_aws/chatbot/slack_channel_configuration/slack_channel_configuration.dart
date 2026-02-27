@@ -8,131 +8,11 @@ import 'slack_channel_configuration_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.chatbot.SlackChannelConfiguration("test", {
-/// configurationName: "min-slaka-kanal",
-/// iamRoleArn: testAwsIamRole.arn,
-/// slackChannelId: "C07EZ1ABC23",
-/// slackTeamId: "T07EA123LEP",
-/// tags: {
-/// Name: "min-slaka-kanal",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// test = aws.chatbot.SlackChannelConfiguration("test",
-/// configuration_name="min-slaka-kanal",
-/// iam_role_arn=test_aws_iam_role["arn"],
-/// slack_channel_id="C07EZ1ABC23",
-/// slack_team_id="T07EA123LEP",
-/// tags={
-/// "Name": "min-slaka-kanal",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var test = new Aws.Chatbot.SlackChannelConfiguration("test", new()
-/// {
-/// ConfigurationName = "min-slaka-kanal",
-/// IamRoleArn = testAwsIamRole.Arn,
-/// SlackChannelId = "C07EZ1ABC23",
-/// SlackTeamId = "T07EA123LEP",
-/// Tags =
-/// {
-/// { "Name", "min-slaka-kanal" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/chatbot"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := chatbot.NewSlackChannelConfiguration(ctx, "test", &chatbot.SlackChannelConfigurationArgs{
-/// ConfigurationName: pulumi.String("min-slaka-kanal"),
-/// IamRoleArn:        pulumi.Any(testAwsIamRole.Arn),
-/// SlackChannelId:    pulumi.String("C07EZ1ABC23"),
-/// SlackTeamId:       pulumi.String("T07EA123LEP"),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("min-slaka-kanal"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.chatbot.SlackChannelConfiguration;
-/// import com.pulumi.aws.chatbot.SlackChannelConfigurationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var test = new SlackChannelConfiguration("test", SlackChannelConfigurationArgs.builder()
-/// .configurationName("min-slaka-kanal")
-/// .iamRoleArn(testAwsIamRole.arn())
-/// .slackChannelId("C07EZ1ABC23")
-/// .slackTeamId("T07EA123LEP")
-/// .tags(Map.of("Name", "min-slaka-kanal"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// test:
-/// type: aws:chatbot:SlackChannelConfiguration
-/// properties:
-/// configurationName: min-slaka-kanal
-/// iamRoleArn: ${testAwsIamRole.arn}
-/// slackChannelId: C07EZ1ABC23
-/// slackTeamId: T07EA123LEP
-/// tags:
-/// Name: min-slaka-kanal
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Chatbot Slack Channel Configuration using the <span pulumi-lang-nodejs="`chatConfigurationArn`" pulumi-lang-dotnet="`ChatConfigurationArn`" pulumi-lang-go="`chatConfigurationArn`" pulumi-lang-python="`chat_configuration_arn`" pulumi-lang-yaml="`chatConfigurationArn`" pulumi-lang-java="`chatConfigurationArn`">`chat_configuration_arn`</span>. For example:
+/// Using `pulumi import`, import Chatbot Slack Channel Configuration using the `chat_configuration_arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:chatbot/slackChannelConfiguration:SlackChannelConfiguration example arn:aws:chatbot::123456789012:chat-configuration/slack-channel/min-slaka-kanal
@@ -176,7 +56,7 @@ class SlackChannelConfiguration extends CustomResource {
   /// Map of tags assigned to the resource.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
   late final Output<SlackChannelConfigurationTimeouts?> timeouts;
 

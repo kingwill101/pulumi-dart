@@ -7,7 +7,7 @@ class MultitenantDistributionOriginCustomOriginConfig {
   /// HTTPS port the custom origin listens on.
   final int httpsPort;
 
-  /// Type of IP addresses used by your origins. Valid values are <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span> and <span pulumi-lang-nodejs="`dualstack`" pulumi-lang-dotnet="`Dualstack`" pulumi-lang-go="`dualstack`" pulumi-lang-python="`dualstack`" pulumi-lang-yaml="`dualstack`" pulumi-lang-java="`dualstack`">`dualstack`</span>.
+  /// Type of IP addresses used by your origins. Valid values are `ipv4` and `dualstack`.
   final String? ipAddressType;
 
   /// Custom keep-alive timeout, in seconds. Default: 5.

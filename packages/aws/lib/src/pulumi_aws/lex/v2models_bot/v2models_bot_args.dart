@@ -7,7 +7,7 @@ import '../v2models_bot_timeouts/v2models_bot_timeouts.dart';
 
 /// The set of arguments for V2modelsBot.
 class V2modelsBotArgs {
-  /// Provides information on additional privacy protections Amazon Lex should use with the bot's data. See <span pulumi-lang-nodejs="`dataPrivacy`" pulumi-lang-dotnet="`DataPrivacy`" pulumi-lang-go="`dataPrivacy`" pulumi-lang-python="`data_privacy`" pulumi-lang-yaml="`dataPrivacy`" pulumi-lang-java="`dataPrivacy`">`data_privacy`</span>
+  /// Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `data_privacy`
   final Input<List<V2modelsBotDataPrivacy>> dataPrivacies;
 
   /// Description of the bot. It appears in lists to help you identify a particular bot.
@@ -16,7 +16,7 @@ class V2modelsBotArgs {
   /// Time, in seconds, that Amazon Lex should keep information about a user's conversation with the bot. You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.
   final Input<int> idleSessionTtlInSeconds;
 
-  /// List of bot members in a network to be created. See <span pulumi-lang-nodejs="`botMembers`" pulumi-lang-dotnet="`BotMembers`" pulumi-lang-go="`botMembers`" pulumi-lang-python="`bot_members`" pulumi-lang-yaml="`botMembers`" pulumi-lang-java="`botMembers`">`bot_members`</span>.
+  /// List of bot members in a network to be created. See `bot_members`.
   final Input<List<V2modelsBotMember>>? members;
 
   /// Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.

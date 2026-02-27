@@ -3,7 +3,7 @@
 import '../rule_lock_configuration_unlock_delay/rule_lock_configuration_unlock_delay.dart';
 
 class RuleLockConfiguration {
-  /// Information about the retention rule unlock delay. See <span pulumi-lang-nodejs="`unlockDelay`" pulumi-lang-dotnet="`UnlockDelay`" pulumi-lang-go="`unlockDelay`" pulumi-lang-python="`unlock_delay`" pulumi-lang-yaml="`unlockDelay`" pulumi-lang-java="`unlockDelay`">`unlock_delay`</span> below.
+  /// Information about the retention rule unlock delay. See `unlock_delay` below.
   final RuleLockConfigurationUnlockDelay unlockDelay;
 
   RuleLockConfiguration({

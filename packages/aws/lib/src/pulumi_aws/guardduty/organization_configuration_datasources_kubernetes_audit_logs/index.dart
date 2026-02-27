@@ -1,3 +1,0 @@
-library module_guardduty_organization_configuration_datasources_kubernetes_audit_logs;
-
-export 'organization_configuration_datasources_kubernetes_audit_logs.dart';

@@ -7,7 +7,7 @@ import '../budget_action_subscriber/budget_action_subscriber.dart';
 
 /// The set of arguments for BudgetAction.
 class BudgetActionArgs {
-  /// The ID of the target account for budget. Will use current user's<span pulumi-lang-nodejs=" accountId " pulumi-lang-dotnet=" AccountId " pulumi-lang-go=" accountId " pulumi-lang-python=" account_id " pulumi-lang-yaml=" accountId " pulumi-lang-java=" accountId "> account_id </span>by default if omitted.
+  /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
   final Input<String>? accountId;
 
   /// The trigger threshold of the action. See Action Threshold.
@@ -34,7 +34,7 @@ class BudgetActionArgs {
   /// A list of subscribers. See Subscriber.
   final Input<List<BudgetActionSubscriber>> subscribers;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   BudgetActionArgs({

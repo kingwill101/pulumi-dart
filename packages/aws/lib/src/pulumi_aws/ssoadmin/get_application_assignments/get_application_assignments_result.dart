@@ -8,7 +8,7 @@ class GetApplicationAssignmentsResult {
   /// ARN of the application.
   final String applicationArn;
 
-  /// List of principals assigned to the application. See the <span pulumi-lang-nodejs="`applicationAssignments`" pulumi-lang-dotnet="`ApplicationAssignments`" pulumi-lang-go="`applicationAssignments`" pulumi-lang-python="`application_assignments`" pulumi-lang-yaml="`applicationAssignments`" pulumi-lang-java="`applicationAssignments`">`application_assignments`</span> attribute reference below.
+  /// List of principals assigned to the application. See the `application_assignments` attribute reference below.
   final List<GetApplicationAssignmentsApplicationAssignment>
       applicationAssignments;
   final String id;

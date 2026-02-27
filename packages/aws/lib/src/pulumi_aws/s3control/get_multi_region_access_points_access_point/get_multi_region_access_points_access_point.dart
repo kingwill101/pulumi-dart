@@ -14,11 +14,11 @@ class GetMultiRegionAccessPointsAccessPoint {
   /// Name of the multi-region access point.
   final String name;
 
-  /// Public access block configuration for this multi-region access point. See <span pulumi-lang-nodejs="`publicAccessBlock`" pulumi-lang-dotnet="`PublicAccessBlock`" pulumi-lang-go="`publicAccessBlock`" pulumi-lang-python="`public_access_block`" pulumi-lang-yaml="`publicAccessBlock`" pulumi-lang-java="`publicAccessBlock`">`public_access_block`</span> below.
+  /// Public access block configuration for this multi-region access point. See `public_access_block` below.
   final List<GetMultiRegionAccessPointsAccessPointPublicAccessBlock>
       publicAccessBlocks;
 
-  /// List of AWS Regions where the multi-region access point has data support. See <span pulumi-lang-nodejs="`regions`" pulumi-lang-dotnet="`Regions`" pulumi-lang-go="`regions`" pulumi-lang-python="`regions`" pulumi-lang-yaml="`regions`" pulumi-lang-java="`regions`">`regions`</span> below.
+  /// List of AWS Regions where the multi-region access point has data support. See `regions` below.
   final List<GetMultiRegionAccessPointsAccessPointRegion> regions;
 
   /// Current status of the multi-region access point.

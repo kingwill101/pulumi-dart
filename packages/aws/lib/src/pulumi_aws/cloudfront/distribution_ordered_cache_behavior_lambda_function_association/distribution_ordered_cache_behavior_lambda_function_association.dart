@@ -4,7 +4,7 @@ class DistributionOrderedCacheBehaviorLambdaFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   final String eventType;
 
-  /// When set to true it exposes the request body to the lambda function. Defaults to false. Valid values: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// When set to true it exposes the request body to the lambda function. Defaults to false. Valid values: `true`, `false`.
   final bool? includeBody;
 
   /// ARN of the Lambda function.

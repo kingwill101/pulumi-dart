@@ -5,7 +5,7 @@ class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
   final String name;
 
   /// Unique identifier assigned to a slot type.
-  /// This refers to either a built-in slot type or the unique <span pulumi-lang-nodejs="`slotTypeId`" pulumi-lang-dotnet="`SlotTypeId`" pulumi-lang-go="`slotTypeId`" pulumi-lang-python="`slot_type_id`" pulumi-lang-yaml="`slotTypeId`" pulumi-lang-java="`slotTypeId`">`slot_type_id`</span> of a custom slot type.
+  /// This refers to either a built-in slot type or the unique `slot_type_id` of a custom slot type.
   final String slotTypeId;
 
   V2modelsSlotTypeCompositeSlotTypeSettingSubSlot({

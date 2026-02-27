@@ -7,16 +7,16 @@ class GetSessionContextResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// IAM source role ARN if <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> corresponds to an STS assumed role. Otherwise, <span pulumi-lang-nodejs="`issuerArn`" pulumi-lang-dotnet="`IssuerArn`" pulumi-lang-go="`issuerArn`" pulumi-lang-python="`issuer_arn`" pulumi-lang-yaml="`issuerArn`" pulumi-lang-java="`issuerArn`">`issuer_arn`</span> is equal to <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>.
+  /// IAM source role ARN if `arn` corresponds to an STS assumed role. Otherwise, `issuer_arn` is equal to `arn`.
   final String issuerArn;
 
   /// Unique identifier of the IAM role that issues the STS assumed role.
   final String issuerId;
 
-  /// Name of the source role. Only available if <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> corresponds to an STS assumed role.
+  /// Name of the source role. Only available if `arn` corresponds to an STS assumed role.
   final String issuerName;
 
-  /// Name of the STS session. Only available if <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> corresponds to an STS assumed role.
+  /// Name of the STS session. Only available if `arn` corresponds to an STS assumed role.
   final String sessionName;
 
   GetSessionContextResult({

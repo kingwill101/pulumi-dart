@@ -5,13 +5,13 @@ import '../idc_application_service_integration_redshift/idc_application_service_
 import '../idc_application_service_integration_s3_access_grants/idc_application_service_integration_s3_access_grants.dart';
 
 class IdcApplicationServiceIntegration {
-  /// List of scopes set up for Lake Formation integration. Refer to the<span pulumi-lang-nodejs=" lakeFormation " pulumi-lang-dotnet=" LakeFormation " pulumi-lang-go=" lakeFormation " pulumi-lang-python=" lake_formation " pulumi-lang-yaml=" lakeFormation " pulumi-lang-java=" lakeFormation "> lake_formation </span>documentation for more details.
+  /// List of scopes set up for Lake Formation integration. Refer to the lake_formation documentation for more details.
   final IdcApplicationServiceIntegrationLakeFormation? lakeFormation;
 
   /// List of scopes set up for Redshift integration. Refer to the redshift documentation for more details.
   final IdcApplicationServiceIntegrationRedshift? redshift;
 
-  /// List of scopes set up for S3 Access Grants integration. Refer to the<span pulumi-lang-nodejs=" s3AccessGrants " pulumi-lang-dotnet=" S3AccessGrants " pulumi-lang-go=" s3AccessGrants " pulumi-lang-python=" s3_access_grants " pulumi-lang-yaml=" s3AccessGrants " pulumi-lang-java=" s3AccessGrants "> s3_access_grants </span>documentation for more details.
+  /// List of scopes set up for S3 Access Grants integration. Refer to the s3_access_grants documentation for more details.
   final IdcApplicationServiceIntegrationS3AccessGrants? s3AccessGrants;
 
   IdcApplicationServiceIntegration({

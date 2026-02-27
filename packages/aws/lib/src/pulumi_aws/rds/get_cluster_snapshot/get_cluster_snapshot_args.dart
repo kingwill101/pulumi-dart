@@ -11,12 +11,12 @@ class GetClusterSnapshotArgs {
   final Input<String>? dbClusterSnapshotIdentifier;
 
   /// Set this value to true to include manual DB Cluster Snapshots that are public and can be
-  /// copied or restored by any AWS account, otherwise set this value to false. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// copied or restored by any AWS account, otherwise set this value to false. The default is `false`.
   final Input<bool>? includePublic;
 
   /// Set this value to true to include shared manual DB Cluster Snapshots from other
   /// AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to false.
-  /// The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// The default is `false`.
   final Input<bool>? includeShared;
 
   /// If more than one result is returned, use the most recent Snapshot.
@@ -27,7 +27,7 @@ class GetClusterSnapshotArgs {
 
   /// Type of snapshots to be returned. If you don't specify a SnapshotType
   /// value, then both automated and manual DB cluster snapshots are returned. Shared and public DB Cluster Snapshots are not
-  /// included in the returned results by default. Possible values are, <span pulumi-lang-nodejs="`automated`" pulumi-lang-dotnet="`Automated`" pulumi-lang-go="`automated`" pulumi-lang-python="`automated`" pulumi-lang-yaml="`automated`" pulumi-lang-java="`automated`">`automated`</span>, <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`">`shared`</span>, <span pulumi-lang-nodejs="`public`" pulumi-lang-dotnet="`Public`" pulumi-lang-go="`public`" pulumi-lang-python="`public`" pulumi-lang-yaml="`public`" pulumi-lang-java="`public`">`public`</span> and <span pulumi-lang-nodejs="`awsbackup`" pulumi-lang-dotnet="`Awsbackup`" pulumi-lang-go="`awsbackup`" pulumi-lang-python="`awsbackup`" pulumi-lang-yaml="`awsbackup`" pulumi-lang-java="`awsbackup`">`awsbackup`</span>.
+  /// included in the returned results by default. Possible values are, `automated`, `manual`, `shared`, `public` and `awsbackup`.
   final Input<String>? snapshotType;
 
   /// Mapping of tags, each pair of which must exactly match

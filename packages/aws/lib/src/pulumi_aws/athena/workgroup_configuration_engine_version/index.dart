@@ -1,3 +1,0 @@
-library module_athena_workgroup_configuration_engine_version;
-
-export 'workgroup_configuration_engine_version.dart';

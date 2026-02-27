@@ -1,0 +1,3 @@
+library module_macie2_classification_job_schedule_frequency;
+
+export 'classification_job_schedule_frequency/classification_job_schedule_frequency.dart';

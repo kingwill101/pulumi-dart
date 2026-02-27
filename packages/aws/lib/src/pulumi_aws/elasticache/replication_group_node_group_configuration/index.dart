@@ -1,3 +1,0 @@
-library module_elasticache_replication_group_node_group_configuration;
-
-export 'replication_group_node_group_configuration.dart';

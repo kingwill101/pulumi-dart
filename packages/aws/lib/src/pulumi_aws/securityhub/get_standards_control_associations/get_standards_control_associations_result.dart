@@ -12,7 +12,7 @@ class GetStandardsControlAssociationsResult {
   final String securityControlId;
 
   /// A list that provides the status and other details for each security control that applies to each enabled standard.
-  /// See <span pulumi-lang-nodejs="`standardsControlAssociations`" pulumi-lang-dotnet="`StandardsControlAssociations`" pulumi-lang-go="`standardsControlAssociations`" pulumi-lang-python="`standards_control_associations`" pulumi-lang-yaml="`standardsControlAssociations`" pulumi-lang-java="`standardsControlAssociations`">`standards_control_associations`</span> below.
+  /// See `standards_control_associations` below.
   final List<GetStandardsControlAssociationsStandardsControlAssociation>
       standardsControlAssociations;
 

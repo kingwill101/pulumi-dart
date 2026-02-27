@@ -1,3 +1,0 @@
-library module_resiliencehub_resiliency_policy_policy_region;
-
-export 'resiliency_policy_policy_region.dart';

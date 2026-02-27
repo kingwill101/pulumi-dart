@@ -20,10 +20,10 @@ class StorageLensConfigurationStorageLensConfiguration {
   /// Whether the S3 Storage Lens configuration is enabled.
   final bool enabled;
 
-  /// What is excluded in this configuration. Conflicts with <span pulumi-lang-nodejs="`include`" pulumi-lang-dotnet="`Include`" pulumi-lang-go="`include`" pulumi-lang-python="`include`" pulumi-lang-yaml="`include`" pulumi-lang-java="`include`">`include`</span>. See Exclude below for more details.
+  /// What is excluded in this configuration. Conflicts with `include`. See Exclude below for more details.
   final StorageLensConfigurationStorageLensConfigurationExclude? exclude;
 
-  /// What is included in this configuration. Conflicts with <span pulumi-lang-nodejs="`exclude`" pulumi-lang-dotnet="`Exclude`" pulumi-lang-go="`exclude`" pulumi-lang-python="`exclude`" pulumi-lang-yaml="`exclude`" pulumi-lang-java="`exclude`">`exclude`</span>. See Include below for more details.
+  /// What is included in this configuration. Conflicts with `exclude`. See Include below for more details.
   final StorageLensConfigurationStorageLensConfigurationInclude? include;
 
   StorageLensConfigurationStorageLensConfiguration({

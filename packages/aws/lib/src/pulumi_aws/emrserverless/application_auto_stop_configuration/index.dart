@@ -1,3 +1,0 @@
-library module_emrserverless_application_auto_stop_configuration;
-
-export 'application_auto_stop_configuration.dart';

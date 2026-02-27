@@ -9,24 +9,24 @@ import '../get_traffic_policy_document_rule_region/get_traffic_policy_document_r
 import '../get_traffic_policy_document_rule_secondary/get_traffic_policy_document_rule_secondary.dart';
 
 class GetTrafficPolicyDocumentRule {
-  /// Configuration block for when you add a geoproximity rule, you configure Amazon Route 53 to route traffic to your resources based on the geographic location of your resources. Only valid for <span pulumi-lang-nodejs="`geoproximity`" pulumi-lang-dotnet="`Geoproximity`" pulumi-lang-go="`geoproximity`" pulumi-lang-python="`geoproximity`" pulumi-lang-yaml="`geoproximity`" pulumi-lang-java="`geoproximity`">`geoproximity`</span> type. See below
+  /// Configuration block for when you add a geoproximity rule, you configure Amazon Route 53 to route traffic to your resources based on the geographic location of your resources. Only valid for `geoproximity` type. See below
   final List<GetTrafficPolicyDocumentRuleGeoProximityLocation>?
       geoProximityLocations;
 
   /// ID of a rule you want to assign.
   final String id;
 
-  /// Configuration block for when you add a multivalue answer rule, you configure your traffic policy to route traffic approximately randomly to your healthy resources.  Only valid for <span pulumi-lang-nodejs="`multivalue`" pulumi-lang-dotnet="`Multivalue`" pulumi-lang-go="`multivalue`" pulumi-lang-python="`multivalue`" pulumi-lang-yaml="`multivalue`" pulumi-lang-java="`multivalue`">`multivalue`</span> type. See below
+  /// Configuration block for when you add a multivalue answer rule, you configure your traffic policy to route traffic approximately randomly to your healthy resources.  Only valid for `multivalue` type. See below
   final List<GetTrafficPolicyDocumentRuleItem>? items;
 
-  /// Configuration block for when you add a geolocation rule, you configure your traffic policy to route your traffic based on the geographic location of your users.  Only valid for <span pulumi-lang-nodejs="`geo`" pulumi-lang-dotnet="`Geo`" pulumi-lang-go="`geo`" pulumi-lang-python="`geo`" pulumi-lang-yaml="`geo`" pulumi-lang-java="`geo`">`geo`</span> type. See below
+  /// Configuration block for when you add a geolocation rule, you configure your traffic policy to route your traffic based on the geographic location of your users.  Only valid for `geo` type. See below
   final List<GetTrafficPolicyDocumentRuleLocation>? locations;
 
-  /// Configuration block for the settings for the rule or endpoint that you want to route traffic to whenever the corresponding resources are available. Only valid for <span pulumi-lang-nodejs="`failover`" pulumi-lang-dotnet="`Failover`" pulumi-lang-go="`failover`" pulumi-lang-python="`failover`" pulumi-lang-yaml="`failover`" pulumi-lang-java="`failover`">`failover`</span> type. See below
+  /// Configuration block for the settings for the rule or endpoint that you want to route traffic to whenever the corresponding resources are available. Only valid for `failover` type. See below
   final GetTrafficPolicyDocumentRulePrimary? primary;
   final List<GetTrafficPolicyDocumentRuleRegion>? regions;
 
-  /// Configuration block for the rule or endpoint that you want to route traffic to whenever the primary resources are not available. Only valid for <span pulumi-lang-nodejs="`failover`" pulumi-lang-dotnet="`Failover`" pulumi-lang-go="`failover`" pulumi-lang-python="`failover`" pulumi-lang-yaml="`failover`" pulumi-lang-java="`failover`">`failover`</span> type. See below
+  /// Configuration block for the rule or endpoint that you want to route traffic to whenever the primary resources are not available. Only valid for `failover` type. See below
   final GetTrafficPolicyDocumentRuleSecondary? secondary;
 
   /// Type of the rule.

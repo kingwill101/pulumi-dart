@@ -7,10 +7,10 @@ class GetDistributionTenantArgs {
   /// ARN (Amazon Resource Name) for the distribution tenant.
   final Input<String>? arn;
 
-  /// An associated domain of the distribution tenant. Exactly one of <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> or <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> must be specified.
+  /// An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
   final Input<String>? domain;
 
-  /// Identifier for the distribution tenant. For example: `EDFDVBD632BHDS5`. Exactly one of <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> or <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> must be specified.
+  /// Identifier for the distribution tenant. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `domain` must be specified.
   final Input<String>? id;
   final Input<String>? name;
 

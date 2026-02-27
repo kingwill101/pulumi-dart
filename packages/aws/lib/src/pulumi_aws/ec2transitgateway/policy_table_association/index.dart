@@ -1,4 +1,0 @@
-library module_ec2transitgateway_policy_table_association;
-
-export 'policy_table_association.dart';
-export 'policy_table_association_args.dart';

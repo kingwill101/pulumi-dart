@@ -1,3 +1,0 @@
-library module_wafregional_size_constraint_set_size_constraint_field_to_match;
-
-export 'size_constraint_set_size_constraint_field_to_match2.dart';

@@ -4,7 +4,7 @@ class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
   /// Determines whether to propagate the tags from the task definition to the Amazon EBS volume.
   final String? propagateTags;
 
-  /// The type of volume resource. Valid values, <span pulumi-lang-nodejs="`volume`" pulumi-lang-dotnet="`Volume`" pulumi-lang-go="`volume`" pulumi-lang-python="`volume`" pulumi-lang-yaml="`volume`" pulumi-lang-java="`volume`">`volume`</span>.
+  /// The type of volume resource. Valid values, `volume`.
   final String resourceType;
 
   /// The tags applied to this Amazon EBS volume. `AmazonECSCreated` and `AmazonECSManaged` are reserved tags that can't be used.

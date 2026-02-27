@@ -7,7 +7,7 @@ import '../model_primary_container_model_data_source/model_primary_container_mod
 import '../model_primary_container_multi_model_config/model_primary_container_multi_model_config.dart';
 
 class ModelPrimaryContainer {
-  /// Additional data sources that are available to the model in addition to those specified in <span pulumi-lang-nodejs="`modelDataSource`" pulumi-lang-dotnet="`ModelDataSource`" pulumi-lang-go="`modelDataSource`" pulumi-lang-python="`model_data_source`" pulumi-lang-yaml="`modelDataSource`" pulumi-lang-java="`modelDataSource`">`model_data_source`</span>. See Additional Model Data Source.
+  /// Additional data sources that are available to the model in addition to those specified in `model_data_source`. See Additional Model Data Source.
   final List<ModelPrimaryContainerAdditionalModelDataSource>?
       additionalModelDataSources;
 

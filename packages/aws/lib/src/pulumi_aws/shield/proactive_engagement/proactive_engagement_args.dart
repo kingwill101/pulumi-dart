@@ -5,7 +5,7 @@ import '../proactive_engagement_emergency_contact/proactive_engagement_emergency
 
 /// The set of arguments for ProactiveEngagement.
 class ProactiveEngagementArgs {
-  /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See <span pulumi-lang-nodejs="`emergencyContacts`" pulumi-lang-dotnet="`EmergencyContacts`" pulumi-lang-go="`emergencyContacts`" pulumi-lang-python="`emergency_contacts`" pulumi-lang-yaml="`emergencyContacts`" pulumi-lang-java="`emergencyContacts`">`emergency_contacts`</span>.
+  /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
   final Input<List<ProactiveEngagementEmergencyContact>> emergencyContacts;
 
   /// Boolean value indicating if Proactive Engagement should be enabled or not.

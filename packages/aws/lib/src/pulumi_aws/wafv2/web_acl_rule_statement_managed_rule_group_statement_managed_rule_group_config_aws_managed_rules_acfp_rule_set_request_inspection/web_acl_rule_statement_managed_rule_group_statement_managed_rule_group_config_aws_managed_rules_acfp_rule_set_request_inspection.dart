@@ -12,7 +12,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField?
       emailField;
 
-  /// Details about your login page password field. See <span pulumi-lang-nodejs="`passwordField`" pulumi-lang-dotnet="`PasswordField`" pulumi-lang-go="`passwordField`" pulumi-lang-python="`password_field`" pulumi-lang-yaml="`passwordField`" pulumi-lang-java="`passwordField`">`password_field`</span> for more details.
+  /// Details about your login page password field. See `password_field` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField?
       passwordField;
 
@@ -21,7 +21,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields?
       phoneNumberFields;
 
-  /// Details about your login page username field. See <span pulumi-lang-nodejs="`usernameField`" pulumi-lang-dotnet="`UsernameField`" pulumi-lang-go="`usernameField`" pulumi-lang-python="`username_field`" pulumi-lang-yaml="`usernameField`" pulumi-lang-java="`usernameField`">`username_field`</span> for more details.
+  /// Details about your login page username field. See `username_field` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField?
       usernameField;
 

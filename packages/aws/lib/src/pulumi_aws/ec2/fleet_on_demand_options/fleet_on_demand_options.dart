@@ -3,24 +3,24 @@
 import '../fleet_on_demand_options_capacity_reservation_options/fleet_on_demand_options_capacity_reservation_options.dart';
 
 class FleetOnDemandOptions {
-  /// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, <span pulumi-lang-nodejs="`prioritized`" pulumi-lang-dotnet="`Prioritized`" pulumi-lang-go="`prioritized`" pulumi-lang-python="`prioritized`" pulumi-lang-yaml="`prioritized`" pulumi-lang-java="`prioritized`">`prioritized`</span>. Default: `lowestPrice`.
+  /// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
   final String? allocationStrategy;
 
-  /// The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for fleets of type <span pulumi-lang-nodejs="`instant`" pulumi-lang-dotnet="`Instant`" pulumi-lang-go="`instant`" pulumi-lang-python="`instant`" pulumi-lang-yaml="`instant`" pulumi-lang-java="`instant`">`instant`</span>.
+  /// The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for fleets of type `instant`.
   final FleetOnDemandOptionsCapacityReservationOptions?
       capacityReservationOptions;
 
   /// The maximum amount per hour for On-Demand Instances that you're willing to pay.
   final String? maxTotalPrice;
 
-  /// The minimum target capacity for On-Demand Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type <span pulumi-lang-nodejs="`instant`" pulumi-lang-dotnet="`Instant`" pulumi-lang-go="`instant`" pulumi-lang-python="`instant`" pulumi-lang-yaml="`instant`" pulumi-lang-java="`instant`">`instant`</span>.
-  /// If you specify <span pulumi-lang-nodejs="`minTargetCapacity`" pulumi-lang-dotnet="`MinTargetCapacity`" pulumi-lang-go="`minTargetCapacity`" pulumi-lang-python="`min_target_capacity`" pulumi-lang-yaml="`minTargetCapacity`" pulumi-lang-java="`minTargetCapacity`">`min_target_capacity`</span>, at least one of the following must be specified: <span pulumi-lang-nodejs="`singleAvailabilityZone`" pulumi-lang-dotnet="`SingleAvailabilityZone`" pulumi-lang-go="`singleAvailabilityZone`" pulumi-lang-python="`single_availability_zone`" pulumi-lang-yaml="`singleAvailabilityZone`" pulumi-lang-java="`singleAvailabilityZone`">`single_availability_zone`</span> or <span pulumi-lang-nodejs="`singleInstanceType`" pulumi-lang-dotnet="`SingleInstanceType`" pulumi-lang-go="`singleInstanceType`" pulumi-lang-python="`single_instance_type`" pulumi-lang-yaml="`singleInstanceType`" pulumi-lang-java="`singleInstanceType`">`single_instance_type`</span>.
+  /// The minimum target capacity for On-Demand Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type `instant`.
+  /// If you specify `min_target_capacity`, at least one of the following must be specified: `single_availability_zone` or `single_instance_type`.
   final int? minTargetCapacity;
 
-  /// Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for fleets of type <span pulumi-lang-nodejs="`instant`" pulumi-lang-dotnet="`Instant`" pulumi-lang-go="`instant`" pulumi-lang-python="`instant`" pulumi-lang-yaml="`instant`" pulumi-lang-java="`instant`">`instant`</span>.
+  /// Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for fleets of type `instant`.
   final bool? singleAvailabilityZone;
 
-  /// Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported only for fleets of type <span pulumi-lang-nodejs="`instant`" pulumi-lang-dotnet="`Instant`" pulumi-lang-go="`instant`" pulumi-lang-python="`instant`" pulumi-lang-yaml="`instant`" pulumi-lang-java="`instant`">`instant`</span>.
+  /// Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported only for fleets of type `instant`.
   final bool? singleInstanceType;
 
   FleetOnDemandOptions({

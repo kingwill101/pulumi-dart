@@ -1,0 +1,3 @@
+library module_cloudfront_response_headers_policy_security_headers_config_referrer_policy;
+
+export 'response_headers_policy_security_headers_config_referrer_policy/response_headers_policy_security_headers_config_referrer_policy.dart';

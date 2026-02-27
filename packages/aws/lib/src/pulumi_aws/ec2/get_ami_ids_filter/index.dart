@@ -1,3 +1,0 @@
-library module_ec2_get_ami_ids_filter;
-
-export 'get_ami_ids_filter2.dart';

@@ -1,0 +1,3 @@
+library module_lex_v2models_slot_type_composite_slot_type_setting_sub_slot;
+
+export 'v2models_slot_type_composite_slot_type_setting_sub_slot/v2models_slot_type_composite_slot_type_setting_sub_slot.dart';

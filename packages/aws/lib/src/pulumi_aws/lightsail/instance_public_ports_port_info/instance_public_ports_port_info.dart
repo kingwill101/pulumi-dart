@@ -13,7 +13,7 @@ class InstancePublicPortsPortInfo {
   /// Set of IPv6 addresses or ranges of IPv6 addresses (in CIDR notation) that are allowed to connect to an instance through the ports, and the protocol.
   final List<String>? ipv6Cidrs;
 
-  /// IP protocol name. Valid values: <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span>, <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>, <span pulumi-lang-nodejs="`icmp`" pulumi-lang-dotnet="`Icmp`" pulumi-lang-go="`icmp`" pulumi-lang-python="`icmp`" pulumi-lang-yaml="`icmp`" pulumi-lang-java="`icmp`">`icmp`</span>, <span pulumi-lang-nodejs="`icmpv6`" pulumi-lang-dotnet="`Icmpv6`" pulumi-lang-go="`icmpv6`" pulumi-lang-python="`icmpv6`" pulumi-lang-yaml="`icmpv6`" pulumi-lang-java="`icmpv6`">`icmpv6`</span>. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
+  /// IP protocol name. Valid values: `tcp`, `all`, `udp`, `icmp`, `icmpv6`. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.
   final String protocol;
 
   /// Last port in a range of open ports on an instance. See [PortInfo](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_PortInfo.html) for details.

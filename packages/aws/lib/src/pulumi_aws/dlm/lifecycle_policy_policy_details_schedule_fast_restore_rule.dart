@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_schedule_fast_restore_rule;
+
+export 'lifecycle_policy_policy_details_schedule_fast_restore_rule/lifecycle_policy_policy_details_schedule_fast_restore_rule.dart';

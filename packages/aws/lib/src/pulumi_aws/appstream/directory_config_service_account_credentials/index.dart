@@ -1,3 +1,0 @@
-library module_appstream_directory_config_service_account_credentials;
-
-export 'directory_config_service_account_credentials.dart';

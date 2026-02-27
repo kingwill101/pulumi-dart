@@ -1,3 +1,0 @@
-library module_lex_v2models_slot_type_external_source_setting_grammar_slot_type_setting;
-
-export 'v2models_slot_type_external_source_setting_grammar_slot_type_setting.dart';

@@ -1,5 +1,0 @@
-library module_servicecatalog_get_provisioning_artifacts;
-
-export 'get_provisioning_artifacts.dart';
-export 'get_provisioning_artifacts_args.dart';
-export 'get_provisioning_artifacts_result.dart';

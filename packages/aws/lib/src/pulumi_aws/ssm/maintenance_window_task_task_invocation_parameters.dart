@@ -1,0 +1,3 @@
+library module_ssm_maintenance_window_task_task_invocation_parameters;
+
+export 'maintenance_window_task_task_invocation_parameters/maintenance_window_task_task_invocation_parameters.dart';

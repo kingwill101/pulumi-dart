@@ -4,10 +4,10 @@ import '../cluster_client_authentication_sasl/cluster_client_authentication_sasl
 import '../cluster_client_authentication_tls/cluster_client_authentication_tls.dart';
 
 class ClusterClientAuthentication {
-  /// Configuration block for specifying SASL client authentication. See<span pulumi-lang-nodejs=" clientAuthentication " pulumi-lang-dotnet=" ClientAuthentication " pulumi-lang-go=" clientAuthentication " pulumi-lang-python=" client_authentication " pulumi-lang-yaml=" clientAuthentication " pulumi-lang-java=" clientAuthentication "> client_authentication </span>sasl Argument Reference below.
+  /// Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
   final ClusterClientAuthenticationSasl? sasl;
 
-  /// Configuration block for specifying TLS client authentication. See<span pulumi-lang-nodejs=" clientAuthentication " pulumi-lang-dotnet=" ClientAuthentication " pulumi-lang-go=" clientAuthentication " pulumi-lang-python=" client_authentication " pulumi-lang-yaml=" clientAuthentication " pulumi-lang-java=" clientAuthentication "> client_authentication </span>tls Argument Reference below.
+  /// Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
   final ClusterClientAuthenticationTls? tls;
 
   /// Enables unauthenticated access.

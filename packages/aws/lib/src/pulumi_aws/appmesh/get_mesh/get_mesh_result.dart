@@ -23,7 +23,7 @@ class GetMeshResult {
   /// Resource owner's AWS account ID.
   final String resourceOwner;
 
-  /// Service mesh specification. See the <span pulumi-lang-nodejs="`aws.appmesh.Mesh`" pulumi-lang-dotnet="`aws.appmesh.Mesh`" pulumi-lang-go="`appmesh.Mesh`" pulumi-lang-python="`appmesh.Mesh`" pulumi-lang-yaml="`aws.appmesh.Mesh`" pulumi-lang-java="`aws.appmesh.Mesh`">`aws.appmesh.Mesh`</span> resource for details.
+  /// Service mesh specification. See the `aws.appmesh.Mesh` resource for details.
   final List<GetMeshSpec> specs;
 
   /// Map of tags.

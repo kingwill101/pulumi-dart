@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class EndpointOracleSettings {
-  /// Set this attribute to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source.
+  /// Set this attribute to `false` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source.
   final bool? accessAlternateDirectly;
 
   /// Set this attribute to set up table-level supplemental logging for the Oracle database. This attribute enables PRIMARY KEY supplemental logging on all tables selected for a migration task.
   final bool? addSupplementalLogging;
 
-  /// Set this attribute with <span pulumi-lang-nodejs="`archivedLogDestId`" pulumi-lang-dotnet="`ArchivedLogDestId`" pulumi-lang-go="`archivedLogDestId`" pulumi-lang-python="`archived_log_dest_id`" pulumi-lang-yaml="`archivedLogDestId`" pulumi-lang-java="`archivedLogDestId`">`archived_log_dest_id`</span> in a primary/standby setup. This attribute is useful in the case of a switchover.
+  /// Set this attribute with `archived_log_dest_id` in a primary/standby setup. This attribute is useful in the case of a switchover.
   final int? additionalArchivedLogDestId;
 
-  /// Set this attribute to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to enable replication of Oracle tables containing columns that are nested tables or defined types.
+  /// Set this attribute to `true` to enable replication of Oracle tables containing columns that are nested tables or defined types.
   final bool? allowSelectedNestedTables;
 
-  /// Specifies the ID of the destination for the archived redo logs. This value should be the same as a number in the<span pulumi-lang-nodejs=" destId " pulumi-lang-dotnet=" DestId " pulumi-lang-go=" destId " pulumi-lang-python=" dest_id " pulumi-lang-yaml=" destId " pulumi-lang-java=" destId "> dest_id </span>column of the v$archived_log view.
+  /// Specifies the ID of the destination for the archived redo logs. This value should be the same as a number in the dest_id column of the v$archived_log view.
   final int? archivedLogDestId;
 
-  /// When this field is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, AWS DMS only accesses the archived redo logs.
+  /// When this field is set to `true`, AWS DMS only accesses the archived redo logs.
   final bool? archivedLogsOnly;
 
   /// For an Oracle source endpoint, your Oracle Automatic Storage Management (ASM) password.
@@ -28,28 +28,28 @@ class EndpointOracleSettings {
   /// For an Oracle source endpoint, your ASM user name.
   final String? asmUser;
 
-  /// Authentication mechanism to access the Oracle source endpoint. Default is <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span>. Valid values are <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span> and <span pulumi-lang-nodejs="`kerberos`" pulumi-lang-dotnet="`Kerberos`" pulumi-lang-go="`kerberos`" pulumi-lang-python="`kerberos`" pulumi-lang-yaml="`kerberos`" pulumi-lang-java="`kerberos`">`kerberos`</span>.
+  /// Authentication mechanism to access the Oracle source endpoint. Default is `password`. Valid values are `password` and `kerberos`.
   final String? authenticationMethod;
 
-  /// Specifies whether the length of a character column is in bytes or in characters. Valid values are <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, <span pulumi-lang-nodejs="`char`" pulumi-lang-dotnet="`Char`" pulumi-lang-go="`char`" pulumi-lang-python="`char`" pulumi-lang-yaml="`char`" pulumi-lang-java="`char`">`char`</span>, and <span pulumi-lang-nodejs="`byte`" pulumi-lang-dotnet="`Byte`" pulumi-lang-go="`byte`" pulumi-lang-python="`byte`" pulumi-lang-yaml="`byte`" pulumi-lang-java="`byte`">`byte`</span>.
+  /// Specifies whether the length of a character column is in bytes or in characters. Valid values are `default`, `char`, and `byte`.
   final String? charLengthSemantics;
 
-  /// When <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, converts timestamps with the timezone datatype to their UTC value.
+  /// When `true`, converts timestamps with the timezone datatype to their UTC value.
   final bool? convertTimestampWithZoneToUtc;
 
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, this attribute helps to increase the commit rate on the Oracle target database by writing directly to tables and not writing a trail to database logs.
+  /// When set to `true`, this attribute helps to increase the commit rate on the Oracle target database by writing directly to tables and not writing a trail to database logs.
   final bool? directPathNoLog;
 
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, this attribute specifies a parallel load when<span pulumi-lang-nodejs=" useDirectPathFullLoad " pulumi-lang-dotnet=" UseDirectPathFullLoad " pulumi-lang-go=" useDirectPathFullLoad " pulumi-lang-python=" use_direct_path_full_load " pulumi-lang-yaml=" useDirectPathFullLoad " pulumi-lang-java=" useDirectPathFullLoad "> use_direct_path_full_load </span>is set to true.
+  /// When set to `true`, this attribute specifies a parallel load when use_direct_path_full_load is set to true.
   final bool? directPathParallelLoad;
 
   /// Set this attribute to enable homogenous tablespace replication and create existing tables or indexes under the same tablespace on the target.
   final bool? enableHomogenousTablespace;
 
-  /// Specifies the IDs of one more destinations for one or more archived redo logs. These IDs are the values of the<span pulumi-lang-nodejs=" destId " pulumi-lang-dotnet=" DestId " pulumi-lang-go=" destId " pulumi-lang-python=" dest_id " pulumi-lang-yaml=" destId " pulumi-lang-java=" destId "> dest_id </span>column in the v$archived_log view.
+  /// Specifies the IDs of one more destinations for one or more archived redo logs. These IDs are the values of the dest_id column in the v$archived_log view.
   final List<int>? extraArchivedLogDestIds;
 
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, this attribute causes a task to fail if the actual size of an LOB column is greater than the specified lob_max_size.
+  /// When set to `true`, this attribute causes a task to fail if the actual size of an LOB column is greater than the specified lob_max_size.
   final bool? failTaskOnLobTruncation;
 
   /// Specifies the number scale.
@@ -67,16 +67,16 @@ class EndpointOracleSettings {
   /// Set this attribute to change the number of read-ahead blocks that DMS configures to perform a change data capture (CDC) load using Oracle Automatic Storage Management (ASM). You can specify an integer value between 1000 (the default) and 200,000 (the maximum).
   final int? readAheadBlocks;
 
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, this attribute supports tablespace replication.
+  /// When set to `true`, this attribute supports tablespace replication.
   final bool? readTableSpaceName;
 
-  /// Set this attribute to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This setting tells DMS instance to replace the default Oracle root with the specified <span pulumi-lang-nodejs="`usePathPrefix`" pulumi-lang-dotnet="`UsePathPrefix`" pulumi-lang-go="`usePathPrefix`" pulumi-lang-python="`use_path_prefix`" pulumi-lang-yaml="`usePathPrefix`" pulumi-lang-java="`usePathPrefix`">`use_path_prefix`</span> setting to access the redo logs.
+  /// Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This setting tells DMS instance to replace the default Oracle root with the specified `use_path_prefix` setting to access the redo logs.
   final bool? replacePathPrefix;
 
   /// Specifies the number of seconds that the system waits before resending a query.
   final int? retryInterval;
 
-  /// Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN of the IAM role that specifies AWS DMS as the trusted entity and grants the required permissions to access the <span pulumi-lang-nodejs="`secretsManagerOracleAsmSecretId`" pulumi-lang-dotnet="`SecretsManagerOracleAsmSecretId`" pulumi-lang-go="`secretsManagerOracleAsmSecretId`" pulumi-lang-python="`secrets_manager_oracle_asm_secret_id`" pulumi-lang-yaml="`secretsManagerOracleAsmSecretId`" pulumi-lang-java="`secretsManagerOracleAsmSecretId`">`secrets_manager_oracle_asm_secret_id`</span>.
+  /// Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN of the IAM role that specifies AWS DMS as the trusted entity and grants the required permissions to access the `secrets_manager_oracle_asm_secret_id`.
   final String? secretsManagerOracleAsmAccessRoleArn;
 
   /// Required only if your Oracle endpoint uses Automatic Storage Management (ASM). The full ARN, partial ARN, or friendly name of the secret that contains the Oracle ASM connection details for the Oracle endpoint.
@@ -94,19 +94,19 @@ class EndpointOracleSettings {
   /// Use this attribute to specify a time in minutes for the delay in standby sync. If the source is an Oracle Active Data Guard standby database, use this attribute to specify the time lag between primary and standby databases.
   final int? standbyDelayTime;
 
-  /// Use this attribute to trim data on CHAR and NCHAR data types during migration. The default value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Use this attribute to trim data on CHAR and NCHAR data types during migration. The default value is `true`.
   final bool? trimSpaceInChar;
 
-  /// Set this attribute to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This tells the DMS instance to use any specified prefix replacement to access all online redo logs.
+  /// Set this attribute to `true` in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This tells the DMS instance to use any specified prefix replacement to access all online redo logs.
   final bool? useAlternateFolderForOnline;
 
-  /// Set this attribute to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to capture change data using the Binary Reader utility. Set <span pulumi-lang-nodejs="`useLogminerReader`" pulumi-lang-dotnet="`UseLogminerReader`" pulumi-lang-go="`useLogminerReader`" pulumi-lang-python="`use_logminer_reader`" pulumi-lang-yaml="`useLogminerReader`" pulumi-lang-java="`useLogminerReader`">`use_logminer_reader`</span> to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> to set this attribute to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Set this attribute to `true` to capture change data using the Binary Reader utility. Set `use_logminer_reader` to `false` to set this attribute to `true`.
   final bool? useBfile;
 
-  /// Set this attribute to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to have AWS DMS use a direct path full load. Specify this value to use the direct path protocol in the Oracle Call Interface (OCI).
+  /// Set this attribute to `true` to have AWS DMS use a direct path full load. Specify this value to use the direct path protocol in the Oracle Call Interface (OCI).
   final bool? useDirectPathFullLoad;
 
-  /// Set this attribute to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to capture change data using the Oracle LogMiner utility (the default). Set this attribute to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if you want to access the redo logs as a binary file.
+  /// Set this attribute to `true` to capture change data using the Oracle LogMiner utility (the default). Set this attribute to `false` if you want to access the redo logs as a binary file.
   final bool? useLogminerReader;
 
   /// Set this string attribute to the required value in order to use the Binary Reader to capture change data for an Amazon RDS for Oracle as the source. This value specifies the path prefix used to replace the default Oracle root to access the redo logs.

@@ -3,7 +3,7 @@
 import '../scraper_source_eks/scraper_source_eks.dart';
 
 class ScraperSource {
-  /// Configuration block for an EKS cluster source. See <span pulumi-lang-nodejs="`eks`" pulumi-lang-dotnet="`Eks`" pulumi-lang-go="`eks`" pulumi-lang-python="`eks`" pulumi-lang-yaml="`eks`" pulumi-lang-java="`eks`">`eks`</span>.
+  /// Configuration block for an EKS cluster source. See `eks`.
   final ScraperSourceEks eks;
 
   ScraperSource({

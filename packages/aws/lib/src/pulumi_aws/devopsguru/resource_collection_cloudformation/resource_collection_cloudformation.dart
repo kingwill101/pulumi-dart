@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ResourceCollectionCloudformation {
-  /// Array of the names of the AWS CloudFormation stacks. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `AWS_SERVICE` (all acccount resources) this array should be a single item containing a wildcard (`"*"`).
+  /// Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all acccount resources) this array should be a single item containing a wildcard (`"*"`).
   final List<String> stackNames;
 
   ResourceCollectionCloudformation({

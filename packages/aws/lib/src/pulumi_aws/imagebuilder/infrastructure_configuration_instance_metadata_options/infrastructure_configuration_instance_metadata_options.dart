@@ -4,7 +4,7 @@ class InfrastructureConfigurationInstanceMetadataOptions {
   /// The number of hops that an instance can traverse to reach its destonation.
   final int? httpPutResponseHopLimit;
 
-  /// Whether a signed token is required for instance metadata retrieval requests. Valid values: <span pulumi-lang-nodejs="`required`" pulumi-lang-dotnet="`Required`" pulumi-lang-go="`required`" pulumi-lang-python="`required`" pulumi-lang-yaml="`required`" pulumi-lang-java="`required`">`required`</span>, <span pulumi-lang-nodejs="`optional`" pulumi-lang-dotnet="`Optional`" pulumi-lang-go="`optional`" pulumi-lang-python="`optional`" pulumi-lang-yaml="`optional`" pulumi-lang-java="`optional`">`optional`</span>.
+  /// Whether a signed token is required for instance metadata retrieval requests. Valid values: `required`, `optional`.
   final String? httpTokens;
 
   InfrastructureConfigurationInstanceMetadataOptions({

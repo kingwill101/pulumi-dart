@@ -1,0 +1,3 @@
+library module_vpc_get_endpoint_associations_association_private_dns_entry;
+
+export 'get_endpoint_associations_association_private_dns_entry/get_endpoint_associations_association_private_dns_entry.dart';

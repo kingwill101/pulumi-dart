@@ -1,3 +1,0 @@
-library module_transcribe_language_model_input_data_config;
-
-export 'language_model_input_data_config.dart';

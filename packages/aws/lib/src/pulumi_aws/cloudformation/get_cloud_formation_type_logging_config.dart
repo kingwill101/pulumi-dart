@@ -1,0 +1,3 @@
+library module_cloudformation_get_cloud_formation_type_logging_config;
+
+export 'get_cloud_formation_type_logging_config/get_cloud_formation_type_logging_config.dart';

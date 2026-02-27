@@ -1,4 +1,0 @@
-library module_fsx_ontap_storage_virtual_machine;
-
-export 'ontap_storage_virtual_machine.dart';
-export 'ontap_storage_virtual_machine_args.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ClusterServerSideEncryption {
-  /// Whether to enable encryption at rest. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable encryption at rest. Defaults to `false`.
   final bool? enabled;
 
   ClusterServerSideEncryption({

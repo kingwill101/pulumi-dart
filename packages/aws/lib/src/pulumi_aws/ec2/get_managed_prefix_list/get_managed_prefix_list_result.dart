@@ -12,7 +12,7 @@ class GetManagedPrefixListResult {
   /// ARN of the selected prefix list.
   final String arn;
 
-  /// Set of entries in this prefix list. Each entry is an object with <span pulumi-lang-nodejs="`cidr`" pulumi-lang-dotnet="`Cidr`" pulumi-lang-go="`cidr`" pulumi-lang-python="`cidr`" pulumi-lang-yaml="`cidr`" pulumi-lang-java="`cidr`">`cidr`</span> and <span pulumi-lang-nodejs="`description`" pulumi-lang-dotnet="`Description`" pulumi-lang-go="`description`" pulumi-lang-python="`description`" pulumi-lang-yaml="`description`" pulumi-lang-java="`description`">`description`</span>.
+  /// Set of entries in this prefix list. Each entry is an object with `cidr` and `description`.
   final List<GetManagedPrefixListEntry> entries;
   final List<GetManagedPrefixListFilter>? filters;
 

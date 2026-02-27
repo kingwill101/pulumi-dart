@@ -8,103 +8,11 @@ import 'service_network_service_association_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.vpclattice.ServiceNetworkServiceAssociation("example", {
-/// serviceIdentifier: exampleAwsVpclatticeService.id,
-/// serviceNetworkIdentifier: exampleAwsVpclatticeServiceNetwork.id,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.vpclattice.ServiceNetworkServiceAssociation("example",
-/// service_identifier=example_aws_vpclattice_service["id"],
-/// service_network_identifier=example_aws_vpclattice_service_network["id"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.VpcLattice.ServiceNetworkServiceAssociation("example", new()
-/// {
-/// ServiceIdentifier = exampleAwsVpclatticeService.Id,
-/// ServiceNetworkIdentifier = exampleAwsVpclatticeServiceNetwork.Id,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpclattice"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := vpclattice.NewServiceNetworkServiceAssociation(ctx, "example", &vpclattice.ServiceNetworkServiceAssociationArgs{
-/// ServiceIdentifier:        pulumi.Any(exampleAwsVpclatticeService.Id),
-/// ServiceNetworkIdentifier: pulumi.Any(exampleAwsVpclatticeServiceNetwork.Id),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.vpclattice.ServiceNetworkServiceAssociation;
-/// import com.pulumi.aws.vpclattice.ServiceNetworkServiceAssociationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new ServiceNetworkServiceAssociation("example", ServiceNetworkServiceAssociationArgs.builder()
-/// .serviceIdentifier(exampleAwsVpclatticeService.id())
-/// .serviceNetworkIdentifier(exampleAwsVpclatticeServiceNetwork.id())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:vpclattice:ServiceNetworkServiceAssociation
-/// properties:
-/// serviceIdentifier: ${exampleAwsVpclatticeService.id}
-/// serviceNetworkIdentifier: ${exampleAwsVpclatticeServiceNetwork.id}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC Lattice Service Network Service Association using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import VPC Lattice Service Network Service Association using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpclattice/serviceNetworkServiceAssociation:ServiceNetworkServiceAssociation example snsa-05e2474658a88f6ba
@@ -134,10 +42,10 @@ class ServiceNetworkServiceAssociation extends CustomResource {
   /// The operations status. Valid Values are CREATE_IN_PROGRESS | ACTIVE | DELETE_IN_PROGRESS | CREATE_FAILED | DELETE_FAILED
   late final Output<String> status;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   ServiceNetworkServiceAssociation(

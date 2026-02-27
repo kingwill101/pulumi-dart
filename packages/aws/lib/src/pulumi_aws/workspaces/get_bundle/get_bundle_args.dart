@@ -7,10 +7,10 @@ class GetBundleArgs {
   /// ID of the bundle.
   final Input<String>? bundleId;
 
-  /// Name of the bundle. You cannot combine this parameter with <span pulumi-lang-nodejs="`bundleId`" pulumi-lang-dotnet="`BundleId`" pulumi-lang-go="`bundleId`" pulumi-lang-python="`bundle_id`" pulumi-lang-yaml="`bundleId`" pulumi-lang-java="`bundleId`">`bundle_id`</span>.
+  /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
   final Input<String>? name;
 
-  /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with <span pulumi-lang-nodejs="`bundleId`" pulumi-lang-dotnet="`BundleId`" pulumi-lang-go="`bundleId`" pulumi-lang-python="`bundle_id`" pulumi-lang-yaml="`bundleId`" pulumi-lang-java="`bundleId`">`bundle_id`</span>.
+  /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   final Input<String>? owner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

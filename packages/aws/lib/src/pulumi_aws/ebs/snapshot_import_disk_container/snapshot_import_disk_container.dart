@@ -9,10 +9,10 @@ class SnapshotImportDiskContainer {
   /// The format of the disk image being imported. One of `VHD` or `VMDK`.
   final String format;
 
-  /// The URL to the Amazon S3-based disk image being imported. It can either be a https URL (https://..) or an Amazon S3 URL (s3://..). One of <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`userBucket`" pulumi-lang-dotnet="`UserBucket`" pulumi-lang-go="`userBucket`" pulumi-lang-python="`user_bucket`" pulumi-lang-yaml="`userBucket`" pulumi-lang-java="`userBucket`">`user_bucket`</span> must be set.
+  /// The URL to the Amazon S3-based disk image being imported. It can either be a https URL (https://..) or an Amazon S3 URL (s3://..). One of `url` or `user_bucket` must be set.
   final String? url;
 
-  /// The Amazon S3 bucket for the disk image. One of <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span> or <span pulumi-lang-nodejs="`userBucket`" pulumi-lang-dotnet="`UserBucket`" pulumi-lang-go="`userBucket`" pulumi-lang-python="`user_bucket`" pulumi-lang-yaml="`userBucket`" pulumi-lang-java="`userBucket`">`user_bucket`</span> must be set. Detailed below.
+  /// The Amazon S3 bucket for the disk image. One of `url` or `user_bucket` must be set. Detailed below.
   final SnapshotImportDiskContainerUserBucket? userBucket;
 
   SnapshotImportDiskContainer({

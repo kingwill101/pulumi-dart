@@ -1,0 +1,3 @@
+library module_apigatewayv2_stage_default_route_settings;
+
+export 'stage_default_route_settings/stage_default_route_settings.dart';

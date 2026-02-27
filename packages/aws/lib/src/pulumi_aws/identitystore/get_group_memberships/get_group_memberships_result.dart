@@ -8,7 +8,7 @@ class GetGroupMembershipsResult {
   /// Group identifier.
   final String groupId;
 
-  /// A list of group membership objects. See <span pulumi-lang-nodejs="`groupMemberships`" pulumi-lang-dotnet="`GroupMemberships`" pulumi-lang-go="`groupMemberships`" pulumi-lang-python="`group_memberships`" pulumi-lang-yaml="`groupMemberships`" pulumi-lang-java="`groupMemberships`">`group_memberships`</span> below.
+  /// A list of group membership objects. See `group_memberships` below.
   final List<GetGroupMembershipsGroupMembership> groupMemberships;
 
   /// The provider-assigned unique ID for this managed resource.

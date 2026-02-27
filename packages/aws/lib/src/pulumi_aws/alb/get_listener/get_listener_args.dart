@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getListener.
 class GetListenerArgs {
-  /// ARN of the listener. Required if <span pulumi-lang-nodejs="`loadBalancerArn`" pulumi-lang-dotnet="`LoadBalancerArn`" pulumi-lang-go="`loadBalancerArn`" pulumi-lang-python="`load_balancer_arn`" pulumi-lang-yaml="`loadBalancerArn`" pulumi-lang-java="`loadBalancerArn`">`load_balancer_arn`</span> and <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> is not set.
+  /// ARN of the listener. Required if `load_balancer_arn` and `port` is not set.
   final Input<String>? arn;
 
-  /// ARN of the load balancer. Required if <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> is not set.
+  /// ARN of the load balancer. Required if `arn` is not set.
   final Input<String>? loadBalancerArn;
 
-  /// Port of the listener. Required if <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> is not set.
+  /// Port of the listener. Required if `arn` is not set.
   final Input<int>? port;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

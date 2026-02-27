@@ -1,0 +1,3 @@
+library module_s3_object_copy_override_provider_default_tags;
+
+export 'object_copy_override_provider_default_tags/object_copy_override_provider_default_tags.dart';

@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_updated_at;
-
-export 'filter_filter_criteria_updated_at.dart';

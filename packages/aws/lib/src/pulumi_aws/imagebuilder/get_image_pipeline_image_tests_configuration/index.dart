@@ -1,3 +1,0 @@
-library module_imagebuilder_get_image_pipeline_image_tests_configuration;
-
-export 'get_image_pipeline_image_tests_configuration.dart';

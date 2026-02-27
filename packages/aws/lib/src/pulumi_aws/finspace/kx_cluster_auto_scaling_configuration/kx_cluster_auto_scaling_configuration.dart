@@ -7,10 +7,10 @@ class KxClusterAutoScalingConfiguration {
   /// Highest number of nodes to scale. Cannot be greater than 5
   final int maxNodeCount;
 
-  /// Desired value of chosen <span pulumi-lang-nodejs="`autoScalingMetric`" pulumi-lang-dotnet="`AutoScalingMetric`" pulumi-lang-go="`autoScalingMetric`" pulumi-lang-python="`auto_scaling_metric`" pulumi-lang-yaml="`autoScalingMetric`" pulumi-lang-java="`autoScalingMetric`">`auto_scaling_metric`</span>. When metric drops below this value, cluster will scale in. When metric goes above this value, cluster will scale out. Can be set between 0 and 100 percent.
+  /// Desired value of chosen `auto_scaling_metric`. When metric drops below this value, cluster will scale in. When metric goes above this value, cluster will scale out. Can be set between 0 and 100 percent.
   final double metricTarget;
 
-  /// Lowest number of nodes to scale. Must be at least 1 and less than the <span pulumi-lang-nodejs="`maxNodeCount`" pulumi-lang-dotnet="`MaxNodeCount`" pulumi-lang-go="`maxNodeCount`" pulumi-lang-python="`max_node_count`" pulumi-lang-yaml="`maxNodeCount`" pulumi-lang-java="`maxNodeCount`">`max_node_count`</span>. If nodes in cluster belong to multiple availability zones, then <span pulumi-lang-nodejs="`minNodeCount`" pulumi-lang-dotnet="`MinNodeCount`" pulumi-lang-go="`minNodeCount`" pulumi-lang-python="`min_node_count`" pulumi-lang-yaml="`minNodeCount`" pulumi-lang-java="`minNodeCount`">`min_node_count`</span> must be at least 3.
+  /// Lowest number of nodes to scale. Must be at least 1 and less than the `max_node_count`. If nodes in cluster belong to multiple availability zones, then `min_node_count` must be at least 3.
   final int minNodeCount;
 
   /// Duration in seconds that FinSpace will wait after a scale in event before initiating another scaling event.

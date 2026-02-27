@@ -10,7 +10,7 @@ class SelectionCondition {
   /// Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching". See below for details.
   final List<SelectionConditionStringEqual>? stringEquals;
 
-  /// Filters the values of your tagged resources for matching tag values with the use of a wildcard character (`*`) anywhere in the string. For example, `prod*` or `*rod*` matches the tag value <span pulumi-lang-nodejs="`production`" pulumi-lang-dotnet="`Production`" pulumi-lang-go="`production`" pulumi-lang-python="`production`" pulumi-lang-yaml="`production`" pulumi-lang-java="`production`">`production`</span>. See below for details.
+  /// Filters the values of your tagged resources for matching tag values with the use of a wildcard character (`*`) anywhere in the string. For example, `prod*` or `*rod*` matches the tag value `production`. See below for details.
   final List<SelectionConditionStringLike>? stringLikes;
 
   /// Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching". See below for details.

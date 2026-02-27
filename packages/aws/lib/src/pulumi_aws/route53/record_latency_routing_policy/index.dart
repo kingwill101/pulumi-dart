@@ -1,3 +1,0 @@
-library module_route53_record_latency_routing_policy;
-
-export 'record_latency_routing_policy.dart';

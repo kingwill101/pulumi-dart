@@ -1,0 +1,3 @@
+library module_cloudfront_continuous_deployment_policy_traffic_config_single_weight_config;
+
+export 'continuous_deployment_policy_traffic_config_single_weight_config/continuous_deployment_policy_traffic_config_single_weight_config.dart';

@@ -4,10 +4,10 @@ import '../data_repository_association_s3_auto_export_policy/data_repository_ass
 import '../data_repository_association_s3_auto_import_policy/data_repository_association_s3_auto_import_policy.dart';
 
 class DataRepositoryAssociationS3 {
-  /// Specifies the type of updated objects that will be automatically exported from your file system to the linked S3 bucket. See the <span pulumi-lang-nodejs="`events`" pulumi-lang-dotnet="`Events`" pulumi-lang-go="`events`" pulumi-lang-python="`events`" pulumi-lang-yaml="`events`" pulumi-lang-java="`events`">`events`</span> configuration block.
+  /// Specifies the type of updated objects that will be automatically exported from your file system to the linked S3 bucket. See the `events` configuration block.
   final DataRepositoryAssociationS3AutoExportPolicy? autoExportPolicy;
 
-  /// Specifies the type of updated objects that will be automatically imported from the linked S3 bucket to your file system. See the <span pulumi-lang-nodejs="`events`" pulumi-lang-dotnet="`Events`" pulumi-lang-go="`events`" pulumi-lang-python="`events`" pulumi-lang-yaml="`events`" pulumi-lang-java="`events`">`events`</span> configuration block.
+  /// Specifies the type of updated objects that will be automatically imported from the linked S3 bucket to your file system. See the `events` configuration block.
   final DataRepositoryAssociationS3AutoImportPolicy? autoImportPolicy;
 
   DataRepositoryAssociationS3({

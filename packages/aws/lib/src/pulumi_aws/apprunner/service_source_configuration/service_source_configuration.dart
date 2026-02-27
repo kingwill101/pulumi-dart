@@ -9,7 +9,7 @@ class ServiceSourceConfiguration {
   final ServiceSourceConfigurationAuthenticationConfiguration?
       authenticationConfiguration;
 
-  /// Whether continuous integration from the source repository is enabled for the App Runner service. If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, each repository change (source code commit or new image version) starts a deployment. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether continuous integration from the source repository is enabled for the App Runner service. If set to `true`, each repository change (source code commit or new image version) starts a deployment. Defaults to `true`.
   final bool? autoDeploymentsEnabled;
 
   /// Description of a source code repository. See Code Repository below for more details.

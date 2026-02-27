@@ -1,3 +1,0 @@
-library module_apigateway_usage_plan_throttle_settings;
-
-export 'usage_plan_throttle_settings.dart';

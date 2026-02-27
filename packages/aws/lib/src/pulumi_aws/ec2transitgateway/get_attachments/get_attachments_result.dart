@@ -10,7 +10,7 @@ class GetAttachmentsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the <span pulumi-lang-nodejs="[aws.ec2transitgateway.getAttachment]" pulumi-lang-dotnet="[aws.ec2transitgateway.getAttachment]" pulumi-lang-go="[ec2transitgateway.getAttachment]" pulumi-lang-python="[ec2transitgateway_get_attachment]" pulumi-lang-yaml="[aws.ec2transitgateway.getAttachment]" pulumi-lang-java="[aws.ec2transitgateway.getAttachment]">[aws.ec2transitgateway.getAttachment]</span>[2] data source, searching by identifier.
+  /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.getAttachment][2] data source, searching by identifier.
   final List<String> ids;
   final String region;
   final Map<String, String> tags;

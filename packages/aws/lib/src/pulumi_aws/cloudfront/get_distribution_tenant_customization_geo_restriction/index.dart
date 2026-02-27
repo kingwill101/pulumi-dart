@@ -1,3 +1,0 @@
-library module_cloudfront_get_distribution_tenant_customization_geo_restriction;
-
-export 'get_distribution_tenant_customization_geo_restriction.dart';

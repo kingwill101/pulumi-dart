@@ -1,3 +1,0 @@
-library module_cloudfront_continuous_deployment_policy_traffic_config_single_weight_config_session_stickiness_config;
-
-export 'continuous_deployment_policy_traffic_config_single_weight_config_session_stickiness_config.dart';

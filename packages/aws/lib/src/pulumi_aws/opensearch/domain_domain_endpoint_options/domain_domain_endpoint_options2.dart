@@ -10,7 +10,7 @@ class DomainDomainEndpointOptions2 {
   /// Whether to enable custom endpoint for the OpenSearch domain.
   final bool? customEndpointEnabled;
 
-  /// Whether or not to require HTTPS. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether or not to require HTTPS. Defaults to `true`.
   final bool? enforceHttps;
 
   /// Name of the TLS security policy that needs to be applied to the HTTPS endpoint. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainEndpointOptions.html#opensearchservice-Type-DomainEndpointOptions-TLSSecurityPolicy). Pulumi will only perform drift detection if a configuration value is provided.

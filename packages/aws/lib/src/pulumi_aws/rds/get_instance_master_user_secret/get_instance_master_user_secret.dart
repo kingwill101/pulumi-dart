@@ -7,7 +7,7 @@ class GetInstanceMasterUserSecret {
   /// The Amazon Resource Name (ARN) of the secret.
   final String secretArn;
 
-  /// The status of the secret. Valid Values: <span pulumi-lang-nodejs="`creating`" pulumi-lang-dotnet="`Creating`" pulumi-lang-go="`creating`" pulumi-lang-python="`creating`" pulumi-lang-yaml="`creating`" pulumi-lang-java="`creating`">`creating`</span> | <span pulumi-lang-nodejs="`active`" pulumi-lang-dotnet="`Active`" pulumi-lang-go="`active`" pulumi-lang-python="`active`" pulumi-lang-yaml="`active`" pulumi-lang-java="`active`">`active`</span> | <span pulumi-lang-nodejs="`rotating`" pulumi-lang-dotnet="`Rotating`" pulumi-lang-go="`rotating`" pulumi-lang-python="`rotating`" pulumi-lang-yaml="`rotating`" pulumi-lang-java="`rotating`">`rotating`</span> | <span pulumi-lang-nodejs="`impaired`" pulumi-lang-dotnet="`Impaired`" pulumi-lang-go="`impaired`" pulumi-lang-python="`impaired`" pulumi-lang-yaml="`impaired`" pulumi-lang-java="`impaired`">`impaired`</span>.
+  /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   final String secretStatus;
 
   GetInstanceMasterUserSecret({

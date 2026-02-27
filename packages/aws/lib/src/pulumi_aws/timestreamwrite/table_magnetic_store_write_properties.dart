@@ -1,0 +1,3 @@
+library module_timestreamwrite_table_magnetic_store_write_properties;
+
+export 'table_magnetic_store_write_properties/table_magnetic_store_write_properties.dart';

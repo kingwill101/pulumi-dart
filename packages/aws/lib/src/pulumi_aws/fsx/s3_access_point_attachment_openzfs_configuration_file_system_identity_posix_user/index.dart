@@ -1,3 +1,0 @@
-library module_fsx_s3_access_point_attachment_openzfs_configuration_file_system_identity_posix_user;
-
-export 's3_access_point_attachment_openzfs_configuration_file_system_identity_posix_user.dart';

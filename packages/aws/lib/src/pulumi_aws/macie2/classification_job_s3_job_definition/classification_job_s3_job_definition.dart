@@ -6,10 +6,10 @@ import '../classification_job_s3_job_definition_bucket_definition/classification
 import '../classification_job_s3_job_definition_scoping/classification_job_s3_job_definition_scoping.dart';
 
 class ClassificationJobS3JobDefinition {
-  /// The property- and tag-based conditions that determine which S3 buckets to include or exclude from the analysis. Conflicts with <span pulumi-lang-nodejs="`bucketDefinitions`" pulumi-lang-dotnet="`BucketDefinitions`" pulumi-lang-go="`bucketDefinitions`" pulumi-lang-python="`bucket_definitions`" pulumi-lang-yaml="`bucketDefinitions`" pulumi-lang-java="`bucketDefinitions`">`bucket_definitions`</span>. (documented below)
+  /// The property- and tag-based conditions that determine which S3 buckets to include or exclude from the analysis. Conflicts with `bucket_definitions`. (documented below)
   final ClassificationJobS3JobDefinitionBucketCriteria? bucketCriteria;
 
-  /// An array of objects, one for each AWS account that owns buckets to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for the account. Conflicts with <span pulumi-lang-nodejs="`bucketCriteria`" pulumi-lang-dotnet="`BucketCriteria`" pulumi-lang-go="`bucketCriteria`" pulumi-lang-python="`bucket_criteria`" pulumi-lang-yaml="`bucketCriteria`" pulumi-lang-java="`bucketCriteria`">`bucket_criteria`</span>. (documented below)
+  /// An array of objects, one for each AWS account that owns buckets to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for the account. Conflicts with `bucket_criteria`. (documented below)
   final List<ClassificationJobS3JobDefinitionBucketDefinition>?
       bucketDefinitions;
 

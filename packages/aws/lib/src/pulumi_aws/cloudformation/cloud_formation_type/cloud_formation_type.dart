@@ -8,13 +8,13 @@ import 'cloud_formation_type_args.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.cloudformation.CloudFormationType`" pulumi-lang-dotnet="`aws.cloudformation.CloudFormationType`" pulumi-lang-go="`cloudformation.CloudFormationType`" pulumi-lang-python="`cloudformation.CloudFormationType`" pulumi-lang-yaml="`aws.cloudformation.CloudFormationType`" pulumi-lang-java="`aws.cloudformation.CloudFormationType`">`aws.cloudformation.CloudFormationType`</span> using the type version Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.cloudformation.CloudFormationType` using the type version Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudformation/cloudFormationType:CloudFormationType example arn:aws:cloudformation:us-east-1:123456789012:type/resource/ExampleCompany-ExampleService-ExampleType/1
 /// ```
 class CloudFormationType extends CustomResource {
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also <span pulumi-lang-nodejs="`typeArn`" pulumi-lang-dotnet="`TypeArn`" pulumi-lang-go="`typeArn`" pulumi-lang-python="`type_arn`" pulumi-lang-yaml="`typeArn`" pulumi-lang-java="`typeArn`">`type_arn`</span>.
+  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `type_arn`.
   late final Output<String> arn;
 
   /// Identifier of the CloudFormation Type default version.
@@ -56,7 +56,7 @@ class CloudFormationType extends CustomResource {
   /// CloudFormation Registry Type. For example, `RESOURCE` or `MODULE`.
   late final Output<String> type;
 
-  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type. See also <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>.
+  /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type. See also `arn`.
   late final Output<String> typeArn;
 
   /// CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.

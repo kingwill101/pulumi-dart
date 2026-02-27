@@ -14,7 +14,7 @@ class MountTargetArgs {
   /// IP address type for the mount target. Valid values are `IPV4_ONLY` (only IPv4 addresses), `IPV6_ONLY` (only IPv6 addresses), and `DUAL_STACK` (dual-stack, both IPv4 and IPv6 addresses). Defaults to `IPV4_ONLY`.
   final Input<String>? ipAddressType;
 
-  /// IPv6 address to use. Valid only when <span pulumi-lang-nodejs="`ipAddressType`" pulumi-lang-dotnet="`IpAddressType`" pulumi-lang-go="`ipAddressType`" pulumi-lang-python="`ip_address_type`" pulumi-lang-yaml="`ipAddressType`" pulumi-lang-java="`ipAddressType`">`ip_address_type`</span> is set to `IPV6_ONLY` or `DUAL_STACK`.
+  /// IPv6 address to use. Valid only when `ip_address_type` is set to `IPV6_ONLY` or `DUAL_STACK`.
   final Input<String>? ipv6Address;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

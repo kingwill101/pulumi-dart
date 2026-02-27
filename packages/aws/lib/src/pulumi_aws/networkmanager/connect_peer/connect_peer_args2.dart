@@ -5,7 +5,7 @@ import '../connect_peer_bgp_options/connect_peer_bgp_options.dart';
 
 /// The set of arguments for ConnectPeer.
 class ConnectPeerArgs2 {
-  /// Connect peer BGP options. See<span pulumi-lang-nodejs=" bgpOptions " pulumi-lang-dotnet=" BgpOptions " pulumi-lang-go=" bgpOptions " pulumi-lang-python=" bgp_options " pulumi-lang-yaml=" bgpOptions " pulumi-lang-java=" bgpOptions "> bgp_options </span>for more information.
+  /// Connect peer BGP options. See bgp_options for more information.
   final Input<ConnectPeerBgpOptions>? bgpOptions;
 
   /// ID of the connection attachment.
@@ -14,7 +14,7 @@ class ConnectPeerArgs2 {
   /// Connect peer core network address.
   final Input<String>? coreNetworkAddress;
 
-  /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See <span pulumi-lang-nodejs="`aws.networkmanager.ConnectAttachment`" pulumi-lang-dotnet="`aws.networkmanager.ConnectAttachment`" pulumi-lang-go="`networkmanager.ConnectAttachment`" pulumi-lang-python="`networkmanager.ConnectAttachment`" pulumi-lang-yaml="`aws.networkmanager.ConnectAttachment`" pulumi-lang-java="`aws.networkmanager.ConnectAttachment`">`aws.networkmanager.ConnectAttachment`</span> for details.
+  /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
   final Input<List<String>>? insideCidrBlocks;
 
   /// Connect peer address.
@@ -22,10 +22,10 @@ class ConnectPeerArgs2 {
   /// The following arguments are optional:
   final Input<String> peerAddress;
 
-  /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See <span pulumi-lang-nodejs="`aws.networkmanager.ConnectAttachment`" pulumi-lang-dotnet="`aws.networkmanager.ConnectAttachment`" pulumi-lang-go="`networkmanager.ConnectAttachment`" pulumi-lang-python="`networkmanager.ConnectAttachment`" pulumi-lang-yaml="`aws.networkmanager.ConnectAttachment`" pulumi-lang-java="`aws.networkmanager.ConnectAttachment`">`aws.networkmanager.ConnectAttachment`</span> for details.
+  /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   final Input<String>? subnetArn;
 
-  /// Key-value tags for the attachment. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ConnectPeerArgs2({

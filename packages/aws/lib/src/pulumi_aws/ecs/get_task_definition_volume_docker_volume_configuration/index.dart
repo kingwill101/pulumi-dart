@@ -1,3 +1,0 @@
-library module_ecs_get_task_definition_volume_docker_volume_configuration;
-
-export 'get_task_definition_volume_docker_volume_configuration.dart';

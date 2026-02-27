@@ -12,29 +12,29 @@ class ProjectArtifacts {
   /// allows CodeBuild to modify the access control list for the bucket.
   final String? bucketOwnerAccess;
 
-  /// Whether to disable encrypting output artifacts. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to `NO_ARTIFACTS`,
-  /// this value is ignored. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to disable encrypting output artifacts. If `type` is set to `NO_ARTIFACTS`,
+  /// this value is ignored. Defaults to `false`.
   final bool? encryptionDisabled;
 
-  /// Information about the build output artifact location. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to `CODEPIPELINE` or
-  /// `NO_ARTIFACTS`, this value is ignored. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to `S3`, this is the name of the output bucket.
+  /// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or
+  /// `NO_ARTIFACTS`, this value is ignored. If `type` is set to `S3`, this is the name of the output bucket.
   final String? location;
 
-  /// Name of the project. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to `S3`, this is the name of the output artifact object
+  /// Name of the project. If `type` is set to `S3`, this is the name of the output artifact object
   final String? name;
 
-  /// Namespace to use in storing build artifacts. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to `S3`, then valid values
+  /// Namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values
   /// are `BUILD_ID`, `NONE`.
   final String? namespaceType;
 
   /// Whether a name specified in the build specification overrides the artifact name.
   final bool? overrideArtifactName;
 
-  /// Type of build output artifact to create. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to `S3`, valid values are `NONE`,
+  /// Type of build output artifact to create. If `type` is set to `S3`, valid values are `NONE`,
   /// `ZIP`
   final String? packaging;
 
-  /// If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to `S3`, this is the path to the output artifact.
+  /// If `type` is set to `S3`, this is the path to the output artifact.
   final String? path;
 
   /// Build output artifact's type. Valid values: `CODEPIPELINE`, `NO_ARTIFACTS`, `S3`.

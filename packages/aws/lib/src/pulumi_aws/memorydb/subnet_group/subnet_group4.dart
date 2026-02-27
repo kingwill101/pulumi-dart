@@ -7,173 +7,11 @@ import 'subnet_group_args4.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.ec2.Vpc("example", {cidrBlock: "10.0.0.0/16"});
-/// const exampleSubnet = new aws.ec2.Subnet("example", {
-/// vpcId: example.id,
-/// cidrBlock: "10.0.0.0/24",
-/// availabilityZone: "us-west-2a",
-/// });
-/// const exampleSubnetGroup = new aws.memorydb.SubnetGroup("example", {
-/// name: "my-subnet-group",
-/// subnetIds: [exampleSubnet.id],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.ec2.Vpc("example", cidr_block="10.0.0.0/16")
-/// example_subnet = aws.ec2.Subnet("example",
-/// vpc_id=example.id,
-/// cidr_block="10.0.0.0/24",
-/// availability_zone="us-west-2a")
-/// example_subnet_group = aws.memorydb.SubnetGroup("example",
-/// name="my-subnet-group",
-/// subnet_ids=[example_subnet.id])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Ec2.Vpc("example", new()
-/// {
-/// CidrBlock = "10.0.0.0/16",
-/// });
-///
-/// var exampleSubnet = new Aws.Ec2.Subnet("example", new()
-/// {
-/// VpcId = example.Id,
-/// CidrBlock = "10.0.0.0/24",
-/// AvailabilityZone = "us-west-2a",
-/// });
-///
-/// var exampleSubnetGroup = new Aws.MemoryDb.SubnetGroup("example", new()
-/// {
-/// Name = "my-subnet-group",
-/// SubnetIds = new[]
-/// {
-/// exampleSubnet.Id,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/memorydb"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
-/// CidrBlock: pulumi.String("10.0.0.0/16"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
-/// VpcId:            example.ID(),
-/// CidrBlock:        pulumi.String("10.0.0.0/24"),
-/// AvailabilityZone: pulumi.String("us-west-2a"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = memorydb.NewSubnetGroup(ctx, "example", &memorydb.SubnetGroupArgs{
-/// Name: pulumi.String("my-subnet-group"),
-/// SubnetIds: pulumi.StringArray{
-/// exampleSubnet.ID(),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.ec2.Vpc;
-/// import com.pulumi.aws.ec2.VpcArgs;
-/// import com.pulumi.aws.ec2.Subnet;
-/// import com.pulumi.aws.ec2.SubnetArgs;
-/// import com.pulumi.aws.memorydb.SubnetGroup;
-/// import com.pulumi.aws.memorydb.SubnetGroupArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Vpc("example", VpcArgs.builder()
-/// .cidrBlock("10.0.0.0/16")
-/// .build());
-///
-/// var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()
-/// .vpcId(example.id())
-/// .cidrBlock("10.0.0.0/24")
-/// .availabilityZone("us-west-2a")
-/// .build());
-///
-/// var exampleSubnetGroup = new SubnetGroup("exampleSubnetGroup", SubnetGroupArgs.builder()
-/// .name("my-subnet-group")
-/// .subnetIds(exampleSubnet.id())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:ec2:Vpc
-/// properties:
-/// cidrBlock: 10.0.0.0/16
-/// exampleSubnet:
-/// type: aws:ec2:Subnet
-/// name: example
-/// properties:
-/// vpcId: ${example.id}
-/// cidrBlock: 10.0.0.0/24
-/// availabilityZone: us-west-2a
-/// exampleSubnetGroup:
-/// type: aws:memorydb:SubnetGroup
-/// name: example
-/// properties:
-/// name: my-subnet-group
-/// subnetIds:
-/// - ${exampleSubnet.id}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import a subnet group using its <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+/// Using `pulumi import`, import a subnet group using its `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:memorydb/subnetGroup:SubnetGroup example my-subnet-group
@@ -185,10 +23,10 @@ class SubnetGroup4 extends CustomResource {
   /// Description for the subnet group. Defaults to `"Managed by Pulumi"`.
   late final Output<String?> description;
 
-  /// Name of the subnet group. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the subnet group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final Output<String> name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final Output<String> namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -199,10 +37,10 @@ class SubnetGroup4 extends CustomResource {
   /// The following arguments are optional:
   late final Output<List<String>> subnetIds;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// The VPC in which the subnet group exists.

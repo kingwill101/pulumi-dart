@@ -1,0 +1,3 @@
+library module_lightsail_certificate_domain_validation_option;
+
+export 'certificate_domain_validation_option/certificate_domain_validation_option2.dart';

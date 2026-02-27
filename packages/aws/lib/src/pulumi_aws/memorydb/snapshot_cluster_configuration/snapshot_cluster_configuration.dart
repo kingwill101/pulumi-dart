@@ -13,7 +13,7 @@ class SnapshotClusterConfiguration {
   /// The weekly time range during which maintenance on the cluster is performed.
   final String? maintenanceWindow;
 
-  /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final String? name;
 
   /// Compute and memory capacity of the nodes in the cluster.

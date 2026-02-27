@@ -1,0 +1,3 @@
+library module_appmesh_route_spec_http2_route_match_query_parameter;
+
+export 'route_spec_http2_route_match_query_parameter/route_spec_http2_route_match_query_parameter.dart';

@@ -1,0 +1,3 @@
+library module_ecs_service_vpc_lattice_configuration;
+
+export 'service_vpc_lattice_configuration/service_vpc_lattice_configuration.dart';

@@ -1,3 +1,0 @@
-library module_appstream_fleet_domain_join_info;
-
-export 'fleet_domain_join_info.dart';

@@ -1,3 +1,0 @@
-library module_opensearch_domain_aiml_options_natural_language_query_generation_options;
-
-export 'domain_aiml_options_natural_language_query_generation_options.dart';

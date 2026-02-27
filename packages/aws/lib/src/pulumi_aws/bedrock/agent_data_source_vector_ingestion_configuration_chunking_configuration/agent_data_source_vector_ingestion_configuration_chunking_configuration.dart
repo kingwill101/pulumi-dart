@@ -8,15 +8,15 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   /// Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
   final String chunkingStrategy;
 
-  /// Configurations for when you choose fixed-size chunking. Requires<span pulumi-lang-nodejs=" chunkingStrategy " pulumi-lang-dotnet=" ChunkingStrategy " pulumi-lang-go=" chunkingStrategy " pulumi-lang-python=" chunking_strategy " pulumi-lang-yaml=" chunkingStrategy " pulumi-lang-java=" chunkingStrategy "> chunking_strategy </span>as `FIXED_SIZE`. See <span pulumi-lang-nodejs="`fixedSizeChunkingConfiguration`" pulumi-lang-dotnet="`FixedSizeChunkingConfiguration`" pulumi-lang-go="`fixedSizeChunkingConfiguration`" pulumi-lang-python="`fixed_size_chunking_configuration`" pulumi-lang-yaml="`fixedSizeChunkingConfiguration`" pulumi-lang-java="`fixedSizeChunkingConfiguration`">`fixed_size_chunking_configuration`</span> for details.
+  /// Configurations for when you choose fixed-size chunking. Requires chunking_strategy as `FIXED_SIZE`. See `fixed_size_chunking_configuration` for details.
   final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration?
       fixedSizeChunkingConfiguration;
 
-  /// Configurations for when you choose hierarchical chunking. Requires<span pulumi-lang-nodejs=" chunkingStrategy " pulumi-lang-dotnet=" ChunkingStrategy " pulumi-lang-go=" chunkingStrategy " pulumi-lang-python=" chunking_strategy " pulumi-lang-yaml=" chunkingStrategy " pulumi-lang-java=" chunkingStrategy "> chunking_strategy </span>as `HIERARCHICAL`. See <span pulumi-lang-nodejs="`hierarchicalChunkingConfiguration`" pulumi-lang-dotnet="`HierarchicalChunkingConfiguration`" pulumi-lang-go="`hierarchicalChunkingConfiguration`" pulumi-lang-python="`hierarchical_chunking_configuration`" pulumi-lang-yaml="`hierarchicalChunkingConfiguration`" pulumi-lang-java="`hierarchicalChunkingConfiguration`">`hierarchical_chunking_configuration`</span> for details.
+  /// Configurations for when you choose hierarchical chunking. Requires chunking_strategy as `HIERARCHICAL`. See `hierarchical_chunking_configuration` for details.
   final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration?
       hierarchicalChunkingConfiguration;
 
-  /// Configurations for when you choose semantic chunking. Requires<span pulumi-lang-nodejs=" chunkingStrategy " pulumi-lang-dotnet=" ChunkingStrategy " pulumi-lang-go=" chunkingStrategy " pulumi-lang-python=" chunking_strategy " pulumi-lang-yaml=" chunkingStrategy " pulumi-lang-java=" chunkingStrategy "> chunking_strategy </span>as `SEMANTIC`. See <span pulumi-lang-nodejs="`semanticChunkingConfiguration`" pulumi-lang-dotnet="`SemanticChunkingConfiguration`" pulumi-lang-go="`semanticChunkingConfiguration`" pulumi-lang-python="`semantic_chunking_configuration`" pulumi-lang-yaml="`semanticChunkingConfiguration`" pulumi-lang-java="`semanticChunkingConfiguration`">`semantic_chunking_configuration`</span> for details.
+  /// Configurations for when you choose semantic chunking. Requires chunking_strategy as `SEMANTIC`. See `semantic_chunking_configuration` for details.
   final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration?
       semanticChunkingConfiguration;
 

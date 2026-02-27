@@ -1,3 +1,0 @@
-library module_ec2_fleet_launch_template_config_override_instance_requirements;
-
-export 'fleet_launch_template_config_override_instance_requirements.dart';

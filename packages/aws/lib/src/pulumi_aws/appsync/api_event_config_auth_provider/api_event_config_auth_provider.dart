@@ -8,14 +8,14 @@ class ApiEventConfigAuthProvider {
   /// Type of authentication provider. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
   final String authType;
 
-  /// Configuration for Cognito user pool authentication. Required when <span pulumi-lang-nodejs="`authType`" pulumi-lang-dotnet="`AuthType`" pulumi-lang-go="`authType`" pulumi-lang-python="`auth_type`" pulumi-lang-yaml="`authType`" pulumi-lang-java="`authType`">`auth_type`</span> is `AMAZON_COGNITO_USER_POOLS`. See Cognito Config below.
+  /// Configuration for Cognito user pool authentication. Required when `auth_type` is `AMAZON_COGNITO_USER_POOLS`. See Cognito Config below.
   final ApiEventConfigAuthProviderCognitoConfig? cognitoConfig;
 
-  /// Configuration for Lambda authorization. Required when <span pulumi-lang-nodejs="`authType`" pulumi-lang-dotnet="`AuthType`" pulumi-lang-go="`authType`" pulumi-lang-python="`auth_type`" pulumi-lang-yaml="`authType`" pulumi-lang-java="`authType`">`auth_type`</span> is `AWS_LAMBDA`. See Lambda Authorizer Config below.
+  /// Configuration for Lambda authorization. Required when `auth_type` is `AWS_LAMBDA`. See Lambda Authorizer Config below.
   final ApiEventConfigAuthProviderLambdaAuthorizerConfig?
       lambdaAuthorizerConfig;
 
-  /// Configuration for OpenID Connect. Required when <span pulumi-lang-nodejs="`authType`" pulumi-lang-dotnet="`AuthType`" pulumi-lang-go="`authType`" pulumi-lang-python="`auth_type`" pulumi-lang-yaml="`authType`" pulumi-lang-java="`authType`">`auth_type`</span> is `OPENID_CONNECT`. See OpenID Connect Config below.
+  /// Configuration for OpenID Connect. Required when `auth_type` is `OPENID_CONNECT`. See OpenID Connect Config below.
   final ApiEventConfigAuthProviderOpenidConnectConfig? openidConnectConfig;
 
   ApiEventConfigAuthProvider({

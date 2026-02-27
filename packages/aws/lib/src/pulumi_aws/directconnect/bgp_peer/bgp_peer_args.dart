@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for BgpPeer.
 class BgpPeerArgs {
-  /// The address family for the BGP peer. `ipv4 ` or <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span>.
+  /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   final Input<String> addressFamily;
 
   /// The IPv4 CIDR address to use to send traffic to Amazon.

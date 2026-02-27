@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ApplicationAppversionLifecycle {
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to delete a version's source bundle from S3 when the application version is deleted.
+  /// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
   final bool? deleteSourceFromS3;
 
   /// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).

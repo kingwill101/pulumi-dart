@@ -1,0 +1,3 @@
+library module_eks_cluster_encryption_config_provider;
+
+export 'cluster_encryption_config_provider/cluster_encryption_config_provider.dart';

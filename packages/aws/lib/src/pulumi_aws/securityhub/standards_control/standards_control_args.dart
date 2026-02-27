@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for StandardsControl.
 class StandardsControlArgs {
-  /// The control status could be `ENABLED` or `DISABLED`. You have to specify <span pulumi-lang-nodejs="`disabledReason`" pulumi-lang-dotnet="`DisabledReason`" pulumi-lang-go="`disabledReason`" pulumi-lang-python="`disabled_reason`" pulumi-lang-yaml="`disabledReason`" pulumi-lang-java="`disabledReason`">`disabled_reason`</span> argument for `DISABLED` control status.
+  /// The control status could be `ENABLED` or `DISABLED`. You have to specify `disabled_reason` argument for `DISABLED` control status.
   final Input<String> controlStatus;
 
-  /// A description of the reason why you are disabling a security standard control. If you specify this attribute, <span pulumi-lang-nodejs="`controlStatus`" pulumi-lang-dotnet="`ControlStatus`" pulumi-lang-go="`controlStatus`" pulumi-lang-python="`control_status`" pulumi-lang-yaml="`controlStatus`" pulumi-lang-java="`controlStatus`">`control_status`</span> will be set to `DISABLED` automatically.
+  /// A description of the reason why you are disabling a security standard control. If you specify this attribute, `control_status` will be set to `DISABLED` automatically.
   final Input<String>? disabledReason;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

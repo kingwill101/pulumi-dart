@@ -1,4 +1,0 @@
-library module_globalaccelerator_custom_routing_accelerator;
-
-export 'custom_routing_accelerator.dart';
-export 'custom_routing_accelerator_args.dart';

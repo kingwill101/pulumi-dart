@@ -9,157 +9,11 @@ import 'kx_volume_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.finspace.KxVolume("example", {
-/// name: "my-tf-kx-volume",
-/// environmentId: exampleAwsFinspaceKxEnvironment.id,
-/// availabilityZones: ["use1-az2"],
-/// azMode: "SINGLE",
-/// type: "NAS_1",
-/// nas1Configurations: [{
-/// size: 1200,
-/// type: "SSD_250",
-/// }],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.finspace.KxVolume("example",
-/// name="my-tf-kx-volume",
-/// environment_id=example_aws_finspace_kx_environment["id"],
-/// availability_zones=["use1-az2"],
-/// az_mode="SINGLE",
-/// type="NAS_1",
-/// nas1_configurations=[{
-/// "size": 1200,
-/// "type": "SSD_250",
-/// }])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.FinSpace.KxVolume("example", new()
-/// {
-/// Name = "my-tf-kx-volume",
-/// EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
-/// AvailabilityZones = new[]
-/// {
-/// "use1-az2",
-/// },
-/// AzMode = "SINGLE",
-/// Type = "NAS_1",
-/// Nas1Configurations = new[]
-/// {
-/// new Aws.FinSpace.Inputs.KxVolumeNas1ConfigurationArgs
-/// {
-/// Size = 1200,
-/// Type = "SSD_250",
-/// },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/finspace"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := finspace.NewKxVolume(ctx, "example", &finspace.KxVolumeArgs{
-/// Name:          pulumi.String("my-tf-kx-volume"),
-/// EnvironmentId: pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
-/// AvailabilityZones: pulumi.StringArray{
-/// pulumi.String("use1-az2"),
-/// },
-/// AzMode: pulumi.String("SINGLE"),
-/// Type:   pulumi.String("NAS_1"),
-/// Nas1Configurations: finspace.KxVolumeNas1ConfigurationArray{
-/// &finspace.KxVolumeNas1ConfigurationArgs{
-/// Size: pulumi.Int(1200),
-/// Type: pulumi.String("SSD_250"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.finspace.KxVolume;
-/// import com.pulumi.aws.finspace.KxVolumeArgs;
-/// import com.pulumi.aws.finspace.inputs.KxVolumeNas1ConfigurationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new KxVolume("example", KxVolumeArgs.builder()
-/// .name("my-tf-kx-volume")
-/// .environmentId(exampleAwsFinspaceKxEnvironment.id())
-/// .availabilityZones("use1-az2")
-/// .azMode("SINGLE")
-/// .type("NAS_1")
-/// .nas1Configurations(KxVolumeNas1ConfigurationArgs.builder()
-/// .size(1200)
-/// .type("SSD_250")
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:finspace:KxVolume
-/// properties:
-/// name: my-tf-kx-volume
-/// environmentId: ${exampleAwsFinspaceKxEnvironment.id}
-/// availabilityZones:
-/// - use1-az2
-/// azMode: SINGLE
-/// type: NAS_1
-/// nas1Configurations:
-/// - size: 1200
-/// type: SSD_250
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an AWS FinSpace Kx Volume using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> (environment ID and volume name, comma-delimited). For example:
+/// Using `pulumi import`, import an AWS FinSpace Kx Volume using the `id` (environment ID and volume name, comma-delimited). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:finspace/kxVolume:KxVolume example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-volume
@@ -193,7 +47,7 @@ class KxVolume extends CustomResource {
   /// Unique name for the volumr that you want to create.
   late final Output<String> name;
 
-  /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when <span pulumi-lang-nodejs="`volumeType`" pulumi-lang-dotnet="`VolumeType`" pulumi-lang-go="`volumeType`" pulumi-lang-python="`volume_type`" pulumi-lang-yaml="`volumeType`" pulumi-lang-java="`volumeType`">`volume_type`</span> is `NAS_1`. See <span pulumi-lang-nodejs="`nas1Configuration`" pulumi-lang-dotnet="`Nas1Configuration`" pulumi-lang-go="`nas1Configuration`" pulumi-lang-python="`nas1_configuration`" pulumi-lang-yaml="`nas1Configuration`" pulumi-lang-java="`nas1Configuration`">`nas1_configuration`</span> Argument Reference below.
+  /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
   late final Output<List<KxVolumeNas1Configuration>?> nas1Configurations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -218,7 +72,7 @@ class KxVolume extends CustomResource {
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
 
-  /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide <span pulumi-lang-nodejs="`nas1Configuration`" pulumi-lang-dotnet="`Nas1Configuration`" pulumi-lang-go="`nas1Configuration`" pulumi-lang-python="`nas1_configuration`" pulumi-lang-yaml="`nas1Configuration`" pulumi-lang-java="`nas1Configuration`">`nas1_configuration`</span>.
+  /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
   late final Output<String> type;
 
   KxVolume(

@@ -1,3 +1,0 @@
-library module_timestreamquery_scheduled_query_target_configuration_timestream_configuration_dimension_mapping;
-
-export 'scheduled_query_target_configuration_timestream_configuration_dimension_mapping.dart';

@@ -1,3 +1,0 @@
-library module_rekognition_stream_processor_settings_connected_home;
-
-export 'stream_processor_settings_connected_home.dart';

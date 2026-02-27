@@ -1,3 +1,0 @@
-library module_workspacesweb_session_logger_log_configuration;
-
-export 'session_logger_log_configuration.dart';

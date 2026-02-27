@@ -1,4 +1,0 @@
-library module_workspacesweb_ip_access_settings_association;
-
-export 'ip_access_settings_association.dart';
-export 'ip_access_settings_association_args.dart';

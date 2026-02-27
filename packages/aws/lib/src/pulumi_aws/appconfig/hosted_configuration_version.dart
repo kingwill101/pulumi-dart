@@ -1,0 +1,4 @@
+library module_appconfig_hosted_configuration_version;
+
+export 'hosted_configuration_version/hosted_configuration_version.dart';
+export 'hosted_configuration_version/hosted_configuration_version_args.dart';

@@ -2,197 +2,15 @@ import 'package:pulumi/pulumi.dart';
 import '../cluster_snapshot_copy_timeouts/cluster_snapshot_copy_timeouts.dart';
 import 'cluster_snapshot_copy_args.dart';
 
-/// Manages an RDS database cluster snapshot copy. For managing RDS database instance snapshot copies, see the <span pulumi-lang-nodejs="`aws.rds.SnapshotCopy`" pulumi-lang-dotnet="`aws.rds.SnapshotCopy`" pulumi-lang-go="`rds.SnapshotCopy`" pulumi-lang-python="`rds.SnapshotCopy`" pulumi-lang-yaml="`aws.rds.SnapshotCopy`" pulumi-lang-java="`aws.rds.SnapshotCopy`">`aws.rds.SnapshotCopy`</span> resource.
+/// Manages an RDS database cluster snapshot copy. For managing RDS database instance snapshot copies, see the `aws.rds.SnapshotCopy` resource.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.rds.Cluster("example", {
-/// clusterIdentifier: "aurora-cluster-demo",
-/// databaseName: "test",
-/// engine: aws.rds.EngineType.AuroraMysql,
-/// masterUsername: "tfacctest",
-/// masterPassword: "avoid-plaintext-passwords",
-/// skipFinalSnapshot: true,
-/// });
-/// const exampleClusterSnapshot = new aws.rds.ClusterSnapshot("example", {
-/// dbClusterIdentifier: example.clusterIdentifier,
-/// dbClusterSnapshotIdentifier: "example",
-/// });
-/// const exampleClusterSnapshotCopy = new aws.rds.ClusterSnapshotCopy("example", {
-/// sourceDbClusterSnapshotIdentifier: exampleClusterSnapshot.dbClusterSnapshotArn,
-/// targetDbClusterSnapshotIdentifier: "example-copy",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.rds.Cluster("example",
-/// cluster_identifier="aurora-cluster-demo",
-/// database_name="test",
-/// engine=aws.rds.EngineType.AURORA_MYSQL,
-/// master_username="tfacctest",
-/// master_password="avoid-plaintext-passwords",
-/// skip_final_snapshot=True)
-/// example_cluster_snapshot = aws.rds.ClusterSnapshot("example",
-/// db_cluster_identifier=example.cluster_identifier,
-/// db_cluster_snapshot_identifier="example")
-/// example_cluster_snapshot_copy = aws.rds.ClusterSnapshotCopy("example",
-/// source_db_cluster_snapshot_identifier=example_cluster_snapshot.db_cluster_snapshot_arn,
-/// target_db_cluster_snapshot_identifier="example-copy")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Rds.Cluster("example", new()
-/// {
-/// ClusterIdentifier = "aurora-cluster-demo",
-/// DatabaseName = "test",
-/// Engine = Aws.Rds.EngineType.AuroraMysql,
-/// MasterUsername = "tfacctest",
-/// MasterPassword = "avoid-plaintext-passwords",
-/// SkipFinalSnapshot = true,
-/// });
-///
-/// var exampleClusterSnapshot = new Aws.Rds.ClusterSnapshot("example", new()
-/// {
-/// DbClusterIdentifier = example.ClusterIdentifier,
-/// DbClusterSnapshotIdentifier = "example",
-/// });
-///
-/// var exampleClusterSnapshotCopy = new Aws.Rds.ClusterSnapshotCopy("example", new()
-/// {
-/// SourceDbClusterSnapshotIdentifier = exampleClusterSnapshot.DbClusterSnapshotArn,
-/// TargetDbClusterSnapshotIdentifier = "example-copy",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := rds.NewCluster(ctx, "example", &rds.ClusterArgs{
-/// ClusterIdentifier: pulumi.String("aurora-cluster-demo"),
-/// DatabaseName:      pulumi.String("test"),
-/// Engine:            pulumi.String(rds.EngineTypeAuroraMysql),
-/// MasterUsername:    pulumi.String("tfacctest"),
-/// MasterPassword:    pulumi.String("avoid-plaintext-passwords"),
-/// SkipFinalSnapshot: pulumi.Bool(true),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// exampleClusterSnapshot, err := rds.NewClusterSnapshot(ctx, "example", &rds.ClusterSnapshotArgs{
-/// DbClusterIdentifier:         example.ClusterIdentifier,
-/// DbClusterSnapshotIdentifier: pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = rds.NewClusterSnapshotCopy(ctx, "example", &rds.ClusterSnapshotCopyArgs{
-/// SourceDbClusterSnapshotIdentifier: exampleClusterSnapshot.DbClusterSnapshotArn,
-/// TargetDbClusterSnapshotIdentifier: pulumi.String("example-copy"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.rds.Cluster;
-/// import com.pulumi.aws.rds.ClusterArgs;
-/// import com.pulumi.aws.rds.ClusterSnapshot;
-/// import com.pulumi.aws.rds.ClusterSnapshotArgs;
-/// import com.pulumi.aws.rds.ClusterSnapshotCopy;
-/// import com.pulumi.aws.rds.ClusterSnapshotCopyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Cluster("example", ClusterArgs.builder()
-/// .clusterIdentifier("aurora-cluster-demo")
-/// .databaseName("test")
-/// .engine("aurora-mysql")
-/// .masterUsername("tfacctest")
-/// .masterPassword("avoid-plaintext-passwords")
-/// .skipFinalSnapshot(true)
-/// .build());
-///
-/// var exampleClusterSnapshot = new ClusterSnapshot("exampleClusterSnapshot", ClusterSnapshotArgs.builder()
-/// .dbClusterIdentifier(example.clusterIdentifier())
-/// .dbClusterSnapshotIdentifier("example")
-/// .build());
-///
-/// var exampleClusterSnapshotCopy = new ClusterSnapshotCopy("exampleClusterSnapshotCopy", ClusterSnapshotCopyArgs.builder()
-/// .sourceDbClusterSnapshotIdentifier(exampleClusterSnapshot.dbClusterSnapshotArn())
-/// .targetDbClusterSnapshotIdentifier("example-copy")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:rds:Cluster
-/// properties:
-/// clusterIdentifier: aurora-cluster-demo
-/// databaseName: test
-/// engine: aurora-mysql
-/// masterUsername: tfacctest
-/// masterPassword: avoid-plaintext-passwords
-/// skipFinalSnapshot: true
-/// exampleClusterSnapshot:
-/// type: aws:rds:ClusterSnapshot
-/// name: example
-/// properties:
-/// dbClusterIdentifier: ${example.clusterIdentifier}
-/// dbClusterSnapshotIdentifier: example
-/// exampleClusterSnapshotCopy:
-/// type: aws:rds:ClusterSnapshotCopy
-/// name: example
-/// properties:
-/// sourceDbClusterSnapshotIdentifier: ${exampleClusterSnapshot.dbClusterSnapshotArn}
-/// targetDbClusterSnapshotIdentifier: example-copy
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.rds.ClusterSnapshotCopy`" pulumi-lang-dotnet="`aws.rds.ClusterSnapshotCopy`" pulumi-lang-go="`rds.ClusterSnapshotCopy`" pulumi-lang-python="`rds.ClusterSnapshotCopy`" pulumi-lang-yaml="`aws.rds.ClusterSnapshotCopy`" pulumi-lang-java="`aws.rds.ClusterSnapshotCopy`">`aws.rds.ClusterSnapshotCopy`</span> using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import `aws.rds.ClusterSnapshotCopy` using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/clusterSnapshotCopy:ClusterSnapshotCopy example my-snapshot
@@ -201,7 +19,7 @@ class ClusterSnapshotCopy extends CustomResource {
   /// Specifies the allocated storage size in gigabytes (GB).
   late final Output<int> allocatedStorage;
 
-  /// Whether to copy existing tags. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to copy existing tags. Defaults to `false`.
   late final Output<bool?> copyTags;
 
   /// The Amazon Resource Name (ARN) for the DB cluster snapshot.
@@ -228,7 +46,7 @@ class ClusterSnapshotCopy extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// List of AWS Account IDs to share the snapshot with. Use <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span> to make the snapshot public.
+  /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   late final Output<List<String>?> sharedAccounts;
   late final Output<String> snapshotType;
 
@@ -241,10 +59,10 @@ class ClusterSnapshotCopy extends CustomResource {
   /// Specifies the storage type associated with DB cluster snapshot.
   late final Output<String> storageType;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Identifier for the snapshot.

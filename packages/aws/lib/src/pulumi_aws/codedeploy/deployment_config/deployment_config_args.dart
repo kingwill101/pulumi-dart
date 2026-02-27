@@ -13,16 +13,16 @@ class DeploymentConfigArgs {
   /// The name of the deployment config.
   final Input<String>? deploymentConfigName;
 
-  /// A<span pulumi-lang-nodejs=" minimumHealthyHosts " pulumi-lang-dotnet=" MinimumHealthyHosts " pulumi-lang-go=" minimumHealthyHosts " pulumi-lang-python=" minimum_healthy_hosts " pulumi-lang-yaml=" minimumHealthyHosts " pulumi-lang-java=" minimumHealthyHosts "> minimum_healthy_hosts </span>block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
+  /// A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
   final Input<DeploymentConfigMinimumHealthyHosts>? minimumHealthyHosts;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A<span pulumi-lang-nodejs=" trafficRoutingConfig " pulumi-lang-dotnet=" TrafficRoutingConfig " pulumi-lang-go=" trafficRoutingConfig " pulumi-lang-python=" traffic_routing_config " pulumi-lang-yaml=" trafficRoutingConfig " pulumi-lang-java=" trafficRoutingConfig "> traffic_routing_config </span>block. Traffic Routing Config is documented below.
+  /// A traffic_routing_config block. Traffic Routing Config is documented below.
   final Input<DeploymentConfigTrafficRoutingConfig>? trafficRoutingConfig;
 
-  /// A<span pulumi-lang-nodejs=" zonalConfig " pulumi-lang-dotnet=" ZonalConfig " pulumi-lang-go=" zonalConfig " pulumi-lang-python=" zonal_config " pulumi-lang-yaml=" zonalConfig " pulumi-lang-java=" zonalConfig "> zonal_config </span>block. Zonal Config is documented below.
+  /// A zonal_config block. Zonal Config is documented below.
   final Input<DeploymentConfigZonalConfig>? zonalConfig;
 
   DeploymentConfigArgs({

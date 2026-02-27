@@ -9,7 +9,7 @@ class GetAcceleratorArgs {
 
   /// Unique name of the Global Accelerator.
   ///
-  /// > **NOTE:** When both <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> and <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> are specified, <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> takes precedence.
+  /// > **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
   final Input<String>? name;
 
   GetAcceleratorArgs({

@@ -11,7 +11,7 @@ class ConformancePackArgs {
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
   final Input<String>? deliveryS3KeyPrefix;
 
-  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the <span pulumi-lang-nodejs="`templateBody`" pulumi-lang-dotnet="`TemplateBody`" pulumi-lang-go="`templateBody`" pulumi-lang-python="`template_body`" pulumi-lang-yaml="`templateBody`" pulumi-lang-java="`templateBody`">`template_body`</span> or in the template stored in Amazon S3 if using <span pulumi-lang-nodejs="`templateS3Uri`" pulumi-lang-dotnet="`TemplateS3Uri`" pulumi-lang-go="`templateS3Uri`" pulumi-lang-python="`template_s3_uri`" pulumi-lang-yaml="`templateS3Uri`" pulumi-lang-java="`templateS3Uri`">`template_s3_uri`</span>.
+  /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `template_body` or in the template stored in Amazon S3 if using `template_s3_uri`.
   final Input<List<ConformancePackInputParameter>>? inputParameters;
 
   /// The name of the conformance pack. Must begin with a letter and contain from 1 to 256 alphanumeric characters and hyphens.
@@ -25,7 +25,7 @@ class ConformancePackArgs {
 
   /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   ///
-  /// > **Note:** If both <span pulumi-lang-nodejs="`templateBody`" pulumi-lang-dotnet="`TemplateBody`" pulumi-lang-go="`templateBody`" pulumi-lang-python="`template_body`" pulumi-lang-yaml="`templateBody`" pulumi-lang-java="`templateBody`">`template_body`</span> and <span pulumi-lang-nodejs="`templateS3Uri`" pulumi-lang-dotnet="`TemplateS3Uri`" pulumi-lang-go="`templateS3Uri`" pulumi-lang-python="`template_s3_uri`" pulumi-lang-yaml="`templateS3Uri`" pulumi-lang-java="`templateS3Uri`">`template_s3_uri`</span> are specified, AWS Config uses the <span pulumi-lang-nodejs="`templateS3Uri`" pulumi-lang-dotnet="`TemplateS3Uri`" pulumi-lang-go="`templateS3Uri`" pulumi-lang-python="`template_s3_uri`" pulumi-lang-yaml="`templateS3Uri`" pulumi-lang-java="`templateS3Uri`">`template_s3_uri`</span> and ignores the <span pulumi-lang-nodejs="`templateBody`" pulumi-lang-dotnet="`TemplateBody`" pulumi-lang-go="`templateBody`" pulumi-lang-python="`template_body`" pulumi-lang-yaml="`templateBody`" pulumi-lang-java="`templateBody`">`template_body`</span>.
+  /// > **Note:** If both `template_body` and `template_s3_uri` are specified, AWS Config uses the `template_s3_uri` and ignores the `template_body`.
   final Input<String>? templateS3Uri;
 
   ConformancePackArgs({

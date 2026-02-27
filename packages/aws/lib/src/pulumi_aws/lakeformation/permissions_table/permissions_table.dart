@@ -10,7 +10,7 @@ class PermissionsTable {
   /// Name of the table.
   final String? name;
 
-  /// Whether to use a wildcard representing every table under a database. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to use a wildcard representing every table under a database. Defaults to `false`.
   ///
   /// The following arguments are optional:
   final bool? wildcard;

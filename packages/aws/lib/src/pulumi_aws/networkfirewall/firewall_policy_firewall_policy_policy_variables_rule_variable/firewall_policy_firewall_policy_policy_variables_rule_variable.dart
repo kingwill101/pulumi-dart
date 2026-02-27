@@ -6,7 +6,7 @@ class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable {
   /// A configuration block that defines a set of IP addresses. See IP Set below for details.
   final FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet ipSet;
 
-  /// An alphanumeric string to identify the <span pulumi-lang-nodejs="`ipSet`" pulumi-lang-dotnet="`IpSet`" pulumi-lang-go="`ipSet`" pulumi-lang-python="`ip_set`" pulumi-lang-yaml="`ipSet`" pulumi-lang-java="`ipSet`">`ip_set`</span>. Valid values: `HOME_NET`
+  /// An alphanumeric string to identify the `ip_set`. Valid values: `HOME_NET`
   final String key;
 
   FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable({

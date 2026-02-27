@@ -3,7 +3,7 @@
 import '../policy_target_tracking_configuration_customized_metric_specification_metric_metric_stat/policy_target_tracking_configuration_customized_metric_specification_metric_metric_stat.dart';
 
 class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric {
-  /// Math expression used on the returned metric. You must specify either <span pulumi-lang-nodejs="`expression`" pulumi-lang-dotnet="`Expression`" pulumi-lang-go="`expression`" pulumi-lang-python="`expression`" pulumi-lang-yaml="`expression`" pulumi-lang-java="`expression`">`expression`</span> or <span pulumi-lang-nodejs="`metricStat`" pulumi-lang-dotnet="`MetricStat`" pulumi-lang-go="`metricStat`" pulumi-lang-python="`metric_stat`" pulumi-lang-yaml="`metricStat`" pulumi-lang-java="`metricStat`">`metric_stat`</span>, but not both.
+  /// Math expression used on the returned metric. You must specify either `expression` or `metric_stat`, but not both.
   final String? expression;
 
   /// Short name for the metric used in target tracking scaling policy.
@@ -12,7 +12,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric {
   /// Human-readable label for this metric or expression.
   final String? label;
 
-  /// Structure that defines CloudWatch metric to be used in target tracking scaling policy. You must specify either <span pulumi-lang-nodejs="`expression`" pulumi-lang-dotnet="`Expression`" pulumi-lang-go="`expression`" pulumi-lang-python="`expression`" pulumi-lang-yaml="`expression`" pulumi-lang-java="`expression`">`expression`</span> or <span pulumi-lang-nodejs="`metricStat`" pulumi-lang-dotnet="`MetricStat`" pulumi-lang-go="`metricStat`" pulumi-lang-python="`metric_stat`" pulumi-lang-yaml="`metricStat`" pulumi-lang-java="`metricStat`">`metric_stat`</span>, but not both.
+  /// Structure that defines CloudWatch metric to be used in target tracking scaling policy. You must specify either `expression` or `metric_stat`, but not both.
   final PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat?
       metricStat;
 

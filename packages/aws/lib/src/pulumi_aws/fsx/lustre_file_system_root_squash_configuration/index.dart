@@ -1,3 +1,0 @@
-library module_fsx_lustre_file_system_root_squash_configuration;
-
-export 'lustre_file_system_root_squash_configuration.dart';

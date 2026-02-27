@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_threat_intel_indicator_source_url;
-
-export 'insight_filters_threat_intel_indicator_source_url.dart';

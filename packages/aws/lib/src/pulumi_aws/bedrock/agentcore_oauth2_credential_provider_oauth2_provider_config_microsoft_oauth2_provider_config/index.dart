@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_oauth2_credential_provider_oauth2_provider_config_microsoft_oauth2_provider_config;
-
-export 'agentcore_oauth2_credential_provider_oauth2_provider_config_microsoft_oauth2_provider_config.dart';

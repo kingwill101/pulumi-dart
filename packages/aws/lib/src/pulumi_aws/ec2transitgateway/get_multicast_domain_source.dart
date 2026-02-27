@@ -1,0 +1,3 @@
+library module_ec2transitgateway_get_multicast_domain_source;
+
+export 'get_multicast_domain_source/get_multicast_domain_source.dart';

@@ -10,7 +10,7 @@ class BlockPublicAccessConfigurationArgs {
   /// The following arguments are optional:
   final Input<bool> blockPublicSecurityGroupRules;
 
-  /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if <span pulumi-lang-nodejs="`blockPublicSecurityGroupRules`" pulumi-lang-dotnet="`BlockPublicSecurityGroupRules`" pulumi-lang-go="`blockPublicSecurityGroupRules`" pulumi-lang-python="`block_public_security_group_rules`" pulumi-lang-yaml="`blockPublicSecurityGroupRules`" pulumi-lang-java="`blockPublicSecurityGroupRules`">`block_public_security_group_rules`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
   final Input<
           List<
               BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>?

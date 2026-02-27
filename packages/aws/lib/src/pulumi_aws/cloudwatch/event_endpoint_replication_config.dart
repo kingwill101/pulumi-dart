@@ -1,0 +1,3 @@
+library module_cloudwatch_event_endpoint_replication_config;
+
+export 'event_endpoint_replication_config/event_endpoint_replication_config.dart';

@@ -1,0 +1,3 @@
+library module_networkfirewall_firewall_firewall_status_sync_state_attachment;
+
+export 'firewall_firewall_status_sync_state_attachment/firewall_firewall_status_sync_state_attachment.dart';

@@ -33,7 +33,7 @@ class GetEngineVersionResult2 {
   /// Whether the engine version supports global databases.
   final bool supportsGlobalDatabases;
 
-  /// Whether the engine version supports exporting the log types specified by <span pulumi-lang-nodejs="`exportableLogTypes`" pulumi-lang-dotnet="`ExportableLogTypes`" pulumi-lang-go="`exportableLogTypes`" pulumi-lang-python="`exportable_log_types`" pulumi-lang-yaml="`exportableLogTypes`" pulumi-lang-java="`exportableLogTypes`">`exportable_log_types`</span> to CloudWatch Logs.
+  /// Whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
   final bool supportsLogExportsToCloudwatch;
 
   /// Whether the database engine version supports read replicas.

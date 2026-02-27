@@ -1,0 +1,3 @@
+library module_connect_get_quick_connect_quick_connect_config_queue_config;
+
+export 'get_quick_connect_quick_connect_config_queue_config/get_quick_connect_quick_connect_config_queue_config.dart';

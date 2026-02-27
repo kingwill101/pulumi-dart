@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ClusterKerberosAttributes {
-  /// Active Directory password for <span pulumi-lang-nodejs="`adDomainJoinUser`" pulumi-lang-dotnet="`AdDomainJoinUser`" pulumi-lang-go="`adDomainJoinUser`" pulumi-lang-python="`ad_domain_join_user`" pulumi-lang-yaml="`adDomainJoinUser`" pulumi-lang-java="`adDomainJoinUser`">`ad_domain_join_user`</span>. This provider cannot perform drift detection of this configuration.
+  /// Active Directory password for `ad_domain_join_user`. This provider cannot perform drift detection of this configuration.
   final String? adDomainJoinPassword;
 
   /// Required only when establishing a cross-realm trust with an Active Directory domain. A user with sufficient privileges to join resources to the domain. This provider cannot perform drift detection of this configuration.

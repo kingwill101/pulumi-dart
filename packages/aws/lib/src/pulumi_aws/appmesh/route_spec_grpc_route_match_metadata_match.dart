@@ -1,0 +1,3 @@
+library module_appmesh_route_spec_grpc_route_match_metadata_match;
+
+export 'route_spec_grpc_route_match_metadata_match/route_spec_grpc_route_match_metadata_match.dart';

@@ -1,0 +1,3 @@
+library module_verifiedaccess_instance_logging_configuration_access_logs_s3;
+
+export 'instance_logging_configuration_access_logs_s3/instance_logging_configuration_access_logs_s3.dart';

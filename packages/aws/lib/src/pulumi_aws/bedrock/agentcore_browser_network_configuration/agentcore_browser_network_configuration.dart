@@ -6,7 +6,7 @@ class AgentcoreBrowserNetworkConfiguration {
   /// Network mode for the browser. Valid values: `PUBLIC`, `VPC`.
   final String networkMode;
 
-  /// VPC configuration when <span pulumi-lang-nodejs="`networkMode`" pulumi-lang-dotnet="`NetworkMode`" pulumi-lang-go="`networkMode`" pulumi-lang-python="`network_mode`" pulumi-lang-yaml="`networkMode`" pulumi-lang-java="`networkMode`">`network_mode`</span> is `VPC`. See <span pulumi-lang-nodejs="`vpcConfig`" pulumi-lang-dotnet="`VpcConfig`" pulumi-lang-go="`vpcConfig`" pulumi-lang-python="`vpc_config`" pulumi-lang-yaml="`vpcConfig`" pulumi-lang-java="`vpcConfig`">`vpc_config`</span> below.
+  /// VPC configuration when `network_mode` is `VPC`. See `vpc_config` below.
   final AgentcoreBrowserNetworkConfigurationVpcConfig? vpcConfig;
 
   AgentcoreBrowserNetworkConfiguration({

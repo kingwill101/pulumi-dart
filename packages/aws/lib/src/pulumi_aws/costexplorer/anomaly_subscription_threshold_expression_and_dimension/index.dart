@@ -1,3 +1,0 @@
-library module_costexplorer_anomaly_subscription_threshold_expression_and_dimension;
-
-export 'anomaly_subscription_threshold_expression_and_dimension.dart';

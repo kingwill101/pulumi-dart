@@ -1,3 +1,0 @@
-library module_opensearchingest_pipeline_vpc_options;
-
-export 'pipeline_vpc_options.dart';

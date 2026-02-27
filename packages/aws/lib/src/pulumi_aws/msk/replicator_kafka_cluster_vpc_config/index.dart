@@ -1,3 +1,0 @@
-library module_msk_replicator_kafka_cluster_vpc_config;
-
-export 'replicator_kafka_cluster_vpc_config.dart';

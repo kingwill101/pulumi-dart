@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_oauth2_credential_provider_client_secret_arn;
-
-export 'agentcore_oauth2_credential_provider_client_secret_arn.dart';

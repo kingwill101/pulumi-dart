@@ -1,0 +1,6 @@
+library module_rum;
+
+export 'rum/app_monitor.dart';
+export 'rum/app_monitor_app_monitor_configuration.dart';
+export 'rum/app_monitor_custom_events.dart';
+export 'rum/metrics_destination.dart';

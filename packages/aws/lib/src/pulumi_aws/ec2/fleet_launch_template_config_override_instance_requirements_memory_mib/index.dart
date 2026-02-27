@@ -1,3 +1,0 @@
-library module_ec2_fleet_launch_template_config_override_instance_requirements_memory_mib;
-
-export 'fleet_launch_template_config_override_instance_requirements_memory_mib.dart';

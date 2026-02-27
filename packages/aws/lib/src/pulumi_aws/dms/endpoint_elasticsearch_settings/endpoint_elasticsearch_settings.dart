@@ -4,16 +4,16 @@ class EndpointElasticsearchSettings {
   /// Endpoint for the OpenSearch cluster.
   final String endpointUri;
 
-  /// Maximum number of seconds for which DMS retries failed API requests to the OpenSearch cluster. Default is <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span>.
+  /// Maximum number of seconds for which DMS retries failed API requests to the OpenSearch cluster. Default is `300`.
   final int? errorRetryDuration;
 
-  /// Maximum percentage of records that can fail to be written before a full load operation stops. Default is <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span>.
+  /// Maximum percentage of records that can fail to be written before a full load operation stops. Default is `10`.
   final int? fullLoadErrorPercentage;
 
   /// ARN of the IAM Role with permissions to write to the OpenSearch cluster.
   final String serviceAccessRoleArn;
 
-  /// Enable to migrate documentation using the documentation type `_doc`. OpenSearch and an Elasticsearch clusters only support the _doc documentation type in versions 7.x and later. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enable to migrate documentation using the documentation type `_doc`. OpenSearch and an Elasticsearch clusters only support the _doc documentation type in versions 7.x and later. The default value is `false`.
   final bool? useNewMappingType;
 
   EndpointElasticsearchSettings({

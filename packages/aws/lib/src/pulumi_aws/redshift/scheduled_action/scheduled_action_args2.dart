@@ -8,7 +8,7 @@ class ScheduledActionArgs2 {
   /// The description of the scheduled action.
   final Input<String>? description;
 
-  /// Whether to enable the scheduled action. Default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> .
+  /// Whether to enable the scheduled action. Default is `true` .
   final Input<bool>? enable;
 
   /// The end time in UTC when the schedule is active, in UTC RFC3339 format(for example, YYYY-MM-DDTHH:MM:SSZ).

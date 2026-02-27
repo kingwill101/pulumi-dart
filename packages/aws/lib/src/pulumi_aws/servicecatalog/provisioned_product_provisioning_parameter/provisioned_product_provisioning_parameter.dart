@@ -4,7 +4,7 @@ class ProvisionedProductProvisioningParameter {
   /// Parameter key.
   final String key;
 
-  /// Whether to ignore <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> and keep the previous parameter value. Ignored when initially provisioning a product.
+  /// Whether to ignore `value` and keep the previous parameter value. Ignored when initially provisioning a product.
   final bool? usePreviousValue;
 
   /// Parameter value.

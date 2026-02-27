@@ -1,5 +1,0 @@
-library module_opensearch_get_serverless_access_policy;
-
-export 'get_serverless_access_policy.dart';
-export 'get_serverless_access_policy_args.dart';
-export 'get_serverless_access_policy_result.dart';

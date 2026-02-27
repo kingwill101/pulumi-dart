@@ -1,0 +1,3 @@
+library module_redshift_endpoint_access_vpc_endpoint;
+
+export 'endpoint_access_vpc_endpoint/endpoint_access_vpc_endpoint.dart';

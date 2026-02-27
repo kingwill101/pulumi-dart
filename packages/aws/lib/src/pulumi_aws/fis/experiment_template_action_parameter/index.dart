@@ -1,3 +1,0 @@
-library module_fis_experiment_template_action_parameter;
-
-export 'experiment_template_action_parameter.dart';

@@ -5,10 +5,10 @@ class GetObjectResult {
   /// ARN of the object.
   final String arn;
 
-  /// Object data (see **limitations above** to understand cases in which this field is actually available). If <span pulumi-lang-nodejs="`downloadBody`" pulumi-lang-dotnet="`DownloadBody`" pulumi-lang-go="`downloadBody`" pulumi-lang-python="`download_body`" pulumi-lang-yaml="`downloadBody`" pulumi-lang-java="`downloadBody`">`download_body`</span> is set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, <span pulumi-lang-nodejs="`body`" pulumi-lang-dotnet="`Body`" pulumi-lang-go="`body`" pulumi-lang-python="`body`" pulumi-lang-yaml="`body`" pulumi-lang-java="`body`">`body`</span> is not available.
+  /// Object data (see **limitations above** to understand cases in which this field is actually available). If `download_body` is set to `false`, `body` is not available.
   final String body;
 
-  /// Object data as base64 encoded string. **This is only available if <span pulumi-lang-nodejs="`downloadBody`" pulumi-lang-dotnet="`DownloadBody`" pulumi-lang-go="`downloadBody`" pulumi-lang-python="`download_body`" pulumi-lang-yaml="`downloadBody`" pulumi-lang-java="`downloadBody`">`download_body`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.**
+  /// Object data as base64 encoded string. **This is only available if `download_body` is set to `true`.**
   final String bodyBase64;
   final String bucket;
 

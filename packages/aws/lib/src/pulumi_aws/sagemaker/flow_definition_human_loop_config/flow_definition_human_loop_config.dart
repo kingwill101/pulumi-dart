@@ -10,10 +10,10 @@ class FlowDefinitionHumanLoopConfig {
   final FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice?
       publicWorkforceTaskPrice;
 
-  /// The length of time that a task remains available for review by human workers. Valid value range between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`864000`" pulumi-lang-dotnet="`864000`" pulumi-lang-go="`864000`" pulumi-lang-python="`864000`" pulumi-lang-yaml="`864000`" pulumi-lang-java="`864000`">`864000`</span>.
+  /// The length of time that a task remains available for review by human workers. Valid value range between `1` and `864000`.
   final int? taskAvailabilityLifetimeInSeconds;
 
-  /// The number of distinct workers who will perform the same task on each object. Valid value range between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`3`" pulumi-lang-dotnet="`3`" pulumi-lang-go="`3`" pulumi-lang-python="`3`" pulumi-lang-yaml="`3`" pulumi-lang-java="`3`">`3`</span>.
+  /// The number of distinct workers who will perform the same task on each object. Valid value range between `1` and `3`.
   final int taskCount;
 
   /// A description for the human worker task.
@@ -22,7 +22,7 @@ class FlowDefinitionHumanLoopConfig {
   /// An array of keywords used to describe the task so that workers can discover the task.
   final List<String>? taskKeywords;
 
-  /// The amount of time that a worker has to complete a task. The default value is <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span> seconds.
+  /// The amount of time that a worker has to complete a task. The default value is `3600` seconds.
   final int? taskTimeLimitInSeconds;
 
   /// A title for the human worker task.

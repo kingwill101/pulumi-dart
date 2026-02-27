@@ -1,3 +1,0 @@
-library module_glue_catalog_table_optimizer_configuration_retention_configuration_iceberg_configuration;
-
-export 'catalog_table_optimizer_configuration_retention_configuration_iceberg_configuration.dart';

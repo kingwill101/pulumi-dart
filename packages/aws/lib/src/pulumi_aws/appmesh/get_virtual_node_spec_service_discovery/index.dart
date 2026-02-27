@@ -1,3 +1,0 @@
-library module_appmesh_get_virtual_node_spec_service_discovery;
-
-export 'get_virtual_node_spec_service_discovery.dart';

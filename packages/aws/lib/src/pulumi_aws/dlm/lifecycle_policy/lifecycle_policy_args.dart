@@ -14,7 +14,7 @@ class LifecyclePolicyArgs {
   /// The ARN of an IAM role that is able to be assumed by the DLM service.
   final Input<String> executionRoleArn;
 
-  /// See the <span pulumi-lang-nodejs="`policyDetails`" pulumi-lang-dotnet="`PolicyDetails`" pulumi-lang-go="`policyDetails`" pulumi-lang-python="`policy_details`" pulumi-lang-yaml="`policyDetails`" pulumi-lang-java="`policyDetails`">`policy_details`</span> configuration block. Max of 1.
+  /// See the `policy_details` configuration block. Max of 1.
   final Input<LifecyclePolicyPolicyDetails> policyDetails;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -23,7 +23,7 @@ class LifecyclePolicyArgs {
   /// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
   final Input<String>? state;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   LifecyclePolicyArgs({

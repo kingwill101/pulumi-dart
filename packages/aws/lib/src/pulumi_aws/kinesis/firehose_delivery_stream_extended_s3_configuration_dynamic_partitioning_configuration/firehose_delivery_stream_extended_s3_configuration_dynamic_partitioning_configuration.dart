@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration {
-  /// Enables or disables dynamic partitioning. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables or disables dynamic partitioning. Defaults to `false`.
   final bool? enabled;
 
   /// Total amount of seconds Firehose spends on retries. Valid values between 0 and 7200. Default is 300.

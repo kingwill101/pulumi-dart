@@ -1,0 +1,3 @@
+library module_lambda_capacity_provider_capacity_provider_scaling_config;
+
+export 'capacity_provider_capacity_provider_scaling_config/capacity_provider_capacity_provider_scaling_config.dart';

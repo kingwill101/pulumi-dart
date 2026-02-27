@@ -4,7 +4,7 @@ class EndpointClientLoginBannerOptions {
   /// Customizable text that will be displayed in a banner on AWS provided clients when a VPN session is established. UTF-8 encoded characters only. Maximum of 1400 characters.
   final String? bannerText;
 
-  /// Enable or disable a customizable text banner that will be displayed on AWS provided clients when a VPN session is established. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> (not enabled).
+  /// Enable or disable a customizable text banner that will be displayed on AWS provided clients when a VPN session is established. The default is `false` (not enabled).
   final bool? enabled;
 
   EndpointClientLoginBannerOptions({

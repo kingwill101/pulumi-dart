@@ -1,0 +1,3 @@
+library module_ec2_default_security_group_egress;
+
+export 'default_security_group_egress/default_security_group_egress.dart';

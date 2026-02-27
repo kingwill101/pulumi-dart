@@ -1,3 +1,0 @@
-library module_glue_catalog_table_optimizer_configuration_orphan_file_deletion_configuration;
-
-export 'catalog_table_optimizer_configuration_orphan_file_deletion_configuration.dart';

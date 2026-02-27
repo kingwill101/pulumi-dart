@@ -8,7 +8,7 @@ import '../spot_fleet_request_spot_maintenance_strategies/spot_fleet_request_spo
 /// The set of arguments for SpotFleetRequest.
 class SpotFleetRequestArgs {
   /// Indicates how to allocate the target capacity across
-  /// the Spot pools specified by the Spot fleet request. Valid values: `lowestPrice`, <span pulumi-lang-nodejs="`diversified`" pulumi-lang-dotnet="`Diversified`" pulumi-lang-go="`diversified`" pulumi-lang-python="`diversified`" pulumi-lang-yaml="`diversified`" pulumi-lang-java="`diversified`">`diversified`</span>, `capacityOptimized`, `capacityOptimizedPrioritized`, and `priceCapacityOptimized`. The default is
+  /// the Spot pools specified by the Spot fleet request. Valid values: `lowestPrice`, `diversified`, `capacityOptimized`, `capacityOptimizedPrioritized`, and `priceCapacityOptimized`. The default is
   /// `lowestPrice`.
   final Input<String>? allocationStrategy;
 
@@ -21,7 +21,7 @@ class SpotFleetRequestArgs {
   final Input<String>? excessCapacityTerminationPolicy;
 
   /// The type of fleet request. Indicates whether the Spot Fleet only requests the target
-  /// capacity or also attempts to maintain it. Default is <span pulumi-lang-nodejs="`maintain`" pulumi-lang-dotnet="`Maintain`" pulumi-lang-go="`maintain`" pulumi-lang-python="`maintain`" pulumi-lang-yaml="`maintain`" pulumi-lang-java="`maintain`">`maintain`</span>.
+  /// capacity or also attempts to maintain it. Default is `maintain`.
   final Input<String>? fleetType;
 
   /// Grants the Spot fleet permission to terminate
@@ -32,46 +32,46 @@ class SpotFleetRequestArgs {
 
   /// Indicates whether a Spot
   /// instance stops or terminates when it is interrupted. Default is
-  /// <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>.
+  /// `terminate`.
   final Input<String>? instanceInterruptionBehaviour;
 
   /// The number of Spot pools across which to allocate your target Spot capacity.
-  /// Valid only when <span pulumi-lang-nodejs="`allocationStrategy`" pulumi-lang-dotnet="`AllocationStrategy`" pulumi-lang-go="`allocationStrategy`" pulumi-lang-python="`allocation_strategy`" pulumi-lang-yaml="`allocationStrategy`" pulumi-lang-java="`allocationStrategy`">`allocation_strategy`</span> is set to `lowestPrice`. Spot Fleet selects
+  /// Valid only when `allocation_strategy` is set to `lowestPrice`. Spot Fleet selects
   /// the cheapest Spot pools and evenly allocates your target Spot capacity across
   /// the number of Spot pools that you specify.
   final Input<int>? instancePoolsToUseCount;
 
   /// Used to define the launch configuration of the
   /// spot-fleet request. Can be specified multiple times to define different bids
-  /// across different markets and instance types. Conflicts with <span pulumi-lang-nodejs="`launchTemplateConfig`" pulumi-lang-dotnet="`LaunchTemplateConfig`" pulumi-lang-go="`launchTemplateConfig`" pulumi-lang-python="`launch_template_config`" pulumi-lang-yaml="`launchTemplateConfig`" pulumi-lang-java="`launchTemplateConfig`">`launch_template_config`</span>. At least one of <span pulumi-lang-nodejs="`launchSpecification`" pulumi-lang-dotnet="`LaunchSpecification`" pulumi-lang-go="`launchSpecification`" pulumi-lang-python="`launch_specification`" pulumi-lang-yaml="`launchSpecification`" pulumi-lang-java="`launchSpecification`">`launch_specification`</span> or <span pulumi-lang-nodejs="`launchTemplateConfig`" pulumi-lang-dotnet="`LaunchTemplateConfig`" pulumi-lang-go="`launchTemplateConfig`" pulumi-lang-python="`launch_template_config`" pulumi-lang-yaml="`launchTemplateConfig`" pulumi-lang-java="`launchTemplateConfig`">`launch_template_config`</span> is required.
+  /// across different markets and instance types. Conflicts with `launch_template_config`. At least one of `launch_specification` or `launch_template_config` is required.
   ///
   /// **Note**: This takes in similar but not
-  /// identical inputs as <span pulumi-lang-nodejs="`aws.ec2.Instance`" pulumi-lang-dotnet="`aws.ec2.Instance`" pulumi-lang-go="`ec2.Instance`" pulumi-lang-python="`ec2.Instance`" pulumi-lang-yaml="`aws.ec2.Instance`" pulumi-lang-java="`aws.ec2.Instance`">`aws.ec2.Instance`</span>.  There are limitations on
+  /// identical inputs as `aws.ec2.Instance`.  There are limitations on
   /// what you can specify. See the list of officially supported inputs in the
-  /// [reference documentation](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetLaunchSpecification.html). Any normal <span pulumi-lang-nodejs="`aws.ec2.Instance`" pulumi-lang-dotnet="`aws.ec2.Instance`" pulumi-lang-go="`ec2.Instance`" pulumi-lang-python="`ec2.Instance`" pulumi-lang-yaml="`aws.ec2.Instance`" pulumi-lang-java="`aws.ec2.Instance`">`aws.ec2.Instance`</span> parameter that corresponds to those inputs may be used and it have
-  /// a additional parameter <span pulumi-lang-nodejs="`iamInstanceProfileArn`" pulumi-lang-dotnet="`IamInstanceProfileArn`" pulumi-lang-go="`iamInstanceProfileArn`" pulumi-lang-python="`iam_instance_profile_arn`" pulumi-lang-yaml="`iamInstanceProfileArn`" pulumi-lang-java="`iamInstanceProfileArn`">`iam_instance_profile_arn`</span> takes <span pulumi-lang-nodejs="`aws.iam.InstanceProfile`" pulumi-lang-dotnet="`aws.iam.InstanceProfile`" pulumi-lang-go="`iam.InstanceProfile`" pulumi-lang-python="`iam.InstanceProfile`" pulumi-lang-yaml="`aws.iam.InstanceProfile`" pulumi-lang-java="`aws.iam.InstanceProfile`">`aws.iam.InstanceProfile`</span> attribute <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> as input.
+  /// [reference documentation](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetLaunchSpecification.html). Any normal `aws.ec2.Instance` parameter that corresponds to those inputs may be used and it have
+  /// a additional parameter `iam_instance_profile_arn` takes `aws.iam.InstanceProfile` attribute `arn` as input.
   final Input<List<SpotFleetRequestLaunchSpecification>>? launchSpecifications;
 
-  /// Launch template configuration block. See Launch Template Configs below for more details. Conflicts with <span pulumi-lang-nodejs="`launchSpecification`" pulumi-lang-dotnet="`LaunchSpecification`" pulumi-lang-go="`launchSpecification`" pulumi-lang-python="`launch_specification`" pulumi-lang-yaml="`launchSpecification`" pulumi-lang-java="`launchSpecification`">`launch_specification`</span>. At least one of <span pulumi-lang-nodejs="`launchSpecification`" pulumi-lang-dotnet="`LaunchSpecification`" pulumi-lang-go="`launchSpecification`" pulumi-lang-python="`launch_specification`" pulumi-lang-yaml="`launchSpecification`" pulumi-lang-java="`launchSpecification`">`launch_specification`</span> or <span pulumi-lang-nodejs="`launchTemplateConfig`" pulumi-lang-dotnet="`LaunchTemplateConfig`" pulumi-lang-go="`launchTemplateConfig`" pulumi-lang-python="`launch_template_config`" pulumi-lang-yaml="`launchTemplateConfig`" pulumi-lang-java="`launchTemplateConfig`">`launch_template_config`</span> is required.
+  /// Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launch_specification`. At least one of `launch_specification` or `launch_template_config` is required.
   final Input<List<SpotFleetRequestLaunchTemplateConfig>>?
       launchTemplateConfigs;
 
   /// A list of elastic load balancer names to add to the Spot fleet.
   final Input<List<String>>? loadBalancers;
 
-  /// The order of the launch template overrides to use in fulfilling On-Demand capacity. the possible values are: `lowestPrice` and <span pulumi-lang-nodejs="`prioritized`" pulumi-lang-dotnet="`Prioritized`" pulumi-lang-go="`prioritized`" pulumi-lang-python="`prioritized`" pulumi-lang-yaml="`prioritized`" pulumi-lang-java="`prioritized`">`prioritized`</span>. the default is `lowestPrice`.
+  /// The order of the launch template overrides to use in fulfilling On-Demand capacity. the possible values are: `lowestPrice` and `prioritized`. the default is `lowestPrice`.
   final Input<String>? onDemandAllocationStrategy;
 
   /// The maximum amount per hour for On-Demand Instances that you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching instances even if it hasn’t met the target capacity.
   final Input<String>? onDemandMaxTotalPrice;
 
-  /// The number of On-Demand units to request. If the request type is <span pulumi-lang-nodejs="`maintain`" pulumi-lang-dotnet="`Maintain`" pulumi-lang-go="`maintain`" pulumi-lang-python="`maintain`" pulumi-lang-yaml="`maintain`" pulumi-lang-java="`maintain`">`maintain`</span>, you can specify a target capacity of 0 and add capacity later.
+  /// The number of On-Demand units to request. If the request type is `maintain`, you can specify a target capacity of 0 and add capacity later.
   final Input<int>? onDemandTargetCapacity;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Indicates whether Spot fleet should replace unhealthy instances. Default <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
   final Input<bool>? replaceUnhealthyInstances;
 
   /// Nested argument containing maintenance strategies for managing your Spot Instances that are at an elevated risk of being interrupted. Defined below.
@@ -81,7 +81,7 @@ class SpotFleetRequestArgs {
   /// The maximum bid price per unit hour.
   final Input<String>? spotPrice;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The number of units to request. You can choose to set the
@@ -89,15 +89,15 @@ class SpotFleetRequestArgs {
   /// important to your application workload, such as vCPUs, memory, or I/O.
   final Input<int> targetCapacity;
 
-  /// The unit for the target capacity. This can only be done with <span pulumi-lang-nodejs="`instanceRequirements`" pulumi-lang-dotnet="`InstanceRequirements`" pulumi-lang-go="`instanceRequirements`" pulumi-lang-python="`instance_requirements`" pulumi-lang-yaml="`instanceRequirements`" pulumi-lang-java="`instanceRequirements`">`instance_requirements`</span> defined
+  /// The unit for the target capacity. This can only be done with `instance_requirements` defined
   final Input<String>? targetCapacityUnitType;
 
-  /// A list of <span pulumi-lang-nodejs="`aws.alb.TargetGroup`" pulumi-lang-dotnet="`aws.alb.TargetGroup`" pulumi-lang-go="`alb.TargetGroup`" pulumi-lang-python="`alb.TargetGroup`" pulumi-lang-yaml="`aws.alb.TargetGroup`" pulumi-lang-java="`aws.alb.TargetGroup`">`aws.alb.TargetGroup`</span> ARNs, for use with Application Load Balancing.
+  /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
   final Input<List<String>>? targetGroupArns;
 
   /// Indicates whether running Spot
   /// instances should be terminated when the resource is deleted (and the Spot fleet request cancelled).
-  /// If no value is specified, the value of the <span pulumi-lang-nodejs="`terminateInstancesWithExpiration`" pulumi-lang-dotnet="`TerminateInstancesWithExpiration`" pulumi-lang-go="`terminateInstancesWithExpiration`" pulumi-lang-python="`terminate_instances_with_expiration`" pulumi-lang-yaml="`terminateInstancesWithExpiration`" pulumi-lang-java="`terminateInstancesWithExpiration`">`terminate_instances_with_expiration`</span> argument is used.
+  /// If no value is specified, the value of the `terminate_instances_with_expiration` argument is used.
   final Input<String>? terminateInstancesOnDelete;
 
   /// Indicates whether running Spot

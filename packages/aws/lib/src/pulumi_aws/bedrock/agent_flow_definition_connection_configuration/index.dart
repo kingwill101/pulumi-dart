@@ -1,3 +1,0 @@
-library module_bedrock_agent_flow_definition_connection_configuration;
-
-export 'agent_flow_definition_connection_configuration.dart';

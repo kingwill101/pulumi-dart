@@ -1,4 +1,0 @@
-library module_s3control_bucket_lifecycle_configuration;
-
-export 'bucket_lifecycle_configuration2.dart';
-export 'bucket_lifecycle_configuration_args2.dart';

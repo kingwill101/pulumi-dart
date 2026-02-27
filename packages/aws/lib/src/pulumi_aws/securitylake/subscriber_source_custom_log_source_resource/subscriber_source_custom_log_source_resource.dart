@@ -5,10 +5,10 @@ import '../subscriber_source_custom_log_source_resource_attribute/subscriber_sou
 import '../subscriber_source_custom_log_source_resource_provider/subscriber_source_custom_log_source_resource_provider.dart';
 
 class SubscriberSourceCustomLogSourceResource {
-  /// The attributes of the third-party custom source. See <span pulumi-lang-nodejs="`attributes`" pulumi-lang-dotnet="`Attributes`" pulumi-lang-go="`attributes`" pulumi-lang-python="`attributes`" pulumi-lang-yaml="`attributes`" pulumi-lang-java="`attributes`">`attributes`</span> Block below.
+  /// The attributes of the third-party custom source. See `attributes` Block below.
   final List<SubscriberSourceCustomLogSourceResourceAttribute>? attributes;
 
-  /// The details of the log provider for the third-party custom source. See <span pulumi-lang-nodejs="`provider`" pulumi-lang-dotnet="`Provider`" pulumi-lang-go="`provider`" pulumi-lang-python="`provider`" pulumi-lang-yaml="`provider`" pulumi-lang-java="`provider`">`provider`</span> Block below.
+  /// The details of the log provider for the third-party custom source. See `provider` Block below.
   final List<SubscriberSourceCustomLogSourceResourceProvider>? providers;
 
   /// The name for a third-party custom source. This must be a Regionally unique value.

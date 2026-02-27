@@ -17,8 +17,8 @@ class VpcPeeringConnectionArgs {
   /// Defaults to the account ID the [AWS provider][1] is currently connected to, so must be managed if connecting cross-account.
   final Input<String>? peerOwnerId;
 
-  /// The region of the accepter VPC of the VPC Peering Connection. <span pulumi-lang-nodejs="`autoAccept`" pulumi-lang-dotnet="`AutoAccept`" pulumi-lang-go="`autoAccept`" pulumi-lang-python="`auto_accept`" pulumi-lang-yaml="`autoAccept`" pulumi-lang-java="`autoAccept`">`auto_accept`</span> must be <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>,
-  /// and use the <span pulumi-lang-nodejs="`aws.ec2.VpcPeeringConnectionAccepter`" pulumi-lang-dotnet="`aws.ec2.VpcPeeringConnectionAccepter`" pulumi-lang-go="`ec2.VpcPeeringConnectionAccepter`" pulumi-lang-python="`ec2.VpcPeeringConnectionAccepter`" pulumi-lang-yaml="`aws.ec2.VpcPeeringConnectionAccepter`" pulumi-lang-java="`aws.ec2.VpcPeeringConnectionAccepter`">`aws.ec2.VpcPeeringConnectionAccepter`</span> to manage the accepter side.
+  /// The region of the accepter VPC of the VPC Peering Connection. `auto_accept` must be `false`,
+  /// and use the `aws.ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
   final Input<String>? peerRegion;
 
   /// The ID of the target VPC with which you are creating the VPC Peering Connection.
@@ -31,7 +31,7 @@ class VpcPeeringConnectionArgs {
   /// the peering connection (a maximum of one).
   final Input<VpcPeeringConnectionRequester>? requester;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The ID of the requester VPC.

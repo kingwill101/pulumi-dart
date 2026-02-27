@@ -1,0 +1,3 @@
+library module_inspector2_filter_filter_criteria;
+
+export 'filter_filter_criteria/filter_filter_criteria.dart';

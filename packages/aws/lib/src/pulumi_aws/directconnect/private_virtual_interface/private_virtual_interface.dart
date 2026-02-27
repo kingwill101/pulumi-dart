@@ -5,127 +5,17 @@ import 'private_virtual_interface_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const foo = new aws.directconnect.PrivateVirtualInterface("foo", {
-/// connectionId: "dxcon-zzzzzzzz",
-/// name: "vif-foo",
-/// vlan: 4094,
-/// addressFamily: "ipv4",
-/// bgpAsn: 65352,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// foo = aws.directconnect.PrivateVirtualInterface("foo",
-/// connection_id="dxcon-zzzzzzzz",
-/// name="vif-foo",
-/// vlan=4094,
-/// address_family="ipv4",
-/// bgp_asn=65352)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var foo = new Aws.DirectConnect.PrivateVirtualInterface("foo", new()
-/// {
-/// ConnectionId = "dxcon-zzzzzzzz",
-/// Name = "vif-foo",
-/// Vlan = 4094,
-/// AddressFamily = "ipv4",
-/// BgpAsn = 65352,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/directconnect"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := directconnect.NewPrivateVirtualInterface(ctx, "foo", &directconnect.PrivateVirtualInterfaceArgs{
-/// ConnectionId:  pulumi.String("dxcon-zzzzzzzz"),
-/// Name:          pulumi.String("vif-foo"),
-/// Vlan:          pulumi.Int(4094),
-/// AddressFamily: pulumi.String("ipv4"),
-/// BgpAsn:        pulumi.Int(65352),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.directconnect.PrivateVirtualInterface;
-/// import com.pulumi.aws.directconnect.PrivateVirtualInterfaceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var foo = new PrivateVirtualInterface("foo", PrivateVirtualInterfaceArgs.builder()
-/// .connectionId("dxcon-zzzzzzzz")
-/// .name("vif-foo")
-/// .vlan(4094)
-/// .addressFamily("ipv4")
-/// .bgpAsn(65352)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// foo:
-/// type: aws:directconnect:PrivateVirtualInterface
-/// properties:
-/// connectionId: dxcon-zzzzzzzz
-/// name: vif-foo
-/// vlan: 4094
-/// addressFamily: ipv4
-/// bgpAsn: 65352
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Direct Connect private virtual interfaces using the VIF <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Direct Connect private virtual interfaces using the VIF `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:directconnect/privateVirtualInterface:PrivateVirtualInterface test dxvif-33cc44dd
 /// ```
 class PrivateVirtualInterface extends CustomResource {
-  /// The address family for the BGP peer. `ipv4 ` or <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span>.
+  /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   late final Output<String> addressFamily;
 
   /// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
@@ -157,7 +47,7 @@ class PrivateVirtualInterface extends CustomResource {
   late final Output<bool> jumboFrameCapable;
 
   /// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
-  /// The MTU of a virtual private interface can be either <span pulumi-lang-nodejs="`1500`" pulumi-lang-dotnet="`1500`" pulumi-lang-go="`1500`" pulumi-lang-python="`1500`" pulumi-lang-yaml="`1500`" pulumi-lang-java="`1500`">`1500`</span> or <span pulumi-lang-nodejs="`9001`" pulumi-lang-dotnet="`9001`" pulumi-lang-go="`9001`" pulumi-lang-python="`9001`" pulumi-lang-yaml="`9001`" pulumi-lang-java="`9001`">`9001`</span> (jumbo frames). Default is <span pulumi-lang-nodejs="`1500`" pulumi-lang-dotnet="`1500`" pulumi-lang-go="`1500`" pulumi-lang-python="`1500`" pulumi-lang-yaml="`1500`" pulumi-lang-java="`1500`">`1500`</span>.
+  /// The MTU of a virtual private interface can be either `1500` or `9001` (jumbo frames). Default is `1500`.
   late final Output<int?> mtu;
 
   /// The name for the virtual interface.
@@ -169,10 +59,10 @@ class PrivateVirtualInterface extends CustomResource {
   /// Indicates whether to enable or disable SiteLink.
   late final Output<bool?> sitelinkEnabled;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// The VLAN ID.

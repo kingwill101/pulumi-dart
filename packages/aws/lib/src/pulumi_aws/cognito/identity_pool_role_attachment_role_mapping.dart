@@ -1,0 +1,3 @@
+library module_cognito_identity_pool_role_attachment_role_mapping;
+
+export 'identity_pool_role_attachment_role_mapping/identity_pool_role_attachment_role_mapping.dart';

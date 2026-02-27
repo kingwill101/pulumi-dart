@@ -12,7 +12,7 @@ class DomainConfigurationArgs {
   /// An enumerated string that speciﬁes the authentication type. Valid values are `CUSTOM_AUTH_X509`, `CUSTOM_AUTH`, `AWS_X509`, `AWS_SIGV4` or `DEFAULT`.
   final Input<String>? authenticationType;
 
-  /// An object that specifies the authorization service for a domain. See the <span pulumi-lang-nodejs="`authorizerConfig`" pulumi-lang-dotnet="`AuthorizerConfig`" pulumi-lang-go="`authorizerConfig`" pulumi-lang-python="`authorizer_config`" pulumi-lang-yaml="`authorizerConfig`" pulumi-lang-java="`authorizerConfig`">`authorizer_config`</span> Block below for details.
+  /// An object that specifies the authorization service for a domain. See the `authorizer_config` Block below for details.
   final Input<DomainConfigurationAuthorizerConfig>? authorizerConfig;
 
   /// Fully-qualified domain name.
@@ -24,7 +24,7 @@ class DomainConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The ARNs of the certificates that IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for Amazon Web Services-managed domains. When using a custom <span pulumi-lang-nodejs="`domainName`" pulumi-lang-dotnet="`DomainName`" pulumi-lang-go="`domainName`" pulumi-lang-python="`domain_name`" pulumi-lang-yaml="`domainName`" pulumi-lang-java="`domainName`">`domain_name`</span>, the cert must include it.
+  /// The ARNs of the certificates that IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for Amazon Web Services-managed domains. When using a custom `domain_name`, the cert must include it.
   final Input<List<String>>? serverCertificateArns;
 
   /// The type of service delivered by the endpoint. Note: Amazon Web Services IoT Core currently supports only the `DATA` service type.
@@ -33,10 +33,10 @@ class DomainConfigurationArgs {
   /// The status to which the domain configuration should be set. Valid values are `ENABLED` and `DISABLED`.
   final Input<String>? status;
 
-  /// Map of tags to assign to this resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// An object that specifies the TLS configuration for a domain. See the <span pulumi-lang-nodejs="`tlsConfig`" pulumi-lang-dotnet="`TlsConfig`" pulumi-lang-go="`tlsConfig`" pulumi-lang-python="`tls_config`" pulumi-lang-yaml="`tlsConfig`" pulumi-lang-java="`tlsConfig`">`tls_config`</span> Block below for details.
+  /// An object that specifies the TLS configuration for a domain. See the `tls_config` Block below for details.
   final Input<DomainConfigurationTlsConfig>? tlsConfig;
 
   /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.

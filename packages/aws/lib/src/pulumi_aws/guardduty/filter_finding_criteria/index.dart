@@ -1,3 +1,0 @@
-library module_guardduty_filter_finding_criteria;
-
-export 'filter_finding_criteria.dart';

@@ -6,7 +6,7 @@ class RuleGroupRuleGroupRuleVariablesIpSet {
   /// A configuration block that defines a set of IP addresses. See IP Set below for details.
   final RuleGroupRuleGroupRuleVariablesIpSetIpSet ipSet;
 
-  /// A unique alphanumeric string to identify the <span pulumi-lang-nodejs="`ipSet`" pulumi-lang-dotnet="`IpSet`" pulumi-lang-go="`ipSet`" pulumi-lang-python="`ip_set`" pulumi-lang-yaml="`ipSet`" pulumi-lang-java="`ipSet`">`ip_set`</span>.
+  /// A unique alphanumeric string to identify the `ip_set`.
   final String key;
 
   RuleGroupRuleGroupRuleVariablesIpSet({

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetTrafficPolicyDocumentRuleGeoProximityLocation {
-  /// Specify a value for <span pulumi-lang-nodejs="`bias`" pulumi-lang-dotnet="`Bias`" pulumi-lang-go="`bias`" pulumi-lang-python="`bias`" pulumi-lang-yaml="`bias`" pulumi-lang-java="`bias`">`bias`</span> if you want to route more traffic to an endpoint from nearby endpoints (positive values) or route less traffic to an endpoint (negative values).
+  /// Specify a value for `bias` if you want to route more traffic to an endpoint from nearby endpoints (positive values) or route less traffic to an endpoint (negative values).
   final String? bias;
 
   /// References to an endpoint.

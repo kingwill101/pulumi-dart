@@ -6,7 +6,7 @@ class ApplicationPortalOptionsSignInOptions {
 
   /// Determines how IAM Identity Center navigates the user to the target application.
   /// Valid values are `APPLICATION` and `IDENTITY_CENTER`.
-  /// If `APPLICATION` is set, IAM Identity Center redirects the customer to the configured <span pulumi-lang-nodejs="`applicationUrl`" pulumi-lang-dotnet="`ApplicationUrl`" pulumi-lang-go="`applicationUrl`" pulumi-lang-python="`application_url`" pulumi-lang-yaml="`applicationUrl`" pulumi-lang-java="`applicationUrl`">`application_url`</span>.
+  /// If `APPLICATION` is set, IAM Identity Center redirects the customer to the configured `application_url`.
   /// If `IDENTITY_CENTER` is set, IAM Identity Center uses SAML identity-provider initiated authentication to sign the customer directly into a SAML-based application.
   final String origin;
 

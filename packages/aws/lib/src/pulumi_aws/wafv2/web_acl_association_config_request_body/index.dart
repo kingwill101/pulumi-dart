@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_association_config_request_body;
-
-export 'web_acl_association_config_request_body.dart';

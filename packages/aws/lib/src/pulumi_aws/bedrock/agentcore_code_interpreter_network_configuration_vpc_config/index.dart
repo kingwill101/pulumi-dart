@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_code_interpreter_network_configuration_vpc_config;
-
-export 'agentcore_code_interpreter_network_configuration_vpc_config.dart';

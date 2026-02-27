@@ -1,3 +1,0 @@
-library module_quicksight_iam_policy_assignment_identities;
-
-export 'iam_policy_assignment_identities.dart';

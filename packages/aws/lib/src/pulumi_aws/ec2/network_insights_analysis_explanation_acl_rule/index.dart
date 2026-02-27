@@ -1,3 +1,0 @@
-library module_ec2_network_insights_analysis_explanation_acl_rule;
-
-export 'network_insights_analysis_explanation_acl_rule.dart';

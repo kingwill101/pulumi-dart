@@ -1,0 +1,3 @@
+library module_appmesh_get_mesh_spec_service_discovery;
+
+export 'get_mesh_spec_service_discovery/get_mesh_spec_service_discovery.dart';

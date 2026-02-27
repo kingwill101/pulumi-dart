@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class RuleScope {
-  /// The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for <span pulumi-lang-nodejs="`complianceResourceTypes`" pulumi-lang-dotnet="`ComplianceResourceTypes`" pulumi-lang-go="`complianceResourceTypes`" pulumi-lang-python="`compliance_resource_types`" pulumi-lang-yaml="`complianceResourceTypes`" pulumi-lang-java="`complianceResourceTypes`">`compliance_resource_types`</span>.
+  /// The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `compliance_resource_types`.
   final String? complianceResourceId;
 
-  /// A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for <span pulumi-lang-nodejs="`complianceResourceId`" pulumi-lang-dotnet="`ComplianceResourceId`" pulumi-lang-go="`complianceResourceId`" pulumi-lang-python="`compliance_resource_id`" pulumi-lang-yaml="`complianceResourceId`" pulumi-lang-java="`complianceResourceId`">`compliance_resource_id`</span>. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
+  /// A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `compliance_resource_id`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
   final List<String>? complianceResourceTypes;
 
   /// The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.

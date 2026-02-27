@@ -1,0 +1,5 @@
+library module_fsx_get_ontap_storage_virtual_machines;
+
+export 'get_ontap_storage_virtual_machines/get_ontap_storage_virtual_machines.dart';
+export 'get_ontap_storage_virtual_machines/get_ontap_storage_virtual_machines_args.dart';
+export 'get_ontap_storage_virtual_machines/get_ontap_storage_virtual_machines_result.dart';

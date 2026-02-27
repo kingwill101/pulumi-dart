@@ -1,0 +1,3 @@
+library module_appmesh_get_virtual_node_spec_listener_connection_pool_http2;
+
+export 'get_virtual_node_spec_listener_connection_pool_http2/get_virtual_node_spec_listener_connection_pool_http2.dart';

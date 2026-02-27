@@ -1,0 +1,3 @@
+library module_route53_get_traffic_policy_document_endpoint;
+
+export 'get_traffic_policy_document_endpoint/get_traffic_policy_document_endpoint.dart';

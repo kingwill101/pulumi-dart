@@ -1,0 +1,3 @@
+library module_workspacesweb_ip_access_settings_ip_rule;
+
+export 'ip_access_settings_ip_rule/ip_access_settings_ip_rule.dart';

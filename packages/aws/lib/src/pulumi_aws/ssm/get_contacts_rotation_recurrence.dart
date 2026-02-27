@@ -1,0 +1,3 @@
+library module_ssm_get_contacts_rotation_recurrence;
+
+export 'get_contacts_rotation_recurrence/get_contacts_rotation_recurrence.dart';

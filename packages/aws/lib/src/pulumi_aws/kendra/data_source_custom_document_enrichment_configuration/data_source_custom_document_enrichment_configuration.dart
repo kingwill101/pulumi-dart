@@ -6,7 +6,7 @@ import '../data_source_custom_document_enrichment_configuration_post_extraction_
 import '../data_source_custom_document_enrichment_configuration_pre_extraction_hook_configuration/data_source_custom_document_enrichment_configuration_pre_extraction_hook_configuration.dart';
 
 class DataSourceCustomDocumentEnrichmentConfiguration {
-  /// Configuration information to alter document attributes or metadata fields and content when ingesting documents into Amazon Kendra. Minimum number of <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> items. Maximum number of <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span> items. Detailed below.
+  /// Configuration information to alter document attributes or metadata fields and content when ingesting documents into Amazon Kendra. Minimum number of `0` items. Maximum number of `100` items. Detailed below.
   final List<
           DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration>?
       inlineConfigurations;
@@ -19,7 +19,7 @@ class DataSourceCustomDocumentEnrichmentConfiguration {
   final DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfiguration?
       preExtractionHookConfiguration;
 
-  /// The Amazon Resource Name (ARN) of a role with permission to run <span pulumi-lang-nodejs="`preExtractionHookConfiguration`" pulumi-lang-dotnet="`PreExtractionHookConfiguration`" pulumi-lang-go="`preExtractionHookConfiguration`" pulumi-lang-python="`pre_extraction_hook_configuration`" pulumi-lang-yaml="`preExtractionHookConfiguration`" pulumi-lang-java="`preExtractionHookConfiguration`">`pre_extraction_hook_configuration`</span> and <span pulumi-lang-nodejs="`postExtractionHookConfiguration`" pulumi-lang-dotnet="`PostExtractionHookConfiguration`" pulumi-lang-go="`postExtractionHookConfiguration`" pulumi-lang-python="`post_extraction_hook_configuration`" pulumi-lang-yaml="`postExtractionHookConfiguration`" pulumi-lang-java="`postExtractionHookConfiguration`">`post_extraction_hook_configuration`</span> for altering document metadata and content during the document ingestion process. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+  /// The Amazon Resource Name (ARN) of a role with permission to run `pre_extraction_hook_configuration` and `post_extraction_hook_configuration` for altering document metadata and content during the document ingestion process. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   final String? roleArn;
 
   DataSourceCustomDocumentEnrichmentConfiguration({

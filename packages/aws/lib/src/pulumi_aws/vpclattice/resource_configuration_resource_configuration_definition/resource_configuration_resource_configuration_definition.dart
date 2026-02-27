@@ -5,15 +5,15 @@ import '../resource_configuration_resource_configuration_definition_dns_resource
 import '../resource_configuration_resource_configuration_definition_ip_resource/resource_configuration_resource_configuration_definition_ip_resource.dart';
 
 class ResourceConfigurationResourceConfigurationDefinition {
-  /// Resource DNS Configuration. See <span pulumi-lang-nodejs="`arnResource`" pulumi-lang-dotnet="`ArnResource`" pulumi-lang-go="`arnResource`" pulumi-lang-python="`arn_resource`" pulumi-lang-yaml="`arnResource`" pulumi-lang-java="`arnResource`">`arn_resource`</span> Block for details.
+  /// Resource DNS Configuration. See `arn_resource` Block for details.
   final ResourceConfigurationResourceConfigurationDefinitionArnResource?
       arnResource;
 
-  /// Resource DNS Configuration. See <span pulumi-lang-nodejs="`dnsResource`" pulumi-lang-dotnet="`DnsResource`" pulumi-lang-go="`dnsResource`" pulumi-lang-python="`dns_resource`" pulumi-lang-yaml="`dnsResource`" pulumi-lang-java="`dnsResource`">`dns_resource`</span> Block for details.
+  /// Resource DNS Configuration. See `dns_resource` Block for details.
   final ResourceConfigurationResourceConfigurationDefinitionDnsResource?
       dnsResource;
 
-  /// Resource DNS Configuration. See <span pulumi-lang-nodejs="`ipResource`" pulumi-lang-dotnet="`IpResource`" pulumi-lang-go="`ipResource`" pulumi-lang-python="`ip_resource`" pulumi-lang-yaml="`ipResource`" pulumi-lang-java="`ipResource`">`ip_resource`</span> Block for details.
+  /// Resource DNS Configuration. See `ip_resource` Block for details.
   final ResourceConfigurationResourceConfigurationDefinitionIpResource?
       ipResource;
 

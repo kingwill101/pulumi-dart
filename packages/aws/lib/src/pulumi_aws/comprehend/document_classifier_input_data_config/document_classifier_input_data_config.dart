@@ -5,8 +5,8 @@ import '../document_classifier_input_data_config_augmented_manifest/document_cla
 
 class DocumentClassifierInputDataConfig {
   /// List of training datasets produced by Amazon SageMaker AI Ground Truth.
-  /// Used if <span pulumi-lang-nodejs="`dataFormat`" pulumi-lang-dotnet="`DataFormat`" pulumi-lang-go="`dataFormat`" pulumi-lang-python="`data_format`" pulumi-lang-yaml="`dataFormat`" pulumi-lang-java="`dataFormat`">`data_format`</span> is `AUGMENTED_MANIFEST`.
-  /// See the <span pulumi-lang-nodejs="`augmentedManifests`" pulumi-lang-dotnet="`AugmentedManifests`" pulumi-lang-go="`augmentedManifests`" pulumi-lang-python="`augmented_manifests`" pulumi-lang-yaml="`augmentedManifests`" pulumi-lang-java="`augmentedManifests`">`augmented_manifests`</span> Configuration Block section below.
+  /// Used if `data_format` is `AUGMENTED_MANIFEST`.
+  /// See the `augmented_manifests` Configuration Block section below.
   final List<DocumentClassifierInputDataConfigAugmentedManifest>?
       augmentedManifests;
 
@@ -20,7 +20,7 @@ class DocumentClassifierInputDataConfig {
   final String? labelDelimiter;
 
   /// Location of training documents.
-  /// Used if <span pulumi-lang-nodejs="`dataFormat`" pulumi-lang-dotnet="`DataFormat`" pulumi-lang-go="`dataFormat`" pulumi-lang-python="`data_format`" pulumi-lang-yaml="`dataFormat`" pulumi-lang-java="`dataFormat`">`data_format`</span> is `COMPREHEND_CSV`.
+  /// Used if `data_format` is `COMPREHEND_CSV`.
   final String? s3Uri;
   final String? testS3Uri;
 

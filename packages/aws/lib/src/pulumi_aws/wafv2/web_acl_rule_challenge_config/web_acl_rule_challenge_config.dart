@@ -3,7 +3,7 @@
 import '../web_acl_rule_challenge_config_immunity_time_property/web_acl_rule_challenge_config_immunity_time_property.dart';
 
 class WebAclRuleChallengeConfig {
-  /// Defines custom immunity time. See <span pulumi-lang-nodejs="`immunityTimeProperty`" pulumi-lang-dotnet="`ImmunityTimeProperty`" pulumi-lang-go="`immunityTimeProperty`" pulumi-lang-python="`immunity_time_property`" pulumi-lang-yaml="`immunityTimeProperty`" pulumi-lang-java="`immunityTimeProperty`">`immunity_time_property`</span> below for details.
+  /// Defines custom immunity time. See `immunity_time_property` below for details.
   final WebAclRuleChallengeConfigImmunityTimeProperty? immunityTimeProperty;
 
   WebAclRuleChallengeConfig({

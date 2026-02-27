@@ -4,22 +4,22 @@ import '../ontap_volume_snaplock_configuration_autocommit_period/ontap_volume_sn
 import '../ontap_volume_snaplock_configuration_retention_period/ontap_volume_snaplock_configuration_retention_period.dart';
 
 class OntapVolumeSnaplockConfiguration {
-  /// Enables or disables the audit log volume for an FSx for ONTAP SnapLock volume. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables or disables the audit log volume for an FSx for ONTAP SnapLock volume. The default value is `false`.
   final bool? auditLogVolume;
 
-  /// The configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock volume. See <span pulumi-lang-nodejs="`autocommitPeriod`" pulumi-lang-dotnet="`AutocommitPeriod`" pulumi-lang-go="`autocommitPeriod`" pulumi-lang-python="`autocommit_period`" pulumi-lang-yaml="`autocommitPeriod`" pulumi-lang-java="`autocommitPeriod`">`autocommit_period`</span> Block for details.
+  /// The configuration object for setting the autocommit period of files in an FSx for ONTAP SnapLock volume. See `autocommit_period` Block for details.
   final OntapVolumeSnaplockConfigurationAutocommitPeriod? autocommitPeriod;
 
   /// Enables, disables, or permanently disables privileged delete on an FSx for ONTAP SnapLock Enterprise volume. Valid values: `DISABLED`, `ENABLED`, `PERMANENTLY_DISABLED`. The default value is `DISABLED`.
   final String? privilegedDelete;
 
-  /// The retention period of an FSx for ONTAP SnapLock volume. See <span pulumi-lang-nodejs="`retentionPeriod`" pulumi-lang-dotnet="`RetentionPeriod`" pulumi-lang-go="`retentionPeriod`" pulumi-lang-python="`retention_period`" pulumi-lang-yaml="`retentionPeriod`" pulumi-lang-java="`retentionPeriod`">`retention_period`</span> Block for details.
+  /// The retention period of an FSx for ONTAP SnapLock volume. See `retention_period` Block for details.
   final OntapVolumeSnaplockConfigurationRetentionPeriod? retentionPeriod;
 
   /// Specifies the retention mode of an FSx for ONTAP SnapLock volume. After it is set, it can't be changed. Valid values: `COMPLIANCE`, `ENTERPRISE`.
   final String snaplockType;
 
-  /// Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables or disables volume-append mode on an FSx for ONTAP SnapLock volume. The default value is `false`.
   final bool? volumeAppendModeEnabled;
 
   OntapVolumeSnaplockConfiguration({

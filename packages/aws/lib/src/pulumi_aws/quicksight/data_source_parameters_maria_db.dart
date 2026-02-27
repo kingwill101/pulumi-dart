@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_maria_db;
+
+export 'data_source_parameters_maria_db/data_source_parameters_maria_db.dart';

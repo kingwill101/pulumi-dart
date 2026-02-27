@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_ecs_task_parameters_network_configuration;
+
+export 'pipe_target_parameters_ecs_task_parameters_network_configuration/pipe_target_parameters_ecs_task_parameters_network_configuration.dart';

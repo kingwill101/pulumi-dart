@@ -1,3 +1,0 @@
-library module_medialive_channel_encoder_settings_audio_description_codec_settings;
-
-export 'channel_encoder_settings_audio_description_codec_settings.dart';

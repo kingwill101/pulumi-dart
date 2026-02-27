@@ -1,0 +1,3 @@
+library module_inspector2_filter_filter_criteria_vulnerable_package_architecture;
+
+export 'filter_filter_criteria_vulnerable_package_architecture/filter_filter_criteria_vulnerable_package_architecture.dart';

@@ -9,7 +9,7 @@ class StackArgs2 {
   final Input<List<String>>? capabilities;
 
   /// Set to true to disable rollback of the stack if stack creation failed.
-  /// Conflicts with <span pulumi-lang-nodejs="`onFailure`" pulumi-lang-dotnet="`OnFailure`" pulumi-lang-go="`onFailure`" pulumi-lang-python="`on_failure`" pulumi-lang-yaml="`onFailure`" pulumi-lang-java="`onFailure`">`on_failure`</span>.
+  /// Conflicts with `on_failure`.
   final Input<bool>? disableRollback;
 
   /// The ARN of an IAM role that AWS CloudFormation assumes to create the stack. If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.
@@ -22,24 +22,24 @@ class StackArgs2 {
   final Input<List<String>>? notificationArns;
 
   /// Action to be taken if stack creation fails. This must be
-  /// one of: `DO_NOTHING`, `ROLLBACK`, or `DELETE`. Conflicts with <span pulumi-lang-nodejs="`disableRollback`" pulumi-lang-dotnet="`DisableRollback`" pulumi-lang-go="`disableRollback`" pulumi-lang-python="`disable_rollback`" pulumi-lang-yaml="`disableRollback`" pulumi-lang-java="`disableRollback`">`disable_rollback`</span>.
+  /// one of: `DO_NOTHING`, `ROLLBACK`, or `DELETE`. Conflicts with `disable_rollback`.
   final Input<String>? onFailure;
 
   /// A map of Parameter structures that specify input parameters for the stack.
   final Input<Map<String, String>>? parameters;
 
   /// Structure containing the stack policy body.
-  /// Conflicts w/ <span pulumi-lang-nodejs="`policyUrl`" pulumi-lang-dotnet="`PolicyUrl`" pulumi-lang-go="`policyUrl`" pulumi-lang-python="`policy_url`" pulumi-lang-yaml="`policyUrl`" pulumi-lang-java="`policyUrl`">`policy_url`</span>.
+  /// Conflicts w/ `policy_url`.
   final Input<String>? policyBody;
 
   /// Location of a file containing the stack policy.
-  /// Conflicts w/ <span pulumi-lang-nodejs="`policyBody`" pulumi-lang-dotnet="`PolicyBody`" pulumi-lang-go="`policyBody`" pulumi-lang-python="`policy_body`" pulumi-lang-yaml="`policyBody`" pulumi-lang-java="`policyBody`">`policy_body`</span>.
+  /// Conflicts w/ `policy_body`.
   final Input<String>? policyUrl;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Map of resource tags to associate with this stack. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Structure containing the template body (max size: 51,200 bytes).

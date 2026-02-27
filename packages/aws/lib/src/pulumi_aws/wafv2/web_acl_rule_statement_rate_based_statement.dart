@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_statement_rate_based_statement;
+
+export 'web_acl_rule_statement_rate_based_statement/web_acl_rule_statement_rate_based_statement.dart';

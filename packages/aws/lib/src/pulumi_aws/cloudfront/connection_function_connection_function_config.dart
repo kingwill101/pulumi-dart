@@ -1,0 +1,3 @@
+library module_cloudfront_connection_function_connection_function_config;
+
+export 'connection_function_connection_function_config/connection_function_connection_function_config.dart';

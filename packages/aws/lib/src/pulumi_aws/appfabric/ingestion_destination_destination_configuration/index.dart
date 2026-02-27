@@ -1,3 +1,0 @@
-library module_appfabric_ingestion_destination_destination_configuration;
-
-export 'ingestion_destination_destination_configuration.dart';

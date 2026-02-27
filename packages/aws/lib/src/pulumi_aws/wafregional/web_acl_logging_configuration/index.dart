@@ -1,3 +1,0 @@
-library module_wafregional_web_acl_logging_configuration;
-
-export 'web_acl_logging_configuration2.dart';

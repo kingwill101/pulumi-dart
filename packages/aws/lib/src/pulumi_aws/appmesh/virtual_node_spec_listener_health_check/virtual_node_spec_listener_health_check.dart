@@ -7,13 +7,13 @@ class VirtualNodeSpecListenerHealthCheck {
   /// Time period in milliseconds between each health check execution.
   final int intervalMillis;
 
-  /// Destination path for the health check request. This is only required if the specified protocol is <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span> or <span pulumi-lang-nodejs="`http2`" pulumi-lang-dotnet="`Http2`" pulumi-lang-go="`http2`" pulumi-lang-python="`http2`" pulumi-lang-yaml="`http2`" pulumi-lang-java="`http2`">`http2`</span>.
+  /// Destination path for the health check request. This is only required if the specified protocol is `http` or `http2`.
   final String? path;
 
-  /// Destination port for the health check request. This port must match the port defined in the <span pulumi-lang-nodejs="`portMapping`" pulumi-lang-dotnet="`PortMapping`" pulumi-lang-go="`portMapping`" pulumi-lang-python="`port_mapping`" pulumi-lang-yaml="`portMapping`" pulumi-lang-java="`portMapping`">`port_mapping`</span> for the listener.
+  /// Destination port for the health check request. This port must match the port defined in the `port_mapping` for the listener.
   final int? port;
 
-  /// Protocol for the health check request. Valid values are <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`http2`" pulumi-lang-dotnet="`Http2`" pulumi-lang-go="`http2`" pulumi-lang-python="`http2`" pulumi-lang-yaml="`http2`" pulumi-lang-java="`http2`">`http2`</span>, <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span> and <span pulumi-lang-nodejs="`grpc`" pulumi-lang-dotnet="`Grpc`" pulumi-lang-go="`grpc`" pulumi-lang-python="`grpc`" pulumi-lang-yaml="`grpc`" pulumi-lang-java="`grpc`">`grpc`</span>.
+  /// Protocol for the health check request. Valid values are `http`, `http2`, `tcp` and `grpc`.
   final String protocol;
 
   /// Amount of time to wait when receiving a response from the health check, in milliseconds.

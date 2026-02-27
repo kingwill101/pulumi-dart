@@ -8,14 +8,14 @@ import 'image_pipeline_args.dart';
 
 /// Manages an Image Builder Image Pipeline.
 ///
-/// > **NOTE:** Starting with version `5.74.0`, lifecycle meta-argument <span pulumi-lang-nodejs="`replaceTriggeredBy`" pulumi-lang-dotnet="`ReplaceTriggeredBy`" pulumi-lang-go="`replaceTriggeredBy`" pulumi-lang-python="`replace_triggered_by`" pulumi-lang-yaml="`replaceTriggeredBy`" pulumi-lang-java="`replaceTriggeredBy`">`replace_triggered_by`</span> must be used in order to prevent a dependency error on destroy.
+/// > **NOTE:** Starting with version `5.74.0`, lifecycle meta-argument `replace_triggered_by` must be used in order to prevent a dependency error on destroy.
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the Image Builder image pipeline.
+/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder image pipeline.
 ///
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.imagebuilder.ImagePipeline`" pulumi-lang-dotnet="`aws.imagebuilder.ImagePipeline`" pulumi-lang-go="`imagebuilder.ImagePipeline`" pulumi-lang-python="`imagebuilder.ImagePipeline`" pulumi-lang-yaml="`aws.imagebuilder.ImagePipeline`" pulumi-lang-java="`aws.imagebuilder.ImagePipeline`">`aws.imagebuilder.ImagePipeline`</span> resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.ImagePipeline` resources using the Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/imagePipeline:ImagePipeline example arn:aws:imagebuilder:us-east-1:123456789012:image-pipeline/example
@@ -45,7 +45,7 @@ class ImagePipeline extends CustomResource {
   /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
   late final Output<String?> distributionConfigurationArn;
 
-  /// Whether additional information about the image being created is collected. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether additional information about the image being created is collected. Defaults to `true`.
   late final Output<bool?> enhancedImageMetadataEnabled;
 
   /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
@@ -85,10 +85,10 @@ class ImagePipeline extends CustomResource {
   /// Status of the image pipeline. Valid values are `DISABLED` and `ENABLED`. Defaults to `ENABLED`.
   late final Output<String?> status;
 
-  /// Key-value map of resource tags for the image pipeline. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the image pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Configuration block with the workflow configuration. Detailed below.

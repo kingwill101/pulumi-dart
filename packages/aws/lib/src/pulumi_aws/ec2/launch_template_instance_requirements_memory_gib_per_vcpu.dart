@@ -1,0 +1,3 @@
+library module_ec2_launch_template_instance_requirements_memory_gib_per_vcpu;
+
+export 'launch_template_instance_requirements_memory_gib_per_vcpu/launch_template_instance_requirements_memory_gib_per_vcpu.dart';

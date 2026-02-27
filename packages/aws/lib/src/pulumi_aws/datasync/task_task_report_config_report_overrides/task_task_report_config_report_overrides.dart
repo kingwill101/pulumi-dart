@@ -12,7 +12,7 @@ class TaskTaskReportConfigReportOverrides {
 
   /// Specifies the level of reporting for the files, objects, and directories that DataSync attempted to verify at the end of your transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
   ///
-  /// > **NOTE:** If any <span pulumi-lang-nodejs="`reportOverrides`" pulumi-lang-dotnet="`ReportOverrides`" pulumi-lang-go="`reportOverrides`" pulumi-lang-python="`report_overrides`" pulumi-lang-yaml="`reportOverrides`" pulumi-lang-java="`reportOverrides`">`report_overrides`</span> are set to the same value as `task_report_config.report_level`, they will always be flagged as changed. Only set overrides to a value that differs from `task_report_config.report_level`.
+  /// > **NOTE:** If any `report_overrides` are set to the same value as `task_report_config.report_level`, they will always be flagged as changed. Only set overrides to a value that differs from `task_report_config.report_level`.
   final String? verifiedOverride;
 
   TaskTaskReportConfigReportOverrides({

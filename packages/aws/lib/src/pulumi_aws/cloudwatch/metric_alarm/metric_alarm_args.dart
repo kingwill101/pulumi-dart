@@ -5,7 +5,7 @@ import '../metric_alarm_metric_query/metric_alarm_metric_query.dart';
 
 /// The set of arguments for MetricAlarm.
 class MetricAlarmArgs {
-  /// Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to `true`.
   final Input<bool>? actionsEnabled;
 
   /// The list of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).
@@ -24,9 +24,9 @@ class MetricAlarmArgs {
   final Input<Map<String, String>>? dimensions;
 
   /// Used only for alarms based on percentiles.
-  /// If you specify <span pulumi-lang-nodejs="`ignore`" pulumi-lang-dotnet="`Ignore`" pulumi-lang-go="`ignore`" pulumi-lang-python="`ignore`" pulumi-lang-yaml="`ignore`" pulumi-lang-java="`ignore`">`ignore`</span>, the alarm state will not change during periods with too few data points to be statistically significant.
-  /// If you specify <span pulumi-lang-nodejs="`evaluate`" pulumi-lang-dotnet="`Evaluate`" pulumi-lang-go="`evaluate`" pulumi-lang-python="`evaluate`" pulumi-lang-yaml="`evaluate`" pulumi-lang-java="`evaluate`">`evaluate`</span> or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available.
-  /// The following values are supported: <span pulumi-lang-nodejs="`ignore`" pulumi-lang-dotnet="`Ignore`" pulumi-lang-go="`ignore`" pulumi-lang-python="`ignore`" pulumi-lang-yaml="`ignore`" pulumi-lang-java="`ignore`">`ignore`</span>, and <span pulumi-lang-nodejs="`evaluate`" pulumi-lang-dotnet="`Evaluate`" pulumi-lang-go="`evaluate`" pulumi-lang-python="`evaluate`" pulumi-lang-yaml="`evaluate`" pulumi-lang-java="`evaluate`">`evaluate`</span>.
+  /// If you specify `ignore`, the alarm state will not change during periods with too few data points to be statistically significant.
+  /// If you specify `evaluate` or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available.
+  /// The following values are supported: `ignore`, and `evaluate`.
   final Input<String>? evaluateLowSampleCountPercentiles;
 
   /// The number of periods over which data is compared to the specified threshold.
@@ -55,8 +55,8 @@ class MetricAlarmArgs {
   /// The list of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).
   final Input<List<String>>? okActions;
 
-  /// The period in seconds over which the specified <span pulumi-lang-nodejs="`statistic`" pulumi-lang-dotnet="`Statistic`" pulumi-lang-go="`statistic`" pulumi-lang-python="`statistic`" pulumi-lang-yaml="`statistic`" pulumi-lang-java="`statistic`">`statistic`</span> is applied.
-  /// Valid values are <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span>, <span pulumi-lang-nodejs="`20`" pulumi-lang-dotnet="`20`" pulumi-lang-go="`20`" pulumi-lang-python="`20`" pulumi-lang-yaml="`20`" pulumi-lang-java="`20`">`20`</span>, <span pulumi-lang-nodejs="`30`" pulumi-lang-dotnet="`30`" pulumi-lang-go="`30`" pulumi-lang-python="`30`" pulumi-lang-yaml="`30`" pulumi-lang-java="`30`">`30`</span>, or any multiple of <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>.
+  /// The period in seconds over which the specified `statistic` is applied.
+  /// Valid values are `10`, `20`, `30`, or any multiple of `60`.
   final Input<int>? period;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -66,12 +66,12 @@ class MetricAlarmArgs {
   /// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
   final Input<String>? statistic;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// See [related part of AWS Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricAlarm.html)
   /// for details about valid values.
   ///
-  /// > **NOTE:**  If you specify at least one <span pulumi-lang-nodejs="`metricQuery`" pulumi-lang-dotnet="`MetricQuery`" pulumi-lang-go="`metricQuery`" pulumi-lang-python="`metric_query`" pulumi-lang-yaml="`metricQuery`" pulumi-lang-java="`metricQuery`">`metric_query`</span>, you may not specify a <span pulumi-lang-nodejs="`metricName`" pulumi-lang-dotnet="`MetricName`" pulumi-lang-go="`metricName`" pulumi-lang-python="`metric_name`" pulumi-lang-yaml="`metricName`" pulumi-lang-java="`metricName`">`metric_name`</span>, <span pulumi-lang-nodejs="`namespace`" pulumi-lang-dotnet="`Namespace`" pulumi-lang-go="`namespace`" pulumi-lang-python="`namespace`" pulumi-lang-yaml="`namespace`" pulumi-lang-java="`namespace`">`namespace`</span>, <span pulumi-lang-nodejs="`period`" pulumi-lang-dotnet="`Period`" pulumi-lang-go="`period`" pulumi-lang-python="`period`" pulumi-lang-yaml="`period`" pulumi-lang-java="`period`">`period`</span> or <span pulumi-lang-nodejs="`statistic`" pulumi-lang-dotnet="`Statistic`" pulumi-lang-go="`statistic`" pulumi-lang-python="`statistic`" pulumi-lang-yaml="`statistic`" pulumi-lang-java="`statistic`">`statistic`</span>. If you do not specify a <span pulumi-lang-nodejs="`metricQuery`" pulumi-lang-dotnet="`MetricQuery`" pulumi-lang-go="`metricQuery`" pulumi-lang-python="`metric_query`" pulumi-lang-yaml="`metricQuery`" pulumi-lang-java="`metricQuery`">`metric_query`</span>, you must specify each of these (although you may use <span pulumi-lang-nodejs="`extendedStatistic`" pulumi-lang-dotnet="`ExtendedStatistic`" pulumi-lang-go="`extendedStatistic`" pulumi-lang-python="`extended_statistic`" pulumi-lang-yaml="`extendedStatistic`" pulumi-lang-java="`extendedStatistic`">`extended_statistic`</span> instead of <span pulumi-lang-nodejs="`statistic`" pulumi-lang-dotnet="`Statistic`" pulumi-lang-go="`statistic`" pulumi-lang-python="`statistic`" pulumi-lang-yaml="`statistic`" pulumi-lang-java="`statistic`">`statistic`</span>).
+  /// > **NOTE:**  If you specify at least one `metric_query`, you may not specify a `metric_name`, `namespace`, `period` or `statistic`. If you do not specify a `metric_query`, you must specify each of these (although you may use `extended_statistic` instead of `statistic`).
   final Input<Map<String, String>>? tags;
 
   /// The value against which the specified statistic is compared. This parameter is required for alarms based on static thresholds, but should not be used for alarms based on anomaly detection models.
@@ -80,7 +80,7 @@ class MetricAlarmArgs {
   /// If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
   final Input<String>? thresholdMetricId;
 
-  /// Sets how this alarm is to handle missing data points. The following values are supported: <span pulumi-lang-nodejs="`missing`" pulumi-lang-dotnet="`Missing`" pulumi-lang-go="`missing`" pulumi-lang-python="`missing`" pulumi-lang-yaml="`missing`" pulumi-lang-java="`missing`">`missing`</span>, <span pulumi-lang-nodejs="`ignore`" pulumi-lang-dotnet="`Ignore`" pulumi-lang-go="`ignore`" pulumi-lang-python="`ignore`" pulumi-lang-yaml="`ignore`" pulumi-lang-java="`ignore`">`ignore`</span>, <span pulumi-lang-nodejs="`breaching`" pulumi-lang-dotnet="`Breaching`" pulumi-lang-go="`breaching`" pulumi-lang-python="`breaching`" pulumi-lang-yaml="`breaching`" pulumi-lang-java="`breaching`">`breaching`</span> and `notBreaching`. Defaults to <span pulumi-lang-nodejs="`missing`" pulumi-lang-dotnet="`Missing`" pulumi-lang-go="`missing`" pulumi-lang-python="`missing`" pulumi-lang-yaml="`missing`" pulumi-lang-java="`missing`">`missing`</span>.
+  /// Sets how this alarm is to handle missing data points. The following values are supported: `missing`, `ignore`, `breaching` and `notBreaching`. Defaults to `missing`.
   final Input<String>? treatMissingData;
 
   /// The unit for the alarm's associated metric.

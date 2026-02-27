@@ -1,3 +1,0 @@
-library module_dataexchange_event_action_action_export_revision_to_s3;
-
-export 'event_action_action_export_revision_to_s3.dart';

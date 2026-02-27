@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_rule_statement_regex_pattern_set_reference_statement_field_to_match_cookies;
-
-export 'web_acl_rule_statement_regex_pattern_set_reference_statement_field_to_match_cookies.dart';

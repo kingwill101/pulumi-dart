@@ -1,0 +1,3 @@
+library module_cloudwatch_log_transformer_transformer_config_parse_postgres;
+
+export 'log_transformer_transformer_config_parse_postgres/log_transformer_transformer_config_parse_postgres.dart';

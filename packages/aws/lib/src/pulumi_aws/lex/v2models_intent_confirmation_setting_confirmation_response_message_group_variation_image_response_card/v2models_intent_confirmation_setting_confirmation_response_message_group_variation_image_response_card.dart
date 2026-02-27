@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../v2models_intent_confirmation_setting_confirmation_response_message_group_variation_image_response_card_button/v2models_intent_confirmation_setting_confirmation_response_message_group_variation_image_response_card_button.dart';
 
 class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCard {
-  /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See <span pulumi-lang-nodejs="`button`" pulumi-lang-dotnet="`Button`" pulumi-lang-go="`button`" pulumi-lang-python="`button`" pulumi-lang-yaml="`button`" pulumi-lang-java="`button`">`button`</span>.
+  /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
   final List<
           V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCardButton>?
       buttons;

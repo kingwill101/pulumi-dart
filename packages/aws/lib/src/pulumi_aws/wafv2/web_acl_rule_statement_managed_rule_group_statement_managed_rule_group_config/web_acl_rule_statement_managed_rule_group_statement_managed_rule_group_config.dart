@@ -12,7 +12,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig {
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet?
       awsManagedRulesAcfpRuleSet;
 
-  /// Configuration for using the anti-DDoS managed rule group. See <span pulumi-lang-nodejs="`awsManagedRulesAntiDdosRuleSet`" pulumi-lang-dotnet="`AwsManagedRulesAntiDdosRuleSet`" pulumi-lang-go="`awsManagedRulesAntiDdosRuleSet`" pulumi-lang-python="`aws_managed_rules_anti_ddos_rule_set`" pulumi-lang-yaml="`awsManagedRulesAntiDdosRuleSet`" pulumi-lang-java="`awsManagedRulesAntiDdosRuleSet`">`aws_managed_rules_anti_ddos_rule_set`</span> for more details.
+  /// Configuration for using the anti-DDoS managed rule group. See `aws_managed_rules_anti_ddos_rule_set` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet?
       awsManagedRulesAntiDdosRuleSet;
 
@@ -20,21 +20,21 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig {
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet?
       awsManagedRulesAtpRuleSet;
 
-  /// Additional configuration for using the Bot Control managed rule group. Use this to specify the inspection level that you want to use. See <span pulumi-lang-nodejs="`awsManagedRulesBotControlRuleSet`" pulumi-lang-dotnet="`AwsManagedRulesBotControlRuleSet`" pulumi-lang-go="`awsManagedRulesBotControlRuleSet`" pulumi-lang-python="`aws_managed_rules_bot_control_rule_set`" pulumi-lang-yaml="`awsManagedRulesBotControlRuleSet`" pulumi-lang-java="`awsManagedRulesBotControlRuleSet`">`aws_managed_rules_bot_control_rule_set`</span> for more details
+  /// Additional configuration for using the Bot Control managed rule group. Use this to specify the inspection level that you want to use. See `aws_managed_rules_bot_control_rule_set` for more details
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet?
       awsManagedRulesBotControlRuleSet;
 
   /// The path of the login endpoint for your application.
   final String? loginPath;
 
-  /// Details about your login page password field. See <span pulumi-lang-nodejs="`passwordField`" pulumi-lang-dotnet="`PasswordField`" pulumi-lang-go="`passwordField`" pulumi-lang-python="`password_field`" pulumi-lang-yaml="`passwordField`" pulumi-lang-java="`passwordField`">`password_field`</span> for more details.
+  /// Details about your login page password field. See `password_field` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField?
       passwordField;
 
   /// The payload type for your login endpoint, either JSON or form encoded.
   final String? payloadType;
 
-  /// Details about your login page username field. See <span pulumi-lang-nodejs="`usernameField`" pulumi-lang-dotnet="`UsernameField`" pulumi-lang-go="`usernameField`" pulumi-lang-python="`username_field`" pulumi-lang-yaml="`usernameField`" pulumi-lang-java="`usernameField`">`username_field`</span> for more details.
+  /// Details about your login page username field. See `username_field` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField?
       usernameField;
 

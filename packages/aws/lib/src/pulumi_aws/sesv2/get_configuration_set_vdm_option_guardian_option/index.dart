@@ -1,3 +1,0 @@
-library module_sesv2_get_configuration_set_vdm_option_guardian_option;
-
-export 'get_configuration_set_vdm_option_guardian_option.dart';

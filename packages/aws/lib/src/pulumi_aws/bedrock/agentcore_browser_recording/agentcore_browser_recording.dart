@@ -3,10 +3,10 @@
 import '../agentcore_browser_recording_s3_location/agentcore_browser_recording_s3_location.dart';
 
 class AgentcoreBrowserRecording {
-  /// Whether to enable recording for browser sessions. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable recording for browser sessions. Defaults to `false`.
   final bool? enabled;
 
-  /// S3 location where browser session recordings are stored. See <span pulumi-lang-nodejs="`s3Location`" pulumi-lang-dotnet="`S3Location`" pulumi-lang-go="`s3Location`" pulumi-lang-python="`s3_location`" pulumi-lang-yaml="`s3Location`" pulumi-lang-java="`s3Location`">`s3_location`</span> below.
+  /// S3 location where browser session recordings are stored. See `s3_location` below.
   final AgentcoreBrowserRecordingS3Location? s3Location;
 
   AgentcoreBrowserRecording({

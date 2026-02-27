@@ -3,7 +3,7 @@
 import '../web_acl_rule_statement_managed_rule_group_statement_rule_action_override_action_to_use/web_acl_rule_statement_managed_rule_group_statement_rule_action_override_action_to_use.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride {
-  /// Override action to use, in place of the configured action of the rule in the rule group. See <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> for details.
+  /// Override action to use, in place of the configured action of the rule in the rule group. See `action` for details.
   final WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUse
       actionToUse;
 

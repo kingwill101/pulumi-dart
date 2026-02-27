@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_gateway_target_target_configuration_mcp_mcp_server;
-
-export 'agentcore_gateway_target_target_configuration_mcp_mcp_server.dart';

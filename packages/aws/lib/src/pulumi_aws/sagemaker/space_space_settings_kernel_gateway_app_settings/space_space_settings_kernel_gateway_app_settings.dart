@@ -5,11 +5,11 @@ import '../space_space_settings_kernel_gateway_app_settings_custom_image/space_s
 import '../space_space_settings_kernel_gateway_app_settings_default_resource_spec/space_space_settings_kernel_gateway_app_settings_default_resource_spec.dart';
 
 class SpaceSpaceSettingsKernelGatewayAppSettings {
-  /// A list of custom SageMaker AI images that are configured to run as a KernelGateway app. See <span pulumi-lang-nodejs="`customImage`" pulumi-lang-dotnet="`CustomImage`" pulumi-lang-go="`customImage`" pulumi-lang-python="`custom_image`" pulumi-lang-yaml="`customImage`" pulumi-lang-java="`customImage`">`custom_image`</span> Block below.
+  /// A list of custom SageMaker AI images that are configured to run as a KernelGateway app. See `custom_image` Block below.
   final List<SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage>?
       customImages;
 
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See <span pulumi-lang-nodejs="`defaultResourceSpec`" pulumi-lang-dotnet="`DefaultResourceSpec`" pulumi-lang-go="`defaultResourceSpec`" pulumi-lang-python="`default_resource_spec`" pulumi-lang-yaml="`defaultResourceSpec`" pulumi-lang-java="`defaultResourceSpec`">`default_resource_spec`</span> Block below.
+  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `default_resource_spec` Block below.
   final SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec
       defaultResourceSpec;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../configuration_set_event_destination_event_destination_cloud_watch_destination_dimension_configuration/configuration_set_event_destination_event_destination_cloud_watch_destination_dimension_configuration.dart';
 
 class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
-  /// An array of objects that define the dimensions to use when you send email events to Amazon CloudWatch. See <span pulumi-lang-nodejs="`dimensionConfiguration`" pulumi-lang-dotnet="`DimensionConfiguration`" pulumi-lang-go="`dimensionConfiguration`" pulumi-lang-python="`dimension_configuration`" pulumi-lang-yaml="`dimensionConfiguration`" pulumi-lang-java="`dimensionConfiguration`">`dimension_configuration`</span> Block for details.
+  /// An array of objects that define the dimensions to use when you send email events to Amazon CloudWatch. See `dimension_configuration` Block for details.
   final List<
           ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration>
       dimensionConfigurations;

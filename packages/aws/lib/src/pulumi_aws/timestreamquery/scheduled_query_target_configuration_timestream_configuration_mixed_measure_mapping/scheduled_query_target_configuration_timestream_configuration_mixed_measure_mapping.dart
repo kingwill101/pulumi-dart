@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart';
 import '../scheduled_query_target_configuration_timestream_configuration_mixed_measure_mapping_multi_measure_attribute_mapping/scheduled_query_target_configuration_timestream_configuration_mixed_measure_mapping_multi_measure_attribute_mapping.dart';
 
 class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping {
-  /// Refers to the value of<span pulumi-lang-nodejs=" measureName " pulumi-lang-dotnet=" MeasureName " pulumi-lang-go=" measureName " pulumi-lang-python=" measure_name " pulumi-lang-yaml=" measureName " pulumi-lang-java=" measureName "> measure_name </span>in a result row. This field is required if <span pulumi-lang-nodejs="`measureNameColumn`" pulumi-lang-dotnet="`MeasureNameColumn`" pulumi-lang-go="`measureNameColumn`" pulumi-lang-python="`measure_name_column`" pulumi-lang-yaml="`measureNameColumn`" pulumi-lang-java="`measureNameColumn`">`measure_name_column`</span> is provided.
+  /// Refers to the value of measure_name in a result row. This field is required if `measure_name_column` is provided.
   final String? measureName;
 
-  /// Type of the value that is to be read from <span pulumi-lang-nodejs="`sourceColumn`" pulumi-lang-dotnet="`SourceColumn`" pulumi-lang-go="`sourceColumn`" pulumi-lang-python="`source_column`" pulumi-lang-yaml="`sourceColumn`" pulumi-lang-java="`sourceColumn`">`source_column`</span>. Valid values are `BIGINT`, `BOOLEAN`, `DOUBLE`, `VARCHAR`, `MULTI`.
+  /// Type of the value that is to be read from `source_column`. Valid values are `BIGINT`, `BOOLEAN`, `DOUBLE`, `VARCHAR`, `MULTI`.
   final String measureValueType;
 
-  /// Configuration block for attribute mappings for `MULTI` value measures. Required when <span pulumi-lang-nodejs="`measureValueType`" pulumi-lang-dotnet="`MeasureValueType`" pulumi-lang-go="`measureValueType`" pulumi-lang-python="`measure_value_type`" pulumi-lang-yaml="`measureValueType`" pulumi-lang-java="`measureValueType`">`measure_value_type`</span> is `MULTI`. See below.
+  /// Configuration block for attribute mappings for `MULTI` value measures. Required when `measure_value_type` is `MULTI`. See below.
   final List<
           ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping>?
       multiMeasureAttributeMappings;
@@ -18,7 +18,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
   /// Source column from which measure-value is to be read for result materialization.
   final String? sourceColumn;
 
-  /// Target measure name to be used. If not provided, the target measure name by default is <span pulumi-lang-nodejs="`measureName`" pulumi-lang-dotnet="`MeasureName`" pulumi-lang-go="`measureName`" pulumi-lang-python="`measure_name`" pulumi-lang-yaml="`measureName`" pulumi-lang-java="`measureName`">`measure_name`</span>, if provided, or <span pulumi-lang-nodejs="`sourceColumn`" pulumi-lang-dotnet="`SourceColumn`" pulumi-lang-go="`sourceColumn`" pulumi-lang-python="`source_column`" pulumi-lang-yaml="`sourceColumn`" pulumi-lang-java="`sourceColumn`">`source_column`</span> otherwise.
+  /// Target measure name to be used. If not provided, the target measure name by default is `measure_name`, if provided, or `source_column` otherwise.
   final String? targetMeasureName;
 
   ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping({

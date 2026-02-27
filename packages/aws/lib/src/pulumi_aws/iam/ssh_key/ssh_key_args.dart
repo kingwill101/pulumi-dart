@@ -10,7 +10,7 @@ class SshKeyArgs {
   /// The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
   final Input<String> publicKey;
 
-  /// The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is <span pulumi-lang-nodejs="`active`" pulumi-lang-dotnet="`Active`" pulumi-lang-go="`active`" pulumi-lang-python="`active`" pulumi-lang-yaml="`active`" pulumi-lang-java="`active`">`active`</span>.
+  /// The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
   final Input<String>? status;
 
   /// The name of the IAM user to associate the SSH public key with.

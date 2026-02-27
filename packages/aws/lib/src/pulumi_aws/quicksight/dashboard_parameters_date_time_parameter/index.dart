@@ -1,3 +1,0 @@
-library module_quicksight_dashboard_parameters_date_time_parameter;
-
-export 'dashboard_parameters_date_time_parameter.dart';

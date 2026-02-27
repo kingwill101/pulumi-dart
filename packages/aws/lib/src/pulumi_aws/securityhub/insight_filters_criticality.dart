@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_criticality;
+
+export 'insight_filters_criticality/insight_filters_criticality.dart';

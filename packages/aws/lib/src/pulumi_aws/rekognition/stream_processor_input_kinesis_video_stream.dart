@@ -1,0 +1,3 @@
+library module_rekognition_stream_processor_input_kinesis_video_stream;
+
+export 'stream_processor_input_kinesis_video_stream/stream_processor_input_kinesis_video_stream.dart';

@@ -1,3 +1,0 @@
-library module_datazone_glossary_term_timeouts;
-
-export 'glossary_term_timeouts.dart';

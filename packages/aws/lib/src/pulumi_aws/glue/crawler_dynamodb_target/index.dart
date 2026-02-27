@@ -1,3 +1,0 @@
-library module_glue_crawler_dynamodb_target;
-
-export 'crawler_dynamodb_target.dart';

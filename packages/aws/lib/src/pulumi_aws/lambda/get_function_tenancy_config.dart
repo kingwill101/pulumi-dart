@@ -1,0 +1,3 @@
+library module_lambda_get_function_tenancy_config;
+
+export 'get_function_tenancy_config/get_function_tenancy_config.dart';

@@ -1,0 +1,3 @@
+library module_odb_network_managed_service_kms_access;
+
+export 'network_managed_service_kms_access/network_managed_service_kms_access.dart';

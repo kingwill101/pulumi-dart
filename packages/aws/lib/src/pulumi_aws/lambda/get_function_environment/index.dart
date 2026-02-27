@@ -1,3 +1,0 @@
-library module_lambda_get_function_environment;
-
-export 'get_function_environment.dart';

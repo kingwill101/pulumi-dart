@@ -5,7 +5,7 @@ import '../identity_pool_cognito_identity_provider/identity_pool_cognito_identit
 
 /// The set of arguments for IdentityPool.
 class IdentityPoolArgs {
-  /// Enables or disables the classic / basic authentication flow. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables or disables the classic / basic authentication flow. Default is `false`.
   final Input<bool>? allowClassicFlow;
 
   /// Whether the identity pool supports unauthenticated logins or not.
@@ -34,7 +34,7 @@ class IdentityPoolArgs {
   /// Key-Value pairs mapping provider names to provider app IDs.
   final Input<Map<String, String>>? supportedLoginProviders;
 
-  /// A map of tags to assign to the Identity Pool. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the Identity Pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   IdentityPoolArgs({

@@ -1,3 +1,0 @@
-library module_codestarconnections_host_vpc_configuration;
-
-export 'host_vpc_configuration2.dart';

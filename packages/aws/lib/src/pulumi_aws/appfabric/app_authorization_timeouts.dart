@@ -1,0 +1,3 @@
+library module_appfabric_app_authorization_timeouts;
+
+export 'app_authorization_timeouts/app_authorization_timeouts.dart';

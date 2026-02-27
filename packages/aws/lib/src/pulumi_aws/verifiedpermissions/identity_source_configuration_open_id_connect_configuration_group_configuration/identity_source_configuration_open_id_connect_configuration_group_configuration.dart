@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration {
-  /// The token claim that you want Verified Permissions to interpret as group membership. For example, <span pulumi-lang-nodejs="`groups`" pulumi-lang-dotnet="`Groups`" pulumi-lang-go="`groups`" pulumi-lang-python="`groups`" pulumi-lang-yaml="`groups`" pulumi-lang-java="`groups`">`groups`</span>.
+  /// The token claim that you want Verified Permissions to interpret as group membership. For example, `groups`.
   final String groupClaim;
 
   /// The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.

@@ -1,5 +1,0 @@
-library module_glue_get_data_catalog_encryption_settings;
-
-export 'get_data_catalog_encryption_settings.dart';
-export 'get_data_catalog_encryption_settings_args.dart';
-export 'get_data_catalog_encryption_settings_result.dart';

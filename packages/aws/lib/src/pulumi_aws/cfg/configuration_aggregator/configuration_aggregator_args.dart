@@ -20,9 +20,9 @@ class ConfigurationAggregatorArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// Either <span pulumi-lang-nodejs="`accountAggregationSource`" pulumi-lang-dotnet="`AccountAggregationSource`" pulumi-lang-go="`accountAggregationSource`" pulumi-lang-python="`account_aggregation_source`" pulumi-lang-yaml="`accountAggregationSource`" pulumi-lang-java="`accountAggregationSource`">`account_aggregation_source`</span> or <span pulumi-lang-nodejs="`organizationAggregationSource`" pulumi-lang-dotnet="`OrganizationAggregationSource`" pulumi-lang-go="`organizationAggregationSource`" pulumi-lang-python="`organization_aggregation_source`" pulumi-lang-yaml="`organizationAggregationSource`" pulumi-lang-java="`organizationAggregationSource`">`organization_aggregation_source`</span> must be specified.
+  /// Either `account_aggregation_source` or `organization_aggregation_source` must be specified.
   final Input<Map<String, String>>? tags;
 
   ConfigurationAggregatorArgs({

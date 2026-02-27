@@ -1,0 +1,3 @@
+library module_ec2transitgateway_get_peering_attachments_filter;
+
+export 'get_peering_attachments_filter/get_peering_attachments_filter.dart';

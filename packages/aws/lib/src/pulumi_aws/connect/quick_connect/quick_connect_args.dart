@@ -14,13 +14,13 @@ class QuickConnectArgs {
   /// Specifies the name of the Quick Connect.
   final Input<String>? name;
 
-  /// A block that defines the configuration information for the Quick Connect: <span pulumi-lang-nodejs="`quickConnectType`" pulumi-lang-dotnet="`QuickConnectType`" pulumi-lang-go="`quickConnectType`" pulumi-lang-python="`quick_connect_type`" pulumi-lang-yaml="`quickConnectType`" pulumi-lang-java="`quickConnectType`">`quick_connect_type`</span> and one of <span pulumi-lang-nodejs="`phoneConfig`" pulumi-lang-dotnet="`PhoneConfig`" pulumi-lang-go="`phoneConfig`" pulumi-lang-python="`phone_config`" pulumi-lang-yaml="`phoneConfig`" pulumi-lang-java="`phoneConfig`">`phone_config`</span>, <span pulumi-lang-nodejs="`queueConfig`" pulumi-lang-dotnet="`QueueConfig`" pulumi-lang-go="`queueConfig`" pulumi-lang-python="`queue_config`" pulumi-lang-yaml="`queueConfig`" pulumi-lang-java="`queueConfig`">`queue_config`</span>, <span pulumi-lang-nodejs="`userConfig`" pulumi-lang-dotnet="`UserConfig`" pulumi-lang-go="`userConfig`" pulumi-lang-python="`user_config`" pulumi-lang-yaml="`userConfig`" pulumi-lang-java="`userConfig`">`user_config`</span> . The Quick Connect Config block is documented below.
+  /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
   final Input<QuickConnectQuickConnectConfig> quickConnectConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Tags to apply to the Quick Connect. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Quick Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   QuickConnectArgs({

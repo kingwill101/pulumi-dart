@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration {
-  /// A prefix used to filter metadata configuration files in the AWS S3 bucket. The S3 bucket might contain multiple metadata files. Use <span pulumi-lang-nodejs="`s3Prefix`" pulumi-lang-dotnet="`S3Prefix`" pulumi-lang-go="`s3Prefix`" pulumi-lang-python="`s3_prefix`" pulumi-lang-yaml="`s3Prefix`" pulumi-lang-java="`s3Prefix`">`s3_prefix`</span> to include only the desired metadata files.
+  /// A prefix used to filter metadata configuration files in the AWS S3 bucket. The S3 bucket might contain multiple metadata files. Use `s3_prefix` to include only the desired metadata files.
   final String? s3Prefix;
 
   DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration({

@@ -6,29 +6,29 @@ import '../vectors_index_metadata_configuration/vectors_index_metadata_configura
 
 /// The set of arguments for VectorsIndex.
 class VectorsIndexArgs {
-  /// Data type of the vectors to be inserted into the vector index. Valid values: <span pulumi-lang-nodejs="`float32`" pulumi-lang-dotnet="`Float32`" pulumi-lang-go="`float32`" pulumi-lang-python="`float32`" pulumi-lang-yaml="`float32`" pulumi-lang-java="`float32`">`float32`</span>.
+  /// Data type of the vectors to be inserted into the vector index. Valid values: `float32`.
   final Input<String> dataType;
 
   /// Dimensions of the vectors to be inserted into the vector index.
   final Input<int> dimension;
 
-  /// Distance metric to be used for similarity search. Valid values: <span pulumi-lang-nodejs="`cosine`" pulumi-lang-dotnet="`Cosine`" pulumi-lang-go="`cosine`" pulumi-lang-python="`cosine`" pulumi-lang-yaml="`cosine`" pulumi-lang-java="`cosine`">`cosine`</span>, <span pulumi-lang-nodejs="`euclidean`" pulumi-lang-dotnet="`Euclidean`" pulumi-lang-go="`euclidean`" pulumi-lang-python="`euclidean`" pulumi-lang-yaml="`euclidean`" pulumi-lang-java="`euclidean`">`euclidean`</span>.
+  /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
   final Input<String> distanceMetric;
 
-  /// Block for encryption configuration for the vector index. See <span pulumi-lang-nodejs="`encyptionConfiguration`" pulumi-lang-dotnet="`EncyptionConfiguration`" pulumi-lang-go="`encyptionConfiguration`" pulumi-lang-python="`encyption_configuration`" pulumi-lang-yaml="`encyptionConfiguration`" pulumi-lang-java="`encyptionConfiguration`">`encyption_configuration`</span> block below.
+  /// Block for encryption configuration for the vector index. See `encyption_configuration` block below.
   final Input<List<VectorsIndexEncryptionConfiguration>>?
       encryptionConfigurations;
 
   /// Name of the vector index.
   final Input<String> indexName;
 
-  /// Block for metadata configuration for the vector index. See <span pulumi-lang-nodejs="`metadataConfiguration`" pulumi-lang-dotnet="`MetadataConfiguration`" pulumi-lang-go="`metadataConfiguration`" pulumi-lang-python="`metadata_configuration`" pulumi-lang-yaml="`metadataConfiguration`" pulumi-lang-java="`metadataConfiguration`">`metadata_configuration`</span> block below.
+  /// Block for metadata configuration for the vector index. See `metadata_configuration` block below.
   final Input<VectorsIndexMetadataConfiguration>? metadataConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Name of the vector bucket for the vector index.

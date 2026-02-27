@@ -16,33 +16,33 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatch {
   /// Inspect all query arguments.
   final Map<String, dynamic>? allQueryArguments;
 
-  /// Inspect the request body, which immediately follows the request headers. See <span pulumi-lang-nodejs="`body`" pulumi-lang-dotnet="`Body`" pulumi-lang-go="`body`" pulumi-lang-python="`body`" pulumi-lang-yaml="`body`" pulumi-lang-java="`body`">`body`</span> below for details.
+  /// Inspect the request body, which immediately follows the request headers. See `body` below for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody?
       body;
 
-  /// Inspect the cookies in the web request. See <span pulumi-lang-nodejs="`cookies`" pulumi-lang-dotnet="`Cookies`" pulumi-lang-go="`cookies`" pulumi-lang-python="`cookies`" pulumi-lang-yaml="`cookies`" pulumi-lang-java="`cookies`">`cookies`</span> below for details.
+  /// Inspect the cookies in the web request. See `cookies` below for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies?
       cookies;
 
-  /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request that AWS WAF receives for inspection. See <span pulumi-lang-nodejs="`headerOrder`" pulumi-lang-dotnet="`HeaderOrder`" pulumi-lang-go="`headerOrder`" pulumi-lang-python="`header_order`" pulumi-lang-yaml="`headerOrder`" pulumi-lang-java="`headerOrder`">`header_order`</span> below for details.
+  /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request that AWS WAF receives for inspection. See `header_order` below for details.
   final List<
           WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder>?
       headerOrders;
 
-  /// Inspect the request headers. See <span pulumi-lang-nodejs="`headers`" pulumi-lang-dotnet="`Headers`" pulumi-lang-go="`headers`" pulumi-lang-python="`headers`" pulumi-lang-yaml="`headers`" pulumi-lang-java="`headers`">`headers`</span> below for details.
+  /// Inspect the request headers. See `headers` below for details.
   final List<
           WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader>?
       headers;
 
-  /// Inspect the JA3 fingerprint. See <span pulumi-lang-nodejs="`ja3Fingerprint`" pulumi-lang-dotnet="`Ja3Fingerprint`" pulumi-lang-go="`ja3Fingerprint`" pulumi-lang-python="`ja3_fingerprint`" pulumi-lang-yaml="`ja3Fingerprint`" pulumi-lang-java="`ja3Fingerprint`">`ja3_fingerprint`</span> below for details.
+  /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint?
       ja3Fingerprint;
 
-  /// Inspect the JA3 fingerprint. See <span pulumi-lang-nodejs="`ja4Fingerprint`" pulumi-lang-dotnet="`Ja4Fingerprint`" pulumi-lang-go="`ja4Fingerprint`" pulumi-lang-python="`ja4_fingerprint`" pulumi-lang-yaml="`ja4Fingerprint`" pulumi-lang-java="`ja4Fingerprint`">`ja4_fingerprint`</span> below for details.
+  /// Inspect the JA3 fingerprint. See `ja4_fingerprint` below for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint?
       ja4Fingerprint;
 
-  /// Inspect the request body as JSON. See <span pulumi-lang-nodejs="`jsonBody`" pulumi-lang-dotnet="`JsonBody`" pulumi-lang-go="`jsonBody`" pulumi-lang-python="`json_body`" pulumi-lang-yaml="`jsonBody`" pulumi-lang-java="`jsonBody`">`json_body`</span> for details.
+  /// Inspect the request body as JSON. See `json_body` for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBody?
       jsonBody;
 
@@ -52,15 +52,15 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatch {
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
   final Map<String, dynamic>? queryString;
 
-  /// Inspect a single header. See <span pulumi-lang-nodejs="`singleHeader`" pulumi-lang-dotnet="`SingleHeader`" pulumi-lang-go="`singleHeader`" pulumi-lang-python="`single_header`" pulumi-lang-yaml="`singleHeader`" pulumi-lang-java="`singleHeader`">`single_header`</span> below for details.
+  /// Inspect a single header. See `single_header` below for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader?
       singleHeader;
 
-  /// Inspect a single query argument. See <span pulumi-lang-nodejs="`singleQueryArgument`" pulumi-lang-dotnet="`SingleQueryArgument`" pulumi-lang-go="`singleQueryArgument`" pulumi-lang-python="`single_query_argument`" pulumi-lang-yaml="`singleQueryArgument`" pulumi-lang-java="`singleQueryArgument`">`single_query_argument`</span> below for details.
+  /// Inspect a single query argument. See `single_query_argument` below for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument?
       singleQueryArgument;
 
-  /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See <span pulumi-lang-nodejs="`uriFragment`" pulumi-lang-dotnet="`UriFragment`" pulumi-lang-go="`uriFragment`" pulumi-lang-python="`uri_fragment`" pulumi-lang-yaml="`uriFragment`" pulumi-lang-java="`uriFragment`">`uri_fragment`</span> below for details.
+  /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See `uri_fragment` below for details.
   final WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchUriFragment?
       uriFragment;
 

@@ -1,3 +1,0 @@
-library module_iam_get_access_keys_access_key;
-
-export 'get_access_keys_access_key.dart';

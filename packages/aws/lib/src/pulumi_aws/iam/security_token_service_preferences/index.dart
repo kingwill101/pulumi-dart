@@ -1,4 +1,0 @@
-library module_iam_security_token_service_preferences;
-
-export 'security_token_service_preferences.dart';
-export 'security_token_service_preferences_args.dart';

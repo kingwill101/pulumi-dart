@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DomainSoftwareUpdateOptions {
-  /// Whether automatic service software updates are enabled for the domain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether automatic service software updates are enabled for the domain. Defaults to `false`.
   final bool? autoSoftwareUpdateEnabled;
 
   DomainSoftwareUpdateOptions({

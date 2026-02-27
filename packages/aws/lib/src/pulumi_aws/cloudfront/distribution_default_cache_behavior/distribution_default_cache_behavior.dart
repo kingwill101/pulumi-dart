@@ -10,13 +10,13 @@ class DistributionDefaultCacheBehavior {
   /// Controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin.
   final List<String> allowedMethods;
 
-  /// Unique identifier of the cache policy that is attached to the cache behavior. If configuring the <span pulumi-lang-nodejs="`defaultCacheBehavior`" pulumi-lang-dotnet="`DefaultCacheBehavior`" pulumi-lang-go="`defaultCacheBehavior`" pulumi-lang-python="`default_cache_behavior`" pulumi-lang-yaml="`defaultCacheBehavior`" pulumi-lang-java="`defaultCacheBehavior`">`default_cache_behavior`</span> either <span pulumi-lang-nodejs="`cachePolicyId`" pulumi-lang-dotnet="`CachePolicyId`" pulumi-lang-go="`cachePolicyId`" pulumi-lang-python="`cache_policy_id`" pulumi-lang-yaml="`cachePolicyId`" pulumi-lang-java="`cachePolicyId`">`cache_policy_id`</span> or <span pulumi-lang-nodejs="`forwardedValues`" pulumi-lang-dotnet="`ForwardedValues`" pulumi-lang-go="`forwardedValues`" pulumi-lang-python="`forwarded_values`" pulumi-lang-yaml="`forwardedValues`" pulumi-lang-java="`forwardedValues`">`forwarded_values`</span> must be set.
+  /// Unique identifier of the cache policy that is attached to the cache behavior. If configuring the `default_cache_behavior` either `cache_policy_id` or `forwarded_values` must be set.
   final String? cachePolicyId;
 
   /// Controls whether CloudFront caches the response to requests using the specified HTTP methods.
   final List<String> cachedMethods;
 
-  /// Whether you want CloudFront to automatically compress content for web requests that include `Accept-Encoding: gzip` in the request header (default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>).
+  /// Whether you want CloudFront to automatically compress content for web requests that include `Accept-Encoding: gzip` in the request header (default: `false`).
   final bool? compress;
 
   /// Default amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request in the absence of an `Cache-Control max-age` or `Expires` header. The TTL defined in Cache Policy overrides this configuration.

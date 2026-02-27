@@ -1,3 +1,0 @@
-library module_elasticache_get_serverless_cache_reader_endpoint;
-
-export 'get_serverless_cache_reader_endpoint.dart';

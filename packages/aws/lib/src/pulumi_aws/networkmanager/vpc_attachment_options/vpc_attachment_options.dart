@@ -10,7 +10,7 @@ class VpcAttachmentOptions {
   /// Whether to enable IPv6 support. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   final bool? ipv6Support;
 
-  /// Whether to enable security group referencing support for this VPC attachment. The default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. However, at the core network policy-level the default is set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
+  /// Whether to enable security group referencing support for this VPC attachment. The default is `true`. However, at the core network policy-level the default is set to `false`. If the VPC attachment is pending acceptance, changing this value will recreate the resource.
   final bool? securityGroupReferencingSupport;
 
   VpcAttachmentOptions({

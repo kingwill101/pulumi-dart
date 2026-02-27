@@ -1,3 +1,0 @@
-library module_bedrock_agent_flow_definition_node_configuration_retrieval_service_configuration_s3;
-
-export 'agent_flow_definition_node_configuration_retrieval_service_configuration_s3.dart';

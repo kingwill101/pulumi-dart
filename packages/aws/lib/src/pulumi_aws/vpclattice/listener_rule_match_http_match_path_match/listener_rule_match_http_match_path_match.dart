@@ -4,11 +4,11 @@ import '../listener_rule_match_http_match_path_match_match/listener_rule_match_h
 
 class ListenerRuleMatchHttpMatchPathMatch {
   /// Indicates whether the match is case sensitive.
-  /// Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Default is `false`.
   final bool? caseSensitive;
 
   /// The header match type.
-  /// See Path Match <span pulumi-lang-nodejs="`match`" pulumi-lang-dotnet="`Match`" pulumi-lang-go="`match`" pulumi-lang-python="`match`" pulumi-lang-yaml="`match`" pulumi-lang-java="`match`">`match`</span> Block for details.
+  /// See Path Match `match` Block for details.
   final ListenerRuleMatchHttpMatchPathMatchMatch match;
 
   ListenerRuleMatchHttpMatchPathMatch({

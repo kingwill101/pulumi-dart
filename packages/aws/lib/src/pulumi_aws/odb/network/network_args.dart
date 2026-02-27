@@ -5,7 +5,7 @@ import '../network_timeouts/network_timeouts.dart';
 
 /// The set of arguments for Network.
 class NetworkArgs {
-  /// The name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure<span pulumi-lang-nodejs=" availabilityZone " pulumi-lang-dotnet=" AvailabilityZone " pulumi-lang-go=" availabilityZone " pulumi-lang-python=" availability_zone " pulumi-lang-yaml=" availabilityZone " pulumi-lang-java=" availabilityZone "> availability_zone </span>maps correctly with availability_zone_id.
+  /// The name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure availability_zone maps correctly with availability_zone_id.
   final Input<String>? availabilityZone;
 
   /// The AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
@@ -17,7 +17,7 @@ class NetworkArgs {
   /// The CIDR notation for the network resource. Changing this will force terraform to create new resource.
   final Input<String> clientSubnetCidr;
 
-  /// The name of the custom domain that the network is located. Custom_domain_name and<span pulumi-lang-nodejs=" defaultDnsPrefix " pulumi-lang-dotnet=" DefaultDnsPrefix " pulumi-lang-go=" defaultDnsPrefix " pulumi-lang-python=" default_dns_prefix " pulumi-lang-yaml=" defaultDnsPrefix " pulumi-lang-java=" defaultDnsPrefix "> default_dns_prefix </span>both can't be given. Changing this will force terraform to create new resource.
+  /// The name of the custom domain that the network is located. Custom_domain_name and default_dns_prefix both can't be given. Changing this will force terraform to create new resource.
   final Input<String>? customDomainName;
 
   /// The default DNS prefix for the network resource. Changing this will force terraform to create new resource. Changing this will force terraform to create new resource.
@@ -50,7 +50,7 @@ class NetworkArgs {
   /// Specifies the endpoint policy for STS access from the ODB network.
   final Input<String>? stsPolicyDocument;
 
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<NetworkTimeouts>? timeouts;
 

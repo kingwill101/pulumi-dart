@@ -9,7 +9,7 @@ class TargetGroupConfig {
   /// The type of IP address used for the target group. Valid values: `IPV4` | `IPV6`.
   final String? ipAddressType;
 
-  /// The version of the event structure that the Lambda function receives. Supported only if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `LAMBDA`. Valid Values are `V1` | `V2`.
+  /// The version of the event structure that the Lambda function receives. Supported only if `type` is `LAMBDA`. Valid Values are `V1` | `V2`.
   final String? lambdaEventStructureVersion;
 
   /// The port on which the targets are listening.

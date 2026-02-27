@@ -7,16 +7,16 @@ class NetworkProfileArgs {
   /// The description of the network profile.
   final Input<String>? description;
 
-  /// The data throughput rate in bits per second, as an integer from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`104857600`" pulumi-lang-dotnet="`104857600`" pulumi-lang-go="`104857600`" pulumi-lang-python="`104857600`" pulumi-lang-yaml="`104857600`" pulumi-lang-java="`104857600`">`104857600`</span>. Default value is <span pulumi-lang-nodejs="`104857600`" pulumi-lang-dotnet="`104857600`" pulumi-lang-go="`104857600`" pulumi-lang-python="`104857600`" pulumi-lang-yaml="`104857600`" pulumi-lang-java="`104857600`">`104857600`</span>.
+  /// The data throughput rate in bits per second, as an integer from `0` to `104857600`. Default value is `104857600`.
   final Input<int>? downlinkBandwidthBits;
 
-  /// Delay time for all packets to destination in milliseconds as an integer from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`2000`" pulumi-lang-dotnet="`2000`" pulumi-lang-go="`2000`" pulumi-lang-python="`2000`" pulumi-lang-yaml="`2000`" pulumi-lang-java="`2000`">`2000`</span>.
+  /// Delay time for all packets to destination in milliseconds as an integer from `0` to `2000`.
   final Input<int>? downlinkDelayMs;
 
-  /// Time variation in the delay of received packets in milliseconds as an integer from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`2000`" pulumi-lang-dotnet="`2000`" pulumi-lang-go="`2000`" pulumi-lang-python="`2000`" pulumi-lang-yaml="`2000`" pulumi-lang-java="`2000`">`2000`</span>.
+  /// Time variation in the delay of received packets in milliseconds as an integer from `0` to `2000`.
   final Input<int>? downlinkJitterMs;
 
-  /// Proportion of received packets that fail to arrive from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span> percent.
+  /// Proportion of received packets that fail to arrive from `0` to `100` percent.
   final Input<int>? downlinkLossPercent;
 
   /// The name for the network profile.
@@ -28,22 +28,22 @@ class NetworkProfileArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The type of network profile to create. Valid values are listed are `PRIVATE` and `CURATED`.
   final Input<String>? type;
 
-  /// The data throughput rate in bits per second, as an integer from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`104857600`" pulumi-lang-dotnet="`104857600`" pulumi-lang-go="`104857600`" pulumi-lang-python="`104857600`" pulumi-lang-yaml="`104857600`" pulumi-lang-java="`104857600`">`104857600`</span>. Default value is <span pulumi-lang-nodejs="`104857600`" pulumi-lang-dotnet="`104857600`" pulumi-lang-go="`104857600`" pulumi-lang-python="`104857600`" pulumi-lang-yaml="`104857600`" pulumi-lang-java="`104857600`">`104857600`</span>.
+  /// The data throughput rate in bits per second, as an integer from `0` to `104857600`. Default value is `104857600`.
   final Input<int>? uplinkBandwidthBits;
 
-  /// Delay time for all packets to destination in milliseconds as an integer from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`2000`" pulumi-lang-dotnet="`2000`" pulumi-lang-go="`2000`" pulumi-lang-python="`2000`" pulumi-lang-yaml="`2000`" pulumi-lang-java="`2000`">`2000`</span>.
+  /// Delay time for all packets to destination in milliseconds as an integer from `0` to `2000`.
   final Input<int>? uplinkDelayMs;
 
-  /// Time variation in the delay of received packets in milliseconds as an integer from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`2000`" pulumi-lang-dotnet="`2000`" pulumi-lang-go="`2000`" pulumi-lang-python="`2000`" pulumi-lang-yaml="`2000`" pulumi-lang-java="`2000`">`2000`</span>.
+  /// Time variation in the delay of received packets in milliseconds as an integer from `0` to `2000`.
   final Input<int>? uplinkJitterMs;
 
-  /// Proportion of received packets that fail to arrive from <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span> percent.
+  /// Proportion of received packets that fail to arrive from `0` to `100` percent.
   final Input<int>? uplinkLossPercent;
 
   NetworkProfileArgs({

@@ -1,3 +1,0 @@
-library module_backup_get_framework_control_scope;
-
-export 'get_framework_control_scope.dart';

@@ -1,0 +1,3 @@
+library module_servicediscovery_service_health_check_config;
+
+export 'service_health_check_config/service_health_check_config.dart';

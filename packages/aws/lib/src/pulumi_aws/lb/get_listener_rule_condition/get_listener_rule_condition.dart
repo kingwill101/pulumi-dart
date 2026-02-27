@@ -17,7 +17,7 @@ class GetListenerRuleCondition {
   /// Detailed below.
   final List<GetListenerRuleConditionHttpHeader>? httpHeaders;
 
-  /// Contains a single attribute <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`">`values`</span>, which contains a set of HTTP request methods.
+  /// Contains a single attribute `values`, which contains a set of HTTP request methods.
   final List<GetListenerRuleConditionHttpRequestMethod>? httpRequestMethods;
 
   /// Path patterns to compare against the request URL.
@@ -28,7 +28,7 @@ class GetListenerRuleCondition {
   /// Detailed below.
   final List<GetListenerRuleConditionQueryString>? queryStrings;
 
-  /// Contains a single attribute <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`">`values`</span>, which contains a set of source IPs in CIDR notation.
+  /// Contains a single attribute `values`, which contains a set of source IPs in CIDR notation.
   final List<GetListenerRuleConditionSourceIp>? sourceIps;
 
   GetListenerRuleCondition({

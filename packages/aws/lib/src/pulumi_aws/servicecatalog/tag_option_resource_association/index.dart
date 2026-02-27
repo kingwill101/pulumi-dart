@@ -1,4 +1,0 @@
-library module_servicecatalog_tag_option_resource_association;
-
-export 'tag_option_resource_association.dart';
-export 'tag_option_resource_association_args.dart';

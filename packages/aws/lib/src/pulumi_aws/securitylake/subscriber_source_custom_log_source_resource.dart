@@ -1,0 +1,3 @@
+library module_securitylake_subscriber_source_custom_log_source_resource;
+
+export 'subscriber_source_custom_log_source_resource/subscriber_source_custom_log_source_resource.dart';

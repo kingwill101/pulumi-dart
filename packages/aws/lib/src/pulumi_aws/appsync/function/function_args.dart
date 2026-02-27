@@ -18,10 +18,10 @@ class FunctionArgs {
   /// Function description.
   final Input<String>? description;
 
-  /// Version of the request mapping template. Currently the supported value is `2018-05-29`. Does not apply when specifying <span pulumi-lang-nodejs="`code`" pulumi-lang-dotnet="`Code`" pulumi-lang-go="`code`" pulumi-lang-python="`code`" pulumi-lang-yaml="`code`" pulumi-lang-java="`code`">`code`</span>.
+  /// Version of the request mapping template. Currently the supported value is `2018-05-29`. Does not apply when specifying `code`.
   final Input<String>? functionVersion;
 
-  /// Maximum batching size for a resolver. Valid values are between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`2000`" pulumi-lang-dotnet="`2000`" pulumi-lang-go="`2000`" pulumi-lang-python="`2000`" pulumi-lang-yaml="`2000`" pulumi-lang-java="`2000`">`2000`</span>.
+  /// Maximum batching size for a resolver. Valid values are between `0` and `2000`.
   final Input<int>? maxBatchSize;
 
   /// Function name. The function name does not have to be unique.
@@ -36,10 +36,10 @@ class FunctionArgs {
   /// Function response mapping template.
   final Input<String>? responseMappingTemplate;
 
-  /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See <span pulumi-lang-nodejs="`runtime`" pulumi-lang-dotnet="`Runtime`" pulumi-lang-go="`runtime`" pulumi-lang-python="`runtime`" pulumi-lang-yaml="`runtime`" pulumi-lang-java="`runtime`">`runtime`</span> Block for details.
+  /// Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
   final Input<FunctionRuntime>? runtime;
 
-  /// Describes a Sync configuration for a resolver. See <span pulumi-lang-nodejs="`syncConfig`" pulumi-lang-dotnet="`SyncConfig`" pulumi-lang-go="`syncConfig`" pulumi-lang-python="`sync_config`" pulumi-lang-yaml="`syncConfig`" pulumi-lang-java="`syncConfig`">`sync_config`</span> Block for details.
+  /// Describes a Sync configuration for a resolver. See `sync_config` Block for details.
   final Input<FunctionSyncConfig>? syncConfig;
 
   FunctionArgs({

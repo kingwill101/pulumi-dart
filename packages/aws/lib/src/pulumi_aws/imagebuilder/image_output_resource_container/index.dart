@@ -1,3 +1,0 @@
-library module_imagebuilder_image_output_resource_container;
-
-export 'image_output_resource_container.dart';

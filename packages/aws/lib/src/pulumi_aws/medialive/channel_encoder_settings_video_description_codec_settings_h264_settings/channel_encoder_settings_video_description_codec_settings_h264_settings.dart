@@ -51,10 +51,10 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings {
   /// Number of B-frames between reference frames.
   final int? gopNumBFrames;
 
-  /// GOP size in units of either frames of seconds per <span pulumi-lang-nodejs="`gopSizeUnits`" pulumi-lang-dotnet="`GopSizeUnits`" pulumi-lang-go="`gopSizeUnits`" pulumi-lang-python="`gop_size_units`" pulumi-lang-yaml="`gopSizeUnits`" pulumi-lang-java="`gopSizeUnits`">`gop_size_units`</span>.
+  /// GOP size in units of either frames of seconds per `gop_size_units`.
   final double? gopSize;
 
-  /// Indicates if the <span pulumi-lang-nodejs="`gopSize`" pulumi-lang-dotnet="`GopSize`" pulumi-lang-go="`gopSize`" pulumi-lang-python="`gop_size`" pulumi-lang-yaml="`gopSize`" pulumi-lang-java="`gopSize`">`gop_size`</span> is specified in frames or seconds.
+  /// Indicates if the `gop_size` is specified in frames or seconds.
   final String? gopSizeUnits;
 
   /// H264 level.

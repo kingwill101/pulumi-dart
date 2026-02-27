@@ -1,3 +1,0 @@
-library module_eks_cluster_certificate_authority;
-
-export 'cluster_certificate_authority.dart';

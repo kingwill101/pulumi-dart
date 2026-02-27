@@ -3,7 +3,7 @@
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_engine_configuration_serverless_configuration_auth_configuration/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_engine_configuration_serverless_configuration_auth_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfiguration {
-  /// Configurations for authentication to a Redshift Serverless. See <span pulumi-lang-nodejs="`authConfiguration`" pulumi-lang-dotnet="`AuthConfiguration`" pulumi-lang-go="`authConfiguration`" pulumi-lang-python="`auth_configuration`" pulumi-lang-yaml="`authConfiguration`" pulumi-lang-java="`authConfiguration`">`auth_configuration`</span> block for details.
+  /// Configurations for authentication to a Redshift Serverless. See `auth_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfigurationAuthConfiguration
       authConfiguration;
 

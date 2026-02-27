@@ -4,11 +4,11 @@ import '../firehose_delivery_stream_extended_s3_configuration_data_format_conver
 import '../firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_input_format_configuration_deserializer_open_xjson_ser_de/firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_input_format_configuration_deserializer_open_xjson_ser_de.dart';
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer {
-  /// Specifies the native Hive / HCatalog JsonSerDe. More details below. See <span pulumi-lang-nodejs="`hiveJsonSerDe`" pulumi-lang-dotnet="`HiveJsonSerDe`" pulumi-lang-go="`hiveJsonSerDe`" pulumi-lang-python="`hive_json_ser_de`" pulumi-lang-yaml="`hiveJsonSerDe`" pulumi-lang-java="`hiveJsonSerDe`">`hive_json_ser_de`</span> block below for details.
+  /// Specifies the native Hive / HCatalog JsonSerDe. More details below. See `hive_json_ser_de` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe?
       hiveJsonSerDe;
 
-  /// Specifies the OpenX SerDe. See <span pulumi-lang-nodejs="`openXJsonSerDe`" pulumi-lang-dotnet="`OpenXJsonSerDe`" pulumi-lang-go="`openXJsonSerDe`" pulumi-lang-python="`open_x_json_ser_de`" pulumi-lang-yaml="`openXJsonSerDe`" pulumi-lang-java="`openXJsonSerDe`">`open_x_json_ser_de`</span> block below for details.
+  /// Specifies the OpenX SerDe. See `open_x_json_ser_de` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe?
       openXJsonSerDe;
 

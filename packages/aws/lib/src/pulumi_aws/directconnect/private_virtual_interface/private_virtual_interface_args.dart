@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for PrivateVirtualInterface.
 class PrivateVirtualInterfaceArgs {
-  /// The address family for the BGP peer. `ipv4 ` or <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span>.
+  /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   final Input<String> addressFamily;
 
   /// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
@@ -26,7 +26,7 @@ class PrivateVirtualInterfaceArgs {
   final Input<String>? dxGatewayId;
 
   /// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection.
-  /// The MTU of a virtual private interface can be either <span pulumi-lang-nodejs="`1500`" pulumi-lang-dotnet="`1500`" pulumi-lang-go="`1500`" pulumi-lang-python="`1500`" pulumi-lang-yaml="`1500`" pulumi-lang-java="`1500`">`1500`</span> or <span pulumi-lang-nodejs="`9001`" pulumi-lang-dotnet="`9001`" pulumi-lang-go="`9001`" pulumi-lang-python="`9001`" pulumi-lang-yaml="`9001`" pulumi-lang-java="`9001`">`9001`</span> (jumbo frames). Default is <span pulumi-lang-nodejs="`1500`" pulumi-lang-dotnet="`1500`" pulumi-lang-go="`1500`" pulumi-lang-python="`1500`" pulumi-lang-yaml="`1500`" pulumi-lang-java="`1500`">`1500`</span>.
+  /// The MTU of a virtual private interface can be either `1500` or `9001` (jumbo frames). Default is `1500`.
   final Input<int>? mtu;
 
   /// The name for the virtual interface.
@@ -38,7 +38,7 @@ class PrivateVirtualInterfaceArgs {
   /// Indicates whether to enable or disable SiteLink.
   final Input<bool>? sitelinkEnabled;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The VLAN ID.

@@ -27,7 +27,7 @@ class GetResolverRuleResult {
   /// Map of tags assigned to the resolver rule.
   final Map<String, String> tags;
 
-  /// List of configurations for target IP addresses. Only applicable for `FORWARD` rules. See <span pulumi-lang-nodejs="`targetIps`" pulumi-lang-dotnet="`TargetIps`" pulumi-lang-go="`targetIps`" pulumi-lang-python="`target_ips`" pulumi-lang-yaml="`targetIps`" pulumi-lang-java="`targetIps`">`target_ips`</span> below for details.
+  /// List of configurations for target IP addresses. Only applicable for `FORWARD` rules. See `target_ips` below for details.
   final List<GetResolverRuleTargetIp> targetIps;
 
   GetResolverRuleResult({

@@ -4,10 +4,10 @@ class ListenerRuleConditionHttpHeader2 {
   /// Name of HTTP header to search. The maximum size is 40 characters. Comparison is case-insensitive. Only RFC7240 characters are supported. Wildcards are not supported. You cannot use HTTP header condition to specify the host header, use a `host-header` condition instead.
   final String httpHeaderName;
 
-  /// List of regular expression to compare against the HTTP header. The maximum length of each string is 128 characters. Conflicts with <span pulumi-lang-nodejs="`values`" pulumi-lang-dotnet="`Values`" pulumi-lang-go="`values`" pulumi-lang-python="`values`" pulumi-lang-yaml="`values`" pulumi-lang-java="`values`">`values`</span>.
+  /// List of regular expression to compare against the HTTP header. The maximum length of each string is 128 characters. Conflicts with `values`.
   final List<String>? regexValues;
 
-  /// List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case-insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string. Conflicts with <span pulumi-lang-nodejs="`regexValues`" pulumi-lang-dotnet="`RegexValues`" pulumi-lang-go="`regexValues`" pulumi-lang-python="`regex_values`" pulumi-lang-yaml="`regexValues`" pulumi-lang-java="`regexValues`">`regex_values`</span>.
+  /// List of header value patterns to match. Maximum size of each pattern is 128 characters. Comparison is case-insensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). If the same header appears multiple times in the request they will be searched in order until a match is found. Only one pattern needs to match for the condition to be satisfied. To require that all of the strings are a match, create one condition block per string. Conflicts with `regex_values`.
   final List<String>? values;
 
   ListenerRuleConditionHttpHeader2({

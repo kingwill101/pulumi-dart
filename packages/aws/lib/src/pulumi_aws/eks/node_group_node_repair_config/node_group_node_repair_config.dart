@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart';
 import '../node_group_node_repair_config_node_repair_config_override/node_group_node_repair_config_node_repair_config_override.dart';
 
 class NodeGroupNodeRepairConfig {
-  /// Specifies whether to enable node auto repair for the node group. Node auto repair is disabled by default. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether to enable node auto repair for the node group. Node auto repair is disabled by default. Defaults to `false`.
   final bool? enabled;
 
-  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a count of unhealthy nodes. Conflicts with <span pulumi-lang-nodejs="`maxParallelNodesRepairedPercentage`" pulumi-lang-dotnet="`MaxParallelNodesRepairedPercentage`" pulumi-lang-go="`maxParallelNodesRepairedPercentage`" pulumi-lang-python="`max_parallel_nodes_repaired_percentage`" pulumi-lang-yaml="`maxParallelNodesRepairedPercentage`" pulumi-lang-java="`maxParallelNodesRepairedPercentage`">`max_parallel_nodes_repaired_percentage`</span>.
+  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a count of unhealthy nodes. Conflicts with `max_parallel_nodes_repaired_percentage`.
   final int? maxParallelNodesRepairedCount;
 
-  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a percentage of unhealthy nodes. Conflicts with <span pulumi-lang-nodejs="`maxParallelNodesRepairedCount`" pulumi-lang-dotnet="`MaxParallelNodesRepairedCount`" pulumi-lang-go="`maxParallelNodesRepairedCount`" pulumi-lang-python="`max_parallel_nodes_repaired_count`" pulumi-lang-yaml="`maxParallelNodesRepairedCount`" pulumi-lang-java="`maxParallelNodesRepairedCount`">`max_parallel_nodes_repaired_count`</span>.
+  /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a percentage of unhealthy nodes. Conflicts with `max_parallel_nodes_repaired_count`.
   final int? maxParallelNodesRepairedPercentage;
 
-  /// Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with <span pulumi-lang-nodejs="`maxUnhealthyNodeThresholdPercentage`" pulumi-lang-dotnet="`MaxUnhealthyNodeThresholdPercentage`" pulumi-lang-go="`maxUnhealthyNodeThresholdPercentage`" pulumi-lang-python="`max_unhealthy_node_threshold_percentage`" pulumi-lang-yaml="`maxUnhealthyNodeThresholdPercentage`" pulumi-lang-java="`maxUnhealthyNodeThresholdPercentage`">`max_unhealthy_node_threshold_percentage`</span>.
+  /// Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_percentage`.
   final int? maxUnhealthyNodeThresholdCount;
 
-  /// Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with <span pulumi-lang-nodejs="`maxUnhealthyNodeThresholdCount`" pulumi-lang-dotnet="`MaxUnhealthyNodeThresholdCount`" pulumi-lang-go="`maxUnhealthyNodeThresholdCount`" pulumi-lang-python="`max_unhealthy_node_threshold_count`" pulumi-lang-yaml="`maxUnhealthyNodeThresholdCount`" pulumi-lang-java="`maxUnhealthyNodeThresholdCount`">`max_unhealthy_node_threshold_count`</span>.
+  /// Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_count`.
   final int? maxUnhealthyNodeThresholdPercentage;
 
-  /// Granular overrides for specific repair actions. See <span pulumi-lang-nodejs="`nodeRepairConfigOverrides`" pulumi-lang-dotnet="`NodeRepairConfigOverrides`" pulumi-lang-go="`nodeRepairConfigOverrides`" pulumi-lang-python="`node_repair_config_overrides`" pulumi-lang-yaml="`nodeRepairConfigOverrides`" pulumi-lang-java="`nodeRepairConfigOverrides`">`node_repair_config_overrides`</span> below for details.
+  /// Granular overrides for specific repair actions. See `node_repair_config_overrides` below for details.
   final List<NodeGroupNodeRepairConfigNodeRepairConfigOverride>?
       nodeRepairConfigOverrides;
 

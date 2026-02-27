@@ -1,3 +1,0 @@
-library module_sagemaker_user_profile_user_settings_canvas_app_settings_direct_deploy_settings;
-
-export 'user_profile_user_settings_canvas_app_settings_direct_deploy_settings.dart';

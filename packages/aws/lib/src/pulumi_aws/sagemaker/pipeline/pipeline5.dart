@@ -9,186 +9,11 @@ import 'pipeline_args5.dart';
 ///
 /// ### Basic usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.sagemaker.Pipeline("example", {
-/// pipelineName: "example",
-/// pipelineDisplayName: "example",
-/// roleArn: exampleAwsIamRole.arn,
-/// pipelineDefinition: JSON.stringify({
-/// Version: "2020-12-01",
-/// Steps: [{
-/// Name: "Test",
-/// Type: "Fail",
-/// Arguments: {
-/// ErrorMessage: "test",
-/// },
-/// }],
-/// }),
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import json
-/// import pulumi_aws as aws
-///
-/// example = aws.sagemaker.Pipeline("example",
-/// pipeline_name="example",
-/// pipeline_display_name="example",
-/// role_arn=example_aws_iam_role["arn"],
-/// pipeline_definition=json.dumps({
-/// "Version": "2020-12-01",
-/// "Steps": [{
-/// "Name": "Test",
-/// "Type": "Fail",
-/// "Arguments": {
-/// "ErrorMessage": "test",
-/// },
-/// }],
-/// }))
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using System.Text.Json;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Sagemaker.Pipeline("example", new()
-/// {
-/// PipelineName = "example",
-/// PipelineDisplayName = "example",
-/// RoleArn = exampleAwsIamRole.Arn,
-/// PipelineDefinition = JsonSerializer.Serialize(new Dictionary<string, object?>
-/// {
-/// ["Version"] = "2020-12-01",
-/// ["Steps"] = new[]
-/// {
-/// new Dictionary<string, object?>
-/// {
-/// ["Name"] = "Test",
-/// ["Type"] = "Fail",
-/// ["Arguments"] = new Dictionary<string, object?>
-/// {
-/// ["ErrorMessage"] = "test",
-/// },
-/// },
-/// },
-/// }),
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "encoding/json"
-///
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sagemaker"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// "Version": "2020-12-01",
-/// "Steps": []map[string]interface{}{
-/// map[string]interface{}{
-/// "Name": "Test",
-/// "Type": "Fail",
-/// "Arguments": map[string]interface{}{
-/// "ErrorMessage": "test",
-/// },
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// json0 := string(tmpJSON0)
-/// _, err = sagemaker.NewPipeline(ctx, "example", &sagemaker.PipelineArgs{
-/// PipelineName:        pulumi.String("example"),
-/// PipelineDisplayName: pulumi.String("example"),
-/// RoleArn:             pulumi.Any(exampleAwsIamRole.Arn),
-/// PipelineDefinition:  pulumi.String(json0),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.sagemaker.Pipeline;
-/// import com.pulumi.aws.sagemaker.PipelineArgs;
-/// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Pipeline("example", PipelineArgs.builder()
-/// .pipelineName("example")
-/// .pipelineDisplayName("example")
-/// .roleArn(exampleAwsIamRole.arn())
-/// .pipelineDefinition(serializeJson(
-/// jsonObject(
-/// jsonProperty("Version", "2020-12-01"),
-/// jsonProperty("Steps", jsonArray(jsonObject(
-/// jsonProperty("Name", "Test"),
-/// jsonProperty("Type", "Fail"),
-/// jsonProperty("Arguments", jsonObject(
-/// jsonProperty("ErrorMessage", "test")
-/// ))
-/// )))
-/// )))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:sagemaker:Pipeline
-/// properties:
-/// pipelineName: example
-/// pipelineDisplayName: example
-/// roleArn: ${exampleAwsIamRole.arn}
-/// pipelineDefinition:
-/// fn::toJSON:
-/// Version: 2020-12-01
-/// Steps:
-/// - Name: Test
-/// Type: Fail
-/// Arguments:
-/// ErrorMessage: test
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import pipelines using the <span pulumi-lang-nodejs="`pipelineName`" pulumi-lang-dotnet="`PipelineName`" pulumi-lang-go="`pipelineName`" pulumi-lang-python="`pipeline_name`" pulumi-lang-yaml="`pipelineName`" pulumi-lang-java="`pipelineName`">`pipeline_name`</span>. For example:
+/// Using `pulumi import`, import pipelines using the `pipeline_name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:sagemaker/pipeline:Pipeline test_pipeline pipeline
@@ -222,10 +47,10 @@ class Pipeline5 extends CustomResource {
   /// The ARN of the IAM role the pipeline will execute as.
   late final Output<String?> roleArn;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   Pipeline5(

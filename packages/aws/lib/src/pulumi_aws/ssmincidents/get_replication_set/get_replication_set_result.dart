@@ -11,7 +11,7 @@ class GetReplicationSetResult {
   /// The ARN of the user who created the replication set.
   final String createdBy;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the last remaining Region in a replication set can’t be deleted.
+  /// If `true`, the last remaining Region in a replication set can’t be deleted.
   final bool deletionProtected;
 
   /// The provider-assigned unique ID for this managed resource.
@@ -20,7 +20,7 @@ class GetReplicationSetResult {
   /// The ARN of the user who last modified the replication set.
   final String lastModifiedBy;
 
-  /// (**Deprecated**) The replication set's Regions. Use <span pulumi-lang-nodejs="`regions`" pulumi-lang-dotnet="`Regions`" pulumi-lang-go="`regions`" pulumi-lang-python="`regions`" pulumi-lang-yaml="`regions`" pulumi-lang-java="`regions`">`regions`</span> instead.
+  /// (**Deprecated**) The replication set's Regions. Use `regions` instead.
   final List<GetReplicationSetRegion> region;
 
   /// The replication set's Regions.

@@ -1,0 +1,3 @@
+library module_iot_topic_rule_error_action_timestream;
+
+export 'topic_rule_error_action_timestream/topic_rule_error_action_timestream.dart';

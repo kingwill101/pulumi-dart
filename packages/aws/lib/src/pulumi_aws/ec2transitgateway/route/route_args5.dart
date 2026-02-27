@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for Route.
 class RouteArgs5 {
-  /// Indicates whether to drop traffic that matches this route (default to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>).
+  /// Indicates whether to drop traffic that matches this route (default to `false`).
   final Input<bool>? blackhole;
 
   /// IPv4 or IPv6 RFC1924 CIDR used for destination matches. Routing decisions are based on the most specific match.
@@ -13,7 +13,7 @@ class RouteArgs5 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Identifier of EC2 Transit Gateway Attachment (required if <span pulumi-lang-nodejs="`blackhole`" pulumi-lang-dotnet="`Blackhole`" pulumi-lang-go="`blackhole`" pulumi-lang-python="`blackhole`" pulumi-lang-yaml="`blackhole`" pulumi-lang-java="`blackhole`">`blackhole`</span> is set to false).
+  /// Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
   final Input<String>? transitGatewayAttachmentId;
 
   /// Identifier of EC2 Transit Gateway Route Table.

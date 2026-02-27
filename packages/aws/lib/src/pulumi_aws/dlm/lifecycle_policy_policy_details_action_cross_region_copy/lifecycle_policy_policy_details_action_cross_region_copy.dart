@@ -4,7 +4,7 @@ import '../lifecycle_policy_policy_details_action_cross_region_copy_encryption_c
 import '../lifecycle_policy_policy_details_action_cross_region_copy_retain_rule/lifecycle_policy_policy_details_action_cross_region_copy_retain_rule.dart';
 
 class LifecyclePolicyPolicyDetailsActionCrossRegionCopy {
-  /// The encryption settings for the copied snapshot. See the <span pulumi-lang-nodejs="`encryptionConfiguration`" pulumi-lang-dotnet="`EncryptionConfiguration`" pulumi-lang-go="`encryptionConfiguration`" pulumi-lang-python="`encryption_configuration`" pulumi-lang-yaml="`encryptionConfiguration`" pulumi-lang-java="`encryptionConfiguration`">`encryption_configuration`</span> block. Max of 1 per action.
+  /// The encryption settings for the copied snapshot. See the `encryption_configuration` block. Max of 1 per action.
   final LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration
       encryptionConfiguration;
   final LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule? retainRule;

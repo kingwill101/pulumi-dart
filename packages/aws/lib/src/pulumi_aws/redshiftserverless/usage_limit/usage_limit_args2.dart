@@ -7,10 +7,10 @@ class UsageLimitArgs2 {
   /// The limit amount. If time-based, this amount is in Redshift Processing Units (RPU) consumed per hour. If data-based, this amount is in terabytes (TB) of data transferred between Regions in cross-account sharing. The value must be a positive number.
   final Input<int> amount;
 
-  /// The action that Amazon Redshift Serverless takes when the limit is reached. Valid values are <span pulumi-lang-nodejs="`log`" pulumi-lang-dotnet="`Log`" pulumi-lang-go="`log`" pulumi-lang-python="`log`" pulumi-lang-yaml="`log`" pulumi-lang-java="`log`">`log`</span>, `emit-metric`, and <span pulumi-lang-nodejs="`deactivate`" pulumi-lang-dotnet="`Deactivate`" pulumi-lang-go="`deactivate`" pulumi-lang-python="`deactivate`" pulumi-lang-yaml="`deactivate`" pulumi-lang-java="`deactivate`">`deactivate`</span>. The default is <span pulumi-lang-nodejs="`log`" pulumi-lang-dotnet="`Log`" pulumi-lang-go="`log`" pulumi-lang-python="`log`" pulumi-lang-yaml="`log`" pulumi-lang-java="`log`">`log`</span>.
+  /// The action that Amazon Redshift Serverless takes when the limit is reached. Valid values are `log`, `emit-metric`, and `deactivate`. The default is `log`.
   final Input<String>? breachAction;
 
-  /// The time period that the amount applies to. A weekly period begins on Sunday. Valid values are <span pulumi-lang-nodejs="`daily`" pulumi-lang-dotnet="`Daily`" pulumi-lang-go="`daily`" pulumi-lang-python="`daily`" pulumi-lang-yaml="`daily`" pulumi-lang-java="`daily`">`daily`</span>, <span pulumi-lang-nodejs="`weekly`" pulumi-lang-dotnet="`Weekly`" pulumi-lang-go="`weekly`" pulumi-lang-python="`weekly`" pulumi-lang-yaml="`weekly`" pulumi-lang-java="`weekly`">`weekly`</span>, and <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`">`monthly`</span>. The default is <span pulumi-lang-nodejs="`monthly`" pulumi-lang-dotnet="`Monthly`" pulumi-lang-go="`monthly`" pulumi-lang-python="`monthly`" pulumi-lang-yaml="`monthly`" pulumi-lang-java="`monthly`">`monthly`</span>.
+  /// The time period that the amount applies to. A weekly period begins on Sunday. Valid values are `daily`, `weekly`, and `monthly`. The default is `monthly`.
   final Input<String>? period;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

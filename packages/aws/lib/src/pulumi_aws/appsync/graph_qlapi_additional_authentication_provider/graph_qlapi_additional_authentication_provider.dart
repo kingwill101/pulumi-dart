@@ -8,15 +8,15 @@ class GraphQLApiAdditionalAuthenticationProvider {
   /// Authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`
   final String authenticationType;
 
-  /// Nested argument containing Lambda authorizer configuration. See <span pulumi-lang-nodejs="`lambdaAuthorizerConfig`" pulumi-lang-dotnet="`LambdaAuthorizerConfig`" pulumi-lang-go="`lambdaAuthorizerConfig`" pulumi-lang-python="`lambda_authorizer_config`" pulumi-lang-yaml="`lambdaAuthorizerConfig`" pulumi-lang-java="`lambdaAuthorizerConfig`">`lambda_authorizer_config`</span> Block for details.
+  /// Nested argument containing Lambda authorizer configuration. See `lambda_authorizer_config` Block for details.
   final GraphQLApiAdditionalAuthenticationProviderLambdaAuthorizerConfig?
       lambdaAuthorizerConfig;
 
-  /// Nested argument containing OpenID Connect configuration. See <span pulumi-lang-nodejs="`openidConnectConfig`" pulumi-lang-dotnet="`OpenidConnectConfig`" pulumi-lang-go="`openidConnectConfig`" pulumi-lang-python="`openid_connect_config`" pulumi-lang-yaml="`openidConnectConfig`" pulumi-lang-java="`openidConnectConfig`">`openid_connect_config`</span> Block for details.
+  /// Nested argument containing OpenID Connect configuration. See `openid_connect_config` Block for details.
   final GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig?
       openidConnectConfig;
 
-  /// Amazon Cognito User Pool configuration. See <span pulumi-lang-nodejs="`userPoolConfig`" pulumi-lang-dotnet="`UserPoolConfig`" pulumi-lang-go="`userPoolConfig`" pulumi-lang-python="`user_pool_config`" pulumi-lang-yaml="`userPoolConfig`" pulumi-lang-java="`userPoolConfig`">`user_pool_config`</span> Block for details.
+  /// Amazon Cognito User Pool configuration. See `user_pool_config` Block for details.
   final GraphQLApiAdditionalAuthenticationProviderUserPoolConfig?
       userPoolConfig;
 

@@ -4,7 +4,7 @@ class PlanTriggerCondition {
   /// Name of the associated alarm.
   final String associatedAlarmName;
 
-  /// Condition to check. Valid values: <span pulumi-lang-nodejs="`red`" pulumi-lang-dotnet="`Red`" pulumi-lang-go="`red`" pulumi-lang-python="`red`" pulumi-lang-yaml="`red`" pulumi-lang-java="`red`">`red`</span>, <span pulumi-lang-nodejs="`green`" pulumi-lang-dotnet="`Green`" pulumi-lang-go="`green`" pulumi-lang-python="`green`" pulumi-lang-yaml="`green`" pulumi-lang-java="`green`">`green`</span>.
+  /// Condition to check. Valid values: `red`, `green`.
   final String condition;
 
   PlanTriggerCondition({

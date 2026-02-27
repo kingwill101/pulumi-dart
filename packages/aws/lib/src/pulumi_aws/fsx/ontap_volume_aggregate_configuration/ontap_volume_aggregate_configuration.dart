@@ -4,10 +4,10 @@ class OntapVolumeAggregateConfiguration {
   /// Used to specify the names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
   final List<String>? aggregates;
 
-  /// Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is <span pulumi-lang-nodejs="`8`" pulumi-lang-dotnet="`8`" pulumi-lang-go="`8`" pulumi-lang-python="`8`" pulumi-lang-yaml="`8`" pulumi-lang-java="`8`">`8`</span>.
+  /// Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
   final int? constituentsPerAggregate;
 
-  /// The total amount of constituents for a `FLEXGROUP` volume. This would equal<span pulumi-lang-nodejs=" constituentsPerAggregate " pulumi-lang-dotnet=" ConstituentsPerAggregate " pulumi-lang-go=" constituentsPerAggregate " pulumi-lang-python=" constituents_per_aggregate " pulumi-lang-yaml=" constituentsPerAggregate " pulumi-lang-java=" constituentsPerAggregate "> constituents_per_aggregate </span>x aggregates.
+  /// The total amount of constituents for a `FLEXGROUP` volume. This would equal constituents_per_aggregate x aggregates.
   final int? totalConstituents;
 
   OntapVolumeAggregateConfiguration({

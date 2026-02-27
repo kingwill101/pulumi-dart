@@ -9,7 +9,7 @@ class FunctionSyncConfig {
   /// Conflict Resolution strategy to perform in the event of a conflict. Valid values are `NONE`, `OPTIMISTIC_CONCURRENCY`, `AUTOMERGE`, and `LAMBDA`.
   final String? conflictHandler;
 
-  /// Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See <span pulumi-lang-nodejs="`lambdaConflictHandlerConfig`" pulumi-lang-dotnet="`LambdaConflictHandlerConfig`" pulumi-lang-go="`lambdaConflictHandlerConfig`" pulumi-lang-python="`lambda_conflict_handler_config`" pulumi-lang-yaml="`lambdaConflictHandlerConfig`" pulumi-lang-java="`lambdaConflictHandlerConfig`">`lambda_conflict_handler_config`</span> Block for details.
+  /// Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See `lambda_conflict_handler_config` Block for details.
   final FunctionSyncConfigLambdaConflictHandlerConfig?
       lambdaConflictHandlerConfig;
 

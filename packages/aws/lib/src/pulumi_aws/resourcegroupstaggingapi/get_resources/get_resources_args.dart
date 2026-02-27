@@ -5,7 +5,7 @@ import '../get_resources_tag_filter/get_resources_tag_filter.dart';
 
 /// Arguments for getResources.
 class GetResourcesArgs {
-  /// Specifies whether to exclude resources that are compliant with the tag policy. You can use this parameter only if the <span pulumi-lang-nodejs="`includeComplianceDetails`" pulumi-lang-dotnet="`IncludeComplianceDetails`" pulumi-lang-go="`includeComplianceDetails`" pulumi-lang-python="`include_compliance_details`" pulumi-lang-yaml="`includeComplianceDetails`" pulumi-lang-java="`includeComplianceDetails`">`include_compliance_details`</span> argument is also set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Specifies whether to exclude resources that are compliant with the tag policy. You can use this parameter only if the `include_compliance_details` argument is also set to `true`.
   final Input<bool>? excludeCompliantResources;
 
   /// Specifies whether to include details regarding the compliance with the effective tag policy.
@@ -14,13 +14,13 @@ class GetResourcesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Specifies a list of ARNs of resources for which you want to retrieve tag data. Conflicts with <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span>.
+  /// Specifies a list of ARNs of resources for which you want to retrieve tag data. Conflicts with `filter`.
   final Input<List<String>>? resourceArnLists;
 
-  /// Constraints on the resources that you want returned. The format of each resource type is `service:resourceType`. For example, specifying a resource type of <span pulumi-lang-nodejs="`ec2`" pulumi-lang-dotnet="`Ec2`" pulumi-lang-go="`ec2`" pulumi-lang-python="`ec2`" pulumi-lang-yaml="`ec2`" pulumi-lang-java="`ec2`">`ec2`</span> returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
+  /// Constraints on the resources that you want returned. The format of each resource type is `service:resourceType`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
   final Input<List<String>>? resourceTypeFilters;
 
-  /// Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with <span pulumi-lang-nodejs="`resourceArnList`" pulumi-lang-dotnet="`ResourceArnList`" pulumi-lang-go="`resourceArnList`" pulumi-lang-python="`resource_arn_list`" pulumi-lang-yaml="`resourceArnList`" pulumi-lang-java="`resourceArnList`">`resource_arn_list`</span>.
+  /// Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resource_arn_list`.
   final Input<List<GetResourcesTagFilter>>? tagFilters;
 
   GetResourcesArgs({

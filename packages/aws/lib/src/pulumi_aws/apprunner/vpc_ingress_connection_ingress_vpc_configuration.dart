@@ -1,0 +1,3 @@
+library module_apprunner_vpc_ingress_connection_ingress_vpc_configuration;
+
+export 'vpc_ingress_connection_ingress_vpc_configuration/vpc_ingress_connection_ingress_vpc_configuration.dart';

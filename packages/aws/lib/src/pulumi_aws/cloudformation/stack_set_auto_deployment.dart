@@ -1,0 +1,3 @@
+library module_cloudformation_stack_set_auto_deployment;
+
+export 'stack_set_auto_deployment/stack_set_auto_deployment.dart';

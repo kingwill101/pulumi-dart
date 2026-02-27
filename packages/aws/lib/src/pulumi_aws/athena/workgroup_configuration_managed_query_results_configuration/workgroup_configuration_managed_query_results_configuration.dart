@@ -3,7 +3,7 @@
 import '../workgroup_configuration_managed_query_results_configuration_encryption_configuration/workgroup_configuration_managed_query_results_configuration_encryption_configuration.dart';
 
 class WorkgroupConfigurationManagedQueryResultsConfiguration {
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, allows you to store query results in Athena owned storage. If set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, workgroup member stores query results in the location specified under `result_configuration.output_location`. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. A workgroup cannot have the `result_configuration.output_location` set when this is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// If set to `true`, allows you to store query results in Athena owned storage. If set to `false`, workgroup member stores query results in the location specified under `result_configuration.output_location`. The default is `false`. A workgroup cannot have the `result_configuration.output_location` set when this is `true`.
   final bool? enabled;
 
   /// Configuration block for the encryption configuration. See Managed Query Results Encryption Configuration below.

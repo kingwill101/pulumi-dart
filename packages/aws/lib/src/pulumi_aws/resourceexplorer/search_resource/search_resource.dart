@@ -13,7 +13,7 @@ class SearchResource {
   /// Amazon Web Services account that owns the resource.
   final String owningAccountId;
 
-  /// Structure with additional type-specific details about the resource.  See <span pulumi-lang-nodejs="`properties`" pulumi-lang-dotnet="`Properties`" pulumi-lang-go="`properties`" pulumi-lang-python="`properties`" pulumi-lang-yaml="`properties`" pulumi-lang-java="`properties`">`properties`</span> below.
+  /// Structure with additional type-specific details about the resource.  See `properties` below.
   final List<SearchResourceProperty> properties;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

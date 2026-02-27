@@ -42,7 +42,7 @@ class GetReceivedLicenseResult {
   final String licenseName;
 
   /// Product name.
-  /// * <span pulumi-lang-nodejs="`productSku " pulumi-lang-dotnet="`ProductSku " pulumi-lang-go="`productSku " pulumi-lang-python="`product_sku " pulumi-lang-yaml="`productSku " pulumi-lang-java="`productSku ">`product_sku </span>` - Product SKU.
+  /// * `product_sku ` - Product SKU.
   final String productName;
   final String productSku;
 

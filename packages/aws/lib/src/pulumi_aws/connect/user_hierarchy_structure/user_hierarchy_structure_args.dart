@@ -5,7 +5,7 @@ import '../user_hierarchy_structure_hierarchy_structure/user_hierarchy_structure
 
 /// The set of arguments for UserHierarchyStructure.
 class UserHierarchyStructureArgs {
-  /// A block that defines the hierarchy structure's levels. The <span pulumi-lang-nodejs="`hierarchyStructure`" pulumi-lang-dotnet="`HierarchyStructure`" pulumi-lang-go="`hierarchyStructure`" pulumi-lang-python="`hierarchy_structure`" pulumi-lang-yaml="`hierarchyStructure`" pulumi-lang-java="`hierarchyStructure`">`hierarchy_structure`</span> block is documented below.
+  /// A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
   final Input<UserHierarchyStructureHierarchyStructure> hierarchyStructure;
 
   /// Specifies the identifier of the hosting Amazon Connect Instance.

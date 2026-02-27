@@ -3,28 +3,28 @@
 import '../agentcore_oauth2_credential_provider_oauth2_provider_config_custom_oauth2_provider_config_oauth_discovery/agentcore_oauth2_credential_provider_oauth2_provider_config_custom_oauth2_provider_config_oauth_discovery.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig {
-  /// Used together with write-only credentials to trigger an update. Increment this value when an update to <span pulumi-lang-nodejs="`clientIdWo`" pulumi-lang-dotnet="`ClientIdWo`" pulumi-lang-go="`clientIdWo`" pulumi-lang-python="`client_id_wo`" pulumi-lang-yaml="`clientIdWo`" pulumi-lang-java="`clientIdWo`">`client_id_wo`</span> or <span pulumi-lang-nodejs="`clientSecretWo`" pulumi-lang-dotnet="`ClientSecretWo`" pulumi-lang-go="`clientSecretWo`" pulumi-lang-python="`client_secret_wo`" pulumi-lang-yaml="`clientSecretWo`" pulumi-lang-java="`clientSecretWo`">`client_secret_wo`</span> is required.
+  /// Used together with write-only credentials to trigger an update. Increment this value when an update to `client_id_wo` or `client_secret_wo` is required.
   ///
   /// **OAuth Discovery Configuration:**
   final int? clientCredentialsWoVersion;
 
-  /// OAuth2 client ID. Cannot be used with <span pulumi-lang-nodejs="`clientIdWo`" pulumi-lang-dotnet="`ClientIdWo`" pulumi-lang-go="`clientIdWo`" pulumi-lang-python="`client_id_wo`" pulumi-lang-yaml="`clientIdWo`" pulumi-lang-java="`clientIdWo`">`client_id_wo`</span>. Must be used together with <span pulumi-lang-nodejs="`clientSecret`" pulumi-lang-dotnet="`ClientSecret`" pulumi-lang-go="`clientSecret`" pulumi-lang-python="`client_secret`" pulumi-lang-yaml="`clientSecret`" pulumi-lang-java="`clientSecret`">`client_secret`</span>.
+  /// OAuth2 client ID. Cannot be used with `client_id_wo`. Must be used together with `client_secret`.
   final String? clientId;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only OAuth2 client ID. Cannot be used with <span pulumi-lang-nodejs="`clientId`" pulumi-lang-dotnet="`ClientId`" pulumi-lang-go="`clientId`" pulumi-lang-python="`client_id`" pulumi-lang-yaml="`clientId`" pulumi-lang-java="`clientId`">`client_id`</span>. Must be used together with <span pulumi-lang-nodejs="`clientSecretWo`" pulumi-lang-dotnet="`ClientSecretWo`" pulumi-lang-go="`clientSecretWo`" pulumi-lang-python="`client_secret_wo`" pulumi-lang-yaml="`clientSecretWo`" pulumi-lang-java="`clientSecretWo`">`client_secret_wo`</span> and <span pulumi-lang-nodejs="`clientCredentialsWoVersion`" pulumi-lang-dotnet="`ClientCredentialsWoVersion`" pulumi-lang-go="`clientCredentialsWoVersion`" pulumi-lang-python="`client_credentials_wo_version`" pulumi-lang-yaml="`clientCredentialsWoVersion`" pulumi-lang-java="`clientCredentialsWoVersion`">`client_credentials_wo_version`</span>.
+  /// Write-only OAuth2 client ID. Cannot be used with `client_id`. Must be used together with `client_secret_wo` and `client_credentials_wo_version`.
   final String? clientIdWo;
 
-  /// OAuth2 client secret. Cannot be used with <span pulumi-lang-nodejs="`clientSecretWo`" pulumi-lang-dotnet="`ClientSecretWo`" pulumi-lang-go="`clientSecretWo`" pulumi-lang-python="`client_secret_wo`" pulumi-lang-yaml="`clientSecretWo`" pulumi-lang-java="`clientSecretWo`">`client_secret_wo`</span>. Must be used together with <span pulumi-lang-nodejs="`clientId`" pulumi-lang-dotnet="`ClientId`" pulumi-lang-go="`clientId`" pulumi-lang-python="`client_id`" pulumi-lang-yaml="`clientId`" pulumi-lang-java="`clientId`">`client_id`</span>.
+  /// OAuth2 client secret. Cannot be used with `client_secret_wo`. Must be used together with `client_id`.
   ///
   /// **Write-Only Credentials (choose one pair):**
   final String? clientSecret;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only OAuth2 client secret. Cannot be used with <span pulumi-lang-nodejs="`clientSecret`" pulumi-lang-dotnet="`ClientSecret`" pulumi-lang-go="`clientSecret`" pulumi-lang-python="`client_secret`" pulumi-lang-yaml="`clientSecret`" pulumi-lang-java="`clientSecret`">`client_secret`</span>. Must be used together with <span pulumi-lang-nodejs="`clientIdWo`" pulumi-lang-dotnet="`ClientIdWo`" pulumi-lang-go="`clientIdWo`" pulumi-lang-python="`client_id_wo`" pulumi-lang-yaml="`clientIdWo`" pulumi-lang-java="`clientIdWo`">`client_id_wo`</span> and <span pulumi-lang-nodejs="`clientCredentialsWoVersion`" pulumi-lang-dotnet="`ClientCredentialsWoVersion`" pulumi-lang-go="`clientCredentialsWoVersion`" pulumi-lang-python="`client_credentials_wo_version`" pulumi-lang-yaml="`clientCredentialsWoVersion`" pulumi-lang-java="`clientCredentialsWoVersion`">`client_credentials_wo_version`</span>.
+  /// Write-only OAuth2 client secret. Cannot be used with `client_secret`. Must be used together with `client_id_wo` and `client_credentials_wo_version`.
   final String? clientSecretWo;
 
-  /// OAuth discovery configuration. See <span pulumi-lang-nodejs="`oauthDiscovery`" pulumi-lang-dotnet="`OauthDiscovery`" pulumi-lang-go="`oauthDiscovery`" pulumi-lang-python="`oauth_discovery`" pulumi-lang-yaml="`oauthDiscovery`" pulumi-lang-java="`oauthDiscovery`">`oauth_discovery`</span> below.
+  /// OAuth discovery configuration. See `oauth_discovery` below.
   final AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery?
       oauthDiscovery;
 

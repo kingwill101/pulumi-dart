@@ -1,3 +1,0 @@
-library module_autoscalingplans_scaling_plan_application_source;
-
-export 'scaling_plan_application_source.dart';

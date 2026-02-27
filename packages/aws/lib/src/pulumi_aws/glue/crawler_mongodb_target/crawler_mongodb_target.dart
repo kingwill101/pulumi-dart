@@ -7,7 +7,7 @@ class CrawlerMongodbTarget {
   /// The path of the Amazon DocumentDB or MongoDB target (database/collection).
   final String path;
 
-  /// Indicates whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table. Default value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Indicates whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table. Default value is `true`.
   final bool? scanAll;
 
   CrawlerMongodbTarget({

@@ -1,3 +1,0 @@
-library module_quicksight_data_source_parameters_teradata;
-
-export 'data_source_parameters_teradata.dart';

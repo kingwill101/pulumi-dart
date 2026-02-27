@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_token_vault_cmk_kms_configuration;
-
-export 'agentcore_token_vault_cmk_kms_configuration.dart';

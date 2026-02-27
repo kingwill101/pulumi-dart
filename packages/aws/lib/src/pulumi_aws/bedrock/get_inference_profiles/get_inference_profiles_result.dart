@@ -8,7 +8,7 @@ class GetInferenceProfilesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// List of inference profile summary objects. See <span pulumi-lang-nodejs="`inferenceProfileSummaries`" pulumi-lang-dotnet="`InferenceProfileSummaries`" pulumi-lang-go="`inferenceProfileSummaries`" pulumi-lang-python="`inference_profile_summaries`" pulumi-lang-yaml="`inferenceProfileSummaries`" pulumi-lang-java="`inferenceProfileSummaries`">`inference_profile_summaries`</span>.
+  /// List of inference profile summary objects. See `inference_profile_summaries`.
   final List<GetInferenceProfilesInferenceProfileSummary>
       inferenceProfileSummaries;
   final String region;

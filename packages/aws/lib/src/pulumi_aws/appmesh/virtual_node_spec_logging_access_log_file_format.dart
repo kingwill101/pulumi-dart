@@ -1,0 +1,3 @@
+library module_appmesh_virtual_node_spec_logging_access_log_file_format;
+
+export 'virtual_node_spec_logging_access_log_file_format/virtual_node_spec_logging_access_log_file_format.dart';

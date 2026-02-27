@@ -1,3 +1,0 @@
-library module_ses_configuration_set_delivery_options;
-
-export 'configuration_set_delivery_options.dart';

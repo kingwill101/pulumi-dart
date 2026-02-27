@@ -1,3 +1,0 @@
-library module_networkfirewall_firewall_transit_gateway_attachment_accepter_timeouts;
-
-export 'firewall_transit_gateway_attachment_accepter_timeouts.dart';

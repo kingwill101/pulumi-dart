@@ -1,0 +1,3 @@
+library module_ecs_capacity_provider_auto_scaling_group_provider_managed_scaling;
+
+export 'capacity_provider_auto_scaling_group_provider_managed_scaling/capacity_provider_auto_scaling_group_provider_managed_scaling.dart';

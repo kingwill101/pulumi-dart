@@ -1,0 +1,3 @@
+library module_servicecatalog_provisioned_product_output;
+
+export 'provisioned_product_output/provisioned_product_output.dart';

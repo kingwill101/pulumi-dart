@@ -1,3 +1,0 @@
-library module_apigatewayv2_integration_response_parameter;
-
-export 'integration_response_parameter.dart';

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getBudget.
 class GetBudgetArgs {
-  /// The ID of the target account for budget. Will use current user's<span pulumi-lang-nodejs=" accountId " pulumi-lang-dotnet=" AccountId " pulumi-lang-go=" accountId " pulumi-lang-python=" account_id " pulumi-lang-yaml=" accountId " pulumi-lang-java=" accountId "> account_id </span>by default if omitted.
+  /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
   final Input<String>? accountId;
 
   /// The name of a budget. Unique within accounts.

@@ -1,3 +1,0 @@
-library module_odb_get_cloud_exadata_infrastructure_customer_contacts_to_send_to_oci;
-
-export 'get_cloud_exadata_infrastructure_customer_contacts_to_send_to_oci.dart';

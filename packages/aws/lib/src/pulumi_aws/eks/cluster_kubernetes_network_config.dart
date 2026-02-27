@@ -1,0 +1,3 @@
+library module_eks_cluster_kubernetes_network_config;
+
+export 'cluster_kubernetes_network_config/cluster_kubernetes_network_config.dart';

@@ -24,7 +24,7 @@ import 'launch_template_args.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Launch Templates using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Launch Templates using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/launchTemplate:LaunchTemplate web lt-12345678
@@ -58,11 +58,11 @@ class LaunchTemplate extends CustomResource {
   /// If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
   late final Output<bool?> disableApiStop;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, enables [EC2 Instance
+  /// If `true`, enables [EC2 Instance
   /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingDisableAPITermination.html)
   late final Output<bool?> disableApiTermination;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the launched EC2 instance will be EBS-optimized.
+  /// If `true`, the launched EC2 instance will be EBS-optimized.
   late final Output<String?> ebsOptimized;
 
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
@@ -78,18 +78,18 @@ class LaunchTemplate extends CustomResource {
   /// The AMI from which to launch the instance or use a Systems Manager parameter convention e.g. `resolve:ssm:parameter-name`. See [docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id) for more details.
   late final Output<String?> imageId;
 
-  /// Shutdown behavior for the instance. Can be <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span> or <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>.
-  /// (Default: <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span>).
+  /// Shutdown behavior for the instance. Can be `stop` or `terminate`.
+  /// (Default: `stop`).
   late final Output<String?> instanceInitiatedShutdownBehavior;
 
   /// The market (purchasing) option for the instance. See Market Options
   /// below for details.
   late final Output<LaunchTemplateInstanceMarketOptions?> instanceMarketOptions;
 
-  /// The attribute requirements for the type of instance. If present then <span pulumi-lang-nodejs="`instanceType`" pulumi-lang-dotnet="`InstanceType`" pulumi-lang-go="`instanceType`" pulumi-lang-python="`instance_type`" pulumi-lang-yaml="`instanceType`" pulumi-lang-java="`instanceType`">`instance_type`</span> cannot be present.
+  /// The attribute requirements for the type of instance. If present then `instance_type` cannot be present.
   late final Output<LaunchTemplateInstanceRequirements?> instanceRequirements;
 
-  /// The type of the instance. If present then <span pulumi-lang-nodejs="`instanceRequirements`" pulumi-lang-dotnet="`InstanceRequirements`" pulumi-lang-go="`instanceRequirements`" pulumi-lang-python="`instance_requirements`" pulumi-lang-yaml="`instanceRequirements`" pulumi-lang-java="`instanceRequirements`">`instance_requirements`</span> cannot be present.
+  /// The type of the instance. If present then `instance_requirements` cannot be present.
   late final Output<String?> instanceType;
 
   /// The kernel ID.
@@ -117,7 +117,7 @@ class LaunchTemplate extends CustomResource {
   /// The name of the launch template. If you leave this blank, the provider will auto-generate a unique name.
   late final Output<String> name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final Output<String> namePrefix;
 
   /// Customize network interfaces to be attached at instance boot time. See Network
@@ -144,19 +144,19 @@ class LaunchTemplate extends CustomResource {
       secondaryInterfaces;
 
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
-  /// <span pulumi-lang-nodejs="`vpcSecurityGroupIds`" pulumi-lang-dotnet="`VpcSecurityGroupIds`" pulumi-lang-go="`vpcSecurityGroupIds`" pulumi-lang-python="`vpc_security_group_ids`" pulumi-lang-yaml="`vpcSecurityGroupIds`" pulumi-lang-java="`vpcSecurityGroupIds`">`vpc_security_group_ids`</span> instead.
+  /// `vpc_security_group_ids` instead.
   late final Output<List<String>?> securityGroupNames;
 
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
   late final Output<List<LaunchTemplateTagSpecification>?> tagSpecifications;
 
-  /// A map of tags to assign to the launch template. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the launch template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
-  /// Whether to update Default Version each update. Conflicts with <span pulumi-lang-nodejs="`defaultVersion`" pulumi-lang-dotnet="`DefaultVersion`" pulumi-lang-go="`defaultVersion`" pulumi-lang-python="`default_version`" pulumi-lang-yaml="`defaultVersion`" pulumi-lang-java="`defaultVersion`">`default_version`</span>.
+  /// Whether to update Default Version each update. Conflicts with `default_version`.
   late final Output<bool?> updateDefaultVersion;
 
   /// The base64-encoded user data to provide when launching the instance.

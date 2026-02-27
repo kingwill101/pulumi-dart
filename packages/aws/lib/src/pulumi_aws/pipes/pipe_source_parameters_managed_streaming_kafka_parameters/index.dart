@@ -1,3 +1,0 @@
-library module_pipes_pipe_source_parameters_managed_streaming_kafka_parameters;
-
-export 'pipe_source_parameters_managed_streaming_kafka_parameters.dart';

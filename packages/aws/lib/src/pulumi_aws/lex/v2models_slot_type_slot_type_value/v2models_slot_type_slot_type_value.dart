@@ -6,11 +6,11 @@ import '../v2models_slot_type_slot_type_value_synonym/v2models_slot_type_slot_ty
 
 class V2modelsSlotTypeSlotTypeValue {
   /// Value of the slot type entry.
-  /// See <span pulumi-lang-nodejs="`sampleValue`" pulumi-lang-dotnet="`SampleValue`" pulumi-lang-go="`sampleValue`" pulumi-lang-python="`sample_value`" pulumi-lang-yaml="`sampleValue`" pulumi-lang-java="`sampleValue`">`sample_value`</span> argument reference below.
+  /// See `sample_value` argument reference below.
   final List<V2modelsSlotTypeSlotTypeValueSampleValue>? sampleValues;
 
   /// A list of additional values related to the slot type entry.
-  /// See <span pulumi-lang-nodejs="`synonyms`" pulumi-lang-dotnet="`Synonyms`" pulumi-lang-go="`synonyms`" pulumi-lang-python="`synonyms`" pulumi-lang-yaml="`synonyms`" pulumi-lang-java="`synonyms`">`synonyms`</span> argument reference below.
+  /// See `synonyms` argument reference below.
   final List<V2modelsSlotTypeSlotTypeValueSynonym>? synonyms;
 
   V2modelsSlotTypeSlotTypeValue({

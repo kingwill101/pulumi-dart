@@ -1,0 +1,3 @@
+library module_medialive_channel_destination_media_package_setting;
+
+export 'channel_destination_media_package_setting/channel_destination_media_package_setting.dart';

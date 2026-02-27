@@ -7,7 +7,7 @@ import '../pipeline_stage_on_failure/pipeline_stage_on_failure.dart';
 import '../pipeline_stage_on_success/pipeline_stage_on_success.dart';
 
 class PipelineStage {
-  /// The action(s) to include in the stage. Defined as an <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> block below
+  /// The action(s) to include in the stage. Defined as an `action` block below
   final List<PipelineStageAction> actions;
 
   /// The method to use when a stage allows entry. For example, configuring this field for conditions will allow entry to the stage when the conditions are met.

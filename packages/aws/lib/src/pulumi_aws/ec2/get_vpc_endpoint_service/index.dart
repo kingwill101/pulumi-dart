@@ -1,5 +1,0 @@
-library module_ec2_get_vpc_endpoint_service;
-
-export 'get_vpc_endpoint_service.dart';
-export 'get_vpc_endpoint_service_args.dart';
-export 'get_vpc_endpoint_service_result.dart';

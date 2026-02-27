@@ -1,3 +1,0 @@
-library module_datasync_location_azure_blob_sas_configuration;
-
-export 'location_azure_blob_sas_configuration.dart';

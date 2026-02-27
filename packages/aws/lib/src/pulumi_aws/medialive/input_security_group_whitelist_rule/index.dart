@@ -1,3 +1,0 @@
-library module_medialive_input_security_group_whitelist_rule;
-
-export 'input_security_group_whitelist_rule.dart';

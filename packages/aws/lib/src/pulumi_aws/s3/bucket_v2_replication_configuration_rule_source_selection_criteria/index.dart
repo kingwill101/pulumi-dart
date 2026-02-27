@@ -1,3 +1,0 @@
-library module_s3_bucket_v2_replication_configuration_rule_source_selection_criteria;
-
-export 'bucket_v2_replication_configuration_rule_source_selection_criteria.dart';

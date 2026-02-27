@@ -1,0 +1,3 @@
+library module_ses_receipt_rule_bounce_action;
+
+export 'receipt_rule_bounce_action/receipt_rule_bounce_action.dart';

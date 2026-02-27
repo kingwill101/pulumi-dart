@@ -7,7 +7,7 @@ class PipelineStageOnFailureCondition {
   /// The action to be done when the condition is met. For example, rolling back an execution for a failure condition. Possible values are `ROLLBACK`, `FAIL`, `RETRY` and `SKIP`.
   final String? result;
 
-  /// The rules that make up the condition. Defined as a <span pulumi-lang-nodejs="`rule`" pulumi-lang-dotnet="`Rule`" pulumi-lang-go="`rule`" pulumi-lang-python="`rule`" pulumi-lang-yaml="`rule`" pulumi-lang-java="`rule`">`rule`</span> block below.
+  /// The rules that make up the condition. Defined as a `rule` block below.
   final List<PipelineStageOnFailureConditionRule> rules;
 
   PipelineStageOnFailureCondition({

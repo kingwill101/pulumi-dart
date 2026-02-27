@@ -1,0 +1,3 @@
+library module_costexplorer_get_cost_category_rule_rule_or_or_tag;
+
+export 'get_cost_category_rule_rule_or_or_tag/get_cost_category_rule_rule_or_or_tag.dart';

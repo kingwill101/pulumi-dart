@@ -1,0 +1,3 @@
+library module_ec2_vpc_endpoint_subnet_configuration;
+
+export 'vpc_endpoint_subnet_configuration/vpc_endpoint_subnet_configuration.dart';

@@ -9,7 +9,7 @@ class ConfigurationAggregatorAccountAggregationSource {
 
   /// List of source regions being aggregated.
   ///
-  /// Either <span pulumi-lang-nodejs="`regions`" pulumi-lang-dotnet="`Regions`" pulumi-lang-go="`regions`" pulumi-lang-python="`regions`" pulumi-lang-yaml="`regions`" pulumi-lang-java="`regions`">`regions`</span> or <span pulumi-lang-nodejs="`allRegions`" pulumi-lang-dotnet="`AllRegions`" pulumi-lang-go="`allRegions`" pulumi-lang-python="`all_regions`" pulumi-lang-yaml="`allRegions`" pulumi-lang-java="`allRegions`">`all_regions`</span> (as true) must be specified.
+  /// Either `regions` or `all_regions` (as true) must be specified.
   final List<String>? regions;
 
   ConfigurationAggregatorAccountAggregationSource({

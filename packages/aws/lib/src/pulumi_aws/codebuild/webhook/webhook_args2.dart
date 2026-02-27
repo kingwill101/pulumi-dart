@@ -7,28 +7,28 @@ import '../webhook_scope_configuration/webhook_scope_configuration.dart';
 
 /// The set of arguments for Webhook.
 class WebhookArgs2 {
-  /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using <span pulumi-lang-nodejs="`filterGroup`" pulumi-lang-dotnet="`FilterGroup`" pulumi-lang-go="`filterGroup`" pulumi-lang-python="`filter_group`" pulumi-lang-yaml="`filterGroup`" pulumi-lang-java="`filterGroup`">`filter_group`</span> over <span pulumi-lang-nodejs="`branchFilter`" pulumi-lang-dotnet="`BranchFilter`" pulumi-lang-go="`branchFilter`" pulumi-lang-python="`branch_filter`" pulumi-lang-yaml="`branchFilter`" pulumi-lang-java="`branchFilter`">`branch_filter`</span>.
+  /// A regular expression used to determine which branches get built. Default is all branches are built. We recommend using `filter_group` over `branch_filter`.
   final Input<String>? branchFilter;
 
   /// The type of build this webhook will trigger. Valid values for this parameter are: `BUILD`, `BUILD_BATCH`.
   final Input<String>? buildType;
 
-  /// Information about the webhook's trigger. See<span pulumi-lang-nodejs=" filterGroup " pulumi-lang-dotnet=" FilterGroup " pulumi-lang-go=" filterGroup " pulumi-lang-python=" filter_group " pulumi-lang-yaml=" filterGroup " pulumi-lang-java=" filterGroup "> filter_group </span>for details.
+  /// Information about the webhook's trigger. See filter_group for details.
   final Input<List<WebhookFilterGroup>>? filterGroups;
 
-  /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns <span pulumi-lang-nodejs="`payloadUrl`" pulumi-lang-dotnet="`PayloadUrl`" pulumi-lang-go="`payloadUrl`" pulumi-lang-python="`payload_url`" pulumi-lang-yaml="`payloadUrl`" pulumi-lang-java="`payloadUrl`">`payload_url`</span> and <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`">`secret`</span> values for the webhook. The <span pulumi-lang-nodejs="`payloadUrl`" pulumi-lang-dotnet="`PayloadUrl`" pulumi-lang-go="`payloadUrl`" pulumi-lang-python="`payload_url`" pulumi-lang-yaml="`payloadUrl`" pulumi-lang-java="`payloadUrl`">`payload_url`</span> and <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`">`secret`</span> values in the output can be used to manually create a webhook within GitHub.
+  /// If true, CodeBuild doesn't create a webhook in GitHub and instead returns `payload_url` and `secret` values for the webhook. The `payload_url` and `secret` values in the output can be used to manually create a webhook within GitHub.
   final Input<bool>? manualCreation;
 
   /// The name of the build project.
   final Input<String> projectName;
 
-  /// Defines comment-based approval requirements for triggering builds on pull requests. See<span pulumi-lang-nodejs=" pullRequestBuildPolicy " pulumi-lang-dotnet=" PullRequestBuildPolicy " pulumi-lang-go=" pullRequestBuildPolicy " pulumi-lang-python=" pull_request_build_policy " pulumi-lang-yaml=" pullRequestBuildPolicy " pulumi-lang-java=" pullRequestBuildPolicy "> pull_request_build_policy </span>for details.
+  /// Defines comment-based approval requirements for triggering builds on pull requests. See pull_request_build_policy for details.
   final Input<WebhookPullRequestBuildPolicy>? pullRequestBuildPolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Scope configuration for global or organization webhooks. See<span pulumi-lang-nodejs=" scopeConfiguration " pulumi-lang-dotnet=" ScopeConfiguration " pulumi-lang-go=" scopeConfiguration " pulumi-lang-python=" scope_configuration " pulumi-lang-yaml=" scopeConfiguration " pulumi-lang-java=" scopeConfiguration "> scope_configuration </span>for details.
+  /// Scope configuration for global or organization webhooks. See scope_configuration for details.
   final Input<WebhookScopeConfiguration>? scopeConfiguration;
 
   WebhookArgs2({

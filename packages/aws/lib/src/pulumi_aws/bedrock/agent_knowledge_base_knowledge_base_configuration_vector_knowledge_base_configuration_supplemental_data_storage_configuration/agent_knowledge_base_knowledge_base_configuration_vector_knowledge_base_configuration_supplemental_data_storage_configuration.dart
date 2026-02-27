@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_supplemental_data_storage_configuration_storage_location/agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_supplemental_data_storage_configuration_storage_location.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration {
-  /// A storage location specification for images extracted from multimodal documents in your data source.  See <span pulumi-lang-nodejs="`storageLocation`" pulumi-lang-dotnet="`StorageLocation`" pulumi-lang-go="`storageLocation`" pulumi-lang-python="`storage_location`" pulumi-lang-yaml="`storageLocation`" pulumi-lang-java="`storageLocation`">`storage_location`</span> block for details.
+  /// A storage location specification for images extracted from multimodal documents in your data source.  See `storage_location` block for details.
   final List<
           AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation>
       storageLocations;

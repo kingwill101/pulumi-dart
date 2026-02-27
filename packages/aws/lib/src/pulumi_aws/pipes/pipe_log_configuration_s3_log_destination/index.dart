@@ -1,3 +1,0 @@
-library module_pipes_pipe_log_configuration_s3_log_destination;
-
-export 'pipe_log_configuration_s3_log_destination.dart';

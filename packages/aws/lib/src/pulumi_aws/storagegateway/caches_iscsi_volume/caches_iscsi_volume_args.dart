@@ -7,10 +7,10 @@ class CachesIscsiVolumeArgs {
   /// The Amazon Resource Name (ARN) of the gateway.
   final Input<String> gatewayArn;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to use Amazon S3 server side encryption with your own AWS KMS key, or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> to use a key managed by Amazon S3.
+  /// Set to `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3.
   final Input<bool>? kmsEncrypted;
 
-  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. Is required when <span pulumi-lang-nodejs="`kmsEncrypted`" pulumi-lang-dotnet="`KmsEncrypted`" pulumi-lang-go="`kmsEncrypted`" pulumi-lang-python="`kms_encrypted`" pulumi-lang-yaml="`kmsEncrypted`" pulumi-lang-java="`kmsEncrypted`">`kms_encrypted`</span> is set.
+  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. Is required when `kms_encrypted` is set.
   final Input<String>? kmsKey;
 
   /// The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted.
@@ -22,10 +22,10 @@ class CachesIscsiVolumeArgs {
   /// The snapshot ID of the snapshot to restore as the new cached volumeE.g., `snap-1122aabb`.
   final Input<String>? snapshotId;
 
-  /// The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The <span pulumi-lang-nodejs="`volumeSizeInBytes`" pulumi-lang-dotnet="`VolumeSizeInBytes`" pulumi-lang-go="`volumeSizeInBytes`" pulumi-lang-python="`volume_size_in_bytes`" pulumi-lang-yaml="`volumeSizeInBytes`" pulumi-lang-java="`volumeSizeInBytes`">`volume_size_in_bytes`</span> value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
+  /// The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The `volume_size_in_bytes` value for this new volume must be equal to or larger than the size of the existing volume, in bytes.
   final Input<String>? sourceVolumeArn;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.

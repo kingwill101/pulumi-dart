@@ -1,3 +1,0 @@
-library module_networkmanager_get_core_network_policy_document_routing_policy_routing_policy_rule;
-
-export 'get_core_network_policy_document_routing_policy_routing_policy_rule.dart';

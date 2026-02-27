@@ -21,25 +21,25 @@ class FileSystemArgs {
   /// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
   final Input<String>? kmsKeyId;
 
-  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See <span pulumi-lang-nodejs="`lifecyclePolicy`" pulumi-lang-dotnet="`LifecyclePolicy`" pulumi-lang-go="`lifecyclePolicy`" pulumi-lang-python="`lifecycle_policy`" pulumi-lang-yaml="`lifecyclePolicy`" pulumi-lang-java="`lifecyclePolicy`">`lifecycle_policy`</span> block below for details.
+  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecycle_policy` block below for details.
   final Input<List<FileSystemLifecyclePolicy>>? lifecyclePolicies;
 
   /// The file system performance mode. Can be either `"generalPurpose"` or `"maxIO"` (Default: `"generalPurpose"`).
   final Input<String>? performanceMode;
 
-  /// A file system [protection](https://docs.aws.amazon.com/efs/latest/ug/API_FileSystemProtectionDescription.html) object. See <span pulumi-lang-nodejs="`protection`" pulumi-lang-dotnet="`Protection`" pulumi-lang-go="`protection`" pulumi-lang-python="`protection`" pulumi-lang-yaml="`protection`" pulumi-lang-java="`protection`">`protection`</span> block below for details.
+  /// A file system [protection](https://docs.aws.amazon.com/efs/latest/ug/API_FileSystemProtectionDescription.html) object. See `protection` block below for details.
   final Input<FileSystemProtection>? protection;
 
-  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with <span pulumi-lang-nodejs="`throughputMode`" pulumi-lang-dotnet="`ThroughputMode`" pulumi-lang-go="`throughputMode`" pulumi-lang-python="`throughput_mode`" pulumi-lang-yaml="`throughputMode`" pulumi-lang-java="`throughputMode`">`throughput_mode`</span> set to <span pulumi-lang-nodejs="`provisioned`" pulumi-lang-dotnet="`Provisioned`" pulumi-lang-go="`provisioned`" pulumi-lang-python="`provisioned`" pulumi-lang-yaml="`provisioned`" pulumi-lang-java="`provisioned`">`provisioned`</span>.
+  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughput_mode` set to `provisioned`.
   final Input<double>? provisionedThroughputInMibps;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the file system. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Throughput mode for the file system. Defaults to <span pulumi-lang-nodejs="`bursting`" pulumi-lang-dotnet="`Bursting`" pulumi-lang-go="`bursting`" pulumi-lang-python="`bursting`" pulumi-lang-yaml="`bursting`" pulumi-lang-java="`bursting`">`bursting`</span>. Valid values: <span pulumi-lang-nodejs="`bursting`" pulumi-lang-dotnet="`Bursting`" pulumi-lang-go="`bursting`" pulumi-lang-python="`bursting`" pulumi-lang-yaml="`bursting`" pulumi-lang-java="`bursting`">`bursting`</span>, <span pulumi-lang-nodejs="`provisioned`" pulumi-lang-dotnet="`Provisioned`" pulumi-lang-go="`provisioned`" pulumi-lang-python="`provisioned`" pulumi-lang-yaml="`provisioned`" pulumi-lang-java="`provisioned`">`provisioned`</span>, or <span pulumi-lang-nodejs="`elastic`" pulumi-lang-dotnet="`Elastic`" pulumi-lang-go="`elastic`" pulumi-lang-python="`elastic`" pulumi-lang-yaml="`elastic`" pulumi-lang-java="`elastic`">`elastic`</span>. When using <span pulumi-lang-nodejs="`provisioned`" pulumi-lang-dotnet="`Provisioned`" pulumi-lang-go="`provisioned`" pulumi-lang-python="`provisioned`" pulumi-lang-yaml="`provisioned`" pulumi-lang-java="`provisioned`">`provisioned`</span>, also set <span pulumi-lang-nodejs="`provisionedThroughputInMibps`" pulumi-lang-dotnet="`ProvisionedThroughputInMibps`" pulumi-lang-go="`provisionedThroughputInMibps`" pulumi-lang-python="`provisioned_throughput_in_mibps`" pulumi-lang-yaml="`provisionedThroughputInMibps`" pulumi-lang-java="`provisionedThroughputInMibps`">`provisioned_throughput_in_mibps`</span>.
+  /// Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
   final Input<String>? throughputMode;
 
   FileSystemArgs({

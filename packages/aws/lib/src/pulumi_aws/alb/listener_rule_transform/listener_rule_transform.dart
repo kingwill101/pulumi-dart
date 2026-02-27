@@ -4,13 +4,13 @@ import '../listener_rule_transform_host_header_rewrite_config/listener_rule_tran
 import '../listener_rule_transform_url_rewrite_config/listener_rule_transform_url_rewrite_config.dart';
 
 class ListenerRuleTransform {
-  /// Configuration block for host header rewrite. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `host-header-rewrite`. See Host Header Rewrite Config Blocks below.
+  /// Configuration block for host header rewrite. Required if `type` is `host-header-rewrite`. See Host Header Rewrite Config Blocks below.
   final ListenerRuleTransformHostHeaderRewriteConfig? hostHeaderRewriteConfig;
 
   /// Type of transform. Valid values are `host-header-rewrite` and `url-rewrite`.
   final String type;
 
-  /// Configuration block for URL rewrite. Required if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `url-rewrite`. See URL Rewrite Config Blocks below.
+  /// Configuration block for URL rewrite. Required if `type` is `url-rewrite`. See URL Rewrite Config Blocks below.
   final ListenerRuleTransformUrlRewriteConfig? urlRewriteConfig;
 
   ListenerRuleTransform({

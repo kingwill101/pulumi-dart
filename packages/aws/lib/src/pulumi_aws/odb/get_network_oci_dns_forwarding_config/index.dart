@@ -1,3 +1,0 @@
-library module_odb_get_network_oci_dns_forwarding_config;
-
-export 'get_network_oci_dns_forwarding_config.dart';

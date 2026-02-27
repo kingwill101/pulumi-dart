@@ -62,7 +62,7 @@ class GetInstanceResult2 {
   final String id;
   final String? instanceId;
 
-  /// State of the instance. One of: <span pulumi-lang-nodejs="`pending`" pulumi-lang-dotnet="`Pending`" pulumi-lang-go="`pending`" pulumi-lang-python="`pending`" pulumi-lang-yaml="`pending`" pulumi-lang-java="`pending`">`pending`</span>, <span pulumi-lang-nodejs="`running`" pulumi-lang-dotnet="`Running`" pulumi-lang-go="`running`" pulumi-lang-python="`running`" pulumi-lang-yaml="`running`" pulumi-lang-java="`running`">`running`</span>, `shutting-down`, <span pulumi-lang-nodejs="`terminated`" pulumi-lang-dotnet="`Terminated`" pulumi-lang-go="`terminated`" pulumi-lang-python="`terminated`" pulumi-lang-yaml="`terminated`" pulumi-lang-java="`terminated`">`terminated`</span>, <span pulumi-lang-nodejs="`stopping`" pulumi-lang-dotnet="`Stopping`" pulumi-lang-go="`stopping`" pulumi-lang-python="`stopping`" pulumi-lang-yaml="`stopping`" pulumi-lang-java="`stopping`">`stopping`</span>, <span pulumi-lang-nodejs="`stopped`" pulumi-lang-dotnet="`Stopped`" pulumi-lang-go="`stopped`" pulumi-lang-python="`stopped`" pulumi-lang-yaml="`stopped`" pulumi-lang-java="`stopped`">`stopped`</span>. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
+  /// State of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
   final String instanceState;
   final Map<String, String> instanceTags;
 
@@ -93,7 +93,7 @@ class GetInstanceResult2 {
   /// ARN of the Outpost.
   final String outpostArn;
 
-  /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if <span pulumi-lang-nodejs="`getPasswordData`" pulumi-lang-dotnet="`GetPasswordData`" pulumi-lang-go="`getPasswordData`" pulumi-lang-python="`get_password_data`" pulumi-lang-yaml="`getPasswordData`" pulumi-lang-java="`getPasswordData`">`get_password_data`</span> is true. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `get_password_data` is true. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   final String passwordData;
 
   /// Placement group of the Instance.
@@ -117,7 +117,7 @@ class GetInstanceResult2 {
   /// Public DNS name assigned to the Instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC.
   final String publicDns;
 
-  /// Public IP address assigned to the Instance, if applicable. **NOTE**: If you are using an <span pulumi-lang-nodejs="`aws.ec2.Eip`" pulumi-lang-dotnet="`aws.ec2.Eip`" pulumi-lang-go="`ec2.Eip`" pulumi-lang-python="`ec2.Eip`" pulumi-lang-yaml="`aws.ec2.Eip`" pulumi-lang-java="`aws.ec2.Eip`">`aws.ec2.Eip`</span> with your instance, you should refer to the EIP's address directly and not use <span pulumi-lang-nodejs="`publicIp`" pulumi-lang-dotnet="`PublicIp`" pulumi-lang-go="`publicIp`" pulumi-lang-python="`public_ip`" pulumi-lang-yaml="`publicIp`" pulumi-lang-java="`publicIp`">`public_ip`</span>, as this field will change after the EIP is attached.
+  /// Public IP address assigned to the Instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
   final String publicIp;
   final String region;
 
@@ -139,13 +139,13 @@ class GetInstanceResult2 {
   /// Map of tags assigned to the Instance.
   final Map<String, String> tags;
 
-  /// Tenancy of the instance: <span pulumi-lang-nodejs="`dedicated`" pulumi-lang-dotnet="`Dedicated`" pulumi-lang-go="`dedicated`" pulumi-lang-python="`dedicated`" pulumi-lang-yaml="`dedicated`" pulumi-lang-java="`dedicated`">`dedicated`</span>, <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span>.
+  /// Tenancy of the instance: `dedicated`, `default`, `host`.
   final String tenancy;
 
   /// SHA-1 hash of User Data supplied to the Instance.
   final String userData;
 
-  /// Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if <span pulumi-lang-nodejs="`getUserData`" pulumi-lang-dotnet="`GetUserData`" pulumi-lang-go="`getUserData`" pulumi-lang-python="`get_user_data`" pulumi-lang-yaml="`getUserData`" pulumi-lang-java="`getUserData`">`get_user_data`</span> is true.
+  /// Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if `get_user_data` is true.
   final String userDataBase64;
 
   /// Associated security groups in a non-default VPC.

@@ -10,7 +10,7 @@ class GetAuthorizationTokenArgs {
   /// Account number of the AWS account that owns the domain.
   final Input<String>? domainOwner;
 
-  /// Time, in seconds, that the generated authorization token is valid. Valid values are <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and between <span pulumi-lang-nodejs="`900`" pulumi-lang-dotnet="`900`" pulumi-lang-go="`900`" pulumi-lang-python="`900`" pulumi-lang-yaml="`900`" pulumi-lang-java="`900`">`900`</span> and <span pulumi-lang-nodejs="`43200`" pulumi-lang-dotnet="`43200`" pulumi-lang-go="`43200`" pulumi-lang-python="`43200`" pulumi-lang-yaml="`43200`" pulumi-lang-java="`43200`">`43200`</span>.
+  /// Time, in seconds, that the generated authorization token is valid. Valid values are `0` and between `900` and `43200`.
   final Input<int>? durationSeconds;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -1,0 +1,3 @@
+library module_kendra_get_index_user_group_resolution_configuration;
+
+export 'get_index_user_group_resolution_configuration/get_index_user_group_resolution_configuration.dart';

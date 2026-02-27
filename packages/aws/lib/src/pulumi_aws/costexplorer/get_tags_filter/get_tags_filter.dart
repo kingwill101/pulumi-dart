@@ -12,10 +12,10 @@ class GetTagsFilter {
   /// Return results that match both `Dimension` objects.
   final List<GetTagsFilterAnd>? ands;
 
-  /// Configuration block for the filter that's based on `CostCategory` values. See <span pulumi-lang-nodejs="`costCategory`" pulumi-lang-dotnet="`CostCategory`" pulumi-lang-go="`costCategory`" pulumi-lang-python="`cost_category`" pulumi-lang-yaml="`costCategory`" pulumi-lang-java="`costCategory`">`cost_category`</span> block below for details.
+  /// Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
   final GetTagsFilterCostCategory? costCategory;
 
-  /// Configuration block for the specific `Dimension` to use for `Expression`. See <span pulumi-lang-nodejs="`dimension`" pulumi-lang-dotnet="`Dimension`" pulumi-lang-go="`dimension`" pulumi-lang-python="`dimension`" pulumi-lang-yaml="`dimension`" pulumi-lang-java="`dimension`">`dimension`</span> block below for details.
+  /// Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   final GetTagsFilterDimension? dimension;
 
   /// Return results that match both `Dimension` object.

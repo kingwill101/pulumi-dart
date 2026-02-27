@@ -7,24 +7,24 @@ import '../v2models_slot_value_elicitation_setting_wait_and_continue_specificati
 
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecification {
   /// Specifies whether the bot will wait for a user to respond.
-  /// When this field is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, wait and continue responses for a slot aren't used.
-  /// If the active field isn't specified, the default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// When this field is `false`, wait and continue responses for a slot aren't used.
+  /// If the active field isn't specified, the default is `true`.
   final bool? active;
 
   /// Response that Amazon Lex sends to indicate that the bot is ready to continue the conversation.
-  /// See the <span pulumi-lang-nodejs="`continueResponse`" pulumi-lang-dotnet="`ContinueResponse`" pulumi-lang-go="`continueResponse`" pulumi-lang-python="`continue_response`" pulumi-lang-yaml="`continueResponse`" pulumi-lang-java="`continueResponse`">`continue_response`</span> argument reference below.
+  /// See the `continue_response` argument reference below.
   final List<
           V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse>?
       continueResponses;
 
   /// Response that Amazon Lex sends periodically to the user to indicate that the bot is still waiting for input from the user.
-  /// See the <span pulumi-lang-nodejs="`stillWaitingResponse`" pulumi-lang-dotnet="`StillWaitingResponse`" pulumi-lang-go="`stillWaitingResponse`" pulumi-lang-python="`still_waiting_response`" pulumi-lang-yaml="`stillWaitingResponse`" pulumi-lang-java="`stillWaitingResponse`">`still_waiting_response`</span> argument reference below.
+  /// See the `still_waiting_response` argument reference below.
   final List<
           V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse>?
       stillWaitingResponses;
 
   /// Response that Amazon Lex sends to indicate that the bot is waiting for the conversation to continue.
-  /// See the <span pulumi-lang-nodejs="`waitingResponse`" pulumi-lang-dotnet="`WaitingResponse`" pulumi-lang-go="`waitingResponse`" pulumi-lang-python="`waiting_response`" pulumi-lang-yaml="`waitingResponse`" pulumi-lang-java="`waitingResponse`">`waiting_response`</span> argument reference below.
+  /// See the `waiting_response` argument reference below.
   final List<
           V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse>?
       waitingResponses;

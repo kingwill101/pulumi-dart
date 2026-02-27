@@ -1,0 +1,4 @@
+library module_inspector2_delegated_admin_account;
+
+export 'delegated_admin_account/delegated_admin_account.dart';
+export 'delegated_admin_account/delegated_admin_account_args.dart';

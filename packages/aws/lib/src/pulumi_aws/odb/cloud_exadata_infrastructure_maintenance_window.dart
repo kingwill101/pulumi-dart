@@ -1,0 +1,3 @@
+library module_odb_cloud_exadata_infrastructure_maintenance_window;
+
+export 'cloud_exadata_infrastructure_maintenance_window/cloud_exadata_infrastructure_maintenance_window.dart';

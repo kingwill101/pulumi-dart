@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader {
-  /// List of item names (<span pulumi-lang-nodejs="`cookies`" pulumi-lang-dotnet="`Cookies`" pulumi-lang-go="`cookies`" pulumi-lang-python="`cookies`" pulumi-lang-yaml="`cookies`" pulumi-lang-java="`cookies`">`cookies`</span>, <span pulumi-lang-nodejs="`headers`" pulumi-lang-dotnet="`Headers`" pulumi-lang-go="`headers`" pulumi-lang-python="`headers`" pulumi-lang-yaml="`headers`" pulumi-lang-java="`headers`">`headers`</span>, or <span pulumi-lang-nodejs="`queryStrings`" pulumi-lang-dotnet="`QueryStrings`" pulumi-lang-go="`queryStrings`" pulumi-lang-python="`query_strings`" pulumi-lang-yaml="`queryStrings`" pulumi-lang-java="`queryStrings`">`query_strings`</span>).
+  /// List of item names (`cookies`, `headers`, or `query_strings`).
   final List<String> items;
 
   GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader({

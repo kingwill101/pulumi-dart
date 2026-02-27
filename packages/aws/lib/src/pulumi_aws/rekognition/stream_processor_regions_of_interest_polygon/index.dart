@@ -1,3 +1,0 @@
-library module_rekognition_stream_processor_regions_of_interest_polygon;
-
-export 'stream_processor_regions_of_interest_polygon.dart';

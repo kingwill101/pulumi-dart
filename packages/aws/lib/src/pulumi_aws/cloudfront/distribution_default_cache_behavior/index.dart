@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_default_cache_behavior;
-
-export 'distribution_default_cache_behavior.dart';

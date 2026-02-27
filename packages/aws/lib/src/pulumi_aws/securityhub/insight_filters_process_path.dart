@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_process_path;
+
+export 'insight_filters_process_path/insight_filters_process_path.dart';

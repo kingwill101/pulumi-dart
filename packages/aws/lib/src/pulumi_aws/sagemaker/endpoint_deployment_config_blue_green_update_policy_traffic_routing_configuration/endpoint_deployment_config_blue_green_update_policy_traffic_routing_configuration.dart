@@ -15,7 +15,7 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration {
   /// Traffic routing strategy type. Valid values are: `ALL_AT_ONCE`, `CANARY`, and `LINEAR`.
   final String type;
 
-  /// The waiting time (in seconds) between incremental steps to turn on traffic on the new endpoint fleet. Valid values are between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
+  /// The waiting time (in seconds) between incremental steps to turn on traffic on the new endpoint fleet. Valid values are between `0` and `3600`.
   final int waitIntervalInSeconds;
 
   EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration({

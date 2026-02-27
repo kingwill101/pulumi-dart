@@ -1,4 +1,0 @@
-library module_ec2_vpc_ipv6_cidr_block_association;
-
-export 'vpc_ipv6_cidr_block_association.dart';
-export 'vpc_ipv6_cidr_block_association_args.dart';

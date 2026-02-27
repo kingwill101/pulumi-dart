@@ -4,7 +4,7 @@ class ClusterAccessConfig {
   /// The authentication mode for the cluster. Valid values are `CONFIG_MAP`, `API` or `API_AND_CONFIG_MAP`
   final String? authenticationMode;
 
-  /// Whether or not to bootstrap the access config values to the cluster. Default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether or not to bootstrap the access config values to the cluster. Default is `true`.
   final bool? bootstrapClusterCreatorAdminPermissions;
 
   ClusterAccessConfig({

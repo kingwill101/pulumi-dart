@@ -1,0 +1,3 @@
+library module_s3_bucket_replication_config_rule_destination_encryption_configuration;
+
+export 'bucket_replication_config_rule_destination_encryption_configuration/bucket_replication_config_rule_destination_encryption_configuration.dart';

@@ -10,14 +10,14 @@ class EndpointConfigurationShadowProductionVariant {
   /// Size of the Elastic Inference (EI) instance to use for the production variant.
   final String? acceleratorType;
 
-  /// Timeout value, in seconds, for your inference container to pass health check by SageMaker AI Hosting. For more information about health check, see [How Your Container Should Respond to Health Check (Ping) Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-algo-ping-requests). Valid values between <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> and <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
+  /// Timeout value, in seconds, for your inference container to pass health check by SageMaker AI Hosting. For more information about health check, see [How Your Container Should Respond to Health Check (Ping) Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-algo-ping-requests). Valid values between `60` and `3600`.
   final int? containerStartupHealthCheckTimeoutInSeconds;
 
   /// Core dump configuration from the model container when the process crashes. Fields are documented below.
   final EndpointConfigurationShadowProductionVariantCoreDumpConfig?
       coreDumpConfig;
 
-  /// Whether to turn on native AWS SSM access for a production variant behind an endpoint. By default, SSM access is disabled for all production variants behind endpoints. Ignored if <span pulumi-lang-nodejs="`modelName`" pulumi-lang-dotnet="`ModelName`" pulumi-lang-go="`modelName`" pulumi-lang-python="`model_name`" pulumi-lang-yaml="`modelName`" pulumi-lang-java="`modelName`">`model_name`</span> is not set (Inference Components endpoint).
+  /// Whether to turn on native AWS SSM access for a production variant behind an endpoint. By default, SSM access is disabled for all production variants behind endpoints. Ignored if `model_name` is not set (Inference Components endpoint).
   final bool? enableSsmAccess;
 
   /// Option from a collection of preconfigured AMI images. Each image is configured by AWS with a set of software and driver versions. AWS optimizes these configurations for different machine learning workloads.
@@ -26,7 +26,7 @@ class EndpointConfigurationShadowProductionVariant {
   /// Initial number of instances used for auto-scaling.
   final int? initialInstanceCount;
 
-  /// Initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, defaults to `1.0`. Ignored if <span pulumi-lang-nodejs="`modelName`" pulumi-lang-dotnet="`ModelName`" pulumi-lang-go="`modelName`" pulumi-lang-python="`model_name`" pulumi-lang-yaml="`modelName`" pulumi-lang-java="`modelName`">`model_name`</span> is not set (Inference Components endpoint).
+  /// Initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, defaults to `1.0`. Ignored if `model_name` is not set (Inference Components endpoint).
   final double? initialVariantWeight;
 
   /// Type of instance to start.
@@ -36,13 +36,13 @@ class EndpointConfigurationShadowProductionVariant {
   final EndpointConfigurationShadowProductionVariantManagedInstanceScaling?
       managedInstanceScaling;
 
-  /// Timeout value, in seconds, to download and extract the model that you want to host from S3 to the individual inference instance associated with this production variant. Valid values between <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> and <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
+  /// Timeout value, in seconds, to download and extract the model that you want to host from S3 to the individual inference instance associated with this production variant. Valid values between `60` and `3600`.
   final int? modelDataDownloadTimeoutInSeconds;
 
-  /// Name of the model to use. Required unless using Inference Components (in which case <span pulumi-lang-nodejs="`executionRoleArn`" pulumi-lang-dotnet="`ExecutionRoleArn`" pulumi-lang-go="`executionRoleArn`" pulumi-lang-python="`execution_role_arn`" pulumi-lang-yaml="`executionRoleArn`" pulumi-lang-java="`executionRoleArn`">`execution_role_arn`</span> must be specified at the endpoint configuration level).
+  /// Name of the model to use. Required unless using Inference Components (in which case `execution_role_arn` must be specified at the endpoint configuration level).
   final String? modelName;
 
-  /// How the endpoint routes incoming traffic. See<span pulumi-lang-nodejs=" routingConfig " pulumi-lang-dotnet=" RoutingConfig " pulumi-lang-go=" routingConfig " pulumi-lang-python=" routing_config " pulumi-lang-yaml=" routingConfig " pulumi-lang-java=" routingConfig "> routing_config </span>below.
+  /// How the endpoint routes incoming traffic. See routing_config below.
   final List<EndpointConfigurationShadowProductionVariantRoutingConfig>?
       routingConfigs;
 
@@ -53,7 +53,7 @@ class EndpointConfigurationShadowProductionVariant {
   /// Name of the variant. If omitted, the provider will assign a random, unique name.
   final String? variantName;
 
-  /// Size, in GB, of the ML storage volume attached to individual inference instance associated with the production variant. Valid values between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`512`" pulumi-lang-dotnet="`512`" pulumi-lang-go="`512`" pulumi-lang-python="`512`" pulumi-lang-yaml="`512`" pulumi-lang-java="`512`">`512`</span>.
+  /// Size, in GB, of the ML storage volume attached to individual inference instance associated with the production variant. Valid values between `1` and `512`.
   final int? volumeSizeInGb;
 
   EndpointConfigurationShadowProductionVariant({

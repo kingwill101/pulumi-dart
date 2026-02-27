@@ -5,115 +5,11 @@ import 'partner_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.redshift.Partner("example", {
-/// clusterIdentifier: exampleAwsRedshiftCluster.id,
-/// accountId: "1234567910",
-/// databaseName: exampleAwsRedshiftCluster.databaseName,
-/// partnerName: "example",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.redshift.Partner("example",
-/// cluster_identifier=example_aws_redshift_cluster["id"],
-/// account_id="1234567910",
-/// database_name=example_aws_redshift_cluster["databaseName"],
-/// partner_name="example")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.RedShift.Partner("example", new()
-/// {
-/// ClusterIdentifier = exampleAwsRedshiftCluster.Id,
-/// AccountId = "1234567910",
-/// DatabaseName = exampleAwsRedshiftCluster.DatabaseName,
-/// PartnerName = "example",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/redshift"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := redshift.NewPartner(ctx, "example", &redshift.PartnerArgs{
-/// ClusterIdentifier: pulumi.Any(exampleAwsRedshiftCluster.Id),
-/// AccountId:         pulumi.String("1234567910"),
-/// DatabaseName:      pulumi.Any(exampleAwsRedshiftCluster.DatabaseName),
-/// PartnerName:       pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.redshift.Partner;
-/// import com.pulumi.aws.redshift.PartnerArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Partner("example", PartnerArgs.builder()
-/// .clusterIdentifier(exampleAwsRedshiftCluster.id())
-/// .accountId("1234567910")
-/// .databaseName(exampleAwsRedshiftCluster.databaseName())
-/// .partnerName("example")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:redshift:Partner
-/// properties:
-/// clusterIdentifier: ${exampleAwsRedshiftCluster.id}
-/// accountId: 1.23456791e+09
-/// databaseName: ${exampleAwsRedshiftCluster.databaseName}
-/// partnerName: example
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift usage limits using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Redshift usage limits using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/partner:Partner example 01234567910:cluster-example-id:example:example

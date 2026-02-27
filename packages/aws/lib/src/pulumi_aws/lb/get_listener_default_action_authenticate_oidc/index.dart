@@ -1,3 +1,0 @@
-library module_lb_get_listener_default_action_authenticate_oidc;
-
-export 'get_listener_default_action_authenticate_oidc2.dart';

@@ -6,7 +6,7 @@ class GetRouterConfigurationRouter {
 
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
-  /// There is currently no AWS API to retrieve the full list of <span pulumi-lang-nodejs="`routerTypeIdentifier`" pulumi-lang-dotnet="`RouterTypeIdentifier`" pulumi-lang-go="`routerTypeIdentifier`" pulumi-lang-python="`router_type_identifier`" pulumi-lang-yaml="`routerTypeIdentifier`" pulumi-lang-java="`routerTypeIdentifier`">`router_type_identifier`</span> values. Here is a list of known `RouterType` objects that can be used:
+  /// There is currently no AWS API to retrieve the full list of `router_type_identifier` values. Here is a list of known `RouterType` objects that can be used:
   ///
   /// ```json
   /// {

@@ -10,7 +10,7 @@ class IntegrationResponseArgs2 {
   /// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
   final Input<String>? contentHandlingStrategy;
 
-  /// Identifier of the <span pulumi-lang-nodejs="`aws.apigatewayv2.Integration`" pulumi-lang-dotnet="`aws.apigatewayv2.Integration`" pulumi-lang-go="`apigatewayv2.Integration`" pulumi-lang-python="`apigatewayv2.Integration`" pulumi-lang-yaml="`aws.apigatewayv2.Integration`" pulumi-lang-java="`aws.apigatewayv2.Integration`">`aws.apigatewayv2.Integration`</span>.
+  /// Identifier of the `aws.apigatewayv2.Integration`.
   final Input<String> integrationId;
 
   /// Integration response key.

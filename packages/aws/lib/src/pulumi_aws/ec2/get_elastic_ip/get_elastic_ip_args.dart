@@ -8,7 +8,7 @@ class GetElasticIpArgs {
   /// One or more name/value pairs to use as filters. There are several valid keys, for a full reference, check out the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html).
   final Input<List<GetElasticIpFilter>>? filters;
 
-  /// Allocation ID of the specific VPC EIP to retrieve. If a classic EIP is required, do NOT set <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>, only set <span pulumi-lang-nodejs="`publicIp`" pulumi-lang-dotnet="`PublicIp`" pulumi-lang-go="`publicIp`" pulumi-lang-python="`public_ip`" pulumi-lang-yaml="`publicIp`" pulumi-lang-java="`publicIp`">`public_ip`</span>
+  /// Allocation ID of the specific VPC EIP to retrieve. If a classic EIP is required, do NOT set `id`, only set `public_ip`
   final Input<String>? id;
 
   /// Public IP of the specific EIP to retrieve.

@@ -6,17 +6,17 @@ import '../agentcore_gateway_target_target_configuration_mcp_open_api_schema/age
 import '../agentcore_gateway_target_target_configuration_mcp_smithy_model/agentcore_gateway_target_target_configuration_mcp_smithy_model.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcp {
-  /// Lambda function target configuration. See <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span> below.
+  /// Lambda function target configuration. See `lambda` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambda? lambda;
 
-  /// MCP server target configuration. See <span pulumi-lang-nodejs="`mcpServer`" pulumi-lang-dotnet="`McpServer`" pulumi-lang-go="`mcpServer`" pulumi-lang-python="`mcp_server`" pulumi-lang-yaml="`mcpServer`" pulumi-lang-java="`mcpServer`">`mcp_server`</span> below.
+  /// MCP server target configuration. See `mcp_server` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpMcpServer? mcpServer;
 
-  /// OpenAPI schema-based target configuration. See <span pulumi-lang-nodejs="`apiSchemaConfiguration`" pulumi-lang-dotnet="`ApiSchemaConfiguration`" pulumi-lang-go="`apiSchemaConfiguration`" pulumi-lang-python="`api_schema_configuration`" pulumi-lang-yaml="`apiSchemaConfiguration`" pulumi-lang-java="`apiSchemaConfiguration`">`api_schema_configuration`</span> below.
+  /// OpenAPI schema-based target configuration. See `api_schema_configuration` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema?
       openApiSchema;
 
-  /// Smithy model-based target configuration. See <span pulumi-lang-nodejs="`apiSchemaConfiguration`" pulumi-lang-dotnet="`ApiSchemaConfiguration`" pulumi-lang-go="`apiSchemaConfiguration`" pulumi-lang-python="`api_schema_configuration`" pulumi-lang-yaml="`apiSchemaConfiguration`" pulumi-lang-java="`apiSchemaConfiguration`">`api_schema_configuration`</span> below.
+  /// Smithy model-based target configuration. See `api_schema_configuration` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel? smithyModel;
 
   AgentcoreGatewayTargetTargetConfigurationMcp({

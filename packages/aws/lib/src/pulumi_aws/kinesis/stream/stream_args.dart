@@ -5,13 +5,13 @@ import '../stream_stream_mode_details/stream_stream_mode_details.dart';
 
 /// The set of arguments for Stream.
 class StreamArgs {
-  /// The Amazon Resource Name (ARN) specifying the Stream (same as <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>)
+  /// The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
   final Input<String>? arn;
 
   /// The encryption type to use. The only acceptable values are `NONE` or `KMS`. The default value is `NONE`.
   final Input<String>? encryptionType;
 
-  /// A boolean that indicates all registered consumers should be deregistered from the stream so that the stream can be destroyed without error. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// A boolean that indicates all registered consumers should be deregistered from the stream so that the stream can be destroyed without error. The default value is `false`.
   final Input<bool>? enforceConsumerDeletion;
 
   /// The GUID for the customer-managed KMS key to use for encryption. You can also use a Kinesis-owned master key by specifying the alias `alias/aws/kinesis`.
@@ -29,7 +29,7 @@ class StreamArgs {
   /// Length of time data records are accessible after they are added to the stream. The maximum value of a stream's retention period is 8760 hours. Minimum value is 24. Default is 24.
   final Input<int>? retentionPeriod;
 
-  /// The number of shards that the stream will use. If the <span pulumi-lang-nodejs="`streamMode`" pulumi-lang-dotnet="`StreamMode`" pulumi-lang-go="`streamMode`" pulumi-lang-python="`stream_mode`" pulumi-lang-yaml="`streamMode`" pulumi-lang-java="`streamMode`">`stream_mode`</span> is `PROVISIONED`, this field is required.
+  /// The number of shards that the stream will use. If the `stream_mode` is `PROVISIONED`, this field is required.
   /// Amazon has guidelines for specifying the Stream size that should be referenced when creating a Kinesis stream. See [Amazon Kinesis Streams](https://docs.aws.amazon.com/kinesis/latest/dev/amazon-kinesis-streams.html) for more.
   final Input<int>? shardCount;
 
@@ -39,7 +39,7 @@ class StreamArgs {
   /// Indicates the [capacity mode](https://docs.aws.amazon.com/streams/latest/dev/how-do-i-size-a-stream.html) of the data stream. Detailed below.
   final Input<StreamStreamModeDetails>? streamModeDetails;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   StreamArgs({

@@ -7,7 +7,7 @@ class UserPhoneConfig {
   /// When Auto-Accept Call is enabled for an available agent, the agent connects to contacts automatically.
   final bool? autoAccept;
 
-  /// The phone number for the user's desk phone. Required if <span pulumi-lang-nodejs="`phoneType`" pulumi-lang-dotnet="`PhoneType`" pulumi-lang-go="`phoneType`" pulumi-lang-python="`phone_type`" pulumi-lang-yaml="`phoneType`" pulumi-lang-java="`phoneType`">`phone_type`</span> is set as `DESK_PHONE`.
+  /// The phone number for the user's desk phone. Required if `phone_type` is set as `DESK_PHONE`.
   final String? deskPhoneNumber;
 
   /// The phone type. Valid values are `DESK_PHONE` and `SOFT_PHONE`.

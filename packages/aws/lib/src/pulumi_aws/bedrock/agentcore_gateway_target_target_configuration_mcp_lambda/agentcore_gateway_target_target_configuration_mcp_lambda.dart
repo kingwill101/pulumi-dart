@@ -6,7 +6,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   /// ARN of the Lambda function to invoke.
   final String lambdaArn;
 
-  /// Schema definition for the tool. See <span pulumi-lang-nodejs="`toolSchema`" pulumi-lang-dotnet="`ToolSchema`" pulumi-lang-go="`toolSchema`" pulumi-lang-python="`tool_schema`" pulumi-lang-yaml="`toolSchema`" pulumi-lang-java="`toolSchema`">`tool_schema`</span> below.
+  /// Schema definition for the tool. See `tool_schema` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema toolSchema;
 
   AgentcoreGatewayTargetTargetConfigurationMcpLambda({

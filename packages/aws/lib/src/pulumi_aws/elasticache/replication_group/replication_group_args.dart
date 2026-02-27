@@ -6,40 +6,40 @@ import '../replication_group_node_group_configuration/replication_group_node_gro
 
 /// The set of arguments for ReplicationGroup.
 class ReplicationGroupArgs {
-  /// Specifies whether any modifications are applied immediately, or during the next maintenance window. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether any modifications are applied immediately, or during the next maintenance window. Default is `false`.
   final Input<bool>? applyImmediately;
 
   /// Whether to enable encryption at rest.
-  /// When <span pulumi-lang-nodejs="`engine`" pulumi-lang-dotnet="`Engine`" pulumi-lang-go="`engine`" pulumi-lang-python="`engine`" pulumi-lang-yaml="`engine`" pulumi-lang-java="`engine`">`engine`</span> is <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span>, default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
-  /// When <span pulumi-lang-nodejs="`engine`" pulumi-lang-dotnet="`Engine`" pulumi-lang-go="`engine`" pulumi-lang-python="`engine`" pulumi-lang-yaml="`engine`" pulumi-lang-java="`engine`">`engine`</span> is <span pulumi-lang-nodejs="`valkey`" pulumi-lang-dotnet="`Valkey`" pulumi-lang-go="`valkey`" pulumi-lang-python="`valkey`" pulumi-lang-yaml="`valkey`" pulumi-lang-java="`valkey`">`valkey`</span>, default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// When `engine` is `redis`, default is `false`.
+  /// When `engine` is `valkey`, default is `true`.
   final Input<bool>? atRestEncryptionEnabled;
 
-  /// Password used to access a password protected server. Can be specified only if <span pulumi-lang-nodejs="`transitEncryptionEnabled " pulumi-lang-dotnet="`TransitEncryptionEnabled " pulumi-lang-go="`transitEncryptionEnabled " pulumi-lang-python="`transit_encryption_enabled " pulumi-lang-yaml="`transitEncryptionEnabled " pulumi-lang-java="`transitEncryptionEnabled ">`transit_encryption_enabled </span>= true`.
+  /// Password used to access a password protected server. Can be specified only if `transit_encryption_enabled = true`.
   final Input<String>? authToken;
 
-  /// Strategy used when modifying <span pulumi-lang-nodejs="`authToken`" pulumi-lang-dotnet="`AuthToken`" pulumi-lang-go="`authToken`" pulumi-lang-python="`auth_token`" pulumi-lang-yaml="`authToken`" pulumi-lang-java="`authToken`">`auth_token`</span> on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then <span pulumi-lang-nodejs="`authToken`" pulumi-lang-dotnet="`AuthToken`" pulumi-lang-go="`authToken`" pulumi-lang-python="`auth_token`" pulumi-lang-yaml="`authToken`" pulumi-lang-java="`authToken`">`auth_token`</span> must be omitted.
+  /// Strategy used when modifying `auth_token` on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then `auth_token` must be omitted.
   final Input<String>? authTokenUpdateStrategy;
 
   /// Specifies whether minor version engine upgrades will be applied automatically to the underlying Cache Cluster instances during the maintenance window.
   /// Only supported for engine types `"redis"` and `"valkey"` and if the engine version is 6 or higher.
-  /// Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Defaults to `true`.
   final Input<bool>? autoMinorVersionUpgrade;
 
-  /// Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. If enabled, <span pulumi-lang-nodejs="`numCacheClusters`" pulumi-lang-dotnet="`NumCacheClusters`" pulumi-lang-go="`numCacheClusters`" pulumi-lang-python="`num_cache_clusters`" pulumi-lang-yaml="`numCacheClusters`" pulumi-lang-java="`numCacheClusters`">`num_cache_clusters`</span> must be greater than 1. Must be enabled for Redis (cluster mode enabled) replication groups. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. If enabled, `num_cache_clusters` must be greater than 1. Must be enabled for Redis (cluster mode enabled) replication groups. Defaults to `false`.
   final Input<bool>? automaticFailoverEnabled;
 
-  /// Specifies whether cluster mode is enabled or disabled. Valid values are <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`">`enabled`</span> or <span pulumi-lang-nodejs="`disabled`" pulumi-lang-dotnet="`Disabled`" pulumi-lang-go="`disabled`" pulumi-lang-python="`disabled`" pulumi-lang-yaml="`disabled`" pulumi-lang-java="`disabled`">`disabled`</span> or <span pulumi-lang-nodejs="`compatible`" pulumi-lang-dotnet="`Compatible`" pulumi-lang-go="`compatible`" pulumi-lang-python="`compatible`" pulumi-lang-yaml="`compatible`" pulumi-lang-java="`compatible`">`compatible`</span>
+  /// Specifies whether cluster mode is enabled or disabled. Valid values are `enabled` or `disabled` or `compatible`
   final Input<String>? clusterMode;
 
-  /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> when using r6gd nodes.
+  /// Enables data tiering. Data tiering is only supported for replication groups using the r6gd node type. This parameter must be set to `true` when using r6gd nodes.
   final Input<bool>? dataTieringEnabled;
 
   /// User-created description for the replication group. Must not be empty.
   final Input<String> description;
 
   /// Name of the cache engine to be used for the clusters in this replication group.
-  /// Valid values are <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span> or <span pulumi-lang-nodejs="`valkey`" pulumi-lang-dotnet="`Valkey`" pulumi-lang-go="`valkey`" pulumi-lang-python="`valkey`" pulumi-lang-yaml="`valkey`" pulumi-lang-java="`valkey`">`valkey`</span>.
-  /// Default is <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span>.
+  /// Valid values are `redis` or `valkey`.
+  /// Default is `redis`.
   final Input<String>? engine;
 
   /// Version number of the cache engine to be used for the cache clusters in this replication group.
@@ -47,19 +47,19 @@ class ReplicationGroupArgs {
   /// If the version is 6, the major and minor version can be set, e.g., `6.2`,
   /// or the minor version can be unspecified which will use the latest version at creation time, e.g., `6.x`.
   /// Otherwise, specify the full version desired, e.g., `5.0.6`.
-  /// The actual engine version used is returned in the attribute <span pulumi-lang-nodejs="`engineVersionActual`" pulumi-lang-dotnet="`EngineVersionActual`" pulumi-lang-go="`engineVersionActual`" pulumi-lang-python="`engine_version_actual`" pulumi-lang-yaml="`engineVersionActual`" pulumi-lang-java="`engineVersionActual`">`engine_version_actual`</span>, see Attribute Reference below.
+  /// The actual engine version used is returned in the attribute `engine_version_actual`, see Attribute Reference below.
   final Input<String>? engineVersion;
 
   /// The name of your final node group (shard) snapshot. ElastiCache creates the snapshot from the primary node in the cluster. If omitted, no final snapshot will be made.
   final Input<String>? finalSnapshotIdentifier;
 
-  /// The ID of the global replication group to which this replication group should belong. If this parameter is specified, the replication group is added to the specified global replication group as a secondary replication group; otherwise, the replication group is not part of any global replication group. If <span pulumi-lang-nodejs="`globalReplicationGroupId`" pulumi-lang-dotnet="`GlobalReplicationGroupId`" pulumi-lang-go="`globalReplicationGroupId`" pulumi-lang-python="`global_replication_group_id`" pulumi-lang-yaml="`globalReplicationGroupId`" pulumi-lang-java="`globalReplicationGroupId`">`global_replication_group_id`</span> is set, the <span pulumi-lang-nodejs="`numNodeGroups`" pulumi-lang-dotnet="`NumNodeGroups`" pulumi-lang-go="`numNodeGroups`" pulumi-lang-python="`num_node_groups`" pulumi-lang-yaml="`numNodeGroups`" pulumi-lang-java="`numNodeGroups`">`num_node_groups`</span> parameter cannot be set.
+  /// The ID of the global replication group to which this replication group should belong. If this parameter is specified, the replication group is added to the specified global replication group as a secondary replication group; otherwise, the replication group is not part of any global replication group. If `global_replication_group_id` is set, the `num_node_groups` parameter cannot be set.
   final Input<String>? globalReplicationGroupId;
 
-  /// The IP version to advertise in the discovery protocol. Valid values are <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span> or <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span>.
+  /// The IP version to advertise in the discovery protocol. Valid values are `ipv4` or `ipv6`.
   final Input<String>? ipDiscovery;
 
-  /// The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if <span pulumi-lang-nodejs="`atRestEncryptionEnabled " pulumi-lang-dotnet="`AtRestEncryptionEnabled " pulumi-lang-go="`atRestEncryptionEnabled " pulumi-lang-python="`at_rest_encryption_enabled " pulumi-lang-yaml="`atRestEncryptionEnabled " pulumi-lang-java="`atRestEncryptionEnabled ">`at_rest_encryption_enabled </span>= true`.
+  /// The ARN of the key that you wish to use if encrypting at rest. If not supplied, uses service managed encryption. Can be specified only if `at_rest_encryption_enabled = true`.
   final Input<String>? kmsKeyId;
 
   /// Specifies the destination and format of Redis OSS/Valkey [SLOWLOG](https://redis.io/commands/slowlog) or Redis OSS/Valkey [Engine Log](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See the documentation on [Amazon ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Log_Delivery.html#Log_contents-engine-log). See Log Delivery Configuration below for more details.
@@ -70,36 +70,36 @@ class ReplicationGroupArgs {
   final Input<String>? maintenanceWindow;
 
   /// Specifies whether to enable Multi-AZ Support for the replication group.
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, <span pulumi-lang-nodejs="`automaticFailoverEnabled`" pulumi-lang-dotnet="`AutomaticFailoverEnabled`" pulumi-lang-go="`automaticFailoverEnabled`" pulumi-lang-python="`automatic_failover_enabled`" pulumi-lang-yaml="`automaticFailoverEnabled`" pulumi-lang-java="`automaticFailoverEnabled`">`automatic_failover_enabled`</span> must also be enabled.
-  /// Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If `true`, `automatic_failover_enabled` must also be enabled.
+  /// Defaults to `false`.
   final Input<bool>? multiAzEnabled;
 
-  /// The IP versions for cache cluster connections. Valid values are <span pulumi-lang-nodejs="`ipv4`" pulumi-lang-dotnet="`Ipv4`" pulumi-lang-go="`ipv4`" pulumi-lang-python="`ipv4`" pulumi-lang-yaml="`ipv4`" pulumi-lang-java="`ipv4`">`ipv4`</span>, <span pulumi-lang-nodejs="`ipv6`" pulumi-lang-dotnet="`Ipv6`" pulumi-lang-go="`ipv6`" pulumi-lang-python="`ipv6`" pulumi-lang-yaml="`ipv6`" pulumi-lang-java="`ipv6`">`ipv6`</span> or <span pulumi-lang-nodejs="`dualStack`" pulumi-lang-dotnet="`DualStack`" pulumi-lang-go="`dualStack`" pulumi-lang-python="`dual_stack`" pulumi-lang-yaml="`dualStack`" pulumi-lang-java="`dualStack`">`dual_stack`</span>.
+  /// The IP versions for cache cluster connections. Valid values are `ipv4`, `ipv6` or `dual_stack`.
   final Input<String>? networkType;
 
-  /// Configuration block for node groups (shards). Can be specified only if <span pulumi-lang-nodejs="`numNodeGroups`" pulumi-lang-dotnet="`NumNodeGroups`" pulumi-lang-go="`numNodeGroups`" pulumi-lang-python="`num_node_groups`" pulumi-lang-yaml="`numNodeGroups`" pulumi-lang-java="`numNodeGroups`">`num_node_groups`</span> is set. Conflicts with <span pulumi-lang-nodejs="`preferredCacheClusterAzs`" pulumi-lang-dotnet="`PreferredCacheClusterAzs`" pulumi-lang-go="`preferredCacheClusterAzs`" pulumi-lang-python="`preferred_cache_cluster_azs`" pulumi-lang-yaml="`preferredCacheClusterAzs`" pulumi-lang-java="`preferredCacheClusterAzs`">`preferred_cache_cluster_azs`</span>. See Node Group Configuration below for more details.
+  /// Configuration block for node groups (shards). Can be specified only if `num_node_groups` is set. Conflicts with `preferred_cache_cluster_azs`. See Node Group Configuration below for more details.
   final Input<List<ReplicationGroupNodeGroupConfiguration>>?
       nodeGroupConfigurations;
 
   /// Instance class to be used.
   /// See AWS documentation for information on [supported node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html) and [guidance on selecting node types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes-select-size.html).
-  /// Required unless <span pulumi-lang-nodejs="`globalReplicationGroupId`" pulumi-lang-dotnet="`GlobalReplicationGroupId`" pulumi-lang-go="`globalReplicationGroupId`" pulumi-lang-python="`global_replication_group_id`" pulumi-lang-yaml="`globalReplicationGroupId`" pulumi-lang-java="`globalReplicationGroupId`">`global_replication_group_id`</span> is set.
-  /// Cannot be set if <span pulumi-lang-nodejs="`globalReplicationGroupId`" pulumi-lang-dotnet="`GlobalReplicationGroupId`" pulumi-lang-go="`globalReplicationGroupId`" pulumi-lang-python="`global_replication_group_id`" pulumi-lang-yaml="`globalReplicationGroupId`" pulumi-lang-java="`globalReplicationGroupId`">`global_replication_group_id`</span> is set.
+  /// Required unless `global_replication_group_id` is set.
+  /// Cannot be set if `global_replication_group_id` is set.
   final Input<String>? nodeType;
 
   /// ARN of an SNS topic to send ElastiCache notifications to. Example: `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
   final Input<String>? notificationTopicArn;
 
   /// Number of cache clusters (primary and replicas) this replication group will have.
-  /// If <span pulumi-lang-nodejs="`automaticFailoverEnabled`" pulumi-lang-dotnet="`AutomaticFailoverEnabled`" pulumi-lang-go="`automaticFailoverEnabled`" pulumi-lang-python="`automatic_failover_enabled`" pulumi-lang-yaml="`automaticFailoverEnabled`" pulumi-lang-java="`automaticFailoverEnabled`">`automatic_failover_enabled`</span> or <span pulumi-lang-nodejs="`multiAzEnabled`" pulumi-lang-dotnet="`MultiAzEnabled`" pulumi-lang-go="`multiAzEnabled`" pulumi-lang-python="`multi_az_enabled`" pulumi-lang-yaml="`multiAzEnabled`" pulumi-lang-java="`multiAzEnabled`">`multi_az_enabled`</span> are <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, must be at least 2.
+  /// If `automatic_failover_enabled` or `multi_az_enabled` are `true`, must be at least 2.
   /// Updates will occur before other modifications.
-  /// Conflicts with <span pulumi-lang-nodejs="`numNodeGroups`" pulumi-lang-dotnet="`NumNodeGroups`" pulumi-lang-go="`numNodeGroups`" pulumi-lang-python="`num_node_groups`" pulumi-lang-yaml="`numNodeGroups`" pulumi-lang-java="`numNodeGroups`">`num_node_groups`</span> and <span pulumi-lang-nodejs="`replicasPerNodeGroup`" pulumi-lang-dotnet="`ReplicasPerNodeGroup`" pulumi-lang-go="`replicasPerNodeGroup`" pulumi-lang-python="`replicas_per_node_group`" pulumi-lang-yaml="`replicasPerNodeGroup`" pulumi-lang-java="`replicasPerNodeGroup`">`replicas_per_node_group`</span>.
-  /// Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Conflicts with `num_node_groups` and `replicas_per_node_group`.
+  /// Defaults to `1`.
   final Input<int>? numCacheClusters;
 
   /// Number of node groups (shards) for this Redis replication group.
   /// Changing this number will trigger a resizing operation before other settings modifications.
-  /// Conflicts with <span pulumi-lang-nodejs="`numCacheClusters`" pulumi-lang-dotnet="`NumCacheClusters`" pulumi-lang-go="`numCacheClusters`" pulumi-lang-python="`num_cache_clusters`" pulumi-lang-yaml="`numCacheClusters`" pulumi-lang-java="`numCacheClusters`">`num_cache_clusters`</span>.
+  /// Conflicts with `num_cache_clusters`.
   final Input<int>? numNodeGroups;
 
   /// Name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used. To enable "cluster mode", i.e., data sharding, use a parameter group that has the parameter `cluster-enabled` set to true.
@@ -117,8 +117,8 @@ class ReplicationGroupArgs {
   /// Number of replica nodes in each node group.
   /// Changing this number will trigger a resizing operation before other settings modifications.
   /// Valid values are 0 to 5.
-  /// Conflicts with <span pulumi-lang-nodejs="`numCacheClusters`" pulumi-lang-dotnet="`NumCacheClusters`" pulumi-lang-go="`numCacheClusters`" pulumi-lang-python="`num_cache_clusters`" pulumi-lang-yaml="`numCacheClusters`" pulumi-lang-java="`numCacheClusters`">`num_cache_clusters`</span>.
-  /// Can only be set if <span pulumi-lang-nodejs="`numNodeGroups`" pulumi-lang-dotnet="`NumNodeGroups`" pulumi-lang-go="`numNodeGroups`" pulumi-lang-python="`num_node_groups`" pulumi-lang-yaml="`numNodeGroups`" pulumi-lang-java="`numNodeGroups`">`num_node_groups`</span> is set.
+  /// Conflicts with `num_cache_clusters`.
+  /// Can only be set if `num_node_groups` is set.
   final Input<int>? replicasPerNodeGroup;
 
   /// Replication group identifier. This parameter is stored as a lowercase string.
@@ -135,10 +135,10 @@ class ReplicationGroupArgs {
   /// List of ARNs that identify Redis RDB snapshot files stored in Amazon S3. The names object names cannot contain any commas.
   final Input<List<String>>? snapshotArns;
 
-  /// Name of a snapshot from which to restore data into the new node group. Changing the <span pulumi-lang-nodejs="`snapshotName`" pulumi-lang-dotnet="`SnapshotName`" pulumi-lang-go="`snapshotName`" pulumi-lang-python="`snapshot_name`" pulumi-lang-yaml="`snapshotName`" pulumi-lang-java="`snapshotName`">`snapshot_name`</span> forces a new resource.
+  /// Name of a snapshot from which to restore data into the new node group. Changing the `snapshot_name` forces a new resource.
   final Input<String>? snapshotName;
 
-  /// Number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days before being deleted. If the value of <span pulumi-lang-nodejs="`snapshotRetentionLimit`" pulumi-lang-dotnet="`SnapshotRetentionLimit`" pulumi-lang-go="`snapshotRetentionLimit`" pulumi-lang-python="`snapshot_retention_limit`" pulumi-lang-yaml="`snapshotRetentionLimit`" pulumi-lang-java="`snapshotRetentionLimit`">`snapshot_retention_limit`</span> is set to zero (0), backups are turned off. Please note that setting a <span pulumi-lang-nodejs="`snapshotRetentionLimit`" pulumi-lang-dotnet="`SnapshotRetentionLimit`" pulumi-lang-go="`snapshotRetentionLimit`" pulumi-lang-python="`snapshot_retention_limit`" pulumi-lang-yaml="`snapshotRetentionLimit`" pulumi-lang-java="`snapshotRetentionLimit`">`snapshot_retention_limit`</span> is not supported on cache.t1.micro cache nodes
+  /// Number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them. For example, if you set SnapshotRetentionLimit to 5, then a snapshot that was taken today will be retained for 5 days before being deleted. If the value of `snapshot_retention_limit` is set to zero (0), backups are turned off. Please note that setting a `snapshot_retention_limit` is not supported on cache.t1.micro cache nodes
   final Input<int>? snapshotRetentionLimit;
 
   /// Daily time range (in UTC) during which ElastiCache will begin taking a daily snapshot of your cache cluster. The minimum snapshot window is a 60 minute period. Example: `05:00-09:00`
@@ -147,17 +147,17 @@ class ReplicationGroupArgs {
   /// Name of the cache subnet group to be used for the replication group.
   final Input<String>? subnetGroupName;
 
-  /// Map of tags to assign to the resource. Adding tags to this resource will add or overwrite any existing tags on the clusters in the replication group and not to the group itself. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. Adding tags to this resource will add or overwrite any existing tags on the clusters in the replication group and not to the group itself. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Whether to enable encryption in transit.
-  /// Changing this argument with an <span pulumi-lang-nodejs="`engineVersion`" pulumi-lang-dotnet="`EngineVersion`" pulumi-lang-go="`engineVersion`" pulumi-lang-python="`engine_version`" pulumi-lang-yaml="`engineVersion`" pulumi-lang-java="`engineVersion`">`engine_version`</span> < `7.0.5` will force a replacement.
+  /// Changing this argument with an `engine_version` < `7.0.5` will force a replacement.
   /// Engine versions prior to `7.0.5` only allow this transit encryption to be configured during creation of the replication group.
   final Input<bool>? transitEncryptionEnabled;
 
   /// A setting that enables clients to migrate to in-transit encryption with no downtime.
-  /// Valid values are <span pulumi-lang-nodejs="`preferred`" pulumi-lang-dotnet="`Preferred`" pulumi-lang-go="`preferred`" pulumi-lang-python="`preferred`" pulumi-lang-yaml="`preferred`" pulumi-lang-java="`preferred`">`preferred`</span> and <span pulumi-lang-nodejs="`required`" pulumi-lang-dotnet="`Required`" pulumi-lang-go="`required`" pulumi-lang-python="`required`" pulumi-lang-yaml="`required`" pulumi-lang-java="`required`">`required`</span>.
-  /// When enabling encryption on an existing replication group, this must first be set to <span pulumi-lang-nodejs="`preferred`" pulumi-lang-dotnet="`Preferred`" pulumi-lang-go="`preferred`" pulumi-lang-python="`preferred`" pulumi-lang-yaml="`preferred`" pulumi-lang-java="`preferred`">`preferred`</span> before setting it to <span pulumi-lang-nodejs="`required`" pulumi-lang-dotnet="`Required`" pulumi-lang-go="`required`" pulumi-lang-python="`required`" pulumi-lang-yaml="`required`" pulumi-lang-java="`required`">`required`</span> in a subsequent apply.
+  /// Valid values are `preferred` and `required`.
+  /// When enabling encryption on an existing replication group, this must first be set to `preferred` before setting it to `required` in a subsequent apply.
   /// See the `TransitEncryptionMode` field in the [`CreateReplicationGroup` API documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateReplicationGroup.html) for additional details.
   final Input<String>? transitEncryptionMode;
 

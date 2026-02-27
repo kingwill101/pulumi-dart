@@ -1,3 +1,0 @@
-library module_kinesis_firehose_delivery_stream_redshift_configuration_s3_backup_configuration;
-
-export 'firehose_delivery_stream_redshift_configuration_s3_backup_configuration.dart';

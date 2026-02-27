@@ -8,7 +8,7 @@ class InstancePublicPortsArgs {
   /// Name of the instance for which to open ports.
   final Input<String> instanceName;
 
-  /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See <span pulumi-lang-nodejs="`portInfo`" pulumi-lang-dotnet="`PortInfo`" pulumi-lang-go="`portInfo`" pulumi-lang-python="`port_info`" pulumi-lang-yaml="`portInfo`" pulumi-lang-java="`portInfo`">`port_info`</span> Block for details.
+  /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
   ///
   /// The following arguments are optional:
   final Input<List<InstancePublicPortsPortInfo>> portInfos;

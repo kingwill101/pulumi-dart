@@ -1,3 +1,0 @@
-library module_ssoadmin_permissions_boundary_attachment_permissions_boundary;
-
-export 'permissions_boundary_attachment_permissions_boundary.dart';

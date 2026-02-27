@@ -6,7 +6,7 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration {
   /// Custom prompt to use for the Bedrock model.
   final String? customPrompt;
 
-  /// Configuration block for the guardrail to use with the Bedrock model. See <span pulumi-lang-nodejs="`guardrail`" pulumi-lang-dotnet="`Guardrail`" pulumi-lang-go="`guardrail`" pulumi-lang-python="`guardrail`" pulumi-lang-yaml="`guardrail`" pulumi-lang-java="`guardrail`">`guardrail`</span>.
+  /// Configuration block for the guardrail to use with the Bedrock model. See `guardrail`.
   final V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail?
       guardrail;
 

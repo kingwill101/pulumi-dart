@@ -1,0 +1,3 @@
+library module_apprunner_service_instance_configuration;
+
+export 'service_instance_configuration/service_instance_configuration.dart';

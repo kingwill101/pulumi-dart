@@ -18,7 +18,7 @@ class GroupArgs {
   /// The instance capacity distribution across Availability Zones. See Availability Zone Distribution below for more details.
   final Input<GroupAvailabilityZoneDistribution>? availabilityZoneDistribution;
 
-  /// A list of Availability Zones where instances in the Auto Scaling group can be created. Used for launching into the default VPC subnet in each Availability Zone when not using the <span pulumi-lang-nodejs="`vpcZoneIdentifier`" pulumi-lang-dotnet="`VpcZoneIdentifier`" pulumi-lang-go="`vpcZoneIdentifier`" pulumi-lang-python="`vpc_zone_identifier`" pulumi-lang-yaml="`vpcZoneIdentifier`" pulumi-lang-java="`vpcZoneIdentifier`">`vpc_zone_identifier`</span> attribute, or for attaching a network interface when an existing network interface ID is specified in a launch template. Conflicts with <span pulumi-lang-nodejs="`vpcZoneIdentifier`" pulumi-lang-dotnet="`VpcZoneIdentifier`" pulumi-lang-go="`vpcZoneIdentifier`" pulumi-lang-python="`vpc_zone_identifier`" pulumi-lang-yaml="`vpcZoneIdentifier`" pulumi-lang-java="`vpcZoneIdentifier`">`vpc_zone_identifier`</span>.
+  /// A list of Availability Zones where instances in the Auto Scaling group can be created. Used for launching into the default VPC subnet in each Availability Zone when not using the `vpc_zone_identifier` attribute, or for attaching a network interface when an existing network interface ID is specified in a launch template. Conflicts with `vpc_zone_identifier`.
   final Input<List<String>>? availabilityZones;
 
   /// Whether capacity rebalance is enabled. Otherwise, capacity rebalance is disabled.
@@ -42,7 +42,7 @@ class GroupArgs {
   /// Capacity below.)
   final Input<int>? desiredCapacity;
 
-  /// The unit of measurement for the value specified for <span pulumi-lang-nodejs="`desiredCapacity`" pulumi-lang-dotnet="`DesiredCapacity`" pulumi-lang-go="`desiredCapacity`" pulumi-lang-python="`desired_capacity`" pulumi-lang-yaml="`desiredCapacity`" pulumi-lang-java="`desiredCapacity`">`desired_capacity`</span>. Supported for attribute-based instance type selection only. Valid values: `"units"`, `"vcpu"`, `"memory-mib"`.
+  /// The unit of measurement for the value specified for `desired_capacity`. Supported for attribute-based instance type selection only. Valid values: `"units"`, `"vcpu"`, `"memory-mib"`.
   final Input<String>? desiredCapacityType;
 
   /// List of metrics to collect. The allowed values are defined by the [underlying AWS API](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html).
@@ -64,16 +64,16 @@ class GroupArgs {
   /// "EC2" or "ELB". Controls how health checking is done.
   final Input<String>? healthCheckType;
 
-  /// Whether to ignore failed [Auto Scaling scaling activities](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html) while waiting for capacity. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> -- failed scaling activities cause errors to be returned.
+  /// Whether to ignore failed [Auto Scaling scaling activities](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html) while waiting for capacity. The default is `false` -- failed scaling activities cause errors to be returned.
   final Input<bool>? ignoreFailedScalingActivities;
 
   /// One or more
   /// [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
   /// to attach to the Auto Scaling Group **before** instances are launched. The
   /// syntax is exactly the same as the separate
-  /// <span pulumi-lang-nodejs="`aws.autoscaling.LifecycleHook`" pulumi-lang-dotnet="`aws.autoscaling.LifecycleHook`" pulumi-lang-go="`autoscaling.LifecycleHook`" pulumi-lang-python="`autoscaling.LifecycleHook`" pulumi-lang-yaml="`aws.autoscaling.LifecycleHook`" pulumi-lang-java="`aws.autoscaling.LifecycleHook`">`aws.autoscaling.LifecycleHook`</span>
-  /// resource, without the <span pulumi-lang-nodejs="`autoscalingGroupName`" pulumi-lang-dotnet="`AutoscalingGroupName`" pulumi-lang-go="`autoscalingGroupName`" pulumi-lang-python="`autoscaling_group_name`" pulumi-lang-yaml="`autoscalingGroupName`" pulumi-lang-java="`autoscalingGroupName`">`autoscaling_group_name`</span> attribute. Please note that this will only work when creating
-  /// a new Auto Scaling Group. For all other use-cases, please use <span pulumi-lang-nodejs="`aws.autoscaling.LifecycleHook`" pulumi-lang-dotnet="`aws.autoscaling.LifecycleHook`" pulumi-lang-go="`autoscaling.LifecycleHook`" pulumi-lang-python="`autoscaling.LifecycleHook`" pulumi-lang-yaml="`aws.autoscaling.LifecycleHook`" pulumi-lang-java="`aws.autoscaling.LifecycleHook`">`aws.autoscaling.LifecycleHook`</span> resource.
+  /// `aws.autoscaling.LifecycleHook`
+  /// resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
+  /// a new Auto Scaling Group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
   final Input<List<GroupInitialLifecycleHook>>? initialLifecycleHooks;
 
   /// If this block is configured, add a instance maintenance policy to the specified Auto Scaling group. Defined below.
@@ -91,7 +91,7 @@ class GroupArgs {
   final Input<GroupLaunchTemplate>? launchTemplate;
 
   /// List of elastic load balancer names to add to the autoscaling
-  /// group names. Only valid for classic load balancers. For ALBs, use <span pulumi-lang-nodejs="`targetGroupArns`" pulumi-lang-dotnet="`TargetGroupArns`" pulumi-lang-go="`targetGroupArns`" pulumi-lang-python="`target_group_arns`" pulumi-lang-yaml="`targetGroupArns`" pulumi-lang-java="`targetGroupArns`">`target_group_arns`</span> instead. To remove all load balancer attachments an empty list should be specified.
+  /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead. To remove all load balancer attachments an empty list should be specified.
   final Input<List<String>>? loadBalancers;
 
   /// Maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 86400 and 31536000 seconds.
@@ -116,11 +116,11 @@ class GroupArgs {
   /// Configuration block containing settings to define launch targets for Auto Scaling groups. See Mixed Instances Policy below for more details.
   final Input<GroupMixedInstancesPolicy>? mixedInstancesPolicy;
 
-  /// Name of the Auto Scaling Group. By default generated by Pulumi. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the Auto Scaling Group. By default generated by Pulumi. Conflicts with `name_prefix`.
   final Input<String>? name;
 
   /// Creates a unique name beginning with the specified
-  /// prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// Name of the placement group into which you'll launch your instances, if any.
@@ -146,7 +146,7 @@ class GroupArgs {
   /// Configuration block(s) containing resource tags. See Tag below for more details.
   final Input<List<GroupTag>>? tags;
 
-  /// Set of <span pulumi-lang-nodejs="`aws.lb.TargetGroup`" pulumi-lang-dotnet="`aws.lb.TargetGroup`" pulumi-lang-go="`lb.TargetGroup`" pulumi-lang-python="`lb.TargetGroup`" pulumi-lang-yaml="`aws.lb.TargetGroup`" pulumi-lang-java="`aws.lb.TargetGroup`">`aws.lb.TargetGroup`</span> ARNs, for use with Application or Network Load Balancing. To remove all target group attachments an empty list should be specified.
+  /// Set of `aws.lb.TargetGroup` ARNs, for use with Application or Network Load Balancing. To remove all target group attachments an empty list should be specified.
   final Input<List<String>>? targetGroupArns;
 
   /// List of policies to decide how the instances in the Auto Scaling Group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`. Additionally, the ARN of a Lambda function can be specified for custom termination policies.
@@ -155,7 +155,7 @@ class GroupArgs {
   /// Attaches one or more traffic sources to the specified Auto Scaling group.
   final Input<List<GroupTrafficSource>>? trafficSources;
 
-  /// List of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with <span pulumi-lang-nodejs="`availabilityZones`" pulumi-lang-dotnet="`AvailabilityZones`" pulumi-lang-go="`availabilityZones`" pulumi-lang-python="`availability_zones`" pulumi-lang-yaml="`availabilityZones`" pulumi-lang-java="`availabilityZones`">`availability_zones`</span>.
+  /// List of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with `availability_zones`.
   final Input<List<String>>? vpcZoneIdentifiers;
 
   /// Maximum
@@ -168,7 +168,7 @@ class GroupArgs {
   /// Setting this will cause Pulumi to wait
   /// for exactly this number of healthy instances from this Auto Scaling Group in
   /// all attached load balancers on both create and update operations. (Takes
-  /// precedence over <span pulumi-lang-nodejs="`minElbCapacity`" pulumi-lang-dotnet="`MinElbCapacity`" pulumi-lang-go="`minElbCapacity`" pulumi-lang-python="`min_elb_capacity`" pulumi-lang-yaml="`minElbCapacity`" pulumi-lang-java="`minElbCapacity`">`min_elb_capacity`</span> behavior.)
+  /// precedence over `min_elb_capacity` behavior.)
   /// (See also Waiting for Capacity below.)
   final Input<int>? waitForElbCapacity;
 

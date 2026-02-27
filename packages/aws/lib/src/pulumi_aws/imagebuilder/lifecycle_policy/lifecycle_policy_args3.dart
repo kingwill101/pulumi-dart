@@ -9,7 +9,7 @@ class LifecyclePolicyArgs3 {
   /// description for the lifecycle policy.
   final Input<String>? description;
 
-  /// The Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions. More information about this role can be found [<span pulumi-lang-nodejs="`here`" pulumi-lang-dotnet="`Here`" pulumi-lang-go="`here`" pulumi-lang-python="`here`" pulumi-lang-yaml="`here`" pulumi-lang-java="`here`">`here`</span>](https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-lifecycle-prerequisites.html#image-lifecycle-prereq-role).
+  /// The Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions. More information about this role can be found [`here`](https://docs.aws.amazon.com/imagebuilder/latest/userguide/image-lifecycle-prerequisites.html#image-lifecycle-prereq-role).
   final Input<String> executionRole;
 
   /// The name of the lifecycle policy to create.
@@ -32,7 +32,7 @@ class LifecyclePolicyArgs3 {
   /// The status of the lifecycle policy.
   final Input<String>? status;
 
-  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   LifecyclePolicyArgs3({

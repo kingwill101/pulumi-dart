@@ -1,5 +1,0 @@
-library module_ec2transitgateway_get_direct_connect_gateway_attachment;
-
-export 'get_direct_connect_gateway_attachment.dart';
-export 'get_direct_connect_gateway_attachment_args.dart';
-export 'get_direct_connect_gateway_attachment_result.dart';

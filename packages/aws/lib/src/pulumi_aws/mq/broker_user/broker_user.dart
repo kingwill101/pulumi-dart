@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class BrokerUser {
-  /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> of `ActiveMQ` only.
+  /// Whether to enable access to the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) for the user. Applies to `engine_type` of `ActiveMQ` only.
   final bool? consoleAccess;
 
-  /// List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> of `ActiveMQ` only.
+  /// List of groups (20 maximum) to which the ActiveMQ user belongs. Applies to `engine_type` of `ActiveMQ` only.
   final List<String>? groups;
 
   /// Password of the user. Must be 12 to 250 characters long, contain at least 4 unique characters, and must not contain commas.
   final String password;
 
-  /// Whether to set replication user. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to set replication user. Defaults to `false`.
   final bool? replicationUser;
 
   /// Username of the user.

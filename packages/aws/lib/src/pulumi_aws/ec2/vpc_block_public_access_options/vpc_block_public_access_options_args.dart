@@ -5,7 +5,7 @@ import '../vpc_block_public_access_options_timeouts/vpc_block_public_access_opti
 
 /// The set of arguments for VpcBlockPublicAccessOptions.
 class VpcBlockPublicAccessOptionsArgs {
-  /// Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, <span pulumi-lang-nodejs="`off`" pulumi-lang-dotnet="`Off`" pulumi-lang-go="`off`" pulumi-lang-python="`off`" pulumi-lang-yaml="`off`" pulumi-lang-java="`off`">`off`</span>. If this resource is deleted, then this value will be set to <span pulumi-lang-nodejs="`off`" pulumi-lang-dotnet="`Off`" pulumi-lang-go="`off`" pulumi-lang-python="`off`" pulumi-lang-yaml="`off`" pulumi-lang-java="`off`">`off`</span> in the AWS account and region.
+  /// Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.
   final Input<String> internetGatewayBlockMode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -21,7 +21,7 @@ class GetInferenceProfileResult {
   /// The unique identifier of the inference profile.
   final String inferenceProfileName;
 
-  /// A list of information about each model in the inference profile. See <span pulumi-lang-nodejs="`models`" pulumi-lang-dotnet="`Models`" pulumi-lang-go="`models`" pulumi-lang-python="`models`" pulumi-lang-yaml="`models`" pulumi-lang-java="`models`">`models`</span>.
+  /// A list of information about each model in the inference profile. See `models`.
   final List<GetInferenceProfileModel> models;
   final String region;
 

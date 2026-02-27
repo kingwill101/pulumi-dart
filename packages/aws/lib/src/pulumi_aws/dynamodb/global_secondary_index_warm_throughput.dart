@@ -1,0 +1,3 @@
+library module_dynamodb_global_secondary_index_warm_throughput;
+
+export 'global_secondary_index_warm_throughput/global_secondary_index_warm_throughput.dart';

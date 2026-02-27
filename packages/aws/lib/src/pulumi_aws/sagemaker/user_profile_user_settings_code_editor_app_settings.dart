@@ -1,0 +1,3 @@
+library module_sagemaker_user_profile_user_settings_code_editor_app_settings;
+
+export 'user_profile_user_settings_code_editor_app_settings/user_profile_user_settings_code_editor_app_settings.dart';

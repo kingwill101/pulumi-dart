@@ -1,3 +1,0 @@
-library module_ec2_instance_root_block_device;
-
-export 'instance_root_block_device.dart';

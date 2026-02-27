@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_browser_network_configuration;
+
+export 'agentcore_browser_network_configuration/agentcore_browser_network_configuration.dart';

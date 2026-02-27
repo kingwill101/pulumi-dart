@@ -8,7 +8,7 @@ class DomainMatchingAutoMerging {
   final DomainMatchingAutoMergingConflictResolution? conflictResolution;
 
   /// A block that specifies a list of matching attributes that represent matching criteria. If two profiles meet at least one of the requirements in the matching attributes list, they will be merged. Documented below.
-  /// * <span pulumi-lang-nodejs="`minAllowedConfidenceScoreForMerging " pulumi-lang-dotnet="`MinAllowedConfidenceScoreForMerging " pulumi-lang-go="`minAllowedConfidenceScoreForMerging " pulumi-lang-python="`min_allowed_confidence_score_for_merging " pulumi-lang-yaml="`minAllowedConfidenceScoreForMerging " pulumi-lang-java="`minAllowedConfidenceScoreForMerging ">`min_allowed_confidence_score_for_merging </span>` - (Optional) A number between 0 and 1 that represents the minimum confidence score required for profiles within a matching group to be merged during the auto-merge process. A higher score means higher similarity required to merge profiles.
+  /// * `min_allowed_confidence_score_for_merging ` - (Optional) A number between 0 and 1 that represents the minimum confidence score required for profiles within a matching group to be merged during the auto-merge process. A higher score means higher similarity required to merge profiles.
   final DomainMatchingAutoMergingConsolidation? consolidation;
 
   /// The flag that enables the auto-merging of duplicate profiles.

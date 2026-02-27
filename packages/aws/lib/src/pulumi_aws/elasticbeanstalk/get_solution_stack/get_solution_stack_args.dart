@@ -14,7 +14,7 @@ class GetSolutionStackArgs {
   ///
   /// > **NOTE:** If more or less than a single match is returned by the search,
   /// this call will fail. Ensure that your search is specific enough to return
-  /// a single solution stack, or use <span pulumi-lang-nodejs="`mostRecent`" pulumi-lang-dotnet="`MostRecent`" pulumi-lang-go="`mostRecent`" pulumi-lang-python="`most_recent`" pulumi-lang-yaml="`mostRecent`" pulumi-lang-java="`mostRecent`">`most_recent`</span> to choose the most recent one.
+  /// a single solution stack, or use `most_recent` to choose the most recent one.
   final Input<String> nameRegex;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

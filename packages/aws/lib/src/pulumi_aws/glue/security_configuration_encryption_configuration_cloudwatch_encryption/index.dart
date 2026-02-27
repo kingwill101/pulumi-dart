@@ -1,3 +1,0 @@
-library module_glue_security_configuration_encryption_configuration_cloudwatch_encryption;
-
-export 'security_configuration_encryption_configuration_cloudwatch_encryption.dart';

@@ -10,7 +10,7 @@ class ControlControlMappingSource {
   final String? sourceFrequency;
   final String? sourceId;
 
-  /// The keyword to search for in CloudTrail logs, Config rules, Security Hub checks, and Amazon Web Services API names. See <span pulumi-lang-nodejs="`sourceKeyword`" pulumi-lang-dotnet="`SourceKeyword`" pulumi-lang-go="`sourceKeyword`" pulumi-lang-python="`source_keyword`" pulumi-lang-yaml="`sourceKeyword`" pulumi-lang-java="`sourceKeyword`">`source_keyword`</span> below.
+  /// The keyword to search for in CloudTrail logs, Config rules, Security Hub checks, and Amazon Web Services API names. See `source_keyword` below.
   final ControlControlMappingSourceSourceKeyword? sourceKeyword;
 
   /// Name of the source.
@@ -19,7 +19,7 @@ class ControlControlMappingSource {
   /// The setup option for the data source. This option reflects if the evidence collection is automated or manual. Valid values are `System_Controls_Mapping` (automated) and `Procedural_Controls_Mapping` (manual).
   final String sourceSetUpOption;
 
-  /// Type of data source for evidence collection. If <span pulumi-lang-nodejs="`sourceSetUpOption`" pulumi-lang-dotnet="`SourceSetUpOption`" pulumi-lang-go="`sourceSetUpOption`" pulumi-lang-python="`source_set_up_option`" pulumi-lang-yaml="`sourceSetUpOption`" pulumi-lang-java="`sourceSetUpOption`">`source_set_up_option`</span> is manual, the only valid value is `MANUAL`. If <span pulumi-lang-nodejs="`sourceSetUpOption`" pulumi-lang-dotnet="`SourceSetUpOption`" pulumi-lang-go="`sourceSetUpOption`" pulumi-lang-python="`source_set_up_option`" pulumi-lang-yaml="`sourceSetUpOption`" pulumi-lang-java="`sourceSetUpOption`">`source_set_up_option`</span> is automated, valid values are `AWS_Cloudtrail`, `AWS_Config`, `AWS_Security_Hub`, or `AWS_API_Call`.
+  /// Type of data source for evidence collection. If `source_set_up_option` is manual, the only valid value is `MANUAL`. If `source_set_up_option` is automated, valid values are `AWS_Cloudtrail`, `AWS_Config`, `AWS_Security_Hub`, or `AWS_API_Call`.
   ///
   /// The following arguments are optional:
   final String sourceType;

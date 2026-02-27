@@ -10,109 +10,11 @@ import 'workspace_service_account_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.grafana.WorkspaceServiceAccount("example", {
-/// name: "example-admin",
-/// grafanaRole: "ADMIN",
-/// workspaceId: exampleAwsGrafanaWorkspace.id,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.grafana.WorkspaceServiceAccount("example",
-/// name="example-admin",
-/// grafana_role="ADMIN",
-/// workspace_id=example_aws_grafana_workspace["id"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Grafana.WorkspaceServiceAccount("example", new()
-/// {
-/// Name = "example-admin",
-/// GrafanaRole = "ADMIN",
-/// WorkspaceId = exampleAwsGrafanaWorkspace.Id,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/grafana"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := grafana.NewWorkspaceServiceAccount(ctx, "example", &grafana.WorkspaceServiceAccountArgs{
-/// Name:        pulumi.String("example-admin"),
-/// GrafanaRole: pulumi.String("ADMIN"),
-/// WorkspaceId: pulumi.Any(exampleAwsGrafanaWorkspace.Id),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.grafana.WorkspaceServiceAccount;
-/// import com.pulumi.aws.grafana.WorkspaceServiceAccountArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new WorkspaceServiceAccount("example", WorkspaceServiceAccountArgs.builder()
-/// .name("example-admin")
-/// .grafanaRole("ADMIN")
-/// .workspaceId(exampleAwsGrafanaWorkspace.id())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:grafana:WorkspaceServiceAccount
-/// properties:
-/// name: example-admin
-/// grafanaRole: ADMIN
-/// workspaceId: ${exampleAwsGrafanaWorkspace.id}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Managed Grafana Workspace Service Account using the <span pulumi-lang-nodejs="`workspaceId`" pulumi-lang-dotnet="`WorkspaceId`" pulumi-lang-go="`workspaceId`" pulumi-lang-python="`workspace_id`" pulumi-lang-yaml="`workspaceId`" pulumi-lang-java="`workspaceId`">`workspace_id`</span> and <span pulumi-lang-nodejs="`serviceAccountId`" pulumi-lang-dotnet="`ServiceAccountId`" pulumi-lang-go="`serviceAccountId`" pulumi-lang-python="`service_account_id`" pulumi-lang-yaml="`serviceAccountId`" pulumi-lang-java="`serviceAccountId`">`service_account_id`</span> separated by a comma (`,`). For example:
+/// Using `pulumi import`, import Managed Grafana Workspace Service Account using the `workspace_id` and `service_account_id` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount example g-abc12345,1

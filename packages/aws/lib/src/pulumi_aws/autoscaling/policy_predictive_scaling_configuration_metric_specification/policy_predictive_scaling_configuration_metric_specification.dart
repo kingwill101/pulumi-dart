@@ -8,7 +8,7 @@ import '../policy_predictive_scaling_configuration_metric_specification_predefin
 import '../policy_predictive_scaling_configuration_metric_specification_predefined_scaling_metric_specification/policy_predictive_scaling_configuration_metric_specification_predefined_scaling_metric_specification.dart';
 
 class PolicyPredictiveScalingConfigurationMetricSpecification {
-  /// Customized capacity metric specification. The field is only valid when you use <span pulumi-lang-nodejs="`customizedLoadMetricSpecification`" pulumi-lang-dotnet="`CustomizedLoadMetricSpecification`" pulumi-lang-go="`customizedLoadMetricSpecification`" pulumi-lang-python="`customized_load_metric_specification`" pulumi-lang-yaml="`customizedLoadMetricSpecification`" pulumi-lang-java="`customizedLoadMetricSpecification`">`customized_load_metric_specification`</span>
+  /// Customized capacity metric specification. The field is only valid when you use `customized_load_metric_specification`
   final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification?
       customizedCapacityMetricSpecification;
 

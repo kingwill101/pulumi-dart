@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../rule_group_rule_statement_regex_match_statement_field_to_match_cookies_match_pattern/rule_group_rule_statement_regex_match_statement_field_to_match_cookies_match_pattern.dart';
 
 class RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookies {
-  /// The filter to use to identify the subset of cookies to inspect in a web request. You must specify exactly one setting: either <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>, <span pulumi-lang-nodejs="`includedCookies`" pulumi-lang-dotnet="`IncludedCookies`" pulumi-lang-go="`includedCookies`" pulumi-lang-python="`included_cookies`" pulumi-lang-yaml="`includedCookies`" pulumi-lang-java="`includedCookies`">`included_cookies`</span> or <span pulumi-lang-nodejs="`excludedCookies`" pulumi-lang-dotnet="`ExcludedCookies`" pulumi-lang-go="`excludedCookies`" pulumi-lang-python="`excluded_cookies`" pulumi-lang-yaml="`excludedCookies`" pulumi-lang-java="`excludedCookies`">`excluded_cookies`</span>. More details: [CookieMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_CookieMatchPattern.html)
+  /// The filter to use to identify the subset of cookies to inspect in a web request. You must specify exactly one setting: either `all`, `included_cookies` or `excluded_cookies`. More details: [CookieMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_CookieMatchPattern.html)
   final List<
           RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern>
       matchPatterns;

@@ -15,7 +15,7 @@ class PipelineArgs3 {
   /// The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
   final Input<PipelineContentConfig>? contentConfig;
 
-  /// The permissions for the <span pulumi-lang-nodejs="`contentConfig`" pulumi-lang-dotnet="`ContentConfig`" pulumi-lang-go="`contentConfig`" pulumi-lang-python="`content_config`" pulumi-lang-yaml="`contentConfig`" pulumi-lang-java="`contentConfig`">`content_config`</span> object. (documented below)
+  /// The permissions for the `content_config` object. (documented below)
   final Input<List<PipelineContentConfigPermission>>? contentConfigPermissions;
 
   /// The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
@@ -39,16 +39,16 @@ class PipelineArgs3 {
   /// The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
   final Input<PipelineThumbnailConfig>? thumbnailConfig;
 
-  /// The permissions for the <span pulumi-lang-nodejs="`thumbnailConfig`" pulumi-lang-dotnet="`ThumbnailConfig`" pulumi-lang-go="`thumbnailConfig`" pulumi-lang-python="`thumbnail_config`" pulumi-lang-yaml="`thumbnailConfig`" pulumi-lang-java="`thumbnailConfig`">`thumbnail_config`</span> object. (documented below)
+  /// The permissions for the `thumbnail_config` object. (documented below)
   ///
   /// See ["Create Pipeline"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-pipeline.html) in the AWS docs for reference.
   ///
-  /// The <span pulumi-lang-nodejs="`contentConfig`" pulumi-lang-dotnet="`ContentConfig`" pulumi-lang-go="`contentConfig`" pulumi-lang-python="`content_config`" pulumi-lang-yaml="`contentConfig`" pulumi-lang-java="`contentConfig`">`content_config`</span> object specifies information about the Amazon S3 bucket in
+  /// The `content_config` object specifies information about the Amazon S3 bucket in
   /// which you want Elastic Transcoder to save transcoded files and playlists: which
   /// bucket to use, and the storage class that you want to assign to the files. If
-  /// you specify values for <span pulumi-lang-nodejs="`contentConfig`" pulumi-lang-dotnet="`ContentConfig`" pulumi-lang-go="`contentConfig`" pulumi-lang-python="`content_config`" pulumi-lang-yaml="`contentConfig`" pulumi-lang-java="`contentConfig`">`content_config`</span>, you must also specify values for
-  /// <span pulumi-lang-nodejs="`thumbnailConfig`" pulumi-lang-dotnet="`ThumbnailConfig`" pulumi-lang-go="`thumbnailConfig`" pulumi-lang-python="`thumbnail_config`" pulumi-lang-yaml="`thumbnailConfig`" pulumi-lang-java="`thumbnailConfig`">`thumbnail_config`</span>. If you specify values for <span pulumi-lang-nodejs="`contentConfig`" pulumi-lang-dotnet="`ContentConfig`" pulumi-lang-go="`contentConfig`" pulumi-lang-python="`content_config`" pulumi-lang-yaml="`contentConfig`" pulumi-lang-java="`contentConfig`">`content_config`</span> and
-  /// <span pulumi-lang-nodejs="`thumbnailConfig`" pulumi-lang-dotnet="`ThumbnailConfig`" pulumi-lang-go="`thumbnailConfig`" pulumi-lang-python="`thumbnail_config`" pulumi-lang-yaml="`thumbnailConfig`" pulumi-lang-java="`thumbnailConfig`">`thumbnail_config`</span>, omit the <span pulumi-lang-nodejs="`outputBucket`" pulumi-lang-dotnet="`OutputBucket`" pulumi-lang-go="`outputBucket`" pulumi-lang-python="`output_bucket`" pulumi-lang-yaml="`outputBucket`" pulumi-lang-java="`outputBucket`">`output_bucket`</span> object.
+  /// you specify values for `content_config`, you must also specify values for
+  /// `thumbnail_config`. If you specify values for `content_config` and
+  /// `thumbnail_config`, omit the `output_bucket` object.
   final Input<List<PipelineThumbnailConfigPermission>>?
       thumbnailConfigPermissions;
 

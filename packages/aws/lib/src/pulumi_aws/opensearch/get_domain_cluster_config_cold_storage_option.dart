@@ -1,0 +1,3 @@
+library module_opensearch_get_domain_cluster_config_cold_storage_option;
+
+export 'get_domain_cluster_config_cold_storage_option/get_domain_cluster_config_cold_storage_option2.dart';

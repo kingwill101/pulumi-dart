@@ -1,3 +1,0 @@
-library module_finspace_kx_volume_nas1_configuration;
-
-export 'kx_volume_nas1_configuration.dart';

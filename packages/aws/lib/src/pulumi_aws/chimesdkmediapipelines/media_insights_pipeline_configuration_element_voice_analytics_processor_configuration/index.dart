@@ -1,3 +1,0 @@
-library module_chimesdkmediapipelines_media_insights_pipeline_configuration_element_voice_analytics_processor_configuration;
-
-export 'media_insights_pipeline_configuration_element_voice_analytics_processor_configuration.dart';

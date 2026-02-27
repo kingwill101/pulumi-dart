@@ -1,3 +1,0 @@
-library module_odb_get_network_managed_service_sts_access;
-
-export 'get_network_managed_service_sts_access.dart';

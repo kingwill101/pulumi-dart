@@ -6,7 +6,7 @@ import '../web_acl_rule_statement_managed_rule_group_statement_rule_action_overr
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatement {
-  /// Additional information that's used by a managed rule group. Only one rule attribute is allowed in each config. See <span pulumi-lang-nodejs="`managedRuleGroupConfigs`" pulumi-lang-dotnet="`ManagedRuleGroupConfigs`" pulumi-lang-go="`managedRuleGroupConfigs`" pulumi-lang-python="`managed_rule_group_configs`" pulumi-lang-yaml="`managedRuleGroupConfigs`" pulumi-lang-java="`managedRuleGroupConfigs`">`managed_rule_group_configs`</span> for more details
+  /// Additional information that's used by a managed rule group. Only one rule attribute is allowed in each config. See `managed_rule_group_configs` for more details
   final List<
           WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig>?
       managedRuleGroupConfigs;
@@ -14,11 +14,11 @@ class WebAclRuleStatementManagedRuleGroupStatement {
   /// Name of the managed rule group.
   final String name;
 
-  /// Action settings to use in the place of the rule actions that are configured inside the rule group. You specify one override for each rule whose action you want to change. See <span pulumi-lang-nodejs="`ruleActionOverride`" pulumi-lang-dotnet="`RuleActionOverride`" pulumi-lang-go="`ruleActionOverride`" pulumi-lang-python="`rule_action_override`" pulumi-lang-yaml="`ruleActionOverride`" pulumi-lang-java="`ruleActionOverride`">`rule_action_override`</span> below for details.
+  /// Action settings to use in the place of the rule actions that are configured inside the rule group. You specify one override for each rule whose action you want to change. See `rule_action_override` below for details.
   final List<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride>?
       ruleActionOverrides;
 
-  /// Narrows the scope of the statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See <span pulumi-lang-nodejs="`statement`" pulumi-lang-dotnet="`Statement`" pulumi-lang-go="`statement`" pulumi-lang-python="`statement`" pulumi-lang-yaml="`statement`" pulumi-lang-java="`statement`">`statement`</span> above for details.
+  /// Narrows the scope of the statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See `statement` above for details.
   final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement?
       scopeDownStatement;
 

@@ -3,7 +3,7 @@
 import '../domain_domain_settings_rstudio_server_pro_domain_settings_default_resource_spec/domain_domain_settings_rstudio_server_pro_domain_settings_default_resource_spec.dart';
 
 class DomainDomainSettingsRStudioServerProDomainSettings {
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see <span pulumi-lang-nodejs="`defaultResourceSpec`" pulumi-lang-dotnet="`DefaultResourceSpec`" pulumi-lang-go="`defaultResourceSpec`" pulumi-lang-python="`default_resource_spec`" pulumi-lang-yaml="`defaultResourceSpec`" pulumi-lang-java="`defaultResourceSpec`">`default_resource_spec`</span> Block above.
+  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block above.
   final DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec?
       defaultResourceSpec;
 

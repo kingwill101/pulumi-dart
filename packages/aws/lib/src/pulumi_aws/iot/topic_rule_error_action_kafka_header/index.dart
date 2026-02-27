@@ -1,3 +1,0 @@
-library module_iot_topic_rule_error_action_kafka_header;
-
-export 'topic_rule_error_action_kafka_header.dart';

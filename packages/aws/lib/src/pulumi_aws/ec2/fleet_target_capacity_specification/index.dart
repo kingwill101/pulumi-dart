@@ -1,3 +1,0 @@
-library module_ec2_fleet_target_capacity_specification;
-
-export 'fleet_target_capacity_specification.dart';

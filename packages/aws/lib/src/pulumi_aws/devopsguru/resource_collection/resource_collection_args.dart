@@ -6,13 +6,13 @@ import '../resource_collection_tags/resource_collection_tags.dart';
 
 /// The set of arguments for ResourceCollection.
 class ResourceCollectionArgs {
-  /// A collection of AWS CloudFormation stacks. See <span pulumi-lang-nodejs="`cloudformation`" pulumi-lang-dotnet="`Cloudformation`" pulumi-lang-go="`cloudformation`" pulumi-lang-python="`cloudformation`" pulumi-lang-yaml="`cloudformation`" pulumi-lang-java="`cloudformation`">`cloudformation`</span> below for additional details.
+  /// A collection of AWS CloudFormation stacks. See `cloudformation` below for additional details.
   final Input<ResourceCollectionCloudformation>? cloudformation;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// AWS tags used to filter the resources in the resource collection. See <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span> below for additional details.
+  /// AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
   final Input<ResourceCollectionTags>? tags;
 
   /// Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.

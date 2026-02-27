@@ -1,3 +1,0 @@
-library module_kinesis_analytics_application_inputs_kinesis_firehose;
-
-export 'analytics_application_inputs_kinesis_firehose.dart';

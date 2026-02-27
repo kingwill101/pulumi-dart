@@ -1,0 +1,3 @@
+library module_wafv2_web_acl_rule_statement_rate_based_statement_custom_key_uri_path;
+
+export 'web_acl_rule_statement_rate_based_statement_custom_key_uri_path/web_acl_rule_statement_rate_based_statement_custom_key_uri_path.dart';

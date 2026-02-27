@@ -13,19 +13,19 @@ class ExperimentTemplateTarget {
 
   /// The resource type parameters.
   ///
-  /// > **NOTE:** The <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> configuration block requires either <span pulumi-lang-nodejs="`resourceArns`" pulumi-lang-dotnet="`ResourceArns`" pulumi-lang-go="`resourceArns`" pulumi-lang-python="`resource_arns`" pulumi-lang-yaml="`resourceArns`" pulumi-lang-java="`resourceArns`">`resource_arns`</span> or <span pulumi-lang-nodejs="`resourceTag`" pulumi-lang-dotnet="`ResourceTag`" pulumi-lang-go="`resourceTag`" pulumi-lang-python="`resource_tag`" pulumi-lang-yaml="`resourceTag`" pulumi-lang-java="`resourceTag`">`resource_tag`</span>.
+  /// > **NOTE:** The `target` configuration block requires either `resource_arns` or `resource_tag`.
   final Map<String, String>? parameters;
 
-  /// Set of ARNs of the resources to target with an action. Conflicts with <span pulumi-lang-nodejs="`resourceTag`" pulumi-lang-dotnet="`ResourceTag`" pulumi-lang-go="`resourceTag`" pulumi-lang-python="`resource_tag`" pulumi-lang-yaml="`resourceTag`" pulumi-lang-java="`resourceTag`">`resource_tag`</span>.
+  /// Set of ARNs of the resources to target with an action. Conflicts with `resource_tag`.
   final List<String>? resourceArns;
 
-  /// Tag(s) the resources need to have to be considered a valid target for an action. Conflicts with <span pulumi-lang-nodejs="`resourceArns`" pulumi-lang-dotnet="`ResourceArns`" pulumi-lang-go="`resourceArns`" pulumi-lang-python="`resource_arns`" pulumi-lang-yaml="`resourceArns`" pulumi-lang-java="`resourceArns`">`resource_arns`</span>. See below.
+  /// Tag(s) the resources need to have to be considered a valid target for an action. Conflicts with `resource_arns`. See below.
   final List<ExperimentTemplateTargetResourceTag>? resourceTags;
 
   /// AWS resource type. The resource type must be supported for the specified action. To find out what resource types are supported, see [Targets for AWS FIS](https://docs.aws.amazon.com/fis/latest/userguide/targets.html#resource-types).
   final String resourceType;
 
-  /// Scopes the identified resources. Valid values are `ALL` (all identified resources), `COUNT(n)` (randomly select <span pulumi-lang-nodejs="`n`" pulumi-lang-dotnet="`N`" pulumi-lang-go="`n`" pulumi-lang-python="`n`" pulumi-lang-yaml="`n`" pulumi-lang-java="`n`">`n`</span> of the identified resources), `PERCENT(n)` (randomly select <span pulumi-lang-nodejs="`n`" pulumi-lang-dotnet="`N`" pulumi-lang-go="`n`" pulumi-lang-python="`n`" pulumi-lang-yaml="`n`" pulumi-lang-java="`n`">`n`</span> percent of the identified resources).
+  /// Scopes the identified resources. Valid values are `ALL` (all identified resources), `COUNT(n)` (randomly select `n` of the identified resources), `PERCENT(n)` (randomly select `n` percent of the identified resources).
   final String selectionMode;
 
   ExperimentTemplateTarget({

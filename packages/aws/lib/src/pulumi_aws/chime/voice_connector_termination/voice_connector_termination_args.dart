@@ -10,7 +10,7 @@ class VoiceConnectorTerminationArgs {
   /// The IP addresses allowed to make calls, in CIDR format.
   final Input<List<String>> cidrAllowLists;
 
-  /// The limit on calls per second. Max value based on account service quota. Default value of <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// The limit on calls per second. Max value based on account service quota. Default value of `1`.
   final Input<int>? cpsLimit;
 
   /// The default caller ID phone number.

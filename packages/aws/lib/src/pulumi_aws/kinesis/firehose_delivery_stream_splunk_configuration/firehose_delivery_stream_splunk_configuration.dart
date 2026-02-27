@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamSplunkConfiguration {
   /// Buffer incoming data to the specified size, in MBs between 1 to 5, before delivering it to the destination.  The default value is 5MB.
   final int? bufferingSize;
 
-  /// The CloudWatch Logging Options for the delivery stream. See <span pulumi-lang-nodejs="`cloudwatchLoggingOptions`" pulumi-lang-dotnet="`CloudwatchLoggingOptions`" pulumi-lang-go="`cloudwatchLoggingOptions`" pulumi-lang-python="`cloudwatch_logging_options`" pulumi-lang-yaml="`cloudwatchLoggingOptions`" pulumi-lang-java="`cloudwatchLoggingOptions`">`cloudwatch_logging_options`</span> block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
   final FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions?
       cloudwatchLoggingOptions;
 
@@ -25,10 +25,10 @@ class FirehoseDeliveryStreamSplunkConfiguration {
   /// The HEC endpoint type. Valid values are `Raw` or `Event`. The default value is `Raw`.
   final String? hecEndpointType;
 
-  /// The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> is not provided.
+  /// The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secrets_manager_configuration` is not provided.
   final String? hecToken;
 
-  /// The data processing configuration.  See <span pulumi-lang-nodejs="`processingConfiguration`" pulumi-lang-dotnet="`ProcessingConfiguration`" pulumi-lang-go="`processingConfiguration`" pulumi-lang-python="`processing_configuration`" pulumi-lang-yaml="`processingConfiguration`" pulumi-lang-java="`processingConfiguration`">`processing_configuration`</span> block below for details.
+  /// The data processing configuration.  See `processing_configuration` block below for details.
   final FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration?
       processingConfiguration;
 
@@ -36,10 +36,10 @@ class FirehoseDeliveryStreamSplunkConfiguration {
   final int? retryDuration;
 
   /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
-  /// <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> - (Optional) The Secrets Manager configuration. See <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> block below for details. This value is required if <span pulumi-lang-nodejs="`hecToken`" pulumi-lang-dotnet="`HecToken`" pulumi-lang-go="`hecToken`" pulumi-lang-python="`hec_token`" pulumi-lang-yaml="`hecToken`" pulumi-lang-java="`hecToken`">`hec_token`</span> is not provided.
+  /// `secrets_manager_configuration` - (Optional) The Secrets Manager configuration. See `secrets_manager_configuration` block below for details. This value is required if `hec_token` is not provided.
   final String? s3BackupMode;
 
-  /// The S3 Configuration. See <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span> block below for details.
+  /// The S3 Configuration. See `s3_configuration` block below for details.
   final FirehoseDeliveryStreamSplunkConfigurationS3Configuration
       s3Configuration;
   final FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration?

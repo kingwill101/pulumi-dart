@@ -1,3 +1,0 @@
-library module_appsync_data_source_http_config_authorization_config_aws_iam_config;
-
-export 'data_source_http_config_authorization_config_aws_iam_config.dart';

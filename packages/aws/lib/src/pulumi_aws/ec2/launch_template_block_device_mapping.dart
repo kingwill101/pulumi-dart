@@ -1,0 +1,3 @@
+library module_ec2_launch_template_block_device_mapping;
+
+export 'launch_template_block_device_mapping/launch_template_block_device_mapping.dart';

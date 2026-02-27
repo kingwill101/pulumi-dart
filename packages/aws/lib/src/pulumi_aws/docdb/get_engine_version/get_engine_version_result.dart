@@ -16,7 +16,7 @@ class GetEngineVersionResult {
   final List<String>? preferredVersions;
   final String region;
 
-  /// Indicates whether the engine version supports exporting the log types specified by <span pulumi-lang-nodejs="`exportableLogTypes`" pulumi-lang-dotnet="`ExportableLogTypes`" pulumi-lang-go="`exportableLogTypes`" pulumi-lang-python="`exportable_log_types`" pulumi-lang-yaml="`exportableLogTypes`" pulumi-lang-java="`exportableLogTypes`">`exportable_log_types`</span> to CloudWatch Logs.
+  /// Indicates whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
   final bool supportsLogExportsToCloudwatch;
 
   /// A set of engine versions that this database engine version can be upgraded to.

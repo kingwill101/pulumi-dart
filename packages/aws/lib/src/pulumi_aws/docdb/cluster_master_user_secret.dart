@@ -1,0 +1,3 @@
+library module_docdb_cluster_master_user_secret;
+
+export 'cluster_master_user_secret/cluster_master_user_secret.dart';

@@ -1,0 +1,3 @@
+library module_ec2_vpc_ipam_pool_cidr_cidr_authorization_context;
+
+export 'vpc_ipam_pool_cidr_cidr_authorization_context/vpc_ipam_pool_cidr_cidr_authorization_context.dart';

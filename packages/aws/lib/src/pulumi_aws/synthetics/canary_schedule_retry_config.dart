@@ -1,0 +1,3 @@
+library module_synthetics_canary_schedule_retry_config;
+
+export 'canary_schedule_retry_config/canary_schedule_retry_config.dart';

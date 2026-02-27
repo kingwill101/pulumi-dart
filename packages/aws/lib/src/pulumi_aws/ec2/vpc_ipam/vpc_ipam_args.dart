@@ -11,22 +11,22 @@ class VpcIpamArgs {
   /// A description for the IPAM.
   final Input<String>? description;
 
-  /// Enable this option to use your own GUA ranges as private IPv6 addresses. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enable this option to use your own GUA ranges as private IPv6 addresses. Default: `false`.
   final Input<bool>? enablePrivateGua;
 
   /// AWS account that is charged for active IP addresses managed in IPAM. Valid values are `ipam-owner` (default) and `resource-owner`.
   final Input<String>? meteredAccount;
 
-  /// Determines which locales can be chosen when you create pools. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the<span pulumi-lang-nodejs=" regionName " pulumi-lang-dotnet=" RegionName " pulumi-lang-go=" regionName " pulumi-lang-python=" region_name " pulumi-lang-yaml=" regionName " pulumi-lang-java=" regionName "> region_name </span>parameter. You **must** set your provider block region as an operating_region.
+  /// Determines which locales can be chosen when you create pools. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the region_name parameter. You **must** set your provider block region as an operating_region.
   final Input<List<VpcIpamOperatingRegion>> operatingRegions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// specifies the IPAM tier. Valid options include <span pulumi-lang-nodejs="`free`" pulumi-lang-dotnet="`Free`" pulumi-lang-go="`free`" pulumi-lang-python="`free`" pulumi-lang-yaml="`free`" pulumi-lang-java="`free`">`free`</span> and <span pulumi-lang-nodejs="`advanced`" pulumi-lang-dotnet="`Advanced`" pulumi-lang-go="`advanced`" pulumi-lang-python="`advanced`" pulumi-lang-yaml="`advanced`" pulumi-lang-java="`advanced`">`advanced`</span>. Default is <span pulumi-lang-nodejs="`advanced`" pulumi-lang-dotnet="`Advanced`" pulumi-lang-go="`advanced`" pulumi-lang-python="`advanced`" pulumi-lang-yaml="`advanced`" pulumi-lang-java="`advanced`">`advanced`</span>.
+  /// specifies the IPAM tier. Valid options include `free` and `advanced`. Default is `advanced`.
   final Input<String>? tier;
 
   VpcIpamArgs({

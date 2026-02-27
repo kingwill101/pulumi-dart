@@ -1,4 +1,0 @@
-library module_sagemaker_notebook_instance_lifecycle_configuration;
-
-export 'notebook_instance_lifecycle_configuration.dart';
-export 'notebook_instance_lifecycle_configuration_args.dart';

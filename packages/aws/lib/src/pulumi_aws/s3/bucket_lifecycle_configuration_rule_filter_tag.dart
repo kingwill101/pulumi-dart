@@ -1,0 +1,3 @@
+library module_s3_bucket_lifecycle_configuration_rule_filter_tag;
+
+export 'bucket_lifecycle_configuration_rule_filter_tag/bucket_lifecycle_configuration_rule_filter_tag.dart';

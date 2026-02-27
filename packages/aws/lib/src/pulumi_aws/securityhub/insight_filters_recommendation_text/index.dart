@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_recommendation_text;
-
-export 'insight_filters_recommendation_text.dart';

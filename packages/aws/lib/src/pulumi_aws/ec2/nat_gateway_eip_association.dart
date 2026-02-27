@@ -1,0 +1,4 @@
+library module_ec2_nat_gateway_eip_association;
+
+export 'nat_gateway_eip_association/nat_gateway_eip_association.dart';
+export 'nat_gateway_eip_association/nat_gateway_eip_association_args.dart';

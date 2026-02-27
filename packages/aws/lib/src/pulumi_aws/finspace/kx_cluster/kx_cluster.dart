@@ -16,309 +16,11 @@ import 'kx_cluster_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.finspace.KxCluster("example", {
-/// name: "my-tf-kx-cluster",
-/// environmentId: exampleAwsFinspaceKxEnvironment.id,
-/// type: "HDB",
-/// releaseLabel: "1.0",
-/// azMode: "SINGLE",
-/// availabilityZoneId: "use1-az2",
-/// capacityConfiguration: {
-/// nodeType: "kx.s.2xlarge",
-/// nodeCount: 2,
-/// },
-/// vpcConfiguration: {
-/// vpcId: test.id,
-/// securityGroupIds: [exampleAwsSecurityGroup.id],
-/// subnetIds: [exampleAwsSubnet.id],
-/// ipAddressType: "IP_V4",
-/// },
-/// cacheStorageConfigurations: [{
-/// type: "CACHE_1000",
-/// size: 1200,
-/// }],
-/// databases: [{
-/// databaseName: exampleAwsFinspaceKxDatabase.name,
-/// cacheConfiguration: [{
-/// cacheType: "CACHE_1000",
-/// dbPaths: "/",
-/// }],
-/// }],
-/// code: {
-/// s3Bucket: testAwsS3Bucket.id,
-/// s3Key: object.key,
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.finspace.KxCluster("example",
-/// name="my-tf-kx-cluster",
-/// environment_id=example_aws_finspace_kx_environment["id"],
-/// type="HDB",
-/// release_label="1.0",
-/// az_mode="SINGLE",
-/// availability_zone_id="use1-az2",
-/// capacity_configuration={
-/// "node_type": "kx.s.2xlarge",
-/// "node_count": 2,
-/// },
-/// vpc_configuration={
-/// "vpc_id": test["id"],
-/// "security_group_ids": [example_aws_security_group["id"]],
-/// "subnet_ids": [example_aws_subnet["id"]],
-/// "ip_address_type": "IP_V4",
-/// },
-/// cache_storage_configurations=[{
-/// "type": "CACHE_1000",
-/// "size": 1200,
-/// }],
-/// databases=[{
-/// "database_name": example_aws_finspace_kx_database["name"],
-/// "cache_configuration": [{
-/// "cacheType": "CACHE_1000",
-/// "dbPaths": "/",
-/// }],
-/// }],
-/// code={
-/// "s3_bucket": test_aws_s3_bucket["id"],
-/// "s3_key": object["key"],
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.FinSpace.KxCluster("example", new()
-/// {
-/// Name = "my-tf-kx-cluster",
-/// EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
-/// Type = "HDB",
-/// ReleaseLabel = "1.0",
-/// AzMode = "SINGLE",
-/// AvailabilityZoneId = "use1-az2",
-/// CapacityConfiguration = new Aws.FinSpace.Inputs.KxClusterCapacityConfigurationArgs
-/// {
-/// NodeType = "kx.s.2xlarge",
-/// NodeCount = 2,
-/// },
-/// VpcConfiguration = new Aws.FinSpace.Inputs.KxClusterVpcConfigurationArgs
-/// {
-/// VpcId = test.Id,
-/// SecurityGroupIds = new[]
-/// {
-/// exampleAwsSecurityGroup.Id,
-/// },
-/// SubnetIds = new[]
-/// {
-/// exampleAwsSubnet.Id,
-/// },
-/// IpAddressType = "IP_V4",
-/// },
-/// CacheStorageConfigurations = new[]
-/// {
-/// new Aws.FinSpace.Inputs.KxClusterCacheStorageConfigurationArgs
-/// {
-/// Type = "CACHE_1000",
-/// Size = 1200,
-/// },
-/// },
-/// Databases = new[]
-/// {
-/// new Aws.FinSpace.Inputs.KxClusterDatabaseArgs
-/// {
-/// DatabaseName = exampleAwsFinspaceKxDatabase.Name,
-/// CacheConfiguration = new[]
-/// {
-///
-/// {
-/// { "cacheType", "CACHE_1000" },
-/// { "dbPaths", "/" },
-/// },
-/// },
-/// },
-/// },
-/// Code = new Aws.FinSpace.Inputs.KxClusterCodeArgs
-/// {
-/// S3Bucket = testAwsS3Bucket.Id,
-/// S3Key = @object.Key,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/finspace"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := finspace.NewKxCluster(ctx, "example", &finspace.KxClusterArgs{
-/// Name:               pulumi.String("my-tf-kx-cluster"),
-/// EnvironmentId:      pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
-/// Type:               pulumi.String("HDB"),
-/// ReleaseLabel:       pulumi.String("1.0"),
-/// AzMode:             pulumi.String("SINGLE"),
-/// AvailabilityZoneId: pulumi.String("use1-az2"),
-/// CapacityConfiguration: &finspace.KxClusterCapacityConfigurationArgs{
-/// NodeType:  pulumi.String("kx.s.2xlarge"),
-/// NodeCount: pulumi.Int(2),
-/// },
-/// VpcConfiguration: &finspace.KxClusterVpcConfigurationArgs{
-/// VpcId: pulumi.Any(test.Id),
-/// SecurityGroupIds: pulumi.StringArray{
-/// exampleAwsSecurityGroup.Id,
-/// },
-/// SubnetIds: pulumi.StringArray{
-/// exampleAwsSubnet.Id,
-/// },
-/// IpAddressType: pulumi.String("IP_V4"),
-/// },
-/// CacheStorageConfigurations: finspace.KxClusterCacheStorageConfigurationArray{
-/// &finspace.KxClusterCacheStorageConfigurationArgs{
-/// Type: pulumi.String("CACHE_1000"),
-/// Size: pulumi.Int(1200),
-/// },
-/// },
-/// Databases: finspace.KxClusterDatabaseArray{
-/// &finspace.KxClusterDatabaseArgs{
-/// DatabaseName: pulumi.Any(exampleAwsFinspaceKxDatabase.Name),
-/// CacheConfiguration: []map[string]interface{}{
-/// map[string]interface{}{
-/// "cacheType": "CACHE_1000",
-/// "dbPaths":   "/",
-/// },
-/// },
-/// },
-/// },
-/// Code: &finspace.KxClusterCodeArgs{
-/// S3Bucket: pulumi.Any(testAwsS3Bucket.Id),
-/// S3Key:    pulumi.Any(object.Key),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.finspace.KxCluster;
-/// import com.pulumi.aws.finspace.KxClusterArgs;
-/// import com.pulumi.aws.finspace.inputs.KxClusterCapacityConfigurationArgs;
-/// import com.pulumi.aws.finspace.inputs.KxClusterVpcConfigurationArgs;
-/// import com.pulumi.aws.finspace.inputs.KxClusterCacheStorageConfigurationArgs;
-/// import com.pulumi.aws.finspace.inputs.KxClusterDatabaseArgs;
-/// import com.pulumi.aws.finspace.inputs.KxClusterCodeArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new KxCluster("example", KxClusterArgs.builder()
-/// .name("my-tf-kx-cluster")
-/// .environmentId(exampleAwsFinspaceKxEnvironment.id())
-/// .type("HDB")
-/// .releaseLabel("1.0")
-/// .azMode("SINGLE")
-/// .availabilityZoneId("use1-az2")
-/// .capacityConfiguration(KxClusterCapacityConfigurationArgs.builder()
-/// .nodeType("kx.s.2xlarge")
-/// .nodeCount(2)
-/// .build())
-/// .vpcConfiguration(KxClusterVpcConfigurationArgs.builder()
-/// .vpcId(test.id())
-/// .securityGroupIds(exampleAwsSecurityGroup.id())
-/// .subnetIds(exampleAwsSubnet.id())
-/// .ipAddressType("IP_V4")
-/// .build())
-/// .cacheStorageConfigurations(KxClusterCacheStorageConfigurationArgs.builder()
-/// .type("CACHE_1000")
-/// .size(1200)
-/// .build())
-/// .databases(KxClusterDatabaseArgs.builder()
-/// .databaseName(exampleAwsFinspaceKxDatabase.name())
-/// .cacheConfiguration(List.of(Map.ofEntries(
-/// Map.entry("cacheType", "CACHE_1000"),
-/// Map.entry("dbPaths", "/")
-/// )))
-/// .build())
-/// .code(KxClusterCodeArgs.builder()
-/// .s3Bucket(testAwsS3Bucket.id())
-/// .s3Key(object.key())
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:finspace:KxCluster
-/// properties:
-/// name: my-tf-kx-cluster
-/// environmentId: ${exampleAwsFinspaceKxEnvironment.id}
-/// type: HDB
-/// releaseLabel: '1.0'
-/// azMode: SINGLE
-/// availabilityZoneId: use1-az2
-/// capacityConfiguration:
-/// nodeType: kx.s.2xlarge
-/// nodeCount: 2
-/// vpcConfiguration:
-/// vpcId: ${test.id}
-/// securityGroupIds:
-/// - ${exampleAwsSecurityGroup.id}
-/// subnetIds:
-/// - ${exampleAwsSubnet.id}
-/// ipAddressType: IP_V4
-/// cacheStorageConfigurations:
-/// - type: CACHE_1000
-/// size: 1200
-/// databases:
-/// - databaseName: ${exampleAwsFinspaceKxDatabase.name}
-/// cacheConfiguration:
-/// - cacheType: CACHE_1000
-/// dbPaths: /
-/// code:
-/// s3Bucket: ${testAwsS3Bucket.id}
-/// s3Key: ${object.key}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import an AWS FinSpace Kx Cluster using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> (environment ID and cluster name, comma-delimited). For example:
+/// Using `pulumi import`, import an AWS FinSpace Kx Cluster using the `id` (environment ID and cluster name, comma-delimited). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:finspace/kxCluster:KxCluster example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-cluster
@@ -331,7 +33,7 @@ class KxCluster extends CustomResource {
   late final Output<KxClusterAutoScalingConfiguration?>
       autoScalingConfiguration;
 
-  /// The availability zone identifiers for the requested regions. Required when <span pulumi-lang-nodejs="`azMode`" pulumi-lang-dotnet="`AzMode`" pulumi-lang-go="`azMode`" pulumi-lang-python="`az_mode`" pulumi-lang-yaml="`azMode`" pulumi-lang-java="`azMode`">`az_mode`</span> is set to SINGLE.
+  /// The availability zone identifiers for the requested regions. Required when `az_mode` is set to SINGLE.
   late final Output<String?> availabilityZoneId;
 
   /// The number of availability zones you want to assign per cluster. This can be one of the following:
@@ -382,7 +84,7 @@ class KxCluster extends CustomResource {
   /// Version of FinSpace Managed kdb to run.
   late final Output<String> releaseLabel;
 
-  /// Size and type of the temporary storage that is used to hold data during the savedown process. This parameter is required when you choose <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> as RDB. All the data written to this storage space is lost when the cluster node is restarted. See savedown_storage_configuration.
+  /// Size and type of the temporary storage that is used to hold data during the savedown process. This parameter is required when you choose `type` as RDB. All the data written to this storage space is lost when the cluster node is restarted. See savedown_storage_configuration.
   late final Output<KxClusterSavedownStorageConfiguration?>
       savedownStorageConfiguration;
 
@@ -392,10 +94,10 @@ class KxCluster extends CustomResource {
   late final Output<String> status;
   late final Output<String> statusReason;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// A configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant , the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path.

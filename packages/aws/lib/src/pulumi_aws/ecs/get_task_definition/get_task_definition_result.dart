@@ -12,16 +12,16 @@ class GetTaskDefinitionResult {
   /// ARN of the task definition.
   final String arn;
 
-  /// ARN of the Task Definition with the trailing <span pulumi-lang-nodejs="`revision`" pulumi-lang-dotnet="`Revision`" pulumi-lang-go="`revision`" pulumi-lang-python="`revision`" pulumi-lang-yaml="`revision`" pulumi-lang-java="`revision`">`revision`</span> removed. This may be useful for situations where the latest task definition is always desired. If a revision isn't specified, the latest ACTIVE revision is used. See the [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html#ECS-StartTask-request-taskDefinition) for details.
+  /// ARN of the Task Definition with the trailing `revision` removed. This may be useful for situations where the latest task definition is always desired. If a revision isn't specified, the latest ACTIVE revision is used. See the [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html#ECS-StartTask-request-taskDefinition) for details.
   final String arnWithoutRevision;
 
   /// A list of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
   final String containerDefinitions;
 
-  /// Number of cpu units used by the task. If the <span pulumi-lang-nodejs="`requiresCompatibilities`" pulumi-lang-dotnet="`RequiresCompatibilities`" pulumi-lang-go="`requiresCompatibilities`" pulumi-lang-python="`requires_compatibilities`" pulumi-lang-yaml="`requiresCompatibilities`" pulumi-lang-java="`requiresCompatibilities`">`requires_compatibilities`</span> is `FARGATE` this field is required.
+  /// Number of cpu units used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
   final String cpu;
 
-  /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   final bool enableFaultInjection;
 
   /// The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
@@ -37,19 +37,19 @@ class GetTaskDefinitionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// IPC resource namespace to be used for the containers in the task The valid values are <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span>, <span pulumi-lang-nodejs="`task`" pulumi-lang-dotnet="`Task`" pulumi-lang-go="`task`" pulumi-lang-python="`task`" pulumi-lang-yaml="`task`" pulumi-lang-java="`task`">`task`</span>, and <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
+  /// IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
   final String ipcMode;
 
-  /// Amount (in MiB) of memory used by the task. If the <span pulumi-lang-nodejs="`requiresCompatibilities`" pulumi-lang-dotnet="`RequiresCompatibilities`" pulumi-lang-go="`requiresCompatibilities`" pulumi-lang-python="`requires_compatibilities`" pulumi-lang-yaml="`requiresCompatibilities`" pulumi-lang-java="`requiresCompatibilities`">`requires_compatibilities`</span> is `FARGATE` this field is required.
+  /// Amount (in MiB) of memory used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
   final String memory;
 
-  /// Docker networking mode to use for the containers in the task. Valid values are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, <span pulumi-lang-nodejs="`bridge`" pulumi-lang-dotnet="`Bridge`" pulumi-lang-go="`bridge`" pulumi-lang-python="`bridge`" pulumi-lang-yaml="`bridge`" pulumi-lang-java="`bridge`">`bridge`</span>, <span pulumi-lang-nodejs="`awsvpc`" pulumi-lang-dotnet="`Awsvpc`" pulumi-lang-go="`awsvpc`" pulumi-lang-python="`awsvpc`" pulumi-lang-yaml="`awsvpc`" pulumi-lang-java="`awsvpc`">`awsvpc`</span>, and <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span>.
+  /// Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
   final String networkMode;
 
-  /// Process namespace to use for the containers in the task. The valid values are <span pulumi-lang-nodejs="`host`" pulumi-lang-dotnet="`Host`" pulumi-lang-go="`host`" pulumi-lang-python="`host`" pulumi-lang-yaml="`host`" pulumi-lang-java="`host`">`host`</span> and <span pulumi-lang-nodejs="`task`" pulumi-lang-dotnet="`Task`" pulumi-lang-go="`task`" pulumi-lang-python="`task`" pulumi-lang-yaml="`task`" pulumi-lang-java="`task`">`task`</span>.
+  /// Process namespace to use for the containers in the task. The valid values are `host` and `task`.
   final String pidMode;
 
-  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of <span pulumi-lang-nodejs="`placementConstraints`" pulumi-lang-dotnet="`PlacementConstraints`" pulumi-lang-go="`placementConstraints`" pulumi-lang-python="`placement_constraints`" pulumi-lang-yaml="`placementConstraints`" pulumi-lang-java="`placementConstraints`">`placement_constraints`</span> is <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span>. Detailed below.
+  /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
   final List<GetTaskDefinitionPlacementConstraint> placementConstraints;
 
   /// Configuration block for the App Mesh proxy. Detailed below.
@@ -62,7 +62,7 @@ class GetTaskDefinitionResult {
   /// Revision of the task in a particular family.
   final int revision;
 
-  /// Configuration block for<span pulumi-lang-nodejs=" runtimePlatform " pulumi-lang-dotnet=" RuntimePlatform " pulumi-lang-go=" runtimePlatform " pulumi-lang-python=" runtime_platform " pulumi-lang-yaml=" runtimePlatform " pulumi-lang-java=" runtimePlatform "> runtime_platform </span>that containers in your task may use.
+  /// Configuration block for runtime_platform that containers in your task may use.
   final List<GetTaskDefinitionRuntimePlatform> runtimePlatforms;
 
   /// Status of the task definition.

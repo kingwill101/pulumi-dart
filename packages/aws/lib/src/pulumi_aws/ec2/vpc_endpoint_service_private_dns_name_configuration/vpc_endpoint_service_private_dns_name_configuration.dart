@@ -4,7 +4,7 @@ class VpcEndpointServicePrivateDnsNameConfiguration {
   /// Name of the record subdomain the service provider needs to create.
   final String? name;
 
-  /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is <span pulumi-lang-nodejs="`verified`" pulumi-lang-dotnet="`Verified`" pulumi-lang-go="`verified`" pulumi-lang-python="`verified`" pulumi-lang-yaml="`verified`" pulumi-lang-java="`verified`">`verified`</span>.
+  /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
   final String? state;
 
   /// Endpoint service verification type, for example `TXT`.

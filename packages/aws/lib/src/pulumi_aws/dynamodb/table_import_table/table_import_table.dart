@@ -13,7 +13,7 @@ class TableImportTable {
   final String inputFormat;
 
   /// Describe the format options for the data that was imported into the target table.
-  /// There is one value, <span pulumi-lang-nodejs="`csv`" pulumi-lang-dotnet="`Csv`" pulumi-lang-go="`csv`" pulumi-lang-python="`csv`" pulumi-lang-yaml="`csv`" pulumi-lang-java="`csv`">`csv`</span>.
+  /// There is one value, `csv`.
   /// See below.
   final TableImportTableInputFormatOptions? inputFormatOptions;
 

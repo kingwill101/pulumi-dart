@@ -1,0 +1,3 @@
+library module_memorydb_get_user_authentication_mode;
+
+export 'get_user_authentication_mode/get_user_authentication_mode2.dart';

@@ -7,22 +7,22 @@ import '../job_definition_timeout/job_definition_timeout.dart';
 
 /// The set of arguments for JobDefinition.
 class JobDefinitionArgs {
-  /// Valid [container properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> parameter is <span pulumi-lang-nodejs="`container`" pulumi-lang-dotnet="`Container`" pulumi-lang-go="`container`" pulumi-lang-python="`container`" pulumi-lang-yaml="`container`" pulumi-lang-java="`container`">`container`</span>.
+  /// Valid [container properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
   final Input<String>? containerProperties;
 
-  /// When updating a job definition a new revision is created. This parameter determines if the previous version is <span pulumi-lang-nodejs="`deregistered`" pulumi-lang-dotnet="`Deregistered`" pulumi-lang-go="`deregistered`" pulumi-lang-python="`deregistered`" pulumi-lang-yaml="`deregistered`" pulumi-lang-java="`deregistered`">`deregistered`</span> (`INACTIVE`) or left  `ACTIVE`. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// When updating a job definition a new revision is created. This parameter determines if the previous version is `deregistered` (`INACTIVE`) or left  `ACTIVE`. Defaults to `true`.
   final Input<bool>? deregisterOnNewRevision;
 
-  /// Valid [ECS properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> parameter is <span pulumi-lang-nodejs="`container`" pulumi-lang-dotnet="`Container`" pulumi-lang-go="`container`" pulumi-lang-python="`container`" pulumi-lang-yaml="`container`" pulumi-lang-java="`container`">`container`</span>.
+  /// Valid [ECS properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
   final Input<String>? ecsProperties;
 
-  /// Valid eks properties. This parameter is only valid if the <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> parameter is <span pulumi-lang-nodejs="`container`" pulumi-lang-dotnet="`Container`" pulumi-lang-go="`container`" pulumi-lang-python="`container`" pulumi-lang-yaml="`container`" pulumi-lang-java="`container`">`container`</span>.
+  /// Valid eks properties. This parameter is only valid if the `type` parameter is `container`.
   final Input<JobDefinitionEksProperties>? eksProperties;
 
   /// Name of the job definition.
   final Input<String>? name;
 
-  /// Valid [node properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is required if the <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> parameter is <span pulumi-lang-nodejs="`multinode`" pulumi-lang-dotnet="`Multinode`" pulumi-lang-go="`multinode`" pulumi-lang-python="`multinode`" pulumi-lang-yaml="`multinode`" pulumi-lang-java="`multinode`">`multinode`</span>.
+  /// Valid [node properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is required if the `type` parameter is `multinode`.
   final Input<String>? nodeProperties;
 
   /// Parameter substitution placeholders to set in the job definition.
@@ -31,25 +31,25 @@ class JobDefinitionArgs {
   /// Platform capabilities required by the job definition. If no value is specified, it defaults to `EC2`. To run the job on Fargate resources, specify `FARGATE`.
   final Input<List<String>>? platformCapabilities;
 
-  /// Whether to propagate the tags from the job definition to the corresponding Amazon ECS task. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to propagate the tags from the job definition to the corresponding Amazon ECS task. Default is `false`.
   final Input<bool>? propagateTags;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Retry strategy to use for failed jobs that are submitted with this job definition. Maximum number of <span pulumi-lang-nodejs="`retryStrategy`" pulumi-lang-dotnet="`RetryStrategy`" pulumi-lang-go="`retryStrategy`" pulumi-lang-python="`retry_strategy`" pulumi-lang-yaml="`retryStrategy`" pulumi-lang-java="`retryStrategy`">`retry_strategy`</span> is <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.  Defined below.
+  /// Retry strategy to use for failed jobs that are submitted with this job definition. Maximum number of `retry_strategy` is `1`.  Defined below.
   final Input<JobDefinitionRetryStrategy>? retryStrategy;
 
-  /// Scheduling priority of the job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority. Allowed values <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> through <span pulumi-lang-nodejs="`9999`" pulumi-lang-dotnet="`9999`" pulumi-lang-go="`9999`" pulumi-lang-python="`9999`" pulumi-lang-yaml="`9999`" pulumi-lang-java="`9999`">`9999`</span>.
+  /// Scheduling priority of the job definition. This only affects jobs in job queues with a fair share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority. Allowed values `0` through `9999`.
   final Input<int>? schedulingPriority;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of <span pulumi-lang-nodejs="`timeout`" pulumi-lang-dotnet="`Timeout`" pulumi-lang-go="`timeout`" pulumi-lang-python="`timeout`" pulumi-lang-yaml="`timeout`" pulumi-lang-java="`timeout`">`timeout`</span> is <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. Defined below.
+  /// Timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
   final Input<JobDefinitionTimeout>? timeout;
 
-  /// Type of job definition. Must be <span pulumi-lang-nodejs="`container`" pulumi-lang-dotnet="`Container`" pulumi-lang-go="`container`" pulumi-lang-python="`container`" pulumi-lang-yaml="`container`" pulumi-lang-java="`container`">`container`</span> or <span pulumi-lang-nodejs="`multinode`" pulumi-lang-dotnet="`Multinode`" pulumi-lang-go="`multinode`" pulumi-lang-python="`multinode`" pulumi-lang-yaml="`multinode`" pulumi-lang-java="`multinode`">`multinode`</span>.
+  /// Type of job definition. Must be `container` or `multinode`.
   ///
   /// The following arguments are optional:
   final Input<String> type;

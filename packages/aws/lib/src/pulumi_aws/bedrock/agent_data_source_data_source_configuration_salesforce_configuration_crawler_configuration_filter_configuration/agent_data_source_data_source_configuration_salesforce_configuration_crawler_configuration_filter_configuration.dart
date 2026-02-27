@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../agent_data_source_data_source_configuration_salesforce_configuration_crawler_configuration_filter_configuration_pattern_object_filter/agent_data_source_data_source_configuration_salesforce_configuration_crawler_configuration_filter_configuration_pattern_object_filter.dart';
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration {
-  /// The configuration of filtering certain objects or content types of the data source. See <span pulumi-lang-nodejs="`patternObjectFilter`" pulumi-lang-dotnet="`PatternObjectFilter`" pulumi-lang-go="`patternObjectFilter`" pulumi-lang-python="`pattern_object_filter`" pulumi-lang-yaml="`patternObjectFilter`" pulumi-lang-java="`patternObjectFilter`">`pattern_object_filter`</span> block for details.
+  /// The configuration of filtering certain objects or content types of the data source. See `pattern_object_filter` block for details.
   final List<
           AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter>?
       patternObjectFilters;

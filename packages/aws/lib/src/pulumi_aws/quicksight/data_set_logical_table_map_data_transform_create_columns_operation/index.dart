@@ -1,3 +1,0 @@
-library module_quicksight_data_set_logical_table_map_data_transform_create_columns_operation;
-
-export 'data_set_logical_table_map_data_transform_create_columns_operation.dart';

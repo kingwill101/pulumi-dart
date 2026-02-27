@@ -1,0 +1,22 @@
+library module_route53domains;
+
+export 'route53domains/delegation_signer_record.dart';
+export 'route53domains/delegation_signer_record_signing_attributes.dart';
+export 'route53domains/delegation_signer_record_timeouts.dart';
+export 'route53domains/domain.dart';
+export 'route53domains/domain_admin_contact.dart';
+export 'route53domains/domain_admin_contact_extra_param.dart';
+export 'route53domains/domain_billing_contact.dart';
+export 'route53domains/domain_billing_contact_extra_param.dart';
+export 'route53domains/domain_name_server.dart';
+export 'route53domains/domain_registrant_contact.dart';
+export 'route53domains/domain_registrant_contact_extra_param.dart';
+export 'route53domains/domain_tech_contact.dart';
+export 'route53domains/domain_tech_contact_extra_param.dart';
+export 'route53domains/domain_timeouts.dart';
+export 'route53domains/registered_domain.dart';
+export 'route53domains/registered_domain_admin_contact.dart';
+export 'route53domains/registered_domain_billing_contact.dart';
+export 'route53domains/registered_domain_name_server.dart';
+export 'route53domains/registered_domain_registrant_contact.dart';
+export 'route53domains/registered_domain_tech_contact.dart';

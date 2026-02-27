@@ -1,0 +1,3 @@
+library module_ec2_encryption_control_resource_exclusions;
+
+export 'encryption_control_resource_exclusions/encryption_control_resource_exclusions.dart';

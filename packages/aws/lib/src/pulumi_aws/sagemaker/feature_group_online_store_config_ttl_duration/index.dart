@@ -1,3 +1,0 @@
-library module_sagemaker_feature_group_online_store_config_ttl_duration;
-
-export 'feature_group_online_store_config_ttl_duration.dart';

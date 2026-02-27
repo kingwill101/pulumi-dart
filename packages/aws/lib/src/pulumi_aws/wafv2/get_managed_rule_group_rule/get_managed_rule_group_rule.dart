@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../get_managed_rule_group_rule_action/get_managed_rule_group_rule_action.dart';
 
 class GetManagedRuleGroupRule {
-  /// Action taken on a web request when it matches a rule's statement. See <span pulumi-lang-nodejs="`actionToUse`" pulumi-lang-dotnet="`ActionToUse`" pulumi-lang-go="`actionToUse`" pulumi-lang-python="`action_to_use`" pulumi-lang-yaml="`actionToUse`" pulumi-lang-java="`actionToUse`">`action_to_use`</span> for details.
+  /// Action taken on a web request when it matches a rule's statement. See `action_to_use` for details.
   final List<GetManagedRuleGroupRuleAction> actions;
 
   /// Managed rule group name.

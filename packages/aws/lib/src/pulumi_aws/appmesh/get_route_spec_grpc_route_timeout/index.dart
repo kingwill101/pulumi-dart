@@ -1,3 +1,0 @@
-library module_appmesh_get_route_spec_grpc_route_timeout;
-
-export 'get_route_spec_grpc_route_timeout.dart';

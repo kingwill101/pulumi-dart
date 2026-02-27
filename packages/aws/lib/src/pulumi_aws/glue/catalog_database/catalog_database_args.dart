@@ -10,14 +10,14 @@ class CatalogDatabaseArgs {
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
   final Input<String>? catalogId;
 
-  /// Creates a set of default permissions on the table for principals. See <span pulumi-lang-nodejs="`createTableDefaultPermission`" pulumi-lang-dotnet="`CreateTableDefaultPermission`" pulumi-lang-go="`createTableDefaultPermission`" pulumi-lang-python="`create_table_default_permission`" pulumi-lang-yaml="`createTableDefaultPermission`" pulumi-lang-java="`createTableDefaultPermission`">`create_table_default_permission`</span> below.
+  /// Creates a set of default permissions on the table for principals. See `create_table_default_permission` below.
   final Input<List<CatalogDatabaseCreateTableDefaultPermission>>?
       createTableDefaultPermissions;
 
   /// Description of the database.
   final Input<String>? description;
 
-  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See <span pulumi-lang-nodejs="`federatedDatabase`" pulumi-lang-dotnet="`FederatedDatabase`" pulumi-lang-go="`federatedDatabase`" pulumi-lang-python="`federated_database`" pulumi-lang-yaml="`federatedDatabase`" pulumi-lang-java="`federatedDatabase`">`federated_database`</span> below.
+  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federated_database` below.
   final Input<CatalogDatabaseFederatedDatabase>? federatedDatabase;
 
   /// Location of the database (for example, an HDFS path).
@@ -32,10 +32,10 @@ class CatalogDatabaseArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Configuration block for a target database for resource linking. See <span pulumi-lang-nodejs="`targetDatabase`" pulumi-lang-dotnet="`TargetDatabase`" pulumi-lang-go="`targetDatabase`" pulumi-lang-python="`target_database`" pulumi-lang-yaml="`targetDatabase`" pulumi-lang-java="`targetDatabase`">`target_database`</span> below.
+  /// Configuration block for a target database for resource linking. See `target_database` below.
   final Input<CatalogDatabaseTargetDatabase>? targetDatabase;
 
   CatalogDatabaseArgs({

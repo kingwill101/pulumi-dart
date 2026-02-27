@@ -1,0 +1,3 @@
+library module_inspector2_filter_filter_criteria_vendor_severity;
+
+export 'filter_filter_criteria_vendor_severity/filter_filter_criteria_vendor_severity.dart';

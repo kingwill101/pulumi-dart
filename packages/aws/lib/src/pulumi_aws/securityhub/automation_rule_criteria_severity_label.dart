@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_criteria_severity_label;
+
+export 'automation_rule_criteria_severity_label/automation_rule_criteria_severity_label.dart';

@@ -4,16 +4,16 @@ class FleetComputeConfiguration {
   /// Amount of disk space of the instance type included in the fleet.
   final int? disk;
 
-  /// EC2 instance type to be launched in the fleet. Specify only if <span pulumi-lang-nodejs="`computeType`" pulumi-lang-dotnet="`ComputeType`" pulumi-lang-go="`computeType`" pulumi-lang-python="`compute_type`" pulumi-lang-yaml="`computeType`" pulumi-lang-java="`computeType`">`compute_type`</span> is set to `CUSTOM_INSTANCE_TYPE`. See [Supported instance families](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types).
+  /// EC2 instance type to be launched in the fleet. Specify only if `compute_type` is set to `CUSTOM_INSTANCE_TYPE`. See [Supported instance families](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.instance-types).
   final String? instanceType;
 
-  /// Machine type of the instance type included in the fleet. Valid values: `GENERAL`, `NVME`. Specify only if <span pulumi-lang-nodejs="`computeType`" pulumi-lang-dotnet="`ComputeType`" pulumi-lang-go="`computeType`" pulumi-lang-python="`compute_type`" pulumi-lang-yaml="`computeType`" pulumi-lang-java="`computeType`">`compute_type`</span> is set to `ATTRIBUTE_BASED_COMPUTE`.
+  /// Machine type of the instance type included in the fleet. Valid values: `GENERAL`, `NVME`. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   final String? machineType;
 
-  /// Amount of memory of the instance type included in the fleet. Specify only if <span pulumi-lang-nodejs="`computeType`" pulumi-lang-dotnet="`ComputeType`" pulumi-lang-go="`computeType`" pulumi-lang-python="`compute_type`" pulumi-lang-yaml="`computeType`" pulumi-lang-java="`computeType`">`compute_type`</span> is set to `ATTRIBUTE_BASED_COMPUTE`.
+  /// Amount of memory of the instance type included in the fleet. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   final int? memory;
 
-  /// Number of vCPUs of the instance type included in the fleet. Specify only if <span pulumi-lang-nodejs="`computeType`" pulumi-lang-dotnet="`ComputeType`" pulumi-lang-go="`computeType`" pulumi-lang-python="`compute_type`" pulumi-lang-yaml="`computeType`" pulumi-lang-java="`computeType`">`compute_type`</span> is set to `ATTRIBUTE_BASED_COMPUTE`.
+  /// Number of vCPUs of the instance type included in the fleet. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   final int? vcpu;
 
   FleetComputeConfiguration({

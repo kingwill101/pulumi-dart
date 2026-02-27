@@ -1,0 +1,3 @@
+library module_appmesh_get_gateway_route_spec_http2_route_match_hostname;
+
+export 'get_gateway_route_spec_http2_route_match_hostname/get_gateway_route_spec_http2_route_match_hostname.dart';

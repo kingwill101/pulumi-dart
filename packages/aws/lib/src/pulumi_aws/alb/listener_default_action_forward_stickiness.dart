@@ -1,0 +1,3 @@
+library module_alb_listener_default_action_forward_stickiness;
+
+export 'listener_default_action_forward_stickiness/listener_default_action_forward_stickiness.dart';

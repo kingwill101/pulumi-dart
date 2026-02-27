@@ -1,4 +1,0 @@
-library module_lightsail_lb_certificate_attachment;
-
-export 'lb_certificate_attachment.dart';
-export 'lb_certificate_attachment_args.dart';

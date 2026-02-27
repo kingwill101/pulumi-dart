@@ -4,7 +4,7 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
   /// string value
   final String? key;
 
-  /// Valid values include: <span pulumi-lang-nodejs="`equals`" pulumi-lang-dotnet="`Equals`" pulumi-lang-go="`equals`" pulumi-lang-python="`equals`" pulumi-lang-yaml="`equals`" pulumi-lang-java="`equals`">`equals`</span>, `not-equals`, <span pulumi-lang-nodejs="`contains`" pulumi-lang-dotnet="`Contains`" pulumi-lang-go="`contains`" pulumi-lang-python="`contains`" pulumi-lang-yaml="`contains`" pulumi-lang-java="`contains`">`contains`</span>, `begins-with`.
+  /// Valid values include: `equals`, `not-equals`, `contains`, `begins-with`.
   final String? operator;
 
   /// Must be `routing-policy-label`.

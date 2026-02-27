@@ -10,7 +10,7 @@ class RecordGeoproximityRoutingPolicy {
   /// Route more traffic or less traffic to the resource by specifying a value ranges between -90 to 90. See https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geoproximity.html for bias details.
   final int? bias;
 
-  /// Specify <span pulumi-lang-nodejs="`latitude`" pulumi-lang-dotnet="`Latitude`" pulumi-lang-go="`latitude`" pulumi-lang-python="`latitude`" pulumi-lang-yaml="`latitude`" pulumi-lang-java="`latitude`">`latitude`</span> and <span pulumi-lang-nodejs="`longitude`" pulumi-lang-dotnet="`Longitude`" pulumi-lang-go="`longitude`" pulumi-lang-python="`longitude`" pulumi-lang-yaml="`longitude`" pulumi-lang-java="`longitude`">`longitude`</span> for routing traffic to non-AWS resources.
+  /// Specify `latitude` and `longitude` for routing traffic to non-AWS resources.
   final List<RecordGeoproximityRoutingPolicyCoordinate>? coordinates;
 
   /// A AWS local zone group where the resource is present. See https://docs.aws.amazon.com/local-zones/latest/ug/available-local-zones.html for local zone group list.

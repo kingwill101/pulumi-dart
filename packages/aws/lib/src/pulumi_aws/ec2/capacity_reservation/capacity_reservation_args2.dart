@@ -13,7 +13,7 @@ class CapacityReservationArgs2 {
   /// The date and time at which the Capacity Reservation expires. When a Capacity Reservation expires, the reserved capacity is released and you can no longer launch instances into it. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   final Input<String>? endDate;
 
-  /// Indicates the way in which the Capacity Reservation ends. Specify either <span pulumi-lang-nodejs="`unlimited`" pulumi-lang-dotnet="`Unlimited`" pulumi-lang-go="`unlimited`" pulumi-lang-python="`unlimited`" pulumi-lang-yaml="`unlimited`" pulumi-lang-java="`unlimited`">`unlimited`</span> or <span pulumi-lang-nodejs="`limited`" pulumi-lang-dotnet="`Limited`" pulumi-lang-go="`limited`" pulumi-lang-python="`limited`" pulumi-lang-yaml="`limited`" pulumi-lang-java="`limited`">`limited`</span>.
+  /// Indicates the way in which the Capacity Reservation ends. Specify either `unlimited` or `limited`.
   final Input<String>? endDateType;
 
   /// Indicates whether the Capacity Reservation supports instances with temporary, block-level storage.
@@ -22,7 +22,7 @@ class CapacityReservationArgs2 {
   /// The number of instances for which to reserve capacity.
   final Input<int> instanceCount;
 
-  /// Indicates the type of instance launches that the Capacity Reservation accepts. Specify either <span pulumi-lang-nodejs="`open`" pulumi-lang-dotnet="`Open`" pulumi-lang-go="`open`" pulumi-lang-python="`open`" pulumi-lang-yaml="`open`" pulumi-lang-java="`open`">`open`</span> or <span pulumi-lang-nodejs="`targeted`" pulumi-lang-dotnet="`Targeted`" pulumi-lang-go="`targeted`" pulumi-lang-python="`targeted`" pulumi-lang-yaml="`targeted`" pulumi-lang-java="`targeted`">`targeted`</span>.
+  /// Indicates the type of instance launches that the Capacity Reservation accepts. Specify either `open` or `targeted`.
   final Input<String>? instanceMatchCriteria;
 
   /// The type of operating system for which to reserve capacity. Valid options are `Linux/UNIX`, `Red Hat Enterprise Linux`, `SUSE Linux`, `Windows`, `Windows with SQL Server`, `Windows with SQL Server Enterprise`, `Windows with SQL Server Standard` or `Windows with SQL Server Web`.
@@ -40,10 +40,10 @@ class CapacityReservationArgs2 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Indicates the tenancy of the Capacity Reservation. Specify either <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> or <span pulumi-lang-nodejs="`dedicated`" pulumi-lang-dotnet="`Dedicated`" pulumi-lang-go="`dedicated`" pulumi-lang-python="`dedicated`" pulumi-lang-yaml="`dedicated`" pulumi-lang-java="`dedicated`">`dedicated`</span>.
+  /// Indicates the tenancy of the Capacity Reservation. Specify either `default` or `dedicated`.
   final Input<String>? tenancy;
 
   CapacityReservationArgs2({

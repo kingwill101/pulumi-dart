@@ -1,0 +1,3 @@
+library module_docdb_global_cluster_global_cluster_member;
+
+export 'global_cluster_global_cluster_member/global_cluster_global_cluster_member.dart';

@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_s3;
+
+export 'data_source_parameters_s3/data_source_parameters_s3.dart';

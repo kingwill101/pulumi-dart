@@ -7,7 +7,7 @@ class ImagePipelineImageScanningConfiguration {
   final ImagePipelineImageScanningConfigurationEcrConfiguration?
       ecrConfiguration;
 
-  /// Whether image scans are enabled. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether image scans are enabled. Defaults to `false`.
   final bool? imageScanningEnabled;
 
   ImagePipelineImageScanningConfiguration({

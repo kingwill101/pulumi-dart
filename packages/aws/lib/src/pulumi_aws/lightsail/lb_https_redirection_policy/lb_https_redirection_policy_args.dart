@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for LbHttpsRedirectionPolicy.
 class LbHttpsRedirectionPolicyArgs {
-  /// Whether to enable HTTP to HTTPS redirection. <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to activate HTTP to HTTPS redirection or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> to deactivate HTTP to HTTPS redirection.
+  /// Whether to enable HTTP to HTTPS redirection. `true` to activate HTTP to HTTPS redirection or `false` to deactivate HTTP to HTTPS redirection.
   final Input<bool> enabled;
 
   /// Name of the load balancer to which you want to enable HTTP to HTTPS redirection.

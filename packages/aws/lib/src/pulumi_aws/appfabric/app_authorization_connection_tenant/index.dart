@@ -1,3 +1,0 @@
-library module_appfabric_app_authorization_connection_tenant;
-
-export 'app_authorization_connection_tenant.dart';

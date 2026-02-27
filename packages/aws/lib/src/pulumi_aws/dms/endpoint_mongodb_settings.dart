@@ -1,0 +1,3 @@
+library module_dms_endpoint_mongodb_settings;
+
+export 'endpoint_mongodb_settings/endpoint_mongodb_settings.dart';

@@ -6,7 +6,7 @@ import '../workspace_vpc_configuration/workspace_vpc_configuration.dart';
 
 /// The set of arguments for Workspace.
 class WorkspaceArgs2 {
-  /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then <span pulumi-lang-nodejs="`organizationalUnits`" pulumi-lang-dotnet="`OrganizationalUnits`" pulumi-lang-go="`organizationalUnits`" pulumi-lang-python="`organizational_units`" pulumi-lang-yaml="`organizationalUnits`" pulumi-lang-java="`organizationalUnits`">`organizational_units`</span> must also be present.
+  /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizational_units` must also be present.
   final Input<String> accountAccessType;
 
   /// The authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
@@ -53,7 +53,7 @@ class WorkspaceArgs2 {
   /// The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
   final Input<String>? stackSetName;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final Input<Map<String, String>>? tags;
 
   /// The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to. See VPC Configuration below.

@@ -1,0 +1,3 @@
+library module_resourcegroupstaggingapi_get_resources_tag_filter;
+
+export 'get_resources_tag_filter/get_resources_tag_filter.dart';

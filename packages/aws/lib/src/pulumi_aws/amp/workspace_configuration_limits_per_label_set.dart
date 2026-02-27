@@ -1,0 +1,3 @@
+library module_amp_workspace_configuration_limits_per_label_set;
+
+export 'workspace_configuration_limits_per_label_set/workspace_configuration_limits_per_label_set.dart';

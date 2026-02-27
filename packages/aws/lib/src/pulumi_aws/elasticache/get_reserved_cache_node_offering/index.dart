@@ -1,5 +1,0 @@
-library module_elasticache_get_reserved_cache_node_offering;
-
-export 'get_reserved_cache_node_offering.dart';
-export 'get_reserved_cache_node_offering_args.dart';
-export 'get_reserved_cache_node_offering_result.dart';

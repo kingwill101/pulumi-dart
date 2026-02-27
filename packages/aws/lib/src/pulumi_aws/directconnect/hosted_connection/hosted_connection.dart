@@ -2,120 +2,6 @@ import 'package:pulumi/pulumi.dart';
 import 'hosted_connection_args.dart';
 
 /// Provides a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects. Intended for use by AWS Direct Connect Partners only.
-///
-/// ## Example Usage
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const hosted = new aws.directconnect.HostedConnection("hosted", {
-/// connectionId: "dxcon-ffabc123",
-/// bandwidth: "100Mbps",
-/// name: "tf-dx-hosted-connection",
-/// ownerAccountId: "123456789012",
-/// vlan: 1,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// hosted = aws.directconnect.HostedConnection("hosted",
-/// connection_id="dxcon-ffabc123",
-/// bandwidth="100Mbps",
-/// name="tf-dx-hosted-connection",
-/// owner_account_id="123456789012",
-/// vlan=1)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var hosted = new Aws.DirectConnect.HostedConnection("hosted", new()
-/// {
-/// ConnectionId = "dxcon-ffabc123",
-/// Bandwidth = "100Mbps",
-/// Name = "tf-dx-hosted-connection",
-/// OwnerAccountId = "123456789012",
-/// Vlan = 1,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/directconnect"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := directconnect.NewHostedConnection(ctx, "hosted", &directconnect.HostedConnectionArgs{
-/// ConnectionId:   pulumi.String("dxcon-ffabc123"),
-/// Bandwidth:      pulumi.String("100Mbps"),
-/// Name:           pulumi.String("tf-dx-hosted-connection"),
-/// OwnerAccountId: pulumi.String("123456789012"),
-/// Vlan:           pulumi.Int(1),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.directconnect.HostedConnection;
-/// import com.pulumi.aws.directconnect.HostedConnectionArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var hosted = new HostedConnection("hosted", HostedConnectionArgs.builder()
-/// .connectionId("dxcon-ffabc123")
-/// .bandwidth("100Mbps")
-/// .name("tf-dx-hosted-connection")
-/// .ownerAccountId("123456789012")
-/// .vlan(1)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// hosted:
-/// type: aws:directconnect:HostedConnection
-/// properties:
-/// connectionId: dxcon-ffabc123
-/// bandwidth: 100Mbps
-/// name: tf-dx-hosted-connection
-/// ownerAccountId: '123456789012'
-/// vlan: 1
-/// ```
-/// <!--End PulumiCodeChooser -->
 class HostedConnection extends CustomResource {
   /// The Direct Connect endpoint on which the physical connection terminates.
   late final Output<String> awsDevice;
@@ -156,7 +42,7 @@ class HostedConnection extends CustomResource {
   /// The name of the service provider associated with the connection.
   late final Output<String> providerName;
 
-  /// (**Deprecated**) The AWS Region where the connection is located. Use <span pulumi-lang-nodejs="`connectionRegion`" pulumi-lang-dotnet="`ConnectionRegion`" pulumi-lang-go="`connectionRegion`" pulumi-lang-python="`connection_region`" pulumi-lang-yaml="`connectionRegion`" pulumi-lang-java="`connectionRegion`">`connection_region`</span> instead.
+  /// (**Deprecated**) The AWS Region where the connection is located. Use `connection_region` instead.
   late final Output<String> region;
 
   /// The state of the connection. Possible values include: ordering, requested, pending, available, down, deleting, deleted, rejected, unknown. See [AllocateHostedConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_AllocateHostedConnection.html) for a description of each connection state.

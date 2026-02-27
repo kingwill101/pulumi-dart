@@ -1,3 +1,0 @@
-library module_bedrock_agent_prompt_variant_template_configuration_chat_system_cache_point;
-
-export 'agent_prompt_variant_template_configuration_chat_system_cache_point.dart';

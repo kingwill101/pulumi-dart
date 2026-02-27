@@ -3,10 +3,10 @@
 class UserAuthenticationMode {
   final int? passwordCount;
 
-  /// Specifies the passwords to use for authentication if <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is set to <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span>.
+  /// Specifies the passwords to use for authentication if `type` is set to `password`.
   final List<String>? passwords;
 
-  /// Specifies the authentication type. Possible options are: <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span>, `no-password-required` or <span pulumi-lang-nodejs="`iam`" pulumi-lang-dotnet="`Iam`" pulumi-lang-go="`iam`" pulumi-lang-python="`iam`" pulumi-lang-yaml="`iam`" pulumi-lang-java="`iam`">`iam`</span>.
+  /// Specifies the authentication type. Possible options are: `password`, `no-password-required` or `iam`.
   final String type;
 
   UserAuthenticationMode({

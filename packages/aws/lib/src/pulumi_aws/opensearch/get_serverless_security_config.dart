@@ -1,0 +1,5 @@
+library module_opensearch_get_serverless_security_config;
+
+export 'get_serverless_security_config/get_serverless_security_config.dart';
+export 'get_serverless_security_config/get_serverless_security_config_args.dart';
+export 'get_serverless_security_config/get_serverless_security_config_result.dart';

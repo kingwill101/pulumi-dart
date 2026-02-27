@@ -1,3 +1,0 @@
-library module_cognito_log_delivery_configuration_log_configuration_firehose_configuration;
-
-export 'log_delivery_configuration_log_configuration_firehose_configuration.dart';

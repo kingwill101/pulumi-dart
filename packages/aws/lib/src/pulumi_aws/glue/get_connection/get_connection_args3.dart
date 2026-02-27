@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getConnection.
 class GetConnectionArgs3 {
   /// Concatenation of the catalog ID and connection name. For example, if your account ID is
-  /// <span pulumi-lang-nodejs="`123456789123`" pulumi-lang-dotnet="`123456789123`" pulumi-lang-go="`123456789123`" pulumi-lang-python="`123456789123`" pulumi-lang-yaml="`123456789123`" pulumi-lang-java="`123456789123`">`123456789123`</span> and the connection name is <span pulumi-lang-nodejs="`conn`" pulumi-lang-dotnet="`Conn`" pulumi-lang-go="`conn`" pulumi-lang-python="`conn`" pulumi-lang-yaml="`conn`" pulumi-lang-java="`conn`">`conn`</span> then the ID is `123456789123:conn`.
+  /// `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
   final Input<String> id;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -7,13 +7,13 @@ class RecordsExclusiveResourceRecordSetGeoproximityLocation {
   final String? awsRegion;
 
   /// Increases or decreases the size of the geographic region from which Route 53 routes traffic to a resource.
-  /// To expand the size of the geographic region from which Route 53 routes traffic to a resource, specify a positive integer from <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> to <span pulumi-lang-nodejs="`99`" pulumi-lang-dotnet="`99`" pulumi-lang-go="`99`" pulumi-lang-python="`99`" pulumi-lang-yaml="`99`" pulumi-lang-java="`99`">`99`</span>.
+  /// To expand the size of the geographic region from which Route 53 routes traffic to a resource, specify a positive integer from `1` to `99`.
   /// To shrink the size of the geographic region from which Route 53 routes traffic to a resource, specify a negative bias of `-1` to `-99`.
   /// See the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geoproximity.html) for additional details.
   final int? bias;
 
   /// Coordinates for a geoproximity resource record.
-  /// See <span pulumi-lang-nodejs="`coordinates`" pulumi-lang-dotnet="`Coordinates`" pulumi-lang-go="`coordinates`" pulumi-lang-python="`coordinates`" pulumi-lang-yaml="`coordinates`" pulumi-lang-java="`coordinates`">`coordinates`</span> below.
+  /// See `coordinates` below.
   final RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates?
       coordinates;
 

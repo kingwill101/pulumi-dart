@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_tenant_managed_certificate_request;
+
+export 'distribution_tenant_managed_certificate_request/distribution_tenant_managed_certificate_request.dart';

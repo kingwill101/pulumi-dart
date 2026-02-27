@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class AccessPointRootDirectoryCreationInfo {
-  /// POSIX group ID to apply to the <span pulumi-lang-nodejs="`rootDirectory`" pulumi-lang-dotnet="`RootDirectory`" pulumi-lang-go="`rootDirectory`" pulumi-lang-python="`root_directory`" pulumi-lang-yaml="`rootDirectory`" pulumi-lang-java="`rootDirectory`">`root_directory`</span>.
+  /// POSIX group ID to apply to the `root_directory`.
   final int ownerGid;
 
-  /// POSIX user ID to apply to the <span pulumi-lang-nodejs="`rootDirectory`" pulumi-lang-dotnet="`RootDirectory`" pulumi-lang-go="`rootDirectory`" pulumi-lang-python="`root_directory`" pulumi-lang-yaml="`rootDirectory`" pulumi-lang-java="`rootDirectory`">`root_directory`</span>.
+  /// POSIX user ID to apply to the `root_directory`.
   final int ownerUid;
 
   /// POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PlanWorkflowStepCustomActionLambdaConfigUngraceful {
-  /// Behavior when ungraceful. Valid values: <span pulumi-lang-nodejs="`skip`" pulumi-lang-dotnet="`Skip`" pulumi-lang-go="`skip`" pulumi-lang-python="`skip`" pulumi-lang-yaml="`skip`" pulumi-lang-java="`skip`">`skip`</span>.
+  /// Behavior when ungraceful. Valid values: `skip`.
   final String behavior;
 
   PlanWorkflowStepCustomActionLambdaConfigUngraceful({

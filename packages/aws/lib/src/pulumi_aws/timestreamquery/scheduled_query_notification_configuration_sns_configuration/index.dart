@@ -1,3 +1,0 @@
-library module_timestreamquery_scheduled_query_notification_configuration_sns_configuration;
-
-export 'scheduled_query_notification_configuration_sns_configuration.dart';

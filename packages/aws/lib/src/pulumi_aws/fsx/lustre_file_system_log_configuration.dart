@@ -1,0 +1,3 @@
+library module_fsx_lustre_file_system_log_configuration;
+
+export 'lustre_file_system_log_configuration/lustre_file_system_log_configuration.dart';

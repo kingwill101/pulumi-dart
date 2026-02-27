@@ -4,10 +4,10 @@ import '../cluster_open_monitoring_prometheus_jmx_exporter/cluster_open_monitori
 import '../cluster_open_monitoring_prometheus_node_exporter/cluster_open_monitoring_prometheus_node_exporter.dart';
 
 class ClusterOpenMonitoringPrometheus {
-  /// Configuration block for JMX Exporter. See<span pulumi-lang-nodejs=" openMonitoring " pulumi-lang-dotnet=" OpenMonitoring " pulumi-lang-go=" openMonitoring " pulumi-lang-python=" open_monitoring " pulumi-lang-yaml=" openMonitoring " pulumi-lang-java=" openMonitoring "> open_monitoring </span>prometheus<span pulumi-lang-nodejs=" jmxExporter " pulumi-lang-dotnet=" JmxExporter " pulumi-lang-go=" jmxExporter " pulumi-lang-python=" jmx_exporter " pulumi-lang-yaml=" jmxExporter " pulumi-lang-java=" jmxExporter "> jmx_exporter </span>Argument Reference below.
+  /// Configuration block for JMX Exporter. See open_monitoring prometheus jmx_exporter Argument Reference below.
   final ClusterOpenMonitoringPrometheusJmxExporter? jmxExporter;
 
-  /// Configuration block for Node Exporter. See<span pulumi-lang-nodejs=" openMonitoring " pulumi-lang-dotnet=" OpenMonitoring " pulumi-lang-go=" openMonitoring " pulumi-lang-python=" open_monitoring " pulumi-lang-yaml=" openMonitoring " pulumi-lang-java=" openMonitoring "> open_monitoring </span>prometheus<span pulumi-lang-nodejs=" nodeExporter " pulumi-lang-dotnet=" NodeExporter " pulumi-lang-go=" nodeExporter " pulumi-lang-python=" node_exporter " pulumi-lang-yaml=" nodeExporter " pulumi-lang-java=" nodeExporter "> node_exporter </span>Argument Reference below.
+  /// Configuration block for Node Exporter. See open_monitoring prometheus node_exporter Argument Reference below.
   final ClusterOpenMonitoringPrometheusNodeExporter? nodeExporter;
 
   ClusterOpenMonitoringPrometheus({

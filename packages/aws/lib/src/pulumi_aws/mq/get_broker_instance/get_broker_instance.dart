@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetBrokerInstance {
-  /// URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span>.
+  /// URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
   final String consoleUrl;
 
   /// Broker's wire-level protocol endpoints.

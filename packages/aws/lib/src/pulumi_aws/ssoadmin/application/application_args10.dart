@@ -22,7 +22,7 @@ class ApplicationArgs10 {
   /// The following arguments are optional:
   final Input<String>? name;
 
-  /// Options for the portal associated with an application. See <span pulumi-lang-nodejs="`portalOptions`" pulumi-lang-dotnet="`PortalOptions`" pulumi-lang-go="`portalOptions`" pulumi-lang-python="`portal_options`" pulumi-lang-yaml="`portalOptions`" pulumi-lang-java="`portalOptions`">`portal_options`</span> below.
+  /// Options for the portal associated with an application. See `portal_options` below.
   final Input<ApplicationPortalOptions>? portalOptions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -31,7 +31,7 @@ class ApplicationArgs10 {
   /// Status of the application. Valid values are `ENABLED` and `DISABLED`.
   final Input<String>? status;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ApplicationArgs10({

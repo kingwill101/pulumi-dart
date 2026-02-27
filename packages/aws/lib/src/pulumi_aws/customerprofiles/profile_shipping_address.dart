@@ -1,0 +1,3 @@
+library module_customerprofiles_profile_shipping_address;
+
+export 'profile_shipping_address/profile_shipping_address.dart';

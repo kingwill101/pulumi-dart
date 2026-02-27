@@ -1,0 +1,3 @@
+library module_appsync_data_source_elasticsearch_config;
+
+export 'data_source_elasticsearch_config/data_source_elasticsearch_config.dart';

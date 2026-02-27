@@ -6,12 +6,12 @@ import '../get_notification_channel_sn/get_notification_channel_sn.dart';
 
 /// Result data returned by getNotificationChannel.
 class GetNotificationChannelResult {
-  /// Filter configurations for the Amazon SNS notification topic. See the <span pulumi-lang-nodejs="`filters`" pulumi-lang-dotnet="`Filters`" pulumi-lang-go="`filters`" pulumi-lang-python="`filters`" pulumi-lang-yaml="`filters`" pulumi-lang-java="`filters`">`filters`</span> attribute reference below.
+  /// Filter configurations for the Amazon SNS notification topic. See the `filters` attribute reference below.
   final List<GetNotificationChannelFilter>? filters;
   final String id;
   final String region;
 
-  /// SNS noficiation channel configurations. See the <span pulumi-lang-nodejs="`sns`" pulumi-lang-dotnet="`Sns`" pulumi-lang-go="`sns`" pulumi-lang-python="`sns`" pulumi-lang-yaml="`sns`" pulumi-lang-java="`sns`">`sns`</span> attribute reference below.
+  /// SNS noficiation channel configurations. See the `sns` attribute reference below.
   final List<GetNotificationChannelSn>? sns;
 
   GetNotificationChannelResult({

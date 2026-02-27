@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_finding_provider_fields_confidence;
+
+export 'insight_filters_finding_provider_fields_confidence/insight_filters_finding_provider_fields_confidence.dart';

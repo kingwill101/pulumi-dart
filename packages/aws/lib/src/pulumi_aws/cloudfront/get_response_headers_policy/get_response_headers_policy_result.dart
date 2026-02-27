@@ -18,7 +18,7 @@ class GetResponseHeadersPolicyResult {
   /// Configuration for a set of HTTP response headers that are used for Cross-Origin Resource Sharing (CORS). See Cors Config for more information.
   final List<GetResponseHeadersPolicyCorsConfig> corsConfigs;
 
-  /// Object that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> that contains a list of Custom Headers. See Custom Header for more information.
+  /// Object that contains an attribute `items` that contains a list of Custom Headers. See Custom Header for more information.
   final List<GetResponseHeadersPolicyCustomHeadersConfig> customHeadersConfigs;
 
   /// Current version of the response headers policy.
@@ -26,7 +26,7 @@ class GetResponseHeadersPolicyResult {
   final String id;
   final String name;
 
-  /// Object that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> that contains a list of Remove Headers. See Remove Header for more information.
+  /// Object that contains an attribute `items` that contains a list of Remove Headers. See Remove Header for more information.
   final List<GetResponseHeadersPolicyRemoveHeadersConfig> removeHeadersConfigs;
 
   /// A configuration for a set of security-related HTTP response headers. See Security Headers Config for more information.

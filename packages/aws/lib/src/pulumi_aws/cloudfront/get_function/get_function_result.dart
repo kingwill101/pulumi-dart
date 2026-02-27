@@ -17,7 +17,7 @@ class GetFunctionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// List of <span pulumi-lang-nodejs="`aws.cloudfront.KeyValueStore`" pulumi-lang-dotnet="`aws.cloudfront.KeyValueStore`" pulumi-lang-go="`cloudfront.KeyValueStore`" pulumi-lang-python="`cloudfront.KeyValueStore`" pulumi-lang-yaml="`aws.cloudfront.KeyValueStore`" pulumi-lang-java="`aws.cloudfront.KeyValueStore`">`aws.cloudfront.KeyValueStore`</span> ARNs associated to the function.
+  /// List of `aws.cloudfront.KeyValueStore` ARNs associated to the function.
   final List<String> keyValueStoreAssociations;
 
   /// When this resource was last modified.

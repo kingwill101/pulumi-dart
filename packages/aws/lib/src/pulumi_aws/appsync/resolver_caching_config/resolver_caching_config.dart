@@ -4,7 +4,7 @@ class ResolverCachingConfig {
   /// The caching keys for a resolver that has caching activated. Valid values are entries from the $context.arguments, $context.source, and $context.identity maps.
   final List<String>? cachingKeys;
 
-  /// The TTL in seconds for a resolver that has caching activated. Valid values are between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span> seconds.
+  /// The TTL in seconds for a resolver that has caching activated. Valid values are between `1` and `3600` seconds.
   final int? ttl;
 
   ResolverCachingConfig({

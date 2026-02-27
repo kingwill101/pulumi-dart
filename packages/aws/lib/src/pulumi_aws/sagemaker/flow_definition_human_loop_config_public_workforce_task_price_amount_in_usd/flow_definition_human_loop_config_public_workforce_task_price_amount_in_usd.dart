@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd {
-  /// The fractional portion, in cents, of the amount. Valid value range between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`99`" pulumi-lang-dotnet="`99`" pulumi-lang-go="`99`" pulumi-lang-python="`99`" pulumi-lang-yaml="`99`" pulumi-lang-java="`99`">`99`</span>.
+  /// The fractional portion, in cents, of the amount. Valid value range between `0` and `99`.
   final int? cents;
 
-  /// The whole number of dollars in the amount. Valid value range between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span>.
+  /// The whole number of dollars in the amount. Valid value range between `0` and `2`.
   final int? dollars;
 
-  /// Fractions of a cent, in tenths. Valid value range between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`9`" pulumi-lang-dotnet="`9`" pulumi-lang-go="`9`" pulumi-lang-python="`9`" pulumi-lang-yaml="`9`" pulumi-lang-java="`9`">`9`</span>.
+  /// Fractions of a cent, in tenths. Valid value range between `0` and `9`.
   final int? tenthFractionsOfACent;
 
   FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd({

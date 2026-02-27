@@ -1,3 +1,0 @@
-library module_appmesh_virtual_router_spec_listener_port_mapping;
-
-export 'virtual_router_spec_listener_port_mapping.dart';

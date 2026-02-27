@@ -1,3 +1,0 @@
-library module_vpn_get_connection_vgw_telemetry;
-
-export 'get_connection_vgw_telemetry.dart';

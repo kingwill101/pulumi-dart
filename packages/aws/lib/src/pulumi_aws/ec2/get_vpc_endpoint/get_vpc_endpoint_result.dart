@@ -34,11 +34,11 @@ class GetVpcEndpointResult {
   /// Prefix list ID of the exposed AWS service. Applicable for endpoints of type `Gateway`.
   final String prefixListId;
 
-  /// Whether or not the VPC is associated with a private hosted zone - <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Applicable for endpoints of type `Interface`.
+  /// Whether or not the VPC is associated with a private hosted zone - `true` or `false`. Applicable for endpoints of type `Interface`.
   final bool privateDnsEnabled;
   final String region;
 
-  /// Whether or not the VPC Endpoint is being managed by its service - <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether or not the VPC Endpoint is being managed by its service - `true` or `false`.
   final bool requesterManaged;
 
   /// One or more route tables associated with the VPC Endpoint. Applicable for endpoints of type `Gateway`.

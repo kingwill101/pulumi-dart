@@ -1,3 +1,0 @@
-library module_s3_bucket_replication_config_rule_delete_marker_replication;
-
-export 'bucket_replication_config_rule_delete_marker_replication.dart';

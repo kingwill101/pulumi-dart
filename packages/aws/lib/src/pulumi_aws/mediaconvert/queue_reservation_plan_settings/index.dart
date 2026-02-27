@@ -1,3 +1,0 @@
-library module_mediaconvert_queue_reservation_plan_settings;
-
-export 'queue_reservation_plan_settings.dart';

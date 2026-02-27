@@ -19,13 +19,13 @@ class SchemaArgs {
   /// The ARN of the Glue Registry to create the schema in.
   final Input<String>? registryArn;
 
-  /// The schema definition using the <span pulumi-lang-nodejs="`dataFormat`" pulumi-lang-dotnet="`DataFormat`" pulumi-lang-go="`dataFormat`" pulumi-lang-python="`data_format`" pulumi-lang-yaml="`dataFormat`" pulumi-lang-java="`dataFormat`">`data_format`</span> setting for <span pulumi-lang-nodejs="`schemaName`" pulumi-lang-dotnet="`SchemaName`" pulumi-lang-go="`schemaName`" pulumi-lang-python="`schema_name`" pulumi-lang-yaml="`schemaName`" pulumi-lang-java="`schemaName`">`schema_name`</span>.
+  /// The schema definition using the `data_format` setting for `schema_name`.
   final Input<String> schemaDefinition;
 
   /// The Name of the schema.
   final Input<String> schemaName;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   SchemaArgs({

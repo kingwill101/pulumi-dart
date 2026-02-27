@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_sample_utterance;
-
-export 'v2models_intent_sample_utterance.dart';

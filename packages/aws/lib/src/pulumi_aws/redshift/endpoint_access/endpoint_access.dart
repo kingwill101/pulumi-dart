@@ -6,109 +6,11 @@ import 'endpoint_access_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.redshift.EndpointAccess("example", {
-/// endpointName: "example",
-/// subnetGroupName: exampleAwsRedshiftSubnetGroup.id,
-/// clusterIdentifier: exampleAwsRedshiftCluster.clusterIdentifier,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.redshift.EndpointAccess("example",
-/// endpoint_name="example",
-/// subnet_group_name=example_aws_redshift_subnet_group["id"],
-/// cluster_identifier=example_aws_redshift_cluster["clusterIdentifier"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.RedShift.EndpointAccess("example", new()
-/// {
-/// EndpointName = "example",
-/// SubnetGroupName = exampleAwsRedshiftSubnetGroup.Id,
-/// ClusterIdentifier = exampleAwsRedshiftCluster.ClusterIdentifier,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/redshift"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := redshift.NewEndpointAccess(ctx, "example", &redshift.EndpointAccessArgs{
-/// EndpointName:      pulumi.String("example"),
-/// SubnetGroupName:   pulumi.Any(exampleAwsRedshiftSubnetGroup.Id),
-/// ClusterIdentifier: pulumi.Any(exampleAwsRedshiftCluster.ClusterIdentifier),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.redshift.EndpointAccess;
-/// import com.pulumi.aws.redshift.EndpointAccessArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new EndpointAccess("example", EndpointAccessArgs.builder()
-/// .endpointName("example")
-/// .subnetGroupName(exampleAwsRedshiftSubnetGroup.id())
-/// .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:redshift:EndpointAccess
-/// properties:
-/// endpointName: example
-/// subnetGroupName: ${exampleAwsRedshiftSubnetGroup.id}
-/// clusterIdentifier: ${exampleAwsRedshiftCluster.clusterIdentifier}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Redshift endpoint access using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+/// Using `pulumi import`, import Redshift endpoint access using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:redshift/endpointAccess:EndpointAccess example example

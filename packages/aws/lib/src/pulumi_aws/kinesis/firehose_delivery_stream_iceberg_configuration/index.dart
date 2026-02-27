@@ -1,3 +1,0 @@
-library module_kinesis_firehose_delivery_stream_iceberg_configuration;
-
-export 'firehose_delivery_stream_iceberg_configuration.dart';

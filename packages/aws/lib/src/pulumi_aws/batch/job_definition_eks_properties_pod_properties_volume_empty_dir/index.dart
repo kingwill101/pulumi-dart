@@ -1,3 +1,0 @@
-library module_batch_job_definition_eks_properties_pod_properties_volume_empty_dir;
-
-export 'job_definition_eks_properties_pod_properties_volume_empty_dir.dart';

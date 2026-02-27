@@ -1,0 +1,3 @@
+library module_ecs_task_definition_proxy_configuration;
+
+export 'task_definition_proxy_configuration/task_definition_proxy_configuration.dart';

@@ -9,7 +9,7 @@ class NfsFileShareArgs {
   /// The Amazon Resource Name (ARN) of the storage used for audit logs.
   final Input<String>? auditDestinationArn;
 
-  /// The region of the S3 bucket used by the file share. Required when specifying <span pulumi-lang-nodejs="`vpcEndpointDnsName`" pulumi-lang-dotnet="`VpcEndpointDnsName`" pulumi-lang-go="`vpcEndpointDnsName`" pulumi-lang-python="`vpc_endpoint_dns_name`" pulumi-lang-yaml="`vpcEndpointDnsName`" pulumi-lang-java="`vpcEndpointDnsName`">`vpc_endpoint_dns_name`</span>.
+  /// The region of the S3 bucket used by the file share. Required when specifying `vpc_endpoint_dns_name`.
   final Input<String>? bucketRegion;
 
   /// Refresh cache information. see Cache Attributes for more details.
@@ -21,19 +21,19 @@ class NfsFileShareArgs {
   /// The default [storage class](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-DefaultStorageClass) for objects put into an Amazon S3 bucket by the file gateway. Defaults to `S3_STANDARD`.
   final Input<String>? defaultStorageClass;
 
-  /// The name of the file share. Must be set if an S3 prefix name is set in <span pulumi-lang-nodejs="`locationArn`" pulumi-lang-dotnet="`LocationArn`" pulumi-lang-go="`locationArn`" pulumi-lang-python="`location_arn`" pulumi-lang-yaml="`locationArn`" pulumi-lang-java="`locationArn`">`location_arn`</span>.
+  /// The name of the file share. Must be set if an S3 prefix name is set in `location_arn`.
   final Input<String>? fileShareName;
 
   /// Amazon Resource Name (ARN) of the file gateway.
   final Input<String> gatewayArn;
 
-  /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Boolean value that enables guessing of the MIME type for uploaded objects based on file extensions. Defaults to `true`.
   final Input<bool>? guessMimeTypeEnabled;
 
-  /// Boolean value if <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to use Amazon S3 server side encryption with your own AWS KMS key, or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> to use a key managed by Amazon S3. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean value if `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Defaults to `false`.
   final Input<bool>? kmsEncrypted;
 
-  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when <span pulumi-lang-nodejs="`kmsEncrypted`" pulumi-lang-dotnet="`KmsEncrypted`" pulumi-lang-go="`kmsEncrypted`" pulumi-lang-python="`kms_encrypted`" pulumi-lang-yaml="`kmsEncrypted`" pulumi-lang-java="`kmsEncrypted`">`kms_encrypted`</span> is true.
+  /// Amazon Resource Name (ARN) for KMS key used for Amazon S3 server side encryption. This value can only be set when `kms_encrypted` is true.
   final Input<String>? kmsKeyArn;
 
   /// The ARN of the backed storage used for storing file data.
@@ -45,16 +45,16 @@ class NfsFileShareArgs {
   /// The notification policy of the file share. For more information see the [AWS Documentation](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_CreateNFSFileShare.html#StorageGateway-CreateNFSFileShare-request-NotificationPolicy). Default value is `{}`.
   final Input<String>? notificationPolicy;
 
-  /// Access Control List permission for S3 objects. Defaults to <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>.
+  /// Access Control List permission for S3 objects. Defaults to `private`.
   final Input<String>? objectAcl;
 
-  /// Boolean to indicate write status of file share. File share does not accept writes if <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean to indicate write status of file share. File share does not accept writes if `true`. Defaults to `false`.
   final Input<bool>? readOnly;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if you want the requester to pay instead of the bucket owner. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to `true` if you want the requester to pay instead of the bucket owner. Defaults to `false`.
   final Input<bool>? requesterPays;
 
   /// The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage.
@@ -63,7 +63,7 @@ class NfsFileShareArgs {
   /// Maps a user to anonymous user. Defaults to `RootSquash`. Valid values: `RootSquash` (only root is mapped to anonymous user), `NoSquash` (no one is mapped to anonymous user), `AllSquash` (everyone is mapped to anonymous user)
   final Input<String>? squash;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The DNS name of the VPC endpoint for S3 PrivateLink.

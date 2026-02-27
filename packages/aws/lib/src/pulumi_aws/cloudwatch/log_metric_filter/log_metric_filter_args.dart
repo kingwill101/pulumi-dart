@@ -5,7 +5,7 @@ import '../log_metric_filter_metric_transformation/log_metric_filter_metric_tran
 
 /// The set of arguments for LogMetricFilter.
 class LogMetricFilterArgs {
-  /// Whether the metric filter will be applied on the transformed version of the log events instead of the original ingested log events. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Valid only for log groups that have an active log transformer.
+  /// Whether the metric filter will be applied on the transformed version of the log events instead of the original ingested log events. Defaults to `false`. Valid only for log groups that have an active log transformer.
   final Input<bool>? applyOnTransformedLogs;
 
   /// The name of the log group to associate the metric filter with.

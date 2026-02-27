@@ -5,13 +5,13 @@ import '../data_protection_settings_inline_redaction_configuration_inline_redact
 import '../data_protection_settings_inline_redaction_configuration_inline_redaction_pattern_redaction_place_holder/data_protection_settings_inline_redaction_configuration_inline_redaction_pattern_redaction_place_holder.dart';
 
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
-  /// The built-in pattern from the list of preconfigured patterns. Either a <span pulumi-lang-nodejs="`customPattern`" pulumi-lang-dotnet="`CustomPattern`" pulumi-lang-go="`customPattern`" pulumi-lang-python="`custom_pattern`" pulumi-lang-yaml="`customPattern`" pulumi-lang-java="`customPattern`">`custom_pattern`</span> or <span pulumi-lang-nodejs="`builtInPatternId`" pulumi-lang-dotnet="`BuiltInPatternId`" pulumi-lang-go="`builtInPatternId`" pulumi-lang-python="`built_in_pattern_id`" pulumi-lang-yaml="`builtInPatternId`" pulumi-lang-java="`builtInPatternId`">`built_in_pattern_id`</span> is required.
+  /// The built-in pattern from the list of preconfigured patterns. Either a `custom_pattern` or `built_in_pattern_id` is required.
   final String? builtInPatternId;
 
   /// The confidence level for inline redaction pattern. This indicates the certainty of data type matches in the redaction process. Values range from 1 (low confidence) to 3 (high confidence).
   final int? confidenceLevel;
 
-  /// The configuration for a custom pattern. Either a <span pulumi-lang-nodejs="`customPattern`" pulumi-lang-dotnet="`CustomPattern`" pulumi-lang-go="`customPattern`" pulumi-lang-python="`custom_pattern`" pulumi-lang-yaml="`customPattern`" pulumi-lang-java="`customPattern`">`custom_pattern`</span> or <span pulumi-lang-nodejs="`builtInPatternId`" pulumi-lang-dotnet="`BuiltInPatternId`" pulumi-lang-go="`builtInPatternId`" pulumi-lang-python="`built_in_pattern_id`" pulumi-lang-yaml="`builtInPatternId`" pulumi-lang-java="`builtInPatternId`">`built_in_pattern_id`</span> is required. Detailed below.
+  /// The configuration for a custom pattern. Either a `custom_pattern` or `built_in_pattern_id` is required. Detailed below.
   final DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern?
       customPattern;
 

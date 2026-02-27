@@ -1,3 +1,0 @@
-library module_securitylake_data_lake_configuration_lifecycle_configuration_transition;
-
-export 'data_lake_configuration_lifecycle_configuration_transition.dart';

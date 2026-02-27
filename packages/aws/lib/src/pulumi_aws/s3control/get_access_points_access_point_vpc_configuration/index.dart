@@ -1,3 +1,0 @@
-library module_s3control_get_access_points_access_point_vpc_configuration;
-
-export 'get_access_points_access_point_vpc_configuration.dart';

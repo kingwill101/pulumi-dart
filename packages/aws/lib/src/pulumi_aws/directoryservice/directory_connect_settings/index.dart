@@ -1,3 +1,0 @@
-library module_directoryservice_directory_connect_settings;
-
-export 'directory_connect_settings.dart';

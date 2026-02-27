@@ -1,5 +1,0 @@
-library module_route53_get_resolver_firewall_rule_group_association;
-
-export 'get_resolver_firewall_rule_group_association.dart';
-export 'get_resolver_firewall_rule_group_association_args.dart';
-export 'get_resolver_firewall_rule_group_association_result.dart';

@@ -1,0 +1,3 @@
+library module_servicequotas_get_service_quota_usage_metric_metric_dimension;
+
+export 'get_service_quota_usage_metric_metric_dimension/get_service_quota_usage_metric_metric_dimension.dart';

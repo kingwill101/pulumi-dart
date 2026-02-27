@@ -16,7 +16,7 @@ class GetConnectionResult {
   /// Name of the CodeStar Connection. The name is unique in the calling AWS account.
   final String name;
 
-  /// Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an<span pulumi-lang-nodejs=" aws.codestarconnections.Host " pulumi-lang-dotnet=" aws.codestarconnections.Host " pulumi-lang-go=" codestarconnections.Host " pulumi-lang-python=" codestarconnections.Host " pulumi-lang-yaml=" aws.codestarconnections.Host " pulumi-lang-java=" aws.codestarconnections.Host "> aws.codestarconnections.Host </span>resource and use <span pulumi-lang-nodejs="`hostArn`" pulumi-lang-dotnet="`HostArn`" pulumi-lang-go="`hostArn`" pulumi-lang-python="`host_arn`" pulumi-lang-yaml="`hostArn`" pulumi-lang-java="`hostArn`">`host_arn`</span> instead.
+  /// Name of the external provider where your third-party code repository is configured. Possible values are `Bitbucket`, `GitHub` and `GitLab`. For connections to GitHub Enterprise Server or GitLab Self-Managed instances, you must create an aws.codestarconnections.Host resource and use `host_arn` instead.
   final String providerType;
   final String region;
 

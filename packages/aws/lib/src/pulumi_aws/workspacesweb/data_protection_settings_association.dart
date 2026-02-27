@@ -1,0 +1,4 @@
+library module_workspacesweb_data_protection_settings_association;
+
+export 'data_protection_settings_association/data_protection_settings_association.dart';
+export 'data_protection_settings_association/data_protection_settings_association_args.dart';

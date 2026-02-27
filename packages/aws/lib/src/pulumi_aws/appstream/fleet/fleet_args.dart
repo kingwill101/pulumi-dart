@@ -31,7 +31,7 @@ class FleetArgs {
   /// ARN of the IAM role to apply to the fleet.
   final Input<String>? iamRoleArn;
 
-  /// Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the <span pulumi-lang-nodejs="`disconnectTimeoutInSeconds`" pulumi-lang-dotnet="`DisconnectTimeoutInSeconds`" pulumi-lang-go="`disconnectTimeoutInSeconds`" pulumi-lang-python="`disconnect_timeout_in_seconds`" pulumi-lang-yaml="`disconnectTimeoutInSeconds`" pulumi-lang-java="`disconnectTimeoutInSeconds`">`disconnect_timeout_in_seconds`</span> time interval begins. Defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>. Valid value is between <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> and `3600 `seconds.
+  /// Amount of time that users can be idle (inactive) before they are disconnected from their streaming session and the `disconnect_timeout_in_seconds` time interval begins. Defaults to `0`. Valid value is between `60` and `3600 `seconds.
   final Input<int>? idleDisconnectTimeoutInSeconds;
 
   /// ARN of the public, private, or shared image to use.

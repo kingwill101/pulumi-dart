@@ -1,3 +1,0 @@
-library module_sagemaker_model_container_image_config_repository_auth_config;
-
-export 'model_container_image_config_repository_auth_config.dart';

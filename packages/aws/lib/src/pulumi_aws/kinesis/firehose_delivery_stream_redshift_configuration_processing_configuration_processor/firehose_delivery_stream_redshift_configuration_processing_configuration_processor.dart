@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../firehose_delivery_stream_redshift_configuration_processing_configuration_processor_parameter/firehose_delivery_stream_redshift_configuration_processing_configuration_processor_parameter.dart';
 
 class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessor {
-  /// Specifies the processor parameters as multiple blocks. See <span pulumi-lang-nodejs="`parameters`" pulumi-lang-dotnet="`Parameters`" pulumi-lang-go="`parameters`" pulumi-lang-python="`parameters`" pulumi-lang-yaml="`parameters`" pulumi-lang-java="`parameters`">`parameters`</span> block below for details.
+  /// Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
   final List<
           FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorParameter>?
       parameters;

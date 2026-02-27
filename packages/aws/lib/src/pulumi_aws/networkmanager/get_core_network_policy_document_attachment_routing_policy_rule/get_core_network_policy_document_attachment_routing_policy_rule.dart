@@ -18,7 +18,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
   /// A set of AWS Region codes where this rule applies.
   final List<String>? edgeLocations;
 
-  /// An integer from <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> to <span pulumi-lang-nodejs="`65535`" pulumi-lang-dotnet="`65535`" pulumi-lang-go="`65535`" pulumi-lang-python="`65535`" pulumi-lang-yaml="`65535`" pulumi-lang-java="`65535`">`65535`</span> indicating the rule's order number. Rules are processed in order from the lowest numbered rule to the highest. Rules stop processing when a rule is matched.
+  /// An integer from `1` to `65535` indicating the rule's order number. Rules are processed in order from the lowest numbered rule to the highest. Rules stop processing when a rule is matched.
   final int ruleNumber;
 
   GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule({

@@ -28,22 +28,22 @@ class AgentAgentArgs {
   /// The following arguments are optional:
   final Input<String> foundationModel;
 
-  /// Details about the guardrail associated with the agent. See <span pulumi-lang-nodejs="`guardrailConfiguration`" pulumi-lang-dotnet="`GuardrailConfiguration`" pulumi-lang-go="`guardrailConfiguration`" pulumi-lang-python="`guardrail_configuration`" pulumi-lang-yaml="`guardrailConfiguration`" pulumi-lang-java="`guardrailConfiguration`">`guardrail_configuration`</span> Block for details.
+  /// Details about the guardrail associated with the agent. See `guardrail_configuration` Block for details.
   final Input<List<AgentAgentGuardrailConfiguration>>? guardrailConfigurations;
 
   /// Number of seconds for which Amazon Bedrock keeps information about a user's conversation with the agent. A user interaction remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Bedrock deletes any data provided before the timeout.
   final Input<int>? idleSessionTtlInSeconds;
 
-  /// Instructions that tell the agent what it should do and how it should interact with users. If <span pulumi-lang-nodejs="`prepareAgent`" pulumi-lang-dotnet="`PrepareAgent`" pulumi-lang-go="`prepareAgent`" pulumi-lang-python="`prepare_agent`" pulumi-lang-yaml="`prepareAgent`" pulumi-lang-java="`prepareAgent`">`prepare_agent`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> this argument is required. The valid range is 40 - 20000 characters.
+  /// Instructions that tell the agent what it should do and how it should interact with users. If `prepare_agent` is `true` this argument is required. The valid range is 40 - 20000 characters.
   final Input<String>? instruction;
 
   /// Configurations for the agent's ability to retain the conversational context.
   final Input<List<AgentAgentMemoryConfiguration>>? memoryConfigurations;
 
-  /// Whether to prepare the agent after creation or modification. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether to prepare the agent after creation or modification. Defaults to `true`.
   final Input<bool>? prepareAgent;
 
-  /// Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See <span pulumi-lang-nodejs="`promptOverrideConfiguration`" pulumi-lang-dotnet="`PromptOverrideConfiguration`" pulumi-lang-go="`promptOverrideConfiguration`" pulumi-lang-python="`prompt_override_configuration`" pulumi-lang-yaml="`promptOverrideConfiguration`" pulumi-lang-java="`promptOverrideConfiguration`">`prompt_override_configuration`</span> Block for details.
+  /// Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `prompt_override_configuration` Block for details.
   final Input<List<AgentAgentPromptOverrideConfiguration>>?
       promptOverrideConfigurations;
 
@@ -53,7 +53,7 @@ class AgentAgentArgs {
   /// Whether the in-use check is skipped when deleting the agent.
   final Input<bool>? skipResourceInUseCheck;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<AgentAgentTimeouts>? timeouts;
 

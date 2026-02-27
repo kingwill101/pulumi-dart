@@ -7,7 +7,7 @@ import '../firehose_delivery_stream_redshift_configuration_s3_configuration/fire
 import '../firehose_delivery_stream_redshift_configuration_secrets_manager_configuration/firehose_delivery_stream_redshift_configuration_secrets_manager_configuration.dart';
 
 class FirehoseDeliveryStreamRedshiftConfiguration {
-  /// The CloudWatch Logging Options for the delivery stream. See <span pulumi-lang-nodejs="`cloudwatchLoggingOptions`" pulumi-lang-dotnet="`CloudwatchLoggingOptions`" pulumi-lang-go="`cloudwatchLoggingOptions`" pulumi-lang-python="`cloudwatch_logging_options`" pulumi-lang-yaml="`cloudwatchLoggingOptions`" pulumi-lang-java="`cloudwatchLoggingOptions`">`cloudwatch_logging_options`</span> block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
   final FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions?
       cloudwatchLoggingOptions;
 
@@ -23,10 +23,10 @@ class FirehoseDeliveryStreamRedshiftConfiguration {
   /// The name of the table in the redshift cluster that the s3 bucket will copy to.
   final String dataTableName;
 
-  /// The password for the username above. This value is required if <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> is not provided.
+  /// The password for the username above. This value is required if `secrets_manager_configuration` is not provided.
   final String? password;
 
-  /// The data processing configuration.  See <span pulumi-lang-nodejs="`processingConfiguration`" pulumi-lang-dotnet="`ProcessingConfiguration`" pulumi-lang-go="`processingConfiguration`" pulumi-lang-python="`processing_configuration`" pulumi-lang-yaml="`processingConfiguration`" pulumi-lang-java="`processingConfiguration`">`processing_configuration`</span> block below for details.
+  /// The data processing configuration.  See `processing_configuration` block below for details.
   final FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration?
       processingConfiguration;
 
@@ -36,21 +36,21 @@ class FirehoseDeliveryStreamRedshiftConfiguration {
   /// The arn of the role the stream assumes.
   final String roleArn;
 
-  /// The configuration for backup in Amazon S3. Required if <span pulumi-lang-nodejs="`s3BackupMode`" pulumi-lang-dotnet="`S3BackupMode`" pulumi-lang-go="`s3BackupMode`" pulumi-lang-python="`s3_backup_mode`" pulumi-lang-yaml="`s3BackupMode`" pulumi-lang-java="`s3BackupMode`">`s3_backup_mode`</span> is `Enabled`. Supports the same fields as <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span> object.
-  /// <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> - (Optional) The Secrets Manager configuration. See <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> block below for details. This value is required if <span pulumi-lang-nodejs="`username`" pulumi-lang-dotnet="`Username`" pulumi-lang-go="`username`" pulumi-lang-python="`username`" pulumi-lang-yaml="`username`" pulumi-lang-java="`username`">`username`</span> and <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span> are not provided.
+  /// The configuration for backup in Amazon S3. Required if `s3_backup_mode` is `Enabled`. Supports the same fields as `s3_configuration` object.
+  /// `secrets_manager_configuration` - (Optional) The Secrets Manager configuration. See `secrets_manager_configuration` block below for details. This value is required if `username` and `password` are not provided.
   final FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration?
       s3BackupConfiguration;
 
   /// The Amazon S3 backup mode.  Valid values are `Disabled` and `Enabled`.  Default value is `Disabled`.
   final String? s3BackupMode;
 
-  /// The S3 Configuration. See<span pulumi-lang-nodejs=" s3Configuration " pulumi-lang-dotnet=" S3Configuration " pulumi-lang-go=" s3Configuration " pulumi-lang-python=" s3_configuration " pulumi-lang-yaml=" s3Configuration " pulumi-lang-java=" s3Configuration "> s3_configuration </span>below for details.
+  /// The S3 Configuration. See s3_configuration below for details.
   final FirehoseDeliveryStreamRedshiftConfigurationS3Configuration
       s3Configuration;
   final FirehoseDeliveryStreamRedshiftConfigurationSecretsManagerConfiguration?
       secretsManagerConfiguration;
 
-  /// The username that the firehose delivery stream will assume. It is strongly recommended that the username and password provided is used exclusively for Amazon Kinesis Firehose purposes, and that the permissions for the account are restricted for Amazon Redshift INSERT permissions. This value is required if <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> is not provided.
+  /// The username that the firehose delivery stream will assume. It is strongly recommended that the username and password provided is used exclusively for Amazon Kinesis Firehose purposes, and that the permissions for the account are restricted for Amazon Redshift INSERT permissions. This value is required if `secrets_manager_configuration` is not provided.
   final String? username;
 
   FirehoseDeliveryStreamRedshiftConfiguration({

@@ -1,0 +1,3 @@
+library module_datasync_location_fsx_ontap_file_system_protocol;
+
+export 'location_fsx_ontap_file_system_protocol/location_fsx_ontap_file_system_protocol.dart';

@@ -8,18 +8,18 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   /// Whether the user can interrupt a speech prompt attempt from the bot.
   final bool? allowInterrupt;
 
-  /// Configuration block for the allowed input types of the prompt attempt. See <span pulumi-lang-nodejs="`allowedInputTypes`" pulumi-lang-dotnet="`AllowedInputTypes`" pulumi-lang-go="`allowedInputTypes`" pulumi-lang-python="`allowed_input_types`" pulumi-lang-yaml="`allowedInputTypes`" pulumi-lang-java="`allowedInputTypes`">`allowed_input_types`</span>.
+  /// Configuration block for the allowed input types of the prompt attempt. See `allowed_input_types`.
   final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes?
       allowedInputTypes;
 
-  /// Configuration block for settings on audio and DTMF input. See <span pulumi-lang-nodejs="`audioAndDtmfInputSpecification`" pulumi-lang-dotnet="`AudioAndDtmfInputSpecification`" pulumi-lang-go="`audioAndDtmfInputSpecification`" pulumi-lang-python="`audio_and_dtmf_input_specification`" pulumi-lang-yaml="`audioAndDtmfInputSpecification`" pulumi-lang-java="`audioAndDtmfInputSpecification`">`audio_and_dtmf_input_specification`</span>.
+  /// Configuration block for settings on audio and DTMF input. See `audio_and_dtmf_input_specification`.
   final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification?
       audioAndDtmfInputSpecification;
 
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final String mapBlockKey;
 
-  /// Configuration block for the settings on text input. See <span pulumi-lang-nodejs="`textInputSpecification`" pulumi-lang-dotnet="`TextInputSpecification`" pulumi-lang-go="`textInputSpecification`" pulumi-lang-python="`text_input_specification`" pulumi-lang-yaml="`textInputSpecification`" pulumi-lang-java="`textInputSpecification`">`text_input_specification`</span>.
+  /// Configuration block for the settings on text input. See `text_input_specification`.
   final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification?
       textInputSpecification;
 

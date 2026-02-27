@@ -1,3 +1,0 @@
-library module_licensemanager_get_received_license_received_metadata;
-
-export 'get_received_license_received_metadata.dart';

@@ -1,3 +1,0 @@
-library module_cloudformation_stack_set_operation_preferences;
-
-export 'stack_set_operation_preferences.dart';

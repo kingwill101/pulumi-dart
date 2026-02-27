@@ -7,7 +7,7 @@ class ClusterLogDeliveryConfiguration {
   /// For CloudWatch Logs use `cloudwatch-logs` or for Kinesis Data Firehose use `kinesis-firehose`.
   final String destinationType;
 
-  /// Valid values are <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span> or <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span>
+  /// Valid values are `json` or `text`
   final String logFormat;
 
   /// Valid values are  `slow-log` or `engine-log`. Max 1 of each.

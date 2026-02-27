@@ -1,3 +1,0 @@
-library module_route53_resolver_endpoint_ip_address;
-
-export 'resolver_endpoint_ip_address.dart';

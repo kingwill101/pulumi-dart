@@ -3,7 +3,7 @@
 import '../s3_access_point_attachment_openzfs_configuration_file_system_identity_posix_user/s3_access_point_attachment_openzfs_configuration_file_system_identity_posix_user.dart';
 
 class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
-  /// UID and GIDs of the file system POSIX user. See <span pulumi-lang-nodejs="`posixUser`" pulumi-lang-dotnet="`PosixUser`" pulumi-lang-go="`posixUser`" pulumi-lang-python="`posix_user`" pulumi-lang-yaml="`posixUser`" pulumi-lang-java="`posixUser`">`posix_user`</span> Block for details.
+  /// UID and GIDs of the file system POSIX user. See `posix_user` Block for details.
   final S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser?
       posixUser;
 

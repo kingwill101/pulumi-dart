@@ -1,0 +1,3 @@
+library module_imagebuilder_lifecycle_policy_resource_selection_recipe;
+
+export 'lifecycle_policy_resource_selection_recipe/lifecycle_policy_resource_selection_recipe.dart';

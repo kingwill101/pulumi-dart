@@ -1,3 +1,0 @@
-library module_networkfirewall_tls_inspection_configuration_certificate;
-
-export 'tls_inspection_configuration_certificate.dart';

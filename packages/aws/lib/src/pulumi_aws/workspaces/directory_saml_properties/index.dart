@@ -1,3 +1,0 @@
-library module_workspaces_directory_saml_properties;
-
-export 'directory_saml_properties.dart';

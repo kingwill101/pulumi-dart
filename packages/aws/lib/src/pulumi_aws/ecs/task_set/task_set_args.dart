@@ -28,10 +28,10 @@ class TaskSetArgs {
   /// Details on load balancers that are used with a task set. Detailed below.
   final Input<List<TaskSetLoadBalancer>>? loadBalancers;
 
-  /// The network configuration for the service. This parameter is required for task definitions that use the <span pulumi-lang-nodejs="`awsvpc`" pulumi-lang-dotnet="`Awsvpc`" pulumi-lang-go="`awsvpc`" pulumi-lang-python="`awsvpc`" pulumi-lang-yaml="`awsvpc`" pulumi-lang-java="`awsvpc`">`awsvpc`</span> network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. Detailed below.
+  /// The network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. Detailed below.
   final Input<TaskSetNetworkConfiguration>? networkConfiguration;
 
-  /// The platform version on which to run your service. Only applicable for <span pulumi-lang-nodejs="`launchType`" pulumi-lang-dotnet="`LaunchType`" pulumi-lang-go="`launchType`" pulumi-lang-python="`launch_type`" pulumi-lang-yaml="`launchType`" pulumi-lang-java="`launchType`">`launch_type`</span> set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+  /// The platform version on which to run your service. Only applicable for `launch_type` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
   final Input<String>? platformVersion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -43,10 +43,10 @@ class TaskSetArgs {
   /// The short name or ARN of the ECS service.
   final Input<String> service;
 
-  /// The service discovery registries for the service. The maximum number of <span pulumi-lang-nodejs="`serviceRegistries`" pulumi-lang-dotnet="`ServiceRegistries`" pulumi-lang-go="`serviceRegistries`" pulumi-lang-python="`service_registries`" pulumi-lang-yaml="`serviceRegistries`" pulumi-lang-java="`serviceRegistries`">`service_registries`</span> blocks is <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. Detailed below.
+  /// The service discovery registries for the service. The maximum number of `service_registries` blocks is `1`. Detailed below.
   final Input<TaskSetServiceRegistries>? serviceRegistries;
 
-  /// A map of tags to assign to the file system. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set <span pulumi-lang-nodejs="`copyTagsToBackups`" pulumi-lang-dotnet="`CopyTagsToBackups`" pulumi-lang-go="`copyTagsToBackups`" pulumi-lang-python="`copy_tags_to_backups`" pulumi-lang-yaml="`copyTagsToBackups`" pulumi-lang-java="`copyTagsToBackups`">`copy_tags_to_backups`</span> to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   final Input<Map<String, String>>? tags;
 
   /// The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
@@ -57,7 +57,7 @@ class TaskSetArgs {
   /// Whether the provider should wait until the task set has reached `STEADY_STATE`.
   final Input<bool>? waitUntilStable;
 
-  /// Wait timeout for task set to reach `STEADY_STATE`. Valid time units include <span pulumi-lang-nodejs="`ns`" pulumi-lang-dotnet="`Ns`" pulumi-lang-go="`ns`" pulumi-lang-python="`ns`" pulumi-lang-yaml="`ns`" pulumi-lang-java="`ns`">`ns`</span>, <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span> (or `µs`), <span pulumi-lang-nodejs="`ms`" pulumi-lang-dotnet="`Ms`" pulumi-lang-go="`ms`" pulumi-lang-python="`ms`" pulumi-lang-yaml="`ms`" pulumi-lang-java="`ms`">`ms`</span>, <span pulumi-lang-nodejs="`s`" pulumi-lang-dotnet="`S`" pulumi-lang-go="`s`" pulumi-lang-python="`s`" pulumi-lang-yaml="`s`" pulumi-lang-java="`s`">`s`</span>, <span pulumi-lang-nodejs="`m`" pulumi-lang-dotnet="`M`" pulumi-lang-go="`m`" pulumi-lang-python="`m`" pulumi-lang-yaml="`m`" pulumi-lang-java="`m`">`m`</span>, and <span pulumi-lang-nodejs="`h`" pulumi-lang-dotnet="`H`" pulumi-lang-go="`h`" pulumi-lang-python="`h`" pulumi-lang-yaml="`h`" pulumi-lang-java="`h`">`h`</span>. Default <span pulumi-lang-nodejs="`10m`" pulumi-lang-dotnet="`10m`" pulumi-lang-go="`10m`" pulumi-lang-python="`10m`" pulumi-lang-yaml="`10m`" pulumi-lang-java="`10m`">`10m`</span>.
+  /// Wait timeout for task set to reach `STEADY_STATE`. Valid time units include `ns`, `us` (or `µs`), `ms`, `s`, `m`, and `h`. Default `10m`.
   final Input<String>? waitUntilStableTimeout;
 
   TaskSetArgs({

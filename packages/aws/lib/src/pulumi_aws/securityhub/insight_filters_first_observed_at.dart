@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_first_observed_at;
+
+export 'insight_filters_first_observed_at/insight_filters_first_observed_at.dart';

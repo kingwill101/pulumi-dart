@@ -1,0 +1,3 @@
+library module_drs_replication_configuration_template_timeouts;
+
+export 'replication_configuration_template_timeouts/replication_configuration_template_timeouts.dart';

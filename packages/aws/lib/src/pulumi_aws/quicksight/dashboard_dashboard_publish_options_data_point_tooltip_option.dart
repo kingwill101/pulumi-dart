@@ -1,0 +1,3 @@
+library module_quicksight_dashboard_dashboard_publish_options_data_point_tooltip_option;
+
+export 'dashboard_dashboard_publish_options_data_point_tooltip_option/dashboard_dashboard_publish_options_data_point_tooltip_option.dart';

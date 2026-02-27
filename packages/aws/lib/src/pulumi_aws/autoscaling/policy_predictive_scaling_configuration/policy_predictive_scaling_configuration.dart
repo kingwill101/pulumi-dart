@@ -6,7 +6,7 @@ class PolicyPredictiveScalingConfiguration {
   /// Defines the behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity of the Auto Scaling group. Valid values are `HonorMaxCapacity` or `IncreaseMaxCapacity`. Default is `HonorMaxCapacity`.
   final String? maxCapacityBreachBehavior;
 
-  /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. Valid range is <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>. If set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>, Amazon EC2 Auto Scaling may scale capacity higher than the maximum capacity to equal but not exceed forecast capacity.
+  /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. Valid range is `0` to `100`. If set to `0`, Amazon EC2 Auto Scaling may scale capacity higher than the maximum capacity to equal but not exceed forecast capacity.
   final String? maxCapacityBuffer;
 
   /// This structure includes the metrics and target utilization to use for predictive scaling.
@@ -16,7 +16,7 @@ class PolicyPredictiveScalingConfiguration {
   /// Predictive scaling mode. Valid values are `ForecastAndScale` and `ForecastOnly`. Default is `ForecastOnly`.
   final String? mode;
 
-  /// Amount of time, in seconds, by which the instance launch time can be advanced. Minimum is <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
+  /// Amount of time, in seconds, by which the instance launch time can be advanced. Minimum is `0`.
   final String? schedulingBufferTime;
 
   PolicyPredictiveScalingConfiguration({

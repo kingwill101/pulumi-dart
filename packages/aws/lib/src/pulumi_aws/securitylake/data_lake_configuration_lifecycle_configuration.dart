@@ -1,0 +1,3 @@
+library module_securitylake_data_lake_configuration_lifecycle_configuration;
+
+export 'data_lake_configuration_lifecycle_configuration/data_lake_configuration_lifecycle_configuration.dart';

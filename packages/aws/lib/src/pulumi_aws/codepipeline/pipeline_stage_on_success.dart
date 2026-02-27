@@ -1,0 +1,3 @@
+library module_codepipeline_pipeline_stage_on_success;
+
+export 'pipeline_stage_on_success/pipeline_stage_on_success.dart';

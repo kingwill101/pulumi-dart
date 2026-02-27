@@ -6,7 +6,7 @@ class FieldLevelEncryptionConfigQueryArgProfileConfig {
   /// Flag to set if you want a request to be forwarded to the origin even if the profile specified by the field-level encryption query argument, fle-profile, is unknown.
   final bool forwardWhenQueryArgProfileIsUnknown;
 
-  /// Object that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> that contains the list ofrofiles specified for query argument-profile mapping for field-level encryption. see Query Arg Profile.
+  /// Object that contains an attribute `items` that contains the list ofrofiles specified for query argument-profile mapping for field-level encryption. see Query Arg Profile.
   final FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles?
       queryArgProfiles;
 

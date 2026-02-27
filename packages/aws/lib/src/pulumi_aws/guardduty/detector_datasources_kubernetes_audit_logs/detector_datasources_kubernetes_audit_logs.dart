@@ -2,7 +2,7 @@
 
 class DetectorDatasourcesKubernetesAuditLogs {
   /// If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  /// Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Defaults to `true`.
   final bool enable;
 
   DetectorDatasourcesKubernetesAuditLogs({

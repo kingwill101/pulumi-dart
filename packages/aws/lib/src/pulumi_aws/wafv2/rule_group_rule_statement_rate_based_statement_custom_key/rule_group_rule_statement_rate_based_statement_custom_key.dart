@@ -12,16 +12,16 @@ import '../rule_group_rule_statement_rate_based_statement_custom_key_uri_path/ru
 class RuleGroupRuleStatementRateBasedStatementCustomKey {
   final Map<String, dynamic>? asn;
 
-  /// (Optional) Use the value of a cookie in the request as an aggregate key. See RateLimit <span pulumi-lang-nodejs="`cookie`" pulumi-lang-dotnet="`Cookie`" pulumi-lang-go="`cookie`" pulumi-lang-python="`cookie`" pulumi-lang-yaml="`cookie`" pulumi-lang-java="`cookie`">`cookie`</span> below for details.
+  /// (Optional) Use the value of a cookie in the request as an aggregate key. See RateLimit `cookie` below for details.
   final RuleGroupRuleStatementRateBasedStatementCustomKeyCookie? cookie;
 
-  /// (Optional) Use the first IP address in an HTTP header as an aggregate key. See <span pulumi-lang-nodejs="`forwardedIp`" pulumi-lang-dotnet="`ForwardedIp`" pulumi-lang-go="`forwardedIp`" pulumi-lang-python="`forwarded_ip`" pulumi-lang-yaml="`forwardedIp`" pulumi-lang-java="`forwardedIp`">`forwarded_ip`</span> below for details.
+  /// (Optional) Use the first IP address in an HTTP header as an aggregate key. See `forwarded_ip` below for details.
   final Map<String, dynamic>? forwardedIp;
 
-  /// (Optional) Use the value of a header in the request as an aggregate key. See RateLimit <span pulumi-lang-nodejs="`header`" pulumi-lang-dotnet="`Header`" pulumi-lang-go="`header`" pulumi-lang-python="`header`" pulumi-lang-yaml="`header`" pulumi-lang-java="`header`">`header`</span> below for details.
+  /// (Optional) Use the value of a header in the request as an aggregate key. See RateLimit `header` below for details.
   final RuleGroupRuleStatementRateBasedStatementCustomKeyHeader? header;
 
-  /// (Optional) Use the request's HTTP method as an aggregate key. See RateLimit <span pulumi-lang-nodejs="`httpMethod`" pulumi-lang-dotnet="`HttpMethod`" pulumi-lang-go="`httpMethod`" pulumi-lang-python="`http_method`" pulumi-lang-yaml="`httpMethod`" pulumi-lang-java="`httpMethod`">`http_method`</span> below for details.
+  /// (Optional) Use the request's HTTP method as an aggregate key. See RateLimit `http_method` below for details.
   final Map<String, dynamic>? httpMethod;
 
   /// (Optional) Use the request's originating IP address as an aggregate key. See `RateLimit ip` below for details.
@@ -35,19 +35,19 @@ class RuleGroupRuleStatementRateBasedStatementCustomKey {
   final RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint?
       ja4Fingerprint;
 
-  /// (Optional) Use the specified label namespace as an aggregate key. See RateLimit <span pulumi-lang-nodejs="`labelNamespace`" pulumi-lang-dotnet="`LabelNamespace`" pulumi-lang-go="`labelNamespace`" pulumi-lang-python="`label_namespace`" pulumi-lang-yaml="`labelNamespace`" pulumi-lang-java="`labelNamespace`">`label_namespace`</span> below for details.
+  /// (Optional) Use the specified label namespace as an aggregate key. See RateLimit `label_namespace` below for details.
   final RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace?
       labelNamespace;
 
-  /// (Optional) Use the specified query argument as an aggregate key. See RateLimit <span pulumi-lang-nodejs="`queryArgument`" pulumi-lang-dotnet="`QueryArgument`" pulumi-lang-go="`queryArgument`" pulumi-lang-python="`query_argument`" pulumi-lang-yaml="`queryArgument`" pulumi-lang-java="`queryArgument`">`query_argument`</span> below for details.
+  /// (Optional) Use the specified query argument as an aggregate key. See RateLimit `query_argument` below for details.
   final RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument?
       queryArgument;
 
-  /// (Optional) Use the request's query string as an aggregate key. See RateLimit <span pulumi-lang-nodejs="`queryString`" pulumi-lang-dotnet="`QueryString`" pulumi-lang-go="`queryString`" pulumi-lang-python="`query_string`" pulumi-lang-yaml="`queryString`" pulumi-lang-java="`queryString`">`query_string`</span> below for details.
+  /// (Optional) Use the request's query string as an aggregate key. See RateLimit `query_string` below for details.
   final RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString?
       queryString;
 
-  /// (Optional) Use the request's URI path as an aggregate key. See RateLimit <span pulumi-lang-nodejs="`uriPath`" pulumi-lang-dotnet="`UriPath`" pulumi-lang-go="`uriPath`" pulumi-lang-python="`uri_path`" pulumi-lang-yaml="`uriPath`" pulumi-lang-java="`uriPath`">`uri_path`</span> below for details.
+  /// (Optional) Use the request's URI path as an aggregate key. See RateLimit `uri_path` below for details.
   final RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath? uriPath;
 
   RuleGroupRuleStatementRateBasedStatementCustomKey({

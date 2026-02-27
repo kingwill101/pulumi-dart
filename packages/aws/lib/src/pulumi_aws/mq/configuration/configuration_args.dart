@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for Configuration.
 class ConfigurationArgs {
-  /// Authentication strategy associated with the configuration. Valid values are <span pulumi-lang-nodejs="`simple`" pulumi-lang-dotnet="`Simple`" pulumi-lang-go="`simple`" pulumi-lang-python="`simple`" pulumi-lang-yaml="`simple`" pulumi-lang-java="`simple`">`simple`</span> and <span pulumi-lang-nodejs="`ldap`" pulumi-lang-dotnet="`Ldap`" pulumi-lang-go="`ldap`" pulumi-lang-python="`ldap`" pulumi-lang-yaml="`ldap`" pulumi-lang-java="`ldap`">`ldap`</span>. <span pulumi-lang-nodejs="`ldap`" pulumi-lang-dotnet="`Ldap`" pulumi-lang-go="`ldap`" pulumi-lang-python="`ldap`" pulumi-lang-yaml="`ldap`" pulumi-lang-java="`ldap`">`ldap`</span> is not supported for RabbitMQ engine type.
+  /// Authentication strategy associated with the configuration. Valid values are `simple` and `ldap`. `ldap` is not supported for RabbitMQ engine type.
   final Input<String>? authenticationStrategy;
 
   /// Broker configuration in XML format for ActiveMQ or Cuttlefish format for RabbitMQ. See [AWS documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html) for supported parameters and format of the XML.
@@ -27,7 +27,7 @@ class ConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ConfigurationArgs({

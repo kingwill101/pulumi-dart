@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_statement_byte_match_statement_text_transformation;
+
+export 'rule_group_rule_statement_byte_match_statement_text_transformation/rule_group_rule_statement_byte_match_statement_text_transformation.dart';

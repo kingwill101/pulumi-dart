@@ -1,3 +1,0 @@
-library module_rds_cluster_snapshot_copy_timeouts;
-
-export 'cluster_snapshot_copy_timeouts.dart';

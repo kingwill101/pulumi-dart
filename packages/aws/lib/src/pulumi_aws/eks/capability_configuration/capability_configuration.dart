@@ -3,7 +3,7 @@
 import '../capability_configuration_argo_cd/capability_configuration_argo_cd.dart';
 
 class CapabilityConfiguration {
-  /// ArgoCD configuration. See <span pulumi-lang-nodejs="`argoCd`" pulumi-lang-dotnet="`ArgoCd`" pulumi-lang-go="`argoCd`" pulumi-lang-python="`argo_cd`" pulumi-lang-yaml="`argoCd`" pulumi-lang-java="`argoCd`">`argo_cd`</span> below.
+  /// ArgoCD configuration. See `argo_cd` below.
   final CapabilityConfigurationArgoCd? argoCd;
 
   CapabilityConfiguration({

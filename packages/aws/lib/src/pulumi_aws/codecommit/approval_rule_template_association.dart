@@ -1,0 +1,4 @@
+library module_codecommit_approval_rule_template_association;
+
+export 'approval_rule_template_association/approval_rule_template_association.dart';
+export 'approval_rule_template_association/approval_rule_template_association_args.dart';

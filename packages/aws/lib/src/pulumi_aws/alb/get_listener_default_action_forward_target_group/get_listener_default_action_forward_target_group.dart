@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetListenerDefaultActionForwardTargetGroup {
-  /// ARN of the listener. Required if <span pulumi-lang-nodejs="`loadBalancerArn`" pulumi-lang-dotnet="`LoadBalancerArn`" pulumi-lang-go="`loadBalancerArn`" pulumi-lang-python="`load_balancer_arn`" pulumi-lang-yaml="`loadBalancerArn`" pulumi-lang-java="`loadBalancerArn`">`load_balancer_arn`</span> and <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> is not set.
+  /// ARN of the listener. Required if `load_balancer_arn` and `port` is not set.
   final String arn;
   final int weight;
 

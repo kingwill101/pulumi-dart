@@ -8,7 +8,7 @@ import 'default_vpc_dhcp_options_args.dart';
 /// **This is an advanced resource**, and has special caveats to be aware of when
 /// using it. Please read this document in its entirety before using this resource.
 ///
-/// The <span pulumi-lang-nodejs="`aws.ec2.DefaultVpcDhcpOptions`" pulumi-lang-dotnet="`aws.ec2.DefaultVpcDhcpOptions`" pulumi-lang-go="`ec2.DefaultVpcDhcpOptions`" pulumi-lang-python="`ec2.DefaultVpcDhcpOptions`" pulumi-lang-yaml="`aws.ec2.DefaultVpcDhcpOptions`" pulumi-lang-java="`aws.ec2.DefaultVpcDhcpOptions`">`aws.ec2.DefaultVpcDhcpOptions`</span> behaves differently from normal resources, in that
+/// The `aws.ec2.DefaultVpcDhcpOptions` behaves differently from normal resources, in that
 /// this provider does not _create_ this resource, but instead "adopts" it
 /// into management.
 ///
@@ -16,104 +16,11 @@ import 'default_vpc_dhcp_options_args.dart';
 ///
 /// Basic usage with tags:
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const _default = new aws.ec2.DefaultVpcDhcpOptions("default", {tags: {
-/// Name: "Default DHCP Option Set",
-/// }});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// default = aws.ec2.DefaultVpcDhcpOptions("default", tags={
-/// "Name": "Default DHCP Option Set",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Aws.Ec2.DefaultVpcDhcpOptions("default", new()
-/// {
-/// Tags =
-/// {
-/// { "Name", "Default DHCP Option Set" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := ec2.NewDefaultVpcDhcpOptions(ctx, "default", &ec2.DefaultVpcDhcpOptionsArgs{
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("Default DHCP Option Set"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.ec2.DefaultVpcDhcpOptions;
-/// import com.pulumi.aws.ec2.DefaultVpcDhcpOptionsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new DefaultVpcDhcpOptions("default", DefaultVpcDhcpOptionsArgs.builder()
-/// .tags(Map.of("Name", "Default DHCP Option Set"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: aws:ec2:DefaultVpcDhcpOptions
-/// properties:
-/// tags:
-/// Name: Default DHCP Option Set
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC DHCP Options using the DHCP Options <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import VPC DHCP Options using the DHCP Options `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions default_options dopt-d9070ebb

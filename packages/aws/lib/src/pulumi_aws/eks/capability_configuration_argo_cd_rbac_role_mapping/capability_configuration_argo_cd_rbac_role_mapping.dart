@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../capability_configuration_argo_cd_rbac_role_mapping_identity/capability_configuration_argo_cd_rbac_role_mapping_identity.dart';
 
 class CapabilityConfigurationArgoCdRbacRoleMapping {
-  /// List of identities. See <span pulumi-lang-nodejs="`identity`" pulumi-lang-dotnet="`Identity`" pulumi-lang-go="`identity`" pulumi-lang-python="`identity`" pulumi-lang-yaml="`identity`" pulumi-lang-java="`identity`">`identity`</span> below.
+  /// List of identities. See `identity` below.
   final List<CapabilityConfigurationArgoCdRbacRoleMappingIdentity> identities;
 
   /// ArgoCD role. Valid values: `ADMIN`, `EDITOR`, `VIEWER`.

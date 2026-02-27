@@ -1,0 +1,3 @@
+library module_ecs_task_set_capacity_provider_strategy;
+
+export 'task_set_capacity_provider_strategy/task_set_capacity_provider_strategy.dart';

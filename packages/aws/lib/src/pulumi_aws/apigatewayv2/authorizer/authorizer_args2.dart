@@ -17,7 +17,7 @@ class AuthorizerArgs2 {
   final Input<String>? authorizerPayloadFormatVersion;
 
   /// Time to live (TTL) for cached authorizer results, in seconds. If it equals 0, authorization caching is disabled.
-  /// If it is greater than 0, API Gateway caches authorizer responses. The maximum value is 3600, or 1 hour. Defaults to <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span>.
+  /// If it is greater than 0, API Gateway caches authorizer responses. The maximum value is 3600, or 1 hour. Defaults to `300`.
   /// Supported only for HTTP API Lambda authorizers.
   final Input<int>? authorizerResultTtlInSeconds;
 
@@ -27,7 +27,7 @@ class AuthorizerArgs2 {
   final Input<String> authorizerType;
 
   /// Authorizer's Uniform Resource Identifier (URI).
-  /// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the <span pulumi-lang-nodejs="`invokeArn`" pulumi-lang-dotnet="`InvokeArn`" pulumi-lang-go="`invokeArn`" pulumi-lang-python="`invoke_arn`" pulumi-lang-yaml="`invokeArn`" pulumi-lang-java="`invokeArn`">`invoke_arn`</span> attribute of the <span pulumi-lang-nodejs="`aws.lambda.Function`" pulumi-lang-dotnet="`aws.lambda.Function`" pulumi-lang-go="`lambda.Function`" pulumi-lang-python="`lambda.Function`" pulumi-lang-yaml="`aws.lambda.Function`" pulumi-lang-java="`aws.lambda.Function`">`aws.lambda.Function`</span> resource.
+  /// For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invoke_arn` attribute of the `aws.lambda.Function` resource.
   /// Supported only for `REQUEST` authorizers. Must be between 1 and 2048 characters in length.
   final Input<String>? authorizerUri;
 

@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_resource_aws_ec2_instance_iam_instance_profile_arn;
-
-export 'insight_filters_resource_aws_ec2_instance_iam_instance_profile_arn.dart';

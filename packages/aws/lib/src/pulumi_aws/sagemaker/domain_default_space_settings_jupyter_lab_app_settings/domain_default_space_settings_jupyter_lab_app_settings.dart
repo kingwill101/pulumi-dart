@@ -8,26 +8,26 @@ import '../domain_default_space_settings_jupyter_lab_app_settings_default_resour
 import '../domain_default_space_settings_jupyter_lab_app_settings_emr_settings/domain_default_space_settings_jupyter_lab_app_settings_emr_settings.dart';
 
 class DomainDefaultSpaceSettingsJupyterLabAppSettings {
-  /// Indicates whether idle shutdown is activated for JupyterLab applications. see <span pulumi-lang-nodejs="`appLifecycleManagement`" pulumi-lang-dotnet="`AppLifecycleManagement`" pulumi-lang-go="`appLifecycleManagement`" pulumi-lang-python="`app_lifecycle_management`" pulumi-lang-yaml="`appLifecycleManagement`" pulumi-lang-java="`appLifecycleManagement`">`app_lifecycle_management`</span> Block below.
+  /// Indicates whether idle shutdown is activated for JupyterLab applications. see `app_lifecycle_management` Block below.
   final DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement?
       appLifecycleManagement;
 
   /// The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   final String? builtInLifecycleConfigArn;
 
-  /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see <span pulumi-lang-nodejs="`codeRepository`" pulumi-lang-dotnet="`CodeRepository`" pulumi-lang-go="`codeRepository`" pulumi-lang-python="`code_repository`" pulumi-lang-yaml="`codeRepository`" pulumi-lang-java="`codeRepository`">`code_repository`</span> Block below.
+  /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `code_repository` Block below.
   final List<DomainDefaultSpaceSettingsJupyterLabAppSettingsCodeRepository>?
       codeRepositories;
 
-  /// A list of custom SageMaker AI images that are configured to run as a JupyterLab app. see <span pulumi-lang-nodejs="`customImage`" pulumi-lang-dotnet="`CustomImage`" pulumi-lang-go="`customImage`" pulumi-lang-python="`custom_image`" pulumi-lang-yaml="`customImage`" pulumi-lang-java="`customImage`">`custom_image`</span> Block below.
+  /// A list of custom SageMaker AI images that are configured to run as a JupyterLab app. see `custom_image` Block below.
   final List<DomainDefaultSpaceSettingsJupyterLabAppSettingsCustomImage>?
       customImages;
 
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see <span pulumi-lang-nodejs="`defaultResourceSpec`" pulumi-lang-dotnet="`DefaultResourceSpec`" pulumi-lang-go="`defaultResourceSpec`" pulumi-lang-python="`default_resource_spec`" pulumi-lang-yaml="`defaultResourceSpec`" pulumi-lang-java="`defaultResourceSpec`">`default_resource_spec`</span> Block below.
+  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
   final DomainDefaultSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec?
       defaultResourceSpec;
 
-  /// The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see <span pulumi-lang-nodejs="`emrSettings`" pulumi-lang-dotnet="`EmrSettings`" pulumi-lang-go="`emrSettings`" pulumi-lang-python="`emr_settings`" pulumi-lang-yaml="`emrSettings`" pulumi-lang-java="`emrSettings`">`emr_settings`</span> Block below.
+  /// The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emr_settings` Block below.
   final DomainDefaultSpaceSettingsJupyterLabAppSettingsEmrSettings? emrSettings;
 
   /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.

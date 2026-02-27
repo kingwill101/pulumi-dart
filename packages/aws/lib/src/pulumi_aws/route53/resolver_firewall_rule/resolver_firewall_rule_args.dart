@@ -19,13 +19,13 @@ class ResolverFirewallRuleArgs {
   /// The way that you want DNS Firewall to block the request. Valid values: `NODATA`, `NXDOMAIN`, `OVERRIDE`.
   final Input<String>? blockResponse;
 
-  /// The confidence threshold for DNS Firewall Advanced rules. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `LOW`, `MEDIUM`, `HIGH`. Conflicts with <span pulumi-lang-nodejs="`firewallDomainListId`" pulumi-lang-dotnet="`FirewallDomainListId`" pulumi-lang-go="`firewallDomainListId`" pulumi-lang-python="`firewall_domain_list_id`" pulumi-lang-yaml="`firewallDomainListId`" pulumi-lang-java="`firewallDomainListId`">`firewall_domain_list_id`</span>.
+  /// The confidence threshold for DNS Firewall Advanced rules. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `LOW`, `MEDIUM`, `HIGH`. Conflicts with `firewall_domain_list_id`.
   final Input<String>? confidenceThreshold;
 
-  /// The type of DNS Firewall Advanced rule. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `DGA`, `DNS_TUNNELING`. Conflicts with <span pulumi-lang-nodejs="`firewallDomainListId`" pulumi-lang-dotnet="`FirewallDomainListId`" pulumi-lang-go="`firewallDomainListId`" pulumi-lang-python="`firewall_domain_list_id`" pulumi-lang-yaml="`firewallDomainListId`" pulumi-lang-java="`firewallDomainListId`">`firewall_domain_list_id`</span>.
+  /// The type of DNS Firewall Advanced rule. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `DGA`, `DNS_TUNNELING`. Conflicts with `firewall_domain_list_id`.
   final Input<String>? dnsThreatProtection;
 
-  /// The ID of the domain list that you want to use in the rule. Required for standard rules. Conflicts with <span pulumi-lang-nodejs="`dnsThreatProtection`" pulumi-lang-dotnet="`DnsThreatProtection`" pulumi-lang-go="`dnsThreatProtection`" pulumi-lang-python="`dns_threat_protection`" pulumi-lang-yaml="`dnsThreatProtection`" pulumi-lang-java="`dnsThreatProtection`">`dns_threat_protection`</span> and <span pulumi-lang-nodejs="`confidenceThreshold`" pulumi-lang-dotnet="`ConfidenceThreshold`" pulumi-lang-go="`confidenceThreshold`" pulumi-lang-python="`confidence_threshold`" pulumi-lang-yaml="`confidenceThreshold`" pulumi-lang-java="`confidenceThreshold`">`confidence_threshold`</span>.
+  /// The ID of the domain list that you want to use in the rule. Required for standard rules. Conflicts with `dns_threat_protection` and `confidence_threshold`.
   final Input<String>? firewallDomainListId;
 
   /// Evaluate DNS redirection in the DNS redirection chain, such as CNAME, DNAME, ot ALIAS. Valid values are `INSPECT_REDIRECTION_DOMAIN` and `TRUST_REDIRECTION_DOMAIN`. Default value is `INSPECT_REDIRECTION_DOMAIN`.

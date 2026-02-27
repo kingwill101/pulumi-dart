@@ -1,0 +1,3 @@
+library module_ec2transitgateway_get_vpn_attachment_filter;
+
+export 'get_vpn_attachment_filter/get_vpn_attachment_filter.dart';

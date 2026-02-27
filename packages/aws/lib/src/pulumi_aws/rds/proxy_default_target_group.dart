@@ -1,0 +1,4 @@
+library module_rds_proxy_default_target_group;
+
+export 'proxy_default_target_group/proxy_default_target_group.dart';
+export 'proxy_default_target_group/proxy_default_target_group_args.dart';

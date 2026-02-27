@@ -11,7 +11,7 @@ import 'function_args2.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import CloudFront Functions using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+/// Using `pulumi import`, import CloudFront Functions using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudfront/function:Function test my_test_function
@@ -29,7 +29,7 @@ class FunctionType2 extends CustomResource {
   /// ETag hash of the function. This is the value for the `DEVELOPMENT` stage of the function.
   late final Output<String> etag;
 
-  /// List of <span pulumi-lang-nodejs="`aws.cloudfront.KeyValueStore`" pulumi-lang-dotnet="`aws.cloudfront.KeyValueStore`" pulumi-lang-go="`cloudfront.KeyValueStore`" pulumi-lang-python="`cloudfront.KeyValueStore`" pulumi-lang-yaml="`aws.cloudfront.KeyValueStore`" pulumi-lang-java="`aws.cloudfront.KeyValueStore`">`aws.cloudfront.KeyValueStore`</span> ARNs to be associated to the function. AWS limits associations to one key value store per function.
+  /// List of `aws.cloudfront.KeyValueStore` ARNs to be associated to the function. AWS limits associations to one key value store per function.
   late final Output<List<String>?> keyValueStoreAssociations;
 
   /// ETag hash of any `LIVE` stage of the function.
@@ -38,7 +38,7 @@ class FunctionType2 extends CustomResource {
   /// Unique name for your CloudFront Function.
   late final Output<String> name;
 
-  /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   late final Output<bool?> publish;
 
   /// Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.

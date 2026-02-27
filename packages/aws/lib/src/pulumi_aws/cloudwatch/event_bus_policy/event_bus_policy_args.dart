@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for EventBusPolicy.
 class EventBusPolicyArgs {
   /// The name of the event bus to set the permissions on.
-  /// If you omit this, the permissions are set on the <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> event bus.
+  /// If you omit this, the permissions are set on the `default` event bus.
   final Input<String>? eventBusName;
 
   /// The text of the policy.

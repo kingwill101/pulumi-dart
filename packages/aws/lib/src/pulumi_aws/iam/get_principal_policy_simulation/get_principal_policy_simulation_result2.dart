@@ -9,7 +9,7 @@ class GetPrincipalPolicySimulationResult2 {
   final List<String> actionNames;
   final List<String>? additionalPoliciesJsons;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if all of the simulation results have decision "allowed", or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> otherwise.
+  /// `true` if all of the simulation results have decision "allowed", or `false` otherwise.
   final bool allAllowed;
   final String? callerArn;
   final List<GetPrincipalPolicySimulationContext>? contexts;

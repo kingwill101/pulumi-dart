@@ -1,0 +1,3 @@
+library module_cloudfront_multitenant_distribution_origin_custom_header;
+
+export 'multitenant_distribution_origin_custom_header/multitenant_distribution_origin_custom_header.dart';

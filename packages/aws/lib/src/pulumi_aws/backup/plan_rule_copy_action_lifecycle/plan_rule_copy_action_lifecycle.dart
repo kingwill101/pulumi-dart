@@ -4,7 +4,7 @@ class PlanRuleCopyActionLifecycle {
   /// Specifies the number of days after creation that a recovery point is moved to cold storage.
   final int? coldStorageAfter;
 
-  /// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than <span pulumi-lang-nodejs="`coldStorageAfter`" pulumi-lang-dotnet="`ColdStorageAfter`" pulumi-lang-go="`coldStorageAfter`" pulumi-lang-python="`cold_storage_after`" pulumi-lang-yaml="`coldStorageAfter`" pulumi-lang-java="`coldStorageAfter`">`cold_storage_after`</span>.
+  /// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
   final int? deleteAfter;
 
   /// This setting will instruct your backup plan to transition supported resources to archive (cold) storage tier in accordance with your lifecycle settings.

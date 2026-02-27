@@ -1,0 +1,3 @@
+library module_waf_xss_match_set_xss_match_tuple;
+
+export 'xss_match_set_xss_match_tuple/xss_match_set_xss_match_tuple.dart';

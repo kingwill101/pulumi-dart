@@ -12,10 +12,10 @@ class NotebookInstanceArgs {
   /// The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or in any other Git repository.
   final Input<String>? defaultCodeRepository;
 
-  /// Set to `Disabled` to disable internet access to notebook. Requires <span pulumi-lang-nodejs="`securityGroups`" pulumi-lang-dotnet="`SecurityGroups`" pulumi-lang-go="`securityGroups`" pulumi-lang-python="`security_groups`" pulumi-lang-yaml="`securityGroups`" pulumi-lang-java="`securityGroups`">`security_groups`</span> and <span pulumi-lang-nodejs="`subnetId`" pulumi-lang-dotnet="`SubnetId`" pulumi-lang-go="`subnetId`" pulumi-lang-python="`subnet_id`" pulumi-lang-yaml="`subnetId`" pulumi-lang-java="`subnetId`">`subnet_id`</span> to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
+  /// Set to `Disabled` to disable internet access to notebook. Requires `security_groups` and `subnet_id` to be set. Supported values: `Enabled` (Default) or `Disabled`. If set to `Disabled`, the notebook instance will be able to access resources only in your VPC, and will not be able to connect to Amazon SageMaker AI training and endpoint services unless your configure a NAT Gateway in your VPC.
   final Input<String>? directInternetAccess;
 
-  /// Information on the IMDS configuration of the notebook instance. Conflicts with <span pulumi-lang-nodejs="`instanceMetadataServiceConfiguration`" pulumi-lang-dotnet="`InstanceMetadataServiceConfiguration`" pulumi-lang-go="`instanceMetadataServiceConfiguration`" pulumi-lang-python="`instance_metadata_service_configuration`" pulumi-lang-yaml="`instanceMetadataServiceConfiguration`" pulumi-lang-java="`instanceMetadataServiceConfiguration`">`instance_metadata_service_configuration`</span>. see details below.
+  /// Information on the IMDS configuration of the notebook instance. Conflicts with `instance_metadata_service_configuration`. see details below.
   final Input<NotebookInstanceInstanceMetadataServiceConfiguration>?
       instanceMetadataServiceConfiguration;
 
@@ -49,7 +49,7 @@ class NotebookInstanceArgs {
   /// The VPC subnet ID.
   final Input<String>? subnetId;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.

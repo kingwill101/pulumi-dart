@@ -1,3 +1,0 @@
-library module_route53domains_registered_domain_name_server;
-
-export 'registered_domain_name_server.dart';

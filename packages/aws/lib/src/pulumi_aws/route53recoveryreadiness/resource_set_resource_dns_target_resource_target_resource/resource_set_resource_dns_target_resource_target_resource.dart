@@ -4,7 +4,7 @@ import '../resource_set_resource_dns_target_resource_target_resource_nlb_resourc
 import '../resource_set_resource_dns_target_resource_target_resource_r53_resource/resource_set_resource_dns_target_resource_target_resource_r53_resource.dart';
 
 class ResourceSetResourceDnsTargetResourceTargetResource {
-  /// NLB resource a DNS Target Resource points to. Required if <span pulumi-lang-nodejs="`r53Resource`" pulumi-lang-dotnet="`R53Resource`" pulumi-lang-go="`r53Resource`" pulumi-lang-python="`r53_resource`" pulumi-lang-yaml="`r53Resource`" pulumi-lang-java="`r53Resource`">`r53_resource`</span> is not set.
+  /// NLB resource a DNS Target Resource points to. Required if `r53_resource` is not set.
   final ResourceSetResourceDnsTargetResourceTargetResourceNlbResource?
       nlbResource;
 

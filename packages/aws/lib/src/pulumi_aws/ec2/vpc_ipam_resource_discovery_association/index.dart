@@ -1,4 +1,0 @@
-library module_ec2_vpc_ipam_resource_discovery_association;
-
-export 'vpc_ipam_resource_discovery_association.dart';
-export 'vpc_ipam_resource_discovery_association_args.dart';

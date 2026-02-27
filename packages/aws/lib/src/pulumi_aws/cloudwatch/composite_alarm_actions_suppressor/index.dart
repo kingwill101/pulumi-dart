@@ -1,3 +1,0 @@
-library module_cloudwatch_composite_alarm_actions_suppressor;
-
-export 'composite_alarm_actions_suppressor.dart';

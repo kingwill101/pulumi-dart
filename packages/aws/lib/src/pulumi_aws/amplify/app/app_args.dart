@@ -11,7 +11,7 @@ class AppArgs {
   /// Personal access token for a third-party source control system for an Amplify app. This token must have write access to the relevant repo to create a webhook and a read-only deploy key for the Amplify project. The token is not stored, so after applying this attribute can be removed and the setup token deleted.
   final Input<String>? accessToken;
 
-  /// Automated branch creation configuration for an Amplify app. See <span pulumi-lang-nodejs="`autoBranchCreationConfig`" pulumi-lang-dotnet="`AutoBranchCreationConfig`" pulumi-lang-go="`autoBranchCreationConfig`" pulumi-lang-python="`auto_branch_creation_config`" pulumi-lang-yaml="`autoBranchCreationConfig`" pulumi-lang-java="`autoBranchCreationConfig`">`auto_branch_creation_config`</span> Block for details.
+  /// Automated branch creation configuration for an Amplify app. See `auto_branch_creation_config` Block for details.
   final Input<AppAutoBranchCreationConfig>? autoBranchCreationConfig;
 
   /// Automated branch creation glob patterns for an Amplify app.
@@ -23,7 +23,7 @@ class AppArgs {
   /// The [build specification](https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html) (build spec) for an Amplify app.
   final Input<String>? buildSpec;
 
-  /// Cache configuration for the Amplify app. See <span pulumi-lang-nodejs="`cacheConfig`" pulumi-lang-dotnet="`CacheConfig`" pulumi-lang-go="`cacheConfig`" pulumi-lang-python="`cache_config`" pulumi-lang-yaml="`cacheConfig`" pulumi-lang-java="`cacheConfig`">`cache_config`</span> Block for details.
+  /// Cache configuration for the Amplify app. See `cache_config` Block for details.
   final Input<AppCacheConfig>? cacheConfig;
 
   /// AWS Identity and Access Management (IAM) SSR compute role for an Amplify app.
@@ -32,7 +32,7 @@ class AppArgs {
   /// The [custom HTTP headers](https://docs.aws.amazon.com/amplify/latest/userguide/custom-headers.html) for an Amplify app.
   final Input<String>? customHeaders;
 
-  /// Custom rewrite and redirect rules for an Amplify app. See <span pulumi-lang-nodejs="`customRule`" pulumi-lang-dotnet="`CustomRule`" pulumi-lang-go="`customRule`" pulumi-lang-python="`custom_rule`" pulumi-lang-yaml="`customRule`" pulumi-lang-java="`customRule`">`custom_rule`</span> Block for details.
+  /// Custom rewrite and redirect rules for an Amplify app. See `custom_rule` Block for details.
   final Input<List<AppCustomRule>>? customRules;
 
   /// Description for an Amplify app.
@@ -56,7 +56,7 @@ class AppArgs {
   /// AWS Identity and Access Management (IAM) service role for an Amplify app.
   final Input<String>? iamServiceRoleArn;
 
-  /// Used to configure the [Amplify Application build instance compute type](https://docs.aws.amazon.com/amplify/latest/APIReference/API_JobConfig.html#amplify-Type-JobConfig-buildComputeType). See <span pulumi-lang-nodejs="`jobConfig`" pulumi-lang-dotnet="`JobConfig`" pulumi-lang-go="`jobConfig`" pulumi-lang-python="`job_config`" pulumi-lang-yaml="`jobConfig`" pulumi-lang-java="`jobConfig`">`job_config`</span> Block for details.
+  /// Used to configure the [Amplify Application build instance compute type](https://docs.aws.amazon.com/amplify/latest/APIReference/API_JobConfig.html#amplify-Type-JobConfig-buildComputeType). See `job_config` Block for details.
   final Input<AppJobConfig>? jobConfig;
 
   /// Name for an Amplify app.
@@ -74,7 +74,7 @@ class AppArgs {
   /// Repository for an Amplify app.
   final Input<String>? repository;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   AppArgs({

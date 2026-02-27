@@ -1,0 +1,3 @@
+library module_storagegateway_nfs_file_share_nfs_file_share_defaults;
+
+export 'nfs_file_share_nfs_file_share_defaults/nfs_file_share_nfs_file_share_defaults.dart';

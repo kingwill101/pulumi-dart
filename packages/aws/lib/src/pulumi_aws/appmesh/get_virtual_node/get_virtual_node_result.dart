@@ -24,7 +24,7 @@ class GetVirtualNodeResult {
   /// Resource owner's AWS account ID.
   final String resourceOwner;
 
-  /// Virtual node specification. See the <span pulumi-lang-nodejs="`aws.appmesh.VirtualNode`" pulumi-lang-dotnet="`aws.appmesh.VirtualNode`" pulumi-lang-go="`appmesh.VirtualNode`" pulumi-lang-python="`appmesh.VirtualNode`" pulumi-lang-yaml="`aws.appmesh.VirtualNode`" pulumi-lang-java="`aws.appmesh.VirtualNode`">`aws.appmesh.VirtualNode`</span> resource for details.
+  /// Virtual node specification. See the `aws.appmesh.VirtualNode` resource for details.
   final List<GetVirtualNodeSpec> specs;
 
   /// Map of tags.

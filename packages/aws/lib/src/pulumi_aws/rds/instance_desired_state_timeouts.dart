@@ -1,0 +1,3 @@
+library module_rds_instance_desired_state_timeouts;
+
+export 'instance_desired_state_timeouts/instance_desired_state_timeouts.dart';

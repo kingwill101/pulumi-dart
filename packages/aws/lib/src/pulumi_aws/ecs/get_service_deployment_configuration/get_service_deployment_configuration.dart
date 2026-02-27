@@ -8,24 +8,24 @@ import '../get_service_deployment_configuration_lifecycle_hook/get_service_deplo
 import '../get_service_deployment_configuration_linear_configuration/get_service_deployment_configuration_linear_configuration.dart';
 
 class GetServiceDeploymentConfiguration {
-  /// CloudWatch alarms configuration. See <span pulumi-lang-nodejs="`alarms`" pulumi-lang-dotnet="`Alarms`" pulumi-lang-go="`alarms`" pulumi-lang-python="`alarms`" pulumi-lang-yaml="`alarms`" pulumi-lang-java="`alarms`">`alarms`</span> Block for details.
+  /// CloudWatch alarms configuration. See `alarms` Block for details.
   final List<GetServiceDeploymentConfigurationAlarm> alarms;
 
   /// Time to wait after deployment before terminating old tasks
   final String bakeTimeInMinutes;
 
-  /// Canary deployment configuration. See <span pulumi-lang-nodejs="`canaryConfiguration`" pulumi-lang-dotnet="`CanaryConfiguration`" pulumi-lang-go="`canaryConfiguration`" pulumi-lang-python="`canary_configuration`" pulumi-lang-yaml="`canaryConfiguration`" pulumi-lang-java="`canaryConfiguration`">`canary_configuration`</span> Block for details.
+  /// Canary deployment configuration. See `canary_configuration` Block for details.
   final List<GetServiceDeploymentConfigurationCanaryConfiguration>
       canaryConfigurations;
 
-  /// Circuit breaker configuration. See <span pulumi-lang-nodejs="`deploymentCircuitBreaker`" pulumi-lang-dotnet="`DeploymentCircuitBreaker`" pulumi-lang-go="`deploymentCircuitBreaker`" pulumi-lang-python="`deployment_circuit_breaker`" pulumi-lang-yaml="`deploymentCircuitBreaker`" pulumi-lang-java="`deploymentCircuitBreaker`">`deployment_circuit_breaker`</span> Block for details.
+  /// Circuit breaker configuration. See `deployment_circuit_breaker` Block for details.
   final List<GetServiceDeploymentConfigurationDeploymentCircuitBreaker>
       deploymentCircuitBreakers;
 
-  /// Lifecycle hooks for deployments. See <span pulumi-lang-nodejs="`lifecycleHook`" pulumi-lang-dotnet="`LifecycleHook`" pulumi-lang-go="`lifecycleHook`" pulumi-lang-python="`lifecycle_hook`" pulumi-lang-yaml="`lifecycleHook`" pulumi-lang-java="`lifecycleHook`">`lifecycle_hook`</span> Block for details.
+  /// Lifecycle hooks for deployments. See `lifecycle_hook` Block for details.
   final List<GetServiceDeploymentConfigurationLifecycleHook> lifecycleHooks;
 
-  /// Linear deployment configuration. See <span pulumi-lang-nodejs="`linearConfiguration`" pulumi-lang-dotnet="`LinearConfiguration`" pulumi-lang-go="`linearConfiguration`" pulumi-lang-python="`linear_configuration`" pulumi-lang-yaml="`linearConfiguration`" pulumi-lang-java="`linearConfiguration`">`linear_configuration`</span> Block for details.
+  /// Linear deployment configuration. See `linear_configuration` Block for details.
   final List<GetServiceDeploymentConfigurationLinearConfiguration>
       linearConfigurations;
 

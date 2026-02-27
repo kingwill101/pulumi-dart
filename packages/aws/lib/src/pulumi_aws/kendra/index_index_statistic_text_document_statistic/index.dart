@@ -1,3 +1,0 @@
-library module_kendra_index_index_statistic_text_document_statistic;
-
-export 'index_index_statistic_text_document_statistic.dart';

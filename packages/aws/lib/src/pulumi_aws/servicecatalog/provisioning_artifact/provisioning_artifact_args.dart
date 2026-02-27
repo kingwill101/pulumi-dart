@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for ProvisioningArtifact.
 class ProvisioningArtifactArgs {
-  /// Language code. Valid values: <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span> (English), <span pulumi-lang-nodejs="`jp`" pulumi-lang-dotnet="`Jp`" pulumi-lang-go="`jp`" pulumi-lang-python="`jp`" pulumi-lang-yaml="`jp`" pulumi-lang-java="`jp`">`jp`</span> (Japanese), <span pulumi-lang-nodejs="`zh`" pulumi-lang-dotnet="`Zh`" pulumi-lang-go="`zh`" pulumi-lang-python="`zh`" pulumi-lang-yaml="`zh`" pulumi-lang-java="`zh`">`zh`</span> (Chinese). The default value is <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span>.
+  /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). The default value is `en`.
   final Input<String>? acceptLanguage;
 
-  /// Whether the product version is active. Inactive provisioning artifacts are invisible to end users. End users cannot launch or update a provisioned product from an inactive provisioning artifact. Default is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the product version is active. Inactive provisioning artifacts are invisible to end users. End users cannot launch or update a provisioned product from an inactive provisioning artifact. Default is `true`.
   final Input<bool>? active;
 
   /// Description of the provisioning artifact (i.e., version), including how it differs from the previous provisioning artifact.
@@ -19,7 +19,7 @@ class ProvisioningArtifactArgs {
   /// Information set by the administrator to provide guidance to end users about which provisioning artifacts to use. Valid values are `DEFAULT` and `DEPRECATED`. The default is `DEFAULT`. Users are able to make updates to a provisioned product of a deprecated version but cannot launch new provisioned products using a deprecated version.
   final Input<String>? guidance;
 
-  /// Name of the provisioning artifact (for example, <span pulumi-lang-nodejs="`v1`" pulumi-lang-dotnet="`V1`" pulumi-lang-go="`v1`" pulumi-lang-python="`v1`" pulumi-lang-yaml="`v1`" pulumi-lang-java="`v1`">`v1`</span>, <span pulumi-lang-nodejs="`v2beta`" pulumi-lang-dotnet="`V2beta`" pulumi-lang-go="`v2beta`" pulumi-lang-python="`v2beta`" pulumi-lang-yaml="`v2beta`" pulumi-lang-java="`v2beta`">`v2beta`</span>). No spaces are allowed.
+  /// Name of the provisioning artifact (for example, `v1`, `v2beta`). No spaces are allowed.
   final Input<String>? name;
 
   /// Identifier of the product.

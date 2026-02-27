@@ -5,7 +5,7 @@ import '../agent_agent_action_group_function_schema_member_functions/agent_agent
 class AgentAgentActionGroupFunctionSchema {
   /// Contains a list of functions.
   /// Each function describes and action in the action group.
-  /// See <span pulumi-lang-nodejs="`memberFunctions`" pulumi-lang-dotnet="`MemberFunctions`" pulumi-lang-go="`memberFunctions`" pulumi-lang-python="`member_functions`" pulumi-lang-yaml="`memberFunctions`" pulumi-lang-java="`memberFunctions`">`member_functions`</span> Block for details.
+  /// See `member_functions` Block for details.
   final AgentAgentActionGroupFunctionSchemaMemberFunctions? memberFunctions;
 
   AgentAgentActionGroupFunctionSchema({

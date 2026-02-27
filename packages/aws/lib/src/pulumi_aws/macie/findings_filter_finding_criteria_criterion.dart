@@ -1,0 +1,3 @@
+library module_macie_findings_filter_finding_criteria_criterion;
+
+export 'findings_filter_finding_criteria_criterion/findings_filter_finding_criteria_criterion.dart';

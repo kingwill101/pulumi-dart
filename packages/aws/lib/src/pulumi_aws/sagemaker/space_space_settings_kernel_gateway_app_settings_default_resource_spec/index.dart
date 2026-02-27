@@ -1,3 +1,0 @@
-library module_sagemaker_space_space_settings_kernel_gateway_app_settings_default_resource_spec;
-
-export 'space_space_settings_kernel_gateway_app_settings_default_resource_spec.dart';

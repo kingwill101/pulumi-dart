@@ -5,13 +5,13 @@ import '../allowed_images_settings_image_criterion/allowed_images_settings_image
 
 /// The set of arguments for AllowedImagesSettings.
 class AllowedImagesSettingsArgs {
-  /// List of image criteria. Maximum of 10 criterion blocks allowed. See <span pulumi-lang-nodejs="`imageCriterion`" pulumi-lang-dotnet="`ImageCriterion`" pulumi-lang-go="`imageCriterion`" pulumi-lang-python="`image_criterion`" pulumi-lang-yaml="`imageCriterion`" pulumi-lang-java="`imageCriterion`">`image_criterion`</span> below.
+  /// List of image criteria. Maximum of 10 criterion blocks allowed. See `image_criterion` below.
   final Input<List<AllowedImagesSettingsImageCriterion>>? imageCriterions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// State of the allowed images settings. Valid values are <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`">`enabled`</span> or `audit-mode`.
+  /// State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
   final Input<String> state;
 
   AllowedImagesSettingsArgs({

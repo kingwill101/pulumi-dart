@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class VectorsVectorBucketEncryptionConfiguration {
-  /// AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if <span pulumi-lang-nodejs="`sseType`" pulumi-lang-dotnet="`SseType`" pulumi-lang-go="`sseType`" pulumi-lang-python="`sse_type`" pulumi-lang-yaml="`sseType`" pulumi-lang-java="`sseType`">`sse_type`</span> is set to `aws:kms`.
+  /// AWS KMS CMK ARN to use for the default encryption of the vector bucket. Allowed if and only if `sse_type` is set to `aws:kms`.
   final String kmsKeyArn;
 
   /// Server-side encryption type to use for the default encryption of the vector bucket. Valid values: `AES256`, `aws:kms`.

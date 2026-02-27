@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ObjectCopyGrant {
-  /// Email address of the grantee. Used only when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `AmazonCustomerByEmail`.
+  /// Email address of the grantee. Used only when `type` is `AmazonCustomerByEmail`.
   final String? email;
 
-  /// Canonical user ID of the grantee. Used only when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `CanonicalUser`.
+  /// Canonical user ID of the grantee. Used only when `type` is `CanonicalUser`.
   final String? id;
 
   /// List of permissions to grant to grantee. Valid values are `READ`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
@@ -15,7 +15,7 @@ class ObjectCopyGrant {
   /// This configuration block has the following optional arguments (one of the three is required):
   final String type;
 
-  /// URI of the grantee group. Used only when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `Group`.
+  /// URI of the grantee group. Used only when `type` is `Group`.
   final String? uri;
 
   ObjectCopyGrant({

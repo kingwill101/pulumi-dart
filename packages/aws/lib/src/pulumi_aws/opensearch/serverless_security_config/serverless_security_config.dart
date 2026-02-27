@@ -8,7 +8,7 @@ import 'serverless_security_config_args.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearchServerless Access Policy using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> argument prefixed with the string `saml/account_id/`. For example:
+/// Using `pulumi import`, import OpenSearchServerless Access Policy using the `name` argument prefixed with the string `saml/account_id/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig example saml/123456789012/example
@@ -29,7 +29,7 @@ class ServerlessSecurityConfig extends CustomResource {
   /// Configuration block for SAML options.
   late final Output<ServerlessSecurityConfigSamlOptions?> samlOptions;
 
-  /// Type of configuration. Must be <span pulumi-lang-nodejs="`saml`" pulumi-lang-dotnet="`Saml`" pulumi-lang-go="`saml`" pulumi-lang-python="`saml`" pulumi-lang-yaml="`saml`" pulumi-lang-java="`saml`">`saml`</span>.
+  /// Type of configuration. Must be `saml`.
   ///
   /// The following arguments are optional:
   late final Output<String> type;

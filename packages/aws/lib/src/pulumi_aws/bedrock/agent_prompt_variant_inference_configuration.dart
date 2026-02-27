@@ -1,0 +1,3 @@
+library module_bedrock_agent_prompt_variant_inference_configuration;
+
+export 'agent_prompt_variant_inference_configuration/agent_prompt_variant_inference_configuration.dart';

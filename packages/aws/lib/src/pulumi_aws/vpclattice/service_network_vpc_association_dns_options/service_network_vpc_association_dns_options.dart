@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ServiceNetworkVpcAssociationDnsOptions {
-  /// Preference for which private domains have a private hosted zone created for and associated with the specified VPC. Only supported when <span pulumi-lang-nodejs="`privateDnsEnabled`" pulumi-lang-dotnet="`PrivateDnsEnabled`" pulumi-lang-go="`privateDnsEnabled`" pulumi-lang-python="`private_dns_enabled`" pulumi-lang-yaml="`privateDnsEnabled`" pulumi-lang-java="`privateDnsEnabled`">`private_dns_enabled`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Valid Values are `VERIFIED_DOMAINS_ONLY`, `ALL_DOMAINS`, `VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS` and `SPECIFIED_DOMAINS_ONLY`.
+  /// Preference for which private domains have a private hosted zone created for and associated with the specified VPC. Only supported when `private_dns_enabled` is `true`. Valid Values are `VERIFIED_DOMAINS_ONLY`, `ALL_DOMAINS`, `VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS` and `SPECIFIED_DOMAINS_ONLY`.
   final String? privateDnsPreference;
 
-  /// Private domains to create private hosted zones for and associate with the specified VPC. Only supported when <span pulumi-lang-nodejs="`privateDnsEnabled`" pulumi-lang-dotnet="`PrivateDnsEnabled`" pulumi-lang-go="`privateDnsEnabled`" pulumi-lang-python="`private_dns_enabled`" pulumi-lang-yaml="`privateDnsEnabled`" pulumi-lang-java="`privateDnsEnabled`">`private_dns_enabled`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> and <span pulumi-lang-nodejs="`privateDnsPreference`" pulumi-lang-dotnet="`PrivateDnsPreference`" pulumi-lang-go="`privateDnsPreference`" pulumi-lang-python="`private_dns_preference`" pulumi-lang-yaml="`privateDnsPreference`" pulumi-lang-java="`privateDnsPreference`">`private_dns_preference`</span> is `VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS` or `SPECIFIED_DOMAINS_ONLY`.
+  /// Private domains to create private hosted zones for and associate with the specified VPC. Only supported when `private_dns_enabled` is `true` and `private_dns_preference` is `VERIFIED_DOMAINS_AND_SPECIFIED_DOMAINS` or `SPECIFIED_DOMAINS_ONLY`.
   final List<String>? privateDnsSpecifiedDomains;
 
   ServiceNetworkVpcAssociationDnsOptions({

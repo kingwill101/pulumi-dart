@@ -9,10 +9,10 @@ class GetOutpostInstanceTypeArgs {
   /// The following arguments are optional:
   final Input<String> arn;
 
-  /// Desired instance type. Conflicts with <span pulumi-lang-nodejs="`preferredInstanceTypes`" pulumi-lang-dotnet="`PreferredInstanceTypes`" pulumi-lang-go="`preferredInstanceTypes`" pulumi-lang-python="`preferred_instance_types`" pulumi-lang-yaml="`preferredInstanceTypes`" pulumi-lang-java="`preferredInstanceTypes`">`preferred_instance_types`</span>.
+  /// Desired instance type. Conflicts with `preferred_instance_types`.
   final Input<String>? instanceType;
 
-  /// Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with <span pulumi-lang-nodejs="`instanceType`" pulumi-lang-dotnet="`InstanceType`" pulumi-lang-go="`instanceType`" pulumi-lang-python="`instance_type`" pulumi-lang-yaml="`instanceType`" pulumi-lang-java="`instanceType`">`instance_type`</span>.
+  /// Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instance_type`.
   final Input<List<String>>? preferredInstanceTypes;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

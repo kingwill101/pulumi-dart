@@ -3,7 +3,7 @@
 import '../rule_group_rule_statement_xss_match_statement_field_to_match_header_match_pattern/rule_group_rule_statement_xss_match_statement_field_to_match_header_match_pattern.dart';
 
 class RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader {
-  /// The filter to use to identify the subset of headers to inspect in a web request. The <span pulumi-lang-nodejs="`matchPattern`" pulumi-lang-dotnet="`MatchPattern`" pulumi-lang-go="`matchPattern`" pulumi-lang-python="`match_pattern`" pulumi-lang-yaml="`matchPattern`" pulumi-lang-java="`matchPattern`">`match_pattern`</span> block supports only one of the following arguments:
+  /// The filter to use to identify the subset of headers to inspect in a web request. The `match_pattern` block supports only one of the following arguments:
   final RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern
       matchPattern;
 

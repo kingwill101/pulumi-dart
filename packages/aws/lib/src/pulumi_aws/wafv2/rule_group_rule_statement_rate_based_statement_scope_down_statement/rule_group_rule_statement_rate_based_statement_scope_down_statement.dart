@@ -19,7 +19,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatement {
   final RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement?
       andStatement;
 
-  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See <span pulumi-lang-nodejs="`asnMatchStatement`" pulumi-lang-dotnet="`AsnMatchStatement`" pulumi-lang-go="`asnMatchStatement`" pulumi-lang-python="`asn_match_statement`" pulumi-lang-yaml="`asnMatchStatement`" pulumi-lang-java="`asnMatchStatement`">`asn_match_statement`</span> below for details.
+  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asn_match_statement` below for details.
   final RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement?
       asnMatchStatement;
 

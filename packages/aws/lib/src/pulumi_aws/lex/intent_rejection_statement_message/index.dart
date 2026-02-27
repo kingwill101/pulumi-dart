@@ -1,3 +1,0 @@
-library module_lex_intent_rejection_statement_message;
-
-export 'intent_rejection_statement_message.dart';

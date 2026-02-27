@@ -1,0 +1,3 @@
+library module_pinpoint_smsvoicev2_phone_number_timeouts;
+
+export 'smsvoicev2_phone_number_timeouts/smsvoicev2_phone_number_timeouts.dart';

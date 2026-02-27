@@ -5,33 +5,7 @@ import 'role_alias_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```yaml
-/// resources:
-/// role:
-/// type: aws:iam:Role
-/// properties:
-/// name: dynamodb-access-role
-/// assumeRolePolicy: ${assumeRole.json}
-/// alias:
-/// type: aws:iot:RoleAlias
-/// properties:
-/// alias: Thermostat-dynamodb-access-role-alias
-/// roleArn: ${role.arn}
-/// variables:
-/// assumeRole:
-/// fn::invoke:
-/// function: aws:iam:getPolicyDocument
-/// arguments:
-/// effect: Allow
-/// principals:
-/// - type: Service
-/// identifiers:
-/// - credentials.iot.amazonaws.com
-/// actions:
-/// - sts:AssumeRole
-/// ```
-/// <!--End PulumiCodeChooser -->
+///
 ///
 /// ## Import
 ///
@@ -56,10 +30,10 @@ class RoleAlias extends CustomResource {
   /// The identity of the role to which the alias refers.
   late final Output<String> roleArn;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   RoleAlias(

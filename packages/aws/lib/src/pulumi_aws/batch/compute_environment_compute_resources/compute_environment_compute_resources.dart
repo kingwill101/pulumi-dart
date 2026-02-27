@@ -8,7 +8,7 @@ class ComputeEnvironmentComputeResources {
   /// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/batch/latest/APIReference/API_ComputeResource.html#Batch-Type-ComputeResource-allocationStrategy). Defaults to `BEST_FIT`. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
   final String? allocationStrategy;
 
-  /// Integer of maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (<span pulumi-lang-nodejs="`20`" pulumi-lang-dotnet="`20`" pulumi-lang-go="`20`" pulumi-lang-python="`20`" pulumi-lang-yaml="`20`" pulumi-lang-java="`20`">`20`</span>), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. If you leave this field empty, the default value is 100% of the On-Demand price. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+  /// Integer of maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. If you leave this field empty, the default value is 100% of the On-Demand price. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
   final int? bidPercentage;
 
   /// The desired number of EC2 vCPUS in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
@@ -21,7 +21,7 @@ class ComputeEnvironmentComputeResources {
   /// The EC2 key pair that is used for instances launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
   final String? ec2KeyPair;
 
-  /// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. (Deprecated, use <span pulumi-lang-nodejs="`ec2Configuration`" pulumi-lang-dotnet="`Ec2Configuration`" pulumi-lang-go="`ec2Configuration`" pulumi-lang-python="`ec2_configuration`" pulumi-lang-yaml="`ec2Configuration`" pulumi-lang-java="`ec2Configuration`">`ec2_configuration`</span> <span pulumi-lang-nodejs="`imageIdOverride`" pulumi-lang-dotnet="`ImageIdOverride`" pulumi-lang-go="`imageIdOverride`" pulumi-lang-python="`image_id_override`" pulumi-lang-yaml="`imageIdOverride`" pulumi-lang-java="`imageIdOverride`">`image_id_override`</span> instead)
+  /// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified. (Deprecated, use `ec2_configuration` `image_id_override` instead)
   final String? imageId;
 
   /// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
@@ -36,7 +36,7 @@ class ComputeEnvironmentComputeResources {
   /// The maximum number of EC2 vCPUs that an environment can reach.
   final int maxVcpus;
 
-  /// The minimum number of EC2 vCPUs that an environment should maintain. For `EC2` or `SPOT` compute environments, if the parameter is not explicitly defined, a <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> default value will be set. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
+  /// The minimum number of EC2 vCPUs that an environment should maintain. For `EC2` or `SPOT` compute environments, if the parameter is not explicitly defined, a `0` default value will be set. This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.
   final int? minVcpus;
 
   /// The Amazon EC2 placement group to associate with your compute resources.

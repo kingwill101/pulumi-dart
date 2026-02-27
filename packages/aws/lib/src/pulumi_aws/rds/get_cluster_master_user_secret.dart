@@ -1,0 +1,3 @@
+library module_rds_get_cluster_master_user_secret;
+
+export 'get_cluster_master_user_secret/get_cluster_master_user_secret.dart';

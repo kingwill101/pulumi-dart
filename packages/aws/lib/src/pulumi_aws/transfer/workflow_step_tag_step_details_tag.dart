@@ -1,0 +1,3 @@
+library module_transfer_workflow_step_tag_step_details_tag;
+
+export 'workflow_step_tag_step_details_tag/workflow_step_tag_step_details_tag.dart';

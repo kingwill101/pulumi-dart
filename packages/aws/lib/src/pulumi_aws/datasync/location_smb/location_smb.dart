@@ -8,123 +8,7 @@ import 'location_smb_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.datasync.LocationSmb("example", {
-/// serverHostname: "smb.example.com",
-/// subdirectory: "/exported/path",
-/// user: "Guest",
-/// password: "ANotGreatPassword",
-/// agentArns: [exampleAwsDatasyncAgent.arn],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.datasync.LocationSmb("example",
-/// server_hostname="smb.example.com",
-/// subdirectory="/exported/path",
-/// user="Guest",
-/// password="ANotGreatPassword",
-/// agent_arns=[example_aws_datasync_agent["arn"]])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.DataSync.LocationSmb("example", new()
-/// {
-/// ServerHostname = "smb.example.com",
-/// Subdirectory = "/exported/path",
-/// User = "Guest",
-/// Password = "ANotGreatPassword",
-/// AgentArns = new[]
-/// {
-/// exampleAwsDatasyncAgent.Arn,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/datasync"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := datasync.NewLocationSmb(ctx, "example", &datasync.LocationSmbArgs{
-/// ServerHostname: pulumi.String("smb.example.com"),
-/// Subdirectory:   pulumi.String("/exported/path"),
-/// User:           pulumi.String("Guest"),
-/// Password:       pulumi.String("ANotGreatPassword"),
-/// AgentArns: pulumi.StringArray{
-/// exampleAwsDatasyncAgent.Arn,
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.datasync.LocationSmb;
-/// import com.pulumi.aws.datasync.LocationSmbArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new LocationSmb("example", LocationSmbArgs.builder()
-/// .serverHostname("smb.example.com")
-/// .subdirectory("/exported/path")
-/// .user("Guest")
-/// .password("ANotGreatPassword")
-/// .agentArns(exampleAwsDatasyncAgent.arn())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:datasync:LocationSmb
-/// properties:
-/// serverHostname: smb.example.com
-/// subdirectory: /exported/path
-/// user: Guest
-/// password: ANotGreatPassword
-/// agentArns:
-/// - ${exampleAwsDatasyncAgent.arn}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -132,10 +16,10 @@ import 'location_smb_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the DataSync SMB location.
+/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync SMB location.
 ///
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.datasync.LocationSmb`" pulumi-lang-dotnet="`aws.datasync.LocationSmb`" pulumi-lang-go="`datasync.LocationSmb`" pulumi-lang-python="`datasync.LocationSmb`" pulumi-lang-yaml="`aws.datasync.LocationSmb`" pulumi-lang-java="`aws.datasync.LocationSmb`">`aws.datasync.LocationSmb`</span> using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.LocationSmb` using the Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/locationSmb:LocationSmb example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
@@ -165,10 +49,10 @@ class LocationSmb extends CustomResource {
   /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
   late final Output<String> subdirectory;
 
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
   late final Output<String> uri;
 

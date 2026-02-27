@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../lifecycle_policy_policy_details_action_cross_region_copy/lifecycle_policy_policy_details_action_cross_region_copy.dart';
 
 class LifecyclePolicyPolicyDetailsAction {
-  /// The rule for copying shared snapshots across Regions. See the <span pulumi-lang-nodejs="`crossRegionCopy`" pulumi-lang-dotnet="`CrossRegionCopy`" pulumi-lang-go="`crossRegionCopy`" pulumi-lang-python="`cross_region_copy`" pulumi-lang-yaml="`crossRegionCopy`" pulumi-lang-java="`crossRegionCopy`">`cross_region_copy`</span> configuration block.
+  /// The rule for copying shared snapshots across Regions. See the `cross_region_copy` configuration block.
   final List<LifecyclePolicyPolicyDetailsActionCrossRegionCopy>
       crossRegionCopies;
   final String name;

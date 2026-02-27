@@ -7,9 +7,9 @@ class GroupTag {
   /// Enables propagation of the tag to
   /// Amazon EC2 instances launched via this ASG
   ///
-  /// To declare multiple tags, additional <span pulumi-lang-nodejs="`tag`" pulumi-lang-dotnet="`Tag`" pulumi-lang-go="`tag`" pulumi-lang-python="`tag`" pulumi-lang-yaml="`tag`" pulumi-lang-java="`tag`">`tag`</span> blocks can be specified.
+  /// To declare multiple tags, additional `tag` blocks can be specified.
   ///
-  /// > **NOTE:** Other AWS APIs may automatically add special tags to their associated Auto Scaling Group for management purposes, such as ECS Capacity Providers adding the `AmazonECSManaged` tag. These generally should be included in the configuration so the provider does not attempt to remove them and so if the <span pulumi-lang-nodejs="`minSize`" pulumi-lang-dotnet="`MinSize`" pulumi-lang-go="`minSize`" pulumi-lang-python="`min_size`" pulumi-lang-yaml="`minSize`" pulumi-lang-java="`minSize`">`min_size`</span> was greater than zero on creation, that these tag(s) are applied to any initial EC2 Instances in the Auto Scaling Group. If these tag(s) were missing in the Auto Scaling Group configuration on creation, affected EC2 Instances missing the tags may require manual intervention of adding the tags to ensure they work properly with the other AWS service.
+  /// > **NOTE:** Other AWS APIs may automatically add special tags to their associated Auto Scaling Group for management purposes, such as ECS Capacity Providers adding the `AmazonECSManaged` tag. These generally should be included in the configuration so the provider does not attempt to remove them and so if the `min_size` was greater than zero on creation, that these tag(s) are applied to any initial EC2 Instances in the Auto Scaling Group. If these tag(s) were missing in the Auto Scaling Group configuration on creation, affected EC2 Instances missing the tags may require manual intervention of adding the tags to ensure they work properly with the other AWS service.
   final bool propagateAtLaunch;
 
   /// Value

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PresetAudioCodecOptions {
-  /// The bit depth of a sample is how many bits of information are included in the audio samples. Valid values are <span pulumi-lang-nodejs="`16`" pulumi-lang-dotnet="`16`" pulumi-lang-go="`16`" pulumi-lang-python="`16`" pulumi-lang-yaml="`16`" pulumi-lang-java="`16`">`16`</span> and <span pulumi-lang-nodejs="`24`" pulumi-lang-dotnet="`24`" pulumi-lang-go="`24`" pulumi-lang-python="`24`" pulumi-lang-yaml="`24`" pulumi-lang-java="`24`">`24`</span>. (FLAC/PCM Only)
+  /// The bit depth of a sample is how many bits of information are included in the audio samples. Valid values are `16` and `24`. (FLAC/PCM Only)
   final String? bitDepth;
 
   /// The order the bits of a PCM sample are stored in. The supported value is LittleEndian. (PCM Only)

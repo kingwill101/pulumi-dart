@@ -18,7 +18,7 @@ class RouteTableRoute {
   /// Identifier of a VPC Egress Only Internet Gateway.
   final String? egressOnlyGatewayId;
 
-  /// Identifier of a VPC internet gateway, virtual private gateway, or <span pulumi-lang-nodejs="`local`" pulumi-lang-dotnet="`Local`" pulumi-lang-go="`local`" pulumi-lang-python="`local`" pulumi-lang-yaml="`local`" pulumi-lang-java="`local`">`local`</span>. <span pulumi-lang-nodejs="`local`" pulumi-lang-dotnet="`Local`" pulumi-lang-go="`local`" pulumi-lang-python="`local`" pulumi-lang-yaml="`local`" pulumi-lang-java="`local`">`local`</span> routes cannot be created but can be adopted or imported. See the example above.
+  /// Identifier of a VPC internet gateway, virtual private gateway, or `local`. `local` routes cannot be created but can be adopted or imported. See the example above.
   final String? gatewayId;
 
   /// The Ipv6 CIDR block of the route.

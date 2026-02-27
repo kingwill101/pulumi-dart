@@ -1,0 +1,3 @@
+library module_s3_bucket_lifecycle_configuration_v2_rule_transition;
+
+export 'bucket_lifecycle_configuration_v2_rule_transition/bucket_lifecycle_configuration_v2_rule_transition.dart';

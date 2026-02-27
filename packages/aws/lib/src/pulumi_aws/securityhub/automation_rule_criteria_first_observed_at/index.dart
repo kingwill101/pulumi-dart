@@ -1,3 +1,0 @@
-library module_securityhub_automation_rule_criteria_first_observed_at;
-
-export 'automation_rule_criteria_first_observed_at.dart';

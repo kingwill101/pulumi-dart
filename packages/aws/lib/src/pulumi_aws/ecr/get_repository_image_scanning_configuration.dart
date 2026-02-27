@@ -1,0 +1,3 @@
+library module_ecr_get_repository_image_scanning_configuration;
+
+export 'get_repository_image_scanning_configuration/get_repository_image_scanning_configuration.dart';

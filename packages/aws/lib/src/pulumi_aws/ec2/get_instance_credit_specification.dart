@@ -1,0 +1,3 @@
+library module_ec2_get_instance_credit_specification;
+
+export 'get_instance_credit_specification/get_instance_credit_specification.dart';

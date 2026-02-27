@@ -10,7 +10,7 @@ class AgentKnowledgeBaseArgs {
   /// Description of the knowledge base.
   final Input<String>? description;
 
-  /// Details about the embeddings configuration of the knowledge base. See <span pulumi-lang-nodejs="`knowledgeBaseConfiguration`" pulumi-lang-dotnet="`KnowledgeBaseConfiguration`" pulumi-lang-go="`knowledgeBaseConfiguration`" pulumi-lang-python="`knowledge_base_configuration`" pulumi-lang-yaml="`knowledgeBaseConfiguration`" pulumi-lang-java="`knowledgeBaseConfiguration`">`knowledge_base_configuration`</span> block for details.
+  /// Details about the embeddings configuration of the knowledge base. See `knowledge_base_configuration` block for details.
   final Input<AgentKnowledgeBaseKnowledgeBaseConfiguration>
       knowledgeBaseConfiguration;
 
@@ -25,10 +25,10 @@ class AgentKnowledgeBaseArgs {
   /// The following arguments are optional:
   final Input<String> roleArn;
 
-  /// Details about the storage configuration of the knowledge base. See <span pulumi-lang-nodejs="`storageConfiguration`" pulumi-lang-dotnet="`StorageConfiguration`" pulumi-lang-go="`storageConfiguration`" pulumi-lang-python="`storage_configuration`" pulumi-lang-yaml="`storageConfiguration`" pulumi-lang-java="`storageConfiguration`">`storage_configuration`</span> block for details.
+  /// Details about the storage configuration of the knowledge base. See `storage_configuration` block for details.
   final Input<AgentKnowledgeBaseStorageConfiguration>? storageConfiguration;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<AgentKnowledgeBaseTimeouts>? timeouts;
 

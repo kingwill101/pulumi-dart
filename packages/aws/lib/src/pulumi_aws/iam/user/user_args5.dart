@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for User.
 class UserArgs5 {
   /// When destroying this user, destroy even if it
-  /// has non-provider-managed IAM access keys, login profile or MFA devices. Without <span pulumi-lang-nodejs="`forceDestroy`" pulumi-lang-dotnet="`ForceDestroy`" pulumi-lang-go="`forceDestroy`" pulumi-lang-python="`force_destroy`" pulumi-lang-yaml="`forceDestroy`" pulumi-lang-java="`forceDestroy`">`force_destroy`</span>
+  /// has non-provider-managed IAM access keys, login profile or MFA devices. Without `force_destroy`
   /// a user with non-provider-managed access keys and login profile will fail to be destroyed.
   final Input<bool>? forceDestroy;
 
@@ -18,7 +18,7 @@ class UserArgs5 {
   /// The ARN of the policy that is used to set the permissions boundary for the user.
   final Input<String>? permissionsBoundary;
 
-  /// Key-value mapping of tags for the IAM user. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of tags for the IAM user. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   UserArgs5({

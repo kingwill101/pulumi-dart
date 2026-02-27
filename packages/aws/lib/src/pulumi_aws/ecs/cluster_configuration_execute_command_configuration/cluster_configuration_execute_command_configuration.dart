@@ -6,7 +6,7 @@ class ClusterConfigurationExecuteCommandConfiguration {
   /// AWS Key Management Service key ID to encrypt the data between the local client and the container.
   final String? kmsKeyId;
 
-  /// Log configuration for the results of the execute command actions. Required when <span pulumi-lang-nodejs="`logging`" pulumi-lang-dotnet="`Logging`" pulumi-lang-go="`logging`" pulumi-lang-python="`logging`" pulumi-lang-yaml="`logging`" pulumi-lang-java="`logging`">`logging`</span> is `OVERRIDE`. See <span pulumi-lang-nodejs="`logConfiguration`" pulumi-lang-dotnet="`LogConfiguration`" pulumi-lang-go="`logConfiguration`" pulumi-lang-python="`log_configuration`" pulumi-lang-yaml="`logConfiguration`" pulumi-lang-java="`logConfiguration`">`log_configuration`</span> Block for details.
+  /// Log configuration for the results of the execute command actions. Required when `logging` is `OVERRIDE`. See `log_configuration` Block for details.
   final ClusterConfigurationExecuteCommandConfigurationLogConfiguration?
       logConfiguration;
 

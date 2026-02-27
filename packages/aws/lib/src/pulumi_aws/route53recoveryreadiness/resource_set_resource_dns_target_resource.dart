@@ -1,0 +1,3 @@
+library module_route53recoveryreadiness_resource_set_resource_dns_target_resource;
+
+export 'resource_set_resource_dns_target_resource/resource_set_resource_dns_target_resource.dart';

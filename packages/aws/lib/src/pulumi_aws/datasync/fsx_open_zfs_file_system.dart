@@ -1,0 +1,4 @@
+library module_datasync_fsx_open_zfs_file_system;
+
+export 'fsx_open_zfs_file_system/fsx_open_zfs_file_system.dart';
+export 'fsx_open_zfs_file_system/fsx_open_zfs_file_system_args.dart';

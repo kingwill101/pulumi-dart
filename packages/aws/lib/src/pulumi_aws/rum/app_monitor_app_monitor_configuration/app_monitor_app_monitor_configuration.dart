@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class AppMonitorAppMonitorConfiguration {
-  /// If you set this to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, RUM web client sets two cookies, a session cookie and a user cookie. The cookies allow the RUM web client to collect data relating to the number of users an application has and the behavior of the application across a sequence of events. Cookies are stored in the top-level domain of the current page.
+  /// If you set this to `true`, RUM web client sets two cookies, a session cookie and a user cookie. The cookies allow the RUM web client to collect data relating to the number of users an application has and the behavior of the application across a sequence of events. Cookies are stored in the top-level domain of the current page.
   final bool? allowCookies;
 
-  /// If you set this to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, RUM enables X-Ray tracing for the user sessions that RUM samples. RUM adds an X-Ray trace header to allowed HTTP requests. It also records an X-Ray segment for allowed HTTP requests.
+  /// If you set this to `true`, RUM enables X-Ray tracing for the user sessions that RUM samples. RUM adds an X-Ray trace header to allowed HTTP requests. It also records an X-Ray segment for allowed HTTP requests.
   final bool? enableXray;
 
   /// A list of URLs in your website or application to exclude from RUM data collection.
@@ -25,7 +25,7 @@ class AppMonitorAppMonitorConfiguration {
   /// Specifies the percentage of user sessions to use for RUM data collection. Choosing a higher percentage gives you more data but also incurs more costs. The number you specify is the percentage of user sessions that will be used. Default value is `0.1`.
   final double? sessionSampleRate;
 
-  /// An array that lists the types of telemetry data that this app monitor is to collect. Valid values are <span pulumi-lang-nodejs="`errors`" pulumi-lang-dotnet="`Errors`" pulumi-lang-go="`errors`" pulumi-lang-python="`errors`" pulumi-lang-yaml="`errors`" pulumi-lang-java="`errors`">`errors`</span>, <span pulumi-lang-nodejs="`performance`" pulumi-lang-dotnet="`Performance`" pulumi-lang-go="`performance`" pulumi-lang-python="`performance`" pulumi-lang-yaml="`performance`" pulumi-lang-java="`performance`">`performance`</span>, and <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>.
+  /// An array that lists the types of telemetry data that this app monitor is to collect. Valid values are `errors`, `performance`, and `http`.
   final List<String>? telemetries;
 
   AppMonitorAppMonitorConfiguration({

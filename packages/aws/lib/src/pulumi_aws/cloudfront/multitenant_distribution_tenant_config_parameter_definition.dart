@@ -1,0 +1,3 @@
+library module_cloudfront_multitenant_distribution_tenant_config_parameter_definition;
+
+export 'multitenant_distribution_tenant_config_parameter_definition/multitenant_distribution_tenant_config_parameter_definition.dart';

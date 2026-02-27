@@ -1,4 +1,0 @@
-library module_drs_replication_configuration_template;
-
-export 'replication_configuration_template.dart';
-export 'replication_configuration_template_args.dart';

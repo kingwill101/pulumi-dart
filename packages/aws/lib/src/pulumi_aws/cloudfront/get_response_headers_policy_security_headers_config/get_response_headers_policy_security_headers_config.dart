@@ -21,7 +21,7 @@ class GetResponseHeadersPolicySecurityHeadersConfig {
   final List<GetResponseHeadersPolicySecurityHeadersConfigFrameOption>
       frameOptions;
 
-  /// Value of the Referrer-Policy HTTP response header. Valid Values: `no-referrer` | `no-referrer-when-downgrade` | <span pulumi-lang-nodejs="`origin`" pulumi-lang-dotnet="`Origin`" pulumi-lang-go="`origin`" pulumi-lang-python="`origin`" pulumi-lang-yaml="`origin`" pulumi-lang-java="`origin`">`origin`</span> | `origin-when-cross-origin` | `same-origin` | `strict-origin` | `strict-origin-when-cross-origin` | `unsafe-url`
+  /// Value of the Referrer-Policy HTTP response header. Valid Values: `no-referrer` | `no-referrer-when-downgrade` | `origin` | `origin-when-cross-origin` | `same-origin` | `strict-origin` | `strict-origin-when-cross-origin` | `unsafe-url`
   final List<GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy>
       referrerPolicies;
 

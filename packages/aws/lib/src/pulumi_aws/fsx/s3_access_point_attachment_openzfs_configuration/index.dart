@@ -1,3 +1,0 @@
-library module_fsx_s3_access_point_attachment_openzfs_configuration;
-
-export 's3_access_point_attachment_openzfs_configuration.dart';

@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_captcha_config;
+
+export 'rule_group_rule_captcha_config/rule_group_rule_captcha_config.dart';

@@ -8,7 +8,7 @@ class GetSchedulingPolicyFairSharePolicy {
   final int computeReservation;
   final int shareDecaySeconds;
 
-  /// One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The <span pulumi-lang-nodejs="`shareDistribution`" pulumi-lang-dotnet="`ShareDistribution`" pulumi-lang-go="`shareDistribution`" pulumi-lang-python="`share_distribution`" pulumi-lang-yaml="`shareDistribution`" pulumi-lang-java="`shareDistribution`">`share_distribution`</span> block is documented below.
+  /// One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `share_distribution` block is documented below.
   final List<GetSchedulingPolicyFairSharePolicyShareDistribution>
       shareDistributions;
 

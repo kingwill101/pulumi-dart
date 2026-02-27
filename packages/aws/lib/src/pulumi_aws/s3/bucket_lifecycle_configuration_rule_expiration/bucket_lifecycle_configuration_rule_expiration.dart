@@ -7,7 +7,7 @@ class BucketLifecycleConfigurationRuleExpiration {
   /// Lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
   final int? days;
 
-  /// Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the delete marker will be expired; if set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> the policy takes no action.
+  /// Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If set to `true`, the delete marker will be expired; if set to `false` the policy takes no action.
   final bool? expiredObjectDeleteMarker;
 
   BucketLifecycleConfigurationRuleExpiration({

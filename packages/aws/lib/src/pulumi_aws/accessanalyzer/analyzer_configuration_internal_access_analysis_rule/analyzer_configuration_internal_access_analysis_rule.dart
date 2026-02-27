@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../analyzer_configuration_internal_access_analysis_rule_inclusion/analyzer_configuration_internal_access_analysis_rule_inclusion.dart';
 
 class AnalyzerConfigurationInternalAccessAnalysisRule {
-  /// List of rules for the internal access analyzer containing criteria to include in analysis. Only resources that meet the rule criteria will generate findings. See <span pulumi-lang-nodejs="`inclusion`" pulumi-lang-dotnet="`Inclusion`" pulumi-lang-go="`inclusion`" pulumi-lang-python="`inclusion`" pulumi-lang-yaml="`inclusion`" pulumi-lang-java="`inclusion`">`inclusion`</span> Block for details.
+  /// List of rules for the internal access analyzer containing criteria to include in analysis. Only resources that meet the rule criteria will generate findings. See `inclusion` Block for details.
   final List<AnalyzerConfigurationInternalAccessAnalysisRuleInclusion>?
       inclusions;
 

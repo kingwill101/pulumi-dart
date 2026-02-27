@@ -8,7 +8,7 @@ class SubscriberNotificationConfiguration {
       httpsNotificationConfiguration;
 
   /// The configurations for SQS subscriber notification.
-  /// There are no parameters within <span pulumi-lang-nodejs="`sqsNotificationConfiguration`" pulumi-lang-dotnet="`SqsNotificationConfiguration`" pulumi-lang-go="`sqsNotificationConfiguration`" pulumi-lang-python="`sqs_notification_configuration`" pulumi-lang-yaml="`sqsNotificationConfiguration`" pulumi-lang-java="`sqsNotificationConfiguration`">`sqs_notification_configuration`</span>.
+  /// There are no parameters within `sqs_notification_configuration`.
   final Map<String, dynamic>? sqsNotificationConfiguration;
 
   SubscriberNotificationConfiguration({

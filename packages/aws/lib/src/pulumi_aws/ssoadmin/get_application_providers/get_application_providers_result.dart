@@ -5,7 +5,7 @@ import '../get_application_providers_application_provider/get_application_provid
 
 /// Result data returned by getApplicationProviders.
 class GetApplicationProvidersResult {
-  /// A list of application providers available in the current region. See <span pulumi-lang-nodejs="`applicationProviders`" pulumi-lang-dotnet="`ApplicationProviders`" pulumi-lang-go="`applicationProviders`" pulumi-lang-python="`application_providers`" pulumi-lang-yaml="`applicationProviders`" pulumi-lang-java="`applicationProviders`">`application_providers`</span> below.
+  /// A list of application providers available in the current region. See `application_providers` below.
   final List<GetApplicationProvidersApplicationProvider> applicationProviders;
 
   /// AWS region.

@@ -8,7 +8,7 @@ import '../express_gateway_service_timeouts/express_gateway_service_timeouts.dar
 
 /// The set of arguments for ExpressGatewayService.
 class ExpressGatewayServiceArgs {
-  /// Name or ARN of the ECS cluster. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  /// Name or ARN of the ECS cluster. Defaults to `default`.
   final Input<String>? cluster;
 
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096.
@@ -38,14 +38,14 @@ class ExpressGatewayServiceArgs {
   /// Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
   final Input<String>? serviceName;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   final Input<String>? taskRoleArn;
   final Input<ExpressGatewayServiceTimeouts>? timeouts;
 
-  /// Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
   final Input<bool>? waitForSteadyState;
 
   ExpressGatewayServiceArgs({

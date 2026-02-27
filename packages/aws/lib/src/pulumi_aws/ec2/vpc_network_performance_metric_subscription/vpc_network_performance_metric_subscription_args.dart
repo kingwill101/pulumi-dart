@@ -16,7 +16,7 @@ class VpcNetworkPerformanceMetricSubscriptionArgs {
   /// The source Region or Availability Zone that the metric subscription is enabled for. For example, `us-east-1`.
   final Input<String> source;
 
-  /// The statistic used for the enabled subscription. Valid values: <span pulumi-lang-nodejs="`p50`" pulumi-lang-dotnet="`P50`" pulumi-lang-go="`p50`" pulumi-lang-python="`p50`" pulumi-lang-yaml="`p50`" pulumi-lang-java="`p50`">`p50`</span>. Default: <span pulumi-lang-nodejs="`p50`" pulumi-lang-dotnet="`P50`" pulumi-lang-go="`p50`" pulumi-lang-python="`p50`" pulumi-lang-yaml="`p50`" pulumi-lang-java="`p50`">`p50`</span>.
+  /// The statistic used for the enabled subscription. Valid values: `p50`. Default: `p50`.
   final Input<String>? statistic;
 
   VpcNetworkPerformanceMetricSubscriptionArgs({

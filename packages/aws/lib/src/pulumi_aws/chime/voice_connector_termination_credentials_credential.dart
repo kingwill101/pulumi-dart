@@ -1,0 +1,3 @@
+library module_chime_voice_connector_termination_credentials_credential;
+
+export 'voice_connector_termination_credentials_credential/voice_connector_termination_credentials_credential.dart';

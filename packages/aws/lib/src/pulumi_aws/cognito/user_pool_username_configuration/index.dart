@@ -1,3 +1,0 @@
-library module_cognito_user_pool_username_configuration;
-
-export 'user_pool_username_configuration.dart';

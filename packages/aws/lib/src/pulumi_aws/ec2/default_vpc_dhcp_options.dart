@@ -1,0 +1,4 @@
+library module_ec2_default_vpc_dhcp_options;
+
+export 'default_vpc_dhcp_options/default_vpc_dhcp_options.dart';
+export 'default_vpc_dhcp_options/default_vpc_dhcp_options_args.dart';

@@ -15,7 +15,7 @@ class GetIpRangesResult {
   final List<String> services;
 
   /// Publication time of the IP ranges, in Unix epoch time format
-  /// (e.g., <span pulumi-lang-nodejs="`1470267965`" pulumi-lang-dotnet="`1470267965`" pulumi-lang-go="`1470267965`" pulumi-lang-python="`1470267965`" pulumi-lang-yaml="`1470267965`" pulumi-lang-java="`1470267965`">`1470267965`</span>).
+  /// (e.g., `1470267965`).
   final int syncToken;
   final String? url;
 

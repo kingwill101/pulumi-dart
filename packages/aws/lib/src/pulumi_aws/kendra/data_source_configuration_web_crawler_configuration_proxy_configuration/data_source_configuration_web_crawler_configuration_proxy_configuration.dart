@@ -7,7 +7,7 @@ class DataSourceConfigurationWebCrawlerConfigurationProxyConfiguration {
   /// The name of the website host you want to connect to via a web proxy server. For example, the host name of `https://a.example.com/page1.html` is `"a.example.com"`.
   final String host;
 
-  /// The port number of the website host you want to connect to via a web proxy server. For example, the port for `https://a.example.com/page1.html` is <span pulumi-lang-nodejs="`443`" pulumi-lang-dotnet="`443`" pulumi-lang-go="`443`" pulumi-lang-python="`443`" pulumi-lang-yaml="`443`" pulumi-lang-java="`443`">`443`</span>, the standard port for HTTPS.
+  /// The port number of the website host you want to connect to via a web proxy server. For example, the port for `https://a.example.com/page1.html` is `443`, the standard port for HTTPS.
   final int port;
 
   DataSourceConfigurationWebCrawlerConfigurationProxyConfiguration({

@@ -9,10 +9,10 @@ class GetPermissionsTable {
   /// The following arguments are optional:
   final String databaseName;
 
-  /// Name of the table. At least one of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`wildcard`" pulumi-lang-dotnet="`Wildcard`" pulumi-lang-go="`wildcard`" pulumi-lang-python="`wildcard`" pulumi-lang-yaml="`wildcard`" pulumi-lang-java="`wildcard`">`wildcard`</span> is required.
+  /// Name of the table. At least one of `name` or `wildcard` is required.
   final String name;
 
-  /// Whether to use a wildcard representing every table under a database. At least one of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`wildcard`" pulumi-lang-dotnet="`Wildcard`" pulumi-lang-go="`wildcard`" pulumi-lang-python="`wildcard`" pulumi-lang-yaml="`wildcard`" pulumi-lang-java="`wildcard`">`wildcard`</span> is required. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
   final bool? wildcard;
 
   GetPermissionsTable({

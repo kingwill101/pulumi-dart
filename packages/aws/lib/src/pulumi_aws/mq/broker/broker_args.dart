@@ -10,10 +10,10 @@ import '../broker_user/broker_user.dart';
 
 /// The set of arguments for Broker.
 class BrokerArgs {
-  /// Whether to apply broker modifications immediately. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to apply broker modifications immediately. Default is `false`.
   final Input<bool>? applyImmediately;
 
-  /// Authentication strategy used to secure the broker. Valid values are <span pulumi-lang-nodejs="`simple`" pulumi-lang-dotnet="`Simple`" pulumi-lang-go="`simple`" pulumi-lang-python="`simple`" pulumi-lang-yaml="`simple`" pulumi-lang-java="`simple`">`simple`</span> and <span pulumi-lang-nodejs="`ldap`" pulumi-lang-dotnet="`Ldap`" pulumi-lang-go="`ldap`" pulumi-lang-python="`ldap`" pulumi-lang-yaml="`ldap`" pulumi-lang-java="`ldap`">`ldap`</span>. <span pulumi-lang-nodejs="`ldap`" pulumi-lang-dotnet="`Ldap`" pulumi-lang-go="`ldap`" pulumi-lang-python="`ldap`" pulumi-lang-yaml="`ldap`" pulumi-lang-java="`ldap`">`ldap`</span> is not supported for <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> `RabbitMQ`.
+  /// Authentication strategy used to secure the broker. Valid values are `simple` and `ldap`. `ldap` is not supported for `engine_type` `RabbitMQ`.
   final Input<String>? authenticationStrategy;
 
   /// Whether to automatically upgrade to new minor versions of brokers as Amazon MQ makes releases available.
@@ -22,13 +22,13 @@ class BrokerArgs {
   /// Name of the broker.
   final Input<String>? brokerName;
 
-  /// Configuration block for broker configuration. Applies to <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> of `ActiveMQ` and `RabbitMQ` only. Detailed below.
+  /// Configuration block for broker configuration. Applies to `engine_type` of `ActiveMQ` and `RabbitMQ` only. Detailed below.
   final Input<BrokerConfiguration>? configuration;
 
   /// Whether this broker is part of a data replication pair. Valid values are `CRDR` and `NONE`.
   final Input<String>? dataReplicationMode;
 
-  /// ARN of the primary broker used to replicate data in a data replication pair. Required when <span pulumi-lang-nodejs="`dataReplicationMode`" pulumi-lang-dotnet="`DataReplicationMode`" pulumi-lang-go="`dataReplicationMode`" pulumi-lang-python="`data_replication_mode`" pulumi-lang-yaml="`dataReplicationMode`" pulumi-lang-java="`dataReplicationMode`">`data_replication_mode`</span> is `CRDR`.
+  /// ARN of the primary broker used to replicate data in a data replication pair. Required when `data_replication_mode` is `CRDR`.
   final Input<String>? dataReplicationPrimaryBrokerArn;
 
   /// Deployment mode of the broker. Valid values are `SINGLE_INSTANCE`, `ACTIVE_STANDBY_MULTI_AZ`, and `CLUSTER_MULTI_AZ`. Default is `SINGLE_INSTANCE`.
@@ -46,7 +46,7 @@ class BrokerArgs {
   /// Broker's instance type. For example, `mq.t3.micro`, `mq.m5.large`.
   final Input<String> hostInstanceType;
 
-  /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> `RabbitMQ`. Detailed below.
+  /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engine_type` `RabbitMQ`. Detailed below.
   final Input<BrokerLdapServerMetadata>? ldapServerMetadata;
 
   /// Configuration block for the logging configuration. Detailed below.
@@ -64,16 +64,16 @@ class BrokerArgs {
   /// List of security group IDs assigned to the broker.
   final Input<List<String>>? securityGroups;
 
-  /// Storage type of the broker. For <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> `ActiveMQ`, valid values are <span pulumi-lang-nodejs="`efs`" pulumi-lang-dotnet="`Efs`" pulumi-lang-go="`efs`" pulumi-lang-python="`efs`" pulumi-lang-yaml="`efs`" pulumi-lang-java="`efs`">`efs`</span> and <span pulumi-lang-nodejs="`ebs`" pulumi-lang-dotnet="`Ebs`" pulumi-lang-go="`ebs`" pulumi-lang-python="`ebs`" pulumi-lang-yaml="`ebs`" pulumi-lang-java="`ebs`">`ebs`</span> (AWS-default is <span pulumi-lang-nodejs="`efs`" pulumi-lang-dotnet="`Efs`" pulumi-lang-go="`efs`" pulumi-lang-python="`efs`" pulumi-lang-yaml="`efs`" pulumi-lang-java="`efs`">`efs`</span>). For <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> `RabbitMQ`, only <span pulumi-lang-nodejs="`ebs`" pulumi-lang-dotnet="`Ebs`" pulumi-lang-go="`ebs`" pulumi-lang-python="`ebs`" pulumi-lang-yaml="`ebs`" pulumi-lang-java="`ebs`">`ebs`</span> is supported. When using <span pulumi-lang-nodejs="`ebs`" pulumi-lang-dotnet="`Ebs`" pulumi-lang-go="`ebs`" pulumi-lang-python="`ebs`" pulumi-lang-yaml="`ebs`" pulumi-lang-java="`ebs`">`ebs`</span>, only the `mq.m5` broker instance type family is supported.
+  /// Storage type of the broker. For `engine_type` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engine_type` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
   final Input<String>? storageType;
 
   /// List of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires multiple subnets.
   final Input<List<String>>? subnetIds;
 
-  /// Map of tags to assign to the broker. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the broker. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Configuration block for broker users. For <span pulumi-lang-nodejs="`engineType`" pulumi-lang-dotnet="`EngineType`" pulumi-lang-go="`engineType`" pulumi-lang-python="`engine_type`" pulumi-lang-yaml="`engineType`" pulumi-lang-java="`engineType`">`engine_type`</span> of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
+  /// Configuration block for broker users. For `engine_type` of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
   ///
   /// The following arguments are optional:
   final Input<List<BrokerUser>> users;

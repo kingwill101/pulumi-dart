@@ -8,7 +8,7 @@ class AliasArgs2 {
   final Input<String>? name;
 
   /// Creates an unique alias beginning with the specified prefix.
-  /// The name must start with the word "alias" followed by a forward slash (alias/).  Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// The name must start with the word "alias" followed by a forward slash (alias/).  Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

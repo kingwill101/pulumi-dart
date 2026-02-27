@@ -1,0 +1,3 @@
+library module_ssm_patch_baseline_approval_rule_patch_filter;
+
+export 'patch_baseline_approval_rule_patch_filter/patch_baseline_approval_rule_patch_filter.dart';

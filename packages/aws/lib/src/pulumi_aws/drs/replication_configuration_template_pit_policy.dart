@@ -1,0 +1,3 @@
+library module_drs_replication_configuration_template_pit_policy;
+
+export 'replication_configuration_template_pit_policy/replication_configuration_template_pit_policy.dart';

@@ -10,13 +10,13 @@ class OptionGroupOption {
   /// Name of the option (e.g., MEMCACHED).
   final String optionName;
 
-  /// The option settings to apply. See <span pulumi-lang-nodejs="`optionSettings`" pulumi-lang-dotnet="`OptionSettings`" pulumi-lang-go="`optionSettings`" pulumi-lang-python="`option_settings`" pulumi-lang-yaml="`optionSettings`" pulumi-lang-java="`optionSettings`">`option_settings`</span> Block below for more details.
+  /// The option settings to apply. See `option_settings` Block below for more details.
   final List<OptionGroupOptionOptionSetting>? optionSettings;
 
-  /// Port number when connecting to the option (e.g., 11211). Leaving out or removing <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> from your configuration does not remove or clear a port from the option in AWS. AWS may assign a default port. Not including <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any port changes.
+  /// Port number when connecting to the option (e.g., 11211). Leaving out or removing `port` from your configuration does not remove or clear a port from the option in AWS. AWS may assign a default port. Not including `port` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any port changes.
   final int? port;
 
-  /// Version of the option (e.g., 13.1.0.0). Leaving out or removing <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> from your configuration does not remove or clear a version from the option in AWS. AWS may assign a default version. Not including <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any version changes.
+  /// Version of the option (e.g., 13.1.0.0). Leaving out or removing `version` from your configuration does not remove or clear a version from the option in AWS. AWS may assign a default version. Not including `version` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any version changes.
   final String? version;
 
   /// List of VPC Security Groups for which the option is enabled.

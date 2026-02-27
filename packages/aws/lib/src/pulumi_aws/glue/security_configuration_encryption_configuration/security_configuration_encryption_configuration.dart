@@ -10,7 +10,7 @@ class SecurityConfigurationEncryptionConfiguration {
   final SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption
       jobBookmarksEncryption;
 
-  /// A <span pulumi-lang-nodejs="`s3Encryption " pulumi-lang-dotnet="`S3Encryption " pulumi-lang-go="`s3Encryption " pulumi-lang-python="`s3_encryption " pulumi-lang-yaml="`s3Encryption " pulumi-lang-java="`s3Encryption ">`s3_encryption </span>` block as described below, which contains encryption configuration for S3 data.
+  /// A `s3_encryption ` block as described below, which contains encryption configuration for S3 data.
   final SecurityConfigurationEncryptionConfigurationS3Encryption s3Encryption;
 
   SecurityConfigurationEncryptionConfiguration({

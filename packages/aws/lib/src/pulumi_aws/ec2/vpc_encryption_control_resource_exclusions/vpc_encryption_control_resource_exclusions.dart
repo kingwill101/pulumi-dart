@@ -10,31 +10,31 @@ import '../vpc_encryption_control_resource_exclusions_vpc_lattice/vpc_encryption
 import '../vpc_encryption_control_resource_exclusions_vpc_peering/vpc_encryption_control_resource_exclusions_vpc_peering.dart';
 
 class VpcEncryptionControlResourceExclusions {
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for Egress-Only Internet Gateways.
+  /// `state` and `state_message` describing encryption enforcement state for Egress-Only Internet Gateways.
   final VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway
       egressOnlyInternetGateway;
 
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for Elastic File System (EFS).
+  /// `state` and `state_message` describing encryption enforcement state for Elastic File System (EFS).
   final VpcEncryptionControlResourceExclusionsElasticFileSystem
       elasticFileSystem;
 
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for Internet Gateways.
+  /// `state` and `state_message` describing encryption enforcement state for Internet Gateways.
   final VpcEncryptionControlResourceExclusionsInternetGateway internetGateway;
 
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for Lambda Functions.
+  /// `state` and `state_message` describing encryption enforcement state for Lambda Functions.
   final VpcEncryptionControlResourceExclusionsLambda lambda;
 
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for NAT Gateways.
+  /// `state` and `state_message` describing encryption enforcement state for NAT Gateways.
   final VpcEncryptionControlResourceExclusionsNatGateway natGateway;
 
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for Virtual Private Gateways.
+  /// `state` and `state_message` describing encryption enforcement state for Virtual Private Gateways.
   final VpcEncryptionControlResourceExclusionsVirtualPrivateGateway
       virtualPrivateGateway;
 
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for VPC Lattice.
+  /// `state` and `state_message` describing encryption enforcement state for VPC Lattice.
   final VpcEncryptionControlResourceExclusionsVpcLattice vpcLattice;
 
-  /// <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> and <span pulumi-lang-nodejs="`stateMessage`" pulumi-lang-dotnet="`StateMessage`" pulumi-lang-go="`stateMessage`" pulumi-lang-python="`state_message`" pulumi-lang-yaml="`stateMessage`" pulumi-lang-java="`stateMessage`">`state_message`</span> describing encryption enforcement state for peered VPCs.
+  /// `state` and `state_message` describing encryption enforcement state for peered VPCs.
   final VpcEncryptionControlResourceExclusionsVpcPeering vpcPeering;
 
   VpcEncryptionControlResourceExclusions({

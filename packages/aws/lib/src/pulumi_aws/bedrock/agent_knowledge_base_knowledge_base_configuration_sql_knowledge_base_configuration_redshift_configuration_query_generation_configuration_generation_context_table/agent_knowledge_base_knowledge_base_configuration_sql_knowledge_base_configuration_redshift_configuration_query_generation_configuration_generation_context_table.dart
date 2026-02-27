@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table_column/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table_column.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable {
-  /// Information about a column in the table. See <span pulumi-lang-nodejs="`column`" pulumi-lang-dotnet="`Column`" pulumi-lang-go="`column`" pulumi-lang-python="`column`" pulumi-lang-yaml="`column`" pulumi-lang-java="`column`">`column`</span> block for details.
+  /// Information about a column in the table. See `column` block for details.
   final List<
           AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>?
       columns;

@@ -11,39 +11,39 @@ import '../v2models_intent_fulfillment_code_hook_post_fulfillment_status_specifi
 import '../v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_timeout_response/v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_timeout_response.dart';
 
 class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification {
-  /// Configuration block for conditional branches to evaluate after the dialog code hook throws an exception or returns with the State field of the Intent object set to Failed. See <span pulumi-lang-nodejs="`failureConditional`" pulumi-lang-dotnet="`FailureConditional`" pulumi-lang-go="`failureConditional`" pulumi-lang-python="`failure_conditional`" pulumi-lang-yaml="`failureConditional`" pulumi-lang-java="`failureConditional`">`failure_conditional`</span>.
+  /// Configuration block for conditional branches to evaluate after the dialog code hook throws an exception or returns with the State field of the Intent object set to Failed. See `failure_conditional`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditional?
       failureConditional;
 
-  /// Configuration block for the next step the bot runs after the dialog code hook throws an exception or returns with the State field of the Intent object set to Failed. See <span pulumi-lang-nodejs="`failureNextStep`" pulumi-lang-dotnet="`FailureNextStep`" pulumi-lang-go="`failureNextStep`" pulumi-lang-python="`failure_next_step`" pulumi-lang-yaml="`failureNextStep`" pulumi-lang-java="`failureNextStep`">`failure_next_step`</span>.
+  /// Configuration block for the next step the bot runs after the dialog code hook throws an exception or returns with the State field of the Intent object set to Failed. See `failure_next_step`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStep?
       failureNextStep;
 
-  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See <span pulumi-lang-nodejs="`failureResponse`" pulumi-lang-dotnet="`FailureResponse`" pulumi-lang-go="`failureResponse`" pulumi-lang-python="`failure_response`" pulumi-lang-yaml="`failureResponse`" pulumi-lang-java="`failureResponse`">`failure_response`</span>.
+  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `failure_response`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureResponse?
       failureResponse;
 
-  /// Configuration block for conditional branches to evaluate after the dialog code hook finishes successfully. See <span pulumi-lang-nodejs="`successConditional`" pulumi-lang-dotnet="`SuccessConditional`" pulumi-lang-go="`successConditional`" pulumi-lang-python="`success_conditional`" pulumi-lang-yaml="`successConditional`" pulumi-lang-java="`successConditional`">`success_conditional`</span>.
+  /// Configuration block for conditional branches to evaluate after the dialog code hook finishes successfully. See `success_conditional`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditional?
       successConditional;
 
-  /// Configuration block for the next step the bot runs after the dialog code hook finishes successfully. See <span pulumi-lang-nodejs="`successNextStep`" pulumi-lang-dotnet="`SuccessNextStep`" pulumi-lang-go="`successNextStep`" pulumi-lang-python="`success_next_step`" pulumi-lang-yaml="`successNextStep`" pulumi-lang-java="`successNextStep`">`success_next_step`</span>.
+  /// Configuration block for the next step the bot runs after the dialog code hook finishes successfully. See `success_next_step`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessNextStep?
       successNextStep;
 
-  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See <span pulumi-lang-nodejs="`successResponse`" pulumi-lang-dotnet="`SuccessResponse`" pulumi-lang-go="`successResponse`" pulumi-lang-python="`success_response`" pulumi-lang-yaml="`successResponse`" pulumi-lang-java="`successResponse`">`success_response`</span>.
+  /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `success_response`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponse?
       successResponse;
 
-  /// Configuration block for conditional branches to evaluate if the code hook times out. See <span pulumi-lang-nodejs="`timeoutConditional`" pulumi-lang-dotnet="`TimeoutConditional`" pulumi-lang-go="`timeoutConditional`" pulumi-lang-python="`timeout_conditional`" pulumi-lang-yaml="`timeoutConditional`" pulumi-lang-java="`timeoutConditional`">`timeout_conditional`</span>.
+  /// Configuration block for conditional branches to evaluate if the code hook times out. See `timeout_conditional`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutConditional?
       timeoutConditional;
 
-  /// Configuration block for the next step that the bot runs when the code hook times out. See <span pulumi-lang-nodejs="`timeoutNextStep`" pulumi-lang-dotnet="`TimeoutNextStep`" pulumi-lang-go="`timeoutNextStep`" pulumi-lang-python="`timeout_next_step`" pulumi-lang-yaml="`timeoutNextStep`" pulumi-lang-java="`timeoutNextStep`">`timeout_next_step`</span>.
+  /// Configuration block for the next step that the bot runs when the code hook times out. See `timeout_next_step`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutNextStep?
       timeoutNextStep;
 
-  /// Configuration block for a list of message groups that Amazon Lex uses to respond the user input. See <span pulumi-lang-nodejs="`timeoutResponse`" pulumi-lang-dotnet="`TimeoutResponse`" pulumi-lang-go="`timeoutResponse`" pulumi-lang-python="`timeout_response`" pulumi-lang-yaml="`timeoutResponse`" pulumi-lang-java="`timeoutResponse`">`timeout_response`</span>.
+  /// Configuration block for a list of message groups that Amazon Lex uses to respond the user input. See `timeout_response`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutResponse?
       timeoutResponse;
 

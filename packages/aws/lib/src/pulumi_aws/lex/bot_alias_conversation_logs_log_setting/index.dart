@@ -1,3 +1,0 @@
-library module_lex_bot_alias_conversation_logs_log_setting;
-
-export 'bot_alias_conversation_logs_log_setting.dart';

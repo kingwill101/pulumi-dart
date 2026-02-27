@@ -46,13 +46,13 @@ class InfrastructureConfigurationArgs {
   /// Amazon Resource Name (ARN) of SNS Topic.
   final Input<String>? snsTopicArn;
 
-  /// EC2 Subnet identifier. Also requires <span pulumi-lang-nodejs="`securityGroupIds`" pulumi-lang-dotnet="`SecurityGroupIds`" pulumi-lang-go="`securityGroupIds`" pulumi-lang-python="`security_group_ids`" pulumi-lang-yaml="`securityGroupIds`" pulumi-lang-java="`securityGroupIds`">`security_group_ids`</span> argument.
+  /// EC2 Subnet identifier. Also requires `security_group_ids` argument.
   final Input<String>? subnetId;
 
-  /// Key-value map of resource tags to assign to the configuration. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags to assign to the configuration. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Enable if the instance should be terminated when the pipeline fails. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enable if the instance should be terminated when the pipeline fails. Defaults to `false`.
   final Input<bool>? terminateInstanceOnFailure;
 
   InfrastructureConfigurationArgs({

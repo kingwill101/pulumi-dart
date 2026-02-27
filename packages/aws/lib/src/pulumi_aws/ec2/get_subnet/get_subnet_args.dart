@@ -8,7 +8,7 @@ class GetSubnetArgs {
   /// Availability zone where the subnet must reside.
   final Input<String>? availabilityZone;
 
-  /// ID of the Availability Zone for the subnet. This argument is not supported in all regions or partitions. If necessary, use <span pulumi-lang-nodejs="`availabilityZone`" pulumi-lang-dotnet="`AvailabilityZone`" pulumi-lang-go="`availabilityZone`" pulumi-lang-python="`availability_zone`" pulumi-lang-yaml="`availabilityZone`" pulumi-lang-java="`availabilityZone`">`availability_zone`</span> instead.
+  /// ID of the Availability Zone for the subnet. This argument is not supported in all regions or partitions. If necessary, use `availability_zone` instead.
   final Input<String>? availabilityZoneId;
 
   /// CIDR block of the desired subnet.

@@ -1,4 +1,0 @@
-library module_networkmanager_core_network_policy_attachment;
-
-export 'core_network_policy_attachment.dart';
-export 'core_network_policy_attachment_args.dart';

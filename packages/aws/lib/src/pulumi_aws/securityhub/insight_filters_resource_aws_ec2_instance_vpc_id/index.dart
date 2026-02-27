@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_resource_aws_ec2_instance_vpc_id;
-
-export 'insight_filters_resource_aws_ec2_instance_vpc_id.dart';

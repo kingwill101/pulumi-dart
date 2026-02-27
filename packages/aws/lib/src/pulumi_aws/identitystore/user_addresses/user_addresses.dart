@@ -13,7 +13,7 @@ class UserAddresses {
   /// The postal code of the address.
   final String? postalCode;
 
-  /// When <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, this is the primary address associated with the user.
+  /// When `true`, this is the primary address associated with the user.
   final bool? primary;
 
   /// The region of the address.

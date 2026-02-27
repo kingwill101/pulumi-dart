@@ -8,7 +8,7 @@ import '../pipeline_variable/pipeline_variable.dart';
 
 /// The set of arguments for Pipeline.
 class PipelineArgs {
-  /// One or more<span pulumi-lang-nodejs=" artifactStore " pulumi-lang-dotnet=" ArtifactStore " pulumi-lang-go=" artifactStore " pulumi-lang-python=" artifact_store " pulumi-lang-yaml=" artifactStore " pulumi-lang-java=" artifactStore "> artifact_store </span>blocks. Artifact stores are documented below.
+  /// One or more artifact_store blocks. Artifact stores are documented below.
   final Input<List<PipelineArtifactStore>> artifactStores;
 
   /// The method that the pipeline will use to handle multiple executions. The default mode is `SUPERSEDED`. For value values, refer to the [AWS documentation](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineDeclaration.html#CodePipeline-Type-PipelineDeclaration-executionMode).
@@ -29,13 +29,13 @@ class PipelineArgs {
   /// A stage block. Stages are documented below.
   final Input<List<PipelineStage>> stages;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// A trigger block. Valid only when <span pulumi-lang-nodejs="`pipelineType`" pulumi-lang-dotnet="`PipelineType`" pulumi-lang-go="`pipelineType`" pulumi-lang-python="`pipeline_type`" pulumi-lang-yaml="`pipelineType`" pulumi-lang-java="`pipelineType`">`pipeline_type`</span> is `V2`. Triggers are documented below.
+  /// A trigger block. Valid only when `pipeline_type` is `V2`. Triggers are documented below.
   final Input<List<PipelineTrigger>>? triggers;
 
-  /// A pipeline-level variable block. Valid only when <span pulumi-lang-nodejs="`pipelineType`" pulumi-lang-dotnet="`PipelineType`" pulumi-lang-go="`pipelineType`" pulumi-lang-python="`pipeline_type`" pulumi-lang-yaml="`pipelineType`" pulumi-lang-java="`pipelineType`">`pipeline_type`</span> is `V2`. Variable are documented below.
+  /// A pipeline-level variable block. Valid only when `pipeline_type` is `V2`. Variable are documented below.
   ///
   /// **Note:** `QUEUED` or `PARALLEL` mode can only be used with V2 pipelines.
   final Input<List<PipelineVariable>>? variables;

@@ -1,3 +1,0 @@
-library module_sagemaker_feature_group_throughput_config;
-
-export 'feature_group_throughput_config.dart';

@@ -5,7 +5,7 @@ import '../access_policy_association_access_scope/access_policy_association_acce
 
 /// The set of arguments for AccessPolicyAssociation.
 class AccessPolicyAssociationArgs {
-  /// The configuration block to determine the scope of the access. See <span pulumi-lang-nodejs="`accessScope`" pulumi-lang-dotnet="`AccessScope`" pulumi-lang-go="`accessScope`" pulumi-lang-python="`access_scope`" pulumi-lang-yaml="`accessScope`" pulumi-lang-java="`accessScope`">`access_scope`</span> Block below.
+  /// The configuration block to determine the scope of the access. See `access_scope` Block below.
   final Input<AccessPolicyAssociationAccessScope> accessScope;
 
   /// Name of the EKS Cluster.

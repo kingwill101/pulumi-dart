@@ -1,0 +1,3 @@
+library module_medialive_channel_input_attachment_automatic_input_failover_settings;
+
+export 'channel_input_attachment_automatic_input_failover_settings/channel_input_attachment_automatic_input_failover_settings.dart';

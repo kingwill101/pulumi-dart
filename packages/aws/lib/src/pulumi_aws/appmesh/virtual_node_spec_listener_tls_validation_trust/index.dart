@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_listener_tls_validation_trust;
-
-export 'virtual_node_spec_listener_tls_validation_trust.dart';

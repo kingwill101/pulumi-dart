@@ -1,3 +1,0 @@
-library module_rds_option_group_option_option_setting;
-
-export 'option_group_option_option_setting.dart';

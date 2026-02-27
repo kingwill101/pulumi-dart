@@ -4,10 +4,10 @@ import '../stream_processor_settings_connected_home/stream_processor_settings_co
 import '../stream_processor_settings_face_search/stream_processor_settings_face_search.dart';
 
 class StreamProcessorSettings {
-  /// Label detection settings to use on a streaming video. See <span pulumi-lang-nodejs="`connectedHome`" pulumi-lang-dotnet="`ConnectedHome`" pulumi-lang-go="`connectedHome`" pulumi-lang-python="`connected_home`" pulumi-lang-yaml="`connectedHome`" pulumi-lang-java="`connectedHome`">`connected_home`</span>.
+  /// Label detection settings to use on a streaming video. See `connected_home`.
   final StreamProcessorSettingsConnectedHome? connectedHome;
 
-  /// Input face recognition parameters for an Amazon Rekognition stream processor. See <span pulumi-lang-nodejs="`faceSearch`" pulumi-lang-dotnet="`FaceSearch`" pulumi-lang-go="`faceSearch`" pulumi-lang-python="`face_search`" pulumi-lang-yaml="`faceSearch`" pulumi-lang-java="`faceSearch`">`face_search`</span>.
+  /// Input face recognition parameters for an Amazon Rekognition stream processor. See `face_search`.
   final StreamProcessorSettingsFaceSearch? faceSearch;
 
   StreamProcessorSettings({

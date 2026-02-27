@@ -3,7 +3,7 @@
 import '../domain_default_user_settings_custom_file_system_config_efs_file_system_config/domain_default_user_settings_custom_file_system_config_efs_file_system_config.dart';
 
 class DomainDefaultUserSettingsCustomFileSystemConfig {
-  /// The default EBS storage settings for a private space. See <span pulumi-lang-nodejs="`efsFileSystemConfig`" pulumi-lang-dotnet="`EfsFileSystemConfig`" pulumi-lang-go="`efsFileSystemConfig`" pulumi-lang-python="`efs_file_system_config`" pulumi-lang-yaml="`efsFileSystemConfig`" pulumi-lang-java="`efsFileSystemConfig`">`efs_file_system_config`</span> Block below.
+  /// The default EBS storage settings for a private space. See `efs_file_system_config` Block below.
   final DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig?
       efsFileSystemConfig;
 

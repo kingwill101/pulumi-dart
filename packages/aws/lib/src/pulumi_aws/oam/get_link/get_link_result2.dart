@@ -17,7 +17,7 @@ class GetLinkResult2 {
   /// Human-readable name used to identify this source account when you are viewing data from it in the monitoring account.
   final String labelTemplate;
 
-  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See <span pulumi-lang-nodejs="`linkConfiguration`" pulumi-lang-dotnet="`LinkConfiguration`" pulumi-lang-go="`linkConfiguration`" pulumi-lang-python="`link_configuration`" pulumi-lang-yaml="`linkConfiguration`" pulumi-lang-java="`linkConfiguration`">`link_configuration`</span> Block for details.
+  /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
   final List<GetLinkLinkConfiguration> linkConfigurations;
 
   /// ID string that AWS generated as part of the link ARN.

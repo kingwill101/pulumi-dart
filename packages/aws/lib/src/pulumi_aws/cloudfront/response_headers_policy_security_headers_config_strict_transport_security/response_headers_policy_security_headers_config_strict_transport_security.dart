@@ -10,7 +10,7 @@ class ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
   /// Whether CloudFront overrides the `Strict-Transport-Security` HTTP response header received from the origin with the one specified in this response headers policy.
   final bool override;
 
-  /// Whether CloudFront includes the <span pulumi-lang-nodejs="`preload`" pulumi-lang-dotnet="`Preload`" pulumi-lang-go="`preload`" pulumi-lang-python="`preload`" pulumi-lang-yaml="`preload`" pulumi-lang-java="`preload`">`preload`</span> directive in the `Strict-Transport-Security` HTTP response header.
+  /// Whether CloudFront includes the `preload` directive in the `Strict-Transport-Security` HTTP response header.
   final bool? preload;
 
   ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity({

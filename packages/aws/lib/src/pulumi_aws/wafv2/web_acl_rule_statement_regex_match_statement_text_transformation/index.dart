@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_rule_statement_regex_match_statement_text_transformation;
-
-export 'web_acl_rule_statement_regex_match_statement_text_transformation.dart';

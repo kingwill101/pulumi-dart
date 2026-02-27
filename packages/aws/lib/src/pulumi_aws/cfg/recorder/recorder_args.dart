@@ -6,7 +6,7 @@ import '../recorder_recording_mode/recorder_recording_mode.dart';
 
 /// The set of arguments for Recorder.
 class RecorderArgs {
-  /// The name of the recorder. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>. Changing it recreates the resource.
+  /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
   final Input<String>? name;
 
   /// Recording group - see below.

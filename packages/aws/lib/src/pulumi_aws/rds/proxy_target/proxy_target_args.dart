@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class ProxyTargetArgs {
   /// DB cluster identifier.
   ///
-  /// **NOTE:** Either <span pulumi-lang-nodejs="`dbInstanceIdentifier`" pulumi-lang-dotnet="`DbInstanceIdentifier`" pulumi-lang-go="`dbInstanceIdentifier`" pulumi-lang-python="`db_instance_identifier`" pulumi-lang-yaml="`dbInstanceIdentifier`" pulumi-lang-java="`dbInstanceIdentifier`">`db_instance_identifier`</span> or <span pulumi-lang-nodejs="`dbClusterIdentifier`" pulumi-lang-dotnet="`DbClusterIdentifier`" pulumi-lang-go="`dbClusterIdentifier`" pulumi-lang-python="`db_cluster_identifier`" pulumi-lang-yaml="`dbClusterIdentifier`" pulumi-lang-java="`dbClusterIdentifier`">`db_cluster_identifier`</span> should be specified and both should not be specified together
+  /// **NOTE:** Either `db_instance_identifier` or `db_cluster_identifier` should be specified and both should not be specified together
   final Input<String>? dbClusterIdentifier;
 
   /// DB instance identifier.

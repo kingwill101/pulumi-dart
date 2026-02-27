@@ -1,3 +1,0 @@
-library module_connect_get_quick_connect_quick_connect_config_user_config;
-
-export 'get_quick_connect_quick_connect_config_user_config.dart';

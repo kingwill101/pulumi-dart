@@ -12,7 +12,7 @@ class BucketNotificationArgs {
   /// The following arguments are optional:
   final Input<String> bucket;
 
-  /// Whether to enable Amazon EventBridge notifications. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
   final Input<bool>? eventbridge;
 
   /// Used to configure notifications to a Lambda Function. See below.

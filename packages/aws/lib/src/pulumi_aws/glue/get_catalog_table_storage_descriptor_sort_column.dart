@@ -1,0 +1,3 @@
+library module_glue_get_catalog_table_storage_descriptor_sort_column;
+
+export 'get_catalog_table_storage_descriptor_sort_column/get_catalog_table_storage_descriptor_sort_column.dart';

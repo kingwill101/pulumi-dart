@@ -7,7 +7,7 @@ class SnapshotBlockPublicAccessArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The mode in which to enable "Block public access for snapshots" for the region. Allowed values are `block-all-sharing`, `block-new-sharing`, <span pulumi-lang-nodejs="`unblocked`" pulumi-lang-dotnet="`Unblocked`" pulumi-lang-go="`unblocked`" pulumi-lang-python="`unblocked`" pulumi-lang-yaml="`unblocked`" pulumi-lang-java="`unblocked`">`unblocked`</span>.
+  /// The mode in which to enable "Block public access for snapshots" for the region. Allowed values are `block-all-sharing`, `block-new-sharing`, `unblocked`.
   final Input<String> state;
 
   SnapshotBlockPublicAccessArgs({

@@ -32,10 +32,10 @@ class FeatureGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an <span pulumi-lang-nodejs="`offlineStoreConfig`" pulumi-lang-dotnet="`OfflineStoreConfig`" pulumi-lang-go="`offlineStoreConfig`" pulumi-lang-python="`offline_store_config`" pulumi-lang-yaml="`offlineStoreConfig`" pulumi-lang-java="`offlineStoreConfig`">`offline_store_config`</span> is provided.
+  /// The Amazon Resource Name (ARN) of the IAM execution role used to persist data into the Offline Store if an `offline_store_config` is provided.
   final Input<String> roleArn;
 
-  /// Map of resource tags for the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<FeatureGroupThroughputConfig>? throughputConfig;
 

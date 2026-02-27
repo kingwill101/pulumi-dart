@@ -6,7 +6,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferen
   /// The Amazon Resource Name (ARN) of the IP Set that this statement references.
   final String arn;
 
-  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See <span pulumi-lang-nodejs="`ipSetForwardedIpConfig`" pulumi-lang-dotnet="`IpSetForwardedIpConfig`" pulumi-lang-go="`ipSetForwardedIpConfig`" pulumi-lang-python="`ip_set_forwarded_ip_config`" pulumi-lang-yaml="`ipSetForwardedIpConfig`" pulumi-lang-java="`ipSetForwardedIpConfig`">`ip_set_forwarded_ip_config`</span> below for more details.
+  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `ip_set_forwarded_ip_config` below for more details.
   final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIpConfig?
       ipSetForwardedIpConfig;
 

@@ -11,7 +11,7 @@ class AnomalySubscriptionThresholdExpressionAnd {
   /// Configuration block for the specific Dimension to use for.
   final AnomalySubscriptionThresholdExpressionAndDimension? dimension;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final AnomalySubscriptionThresholdExpressionAndTags? tags;
 
   AnomalySubscriptionThresholdExpressionAnd({

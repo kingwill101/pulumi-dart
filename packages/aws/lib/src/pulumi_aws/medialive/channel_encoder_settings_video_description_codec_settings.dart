@@ -1,0 +1,3 @@
+library module_medialive_channel_encoder_settings_video_description_codec_settings;
+
+export 'channel_encoder_settings_video_description_codec_settings/channel_encoder_settings_video_description_codec_settings.dart';

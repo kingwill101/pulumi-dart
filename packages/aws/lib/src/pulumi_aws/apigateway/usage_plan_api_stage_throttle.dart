@@ -1,0 +1,3 @@
+library module_apigateway_usage_plan_api_stage_throttle;
+
+export 'usage_plan_api_stage_throttle/usage_plan_api_stage_throttle.dart';

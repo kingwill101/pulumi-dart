@@ -1,0 +1,3 @@
+library module_servicecatalog_get_provisioning_artifacts_provisioning_artifact_detail;
+
+export 'get_provisioning_artifacts_provisioning_artifact_detail/get_provisioning_artifacts_provisioning_artifact_detail.dart';

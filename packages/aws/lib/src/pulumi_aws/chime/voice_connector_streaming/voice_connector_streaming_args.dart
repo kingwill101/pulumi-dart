@@ -8,10 +8,10 @@ class VoiceConnectorStreamingArgs {
   /// The retention period, in hours, for the Amazon Kinesis data.
   final Input<int> dataRetention;
 
-  /// When true, media streaming to Amazon Kinesis is turned off. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
   final Input<bool>? disabled;
 
-  /// The media insights configuration. See <span pulumi-lang-nodejs="`mediaInsightsConfiguration`" pulumi-lang-dotnet="`MediaInsightsConfiguration`" pulumi-lang-go="`mediaInsightsConfiguration`" pulumi-lang-python="`media_insights_configuration`" pulumi-lang-yaml="`mediaInsightsConfiguration`" pulumi-lang-java="`mediaInsightsConfiguration`">`media_insights_configuration`</span>.
+  /// The media insights configuration. See `media_insights_configuration`.
   final Input<VoiceConnectorStreamingMediaInsightsConfiguration>?
       mediaInsightsConfiguration;
 

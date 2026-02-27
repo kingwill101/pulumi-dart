@@ -3,7 +3,7 @@
 import '../configuration_policy_configuration_policy_security_controls_configuration/configuration_policy_configuration_policy_security_controls_configuration.dart';
 
 class ConfigurationPolicyConfigurationPolicy {
-  /// A list that defines which security standards are enabled in the configuration policy. It must be defined if <span pulumi-lang-nodejs="`serviceEnabled`" pulumi-lang-dotnet="`ServiceEnabled`" pulumi-lang-go="`serviceEnabled`" pulumi-lang-python="`service_enabled`" pulumi-lang-yaml="`serviceEnabled`" pulumi-lang-java="`serviceEnabled`">`service_enabled`</span> is set to true.
+  /// A list that defines which security standards are enabled in the configuration policy. It must be defined if `service_enabled` is set to true.
   final List<String>? enabledStandardArns;
 
   /// Defines which security controls are enabled in the configuration policy and any customizations to parameters affecting them. See below.

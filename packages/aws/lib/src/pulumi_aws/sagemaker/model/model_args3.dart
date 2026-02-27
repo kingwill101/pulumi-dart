@@ -8,7 +8,7 @@ import '../model_vpc_config/model_vpc_config.dart';
 
 /// The set of arguments for Model.
 class ModelArgs3 {
-  /// Specifies containers in the inference pipeline. If not specified, the <span pulumi-lang-nodejs="`primaryContainer`" pulumi-lang-dotnet="`PrimaryContainer`" pulumi-lang-go="`primaryContainer`" pulumi-lang-python="`primary_container`" pulumi-lang-yaml="`primaryContainer`" pulumi-lang-java="`primaryContainer`">`primary_container`</span> argument is required. Fields are documented below.
+  /// Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
   final Input<List<ModelContainer>>? containers;
 
   /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
@@ -23,13 +23,13 @@ class ModelArgs3 {
   /// Name of the model (must be unique). If omitted, the provider will assign a random, unique name.
   final Input<String>? name;
 
-  /// Primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the <span pulumi-lang-nodejs="`container`" pulumi-lang-dotnet="`Container`" pulumi-lang-go="`container`" pulumi-lang-python="`container`" pulumi-lang-yaml="`container`" pulumi-lang-java="`container`">`container`</span> argument is required. Fields are documented below.
+  /// Primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
   final Input<ModelPrimaryContainer>? primaryContainer;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Specifies the VPC that you want your model to connect to. This configuration is used in hosting services and in batch transform. See VPC Config.

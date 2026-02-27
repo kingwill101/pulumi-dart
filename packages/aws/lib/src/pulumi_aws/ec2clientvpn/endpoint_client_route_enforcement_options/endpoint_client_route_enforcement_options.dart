@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class EndpointClientRouteEnforcementOptions {
-  /// Enable or disable Client Route Enforcement. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> (not enabled).
+  /// Enable or disable Client Route Enforcement. The default is `false` (not enabled).
   final bool? enforced;
 
   EndpointClientRouteEnforcementOptions({

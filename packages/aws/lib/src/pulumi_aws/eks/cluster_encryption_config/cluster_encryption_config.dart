@@ -6,7 +6,7 @@ class ClusterEncryptionConfig {
   /// Configuration block with provider for encryption. Detailed below.
   final ClusterEncryptionConfigProvider provider;
 
-  /// List of strings with resources to be encrypted. Valid values: <span pulumi-lang-nodejs="`secrets`" pulumi-lang-dotnet="`Secrets`" pulumi-lang-go="`secrets`" pulumi-lang-python="`secrets`" pulumi-lang-yaml="`secrets`" pulumi-lang-java="`secrets`">`secrets`</span>.
+  /// List of strings with resources to be encrypted. Valid values: `secrets`.
   final List<String> resources;
 
   ClusterEncryptionConfig({

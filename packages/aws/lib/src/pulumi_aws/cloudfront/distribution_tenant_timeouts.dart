@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_tenant_timeouts;
+
+export 'distribution_tenant_timeouts/distribution_tenant_timeouts.dart';

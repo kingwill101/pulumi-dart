@@ -1,0 +1,4 @@
+library module_cfg_conformance_pack;
+
+export 'conformance_pack/conformance_pack.dart';
+export 'conformance_pack/conformance_pack_args.dart';

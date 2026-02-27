@@ -6,7 +6,7 @@ import '../get_ami_ids_filter/get_ami_ids_filter2.dart';
 /// Arguments for getAmiIds.
 class GetAmiIdsArgs2 {
   /// Limit search to users with *explicit* launch
-  /// permission on  the image. Valid items are the numeric account ID or <span pulumi-lang-nodejs="`self`" pulumi-lang-dotnet="`Self`" pulumi-lang-go="`self`" pulumi-lang-python="`self`" pulumi-lang-yaml="`self`" pulumi-lang-java="`self`">`self`</span>.
+  /// permission on  the image. Valid items are the numeric account ID or `self`.
   final Input<List<String>>? executableUsers;
 
   /// One or more name/value pairs to filter off of. There
@@ -15,7 +15,7 @@ class GetAmiIdsArgs2 {
   final Input<List<GetAmiIdsFilter2>>? filters;
 
   /// If true, all deprecated AMIs are included in the response.
-  /// If false, no deprecated AMIs are included in the response. If no value is specified, the default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If false, no deprecated AMIs are included in the response. If no value is specified, the default value is `false`.
   final Input<bool>? includeDeprecated;
 
   /// Regex string to apply to the AMI list returned
@@ -25,14 +25,14 @@ class GetAmiIdsArgs2 {
   /// options to narrow down the list AWS returns.
   final Input<String>? nameRegex;
 
-  /// List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, <span pulumi-lang-nodejs="`self`" pulumi-lang-dotnet="`Self`" pulumi-lang-go="`self`" pulumi-lang-python="`self`" pulumi-lang-yaml="`self`" pulumi-lang-java="`self`">`self`</span> (the current account), or an AWS owner alias (e.g., <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>, `aws-marketplace`, <span pulumi-lang-nodejs="`microsoft`" pulumi-lang-dotnet="`Microsoft`" pulumi-lang-go="`microsoft`" pulumi-lang-python="`microsoft`" pulumi-lang-yaml="`microsoft`" pulumi-lang-java="`microsoft`">`microsoft`</span>).
+  /// List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g., `amazon`, `aws-marketplace`, `microsoft`).
   final Input<List<String>> owners;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
   /// Used to sort AMIs by creation time.
-  /// If no value is specified, the default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If no value is specified, the default value is `false`.
   final Input<bool>? sortAscending;
 
   GetAmiIdsArgs2({

@@ -10,7 +10,7 @@ class MemberArgs2 {
   /// The detector ID of the GuardDuty account where you want to create member accounts.
   final Input<String> detectorId;
 
-  /// Boolean whether an email notification is sent to the accounts. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean whether an email notification is sent to the accounts. Defaults to `false`.
   final Input<bool>? disableEmailNotification;
 
   /// Email address for member account.
@@ -19,7 +19,7 @@ class MemberArgs2 {
   /// Message for invitation.
   final Input<String>? invitationMessage;
 
-  /// Boolean whether to invite the account to GuardDuty as a member. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. To detect if an invitation needs to be (re-)sent, the this provider state value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> based on a <span pulumi-lang-nodejs="`relationshipStatus`" pulumi-lang-dotnet="`RelationshipStatus`" pulumi-lang-go="`relationshipStatus`" pulumi-lang-python="`relationship_status`" pulumi-lang-yaml="`relationshipStatus`" pulumi-lang-java="`relationshipStatus`">`relationship_status`</span> of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
+  /// Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationship_status` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
   final Input<bool>? invite;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

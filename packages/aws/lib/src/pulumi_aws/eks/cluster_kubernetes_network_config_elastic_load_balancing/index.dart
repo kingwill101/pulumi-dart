@@ -1,3 +1,0 @@
-library module_eks_cluster_kubernetes_network_config_elastic_load_balancing;
-
-export 'cluster_kubernetes_network_config_elastic_load_balancing.dart';

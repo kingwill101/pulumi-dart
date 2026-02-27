@@ -4,7 +4,7 @@ class DistributionCacheBehaviorSettingsForwardedHeaders {
   /// Specific headers to forward to your distribution's origin.
   final List<String>? headersAllowLists;
 
-  /// Headers that you want your distribution to forward to your origin and base caching on. Valid values: <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, `allow-list`, <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>.
+  /// Headers that you want your distribution to forward to your origin and base caching on. Valid values: `default`, `allow-list`, `all`.
   final String? option;
 
   DistributionCacheBehaviorSettingsForwardedHeaders({

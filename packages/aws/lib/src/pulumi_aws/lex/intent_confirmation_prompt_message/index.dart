@@ -1,3 +1,0 @@
-library module_lex_intent_confirmation_prompt_message;
-
-export 'intent_confirmation_prompt_message.dart';

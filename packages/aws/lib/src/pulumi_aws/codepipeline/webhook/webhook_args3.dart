@@ -9,10 +9,10 @@ class WebhookArgs3 {
   /// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
   final Input<String> authentication;
 
-  /// An <span pulumi-lang-nodejs="`auth`" pulumi-lang-dotnet="`Auth`" pulumi-lang-go="`auth`" pulumi-lang-python="`auth`" pulumi-lang-yaml="`auth`" pulumi-lang-java="`auth`">`auth`</span> block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+  /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
   final Input<WebhookAuthenticationConfiguration>? authenticationConfiguration;
 
-  /// One or more <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> blocks. Filter blocks are documented below.
+  /// One or more `filter` blocks. Filter blocks are documented below.
   final Input<List<WebhookFilter>> filters;
 
   /// The name of the webhook.
@@ -21,7 +21,7 @@ class WebhookArgs3 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.

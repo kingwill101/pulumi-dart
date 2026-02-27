@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_configuration_async_inference_config_client_config;
+
+export 'endpoint_configuration_async_inference_config_client_config/endpoint_configuration_async_inference_config_client_config.dart';

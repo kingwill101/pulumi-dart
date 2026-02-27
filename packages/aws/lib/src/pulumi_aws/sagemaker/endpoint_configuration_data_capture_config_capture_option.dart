@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_configuration_data_capture_config_capture_option;
+
+export 'endpoint_configuration_data_capture_config_capture_option/endpoint_configuration_data_capture_config_capture_option.dart';

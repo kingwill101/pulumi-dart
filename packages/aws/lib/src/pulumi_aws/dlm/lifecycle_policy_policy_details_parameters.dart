@@ -1,0 +1,3 @@
+library module_dlm_lifecycle_policy_policy_details_parameters;
+
+export 'lifecycle_policy_policy_details_parameters/lifecycle_policy_policy_details_parameters.dart';

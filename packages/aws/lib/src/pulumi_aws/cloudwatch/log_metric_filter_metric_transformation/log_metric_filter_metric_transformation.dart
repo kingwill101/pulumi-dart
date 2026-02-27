@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LogMetricFilterMetricTransformation {
-  /// The value to emit when a filter pattern does not match a log event. Conflicts with <span pulumi-lang-nodejs="`dimensions`" pulumi-lang-dotnet="`Dimensions`" pulumi-lang-go="`dimensions`" pulumi-lang-python="`dimensions`" pulumi-lang-yaml="`dimensions`" pulumi-lang-java="`dimensions`">`dimensions`</span>.
+  /// The value to emit when a filter pattern does not match a log event. Conflicts with `dimensions`.
   final String? defaultValue;
 
-  /// Map of fields to use as dimensions for the metric. Up to 3 dimensions are allowed. Conflicts with <span pulumi-lang-nodejs="`defaultValue`" pulumi-lang-dotnet="`DefaultValue`" pulumi-lang-go="`defaultValue`" pulumi-lang-python="`default_value`" pulumi-lang-yaml="`defaultValue`" pulumi-lang-java="`defaultValue`">`default_value`</span>.
+  /// Map of fields to use as dimensions for the metric. Up to 3 dimensions are allowed. Conflicts with `default_value`.
   final Map<String, String>? dimensions;
 
   /// The name of the CloudWatch metric to which the monitored log information should be published (e.g., `ErrorCount`)

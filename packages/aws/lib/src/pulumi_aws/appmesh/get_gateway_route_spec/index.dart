@@ -1,3 +1,0 @@
-library module_appmesh_get_gateway_route_spec;
-
-export 'get_gateway_route_spec.dart';

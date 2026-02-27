@@ -1,0 +1,3 @@
+library module_chatbot_teams_channel_configuration_timeouts;
+
+export 'teams_channel_configuration_timeouts/teams_channel_configuration_timeouts.dart';

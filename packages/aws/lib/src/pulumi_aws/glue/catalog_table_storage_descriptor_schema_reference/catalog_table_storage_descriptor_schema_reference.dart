@@ -3,10 +3,10 @@
 import '../catalog_table_storage_descriptor_schema_reference_schema_id/catalog_table_storage_descriptor_schema_reference_schema_id.dart';
 
 class CatalogTableStorageDescriptorSchemaReference {
-  /// Configuration block that contains schema identity fields. Either this or the <span pulumi-lang-nodejs="`schemaVersionId`" pulumi-lang-dotnet="`SchemaVersionId`" pulumi-lang-go="`schemaVersionId`" pulumi-lang-python="`schema_version_id`" pulumi-lang-yaml="`schemaVersionId`" pulumi-lang-java="`schemaVersionId`">`schema_version_id`</span> has to be provided. See <span pulumi-lang-nodejs="`schemaId`" pulumi-lang-dotnet="`SchemaId`" pulumi-lang-go="`schemaId`" pulumi-lang-python="`schema_id`" pulumi-lang-yaml="`schemaId`" pulumi-lang-java="`schemaId`">`schema_id`</span> below.
+  /// Configuration block that contains schema identity fields. Either this or the `schema_version_id` has to be provided. See `schema_id` below.
   final CatalogTableStorageDescriptorSchemaReferenceSchemaId? schemaId;
 
-  /// Unique ID assigned to a version of the schema. Either this or the <span pulumi-lang-nodejs="`schemaId`" pulumi-lang-dotnet="`SchemaId`" pulumi-lang-go="`schemaId`" pulumi-lang-python="`schema_id`" pulumi-lang-yaml="`schemaId`" pulumi-lang-java="`schemaId`">`schema_id`</span> has to be provided.
+  /// Unique ID assigned to a version of the schema. Either this or the `schema_id` has to be provided.
   final String? schemaVersionId;
 
   /// Version number of the schema.

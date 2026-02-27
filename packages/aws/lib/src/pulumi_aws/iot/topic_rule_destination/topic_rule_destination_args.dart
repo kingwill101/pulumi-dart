@@ -5,7 +5,7 @@ import '../topic_rule_destination_vpc_configuration/topic_rule_destination_vpc_c
 
 /// The set of arguments for TopicRuleDestination.
 class TopicRuleDestinationArgs {
-  /// Whether or not to enable the destination. Default: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether or not to enable the destination. Default: `true`.
   final Input<bool>? enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

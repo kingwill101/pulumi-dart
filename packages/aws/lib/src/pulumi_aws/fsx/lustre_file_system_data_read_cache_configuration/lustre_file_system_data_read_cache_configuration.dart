@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LustreFileSystemDataReadCacheConfiguration {
-  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when the <span pulumi-lang-nodejs="`sizingMode`" pulumi-lang-dotnet="`SizingMode`" pulumi-lang-go="`sizingMode`" pulumi-lang-python="`sizing_mode`" pulumi-lang-yaml="`sizingMode`" pulumi-lang-java="`sizingMode`">`sizing_mode`</span> is `USER_PROVISIONED`.
+  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when the `sizing_mode` is `USER_PROVISIONED`.
   final int? size;
 
   /// Sizing mode for the cache. Valud values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`.

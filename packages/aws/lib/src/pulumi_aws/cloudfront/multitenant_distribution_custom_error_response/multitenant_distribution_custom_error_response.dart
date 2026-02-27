@@ -7,10 +7,10 @@ class MultitenantDistributionCustomErrorResponse {
   /// HTTP status code for which you want to specify a custom error page and/or a caching duration.
   final int errorCode;
 
-  /// HTTP status code that you want CloudFront to return to the viewer along with the custom error page. Both <span pulumi-lang-nodejs="`responseCode`" pulumi-lang-dotnet="`ResponseCode`" pulumi-lang-go="`responseCode`" pulumi-lang-python="`response_code`" pulumi-lang-yaml="`responseCode`" pulumi-lang-java="`responseCode`">`response_code`</span> and <span pulumi-lang-nodejs="`responsePagePath`" pulumi-lang-dotnet="`ResponsePagePath`" pulumi-lang-go="`responsePagePath`" pulumi-lang-python="`response_page_path`" pulumi-lang-yaml="`responsePagePath`" pulumi-lang-java="`responsePagePath`">`response_page_path`</span> must be specified or both must be omitted.
+  /// HTTP status code that you want CloudFront to return to the viewer along with the custom error page. Both `response_code` and `response_page_path` must be specified or both must be omitted.
   final String? responseCode;
 
-  /// Path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ErrorCode. Both <span pulumi-lang-nodejs="`responseCode`" pulumi-lang-dotnet="`ResponseCode`" pulumi-lang-go="`responseCode`" pulumi-lang-python="`response_code`" pulumi-lang-yaml="`responseCode`" pulumi-lang-java="`responseCode`">`response_code`</span> and <span pulumi-lang-nodejs="`responsePagePath`" pulumi-lang-dotnet="`ResponsePagePath`" pulumi-lang-go="`responsePagePath`" pulumi-lang-python="`response_page_path`" pulumi-lang-yaml="`responsePagePath`" pulumi-lang-java="`responsePagePath`">`response_page_path`</span> must be specified or both must be omitted.
+  /// Path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ErrorCode. Both `response_code` and `response_page_path` must be specified or both must be omitted.
   final String? responsePagePath;
 
   MultitenantDistributionCustomErrorResponse({

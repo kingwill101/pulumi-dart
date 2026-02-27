@@ -10,7 +10,7 @@ class AgentPromptVariant {
   /// Contains model-specific inference configurations that aren’t in the inferenceConfiguration field. To see model-specific inference parameters, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
   final String? additionalModelRequestFields;
 
-  /// Specifies a generative AI resource with which to use the prompt. If this is not supplied, then a <span pulumi-lang-nodejs="`genAiResource`" pulumi-lang-dotnet="`GenAiResource`" pulumi-lang-go="`genAiResource`" pulumi-lang-python="`gen_ai_resource`" pulumi-lang-yaml="`genAiResource`" pulumi-lang-java="`genAiResource`">`gen_ai_resource`</span> must be defined. See Generative AI Resource for more information.
+  /// Specifies a generative AI resource with which to use the prompt. If this is not supplied, then a `gen_ai_resource` must be defined. See Generative AI Resource for more information.
   final AgentPromptVariantGenAiResource? genAiResource;
 
   /// Contains inference configurations for the prompt variant. See Inference Configuration for more information.
@@ -19,7 +19,7 @@ class AgentPromptVariant {
   /// A list of objects, each containing a key-value pair that defines a metadata tag and value to attach to a prompt variant. See Metadata for more information.
   final List<AgentPromptVariantMetadata>? metadatas;
 
-  /// Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) with which to run inference on the prompt. If this is not supplied, then a <span pulumi-lang-nodejs="`genAiResource`" pulumi-lang-dotnet="`GenAiResource`" pulumi-lang-go="`genAiResource`" pulumi-lang-python="`gen_ai_resource`" pulumi-lang-yaml="`genAiResource`" pulumi-lang-java="`genAiResource`">`gen_ai_resource`</span> must be defined.
+  /// Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) with which to run inference on the prompt. If this is not supplied, then a `gen_ai_resource` must be defined.
   final String? modelId;
 
   /// Name of the prompt variant.

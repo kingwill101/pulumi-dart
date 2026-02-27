@@ -1,3 +1,0 @@
-library module_route53recoverycontrol_safety_rule_rule_config;
-
-export 'safety_rule_rule_config.dart';

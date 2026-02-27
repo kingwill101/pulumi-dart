@@ -1,3 +1,0 @@
-library module_fms_policy_security_service_policy_data;
-
-export 'policy_security_service_policy_data.dart';

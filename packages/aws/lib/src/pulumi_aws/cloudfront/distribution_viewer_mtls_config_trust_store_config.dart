@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_viewer_mtls_config_trust_store_config;
+
+export 'distribution_viewer_mtls_config_trust_store_config/distribution_viewer_mtls_config_trust_store_config.dart';

@@ -1,0 +1,4 @@
+library module_ec2_vpc_ipv4_cidr_block_association;
+
+export 'vpc_ipv4_cidr_block_association/vpc_ipv4_cidr_block_association.dart';
+export 'vpc_ipv4_cidr_block_association/vpc_ipv4_cidr_block_association_args.dart';

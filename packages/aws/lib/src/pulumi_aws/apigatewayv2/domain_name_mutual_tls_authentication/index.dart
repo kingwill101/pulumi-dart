@@ -1,3 +1,0 @@
-library module_apigatewayv2_domain_name_mutual_tls_authentication;
-
-export 'domain_name_mutual_tls_authentication2.dart';

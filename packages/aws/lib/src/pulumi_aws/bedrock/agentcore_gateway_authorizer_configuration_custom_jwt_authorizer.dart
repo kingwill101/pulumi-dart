@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_authorizer_configuration_custom_jwt_authorizer;
+
+export 'agentcore_gateway_authorizer_configuration_custom_jwt_authorizer/agentcore_gateway_authorizer_configuration_custom_jwt_authorizer.dart';

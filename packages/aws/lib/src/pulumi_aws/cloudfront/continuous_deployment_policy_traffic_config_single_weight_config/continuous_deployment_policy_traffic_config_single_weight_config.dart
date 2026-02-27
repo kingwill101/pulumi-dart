@@ -3,11 +3,11 @@
 import '../continuous_deployment_policy_traffic_config_single_weight_config_session_stickiness_config/continuous_deployment_policy_traffic_config_single_weight_config_session_stickiness_config.dart';
 
 class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig {
-  /// Session stickiness provides the ability to define multiple requests from a single viewer as a single session. This prevents the potentially inconsistent experience of sending some of a given user's requests to the staging distribution, while others are sent to the primary distribution. Define the session duration using TTL values. See <span pulumi-lang-nodejs="`sessionStickinessConfig`" pulumi-lang-dotnet="`SessionStickinessConfig`" pulumi-lang-go="`sessionStickinessConfig`" pulumi-lang-python="`session_stickiness_config`" pulumi-lang-yaml="`sessionStickinessConfig`" pulumi-lang-java="`sessionStickinessConfig`">`session_stickiness_config`</span>.
+  /// Session stickiness provides the ability to define multiple requests from a single viewer as a single session. This prevents the potentially inconsistent experience of sending some of a given user's requests to the staging distribution, while others are sent to the primary distribution. Define the session duration using TTL values. See `session_stickiness_config`.
   final ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig?
       sessionStickinessConfig;
 
-  /// The percentage of traffic to send to a staging distribution, expressed as a decimal number between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and `.15`.
+  /// The percentage of traffic to send to a staging distribution, expressed as a decimal number between `0` and `.15`.
   final double weight;
 
   ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig({

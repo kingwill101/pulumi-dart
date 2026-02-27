@@ -1,3 +1,0 @@
-library module_kinesis_analytics_application_inputs_schema_record_format_mapping_parameters_json;
-
-export 'analytics_application_inputs_schema_record_format_mapping_parameters_json.dart';

@@ -1,3 +1,0 @@
-library module_lambda_event_source_mapping_metrics_config;
-
-export 'event_source_mapping_metrics_config.dart';

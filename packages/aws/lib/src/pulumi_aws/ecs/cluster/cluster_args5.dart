@@ -7,7 +7,7 @@ import '../cluster_setting/cluster_setting.dart';
 
 /// The set of arguments for Cluster.
 class ClusterArgs5 {
-  /// Execute command configuration for the cluster. See <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`">`configuration`</span> Block for details.
+  /// Execute command configuration for the cluster. See `configuration` Block for details.
   final Input<ClusterConfiguration>? configuration;
 
   /// Name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
@@ -18,13 +18,13 @@ class ClusterArgs5 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Default Service Connect namespace. See <span pulumi-lang-nodejs="`serviceConnectDefaults`" pulumi-lang-dotnet="`ServiceConnectDefaults`" pulumi-lang-go="`serviceConnectDefaults`" pulumi-lang-python="`service_connect_defaults`" pulumi-lang-yaml="`serviceConnectDefaults`" pulumi-lang-java="`serviceConnectDefaults`">`service_connect_defaults`</span> Block for details.
+  /// Default Service Connect namespace. See `service_connect_defaults` Block for details.
   final Input<ClusterServiceConnectDefaults>? serviceConnectDefaults;
 
-  /// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. See <span pulumi-lang-nodejs="`setting`" pulumi-lang-dotnet="`Setting`" pulumi-lang-go="`setting`" pulumi-lang-python="`setting`" pulumi-lang-yaml="`setting`" pulumi-lang-java="`setting`">`setting`</span> Block for details.
+  /// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. See `setting` Block for details.
   final Input<List<ClusterSetting>>? settings;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ClusterArgs5({

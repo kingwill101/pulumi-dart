@@ -1,3 +1,0 @@
-library module_athena_workgroup_configuration_monitoring_configuration_cloud_watch_logging_configuration_log_type;
-
-export 'workgroup_configuration_monitoring_configuration_cloud_watch_logging_configuration_log_type.dart';

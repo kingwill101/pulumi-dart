@@ -1,0 +1,3 @@
+library module_opensearch_get_domain_node_to_node_encryption;
+
+export 'get_domain_node_to_node_encryption/get_domain_node_to_node_encryption2.dart';

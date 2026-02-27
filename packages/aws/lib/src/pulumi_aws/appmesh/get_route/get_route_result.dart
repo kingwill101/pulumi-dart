@@ -24,7 +24,7 @@ class GetRouteResult {
   /// Resource owner's AWS account ID.
   final String resourceOwner;
 
-  /// Route specification. See the <span pulumi-lang-nodejs="`aws.appmesh.Route`" pulumi-lang-dotnet="`aws.appmesh.Route`" pulumi-lang-go="`appmesh.Route`" pulumi-lang-python="`appmesh.Route`" pulumi-lang-yaml="`aws.appmesh.Route`" pulumi-lang-java="`aws.appmesh.Route`">`aws.appmesh.Route`</span> resource for details.
+  /// Route specification. See the `aws.appmesh.Route` resource for details.
   final List<GetRouteSpec> specs;
 
   /// Map of tags.

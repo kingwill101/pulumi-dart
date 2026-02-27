@@ -1,0 +1,3 @@
+library module_sagemaker_space_space_settings_jupyter_lab_app_settings_code_repository;
+
+export 'space_space_settings_jupyter_lab_app_settings_code_repository/space_space_settings_jupyter_lab_app_settings_code_repository.dart';

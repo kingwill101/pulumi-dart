@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DistributionTenantManagedCertificateRequest {
-  /// Certificate transparency logging preference. Valid values: <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`">`enabled`</span>, <span pulumi-lang-nodejs="`disabled`" pulumi-lang-dotnet="`Disabled`" pulumi-lang-go="`disabled`" pulumi-lang-python="`disabled`" pulumi-lang-yaml="`disabled`" pulumi-lang-java="`disabled`">`disabled`</span>.
+  /// Certificate transparency logging preference. Valid values: `enabled`, `disabled`.
   final String? certificateTransparencyLoggingPreference;
 
   /// Primary domain name for the certificate.
   final String? primaryDomainName;
 
-  /// Host for validation token. Valid values: <span pulumi-lang-nodejs="`cloudfront`" pulumi-lang-dotnet="`Cloudfront`" pulumi-lang-go="`cloudfront`" pulumi-lang-python="`cloudfront`" pulumi-lang-yaml="`cloudfront`" pulumi-lang-java="`cloudfront`">`cloudfront`</span>, <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span>.
+  /// Host for validation token. Valid values: `cloudfront`, `domain`.
   final String? validationTokenHost;
 
   DistributionTenantManagedCertificateRequest({

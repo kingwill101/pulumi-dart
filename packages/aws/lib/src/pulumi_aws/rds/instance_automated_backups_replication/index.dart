@@ -1,4 +1,0 @@
-library module_rds_instance_automated_backups_replication;
-
-export 'instance_automated_backups_replication.dart';
-export 'instance_automated_backups_replication_args.dart';

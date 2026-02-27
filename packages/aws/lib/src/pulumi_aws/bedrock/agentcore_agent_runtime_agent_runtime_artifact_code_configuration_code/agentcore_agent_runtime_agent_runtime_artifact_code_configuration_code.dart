@@ -3,7 +3,7 @@
 import '../agentcore_agent_runtime_agent_runtime_artifact_code_configuration_code_s3/agentcore_agent_runtime_agent_runtime_artifact_code_configuration_code_s3.dart';
 
 class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode {
-  /// Configuration block for the Amazon S3 object that contains the source code for the agent runtime. See <span pulumi-lang-nodejs="`s3`" pulumi-lang-dotnet="`S3`" pulumi-lang-go="`s3`" pulumi-lang-python="`s3`" pulumi-lang-yaml="`s3`" pulumi-lang-java="`s3`">`s3`</span> below.
+  /// Configuration block for the Amazon S3 object that contains the source code for the agent runtime. See `s3` below.
   final AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3? s3;
 
   AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode({

@@ -1,0 +1,3 @@
+library module_ivs_recording_configuration_thumbnail_configuration;
+
+export 'recording_configuration_thumbnail_configuration/recording_configuration_thumbnail_configuration.dart';

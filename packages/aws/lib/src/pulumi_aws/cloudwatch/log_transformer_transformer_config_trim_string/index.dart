@@ -1,3 +1,0 @@
-library module_cloudwatch_log_transformer_transformer_config_trim_string;
-
-export 'log_transformer_transformer_config_trim_string.dart';

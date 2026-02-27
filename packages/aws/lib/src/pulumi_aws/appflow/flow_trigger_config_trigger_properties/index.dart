@@ -1,3 +1,0 @@
-library module_appflow_flow_trigger_config_trigger_properties;
-
-export 'flow_trigger_config_trigger_properties.dart';

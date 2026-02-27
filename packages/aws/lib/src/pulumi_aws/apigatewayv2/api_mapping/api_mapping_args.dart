@@ -10,13 +10,13 @@ class ApiMappingArgs {
   /// The API mapping key. Refer to [REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mappings.html), [HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mappings.html) or [WebSocket API](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-mappings.html).
   final Input<String>? apiMappingKey;
 
-  /// Domain name. Use the <span pulumi-lang-nodejs="`aws.apigatewayv2.DomainName`" pulumi-lang-dotnet="`aws.apigatewayv2.DomainName`" pulumi-lang-go="`apigatewayv2.DomainName`" pulumi-lang-python="`apigatewayv2.DomainName`" pulumi-lang-yaml="`aws.apigatewayv2.DomainName`" pulumi-lang-java="`aws.apigatewayv2.DomainName`">`aws.apigatewayv2.DomainName`</span> resource to configure a domain name.
+  /// Domain name. Use the `aws.apigatewayv2.DomainName` resource to configure a domain name.
   final Input<String> domainName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// API stage. Use the <span pulumi-lang-nodejs="`aws.apigatewayv2.Stage`" pulumi-lang-dotnet="`aws.apigatewayv2.Stage`" pulumi-lang-go="`apigatewayv2.Stage`" pulumi-lang-python="`apigatewayv2.Stage`" pulumi-lang-yaml="`aws.apigatewayv2.Stage`" pulumi-lang-java="`aws.apigatewayv2.Stage`">`aws.apigatewayv2.Stage`</span> resource to configure an API stage.
+  /// API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
   final Input<String> stage;
 
   ApiMappingArgs({

@@ -1,0 +1,3 @@
+library module_ec2_launch_template_maintenance_options;
+
+export 'launch_template_maintenance_options/launch_template_maintenance_options.dart';

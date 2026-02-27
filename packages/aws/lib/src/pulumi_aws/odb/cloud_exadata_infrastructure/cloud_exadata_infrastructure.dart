@@ -10,7 +10,7 @@ import 'cloud_exadata_infrastructure_args.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Exadata Infrastructure using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Exadata Infrastructure using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:odb/cloudExadataInfrastructure:CloudExadataInfrastructure example example
@@ -132,7 +132,7 @@ class CloudExadataInfrastructure extends CustomResource {
   /// The software version of the storage servers on the Exadata infrastructure.
   late final Output<String> storageServerVersion;
 
-  /// A map of tags to assign to the exadata infrastructure. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
   late final Output<CloudExadataInfrastructureTimeouts?> timeouts;

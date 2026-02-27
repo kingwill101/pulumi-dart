@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for PrincipalPortfolioAssociation.
 class PrincipalPortfolioAssociationArgs {
-  /// Language code. Valid values: <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span> (English), <span pulumi-lang-nodejs="`jp`" pulumi-lang-dotnet="`Jp`" pulumi-lang-go="`jp`" pulumi-lang-python="`jp`" pulumi-lang-yaml="`jp`" pulumi-lang-java="`jp`">`jp`</span> (Japanese), <span pulumi-lang-nodejs="`zh`" pulumi-lang-dotnet="`Zh`" pulumi-lang-go="`zh`" pulumi-lang-python="`zh`" pulumi-lang-yaml="`zh`" pulumi-lang-java="`zh`">`zh`</span> (Chinese). Default value is <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span>.
+  /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final Input<String>? acceptLanguage;
 
   /// Portfolio identifier.
@@ -15,7 +15,7 @@ class PrincipalPortfolioAssociationArgs {
   /// The following arguments are optional:
   final Input<String> principalArn;
 
-  /// Principal type. Setting this argument empty (e.g., <span pulumi-lang-nodejs="`principalType " pulumi-lang-dotnet="`PrincipalType " pulumi-lang-go="`principalType " pulumi-lang-python="`principal_type " pulumi-lang-yaml="`principalType " pulumi-lang-java="`principalType ">`principal_type </span>= ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
+  /// Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   final Input<String>? principalType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

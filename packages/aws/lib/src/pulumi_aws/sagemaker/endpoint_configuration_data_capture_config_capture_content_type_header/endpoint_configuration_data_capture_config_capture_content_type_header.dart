@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader {
-  /// CSV content type headers to capture. One of <span pulumi-lang-nodejs="`csvContentTypes`" pulumi-lang-dotnet="`CsvContentTypes`" pulumi-lang-go="`csvContentTypes`" pulumi-lang-python="`csv_content_types`" pulumi-lang-yaml="`csvContentTypes`" pulumi-lang-java="`csvContentTypes`">`csv_content_types`</span> or <span pulumi-lang-nodejs="`jsonContentTypes`" pulumi-lang-dotnet="`JsonContentTypes`" pulumi-lang-go="`jsonContentTypes`" pulumi-lang-python="`json_content_types`" pulumi-lang-yaml="`jsonContentTypes`" pulumi-lang-java="`jsonContentTypes`">`json_content_types`</span> is required.
+  /// CSV content type headers to capture. One of `csv_content_types` or `json_content_types` is required.
   final List<String>? csvContentTypes;
 
-  /// The JSON content type headers to capture. One of <span pulumi-lang-nodejs="`jsonContentTypes`" pulumi-lang-dotnet="`JsonContentTypes`" pulumi-lang-go="`jsonContentTypes`" pulumi-lang-python="`json_content_types`" pulumi-lang-yaml="`jsonContentTypes`" pulumi-lang-java="`jsonContentTypes`">`json_content_types`</span> or <span pulumi-lang-nodejs="`csvContentTypes`" pulumi-lang-dotnet="`CsvContentTypes`" pulumi-lang-go="`csvContentTypes`" pulumi-lang-python="`csv_content_types`" pulumi-lang-yaml="`csvContentTypes`" pulumi-lang-java="`csvContentTypes`">`csv_content_types`</span> is required.
+  /// The JSON content type headers to capture. One of `json_content_types` or `csv_content_types` is required.
   final List<String>? jsonContentTypes;
 
   EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader({

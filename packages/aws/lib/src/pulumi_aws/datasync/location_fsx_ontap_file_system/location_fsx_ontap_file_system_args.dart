@@ -21,10 +21,10 @@ class LocationFsxOntapFileSystemArgs {
   /// The following arguments are optional:
   final Input<String> storageVirtualMachineArn;
 
-  /// Path to the file share in the SVM where you'll copy your data. You can specify a junction path (also known as a mount point), qtree path (for NFS file shares), or share name (for SMB file shares) (e.g. `/vol1`, `/vol1/tree1`, <span pulumi-lang-nodejs="`share1`" pulumi-lang-dotnet="`Share1`" pulumi-lang-go="`share1`" pulumi-lang-python="`share1`" pulumi-lang-yaml="`share1`" pulumi-lang-java="`share1`">`share1`</span>).
+  /// Path to the file share in the SVM where you'll copy your data. You can specify a junction path (also known as a mount point), qtree path (for NFS file shares), or share name (for SMB file shares) (e.g. `/vol1`, `/vol1/tree1`, `share1`).
   final Input<String>? subdirectory;
 
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   LocationFsxOntapFileSystemArgs({

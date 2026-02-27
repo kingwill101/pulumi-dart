@@ -14,7 +14,7 @@ class CatalogTableStorageDescriptor {
   /// List of reducer grouping columns, clustering columns, and bucketing columns in the table.
   final List<String>? bucketColumns;
 
-  /// Configuration block for columns in the table. See <span pulumi-lang-nodejs="`columns`" pulumi-lang-dotnet="`Columns`" pulumi-lang-go="`columns`" pulumi-lang-python="`columns`" pulumi-lang-yaml="`columns`" pulumi-lang-java="`columns`">`columns`</span> below.
+  /// Configuration block for columns in the table. See `columns` below.
   final List<CatalogTableStorageDescriptorColumn>? columns;
 
   /// Whether the data in the table is compressed.
@@ -38,13 +38,13 @@ class CatalogTableStorageDescriptor {
   /// Object that references a schema stored in the AWS Glue Schema Registry. When creating a table, you can pass an empty list of columns for the schema, and instead use a schema reference. See Schema Reference below.
   final CatalogTableStorageDescriptorSchemaReference? schemaReference;
 
-  /// Configuration block for serialization and deserialization ("SerDe") information. See <span pulumi-lang-nodejs="`serDeInfo`" pulumi-lang-dotnet="`SerDeInfo`" pulumi-lang-go="`serDeInfo`" pulumi-lang-python="`ser_de_info`" pulumi-lang-yaml="`serDeInfo`" pulumi-lang-java="`serDeInfo`">`ser_de_info`</span> below.
+  /// Configuration block for serialization and deserialization ("SerDe") information. See `ser_de_info` below.
   final CatalogTableStorageDescriptorSerDeInfo? serDeInfo;
 
-  /// Configuration block with information about values that appear very frequently in a column (skewed values). See <span pulumi-lang-nodejs="`skewedInfo`" pulumi-lang-dotnet="`SkewedInfo`" pulumi-lang-go="`skewedInfo`" pulumi-lang-python="`skewed_info`" pulumi-lang-yaml="`skewedInfo`" pulumi-lang-java="`skewedInfo`">`skewed_info`</span> below.
+  /// Configuration block with information about values that appear very frequently in a column (skewed values). See `skewed_info` below.
   final CatalogTableStorageDescriptorSkewedInfo? skewedInfo;
 
-  /// Configuration block for the sort order of each bucket in the table. See <span pulumi-lang-nodejs="`sortColumns`" pulumi-lang-dotnet="`SortColumns`" pulumi-lang-go="`sortColumns`" pulumi-lang-python="`sort_columns`" pulumi-lang-yaml="`sortColumns`" pulumi-lang-java="`sortColumns`">`sort_columns`</span> below.
+  /// Configuration block for the sort order of each bucket in the table. See `sort_columns` below.
   final List<CatalogTableStorageDescriptorSortColumn>? sortColumns;
 
   /// Whether the table data is stored in subdirectories.

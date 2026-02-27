@@ -1,0 +1,3 @@
+library module_verifiedaccess_trust_provider_device_options;
+
+export 'trust_provider_device_options/trust_provider_device_options.dart';

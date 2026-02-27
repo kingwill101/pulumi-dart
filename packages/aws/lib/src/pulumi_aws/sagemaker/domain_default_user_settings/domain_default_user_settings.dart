@@ -19,17 +19,17 @@ class DomainDefaultUserSettings {
   /// Indicates whether auto-mounting of an EFS volume is supported for the user profile. The `DefaultAsDomain` value is only supported for user profiles. Do not use the `DefaultAsDomain` value when setting this parameter for a domain. Valid values are: `Enabled`, `Disabled`, and `DefaultAsDomain`.
   final String? autoMountHomeEfs;
 
-  /// The Canvas app settings. See <span pulumi-lang-nodejs="`canvasAppSettings`" pulumi-lang-dotnet="`CanvasAppSettings`" pulumi-lang-go="`canvasAppSettings`" pulumi-lang-python="`canvas_app_settings`" pulumi-lang-yaml="`canvasAppSettings`" pulumi-lang-java="`canvasAppSettings`">`canvas_app_settings`</span> Block below.
+  /// The Canvas app settings. See `canvas_app_settings` Block below.
   final DomainDefaultUserSettingsCanvasAppSettings? canvasAppSettings;
 
-  /// The Code Editor application settings. See <span pulumi-lang-nodejs="`codeEditorAppSettings`" pulumi-lang-dotnet="`CodeEditorAppSettings`" pulumi-lang-go="`codeEditorAppSettings`" pulumi-lang-python="`code_editor_app_settings`" pulumi-lang-yaml="`codeEditorAppSettings`" pulumi-lang-java="`codeEditorAppSettings`">`code_editor_app_settings`</span> Block below.
+  /// The Code Editor application settings. See `code_editor_app_settings` Block below.
   final DomainDefaultUserSettingsCodeEditorAppSettings? codeEditorAppSettings;
 
-  /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See <span pulumi-lang-nodejs="`customFileSystemConfig`" pulumi-lang-dotnet="`CustomFileSystemConfig`" pulumi-lang-go="`customFileSystemConfig`" pulumi-lang-python="`custom_file_system_config`" pulumi-lang-yaml="`customFileSystemConfig`" pulumi-lang-java="`customFileSystemConfig`">`custom_file_system_config`</span> Block below.
+  /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `custom_file_system_config` Block below.
   final List<DomainDefaultUserSettingsCustomFileSystemConfig>?
       customFileSystemConfigs;
 
-  /// Details about the POSIX identity that is used for file system operations. See <span pulumi-lang-nodejs="`customPosixUserConfig`" pulumi-lang-dotnet="`CustomPosixUserConfig`" pulumi-lang-go="`customPosixUserConfig`" pulumi-lang-python="`custom_posix_user_config`" pulumi-lang-yaml="`customPosixUserConfig`" pulumi-lang-java="`customPosixUserConfig`">`custom_posix_user_config`</span> Block below.
+  /// Details about the POSIX identity that is used for file system operations. See `custom_posix_user_config` Block below.
   final DomainDefaultUserSettingsCustomPosixUserConfig? customPosixUserConfig;
 
   /// The default experience that the user is directed to when accessing the domain. The supported values are: `studio::`: Indicates that Studio is the default experience. This value can only be passed if StudioWebPortal is set to ENABLED. `app:JupyterServer:`: Indicates that Studio Classic is the default experience.
@@ -38,41 +38,41 @@ class DomainDefaultUserSettings {
   /// The execution role ARN for the user.
   final String executionRole;
 
-  /// The settings for the JupyterLab application. See <span pulumi-lang-nodejs="`jupyterLabAppSettings`" pulumi-lang-dotnet="`JupyterLabAppSettings`" pulumi-lang-go="`jupyterLabAppSettings`" pulumi-lang-python="`jupyter_lab_app_settings`" pulumi-lang-yaml="`jupyterLabAppSettings`" pulumi-lang-java="`jupyterLabAppSettings`">`jupyter_lab_app_settings`</span> Block below.
+  /// The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
   final DomainDefaultUserSettingsJupyterLabAppSettings? jupyterLabAppSettings;
 
-  /// The Jupyter server's app settings. See <span pulumi-lang-nodejs="`jupyterServerAppSettings`" pulumi-lang-dotnet="`JupyterServerAppSettings`" pulumi-lang-go="`jupyterServerAppSettings`" pulumi-lang-python="`jupyter_server_app_settings`" pulumi-lang-yaml="`jupyterServerAppSettings`" pulumi-lang-java="`jupyterServerAppSettings`">`jupyter_server_app_settings`</span> Block below.
+  /// The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
   final DomainDefaultUserSettingsJupyterServerAppSettings?
       jupyterServerAppSettings;
 
-  /// The kernel gateway app settings. See <span pulumi-lang-nodejs="`kernelGatewayAppSettings`" pulumi-lang-dotnet="`KernelGatewayAppSettings`" pulumi-lang-go="`kernelGatewayAppSettings`" pulumi-lang-python="`kernel_gateway_app_settings`" pulumi-lang-yaml="`kernelGatewayAppSettings`" pulumi-lang-java="`kernelGatewayAppSettings`">`kernel_gateway_app_settings`</span> Block below.
+  /// The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
   final DomainDefaultUserSettingsKernelGatewayAppSettings?
       kernelGatewayAppSettings;
 
-  /// The RSession app settings. See <span pulumi-lang-nodejs="`rSessionAppSettings`" pulumi-lang-dotnet="`RSessionAppSettings`" pulumi-lang-go="`rSessionAppSettings`" pulumi-lang-python="`r_session_app_settings`" pulumi-lang-yaml="`rSessionAppSettings`" pulumi-lang-java="`rSessionAppSettings`">`r_session_app_settings`</span> Block below.
+  /// The RSession app settings. See `r_session_app_settings` Block below.
   final DomainDefaultUserSettingsRSessionAppSettings? rSessionAppSettings;
 
-  /// A collection of settings that configure user interaction with the RStudioServerPro app. See <span pulumi-lang-nodejs="`rStudioServerProAppSettings`" pulumi-lang-dotnet="`RStudioServerProAppSettings`" pulumi-lang-go="`rStudioServerProAppSettings`" pulumi-lang-python="`r_studio_server_pro_app_settings`" pulumi-lang-yaml="`rStudioServerProAppSettings`" pulumi-lang-java="`rStudioServerProAppSettings`">`r_studio_server_pro_app_settings`</span> Block below.
+  /// A collection of settings that configure user interaction with the RStudioServerPro app. See `r_studio_server_pro_app_settings` Block below.
   final DomainDefaultUserSettingsRStudioServerProAppSettings?
       rStudioServerProAppSettings;
 
   /// A list of security group IDs that will be attached to the user.
   final List<String>? securityGroups;
 
-  /// The sharing settings. See <span pulumi-lang-nodejs="`sharingSettings`" pulumi-lang-dotnet="`SharingSettings`" pulumi-lang-go="`sharingSettings`" pulumi-lang-python="`sharing_settings`" pulumi-lang-yaml="`sharingSettings`" pulumi-lang-java="`sharingSettings`">`sharing_settings`</span> Block below.
+  /// The sharing settings. See `sharing_settings` Block below.
   final DomainDefaultUserSettingsSharingSettings? sharingSettings;
 
-  /// The storage settings for a private space. See <span pulumi-lang-nodejs="`spaceStorageSettings`" pulumi-lang-dotnet="`SpaceStorageSettings`" pulumi-lang-go="`spaceStorageSettings`" pulumi-lang-python="`space_storage_settings`" pulumi-lang-yaml="`spaceStorageSettings`" pulumi-lang-java="`spaceStorageSettings`">`space_storage_settings`</span> Block below.
+  /// The storage settings for a private space. See `space_storage_settings` Block below.
   final DomainDefaultUserSettingsSpaceStorageSettings? spaceStorageSettings;
 
   /// Whether the user can access Studio. If this value is set to `DISABLED`, the user cannot access Studio, even if that is the default experience for the domain. Valid values are `ENABLED` and `DISABLED`.
   final String? studioWebPortal;
 
-  /// The Studio Web Portal settings. See <span pulumi-lang-nodejs="`studioWebPortalSettings`" pulumi-lang-dotnet="`StudioWebPortalSettings`" pulumi-lang-go="`studioWebPortalSettings`" pulumi-lang-python="`studio_web_portal_settings`" pulumi-lang-yaml="`studioWebPortalSettings`" pulumi-lang-java="`studioWebPortalSettings`">`studio_web_portal_settings`</span> Block below.
+  /// The Studio Web Portal settings. See `studio_web_portal_settings` Block below.
   final DomainDefaultUserSettingsStudioWebPortalSettings?
       studioWebPortalSettings;
 
-  /// The TensorBoard app settings. See <span pulumi-lang-nodejs="`tensorBoardAppSettings`" pulumi-lang-dotnet="`TensorBoardAppSettings`" pulumi-lang-go="`tensorBoardAppSettings`" pulumi-lang-python="`tensor_board_app_settings`" pulumi-lang-yaml="`tensorBoardAppSettings`" pulumi-lang-java="`tensorBoardAppSettings`">`tensor_board_app_settings`</span> Block below.
+  /// The TensorBoard app settings. See `tensor_board_app_settings` Block below.
   final DomainDefaultUserSettingsTensorBoardAppSettings? tensorBoardAppSettings;
 
   DomainDefaultUserSettings({

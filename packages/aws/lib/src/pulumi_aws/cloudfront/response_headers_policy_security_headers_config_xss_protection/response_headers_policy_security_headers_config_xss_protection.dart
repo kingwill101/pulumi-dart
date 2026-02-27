@@ -7,10 +7,10 @@ class ResponseHeadersPolicySecurityHeadersConfigXssProtection {
   /// Whether CloudFront overrides the `X-XSS-Protection` HTTP response header received from the origin with the one specified in this response headers policy.
   final bool override;
 
-  /// A Boolean value that determines the value of the `X-XSS-Protection` HTTP response header. When this setting is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the value of the `X-XSS-Protection` header is <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. When this setting is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, the value of the `X-XSS-Protection` header is <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
+  /// A Boolean value that determines the value of the `X-XSS-Protection` HTTP response header. When this setting is `true`, the value of the `X-XSS-Protection` header is `1`. When this setting is `false`, the value of the `X-XSS-Protection` header is `0`.
   final bool protection;
 
-  /// A reporting URI, which CloudFront uses as the value of the report directive in the `X-XSS-Protection` header. You cannot specify a <span pulumi-lang-nodejs="`reportUri`" pulumi-lang-dotnet="`ReportUri`" pulumi-lang-go="`reportUri`" pulumi-lang-python="`report_uri`" pulumi-lang-yaml="`reportUri`" pulumi-lang-java="`reportUri`">`report_uri`</span> when <span pulumi-lang-nodejs="`modeBlock`" pulumi-lang-dotnet="`ModeBlock`" pulumi-lang-go="`modeBlock`" pulumi-lang-python="`mode_block`" pulumi-lang-yaml="`modeBlock`" pulumi-lang-java="`modeBlock`">`mode_block`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// A reporting URI, which CloudFront uses as the value of the report directive in the `X-XSS-Protection` header. You cannot specify a `report_uri` when `mode_block` is `true`.
   final String? reportUri;
 
   ResponseHeadersPolicySecurityHeadersConfigXssProtection({

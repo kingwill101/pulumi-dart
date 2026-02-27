@@ -3,7 +3,7 @@
 import '../data_source_dynamodb_config_delta_sync_config/data_source_dynamodb_config_delta_sync_config.dart';
 
 class DataSourceDynamodbConfig {
-  /// The DeltaSyncConfig for a versioned data source. See <span pulumi-lang-nodejs="`deltaSyncConfig`" pulumi-lang-dotnet="`DeltaSyncConfig`" pulumi-lang-go="`deltaSyncConfig`" pulumi-lang-python="`delta_sync_config`" pulumi-lang-yaml="`deltaSyncConfig`" pulumi-lang-java="`deltaSyncConfig`">`delta_sync_config`</span> Block for details.
+  /// The DeltaSyncConfig for a versioned data source. See `delta_sync_config` Block for details.
   final DataSourceDynamodbConfigDeltaSyncConfig? deltaSyncConfig;
 
   /// AWS region of the DynamoDB table. Defaults to current region.
@@ -12,7 +12,7 @@ class DataSourceDynamodbConfig {
   /// Name of the DynamoDB table.
   final String tableName;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to use Amazon Cognito credentials with this data source.
+  /// Set to `true` to use Amazon Cognito credentials with this data source.
   final bool? useCallerCredentials;
 
   /// Detects Conflict Detection and Resolution with this data source.

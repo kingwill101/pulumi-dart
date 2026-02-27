@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_statement_geo_match_statement;
+
+export 'rule_group_rule_statement_geo_match_statement/rule_group_rule_statement_geo_match_statement.dart';

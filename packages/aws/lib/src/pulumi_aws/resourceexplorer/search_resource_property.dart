@@ -1,0 +1,3 @@
+library module_resourceexplorer_search_resource_property;
+
+export 'search_resource_property/search_resource_property.dart';

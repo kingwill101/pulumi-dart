@@ -1,3 +1,0 @@
-library module_resiliencehub_resiliency_policy_policy_hardware;
-
-export 'resiliency_policy_policy_hardware.dart';

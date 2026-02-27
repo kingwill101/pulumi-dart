@@ -1,3 +1,0 @@
-library module_sagemaker_domain_domain_settings;
-
-export 'domain_domain_settings.dart';

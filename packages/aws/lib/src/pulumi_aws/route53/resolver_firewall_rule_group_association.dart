@@ -1,0 +1,4 @@
+library module_route53_resolver_firewall_rule_group_association;
+
+export 'resolver_firewall_rule_group_association/resolver_firewall_rule_group_association.dart';
+export 'resolver_firewall_rule_group_association/resolver_firewall_rule_group_association_args.dart';

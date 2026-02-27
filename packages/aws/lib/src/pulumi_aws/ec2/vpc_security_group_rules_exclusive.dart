@@ -1,0 +1,4 @@
+library module_ec2_vpc_security_group_rules_exclusive;
+
+export 'vpc_security_group_rules_exclusive/vpc_security_group_rules_exclusive.dart';
+export 'vpc_security_group_rules_exclusive/vpc_security_group_rules_exclusive_args.dart';

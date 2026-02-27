@@ -1,3 +1,0 @@
-library module_ec2_launch_configuration_ephemeral_block_device;
-
-export 'launch_configuration_ephemeral_block_device.dart';

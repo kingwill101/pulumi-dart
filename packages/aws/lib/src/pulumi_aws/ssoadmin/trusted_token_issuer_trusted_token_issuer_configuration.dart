@@ -1,0 +1,3 @@
+library module_ssoadmin_trusted_token_issuer_trusted_token_issuer_configuration;
+
+export 'trusted_token_issuer_trusted_token_issuer_configuration/trusted_token_issuer_trusted_token_issuer_configuration.dart';

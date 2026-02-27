@@ -20,15 +20,15 @@ class FlowLogArgs {
   /// ARN of the logging destination.
   final Input<String>? logDestination;
 
-  /// Logging destination type. Valid values: `cloud-watch-logs`, <span pulumi-lang-nodejs="`s3`" pulumi-lang-dotnet="`S3`" pulumi-lang-go="`s3`" pulumi-lang-python="`s3`" pulumi-lang-yaml="`s3`" pulumi-lang-java="`s3`">`s3`</span>, `kinesis-data-firehose`. Default: `cloud-watch-logs`.
+  /// Logging destination type. Valid values: `cloud-watch-logs`, `s3`, `kinesis-data-firehose`. Default: `cloud-watch-logs`.
   final Input<String>? logDestinationType;
 
   /// The fields to include in the flow log record. Accepted format example: `"$${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport}"`.
   final Input<String>? logFormat;
 
   /// The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
-  /// Valid Values: <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> seconds (1 minute) or <span pulumi-lang-nodejs="`600`" pulumi-lang-dotnet="`600`" pulumi-lang-go="`600`" pulumi-lang-python="`600`" pulumi-lang-yaml="`600`" pulumi-lang-java="`600`">`600`</span> seconds (10 minutes). Default: <span pulumi-lang-nodejs="`600`" pulumi-lang-dotnet="`600`" pulumi-lang-go="`600`" pulumi-lang-python="`600`" pulumi-lang-yaml="`600`" pulumi-lang-java="`600`">`600`</span>.
-  /// When <span pulumi-lang-nodejs="`transitGatewayId`" pulumi-lang-dotnet="`TransitGatewayId`" pulumi-lang-go="`transitGatewayId`" pulumi-lang-python="`transit_gateway_id`" pulumi-lang-yaml="`transitGatewayId`" pulumi-lang-java="`transitGatewayId`">`transit_gateway_id`</span> or <span pulumi-lang-nodejs="`transitGatewayAttachmentId`" pulumi-lang-dotnet="`TransitGatewayAttachmentId`" pulumi-lang-go="`transitGatewayAttachmentId`" pulumi-lang-python="`transit_gateway_attachment_id`" pulumi-lang-yaml="`transitGatewayAttachmentId`" pulumi-lang-java="`transitGatewayAttachmentId`">`transit_gateway_attachment_id`</span> is specified, <span pulumi-lang-nodejs="`maxAggregationInterval`" pulumi-lang-dotnet="`MaxAggregationInterval`" pulumi-lang-go="`maxAggregationInterval`" pulumi-lang-python="`max_aggregation_interval`" pulumi-lang-yaml="`maxAggregationInterval`" pulumi-lang-java="`maxAggregationInterval`">`max_aggregation_interval`</span> *must* be 60 seconds (1 minute).
+  /// Valid Values: `60` seconds (1 minute) or `600` seconds (10 minutes). Default: `600`.
+  /// When `transit_gateway_id` or `transit_gateway_attachment_id` is specified, `max_aggregation_interval` *must* be 60 seconds (1 minute).
   final Input<int>? maxAggregationInterval;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -40,10 +40,10 @@ class FlowLogArgs {
   /// Subnet ID to attach to.
   final Input<String>? subnetId;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`. Required if <span pulumi-lang-nodejs="`eniId`" pulumi-lang-dotnet="`EniId`" pulumi-lang-go="`eniId`" pulumi-lang-python="`eni_id`" pulumi-lang-yaml="`eniId`" pulumi-lang-java="`eniId`">`eni_id`</span>, <span pulumi-lang-nodejs="`regionalNatGatewayId`" pulumi-lang-dotnet="`RegionalNatGatewayId`" pulumi-lang-go="`regionalNatGatewayId`" pulumi-lang-python="`regional_nat_gateway_id`" pulumi-lang-yaml="`regionalNatGatewayId`" pulumi-lang-java="`regionalNatGatewayId`">`regional_nat_gateway_id`</span>, <span pulumi-lang-nodejs="`subnetId`" pulumi-lang-dotnet="`SubnetId`" pulumi-lang-go="`subnetId`" pulumi-lang-python="`subnet_id`" pulumi-lang-yaml="`subnetId`" pulumi-lang-java="`subnetId`">`subnet_id`</span>, or <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span> is specified.
+  /// The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`. Required if `eni_id`, `regional_nat_gateway_id`, `subnet_id`, or `vpc_id` is specified.
   final Input<String>? trafficType;
 
   /// Transit Gateway Attachment ID to attach to.
@@ -54,7 +54,7 @@ class FlowLogArgs {
 
   /// VPC ID to attach to.
   ///
-  /// > **NOTE:** One of <span pulumi-lang-nodejs="`eniId`" pulumi-lang-dotnet="`EniId`" pulumi-lang-go="`eniId`" pulumi-lang-python="`eni_id`" pulumi-lang-yaml="`eniId`" pulumi-lang-java="`eniId`">`eni_id`</span>, <span pulumi-lang-nodejs="`regionalNatGatewayId`" pulumi-lang-dotnet="`RegionalNatGatewayId`" pulumi-lang-go="`regionalNatGatewayId`" pulumi-lang-python="`regional_nat_gateway_id`" pulumi-lang-yaml="`regionalNatGatewayId`" pulumi-lang-java="`regionalNatGatewayId`">`regional_nat_gateway_id`</span>, <span pulumi-lang-nodejs="`subnetId`" pulumi-lang-dotnet="`SubnetId`" pulumi-lang-go="`subnetId`" pulumi-lang-python="`subnet_id`" pulumi-lang-yaml="`subnetId`" pulumi-lang-java="`subnetId`">`subnet_id`</span>, <span pulumi-lang-nodejs="`transitGatewayId`" pulumi-lang-dotnet="`TransitGatewayId`" pulumi-lang-go="`transitGatewayId`" pulumi-lang-python="`transit_gateway_id`" pulumi-lang-yaml="`transitGatewayId`" pulumi-lang-java="`transitGatewayId`">`transit_gateway_id`</span>, <span pulumi-lang-nodejs="`transitGatewayAttachmentId`" pulumi-lang-dotnet="`TransitGatewayAttachmentId`" pulumi-lang-go="`transitGatewayAttachmentId`" pulumi-lang-python="`transit_gateway_attachment_id`" pulumi-lang-yaml="`transitGatewayAttachmentId`" pulumi-lang-java="`transitGatewayAttachmentId`">`transit_gateway_attachment_id`</span>, or <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span> must be specified.
+  /// > **NOTE:** One of `eni_id`, `regional_nat_gateway_id`, `subnet_id`, `transit_gateway_id`, `transit_gateway_attachment_id`, or `vpc_id` must be specified.
   final Input<String>? vpcId;
 
   FlowLogArgs({

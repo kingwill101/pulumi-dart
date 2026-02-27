@@ -1,0 +1,3 @@
+library module_emrcontainers_get_virtual_cluster_container_provider;
+
+export 'get_virtual_cluster_container_provider/get_virtual_cluster_container_provider.dart';

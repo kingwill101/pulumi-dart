@@ -3,7 +3,7 @@
 import '../user_profile_user_settings_jupyter_lab_app_settings_app_lifecycle_management_idle_settings/user_profile_user_settings_jupyter_lab_app_settings_app_lifecycle_management_idle_settings.dart';
 
 class UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
-  /// Settings related to idle shutdown of Studio applications. see <span pulumi-lang-nodejs="`idleSettings`" pulumi-lang-dotnet="`IdleSettings`" pulumi-lang-go="`idleSettings`" pulumi-lang-python="`idle_settings`" pulumi-lang-yaml="`idleSettings`" pulumi-lang-java="`idleSettings`">`idle_settings`</span> Block below.
+  /// Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
   final UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings?
       idleSettings;
 

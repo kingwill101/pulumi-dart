@@ -3,7 +3,7 @@
 import '../firewall_policy_firewall_policy_stateless_custom_action_action_definition/firewall_policy_firewall_policy_stateless_custom_action_action_definition.dart';
 
 class FirewallPolicyFirewallPolicyStatelessCustomAction {
-  /// A configuration block describing the custom action associated with the <span pulumi-lang-nodejs="`actionName`" pulumi-lang-dotnet="`ActionName`" pulumi-lang-go="`actionName`" pulumi-lang-python="`action_name`" pulumi-lang-yaml="`actionName`" pulumi-lang-java="`actionName`">`action_name`</span>. See Action Definition below for details.
+  /// A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
   final FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition
       actionDefinition;
 

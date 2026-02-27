@@ -1,3 +1,0 @@
-library module_ec2_peering_connection_options_accepter;
-
-export 'peering_connection_options_accepter.dart';

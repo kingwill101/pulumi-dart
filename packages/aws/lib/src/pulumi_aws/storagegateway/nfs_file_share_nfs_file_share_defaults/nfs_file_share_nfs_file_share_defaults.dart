@@ -7,10 +7,10 @@ class NfsFileShareNfsFileShareDefaults {
   /// The Unix file mode in the string form "nnnn". Defaults to `"0666"`.
   final String? fileMode;
 
-  /// The default group ID for the file share (unless the files have another group ID specified). Defaults to <span pulumi-lang-nodejs="`65534`" pulumi-lang-dotnet="`65534`" pulumi-lang-go="`65534`" pulumi-lang-python="`65534`" pulumi-lang-yaml="`65534`" pulumi-lang-java="`65534`">`65534`</span> (<span pulumi-lang-nodejs="`nfsnobody`" pulumi-lang-dotnet="`Nfsnobody`" pulumi-lang-go="`nfsnobody`" pulumi-lang-python="`nfsnobody`" pulumi-lang-yaml="`nfsnobody`" pulumi-lang-java="`nfsnobody`">`nfsnobody`</span>). Valid values: <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> through <span pulumi-lang-nodejs="`4294967294`" pulumi-lang-dotnet="`4294967294`" pulumi-lang-go="`4294967294`" pulumi-lang-python="`4294967294`" pulumi-lang-yaml="`4294967294`" pulumi-lang-java="`4294967294`">`4294967294`</span>.
+  /// The default group ID for the file share (unless the files have another group ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
   final String? groupId;
 
-  /// The default owner ID for the file share (unless the files have another owner ID specified). Defaults to <span pulumi-lang-nodejs="`65534`" pulumi-lang-dotnet="`65534`" pulumi-lang-go="`65534`" pulumi-lang-python="`65534`" pulumi-lang-yaml="`65534`" pulumi-lang-java="`65534`">`65534`</span> (<span pulumi-lang-nodejs="`nfsnobody`" pulumi-lang-dotnet="`Nfsnobody`" pulumi-lang-go="`nfsnobody`" pulumi-lang-python="`nfsnobody`" pulumi-lang-yaml="`nfsnobody`" pulumi-lang-java="`nfsnobody`">`nfsnobody`</span>). Valid values: <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> through <span pulumi-lang-nodejs="`4294967294`" pulumi-lang-dotnet="`4294967294`" pulumi-lang-go="`4294967294`" pulumi-lang-python="`4294967294`" pulumi-lang-yaml="`4294967294`" pulumi-lang-java="`4294967294`">`4294967294`</span>.
+  /// The default owner ID for the file share (unless the files have another owner ID specified). Defaults to `65534` (`nfsnobody`). Valid values: `0` through `4294967294`.
   final String? ownerId;
 
   NfsFileShareNfsFileShareDefaults({

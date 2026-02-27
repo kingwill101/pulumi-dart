@@ -10,7 +10,7 @@ class FleetEc2InboundPermission {
   /// Network communication protocol used by the fleetE.g., `TCP` or `UDP`
   final String protocol;
 
-  /// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than <span pulumi-lang-nodejs="`fromPort`" pulumi-lang-dotnet="`FromPort`" pulumi-lang-go="`fromPort`" pulumi-lang-python="`from_port`" pulumi-lang-yaml="`fromPort`" pulumi-lang-java="`fromPort`">`from_port`</span>.
+  /// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `from_port`.
   final int toPort;
 
   FleetEc2InboundPermission({

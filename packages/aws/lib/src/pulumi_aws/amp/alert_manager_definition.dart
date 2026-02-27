@@ -1,0 +1,4 @@
+library module_amp_alert_manager_definition;
+
+export 'alert_manager_definition/alert_manager_definition.dart';
+export 'alert_manager_definition/alert_manager_definition_args.dart';

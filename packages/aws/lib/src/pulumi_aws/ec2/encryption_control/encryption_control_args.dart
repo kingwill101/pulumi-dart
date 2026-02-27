@@ -6,50 +6,50 @@ import '../encryption_control_timeouts/encryption_control_timeouts.dart';
 /// The set of arguments for EncryptionControl.
 class EncryptionControlArgs {
   /// Whether to exclude Egress-Only Internet Gateways from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? egressOnlyInternetGatewayExclusion;
 
   /// Whether to exclude Elastic File System (EFS) from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? elasticFileSystemExclusion;
 
   /// Whether to exclude Internet Gateways from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? internetGatewayExclusion;
 
   /// Whether to exclude Lambda Functions from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? lambdaExclusion;
 
   /// Mode to enable for VPC Encryption Control.
-  /// Valid values are <span pulumi-lang-nodejs="`monitor`" pulumi-lang-dotnet="`Monitor`" pulumi-lang-go="`monitor`" pulumi-lang-python="`monitor`" pulumi-lang-yaml="`monitor`" pulumi-lang-java="`monitor`">`monitor`</span> or <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `monitor` or `enforce`.
   final Input<String> mode;
 
   /// Whether to exclude NAT Gateways from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? natGatewayExclusion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<EncryptionControlTimeouts>? timeouts;
 
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? virtualPrivateGatewayExclusion;
 
   /// The ID of the VPC the VPC Encryption Control is linked to.
@@ -58,15 +58,15 @@ class EncryptionControlArgs {
   final Input<String> vpcId;
 
   /// Whether to exclude VPC Lattice from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? vpcLatticeExclusion;
 
   /// Whether to exclude peered VPCs from encryption enforcement.
-  /// Valid values are <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span> or <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span>.
-  /// Default is <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
-  /// Only valid when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is <span pulumi-lang-nodejs="`enforce`" pulumi-lang-dotnet="`Enforce`" pulumi-lang-go="`enforce`" pulumi-lang-python="`enforce`" pulumi-lang-yaml="`enforce`" pulumi-lang-java="`enforce`">`enforce`</span>.
+  /// Valid values are `disable` or `enable`.
+  /// Default is `disable`.
+  /// Only valid when `mode` is `enforce`.
   final Input<String>? vpcPeeringExclusion;
 
   EncryptionControlArgs({

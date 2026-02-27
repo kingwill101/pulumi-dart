@@ -9,7 +9,7 @@ class IdcApplicationArgs {
   /// Type of application being created. Valid values are `None` or `Lakehouse`.
   final Input<String>? applicationType;
 
-  /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the<span pulumi-lang-nodejs=" authorizedTokenIssuer " pulumi-lang-dotnet=" AuthorizedTokenIssuer " pulumi-lang-go=" authorizedTokenIssuer " pulumi-lang-python=" authorized_token_issuer " pulumi-lang-yaml=" authorizedTokenIssuer " pulumi-lang-java=" authorizedTokenIssuer "> authorized_token_issuer </span>documentation for more details.
+  /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorized_token_issuer documentation for more details.
   final Input<IdcApplicationAuthorizedTokenIssuer>? authorizedTokenIssuer;
 
   /// IAM role ARN for the Amazon Redshift IAM Identity Center application instance.
@@ -30,7 +30,7 @@ class IdcApplicationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the<span pulumi-lang-nodejs=" serviceIntegration " pulumi-lang-dotnet=" ServiceIntegration " pulumi-lang-go=" serviceIntegration " pulumi-lang-python=" service_integration " pulumi-lang-yaml=" serviceIntegration " pulumi-lang-java=" serviceIntegration "> service_integration </span>documentation for more details.
+  /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
   final Input<IdcApplicationServiceIntegration>? serviceIntegration;
   final Input<Map<String, String>>? tags;
 

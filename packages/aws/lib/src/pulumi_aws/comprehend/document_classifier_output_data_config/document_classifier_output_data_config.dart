@@ -9,7 +9,7 @@ class DocumentClassifierOutputDataConfig {
   final String? outputS3Uri;
 
   /// Destination path for the output documents.
-  /// The full path to the output file will be returned in <span pulumi-lang-nodejs="`outputS3Uri`" pulumi-lang-dotnet="`OutputS3Uri`" pulumi-lang-go="`outputS3Uri`" pulumi-lang-python="`output_s3_uri`" pulumi-lang-yaml="`outputS3Uri`" pulumi-lang-java="`outputS3Uri`">`output_s3_uri`</span>.
+  /// The full path to the output file will be returned in `output_s3_uri`.
   final String s3Uri;
 
   DocumentClassifierOutputDataConfig({

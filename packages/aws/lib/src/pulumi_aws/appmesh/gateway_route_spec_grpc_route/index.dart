@@ -1,3 +1,0 @@
-library module_appmesh_gateway_route_spec_grpc_route;
-
-export 'gateway_route_spec_grpc_route.dart';

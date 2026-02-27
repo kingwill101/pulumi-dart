@@ -1,3 +1,0 @@
-library module_codebuild_fleet_scaling_configuration_target_tracking_scaling_config;
-
-export 'fleet_scaling_configuration_target_tracking_scaling_config.dart';

@@ -1,0 +1,3 @@
+library module_route53_get_resolver_rule_target_ip;
+
+export 'get_resolver_rule_target_ip/get_resolver_rule_target_ip.dart';

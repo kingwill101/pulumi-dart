@@ -12,7 +12,7 @@ class WebAclDataProtectionConfigDataProtection {
   /// Boolean to specify whether to also exclude any rule match details from the data protection you have enabled for a given field. AWS WAF logs these details for non-terminating matching rules and for the terminating matching rule.
   final bool? excludeRuleMatchDetails;
 
-  /// Specifies the field type and optional keys to apply the protection behavior to. See <span pulumi-lang-nodejs="`field`" pulumi-lang-dotnet="`Field`" pulumi-lang-go="`field`" pulumi-lang-python="`field`" pulumi-lang-yaml="`field`" pulumi-lang-java="`field`">`field`</span> block below for details.
+  /// Specifies the field type and optional keys to apply the protection behavior to. See `field` block below for details.
   final WebAclDataProtectionConfigDataProtectionField field;
 
   WebAclDataProtectionConfigDataProtection({

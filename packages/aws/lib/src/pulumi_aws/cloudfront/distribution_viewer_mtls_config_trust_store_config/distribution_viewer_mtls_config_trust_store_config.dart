@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DistributionViewerMtlsConfigTrustStoreConfig {
-  /// Whether to advertise the trust store CA names to clients. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to advertise the trust store CA names to clients. Defaults to `false`.
   final bool? advertiseTrustStoreCaNames;
 
-  /// Whether to ignore certificate expiry for viewer mTLS. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to ignore certificate expiry for viewer mTLS. Defaults to `false`.
   final bool? ignoreCertificateExpiry;
 
   /// Identifier of the trust store to use for viewer mTLS.

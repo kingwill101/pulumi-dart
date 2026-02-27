@@ -58,13 +58,13 @@ class GetOntapFileSystemResult {
   /// The type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
   final String storageType;
 
-  /// Specifies the IDs of the subnets that the file system is accessible from. For the MULTI_AZ_1 file system deployment type, there are two subnet IDs, one for the preferred file server and one for the standby file server. The preferred file server subnet identified in the <span pulumi-lang-nodejs="`preferredSubnetId`" pulumi-lang-dotnet="`PreferredSubnetId`" pulumi-lang-go="`preferredSubnetId`" pulumi-lang-python="`preferred_subnet_id`" pulumi-lang-yaml="`preferredSubnetId`" pulumi-lang-java="`preferredSubnetId`">`preferred_subnet_id`</span> property.
+  /// Specifies the IDs of the subnets that the file system is accessible from. For the MULTI_AZ_1 file system deployment type, there are two subnet IDs, one for the preferred file server and one for the standby file server. The preferred file server subnet identified in the `preferred_subnet_id` property.
   final List<String> subnetIds;
 
   /// The tags associated with the file system.
   final Map<String, String> tags;
 
-  /// The sustained throughput of an Amazon FSx file system in Megabytes per second (MBps). If the file system uses multiple HA pairs this will equal<span pulumi-lang-nodejs=" throuthputCapacityPerHaPair " pulumi-lang-dotnet=" ThrouthputCapacityPerHaPair " pulumi-lang-go=" throuthputCapacityPerHaPair " pulumi-lang-python=" throuthput_capacity_per_ha_pair " pulumi-lang-yaml=" throuthputCapacityPerHaPair " pulumi-lang-java=" throuthputCapacityPerHaPair "> throuthput_capacity_per_ha_pair </span>x ha_pairs
+  /// The sustained throughput of an Amazon FSx file system in Megabytes per second (MBps). If the file system uses multiple HA pairs this will equal throuthput_capacity_per_ha_pair x ha_pairs
   final int throughputCapacity;
 
   /// The sustained throughput of each HA pair for an Amazon FSx file system in Megabytes per second (MBps).

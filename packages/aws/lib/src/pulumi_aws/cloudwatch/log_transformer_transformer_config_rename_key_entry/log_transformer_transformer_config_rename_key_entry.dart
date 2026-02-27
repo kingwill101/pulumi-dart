@@ -4,7 +4,7 @@ class LogTransformerTransformerConfigRenameKeyEntry {
   /// Specifies the key with the value that will be converted to a different type.
   final String key;
 
-  /// Specifies whether to overwrite the value if the destination key already exists. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// * `renameTo` - (Required) Specifies the new name of the key.
   final bool? overwriteIfExists;
   final String renameTo;

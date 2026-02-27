@@ -10,7 +10,7 @@ class GetRegionArgs {
   /// Region's name (e.g. `us-east-1`).
   final Input<String>? id;
 
-  /// Full name of the region to select. Use <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span> instead.
+  /// Full name of the region to select. Use `region` instead.
   final Input<String>? name;
 
   /// Full name of the region to select (e.g. `us-east-1`), and the region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -1,4 +1,0 @@
-library module_ssoadmin_instance_access_control_attributes;
-
-export 'instance_access_control_attributes.dart';
-export 'instance_access_control_attributes_args.dart';

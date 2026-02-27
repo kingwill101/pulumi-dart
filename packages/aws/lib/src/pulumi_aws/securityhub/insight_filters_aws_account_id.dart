@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_aws_account_id;
+
+export 'insight_filters_aws_account_id/insight_filters_aws_account_id.dart';

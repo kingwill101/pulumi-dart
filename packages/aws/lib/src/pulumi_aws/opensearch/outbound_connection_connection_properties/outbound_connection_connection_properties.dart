@@ -7,7 +7,7 @@ class OutboundConnectionConnectionProperties {
   final OutboundConnectionConnectionPropertiesCrossClusterSearch?
       crossClusterSearch;
 
-  /// The endpoint of the remote domain, is only set when <span pulumi-lang-nodejs="`connectionMode`" pulumi-lang-dotnet="`ConnectionMode`" pulumi-lang-go="`connectionMode`" pulumi-lang-python="`connection_mode`" pulumi-lang-yaml="`connectionMode`" pulumi-lang-java="`connectionMode`">`connection_mode`</span> is `VPC_ENDPOINT` and <span pulumi-lang-nodejs="`acceptConnection`" pulumi-lang-dotnet="`AcceptConnection`" pulumi-lang-go="`acceptConnection`" pulumi-lang-python="`accept_connection`" pulumi-lang-yaml="`acceptConnection`" pulumi-lang-java="`acceptConnection`">`accept_connection`</span> is `TRUE`.
+  /// The endpoint of the remote domain, is only set when `connection_mode` is `VPC_ENDPOINT` and `accept_connection` is `TRUE`.
   final String? endpoint;
 
   OutboundConnectionConnectionProperties({

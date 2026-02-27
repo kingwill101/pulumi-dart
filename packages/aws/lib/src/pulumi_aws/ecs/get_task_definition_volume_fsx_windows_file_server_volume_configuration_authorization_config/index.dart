@@ -1,3 +1,0 @@
-library module_ecs_get_task_definition_volume_fsx_windows_file_server_volume_configuration_authorization_config;
-
-export 'get_task_definition_volume_fsx_windows_file_server_volume_configuration_authorization_config.dart';

@@ -1,0 +1,3 @@
+library module_cloudwatch_get_contributor_managed_insight_rules_managed_rule;
+
+export 'get_contributor_managed_insight_rules_managed_rule/get_contributor_managed_insight_rules_managed_rule.dart';

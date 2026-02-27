@@ -30,7 +30,7 @@ class GetRoleResult {
   /// The ARN of the policy that is used to set the permissions boundary for the role.
   final String permissionsBoundary;
 
-  /// Contains information about the last time that an IAM role was used. See <span pulumi-lang-nodejs="`roleLastUsed`" pulumi-lang-dotnet="`RoleLastUsed`" pulumi-lang-go="`roleLastUsed`" pulumi-lang-python="`role_last_used`" pulumi-lang-yaml="`roleLastUsed`" pulumi-lang-java="`roleLastUsed`">`role_last_used`</span> for details.
+  /// Contains information about the last time that an IAM role was used. See `role_last_used` for details.
   final List<GetRoleRoleLastUsed> roleLastUseds;
 
   /// Tags attached to the role.

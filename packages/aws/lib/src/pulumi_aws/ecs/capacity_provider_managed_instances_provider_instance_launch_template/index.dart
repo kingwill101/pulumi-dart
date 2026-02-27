@@ -1,3 +1,0 @@
-library module_ecs_capacity_provider_managed_instances_provider_instance_launch_template;
-
-export 'capacity_provider_managed_instances_provider_instance_launch_template.dart';

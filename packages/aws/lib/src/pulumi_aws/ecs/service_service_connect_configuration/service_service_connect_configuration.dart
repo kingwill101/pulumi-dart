@@ -11,7 +11,7 @@ class ServiceServiceConnectConfiguration {
   /// Log configuration for the container. See below.
   final ServiceServiceConnectConfigurationLogConfiguration? logConfiguration;
 
-  /// Namespace name or ARN of the <span pulumi-lang-nodejs="`aws.servicediscovery.HttpNamespace`" pulumi-lang-dotnet="`aws.servicediscovery.HttpNamespace`" pulumi-lang-go="`servicediscovery.HttpNamespace`" pulumi-lang-python="`servicediscovery.HttpNamespace`" pulumi-lang-yaml="`aws.servicediscovery.HttpNamespace`" pulumi-lang-java="`aws.servicediscovery.HttpNamespace`">`aws.servicediscovery.HttpNamespace`</span> for use with Service Connect.
+  /// Namespace name or ARN of the `aws.servicediscovery.HttpNamespace` for use with Service Connect.
   final String? namespace;
 
   /// List of Service Connect service objects. See below.

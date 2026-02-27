@@ -1,3 +1,0 @@
-library module_s3_bucket_acl_access_control_policy_grant;
-
-export 'bucket_acl_access_control_policy_grant.dart';

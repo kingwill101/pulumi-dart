@@ -1,0 +1,3 @@
+library module_msk_cluster_client_authentication_sasl;
+
+export 'cluster_client_authentication_sasl/cluster_client_authentication_sasl.dart';

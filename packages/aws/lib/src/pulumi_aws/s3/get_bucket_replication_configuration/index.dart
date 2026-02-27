@@ -1,5 +1,0 @@
-library module_s3_get_bucket_replication_configuration;
-
-export 'get_bucket_replication_configuration.dart';
-export 'get_bucket_replication_configuration_args.dart';
-export 'get_bucket_replication_configuration_result.dart';

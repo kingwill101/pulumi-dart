@@ -27,7 +27,7 @@ class GetVpcIpamPoolResult {
   /// If enabled, IPAM will continuously look for resources within the CIDR range of this pool and automatically import them as allocations into your IPAM.
   final bool autoImport;
 
-  /// Limits which service in AWS that the pool can be used in. <span pulumi-lang-nodejs="`ec2`" pulumi-lang-dotnet="`Ec2`" pulumi-lang-go="`ec2`" pulumi-lang-python="`ec2`" pulumi-lang-yaml="`ec2`" pulumi-lang-java="`ec2`">`ec2`</span> for example, allows users to use space for Elastic IP addresses and VPCs.
+  /// Limits which service in AWS that the pool can be used in. `ec2` for example, allows users to use space for Elastic IP addresses and VPCs.
   final String awsService;
 
   /// Description for the IPAM pool.

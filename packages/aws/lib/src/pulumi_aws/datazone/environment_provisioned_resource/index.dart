@@ -1,3 +1,0 @@
-library module_datazone_environment_provisioned_resource;
-
-export 'environment_provisioned_resource.dart';

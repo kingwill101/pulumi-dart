@@ -1,0 +1,3 @@
+library module_ssm_get_patch_baselines_baseline_identity;
+
+export 'get_patch_baselines_baseline_identity/get_patch_baselines_baseline_identity.dart';

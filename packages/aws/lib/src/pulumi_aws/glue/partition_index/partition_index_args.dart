@@ -11,7 +11,7 @@ class PartitionIndexArgs {
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   final Input<String> databaseName;
 
-  /// Configuration block for a partition index. See <span pulumi-lang-nodejs="`partitionIndex`" pulumi-lang-dotnet="`PartitionIndex`" pulumi-lang-go="`partitionIndex`" pulumi-lang-python="`partition_index`" pulumi-lang-yaml="`partitionIndex`" pulumi-lang-java="`partitionIndex`">`partition_index`</span> below.
+  /// Configuration block for a partition index. See `partition_index` below.
   final Input<PartitionIndexPartitionIndex> partitionIndex;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

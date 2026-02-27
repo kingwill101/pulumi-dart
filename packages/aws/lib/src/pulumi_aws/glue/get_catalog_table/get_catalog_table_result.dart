@@ -32,10 +32,10 @@ class GetCatalogTableResult {
   /// Map of initialization parameters for the SerDe, in key-value form.
   final Map<String, String> parameters;
 
-  /// Configuration block for a maximum of 3 partition indexes. See <span pulumi-lang-nodejs="`partitionIndex`" pulumi-lang-dotnet="`PartitionIndex`" pulumi-lang-go="`partitionIndex`" pulumi-lang-python="`partition_index`" pulumi-lang-yaml="`partitionIndex`" pulumi-lang-java="`partitionIndex`">`partition_index`</span> below.
+  /// Configuration block for a maximum of 3 partition indexes. See `partition_index` below.
   final List<GetCatalogTablePartitionIndex> partitionIndices;
 
-  /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See <span pulumi-lang-nodejs="`partitionKeys`" pulumi-lang-dotnet="`PartitionKeys`" pulumi-lang-go="`partitionKeys`" pulumi-lang-python="`partition_keys`" pulumi-lang-yaml="`partitionKeys`" pulumi-lang-java="`partitionKeys`">`partition_keys`</span> below.
+  /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partition_keys` below.
   final List<GetCatalogTablePartitionKey> partitionKeys;
   final String? queryAsOfTime;
 
@@ -45,13 +45,13 @@ class GetCatalogTableResult {
   /// Retention time for this table.
   final int retention;
 
-  /// Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See <span pulumi-lang-nodejs="`storageDescriptor`" pulumi-lang-dotnet="`StorageDescriptor`" pulumi-lang-go="`storageDescriptor`" pulumi-lang-python="`storage_descriptor`" pulumi-lang-yaml="`storageDescriptor`" pulumi-lang-java="`storageDescriptor`">`storage_descriptor`</span> below.
+  /// Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storage_descriptor` below.
   final List<GetCatalogTableStorageDescriptor> storageDescriptors;
 
   /// Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as `ALTER TABLE` and `SHOW CREATE TABLE` will fail if this argument is empty.
   final String tableType;
 
-  /// Configuration block of a target table for resource linking. See <span pulumi-lang-nodejs="`targetTable`" pulumi-lang-dotnet="`TargetTable`" pulumi-lang-go="`targetTable`" pulumi-lang-python="`target_table`" pulumi-lang-yaml="`targetTable`" pulumi-lang-java="`targetTable`">`target_table`</span> below.
+  /// Configuration block of a target table for resource linking. See `target_table` below.
   final List<GetCatalogTableTargetTable> targetTables;
   final int? transactionId;
 

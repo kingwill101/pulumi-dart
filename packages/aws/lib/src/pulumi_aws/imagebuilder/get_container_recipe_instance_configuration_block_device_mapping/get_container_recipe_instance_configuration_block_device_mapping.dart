@@ -13,7 +13,7 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
   /// Whether to remove a mapping from the parent image.
   final String noDevice;
 
-  /// Virtual device name. For example, <span pulumi-lang-nodejs="`ephemeral0`" pulumi-lang-dotnet="`Ephemeral0`" pulumi-lang-go="`ephemeral0`" pulumi-lang-python="`ephemeral0`" pulumi-lang-yaml="`ephemeral0`" pulumi-lang-java="`ephemeral0`">`ephemeral0`</span>. Instance store volumes are numbered starting from 0.
+  /// Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
   final String virtualName;
 
   GetContainerRecipeInstanceConfigurationBlockDeviceMapping({

@@ -16,7 +16,7 @@ class OntapStorageVirtualMachineEndpoint {
   /// An endpoint for accessing data on your storage virtual machine via NFS protocol. See Endpoint.
   final List<OntapStorageVirtualMachineEndpointNf>? nfs;
 
-  /// An endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an<span pulumi-lang-nodejs=" activeDirectoryConfiguration " pulumi-lang-dotnet=" ActiveDirectoryConfiguration " pulumi-lang-go=" activeDirectoryConfiguration " pulumi-lang-python=" active_directory_configuration " pulumi-lang-yaml=" activeDirectoryConfiguration " pulumi-lang-java=" activeDirectoryConfiguration "> active_directory_configuration </span>has been set. See Endpoint.
+  /// An endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an active_directory_configuration has been set. See Endpoint.
   final List<OntapStorageVirtualMachineEndpointSmb>? smbs;
 
   OntapStorageVirtualMachineEndpoint({

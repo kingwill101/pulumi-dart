@@ -1,4 +1,0 @@
-library module_dynamodb_kinesis_streaming_destination;
-
-export 'kinesis_streaming_destination.dart';
-export 'kinesis_streaming_destination_args.dart';

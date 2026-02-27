@@ -2,7 +2,7 @@
 
 /// Result data returned by getControls.
 class GetControlsResult {
-  /// List of all the ARNs for the controls applied to the <span pulumi-lang-nodejs="`targetIdentifier`" pulumi-lang-dotnet="`TargetIdentifier`" pulumi-lang-go="`targetIdentifier`" pulumi-lang-python="`target_identifier`" pulumi-lang-yaml="`targetIdentifier`" pulumi-lang-java="`targetIdentifier`">`target_identifier`</span>.
+  /// List of all the ARNs for the controls applied to the `target_identifier`.
   final List<String> enabledControls;
 
   /// The provider-assigned unique ID for this managed resource.

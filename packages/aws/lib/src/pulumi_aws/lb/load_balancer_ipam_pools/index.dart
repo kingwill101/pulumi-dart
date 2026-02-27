@@ -1,3 +1,0 @@
-library module_lb_load_balancer_ipam_pools;
-
-export 'load_balancer_ipam_pools2.dart';

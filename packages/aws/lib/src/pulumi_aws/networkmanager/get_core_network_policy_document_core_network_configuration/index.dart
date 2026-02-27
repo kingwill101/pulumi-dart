@@ -1,3 +1,0 @@
-library module_networkmanager_get_core_network_policy_document_core_network_configuration;
-
-export 'get_core_network_policy_document_core_network_configuration.dart';

@@ -16,7 +16,7 @@ class FunctionUrlCors {
   /// HTTP headers in your function response that you want to expose to origins that call the function URL.
   final List<String>? exposeHeaders;
 
-  /// Maximum amount of time, in seconds, that web browsers can cache results of a preflight request. Maximum value is <span pulumi-lang-nodejs="`86400`" pulumi-lang-dotnet="`86400`" pulumi-lang-go="`86400`" pulumi-lang-python="`86400`" pulumi-lang-yaml="`86400`" pulumi-lang-java="`86400`">`86400`</span>.
+  /// Maximum amount of time, in seconds, that web browsers can cache results of a preflight request. Maximum value is `86400`.
   final int? maxAge;
 
   FunctionUrlCors({

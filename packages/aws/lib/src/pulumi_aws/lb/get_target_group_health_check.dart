@@ -1,0 +1,3 @@
+library module_lb_get_target_group_health_check;
+
+export 'get_target_group_health_check/get_target_group_health_check2.dart';

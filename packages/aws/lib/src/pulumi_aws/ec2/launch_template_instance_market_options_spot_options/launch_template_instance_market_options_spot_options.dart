@@ -4,14 +4,14 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions {
   /// The required duration in minutes. This value must be a multiple of 60.
   final int? blockDurationMinutes;
 
-  /// The behavior when a Spot Instance is interrupted. Can be <span pulumi-lang-nodejs="`hibernate`" pulumi-lang-dotnet="`Hibernate`" pulumi-lang-go="`hibernate`" pulumi-lang-python="`hibernate`" pulumi-lang-yaml="`hibernate`" pulumi-lang-java="`hibernate`">`hibernate`</span>,
-  /// <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span>, or <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>. (Default: <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>).
+  /// The behavior when a Spot Instance is interrupted. Can be `hibernate`,
+  /// `stop`, or `terminate`. (Default: `terminate`).
   final String? instanceInterruptionBehavior;
 
   /// The maximum hourly price you're willing to pay for the Spot Instances.
   final String? maxPrice;
 
-  /// The Spot Instance request type. Can be `one-time`, or <span pulumi-lang-nodejs="`persistent`" pulumi-lang-dotnet="`Persistent`" pulumi-lang-go="`persistent`" pulumi-lang-python="`persistent`" pulumi-lang-yaml="`persistent`" pulumi-lang-java="`persistent`">`persistent`</span>.
+  /// The Spot Instance request type. Can be `one-time`, or `persistent`.
   final String? spotInstanceType;
 
   /// The end date of the request.

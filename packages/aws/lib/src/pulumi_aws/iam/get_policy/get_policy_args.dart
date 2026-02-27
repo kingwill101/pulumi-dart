@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getPolicy.
 class GetPolicyArgs {
   /// ARN of the IAM policy.
-  /// Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`pathPrefix`" pulumi-lang-dotnet="`PathPrefix`" pulumi-lang-go="`pathPrefix`" pulumi-lang-python="`path_prefix`" pulumi-lang-yaml="`pathPrefix`" pulumi-lang-java="`pathPrefix`">`path_prefix`</span>.
+  /// Conflicts with `name` and `path_prefix`.
   final Input<String>? arn;
 
   /// Name of the IAM policy.
-  /// Conflicts with <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>.
+  /// Conflicts with `arn`.
   final Input<String>? name;
 
   /// Prefix of the path to the IAM policy.
   /// Defaults to a slash (`/`).
-  /// Conflicts with <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>.
+  /// Conflicts with `arn`.
   final Input<String>? pathPrefix;
 
   /// Key-value mapping of tags for the IAM Policy.

@@ -9,31 +9,31 @@ import '../domain_default_space_settings_kernel_gateway_app_settings/domain_defa
 import '../domain_default_space_settings_space_storage_settings/domain_default_space_settings_space_storage_settings.dart';
 
 class DomainDefaultSpaceSettings {
-  /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See <span pulumi-lang-nodejs="`customFileSystemConfig`" pulumi-lang-dotnet="`CustomFileSystemConfig`" pulumi-lang-go="`customFileSystemConfig`" pulumi-lang-python="`custom_file_system_config`" pulumi-lang-yaml="`customFileSystemConfig`" pulumi-lang-java="`customFileSystemConfig`">`custom_file_system_config`</span> Block below.
+  /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See `custom_file_system_config` Block below.
   final List<DomainDefaultSpaceSettingsCustomFileSystemConfig>?
       customFileSystemConfigs;
 
-  /// Details about the POSIX identity that is used for file system operations. See <span pulumi-lang-nodejs="`customPosixUserConfig`" pulumi-lang-dotnet="`CustomPosixUserConfig`" pulumi-lang-go="`customPosixUserConfig`" pulumi-lang-python="`custom_posix_user_config`" pulumi-lang-yaml="`customPosixUserConfig`" pulumi-lang-java="`customPosixUserConfig`">`custom_posix_user_config`</span> Block below.
+  /// Details about the POSIX identity that is used for file system operations. See `custom_posix_user_config` Block below.
   final DomainDefaultSpaceSettingsCustomPosixUserConfig? customPosixUserConfig;
 
   /// The execution role for the space.
   final String executionRole;
 
-  /// The settings for the JupyterLab application. See <span pulumi-lang-nodejs="`jupyterLabAppSettings`" pulumi-lang-dotnet="`JupyterLabAppSettings`" pulumi-lang-go="`jupyterLabAppSettings`" pulumi-lang-python="`jupyter_lab_app_settings`" pulumi-lang-yaml="`jupyterLabAppSettings`" pulumi-lang-java="`jupyterLabAppSettings`">`jupyter_lab_app_settings`</span> Block below.
+  /// The settings for the JupyterLab application. See `jupyter_lab_app_settings` Block below.
   final DomainDefaultSpaceSettingsJupyterLabAppSettings? jupyterLabAppSettings;
 
-  /// The Jupyter server's app settings. See <span pulumi-lang-nodejs="`jupyterServerAppSettings`" pulumi-lang-dotnet="`JupyterServerAppSettings`" pulumi-lang-go="`jupyterServerAppSettings`" pulumi-lang-python="`jupyter_server_app_settings`" pulumi-lang-yaml="`jupyterServerAppSettings`" pulumi-lang-java="`jupyterServerAppSettings`">`jupyter_server_app_settings`</span> Block below.
+  /// The Jupyter server's app settings. See `jupyter_server_app_settings` Block below.
   final DomainDefaultSpaceSettingsJupyterServerAppSettings?
       jupyterServerAppSettings;
 
-  /// The kernel gateway app settings. See <span pulumi-lang-nodejs="`kernelGatewayAppSettings`" pulumi-lang-dotnet="`KernelGatewayAppSettings`" pulumi-lang-go="`kernelGatewayAppSettings`" pulumi-lang-python="`kernel_gateway_app_settings`" pulumi-lang-yaml="`kernelGatewayAppSettings`" pulumi-lang-java="`kernelGatewayAppSettings`">`kernel_gateway_app_settings`</span> Block below.
+  /// The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
   final DomainDefaultSpaceSettingsKernelGatewayAppSettings?
       kernelGatewayAppSettings;
 
   /// The security groups for the Amazon Virtual Private Cloud that the space uses for communication.
   final List<String>? securityGroups;
 
-  /// The storage settings for a private space. See <span pulumi-lang-nodejs="`spaceStorageSettings`" pulumi-lang-dotnet="`SpaceStorageSettings`" pulumi-lang-go="`spaceStorageSettings`" pulumi-lang-python="`space_storage_settings`" pulumi-lang-yaml="`spaceStorageSettings`" pulumi-lang-java="`spaceStorageSettings`">`space_storage_settings`</span> Block below.
+  /// The storage settings for a private space. See `space_storage_settings` Block below.
   final DomainDefaultSpaceSettingsSpaceStorageSettings? spaceStorageSettings;
 
   DomainDefaultSpaceSettings({

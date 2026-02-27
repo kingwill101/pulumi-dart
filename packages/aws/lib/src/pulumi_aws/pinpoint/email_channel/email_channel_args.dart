@@ -10,7 +10,7 @@ class EmailChannelArgs {
   /// The ARN of the Amazon SES configuration set that you want to apply to messages that you send through the channel.
   final Input<String>? configurationSet;
 
-  /// Whether the channel is enabled or disabled. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the channel is enabled or disabled. Defaults to `true`.
   final Input<bool>? enabled;
 
   /// The email address used to send emails from. You can use email only (`user@example.com`) or friendly address (`User <user@example.com>`). This field comply with [RFC 5322](https://www.ietf.org/rfc/rfc5322.txt).

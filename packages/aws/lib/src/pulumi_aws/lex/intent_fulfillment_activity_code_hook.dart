@@ -1,0 +1,3 @@
+library module_lex_intent_fulfillment_activity_code_hook;
+
+export 'intent_fulfillment_activity_code_hook/intent_fulfillment_activity_code_hook.dart';

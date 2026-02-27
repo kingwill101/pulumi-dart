@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for ResourceShareAssociationsExclusive.
 class ResourceShareAssociationsExclusiveArgs {
   /// A set of principals to associate with the resource share. Principals not configured in this argument will be removed. Valid values include:
-  /// * AWS account ID (exactly 12 digits, e.g., <span pulumi-lang-nodejs="`123456789012`" pulumi-lang-dotnet="`123456789012`" pulumi-lang-go="`123456789012`" pulumi-lang-python="`123456789012`" pulumi-lang-yaml="`123456789012`" pulumi-lang-java="`123456789012`">`123456789012`</span>)
+  /// * AWS account ID (exactly 12 digits, e.g., `123456789012`)
   /// * AWS Organizations Organization ARN (e.g., `arn:aws:organizations::123456789012:organization/o-exampleorgid`)
   /// * AWS Organizations Organizational Unit ARN (e.g., `arn:aws:organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid`)
   /// * IAM role ARN (e.g., `arn:aws:iam::123456789012:role/example-role`)
@@ -22,7 +22,7 @@ class ResourceShareAssociationsExclusiveArgs {
   /// The Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
   final Input<String> resourceShareArn;
 
-  /// A set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when <span pulumi-lang-nodejs="`principals`" pulumi-lang-dotnet="`Principals`" pulumi-lang-go="`principals`" pulumi-lang-python="`principals`" pulumi-lang-yaml="`principals`" pulumi-lang-java="`principals`">`principals`</span> contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
+  /// A set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
   final Input<List<String>>? sources;
 
   ResourceShareAssociationsExclusiveArgs({

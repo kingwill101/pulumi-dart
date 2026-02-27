@@ -24,7 +24,7 @@ class GetApplicationResult4 {
   /// Name of the application.
   final String name;
 
-  /// Options for the portal associated with an application. See the <span pulumi-lang-nodejs="`aws.ssoadmin.Application`" pulumi-lang-dotnet="`aws.ssoadmin.Application`" pulumi-lang-go="`ssoadmin.Application`" pulumi-lang-python="`ssoadmin.Application`" pulumi-lang-yaml="`aws.ssoadmin.Application`" pulumi-lang-java="`aws.ssoadmin.Application`">`aws.ssoadmin.Application`</span> resource documentation. The attributes are the same.
+  /// Options for the portal associated with an application. See the `aws.ssoadmin.Application` resource documentation. The attributes are the same.
   final List<GetApplicationPortalOption> portalOptions;
   final String region;
 

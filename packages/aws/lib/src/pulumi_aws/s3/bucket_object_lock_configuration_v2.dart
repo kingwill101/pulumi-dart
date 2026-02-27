@@ -1,0 +1,4 @@
+library module_s3_bucket_object_lock_configuration_v2;
+
+export 'bucket_object_lock_configuration_v2/bucket_object_lock_configuration_v2.dart';
+export 'bucket_object_lock_configuration_v2/bucket_object_lock_configuration_v2_args.dart';

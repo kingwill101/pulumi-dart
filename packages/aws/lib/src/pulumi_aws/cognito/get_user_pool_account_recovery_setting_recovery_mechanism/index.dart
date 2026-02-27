@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_account_recovery_setting_recovery_mechanism;
-
-export 'get_user_pool_account_recovery_setting_recovery_mechanism.dart';

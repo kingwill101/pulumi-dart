@@ -1,0 +1,3 @@
+library module_wafv2_get_managed_rule_group_rule_action_block_custom_response;
+
+export 'get_managed_rule_group_rule_action_block_custom_response/get_managed_rule_group_rule_action_block_custom_response.dart';

@@ -3,7 +3,7 @@
 import '../application_portal_options_sign_in_options/application_portal_options_sign_in_options.dart';
 
 class ApplicationPortalOptions {
-  /// Sign-in options for the access portal. See <span pulumi-lang-nodejs="`signInOptions`" pulumi-lang-dotnet="`SignInOptions`" pulumi-lang-go="`signInOptions`" pulumi-lang-python="`sign_in_options`" pulumi-lang-yaml="`signInOptions`" pulumi-lang-java="`signInOptions`">`sign_in_options`</span> below.
+  /// Sign-in options for the access portal. See `sign_in_options` below.
   final ApplicationPortalOptionsSignInOptions? signInOptions;
 
   /// Indicates whether this application is visible in the access portal. Valid values are `ENABLED` and `DISABLED`.

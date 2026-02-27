@@ -18,7 +18,7 @@ class GetParameterResult {
   /// Type of the parameter. Valid types are `String`, `StringList` and `SecureString`.
   final String type;
 
-  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span>.
+  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`.
   final String value;
 
   /// Version of the parameter.

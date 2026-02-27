@@ -1,0 +1,3 @@
+library module_bedrock_agent_flow_definition_node_configuration_lex;
+
+export 'agent_flow_definition_node_configuration_lex/agent_flow_definition_node_configuration_lex.dart';

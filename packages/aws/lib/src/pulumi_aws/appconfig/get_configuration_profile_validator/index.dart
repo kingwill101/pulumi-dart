@@ -1,3 +1,0 @@
-library module_appconfig_get_configuration_profile_validator;
-
-export 'get_configuration_profile_validator.dart';

@@ -12,10 +12,10 @@ class EndpointArgs5 {
   /// The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   final Input<String>? applicationDomain;
 
-  /// The type of attachment. Currently, only <span pulumi-lang-nodejs="`vpc`" pulumi-lang-dotnet="`Vpc`" pulumi-lang-go="`vpc`" pulumi-lang-python="`vpc`" pulumi-lang-yaml="`vpc`" pulumi-lang-java="`vpc`">`vpc`</span> is supported.
+  /// The type of attachment. Currently, only `vpc` is supported.
   final Input<String> attachmentType;
 
-  /// The CIDR block details. This parameter is required if the endpoint type is <span pulumi-lang-nodejs="`cidr`" pulumi-lang-dotnet="`Cidr`" pulumi-lang-go="`cidr`" pulumi-lang-python="`cidr`" pulumi-lang-yaml="`cidr`" pulumi-lang-java="`cidr`">`cidr`</span>.
+  /// The CIDR block details. This parameter is required if the endpoint type is `cidr`.
   final Input<EndpointCidrOptions>? cidrOptions;
 
   /// A description for the Verified Access endpoint.
@@ -49,7 +49,7 @@ class EndpointArgs5 {
   /// The options in use for server side encryption.
   final Input<EndpointSseSpecification>? sseSpecification;
 
-  /// Key-value tags for the Verified Access Endpoint. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value tags for the Verified Access Endpoint. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The ID of the Verified Access group to associate the endpoint with.

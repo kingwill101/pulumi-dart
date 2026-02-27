@@ -5,7 +5,7 @@ import '../get_core_network_policy_document_segment_action_via/get_core_network_
 import '../get_core_network_policy_document_segment_action_when_sent_to/get_core_network_policy_document_segment_action_when_sent_to.dart';
 
 class GetCoreNetworkPolicyDocumentSegmentAction {
-  /// Action to take for the chosen segment. Valid values: `create-route`, <span pulumi-lang-nodejs="`share`" pulumi-lang-dotnet="`Share`" pulumi-lang-go="`share`" pulumi-lang-python="`share`" pulumi-lang-yaml="`share`" pulumi-lang-java="`share`">`share`</span>, `send-via`, `send-to`, and `associate-routing-policy` (available in policy version `2025.11` and later).
+  /// Action to take for the chosen segment. Valid values: `create-route`, `share`, `send-via`, `send-to`, and `associate-routing-policy` (available in policy version `2025.11` and later).
   final String action;
 
   /// A user-defined string describing the segment action.
@@ -21,10 +21,10 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
   final GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation?
       edgeLocationAssociation;
 
-  /// String. When <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> is <span pulumi-lang-nodejs="`share`" pulumi-lang-dotnet="`Share`" pulumi-lang-go="`share`" pulumi-lang-python="`share`" pulumi-lang-yaml="`share`" pulumi-lang-java="`share`">`share`</span>, a <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> value of `attachment-route` places the attachment and return routes in each of the <span pulumi-lang-nodejs="`shareWith`" pulumi-lang-dotnet="`ShareWith`" pulumi-lang-go="`shareWith`" pulumi-lang-python="`share_with`" pulumi-lang-yaml="`shareWith`" pulumi-lang-java="`shareWith`">`share_with`</span> segments. When <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> is `send-via`, indicates the mode used for packets. Valid values: `attachment-route`, `single-hop`, `dual-hop`.
+  /// String. When `action` is `share`, a `mode` value of `attachment-route` places the attachment and return routes in each of the `share_with` segments. When `action` is `send-via`, indicates the mode used for packets. Valid values: `attachment-route`, `single-hop`, `dual-hop`.
   final String? mode;
 
-  /// A list of routing policy names to apply to segment sharing. The routing policies control how routes are propagated between the shared segments. Only applicable when <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> is <span pulumi-lang-nodejs="`share`" pulumi-lang-dotnet="`Share`" pulumi-lang-go="`share`" pulumi-lang-python="`share`" pulumi-lang-yaml="`share`" pulumi-lang-java="`share`">`share`</span>. Available in policy version `2025.11` and later.
+  /// A list of routing policy names to apply to segment sharing. The routing policies control how routes are propagated between the shared segments. Only applicable when `action` is `share`. Available in policy version `2025.11` and later.
   final List<String>? routingPolicyNames;
 
   /// Name of the segment.
@@ -39,7 +39,7 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
   /// The network function groups and any edge overrides associated with the action.
   final GetCoreNetworkPolicyDocumentSegmentActionVia? via;
 
-  /// The destination segments for the `send-via` or `send-to` <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span>.
+  /// The destination segments for the `send-via` or `send-to` `action`.
   final GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo? whenSentTo;
 
   GetCoreNetworkPolicyDocumentSegmentAction({

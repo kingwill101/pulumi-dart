@@ -1,3 +1,0 @@
-library module_sagemaker_project_service_catalog_provisioning_details_provisioning_parameter;
-
-export 'project_service_catalog_provisioning_details_provisioning_parameter.dart';

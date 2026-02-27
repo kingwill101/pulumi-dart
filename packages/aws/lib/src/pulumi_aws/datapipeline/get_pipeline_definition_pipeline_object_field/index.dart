@@ -1,3 +1,0 @@
-library module_datapipeline_get_pipeline_definition_pipeline_object_field;
-
-export 'get_pipeline_definition_pipeline_object_field.dart';

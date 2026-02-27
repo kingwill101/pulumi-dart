@@ -1,3 +1,0 @@
-library module_medialive_channel_encoder_settings_video_description_codec_settings_h265_settings;
-
-export 'channel_encoder_settings_video_description_codec_settings_h265_settings.dart';

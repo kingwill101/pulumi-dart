@@ -24,7 +24,7 @@ class GetSnapshotResult2 {
   final String name;
   final String region;
 
-  /// Whether the snapshot is from an automatic backup (<span pulumi-lang-nodejs="`automated`" pulumi-lang-dotnet="`Automated`" pulumi-lang-go="`automated`" pulumi-lang-python="`automated`" pulumi-lang-yaml="`automated`" pulumi-lang-java="`automated`">`automated`</span>) or was created manually (<span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`">`manual`</span>).
+  /// Whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
   final String source;
 
   /// Map of tags assigned to the snapshot.

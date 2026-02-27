@@ -5,7 +5,7 @@ import '../invocation_logging_configuration_logging_config/invocation_logging_co
 
 /// The set of arguments for InvocationLoggingConfiguration.
 class InvocationLoggingConfigurationArgs {
-  /// The logging configuration values to set. See <span pulumi-lang-nodejs="`loggingConfig`" pulumi-lang-dotnet="`LoggingConfig`" pulumi-lang-go="`loggingConfig`" pulumi-lang-python="`logging_config`" pulumi-lang-yaml="`loggingConfig`" pulumi-lang-java="`loggingConfig`">`logging_config`</span> Block for details.
+  /// The logging configuration values to set. See `logging_config` Block for details.
   final Input<InvocationLoggingConfigurationLoggingConfig> loggingConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

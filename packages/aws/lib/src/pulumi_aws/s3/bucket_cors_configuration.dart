@@ -1,0 +1,4 @@
+library module_s3_bucket_cors_configuration;
+
+export 'bucket_cors_configuration/bucket_cors_configuration.dart';
+export 'bucket_cors_configuration/bucket_cors_configuration_args.dart';

@@ -1,0 +1,3 @@
+library module_verifiedaccess_endpoint_rds_options;
+
+export 'endpoint_rds_options/endpoint_rds_options.dart';

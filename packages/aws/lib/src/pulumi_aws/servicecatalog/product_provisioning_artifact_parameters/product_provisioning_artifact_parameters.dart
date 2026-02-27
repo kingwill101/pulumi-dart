@@ -7,7 +7,7 @@ class ProductProvisioningArtifactParameters {
   /// Whether AWS Service Catalog stops validating the specified provisioning artifact template even if it is invalid.
   final bool? disableTemplateValidation;
 
-  /// Name of the provisioning artifact (for example, <span pulumi-lang-nodejs="`v1`" pulumi-lang-dotnet="`V1`" pulumi-lang-go="`v1`" pulumi-lang-python="`v1`" pulumi-lang-yaml="`v1`" pulumi-lang-java="`v1`">`v1`</span>, <span pulumi-lang-nodejs="`v2beta`" pulumi-lang-dotnet="`V2beta`" pulumi-lang-go="`v2beta`" pulumi-lang-python="`v2beta`" pulumi-lang-yaml="`v2beta`" pulumi-lang-java="`v2beta`">`v2beta`</span>). No spaces are allowed.
+  /// Name of the provisioning artifact (for example, `v1`, `v2beta`). No spaces are allowed.
   final String? name;
 
   /// Template source as the physical ID of the resource that contains the template. Currently only supports CloudFormation stack ARN. Specify the physical ID as `arn:[partition]:cloudformation:[region]:[account ID]:stack/[stack name]/[resource ID]`.

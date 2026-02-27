@@ -11,14 +11,14 @@ class V2modelsIntentConfirmationSettingPromptSpecification {
   /// Maximum number of times the bot tries to elicit a response from the user using this prompt.
   final int maxRetries;
 
-  /// Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See <span pulumi-lang-nodejs="`messageGroup`" pulumi-lang-dotnet="`MessageGroup`" pulumi-lang-go="`messageGroup`" pulumi-lang-python="`message_group`" pulumi-lang-yaml="`messageGroup`" pulumi-lang-java="`messageGroup`">`message_group`</span>.
+  /// Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See `message_group`.
   final List<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>?
       messageGroups;
 
   /// How a message is selected from a message group among retries. Valid values are `Random` and `Ordered`.
   final String? messageSelectionStrategy;
 
-  /// Configuration block for advanced settings on each attempt of the prompt. See <span pulumi-lang-nodejs="`promptAttemptsSpecification`" pulumi-lang-dotnet="`PromptAttemptsSpecification`" pulumi-lang-go="`promptAttemptsSpecification`" pulumi-lang-python="`prompt_attempts_specification`" pulumi-lang-yaml="`promptAttemptsSpecification`" pulumi-lang-java="`promptAttemptsSpecification`">`prompt_attempts_specification`</span>.
+  /// Configuration block for advanced settings on each attempt of the prompt. See `prompt_attempts_specification`.
   final List<
           V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>?
       promptAttemptsSpecifications;

@@ -1,0 +1,3 @@
+library module_appmesh_virtual_node_spec_service_discovery_dns;
+
+export 'virtual_node_spec_service_discovery_dns/virtual_node_spec_service_discovery_dns.dart';

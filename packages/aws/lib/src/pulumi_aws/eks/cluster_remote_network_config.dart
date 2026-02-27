@@ -1,0 +1,3 @@
+library module_eks_cluster_remote_network_config;
+
+export 'cluster_remote_network_config/cluster_remote_network_config.dart';

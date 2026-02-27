@@ -6,7 +6,7 @@ class ConnectionFunctionConnectionFunctionConfig {
   /// Comment to describe the function.
   final String comment;
 
-  /// Key value store associations. See <span pulumi-lang-nodejs="`keyValueStoreAssociation`" pulumi-lang-dotnet="`KeyValueStoreAssociation`" pulumi-lang-go="`keyValueStoreAssociation`" pulumi-lang-python="`key_value_store_association`" pulumi-lang-yaml="`keyValueStoreAssociation`" pulumi-lang-java="`keyValueStoreAssociation`">`key_value_store_association`</span> below.
+  /// Key value store associations. See `key_value_store_association` below.
   final ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation?
       keyValueStoreAssociation;
 

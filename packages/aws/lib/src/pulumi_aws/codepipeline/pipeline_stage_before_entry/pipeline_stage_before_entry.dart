@@ -3,7 +3,7 @@
 import '../pipeline_stage_before_entry_condition/pipeline_stage_before_entry_condition.dart';
 
 class PipelineStageBeforeEntry {
-  /// The conditions that are configured as entry condition. Defined as a <span pulumi-lang-nodejs="`condition`" pulumi-lang-dotnet="`Condition`" pulumi-lang-go="`condition`" pulumi-lang-python="`condition`" pulumi-lang-yaml="`condition`" pulumi-lang-java="`condition`">`condition`</span> block below.
+  /// The conditions that are configured as entry condition. Defined as a `condition` block below.
   final PipelineStageBeforeEntryCondition condition;
 
   PipelineStageBeforeEntry({

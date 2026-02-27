@@ -1,0 +1,4 @@
+library module_s3_bucket_request_payment_configuration_v2;
+
+export 'bucket_request_payment_configuration_v2/bucket_request_payment_configuration_v2.dart';
+export 'bucket_request_payment_configuration_v2/bucket_request_payment_configuration_v2_args.dart';

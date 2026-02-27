@@ -1,0 +1,3 @@
+library module_m2_environment_high_availability_config;
+
+export 'environment_high_availability_config/environment_high_availability_config.dart';

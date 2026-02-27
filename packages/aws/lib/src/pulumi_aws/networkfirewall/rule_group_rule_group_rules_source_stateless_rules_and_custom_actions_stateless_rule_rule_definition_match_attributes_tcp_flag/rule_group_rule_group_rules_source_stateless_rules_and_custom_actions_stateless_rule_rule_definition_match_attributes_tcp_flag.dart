@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag {
-  /// Set of flags to look for in a packet. This setting can only specify values that are also specified in <span pulumi-lang-nodejs="`masks`" pulumi-lang-dotnet="`Masks`" pulumi-lang-go="`masks`" pulumi-lang-python="`masks`" pulumi-lang-yaml="`masks`" pulumi-lang-java="`masks`">`masks`</span>.
+  /// Set of flags to look for in a packet. This setting can only specify values that are also specified in `masks`.
   /// Valid values: `FIN`, `SYN`, `RST`, `PSH`, `ACK`, `URG`, `ECE`, `CWR`.
   final List<String> flags;
 

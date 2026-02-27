@@ -15,10 +15,10 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration 
   final KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange?
       portRange;
 
-  /// Protocol number. A value of <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> means all the protocols.
+  /// Protocol number. A value of `1` means all the protocols.
   final String protocol;
 
-  /// Indicates whether to <span pulumi-lang-nodejs="`allow`" pulumi-lang-dotnet="`Allow`" pulumi-lang-go="`allow`" pulumi-lang-python="`allow`" pulumi-lang-yaml="`allow`" pulumi-lang-java="`allow`">`allow`</span> or <span pulumi-lang-nodejs="`deny`" pulumi-lang-dotnet="`Deny`" pulumi-lang-go="`deny`" pulumi-lang-python="`deny`" pulumi-lang-yaml="`deny`" pulumi-lang-java="`deny`">`deny`</span> the traffic that matches the rule.
+  /// Indicates whether to `allow` or `deny` the traffic that matches the rule.
   final String ruleAction;
 
   /// Rule number for the entry. All the network ACL entries are processed in ascending order by rule number.

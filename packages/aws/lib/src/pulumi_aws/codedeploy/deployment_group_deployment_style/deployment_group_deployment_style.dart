@@ -6,7 +6,7 @@ class DeploymentGroupDeploymentStyle {
 
   /// Indicates whether to run an in-place deployment or a blue/green deployment. Valid Values are `IN_PLACE` or `BLUE_GREEN`. Default is `IN_PLACE`.
   ///
-  /// _Only one <span pulumi-lang-nodejs="`deploymentStyle`" pulumi-lang-dotnet="`DeploymentStyle`" pulumi-lang-go="`deploymentStyle`" pulumi-lang-python="`deployment_style`" pulumi-lang-yaml="`deploymentStyle`" pulumi-lang-java="`deploymentStyle`">`deployment_style`</span> is allowed_.
+  /// _Only one `deployment_style` is allowed_.
   final String? deploymentType;
 
   DeploymentGroupDeploymentStyle({

@@ -1,3 +1,0 @@
-library module_kinesis_firehose_delivery_stream_server_side_encryption;
-
-export 'firehose_delivery_stream_server_side_encryption.dart';

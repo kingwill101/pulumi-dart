@@ -1,0 +1,3 @@
+library module_appflow_flow_trigger_config_trigger_properties_scheduled;
+
+export 'flow_trigger_config_trigger_properties_scheduled/flow_trigger_config_trigger_properties_scheduled.dart';

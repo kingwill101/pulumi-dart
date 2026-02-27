@@ -8,109 +8,11 @@ import 'cluster_role_association_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.rds.ClusterRoleAssociation("example", {
-/// dbClusterIdentifier: exampleAwsRdsCluster.id,
-/// featureName: "S3_INTEGRATION",
-/// roleArn: exampleAwsIamRole.arn,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.rds.ClusterRoleAssociation("example",
-/// db_cluster_identifier=example_aws_rds_cluster["id"],
-/// feature_name="S3_INTEGRATION",
-/// role_arn=example_aws_iam_role["arn"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Rds.ClusterRoleAssociation("example", new()
-/// {
-/// DbClusterIdentifier = exampleAwsRdsCluster.Id,
-/// FeatureName = "S3_INTEGRATION",
-/// RoleArn = exampleAwsIamRole.Arn,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := rds.NewClusterRoleAssociation(ctx, "example", &rds.ClusterRoleAssociationArgs{
-/// DbClusterIdentifier: pulumi.Any(exampleAwsRdsCluster.Id),
-/// FeatureName:         pulumi.String("S3_INTEGRATION"),
-/// RoleArn:             pulumi.Any(exampleAwsIamRole.Arn),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.rds.ClusterRoleAssociation;
-/// import com.pulumi.aws.rds.ClusterRoleAssociationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new ClusterRoleAssociation("example", ClusterRoleAssociationArgs.builder()
-/// .dbClusterIdentifier(exampleAwsRdsCluster.id())
-/// .featureName("S3_INTEGRATION")
-/// .roleArn(exampleAwsIamRole.arn())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:rds:ClusterRoleAssociation
-/// properties:
-/// dbClusterIdentifier: ${exampleAwsRdsCluster.id}
-/// featureName: S3_INTEGRATION
-/// roleArn: ${exampleAwsIamRole.arn}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.rds.ClusterRoleAssociation`" pulumi-lang-dotnet="`aws.rds.ClusterRoleAssociation`" pulumi-lang-go="`rds.ClusterRoleAssociation`" pulumi-lang-python="`rds.ClusterRoleAssociation`" pulumi-lang-yaml="`aws.rds.ClusterRoleAssociation`" pulumi-lang-java="`aws.rds.ClusterRoleAssociation`">`aws.rds.ClusterRoleAssociation`</span> using the DB Cluster Identifier and IAM Role ARN separated by a comma (`,`). For example:
+/// Using `pulumi import`, import `aws.rds.ClusterRoleAssociation` using the DB Cluster Identifier and IAM Role ARN separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/clusterRoleAssociation:ClusterRoleAssociation example my-db-cluster,arn:aws:iam::123456789012:role/my-role

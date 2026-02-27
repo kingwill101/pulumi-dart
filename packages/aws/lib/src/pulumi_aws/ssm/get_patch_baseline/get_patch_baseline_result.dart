@@ -45,7 +45,7 @@ class GetPatchBaselineResult {
   /// List of rejected patches.
   final List<String> rejectedPatches;
 
-  /// Action specified to take on patches included in the <span pulumi-lang-nodejs="`rejectedPatches`" pulumi-lang-dotnet="`RejectedPatches`" pulumi-lang-go="`rejectedPatches`" pulumi-lang-python="`rejected_patches`" pulumi-lang-yaml="`rejectedPatches`" pulumi-lang-java="`rejectedPatches`">`rejected_patches`</span> list.
+  /// Action specified to take on patches included in the `rejected_patches` list.
   final String rejectedPatchesAction;
 
   /// Information about the patches to use to update the managed nodes, including target operating systems and source repositories.

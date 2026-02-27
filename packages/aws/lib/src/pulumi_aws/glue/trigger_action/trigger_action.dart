@@ -6,10 +6,10 @@ class TriggerAction {
   /// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
   final Map<String, String>? arguments;
 
-  /// The name of the crawler to be executed. Conflicts with <span pulumi-lang-nodejs="`jobName`" pulumi-lang-dotnet="`JobName`" pulumi-lang-go="`jobName`" pulumi-lang-python="`job_name`" pulumi-lang-yaml="`jobName`" pulumi-lang-java="`jobName`">`job_name`</span>.
+  /// The name of the crawler to be executed. Conflicts with `job_name`.
   final String? crawlerName;
 
-  /// The name of a job to be executed. Conflicts with <span pulumi-lang-nodejs="`crawlerName`" pulumi-lang-dotnet="`CrawlerName`" pulumi-lang-go="`crawlerName`" pulumi-lang-python="`crawler_name`" pulumi-lang-yaml="`crawlerName`" pulumi-lang-java="`crawlerName`">`crawler_name`</span>.
+  /// The name of a job to be executed. Conflicts with `crawler_name`.
   final String? jobName;
 
   /// Specifies configuration properties of a job run notification. See Notification Property details below.

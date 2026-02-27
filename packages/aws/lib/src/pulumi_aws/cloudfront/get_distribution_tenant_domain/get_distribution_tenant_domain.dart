@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetDistributionTenantDomain {
-  /// An associated domain of the distribution tenant. Exactly one of <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> or <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> must be specified.
+  /// An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
   final String domain;
 
   /// Current status of the distribution tenant. `Deployed` if the

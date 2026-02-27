@@ -6,7 +6,7 @@ class AgentcoreCodeInterpreterNetworkConfiguration {
   /// Network mode for the code interpreter. Valid values: `PUBLIC`, `SANDBOX`, `VPC`.
   final String networkMode;
 
-  /// VPC configuration. See <span pulumi-lang-nodejs="`vpcConfig`" pulumi-lang-dotnet="`VpcConfig`" pulumi-lang-go="`vpcConfig`" pulumi-lang-python="`vpc_config`" pulumi-lang-yaml="`vpcConfig`" pulumi-lang-java="`vpcConfig`">`vpc_config`</span> below.
+  /// VPC configuration. See `vpc_config` below.
   final AgentcoreCodeInterpreterNetworkConfigurationVpcConfig? vpcConfig;
 
   AgentcoreCodeInterpreterNetworkConfiguration({

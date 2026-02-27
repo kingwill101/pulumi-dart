@@ -1,3 +1,0 @@
-library module_neptune_cluster_serverless_v2_scaling_configuration;
-
-export 'cluster_serverless_v2_scaling_configuration2.dart';

@@ -1,0 +1,3 @@
+library module_datasync_location_hdfs_name_node;
+
+export 'location_hdfs_name_node/location_hdfs_name_node.dart';

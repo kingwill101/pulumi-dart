@@ -1,3 +1,0 @@
-library module_redshiftserverless_workgroup_config_parameter;
-
-export 'workgroup_config_parameter.dart';

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TargetGroupHealthCheck2 {
-  /// Whether health checks are enabled. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether health checks are enabled. Defaults to `true`.
   final bool? enabled;
 
   /// Number of consecutive health check successes required before considering a target healthy. The range is 2-10. Defaults to 3.
   final int? healthyThreshold;
 
-  /// Approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300. For <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span> target groups, it needs to be greater than the timeout of the underlying <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>. Defaults to 30.
+  /// Approximate amount of time, in seconds, between health checks of an individual target. The range is 5-300. For `lambda` target groups, it needs to be greater than the timeout of the underlying `lambda`. Defaults to 30.
   final int? interval;
 
   /// The HTTP or gRPC codes to use when checking for a successful response from a target.
-  /// The `health_check.protocol` must be one of `HTTP` or `HTTPS` or the <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> must be <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>.
+  /// The `health_check.protocol` must be one of `HTTP` or `HTTPS` or the `target_type` must be `lambda`.
   /// Values can be comma-separated individual values (e.g., "200,202") or a range of values (e.g., "200-299").
   /// Once the value has been set, removing it has no effect. To unset it, set it to an empty string `""`.
-  /// * For gRPC-based target groups (i.e., the <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is one of `HTTP` or `HTTPS` and the <span pulumi-lang-nodejs="`protocolVersion`" pulumi-lang-dotnet="`ProtocolVersion`" pulumi-lang-go="`protocolVersion`" pulumi-lang-python="`protocol_version`" pulumi-lang-yaml="`protocolVersion`" pulumi-lang-java="`protocolVersion`">`protocol_version`</span> is `GRPC`), values can be between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`99`" pulumi-lang-dotnet="`99`" pulumi-lang-go="`99`" pulumi-lang-python="`99`" pulumi-lang-yaml="`99`" pulumi-lang-java="`99`">`99`</span>. The default is <span pulumi-lang-nodejs="`12`" pulumi-lang-dotnet="`12`" pulumi-lang-go="`12`" pulumi-lang-python="`12`" pulumi-lang-yaml="`12`" pulumi-lang-java="`12`">`12`</span>.
-  /// * When used with an Application Load Balancer (i.e., the <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is one of `HTTP` or `HTTPS` and the <span pulumi-lang-nodejs="`protocolVersion`" pulumi-lang-dotnet="`ProtocolVersion`" pulumi-lang-go="`protocolVersion`" pulumi-lang-python="`protocol_version`" pulumi-lang-yaml="`protocolVersion`" pulumi-lang-java="`protocolVersion`">`protocol_version`</span> is not `GRPC`), values can be between <span pulumi-lang-nodejs="`200`" pulumi-lang-dotnet="`200`" pulumi-lang-go="`200`" pulumi-lang-python="`200`" pulumi-lang-yaml="`200`" pulumi-lang-java="`200`">`200`</span> and <span pulumi-lang-nodejs="`499`" pulumi-lang-dotnet="`499`" pulumi-lang-go="`499`" pulumi-lang-python="`499`" pulumi-lang-yaml="`499`" pulumi-lang-java="`499`">`499`</span>. The default is <span pulumi-lang-nodejs="`200`" pulumi-lang-dotnet="`200`" pulumi-lang-go="`200`" pulumi-lang-python="`200`" pulumi-lang-yaml="`200`" pulumi-lang-java="`200`">`200`</span>.
-  /// * When used with a Network Load Balancer (i.e., the <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is one of `TCP`, `TCP_UDP`, `UDP`, or `TLS`), values can be between <span pulumi-lang-nodejs="`200`" pulumi-lang-dotnet="`200`" pulumi-lang-go="`200`" pulumi-lang-python="`200`" pulumi-lang-yaml="`200`" pulumi-lang-java="`200`">`200`</span> and <span pulumi-lang-nodejs="`599`" pulumi-lang-dotnet="`599`" pulumi-lang-go="`599`" pulumi-lang-python="`599`" pulumi-lang-yaml="`599`" pulumi-lang-java="`599`">`599`</span>. The default is `200-399`.
-  /// * When the <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>, values can be between <span pulumi-lang-nodejs="`200`" pulumi-lang-dotnet="`200`" pulumi-lang-go="`200`" pulumi-lang-python="`200`" pulumi-lang-yaml="`200`" pulumi-lang-java="`200`">`200`</span> and <span pulumi-lang-nodejs="`499`" pulumi-lang-dotnet="`499`" pulumi-lang-go="`499`" pulumi-lang-python="`499`" pulumi-lang-yaml="`499`" pulumi-lang-java="`499`">`499`</span>. The default is <span pulumi-lang-nodejs="`200`" pulumi-lang-dotnet="`200`" pulumi-lang-go="`200`" pulumi-lang-python="`200`" pulumi-lang-yaml="`200`" pulumi-lang-java="`200`">`200`</span>.
+  /// * For gRPC-based target groups (i.e., the `protocol` is one of `HTTP` or `HTTPS` and the `protocol_version` is `GRPC`), values can be between `0` and `99`. The default is `12`.
+  /// * When used with an Application Load Balancer (i.e., the `protocol` is one of `HTTP` or `HTTPS` and the `protocol_version` is not `GRPC`), values can be between `200` and `499`. The default is `200`.
+  /// * When used with a Network Load Balancer (i.e., the `protocol` is one of `TCP`, `TCP_UDP`, `UDP`, or `TLS`), values can be between `200` and `599`. The default is `200-399`.
+  /// * When the `target_type` is `lambda`, values can be between `200` and `499`. The default is `200`.
   final String? matcher;
 
   /// Destination for the health check request. Required for HTTP/HTTPS ALB and HTTP NLB. Only applies to HTTP/HTTPS.
@@ -27,7 +27,7 @@ class TargetGroupHealthCheck2 {
   final String? path;
 
   /// The port the load balancer uses when performing health checks on targets.
-  /// Valid values are either `traffic-port`, to use the same port as the target group, or a valid port number between <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> and <span pulumi-lang-nodejs="`65536`" pulumi-lang-dotnet="`65536`" pulumi-lang-go="`65536`" pulumi-lang-python="`65536`" pulumi-lang-yaml="`65536`" pulumi-lang-java="`65536`">`65536`</span>.
+  /// Valid values are either `traffic-port`, to use the same port as the target group, or a valid port number between `1` and `65536`.
   /// Default is `traffic-port`.
   final String? port;
 
@@ -35,7 +35,7 @@ class TargetGroupHealthCheck2 {
   /// Must be one of `TCP`, `HTTP`, or `HTTPS`.
   /// The `TCP` protocol is not supported for health checks if the protocol of the target group is `HTTP` or `HTTPS`.
   /// Default is `HTTP`.
-  /// Cannot be specified when the <span pulumi-lang-nodejs="`targetType`" pulumi-lang-dotnet="`TargetType`" pulumi-lang-go="`targetType`" pulumi-lang-python="`target_type`" pulumi-lang-yaml="`targetType`" pulumi-lang-java="`targetType`">`target_type`</span> is <span pulumi-lang-nodejs="`lambda`" pulumi-lang-dotnet="`Lambda`" pulumi-lang-go="`lambda`" pulumi-lang-python="`lambda`" pulumi-lang-yaml="`lambda`" pulumi-lang-java="`lambda`">`lambda`</span>.
+  /// Cannot be specified when the `target_type` is `lambda`.
   final String? protocol;
 
   /// Amount of time, in seconds, during which no response from a target means a failed health check. The range is 2–120 seconds. For target groups with a protocol of HTTP, the default is 6 seconds. For target groups with a protocol of TCP, TLS or HTTPS, the default is 10 seconds. For target groups with a protocol of GENEVE, the default is 5 seconds. If the target type is lambda, the default is 30 seconds.

@@ -1,3 +1,0 @@
-library module_wafv2_web_acl_rule_statement_byte_match_statement_field_to_match;
-
-export 'web_acl_rule_statement_byte_match_statement_field_to_match.dart';

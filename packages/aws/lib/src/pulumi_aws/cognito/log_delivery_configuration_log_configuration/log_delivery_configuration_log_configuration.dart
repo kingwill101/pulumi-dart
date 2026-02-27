@@ -21,7 +21,7 @@ class LogDeliveryConfigurationLogConfiguration {
 
   /// Configuration for S3 delivery. See S3 Configuration below.
   ///
-  /// > **Note:** At least one destination configuration (<span pulumi-lang-nodejs="`cloudWatchLogsConfiguration`" pulumi-lang-dotnet="`CloudWatchLogsConfiguration`" pulumi-lang-go="`cloudWatchLogsConfiguration`" pulumi-lang-python="`cloud_watch_logs_configuration`" pulumi-lang-yaml="`cloudWatchLogsConfiguration`" pulumi-lang-java="`cloudWatchLogsConfiguration`">`cloud_watch_logs_configuration`</span>, <span pulumi-lang-nodejs="`firehoseConfiguration`" pulumi-lang-dotnet="`FirehoseConfiguration`" pulumi-lang-go="`firehoseConfiguration`" pulumi-lang-python="`firehose_configuration`" pulumi-lang-yaml="`firehoseConfiguration`" pulumi-lang-java="`firehoseConfiguration`">`firehose_configuration`</span>, or <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span>) must be specified for each log configuration.
+  /// > **Note:** At least one destination configuration (`cloud_watch_logs_configuration`, `firehose_configuration`, or `s3_configuration`) must be specified for each log configuration.
   final LogDeliveryConfigurationLogConfigurationS3Configuration?
       s3Configuration;
 

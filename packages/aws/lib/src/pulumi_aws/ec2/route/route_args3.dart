@@ -24,7 +24,7 @@ class RouteArgs3 {
   /// Identifier of a VPC Egress Only Internet Gateway.
   final Input<String>? egressOnlyGatewayId;
 
-  /// Identifier of a VPC internet gateway or a virtual private gateway. Specify <span pulumi-lang-nodejs="`local`" pulumi-lang-dotnet="`Local`" pulumi-lang-go="`local`" pulumi-lang-python="`local`" pulumi-lang-yaml="`local`" pulumi-lang-java="`local`">`local`</span> when updating a previously imported local route.
+  /// Identifier of a VPC internet gateway or a virtual private gateway. Specify `local` when updating a previously imported local route.
   final Input<String>? gatewayId;
 
   /// Identifier of a Outpost local gateway.

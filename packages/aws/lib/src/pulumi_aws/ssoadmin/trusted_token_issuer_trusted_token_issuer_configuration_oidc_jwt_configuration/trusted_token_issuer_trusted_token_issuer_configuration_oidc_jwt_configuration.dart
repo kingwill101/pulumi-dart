@@ -4,7 +4,7 @@ class TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration {
   /// Specifies the path of the source attribute in the JWT from the trusted token issuer.
   final String claimAttributePath;
 
-  /// Specifies path of the destination attribute in a JWT from IAM Identity Center. The attribute mapped by this JMESPath expression is compared against the attribute mapped by <span pulumi-lang-nodejs="`claimAttributePath`" pulumi-lang-dotnet="`ClaimAttributePath`" pulumi-lang-go="`claimAttributePath`" pulumi-lang-python="`claim_attribute_path`" pulumi-lang-yaml="`claimAttributePath`" pulumi-lang-java="`claimAttributePath`">`claim_attribute_path`</span> when a trusted token issuer token is exchanged for an IAM Identity Center token.
+  /// Specifies path of the destination attribute in a JWT from IAM Identity Center. The attribute mapped by this JMESPath expression is compared against the attribute mapped by `claim_attribute_path` when a trusted token issuer token is exchanged for an IAM Identity Center token.
   final String identityStoreAttributePath;
 
   /// Specifies the URL that IAM Identity Center uses for OpenID Discovery. OpenID Discovery is used to obtain the information required to verify the tokens that the trusted token issuer generates.

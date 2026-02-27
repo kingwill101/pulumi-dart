@@ -1,3 +1,0 @@
-library module_cloudfront_field_level_encryption_profile_encryption_entities_item_field_patterns;
-
-export 'field_level_encryption_profile_encryption_entities_item_field_patterns.dart';

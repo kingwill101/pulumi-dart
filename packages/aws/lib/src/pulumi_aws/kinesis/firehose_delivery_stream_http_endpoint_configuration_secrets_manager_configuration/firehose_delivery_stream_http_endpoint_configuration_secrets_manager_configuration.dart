@@ -7,7 +7,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration
   /// The ARN of the role the stream assumes.
   final String? roleArn;
 
-  /// The ARN of the Secrets Manager secret. This value is required if <span pulumi-lang-nodejs="`enabled`" pulumi-lang-dotnet="`Enabled`" pulumi-lang-go="`enabled`" pulumi-lang-python="`enabled`" pulumi-lang-yaml="`enabled`" pulumi-lang-java="`enabled`">`enabled`</span> is true.
+  /// The ARN of the Secrets Manager secret. This value is required if `enabled` is true.
   final String? secretArn;
 
   FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration({

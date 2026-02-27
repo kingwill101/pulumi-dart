@@ -1,3 +1,0 @@
-library module_ec2transitgateway_peering_attachment_options;
-
-export 'peering_attachment_options.dart';

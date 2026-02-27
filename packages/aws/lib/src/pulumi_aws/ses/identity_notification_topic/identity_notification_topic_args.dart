@@ -7,7 +7,7 @@ class IdentityNotificationTopicArgs {
   /// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
   final Input<String> identity;
 
-  /// Whether SES should include original email headers in SNS notifications of this type. <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> by default.
+  /// Whether SES should include original email headers in SNS notifications of this type. `false` by default.
   final Input<bool>? includeOriginalHeaders;
 
   /// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: `Bounce`, `Complaint` or `Delivery`.

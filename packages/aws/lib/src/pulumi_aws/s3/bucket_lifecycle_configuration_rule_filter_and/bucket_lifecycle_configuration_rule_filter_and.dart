@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class BucketLifecycleConfigurationRuleFilterAnd {
-  /// Minimum object size to which the rule applies. Value must be at least <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> if specified. Defaults to 128000 (128 KB) for all <span pulumi-lang-nodejs="`storageClass`" pulumi-lang-dotnet="`StorageClass`" pulumi-lang-go="`storageClass`" pulumi-lang-python="`storage_class`" pulumi-lang-yaml="`storageClass`" pulumi-lang-java="`storageClass`">`storage_class`</span> values unless <span pulumi-lang-nodejs="`transitionDefaultMinimumObjectSize`" pulumi-lang-dotnet="`TransitionDefaultMinimumObjectSize`" pulumi-lang-go="`transitionDefaultMinimumObjectSize`" pulumi-lang-python="`transition_default_minimum_object_size`" pulumi-lang-yaml="`transitionDefaultMinimumObjectSize`" pulumi-lang-java="`transitionDefaultMinimumObjectSize`">`transition_default_minimum_object_size`</span> specifies otherwise.
+  /// Minimum object size to which the rule applies. Value must be at least `0` if specified. Defaults to 128000 (128 KB) for all `storage_class` values unless `transition_default_minimum_object_size` specifies otherwise.
   final int? objectSizeGreaterThan;
 
-  /// Maximum object size to which the rule applies. Value must be at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> if specified.
+  /// Maximum object size to which the rule applies. Value must be at least `1` if specified.
   final int? objectSizeLessThan;
 
   /// Prefix identifying one or more objects to which the rule applies.

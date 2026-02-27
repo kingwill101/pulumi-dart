@@ -1,0 +1,3 @@
+library module_athena_workgroup_configuration_customer_content_encryption_configuration;
+
+export 'workgroup_configuration_customer_content_encryption_configuration/workgroup_configuration_customer_content_encryption_configuration.dart';

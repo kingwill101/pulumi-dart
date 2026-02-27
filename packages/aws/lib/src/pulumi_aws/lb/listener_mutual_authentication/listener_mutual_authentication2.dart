@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ListenerMutualAuthentication2 {
-  /// Valid values are <span pulumi-lang-nodejs="`off`" pulumi-lang-dotnet="`Off`" pulumi-lang-go="`off`" pulumi-lang-python="`off`" pulumi-lang-yaml="`off`" pulumi-lang-java="`off`">`off`</span> and <span pulumi-lang-nodejs="`on`" pulumi-lang-dotnet="`On`" pulumi-lang-go="`on`" pulumi-lang-python="`on`" pulumi-lang-yaml="`on`" pulumi-lang-java="`on`">`on`</span>.
+  /// Valid values are `off` and `on`.
   final String? advertiseTrustStoreCaNames;
 
   /// Whether client certificate expiry is ignored.
-  /// Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Default is `false`.
   final bool? ignoreClientCertificateExpiry;
 
-  /// Valid values are <span pulumi-lang-nodejs="`off`" pulumi-lang-dotnet="`Off`" pulumi-lang-go="`off`" pulumi-lang-python="`off`" pulumi-lang-yaml="`off`" pulumi-lang-java="`off`">`off`</span>, <span pulumi-lang-nodejs="`passthrough`" pulumi-lang-dotnet="`Passthrough`" pulumi-lang-go="`passthrough`" pulumi-lang-python="`passthrough`" pulumi-lang-yaml="`passthrough`" pulumi-lang-java="`passthrough`">`passthrough`</span>, and <span pulumi-lang-nodejs="`verify`" pulumi-lang-dotnet="`Verify`" pulumi-lang-go="`verify`" pulumi-lang-python="`verify`" pulumi-lang-yaml="`verify`" pulumi-lang-java="`verify`">`verify`</span>.
+  /// Valid values are `off`, `passthrough`, and `verify`.
   final String mode;
 
   /// ARN of the elbv2 Trust Store.

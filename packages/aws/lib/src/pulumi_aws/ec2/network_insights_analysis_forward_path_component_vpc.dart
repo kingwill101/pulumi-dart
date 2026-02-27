@@ -1,0 +1,3 @@
+library module_ec2_network_insights_analysis_forward_path_component_vpc;
+
+export 'network_insights_analysis_forward_path_component_vpc/network_insights_analysis_forward_path_component_vpc.dart';

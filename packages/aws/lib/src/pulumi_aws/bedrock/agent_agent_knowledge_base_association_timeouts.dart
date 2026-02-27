@@ -1,0 +1,3 @@
+library module_bedrock_agent_agent_knowledge_base_association_timeouts;
+
+export 'agent_agent_knowledge_base_association_timeouts/agent_agent_knowledge_base_association_timeouts.dart';

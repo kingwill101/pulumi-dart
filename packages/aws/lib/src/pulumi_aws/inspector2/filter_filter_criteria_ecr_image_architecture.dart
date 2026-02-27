@@ -1,0 +1,3 @@
+library module_inspector2_filter_filter_criteria_ecr_image_architecture;
+
+export 'filter_filter_criteria_ecr_image_architecture/filter_filter_criteria_ecr_image_architecture.dart';

@@ -10,11 +10,11 @@ class V2modelsIntentFulfillmentCodeHook {
   /// Whether a Lambda function should be invoked to fulfill a specific intent.
   final bool enabled;
 
-  /// Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See <span pulumi-lang-nodejs="`fulfillmentUpdatesSpecification`" pulumi-lang-dotnet="`FulfillmentUpdatesSpecification`" pulumi-lang-go="`fulfillmentUpdatesSpecification`" pulumi-lang-python="`fulfillment_updates_specification`" pulumi-lang-yaml="`fulfillmentUpdatesSpecification`" pulumi-lang-java="`fulfillmentUpdatesSpecification`">`fulfillment_updates_specification`</span>.
+  /// Configuration block for settings for update messages sent to the user for long-running Lambda fulfillment functions. Fulfillment updates can be used only with streaming conversations. See `fulfillment_updates_specification`.
   final V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification?
       fulfillmentUpdatesSpecification;
 
-  /// Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See <span pulumi-lang-nodejs="`postFulfillmentStatusSpecification`" pulumi-lang-dotnet="`PostFulfillmentStatusSpecification`" pulumi-lang-go="`postFulfillmentStatusSpecification`" pulumi-lang-python="`post_fulfillment_status_specification`" pulumi-lang-yaml="`postFulfillmentStatusSpecification`" pulumi-lang-java="`postFulfillmentStatusSpecification`">`post_fulfillment_status_specification`</span>.
+  /// Configuration block for settings for messages sent to the user for after the Lambda fulfillment function completes. Post-fulfillment messages can be sent for both streaming and non-streaming conversations. See `post_fulfillment_status_specification`.
   final V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification?
       postFulfillmentStatusSpecification;
 

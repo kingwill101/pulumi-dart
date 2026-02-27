@@ -1,0 +1,4 @@
+library module_ec2_vpc_endpoint_route_table_association;
+
+export 'vpc_endpoint_route_table_association/vpc_endpoint_route_table_association.dart';
+export 'vpc_endpoint_route_table_association/vpc_endpoint_route_table_association_args.dart';

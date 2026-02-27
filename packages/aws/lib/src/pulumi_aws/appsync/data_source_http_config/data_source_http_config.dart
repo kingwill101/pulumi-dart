@@ -3,7 +3,7 @@
 import '../data_source_http_config_authorization_config/data_source_http_config_authorization_config.dart';
 
 class DataSourceHttpConfig {
-  /// Authorization configuration in case the HTTP endpoint requires authorization. See <span pulumi-lang-nodejs="`authorizationConfig`" pulumi-lang-dotnet="`AuthorizationConfig`" pulumi-lang-go="`authorizationConfig`" pulumi-lang-python="`authorization_config`" pulumi-lang-yaml="`authorizationConfig`" pulumi-lang-java="`authorizationConfig`">`authorization_config`</span> Block for details.
+  /// Authorization configuration in case the HTTP endpoint requires authorization. See `authorization_config` Block for details.
   final DataSourceHttpConfigAuthorizationConfig? authorizationConfig;
 
   /// HTTP URL.

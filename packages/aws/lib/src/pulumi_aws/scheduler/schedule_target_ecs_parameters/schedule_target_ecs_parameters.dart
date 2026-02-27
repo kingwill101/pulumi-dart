@@ -7,7 +7,7 @@ import '../schedule_target_ecs_parameters_placement_constraint/schedule_target_e
 import '../schedule_target_ecs_parameters_placement_strategy/schedule_target_ecs_parameters_placement_strategy.dart';
 
 class ScheduleTargetEcsParameters {
-  /// Up to <span pulumi-lang-nodejs="`6`" pulumi-lang-dotnet="`6`" pulumi-lang-go="`6`" pulumi-lang-python="`6`" pulumi-lang-yaml="`6`" pulumi-lang-java="`6`">`6`</span> capacity provider strategies to use for the task. Detailed below.
+  /// Up to `6` capacity provider strategies to use for the task. Detailed below.
   final List<ScheduleTargetEcsParametersCapacityProviderStrategy>?
       capacityProviderStrategies;
 
@@ -45,7 +45,7 @@ class ScheduleTargetEcsParameters {
   /// The metadata that you apply to the task. Each tag consists of a key and an optional value. For more information, see [`RunTask`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) in the Amazon ECS API Reference.
   final Map<String, String>? tags;
 
-  /// The number of tasks to create. Ranges from <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> (default) to <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span>.
+  /// The number of tasks to create. Ranges from `1` (default) to `10`.
   final int? taskCount;
 
   /// ARN of the task definition to use.

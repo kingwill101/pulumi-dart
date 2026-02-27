@@ -5,7 +5,7 @@ import '../get_user_groups_group/get_user_groups_group.dart';
 
 /// Result data returned by getUserGroups.
 class GetUserGroupsResult {
-  /// List of groups. See <span pulumi-lang-nodejs="`groups`" pulumi-lang-dotnet="`Groups`" pulumi-lang-go="`groups`" pulumi-lang-python="`groups`" pulumi-lang-yaml="`groups`" pulumi-lang-java="`groups`">`groups`</span> below.
+  /// List of groups. See `groups` below.
   final List<GetUserGroupsGroup> groups;
 
   /// User pool identifier.

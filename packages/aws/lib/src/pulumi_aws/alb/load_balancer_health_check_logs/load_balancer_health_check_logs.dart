@@ -4,7 +4,7 @@ class LoadBalancerHealthCheckLogs {
   /// S3 bucket name to store the logs in.
   final String bucket;
 
-  /// Boolean to enable / disable <span pulumi-lang-nodejs="`healthCheckLogs`" pulumi-lang-dotnet="`HealthCheckLogs`" pulumi-lang-go="`healthCheckLogs`" pulumi-lang-python="`health_check_logs`" pulumi-lang-yaml="`healthCheckLogs`" pulumi-lang-java="`healthCheckLogs`">`health_check_logs`</span>. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, even when <span pulumi-lang-nodejs="`bucket`" pulumi-lang-dotnet="`Bucket`" pulumi-lang-go="`bucket`" pulumi-lang-python="`bucket`" pulumi-lang-yaml="`bucket`" pulumi-lang-java="`bucket`">`bucket`</span> is specified.
+  /// Boolean to enable / disable `health_check_logs`. Defaults to `false`, even when `bucket` is specified.
   final bool? enabled;
 
   /// S3 bucket prefix. Logs are stored in the root if not configured.

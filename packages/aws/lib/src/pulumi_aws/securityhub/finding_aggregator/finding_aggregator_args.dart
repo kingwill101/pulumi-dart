@@ -10,7 +10,7 @@ class FindingAggregatorArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// List of regions to include or exclude (required if <span pulumi-lang-nodejs="`linkingMode`" pulumi-lang-dotnet="`LinkingMode`" pulumi-lang-go="`linkingMode`" pulumi-lang-python="`linking_mode`" pulumi-lang-yaml="`linkingMode`" pulumi-lang-java="`linkingMode`">`linking_mode`</span> is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
+  /// List of regions to include or exclude (required if `linking_mode` is set to `ALL_REGIONS_EXCEPT_SPECIFIED` or `SPECIFIED_REGIONS`)
   final Input<List<String>>? specifiedRegions;
 
   FindingAggregatorArgs({

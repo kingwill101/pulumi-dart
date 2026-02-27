@@ -1,0 +1,3 @@
+library module_costexplorer_get_cost_category_split_charge_rule;
+
+export 'get_cost_category_split_charge_rule/get_cost_category_split_charge_rule.dart';

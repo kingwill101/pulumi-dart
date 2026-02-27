@@ -1,0 +1,4 @@
+library module_workspacesweb_data_protection_settings;
+
+export 'data_protection_settings/data_protection_settings.dart';
+export 'data_protection_settings/data_protection_settings_args.dart';

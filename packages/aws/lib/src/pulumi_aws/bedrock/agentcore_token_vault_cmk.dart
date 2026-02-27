@@ -1,0 +1,4 @@
+library module_bedrock_agentcore_token_vault_cmk;
+
+export 'agentcore_token_vault_cmk/agentcore_token_vault_cmk.dart';
+export 'agentcore_token_vault_cmk/agentcore_token_vault_cmk_args.dart';

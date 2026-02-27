@@ -1,3 +1,0 @@
-library module_connect_get_bot_association_lex_bot;
-
-export 'get_bot_association_lex_bot.dart';

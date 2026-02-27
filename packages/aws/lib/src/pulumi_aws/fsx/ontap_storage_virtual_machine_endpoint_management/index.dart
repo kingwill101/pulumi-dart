@@ -1,3 +1,0 @@
-library module_fsx_ontap_storage_virtual_machine_endpoint_management;
-
-export 'ontap_storage_virtual_machine_endpoint_management.dart';

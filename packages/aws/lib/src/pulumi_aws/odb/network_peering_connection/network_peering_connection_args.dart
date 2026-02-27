@@ -10,19 +10,19 @@ class NetworkPeeringConnectionArgs {
   /// The following arguments are optional:
   final Input<String> displayName;
 
-  /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either<span pulumi-lang-nodejs=" odbNetworkId " pulumi-lang-dotnet=" OdbNetworkId " pulumi-lang-go=" odbNetworkId " pulumi-lang-python=" odb_network_id " pulumi-lang-yaml=" odbNetworkId " pulumi-lang-java=" odbNetworkId "> odb_network_id </span>or<span pulumi-lang-nodejs=" odbNetworkArn " pulumi-lang-dotnet=" OdbNetworkArn " pulumi-lang-go=" odbNetworkArn " pulumi-lang-python=" odb_network_arn " pulumi-lang-yaml=" odbNetworkArn " pulumi-lang-java=" odbNetworkArn "> odb_network_arn </span>should be used.
+  /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
   final Input<String>? odbNetworkArn;
 
   /// The unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
   final Input<String>? odbNetworkId;
 
-  /// The unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either<span pulumi-lang-nodejs=" odbNetworkId " pulumi-lang-dotnet=" OdbNetworkId " pulumi-lang-go=" odbNetworkId " pulumi-lang-python=" odb_network_id " pulumi-lang-yaml=" odbNetworkId " pulumi-lang-java=" odbNetworkId "> odb_network_id </span>or<span pulumi-lang-nodejs=" odbNetworkArn " pulumi-lang-dotnet=" OdbNetworkArn " pulumi-lang-go=" odbNetworkArn " pulumi-lang-python=" odb_network_arn " pulumi-lang-yaml=" odbNetworkArn " pulumi-lang-java=" odbNetworkArn "> odb_network_arn </span>should be used.
+  /// The unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
   final Input<String> peerNetworkId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<NetworkPeeringConnectionTimeouts>? timeouts;
 

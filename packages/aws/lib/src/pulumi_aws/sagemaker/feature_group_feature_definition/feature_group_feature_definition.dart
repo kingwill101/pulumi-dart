@@ -6,7 +6,7 @@ class FeatureGroupFeatureDefinition {
   final FeatureGroupFeatureDefinitionCollectionConfig? collectionConfig;
   final String? collectionType;
 
-  /// The name of a feature. <span pulumi-lang-nodejs="`featureName`" pulumi-lang-dotnet="`FeatureName`" pulumi-lang-go="`featureName`" pulumi-lang-python="`feature_name`" pulumi-lang-yaml="`featureName`" pulumi-lang-java="`featureName`">`feature_name`</span> cannot be any of the following: <span pulumi-lang-nodejs="`isDeleted`" pulumi-lang-dotnet="`IsDeleted`" pulumi-lang-go="`isDeleted`" pulumi-lang-python="`is_deleted`" pulumi-lang-yaml="`isDeleted`" pulumi-lang-java="`isDeleted`">`is_deleted`</span>, <span pulumi-lang-nodejs="`writeTime`" pulumi-lang-dotnet="`WriteTime`" pulumi-lang-go="`writeTime`" pulumi-lang-python="`write_time`" pulumi-lang-yaml="`writeTime`" pulumi-lang-java="`writeTime`">`write_time`</span>, <span pulumi-lang-nodejs="`apiInvocationTime`" pulumi-lang-dotnet="`ApiInvocationTime`" pulumi-lang-go="`apiInvocationTime`" pulumi-lang-python="`api_invocation_time`" pulumi-lang-yaml="`apiInvocationTime`" pulumi-lang-java="`apiInvocationTime`">`api_invocation_time`</span>.
+  /// The name of a feature. `feature_name` cannot be any of the following: `is_deleted`, `write_time`, `api_invocation_time`.
   final String? featureName;
 
   /// The value type of a feature. Valid values are `Integral`, `Fractional`, or `String`.

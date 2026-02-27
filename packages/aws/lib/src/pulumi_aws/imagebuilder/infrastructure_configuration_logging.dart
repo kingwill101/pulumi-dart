@@ -1,0 +1,3 @@
+library module_imagebuilder_infrastructure_configuration_logging;
+
+export 'infrastructure_configuration_logging/infrastructure_configuration_logging.dart';

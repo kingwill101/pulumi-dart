@@ -16,7 +16,7 @@ class TableArgs4 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, <span pulumi-lang-nodejs="`magneticStoreRetentionPeriodInDays`" pulumi-lang-dotnet="`MagneticStoreRetentionPeriodInDays`" pulumi-lang-go="`magneticStoreRetentionPeriodInDays`" pulumi-lang-python="`magnetic_store_retention_period_in_days`" pulumi-lang-yaml="`magneticStoreRetentionPeriodInDays`" pulumi-lang-java="`magneticStoreRetentionPeriodInDays`">`magnetic_store_retention_period_in_days`</span> default to 73000 and <span pulumi-lang-nodejs="`memoryStoreRetentionPeriodInHours`" pulumi-lang-dotnet="`MemoryStoreRetentionPeriodInHours`" pulumi-lang-go="`memoryStoreRetentionPeriodInHours`" pulumi-lang-python="`memory_store_retention_period_in_hours`" pulumi-lang-yaml="`memoryStoreRetentionPeriodInHours`" pulumi-lang-java="`memoryStoreRetentionPeriodInHours`">`memory_store_retention_period_in_hours`</span> defaults to 6.
+  /// The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, `magnetic_store_retention_period_in_days` default to 73000 and `memory_store_retention_period_in_hours` defaults to 6.
   final Input<TableRetentionProperties>? retentionProperties;
 
   /// The schema of the table. See Schema below for more details.
@@ -25,7 +25,7 @@ class TableArgs4 {
   /// The name of the Timestream table.
   final Input<String> tableName;
 
-  /// Map of tags to assign to this resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   TableArgs4({

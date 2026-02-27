@@ -6,7 +6,7 @@ class DomainAdvancedSecurityOptions {
   /// Whether advanced security is enabled.
   final bool enabled;
 
-  /// Whether the internal user database is enabled. If not set, defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> by the AWS API.
+  /// Whether the internal user database is enabled. If not set, defaults to `false` by the AWS API.
   final bool? internalUserDatabaseEnabled;
 
   /// Configuration block for the main user. Detailed below.

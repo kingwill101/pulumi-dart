@@ -1,3 +1,0 @@
-library module_ecs_service_deployment_configuration_canary_configuration;
-
-export 'service_deployment_configuration_canary_configuration.dart';

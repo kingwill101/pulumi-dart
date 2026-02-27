@@ -14,7 +14,7 @@ class NetworkInterfaceArgs {
   /// Enables assigning a primary IPv6 Global Unicast Address (GUA) to the network interface (ENI) in dual-stack or IPv6-only subnets. This ensures the instance attached to the ENI retains a consistent IPv6 address. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains assigned until the instance is terminated or the ENI is detached. Enabling and subsequent disabling forces recreation of the ENI.
   final Input<bool>? enablePrimaryIpv6;
 
-  /// Type of network interface to create. Set to <span pulumi-lang-nodejs="`efa`" pulumi-lang-dotnet="`Efa`" pulumi-lang-go="`efa`" pulumi-lang-python="`efa`" pulumi-lang-yaml="`efa`" pulumi-lang-java="`efa`">`efa`</span> for Elastic Fabric Adapter. Changing <span pulumi-lang-nodejs="`interfaceType`" pulumi-lang-dotnet="`InterfaceType`" pulumi-lang-go="`interfaceType`" pulumi-lang-python="`interface_type`" pulumi-lang-yaml="`interfaceType`" pulumi-lang-java="`interfaceType`">`interface_type`</span> will cause the resource to be destroyed and re-created.
+  /// Type of network interface to create. Set to `efa` for Elastic Fabric Adapter. Changing `interface_type` will cause the resource to be destroyed and re-created.
   final Input<String>? interfaceType;
 
   /// Number of IPv4 prefixes that AWS automatically assigns to the network interface.
@@ -23,16 +23,16 @@ class NetworkInterfaceArgs {
   /// One or more IPv4 prefixes assigned to the network interface.
   final Input<List<String>>? ipv4Prefixes;
 
-  /// Number of IPv6 addresses to assign to a network interface. You can't use this option if specifying specific <span pulumi-lang-nodejs="`ipv6Addresses`" pulumi-lang-dotnet="`Ipv6Addresses`" pulumi-lang-go="`ipv6Addresses`" pulumi-lang-python="`ipv6_addresses`" pulumi-lang-yaml="`ipv6Addresses`" pulumi-lang-java="`ipv6Addresses`">`ipv6_addresses`</span>. If your subnet has the AssignIpv6AddressOnCreation attribute set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, you can specify <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to override this setting.
+  /// Number of IPv6 addresses to assign to a network interface. You can't use this option if specifying specific `ipv6_addresses`. If your subnet has the AssignIpv6AddressOnCreation attribute set to `true`, you can specify `0` to override this setting.
   final Input<int>? ipv6AddressCount;
 
-  /// Whether <span pulumi-lang-nodejs="`ipv6AddressList`" pulumi-lang-dotnet="`Ipv6AddressList`" pulumi-lang-go="`ipv6AddressList`" pulumi-lang-python="`ipv6_address_list`" pulumi-lang-yaml="`ipv6AddressList`" pulumi-lang-java="`ipv6AddressList`">`ipv6_address_list`</span> is allowed and controls the IPs to assign to the ENI and <span pulumi-lang-nodejs="`ipv6Addresses`" pulumi-lang-dotnet="`Ipv6Addresses`" pulumi-lang-go="`ipv6Addresses`" pulumi-lang-python="`ipv6_addresses`" pulumi-lang-yaml="`ipv6Addresses`" pulumi-lang-java="`ipv6Addresses`">`ipv6_addresses`</span> and <span pulumi-lang-nodejs="`ipv6AddressCount`" pulumi-lang-dotnet="`Ipv6AddressCount`" pulumi-lang-go="`ipv6AddressCount`" pulumi-lang-python="`ipv6_address_count`" pulumi-lang-yaml="`ipv6AddressCount`" pulumi-lang-java="`ipv6AddressCount`">`ipv6_address_count`</span> become read-only. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether `ipv6_address_list` is allowed and controls the IPs to assign to the ENI and `ipv6_addresses` and `ipv6_address_count` become read-only. Default is `false`.
   final Input<bool>? ipv6AddressListEnabled;
 
   /// List of private IPs to assign to the ENI in sequential order.
   final Input<List<String>>? ipv6AddressLists;
 
-  /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Addresses are assigned without regard to order. You can't use this option if you're specifying <span pulumi-lang-nodejs="`ipv6AddressCount`" pulumi-lang-dotnet="`Ipv6AddressCount`" pulumi-lang-go="`ipv6AddressCount`" pulumi-lang-python="`ipv6_address_count`" pulumi-lang-yaml="`ipv6AddressCount`" pulumi-lang-java="`ipv6AddressCount`">`ipv6_address_count`</span>.
+  /// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet. Addresses are assigned without regard to order. You can't use this option if you're specifying `ipv6_address_count`.
   final Input<List<String>>? ipv6Addresses;
 
   /// Number of IPv6 prefixes that AWS automatically assigns to the network interface.
@@ -42,16 +42,16 @@ class NetworkInterfaceArgs {
   final Input<List<String>>? ipv6Prefixes;
   final Input<String>? privateIp;
 
-  /// Whether <span pulumi-lang-nodejs="`privateIpList`" pulumi-lang-dotnet="`PrivateIpList`" pulumi-lang-go="`privateIpList`" pulumi-lang-python="`private_ip_list`" pulumi-lang-yaml="`privateIpList`" pulumi-lang-java="`privateIpList`">`private_ip_list`</span> is allowed and controls the IPs to assign to the ENI and <span pulumi-lang-nodejs="`privateIps`" pulumi-lang-dotnet="`PrivateIps`" pulumi-lang-go="`privateIps`" pulumi-lang-python="`private_ips`" pulumi-lang-yaml="`privateIps`" pulumi-lang-java="`privateIps`">`private_ips`</span> and <span pulumi-lang-nodejs="`privateIpsCount`" pulumi-lang-dotnet="`PrivateIpsCount`" pulumi-lang-go="`privateIpsCount`" pulumi-lang-python="`private_ips_count`" pulumi-lang-yaml="`privateIpsCount`" pulumi-lang-java="`privateIpsCount`">`private_ips_count`</span> become read-only. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether `private_ip_list` is allowed and controls the IPs to assign to the ENI and `private_ips` and `private_ips_count` become read-only. Default is `false`.
   final Input<bool>? privateIpListEnabled;
 
-  /// List of private IPs to assign to the ENI in sequential order. Requires setting <span pulumi-lang-nodejs="`privateIpListEnabled`" pulumi-lang-dotnet="`PrivateIpListEnabled`" pulumi-lang-go="`privateIpListEnabled`" pulumi-lang-python="`private_ip_list_enabled`" pulumi-lang-yaml="`privateIpListEnabled`" pulumi-lang-java="`privateIpListEnabled`">`private_ip_list_enabled`</span> to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// List of private IPs to assign to the ENI in sequential order. Requires setting `private_ip_list_enabled` to `true`.
   final Input<List<String>>? privateIpLists;
 
   /// List of private IPs to assign to the ENI without regard to order.
   final Input<List<String>>? privateIps;
 
-  /// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + <span pulumi-lang-nodejs="`privateIpsCount`" pulumi-lang-dotnet="`PrivateIpsCount`" pulumi-lang-go="`privateIpsCount`" pulumi-lang-python="`private_ips_count`" pulumi-lang-yaml="`privateIpsCount`" pulumi-lang-java="`privateIpsCount`">`private_ips_count`</span>, as a primary private IP will be assiged to an ENI by default.
+  /// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + `private_ips_count`, as a primary private IP will be assiged to an ENI by default.
   final Input<int>? privateIpsCount;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -68,7 +68,7 @@ class NetworkInterfaceArgs {
   /// The following arguments are optional:
   final Input<String> subnetId;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   NetworkInterfaceArgs({

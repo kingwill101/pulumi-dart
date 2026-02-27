@@ -7,7 +7,7 @@ class GetZoneArgs {
   /// Boolean to indicate whether to enable accelerated recovery for the hosted zone.
   final Input<bool>? enableAcceleratedRecovery;
 
-  /// Hosted Zone name of the desired Hosted Zone. If blank, then accept any name, filtering on only <span pulumi-lang-nodejs="`privateZone`" pulumi-lang-dotnet="`PrivateZone`" pulumi-lang-go="`privateZone`" pulumi-lang-python="`private_zone`" pulumi-lang-yaml="`privateZone`" pulumi-lang-java="`privateZone`">`private_zone`</span>, <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span> and <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span>.
+  /// Hosted Zone name of the desired Hosted Zone. If blank, then accept any name, filtering on only `private_zone`, `vpc_id` and `tags`.
   final Input<String>? name;
 
   /// Filter to only private Hosted Zones.
@@ -20,11 +20,11 @@ class GetZoneArgs {
   /// - The given filter must match exactly one Hosted Zone.
   final Input<Map<String, String>>? tags;
 
-  /// Filter to private Hosted Zones associated with the specified <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span>.
+  /// Filter to private Hosted Zones associated with the specified `vpc_id`.
   final Input<String>? vpcId;
 
-  /// and <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> are mutually exclusive.
-  /// - If you use the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> argument for a private Hosted Zone, you need to set the <span pulumi-lang-nodejs="`privateZone`" pulumi-lang-dotnet="`PrivateZone`" pulumi-lang-go="`privateZone`" pulumi-lang-python="`private_zone`" pulumi-lang-yaml="`privateZone`" pulumi-lang-java="`privateZone`">`private_zone`</span> argument to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// and `name` are mutually exclusive.
+  /// - If you use the `name` argument for a private Hosted Zone, you need to set the `private_zone` argument to `true`.
   final Input<String>? zoneId;
 
   GetZoneArgs({

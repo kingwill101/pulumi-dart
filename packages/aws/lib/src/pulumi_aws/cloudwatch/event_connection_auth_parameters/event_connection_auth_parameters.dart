@@ -6,17 +6,17 @@ import '../event_connection_auth_parameters_invocation_http_parameters/event_con
 import '../event_connection_auth_parameters_oauth/event_connection_auth_parameters_oauth.dart';
 
 class EventConnectionAuthParameters {
-  /// Parameters used for API_KEY authorization. An API key to include in the header for each authentication request. A maximum of 1 are allowed. Conflicts with <span pulumi-lang-nodejs="`basic`" pulumi-lang-dotnet="`Basic`" pulumi-lang-go="`basic`" pulumi-lang-python="`basic`" pulumi-lang-yaml="`basic`" pulumi-lang-java="`basic`">`basic`</span> and <span pulumi-lang-nodejs="`oauth`" pulumi-lang-dotnet="`Oauth`" pulumi-lang-go="`oauth`" pulumi-lang-python="`oauth`" pulumi-lang-yaml="`oauth`" pulumi-lang-java="`oauth`">`oauth`</span>. Documented below.
+  /// Parameters used for API_KEY authorization. An API key to include in the header for each authentication request. A maximum of 1 are allowed. Conflicts with `basic` and `oauth`. Documented below.
   final EventConnectionAuthParametersApiKey? apiKey;
 
-  /// Parameters used for BASIC authorization. A maximum of 1 are allowed. Conflicts with <span pulumi-lang-nodejs="`apiKey`" pulumi-lang-dotnet="`ApiKey`" pulumi-lang-go="`apiKey`" pulumi-lang-python="`api_key`" pulumi-lang-yaml="`apiKey`" pulumi-lang-java="`apiKey`">`api_key`</span> and <span pulumi-lang-nodejs="`oauth`" pulumi-lang-dotnet="`Oauth`" pulumi-lang-go="`oauth`" pulumi-lang-python="`oauth`" pulumi-lang-yaml="`oauth`" pulumi-lang-java="`oauth`">`oauth`</span>. Documented below.
+  /// Parameters used for BASIC authorization. A maximum of 1 are allowed. Conflicts with `api_key` and `oauth`. Documented below.
   final EventConnectionAuthParametersBasic? basic;
 
   /// Invocation Http Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation Http Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
   final EventConnectionAuthParametersInvocationHttpParameters?
       invocationHttpParameters;
 
-  /// Parameters used for OAUTH_CLIENT_CREDENTIALS authorization. A maximum of 1 are allowed. Conflicts with <span pulumi-lang-nodejs="`basic`" pulumi-lang-dotnet="`Basic`" pulumi-lang-go="`basic`" pulumi-lang-python="`basic`" pulumi-lang-yaml="`basic`" pulumi-lang-java="`basic`">`basic`</span> and <span pulumi-lang-nodejs="`apiKey`" pulumi-lang-dotnet="`ApiKey`" pulumi-lang-go="`apiKey`" pulumi-lang-python="`api_key`" pulumi-lang-yaml="`apiKey`" pulumi-lang-java="`apiKey`">`api_key`</span>. Documented below.
+  /// Parameters used for OAUTH_CLIENT_CREDENTIALS authorization. A maximum of 1 are allowed. Conflicts with `basic` and `api_key`. Documented below.
   final EventConnectionAuthParametersOauth? oauth;
 
   EventConnectionAuthParameters({

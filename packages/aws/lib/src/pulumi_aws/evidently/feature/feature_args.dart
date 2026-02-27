@@ -5,7 +5,7 @@ import '../feature_variation/feature_variation.dart';
 
 /// The set of arguments for Feature.
 class FeatureArgs {
-  /// The name of the variation to use as the default variation. The default variation is served to users who are not allocated to any ongoing launches or experiments of this feature. This variation must also be listed in the <span pulumi-lang-nodejs="`variations`" pulumi-lang-dotnet="`Variations`" pulumi-lang-go="`variations`" pulumi-lang-python="`variations`" pulumi-lang-yaml="`variations`" pulumi-lang-java="`variations`">`variations`</span> structure. If you omit <span pulumi-lang-nodejs="`defaultVariation`" pulumi-lang-dotnet="`DefaultVariation`" pulumi-lang-go="`defaultVariation`" pulumi-lang-python="`default_variation`" pulumi-lang-yaml="`defaultVariation`" pulumi-lang-java="`defaultVariation`">`default_variation`</span>, the first variation listed in the <span pulumi-lang-nodejs="`variations`" pulumi-lang-dotnet="`Variations`" pulumi-lang-go="`variations`" pulumi-lang-python="`variations`" pulumi-lang-yaml="`variations`" pulumi-lang-java="`variations`">`variations`</span> structure is used as the default variation.
+  /// The name of the variation to use as the default variation. The default variation is served to users who are not allocated to any ongoing launches or experiments of this feature. This variation must also be listed in the `variations` structure. If you omit `default_variation`, the first variation listed in the `variations` structure is used as the default variation.
   final Input<String>? defaultVariation;
 
   /// Specifies the description of the feature.
@@ -17,7 +17,7 @@ class FeatureArgs {
   /// Specify `ALL_RULES` to activate the traffic allocation specified by any ongoing launches or experiments. Specify `DEFAULT_VARIATION` to serve the default variation to all users instead.
   final Input<String>? evaluationStrategy;
 
-  /// The name for the new feature. Minimum length of <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. Maximum length of <span pulumi-lang-nodejs="`127`" pulumi-lang-dotnet="`127`" pulumi-lang-go="`127`" pulumi-lang-python="`127`" pulumi-lang-yaml="`127`" pulumi-lang-java="`127`">`127`</span>.
+  /// The name for the new feature. Minimum length of `1`. Maximum length of `127`.
   final Input<String>? name;
 
   /// The name or ARN of the project that is to contain the new feature.
@@ -26,7 +26,7 @@ class FeatureArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Tags to apply to the feature. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the feature. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// One or more blocks that contain the configuration of the feature's different variations. Detailed below

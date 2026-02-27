@@ -5,7 +5,7 @@ import '../get_user_alternate_identifier/get_user_alternate_identifier.dart';
 
 /// Arguments for getUser.
 class GetUserArgs4 {
-  /// A unique identifier for a user or group that is not the primary identifier. Conflicts with <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`">`user_id`</span> and <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span>. Detailed below.
+  /// A unique identifier for a user or group that is not the primary identifier. Conflicts with `user_id` and `filter`. Detailed below.
   final Input<GetUserAlternateIdentifier>? alternateIdentifier;
 
   /// Identity Store ID associated with the Single Sign-On Instance.
@@ -18,7 +18,7 @@ class GetUserArgs4 {
 
   /// The identifier for a user in the Identity Store.
   ///
-  /// > Exactly one of the above arguments must be provided. Passing both <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> and <span pulumi-lang-nodejs="`userId`" pulumi-lang-dotnet="`UserId`" pulumi-lang-go="`userId`" pulumi-lang-python="`user_id`" pulumi-lang-yaml="`userId`" pulumi-lang-java="`userId`">`user_id`</span> is allowed for backwards compatibility.
+  /// > Exactly one of the above arguments must be provided. Passing both `filter` and `user_id` is allowed for backwards compatibility.
   final Input<String>? userId;
 
   GetUserArgs4({

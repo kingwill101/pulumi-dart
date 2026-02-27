@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification;
-
-export 'v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification.dart';

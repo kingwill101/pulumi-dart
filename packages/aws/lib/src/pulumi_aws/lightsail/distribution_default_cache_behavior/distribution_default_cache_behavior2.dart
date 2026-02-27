@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DistributionDefaultCacheBehavior2 {
-  /// Cache behavior of the distribution. Valid values: <span pulumi-lang-nodejs="`cache`" pulumi-lang-dotnet="`Cache`" pulumi-lang-go="`cache`" pulumi-lang-python="`cache`" pulumi-lang-yaml="`cache`" pulumi-lang-java="`cache`">`cache`</span>, `dont-cache`.
+  /// Cache behavior of the distribution. Valid values: `cache`, `dont-cache`.
   final String behavior;
 
   DistributionDefaultCacheBehavior2({

@@ -1,0 +1,3 @@
+library module_lex_v2models_intent_kendra_configuration;
+
+export 'v2models_intent_kendra_configuration/v2models_intent_kendra_configuration.dart';

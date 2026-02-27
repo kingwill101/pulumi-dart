@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_captcha_config_immunity_time_property;
+
+export 'rule_group_rule_captcha_config_immunity_time_property/rule_group_rule_captcha_config_immunity_time_property.dart';

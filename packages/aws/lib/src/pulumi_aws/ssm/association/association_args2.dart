@@ -6,13 +6,13 @@ import '../association_target/association_target.dart';
 
 /// The set of arguments for Association.
 class AssociationArgs2 {
-  /// By default, when you create a new or update associations, the system runs it immediately and then according to the schedule you specified. Enable this option if you do not want an association to run immediately after you create or update it. This parameter is not supported for rate expressions. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// By default, when you create a new or update associations, the system runs it immediately and then according to the schedule you specified. Enable this option if you do not want an association to run immediately after you create or update it. This parameter is not supported for rate expressions. Default: `false`.
   final Input<bool>? applyOnlyAtCronInterval;
 
   /// The descriptive name for the association.
   final Input<String>? associationName;
 
-  /// Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls. This should be set to the SSM document <span pulumi-lang-nodejs="`parameter`" pulumi-lang-dotnet="`Parameter`" pulumi-lang-go="`parameter`" pulumi-lang-python="`parameter`" pulumi-lang-yaml="`parameter`" pulumi-lang-java="`parameter`">`parameter`</span> that will define how your automation will branch out.
+  /// Specify the target for the association. This target is required for associations that use an `Automation` document and target resources by using rate controls. This should be set to the SSM document `parameter` that will define how your automation will branch out.
   final Input<String>? automationTargetParameterName;
 
   /// One or more Systems Manager Change Calendar names. The association runs only when the Change Calendar is open.
@@ -48,7 +48,7 @@ class AssociationArgs2 {
   /// The mode for generating association compliance. You can specify `AUTO` or `MANUAL`.
   final Input<String>? syncCompliance;
 
-  /// A map of tags to assign to the object. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
@@ -56,7 +56,7 @@ class AssociationArgs2 {
 
   /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
   ///
-  /// Output Location (<span pulumi-lang-nodejs="`outputLocation`" pulumi-lang-dotnet="`OutputLocation`" pulumi-lang-go="`outputLocation`" pulumi-lang-python="`output_location`" pulumi-lang-yaml="`outputLocation`" pulumi-lang-java="`outputLocation`">`output_location`</span>) is an S3 bucket where you want to store the results of this association:
+  /// Output Location (`output_location`) is an S3 bucket where you want to store the results of this association:
   final Input<int>? waitForSuccessTimeoutSeconds;
 
   AssociationArgs2({

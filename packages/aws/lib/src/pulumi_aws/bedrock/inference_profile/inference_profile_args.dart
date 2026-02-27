@@ -9,7 +9,7 @@ class InferenceProfileArgs {
   /// The description of the inference profile.
   final Input<String>? description;
 
-  /// The source of the model this inference profile will track metrics and cost for. See <span pulumi-lang-nodejs="`modelSource`" pulumi-lang-dotnet="`ModelSource`" pulumi-lang-go="`modelSource`" pulumi-lang-python="`model_source`" pulumi-lang-yaml="`modelSource`" pulumi-lang-java="`modelSource`">`model_source`</span>.
+  /// The source of the model this inference profile will track metrics and cost for. See `model_source`.
   ///
   /// The following arguments are optional:
   final Input<InferenceProfileModelSource>? modelSource;

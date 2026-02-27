@@ -1,0 +1,3 @@
+library module_appmesh_get_virtual_gateway_spec_listener_tl_certificate;
+
+export 'get_virtual_gateway_spec_listener_tl_certificate/get_virtual_gateway_spec_listener_tl_certificate.dart';

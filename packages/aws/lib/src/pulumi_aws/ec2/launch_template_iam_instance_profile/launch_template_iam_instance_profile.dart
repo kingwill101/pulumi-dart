@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LaunchTemplateIamInstanceProfile {
-  /// The Amazon Resource Name (ARN) of the instance profile. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// The Amazon Resource Name (ARN) of the instance profile. Conflicts with `name`.
   final String? arn;
 
   /// The name of the instance profile.

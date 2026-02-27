@@ -1,0 +1,4 @@
+library module_bedrock_agentcore_oauth2_credential_provider;
+
+export 'agentcore_oauth2_credential_provider/agentcore_oauth2_credential_provider.dart';
+export 'agentcore_oauth2_credential_provider/agentcore_oauth2_credential_provider_args.dart';

@@ -5,7 +5,7 @@ import '../get_vpc_endpoint_service_filter/get_vpc_endpoint_service_filter.dart'
 
 /// Result data returned by getVpcEndpointService.
 class GetVpcEndpointServiceResult {
-  /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   final bool acceptanceRequired;
 
   /// ARN of the VPC endpoint service.
@@ -21,10 +21,10 @@ class GetVpcEndpointServiceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// Whether or not the service manages its VPC endpoints - <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether or not the service manages its VPC endpoints - `true` or `false`.
   final bool managesVpcEndpoints;
 
-  /// AWS account ID of the service owner or <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>.
+  /// AWS account ID of the service owner or `amazon`.
   final String owner;
 
   /// Private DNS name for the service.
@@ -33,7 +33,7 @@ class GetVpcEndpointServiceResult {
   /// Private DNS names assigned to the VPC endpoint service.
   final List<String> privateDnsNames;
 
-  /// (**Deprecated**) Region of the endpoint service. Use <span pulumi-lang-nodejs="`serviceRegion`" pulumi-lang-dotnet="`ServiceRegion`" pulumi-lang-go="`serviceRegion`" pulumi-lang-python="`service_region`" pulumi-lang-yaml="`serviceRegion`" pulumi-lang-java="`serviceRegion`">`service_region`</span> instead.
+  /// (**Deprecated**) Region of the endpoint service. Use `service_region` instead.
   final String region;
   final String? service;
 
@@ -52,7 +52,7 @@ class GetVpcEndpointServiceResult {
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
 
-  /// Whether or not the service supports endpoint policies - <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether or not the service supports endpoint policies - `true` or `false`.
   final bool vpcEndpointPolicySupported;
 
   GetVpcEndpointServiceResult({

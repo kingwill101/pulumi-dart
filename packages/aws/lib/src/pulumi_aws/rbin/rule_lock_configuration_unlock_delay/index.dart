@@ -1,3 +1,0 @@
-library module_rbin_rule_lock_configuration_unlock_delay;
-
-export 'rule_lock_configuration_unlock_delay.dart';

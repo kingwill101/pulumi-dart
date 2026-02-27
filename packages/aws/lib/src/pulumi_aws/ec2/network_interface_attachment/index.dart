@@ -1,5 +1,0 @@
-library module_ec2_network_interface_attachment;
-
-export 'network_interface_attachment.dart';
-export 'network_interface_attachment2.dart';
-export 'network_interface_attachment_args.dart';

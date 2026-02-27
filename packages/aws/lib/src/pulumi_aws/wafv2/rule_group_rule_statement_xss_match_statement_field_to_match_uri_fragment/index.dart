@@ -1,3 +1,0 @@
-library module_wafv2_rule_group_rule_statement_xss_match_statement_field_to_match_uri_fragment;
-
-export 'rule_group_rule_statement_xss_match_statement_field_to_match_uri_fragment.dart';

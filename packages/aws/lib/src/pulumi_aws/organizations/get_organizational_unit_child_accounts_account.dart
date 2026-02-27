@@ -1,0 +1,3 @@
+library module_organizations_get_organizational_unit_child_accounts_account;
+
+export 'get_organizational_unit_child_accounts_account/get_organizational_unit_child_accounts_account.dart';

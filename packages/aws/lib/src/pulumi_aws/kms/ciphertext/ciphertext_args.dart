@@ -17,7 +17,7 @@ class CiphertextArgs {
   /// Data to be encrypted. Note that this may show up in logs. It will not be stored in the state file.
   final Input<String>? plaintextWo;
 
-  /// Used together with <span pulumi-lang-nodejs="`plaintextWo`" pulumi-lang-dotnet="`PlaintextWo`" pulumi-lang-go="`plaintextWo`" pulumi-lang-python="`plaintext_wo`" pulumi-lang-yaml="`plaintextWo`" pulumi-lang-java="`plaintextWo`">`plaintext_wo`</span> to trigger a replacement. Modify this value when a replacement is required.
+  /// Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
   final Input<String>? plaintextWoVersion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

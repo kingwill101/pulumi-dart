@@ -1,0 +1,3 @@
+library module_glue_security_configuration_encryption_configuration;
+
+export 'security_configuration_encryption_configuration/security_configuration_encryption_configuration.dart';

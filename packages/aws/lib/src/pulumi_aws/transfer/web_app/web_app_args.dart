@@ -7,7 +7,7 @@ import '../web_app_web_app_unit/web_app_web_app_unit.dart';
 
 /// The set of arguments for WebApp.
 class WebAppArgs {
-  /// URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, <span pulumi-lang-nodejs="`accessEndpoint`" pulumi-lang-dotnet="`AccessEndpoint`" pulumi-lang-go="`accessEndpoint`" pulumi-lang-python="`access_endpoint`" pulumi-lang-yaml="`accessEndpoint`" pulumi-lang-java="`accessEndpoint`">`access_endpoint`</span> must not be provided.
+  /// URL provided to interact with the Transfer Family web app. If `endpoint_details.vpc` block is specified, `access_endpoint` must not be provided.
   final Input<String>? accessEndpoint;
 
   /// Block for the endpoint configuration for the web app. If not specified, the web app will be created with a public endpoint.

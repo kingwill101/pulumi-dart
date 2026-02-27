@@ -1,0 +1,4 @@
+library module_bedrockmodel_invocation_logging_configuration;
+
+export 'invocation_logging_configuration/invocation_logging_configuration.dart';
+export 'invocation_logging_configuration/invocation_logging_configuration_args.dart';

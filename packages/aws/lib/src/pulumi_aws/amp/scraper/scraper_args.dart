@@ -11,19 +11,19 @@ class ScraperArgs {
   /// a name to associate with the managed scraper. This is for your use, and does not need to be unique.
   final Input<String>? alias;
 
-  /// Configuration block for the managed scraper to send metrics to. See <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span>.
+  /// Configuration block for the managed scraper to send metrics to. See `destination`.
   final Input<ScraperDestination> destination;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See <span pulumi-lang-nodejs="`roleConfiguration`" pulumi-lang-dotnet="`RoleConfiguration`" pulumi-lang-go="`roleConfiguration`" pulumi-lang-python="`role_configuration`" pulumi-lang-yaml="`roleConfiguration`" pulumi-lang-java="`roleConfiguration`">`role_configuration`</span> below.
+  /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `role_configuration` below.
   final Input<ScraperRoleConfiguration>? roleConfiguration;
 
   /// The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
   final Input<String> scrapeConfiguration;
 
-  /// Configuration block to specify where the managed scraper will collect metrics from. See <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>.
+  /// Configuration block to specify where the managed scraper will collect metrics from. See `source`.
   ///
   /// The following arguments are optional:
   final Input<ScraperSource>? source;

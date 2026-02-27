@@ -3,7 +3,7 @@
 import '../agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_embedding_model_configuration_bedrock_embedding_model_configuration/agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_embedding_model_configuration_bedrock_embedding_model_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration {
-  /// The vector configuration details on the Bedrock embeddings model.  See <span pulumi-lang-nodejs="`bedrockEmbeddingModelConfiguration`" pulumi-lang-dotnet="`BedrockEmbeddingModelConfiguration`" pulumi-lang-go="`bedrockEmbeddingModelConfiguration`" pulumi-lang-python="`bedrock_embedding_model_configuration`" pulumi-lang-yaml="`bedrockEmbeddingModelConfiguration`" pulumi-lang-java="`bedrockEmbeddingModelConfiguration`">`bedrock_embedding_model_configuration`</span> block for details.
+  /// The vector configuration details on the Bedrock embeddings model.  See `bedrock_embedding_model_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfiguration?
       bedrockEmbeddingModelConfiguration;
 

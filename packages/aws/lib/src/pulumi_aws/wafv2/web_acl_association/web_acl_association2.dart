@@ -3,7 +3,7 @@ import 'web_acl_association_args2.dart';
 
 /// Creates a WAFv2 Web ACL Association.
 ///
-/// > **NOTE on associating a WAFv2 Web ACL with a Cloudfront distribution:** Do not use this resource to associate a WAFv2 Web ACL with a Cloudfront Distribution. The [AWS API call backing this resource](https://docs.aws.amazon.com/waf/latest/APIReference/API_AssociateWebACL.html) notes that you should use the <span pulumi-lang-nodejs="`webAclId`" pulumi-lang-dotnet="`WebAclId`" pulumi-lang-go="`webAclId`" pulumi-lang-python="`web_acl_id`" pulumi-lang-yaml="`webAclId`" pulumi-lang-java="`webAclId`">`web_acl_id`</span> property on the <span pulumi-lang-nodejs="`cloudfrontDistribution`" pulumi-lang-dotnet="`CloudfrontDistribution`" pulumi-lang-go="`cloudfrontDistribution`" pulumi-lang-python="`cloudfront_distribution`" pulumi-lang-yaml="`cloudfrontDistribution`" pulumi-lang-java="`cloudfrontDistribution`">`cloudfront_distribution`</span> instead.
+/// > **NOTE on associating a WAFv2 Web ACL with a Cloudfront distribution:** Do not use this resource to associate a WAFv2 Web ACL with a Cloudfront Distribution. The [AWS API call backing this resource](https://docs.aws.amazon.com/waf/latest/APIReference/API_AssociateWebACL.html) notes that you should use the `web_acl_id` property on the `cloudfront_distribution` instead.
 ///
 /// [1]: https://docs.aws.amazon.com/waf/latest/APIReference/API_AssociateWebACL.html
 ///

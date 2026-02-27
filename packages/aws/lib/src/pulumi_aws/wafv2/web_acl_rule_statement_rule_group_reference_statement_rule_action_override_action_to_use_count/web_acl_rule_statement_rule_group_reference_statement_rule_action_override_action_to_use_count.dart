@@ -3,7 +3,7 @@
 import '../web_acl_rule_statement_rule_group_reference_statement_rule_action_override_action_to_use_count_custom_request_handling/web_acl_rule_statement_rule_group_reference_statement_rule_action_override_action_to_use_count_custom_request_handling.dart';
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount {
-  /// Defines custom handling for the web request. See <span pulumi-lang-nodejs="`customRequestHandling`" pulumi-lang-dotnet="`CustomRequestHandling`" pulumi-lang-go="`customRequestHandling`" pulumi-lang-python="`custom_request_handling`" pulumi-lang-yaml="`customRequestHandling`" pulumi-lang-java="`customRequestHandling`">`custom_request_handling`</span> below for details.
+  /// Defines custom handling for the web request. See `custom_request_handling` below for details.
   final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling?
       customRequestHandling;
 

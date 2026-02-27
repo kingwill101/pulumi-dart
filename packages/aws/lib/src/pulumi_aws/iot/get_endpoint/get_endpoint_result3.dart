@@ -2,8 +2,8 @@
 
 /// Result data returned by getEndpoint.
 class GetEndpointResult3 {
-  /// Endpoint based on <span pulumi-lang-nodejs="`endpointType`" pulumi-lang-dotnet="`EndpointType`" pulumi-lang-go="`endpointType`" pulumi-lang-python="`endpoint_type`" pulumi-lang-yaml="`endpointType`" pulumi-lang-java="`endpointType`">`endpoint_type`</span>:
-  /// * No <span pulumi-lang-nodejs="`endpointType`" pulumi-lang-dotnet="`EndpointType`" pulumi-lang-go="`endpointType`" pulumi-lang-python="`endpoint_type`" pulumi-lang-yaml="`endpointType`" pulumi-lang-java="`endpointType`">`endpoint_type`</span>: Either `iot:Data` or `iot:Data-ATS` [depending on region](https://aws.amazon.com/blogs/iot/aws-iot-core-ats-endpoints/)
+  /// Endpoint based on `endpoint_type`:
+  /// * No `endpoint_type`: Either `iot:Data` or `iot:Data-ATS` [depending on region](https://aws.amazon.com/blogs/iot/aws-iot-core-ats-endpoints/)
   /// * `iot:CredentialsProvider`: `IDENTIFIER.credentials.iot.REGION.amazonaws.com`
   /// * `iot:Data`: `IDENTIFIER.iot.REGION.amazonaws.com`
   /// * `iot:Data-ATS`: `IDENTIFIER-ats.iot.REGION.amazonaws.com`

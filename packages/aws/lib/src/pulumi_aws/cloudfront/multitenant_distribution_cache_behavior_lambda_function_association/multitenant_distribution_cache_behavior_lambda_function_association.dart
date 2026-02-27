@@ -4,7 +4,7 @@ class MultitenantDistributionCacheBehaviorLambdaFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   final String eventType;
 
-  /// When set to true, the request body is exposed to the Lambda function. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// When set to true, the request body is exposed to the Lambda function. Default: `false`.
   final bool? includeBody;
 
   /// ARN of the Lambda function.

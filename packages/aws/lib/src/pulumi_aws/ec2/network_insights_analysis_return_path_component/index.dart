@@ -1,3 +1,0 @@
-library module_ec2_network_insights_analysis_return_path_component;
-
-export 'network_insights_analysis_return_path_component.dart';

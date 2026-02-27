@@ -1,0 +1,4 @@
+library module_eks_identity_provider_config;
+
+export 'identity_provider_config/identity_provider_config.dart';
+export 'identity_provider_config/identity_provider_config_args.dart';

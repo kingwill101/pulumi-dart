@@ -1,3 +1,0 @@
-library module_opensearch_get_domain_software_update_option;
-
-export 'get_domain_software_update_option.dart';

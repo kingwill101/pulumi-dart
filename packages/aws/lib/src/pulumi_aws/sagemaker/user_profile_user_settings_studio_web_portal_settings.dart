@@ -1,0 +1,3 @@
+library module_sagemaker_user_profile_user_settings_studio_web_portal_settings;
+
+export 'user_profile_user_settings_studio_web_portal_settings/user_profile_user_settings_studio_web_portal_settings.dart';

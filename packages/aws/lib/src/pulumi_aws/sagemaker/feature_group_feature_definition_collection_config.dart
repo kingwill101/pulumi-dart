@@ -1,0 +1,3 @@
+library module_sagemaker_feature_group_feature_definition_collection_config;
+
+export 'feature_group_feature_definition_collection_config/feature_group_feature_definition_collection_config.dart';

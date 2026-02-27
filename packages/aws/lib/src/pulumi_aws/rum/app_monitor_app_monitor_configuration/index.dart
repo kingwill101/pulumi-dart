@@ -1,3 +1,0 @@
-library module_rum_app_monitor_app_monitor_configuration;
-
-export 'app_monitor_app_monitor_configuration.dart';

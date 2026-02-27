@@ -1,3 +1,0 @@
-library module_cognito_get_user_pool_email_configuration;
-
-export 'get_user_pool_email_configuration.dart';

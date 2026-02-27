@@ -1,0 +1,3 @@
+library module_kinesis_analytics_application_output_lambda;
+
+export 'analytics_application_output_lambda/analytics_application_output_lambda.dart';

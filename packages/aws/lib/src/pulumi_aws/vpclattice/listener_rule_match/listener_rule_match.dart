@@ -4,7 +4,7 @@ import '../listener_rule_match_http_match/listener_rule_match_http_match.dart';
 
 class ListenerRuleMatch {
   /// The HTTP criteria that a rule must match.
-  /// See <span pulumi-lang-nodejs="`httpMatch`" pulumi-lang-dotnet="`HttpMatch`" pulumi-lang-go="`httpMatch`" pulumi-lang-python="`http_match`" pulumi-lang-yaml="`httpMatch`" pulumi-lang-java="`httpMatch`">`http_match`</span> Block for details.
+  /// See `http_match` Block for details.
   final ListenerRuleMatchHttpMatch httpMatch;
 
   ListenerRuleMatch({

@@ -3,122 +3,15 @@ import 'global_settings_args.dart';
 
 /// Provides an AWS Backup Global Settings resource.
 ///
-/// > **Note:** This resource will show perpetual differences for any supported settings not explicitly configured in the <span pulumi-lang-nodejs="`globalSettings`" pulumi-lang-dotnet="`GlobalSettings`" pulumi-lang-go="`globalSettings`" pulumi-lang-python="`global_settings`" pulumi-lang-yaml="`globalSettings`" pulumi-lang-java="`globalSettings`">`global_settings`</span> configuration block. To avoid this, specify all supported options with their default values (typically `"false"`, but check the plan diff for the actual value). See [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide for available settings.
+/// > **Note:** This resource will show perpetual differences for any supported settings not explicitly configured in the `global_settings` configuration block. To avoid this, specify all supported options with their default values (typically `"false"`, but check the plan diff for the actual value). See [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide for available settings.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.backup.GlobalSettings("test", {globalSettings: {
-/// isCrossAccountBackupEnabled: "true",
-/// isMpaEnabled: "false",
-/// isDelegatedAdministratorEnabled: "false",
-/// }});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// test = aws.backup.GlobalSettings("test", global_settings={
-/// "isCrossAccountBackupEnabled": "true",
-/// "isMpaEnabled": "false",
-/// "isDelegatedAdministratorEnabled": "false",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var test = new Aws.Backup.GlobalSettings("test", new()
-/// {
-/// GlobalSettingsList =
-/// {
-/// { "isCrossAccountBackupEnabled", "true" },
-/// { "isMpaEnabled", "false" },
-/// { "isDelegatedAdministratorEnabled", "false" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/backup"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := backup.NewGlobalSettings(ctx, "test", &backup.GlobalSettingsArgs{
-/// GlobalSettings: pulumi.StringMap{
-/// "isCrossAccountBackupEnabled":     pulumi.String("true"),
-/// "isMpaEnabled":                    pulumi.String("false"),
-/// "isDelegatedAdministratorEnabled": pulumi.String("false"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.backup.GlobalSettings;
-/// import com.pulumi.aws.backup.GlobalSettingsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var test = new GlobalSettings("test", GlobalSettingsArgs.builder()
-/// .globalSettings(Map.ofEntries(
-/// Map.entry("isCrossAccountBackupEnabled", "true"),
-/// Map.entry("isMpaEnabled", "false"),
-/// Map.entry("isDelegatedAdministratorEnabled", "false")
-/// ))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// test:
-/// type: aws:backup:GlobalSettings
-/// properties:
-/// globalSettings:
-/// isCrossAccountBackupEnabled: 'true'
-/// isMpaEnabled: 'false'
-/// isDelegatedAdministratorEnabled: 'false'
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Backup Global Settings using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Backup Global Settings using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:backup/globalSettings:GlobalSettings example 123456789012

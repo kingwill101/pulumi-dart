@@ -9,7 +9,7 @@ class GetPrebuiltEcrImageResult {
   final String? imageTag;
   final String region;
 
-  /// Account ID containing the image. For example, <span pulumi-lang-nodejs="`469771592824`" pulumi-lang-dotnet="`469771592824`" pulumi-lang-go="`469771592824`" pulumi-lang-python="`469771592824`" pulumi-lang-yaml="`469771592824`" pulumi-lang-java="`469771592824`">`469771592824`</span>.
+  /// Account ID containing the image. For example, `469771592824`.
   final String registryId;
 
   /// Docker image URL. For example, `341280168497.dkr.ecr.ca-central-1.amazonaws.com/sagemaker-sparkml-serving:2.4`.

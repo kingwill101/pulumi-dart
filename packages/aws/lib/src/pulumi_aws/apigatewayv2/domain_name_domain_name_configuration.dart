@@ -1,0 +1,3 @@
+library module_apigatewayv2_domain_name_domain_name_configuration;
+
+export 'domain_name_domain_name_configuration/domain_name_domain_name_configuration.dart';

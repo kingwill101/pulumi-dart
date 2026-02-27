@@ -1,3 +1,0 @@
-library module_sagemaker_model_container_multi_model_config;
-
-export 'model_container_multi_model_config.dart';

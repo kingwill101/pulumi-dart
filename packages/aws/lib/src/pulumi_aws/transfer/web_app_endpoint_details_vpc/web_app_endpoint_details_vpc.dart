@@ -4,7 +4,7 @@ class WebAppEndpointDetailsVpc {
   /// List of security group IDs that control access to the web app endpoint. If not specified, the VPC's default security group is used.
   final List<String>? securityGroupIds;
 
-  /// List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span> parameter.
+  /// List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the `vpc_id` parameter.
   final List<String> subnetIds;
 
   /// ID of the VPC endpoint created for the web app.

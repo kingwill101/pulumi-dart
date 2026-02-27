@@ -16,7 +16,7 @@ class V2modelsSlotTypeArgs {
   final Input<String> botVersion;
 
   /// Specifications for a composite slot type.
-  /// See <span pulumi-lang-nodejs="`compositeSlotTypeSetting`" pulumi-lang-dotnet="`CompositeSlotTypeSetting`" pulumi-lang-go="`compositeSlotTypeSetting`" pulumi-lang-python="`composite_slot_type_setting`" pulumi-lang-yaml="`compositeSlotTypeSetting`" pulumi-lang-java="`compositeSlotTypeSetting`">`composite_slot_type_setting`</span> argument reference below.
+  /// See `composite_slot_type_setting` argument reference below.
   final Input<List<V2modelsSlotTypeCompositeSlotTypeSetting>>?
       compositeSlotTypeSettings;
 
@@ -24,7 +24,7 @@ class V2modelsSlotTypeArgs {
   final Input<String>? description;
 
   /// Type of external information used to create the slot type.
-  /// See <span pulumi-lang-nodejs="`externalSourceSetting`" pulumi-lang-dotnet="`ExternalSourceSetting`" pulumi-lang-go="`externalSourceSetting`" pulumi-lang-python="`external_source_setting`" pulumi-lang-yaml="`externalSourceSetting`" pulumi-lang-java="`externalSourceSetting`">`external_source_setting`</span> argument reference below.
+  /// See `external_source_setting` argument reference below.
   final Input<List<V2modelsSlotTypeExternalSourceSetting>>?
       externalSourceSettings;
 
@@ -47,12 +47,12 @@ class V2modelsSlotTypeArgs {
 
   /// List of SlotTypeValue objects that defines the values that the slot type can take.
   /// Each value can have a list of synonyms, additional values that help train the machine learning model about the values that it resolves for a slot.
-  /// See <span pulumi-lang-nodejs="`slotTypeValues`" pulumi-lang-dotnet="`SlotTypeValues`" pulumi-lang-go="`slotTypeValues`" pulumi-lang-python="`slot_type_values`" pulumi-lang-yaml="`slotTypeValues`" pulumi-lang-java="`slotTypeValues`">`slot_type_values`</span> argument reference below.
+  /// See `slot_type_values` argument reference below.
   final Input<List<V2modelsSlotTypeSlotTypeValue>>? slotTypeValues;
   final Input<V2modelsSlotTypeTimeouts>? timeouts;
 
   /// Determines the strategy that Amazon Lex uses to select a value from the list of possible values.
-  /// See <span pulumi-lang-nodejs="`valueSelectionSetting`" pulumi-lang-dotnet="`ValueSelectionSetting`" pulumi-lang-go="`valueSelectionSetting`" pulumi-lang-python="`value_selection_setting`" pulumi-lang-yaml="`valueSelectionSetting`" pulumi-lang-java="`valueSelectionSetting`">`value_selection_setting`</span> argument reference below.
+  /// See `value_selection_setting` argument reference below.
   final Input<V2modelsSlotTypeValueSelectionSetting>? valueSelectionSetting;
 
   V2modelsSlotTypeArgs({

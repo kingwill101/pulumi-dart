@@ -1,3 +1,0 @@
-library module_ec2transitgateway_instance_connect_endpoint_timeouts;
-
-export 'instance_connect_endpoint_timeouts.dart';

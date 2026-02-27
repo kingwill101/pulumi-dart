@@ -1,0 +1,3 @@
+library module_securitylake_custom_log_source_configuration;
+
+export 'custom_log_source_configuration/custom_log_source_configuration.dart';

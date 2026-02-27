@@ -6,7 +6,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// Time after which query generation will time out.
   final int? executionTimeoutSeconds;
 
-  /// Configurations for context to use during query generation. See <span pulumi-lang-nodejs="`generationContext`" pulumi-lang-dotnet="`GenerationContext`" pulumi-lang-go="`generationContext`" pulumi-lang-python="`generation_context`" pulumi-lang-yaml="`generationContext`" pulumi-lang-java="`generationContext`">`generation_context`</span> block for details.
+  /// Configurations for context to use during query generation. See `generation_context` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext?
       generationContext;
 

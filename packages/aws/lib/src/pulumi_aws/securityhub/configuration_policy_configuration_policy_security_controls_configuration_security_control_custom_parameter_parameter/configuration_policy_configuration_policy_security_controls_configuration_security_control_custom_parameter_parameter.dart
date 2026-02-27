@@ -10,38 +10,38 @@ import '../configuration_policy_configuration_policy_security_controls_configura
 import '../configuration_policy_configuration_policy_security_controls_configuration_security_control_custom_parameter_parameter_string_list/configuration_policy_configuration_policy_security_controls_configuration_security_control_custom_parameter_parameter_string_list.dart';
 
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter {
-  /// The bool <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a Boolean-typed Security Hub Control Parameter.
+  /// The bool `value` for a Boolean-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool?
       bool;
 
-  /// The float <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a Double-typed Security Hub Control Parameter.
+  /// The float `value` for a Double-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble?
       double;
 
-  /// The string <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a Enum-typed Security Hub Control Parameter.
+  /// The string `value` for a Enum-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum?
       enum_;
 
-  /// The string list <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a EnumList-typed Security Hub Control Parameter.
+  /// The string list `value` for a EnumList-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList?
       enumList;
 
-  /// The int <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a Int-typed Security Hub Control Parameter.
+  /// The int `value` for a Int-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt?
       int;
 
-  /// The int list <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a IntList-typed Security Hub Control Parameter.
+  /// The int list `value` for a IntList-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList?
       intList;
 
   /// The name of the control parameter. For more information see the [Security Hub controls reference] documentation.
   final String name;
 
-  /// The string <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a String-typed Security Hub Control Parameter.
+  /// The string `value` for a String-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString?
       string;
 
-  /// The string list <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> for a StringList-typed Security Hub Control Parameter.
+  /// The string list `value` for a StringList-typed Security Hub Control Parameter.
   final ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList?
       stringList;
 

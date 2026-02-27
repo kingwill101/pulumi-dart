@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 import '../configuration_policy_configuration_policy_security_controls_configuration_security_control_custom_parameter/configuration_policy_configuration_policy_security_controls_configuration_security_control_custom_parameter.dart';
 
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration {
-  /// A list of security controls that are disabled in the configuration policy Security Hub enables all other controls (including newly released controls) other than the listed controls. Conflicts with <span pulumi-lang-nodejs="`enabledControlIdentifiers`" pulumi-lang-dotnet="`EnabledControlIdentifiers`" pulumi-lang-go="`enabledControlIdentifiers`" pulumi-lang-python="`enabled_control_identifiers`" pulumi-lang-yaml="`enabledControlIdentifiers`" pulumi-lang-java="`enabledControlIdentifiers`">`enabled_control_identifiers`</span>.
+  /// A list of security controls that are disabled in the configuration policy Security Hub enables all other controls (including newly released controls) other than the listed controls. Conflicts with `enabled_control_identifiers`.
   final List<String>? disabledControlIdentifiers;
 
-  /// A list of security controls that are enabled in the configuration policy. Security Hub disables all other controls (including newly released controls) other than the listed controls. Conflicts with <span pulumi-lang-nodejs="`disabledControlIdentifiers`" pulumi-lang-dotnet="`DisabledControlIdentifiers`" pulumi-lang-go="`disabledControlIdentifiers`" pulumi-lang-python="`disabled_control_identifiers`" pulumi-lang-yaml="`disabledControlIdentifiers`" pulumi-lang-java="`disabledControlIdentifiers`">`disabled_control_identifiers`</span>.
+  /// A list of security controls that are enabled in the configuration policy. Security Hub disables all other controls (including newly released controls) other than the listed controls. Conflicts with `disabled_control_identifiers`.
   final List<String>? enabledControlIdentifiers;
 
   /// A list of control parameter customizations that are included in a configuration policy. Include multiple blocks to define multiple control custom parameters. See below.

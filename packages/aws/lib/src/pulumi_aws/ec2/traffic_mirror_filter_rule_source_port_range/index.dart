@@ -1,3 +1,0 @@
-library module_ec2_traffic_mirror_filter_rule_source_port_range;
-
-export 'traffic_mirror_filter_rule_source_port_range.dart';

@@ -1,5 +1,0 @@
-library module_kinesis_get_firehose_delivery_stream;
-
-export 'get_firehose_delivery_stream.dart';
-export 'get_firehose_delivery_stream_args.dart';
-export 'get_firehose_delivery_stream_result.dart';

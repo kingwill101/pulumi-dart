@@ -6,7 +6,7 @@ class DataSourceHttpConfigAuthorizationConfig {
   /// Authorization type that the HTTP endpoint requires. Default values is `AWS_IAM`.
   final String? authorizationType;
 
-  /// Identity and Access Management (IAM) settings. See <span pulumi-lang-nodejs="`awsIamConfig`" pulumi-lang-dotnet="`AwsIamConfig`" pulumi-lang-go="`awsIamConfig`" pulumi-lang-python="`aws_iam_config`" pulumi-lang-yaml="`awsIamConfig`" pulumi-lang-java="`awsIamConfig`">`aws_iam_config`</span> Block for details.
+  /// Identity and Access Management (IAM) settings. See `aws_iam_config` Block for details.
   final DataSourceHttpConfigAuthorizationConfigAwsIamConfig? awsIamConfig;
 
   DataSourceHttpConfigAuthorizationConfig({

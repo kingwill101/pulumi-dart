@@ -1,3 +1,0 @@
-library module_cloudfront_response_headers_policy_security_headers_config_content_type_options;
-
-export 'response_headers_policy_security_headers_config_content_type_options.dart';

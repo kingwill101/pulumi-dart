@@ -1,3 +1,0 @@
-library module_quicksight_dashboard_dashboard_publish_options_data_point_drill_up_down_option;
-
-export 'dashboard_dashboard_publish_options_data_point_drill_up_down_option.dart';

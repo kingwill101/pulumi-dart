@@ -2,11 +2,11 @@
 
 class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings {
   /// Data objects marked for deletion are deleted after this many days.
-  /// Must be at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Must be at least `1`.
   final int nonCurrentDays;
 
   /// Unreferenced data objects are marked for deletion after this many days.
-  /// Must be at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Must be at least `1`.
   final int unreferencedDays;
 
   TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings({

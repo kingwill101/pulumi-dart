@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class JobDefinitionRetryStrategyEvaluateOnExit {
-  /// Action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: <span pulumi-lang-nodejs="`retry`" pulumi-lang-dotnet="`Retry`" pulumi-lang-go="`retry`" pulumi-lang-python="`retry`" pulumi-lang-yaml="`retry`" pulumi-lang-java="`retry`">`retry`</span>, <span pulumi-lang-nodejs="`exit`" pulumi-lang-dotnet="`Exit`" pulumi-lang-go="`exit`" pulumi-lang-python="`exit`" pulumi-lang-yaml="`exit`" pulumi-lang-java="`exit`">`exit`</span>.
+  /// Action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: `retry`, `exit`.
   final String action;
 
   /// Glob pattern to match against the decimal representation of the exit code returned for a job.

@@ -1,3 +1,0 @@
-library module_devopsguru_service_integration_ops_center;
-
-export 'service_integration_ops_center.dart';

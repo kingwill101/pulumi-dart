@@ -1,0 +1,3 @@
+library module_wafv2_regex_pattern_set_regular_expression;
+
+export 'regex_pattern_set_regular_expression/regex_pattern_set_regular_expression.dart';

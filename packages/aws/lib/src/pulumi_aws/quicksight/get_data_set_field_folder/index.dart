@@ -1,3 +1,0 @@
-library module_quicksight_get_data_set_field_folder;
-
-export 'get_data_set_field_folder.dart';

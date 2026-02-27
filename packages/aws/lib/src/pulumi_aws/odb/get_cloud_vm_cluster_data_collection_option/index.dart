@@ -1,3 +1,0 @@
-library module_odb_get_cloud_vm_cluster_data_collection_option;
-
-export 'get_cloud_vm_cluster_data_collection_option.dart';

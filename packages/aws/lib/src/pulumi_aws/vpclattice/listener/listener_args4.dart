@@ -11,7 +11,7 @@ class ListenerArgs4 {
   /// Name of the listener. A listener name must be unique within a service. Valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
   final Input<String>? name;
 
-  /// Listener port. You can specify a value from 1 to 65535. If <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> is not specified and <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is HTTP, the value will default to 80. If <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> is not specified and <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is HTTPS, the value will default to 443.
+  /// Listener port. You can specify a value from 1 to 65535. If `port` is not specified and `protocol` is HTTP, the value will default to 80. If `port` is not specified and `protocol` is HTTPS, the value will default to 443.
   final Input<int>? port;
 
   /// Protocol for the listener. Supported values are `HTTP`, `HTTPS` or `TLS_PASSTHROUGH`
@@ -20,14 +20,14 @@ class ListenerArgs4 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the <span pulumi-lang-nodejs="`serviceArn`" pulumi-lang-dotnet="`ServiceArn`" pulumi-lang-go="`serviceArn`" pulumi-lang-python="`service_arn`" pulumi-lang-yaml="`serviceArn`" pulumi-lang-java="`serviceArn`">`service_arn`</span> or <span pulumi-lang-nodejs="`serviceIdentifier`" pulumi-lang-dotnet="`ServiceIdentifier`" pulumi-lang-go="`serviceIdentifier`" pulumi-lang-python="`service_identifier`" pulumi-lang-yaml="`serviceIdentifier`" pulumi-lang-java="`serviceIdentifier`">`service_identifier`</span> arguments.
+  /// Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
   final Input<String>? serviceArn;
 
-  /// ID of the VPC Lattice service. You must include either the <span pulumi-lang-nodejs="`serviceArn`" pulumi-lang-dotnet="`ServiceArn`" pulumi-lang-go="`serviceArn`" pulumi-lang-python="`service_arn`" pulumi-lang-yaml="`serviceArn`" pulumi-lang-java="`serviceArn`">`service_arn`</span> or <span pulumi-lang-nodejs="`serviceIdentifier`" pulumi-lang-dotnet="`ServiceIdentifier`" pulumi-lang-go="`serviceIdentifier`" pulumi-lang-python="`service_identifier`" pulumi-lang-yaml="`serviceIdentifier`" pulumi-lang-java="`serviceIdentifier`">`service_identifier`</span> arguments.
-  /// > **NOTE:** You must specify one of the following arguments: <span pulumi-lang-nodejs="`serviceArn`" pulumi-lang-dotnet="`ServiceArn`" pulumi-lang-go="`serviceArn`" pulumi-lang-python="`service_arn`" pulumi-lang-yaml="`serviceArn`" pulumi-lang-java="`serviceArn`">`service_arn`</span> or <span pulumi-lang-nodejs="`serviceIdentifier`" pulumi-lang-dotnet="`ServiceIdentifier`" pulumi-lang-go="`serviceIdentifier`" pulumi-lang-python="`service_identifier`" pulumi-lang-yaml="`serviceIdentifier`" pulumi-lang-java="`serviceIdentifier`">`service_identifier`</span>.
+  /// ID of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
+  /// > **NOTE:** You must specify one of the following arguments: `service_arn` or `service_identifier`.
   final Input<String>? serviceIdentifier;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ListenerArgs4({

@@ -1,0 +1,4 @@
+library module_ec2transitgateway_default_route_table_association;
+
+export 'default_route_table_association/default_route_table_association.dart';
+export 'default_route_table_association/default_route_table_association_args.dart';

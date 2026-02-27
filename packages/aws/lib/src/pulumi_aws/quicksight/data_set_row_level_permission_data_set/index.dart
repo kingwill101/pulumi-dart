@@ -1,3 +1,0 @@
-library module_quicksight_data_set_row_level_permission_data_set;
-
-export 'data_set_row_level_permission_data_set.dart';

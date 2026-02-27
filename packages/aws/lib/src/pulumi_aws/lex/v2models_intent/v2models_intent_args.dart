@@ -22,28 +22,28 @@ class V2modelsIntentArgs {
   /// Version of the bot associated with this intent.
   final Input<String> botVersion;
 
-  /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See <span pulumi-lang-nodejs="`closingSetting`" pulumi-lang-dotnet="`ClosingSetting`" pulumi-lang-go="`closingSetting`" pulumi-lang-python="`closing_setting`" pulumi-lang-yaml="`closingSetting`" pulumi-lang-java="`closingSetting`">`closing_setting`</span>.
+  /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See `closing_setting`.
   final Input<V2modelsIntentClosingSetting>? closingSetting;
 
-  /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` <span pulumi-lang-nodejs="`promptAttemptsSpecification`" pulumi-lang-dotnet="`PromptAttemptsSpecification`" pulumi-lang-go="`promptAttemptsSpecification`" pulumi-lang-python="`prompt_attempts_specification`" pulumi-lang-yaml="`promptAttemptsSpecification`" pulumi-lang-java="`promptAttemptsSpecification`">`prompt_attempts_specification`</span>s. This will cause Terraform to report differences. Use the <span pulumi-lang-nodejs="`confirmationSetting`" pulumi-lang-dotnet="`ConfirmationSetting`" pulumi-lang-go="`confirmationSetting`" pulumi-lang-python="`confirmation_setting`" pulumi-lang-yaml="`confirmationSetting`" pulumi-lang-java="`confirmationSetting`">`confirmation_setting`</span> configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See <span pulumi-lang-nodejs="`confirmationSetting`" pulumi-lang-dotnet="`ConfirmationSetting`" pulumi-lang-go="`confirmationSetting`" pulumi-lang-python="`confirmation_setting`" pulumi-lang-yaml="`confirmationSetting`" pulumi-lang-java="`confirmationSetting`">`confirmation_setting`</span>.
+  /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` `prompt_attempts_specification`s. This will cause Terraform to report differences. Use the `confirmation_setting` configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See `confirmation_setting`.
   final Input<V2modelsIntentConfirmationSetting>? confirmationSetting;
 
   /// Description of the intent. Use the description to help identify the intent in lists.
   final Input<String>? description;
 
-  /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See <span pulumi-lang-nodejs="`dialogCodeHook`" pulumi-lang-dotnet="`DialogCodeHook`" pulumi-lang-go="`dialogCodeHook`" pulumi-lang-python="`dialog_code_hook`" pulumi-lang-yaml="`dialogCodeHook`" pulumi-lang-java="`dialogCodeHook`">`dialog_code_hook`</span>.
+  /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See `dialog_code_hook`.
   final Input<V2modelsIntentDialogCodeHook>? dialogCodeHook;
 
-  /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See <span pulumi-lang-nodejs="`fulfillmentCodeHook`" pulumi-lang-dotnet="`FulfillmentCodeHook`" pulumi-lang-go="`fulfillmentCodeHook`" pulumi-lang-python="`fulfillment_code_hook`" pulumi-lang-yaml="`fulfillmentCodeHook`" pulumi-lang-java="`fulfillmentCodeHook`">`fulfillment_code_hook`</span>.
+  /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See `fulfillment_code_hook`.
   final Input<V2modelsIntentFulfillmentCodeHook>? fulfillmentCodeHook;
 
-  /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See <span pulumi-lang-nodejs="`initialResponseSetting`" pulumi-lang-dotnet="`InitialResponseSetting`" pulumi-lang-go="`initialResponseSetting`" pulumi-lang-python="`initial_response_setting`" pulumi-lang-yaml="`initialResponseSetting`" pulumi-lang-java="`initialResponseSetting`">`initial_response_setting`</span>.
+  /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See `initial_response_setting`.
   final Input<V2modelsIntentInitialResponseSetting>? initialResponseSetting;
 
-  /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See <span pulumi-lang-nodejs="`inputContext`" pulumi-lang-dotnet="`InputContext`" pulumi-lang-go="`inputContext`" pulumi-lang-python="`input_context`" pulumi-lang-yaml="`inputContext`" pulumi-lang-java="`inputContext`">`input_context`</span>.
+  /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See `input_context`.
   final Input<List<V2modelsIntentInputContext>>? inputContexts;
 
-  /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with <span pulumi-lang-nodejs="`qnaIntentConfiguration`" pulumi-lang-dotnet="`QnaIntentConfiguration`" pulumi-lang-go="`qnaIntentConfiguration`" pulumi-lang-python="`qna_intent_configuration`" pulumi-lang-yaml="`qnaIntentConfiguration`" pulumi-lang-java="`qnaIntentConfiguration`">`qna_intent_configuration`</span>. See <span pulumi-lang-nodejs="`kendraConfiguration`" pulumi-lang-dotnet="`KendraConfiguration`" pulumi-lang-go="`kendraConfiguration`" pulumi-lang-python="`kendra_configuration`" pulumi-lang-yaml="`kendraConfiguration`" pulumi-lang-java="`kendraConfiguration`">`kendra_configuration`</span>.
+  /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with `qna_intent_configuration`. See `kendra_configuration`.
   final Input<V2modelsIntentKendraConfiguration>? kendraConfiguration;
 
   /// Identifier of the language and locale where this intent is used. All of the bots, slot types, and slots used by the intent must have the same locale.
@@ -54,22 +54,22 @@ class V2modelsIntentArgs {
   /// The following arguments are optional:
   final Input<String>? name;
 
-  /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See <span pulumi-lang-nodejs="`outputContext`" pulumi-lang-dotnet="`OutputContext`" pulumi-lang-go="`outputContext`" pulumi-lang-python="`output_context`" pulumi-lang-yaml="`outputContext`" pulumi-lang-java="`outputContext`">`output_context`</span>.
+  /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See `output_context`.
   final Input<List<V2modelsIntentOutputContext>>? outputContexts;
 
   /// Identifier for the built-in intent to base this intent on.
   final Input<String>? parentIntentSignature;
 
-  /// Configuration block for QnA intent settings. This is used when <span pulumi-lang-nodejs="`parentIntentSignature`" pulumi-lang-dotnet="`ParentIntentSignature`" pulumi-lang-go="`parentIntentSignature`" pulumi-lang-python="`parent_intent_signature`" pulumi-lang-yaml="`parentIntentSignature`" pulumi-lang-java="`parentIntentSignature`">`parent_intent_signature`</span> is set to `AMAZON.QnAIntent`. Cannot be used with <span pulumi-lang-nodejs="`kendraConfiguration`" pulumi-lang-dotnet="`KendraConfiguration`" pulumi-lang-go="`kendraConfiguration`" pulumi-lang-python="`kendra_configuration`" pulumi-lang-yaml="`kendraConfiguration`" pulumi-lang-java="`kendraConfiguration`">`kendra_configuration`</span>. See <span pulumi-lang-nodejs="`qnaIntentConfiguration`" pulumi-lang-dotnet="`QnaIntentConfiguration`" pulumi-lang-go="`qnaIntentConfiguration`" pulumi-lang-python="`qna_intent_configuration`" pulumi-lang-yaml="`qnaIntentConfiguration`" pulumi-lang-java="`qnaIntentConfiguration`">`qna_intent_configuration`</span>.
+  /// Configuration block for QnA intent settings. This is used when `parent_intent_signature` is set to `AMAZON.QnAIntent`. Cannot be used with `kendra_configuration`. See `qna_intent_configuration`.
   final Input<V2modelsIntentQnaIntentConfiguration>? qnaIntentConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Configuration block for strings that a user might say to signal the intent. See <span pulumi-lang-nodejs="`sampleUtterance`" pulumi-lang-dotnet="`SampleUtterance`" pulumi-lang-go="`sampleUtterance`" pulumi-lang-python="`sample_utterance`" pulumi-lang-yaml="`sampleUtterance`" pulumi-lang-java="`sampleUtterance`">`sample_utterance`</span>.
+  /// Configuration block for strings that a user might say to signal the intent. See `sample_utterance`.
   final Input<List<V2modelsIntentSampleUtterance>>? sampleUtterances;
 
-  /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See <span pulumi-lang-nodejs="`slotPriority`" pulumi-lang-dotnet="`SlotPriority`" pulumi-lang-go="`slotPriority`" pulumi-lang-python="`slot_priority`" pulumi-lang-yaml="`slotPriority`" pulumi-lang-java="`slotPriority`">`slot_priority`</span>.
+  /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slot_priority`.
   final Input<List<V2modelsIntentSlotPriority>>? slotPriorities;
   final Input<V2modelsIntentTimeouts>? timeouts;
 

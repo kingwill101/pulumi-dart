@@ -9,7 +9,7 @@ class GetGroupMembershipsGroupMembership {
   /// Identity Store ID associated with the Single Sign-On Instance.
   final String identityStoreId;
 
-  /// An object containing the identifier of a group member. See <span pulumi-lang-nodejs="`memberId`" pulumi-lang-dotnet="`MemberId`" pulumi-lang-go="`memberId`" pulumi-lang-python="`member_id`" pulumi-lang-yaml="`memberId`" pulumi-lang-java="`memberId`">`member_id`</span> below.
+  /// An object containing the identifier of a group member. See `member_id` below.
   final GetGroupMembershipsGroupMembershipMemberId memberId;
   final String membershipId;
 

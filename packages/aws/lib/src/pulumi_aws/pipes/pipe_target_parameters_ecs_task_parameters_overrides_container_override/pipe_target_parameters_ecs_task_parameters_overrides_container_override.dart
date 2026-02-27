@@ -28,7 +28,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
   /// The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition. You must also specify a container name.
   final int? memoryReservation;
 
-  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final String? name;
 
   /// The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. Detailed below.

@@ -1,3 +1,0 @@
-library module_autoscaling_get_group_traffic_source;
-
-export 'get_group_traffic_source.dart';

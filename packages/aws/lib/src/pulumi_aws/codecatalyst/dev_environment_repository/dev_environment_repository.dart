@@ -3,7 +3,7 @@
 class DevEnvironmentRepository {
   /// The name of the branch in a source repository.
   ///
-  /// persistent storage (`<span pulumi-lang-nodejs=" persistentStorage`" pulumi-lang-dotnet=" PersistentStorage`" pulumi-lang-go=" persistentStorage`" pulumi-lang-python=" persistent_storage`" pulumi-lang-yaml=" persistentStorage`" pulumi-lang-java=" persistentStorage`"> persistent_storage`</span>) supports the following:
+  /// persistent storage (` persistent_storage`) supports the following:
   final String? branchName;
 
   /// The name of the source repository.

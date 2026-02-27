@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_configuration_production_variant_routing_config;
+
+export 'endpoint_configuration_production_variant_routing_config/endpoint_configuration_production_variant_routing_config.dart';

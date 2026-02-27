@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../get_service_load_balancer_advanced_configuration/get_service_load_balancer_advanced_configuration.dart';
 
 class GetServiceLoadBalancer {
-  /// Settings for Blue/Green deployment. See <span pulumi-lang-nodejs="`advancedConfiguration`" pulumi-lang-dotnet="`AdvancedConfiguration`" pulumi-lang-go="`advancedConfiguration`" pulumi-lang-python="`advanced_configuration`" pulumi-lang-yaml="`advancedConfiguration`" pulumi-lang-java="`advancedConfiguration`">`advanced_configuration`</span> Block for details.
+  /// Settings for Blue/Green deployment. See `advanced_configuration` Block for details.
   final List<GetServiceLoadBalancerAdvancedConfiguration>
       advancedConfigurations;
 

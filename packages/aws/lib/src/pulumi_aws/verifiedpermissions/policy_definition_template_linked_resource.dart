@@ -1,0 +1,3 @@
+library module_verifiedpermissions_policy_definition_template_linked_resource;
+
+export 'policy_definition_template_linked_resource/policy_definition_template_linked_resource.dart';

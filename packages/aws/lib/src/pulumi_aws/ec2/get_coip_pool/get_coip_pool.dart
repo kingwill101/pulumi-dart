@@ -11,20 +11,6 @@ import 'get_coip_pool_result.dart';
 /// ## Example Usage
 ///
 /// The following example returns a specific coip pool ID
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```yaml
-/// configuration:
-/// coipPoolId:
-/// type: dynamic
-/// variables:
-/// selected:
-/// fn::invoke:
-/// function: aws:ec2:getCoipPool
-/// arguments:
-/// id: ${coipPoolId}
-/// ```
-/// <!--End PulumiCodeChooser -->
 Future<GetCoipPoolResult> getCoipPool(
   GetCoipPoolArgs args, {
   InvokeOptions? options,

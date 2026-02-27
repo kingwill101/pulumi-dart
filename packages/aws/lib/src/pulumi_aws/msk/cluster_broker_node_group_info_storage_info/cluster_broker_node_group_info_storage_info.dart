@@ -3,7 +3,7 @@
 import '../cluster_broker_node_group_info_storage_info_ebs_storage_info/cluster_broker_node_group_info_storage_info_ebs_storage_info.dart';
 
 class ClusterBrokerNodeGroupInfoStorageInfo {
-  /// A block that contains EBS volume information. See<span pulumi-lang-nodejs=" storageInfo " pulumi-lang-dotnet=" StorageInfo " pulumi-lang-go=" storageInfo " pulumi-lang-python=" storage_info " pulumi-lang-yaml=" storageInfo " pulumi-lang-java=" storageInfo "> storage_info </span>ebs_storage_info Argument Reference below.
+  /// A block that contains EBS volume information. See storage_info ebs_storage_info Argument Reference below.
   final ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo? ebsStorageInfo;
 
   ClusterBrokerNodeGroupInfoStorageInfo({

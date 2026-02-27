@@ -1,3 +1,0 @@
-library module_appfabric_app_authorization_credential;
-
-export 'app_authorization_credential.dart';

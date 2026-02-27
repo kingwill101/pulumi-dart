@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ServerEndpointDetails {
-  /// A list of address allocation IDs that are required to attach an Elastic IP address to your SFTP server's endpoint. This property can only be used when <span pulumi-lang-nodejs="`endpointType`" pulumi-lang-dotnet="`EndpointType`" pulumi-lang-go="`endpointType`" pulumi-lang-python="`endpoint_type`" pulumi-lang-yaml="`endpointType`" pulumi-lang-java="`endpointType`">`endpoint_type`</span> is set to `VPC`.
+  /// A list of address allocation IDs that are required to attach an Elastic IP address to your SFTP server's endpoint. This property can only be used when `endpoint_type` is set to `VPC`.
   final List<String>? addressAllocationIds;
 
-  /// A list of security groups IDs that are available to attach to your server's endpoint. If no security groups are specified, the VPC's default security groups are automatically assigned to your endpoint. This property can only be used when <span pulumi-lang-nodejs="`endpointType`" pulumi-lang-dotnet="`EndpointType`" pulumi-lang-go="`endpointType`" pulumi-lang-python="`endpoint_type`" pulumi-lang-yaml="`endpointType`" pulumi-lang-java="`endpointType`">`endpoint_type`</span> is set to `VPC`.
+  /// A list of security groups IDs that are available to attach to your server's endpoint. If no security groups are specified, the VPC's default security groups are automatically assigned to your endpoint. This property can only be used when `endpoint_type` is set to `VPC`.
   final List<String>? securityGroupIds;
 
-  /// A list of subnet IDs that are required to host your SFTP server endpoint in your VPC. This property can only be used when <span pulumi-lang-nodejs="`endpointType`" pulumi-lang-dotnet="`EndpointType`" pulumi-lang-go="`endpointType`" pulumi-lang-python="`endpoint_type`" pulumi-lang-yaml="`endpointType`" pulumi-lang-java="`endpointType`">`endpoint_type`</span> is set to `VPC`.
+  /// A list of subnet IDs that are required to host your SFTP server endpoint in your VPC. This property can only be used when `endpoint_type` is set to `VPC`.
   final List<String>? subnetIds;
 
-  /// The ID of the VPC endpoint. This property can only be used when <span pulumi-lang-nodejs="`endpointType`" pulumi-lang-dotnet="`EndpointType`" pulumi-lang-go="`endpointType`" pulumi-lang-python="`endpoint_type`" pulumi-lang-yaml="`endpointType`" pulumi-lang-java="`endpointType`">`endpoint_type`</span> is set to `VPC_ENDPOINT`
+  /// The ID of the VPC endpoint. This property can only be used when `endpoint_type` is set to `VPC_ENDPOINT`
   final String? vpcEndpointId;
 
-  /// The VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted. This property can only be used when <span pulumi-lang-nodejs="`endpointType`" pulumi-lang-dotnet="`EndpointType`" pulumi-lang-go="`endpointType`" pulumi-lang-python="`endpoint_type`" pulumi-lang-yaml="`endpointType`" pulumi-lang-java="`endpointType`">`endpoint_type`</span> is set to `VPC`.
+  /// The VPC ID of the virtual private cloud in which the SFTP server's endpoint will be hosted. This property can only be used when `endpoint_type` is set to `VPC`.
   final String? vpcId;
 
   ServerEndpointDetails({

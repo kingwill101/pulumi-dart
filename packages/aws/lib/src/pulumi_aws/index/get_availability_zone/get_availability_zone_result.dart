@@ -19,7 +19,7 @@ class GetAvailabilityZoneResult {
   final String name;
 
   /// Part of the AZ name that appears after the region name, uniquely identifying the AZ within its region.
-  /// For Availability Zones this is usually a single letter, for example <span pulumi-lang-nodejs="`a`" pulumi-lang-dotnet="`A`" pulumi-lang-go="`a`" pulumi-lang-python="`a`" pulumi-lang-yaml="`a`" pulumi-lang-java="`a`">`a`</span> for the `us-west-2a` zone.
+  /// For Availability Zones this is usually a single letter, for example `a` for the `us-west-2a` zone.
   /// For Local and Wavelength Zones this is a longer string, for example `wl1-sfo-wlz-1` for the `us-west-2-wl1-sfo-wlz-1` zone.
   final String nameSuffix;
 

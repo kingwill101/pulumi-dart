@@ -47,11 +47,11 @@ class LaunchTemplateArgs {
   /// If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
   final Input<bool>? disableApiStop;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, enables [EC2 Instance
+  /// If `true`, enables [EC2 Instance
   /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingDisableAPITermination.html)
   final Input<bool>? disableApiTermination;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the launched EC2 instance will be EBS-optimized.
+  /// If `true`, the launched EC2 instance will be EBS-optimized.
   final Input<String>? ebsOptimized;
 
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
@@ -67,18 +67,18 @@ class LaunchTemplateArgs {
   /// The AMI from which to launch the instance or use a Systems Manager parameter convention e.g. `resolve:ssm:parameter-name`. See [docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id) for more details.
   final Input<String>? imageId;
 
-  /// Shutdown behavior for the instance. Can be <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span> or <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>.
-  /// (Default: <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span>).
+  /// Shutdown behavior for the instance. Can be `stop` or `terminate`.
+  /// (Default: `stop`).
   final Input<String>? instanceInitiatedShutdownBehavior;
 
   /// The market (purchasing) option for the instance. See Market Options
   /// below for details.
   final Input<LaunchTemplateInstanceMarketOptions>? instanceMarketOptions;
 
-  /// The attribute requirements for the type of instance. If present then <span pulumi-lang-nodejs="`instanceType`" pulumi-lang-dotnet="`InstanceType`" pulumi-lang-go="`instanceType`" pulumi-lang-python="`instance_type`" pulumi-lang-yaml="`instanceType`" pulumi-lang-java="`instanceType`">`instance_type`</span> cannot be present.
+  /// The attribute requirements for the type of instance. If present then `instance_type` cannot be present.
   final Input<LaunchTemplateInstanceRequirements>? instanceRequirements;
 
-  /// The type of the instance. If present then <span pulumi-lang-nodejs="`instanceRequirements`" pulumi-lang-dotnet="`InstanceRequirements`" pulumi-lang-go="`instanceRequirements`" pulumi-lang-python="`instance_requirements`" pulumi-lang-yaml="`instanceRequirements`" pulumi-lang-java="`instanceRequirements`">`instance_requirements`</span> cannot be present.
+  /// The type of the instance. If present then `instance_requirements` cannot be present.
   final Input<String>? instanceType;
 
   /// The kernel ID.
@@ -102,7 +102,7 @@ class LaunchTemplateArgs {
   /// The name of the launch template. If you leave this blank, the provider will auto-generate a unique name.
   final Input<String>? name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// Customize network interfaces to be attached at instance boot time. See Network
@@ -128,16 +128,16 @@ class LaunchTemplateArgs {
   final Input<List<LaunchTemplateSecondaryInterface>>? secondaryInterfaces;
 
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
-  /// <span pulumi-lang-nodejs="`vpcSecurityGroupIds`" pulumi-lang-dotnet="`VpcSecurityGroupIds`" pulumi-lang-go="`vpcSecurityGroupIds`" pulumi-lang-python="`vpc_security_group_ids`" pulumi-lang-yaml="`vpcSecurityGroupIds`" pulumi-lang-java="`vpcSecurityGroupIds`">`vpc_security_group_ids`</span> instead.
+  /// `vpc_security_group_ids` instead.
   final Input<List<String>>? securityGroupNames;
 
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
   final Input<List<LaunchTemplateTagSpecification>>? tagSpecifications;
 
-  /// A map of tags to assign to the launch template. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the launch template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Whether to update Default Version each update. Conflicts with <span pulumi-lang-nodejs="`defaultVersion`" pulumi-lang-dotnet="`DefaultVersion`" pulumi-lang-go="`defaultVersion`" pulumi-lang-python="`default_version`" pulumi-lang-yaml="`defaultVersion`" pulumi-lang-java="`defaultVersion`">`default_version`</span>.
+  /// Whether to update Default Version each update. Conflicts with `default_version`.
   final Input<bool>? updateDefaultVersion;
 
   /// The base64-encoded user data to provide when launching the instance.

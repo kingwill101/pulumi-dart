@@ -13,7 +13,7 @@ class MultitenantDistributionOrigin {
   /// Number of seconds that CloudFront waits when trying to establish a connection to the origin. Must be between 1-10. Default: 10.
   final int? connectionTimeout;
 
-  /// One or more sub-resources with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> parameters that specify header data that will be sent to the origin. See Custom Header below.
+  /// One or more sub-resources with `name` and `value` parameters that specify header data that will be sent to the origin. See Custom Header below.
   final List<MultitenantDistributionOriginCustomHeader>? customHeaders;
 
   /// CloudFront origin access identity to associate with the origin. See Custom Origin Config below.

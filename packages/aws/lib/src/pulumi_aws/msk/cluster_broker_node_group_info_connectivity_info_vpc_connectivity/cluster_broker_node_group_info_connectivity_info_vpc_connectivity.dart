@@ -3,7 +3,7 @@
 import '../cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication/cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication.dart';
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
-  /// Configuration block for specifying a client authentication. See<span pulumi-lang-nodejs=" clientAuthentication " pulumi-lang-dotnet=" ClientAuthentication " pulumi-lang-go=" clientAuthentication " pulumi-lang-python=" client_authentication " pulumi-lang-yaml=" clientAuthentication " pulumi-lang-java=" clientAuthentication "> client_authentication </span>Argument Reference below.
+  /// Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
   final ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication?
       clientAuthentication;
 

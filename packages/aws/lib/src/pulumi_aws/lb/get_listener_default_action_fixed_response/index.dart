@@ -1,3 +1,0 @@
-library module_lb_get_listener_default_action_fixed_response;
-
-export 'get_listener_default_action_fixed_response2.dart';

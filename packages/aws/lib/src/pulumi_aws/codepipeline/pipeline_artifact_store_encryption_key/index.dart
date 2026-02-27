@@ -1,3 +1,0 @@
-library module_codepipeline_pipeline_artifact_store_encryption_key;
-
-export 'pipeline_artifact_store_encryption_key.dart';

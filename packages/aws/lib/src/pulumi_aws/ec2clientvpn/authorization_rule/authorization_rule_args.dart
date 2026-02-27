@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for AuthorizationRule.
 class AuthorizationRuleArgs {
-  /// The ID of the group to which the authorization rule grants access. One of <span pulumi-lang-nodejs="`accessGroupId`" pulumi-lang-dotnet="`AccessGroupId`" pulumi-lang-go="`accessGroupId`" pulumi-lang-python="`access_group_id`" pulumi-lang-yaml="`accessGroupId`" pulumi-lang-java="`accessGroupId`">`access_group_id`</span> or <span pulumi-lang-nodejs="`authorizeAllGroups`" pulumi-lang-dotnet="`AuthorizeAllGroups`" pulumi-lang-go="`authorizeAllGroups`" pulumi-lang-python="`authorize_all_groups`" pulumi-lang-yaml="`authorizeAllGroups`" pulumi-lang-java="`authorizeAllGroups`">`authorize_all_groups`</span> must be set.
+  /// The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
   final Input<String>? accessGroupId;
 
-  /// Indicates whether the authorization rule grants access to all clients. One of <span pulumi-lang-nodejs="`accessGroupId`" pulumi-lang-dotnet="`AccessGroupId`" pulumi-lang-go="`accessGroupId`" pulumi-lang-python="`access_group_id`" pulumi-lang-yaml="`accessGroupId`" pulumi-lang-java="`accessGroupId`">`access_group_id`</span> or <span pulumi-lang-nodejs="`authorizeAllGroups`" pulumi-lang-dotnet="`AuthorizeAllGroups`" pulumi-lang-go="`authorizeAllGroups`" pulumi-lang-python="`authorize_all_groups`" pulumi-lang-yaml="`authorizeAllGroups`" pulumi-lang-java="`authorizeAllGroups`">`authorize_all_groups`</span> must be set.
+  /// Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
   final Input<bool>? authorizeAllGroups;
 
   /// The ID of the Client VPN endpoint.

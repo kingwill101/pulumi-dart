@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../topic_rule_error_action_http_http_header/topic_rule_error_action_http_http_header.dart';
 
 class TopicRuleErrorActionHttp {
-  /// The HTTPS URL used to verify ownership of <span pulumi-lang-nodejs="`url`" pulumi-lang-dotnet="`Url`" pulumi-lang-go="`url`" pulumi-lang-python="`url`" pulumi-lang-yaml="`url`" pulumi-lang-java="`url`">`url`</span>.
+  /// The HTTPS URL used to verify ownership of `url`.
   final String? confirmationUrl;
 
   /// Custom HTTP header IoT Core should send. It is possible to define more than one custom header.

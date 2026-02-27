@@ -9,7 +9,7 @@ import '../get_ami_product_code/get_ami_product_code.dart';
 class GetAmiResult {
   final bool? allowUnsafeFilter;
 
-  /// OS architecture of the AMI (ie: <span pulumi-lang-nodejs="`i386`" pulumi-lang-dotnet="`I386`" pulumi-lang-go="`i386`" pulumi-lang-python="`i386`" pulumi-lang-yaml="`i386`" pulumi-lang-java="`i386`">`i386`</span> or <span pulumi-lang-nodejs="`x8664`" pulumi-lang-dotnet="`X8664`" pulumi-lang-go="`x8664`" pulumi-lang-python="`x86_64`" pulumi-lang-yaml="`x8664`" pulumi-lang-java="`x8664`">`x86_64`</span>).
+  /// OS architecture of the AMI (ie: `i386` or `x86_64`).
   final String architecture;
 
   /// ARN of the AMI.
@@ -42,13 +42,13 @@ class GetAmiResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// ID of the AMI. Should be the same as the resource <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>.
+  /// ID of the AMI. Should be the same as the resource `id`.
   final String imageId;
 
   /// Location of the AMI.
   final String imageLocation;
 
-  /// AWS account alias (for example, <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>, <span pulumi-lang-nodejs="`self`" pulumi-lang-dotnet="`Self`" pulumi-lang-go="`self`" pulumi-lang-python="`self`" pulumi-lang-yaml="`self`" pulumi-lang-java="`self`">`self`</span>) or
+  /// AWS account alias (for example, `amazon`, `self`) or
   /// the AWS account ID of the AMI owner.
   final String imageOwnerAlias;
 
@@ -86,7 +86,7 @@ class GetAmiResult {
   /// * `product_codes.#.product_code_type` - The type of product code.
   final List<GetAmiProductCode> productCodes;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the image has public launch permissions.
+  /// `true` if the image has public launch permissions.
   final bool public;
 
   /// RAM disk associated with the image, if any. Only applicable
@@ -97,17 +97,17 @@ class GetAmiResult {
   /// Device name of the root device.
   final String rootDeviceName;
 
-  /// Type of root device (ie: <span pulumi-lang-nodejs="`ebs`" pulumi-lang-dotnet="`Ebs`" pulumi-lang-go="`ebs`" pulumi-lang-python="`ebs`" pulumi-lang-yaml="`ebs`" pulumi-lang-java="`ebs`">`ebs`</span> or `instance-store`).
+  /// Type of root device (ie: `ebs` or `instance-store`).
   final String rootDeviceType;
 
   /// Snapshot id associated with the root device, if any
-  /// (only applies to <span pulumi-lang-nodejs="`ebs`" pulumi-lang-dotnet="`Ebs`" pulumi-lang-go="`ebs`" pulumi-lang-python="`ebs`" pulumi-lang-yaml="`ebs`" pulumi-lang-java="`ebs`">`ebs`</span> root devices).
+  /// (only applies to `ebs` root devices).
   final String rootSnapshotId;
 
   /// Whether enhanced networking is enabled.
   final String sriovNetSupport;
 
-  /// Current state of the AMI. If the state is <span pulumi-lang-nodejs="`available`" pulumi-lang-dotnet="`Available`" pulumi-lang-go="`available`" pulumi-lang-python="`available`" pulumi-lang-yaml="`available`" pulumi-lang-java="`available`">`available`</span>, the image
+  /// Current state of the AMI. If the state is `available`, the image
   /// is successfully registered and can be used to launch an instance.
   final String state;
 
@@ -128,8 +128,8 @@ class GetAmiResult {
   /// Operation of the Amazon EC2 instance and the billing code that is associated with the AMI.
   final String usageOperation;
 
-  /// Type of virtualization of the AMI (ie: <span pulumi-lang-nodejs="`hvm`" pulumi-lang-dotnet="`Hvm`" pulumi-lang-go="`hvm`" pulumi-lang-python="`hvm`" pulumi-lang-yaml="`hvm`" pulumi-lang-java="`hvm`">`hvm`</span> or
-  /// <span pulumi-lang-nodejs="`paravirtual`" pulumi-lang-dotnet="`Paravirtual`" pulumi-lang-go="`paravirtual`" pulumi-lang-python="`paravirtual`" pulumi-lang-yaml="`paravirtual`" pulumi-lang-java="`paravirtual`">`paravirtual`</span>).
+  /// Type of virtualization of the AMI (ie: `hvm` or
+  /// `paravirtual`).
   final String virtualizationType;
 
   GetAmiResult({

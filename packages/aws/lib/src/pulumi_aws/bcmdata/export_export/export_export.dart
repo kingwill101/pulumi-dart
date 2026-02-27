@@ -6,20 +6,20 @@ import '../export_export_destination_configuration/export_export_destination_con
 import '../export_export_refresh_cadence/export_export_refresh_cadence.dart';
 
 class ExportExport {
-  /// Data query for this specific data export. See the <span pulumi-lang-nodejs="`dataQuery`" pulumi-lang-dotnet="`DataQuery`" pulumi-lang-go="`dataQuery`" pulumi-lang-python="`data_query`" pulumi-lang-yaml="`dataQuery`" pulumi-lang-java="`dataQuery`">`data_query`</span> argument reference below.
+  /// Data query for this specific data export. See the `data_query` argument reference below.
   final List<ExportExportDataQuery>? dataQueries;
 
   /// Description for this specific data export.
   final String? description;
 
-  /// Destination configuration for this specific data export. See the <span pulumi-lang-nodejs="`destinationConfigurations`" pulumi-lang-dotnet="`DestinationConfigurations`" pulumi-lang-go="`destinationConfigurations`" pulumi-lang-python="`destination_configurations`" pulumi-lang-yaml="`destinationConfigurations`" pulumi-lang-java="`destinationConfigurations`">`destination_configurations`</span> argument reference below.
+  /// Destination configuration for this specific data export. See the `destination_configurations` argument reference below.
   final List<ExportExportDestinationConfiguration>? destinationConfigurations;
   final String? exportArn;
 
   /// Name of this specific data export.
   final String name;
 
-  /// Cadence for Amazon Web Services to update the export in your S3 bucket. See the <span pulumi-lang-nodejs="`refreshCadence`" pulumi-lang-dotnet="`RefreshCadence`" pulumi-lang-go="`refreshCadence`" pulumi-lang-python="`refresh_cadence`" pulumi-lang-yaml="`refreshCadence`" pulumi-lang-java="`refreshCadence`">`refresh_cadence`</span> argument reference below.
+  /// Cadence for Amazon Web Services to update the export in your S3 bucket. See the `refresh_cadence` argument reference below.
   final List<ExportExportRefreshCadence>? refreshCadences;
 
   ExportExport({

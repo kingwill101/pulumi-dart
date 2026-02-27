@@ -21,7 +21,7 @@ class GetServiceResult {
   /// Whether Availability Zone rebalancing is enabled
   final String availabilityZoneRebalancing;
 
-  /// Capacity provider strategy for the service. See <span pulumi-lang-nodejs="`capacityProviderStrategy`" pulumi-lang-dotnet="`CapacityProviderStrategy`" pulumi-lang-go="`capacityProviderStrategy`" pulumi-lang-python="`capacity_provider_strategy`" pulumi-lang-yaml="`capacityProviderStrategy`" pulumi-lang-java="`capacityProviderStrategy`">`capacity_provider_strategy`</span> Block for details.
+  /// Capacity provider strategy for the service. See `capacity_provider_strategy` Block for details.
   final List<GetServiceCapacityProviderStrategy> capacityProviderStrategies;
   final String clusterArn;
 
@@ -31,13 +31,13 @@ class GetServiceResult {
   /// Principal that created the service
   final String createdBy;
 
-  /// Deployment configuration for the service. See <span pulumi-lang-nodejs="`deploymentConfiguration`" pulumi-lang-dotnet="`DeploymentConfiguration`" pulumi-lang-go="`deploymentConfiguration`" pulumi-lang-python="`deployment_configuration`" pulumi-lang-yaml="`deploymentConfiguration`" pulumi-lang-java="`deploymentConfiguration`">`deployment_configuration`</span> Block for details.
+  /// Deployment configuration for the service. See `deployment_configuration` Block for details.
   final List<GetServiceDeploymentConfiguration> deploymentConfigurations;
 
-  /// Deployment controller configuration. See <span pulumi-lang-nodejs="`deploymentController`" pulumi-lang-dotnet="`DeploymentController`" pulumi-lang-go="`deploymentController`" pulumi-lang-python="`deployment_controller`" pulumi-lang-yaml="`deploymentController`" pulumi-lang-java="`deploymentController`">`deployment_controller`</span> Block for details.
+  /// Deployment controller configuration. See `deployment_controller` Block for details.
   final List<GetServiceDeploymentController> deploymentControllers;
 
-  /// Current deployments for the service. See <span pulumi-lang-nodejs="`deployments`" pulumi-lang-dotnet="`Deployments`" pulumi-lang-go="`deployments`" pulumi-lang-python="`deployments`" pulumi-lang-yaml="`deployments`" pulumi-lang-java="`deployments`">`deployments`</span> Block for details.
+  /// Current deployments for the service. See `deployments` Block for details.
   final List<GetServiceDeployment> deployments;
 
   /// Desired number of tasks
@@ -49,7 +49,7 @@ class GetServiceResult {
   /// Whether execute command functionality is enabled
   final bool enableExecuteCommand;
 
-  /// Recent service events. See <span pulumi-lang-nodejs="`events`" pulumi-lang-dotnet="`Events`" pulumi-lang-go="`events`" pulumi-lang-python="`events`" pulumi-lang-yaml="`events`" pulumi-lang-java="`events`">`events`</span> Block for details.
+  /// Recent service events. See `events` Block for details.
   final List<GetServiceEvent> events;
 
   /// Grace period for health checks
@@ -64,19 +64,19 @@ class GetServiceResult {
   /// Launch type for the ECS Service
   final String launchType;
 
-  /// Load balancers for the ECS Service. See <span pulumi-lang-nodejs="`loadBalancer`" pulumi-lang-dotnet="`LoadBalancer`" pulumi-lang-go="`loadBalancer`" pulumi-lang-python="`load_balancer`" pulumi-lang-yaml="`loadBalancer`" pulumi-lang-java="`loadBalancer`">`load_balancer`</span> Block for details.
+  /// Load balancers for the ECS Service. See `load_balancer` Block for details.
   final List<GetServiceLoadBalancer> loadBalancers;
 
-  /// Network configuration for the service. See <span pulumi-lang-nodejs="`networkConfiguration`" pulumi-lang-dotnet="`NetworkConfiguration`" pulumi-lang-go="`networkConfiguration`" pulumi-lang-python="`network_configuration`" pulumi-lang-yaml="`networkConfiguration`" pulumi-lang-java="`networkConfiguration`">`network_configuration`</span> Block for details.
+  /// Network configuration for the service. See `network_configuration` Block for details.
   final List<GetServiceNetworkConfiguration> networkConfigurations;
 
-  /// Placement strategy for tasks. See <span pulumi-lang-nodejs="`orderedPlacementStrategy`" pulumi-lang-dotnet="`OrderedPlacementStrategy`" pulumi-lang-go="`orderedPlacementStrategy`" pulumi-lang-python="`ordered_placement_strategy`" pulumi-lang-yaml="`orderedPlacementStrategy`" pulumi-lang-java="`orderedPlacementStrategy`">`ordered_placement_strategy`</span> Block for details.
+  /// Placement strategy for tasks. See `ordered_placement_strategy` Block for details.
   final List<GetServiceOrderedPlacementStrategy> orderedPlacementStrategies;
 
   /// Number of pending tasks
   final int pendingCount;
 
-  /// Placement constraints for tasks. See <span pulumi-lang-nodejs="`placementConstraints`" pulumi-lang-dotnet="`PlacementConstraints`" pulumi-lang-go="`placementConstraints`" pulumi-lang-python="`placement_constraints`" pulumi-lang-yaml="`placementConstraints`" pulumi-lang-java="`placementConstraints`">`placement_constraints`</span> Block for details.
+  /// Placement constraints for tasks. See `placement_constraints` Block for details.
   final List<GetServicePlacementConstraint> placementConstraints;
 
   /// Platform family for Fargate tasks
@@ -96,7 +96,7 @@ class GetServiceResult {
   final String schedulingStrategy;
   final String serviceName;
 
-  /// Service discovery registries. See <span pulumi-lang-nodejs="`serviceRegistries`" pulumi-lang-dotnet="`ServiceRegistries`" pulumi-lang-go="`serviceRegistries`" pulumi-lang-python="`service_registries`" pulumi-lang-yaml="`serviceRegistries`" pulumi-lang-java="`serviceRegistries`">`service_registries`</span> Block for details.
+  /// Service discovery registries. See `service_registries` Block for details.
   final List<GetServiceServiceRegistry> serviceRegistries;
 
   /// Task set status
@@ -108,7 +108,7 @@ class GetServiceResult {
   /// Task definition ARN
   final String taskDefinition;
 
-  /// Task sets for the service. See <span pulumi-lang-nodejs="`taskSets`" pulumi-lang-dotnet="`TaskSets`" pulumi-lang-go="`taskSets`" pulumi-lang-python="`task_sets`" pulumi-lang-yaml="`taskSets`" pulumi-lang-java="`taskSets`">`task_sets`</span> Block for details.
+  /// Task sets for the service. See `task_sets` Block for details.
   final List<GetServiceTaskSet> taskSets;
 
   GetServiceResult({

@@ -1,4 +1,0 @@
-library module_iam_group_policy_attachments_exclusive;
-
-export 'group_policy_attachments_exclusive.dart';
-export 'group_policy_attachments_exclusive_args.dart';

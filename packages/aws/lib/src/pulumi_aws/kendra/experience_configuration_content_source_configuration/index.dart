@@ -1,3 +1,0 @@
-library module_kendra_experience_configuration_content_source_configuration;
-
-export 'experience_configuration_content_source_configuration.dart';

@@ -7,129 +7,7 @@ import 'upload_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.devicefarm.Project("example", {name: "example"});
-/// const exampleUpload = new aws.devicefarm.Upload("example", {
-/// name: "example",
-/// projectArn: example.arn,
-/// type: "APPIUM_JAVA_TESTNG_TEST_SPEC",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.devicefarm.Project("example", name="example")
-/// example_upload = aws.devicefarm.Upload("example",
-/// name="example",
-/// project_arn=example.arn,
-/// type="APPIUM_JAVA_TESTNG_TEST_SPEC")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.DeviceFarm.Project("example", new()
-/// {
-/// Name = "example",
-/// });
-///
-/// var exampleUpload = new Aws.DeviceFarm.Upload("example", new()
-/// {
-/// Name = "example",
-/// ProjectArn = example.Arn,
-/// Type = "APPIUM_JAVA_TESTNG_TEST_SPEC",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/devicefarm"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := devicefarm.NewProject(ctx, "example", &devicefarm.ProjectArgs{
-/// Name: pulumi.String("example"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = devicefarm.NewUpload(ctx, "example", &devicefarm.UploadArgs{
-/// Name:       pulumi.String("example"),
-/// ProjectArn: example.Arn,
-/// Type:       pulumi.String("APPIUM_JAVA_TESTNG_TEST_SPEC"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.devicefarm.Project;
-/// import com.pulumi.aws.devicefarm.ProjectArgs;
-/// import com.pulumi.aws.devicefarm.Upload;
-/// import com.pulumi.aws.devicefarm.UploadArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Project("example", ProjectArgs.builder()
-/// .name("example")
-/// .build());
-///
-/// var exampleUpload = new Upload("exampleUpload", UploadArgs.builder()
-/// .name("example")
-/// .projectArn(example.arn())
-/// .type("APPIUM_JAVA_TESTNG_TEST_SPEC")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:devicefarm:Project
-/// properties:
-/// name: example
-/// exampleUpload:
-/// type: aws:devicefarm:Upload
-/// name: example
-/// properties:
-/// name: example
-/// projectArn: ${example.arn}
-/// type: APPIUM_JAVA_TESTNG_TEST_SPEC
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -137,7 +15,7 @@ import 'upload_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the Device Farm upload.
+/// - `arn` (String) Amazon Resource Name (ARN) of the Device Farm upload.
 ///
 ///
 /// Using `pulumi import`, import DeviceFarm Uploads using their ARN. For example:

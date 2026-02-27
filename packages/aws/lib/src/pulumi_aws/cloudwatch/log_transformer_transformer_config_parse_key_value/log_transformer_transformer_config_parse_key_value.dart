@@ -16,7 +16,7 @@ class LogTransformerTransformerConfigParseKeyValue {
   /// Specifies a value to insert into the value field in the result if a key-value pair is not successfully split.
   final String? nonMatchValue;
 
-  /// Specifies whether to overwrite the value if the destination key already exists. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   final bool? overwriteIfExists;
 
   /// Specifies the path to the field in the log event that will be parsed. Defaults to `@message`.

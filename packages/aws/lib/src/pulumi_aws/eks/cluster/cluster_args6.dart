@@ -18,7 +18,7 @@ class ClusterArgs6 {
   /// Configuration block for the access config associated with your cluster, see [Amazon EKS Access Entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html). Detailed below.
   final Input<ClusterAccessConfig>? accessConfig;
 
-  /// Install default unmanaged add-ons, such as `aws-cni`, `kube-proxy`, and CoreDNS during cluster creation. If <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, you must manually install desired add-ons. Changing this value will force a new cluster to be created. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Install default unmanaged add-ons, such as `aws-cni`, `kube-proxy`, and CoreDNS during cluster creation. If `false`, you must manually install desired add-ons. Changing this value will force a new cluster to be created. Defaults to `true`.
   final Input<bool>? bootstrapSelfManagedAddons;
 
   /// Configuration block with compute configuration for EKS Auto Mode. Detailed below.
@@ -28,7 +28,7 @@ class ClusterArgs6 {
   final Input<ClusterControlPlaneScalingConfig>? controlPlaneScalingConfig;
   final Input<List<String>>? defaultAddonsToRemoves;
 
-  /// Whether to enable deletion protection for the cluster. When enabled, the cluster cannot be deleted unless deletion protection is first disabled. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable deletion protection for the cluster. When enabled, the cluster cannot be deleted unless deletion protection is first disabled. Default: `false`.
   final Input<bool>? deletionProtection;
 
   /// List of the desired control plane logging to enable. For more information, see [Amazon EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html).
@@ -55,16 +55,16 @@ class ClusterArgs6 {
   /// Configuration block with remote network configuration for EKS Hybrid Nodes. Detailed below.
   final Input<ClusterRemoteNetworkConfig>? remoteNetworkConfig;
 
-  /// ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding <span pulumi-lang-nodejs="`dependsOn`" pulumi-lang-dotnet="`DependsOn`" pulumi-lang-go="`dependsOn`" pulumi-lang-python="`depends_on`" pulumi-lang-yaml="`dependsOn`" pulumi-lang-java="`dependsOn`">`depends_on`</span> if using the <span pulumi-lang-nodejs="`aws.iam.RolePolicy`" pulumi-lang-dotnet="`aws.iam.RolePolicy`" pulumi-lang-go="`iam.RolePolicy`" pulumi-lang-python="`iam.RolePolicy`" pulumi-lang-yaml="`aws.iam.RolePolicy`" pulumi-lang-java="`aws.iam.RolePolicy`">`aws.iam.RolePolicy`</span> resource or <span pulumi-lang-nodejs="`aws.iam.RolePolicyAttachment`" pulumi-lang-dotnet="`aws.iam.RolePolicyAttachment`" pulumi-lang-go="`iam.RolePolicyAttachment`" pulumi-lang-python="`iam.RolePolicyAttachment`" pulumi-lang-yaml="`aws.iam.RolePolicyAttachment`" pulumi-lang-java="`aws.iam.RolePolicyAttachment`">`aws.iam.RolePolicyAttachment`</span> resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
+  /// ARN of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf. Ensure the resource configuration includes explicit dependencies on the IAM Role permissions by adding `depends_on` if using the `aws.iam.RolePolicy` resource or `aws.iam.RolePolicyAttachment` resource, otherwise EKS cannot delete EKS managed EC2 infrastructure such as Security Groups on EKS Cluster deletion.
   final Input<String> roleArn;
 
   /// Configuration block with storage configuration for EKS Auto Mode. Detailed below.
   final Input<ClusterStorageConfig>? storageConfig;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Configuration block for the support policy to use for the cluster.  See<span pulumi-lang-nodejs=" upgradePolicy " pulumi-lang-dotnet=" UpgradePolicy " pulumi-lang-go=" upgradePolicy " pulumi-lang-python=" upgrade_policy " pulumi-lang-yaml=" upgradePolicy " pulumi-lang-java=" upgradePolicy "> upgrade_policy </span>for details.
+  /// Configuration block for the support policy to use for the cluster.  See upgrade_policy for details.
   final Input<ClusterUpgradePolicy>? upgradePolicy;
 
   /// Desired Kubernetes master version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except those automatically triggered by EKS. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by EKS.

@@ -4,7 +4,7 @@ import 'savings_plan_args.dart';
 
 /// Provides an AWS Savings Plan resource.
 ///
-/// > **WARNING:** Savings Plans represent a financial commitment. Once a Savings Plan becomes active, it **cannot be cancelled or deleted**. Only Savings Plans in the <span pulumi-lang-nodejs="`queued`" pulumi-lang-dotnet="`Queued`" pulumi-lang-go="`queued`" pulumi-lang-python="`queued`" pulumi-lang-yaml="`queued`" pulumi-lang-java="`queued`">`queued`</span> state (scheduled for future purchase) can be deleted. Use this resource with caution.
+/// > **WARNING:** Savings Plans represent a financial commitment. Once a Savings Plan becomes active, it **cannot be cancelled or deleted**. Only Savings Plans in the `queued` state (scheduled for future purchase) can be deleted. Use this resource with caution.
 ///
 /// > **Note:** Importing an active Savings Plan will add it to your Terraform state, but destroying it will only remove it from state - the actual Savings Plan will continue until its term ends.
 ///
@@ -12,240 +12,18 @@ import 'savings_plan_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.savingsplans.SavingsPlan("example", {
-/// savingsPlanOfferingId: "00000000-0000-0000-0000-000000000000",
-/// commitment: "1.0",
-/// tags: {
-/// Environment: "production",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.savingsplans.SavingsPlan("example",
-/// savings_plan_offering_id="00000000-0000-0000-0000-000000000000",
-/// commitment="1.0",
-/// tags={
-/// "Environment": "production",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.SavingsPlans.SavingsPlan("example", new()
-/// {
-/// SavingsPlanOfferingId = "00000000-0000-0000-0000-000000000000",
-/// Commitment = "1.0",
-/// Tags =
-/// {
-/// { "Environment", "production" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/savingsplans"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := savingsplans.NewSavingsPlan(ctx, "example", &savingsplans.SavingsPlanArgs{
-/// SavingsPlanOfferingId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-/// Commitment:            pulumi.String("1.0"),
-/// Tags: pulumi.StringMap{
-/// "Environment": pulumi.String("production"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.savingsplans.SavingsPlan;
-/// import com.pulumi.aws.savingsplans.SavingsPlanArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new SavingsPlan("example", SavingsPlanArgs.builder()
-/// .savingsPlanOfferingId("00000000-0000-0000-0000-000000000000")
-/// .commitment("1.0")
-/// .tags(Map.of("Environment", "production"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:savingsplans:SavingsPlan
-/// properties:
-/// savingsPlanOfferingId: 00000000-0000-0000-0000-000000000000
-/// commitment: '1.0'
-/// tags:
-/// Environment: production
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Scheduled Purchase
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const scheduled = new aws.savingsplans.SavingsPlan("scheduled", {
-/// savingsPlanOfferingId: "00000000-0000-0000-0000-000000000000",
-/// commitment: "5.0",
-/// purchaseTime: "2026-12-01T00:00:00Z",
-/// tags: {
-/// Environment: "production",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// scheduled = aws.savingsplans.SavingsPlan("scheduled",
-/// savings_plan_offering_id="00000000-0000-0000-0000-000000000000",
-/// commitment="5.0",
-/// purchase_time="2026-12-01T00:00:00Z",
-/// tags={
-/// "Environment": "production",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var scheduled = new Aws.SavingsPlans.SavingsPlan("scheduled", new()
-/// {
-/// SavingsPlanOfferingId = "00000000-0000-0000-0000-000000000000",
-/// Commitment = "5.0",
-/// PurchaseTime = "2026-12-01T00:00:00Z",
-/// Tags =
-/// {
-/// { "Environment", "production" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/savingsplans"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := savingsplans.NewSavingsPlan(ctx, "scheduled", &savingsplans.SavingsPlanArgs{
-/// SavingsPlanOfferingId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-/// Commitment:            pulumi.String("5.0"),
-/// PurchaseTime:          pulumi.String("2026-12-01T00:00:00Z"),
-/// Tags: pulumi.StringMap{
-/// "Environment": pulumi.String("production"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.savingsplans.SavingsPlan;
-/// import com.pulumi.aws.savingsplans.SavingsPlanArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var scheduled = new SavingsPlan("scheduled", SavingsPlanArgs.builder()
-/// .savingsPlanOfferingId("00000000-0000-0000-0000-000000000000")
-/// .commitment("5.0")
-/// .purchaseTime("2026-12-01T00:00:00Z")
-/// .tags(Map.of("Environment", "production"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// scheduled:
-/// type: aws:savingsplans:SavingsPlan
-/// properties:
-/// savingsPlanOfferingId: 00000000-0000-0000-0000-000000000000
-/// commitment: '5.0'
-/// purchaseTime: 2026-12-01T00:00:00Z
-/// tags:
-/// Environment: production
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Savings Plans using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Savings Plans using the `id`. For example:
 ///
 ///
-/// Using `terraform state mv`, import Savings Plans using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `terraform state mv`, import Savings Plans using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:savingsplans/savingsPlan:SavingsPlan example sp-12345678901234567
@@ -277,7 +55,7 @@ class SavingsPlan extends CustomResource {
   /// The product types.
   late final Output<List<String>> productTypes;
 
-  /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in <span pulumi-lang-nodejs="`queued`" pulumi-lang-dotnet="`Queued`" pulumi-lang-go="`queued`" pulumi-lang-python="`queued`" pulumi-lang-yaml="`queued`" pulumi-lang-java="`queued`">`queued`</span> state and can be deleted before they become active.
+  /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
   late final Output<String?> purchaseTime;
 
   /// The recurring payment amount.
@@ -304,13 +82,13 @@ class SavingsPlan extends CustomResource {
   /// The start time of the Savings Plan in RFC3339 format.
   late final Output<String> start;
 
-  /// The current state of the Savings Plan (e.g., <span pulumi-lang-nodejs="`active`" pulumi-lang-dotnet="`Active`" pulumi-lang-go="`active`" pulumi-lang-python="`active`" pulumi-lang-yaml="`active`" pulumi-lang-java="`active`">`active`</span>, <span pulumi-lang-nodejs="`queued`" pulumi-lang-dotnet="`Queued`" pulumi-lang-go="`queued`" pulumi-lang-python="`queued`" pulumi-lang-yaml="`queued`" pulumi-lang-java="`queued`">`queued`</span>, <span pulumi-lang-nodejs="`retired`" pulumi-lang-dotnet="`Retired`" pulumi-lang-go="`retired`" pulumi-lang-python="`retired`" pulumi-lang-yaml="`retired`" pulumi-lang-java="`retired`">`retired`</span>).
+  /// The current state of the Savings Plan (e.g., `active`, `queued`, `retired`).
   late final Output<String> state;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// The duration of the term, in seconds.

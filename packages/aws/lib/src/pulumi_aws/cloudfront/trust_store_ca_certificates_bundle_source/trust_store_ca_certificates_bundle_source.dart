@@ -3,7 +3,7 @@
 import '../trust_store_ca_certificates_bundle_source_ca_certificates_bundle_s3_location/trust_store_ca_certificates_bundle_source_ca_certificates_bundle_s3_location.dart';
 
 class TrustStoreCaCertificatesBundleSource {
-  /// Configuration block for the S3 location of the CA certificates bundle. See <span pulumi-lang-nodejs="`caCertificatesBundleS3Location`" pulumi-lang-dotnet="`CaCertificatesBundleS3Location`" pulumi-lang-go="`caCertificatesBundleS3Location`" pulumi-lang-python="`ca_certificates_bundle_s3_location`" pulumi-lang-yaml="`caCertificatesBundleS3Location`" pulumi-lang-java="`caCertificatesBundleS3Location`">`ca_certificates_bundle_s3_location`</span> below.
+  /// Configuration block for the S3 location of the CA certificates bundle. See `ca_certificates_bundle_s3_location` below.
   final TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location
       caCertificatesBundleS3Location;
 

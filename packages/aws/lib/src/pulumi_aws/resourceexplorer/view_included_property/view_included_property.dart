@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ViewIncludedProperty {
-  /// The name of the property that is included in this view. Valid values: <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span>.
+  /// The name of the property that is included in this view. Valid values: `tags`.
   final String name;
 
   ViewIncludedProperty({

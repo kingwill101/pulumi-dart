@@ -20,10 +20,10 @@ class SafetyRuleArgs {
   /// Configuration block for safety rule criteria. See below.
   final Input<SafetyRuleRuleConfig> ruleConfig;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Routing controls that can only be set or unset if the specified <span pulumi-lang-nodejs="`ruleConfig`" pulumi-lang-dotnet="`RuleConfig`" pulumi-lang-go="`ruleConfig`" pulumi-lang-python="`rule_config`" pulumi-lang-yaml="`ruleConfig`" pulumi-lang-java="`ruleConfig`">`rule_config`</span> evaluates to true for the specified <span pulumi-lang-nodejs="`gatingControls`" pulumi-lang-dotnet="`GatingControls`" pulumi-lang-go="`gatingControls`" pulumi-lang-python="`gating_controls`" pulumi-lang-yaml="`gatingControls`" pulumi-lang-java="`gatingControls`">`gating_controls`</span>.
+  /// Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
   final Input<List<String>>? targetControls;
 
   /// Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.

@@ -1,0 +1,3 @@
+library module_imagebuilder_get_infrastructure_configurations_filter;
+
+export 'get_infrastructure_configurations_filter/get_infrastructure_configurations_filter.dart';

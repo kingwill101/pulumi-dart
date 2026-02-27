@@ -1,0 +1,3 @@
+library module_verifiedpermissions_identity_source_configuration_open_id_connect_configuration;
+
+export 'identity_source_configuration_open_id_connect_configuration/identity_source_configuration_open_id_connect_configuration.dart';

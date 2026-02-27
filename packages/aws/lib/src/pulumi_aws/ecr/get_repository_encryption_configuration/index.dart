@@ -1,3 +1,0 @@
-library module_ecr_get_repository_encryption_configuration;
-
-export 'get_repository_encryption_configuration.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DomainVpcOptions2 {
-  /// If the domain was created inside a VPC, the names of the availability zones the configured <span pulumi-lang-nodejs="`subnetIds`" pulumi-lang-dotnet="`SubnetIds`" pulumi-lang-go="`subnetIds`" pulumi-lang-python="`subnet_ids`" pulumi-lang-yaml="`subnetIds`" pulumi-lang-java="`subnetIds`">`subnet_ids`</span> were created inside.
+  /// If the domain was created inside a VPC, the names of the availability zones the configured `subnet_ids` were created inside.
   final List<String>? availabilityZones;
 
   /// List of VPC Security Group IDs to be applied to the OpenSearch domain endpoints. If omitted, the default Security Group for the VPC will be used.

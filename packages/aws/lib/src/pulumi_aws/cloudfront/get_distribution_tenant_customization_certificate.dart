@@ -1,0 +1,3 @@
+library module_cloudfront_get_distribution_tenant_customization_certificate;
+
+export 'get_distribution_tenant_customization_certificate/get_distribution_tenant_customization_certificate.dart';

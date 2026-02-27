@@ -4,13 +4,13 @@ class EndpointMysqlSettings {
   /// Script to run immediately after AWS DMS connects to the endpoint.
   final String? afterConnectScript;
 
-  /// Authentication method to use. Valid values: <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span>, <span pulumi-lang-nodejs="`iam`" pulumi-lang-dotnet="`Iam`" pulumi-lang-go="`iam`" pulumi-lang-python="`iam`" pulumi-lang-yaml="`iam`" pulumi-lang-java="`iam`">`iam`</span>.
+  /// Authentication method to use. Valid values: `password`, `iam`.
   final String? authenticationMethod;
 
   /// Whether to clean and recreate table metadata information on the replication instance when a mismatch occurs.
   final bool? cleanSourceMetadataOnMismatch;
 
-  /// Time interval to check the binary log for new changes/events when the database is idle. Default is <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>.
+  /// Time interval to check the binary log for new changes/events when the database is idle. Default is `5`.
   final int? eventsPollInterval;
 
   /// Client statement timeout (in seconds) for a MySQL source endpoint.

@@ -6,7 +6,7 @@ import '../quicksetup_configuration_manager_timeouts/quicksetup_configuration_ma
 
 /// The set of arguments for QuicksetupConfigurationManager.
 class QuicksetupConfigurationManagerArgs {
-  /// Definition of the Quick Setup configuration that the configuration manager deploys. See <span pulumi-lang-nodejs="`configurationDefinition`" pulumi-lang-dotnet="`ConfigurationDefinition`" pulumi-lang-go="`configurationDefinition`" pulumi-lang-python="`configuration_definition`" pulumi-lang-yaml="`configurationDefinition`" pulumi-lang-java="`configurationDefinition`">`configuration_definition`</span> below.
+  /// Definition of the Quick Setup configuration that the configuration manager deploys. See `configuration_definition` below.
   final Input<QuicksetupConfigurationManagerConfigurationDefinition>
       configurationDefinition;
 
@@ -21,7 +21,7 @@ class QuicksetupConfigurationManagerArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<QuicksetupConfigurationManagerTimeouts>? timeouts;
 

@@ -8,7 +8,7 @@ class GetContributorManagedInsightRulesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// Managed rules that are available for the specified Amazon Web Services resource. See <span pulumi-lang-nodejs="`managedRules " pulumi-lang-dotnet="`ManagedRules " pulumi-lang-go="`managedRules " pulumi-lang-python="`managed_rules " pulumi-lang-yaml="`managedRules " pulumi-lang-java="`managedRules ">`managed_rules </span>reference` below for details.
+  /// Managed rules that are available for the specified Amazon Web Services resource. See `managed_rules reference` below for details.
   final List<GetContributorManagedInsightRulesManagedRule> managedRules;
   final String region;
 

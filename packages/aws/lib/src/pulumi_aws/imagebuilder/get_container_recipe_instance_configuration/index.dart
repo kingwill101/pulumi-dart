@@ -1,3 +1,0 @@
-library module_imagebuilder_get_container_recipe_instance_configuration;
-
-export 'get_container_recipe_instance_configuration.dart';

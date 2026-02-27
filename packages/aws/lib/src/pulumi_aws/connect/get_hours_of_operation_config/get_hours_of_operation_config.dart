@@ -8,10 +8,10 @@ class GetHoursOfOperationConfig {
   /// Day that the hours of operation applies to.
   final String day;
 
-  /// End time block specifies the time that your contact center closes. The <span pulumi-lang-nodejs="`endTime`" pulumi-lang-dotnet="`EndTime`" pulumi-lang-go="`endTime`" pulumi-lang-python="`end_time`" pulumi-lang-yaml="`endTime`" pulumi-lang-java="`endTime`">`end_time`</span> is documented below.
+  /// End time block specifies the time that your contact center closes. The `end_time` is documented below.
   final List<GetHoursOfOperationConfigEndTime> endTimes;
 
-  /// Start time block specifies the time that your contact center opens. The <span pulumi-lang-nodejs="`startTime`" pulumi-lang-dotnet="`StartTime`" pulumi-lang-go="`startTime`" pulumi-lang-python="`start_time`" pulumi-lang-yaml="`startTime`" pulumi-lang-java="`startTime`">`start_time`</span> is documented below.
+  /// Start time block specifies the time that your contact center opens. The `start_time` is documented below.
   final List<GetHoursOfOperationConfigStartTime> startTimes;
 
   GetHoursOfOperationConfig({

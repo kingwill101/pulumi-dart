@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
-  /// ARN of the S3 Vectors index. Conflicts with <span pulumi-lang-nodejs="`indexName`" pulumi-lang-dotnet="`IndexName`" pulumi-lang-go="`indexName`" pulumi-lang-python="`index_name`" pulumi-lang-yaml="`indexName`" pulumi-lang-java="`indexName`">`index_name`</span> and <span pulumi-lang-nodejs="`vectorBucketArn`" pulumi-lang-dotnet="`VectorBucketArn`" pulumi-lang-go="`vectorBucketArn`" pulumi-lang-python="`vector_bucket_arn`" pulumi-lang-yaml="`vectorBucketArn`" pulumi-lang-java="`vectorBucketArn`">`vector_bucket_arn`</span>.
+  /// ARN of the S3 Vectors index. Conflicts with `index_name` and `vector_bucket_arn`.
   final String? indexArn;
 
-  /// Name of the S3 Vectors index. Must be specified with <span pulumi-lang-nodejs="`vectorBucketArn`" pulumi-lang-dotnet="`VectorBucketArn`" pulumi-lang-go="`vectorBucketArn`" pulumi-lang-python="`vector_bucket_arn`" pulumi-lang-yaml="`vectorBucketArn`" pulumi-lang-java="`vectorBucketArn`">`vector_bucket_arn`</span>. Conflicts with <span pulumi-lang-nodejs="`indexArn`" pulumi-lang-dotnet="`IndexArn`" pulumi-lang-go="`indexArn`" pulumi-lang-python="`index_arn`" pulumi-lang-yaml="`indexArn`" pulumi-lang-java="`indexArn`">`index_arn`</span>.
+  /// Name of the S3 Vectors index. Must be specified with `vector_bucket_arn`. Conflicts with `index_arn`.
   final String? indexName;
 
-  /// ARN of the S3 Vectors vector bucket. Must be specified with <span pulumi-lang-nodejs="`indexName`" pulumi-lang-dotnet="`IndexName`" pulumi-lang-go="`indexName`" pulumi-lang-python="`index_name`" pulumi-lang-yaml="`indexName`" pulumi-lang-java="`indexName`">`index_name`</span>. Conflicts with <span pulumi-lang-nodejs="`indexArn`" pulumi-lang-dotnet="`IndexArn`" pulumi-lang-go="`indexArn`" pulumi-lang-python="`index_arn`" pulumi-lang-yaml="`indexArn`" pulumi-lang-java="`indexArn`">`index_arn`</span>.
+  /// ARN of the S3 Vectors vector bucket. Must be specified with `index_name`. Conflicts with `index_arn`.
   final String? vectorBucketArn;
 
   AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration({

@@ -8,13 +8,13 @@ import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_s
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting {
   /// List of default values for a slot.
-  /// See the <span pulumi-lang-nodejs="`defaultValueSpecification`" pulumi-lang-dotnet="`DefaultValueSpecification`" pulumi-lang-go="`defaultValueSpecification`" pulumi-lang-python="`default_value_specification`" pulumi-lang-yaml="`defaultValueSpecification`" pulumi-lang-java="`defaultValueSpecification`">`default_value_specification`</span> argument reference below.
+  /// See the `default_value_specification` argument reference below.
   final List<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification>?
       defaultValueSpecifications;
 
   /// Prompt that Amazon Lex uses to elicit the slot value from the user.
-  /// See the <span pulumi-lang-nodejs="`aws.lex.V2modelsIntent`" pulumi-lang-dotnet="`aws.lex.V2modelsIntent`" pulumi-lang-go="`lex.V2modelsIntent`" pulumi-lang-python="`lex.V2modelsIntent`" pulumi-lang-yaml="`aws.lex.V2modelsIntent`" pulumi-lang-java="`aws.lex.V2modelsIntent`">`aws.lex.V2modelsIntent`</span> resource for details on the <span pulumi-lang-nodejs="`promptSpecification`" pulumi-lang-dotnet="`PromptSpecification`" pulumi-lang-go="`promptSpecification`" pulumi-lang-python="`prompt_specification`" pulumi-lang-yaml="`promptSpecification`" pulumi-lang-java="`promptSpecification`">`prompt_specification`</span> argument reference - they are identical.
+  /// See the `aws.lex.V2modelsIntent` resource for details on the `prompt_specification` argument reference - they are identical.
   final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification?
       promptSpecification;
   final List<
@@ -22,7 +22,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting {
       sampleUtterances;
 
   /// Specifies the prompts that Amazon Lex uses while a bot is waiting for customer input.
-  /// See the <span pulumi-lang-nodejs="`waitAndContinueSpecification`" pulumi-lang-dotnet="`WaitAndContinueSpecification`" pulumi-lang-go="`waitAndContinueSpecification`" pulumi-lang-python="`wait_and_continue_specification`" pulumi-lang-yaml="`waitAndContinueSpecification`" pulumi-lang-java="`waitAndContinueSpecification`">`wait_and_continue_specification`</span> argument reference below.
+  /// See the `wait_and_continue_specification` argument reference below.
   final List<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecification>?
       waitAndContinueSpecifications;

@@ -1,0 +1,3 @@
+library module_ec2_get_instance_type_neuron_device;
+
+export 'get_instance_type_neuron_device/get_instance_type_neuron_device.dart';

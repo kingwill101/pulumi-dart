@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DistributionTenantCustomizationsWebAcl {
-  /// Action to take for the web ACL. Valid values: <span pulumi-lang-nodejs="`allow`" pulumi-lang-dotnet="`Allow`" pulumi-lang-go="`allow`" pulumi-lang-python="`allow`" pulumi-lang-yaml="`allow`" pulumi-lang-java="`allow`">`allow`</span>, <span pulumi-lang-nodejs="`block`" pulumi-lang-dotnet="`Block`" pulumi-lang-go="`block`" pulumi-lang-python="`block`" pulumi-lang-yaml="`block`" pulumi-lang-java="`block`">`block`</span>.
+  /// Action to take for the web ACL. Valid values: `allow`, `block`.
   final String? action;
 
   /// ARN of the distribution tenant.

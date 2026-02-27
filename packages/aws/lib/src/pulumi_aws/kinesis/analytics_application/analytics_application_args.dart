@@ -35,11 +35,11 @@ class AnalyticsApplicationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined <span pulumi-lang-nodejs="`startingPosition`" pulumi-lang-dotnet="`StartingPosition`" pulumi-lang-go="`startingPosition`" pulumi-lang-python="`starting_position`" pulumi-lang-yaml="`startingPosition`" pulumi-lang-java="`startingPosition`">`starting_position`</span> must be configured.
-  /// To modify an application's starting position, first stop the application by setting <span pulumi-lang-nodejs="`startApplication " pulumi-lang-dotnet="`StartApplication " pulumi-lang-go="`startApplication " pulumi-lang-python="`start_application " pulumi-lang-yaml="`startApplication " pulumi-lang-java="`startApplication ">`start_application </span>= false`, then update <span pulumi-lang-nodejs="`startingPosition`" pulumi-lang-dotnet="`StartingPosition`" pulumi-lang-go="`startingPosition`" pulumi-lang-python="`starting_position`" pulumi-lang-yaml="`startingPosition`" pulumi-lang-java="`startingPosition`">`starting_position`</span> and set <span pulumi-lang-nodejs="`startApplication " pulumi-lang-dotnet="`StartApplication " pulumi-lang-go="`startApplication " pulumi-lang-python="`start_application " pulumi-lang-yaml="`startApplication " pulumi-lang-java="`startApplication ">`start_application </span>= true`.
+  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `starting_position` must be configured.
+  /// To modify an application's starting position, first stop the application by setting `start_application = false`, then update `starting_position` and set `start_application = true`.
   final Input<bool>? startApplication;
 
-  /// Key-value map of tags for the Kinesis Analytics Application. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   AnalyticsApplicationArgs({

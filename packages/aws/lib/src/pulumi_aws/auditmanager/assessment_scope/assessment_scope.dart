@@ -5,10 +5,10 @@ import '../assessment_scope_aws_account/assessment_scope_aws_account.dart';
 import '../assessment_scope_aws_service/assessment_scope_aws_service.dart';
 
 class AssessmentScope {
-  /// Amazon Web Services accounts that are in scope for the assessment. See <span pulumi-lang-nodejs="`awsAccounts`" pulumi-lang-dotnet="`AwsAccounts`" pulumi-lang-go="`awsAccounts`" pulumi-lang-python="`aws_accounts`" pulumi-lang-yaml="`awsAccounts`" pulumi-lang-java="`awsAccounts`">`aws_accounts`</span> below.
+  /// Amazon Web Services accounts that are in scope for the assessment. See `aws_accounts` below.
   final List<AssessmentScopeAwsAccount>? awsAccounts;
 
-  /// Amazon Web Services services that are included in the scope of the assessment. See <span pulumi-lang-nodejs="`awsServices`" pulumi-lang-dotnet="`AwsServices`" pulumi-lang-go="`awsServices`" pulumi-lang-python="`aws_services`" pulumi-lang-yaml="`awsServices`" pulumi-lang-java="`awsServices`">`aws_services`</span> below.
+  /// Amazon Web Services services that are included in the scope of the assessment. See `aws_services` below.
   final List<AssessmentScopeAwsService>? awsServices;
 
   AssessmentScope({

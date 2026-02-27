@@ -7,7 +7,7 @@ class ResolverRuleTargetIp {
   /// One IPv6 address that you want to forward DNS queries to.
   final String? ipv6;
 
-  /// Port at <span pulumi-lang-nodejs="`ip`" pulumi-lang-dotnet="`Ip`" pulumi-lang-go="`ip`" pulumi-lang-python="`ip`" pulumi-lang-yaml="`ip`" pulumi-lang-java="`ip`">`ip`</span> that you want to forward DNS queries to. Default value is <span pulumi-lang-nodejs="`53`" pulumi-lang-dotnet="`53`" pulumi-lang-go="`53`" pulumi-lang-python="`53`" pulumi-lang-yaml="`53`" pulumi-lang-java="`53`">`53`</span>.
+  /// Port at `ip` that you want to forward DNS queries to. Default value is `53`.
   final int? port;
 
   /// Protocol for the resolver endpoint. Valid values can be found in the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_TargetAddress.html). Default value is `Do53`.

@@ -7,7 +7,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
   /// Description of the routing policy.
   final String? routingPolicyDescription;
 
-  /// Direction of the routing policy. Valid values: <span pulumi-lang-nodejs="`inbound`" pulumi-lang-dotnet="`Inbound`" pulumi-lang-go="`inbound`" pulumi-lang-python="`inbound`" pulumi-lang-yaml="`inbound`" pulumi-lang-java="`inbound`">`inbound`</span>, <span pulumi-lang-nodejs="`outbound`" pulumi-lang-dotnet="`Outbound`" pulumi-lang-go="`outbound`" pulumi-lang-python="`outbound`" pulumi-lang-yaml="`outbound`" pulumi-lang-java="`outbound`">`outbound`</span>.
+  /// Direction of the routing policy. Valid values: `inbound`, `outbound`.
   final String routingPolicyDirection;
 
   /// Name of the routing policy. Must be 1-100 alphanumeric characters.

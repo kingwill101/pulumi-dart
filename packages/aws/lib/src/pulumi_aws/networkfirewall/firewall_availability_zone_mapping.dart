@@ -1,0 +1,3 @@
+library module_networkfirewall_firewall_availability_zone_mapping;
+
+export 'firewall_availability_zone_mapping/firewall_availability_zone_mapping.dart';

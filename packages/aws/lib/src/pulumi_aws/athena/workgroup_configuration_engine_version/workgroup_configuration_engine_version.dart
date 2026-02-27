@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class WorkgroupConfigurationEngineVersion {
-  /// The engine version on which the query runs. If <span pulumi-lang-nodejs="`selectedEngineVersion`" pulumi-lang-dotnet="`SelectedEngineVersion`" pulumi-lang-go="`selectedEngineVersion`" pulumi-lang-python="`selected_engine_version`" pulumi-lang-yaml="`selectedEngineVersion`" pulumi-lang-java="`selectedEngineVersion`">`selected_engine_version`</span> is set to `AUTO`, the effective engine version is chosen by Athena.
+  /// The engine version on which the query runs. If `selected_engine_version` is set to `AUTO`, the effective engine version is chosen by Athena.
   final String? effectiveEngineVersion;
 
   /// Requested engine version. Defaults to `AUTO`.

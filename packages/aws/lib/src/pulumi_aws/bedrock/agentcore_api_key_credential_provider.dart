@@ -1,0 +1,4 @@
+library module_bedrock_agentcore_api_key_credential_provider;
+
+export 'agentcore_api_key_credential_provider/agentcore_api_key_credential_provider.dart';
+export 'agentcore_api_key_credential_provider/agentcore_api_key_credential_provider_args.dart';

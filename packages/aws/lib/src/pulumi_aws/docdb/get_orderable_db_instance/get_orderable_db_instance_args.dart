@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getOrderableDbInstance.
 class GetOrderableDbInstanceArgs {
-  /// DB engine. Default: <span pulumi-lang-nodejs="`docdb`" pulumi-lang-dotnet="`Docdb`" pulumi-lang-go="`docdb`" pulumi-lang-python="`docdb`" pulumi-lang-yaml="`docdb`" pulumi-lang-java="`docdb`">`docdb`</span>
+  /// DB engine. Default: `docdb`
   final Input<String>? engine;
 
   /// Version of the DB engine.
   final Input<String>? engineVersion;
 
-  /// DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with <span pulumi-lang-nodejs="`preferredInstanceClasses`" pulumi-lang-dotnet="`PreferredInstanceClasses`" pulumi-lang-go="`preferredInstanceClasses`" pulumi-lang-python="`preferred_instance_classes`" pulumi-lang-yaml="`preferredInstanceClasses`" pulumi-lang-java="`preferredInstanceClasses`">`preferred_instance_classes`</span>.)
+  /// DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferred_instance_classes`.)
   final Input<String>? instanceClass;
 
-  /// License model. Default: <span pulumi-lang-nodejs="`na`" pulumi-lang-dotnet="`Na`" pulumi-lang-go="`na`" pulumi-lang-python="`na`" pulumi-lang-yaml="`na`" pulumi-lang-java="`na`">`na`</span>
+  /// License model. Default: `na`
   final Input<String>? licenseModel;
 
-  /// Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with <span pulumi-lang-nodejs="`instanceClass`" pulumi-lang-dotnet="`InstanceClass`" pulumi-lang-go="`instanceClass`" pulumi-lang-python="`instance_class`" pulumi-lang-yaml="`instanceClass`" pulumi-lang-java="`instanceClass`">`instance_class`</span>.)
+  /// Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instance_class`.)
   final Input<List<String>>? preferredInstanceClasses;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

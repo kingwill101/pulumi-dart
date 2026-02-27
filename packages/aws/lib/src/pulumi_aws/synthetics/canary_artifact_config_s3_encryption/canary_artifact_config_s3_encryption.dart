@@ -4,7 +4,7 @@ class CanaryArtifactConfigS3Encryption {
   /// The encryption method to use for artifacts created by this canary. Valid values are: `SSE_S3` and `SSE_KMS`.
   final String? encryptionMode;
 
-  /// The ARN of the customer-managed KMS key to use, if you specify `SSE_KMS` for <span pulumi-lang-nodejs="`encryptionMode`" pulumi-lang-dotnet="`EncryptionMode`" pulumi-lang-go="`encryptionMode`" pulumi-lang-python="`encryption_mode`" pulumi-lang-yaml="`encryptionMode`" pulumi-lang-java="`encryptionMode`">`encryption_mode`</span>.
+  /// The ARN of the customer-managed KMS key to use, if you specify `SSE_KMS` for `encryption_mode`.
   final String? kmsKeyArn;
 
   CanaryArtifactConfigS3Encryption({

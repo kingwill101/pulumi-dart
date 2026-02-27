@@ -3,7 +3,7 @@
 import '../analyzer_configuration_internal_access_analysis_rule/analyzer_configuration_internal_access_analysis_rule.dart';
 
 class AnalyzerConfigurationInternalAccess {
-  /// Information about analysis rules for the internal access analyzer. These rules determine which resources and access patterns will be analyzed. See <span pulumi-lang-nodejs="`analysisRule`" pulumi-lang-dotnet="`AnalysisRule`" pulumi-lang-go="`analysisRule`" pulumi-lang-python="`analysis_rule`" pulumi-lang-yaml="`analysisRule`" pulumi-lang-java="`analysisRule`">`analysis_rule`</span> Block for Internal Access Analyzer for details.
+  /// Information about analysis rules for the internal access analyzer. These rules determine which resources and access patterns will be analyzed. See `analysis_rule` Block for Internal Access Analyzer for details.
   final AnalyzerConfigurationInternalAccessAnalysisRule? analysisRule;
 
   AnalyzerConfigurationInternalAccess({

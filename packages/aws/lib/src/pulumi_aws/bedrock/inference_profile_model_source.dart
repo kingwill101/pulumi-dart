@@ -1,0 +1,3 @@
+library module_bedrock_inference_profile_model_source;
+
+export 'inference_profile_model_source/inference_profile_model_source.dart';

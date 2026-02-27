@@ -4,7 +4,7 @@ class TaskSetScale {
   /// The unit of measure for the scale value. Default: `PERCENT`.
   final String? unit;
 
-  /// The value, specified as a percent total of a service's `desiredCount`, to scale the task set. Defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> if not specified. Accepted values are numbers between 0.0 and 100.0.
+  /// The value, specified as a percent total of a service's `desiredCount`, to scale the task set. Defaults to `0` if not specified. Accepted values are numbers between 0.0 and 100.0.
   final double? value;
 
   TaskSetScale({

@@ -9,22 +9,22 @@ class RuleGroupRuleStatementRateBasedStatement {
   /// Setting that indicates how to aggregate the request counts. Valid values include: `CONSTANT`, `CUSTOM_KEYS`, `FORWARDED_IP` or `IP`. Default: `IP`.
   final String? aggregateKeyType;
 
-  /// Aggregate the request counts using one or more web request components as the aggregate keys. See <span pulumi-lang-nodejs="`customKey`" pulumi-lang-dotnet="`CustomKey`" pulumi-lang-go="`customKey`" pulumi-lang-python="`custom_key`" pulumi-lang-yaml="`customKey`" pulumi-lang-java="`customKey`">`custom_key`</span> below for details.
+  /// Aggregate the request counts using one or more web request components as the aggregate keys. See `custom_key` below for details.
   final List<RuleGroupRuleStatementRateBasedStatementCustomKey>? customKeys;
 
-  /// The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>, <span pulumi-lang-nodejs="`120`" pulumi-lang-dotnet="`120`" pulumi-lang-go="`120`" pulumi-lang-python="`120`" pulumi-lang-yaml="`120`" pulumi-lang-java="`120`">`120`</span>, <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span>, and <span pulumi-lang-nodejs="`600`" pulumi-lang-dotnet="`600`" pulumi-lang-go="`600`" pulumi-lang-python="`600`" pulumi-lang-yaml="`600`" pulumi-lang-java="`600`">`600`</span>. Defaults to <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span> (5 minutes).
+  /// The amount of time, in seconds, that AWS WAF should include in its request counts, looking back from the current time. Valid values are `60`, `120`, `300`, and `600`. Defaults to `300` (5 minutes).
   ///
   /// **NOTE:** This setting doesn't determine how often AWS WAF checks the rate, but how far back it looks each time it checks. AWS WAF checks the rate about every 10 seconds.
   final int? evaluationWindowSec;
 
-  /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If <span pulumi-lang-nodejs="`aggregateKeyType`" pulumi-lang-dotnet="`AggregateKeyType`" pulumi-lang-go="`aggregateKeyType`" pulumi-lang-python="`aggregate_key_type`" pulumi-lang-yaml="`aggregateKeyType`" pulumi-lang-java="`aggregateKeyType`">`aggregate_key_type`</span> is set to `FORWARDED_IP`, this block is required. See Forwarded IP Config below for details.
+  /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. If `aggregate_key_type` is set to `FORWARDED_IP`, this block is required. See Forwarded IP Config below for details.
   final RuleGroupRuleStatementRateBasedStatementForwardedIpConfig?
       forwardedIpConfig;
 
-  /// Limit on requests per 5-minute (or <span pulumi-lang-nodejs="`evaluationWindowSec`" pulumi-lang-dotnet="`EvaluationWindowSec`" pulumi-lang-go="`evaluationWindowSec`" pulumi-lang-python="`evaluation_window_sec`" pulumi-lang-yaml="`evaluationWindowSec`" pulumi-lang-java="`evaluationWindowSec`">`evaluation_window_sec`</span>) period for a single originating IP address (or for other aggregate key, depending on <span pulumi-lang-nodejs="`aggregateKeyType`" pulumi-lang-dotnet="`AggregateKeyType`" pulumi-lang-go="`aggregateKeyType`" pulumi-lang-python="`aggregate_key_type`" pulumi-lang-yaml="`aggregateKeyType`" pulumi-lang-java="`aggregateKeyType`">`aggregate_key_type`</span> and <span pulumi-lang-nodejs="`customKey`" pulumi-lang-dotnet="`CustomKey`" pulumi-lang-go="`customKey`" pulumi-lang-python="`custom_key`" pulumi-lang-yaml="`customKey`" pulumi-lang-java="`customKey`">`custom_key`</span>).
+  /// Limit on requests per 5-minute (or `evaluation_window_sec`) period for a single originating IP address (or for other aggregate key, depending on `aggregate_key_type` and `custom_key`).
   final int limit;
 
-  /// An optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See Statement above for details. If <span pulumi-lang-nodejs="`aggregateKeyType`" pulumi-lang-dotnet="`AggregateKeyType`" pulumi-lang-go="`aggregateKeyType`" pulumi-lang-python="`aggregate_key_type`" pulumi-lang-yaml="`aggregateKeyType`" pulumi-lang-java="`aggregateKeyType`">`aggregate_key_type`</span> is set to `CONSTANT`, this block is required.
+  /// An optional nested statement that narrows the scope of the rate-based statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See Statement above for details. If `aggregate_key_type` is set to `CONSTANT`, this block is required.
   final RuleGroupRuleStatementRateBasedStatementScopeDownStatement?
       scopeDownStatement;
 

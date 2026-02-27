@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_statement_rate_based_statement_custom_key_cookie;
+
+export 'rule_group_rule_statement_rate_based_statement_custom_key_cookie/rule_group_rule_statement_rate_based_statement_custom_key_cookie.dart';

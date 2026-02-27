@@ -1,3 +1,0 @@
-library module_bedrock_agent_data_source_vector_ingestion_configuration_custom_transformation_configuration;
-
-export 'agent_data_source_vector_ingestion_configuration_custom_transformation_configuration.dart';

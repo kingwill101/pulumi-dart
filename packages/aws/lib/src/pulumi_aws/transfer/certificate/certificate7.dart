@@ -7,7 +7,7 @@ import 'certificate_args7.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer AS2 Certificate using the <span pulumi-lang-nodejs="`certificateId`" pulumi-lang-dotnet="`CertificateId`" pulumi-lang-go="`certificateId`" pulumi-lang-python="`certificate_id`" pulumi-lang-yaml="`certificateId`" pulumi-lang-java="`certificateId`">`certificate_id`</span>. For example:
+/// Using `pulumi import`, import Transfer AS2 Certificate using the `certificate_id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/certificate:Certificate example c-4221a88afd5f4362a
@@ -40,7 +40,7 @@ class Certificate7 extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
 

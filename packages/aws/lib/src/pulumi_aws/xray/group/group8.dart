@@ -6,124 +6,7 @@ import 'group_args8.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.xray.Group("example", {
-/// groupName: "example",
-/// filterExpression: "responsetime > 5",
-/// insightsConfiguration: {
-/// insightsEnabled: true,
-/// notificationsEnabled: true,
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.xray.Group("example",
-/// group_name="example",
-/// filter_expression="responsetime > 5",
-/// insights_configuration={
-/// "insights_enabled": True,
-/// "notifications_enabled": True,
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Xray.Group("example", new()
-/// {
-/// GroupName = "example",
-/// FilterExpression = "responsetime > 5",
-/// InsightsConfiguration = new Aws.Xray.Inputs.GroupInsightsConfigurationArgs
-/// {
-/// InsightsEnabled = true,
-/// NotificationsEnabled = true,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/xray"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := xray.NewGroup(ctx, "example", &xray.GroupArgs{
-/// GroupName:        pulumi.String("example"),
-/// FilterExpression: pulumi.String("responsetime > 5"),
-/// InsightsConfiguration: &xray.GroupInsightsConfigurationArgs{
-/// InsightsEnabled:      pulumi.Bool(true),
-/// NotificationsEnabled: pulumi.Bool(true),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.xray.Group;
-/// import com.pulumi.aws.xray.GroupArgs;
-/// import com.pulumi.aws.xray.inputs.GroupInsightsConfigurationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Group("example", GroupArgs.builder()
-/// .groupName("example")
-/// .filterExpression("responsetime > 5")
-/// .insightsConfiguration(GroupInsightsConfigurationArgs.builder()
-/// .insightsEnabled(true)
-/// .notificationsEnabled(true)
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:xray:Group
-/// properties:
-/// groupName: example
-/// filterExpression: responsetime > 5
-/// insightsConfiguration:
-/// insightsEnabled: true
-/// notificationsEnabled: true
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -131,7 +14,7 @@ import 'group_args8.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the X-Ray group.
+/// - `arn` (String) Amazon Resource Name (ARN) of the X-Ray group.
 ///
 ///
 /// Using `pulumi import`, import XRay Groups using the ARN. For example:
@@ -155,10 +38,10 @@ class Group8 extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   Group8(

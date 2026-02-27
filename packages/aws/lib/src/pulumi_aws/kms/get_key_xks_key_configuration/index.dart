@@ -1,3 +1,0 @@
-library module_kms_get_key_xks_key_configuration;
-
-export 'get_key_xks_key_configuration.dart';

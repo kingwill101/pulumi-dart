@@ -1,3 +1,0 @@
-library module_ssoadmin_get_application_providers_application_provider;
-
-export 'get_application_providers_application_provider.dart';

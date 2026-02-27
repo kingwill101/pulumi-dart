@@ -92,7 +92,7 @@ class AwsConfig {
 
   bool get assumeRolesIsSecret => _isSecret('assumeRoles');
 
-  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting <span pulumi-lang-nodejs="`caBundle`" pulumi-lang-dotnet="`CaBundle`" pulumi-lang-go="`caBundle`" pulumi-lang-python="`ca_bundle`" pulumi-lang-yaml="`caBundle`" pulumi-lang-java="`caBundle`">`ca_bundle`</span> in the shared config file is not supported.)
+  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `ca_bundle` in the shared config file is not supported.)
   String? get customCaBundle {
     final raw = _raw('customCaBundle');
     return raw;
@@ -147,7 +147,7 @@ class AwsConfig {
 
   bool get forbiddenAccountIdsIsSecret => _isSecret('forbiddenAccountIds');
 
-  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or <span pulumi-lang-nodejs="`httpProxy`" pulumi-lang-dotnet="`HttpProxy`" pulumi-lang-go="`httpProxy`" pulumi-lang-python="`http_proxy`" pulumi-lang-yaml="`httpProxy`" pulumi-lang-java="`httpProxy`">`http_proxy`</span> environment variables.
+  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `http_proxy` environment variables.
   String? get httpProxy {
     final raw = _raw('httpProxy');
     return raw;
@@ -155,7 +155,7 @@ class AwsConfig {
 
   bool get httpProxyIsSecret => _isSecret('httpProxy');
 
-  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or <span pulumi-lang-nodejs="`httpsProxy`" pulumi-lang-dotnet="`HttpsProxy`" pulumi-lang-go="`httpsProxy`" pulumi-lang-python="`https_proxy`" pulumi-lang-yaml="`httpsProxy`" pulumi-lang-java="`httpsProxy`">`https_proxy`</span> environment variables.
+  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `https_proxy` environment variables.
   String? get httpsProxy {
     final raw = _raw('httpsProxy');
     return raw;
@@ -173,7 +173,7 @@ class AwsConfig {
 
   bool get ignoreTagsIsSecret => _isSecret('ignoreTags');
 
-  /// Explicitly allow the provider to perform "insecure" SSL requests. If omitted, default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Explicitly allow the provider to perform "insecure" SSL requests. If omitted, default value is `false`
   bool? get insecure {
     final raw = _raw('insecure');
     return _parseBoolConfig(raw);
@@ -191,7 +191,7 @@ class AwsConfig {
 
   bool get maxRetriesIsSecret => _isSecret('maxRetries');
 
-  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or <span pulumi-lang-nodejs="`noProxy`" pulumi-lang-dotnet="`NoProxy`" pulumi-lang-go="`noProxy`" pulumi-lang-python="`no_proxy`" pulumi-lang-yaml="`noProxy`" pulumi-lang-java="`noProxy`">`no_proxy`</span> environment variables.
+  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `no_proxy` environment variables.
   String? get noProxy {
     final raw = _raw('noProxy');
     return raw;
@@ -217,7 +217,7 @@ class AwsConfig {
 
   bool get regionIsSecret => _isSecret('region');
 
-  /// Specifies how retries are attempted. Valid values are <span pulumi-lang-nodejs="`standard`" pulumi-lang-dotnet="`Standard`" pulumi-lang-go="`standard`" pulumi-lang-python="`standard`" pulumi-lang-yaml="`standard`" pulumi-lang-java="`standard`">`standard`</span> and <span pulumi-lang-nodejs="`adaptive`" pulumi-lang-dotnet="`Adaptive`" pulumi-lang-go="`adaptive`" pulumi-lang-python="`adaptive`" pulumi-lang-yaml="`adaptive`" pulumi-lang-java="`adaptive`">`adaptive`</span>. Can also be configured using the `AWS_RETRY_MODE` environment variable.
+  /// Specifies how retries are attempted. Valid values are `standard` and `adaptive`. Can also be configured using the `AWS_RETRY_MODE` environment variable.
   String? get retryMode {
     final raw = _raw('retryMode');
     return raw;
@@ -225,7 +225,7 @@ class AwsConfig {
 
   bool get retryModeIsSecret => _isSecret('retryMode');
 
-  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are <span pulumi-lang-nodejs="`legacy`" pulumi-lang-dotnet="`Legacy`" pulumi-lang-go="`legacy`" pulumi-lang-python="`legacy`" pulumi-lang-yaml="`legacy`" pulumi-lang-java="`legacy`">`legacy`</span> or <span pulumi-lang-nodejs="`regional`" pulumi-lang-dotnet="`Regional`" pulumi-lang-go="`regional`" pulumi-lang-python="`regional`" pulumi-lang-yaml="`regional`" pulumi-lang-java="`regional`">`regional`</span>. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the <span pulumi-lang-nodejs="`s3UsEast1RegionalEndpoint`" pulumi-lang-dotnet="`S3UsEast1RegionalEndpoint`" pulumi-lang-go="`s3UsEast1RegionalEndpoint`" pulumi-lang-python="`s3_us_east_1_regional_endpoint`" pulumi-lang-yaml="`s3UsEast1RegionalEndpoint`" pulumi-lang-java="`s3UsEast1RegionalEndpoint`">`s3_us_east_1_regional_endpoint`</span> shared config file parameter
+  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3_us_east_1_regional_endpoint` shared config file parameter
   String? get s3UsEast1RegionalEndpoint {
     final raw = _raw('s3UsEast1RegionalEndpoint');
     return raw;

@@ -1,3 +1,0 @@
-library module_imagebuilder_get_image_recipe_block_device_mapping;
-
-export 'get_image_recipe_block_device_mapping.dart';

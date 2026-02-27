@@ -1,0 +1,3 @@
+library module_lakeformation_lf_tag_expression_expression;
+
+export 'lf_tag_expression_expression/lf_tag_expression_expression.dart';

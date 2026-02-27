@@ -1,0 +1,4 @@
+library module_chime_voice_connector_termination;
+
+export 'voice_connector_termination/voice_connector_termination.dart';
+export 'voice_connector_termination/voice_connector_termination_args.dart';

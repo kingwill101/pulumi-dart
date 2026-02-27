@@ -1,3 +1,0 @@
-library module_quicksight_get_data_set_column_group;
-
-export 'get_data_set_column_group.dart';

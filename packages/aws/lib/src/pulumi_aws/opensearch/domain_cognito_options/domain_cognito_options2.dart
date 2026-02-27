@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DomainCognitoOptions2 {
-  /// Whether Amazon Cognito authentication with Dashboard is enabled or not. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether Amazon Cognito authentication with Dashboard is enabled or not. Default is `false`.
   final bool? enabled;
 
   /// ID of the Cognito Identity Pool to use.

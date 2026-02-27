@@ -3,7 +3,7 @@
 import '../cache_policy_parameters_in_cache_key_and_forwarded_to_origin_query_strings_config_query_strings/cache_policy_parameters_in_cache_key_and_forwarded_to_origin_query_strings_config_query_strings.dart';
 
 class CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
-  /// Whether URL query strings in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for <span pulumi-lang-nodejs="`queryStringBehavior`" pulumi-lang-dotnet="`QueryStringBehavior`" pulumi-lang-go="`queryStringBehavior`" pulumi-lang-python="`query_string_behavior`" pulumi-lang-yaml="`queryStringBehavior`" pulumi-lang-java="`queryStringBehavior`">`query_string_behavior`</span> are <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, <span pulumi-lang-nodejs="`whitelist`" pulumi-lang-dotnet="`Whitelist`" pulumi-lang-go="`whitelist`" pulumi-lang-python="`whitelist`" pulumi-lang-yaml="`whitelist`" pulumi-lang-java="`whitelist`">`whitelist`</span>, `allExcept`, and <span pulumi-lang-nodejs="`all`" pulumi-lang-dotnet="`All`" pulumi-lang-go="`all`" pulumi-lang-python="`all`" pulumi-lang-yaml="`all`" pulumi-lang-java="`all`">`all`</span>.
+  /// Whether URL query strings in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values for `query_string_behavior` are `none`, `whitelist`, `allExcept`, and `all`.
   final String queryStringBehavior;
 
   /// Configuration parameter that contains a list of query string names. See Items for more information.

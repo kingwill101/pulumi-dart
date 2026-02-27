@@ -1,0 +1,3 @@
+library module_cleanrooms_membership_default_result_configuration;
+
+export 'membership_default_result_configuration/membership_default_result_configuration.dart';

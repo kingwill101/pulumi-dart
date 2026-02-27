@@ -1,3 +1,0 @@
-library module_quicksight_data_source_parameters_databricks;
-
-export 'data_source_parameters_databricks.dart';

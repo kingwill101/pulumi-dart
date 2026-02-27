@@ -1,3 +1,0 @@
-library module_elb_ssl_negotiation_policy_attribute;
-
-export 'ssl_negotiation_policy_attribute.dart';

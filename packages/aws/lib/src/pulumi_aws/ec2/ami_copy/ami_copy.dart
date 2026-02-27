@@ -14,126 +14,8 @@ import 'ami_copy_args.dart';
 ///
 /// Copying an AMI can take several minutes. The creation of this resource will
 /// block until the new AMI is available for use on new instances.
-///
-/// ## Example Usage
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const example = new aws.ec2.AmiCopy("example", {
-/// name: "example",
-/// sourceAmiId: "ami-xxxxxxxx",
-/// sourceAmiRegion: "us-west-1",
-/// tags: {
-/// Name: "HelloWorld",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.ec2.AmiCopy("example",
-/// name="example",
-/// source_ami_id="ami-xxxxxxxx",
-/// source_ami_region="us-west-1",
-/// tags={
-/// "Name": "HelloWorld",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Ec2.AmiCopy("example", new()
-/// {
-/// Name = "example",
-/// SourceAmiId = "ami-xxxxxxxx",
-/// SourceAmiRegion = "us-west-1",
-/// Tags =
-/// {
-/// { "Name", "HelloWorld" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := ec2.NewAmiCopy(ctx, "example", &ec2.AmiCopyArgs{
-/// Name:            pulumi.String("example"),
-/// SourceAmiId:     pulumi.String("ami-xxxxxxxx"),
-/// SourceAmiRegion: pulumi.String("us-west-1"),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("HelloWorld"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.ec2.AmiCopy;
-/// import com.pulumi.aws.ec2.AmiCopyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new AmiCopy("example", AmiCopyArgs.builder()
-/// .name("example")
-/// .sourceAmiId("ami-xxxxxxxx")
-/// .sourceAmiRegion("us-west-1")
-/// .tags(Map.of("Name", "HelloWorld"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:ec2:AmiCopy
-/// properties:
-/// name: example
-/// sourceAmiId: ami-xxxxxxxx
-/// sourceAmiRegion: us-west-1
-/// tags:
-/// Name: HelloWorld
-/// ```
-/// <!--End PulumiCodeChooser -->
 class AmiCopy extends CustomResource {
-  /// Machine architecture for created instances. Defaults to <span pulumi-lang-nodejs="`x8664`" pulumi-lang-dotnet="`X8664`" pulumi-lang-go="`x8664`" pulumi-lang-python="`x86_64`" pulumi-lang-yaml="`x8664`" pulumi-lang-java="`x8664`">`x86_64`</span>.
+  /// Machine architecture for created instances. Defaults to `x86_64`.
   late final Output<String> architecture;
 
   /// ARN of the AMI.
@@ -156,10 +38,10 @@ class AmiCopy extends CustomResource {
   /// attached to created instances. The structure of this block is described below.
   late final Output<List<AmiCopyEbsBlockDevice>> ebsBlockDevices;
 
-  /// Whether enhanced networking with ENA is enabled. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
   late final Output<bool> enaSupport;
 
-  /// Whether the destination snapshots of the copied image should be encrypted. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Whether the destination snapshots of the copied image should be encrypted. Defaults to `false`
   late final Output<bool?> encrypted;
 
   /// Nested block describing an ephemeral block device that
@@ -206,7 +88,7 @@ class AmiCopy extends CustomResource {
   late final Output<String> rootSnapshotId;
 
   /// Id of the AMI to copy. This id must be valid in the region
-  /// given by <span pulumi-lang-nodejs="`sourceAmiRegion`" pulumi-lang-dotnet="`SourceAmiRegion`" pulumi-lang-go="`sourceAmiRegion`" pulumi-lang-python="`source_ami_region`" pulumi-lang-yaml="`sourceAmiRegion`" pulumi-lang-java="`sourceAmiRegion`">`source_ami_region`</span>.
+  /// given by `source_ami_region`.
   late final Output<String> sourceAmiId;
 
   /// Region from which the AMI will be copied. This may be the
@@ -217,7 +99,7 @@ class AmiCopy extends CustomResource {
   /// for created instances. No other value is supported at this time.
   late final Output<String> sriovNetSupport;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
 

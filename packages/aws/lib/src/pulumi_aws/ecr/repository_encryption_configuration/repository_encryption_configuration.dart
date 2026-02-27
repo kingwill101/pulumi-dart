@@ -4,7 +4,7 @@ class RepositoryEncryptionConfiguration {
   /// The encryption type to use for the repository. Valid values are `AES256` or `KMS`. Defaults to `AES256`.
   final String? encryptionType;
 
-  /// The ARN of the KMS key to use when <span pulumi-lang-nodejs="`encryptionType`" pulumi-lang-dotnet="`EncryptionType`" pulumi-lang-go="`encryptionType`" pulumi-lang-python="`encryption_type`" pulumi-lang-yaml="`encryptionType`" pulumi-lang-java="`encryptionType`">`encryption_type`</span> is `KMS`. If not specified, uses the default AWS managed key for ECR.
+  /// The ARN of the KMS key to use when `encryption_type` is `KMS`. If not specified, uses the default AWS managed key for ECR.
   final String? kmsKey;
 
   RepositoryEncryptionConfiguration({

@@ -1,0 +1,3 @@
+library module_cognito_user_pool_user_pool_add_ons;
+
+export 'user_pool_user_pool_add_ons/user_pool_user_pool_add_ons.dart';

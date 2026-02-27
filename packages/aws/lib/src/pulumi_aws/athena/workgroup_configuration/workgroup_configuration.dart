@@ -8,7 +8,7 @@ import '../workgroup_configuration_monitoring_configuration/workgroup_configurat
 import '../workgroup_configuration_result_configuration/workgroup_configuration_result_configuration.dart';
 
 class WorkgroupConfiguration {
-  /// Integer for the upper data usage limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan. Must be at least <span pulumi-lang-nodejs="`10485760`" pulumi-lang-dotnet="`10485760`" pulumi-lang-go="`10485760`" pulumi-lang-python="`10485760`" pulumi-lang-yaml="`10485760`" pulumi-lang-java="`10485760`">`10485760`</span>.
+  /// Integer for the upper data usage limit (cutoff) for the amount of bytes a single query in a workgroup is allowed to scan. Must be at least `10485760`.
   final int? bytesScannedCutoffPerQuery;
 
   /// Configuration block to specify the KMS key that is used to encrypt the user's data stores in Athena. This setting applies to the PySpark engine for Athena notebooks. See Customer Content Encryption Configuration below.
@@ -18,7 +18,7 @@ class WorkgroupConfiguration {
   /// Boolean indicating whether a minimum level of encryption is enforced for the workgroup for query and calculation results written to Amazon S3.
   final bool? enableMinimumEncryptionConfiguration;
 
-  /// Boolean whether the settings for the workgroup override client-side settings. For more information, see [Workgroup Settings Override Client-Side Settings](https://docs.aws.amazon.com/athena/latest/ug/workgroups-settings-override.html). Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Boolean whether the settings for the workgroup override client-side settings. For more information, see [Workgroup Settings Override Client-Side Settings](https://docs.aws.amazon.com/athena/latest/ug/workgroups-settings-override.html). Defaults to `true`.
   final bool? enforceWorkgroupConfiguration;
 
   /// Configuration block for the Athena Engine Versioning. For more information, see [Athena Engine Versioning](https://docs.aws.amazon.com/athena/latest/ug/engine-versions.html). See Engine Version below.
@@ -38,7 +38,7 @@ class WorkgroupConfiguration {
   /// Configuration block for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc. Only applicable to Apache Spark engine. See Monitoring Configuration below.
   final WorkgroupConfigurationMonitoringConfiguration? monitoringConfiguration;
 
-  /// Boolean whether Amazon CloudWatch metrics are enabled for the workgroup. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Boolean whether Amazon CloudWatch metrics are enabled for the workgroup. Defaults to `true`.
   final bool? publishCloudwatchMetricsEnabled;
 
   /// If set to true , allows members assigned to a workgroup to reference Amazon S3 Requester Pays buckets in queries. If set to false , workgroup members cannot query data from Requester Pays buckets, and queries that retrieve data from Requester Pays buckets cause an error. The default is false . For more information about Requester Pays buckets, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html) in the Amazon Simple Storage Service Developer Guide.

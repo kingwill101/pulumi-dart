@@ -1,0 +1,3 @@
+library module_memorydb_get_cluster_cluster_endpoint;
+
+export 'get_cluster_cluster_endpoint/get_cluster_cluster_endpoint.dart';

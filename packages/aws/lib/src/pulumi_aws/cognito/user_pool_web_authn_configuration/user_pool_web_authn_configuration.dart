@@ -4,7 +4,7 @@ class UserPoolWebAuthnConfiguration {
   /// The authentication domain that passkeys providers use as a relying party.
   final String? relyingPartyId;
 
-  /// If your user pool should require a passkey. Must be one of <span pulumi-lang-nodejs="`required`" pulumi-lang-dotnet="`Required`" pulumi-lang-go="`required`" pulumi-lang-python="`required`" pulumi-lang-yaml="`required`" pulumi-lang-java="`required`">`required`</span> or <span pulumi-lang-nodejs="`preferred`" pulumi-lang-dotnet="`Preferred`" pulumi-lang-go="`preferred`" pulumi-lang-python="`preferred`" pulumi-lang-yaml="`preferred`" pulumi-lang-java="`preferred`">`preferred`</span>.
+  /// If your user pool should require a passkey. Must be one of `required` or `preferred`.
   final String? userVerification;
 
   UserPoolWebAuthnConfiguration({

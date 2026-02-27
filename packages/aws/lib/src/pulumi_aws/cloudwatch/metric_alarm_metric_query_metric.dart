@@ -1,0 +1,3 @@
+library module_cloudwatch_metric_alarm_metric_query_metric;
+
+export 'metric_alarm_metric_query_metric/metric_alarm_metric_query_metric.dart';

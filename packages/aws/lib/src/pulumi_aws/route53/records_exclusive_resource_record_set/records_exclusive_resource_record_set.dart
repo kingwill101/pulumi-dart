@@ -9,7 +9,7 @@ import '../records_exclusive_resource_record_set_resource_record/records_exclusi
 
 class RecordsExclusiveResourceRecordSet {
   /// Alias target block.
-  /// See <span pulumi-lang-nodejs="`aliasTarget`" pulumi-lang-dotnet="`AliasTarget`" pulumi-lang-go="`aliasTarget`" pulumi-lang-python="`alias_target`" pulumi-lang-yaml="`aliasTarget`" pulumi-lang-java="`aliasTarget`">`alias_target`</span> below.
+  /// See `alias_target` below.
   final RecordsExclusiveResourceRecordSetAliasTarget? aliasTarget;
   final RecordsExclusiveResourceRecordSetCidrRoutingConfig? cidrRoutingConfig;
 
@@ -19,11 +19,11 @@ class RecordsExclusiveResourceRecordSet {
   final String? failover;
 
   /// Geolocation block to control how Amazon Route 53 responds to DNS queries based on the geographic origin of the query.
-  /// See <span pulumi-lang-nodejs="`geolocation`" pulumi-lang-dotnet="`Geolocation`" pulumi-lang-go="`geolocation`" pulumi-lang-python="`geolocation`" pulumi-lang-yaml="`geolocation`" pulumi-lang-java="`geolocation`">`geolocation`</span> below.
+  /// See `geolocation` below.
   final RecordsExclusiveResourceRecordSetGeolocation? geolocation;
 
   /// Geoproximity location block.
-  /// See <span pulumi-lang-nodejs="`geoproximityLocation`" pulumi-lang-dotnet="`GeoproximityLocation`" pulumi-lang-go="`geoproximityLocation`" pulumi-lang-python="`geoproximity_location`" pulumi-lang-yaml="`geoproximityLocation`" pulumi-lang-java="`geoproximityLocation`">`geoproximity_location`</span> below.
+  /// See `geoproximity_location` below.
   final RecordsExclusiveResourceRecordSetGeoproximityLocation?
       geoproximityLocation;
 
@@ -40,11 +40,11 @@ class RecordsExclusiveResourceRecordSet {
   final String? region;
 
   /// Information about the resource records to act upon.
-  /// See <span pulumi-lang-nodejs="`resourceRecords`" pulumi-lang-dotnet="`ResourceRecords`" pulumi-lang-go="`resourceRecords`" pulumi-lang-python="`resource_records`" pulumi-lang-yaml="`resourceRecords`" pulumi-lang-java="`resourceRecords`">`resource_records`</span> below.
+  /// See `resource_records` below.
   final List<RecordsExclusiveResourceRecordSetResourceRecord>? resourceRecords;
 
   /// An identifier that differentiates among multiple resource record sets that have the same combination of name and type.
-  /// Required if using <span pulumi-lang-nodejs="`cidrRoutingConfig`" pulumi-lang-dotnet="`CidrRoutingConfig`" pulumi-lang-go="`cidrRoutingConfig`" pulumi-lang-python="`cidr_routing_config`" pulumi-lang-yaml="`cidrRoutingConfig`" pulumi-lang-java="`cidrRoutingConfig`">`cidr_routing_config`</span>, <span pulumi-lang-nodejs="`failover`" pulumi-lang-dotnet="`Failover`" pulumi-lang-go="`failover`" pulumi-lang-python="`failover`" pulumi-lang-yaml="`failover`" pulumi-lang-java="`failover`">`failover`</span>, <span pulumi-lang-nodejs="`geolocation`" pulumi-lang-dotnet="`Geolocation`" pulumi-lang-go="`geolocation`" pulumi-lang-python="`geolocation`" pulumi-lang-yaml="`geolocation`" pulumi-lang-java="`geolocation`">`geolocation`</span>,<span pulumi-lang-nodejs="`geoproximityLocation`" pulumi-lang-dotnet="`GeoproximityLocation`" pulumi-lang-go="`geoproximityLocation`" pulumi-lang-python="`geoproximity_location`" pulumi-lang-yaml="`geoproximityLocation`" pulumi-lang-java="`geoproximityLocation`">`geoproximity_location`</span>, <span pulumi-lang-nodejs="`multivalueAnswer`" pulumi-lang-dotnet="`MultivalueAnswer`" pulumi-lang-go="`multivalueAnswer`" pulumi-lang-python="`multivalue_answer`" pulumi-lang-yaml="`multivalueAnswer`" pulumi-lang-java="`multivalueAnswer`">`multivalue_answer`</span>, <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span>, or <span pulumi-lang-nodejs="`weight`" pulumi-lang-dotnet="`Weight`" pulumi-lang-go="`weight`" pulumi-lang-python="`weight`" pulumi-lang-yaml="`weight`" pulumi-lang-java="`weight`">`weight`</span>.
+  /// Required if using `cidr_routing_config`, `failover`, `geolocation`,`geoproximity_location`, `multivalue_answer`, `region`, or `weight`.
   final String? setIdentifier;
 
   /// ID of the traffic policy instance that Route 53 created this resource record set for.
@@ -61,7 +61,7 @@ class RecordsExclusiveResourceRecordSet {
   ///
   /// The following arguments are optional:
   ///
-  /// > Exactly one of <span pulumi-lang-nodejs="`resourceRecords`" pulumi-lang-dotnet="`ResourceRecords`" pulumi-lang-go="`resourceRecords`" pulumi-lang-python="`resource_records`" pulumi-lang-yaml="`resourceRecords`" pulumi-lang-java="`resourceRecords`">`resource_records`</span> or <span pulumi-lang-nodejs="`aliasTarget`" pulumi-lang-dotnet="`AliasTarget`" pulumi-lang-go="`aliasTarget`" pulumi-lang-python="`alias_target`" pulumi-lang-yaml="`aliasTarget`" pulumi-lang-java="`aliasTarget`">`alias_target`</span> must be specified.
+  /// > Exactly one of `resource_records` or `alias_target` must be specified.
   final String? type;
 
   /// Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set.

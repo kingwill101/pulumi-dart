@@ -1,0 +1,3 @@
+library module_quicksight_data_source_vpc_connection_properties;
+
+export 'data_source_vpc_connection_properties/data_source_vpc_connection_properties.dart';

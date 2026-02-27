@@ -1,0 +1,3 @@
+library module_ec2_vpc_ipam_operating_region;
+
+export 'vpc_ipam_operating_region/vpc_ipam_operating_region.dart';

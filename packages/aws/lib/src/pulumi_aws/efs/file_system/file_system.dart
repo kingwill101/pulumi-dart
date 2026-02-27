@@ -10,228 +10,15 @@ import 'file_system_args.dart';
 ///
 /// ### EFS File System w/ tags
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const foo = new aws.efs.FileSystem("foo", {
-/// creationToken: "my-product",
-/// tags: {
-/// Name: "MyProduct",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// foo = aws.efs.FileSystem("foo",
-/// creation_token="my-product",
-/// tags={
-/// "Name": "MyProduct",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var foo = new Aws.Efs.FileSystem("foo", new()
-/// {
-/// CreationToken = "my-product",
-/// Tags =
-/// {
-/// { "Name", "MyProduct" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/efs"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := efs.NewFileSystem(ctx, "foo", &efs.FileSystemArgs{
-/// CreationToken: pulumi.String("my-product"),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("MyProduct"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.efs.FileSystem;
-/// import com.pulumi.aws.efs.FileSystemArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var foo = new FileSystem("foo", FileSystemArgs.builder()
-/// .creationToken("my-product")
-/// .tags(Map.of("Name", "MyProduct"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// foo:
-/// type: aws:efs:FileSystem
-/// properties:
-/// creationToken: my-product
-/// tags:
-/// Name: MyProduct
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Using lifecycle policy
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const fooWithLifecylePolicy = new aws.efs.FileSystem("foo_with_lifecyle_policy", {
-/// creationToken: "my-product",
-/// lifecyclePolicies: [{
-/// transitionToIa: "AFTER_30_DAYS",
-/// }],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// foo_with_lifecyle_policy = aws.efs.FileSystem("foo_with_lifecyle_policy",
-/// creation_token="my-product",
-/// lifecycle_policies=[{
-/// "transition_to_ia": "AFTER_30_DAYS",
-/// }])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var fooWithLifecylePolicy = new Aws.Efs.FileSystem("foo_with_lifecyle_policy", new()
-/// {
-/// CreationToken = "my-product",
-/// LifecyclePolicies = new[]
-/// {
-/// new Aws.Efs.Inputs.FileSystemLifecyclePolicyArgs
-/// {
-/// TransitionToIa = "AFTER_30_DAYS",
-/// },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/efs"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := efs.NewFileSystem(ctx, "foo_with_lifecyle_policy", &efs.FileSystemArgs{
-/// CreationToken: pulumi.String("my-product"),
-/// LifecyclePolicies: efs.FileSystemLifecyclePolicyArray{
-/// &efs.FileSystemLifecyclePolicyArgs{
-/// TransitionToIa: pulumi.String("AFTER_30_DAYS"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.efs.FileSystem;
-/// import com.pulumi.aws.efs.FileSystemArgs;
-/// import com.pulumi.aws.efs.inputs.FileSystemLifecyclePolicyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var fooWithLifecylePolicy = new FileSystem("fooWithLifecylePolicy", FileSystemArgs.builder()
-/// .creationToken("my-product")
-/// .lifecyclePolicies(FileSystemLifecyclePolicyArgs.builder()
-/// .transitionToIa("AFTER_30_DAYS")
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// fooWithLifecylePolicy:
-/// type: aws:efs:FileSystem
-/// name: foo_with_lifecyle_policy
-/// properties:
-/// creationToken: my-product
-/// lifecyclePolicies:
-/// - transitionToIa: AFTER_30_DAYS
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import the EFS file systems using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import the EFS file systems using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:efs/fileSystem:FileSystem foo fs-6fa144c6
@@ -261,7 +48,7 @@ class FileSystem extends CustomResource {
   /// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
   late final Output<String> kmsKeyId;
 
-  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See <span pulumi-lang-nodejs="`lifecyclePolicy`" pulumi-lang-dotnet="`LifecyclePolicy`" pulumi-lang-go="`lifecyclePolicy`" pulumi-lang-python="`lifecycle_policy`" pulumi-lang-yaml="`lifecyclePolicy`" pulumi-lang-java="`lifecyclePolicy`">`lifecycle_policy`</span> block below for details.
+  /// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object. See `lifecycle_policy` block below for details.
   late final Output<List<FileSystemLifecyclePolicy>?> lifecyclePolicies;
 
   /// The value of the file system's `Name` tag.
@@ -276,10 +63,10 @@ class FileSystem extends CustomResource {
   /// The file system performance mode. Can be either `"generalPurpose"` or `"maxIO"` (Default: `"generalPurpose"`).
   late final Output<String> performanceMode;
 
-  /// A file system [protection](https://docs.aws.amazon.com/efs/latest/ug/API_FileSystemProtectionDescription.html) object. See <span pulumi-lang-nodejs="`protection`" pulumi-lang-dotnet="`Protection`" pulumi-lang-go="`protection`" pulumi-lang-python="`protection`" pulumi-lang-yaml="`protection`" pulumi-lang-java="`protection`">`protection`</span> block below for details.
+  /// A file system [protection](https://docs.aws.amazon.com/efs/latest/ug/API_FileSystemProtectionDescription.html) object. See `protection` block below for details.
   late final Output<FileSystemProtection> protection;
 
-  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with <span pulumi-lang-nodejs="`throughputMode`" pulumi-lang-dotnet="`ThroughputMode`" pulumi-lang-go="`throughputMode`" pulumi-lang-python="`throughput_mode`" pulumi-lang-yaml="`throughputMode`" pulumi-lang-java="`throughputMode`">`throughput_mode`</span> set to <span pulumi-lang-nodejs="`provisioned`" pulumi-lang-dotnet="`Provisioned`" pulumi-lang-go="`provisioned`" pulumi-lang-python="`provisioned`" pulumi-lang-yaml="`provisioned`" pulumi-lang-java="`provisioned`">`provisioned`</span>.
+  /// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughput_mode` set to `provisioned`.
   late final Output<double?> provisionedThroughputInMibps;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -288,13 +75,13 @@ class FileSystem extends CustomResource {
   /// The latest known metered size (in bytes) of data stored in the file system, the value is not the exact size that the file system was at any point in time. See Size In Bytes.
   late final Output<List<FileSystemSizeInByte>> sizeInBytes;
 
-  /// A map of tags to assign to the file system. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
-  /// Throughput mode for the file system. Defaults to <span pulumi-lang-nodejs="`bursting`" pulumi-lang-dotnet="`Bursting`" pulumi-lang-go="`bursting`" pulumi-lang-python="`bursting`" pulumi-lang-yaml="`bursting`" pulumi-lang-java="`bursting`">`bursting`</span>. Valid values: <span pulumi-lang-nodejs="`bursting`" pulumi-lang-dotnet="`Bursting`" pulumi-lang-go="`bursting`" pulumi-lang-python="`bursting`" pulumi-lang-yaml="`bursting`" pulumi-lang-java="`bursting`">`bursting`</span>, <span pulumi-lang-nodejs="`provisioned`" pulumi-lang-dotnet="`Provisioned`" pulumi-lang-go="`provisioned`" pulumi-lang-python="`provisioned`" pulumi-lang-yaml="`provisioned`" pulumi-lang-java="`provisioned`">`provisioned`</span>, or <span pulumi-lang-nodejs="`elastic`" pulumi-lang-dotnet="`Elastic`" pulumi-lang-go="`elastic`" pulumi-lang-python="`elastic`" pulumi-lang-yaml="`elastic`" pulumi-lang-java="`elastic`">`elastic`</span>. When using <span pulumi-lang-nodejs="`provisioned`" pulumi-lang-dotnet="`Provisioned`" pulumi-lang-go="`provisioned`" pulumi-lang-python="`provisioned`" pulumi-lang-yaml="`provisioned`" pulumi-lang-java="`provisioned`">`provisioned`</span>, also set <span pulumi-lang-nodejs="`provisionedThroughputInMibps`" pulumi-lang-dotnet="`ProvisionedThroughputInMibps`" pulumi-lang-go="`provisionedThroughputInMibps`" pulumi-lang-python="`provisioned_throughput_in_mibps`" pulumi-lang-yaml="`provisionedThroughputInMibps`" pulumi-lang-java="`provisionedThroughputInMibps`">`provisioned_throughput_in_mibps`</span>.
+  /// Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`, or `elastic`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
   late final Output<String?> throughputMode;
 
   FileSystem(

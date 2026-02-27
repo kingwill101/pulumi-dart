@@ -1,0 +1,3 @@
+library module_ivschat_logging_configuration_destination_configuration;
+
+export 'logging_configuration_destination_configuration/logging_configuration_destination_configuration.dart';

@@ -1,0 +1,3 @@
+library module_codebuild_project_environment_registry_credential;
+
+export 'project_environment_registry_credential/project_environment_registry_credential.dart';

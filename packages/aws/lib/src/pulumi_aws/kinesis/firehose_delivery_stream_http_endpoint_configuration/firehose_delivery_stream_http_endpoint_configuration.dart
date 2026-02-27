@@ -16,22 +16,22 @@ class FirehoseDeliveryStreamHttpEndpointConfiguration {
   /// Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.
   final int? bufferingSize;
 
-  /// The CloudWatch Logging Options for the delivery stream. See <span pulumi-lang-nodejs="`cloudwatchLoggingOptions`" pulumi-lang-dotnet="`CloudwatchLoggingOptions`" pulumi-lang-go="`cloudwatchLoggingOptions`" pulumi-lang-python="`cloudwatch_logging_options`" pulumi-lang-yaml="`cloudwatchLoggingOptions`" pulumi-lang-java="`cloudwatchLoggingOptions`">`cloudwatch_logging_options`</span> block below for details.
+  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatch_logging_options` block below for details.
   final FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions?
       cloudwatchLoggingOptions;
 
   /// The HTTP endpoint name.
   final String? name;
 
-  /// The data processing configuration.  See <span pulumi-lang-nodejs="`processingConfiguration`" pulumi-lang-dotnet="`ProcessingConfiguration`" pulumi-lang-go="`processingConfiguration`" pulumi-lang-python="`processing_configuration`" pulumi-lang-yaml="`processingConfiguration`" pulumi-lang-java="`processingConfiguration`">`processing_configuration`</span> block below for details.
+  /// The data processing configuration.  See `processing_configuration` block below for details.
   final FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration?
       processingConfiguration;
 
-  /// The request configuration.  See <span pulumi-lang-nodejs="`requestConfiguration`" pulumi-lang-dotnet="`RequestConfiguration`" pulumi-lang-go="`requestConfiguration`" pulumi-lang-python="`request_configuration`" pulumi-lang-yaml="`requestConfiguration`" pulumi-lang-java="`requestConfiguration`">`request_configuration`</span> block below for details.
+  /// The request configuration.  See `request_configuration` block below for details.
   final FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration?
       requestConfiguration;
 
-  /// Total amount of seconds Firehose spends on retries. This duration starts after the initial attempt fails, It does not include the time periods during which Firehose waits for acknowledgment from the specified destination after each attempt. Valid values between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`7200`" pulumi-lang-dotnet="`7200`" pulumi-lang-go="`7200`" pulumi-lang-python="`7200`" pulumi-lang-yaml="`7200`" pulumi-lang-java="`7200`">`7200`</span>. Default is <span pulumi-lang-nodejs="`300`" pulumi-lang-dotnet="`300`" pulumi-lang-go="`300`" pulumi-lang-python="`300`" pulumi-lang-yaml="`300`" pulumi-lang-java="`300`">`300`</span>.
+  /// Total amount of seconds Firehose spends on retries. This duration starts after the initial attempt fails, It does not include the time periods during which Firehose waits for acknowledgment from the specified destination after each attempt. Valid values between `0` and `7200`. Default is `300`.
   final int? retryDuration;
 
   /// Kinesis Data Firehose uses this IAM role for all the permissions that the delivery stream needs. The pattern needs to be `arn:.*`.
@@ -40,11 +40,11 @@ class FirehoseDeliveryStreamHttpEndpointConfiguration {
   /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedDataOnly` and `AllData`.  Default value is `FailedDataOnly`.
   final String? s3BackupMode;
 
-  /// The S3 Configuration. See <span pulumi-lang-nodejs="`s3Configuration`" pulumi-lang-dotnet="`S3Configuration`" pulumi-lang-go="`s3Configuration`" pulumi-lang-python="`s3_configuration`" pulumi-lang-yaml="`s3Configuration`" pulumi-lang-java="`s3Configuration`">`s3_configuration`</span> block below for details.
+  /// The S3 Configuration. See `s3_configuration` block below for details.
   final FirehoseDeliveryStreamHttpEndpointConfigurationS3Configuration
       s3Configuration;
 
-  /// The Secret Manager Configuration. See <span pulumi-lang-nodejs="`secretsManagerConfiguration`" pulumi-lang-dotnet="`SecretsManagerConfiguration`" pulumi-lang-go="`secretsManagerConfiguration`" pulumi-lang-python="`secrets_manager_configuration`" pulumi-lang-yaml="`secretsManagerConfiguration`" pulumi-lang-java="`secretsManagerConfiguration`">`secrets_manager_configuration`</span> block below for details.
+  /// The Secret Manager Configuration. See `secrets_manager_configuration` block below for details.
   final FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration?
       secretsManagerConfiguration;
 

@@ -7,99 +7,7 @@ import 'resource_policy_args3.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.dynamodb.ResourcePolicy("example", {
-/// resourceArn: exampleAwsDynamodbTable.arn,
-/// policy: test.json,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.dynamodb.ResourcePolicy("example",
-/// resource_arn=example_aws_dynamodb_table["arn"],
-/// policy=test["json"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.DynamoDB.ResourcePolicy("example", new()
-/// {
-/// ResourceArn = exampleAwsDynamodbTable.Arn,
-/// Policy = test.Json,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/dynamodb"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := dynamodb.NewResourcePolicy(ctx, "example", &dynamodb.ResourcePolicyArgs{
-/// ResourceArn: pulumi.Any(exampleAwsDynamodbTable.Arn),
-/// Policy:      pulumi.Any(test.Json),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.dynamodb.ResourcePolicy;
-/// import com.pulumi.aws.dynamodb.ResourcePolicyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new ResourcePolicy("example", ResourcePolicyArgs.builder()
-/// .resourceArn(exampleAwsDynamodbTable.arn())
-/// .policy(test.json())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:dynamodb:ResourcePolicy
-/// properties:
-/// resourceArn: ${exampleAwsDynamodbTable.arn}
-/// policy: ${test.json}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -107,10 +15,10 @@ import 'resource_policy_args3.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the DynamoDB table.
+/// - `arn` (String) Amazon Resource Name (ARN) of the DynamoDB table.
 ///
 ///
-/// Using `pulumi import`, import DynamoDB Resource Policy using the <span pulumi-lang-nodejs="`resourceArn`" pulumi-lang-dotnet="`ResourceArn`" pulumi-lang-go="`resourceArn`" pulumi-lang-python="`resource_arn`" pulumi-lang-yaml="`resourceArn`" pulumi-lang-java="`resourceArn`">`resource_arn`</span>. For example:
+/// Using `pulumi import`, import DynamoDB Resource Policy using the `resource_arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dynamodb/resourcePolicy:ResourcePolicy example arn:aws:dynamodb:us-east-1:1234567890:table/my-table

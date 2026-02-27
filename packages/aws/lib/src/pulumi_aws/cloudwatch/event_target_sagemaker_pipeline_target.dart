@@ -1,0 +1,3 @@
+library module_cloudwatch_event_target_sagemaker_pipeline_target;
+
+export 'event_target_sagemaker_pipeline_target/event_target_sagemaker_pipeline_target.dart';

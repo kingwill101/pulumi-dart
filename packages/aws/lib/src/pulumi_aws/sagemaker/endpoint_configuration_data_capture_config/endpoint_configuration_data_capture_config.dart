@@ -5,7 +5,7 @@ import '../endpoint_configuration_data_capture_config_capture_content_type_heade
 import '../endpoint_configuration_data_capture_config_capture_option/endpoint_configuration_data_capture_config_capture_option.dart';
 
 class EndpointConfigurationDataCaptureConfig {
-  /// Content type headers to capture. See <span pulumi-lang-nodejs="`captureContentTypeHeader`" pulumi-lang-dotnet="`CaptureContentTypeHeader`" pulumi-lang-go="`captureContentTypeHeader`" pulumi-lang-python="`capture_content_type_header`" pulumi-lang-yaml="`captureContentTypeHeader`" pulumi-lang-java="`captureContentTypeHeader`">`capture_content_type_header`</span> below.
+  /// Content type headers to capture. See `capture_content_type_header` below.
   final EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader?
       captureContentTypeHeader;
 
@@ -16,7 +16,7 @@ class EndpointConfigurationDataCaptureConfig {
   /// URL for S3 location where the captured data is stored.
   final String destinationS3Uri;
 
-  /// Flag to enable data capture. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Flag to enable data capture. Defaults to `false`.
   final bool? enableCapture;
 
   /// Portion of data to capture. Should be between 0 and 100.

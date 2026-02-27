@@ -16,7 +16,7 @@ class ExperimentTemplateArgs {
   /// Description for the experiment template.
   final Input<String> description;
 
-  /// The experiment options for the experiment template. See<span pulumi-lang-nodejs=" experimentOptions " pulumi-lang-dotnet=" ExperimentOptions " pulumi-lang-go=" experimentOptions " pulumi-lang-python=" experiment_options " pulumi-lang-yaml=" experimentOptions " pulumi-lang-java=" experimentOptions "> experiment_options </span>below for more details!
+  /// The experiment options for the experiment template. See experiment_options below for more details!
   final Input<ExperimentTemplateExperimentOptions>? experimentOptions;
 
   /// The configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
@@ -37,7 +37,7 @@ class ExperimentTemplateArgs {
   /// The following arguments are optional:
   final Input<List<ExperimentTemplateStopCondition>> stopConditions;
 
-  /// Key-value mapping of tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Target of an action. See below.

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TaskOptions {
-  /// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) <span pulumi-lang-nodejs="`atime`" pulumi-lang-dotnet="`Atime`" pulumi-lang-go="`atime`" pulumi-lang-python="`atime`" pulumi-lang-yaml="`atime`" pulumi-lang-java="`atime`">`atime`</span> attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+  /// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
   final String? atime;
 
-  /// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to <span pulumi-lang-nodejs="`1048576`" pulumi-lang-dotnet="`1048576`" pulumi-lang-go="`1048576`" pulumi-lang-python="`1048576`" pulumi-lang-yaml="`1048576`" pulumi-lang-java="`1048576`">`1048576`</span>. Value values: `-1` or greater. Default: `-1` (unlimited).
+  /// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
   final int? bytesPerSecond;
 
   /// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).

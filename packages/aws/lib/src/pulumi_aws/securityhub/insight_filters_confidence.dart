@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_confidence;
+
+export 'insight_filters_confidence/insight_filters_confidence.dart';

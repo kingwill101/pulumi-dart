@@ -4,7 +4,7 @@ class AuthorizerJwtConfiguration {
   /// List of the intended recipients of the JWT. A valid JWT must provide an aud that matches at least one entry in this list.
   final List<String>? audiences;
 
-  /// Base domain of the identity provider that issues JSON Web Tokens, such as the <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`">`endpoint`</span> attribute of the <span pulumi-lang-nodejs="`aws.cognito.UserPool`" pulumi-lang-dotnet="`aws.cognito.UserPool`" pulumi-lang-go="`cognito.UserPool`" pulumi-lang-python="`cognito.UserPool`" pulumi-lang-yaml="`aws.cognito.UserPool`" pulumi-lang-java="`aws.cognito.UserPool`">`aws.cognito.UserPool`</span> resource.
+  /// Base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `aws.cognito.UserPool` resource.
   final String? issuer;
 
   AuthorizerJwtConfiguration({

@@ -5,12 +5,12 @@ import '../agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_
 import '../agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_s3/agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_s3.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
-  /// Inline tool definition. See <span pulumi-lang-nodejs="`inlinePayload`" pulumi-lang-dotnet="`InlinePayload`" pulumi-lang-go="`inlinePayload`" pulumi-lang-python="`inline_payload`" pulumi-lang-yaml="`inlinePayload`" pulumi-lang-java="`inlinePayload`">`inline_payload`</span> below.
+  /// Inline tool definition. See `inline_payload` below.
   final List<
           AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>?
       inlinePayloads;
 
-  /// S3-based tool definition. See <span pulumi-lang-nodejs="`s3`" pulumi-lang-dotnet="`S3`" pulumi-lang-go="`s3`" pulumi-lang-python="`s3`" pulumi-lang-yaml="`s3`" pulumi-lang-java="`s3`">`s3`</span> below.
+  /// S3-based tool definition. See `s3` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3? s3;
 
   AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema({

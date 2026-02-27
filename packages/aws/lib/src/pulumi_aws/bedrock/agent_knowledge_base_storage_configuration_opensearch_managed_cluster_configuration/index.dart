@@ -1,3 +1,0 @@
-library module_bedrock_agent_knowledge_base_storage_configuration_opensearch_managed_cluster_configuration;
-
-export 'agent_knowledge_base_storage_configuration_opensearch_managed_cluster_configuration.dart';

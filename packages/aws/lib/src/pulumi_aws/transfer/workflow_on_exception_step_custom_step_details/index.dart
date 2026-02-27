@@ -1,3 +1,0 @@
-library module_transfer_workflow_on_exception_step_custom_step_details;
-
-export 'workflow_on_exception_step_custom_step_details.dart';

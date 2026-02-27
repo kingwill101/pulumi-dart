@@ -26,75 +26,75 @@ import '../log_transformer_transformer_config_type_converter/log_transformer_tra
 import '../log_transformer_transformer_config_upper_case_string/log_transformer_transformer_config_upper_case_string.dart';
 
 class LogTransformerTransformerConfig {
-  /// Adds new key-value pairs to the log event. See <span pulumi-lang-nodejs="`addKeys`" pulumi-lang-dotnet="`AddKeys`" pulumi-lang-go="`addKeys`" pulumi-lang-python="`add_keys`" pulumi-lang-yaml="`addKeys`" pulumi-lang-java="`addKeys`">`add_keys`</span> below for details.
+  /// Adds new key-value pairs to the log event. See `add_keys` below for details.
   final LogTransformerTransformerConfigAddKeys? addKeys;
 
-  /// Copies values within a log event. See <span pulumi-lang-nodejs="`copyValue`" pulumi-lang-dotnet="`CopyValue`" pulumi-lang-go="`copyValue`" pulumi-lang-python="`copy_value`" pulumi-lang-yaml="`copyValue`" pulumi-lang-java="`copyValue`">`copy_value`</span> below for details.
+  /// Copies values within a log event. See `copy_value` below for details.
   final LogTransformerTransformerConfigCopyValue? copyValue;
 
-  /// Parses comma-separated values (CSV) from the log events into columns. See <span pulumi-lang-nodejs="`csv`" pulumi-lang-dotnet="`Csv`" pulumi-lang-go="`csv`" pulumi-lang-python="`csv`" pulumi-lang-yaml="`csv`" pulumi-lang-java="`csv`">`csv`</span> below for details.
+  /// Parses comma-separated values (CSV) from the log events into columns. See `csv` below for details.
   final List<LogTransformerTransformerConfigCsv>? csvs;
 
-  /// Converts a datetime string into a format that you specify. See <span pulumi-lang-nodejs="`dateTimeConverter`" pulumi-lang-dotnet="`DateTimeConverter`" pulumi-lang-go="`dateTimeConverter`" pulumi-lang-python="`date_time_converter`" pulumi-lang-yaml="`dateTimeConverter`" pulumi-lang-java="`dateTimeConverter`">`date_time_converter`</span> below for details.
+  /// Converts a datetime string into a format that you specify. See `date_time_converter` below for details.
   final List<LogTransformerTransformerConfigDateTimeConverter>?
       dateTimeConverters;
 
-  /// Deletes entry from a log event. See <span pulumi-lang-nodejs="`deleteKeys`" pulumi-lang-dotnet="`DeleteKeys`" pulumi-lang-go="`deleteKeys`" pulumi-lang-python="`delete_keys`" pulumi-lang-yaml="`deleteKeys`" pulumi-lang-java="`deleteKeys`">`delete_keys`</span> below for details.
+  /// Deletes entry from a log event. See `delete_keys` below for details.
   final List<LogTransformerTransformerConfigDeleteKey>? deleteKeys;
 
-  /// Parses and structures unstructured data by using pattern matching. See <span pulumi-lang-nodejs="`grok`" pulumi-lang-dotnet="`Grok`" pulumi-lang-go="`grok`" pulumi-lang-python="`grok`" pulumi-lang-yaml="`grok`" pulumi-lang-java="`grok`">`grok`</span> below for details.
+  /// Parses and structures unstructured data by using pattern matching. See `grok` below for details.
   final LogTransformerTransformerConfigGrok? grok;
 
-  /// Converts list of objects that contain key fields into a map of target keys. See <span pulumi-lang-nodejs="`listToMap`" pulumi-lang-dotnet="`ListToMap`" pulumi-lang-go="`listToMap`" pulumi-lang-python="`list_to_map`" pulumi-lang-yaml="`listToMap`" pulumi-lang-java="`listToMap`">`list_to_map`</span> below for details.
+  /// Converts list of objects that contain key fields into a map of target keys. See `list_to_map` below for details.
   final List<LogTransformerTransformerConfigListToMap>? listToMaps;
 
-  /// Converts a string to lowercase. See <span pulumi-lang-nodejs="`lowerCaseString`" pulumi-lang-dotnet="`LowerCaseString`" pulumi-lang-go="`lowerCaseString`" pulumi-lang-python="`lower_case_string`" pulumi-lang-yaml="`lowerCaseString`" pulumi-lang-java="`lowerCaseString`">`lower_case_string`</span> below for details.
+  /// Converts a string to lowercase. See `lower_case_string` below for details.
   final List<LogTransformerTransformerConfigLowerCaseString>? lowerCaseStrings;
 
-  /// Moves a key from one field to another. See <span pulumi-lang-nodejs="`moveKeys`" pulumi-lang-dotnet="`MoveKeys`" pulumi-lang-go="`moveKeys`" pulumi-lang-python="`move_keys`" pulumi-lang-yaml="`moveKeys`" pulumi-lang-java="`moveKeys`">`move_keys`</span> below for details.
+  /// Moves a key from one field to another. See `move_keys` below for details.
   final List<LogTransformerTransformerConfigMoveKey>? moveKeys;
 
-  /// Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See <span pulumi-lang-nodejs="`parseCloudfront`" pulumi-lang-dotnet="`ParseCloudfront`" pulumi-lang-go="`parseCloudfront`" pulumi-lang-python="`parse_cloudfront`" pulumi-lang-yaml="`parseCloudfront`" pulumi-lang-java="`parseCloudfront`">`parse_cloudfront`</span> below for details.
+  /// Parses CloudFront vended logs, extracts fields, and converts them into JSON format. See `parse_cloudfront` below for details.
   final LogTransformerTransformerConfigParseCloudfront? parseCloudfront;
 
-  /// Parses log events that are in JSON format. See <span pulumi-lang-nodejs="`parseJson`" pulumi-lang-dotnet="`ParseJson`" pulumi-lang-go="`parseJson`" pulumi-lang-python="`parse_json`" pulumi-lang-yaml="`parseJson`" pulumi-lang-java="`parseJson`">`parse_json`</span> below for details.
+  /// Parses log events that are in JSON format. See `parse_json` below for details.
   final List<LogTransformerTransformerConfigParseJson>? parseJsons;
 
-  /// Parses a specified field in the original log event into key-value pairs. See <span pulumi-lang-nodejs="`parseKeyValue`" pulumi-lang-dotnet="`ParseKeyValue`" pulumi-lang-go="`parseKeyValue`" pulumi-lang-python="`parse_key_value`" pulumi-lang-yaml="`parseKeyValue`" pulumi-lang-java="`parseKeyValue`">`parse_key_value`</span> below for details.
+  /// Parses a specified field in the original log event into key-value pairs. See `parse_key_value` below for details.
   final List<LogTransformerTransformerConfigParseKeyValue>? parseKeyValues;
 
-  /// Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See <span pulumi-lang-nodejs="`parsePostgres`" pulumi-lang-dotnet="`ParsePostgres`" pulumi-lang-go="`parsePostgres`" pulumi-lang-python="`parse_postgres`" pulumi-lang-yaml="`parsePostgres`" pulumi-lang-java="`parsePostgres`">`parse_postgres`</span> below for details.
+  /// Parses RDS for PostgreSQL vended logs, extracts fields, and and convert them into a JSON format. See `parse_postgres` below for details.
   final LogTransformerTransformerConfigParsePostgres? parsePostgres;
 
-  /// Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See <span pulumi-lang-nodejs="`parseRoute53`" pulumi-lang-dotnet="`ParseRoute53`" pulumi-lang-go="`parseRoute53`" pulumi-lang-python="`parse_route53`" pulumi-lang-yaml="`parseRoute53`" pulumi-lang-java="`parseRoute53`">`parse_route53`</span> below for details.
+  /// Parses Route 53 vended logs, extracts fields, and converts them into JSON format. See `parse_route53` below for details.
   final LogTransformerTransformerConfigParseRoute53? parseRoute53;
 
-  /// Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See <span pulumi-lang-nodejs="`parseToOcsf`" pulumi-lang-dotnet="`ParseToOcsf`" pulumi-lang-go="`parseToOcsf`" pulumi-lang-python="`parse_to_ocsf`" pulumi-lang-yaml="`parseToOcsf`" pulumi-lang-java="`parseToOcsf`">`parse_to_ocsf`</span> below for details.
+  /// Parses logs events and converts them into Open Cybersecurity Schema Framework (OCSF) events. See `parse_to_ocsf` below for details.
   final LogTransformerTransformerConfigParseToOcsf? parseToOcsf;
 
-  /// Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See <span pulumi-lang-nodejs="`parseVpc`" pulumi-lang-dotnet="`ParseVpc`" pulumi-lang-go="`parseVpc`" pulumi-lang-python="`parse_vpc`" pulumi-lang-yaml="`parseVpc`" pulumi-lang-java="`parseVpc`">`parse_vpc`</span> below for details.
+  /// Parses Amazon VPC vended logs, extracts fields, and converts them into JSON format. See `parse_vpc` below for details.
   final LogTransformerTransformerConfigParseVpc? parseVpc;
 
-  /// Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See <span pulumi-lang-nodejs="`parseWaf`" pulumi-lang-dotnet="`ParseWaf`" pulumi-lang-go="`parseWaf`" pulumi-lang-python="`parse_waf`" pulumi-lang-yaml="`parseWaf`" pulumi-lang-java="`parseWaf`">`parse_waf`</span> below for details.
+  /// Parses AWS WAF vended logs, extracts fields, and converts them into JSON format. See `parse_waf` below for details.
   final LogTransformerTransformerConfigParseWaf? parseWaf;
 
-  /// Renames keys in a log event. See <span pulumi-lang-nodejs="`renameKeys`" pulumi-lang-dotnet="`RenameKeys`" pulumi-lang-go="`renameKeys`" pulumi-lang-python="`rename_keys`" pulumi-lang-yaml="`renameKeys`" pulumi-lang-java="`renameKeys`">`rename_keys`</span> below for details.
+  /// Renames keys in a log event. See `rename_keys` below for details.
   final List<LogTransformerTransformerConfigRenameKey>? renameKeys;
 
-  /// Splits a field into an array of strings using a delimiting character. See <span pulumi-lang-nodejs="`splitString`" pulumi-lang-dotnet="`SplitString`" pulumi-lang-go="`splitString`" pulumi-lang-python="`split_string`" pulumi-lang-yaml="`splitString`" pulumi-lang-java="`splitString`">`split_string`</span> below for details.
+  /// Splits a field into an array of strings using a delimiting character. See `split_string` below for details.
   final List<LogTransformerTransformerConfigSplitString>? splitStrings;
 
-  /// Matches a key’s value against a regular expression and replaces all matches with a replacement string. See <span pulumi-lang-nodejs="`substituteString`" pulumi-lang-dotnet="`SubstituteString`" pulumi-lang-go="`substituteString`" pulumi-lang-python="`substitute_string`" pulumi-lang-yaml="`substituteString`" pulumi-lang-java="`substituteString`">`substitute_string`</span> below for details.
+  /// Matches a key’s value against a regular expression and replaces all matches with a replacement string. See `substitute_string` below for details.
   final List<LogTransformerTransformerConfigSubstituteString>?
       substituteStrings;
 
-  /// Removes leading and trailing whitespace from a string. See <span pulumi-lang-nodejs="`trimString`" pulumi-lang-dotnet="`TrimString`" pulumi-lang-go="`trimString`" pulumi-lang-python="`trim_string`" pulumi-lang-yaml="`trimString`" pulumi-lang-java="`trimString`">`trim_string`</span> below for details.
+  /// Removes leading and trailing whitespace from a string. See `trim_string` below for details.
   final List<LogTransformerTransformerConfigTrimString>? trimStrings;
 
-  /// Converts a value type associated with the specified key to the specified type. See <span pulumi-lang-nodejs="`typeConverter`" pulumi-lang-dotnet="`TypeConverter`" pulumi-lang-go="`typeConverter`" pulumi-lang-python="`type_converter`" pulumi-lang-yaml="`typeConverter`" pulumi-lang-java="`typeConverter`">`type_converter`</span> below for details.
+  /// Converts a value type associated with the specified key to the specified type. See `type_converter` below for details.
   final List<LogTransformerTransformerConfigTypeConverter>? typeConverters;
 
-  /// Converts a string to uppercase. See <span pulumi-lang-nodejs="`upperCaseString`" pulumi-lang-dotnet="`UpperCaseString`" pulumi-lang-go="`upperCaseString`" pulumi-lang-python="`upper_case_string`" pulumi-lang-yaml="`upperCaseString`" pulumi-lang-java="`upperCaseString`">`upper_case_string`</span> below for details.
+  /// Converts a string to uppercase. See `upper_case_string` below for details.
   final List<LogTransformerTransformerConfigUpperCaseString>? upperCaseStrings;
 
   LogTransformerTransformerConfig({

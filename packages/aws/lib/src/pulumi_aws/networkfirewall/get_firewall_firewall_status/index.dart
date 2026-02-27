@@ -1,3 +1,0 @@
-library module_networkfirewall_get_firewall_firewall_status;
-
-export 'get_firewall_firewall_status.dart';

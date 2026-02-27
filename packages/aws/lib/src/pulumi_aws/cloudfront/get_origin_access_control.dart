@@ -1,0 +1,5 @@
+library module_cloudfront_get_origin_access_control;
+
+export 'get_origin_access_control/get_origin_access_control.dart';
+export 'get_origin_access_control/get_origin_access_control_args.dart';
+export 'get_origin_access_control/get_origin_access_control_result.dart';

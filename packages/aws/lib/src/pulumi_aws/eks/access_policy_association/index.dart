@@ -1,4 +1,0 @@
-library module_eks_access_policy_association;
-
-export 'access_policy_association.dart';
-export 'access_policy_association_args.dart';

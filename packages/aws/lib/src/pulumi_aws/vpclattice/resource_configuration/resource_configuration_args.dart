@@ -9,7 +9,7 @@ class ResourceConfigurationArgs {
   /// Allow or Deny the association of this resource to a shareable service network.
   final Input<bool>? allowAssociationToShareableServiceNetwork;
 
-  /// Custom domain name for your resource configuration. Additionally, provide a <span pulumi-lang-nodejs="`domainVerificationId`" pulumi-lang-dotnet="`DomainVerificationId`" pulumi-lang-go="`domainVerificationId`" pulumi-lang-python="`domain_verification_id`" pulumi-lang-yaml="`domainVerificationId`" pulumi-lang-java="`domainVerificationId`">`domain_verification_id`</span> to prove your ownership of a domain.
+  /// Custom domain name for your resource configuration. Additionally, provide a `domain_verification_id` to prove your ownership of a domain.
   final Input<String>? customDomainName;
 
   /// The domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
@@ -18,28 +18,28 @@ class ResourceConfigurationArgs {
   /// Name for the Resource Configuration.
   final Input<String>? name;
 
-  /// Port ranges to access the Resource either single port <span pulumi-lang-nodejs="`80`" pulumi-lang-dotnet="`80`" pulumi-lang-go="`80`" pulumi-lang-python="`80`" pulumi-lang-yaml="`80`" pulumi-lang-java="`80`">`80`</span> or range `80-81` range.
+  /// Port ranges to access the Resource either single port `80` or range `80-81` range.
   final Input<List<String>>? portRanges;
 
-  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if <span pulumi-lang-nodejs="`resourceConfigurationGroupId`" pulumi-lang-dotnet="`ResourceConfigurationGroupId`" pulumi-lang-go="`resourceConfigurationGroupId`" pulumi-lang-python="`resource_configuration_group_id`" pulumi-lang-yaml="`resourceConfigurationGroupId`" pulumi-lang-java="`resourceConfigurationGroupId`">`resource_configuration_group_id`</span> is not.
+  /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resource_configuration_group_id` is not.
   final Input<String>? protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Details of the Resource Configuration. See <span pulumi-lang-nodejs="`resourceConfigurationDefinition`" pulumi-lang-dotnet="`ResourceConfigurationDefinition`" pulumi-lang-go="`resourceConfigurationDefinition`" pulumi-lang-python="`resource_configuration_definition`" pulumi-lang-yaml="`resourceConfigurationDefinition`" pulumi-lang-java="`resourceConfigurationDefinition`">`resource_configuration_definition`</span> Block for details.
+  /// Details of the Resource Configuration. See `resource_configuration_definition` Block for details.
   ///
   /// The following arguments are optional:
   final Input<ResourceConfigurationResourceConfigurationDefinition>?
       resourceConfigurationDefinition;
 
-  /// ID of Resource Configuration where <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `CHILD`.
+  /// ID of Resource Configuration where `type` is `CHILD`.
   final Input<String>? resourceConfigurationGroupId;
 
-  /// ID of the Resource Gateway used to access the resource. MUST be specified if <span pulumi-lang-nodejs="`resourceConfigurationGroupId`" pulumi-lang-dotnet="`ResourceConfigurationGroupId`" pulumi-lang-go="`resourceConfigurationGroupId`" pulumi-lang-python="`resource_configuration_group_id`" pulumi-lang-yaml="`resourceConfigurationGroupId`" pulumi-lang-java="`resourceConfigurationGroupId`">`resource_configuration_group_id`</span> is not.
+  /// ID of the Resource Gateway used to access the resource. MUST be specified if `resource_configuration_group_id` is not.
   final Input<String>? resourceGatewayIdentifier;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<ResourceConfigurationTimeouts>? timeouts;
 

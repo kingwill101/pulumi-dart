@@ -1,0 +1,3 @@
+library module_bedrock_agent_flow_definition_node_configuration_lambda_function;
+
+export 'agent_flow_definition_node_configuration_lambda_function/agent_flow_definition_node_configuration_lambda_function.dart';

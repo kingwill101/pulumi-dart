@@ -1,3 +1,0 @@
-library module_vpclattice_listener_default_action_fixed_response;
-
-export 'listener_default_action_fixed_response3.dart';

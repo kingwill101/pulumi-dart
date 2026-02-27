@@ -4,10 +4,10 @@ import '../centralization_rule_for_organization_rule_destination/centralization_
 import '../centralization_rule_for_organization_rule_source/centralization_rule_for_organization_rule_source.dart';
 
 class CentralizationRuleForOrganizationRule {
-  /// Configuration block for the destination where logs will be centralized. See <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span> below.
+  /// Configuration block for the destination where logs will be centralized. See `destination` below.
   final CentralizationRuleForOrganizationRuleDestination destination;
 
-  /// Configuration block for the source of logs to be centralized. See <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> below.
+  /// Configuration block for the source of logs to be centralized. See `source` below.
   final CentralizationRuleForOrganizationRuleSource source;
 
   CentralizationRuleForOrganizationRule({

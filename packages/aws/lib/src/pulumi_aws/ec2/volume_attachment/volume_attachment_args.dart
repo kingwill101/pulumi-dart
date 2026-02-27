@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for VolumeAttachment.
 class VolumeAttachmentArgs {
   /// The device name to expose to the instance (for
-  /// example, `/dev/sdh` or <span pulumi-lang-nodejs="`xvdh`" pulumi-lang-dotnet="`Xvdh`" pulumi-lang-go="`xvdh`" pulumi-lang-python="`xvdh`" pulumi-lang-yaml="`xvdh`" pulumi-lang-java="`xvdh`">`xvdh`</span>).  See [Device Naming on Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html#available-ec2-device-names) and [Device Naming on Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html#available-ec2-device-names) for more information.
+  /// example, `/dev/sdh` or `xvdh`).  See [Device Naming on Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html#available-ec2-device-names) and [Device Naming on Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html#available-ec2-device-names) for more information.
   final Input<String> deviceName;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if you want to force the
+  /// Set to `true` if you want to force the
   /// volume to detach. Useful if previous attempts failed, but use this option only
   /// as a last resort, as this can result in **data loss**. See
   /// [Detaching an Amazon EBS Volume from an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) for more information.

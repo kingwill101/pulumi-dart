@@ -1,4 +1,0 @@
-library module_route53_resolver_firewall_config;
-
-export 'resolver_firewall_config.dart';
-export 'resolver_firewall_config_args.dart';

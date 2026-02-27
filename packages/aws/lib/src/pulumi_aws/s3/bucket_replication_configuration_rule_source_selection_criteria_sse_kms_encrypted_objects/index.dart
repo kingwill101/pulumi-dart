@@ -1,3 +1,0 @@
-library module_s3_bucket_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_objects;
-
-export 'bucket_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_objects.dart';

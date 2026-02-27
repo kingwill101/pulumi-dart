@@ -12,146 +12,11 @@ import 'canary_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const some = new aws.synthetics.Canary("some", {
-/// name: "some-canary",
-/// artifactS3Location: "s3://some-bucket/",
-/// executionRoleArn: "some-role",
-/// handler: "exports.handler",
-/// zipFile: "test-fixtures/lambdatest.zip",
-/// runtimeVersion: "syn-1.0",
-/// schedule: {
-/// expression: "rate(0 minute)",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// some = aws.synthetics.Canary("some",
-/// name="some-canary",
-/// artifact_s3_location="s3://some-bucket/",
-/// execution_role_arn="some-role",
-/// handler="exports.handler",
-/// zip_file="test-fixtures/lambdatest.zip",
-/// runtime_version="syn-1.0",
-/// schedule={
-/// "expression": "rate(0 minute)",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var some = new Aws.Synthetics.Canary("some", new()
-/// {
-/// Name = "some-canary",
-/// ArtifactS3Location = "s3://some-bucket/",
-/// ExecutionRoleArn = "some-role",
-/// Handler = "exports.handler",
-/// ZipFile = "test-fixtures/lambdatest.zip",
-/// RuntimeVersion = "syn-1.0",
-/// Schedule = new Aws.Synthetics.Inputs.CanaryScheduleArgs
-/// {
-/// Expression = "rate(0 minute)",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/synthetics"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := synthetics.NewCanary(ctx, "some", &synthetics.CanaryArgs{
-/// Name:               pulumi.String("some-canary"),
-/// ArtifactS3Location: pulumi.String("s3://some-bucket/"),
-/// ExecutionRoleArn:   pulumi.String("some-role"),
-/// Handler:            pulumi.String("exports.handler"),
-/// ZipFile:            pulumi.String("test-fixtures/lambdatest.zip"),
-/// RuntimeVersion:     pulumi.String("syn-1.0"),
-/// Schedule: &synthetics.CanaryScheduleArgs{
-/// Expression: pulumi.String("rate(0 minute)"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.synthetics.Canary;
-/// import com.pulumi.aws.synthetics.CanaryArgs;
-/// import com.pulumi.aws.synthetics.inputs.CanaryScheduleArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var some = new Canary("some", CanaryArgs.builder()
-/// .name("some-canary")
-/// .artifactS3Location("s3://some-bucket/")
-/// .executionRoleArn("some-role")
-/// .handler("exports.handler")
-/// .zipFile("test-fixtures/lambdatest.zip")
-/// .runtimeVersion("syn-1.0")
-/// .schedule(CanaryScheduleArgs.builder()
-/// .expression("rate(0 minute)")
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// some:
-/// type: aws:synthetics:Canary
-/// properties:
-/// name: some-canary
-/// artifactS3Location: s3://some-bucket/
-/// executionRoleArn: some-role
-/// handler: exports.handler
-/// zipFile: test-fixtures/lambdatest.zip
-/// runtimeVersion: syn-1.0
-/// schedule:
-/// expression: rate(0 minute)
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Synthetics Canaries using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+/// Using `pulumi import`, import Synthetics Canaries using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:synthetics/canary:Canary some some-canary
@@ -166,7 +31,7 @@ class Canary extends CustomResource {
   /// Location in Amazon S3 where Synthetics stores artifacts from the test runs of this canary.
   late final Output<String> artifactS3Location;
 
-  /// Specifies whether to also delete the Lambda functions and layers used by this canary. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether to also delete the Lambda functions and layers used by this canary. The default is `false`.
   late final Output<bool?> deleteLambda;
 
   /// ARN of the Lambda function that is used as your canary's engine.
@@ -193,13 +58,13 @@ class Canary extends CustomResource {
   /// Runtime version to use for the canary. Versions change often so consult the [Amazon CloudWatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html) for the latest valid versions. Values include `syn-python-selenium-1.0`, `syn-nodejs-puppeteer-3.0`, `syn-nodejs-2.2`, `syn-nodejs-2.1`, `syn-nodejs-2.0`, and `syn-1.0`.
   late final Output<String> runtimeVersion;
 
-  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with <span pulumi-lang-nodejs="`zipFile`" pulumi-lang-dotnet="`ZipFile`" pulumi-lang-go="`zipFile`" pulumi-lang-python="`zip_file`" pulumi-lang-yaml="`zipFile`" pulumi-lang-java="`zipFile`">`zip_file`</span>.**
+  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zip_file`.**
   late final Output<String?> s3Bucket;
 
-  /// S3 key of your script. **Conflicts with <span pulumi-lang-nodejs="`zipFile`" pulumi-lang-dotnet="`ZipFile`" pulumi-lang-go="`zipFile`" pulumi-lang-python="`zip_file`" pulumi-lang-yaml="`zipFile`" pulumi-lang-java="`zipFile`">`zip_file`</span>.**
+  /// S3 key of your script. **Conflicts with `zip_file`.**
   late final Output<String?> s3Key;
 
-  /// S3 version ID of your script. **Conflicts with <span pulumi-lang-nodejs="`zipFile`" pulumi-lang-dotnet="`ZipFile`" pulumi-lang-go="`zipFile`" pulumi-lang-python="`zip_file`" pulumi-lang-yaml="`zipFile`" pulumi-lang-java="`zipFile`">`zip_file`</span>.**
+  /// S3 version ID of your script. **Conflicts with `zip_file`.**
   late final Output<String?> s3Version;
 
   /// Configuration block providing how often the canary is to run and when these test runs are to stop. Detailed below.
@@ -219,10 +84,10 @@ class Canary extends CustomResource {
   /// Number of days to retain data about successful runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
   late final Output<int?> successRetentionPeriod;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Structure that contains information about when the canary was created, modified, and most recently run. see Timeline.
@@ -231,7 +96,7 @@ class Canary extends CustomResource {
   /// Configuration block. Detailed below.
   late final Output<CanaryVpcConfig?> vpcConfig;
 
-  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span>, <span pulumi-lang-nodejs="`s3Key`" pulumi-lang-dotnet="`S3Key`" pulumi-lang-go="`s3Key`" pulumi-lang-python="`s3_key`" pulumi-lang-yaml="`s3Key`" pulumi-lang-java="`s3Key`">`s3_key`</span>, and <span pulumi-lang-nodejs="`s3Version`" pulumi-lang-dotnet="`S3Version`" pulumi-lang-go="`s3Version`" pulumi-lang-python="`s3_version`" pulumi-lang-yaml="`s3Version`" pulumi-lang-java="`s3Version`">`s3_version`</span>.**
+  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3_bucket`, `s3_key`, and `s3_version`.**
   late final Output<String?> zipFile;
 
   Canary(

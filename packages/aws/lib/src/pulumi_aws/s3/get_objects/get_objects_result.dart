@@ -4,7 +4,7 @@
 class GetObjectsResult {
   final String bucket;
 
-  /// List of any keys between <span pulumi-lang-nodejs="`prefix`" pulumi-lang-dotnet="`Prefix`" pulumi-lang-go="`prefix`" pulumi-lang-python="`prefix`" pulumi-lang-yaml="`prefix`" pulumi-lang-java="`prefix`">`prefix`</span> and the next occurrence of <span pulumi-lang-nodejs="`delimiter`" pulumi-lang-dotnet="`Delimiter`" pulumi-lang-go="`delimiter`" pulumi-lang-python="`delimiter`" pulumi-lang-yaml="`delimiter`" pulumi-lang-java="`delimiter`">`delimiter`</span> (i.e., similar to subdirectories of the <span pulumi-lang-nodejs="`prefix`" pulumi-lang-dotnet="`Prefix`" pulumi-lang-go="`prefix`" pulumi-lang-python="`prefix`" pulumi-lang-yaml="`prefix`" pulumi-lang-java="`prefix`">`prefix`</span> "directory"); the list is only returned when you specify <span pulumi-lang-nodejs="`delimiter`" pulumi-lang-dotnet="`Delimiter`" pulumi-lang-go="`delimiter`" pulumi-lang-python="`delimiter`" pulumi-lang-yaml="`delimiter`" pulumi-lang-java="`delimiter`">`delimiter`</span>
+  /// List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
   final List<String> commonPrefixes;
   final String? delimiter;
   final String? encodingType;
@@ -17,7 +17,7 @@ class GetObjectsResult {
   final List<String> keys;
   final int? maxKeys;
 
-  /// List of strings representing object owner IDs (see <span pulumi-lang-nodejs="`fetchOwner`" pulumi-lang-dotnet="`FetchOwner`" pulumi-lang-go="`fetchOwner`" pulumi-lang-python="`fetch_owner`" pulumi-lang-yaml="`fetchOwner`" pulumi-lang-java="`fetchOwner`">`fetch_owner`</span> above)
+  /// List of strings representing object owner IDs (see `fetch_owner` above)
   final List<String> owners;
   final String? prefix;
   final String region;

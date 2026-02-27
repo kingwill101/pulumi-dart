@@ -1,4 +1,0 @@
-library module_route53_resolver_rule_association;
-
-export 'resolver_rule_association.dart';
-export 'resolver_rule_association_args.dart';

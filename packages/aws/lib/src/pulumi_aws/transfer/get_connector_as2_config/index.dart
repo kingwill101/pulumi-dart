@@ -1,3 +1,0 @@
-library module_transfer_get_connector_as2_config;
-
-export 'get_connector_as2_config.dart';

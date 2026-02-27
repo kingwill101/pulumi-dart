@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class VpnConnectionTunnel1LogOptionsCloudwatchLogOptions {
-  /// Enable or disable BGP logging feature. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enable or disable BGP logging feature. The default is `false`.
   final bool? bgpLogEnabled;
 
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send BGP logs to.
   final String? bgpLogGroupArn;
 
-  /// Set BGP log format. Default format is json. Possible values are: <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span> and <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span>. The default is <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span>.
+  /// Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   final String? bgpLogOutputFormat;
 
-  /// Enable or disable VPN tunnel logging feature. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enable or disable VPN tunnel logging feature. The default is `false`.
   final bool? logEnabled;
 
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send logs to.
   final String? logGroupArn;
 
-  /// Set log format. Default format is json. Possible values are: <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span> and <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span>. The default is <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span>.
+  /// Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   final String? logOutputFormat;
 
   VpnConnectionTunnel1LogOptionsCloudwatchLogOptions({

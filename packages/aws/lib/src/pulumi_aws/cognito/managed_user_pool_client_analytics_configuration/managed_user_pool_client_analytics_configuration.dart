@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ManagedUserPoolClientAnalyticsConfiguration {
-  /// Application ARN for an Amazon Pinpoint application. It conflicts with <span pulumi-lang-nodejs="`externalId`" pulumi-lang-dotnet="`ExternalId`" pulumi-lang-go="`externalId`" pulumi-lang-python="`external_id`" pulumi-lang-yaml="`externalId`" pulumi-lang-java="`externalId`">`external_id`</span> and <span pulumi-lang-nodejs="`roleArn`" pulumi-lang-dotnet="`RoleArn`" pulumi-lang-go="`roleArn`" pulumi-lang-python="`role_arn`" pulumi-lang-yaml="`roleArn`" pulumi-lang-java="`roleArn`">`role_arn`</span>.
+  /// Application ARN for an Amazon Pinpoint application. It conflicts with `external_id` and `role_arn`.
   final String? applicationArn;
 
   /// Unique identifier for an Amazon Pinpoint application.
   final String? applicationId;
 
-  /// ID for the Analytics Configuration and conflicts with <span pulumi-lang-nodejs="`applicationArn`" pulumi-lang-dotnet="`ApplicationArn`" pulumi-lang-go="`applicationArn`" pulumi-lang-python="`application_arn`" pulumi-lang-yaml="`applicationArn`" pulumi-lang-java="`applicationArn`">`application_arn`</span>.
+  /// ID for the Analytics Configuration and conflicts with `application_arn`.
   final String? externalId;
 
-  /// ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics. It conflicts with <span pulumi-lang-nodejs="`applicationArn`" pulumi-lang-dotnet="`ApplicationArn`" pulumi-lang-go="`applicationArn`" pulumi-lang-python="`application_arn`" pulumi-lang-yaml="`applicationArn`" pulumi-lang-java="`applicationArn`">`application_arn`</span>.
+  /// ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics. It conflicts with `application_arn`.
   final String? roleArn;
 
-  /// If <span pulumi-lang-nodejs="`userDataShared`" pulumi-lang-dotnet="`UserDataShared`" pulumi-lang-go="`userDataShared`" pulumi-lang-python="`user_data_shared`" pulumi-lang-yaml="`userDataShared`" pulumi-lang-java="`userDataShared`">`user_data_shared`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+  /// If `user_data_shared` is set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
   final bool? userDataShared;
 
   ManagedUserPoolClientAnalyticsConfiguration({

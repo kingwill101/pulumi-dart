@@ -1,3 +1,0 @@
-library module_alb_get_listener_default_action_forward;
-
-export 'get_listener_default_action_forward.dart';

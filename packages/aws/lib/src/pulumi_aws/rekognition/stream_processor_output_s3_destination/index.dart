@@ -1,3 +1,0 @@
-library module_rekognition_stream_processor_output_s3_destination;
-
-export 'stream_processor_output_s3_destination.dart';

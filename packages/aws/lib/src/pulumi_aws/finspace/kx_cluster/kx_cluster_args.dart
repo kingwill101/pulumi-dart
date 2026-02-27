@@ -16,7 +16,7 @@ class KxClusterArgs {
   /// Configuration based on which FinSpace will scale in or scale out nodes in your cluster. See auto_scaling_configuration.
   final Input<KxClusterAutoScalingConfiguration>? autoScalingConfiguration;
 
-  /// The availability zone identifiers for the requested regions. Required when <span pulumi-lang-nodejs="`azMode`" pulumi-lang-dotnet="`AzMode`" pulumi-lang-go="`azMode`" pulumi-lang-python="`az_mode`" pulumi-lang-yaml="`azMode`" pulumi-lang-java="`azMode`">`az_mode`</span> is set to SINGLE.
+  /// The availability zone identifiers for the requested regions. Required when `az_mode` is set to SINGLE.
   final Input<String>? availabilityZoneId;
 
   /// The number of availability zones you want to assign per cluster. This can be one of the following:
@@ -61,14 +61,14 @@ class KxClusterArgs {
   /// Version of FinSpace Managed kdb to run.
   final Input<String> releaseLabel;
 
-  /// Size and type of the temporary storage that is used to hold data during the savedown process. This parameter is required when you choose <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> as RDB. All the data written to this storage space is lost when the cluster node is restarted. See savedown_storage_configuration.
+  /// Size and type of the temporary storage that is used to hold data during the savedown process. This parameter is required when you choose `type` as RDB. All the data written to this storage space is lost when the cluster node is restarted. See savedown_storage_configuration.
   final Input<KxClusterSavedownStorageConfiguration>?
       savedownStorageConfiguration;
 
   /// The structure that stores the configuration details of a scaling group.
   final Input<KxClusterScalingGroupConfiguration>? scalingGroupConfiguration;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// A configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant , the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path.

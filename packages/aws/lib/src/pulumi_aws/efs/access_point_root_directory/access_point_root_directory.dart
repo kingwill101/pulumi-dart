@@ -6,7 +6,7 @@ class AccessPointRootDirectory {
   /// POSIX IDs and permissions to apply to the access point's Root Directory. See Creation Info below.
   final AccessPointRootDirectoryCreationInfo? creationInfo;
 
-  /// Path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide <span pulumi-lang-nodejs="`creationInfo`" pulumi-lang-dotnet="`CreationInfo`" pulumi-lang-go="`creationInfo`" pulumi-lang-python="`creation_info`" pulumi-lang-yaml="`creationInfo`" pulumi-lang-java="`creationInfo`">`creation_info`</span>.
+  /// Path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide `creation_info`.
   final String? path;
 
   AccessPointRootDirectory({

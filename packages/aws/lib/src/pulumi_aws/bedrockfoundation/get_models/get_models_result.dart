@@ -13,7 +13,7 @@ class GetModelsResult {
   /// AWS region.
   final String id;
 
-  /// List of model summary objects. See <span pulumi-lang-nodejs="`modelSummaries`" pulumi-lang-dotnet="`ModelSummaries`" pulumi-lang-go="`modelSummaries`" pulumi-lang-python="`model_summaries`" pulumi-lang-yaml="`modelSummaries`" pulumi-lang-java="`modelSummaries`">`model_summaries`</span>.
+  /// List of model summary objects. See `model_summaries`.
   final List<GetModelsModelSummary> modelSummaries;
   final String region;
 

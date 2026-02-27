@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getImage.
 class GetImageArgs2 {
-  /// Sha256 digest of the image manifest. At least one of <span pulumi-lang-nodejs="`imageDigest`" pulumi-lang-dotnet="`ImageDigest`" pulumi-lang-go="`imageDigest`" pulumi-lang-python="`image_digest`" pulumi-lang-yaml="`imageDigest`" pulumi-lang-java="`imageDigest`">`image_digest`</span>, <span pulumi-lang-nodejs="`imageTag`" pulumi-lang-dotnet="`ImageTag`" pulumi-lang-go="`imageTag`" pulumi-lang-python="`image_tag`" pulumi-lang-yaml="`imageTag`" pulumi-lang-java="`imageTag`">`image_tag`</span>, or <span pulumi-lang-nodejs="`mostRecent`" pulumi-lang-dotnet="`MostRecent`" pulumi-lang-go="`mostRecent`" pulumi-lang-python="`most_recent`" pulumi-lang-yaml="`mostRecent`" pulumi-lang-java="`mostRecent`">`most_recent`</span> must be specified.
+  /// Sha256 digest of the image manifest. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
   final Input<String>? imageDigest;
 
-  /// Tag associated with this image. At least one of <span pulumi-lang-nodejs="`imageDigest`" pulumi-lang-dotnet="`ImageDigest`" pulumi-lang-go="`imageDigest`" pulumi-lang-python="`image_digest`" pulumi-lang-yaml="`imageDigest`" pulumi-lang-java="`imageDigest`">`image_digest`</span>, <span pulumi-lang-nodejs="`imageTag`" pulumi-lang-dotnet="`ImageTag`" pulumi-lang-go="`imageTag`" pulumi-lang-python="`image_tag`" pulumi-lang-yaml="`imageTag`" pulumi-lang-java="`imageTag`">`image_tag`</span>, or <span pulumi-lang-nodejs="`mostRecent`" pulumi-lang-dotnet="`MostRecent`" pulumi-lang-go="`mostRecent`" pulumi-lang-python="`most_recent`" pulumi-lang-yaml="`mostRecent`" pulumi-lang-java="`mostRecent`">`most_recent`</span> must be specified.
+  /// Tag associated with this image. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
   final Input<String>? imageTag;
 
-  /// Return the most recently pushed image. At least one of <span pulumi-lang-nodejs="`imageDigest`" pulumi-lang-dotnet="`ImageDigest`" pulumi-lang-go="`imageDigest`" pulumi-lang-python="`image_digest`" pulumi-lang-yaml="`imageDigest`" pulumi-lang-java="`imageDigest`">`image_digest`</span>, <span pulumi-lang-nodejs="`imageTag`" pulumi-lang-dotnet="`ImageTag`" pulumi-lang-go="`imageTag`" pulumi-lang-python="`image_tag`" pulumi-lang-yaml="`imageTag`" pulumi-lang-java="`imageTag`">`image_tag`</span>, or <span pulumi-lang-nodejs="`mostRecent`" pulumi-lang-dotnet="`MostRecent`" pulumi-lang-go="`mostRecent`" pulumi-lang-python="`most_recent`" pulumi-lang-yaml="`mostRecent`" pulumi-lang-java="`mostRecent`">`most_recent`</span> must be specified.
+  /// Return the most recently pushed image. At least one of `image_digest`, `image_tag`, or `most_recent` must be specified.
   final Input<bool>? mostRecent;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

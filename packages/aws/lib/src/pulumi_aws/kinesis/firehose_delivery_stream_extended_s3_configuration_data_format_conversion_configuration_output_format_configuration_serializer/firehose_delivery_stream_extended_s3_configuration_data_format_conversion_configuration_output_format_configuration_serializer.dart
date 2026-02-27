@@ -4,7 +4,7 @@ import '../firehose_delivery_stream_extended_s3_configuration_data_format_conver
 import '../firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_output_format_configuration_serializer_parquet_ser_de/firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_output_format_configuration_serializer_parquet_ser_de.dart';
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer {
-  /// Specifies converting data to the ORC format before storing it in Amazon S3. For more information, see [Apache ORC](https://orc.apache.org/docs/). See <span pulumi-lang-nodejs="`orcSerDe`" pulumi-lang-dotnet="`OrcSerDe`" pulumi-lang-go="`orcSerDe`" pulumi-lang-python="`orc_ser_de`" pulumi-lang-yaml="`orcSerDe`" pulumi-lang-java="`orcSerDe`">`orc_ser_de`</span> block below for details.
+  /// Specifies converting data to the ORC format before storing it in Amazon S3. For more information, see [Apache ORC](https://orc.apache.org/docs/). See `orc_ser_de` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe?
       orcSerDe;
 

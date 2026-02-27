@@ -1,0 +1,3 @@
+library module_costexplorer_anomaly_subscription_subscriber;
+
+export 'anomaly_subscription_subscriber/anomaly_subscription_subscriber.dart';

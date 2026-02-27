@@ -36,7 +36,7 @@ class TaskArgs {
   /// Amazon Resource Name (ARN) of source DataSync Location.
   final Input<String> sourceLocationArn;
 
-  /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// One of the following task modes for your data transfer:
@@ -44,7 +44,7 @@ class TaskArgs {
   /// * `ENHANCED` - Transfer virtually unlimited numbers of objects with enhanced metrics, more detailed logs, and higher performance than Basic mode. Currently available for transfers between Amazon S3 locations.
   final Input<String>? taskMode;
 
-  /// Configuration block containing the configuration of a DataSync Task Report. See <span pulumi-lang-nodejs="`taskReportConfig`" pulumi-lang-dotnet="`TaskReportConfig`" pulumi-lang-go="`taskReportConfig`" pulumi-lang-python="`task_report_config`" pulumi-lang-yaml="`taskReportConfig`" pulumi-lang-java="`taskReportConfig`">`task_report_config`</span> below.
+  /// Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
   final Input<TaskTaskReportConfig>? taskReportConfig;
 
   TaskArgs({

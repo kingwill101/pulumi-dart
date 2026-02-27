@@ -1,3 +1,0 @@
-library module_lambda_capacity_provider_instance_requirement;
-
-export 'capacity_provider_instance_requirement.dart';

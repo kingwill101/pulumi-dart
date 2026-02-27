@@ -1,0 +1,3 @@
+library module_lex_v2models_bot_data_privacy;
+
+export 'v2models_bot_data_privacy/v2models_bot_data_privacy.dart';

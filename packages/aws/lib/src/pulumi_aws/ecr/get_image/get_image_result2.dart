@@ -16,7 +16,7 @@ class GetImageResult2 {
   /// List of tags associated with this image.
   final List<String> imageTags;
 
-  /// The URI for the specific image version specified by <span pulumi-lang-nodejs="`imageTag`" pulumi-lang-dotnet="`ImageTag`" pulumi-lang-go="`imageTag`" pulumi-lang-python="`image_tag`" pulumi-lang-yaml="`imageTag`" pulumi-lang-java="`imageTag`">`image_tag`</span> or <span pulumi-lang-nodejs="`imageDigest`" pulumi-lang-dotnet="`ImageDigest`" pulumi-lang-go="`imageDigest`" pulumi-lang-python="`image_digest`" pulumi-lang-yaml="`imageDigest`" pulumi-lang-java="`imageDigest`">`image_digest`</span>.
+  /// The URI for the specific image version specified by `image_tag` or `image_digest`.
   final String imageUri;
   final bool? mostRecent;
   final String region;

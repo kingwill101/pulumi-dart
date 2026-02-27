@@ -1,0 +1,3 @@
+library module_bedrock_agent_prompt_variant_gen_ai_resource_agent;
+
+export 'agent_prompt_variant_gen_ai_resource_agent/agent_prompt_variant_gen_ai_resource_agent.dart';

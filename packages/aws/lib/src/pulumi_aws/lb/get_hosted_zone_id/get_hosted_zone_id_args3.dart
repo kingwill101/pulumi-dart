@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getHostedZoneId.
 class GetHostedZoneIdArgs3 {
-  /// Type of load balancer to create. Possible values are <span pulumi-lang-nodejs="`application`" pulumi-lang-dotnet="`Application`" pulumi-lang-go="`application`" pulumi-lang-python="`application`" pulumi-lang-yaml="`application`" pulumi-lang-java="`application`">`application`</span> or <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span>. The default value is <span pulumi-lang-nodejs="`application`" pulumi-lang-dotnet="`Application`" pulumi-lang-go="`application`" pulumi-lang-python="`application`" pulumi-lang-yaml="`application`" pulumi-lang-java="`application`">`application`</span>.
+  /// Type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
   final Input<String>? loadBalancerType;
 
   /// Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.

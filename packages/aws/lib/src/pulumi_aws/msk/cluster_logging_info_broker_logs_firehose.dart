@@ -1,0 +1,3 @@
+library module_msk_cluster_logging_info_broker_logs_firehose;
+
+export 'cluster_logging_info_broker_logs_firehose/cluster_logging_info_broker_logs_firehose.dart';

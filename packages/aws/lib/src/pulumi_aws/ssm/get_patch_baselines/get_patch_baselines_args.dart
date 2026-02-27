@@ -5,10 +5,10 @@ import '../get_patch_baselines_filter/get_patch_baselines_filter.dart';
 
 /// Arguments for getPatchBaselines.
 class GetPatchBaselinesArgs {
-  /// Only return baseline identities where <span pulumi-lang-nodejs="`defaultBaseline`" pulumi-lang-dotnet="`DefaultBaseline`" pulumi-lang-go="`defaultBaseline`" pulumi-lang-python="`default_baseline`" pulumi-lang-yaml="`defaultBaseline`" pulumi-lang-java="`defaultBaseline`">`default_baseline`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Only return baseline identities where `default_baseline` is `true`.
   final Input<bool>? defaultBaselines;
 
-  /// Key-value pairs used to filter the results. See <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> below.
+  /// Key-value pairs used to filter the results. See `filter` below.
   final Input<List<GetPatchBaselinesFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -1,0 +1,3 @@
+library module_synthetics_canary_artifact_config_s3_encryption;
+
+export 'canary_artifact_config_s3_encryption/canary_artifact_config_s3_encryption.dart';

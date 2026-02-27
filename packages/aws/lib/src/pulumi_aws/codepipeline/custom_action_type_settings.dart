@@ -1,0 +1,3 @@
+library module_codepipeline_custom_action_type_settings;
+
+export 'custom_action_type_settings/custom_action_type_settings.dart';

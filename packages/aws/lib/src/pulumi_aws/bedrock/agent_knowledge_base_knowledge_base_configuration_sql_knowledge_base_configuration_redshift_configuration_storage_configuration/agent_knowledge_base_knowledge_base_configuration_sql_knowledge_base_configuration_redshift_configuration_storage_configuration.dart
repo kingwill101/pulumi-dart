@@ -4,11 +4,11 @@ import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_storage_configuration_redshift_configuration/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_storage_configuration_redshift_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration {
-  /// Configurations for storage in AWS Glue Data Catalog. See <span pulumi-lang-nodejs="`awsDataCatalogConfiguration`" pulumi-lang-dotnet="`AwsDataCatalogConfiguration`" pulumi-lang-go="`awsDataCatalogConfiguration`" pulumi-lang-python="`aws_data_catalog_configuration`" pulumi-lang-yaml="`awsDataCatalogConfiguration`" pulumi-lang-java="`awsDataCatalogConfiguration`">`aws_data_catalog_configuration`</span> block for details.
+  /// Configurations for storage in AWS Glue Data Catalog. See `aws_data_catalog_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration?
       awsDataCatalogConfiguration;
 
-  /// Configurations for storage in Amazon Redshift. See <span pulumi-lang-nodejs="`redshiftConfiguration`" pulumi-lang-dotnet="`RedshiftConfiguration`" pulumi-lang-go="`redshiftConfiguration`" pulumi-lang-python="`redshift_configuration`" pulumi-lang-yaml="`redshiftConfiguration`" pulumi-lang-java="`redshiftConfiguration`">`redshift_configuration`</span> block for details.
+  /// Configurations for storage in Amazon Redshift. See `redshift_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration?
       redshiftConfiguration;
 

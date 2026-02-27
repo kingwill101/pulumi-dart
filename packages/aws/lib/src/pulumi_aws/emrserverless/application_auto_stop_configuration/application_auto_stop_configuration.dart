@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ApplicationAutoStopConfiguration {
-  /// Enables the application to automatically stop after a certain amount of time being idle. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Enables the application to automatically stop after a certain amount of time being idle. Defaults to `true`.
   final bool? enabled;
 
-  /// The amount of idle time in minutes after which your application will automatically stop. Defaults to <span pulumi-lang-nodejs="`15`" pulumi-lang-dotnet="`15`" pulumi-lang-go="`15`" pulumi-lang-python="`15`" pulumi-lang-yaml="`15`" pulumi-lang-java="`15`">`15`</span> minutes.
+  /// The amount of idle time in minutes after which your application will automatically stop. Defaults to `15` minutes.
   final int? idleTimeoutMinutes;
 
   ApplicationAutoStopConfiguration({

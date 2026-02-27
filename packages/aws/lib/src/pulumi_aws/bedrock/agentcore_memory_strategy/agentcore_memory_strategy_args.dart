@@ -6,7 +6,7 @@ import '../agentcore_memory_strategy_timeouts/agentcore_memory_strategy_timeouts
 
 /// The set of arguments for AgentcoreMemoryStrategy.
 class AgentcoreMemoryStrategyArgs {
-  /// Custom configuration block. Required when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `CUSTOM`, must be omitted for other types. See <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`">`configuration`</span> below.
+  /// Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` below.
   final Input<AgentcoreMemoryStrategyConfiguration>? configuration;
 
   /// Description of the memory strategy.

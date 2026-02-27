@@ -7,10 +7,10 @@ class GetBudgetNotification {
   /// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`.
   final String notificationType;
 
-  /// (Optional) E-Mail addresses to notify. Either this or <span pulumi-lang-nodejs="`subscriberSnsTopicArns`" pulumi-lang-dotnet="`SubscriberSnsTopicArns`" pulumi-lang-go="`subscriberSnsTopicArns`" pulumi-lang-python="`subscriber_sns_topic_arns`" pulumi-lang-yaml="`subscriberSnsTopicArns`" pulumi-lang-java="`subscriberSnsTopicArns`">`subscriber_sns_topic_arns`</span> is required.
+  /// (Optional) E-Mail addresses to notify. Either this or `subscriber_sns_topic_arns` is required.
   final List<String> subscriberEmailAddresses;
 
-  /// (Optional) SNS topics to notify. Either this or <span pulumi-lang-nodejs="`subscriberEmailAddresses`" pulumi-lang-dotnet="`SubscriberEmailAddresses`" pulumi-lang-go="`subscriberEmailAddresses`" pulumi-lang-python="`subscriber_email_addresses`" pulumi-lang-yaml="`subscriberEmailAddresses`" pulumi-lang-java="`subscriberEmailAddresses`">`subscriber_email_addresses`</span> is required.
+  /// (Optional) SNS topics to notify. Either this or `subscriber_email_addresses` is required.
   final List<String> subscriberSnsTopicArns;
 
   /// (Required) Threshold when the notification should be sent.

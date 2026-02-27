@@ -1,3 +1,0 @@
-library module_cfg_organization_conformance_pack_input_parameter;
-
-export 'organization_conformance_pack_input_parameter.dart';

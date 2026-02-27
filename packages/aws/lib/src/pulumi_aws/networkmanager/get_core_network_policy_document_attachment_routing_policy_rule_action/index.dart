@@ -1,3 +1,0 @@
-library module_networkmanager_get_core_network_policy_document_attachment_routing_policy_rule_action;
-
-export 'get_core_network_policy_document_attachment_routing_policy_rule_action.dart';

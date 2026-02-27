@@ -24,7 +24,7 @@ class GetVirtualRouterResult {
   /// Resource owner's AWS account ID.
   final String resourceOwner;
 
-  /// Virtual routers specification. See the <span pulumi-lang-nodejs="`aws.appmesh.VirtualRouter`" pulumi-lang-dotnet="`aws.appmesh.VirtualRouter`" pulumi-lang-go="`appmesh.VirtualRouter`" pulumi-lang-python="`appmesh.VirtualRouter`" pulumi-lang-yaml="`aws.appmesh.VirtualRouter`" pulumi-lang-java="`aws.appmesh.VirtualRouter`">`aws.appmesh.VirtualRouter`</span> resource for details.
+  /// Virtual routers specification. See the `aws.appmesh.VirtualRouter` resource for details.
   final List<GetVirtualRouterSpec> specs;
 
   /// Map of tags.

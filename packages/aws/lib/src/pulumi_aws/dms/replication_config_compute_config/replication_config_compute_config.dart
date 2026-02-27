@@ -16,7 +16,7 @@ class ReplicationConfigComputeConfig {
   /// Specifies the minimum value of the DMS capacity units (DCUs) for which a given DMS Serverless replication can be provisioned. The list of valid DCU values includes 1, 2, 4, 8, 16, 32, 64, 128, 192, 256, and 384. If this value isn't set DMS sets the lowest allowed value, 1.
   final int? minCapacityUnits;
 
-  /// Specifies if the replication instance is a multi-az deployment. You cannot set the <span pulumi-lang-nodejs="`availabilityZone`" pulumi-lang-dotnet="`AvailabilityZone`" pulumi-lang-go="`availabilityZone`" pulumi-lang-python="`availability_zone`" pulumi-lang-yaml="`availabilityZone`" pulumi-lang-java="`availabilityZone`">`availability_zone`</span> parameter if the <span pulumi-lang-nodejs="`multiAz`" pulumi-lang-dotnet="`MultiAz`" pulumi-lang-go="`multiAz`" pulumi-lang-python="`multi_az`" pulumi-lang-yaml="`multiAz`" pulumi-lang-java="`multiAz`">`multi_az`</span> parameter is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availability_zone` parameter if the `multi_az` parameter is set to `true`.
   final bool? multiAz;
 
   /// The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).

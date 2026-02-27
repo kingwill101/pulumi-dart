@@ -1,3 +1,0 @@
-library module_elb_load_balancer_health_check;
-
-export 'load_balancer_health_check.dart';

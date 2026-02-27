@@ -1,3 +1,0 @@
-library module_sagemaker_workteam_worker_access_configuration_s3_presign_iam_policy_constraints;
-
-export 'workteam_worker_access_configuration_s3_presign_iam_policy_constraints.dart';

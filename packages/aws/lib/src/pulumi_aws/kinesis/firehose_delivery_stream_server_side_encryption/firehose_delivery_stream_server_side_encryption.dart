@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FirehoseDeliveryStreamServerSideEncryption {
-  /// Whether to enable encryption at rest. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable encryption at rest. Default is `false`.
   final bool? enabled;
 
-  /// Amazon Resource Name (ARN) of the encryption key. Required when <span pulumi-lang-nodejs="`keyType`" pulumi-lang-dotnet="`KeyType`" pulumi-lang-go="`keyType`" pulumi-lang-python="`key_type`" pulumi-lang-yaml="`keyType`" pulumi-lang-java="`keyType`">`key_type`</span> is `CUSTOMER_MANAGED_CMK`.
+  /// Amazon Resource Name (ARN) of the encryption key. Required when `key_type` is `CUSTOMER_MANAGED_CMK`.
   final String? keyArn;
 
   /// Type of encryption key. Default is `AWS_OWNED_CMK`. Valid values are `AWS_OWNED_CMK` and `CUSTOMER_MANAGED_CMK`

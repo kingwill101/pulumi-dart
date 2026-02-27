@@ -1,0 +1,3 @@
+library module_ses_receipt_rule_stop_action;
+
+export 'receipt_rule_stop_action/receipt_rule_stop_action.dart';

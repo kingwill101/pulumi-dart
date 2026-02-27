@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ApplicationApplicationConfigurationApplicationEncryptionConfiguration {
-  /// The ARN of the KMS key to use for encryption. Required when <span pulumi-lang-nodejs="`keyType`" pulumi-lang-dotnet="`KeyType`" pulumi-lang-go="`keyType`" pulumi-lang-python="`key_type`" pulumi-lang-yaml="`keyType`" pulumi-lang-java="`keyType`">`key_type`</span> is set to `CUSTOMER_MANAGED_KEY`. The KMS key must be in the same region as the application.
+  /// The ARN of the KMS key to use for encryption. Required when `key_type` is set to `CUSTOMER_MANAGED_KEY`. The KMS key must be in the same region as the application.
   final String? keyId;
 
   /// The type of encryption key to use. Valid values: `CUSTOMER_MANAGED_KEY`, `AWS_OWNED_KEY`.

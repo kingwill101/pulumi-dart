@@ -4,11 +4,11 @@ import '../agent_data_source_vector_ingestion_configuration_parsing_configuratio
 import '../agent_data_source_vector_ingestion_configuration_parsing_configuration_bedrock_foundation_model_configuration/agent_data_source_vector_ingestion_configuration_parsing_configuration_bedrock_foundation_model_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfigurationParsingConfiguration {
-  /// Settings for using Amazon Bedrock Data Automation to parse documents. See <span pulumi-lang-nodejs="`bedrockDataAutomationConfiguration`" pulumi-lang-dotnet="`BedrockDataAutomationConfiguration`" pulumi-lang-go="`bedrockDataAutomationConfiguration`" pulumi-lang-python="`bedrock_data_automation_configuration`" pulumi-lang-yaml="`bedrockDataAutomationConfiguration`" pulumi-lang-java="`bedrockDataAutomationConfiguration`">`bedrock_data_automation_configuration`</span> block for details.
+  /// Settings for using Amazon Bedrock Data Automation to parse documents. See `bedrock_data_automation_configuration` block for details.
   final AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockDataAutomationConfiguration?
       bedrockDataAutomationConfiguration;
 
-  /// Settings for a foundation model used to parse documents in a data source. See <span pulumi-lang-nodejs="`bedrockFoundationModelConfiguration`" pulumi-lang-dotnet="`BedrockFoundationModelConfiguration`" pulumi-lang-go="`bedrockFoundationModelConfiguration`" pulumi-lang-python="`bedrock_foundation_model_configuration`" pulumi-lang-yaml="`bedrockFoundationModelConfiguration`" pulumi-lang-java="`bedrockFoundationModelConfiguration`">`bedrock_foundation_model_configuration`</span> block for details.
+  /// Settings for a foundation model used to parse documents in a data source. See `bedrock_foundation_model_configuration` block for details.
   final AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration?
       bedrockFoundationModelConfiguration;
 

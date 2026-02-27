@@ -1,0 +1,3 @@
+library module_lambda_capacity_provider_permissions_config;
+
+export 'capacity_provider_permissions_config/capacity_provider_permissions_config.dart';

@@ -1,4 +1,0 @@
-library module_ec2_internet_gateway_attachment;
-
-export 'internet_gateway_attachment.dart';
-export 'internet_gateway_attachment_args.dart';

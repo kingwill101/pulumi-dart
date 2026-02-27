@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../log_transformer_transformer_config_substitute_string_entry/log_transformer_transformer_config_substitute_string_entry.dart';
 
 class LogTransformerTransformerConfigSubstituteString {
-  /// Objects containing the information about the fields to substitute. You must include at least one entry, and ten at most. See <span pulumi-lang-nodejs="`substituteString`" pulumi-lang-dotnet="`SubstituteString`" pulumi-lang-go="`substituteString`" pulumi-lang-python="`substitute_string`" pulumi-lang-yaml="`substituteString`" pulumi-lang-java="`substituteString`">`substitute_string`</span> <span pulumi-lang-nodejs="`entry`" pulumi-lang-dotnet="`Entry`" pulumi-lang-go="`entry`" pulumi-lang-python="`entry`" pulumi-lang-yaml="`entry`" pulumi-lang-java="`entry`">`entry`</span> below for details.
+  /// Objects containing the information about the fields to substitute. You must include at least one entry, and ten at most. See `substitute_string` `entry` below for details.
   final List<LogTransformerTransformerConfigSubstituteStringEntry> entries;
 
   LogTransformerTransformerConfigSubstituteString({

@@ -9,7 +9,7 @@ class ResourceSetResourceDnsTargetResource {
   /// Hosted Zone ARN that contains the DNS record with the provided name of target resource.
   final String? hostedZoneArn;
 
-  /// Route53 record set id to uniquely identify a record given a <span pulumi-lang-nodejs="`domainName`" pulumi-lang-dotnet="`DomainName`" pulumi-lang-go="`domainName`" pulumi-lang-python="`domain_name`" pulumi-lang-yaml="`domainName`" pulumi-lang-java="`domainName`">`domain_name`</span> and a <span pulumi-lang-nodejs="`recordType`" pulumi-lang-dotnet="`RecordType`" pulumi-lang-go="`recordType`" pulumi-lang-python="`record_type`" pulumi-lang-yaml="`recordType`" pulumi-lang-java="`recordType`">`record_type`</span>.
+  /// Route53 record set id to uniquely identify a record given a `domain_name` and a `record_type`.
   final String? recordSetId;
 
   /// Type of DNS Record of target resource.

@@ -6,16 +6,16 @@ import '../serverless_cache_timeouts/serverless_cache_timeouts.dart';
 
 /// The set of arguments for ServerlessCache.
 class ServerlessCacheArgs {
-  /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See <span pulumi-lang-nodejs="`cacheUsageLimits`" pulumi-lang-dotnet="`CacheUsageLimits`" pulumi-lang-go="`cacheUsageLimits`" pulumi-lang-python="`cache_usage_limits`" pulumi-lang-yaml="`cacheUsageLimits`" pulumi-lang-java="`cacheUsageLimits`">`cache_usage_limits`</span> Block for details.
+  /// Sets the cache usage limits for storage and ElastiCache Processing Units for the cache. See `cache_usage_limits` Block for details.
   final Input<ServerlessCacheCacheUsageLimits>? cacheUsageLimits;
 
-  /// The daily time that snapshots will be created from the new serverless cache. Only supported for engine types `"redis"` or `"valkey"`. Defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
+  /// The daily time that snapshots will be created from the new serverless cache. Only supported for engine types `"redis"` or `"valkey"`. Defaults to `0`.
   final Input<String>? dailySnapshotTime;
 
   /// User-provided description for the serverless cache. The default is NULL.
   final Input<String>? description;
 
-  /// Name of the cache engine to be used for this cache cluster. Valid values are <span pulumi-lang-nodejs="`memcached`" pulumi-lang-dotnet="`Memcached`" pulumi-lang-go="`memcached`" pulumi-lang-python="`memcached`" pulumi-lang-yaml="`memcached`" pulumi-lang-java="`memcached`">`memcached`</span>, <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span> or <span pulumi-lang-nodejs="`valkey`" pulumi-lang-dotnet="`Valkey`" pulumi-lang-go="`valkey`" pulumi-lang-python="`valkey`" pulumi-lang-yaml="`valkey`" pulumi-lang-java="`valkey`">`valkey`</span>.
+  /// Name of the cache engine to be used for this cache cluster. Valid values are `memcached`, `redis` or `valkey`.
   final Input<String> engine;
 
   /// ARN of the customer managed key for encrypting the data at rest. If no KMS key is provided, a default service key is used.
@@ -45,7 +45,7 @@ class ServerlessCacheArgs {
   /// A list of the identifiers of the subnets where the VPC endpoint for the serverless cache will be deployed. All the subnetIds must belong to the same VPC.
   final Input<List<String>>? subnetIds;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<ServerlessCacheTimeouts>? timeouts;
 

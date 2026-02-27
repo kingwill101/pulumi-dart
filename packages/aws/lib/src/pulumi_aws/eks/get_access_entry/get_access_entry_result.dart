@@ -21,7 +21,7 @@ class GetAccessEntryResult {
   final String region;
   final Map<String, String>? tags;
 
-  /// (Optional) Key-value map of resource tags, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
   final Map<String, String> tagsAll;
 
   /// Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.

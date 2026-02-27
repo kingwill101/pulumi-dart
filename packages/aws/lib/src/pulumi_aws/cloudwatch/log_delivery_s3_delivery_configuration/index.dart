@@ -1,3 +1,0 @@
-library module_cloudwatch_log_delivery_s3_delivery_configuration;
-
-export 'log_delivery_s3_delivery_configuration.dart';

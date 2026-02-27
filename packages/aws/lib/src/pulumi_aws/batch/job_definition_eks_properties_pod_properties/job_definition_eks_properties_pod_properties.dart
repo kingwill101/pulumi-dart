@@ -11,13 +11,13 @@ class JobDefinitionEksPropertiesPodProperties {
   /// Properties of the container that's used on the Amazon EKS pod. See containers below.
   final List<JobDefinitionEksPropertiesPodPropertiesContainer> containers;
 
-  /// DNS policy for the pod. The default value is `ClusterFirst`. If the <span pulumi-lang-nodejs="`hostNetwork`" pulumi-lang-dotnet="`HostNetwork`" pulumi-lang-go="`hostNetwork`" pulumi-lang-python="`host_network`" pulumi-lang-yaml="`hostNetwork`" pulumi-lang-java="`hostNetwork`">`host_network`</span> argument is not specified, the default is `ClusterFirstWithHostNet`. `ClusterFirst` indicates that any DNS query that does not match the configured cluster domain suffix is forwarded to the upstream nameserver inherited from the node. For more information, see Pod's DNS policy in the Kubernetes documentation.
+  /// DNS policy for the pod. The default value is `ClusterFirst`. If the `host_network` argument is not specified, the default is `ClusterFirstWithHostNet`. `ClusterFirst` indicates that any DNS query that does not match the configured cluster domain suffix is forwarded to the upstream nameserver inherited from the node. For more information, see Pod's DNS policy in the Kubernetes documentation.
   final String? dnsPolicy;
 
-  /// Whether the pod uses the hosts' network IP address. The default value is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Setting this to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> enables the Kubernetes pod networking model. Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each pod for incoming connections.
+  /// Whether the pod uses the hosts' network IP address. The default value is `true`. Setting this to `false` enables the Kubernetes pod networking model. Most AWS Batch workloads are egress-only and don't require the overhead of IP allocation for each pod for incoming connections.
   final bool? hostNetwork;
 
-  /// List of Kubernetes secret resources. See <span pulumi-lang-nodejs="`imagePullSecret`" pulumi-lang-dotnet="`ImagePullSecret`" pulumi-lang-go="`imagePullSecret`" pulumi-lang-python="`image_pull_secret`" pulumi-lang-yaml="`imagePullSecret`" pulumi-lang-java="`imagePullSecret`">`image_pull_secret`</span> below.
+  /// List of Kubernetes secret resources. See `image_pull_secret` below.
   final List<JobDefinitionEksPropertiesPodPropertiesImagePullSecret>?
       imagePullSecrets;
 

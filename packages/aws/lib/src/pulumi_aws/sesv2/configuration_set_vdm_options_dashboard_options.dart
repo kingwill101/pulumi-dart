@@ -1,0 +1,3 @@
+library module_sesv2_configuration_set_vdm_options_dashboard_options;
+
+export 'configuration_set_vdm_options_dashboard_options/configuration_set_vdm_options_dashboard_options.dart';

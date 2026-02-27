@@ -1,0 +1,3 @@
+library module_s3control_bucket_lifecycle_configuration_rule_expiration;
+
+export 'bucket_lifecycle_configuration_rule_expiration/bucket_lifecycle_configuration_rule_expiration2.dart';

@@ -3,7 +3,7 @@
 import '../web_acl_default_action_block_custom_response/web_acl_default_action_block_custom_response.dart';
 
 class WebAclDefaultActionBlock {
-  /// Defines a custom response for the web request. See <span pulumi-lang-nodejs="`customResponse`" pulumi-lang-dotnet="`CustomResponse`" pulumi-lang-go="`customResponse`" pulumi-lang-python="`custom_response`" pulumi-lang-yaml="`customResponse`" pulumi-lang-java="`customResponse`">`custom_response`</span> below for details.
+  /// Defines a custom response for the web request. See `custom_response` below for details.
   final WebAclDefaultActionBlockCustomResponse? customResponse;
 
   WebAclDefaultActionBlock({

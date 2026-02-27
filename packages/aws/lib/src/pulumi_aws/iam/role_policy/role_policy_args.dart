@@ -9,7 +9,7 @@ class RolePolicyArgs {
   final Input<String>? name;
 
   /// Creates a unique name beginning with the specified prefix.
-  /// Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// The inline policy document.

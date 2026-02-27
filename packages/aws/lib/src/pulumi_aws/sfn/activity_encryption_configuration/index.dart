@@ -1,3 +1,0 @@
-library module_sfn_activity_encryption_configuration;
-
-export 'activity_encryption_configuration.dart';

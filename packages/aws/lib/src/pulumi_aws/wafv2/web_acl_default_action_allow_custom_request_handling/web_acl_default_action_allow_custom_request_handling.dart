@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../web_acl_default_action_allow_custom_request_handling_insert_header/web_acl_default_action_allow_custom_request_handling_insert_header.dart';
 
 class WebAclDefaultActionAllowCustomRequestHandling {
-  /// The <span pulumi-lang-nodejs="`insertHeader`" pulumi-lang-dotnet="`InsertHeader`" pulumi-lang-go="`insertHeader`" pulumi-lang-python="`insert_header`" pulumi-lang-yaml="`insertHeader`" pulumi-lang-java="`insertHeader`">`insert_header`</span> blocks used to define HTTP headers added to the request. See <span pulumi-lang-nodejs="`insertHeader`" pulumi-lang-dotnet="`InsertHeader`" pulumi-lang-go="`insertHeader`" pulumi-lang-python="`insert_header`" pulumi-lang-yaml="`insertHeader`" pulumi-lang-java="`insertHeader`">`insert_header`</span> below for details.
+  /// The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
   final List<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>
       insertHeaders;
 

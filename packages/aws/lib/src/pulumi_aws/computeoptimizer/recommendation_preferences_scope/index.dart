@@ -1,3 +1,0 @@
-library module_computeoptimizer_recommendation_preferences_scope;
-
-export 'recommendation_preferences_scope.dart';

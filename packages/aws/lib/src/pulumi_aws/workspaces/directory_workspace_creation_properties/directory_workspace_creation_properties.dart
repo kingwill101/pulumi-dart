@@ -10,10 +10,10 @@ class DirectoryWorkspaceCreationProperties {
   /// Indicates whether internet access is enabled for your WorkSpaces.
   final bool? enableInternetAccess;
 
-  /// Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `PERSONAL`.
+  /// Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   final bool? enableMaintenanceMode;
 
-  /// Indicates whether users are local administrators of their WorkSpaces. Valid only if <span pulumi-lang-nodejs="`workspaceType`" pulumi-lang-dotnet="`WorkspaceType`" pulumi-lang-go="`workspaceType`" pulumi-lang-python="`workspace_type`" pulumi-lang-yaml="`workspaceType`" pulumi-lang-java="`workspaceType`">`workspace_type`</span> is set to `PERSONAL`.
+  /// Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   final bool? userEnabledAsLocalAdministrator;
 
   DirectoryWorkspaceCreationProperties({

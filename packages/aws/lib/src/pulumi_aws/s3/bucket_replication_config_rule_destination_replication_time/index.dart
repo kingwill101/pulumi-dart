@@ -1,3 +1,0 @@
-library module_s3_bucket_replication_config_rule_destination_replication_time;
-
-export 'bucket_replication_config_rule_destination_replication_time.dart';

@@ -1,3 +1,0 @@
-library module_ssoadmin_managed_policy_attachments_exclusive_timeouts;
-
-export 'managed_policy_attachments_exclusive_timeouts.dart';

@@ -3,7 +3,7 @@
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration {
-  /// Configurations for a knowledge base connected to an Amazon Redshift database. See <span pulumi-lang-nodejs="`redshiftConfiguration`" pulumi-lang-dotnet="`RedshiftConfiguration`" pulumi-lang-go="`redshiftConfiguration`" pulumi-lang-python="`redshift_configuration`" pulumi-lang-yaml="`redshiftConfiguration`" pulumi-lang-java="`redshiftConfiguration`">`redshift_configuration`</span> block for details.
+  /// Configurations for a knowledge base connected to an Amazon Redshift database. See `redshift_configuration` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration?
       redshiftConfiguration;
 

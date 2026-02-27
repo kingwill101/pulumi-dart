@@ -14,7 +14,7 @@ class MultitenantDistributionDefaultCacheBehavior {
   /// Unique identifier of the cache policy that is attached to the cache behavior.
   final String? cachePolicyId;
 
-  /// Whether you want CloudFront to automatically compress content for web requests that include `Accept-Encoding: gzip` in the request header. Default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether you want CloudFront to automatically compress content for web requests that include `Accept-Encoding: gzip` in the request header. Default: `false`.
   final bool? compress;
 
   /// Field level encryption configuration ID.

@@ -1,3 +1,0 @@
-library module_appconfig_get_environment_monitor;
-
-export 'get_environment_monitor.dart';

@@ -11,7 +11,7 @@ class GetAmiIdsResult2 {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// is set to the list of AMI IDs, sorted by creation time according to <span pulumi-lang-nodejs="`sortAscending`" pulumi-lang-dotnet="`SortAscending`" pulumi-lang-go="`sortAscending`" pulumi-lang-python="`sort_ascending`" pulumi-lang-yaml="`sortAscending`" pulumi-lang-java="`sortAscending`">`sort_ascending`</span>.
+  /// is set to the list of AMI IDs, sorted by creation time according to `sort_ascending`.
   final List<String> ids;
   final bool? includeDeprecated;
   final String? nameRegex;

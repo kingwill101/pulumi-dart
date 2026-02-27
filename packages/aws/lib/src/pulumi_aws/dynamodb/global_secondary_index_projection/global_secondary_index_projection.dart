@@ -2,7 +2,7 @@
 
 class GlobalSecondaryIndexProjection {
   /// Specifies which additional attributes to include in the index.
-  /// Only valid when <span pulumi-lang-nodejs="`projectionType`" pulumi-lang-dotnet="`ProjectionType`" pulumi-lang-go="`projectionType`" pulumi-lang-python="`projection_type`" pulumi-lang-yaml="`projectionType`" pulumi-lang-java="`projectionType`">`projection_type`</span> is `INCLUDE`.`
+  /// Only valid when `projection_type` is `INCLUDE`.`
   final List<String>? nonKeyAttributes;
 
   /// The set of attributes represented in the index.

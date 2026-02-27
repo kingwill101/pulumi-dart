@@ -1,0 +1,3 @@
+library module_imagebuilder_lifecycle_policy_policy_detail_action;
+
+export 'lifecycle_policy_policy_detail_action/lifecycle_policy_policy_detail_action.dart';

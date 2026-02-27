@@ -7,7 +7,7 @@ class EventArchiveArgs {
   /// Description for the archive.
   final Input<String>? description;
 
-  /// Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the <span pulumi-lang-nodejs="`eventSourceArn`" pulumi-lang-dotnet="`EventSourceArn`" pulumi-lang-go="`eventSourceArn`" pulumi-lang-python="`event_source_arn`" pulumi-lang-yaml="`eventSourceArn`" pulumi-lang-java="`eventSourceArn`">`event_source_arn`</span>.
+  /// Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `event_source_arn`.
   final Input<String>? eventPattern;
 
   /// ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive.

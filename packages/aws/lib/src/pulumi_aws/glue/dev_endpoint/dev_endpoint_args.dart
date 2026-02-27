@@ -19,7 +19,7 @@ class DevEndpointArgs {
   /// The name of this endpoint. It must be unique in your account.
   final Input<String>? name;
 
-  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with <span pulumi-lang-nodejs="`workerType`" pulumi-lang-dotnet="`WorkerType`" pulumi-lang-go="`workerType`" pulumi-lang-python="`worker_type`" pulumi-lang-yaml="`workerType`" pulumi-lang-java="`workerType`">`worker_type`</span>.
+  /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
   final Input<int>? numberOfNodes;
 
   /// The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
@@ -46,7 +46,7 @@ class DevEndpointArgs {
   /// The subnet ID for the new endpoint to use.
   final Input<String>? subnetId;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.

@@ -1,0 +1,3 @@
+library module_s3_bucket_website_configuration_v2_error_document;
+
+export 'bucket_website_configuration_v2_error_document/bucket_website_configuration_v2_error_document.dart';

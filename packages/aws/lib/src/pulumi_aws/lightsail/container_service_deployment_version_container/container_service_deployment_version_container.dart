@@ -10,7 +10,7 @@ class ContainerServiceDeploymentVersionContainer {
   /// Key-value map of the environment variables of the container.
   final Map<String, String>? environment;
 
-  /// Name of the image used for the container. Container images sourced from your Lightsail container service, that are registered and stored on your service, start with a colon (`:`). For example, `:container-service-1.mystaticwebsite.1`. Container images sourced from a public registry like Docker Hub don't start with a colon. For example, `nginx:latest` or <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`">`nginx`</span>.
+  /// Name of the image used for the container. Container images sourced from your Lightsail container service, that are registered and stored on your service, start with a colon (`:`). For example, `:container-service-1.mystaticwebsite.1`. Container images sourced from a public registry like Docker Hub don't start with a colon. For example, `nginx:latest` or `nginx`.
   final String image;
 
   /// Key-value map of the open firewall ports of the container. Valid values: `HTTP`, `HTTPS`, `TCP`, `UDP`.

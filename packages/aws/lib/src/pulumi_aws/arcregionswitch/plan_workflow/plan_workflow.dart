@@ -10,7 +10,7 @@ class PlanWorkflow {
   /// Description of the workflow.
   final String? workflowDescription;
 
-  /// Action to perform. Valid values: <span pulumi-lang-nodejs="`activate`" pulumi-lang-dotnet="`Activate`" pulumi-lang-go="`activate`" pulumi-lang-python="`activate`" pulumi-lang-yaml="`activate`" pulumi-lang-java="`activate`">`activate`</span>, <span pulumi-lang-nodejs="`deactivate`" pulumi-lang-dotnet="`Deactivate`" pulumi-lang-go="`deactivate`" pulumi-lang-python="`deactivate`" pulumi-lang-yaml="`deactivate`" pulumi-lang-java="`deactivate`">`deactivate`</span>.
+  /// Action to perform. Valid values: `activate`, `deactivate`.
   final String workflowTargetAction;
 
   /// Target region for the workflow.

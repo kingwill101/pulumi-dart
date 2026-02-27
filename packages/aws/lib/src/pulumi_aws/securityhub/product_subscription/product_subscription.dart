@@ -5,140 +5,7 @@ import 'product_subscription_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.securityhub.Account("example", {});
-/// const current = aws.getRegion({});
-/// const exampleProductSubscription = new aws.securityhub.ProductSubscription("example", {productArn: current.then(current => `arn:aws:securityhub:${current.region}:733251395267:product/alertlogic/althreatmanagement`)}, {
-/// dependsOn: [example],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.securityhub.Account("example")
-/// current = aws.get_region()
-/// example_product_subscription = aws.securityhub.ProductSubscription("example", product_arn=f"arn:aws:securityhub:{current.region}:733251395267:product/alertlogic/althreatmanagement",
-/// opts = pulumi.ResourceOptions(depends_on=[example]))
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.SecurityHub.Account("example");
-///
-/// var current = Aws.GetRegion.Invoke();
-///
-/// var exampleProductSubscription = new Aws.SecurityHub.ProductSubscription("example", new()
-/// {
-/// ProductArn = $"arn:aws:securityhub:{current.Apply(getRegionResult => getRegionResult.Region)}:733251395267:product/alertlogic/althreatmanagement",
-/// }, new CustomResourceOptions
-/// {
-/// DependsOn =
-/// {
-/// example,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/securityhub"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// example, err := securityhub.NewAccount(ctx, "example", nil)
-/// if err != nil {
-/// return err
-/// }
-/// current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = securityhub.NewProductSubscription(ctx, "example", &securityhub.ProductSubscriptionArgs{
-/// ProductArn: pulumi.Sprintf("arn:aws:securityhub:%v:733251395267:product/alertlogic/althreatmanagement", current.Region),
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// example,
-/// }))
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.securityhub.Account;
-/// import com.pulumi.aws.AwsFunctions;
-/// import com.pulumi.aws.inputs.GetRegionArgs;
-/// import com.pulumi.aws.securityhub.ProductSubscription;
-/// import com.pulumi.aws.securityhub.ProductSubscriptionArgs;
-/// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Account("example");
-///
-/// final var current = AwsFunctions.getRegion(GetRegionArgs.builder()
-/// .build());
-///
-/// var exampleProductSubscription = new ProductSubscription("exampleProductSubscription", ProductSubscriptionArgs.builder()
-/// .productArn(String.format("arn:aws:securityhub:%s:733251395267:product/alertlogic/althreatmanagement", current.region()))
-/// .build(), CustomResourceOptions.builder()
-/// .dependsOn(example)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:securityhub:Account
-/// exampleProductSubscription:
-/// type: aws:securityhub:ProductSubscription
-/// name: example
-/// properties:
-/// productArn: arn:aws:securityhub:${current.region}:733251395267:product/alertlogic/althreatmanagement
-/// options:
-/// dependsOn:
-/// - ${example}
-/// variables:
-/// current:
-/// fn::invoke:
-/// function: aws:getRegion
-/// arguments: {}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -153,7 +20,7 @@ class ProductSubscription extends CustomResource {
 
   /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
   ///
-  /// Amazon maintains a list of [Product integrations in AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-providers.html) that changes over time. Any of the products on the linked [Available AWS service integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-internal-providers.html) or [Available third-party partner product integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-partner-providers.html) can be configured using <span pulumi-lang-nodejs="`aws.securityhub.ProductSubscription`" pulumi-lang-dotnet="`aws.securityhub.ProductSubscription`" pulumi-lang-go="`securityhub.ProductSubscription`" pulumi-lang-python="`securityhub.ProductSubscription`" pulumi-lang-yaml="`aws.securityhub.ProductSubscription`" pulumi-lang-java="`aws.securityhub.ProductSubscription`">`aws.securityhub.ProductSubscription`</span>.
+  /// Amazon maintains a list of [Product integrations in AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-providers.html) that changes over time. Any of the products on the linked [Available AWS service integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-internal-providers.html) or [Available third-party partner product integrations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-partner-providers.html) can be configured using `aws.securityhub.ProductSubscription`.
   ///
   /// Available products can also be listed by running the AWS CLI command `aws securityhub describe-products`.
   ///

@@ -1,3 +1,0 @@
-library module_sagemaker_endpoint_deployment_config_auto_rollback_configuration_alarm;
-
-export 'endpoint_deployment_config_auto_rollback_configuration_alarm.dart';

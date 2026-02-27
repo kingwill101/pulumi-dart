@@ -4,7 +4,7 @@ class UserPoolDeviceConfiguration {
   /// Whether a challenge is required on a new device. Only applicable to a new device.
   final bool? challengeRequiredOnNewDevice;
 
-  /// Whether a device is only remembered on user prompt. <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> equates to "Always" remember, <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> is "User Opt In," and not using a <span pulumi-lang-nodejs="`deviceConfiguration`" pulumi-lang-dotnet="`DeviceConfiguration`" pulumi-lang-go="`deviceConfiguration`" pulumi-lang-python="`device_configuration`" pulumi-lang-yaml="`deviceConfiguration`" pulumi-lang-java="`deviceConfiguration`">`device_configuration`</span> block is "No."
+  /// Whether a device is only remembered on user prompt. `false` equates to "Always" remember, `true` is "User Opt In," and not using a `device_configuration` block is "No."
   final bool? deviceOnlyRememberedOnUserPrompt;
 
   UserPoolDeviceConfiguration({

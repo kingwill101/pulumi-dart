@@ -1,3 +1,0 @@
-library module_finspace_kx_cluster_scaling_group_configuration;
-
-export 'kx_cluster_scaling_group_configuration.dart';

@@ -4,19 +4,19 @@ import '../scaling_plan_scaling_instruction_target_tracking_configuration_custom
 import '../scaling_plan_scaling_instruction_target_tracking_configuration_predefined_scaling_metric_specification/scaling_plan_scaling_instruction_target_tracking_configuration_predefined_scaling_metric_specification.dart';
 
 class ScalingPlanScalingInstructionTargetTrackingConfiguration {
-  /// Customized metric. You can specify either <span pulumi-lang-nodejs="`customizedScalingMetricSpecification`" pulumi-lang-dotnet="`CustomizedScalingMetricSpecification`" pulumi-lang-go="`customizedScalingMetricSpecification`" pulumi-lang-python="`customized_scaling_metric_specification`" pulumi-lang-yaml="`customizedScalingMetricSpecification`" pulumi-lang-java="`customizedScalingMetricSpecification`">`customized_scaling_metric_specification`</span> or <span pulumi-lang-nodejs="`predefinedScalingMetricSpecification`" pulumi-lang-dotnet="`PredefinedScalingMetricSpecification`" pulumi-lang-go="`predefinedScalingMetricSpecification`" pulumi-lang-python="`predefined_scaling_metric_specification`" pulumi-lang-yaml="`predefinedScalingMetricSpecification`" pulumi-lang-java="`predefinedScalingMetricSpecification`">`predefined_scaling_metric_specification`</span>.
+  /// Customized metric. You can specify either `customized_scaling_metric_specification` or `predefined_scaling_metric_specification`.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_CustomizedScalingMetricSpecification.html).
   final ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification?
       customizedScalingMetricSpecification;
 
-  /// Boolean indicating whether scale in by the target tracking scaling policy is disabled. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean indicating whether scale in by the target tracking scaling policy is disabled. Defaults to `false`.
   final bool? disableScaleIn;
 
   /// Estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.
   /// This value is used only if the resource is an Auto Scaling group.
   final int? estimatedInstanceWarmup;
 
-  /// Predefined metric. You can specify either <span pulumi-lang-nodejs="`predefinedScalingMetricSpecification`" pulumi-lang-dotnet="`PredefinedScalingMetricSpecification`" pulumi-lang-go="`predefinedScalingMetricSpecification`" pulumi-lang-python="`predefined_scaling_metric_specification`" pulumi-lang-yaml="`predefinedScalingMetricSpecification`" pulumi-lang-java="`predefinedScalingMetricSpecification`">`predefined_scaling_metric_specification`</span> or <span pulumi-lang-nodejs="`customizedScalingMetricSpecification`" pulumi-lang-dotnet="`CustomizedScalingMetricSpecification`" pulumi-lang-go="`customizedScalingMetricSpecification`" pulumi-lang-python="`customized_scaling_metric_specification`" pulumi-lang-yaml="`customizedScalingMetricSpecification`" pulumi-lang-java="`customizedScalingMetricSpecification`">`customized_scaling_metric_specification`</span>.
+  /// Predefined metric. You can specify either `predefined_scaling_metric_specification` or `customized_scaling_metric_specification`.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_PredefinedScalingMetricSpecification.html).
   final ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification?
       predefinedScalingMetricSpecification;

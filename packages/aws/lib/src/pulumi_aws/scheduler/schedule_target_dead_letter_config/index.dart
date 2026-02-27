@@ -1,3 +1,0 @@
-library module_scheduler_schedule_target_dead_letter_config;
-
-export 'schedule_target_dead_letter_config.dart';

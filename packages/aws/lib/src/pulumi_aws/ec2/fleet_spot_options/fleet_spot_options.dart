@@ -3,13 +3,13 @@
 import '../fleet_spot_options_maintenance_strategies/fleet_spot_options_maintenance_strategies.dart';
 
 class FleetSpotOptions {
-  /// How to allocate the target capacity across the Spot pools. Valid values: <span pulumi-lang-nodejs="`diversified`" pulumi-lang-dotnet="`Diversified`" pulumi-lang-go="`diversified`" pulumi-lang-python="`diversified`" pulumi-lang-yaml="`diversified`" pulumi-lang-java="`diversified`">`diversified`</span>, `lowestPrice`, `capacity-optimized`, `capacity-optimized-prioritized` and `price-capacity-optimized`. Default: `lowestPrice`.
+  /// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`, `capacity-optimized`, `capacity-optimized-prioritized` and `price-capacity-optimized`. Default: `lowestPrice`.
   final String? allocationStrategy;
 
-  /// Behavior when a Spot Instance is interrupted. Valid values: <span pulumi-lang-nodejs="`hibernate`" pulumi-lang-dotnet="`Hibernate`" pulumi-lang-go="`hibernate`" pulumi-lang-python="`hibernate`" pulumi-lang-yaml="`hibernate`" pulumi-lang-java="`hibernate`">`hibernate`</span>, <span pulumi-lang-nodejs="`stop`" pulumi-lang-dotnet="`Stop`" pulumi-lang-go="`stop`" pulumi-lang-python="`stop`" pulumi-lang-yaml="`stop`" pulumi-lang-java="`stop`">`stop`</span>, <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>. Default: <span pulumi-lang-nodejs="`terminate`" pulumi-lang-dotnet="`Terminate`" pulumi-lang-go="`terminate`" pulumi-lang-python="`terminate`" pulumi-lang-yaml="`terminate`" pulumi-lang-java="`terminate`">`terminate`</span>.
+  /// Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
   final String? instanceInterruptionBehavior;
 
-  /// Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot <span pulumi-lang-nodejs="`allocationStrategy`" pulumi-lang-dotnet="`AllocationStrategy`" pulumi-lang-go="`allocationStrategy`" pulumi-lang-python="`allocation_strategy`" pulumi-lang-yaml="`allocationStrategy`" pulumi-lang-java="`allocationStrategy`">`allocation_strategy`</span> is set to `lowestPrice`. Default: <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
   final int? instancePoolsToUseCount;
 
   /// Nested argument containing maintenance strategies for managing your Spot Instances that are at an elevated risk of being interrupted. Defined below.
@@ -18,13 +18,13 @@ class FleetSpotOptions {
   /// The maximum amount per hour for Spot Instances that you're willing to pay.
   final String? maxTotalPrice;
 
-  /// The minimum target capacity for Spot Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type <span pulumi-lang-nodejs="`instant`" pulumi-lang-dotnet="`Instant`" pulumi-lang-go="`instant`" pulumi-lang-python="`instant`" pulumi-lang-yaml="`instant`" pulumi-lang-java="`instant`">`instant`</span>.
+  /// The minimum target capacity for Spot Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type `instant`.
   final int? minTargetCapacity;
 
-  /// Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets of type <span pulumi-lang-nodejs="`instant`" pulumi-lang-dotnet="`Instant`" pulumi-lang-go="`instant`" pulumi-lang-python="`instant`" pulumi-lang-yaml="`instant`" pulumi-lang-java="`instant`">`instant`</span>.
+  /// Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets of type `instant`.
   final bool? singleAvailabilityZone;
 
-  /// Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only for fleets of type <span pulumi-lang-nodejs="`instant`" pulumi-lang-dotnet="`Instant`" pulumi-lang-go="`instant`" pulumi-lang-python="`instant`" pulumi-lang-yaml="`instant`" pulumi-lang-java="`instant`">`instant`</span>.
+  /// Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only for fleets of type `instant`.
   final bool? singleInstanceType;
 
   FleetSpotOptions({

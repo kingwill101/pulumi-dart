@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ImagePipelineImageTestsConfiguration {
-  /// Whether image tests are enabled. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether image tests are enabled. Defaults to `true`.
   final bool? imageTestsEnabled;
 
-  /// Number of minutes before image tests time out. Valid values are between <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> and <span pulumi-lang-nodejs="`1440`" pulumi-lang-dotnet="`1440`" pulumi-lang-go="`1440`" pulumi-lang-python="`1440`" pulumi-lang-yaml="`1440`" pulumi-lang-java="`1440`">`1440`</span>. Defaults to <span pulumi-lang-nodejs="`720`" pulumi-lang-dotnet="`720`" pulumi-lang-go="`720`" pulumi-lang-python="`720`" pulumi-lang-yaml="`720`" pulumi-lang-java="`720`">`720`</span>.
+  /// Number of minutes before image tests time out. Valid values are between `60` and `1440`. Defaults to `720`.
   final int? timeoutMinutes;
 
   ImagePipelineImageTestsConfiguration({

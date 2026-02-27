@@ -1,0 +1,3 @@
+library module_dynamodb_table_local_secondary_index;
+
+export 'table_local_secondary_index/table_local_secondary_index.dart';

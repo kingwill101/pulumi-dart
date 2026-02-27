@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../firehose_delivery_stream_http_endpoint_configuration_request_configuration_common_attribute/firehose_delivery_stream_http_endpoint_configuration_request_configuration_common_attribute.dart';
 
 class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration {
-  /// Describes the metadata sent to the HTTP endpoint destination. See <span pulumi-lang-nodejs="`commonAttributes`" pulumi-lang-dotnet="`CommonAttributes`" pulumi-lang-go="`commonAttributes`" pulumi-lang-python="`common_attributes`" pulumi-lang-yaml="`commonAttributes`" pulumi-lang-java="`commonAttributes`">`common_attributes`</span> block below for details.
+  /// Describes the metadata sent to the HTTP endpoint destination. See `common_attributes` block below for details.
   final List<
           FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute>?
       commonAttributes;

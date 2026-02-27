@@ -1,5 +1,0 @@
-library module_iam_get_open_id_connect_provider;
-
-export 'get_open_id_connect_provider.dart';
-export 'get_open_id_connect_provider_args.dart';
-export 'get_open_id_connect_provider_result.dart';

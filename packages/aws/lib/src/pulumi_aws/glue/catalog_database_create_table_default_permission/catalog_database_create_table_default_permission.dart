@@ -6,7 +6,7 @@ class CatalogDatabaseCreateTableDefaultPermission {
   /// The permissions that are granted to the principal.
   final List<String>? permissions;
 
-  /// The principal who is granted permissions.. See <span pulumi-lang-nodejs="`principal`" pulumi-lang-dotnet="`Principal`" pulumi-lang-go="`principal`" pulumi-lang-python="`principal`" pulumi-lang-yaml="`principal`" pulumi-lang-java="`principal`">`principal`</span> below.
+  /// The principal who is granted permissions.. See `principal` below.
   final CatalogDatabaseCreateTableDefaultPermissionPrincipal? principal;
 
   CatalogDatabaseCreateTableDefaultPermission({

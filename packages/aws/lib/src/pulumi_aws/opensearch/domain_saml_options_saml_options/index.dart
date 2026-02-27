@@ -1,3 +1,0 @@
-library module_opensearch_domain_saml_options_saml_options;
-
-export 'domain_saml_options_saml_options2.dart';

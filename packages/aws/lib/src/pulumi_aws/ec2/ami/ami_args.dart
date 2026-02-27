@@ -6,7 +6,7 @@ import '../ami_ephemeral_block_device/ami_ephemeral_block_device.dart';
 
 /// The set of arguments for Ami.
 class AmiArgs {
-  /// Machine architecture for created instances. Defaults to <span pulumi-lang-nodejs="`x8664`" pulumi-lang-dotnet="`X8664`" pulumi-lang-go="`x8664`" pulumi-lang-python="`x86_64`" pulumi-lang-yaml="`x8664`" pulumi-lang-java="`x8664`">`x86_64`</span>.
+  /// Machine architecture for created instances. Defaults to `x86_64`.
   final Input<String>? architecture;
 
   /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
@@ -22,7 +22,7 @@ class AmiArgs {
   /// attached to created instances. The structure of this block is described below.
   final Input<List<AmiEbsBlockDevice>>? ebsBlockDevices;
 
-  /// Whether enhanced networking with ENA is enabled. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
   final Input<bool>? enaSupport;
 
   /// Nested block describing an ephemeral block device that
@@ -45,7 +45,7 @@ class AmiArgs {
   final Input<String>? rootDeviceName;
   final Input<String>? sriovNetSupport;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.

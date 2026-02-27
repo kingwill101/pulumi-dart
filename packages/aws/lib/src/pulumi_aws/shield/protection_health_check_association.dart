@@ -1,0 +1,4 @@
+library module_shield_protection_health_check_association;
+
+export 'protection_health_check_association/protection_health_check_association.dart';
+export 'protection_health_check_association/protection_health_check_association_args.dart';

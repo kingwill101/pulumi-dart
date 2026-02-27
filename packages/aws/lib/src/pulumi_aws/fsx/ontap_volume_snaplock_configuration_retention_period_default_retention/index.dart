@@ -1,3 +1,0 @@
-library module_fsx_ontap_volume_snaplock_configuration_retention_period_default_retention;
-
-export 'ontap_volume_snaplock_configuration_retention_period_default_retention.dart';

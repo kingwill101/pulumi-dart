@@ -6,7 +6,7 @@ class ModelContainerAdditionalModelDataSourceS3DataSource {
   /// How the model data is prepared. Allowed values are: `None` and `Gzip`.
   final String compressionType;
 
-  /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [<span pulumi-lang-nodejs="`modelAccessConfig`" pulumi-lang-dotnet="`ModelAccessConfig`" pulumi-lang-go="`modelAccessConfig`" pulumi-lang-python="`model_access_config`" pulumi-lang-yaml="`modelAccessConfig`" pulumi-lang-java="`modelAccessConfig`">`model_access_config`</span> configuration block]. See Model Access Config.
+  /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`model_access_config` configuration block]. See Model Access Config.
   final ModelContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig?
       modelAccessConfig;
 

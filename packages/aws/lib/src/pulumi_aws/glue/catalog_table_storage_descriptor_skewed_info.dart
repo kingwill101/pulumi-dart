@@ -1,0 +1,3 @@
+library module_glue_catalog_table_storage_descriptor_skewed_info;
+
+export 'catalog_table_storage_descriptor_skewed_info/catalog_table_storage_descriptor_skewed_info.dart';

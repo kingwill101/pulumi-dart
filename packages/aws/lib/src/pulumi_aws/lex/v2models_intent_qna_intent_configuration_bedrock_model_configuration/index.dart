@@ -1,3 +1,0 @@
-library module_lex_v2models_intent_qna_intent_configuration_bedrock_model_configuration;
-
-export 'v2models_intent_qna_intent_configuration_bedrock_model_configuration.dart';

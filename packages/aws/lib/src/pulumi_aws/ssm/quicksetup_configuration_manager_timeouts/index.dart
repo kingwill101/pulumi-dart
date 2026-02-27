@@ -1,3 +1,0 @@
-library module_ssm_quicksetup_configuration_manager_timeouts;
-
-export 'quicksetup_configuration_manager_timeouts.dart';

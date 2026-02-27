@@ -1,0 +1,3 @@
+library module_fsx_open_zfs_volume_origin_snapshot;
+
+export 'open_zfs_volume_origin_snapshot/open_zfs_volume_origin_snapshot.dart';

@@ -1,3 +1,0 @@
-library module_ssoadmin_get_application_assignments_application_assignment;
-
-export 'get_application_assignments_application_assignment.dart';

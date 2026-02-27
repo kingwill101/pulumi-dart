@@ -1,0 +1,3 @@
+library module_ecs_service_deployment_circuit_breaker;
+
+export 'service_deployment_circuit_breaker/service_deployment_circuit_breaker.dart';

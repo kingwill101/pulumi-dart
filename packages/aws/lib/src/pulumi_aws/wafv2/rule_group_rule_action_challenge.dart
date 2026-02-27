@@ -1,0 +1,3 @@
+library module_wafv2_rule_group_rule_action_challenge;
+
+export 'rule_group_rule_action_challenge/rule_group_rule_action_challenge.dart';

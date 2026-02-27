@@ -5,7 +5,7 @@ import '../product_provisioning_artifact_parameters/product_provisioning_artifac
 
 /// The set of arguments for Product.
 class ProductArgs {
-  /// Language code. Valid values: <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span> (English), <span pulumi-lang-nodejs="`jp`" pulumi-lang-dotnet="`Jp`" pulumi-lang-go="`jp`" pulumi-lang-python="`jp`" pulumi-lang-yaml="`jp`" pulumi-lang-java="`jp`">`jp`</span> (Japanese), <span pulumi-lang-nodejs="`zh`" pulumi-lang-dotnet="`Zh`" pulumi-lang-go="`zh`" pulumi-lang-python="`zh`" pulumi-lang-yaml="`zh`" pulumi-lang-java="`zh`">`zh`</span> (Chinese). Default value is <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span>.
+  /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final Input<String>? acceptLanguage;
 
   /// Description of the product.
@@ -20,7 +20,7 @@ class ProductArgs {
   /// Owner of the product.
   final Input<String> owner;
 
-  /// Configuration block for provisioning artifact (i.e., version) parameters. See <span pulumi-lang-nodejs="`provisioningArtifactParameters`" pulumi-lang-dotnet="`ProvisioningArtifactParameters`" pulumi-lang-go="`provisioningArtifactParameters`" pulumi-lang-python="`provisioning_artifact_parameters`" pulumi-lang-yaml="`provisioningArtifactParameters`" pulumi-lang-java="`provisioningArtifactParameters`">`provisioning_artifact_parameters`</span> Block for details.
+  /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioning_artifact_parameters` Block for details.
   final Input<ProductProvisioningArtifactParameters>
       provisioningArtifactParameters;
 
@@ -36,7 +36,7 @@ class ProductArgs {
   /// Contact URL for product support.
   final Input<String>? supportUrl;
 
-  /// Tags to apply to the product. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.

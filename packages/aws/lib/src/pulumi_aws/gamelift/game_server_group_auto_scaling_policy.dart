@@ -1,0 +1,3 @@
+library module_gamelift_game_server_group_auto_scaling_policy;
+
+export 'game_server_group_auto_scaling_policy/game_server_group_auto_scaling_policy.dart';

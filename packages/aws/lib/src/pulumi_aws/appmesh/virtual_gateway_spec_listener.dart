@@ -1,0 +1,3 @@
+library module_appmesh_virtual_gateway_spec_listener;
+
+export 'virtual_gateway_spec_listener/virtual_gateway_spec_listener.dart';

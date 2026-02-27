@@ -1,3 +1,0 @@
-library module_cloudwatch_event_target_kinesis_target;
-
-export 'event_target_kinesis_target.dart';

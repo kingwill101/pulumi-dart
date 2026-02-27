@@ -1,0 +1,4 @@
+library module_emr_block_public_access_configuration;
+
+export 'block_public_access_configuration/block_public_access_configuration.dart';
+export 'block_public_access_configuration/block_public_access_configuration_args.dart';

@@ -18,7 +18,7 @@ class TableItemArgs {
 
   /// Name or ARN of the table to contain the item.
   ///
-  /// > **Note:** Names included in <span pulumi-lang-nodejs="`item`" pulumi-lang-dotnet="`Item`" pulumi-lang-go="`item`" pulumi-lang-python="`item`" pulumi-lang-yaml="`item`" pulumi-lang-java="`item`">`item`</span> are represented internally with everything but letters removed. There is the possibility of collisions if two names, once filtered, are the same. For example, the names `your-name-here` and <span pulumi-lang-nodejs="`yournamehere`" pulumi-lang-dotnet="`Yournamehere`" pulumi-lang-go="`yournamehere`" pulumi-lang-python="`yournamehere`" pulumi-lang-yaml="`yournamehere`" pulumi-lang-java="`yournamehere`">`yournamehere`</span> will overlap and cause an error.
+  /// > **Note:** Names included in `item` are represented internally with everything but letters removed. There is the possibility of collisions if two names, once filtered, are the same. For example, the names `your-name-here` and `yournamehere` will overlap and cause an error.
   final Input<String> tableName;
 
   TableItemArgs({

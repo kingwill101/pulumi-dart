@@ -8,7 +8,7 @@ class FieldLevelEncryptionProfileArgs {
   /// An optional comment about the Field Level Encryption Profile.
   final Input<String>? comment;
 
-  /// The encryption entities config block for field-level encryption profiles that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> which includes the encryption key and field pattern specifications.
+  /// The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
   final Input<FieldLevelEncryptionProfileEncryptionEntities> encryptionEntities;
 
   /// The name of the Field Level Encryption Profile.

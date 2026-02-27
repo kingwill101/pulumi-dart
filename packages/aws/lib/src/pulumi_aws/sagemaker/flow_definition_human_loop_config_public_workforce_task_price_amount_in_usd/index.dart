@@ -1,3 +1,0 @@
-library module_sagemaker_flow_definition_human_loop_config_public_workforce_task_price_amount_in_usd;
-
-export 'flow_definition_human_loop_config_public_workforce_task_price_amount_in_usd.dart';

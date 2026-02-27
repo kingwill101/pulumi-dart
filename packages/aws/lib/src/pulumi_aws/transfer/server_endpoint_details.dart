@@ -1,0 +1,3 @@
+library module_transfer_server_endpoint_details;
+
+export 'server_endpoint_details/server_endpoint_details.dart';

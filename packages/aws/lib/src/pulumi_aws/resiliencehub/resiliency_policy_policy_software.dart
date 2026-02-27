@@ -1,0 +1,3 @@
+library module_resiliencehub_resiliency_policy_policy_software;
+
+export 'resiliency_policy_policy_software/resiliency_policy_policy_software.dart';

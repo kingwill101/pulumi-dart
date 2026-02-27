@@ -1,0 +1,3 @@
+library module_autoscalingplans_scaling_plan_application_source_tag_filter;
+
+export 'scaling_plan_application_source_tag_filter/scaling_plan_application_source_tag_filter.dart';

@@ -1,0 +1,3 @@
+library module_fis_experiment_template_action_target;
+
+export 'experiment_template_action_target/experiment_template_action_target.dart';

@@ -1,3 +1,0 @@
-library module_directoryservice_service_region_vpc_settings;
-
-export 'service_region_vpc_settings.dart';

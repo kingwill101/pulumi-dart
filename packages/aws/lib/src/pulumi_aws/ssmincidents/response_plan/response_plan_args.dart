@@ -19,7 +19,7 @@ class ResponsePlanArgs {
   /// The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
   final Input<List<String>>? engagements;
 
-  /// The <span pulumi-lang-nodejs="`incidentTemplate`" pulumi-lang-dotnet="`IncidentTemplate`" pulumi-lang-go="`incidentTemplate`" pulumi-lang-python="`incident_template`" pulumi-lang-yaml="`incidentTemplate`" pulumi-lang-java="`incidentTemplate`">`incident_template`</span> configuration block is required and supports the following arguments:
+  /// The `incident_template` configuration block is required and supports the following arguments:
   final Input<ResponsePlanIncidentTemplate> incidentTemplate;
 
   /// Information about third-party services integrated into the response plan. The following values are supported:

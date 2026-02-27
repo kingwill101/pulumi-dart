@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_protocol_configuration_mcp;
+
+export 'agentcore_gateway_protocol_configuration_mcp/agentcore_gateway_protocol_configuration_mcp.dart';

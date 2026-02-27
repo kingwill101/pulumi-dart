@@ -1,0 +1,3 @@
+library module_cloudfront_distribution_origin_group_member;
+
+export 'distribution_origin_group_member/distribution_origin_group_member.dart';

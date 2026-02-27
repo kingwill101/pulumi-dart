@@ -3,7 +3,7 @@
 import '../agentcore_gateway_target_target_configuration_mcp/agentcore_gateway_target_target_configuration_mcp.dart';
 
 class AgentcoreGatewayTargetTargetConfiguration {
-  /// Model Context Protocol (MCP) configuration. See <span pulumi-lang-nodejs="`mcp`" pulumi-lang-dotnet="`Mcp`" pulumi-lang-go="`mcp`" pulumi-lang-python="`mcp`" pulumi-lang-yaml="`mcp`" pulumi-lang-java="`mcp`">`mcp`</span> below.
+  /// Model Context Protocol (MCP) configuration. See `mcp` below.
   final AgentcoreGatewayTargetTargetConfigurationMcp? mcp;
 
   AgentcoreGatewayTargetTargetConfiguration({

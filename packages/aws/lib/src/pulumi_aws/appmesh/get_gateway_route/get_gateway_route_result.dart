@@ -24,7 +24,7 @@ class GetGatewayRouteResult {
   /// Resource owner's AWS account ID.
   final String resourceOwner;
 
-  /// Gateway route specification. See the <span pulumi-lang-nodejs="`aws.appmesh.GatewayRoute`" pulumi-lang-dotnet="`aws.appmesh.GatewayRoute`" pulumi-lang-go="`appmesh.GatewayRoute`" pulumi-lang-python="`appmesh.GatewayRoute`" pulumi-lang-yaml="`aws.appmesh.GatewayRoute`" pulumi-lang-java="`aws.appmesh.GatewayRoute`">`aws.appmesh.GatewayRoute`</span> resource for details.
+  /// Gateway route specification. See the `aws.appmesh.GatewayRoute` resource for details.
   final List<GetGatewayRouteSpec> specs;
 
   /// Map of tags.

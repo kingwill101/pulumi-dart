@@ -1,0 +1,3 @@
+library module_timestreamwrite_table_schema_composite_partition_key;
+
+export 'table_schema_composite_partition_key/table_schema_composite_partition_key.dart';

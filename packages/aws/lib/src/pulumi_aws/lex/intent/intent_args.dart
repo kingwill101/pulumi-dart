@@ -13,18 +13,18 @@ import '../intent_slot/intent_slot.dart';
 class IntentArgs {
   /// The statement that you want Amazon Lex to convey to the user
   /// after the intent is successfully fulfilled by the Lambda function. This element is relevant only if
-  /// you provide a Lambda function in the <span pulumi-lang-nodejs="`fulfillmentActivity`" pulumi-lang-dotnet="`FulfillmentActivity`" pulumi-lang-go="`fulfillmentActivity`" pulumi-lang-python="`fulfillment_activity`" pulumi-lang-yaml="`fulfillmentActivity`" pulumi-lang-java="`fulfillmentActivity`">`fulfillment_activity`</span>. If you return the intent to the client
-  /// application, you can't specify this element. The <span pulumi-lang-nodejs="`followUpPrompt`" pulumi-lang-dotnet="`FollowUpPrompt`" pulumi-lang-go="`followUpPrompt`" pulumi-lang-python="`follow_up_prompt`" pulumi-lang-yaml="`followUpPrompt`" pulumi-lang-java="`followUpPrompt`">`follow_up_prompt`</span> and <span pulumi-lang-nodejs="`conclusionStatement`" pulumi-lang-dotnet="`ConclusionStatement`" pulumi-lang-go="`conclusionStatement`" pulumi-lang-python="`conclusion_statement`" pulumi-lang-yaml="`conclusionStatement`" pulumi-lang-java="`conclusionStatement`">`conclusion_statement`</span> are
+  /// you provide a Lambda function in the `fulfillment_activity`. If you return the intent to the client
+  /// application, you can't specify this element. The `follow_up_prompt` and `conclusion_statement` are
   /// mutually exclusive. You can specify only one. Attributes are documented under statement.
   final Input<IntentConclusionStatement>? conclusionStatement;
 
   /// Prompts the user to confirm the intent. This question should
-  /// have a yes or no answer. You you must provide both the <span pulumi-lang-nodejs="`rejectionStatement`" pulumi-lang-dotnet="`RejectionStatement`" pulumi-lang-go="`rejectionStatement`" pulumi-lang-python="`rejection_statement`" pulumi-lang-yaml="`rejectionStatement`" pulumi-lang-java="`rejectionStatement`">`rejection_statement`</span> and <span pulumi-lang-nodejs="`confirmationPrompt`" pulumi-lang-dotnet="`ConfirmationPrompt`" pulumi-lang-go="`confirmationPrompt`" pulumi-lang-python="`confirmation_prompt`" pulumi-lang-yaml="`confirmationPrompt`" pulumi-lang-java="`confirmationPrompt`">`confirmation_prompt`</span>,
+  /// have a yes or no answer. You you must provide both the `rejection_statement` and `confirmation_prompt`,
   /// or neither. Attributes are documented under prompt.
   final Input<IntentConfirmationPrompt>? confirmationPrompt;
 
   /// Determines if a new slot type version is created when the initial
-  /// resource is created and on each update. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// resource is created and on each update. Defaults to `false`.
   final Input<bool>? createVersion;
 
   /// A description of the intent. Must be less than or equal to 200 characters in length.
@@ -36,12 +36,12 @@ class IntentArgs {
 
   /// Amazon Lex uses this prompt to solicit additional activity after
   /// fulfilling an intent. For example, after the OrderPizza intent is fulfilled, you might prompt the
-  /// user to order a drink. The <span pulumi-lang-nodejs="`followUpPrompt`" pulumi-lang-dotnet="`FollowUpPrompt`" pulumi-lang-go="`followUpPrompt`" pulumi-lang-python="`follow_up_prompt`" pulumi-lang-yaml="`followUpPrompt`" pulumi-lang-java="`followUpPrompt`">`follow_up_prompt`</span> field and the <span pulumi-lang-nodejs="`conclusionStatement`" pulumi-lang-dotnet="`ConclusionStatement`" pulumi-lang-go="`conclusionStatement`" pulumi-lang-python="`conclusion_statement`" pulumi-lang-yaml="`conclusionStatement`" pulumi-lang-java="`conclusionStatement`">`conclusion_statement`</span> field are mutually
+  /// user to order a drink. The `follow_up_prompt` field and the `conclusion_statement` field are mutually
   /// exclusive. You can specify only one. Attributes are documented under follow_up_prompt.
   final Input<IntentFollowUpPrompt>? followUpPrompt;
 
   /// Describes how the intent is fulfilled. For example, after a
-  /// user provides all of the information for a pizza order, <span pulumi-lang-nodejs="`fulfillmentActivity`" pulumi-lang-dotnet="`FulfillmentActivity`" pulumi-lang-go="`fulfillmentActivity`" pulumi-lang-python="`fulfillment_activity`" pulumi-lang-yaml="`fulfillmentActivity`" pulumi-lang-java="`fulfillmentActivity`">`fulfillment_activity`</span> defines how the bot
+  /// user provides all of the information for a pizza order, `fulfillment_activity` defines how the bot
   /// places an order with a local pizza store. Attributes are documented under fulfillment_activity.
   final Input<IntentFulfillmentActivity> fulfillmentActivity;
 
@@ -58,8 +58,8 @@ class IntentArgs {
   final Input<String>? region;
 
   /// When the user answers "no" to the question defined in
-  /// <span pulumi-lang-nodejs="`confirmationPrompt`" pulumi-lang-dotnet="`ConfirmationPrompt`" pulumi-lang-go="`confirmationPrompt`" pulumi-lang-python="`confirmation_prompt`" pulumi-lang-yaml="`confirmationPrompt`" pulumi-lang-java="`confirmationPrompt`">`confirmation_prompt`</span>, Amazon Lex responds with this statement to acknowledge that the intent was
-  /// canceled. You must provide both the <span pulumi-lang-nodejs="`rejectionStatement`" pulumi-lang-dotnet="`RejectionStatement`" pulumi-lang-go="`rejectionStatement`" pulumi-lang-python="`rejection_statement`" pulumi-lang-yaml="`rejectionStatement`" pulumi-lang-java="`rejectionStatement`">`rejection_statement`</span> and the <span pulumi-lang-nodejs="`confirmationPrompt`" pulumi-lang-dotnet="`ConfirmationPrompt`" pulumi-lang-go="`confirmationPrompt`" pulumi-lang-python="`confirmation_prompt`" pulumi-lang-yaml="`confirmationPrompt`" pulumi-lang-java="`confirmationPrompt`">`confirmation_prompt`</span>, or neither.
+  /// `confirmation_prompt`, Amazon Lex responds with this statement to acknowledge that the intent was
+  /// canceled. You must provide both the `rejection_statement` and the `confirmation_prompt`, or neither.
   /// Attributes are documented under statement.
   final Input<IntentRejectionStatement>? rejectionStatement;
 

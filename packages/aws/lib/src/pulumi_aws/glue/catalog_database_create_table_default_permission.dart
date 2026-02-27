@@ -1,0 +1,3 @@
+library module_glue_catalog_database_create_table_default_permission;
+
+export 'catalog_database_create_table_default_permission/catalog_database_create_table_default_permission.dart';

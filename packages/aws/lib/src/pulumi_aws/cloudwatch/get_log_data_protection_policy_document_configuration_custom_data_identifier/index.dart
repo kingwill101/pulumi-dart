@@ -1,3 +1,0 @@
-library module_cloudwatch_get_log_data_protection_policy_document_configuration_custom_data_identifier;
-
-export 'get_log_data_protection_policy_document_configuration_custom_data_identifier.dart';

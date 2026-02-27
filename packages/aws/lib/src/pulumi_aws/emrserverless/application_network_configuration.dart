@@ -1,0 +1,3 @@
+library module_emrserverless_application_network_configuration;
+
+export 'application_network_configuration/application_network_configuration.dart';

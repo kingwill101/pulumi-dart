@@ -17,16 +17,16 @@ class DomainArgs9 {
   /// The mode of authentication that members use to access the domain. Valid values are `IAM` and `SSO`.
   final Input<String> authMode;
 
-  /// The default space settings. See <span pulumi-lang-nodejs="`defaultSpaceSettings`" pulumi-lang-dotnet="`DefaultSpaceSettings`" pulumi-lang-go="`defaultSpaceSettings`" pulumi-lang-python="`default_space_settings`" pulumi-lang-yaml="`defaultSpaceSettings`" pulumi-lang-java="`defaultSpaceSettings`">`default_space_settings`</span> Block below.
+  /// The default space settings. See `default_space_settings` Block below.
   final Input<DomainDefaultSpaceSettings>? defaultSpaceSettings;
 
-  /// The default user settings. See <span pulumi-lang-nodejs="`defaultUserSettings`" pulumi-lang-dotnet="`DefaultUserSettings`" pulumi-lang-go="`defaultUserSettings`" pulumi-lang-python="`default_user_settings`" pulumi-lang-yaml="`defaultUserSettings`" pulumi-lang-java="`defaultUserSettings`">`default_user_settings`</span> Block below.
+  /// The default user settings. See `default_user_settings` Block below.
   final Input<DomainDefaultUserSettings> defaultUserSettings;
 
   /// The domain name.
   final Input<String> domainName;
 
-  /// The domain settings. See <span pulumi-lang-nodejs="`domainSettings`" pulumi-lang-dotnet="`DomainSettings`" pulumi-lang-go="`domainSettings`" pulumi-lang-python="`domain_settings`" pulumi-lang-yaml="`domainSettings`" pulumi-lang-java="`domainSettings`">`domain_settings`</span> Block below.
+  /// The domain settings. See `domain_settings` Block below.
   final Input<DomainDomainSettings>? domainSettings;
 
   /// The AWS KMS customer managed CMK used to encrypt the EFS volume attached to the domain.
@@ -35,7 +35,7 @@ class DomainArgs9 {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See <span pulumi-lang-nodejs="`retentionPolicy`" pulumi-lang-dotnet="`RetentionPolicy`" pulumi-lang-go="`retentionPolicy`" pulumi-lang-python="`retention_policy`" pulumi-lang-yaml="`retentionPolicy`" pulumi-lang-java="`retentionPolicy`">`retention_policy`</span> Block below.
+  /// The retention policy for this domain, which specifies whether resources will be retained after the Domain is deleted. By default, all resources are retained. See `retention_policy` Block below.
   final Input<DomainRetentionPolicy>? retentionPolicy;
 
   /// The VPC subnets that Studio uses for communication.
@@ -44,7 +44,7 @@ class DomainArgs9 {
   /// Indicates whether custom tag propagation is supported for the domain. Defaults to `DISABLED`. Valid values are: `ENABLED` and `DISABLED`.
   final Input<String>? tagPropagation;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.

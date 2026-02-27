@@ -5,11 +5,11 @@ import '../table_maintenance_configuration_iceberg_snapshot_management/table_mai
 
 class TableMaintenanceConfiguration {
   /// A single Iceberg compaction settings object.
-  /// See <span pulumi-lang-nodejs="`icebergCompaction`" pulumi-lang-dotnet="`IcebergCompaction`" pulumi-lang-go="`icebergCompaction`" pulumi-lang-python="`iceberg_compaction`" pulumi-lang-yaml="`icebergCompaction`" pulumi-lang-java="`icebergCompaction`">`iceberg_compaction`</span> below.
+  /// See `iceberg_compaction` below.
   final TableMaintenanceConfigurationIcebergCompaction icebergCompaction;
 
   /// A single Iceberg snapshot management settings object.
-  /// See <span pulumi-lang-nodejs="`icebergSnapshotManagement`" pulumi-lang-dotnet="`IcebergSnapshotManagement`" pulumi-lang-go="`icebergSnapshotManagement`" pulumi-lang-python="`iceberg_snapshot_management`" pulumi-lang-yaml="`icebergSnapshotManagement`" pulumi-lang-java="`icebergSnapshotManagement`">`iceberg_snapshot_management`</span> below.
+  /// See `iceberg_snapshot_management` below.
   final TableMaintenanceConfigurationIcebergSnapshotManagement
       icebergSnapshotManagement;
 

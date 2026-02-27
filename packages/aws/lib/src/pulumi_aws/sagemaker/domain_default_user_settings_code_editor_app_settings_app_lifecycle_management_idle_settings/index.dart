@@ -1,3 +1,0 @@
-library module_sagemaker_domain_default_user_settings_code_editor_app_settings_app_lifecycle_management_idle_settings;
-
-export 'domain_default_user_settings_code_editor_app_settings_app_lifecycle_management_idle_settings.dart';

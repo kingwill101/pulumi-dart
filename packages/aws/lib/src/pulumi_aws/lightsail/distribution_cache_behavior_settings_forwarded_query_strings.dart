@@ -1,0 +1,3 @@
+library module_lightsail_distribution_cache_behavior_settings_forwarded_query_strings;
+
+export 'distribution_cache_behavior_settings_forwarded_query_strings/distribution_cache_behavior_settings_forwarded_query_strings.dart';

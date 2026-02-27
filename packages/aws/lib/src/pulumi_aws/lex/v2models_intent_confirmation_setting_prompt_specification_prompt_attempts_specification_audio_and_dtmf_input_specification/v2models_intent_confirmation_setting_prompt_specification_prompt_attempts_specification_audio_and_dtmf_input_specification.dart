@@ -4,11 +4,11 @@ import '../v2models_intent_confirmation_setting_prompt_specification_prompt_atte
 import '../v2models_intent_confirmation_setting_prompt_specification_prompt_attempts_specification_audio_and_dtmf_input_specification_dtmf_specification/v2models_intent_confirmation_setting_prompt_specification_prompt_attempts_specification_audio_and_dtmf_input_specification_dtmf_specification.dart';
 
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification {
-  /// Configuration block for the settings on audio input. See <span pulumi-lang-nodejs="`audioSpecification`" pulumi-lang-dotnet="`AudioSpecification`" pulumi-lang-go="`audioSpecification`" pulumi-lang-python="`audio_specification`" pulumi-lang-yaml="`audioSpecification`" pulumi-lang-java="`audioSpecification`">`audio_specification`</span>.
+  /// Configuration block for the settings on audio input. See `audio_specification`.
   final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification?
       audioSpecification;
 
-  /// Configuration block for the settings on DTMF input. See <span pulumi-lang-nodejs="`dtmfSpecification`" pulumi-lang-dotnet="`DtmfSpecification`" pulumi-lang-go="`dtmfSpecification`" pulumi-lang-python="`dtmf_specification`" pulumi-lang-yaml="`dtmfSpecification`" pulumi-lang-java="`dtmfSpecification`">`dtmf_specification`</span>.
+  /// Configuration block for the settings on DTMF input. See `dtmf_specification`.
   final V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification?
       dtmfSpecification;
 

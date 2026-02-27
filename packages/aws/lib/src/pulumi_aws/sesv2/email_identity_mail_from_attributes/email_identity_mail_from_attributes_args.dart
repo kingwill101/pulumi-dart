@@ -10,7 +10,7 @@ class EmailIdentityMailFromAttributesArgs {
   /// The verified email identity.
   final Input<String> emailIdentity;
 
-  /// The custom MAIL FROM domain that you want the verified identity to use. Required if <span pulumi-lang-nodejs="`behaviorOnMxFailure`" pulumi-lang-dotnet="`BehaviorOnMxFailure`" pulumi-lang-go="`behaviorOnMxFailure`" pulumi-lang-python="`behavior_on_mx_failure`" pulumi-lang-yaml="`behaviorOnMxFailure`" pulumi-lang-java="`behaviorOnMxFailure`">`behavior_on_mx_failure`</span> is `REJECT_MESSAGE`.
+  /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
   final Input<String>? mailFromDomain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

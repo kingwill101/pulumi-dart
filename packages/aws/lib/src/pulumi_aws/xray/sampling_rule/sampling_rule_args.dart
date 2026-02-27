@@ -31,19 +31,19 @@ class SamplingRuleArgs {
   /// The name of the sampling rule.
   final Input<String>? ruleName;
 
-  /// Matches the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> that the service uses to identify itself in segments.
+  /// Matches the `name` that the service uses to identify itself in segments.
   final Input<String> serviceName;
 
-  /// Matches the <span pulumi-lang-nodejs="`origin`" pulumi-lang-dotnet="`Origin`" pulumi-lang-go="`origin`" pulumi-lang-python="`origin`" pulumi-lang-yaml="`origin`" pulumi-lang-java="`origin`">`origin`</span> that the service uses to identify its type in segments.
+  /// Matches the `origin` that the service uses to identify its type in segments.
   final Input<String> serviceType;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final Input<Map<String, String>>? tags;
 
   /// Matches the path from a request URL.
   final Input<String> urlPath;
 
-  /// The version of the sampling rule format (<span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> )
+  /// The version of the sampling rule format (`1` )
   final Input<int> version;
 
   SamplingRuleArgs({

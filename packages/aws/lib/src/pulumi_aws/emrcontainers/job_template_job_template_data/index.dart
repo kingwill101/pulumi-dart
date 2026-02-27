@@ -1,3 +1,0 @@
-library module_emrcontainers_job_template_job_template_data;
-
-export 'job_template_job_template_data.dart';

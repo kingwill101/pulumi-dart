@@ -1,0 +1,4 @@
+library module_servicecatalog_appregistry_application;
+
+export 'appregistry_application/appregistry_application.dart';
+export 'appregistry_application/appregistry_application_args.dart';

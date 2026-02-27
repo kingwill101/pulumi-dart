@@ -1,3 +1,0 @@
-library module_chimesdkmediapipelines_media_insights_pipeline_configuration_real_time_alert_configuration_rule;
-
-export 'media_insights_pipeline_configuration_real_time_alert_configuration_rule.dart';

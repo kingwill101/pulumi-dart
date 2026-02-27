@@ -1,0 +1,3 @@
+library module_imagebuilder_infrastructure_configuration_logging_s3_logs;
+
+export 'infrastructure_configuration_logging_s3_logs/infrastructure_configuration_logging_s3_logs.dart';

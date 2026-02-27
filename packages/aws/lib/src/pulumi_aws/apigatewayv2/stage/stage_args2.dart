@@ -8,23 +8,23 @@ import '../stage_route_setting/stage_route_setting.dart';
 /// The set of arguments for Stage.
 class StageArgs2 {
   /// Settings for logging access in this stage.
-  /// Use the <span pulumi-lang-nodejs="`aws.apigateway.Account`" pulumi-lang-dotnet="`aws.apigateway.Account`" pulumi-lang-go="`apigateway.Account`" pulumi-lang-python="`apigateway.Account`" pulumi-lang-yaml="`aws.apigateway.Account`" pulumi-lang-java="`aws.apigateway.Account`">`aws.apigateway.Account`</span> resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
+  /// Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
   final Input<StageAccessLogSettings2>? accessLogSettings;
 
   /// API identifier.
   final Input<String> apiId;
 
-  /// Whether updates to an API automatically trigger a new deployment. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Applicable for HTTP APIs.
+  /// Whether updates to an API automatically trigger a new deployment. Defaults to `false`. Applicable for HTTP APIs.
   final Input<bool>? autoDeploy;
 
-  /// Identifier of a client certificate for the stage. Use the <span pulumi-lang-nodejs="`aws.apigateway.ClientCertificate`" pulumi-lang-dotnet="`aws.apigateway.ClientCertificate`" pulumi-lang-go="`apigateway.ClientCertificate`" pulumi-lang-python="`apigateway.ClientCertificate`" pulumi-lang-yaml="`aws.apigateway.ClientCertificate`" pulumi-lang-java="`aws.apigateway.ClientCertificate`">`aws.apigateway.ClientCertificate`</span> resource to configure a client certificate.
+  /// Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
   /// Supported only for WebSocket APIs.
   final Input<String>? clientCertificateId;
 
   /// Default route settings for the stage.
   final Input<StageDefaultRouteSettings>? defaultRouteSettings;
 
-  /// Deployment identifier of the stage. Use the <span pulumi-lang-nodejs="`aws.apigatewayv2.Deployment`" pulumi-lang-dotnet="`aws.apigatewayv2.Deployment`" pulumi-lang-go="`apigatewayv2.Deployment`" pulumi-lang-python="`apigatewayv2.Deployment`" pulumi-lang-yaml="`aws.apigatewayv2.Deployment`" pulumi-lang-java="`aws.apigatewayv2.Deployment`">`aws.apigatewayv2.Deployment`</span> resource to configure a deployment.
+  /// Deployment identifier of the stage. Use the `aws.apigatewayv2.Deployment` resource to configure a deployment.
   final Input<String>? deploymentId;
 
   /// Description for the stage. Must be less than or equal to 1024 characters in length.
@@ -44,7 +44,7 @@ class StageArgs2 {
   /// Map that defines the stage variables for the stage.
   final Input<Map<String, String>>? stageVariables;
 
-  /// Map of tags to assign to the stage. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the stage. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   StageArgs2({

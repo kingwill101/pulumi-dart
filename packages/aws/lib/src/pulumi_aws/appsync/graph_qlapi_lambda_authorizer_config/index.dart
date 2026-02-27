@@ -1,3 +1,0 @@
-library module_appsync_graph_qlapi_lambda_authorizer_config;
-
-export 'graph_qlapi_lambda_authorizer_config.dart';

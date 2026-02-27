@@ -3,14 +3,14 @@
 import '../firehose_delivery_stream_msk_source_configuration_authentication_configuration/firehose_delivery_stream_msk_source_configuration_authentication_configuration.dart';
 
 class FirehoseDeliveryStreamMskSourceConfiguration {
-  /// The authentication configuration of the Amazon MSK cluster. See <span pulumi-lang-nodejs="`authenticationConfiguration`" pulumi-lang-dotnet="`AuthenticationConfiguration`" pulumi-lang-go="`authenticationConfiguration`" pulumi-lang-python="`authentication_configuration`" pulumi-lang-yaml="`authenticationConfiguration`" pulumi-lang-java="`authenticationConfiguration`">`authentication_configuration`</span> block below for details.
+  /// The authentication configuration of the Amazon MSK cluster. See `authentication_configuration` block below for details.
   final FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration
       authenticationConfiguration;
 
   /// The ARN of the Amazon MSK cluster.
   final String mskClusterArn;
 
-  /// The start date and time in UTC for the offset position within your MSK topic from where Firehose begins to read. By default, this is set to timestamp when Firehose becomes Active. If you want to create a Firehose stream with Earliest start position set the <span pulumi-lang-nodejs="`readFromTimestamp`" pulumi-lang-dotnet="`ReadFromTimestamp`" pulumi-lang-go="`readFromTimestamp`" pulumi-lang-python="`read_from_timestamp`" pulumi-lang-yaml="`readFromTimestamp`" pulumi-lang-java="`readFromTimestamp`">`read_from_timestamp`</span> parameter to Epoch (1970-01-01T00:00:00Z).
+  /// The start date and time in UTC for the offset position within your MSK topic from where Firehose begins to read. By default, this is set to timestamp when Firehose becomes Active. If you want to create a Firehose stream with Earliest start position set the `read_from_timestamp` parameter to Epoch (1970-01-01T00:00:00Z).
   final String? readFromTimestamp;
 
   /// The topic name within the Amazon MSK cluster.

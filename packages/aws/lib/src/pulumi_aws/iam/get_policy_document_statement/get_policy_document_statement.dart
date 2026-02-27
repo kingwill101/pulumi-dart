@@ -18,16 +18,16 @@ class GetPolicyDocumentStatement {
   /// List of actions that this statement does *not* apply to. Use to apply a policy statement to all actions *except* those listed.
   final List<String>? notActions;
 
-  /// Like <span pulumi-lang-nodejs="`principals`" pulumi-lang-dotnet="`Principals`" pulumi-lang-go="`principals`" pulumi-lang-python="`principals`" pulumi-lang-yaml="`principals`" pulumi-lang-java="`principals`">`principals`</span> except these are principals that the statement does *not* apply to.
+  /// Like `principals` except these are principals that the statement does *not* apply to.
   final List<GetPolicyDocumentStatementNotPrincipal>? notPrincipals;
 
-  /// List of resource ARNs that this statement does *not* apply to. Use to apply a policy statement to all resources *except* those listed. Conflicts with <span pulumi-lang-nodejs="`resources`" pulumi-lang-dotnet="`Resources`" pulumi-lang-go="`resources`" pulumi-lang-python="`resources`" pulumi-lang-yaml="`resources`" pulumi-lang-java="`resources`">`resources`</span>.
+  /// List of resource ARNs that this statement does *not* apply to. Use to apply a policy statement to all resources *except* those listed. Conflicts with `resources`.
   final List<String>? notResources;
 
   /// Configuration block for principals. Detailed below.
   final List<GetPolicyDocumentStatementPrincipal>? principals;
 
-  /// List of resource ARNs that this statement applies to. This is required by AWS if used for an IAM policy. Conflicts with <span pulumi-lang-nodejs="`notResources`" pulumi-lang-dotnet="`NotResources`" pulumi-lang-go="`notResources`" pulumi-lang-python="`not_resources`" pulumi-lang-yaml="`notResources`" pulumi-lang-java="`notResources`">`not_resources`</span>.
+  /// List of resource ARNs that this statement applies to. This is required by AWS if used for an IAM policy. Conflicts with `not_resources`.
   final List<String>? resources;
 
   /// Sid (statement ID) is an identifier for a policy statement.

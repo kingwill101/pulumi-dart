@@ -1,3 +1,0 @@
-library module_glue_catalog_database_target_database;
-
-export 'catalog_database_target_database.dart';

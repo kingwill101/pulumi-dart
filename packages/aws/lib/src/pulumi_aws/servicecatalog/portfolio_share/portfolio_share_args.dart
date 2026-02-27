@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for PortfolioShare.
 class PortfolioShareArgs {
-  /// Language code. Valid values: <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span> (English), <span pulumi-lang-nodejs="`jp`" pulumi-lang-dotnet="`Jp`" pulumi-lang-go="`jp`" pulumi-lang-python="`jp`" pulumi-lang-yaml="`jp`" pulumi-lang-java="`jp`">`jp`</span> (Japanese), <span pulumi-lang-nodejs="`zh`" pulumi-lang-dotnet="`Zh`" pulumi-lang-go="`zh`" pulumi-lang-python="`zh`" pulumi-lang-yaml="`zh`" pulumi-lang-java="`zh`">`zh`</span> (Chinese). Default value is <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span>.
+  /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final Input<String>? acceptLanguage;
 
   /// Portfolio identifier.
@@ -19,7 +19,7 @@ class PortfolioShareArgs {
   /// Enables or disables Principal sharing when creating the portfolio share. If this flag is not provided, principal sharing is disabled.
   final Input<bool>? sharePrincipals;
 
-  /// Whether to enable sharing of <span pulumi-lang-nodejs="`aws.servicecatalog.TagOption`" pulumi-lang-dotnet="`aws.servicecatalog.TagOption`" pulumi-lang-go="`servicecatalog.TagOption`" pulumi-lang-python="`servicecatalog.TagOption`" pulumi-lang-yaml="`aws.servicecatalog.TagOption`" pulumi-lang-java="`aws.servicecatalog.TagOption`">`aws.servicecatalog.TagOption`</span> resources when creating the portfolio share.
+  /// Whether to enable sharing of `aws.servicecatalog.TagOption` resources when creating the portfolio share.
   final Input<bool>? shareTagOptions;
 
   /// Type of portfolio share. Valid values are `ACCOUNT` (an external account), `ORGANIZATION` (a share to every account in an organization), `ORGANIZATIONAL_UNIT`, `ORGANIZATION_MEMBER_ACCOUNT` (a share to an account in an organization).

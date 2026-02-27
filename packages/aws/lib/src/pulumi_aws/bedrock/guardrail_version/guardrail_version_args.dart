@@ -16,7 +16,7 @@ class GuardrailVersionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Whether to retain the old version of a previously deployed Guardrail. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
   final Input<bool>? skipDestroy;
   final Input<GuardrailVersionTimeouts>? timeouts;
 

@@ -3,7 +3,7 @@
 import '../object_copy_override_provider_default_tags/object_copy_override_provider_default_tags.dart';
 
 class ObjectCopyOverrideProvider {
-  /// Override the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Override the provider `default_tags` configuration block.
   final ObjectCopyOverrideProviderDefaultTags? defaultTags;
 
   ObjectCopyOverrideProvider({

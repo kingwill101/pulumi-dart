@@ -1,3 +1,0 @@
-library module_cloudformation_stack_set_managed_execution;
-
-export 'stack_set_managed_execution.dart';

@@ -39,7 +39,7 @@ class GetLayerVersionResult {
   /// ARN for a signing profile version.
   final String signingProfileVersionArn;
 
-  /// (**Deprecated** use <span pulumi-lang-nodejs="`codeSha256`" pulumi-lang-dotnet="`CodeSha256`" pulumi-lang-go="`codeSha256`" pulumi-lang-python="`code_sha256`" pulumi-lang-yaml="`codeSha256`" pulumi-lang-java="`codeSha256`">`code_sha256`</span> instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
+  /// (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   final String sourceCodeHash;
 
   /// Size in bytes of the function .zip file.

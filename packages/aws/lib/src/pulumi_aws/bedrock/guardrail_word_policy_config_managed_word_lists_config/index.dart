@@ -1,3 +1,0 @@
-library module_bedrock_guardrail_word_policy_config_managed_word_lists_config;
-
-export 'guardrail_word_policy_config_managed_word_lists_config.dart';

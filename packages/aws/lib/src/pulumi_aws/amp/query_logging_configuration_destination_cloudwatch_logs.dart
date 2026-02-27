@@ -1,0 +1,3 @@
+library module_amp_query_logging_configuration_destination_cloudwatch_logs;
+
+export 'query_logging_configuration_destination_cloudwatch_logs/query_logging_configuration_destination_cloudwatch_logs.dart';

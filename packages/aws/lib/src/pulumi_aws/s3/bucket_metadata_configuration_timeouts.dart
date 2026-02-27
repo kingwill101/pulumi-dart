@@ -1,0 +1,3 @@
+library module_s3_bucket_metadata_configuration_timeouts;
+
+export 'bucket_metadata_configuration_timeouts/bucket_metadata_configuration_timeouts.dart';

@@ -10,10 +10,10 @@ class TaskTaskReportConfig {
   /// Specifies whether you want your task report to include only what went wrong with your transfer or a list of what succeeded and didn't. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
   final String? reportLevel;
 
-  /// Configuration block containing the configuration of the reporting level for aspects of your task report. See <span pulumi-lang-nodejs="`reportOverrides`" pulumi-lang-dotnet="`ReportOverrides`" pulumi-lang-go="`reportOverrides`" pulumi-lang-python="`report_overrides`" pulumi-lang-yaml="`reportOverrides`" pulumi-lang-java="`reportOverrides`">`report_overrides`</span> below.
+  /// Configuration block containing the configuration of the reporting level for aspects of your task report. See `report_overrides` below.
   final TaskTaskReportConfigReportOverrides? reportOverrides;
 
-  /// Configuration block containing the configuration for the Amazon S3 bucket where DataSync uploads your task report. See <span pulumi-lang-nodejs="`s3Destination`" pulumi-lang-dotnet="`S3Destination`" pulumi-lang-go="`s3Destination`" pulumi-lang-python="`s3_destination`" pulumi-lang-yaml="`s3Destination`" pulumi-lang-java="`s3Destination`">`s3_destination`</span> below.
+  /// Configuration block containing the configuration for the Amazon S3 bucket where DataSync uploads your task report. See `s3_destination` below.
   final TaskTaskReportConfigS3Destination s3Destination;
 
   /// Specifies whether your task report includes the new version of each object transferred into an S3 bucket. This only applies if you enable versioning on your bucket. Keep in mind that setting this to INCLUDE can increase the duration of your task execution. Valid values: `INCLUDE` and `NONE`.

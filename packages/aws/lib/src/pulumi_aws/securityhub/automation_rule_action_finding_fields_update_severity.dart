@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_action_finding_fields_update_severity;
+
+export 'automation_rule_action_finding_fields_update_severity/automation_rule_action_finding_fields_update_severity.dart';

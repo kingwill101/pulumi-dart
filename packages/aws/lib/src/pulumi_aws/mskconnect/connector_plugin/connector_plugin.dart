@@ -3,7 +3,7 @@
 import '../connector_plugin_custom_plugin/connector_plugin_custom_plugin.dart';
 
 class ConnectorPlugin {
-  /// Details about a custom plugin. See <span pulumi-lang-nodejs="`customPlugin`" pulumi-lang-dotnet="`CustomPlugin`" pulumi-lang-go="`customPlugin`" pulumi-lang-python="`custom_plugin`" pulumi-lang-yaml="`customPlugin`" pulumi-lang-java="`customPlugin`">`custom_plugin`</span> Block for details.
+  /// Details about a custom plugin. See `custom_plugin` Block for details.
   final ConnectorPluginCustomPlugin customPlugin;
 
   ConnectorPlugin({

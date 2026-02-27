@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_agent_runtime_agent_runtime_artifact_code_configuration_code_s3;
-
-export 'agentcore_agent_runtime_agent_runtime_artifact_code_configuration_code_s3.dart';

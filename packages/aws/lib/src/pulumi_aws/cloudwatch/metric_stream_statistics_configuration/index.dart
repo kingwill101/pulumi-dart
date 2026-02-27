@@ -1,3 +1,0 @@
-library module_cloudwatch_metric_stream_statistics_configuration;
-
-export 'metric_stream_statistics_configuration.dart';

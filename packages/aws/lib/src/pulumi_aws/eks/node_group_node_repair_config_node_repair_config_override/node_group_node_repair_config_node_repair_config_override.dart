@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class NodeGroupNodeRepairConfigNodeRepairConfigOverride {
-  /// Minimum time in minutes to wait before attempting to repair a node with the specified <span pulumi-lang-nodejs="`nodeMonitoringCondition`" pulumi-lang-dotnet="`NodeMonitoringCondition`" pulumi-lang-go="`nodeMonitoringCondition`" pulumi-lang-python="`node_monitoring_condition`" pulumi-lang-yaml="`nodeMonitoringCondition`" pulumi-lang-java="`nodeMonitoringCondition`">`node_monitoring_condition`</span> and <span pulumi-lang-nodejs="`nodeUnhealthyReason`" pulumi-lang-dotnet="`NodeUnhealthyReason`" pulumi-lang-go="`nodeUnhealthyReason`" pulumi-lang-python="`node_unhealthy_reason`" pulumi-lang-yaml="`nodeUnhealthyReason`" pulumi-lang-java="`nodeUnhealthyReason`">`node_unhealthy_reason`</span>.
+  /// Minimum time in minutes to wait before attempting to repair a node with the specified `node_monitoring_condition` and `node_unhealthy_reason`.
   final int minRepairWaitTimeMins;
 
   /// Unhealthy condition reported by the node monitoring agent that this override applies to.

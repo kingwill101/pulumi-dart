@@ -1,4 +1,0 @@
-library module_ec2transitgateway_multicast_group_member;
-
-export 'multicast_group_member.dart';
-export 'multicast_group_member_args.dart';

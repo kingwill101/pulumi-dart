@@ -13,7 +13,7 @@ class ChannelNamespaceArgs {
   /// Event handler functions that run custom business logic to process published events and subscribe requests.
   final Input<String>? codeHandlers;
 
-  /// Configuration for the <span pulumi-lang-nodejs="`onPublish`" pulumi-lang-dotnet="`OnPublish`" pulumi-lang-go="`onPublish`" pulumi-lang-python="`on_publish`" pulumi-lang-yaml="`onPublish`" pulumi-lang-java="`onPublish`">`on_publish`</span> and <span pulumi-lang-nodejs="`onSubscribe`" pulumi-lang-dotnet="`OnSubscribe`" pulumi-lang-go="`onSubscribe`" pulumi-lang-python="`on_subscribe`" pulumi-lang-yaml="`onSubscribe`" pulumi-lang-java="`onSubscribe`">`on_subscribe`</span> handlers. See Handler Configs below.
+  /// Configuration for the `on_publish` and `on_subscribe` handlers. See Handler Configs below.
   final Input<ChannelNamespaceHandlerConfigs>? handlerConfigs;
 
   /// Name of the channel namespace.
@@ -30,7 +30,7 @@ class ChannelNamespaceArgs {
   /// Authorization modes to use for subscribing to messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
   final Input<List<ChannelNamespaceSubscribeAuthMode>>? subscribeAuthModes;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ChannelNamespaceArgs({

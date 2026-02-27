@@ -1,3 +1,0 @@
-library module_efs_replication_configuration_destination;
-
-export 'replication_configuration_destination.dart';

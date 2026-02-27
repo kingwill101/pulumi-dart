@@ -24,7 +24,7 @@ class GetVirtualGatewayResult {
   /// Resource owner's AWS account ID.
   final String resourceOwner;
 
-  /// Virtual gateway specification. See the <span pulumi-lang-nodejs="`aws.appmesh.VirtualGateway`" pulumi-lang-dotnet="`aws.appmesh.VirtualGateway`" pulumi-lang-go="`appmesh.VirtualGateway`" pulumi-lang-python="`appmesh.VirtualGateway`" pulumi-lang-yaml="`aws.appmesh.VirtualGateway`" pulumi-lang-java="`aws.appmesh.VirtualGateway`">`aws.appmesh.VirtualGateway`</span> resource for details.
+  /// Virtual gateway specification. See the `aws.appmesh.VirtualGateway` resource for details.
   final List<GetVirtualGatewaySpec> specs;
 
   /// Map of tags.

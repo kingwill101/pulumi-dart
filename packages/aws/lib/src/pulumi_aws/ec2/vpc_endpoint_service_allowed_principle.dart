@@ -1,0 +1,4 @@
+library module_ec2_vpc_endpoint_service_allowed_principle;
+
+export 'vpc_endpoint_service_allowed_principle/vpc_endpoint_service_allowed_principle.dart';
+export 'vpc_endpoint_service_allowed_principle/vpc_endpoint_service_allowed_principle_args.dart';

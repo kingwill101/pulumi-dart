@@ -3,7 +3,7 @@
 import '../s3_access_point_attachment_openzfs_configuration_file_system_identity/s3_access_point_attachment_openzfs_configuration_file_system_identity.dart';
 
 class S3AccessPointAttachmentOpenzfsConfiguration {
-  /// File system user identity to use for authorizing file read and write requests that are made using the S3 access point. See <span pulumi-lang-nodejs="`fileSystemIdentity`" pulumi-lang-dotnet="`FileSystemIdentity`" pulumi-lang-go="`fileSystemIdentity`" pulumi-lang-python="`file_system_identity`" pulumi-lang-yaml="`fileSystemIdentity`" pulumi-lang-java="`fileSystemIdentity`">`file_system_identity`</span> Block for details.
+  /// File system user identity to use for authorizing file read and write requests that are made using the S3 access point. See `file_system_identity` Block for details.
   final S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity
       fileSystemIdentity;
 

@@ -1,3 +1,0 @@
-library module_cloudfront_distribution_default_cache_behavior_forwarded_values;
-
-export 'distribution_default_cache_behavior_forwarded_values.dart';

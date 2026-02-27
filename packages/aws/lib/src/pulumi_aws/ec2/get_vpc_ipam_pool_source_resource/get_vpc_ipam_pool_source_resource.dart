@@ -7,10 +7,10 @@ class GetVpcIpamPoolSourceResource {
   /// (Required) Owner of the resource.
   final String resourceOwner;
 
-  /// (Required) Region where the resource exists. Must match the <span pulumi-lang-nodejs="`locale`" pulumi-lang-dotnet="`Locale`" pulumi-lang-go="`locale`" pulumi-lang-python="`locale`" pulumi-lang-yaml="`locale`" pulumi-lang-java="`locale`">`locale`</span> of the parent IPAM Pool.
+  /// (Required) Region where the resource exists. Must match the `locale` of the parent IPAM Pool.
   final String resourceRegion;
 
-  /// (Required) Type of the resource. (<span pulumi-lang-nodejs="`vpc`" pulumi-lang-dotnet="`Vpc`" pulumi-lang-go="`vpc`" pulumi-lang-python="`vpc`" pulumi-lang-yaml="`vpc`" pulumi-lang-java="`vpc`">`vpc`</span>)
+  /// (Required) Type of the resource. (`vpc`)
   final String resourceType;
 
   GetVpcIpamPoolSourceResource({

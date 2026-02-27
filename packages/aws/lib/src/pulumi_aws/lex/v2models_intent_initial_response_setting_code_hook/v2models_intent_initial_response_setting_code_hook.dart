@@ -12,7 +12,7 @@ class V2modelsIntentInitialResponseSettingCodeHook {
   /// Label that indicates the dialog step from which the dialog code hook is happening.
   final String? invocationLabel;
 
-  /// Configuration block that contains the responses and actions that Amazon Lex takes after the Lambda function is complete. See <span pulumi-lang-nodejs="`postCodeHookSpecification`" pulumi-lang-dotnet="`PostCodeHookSpecification`" pulumi-lang-go="`postCodeHookSpecification`" pulumi-lang-python="`post_code_hook_specification`" pulumi-lang-yaml="`postCodeHookSpecification`" pulumi-lang-java="`postCodeHookSpecification`">`post_code_hook_specification`</span>.
+  /// Configuration block that contains the responses and actions that Amazon Lex takes after the Lambda function is complete. See `post_code_hook_specification`.
   final V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification?
       postCodeHookSpecification;
 

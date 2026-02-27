@@ -28,7 +28,7 @@ class GetAccessPointsAccessPoint {
   /// Indicates whether the access point allows access from the public Internet.
   final String networkOrigin;
 
-  /// VPC configuration for the access point. See <span pulumi-lang-nodejs="`vpcConfiguration`" pulumi-lang-dotnet="`VpcConfiguration`" pulumi-lang-go="`vpcConfiguration`" pulumi-lang-python="`vpc_configuration`" pulumi-lang-yaml="`vpcConfiguration`" pulumi-lang-java="`vpcConfiguration`">`vpc_configuration`</span> below.
+  /// VPC configuration for the access point. See `vpc_configuration` below.
   final List<GetAccessPointsAccessPointVpcConfiguration> vpcConfigurations;
 
   GetAccessPointsAccessPoint({

@@ -1,3 +1,0 @@
-library module_timestreamquery_scheduled_query_schedule_configuration;
-
-export 'scheduled_query_schedule_configuration.dart';

@@ -1,0 +1,3 @@
+library module_networkfirewall_rule_group_encryption_configuration;
+
+export 'rule_group_encryption_configuration/rule_group_encryption_configuration.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ClusterRestoreToPointInTime2 {
-  /// Date and time in UTC format to restore the database cluster to. Conflicts with <span pulumi-lang-nodejs="`useLatestRestorableTime`" pulumi-lang-dotnet="`UseLatestRestorableTime`" pulumi-lang-go="`useLatestRestorableTime`" pulumi-lang-python="`use_latest_restorable_time`" pulumi-lang-yaml="`useLatestRestorableTime`" pulumi-lang-java="`useLatestRestorableTime`">`use_latest_restorable_time`</span>.
+  /// Date and time in UTC format to restore the database cluster to. Conflicts with `use_latest_restorable_time`.
   final String? restoreToTime;
 
   /// Type of restore to be performed.
@@ -14,7 +14,7 @@ class ClusterRestoreToPointInTime2 {
   /// Cluster resource ID of the source database cluster from which to restore. To be used for restoring a deleted cluster in the same account which still has a retained automatic backup available.
   final String? sourceClusterResourceId;
 
-  /// Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with <span pulumi-lang-nodejs="`restoreToTime`" pulumi-lang-dotnet="`RestoreToTime`" pulumi-lang-go="`restoreToTime`" pulumi-lang-python="`restore_to_time`" pulumi-lang-yaml="`restoreToTime`" pulumi-lang-java="`restoreToTime`">`restore_to_time`</span>.
+  /// Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with `restore_to_time`.
   final bool? useLatestRestorableTime;
 
   ClusterRestoreToPointInTime2({

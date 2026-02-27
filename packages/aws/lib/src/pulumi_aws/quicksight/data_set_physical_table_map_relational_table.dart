@@ -1,0 +1,3 @@
+library module_quicksight_data_set_physical_table_map_relational_table;
+
+export 'data_set_physical_table_map_relational_table/data_set_physical_table_map_relational_table.dart';

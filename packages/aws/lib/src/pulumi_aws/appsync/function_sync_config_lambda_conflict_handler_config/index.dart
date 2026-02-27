@@ -1,3 +1,0 @@
-library module_appsync_function_sync_config_lambda_conflict_handler_config;
-
-export 'function_sync_config_lambda_conflict_handler_config.dart';

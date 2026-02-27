@@ -4,18 +4,18 @@ import '../allowed_images_settings_image_criterion_creation_date_condition/allow
 import '../allowed_images_settings_image_criterion_deprecation_time_condition/allowed_images_settings_image_criterion_deprecation_time_condition.dart';
 
 class AllowedImagesSettingsImageCriterion {
-  /// Condition based on AMI creation date. See <span pulumi-lang-nodejs="`creationDateCondition`" pulumi-lang-dotnet="`CreationDateCondition`" pulumi-lang-go="`creationDateCondition`" pulumi-lang-python="`creation_date_condition`" pulumi-lang-yaml="`creationDateCondition`" pulumi-lang-java="`creationDateCondition`">`creation_date_condition`</span> below.
+  /// Condition based on AMI creation date. See `creation_date_condition` below.
   final AllowedImagesSettingsImageCriterionCreationDateCondition?
       creationDateCondition;
 
-  /// Condition based on AMI deprecation time. See <span pulumi-lang-nodejs="`deprecationTimeCondition`" pulumi-lang-dotnet="`DeprecationTimeCondition`" pulumi-lang-go="`deprecationTimeCondition`" pulumi-lang-python="`deprecation_time_condition`" pulumi-lang-yaml="`deprecationTimeCondition`" pulumi-lang-java="`deprecationTimeCondition`">`deprecation_time_condition`</span> below.
+  /// Condition based on AMI deprecation time. See `deprecation_time_condition` below.
   final AllowedImagesSettingsImageCriterionDeprecationTimeCondition?
       deprecationTimeCondition;
 
   /// Set of AMI name patterns to allow. Maximum of 50 names.
   final List<String>? imageNames;
 
-  /// Set of image providers to allow. Maximum of 200 providers. Valid values include <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>, `aws-marketplace`, `aws-backup-vault`, <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, or a 12-digit AWS account ID.
+  /// Set of image providers to allow. Maximum of 200 providers. Valid values include `amazon`, `aws-marketplace`, `aws-backup-vault`, `none`, or a 12-digit AWS account ID.
   final List<String>? imageProviders;
 
   /// Set of AWS Marketplace product codes to allow. Maximum of 50 product codes.

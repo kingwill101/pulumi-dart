@@ -7,7 +7,7 @@ import '../experience_configuration/experience_configuration.dart';
 class ExperienceArgs {
   /// Configuration information for your Amazon Kendra experience. The provider will only perform drift detection of its value when present in a configuration. Detailed below.
   ///
-  /// > **NOTE:** By default of the AWS Kendra API, updates to an existing <span pulumi-lang-nodejs="`aws.kendra.Experience`" pulumi-lang-dotnet="`aws.kendra.Experience`" pulumi-lang-go="`kendra.Experience`" pulumi-lang-python="`kendra.Experience`" pulumi-lang-yaml="`aws.kendra.Experience`" pulumi-lang-java="`aws.kendra.Experience`">`aws.kendra.Experience`</span> resource (e.g. updating the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>) will also update the `configuration.content_source_configuration.direct_put_content` parameter to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if not already provided.
+  /// > **NOTE:** By default of the AWS Kendra API, updates to an existing `aws.kendra.Experience` resource (e.g. updating the `name`) will also update the `configuration.content_source_configuration.direct_put_content` parameter to `false` if not already provided.
   final Input<ExperienceConfiguration>? configuration;
 
   /// A description for your Amazon Kendra experience.

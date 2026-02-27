@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration {
-  /// If set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, snapshots are only deleted from table metadata, and the underlying data and metadata files are not deleted. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If set to `false`, snapshots are only deleted from table metadata, and the underlying data and metadata files are not deleted. Defaults to `false`.
   final bool? cleanExpiredFiles;
 
-  /// The number of Iceberg snapshots to retain within the retention period. Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> or the corresponding Iceberg table configuration field if it exists.
+  /// The number of Iceberg snapshots to retain within the retention period. Defaults to `1` or the corresponding Iceberg table configuration field if it exists.
   final int? numberOfSnapshotsToRetain;
 
-  /// Interval in hours between retention job runs. Defaults to <span pulumi-lang-nodejs="`24`" pulumi-lang-dotnet="`24`" pulumi-lang-go="`24`" pulumi-lang-python="`24`" pulumi-lang-yaml="`24`" pulumi-lang-java="`24`">`24`</span>.
+  /// Interval in hours between retention job runs. Defaults to `24`.
   final int? runRateInHours;
 
-  /// The number of days to retain the Iceberg snapshots. Defaults to <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>, or the corresponding Iceberg table configuration field if it exists.
+  /// The number of days to retain the Iceberg snapshots. Defaults to `5`, or the corresponding Iceberg table configuration field if it exists.
   final int? snapshotRetentionPeriodInDays;
 
   CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration({

@@ -6,7 +6,7 @@ import '../query_logging_configuration_timeouts/query_logging_configuration_time
 
 /// The set of arguments for QueryLoggingConfiguration.
 class QueryLoggingConfigurationArgs {
-  /// Configuration block for the logging destinations. See <span pulumi-lang-nodejs="`destinations`" pulumi-lang-dotnet="`Destinations`" pulumi-lang-go="`destinations`" pulumi-lang-python="`destinations`" pulumi-lang-yaml="`destinations`" pulumi-lang-java="`destinations`">`destinations`</span>.
+  /// Configuration block for the logging destinations. See `destinations`.
   final Input<List<QueryLoggingConfigurationDestination>> destinations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

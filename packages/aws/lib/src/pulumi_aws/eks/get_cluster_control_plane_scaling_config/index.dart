@@ -1,3 +1,0 @@
-library module_eks_get_cluster_control_plane_scaling_config;
-
-export 'get_cluster_control_plane_scaling_config.dart';

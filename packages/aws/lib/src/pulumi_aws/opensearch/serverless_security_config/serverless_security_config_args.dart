@@ -17,7 +17,7 @@ class ServerlessSecurityConfigArgs {
   /// Configuration block for SAML options.
   final Input<ServerlessSecurityConfigSamlOptions>? samlOptions;
 
-  /// Type of configuration. Must be <span pulumi-lang-nodejs="`saml`" pulumi-lang-dotnet="`Saml`" pulumi-lang-go="`saml`" pulumi-lang-python="`saml`" pulumi-lang-yaml="`saml`" pulumi-lang-java="`saml`">`saml`</span>.
+  /// Type of configuration. Must be `saml`.
   ///
   /// The following arguments are optional:
   final Input<String> type;

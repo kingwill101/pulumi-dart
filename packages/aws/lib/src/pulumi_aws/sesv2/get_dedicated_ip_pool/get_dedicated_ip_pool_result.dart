@@ -8,7 +8,7 @@ class GetDedicatedIpPoolResult {
   /// ARN of the Dedicated IP Pool.
   final String arn;
 
-  /// A list of objects describing the pool's dedicated IP's. See <span pulumi-lang-nodejs="`dedicatedIps`" pulumi-lang-dotnet="`DedicatedIps`" pulumi-lang-go="`dedicatedIps`" pulumi-lang-python="`dedicated_ips`" pulumi-lang-yaml="`dedicatedIps`" pulumi-lang-java="`dedicatedIps`">`dedicated_ips`</span>.
+  /// A list of objects describing the pool's dedicated IP's. See `dedicated_ips`.
   final List<GetDedicatedIpPoolDedicatedIp> dedicatedIps;
 
   /// The provider-assigned unique ID for this managed resource.

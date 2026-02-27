@@ -32,22 +32,22 @@ class EventTargetArgs {
   final Input<EventTargetEcsTarget>? ecsTarget;
 
   /// The name or ARN of the event bus to associate with the rule.
-  /// If you omit this, the <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> event bus is used.
+  /// If you omit this, the `default` event bus is used.
   final Input<String>? eventBusName;
 
-  /// Used to delete managed rules created by AWS. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Used to delete managed rules created by AWS. Defaults to `false`.
   final Input<bool>? forceDestroy;
 
   /// Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
   final Input<EventTargetHttpTarget>? httpTarget;
 
-  /// Valid JSON text passed to the target. Conflicts with <span pulumi-lang-nodejs="`inputPath`" pulumi-lang-dotnet="`InputPath`" pulumi-lang-go="`inputPath`" pulumi-lang-python="`input_path`" pulumi-lang-yaml="`inputPath`" pulumi-lang-java="`inputPath`">`input_path`</span> and <span pulumi-lang-nodejs="`inputTransformer`" pulumi-lang-dotnet="`InputTransformer`" pulumi-lang-go="`inputTransformer`" pulumi-lang-python="`input_transformer`" pulumi-lang-yaml="`inputTransformer`" pulumi-lang-java="`inputTransformer`">`input_transformer`</span>.
+  /// Valid JSON text passed to the target. Conflicts with `input_path` and `input_transformer`.
   final Input<String>? input;
 
-  /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with <span pulumi-lang-nodejs="`input`" pulumi-lang-dotnet="`Input`" pulumi-lang-go="`input`" pulumi-lang-python="`input`" pulumi-lang-yaml="`input`" pulumi-lang-java="`input`">`input`</span> and <span pulumi-lang-nodejs="`inputTransformer`" pulumi-lang-dotnet="`InputTransformer`" pulumi-lang-go="`inputTransformer`" pulumi-lang-python="`input_transformer`" pulumi-lang-yaml="`inputTransformer`" pulumi-lang-java="`inputTransformer`">`input_transformer`</span>.
+  /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `input_transformer`.
   final Input<String>? inputPath;
 
-  /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with <span pulumi-lang-nodejs="`input`" pulumi-lang-dotnet="`Input`" pulumi-lang-go="`input`" pulumi-lang-python="`input`" pulumi-lang-yaml="`input`" pulumi-lang-java="`input`">`input`</span> and <span pulumi-lang-nodejs="`inputPath`" pulumi-lang-dotnet="`InputPath`" pulumi-lang-go="`inputPath`" pulumi-lang-python="`input_path`" pulumi-lang-yaml="`inputPath`" pulumi-lang-java="`inputPath`">`input_path`</span>.
+  /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `input_path`.
   final Input<EventTargetInputTransformer>? inputTransformer;
 
   /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
@@ -62,7 +62,7 @@ class EventTargetArgs {
   /// Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
   final Input<EventTargetRetryPolicy>? retryPolicy;
 
-  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if <span pulumi-lang-nodejs="`ecsTarget`" pulumi-lang-dotnet="`EcsTarget`" pulumi-lang-go="`ecsTarget`" pulumi-lang-python="`ecs_target`" pulumi-lang-yaml="`ecsTarget`" pulumi-lang-java="`ecsTarget`">`ecs_target`</span> is used or target in <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
+  /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
   final Input<String>? roleArn;
 
   /// The name of the rule you want to add targets to.

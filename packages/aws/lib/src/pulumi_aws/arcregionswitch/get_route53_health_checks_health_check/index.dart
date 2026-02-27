@@ -1,3 +1,0 @@
-library module_arcregionswitch_get_route53_health_checks_health_check;
-
-export 'get_route53_health_checks_health_check.dart';

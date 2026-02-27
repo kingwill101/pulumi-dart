@@ -4,7 +4,7 @@ import '../event_action_action_export_revision_to_s3/event_action_action_export_
 
 class EventActionAction {
   /// Configuration for an Export Revision to S3 action.
-  /// Described in <span pulumi-lang-nodejs="`exportRevisionToS3`" pulumi-lang-dotnet="`ExportRevisionToS3`" pulumi-lang-go="`exportRevisionToS3`" pulumi-lang-python="`export_revision_to_s3`" pulumi-lang-yaml="`exportRevisionToS3`" pulumi-lang-java="`exportRevisionToS3`">`export_revision_to_s3`</span> Configuration Block
+  /// Described in `export_revision_to_s3` Configuration Block
   final EventActionActionExportRevisionToS3 exportRevisionToS3;
 
   EventActionAction({

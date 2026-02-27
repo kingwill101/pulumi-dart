@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../replication_configuration_replication_configuration_rule/replication_configuration_replication_configuration_rule.dart';
 
 class ReplicationConfigurationReplicationConfiguration {
-  /// The replication rules for a replication configuration. A maximum of 10 are allowed per <span pulumi-lang-nodejs="`replicationConfiguration`" pulumi-lang-dotnet="`ReplicationConfiguration`" pulumi-lang-go="`replicationConfiguration`" pulumi-lang-python="`replication_configuration`" pulumi-lang-yaml="`replicationConfiguration`" pulumi-lang-java="`replicationConfiguration`">`replication_configuration`</span>. See Rule
+  /// The replication rules for a replication configuration. A maximum of 10 are allowed per `replication_configuration`. See Rule
   final List<ReplicationConfigurationReplicationConfigurationRule> rules;
 
   ReplicationConfigurationReplicationConfiguration({

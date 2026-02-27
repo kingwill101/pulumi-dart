@@ -8,130 +8,7 @@ import 'location_azure_blob_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.datasync.LocationAzureBlob("example", {
-/// agentArns: [exampleAwsDatasyncAgent.arn],
-/// authenticationType: "SAS",
-/// containerUrl: "https://myaccount.blob.core.windows.net/mycontainer",
-/// sasConfiguration: {
-/// token: "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.datasync.LocationAzureBlob("example",
-/// agent_arns=[example_aws_datasync_agent["arn"]],
-/// authentication_type="SAS",
-/// container_url="https://myaccount.blob.core.windows.net/mycontainer",
-/// sas_configuration={
-/// "token": "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.DataSync.LocationAzureBlob("example", new()
-/// {
-/// AgentArns = new[]
-/// {
-/// exampleAwsDatasyncAgent.Arn,
-/// },
-/// AuthenticationType = "SAS",
-/// ContainerUrl = "https://myaccount.blob.core.windows.net/mycontainer",
-/// SasConfiguration = new Aws.DataSync.Inputs.LocationAzureBlobSasConfigurationArgs
-/// {
-/// Token = "sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/datasync"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := datasync.NewLocationAzureBlob(ctx, "example", &datasync.LocationAzureBlobArgs{
-/// AgentArns: pulumi.StringArray{
-/// exampleAwsDatasyncAgent.Arn,
-/// },
-/// AuthenticationType: pulumi.String("SAS"),
-/// ContainerUrl:       pulumi.String("https://myaccount.blob.core.windows.net/mycontainer"),
-/// SasConfiguration: &datasync.LocationAzureBlobSasConfigurationArgs{
-/// Token: pulumi.String("sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.datasync.LocationAzureBlob;
-/// import com.pulumi.aws.datasync.LocationAzureBlobArgs;
-/// import com.pulumi.aws.datasync.inputs.LocationAzureBlobSasConfigurationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new LocationAzureBlob("example", LocationAzureBlobArgs.builder()
-/// .agentArns(exampleAwsDatasyncAgent.arn())
-/// .authenticationType("SAS")
-/// .containerUrl("https://myaccount.blob.core.windows.net/mycontainer")
-/// .sasConfiguration(LocationAzureBlobSasConfigurationArgs.builder()
-/// .token("sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D")
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:datasync:LocationAzureBlob
-/// properties:
-/// agentArns:
-/// - ${exampleAwsDatasyncAgent.arn}
-/// authenticationType: SAS
-/// containerUrl: https://myaccount.blob.core.windows.net/mycontainer
-/// sasConfiguration:
-/// token: sp=r&st=2023-12-20T14:54:52Z&se=2023-12-20T22:54:52Z&spr=https&sv=2021-06-08&sr=c&sig=aBBKDWQvyuVcTPH9EBp%2FXTI9E%2F%2Fmq171%2BZU178wcwqU%3D
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -139,10 +16,10 @@ import 'location_azure_blob_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the DataSync Azure Blob location.
+/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync Azure Blob location.
 ///
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.datasync.LocationAzureBlob`" pulumi-lang-dotnet="`aws.datasync.LocationAzureBlob`" pulumi-lang-go="`datasync.LocationAzureBlob`" pulumi-lang-python="`datasync.LocationAzureBlob`" pulumi-lang-yaml="`aws.datasync.LocationAzureBlob`" pulumi-lang-java="`aws.datasync.LocationAzureBlob`">`aws.datasync.LocationAzureBlob`</span> using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.LocationAzureBlob` using the Amazon Resource Name (ARN). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/locationAzureBlob:LocationAzureBlob example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
@@ -175,10 +52,10 @@ class LocationAzureBlob extends CustomResource {
   /// Path segments if you want to limit your transfer to a virtual directory in the container.
   late final Output<String> subdirectory;
 
-  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
   late final Output<String> uri;
 

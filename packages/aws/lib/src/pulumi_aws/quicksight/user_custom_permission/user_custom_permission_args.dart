@@ -10,7 +10,7 @@ class UserCustomPermissionArgs {
   /// Custom permissions profile name.
   final Input<String> customPermissionsName;
 
-  /// Namespace that the user belongs to. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  /// Namespace that the user belongs to. Defaults to `default`.
   final Input<String>? namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

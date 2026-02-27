@@ -1,4 +1,0 @@
-library module_ec2_vpc_ipam_organization_admin_account;
-
-export 'vpc_ipam_organization_admin_account.dart';
-export 'vpc_ipam_organization_admin_account_args.dart';

@@ -12,7 +12,7 @@ class ConfigurationSetEventDestinationArgs {
   final Input<ConfigurationSetEventDestinationEventDestination>
       eventDestination;
 
-  /// An object that defines the event destination. See <span pulumi-lang-nodejs="`eventDestination`" pulumi-lang-dotnet="`EventDestination`" pulumi-lang-go="`eventDestination`" pulumi-lang-python="`event_destination`" pulumi-lang-yaml="`eventDestination`" pulumi-lang-java="`eventDestination`">`event_destination`</span> Block for details.
+  /// An object that defines the event destination. See `event_destination` Block for details.
   final Input<String> eventDestinationName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

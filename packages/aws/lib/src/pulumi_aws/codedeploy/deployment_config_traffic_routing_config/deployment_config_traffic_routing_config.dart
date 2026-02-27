@@ -4,10 +4,10 @@ import '../deployment_config_traffic_routing_config_time_based_canary/deployment
 import '../deployment_config_traffic_routing_config_time_based_linear/deployment_config_traffic_routing_config_time_based_linear.dart';
 
 class DeploymentConfigTrafficRoutingConfig {
-  /// The time based canary configuration information. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `TimeBasedLinear`, use <span pulumi-lang-nodejs="`timeBasedLinear`" pulumi-lang-dotnet="`TimeBasedLinear`" pulumi-lang-go="`timeBasedLinear`" pulumi-lang-python="`time_based_linear`" pulumi-lang-yaml="`timeBasedLinear`" pulumi-lang-java="`timeBasedLinear`">`time_based_linear`</span> instead.
+  /// The time based canary configuration information. If `type` is `TimeBasedLinear`, use `time_based_linear` instead.
   final DeploymentConfigTrafficRoutingConfigTimeBasedCanary? timeBasedCanary;
 
-  /// The time based linear configuration information. If <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `TimeBasedCanary`, use <span pulumi-lang-nodejs="`timeBasedCanary`" pulumi-lang-dotnet="`TimeBasedCanary`" pulumi-lang-go="`timeBasedCanary`" pulumi-lang-python="`time_based_canary`" pulumi-lang-yaml="`timeBasedCanary`" pulumi-lang-java="`timeBasedCanary`">`time_based_canary`</span> instead.
+  /// The time based linear configuration information. If `type` is `TimeBasedCanary`, use `time_based_canary` instead.
   final DeploymentConfigTrafficRoutingConfigTimeBasedLinear? timeBasedLinear;
 
   /// Type of traffic routing config. One of `TimeBasedCanary`, `TimeBasedLinear`, `AllAtOnce`.

@@ -1,0 +1,3 @@
+library module_ec2_network_insights_analysis_forward_path_component;
+
+export 'network_insights_analysis_forward_path_component/network_insights_analysis_forward_path_component.dart';

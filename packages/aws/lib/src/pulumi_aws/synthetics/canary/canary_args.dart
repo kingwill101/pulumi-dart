@@ -14,7 +14,7 @@ class CanaryArgs {
   /// Location in Amazon S3 where Synthetics stores artifacts from the test runs of this canary.
   final Input<String> artifactS3Location;
 
-  /// Specifies whether to also delete the Lambda functions and layers used by this canary. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether to also delete the Lambda functions and layers used by this canary. The default is `false`.
   final Input<bool>? deleteLambda;
 
   /// ARN of the IAM role to be used to run the canary. see [AWS Docs](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CreateCanary.html#API_CreateCanary_RequestSyntax) for permissions needs for IAM Role.
@@ -38,13 +38,13 @@ class CanaryArgs {
   /// Runtime version to use for the canary. Versions change often so consult the [Amazon CloudWatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html) for the latest valid versions. Values include `syn-python-selenium-1.0`, `syn-nodejs-puppeteer-3.0`, `syn-nodejs-2.2`, `syn-nodejs-2.1`, `syn-nodejs-2.0`, and `syn-1.0`.
   final Input<String> runtimeVersion;
 
-  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with <span pulumi-lang-nodejs="`zipFile`" pulumi-lang-dotnet="`ZipFile`" pulumi-lang-go="`zipFile`" pulumi-lang-python="`zip_file`" pulumi-lang-yaml="`zipFile`" pulumi-lang-java="`zipFile`">`zip_file`</span>.**
+  /// Full bucket name which is used if your canary script is located in S3. The bucket must already exist. **Conflicts with `zip_file`.**
   final Input<String>? s3Bucket;
 
-  /// S3 key of your script. **Conflicts with <span pulumi-lang-nodejs="`zipFile`" pulumi-lang-dotnet="`ZipFile`" pulumi-lang-go="`zipFile`" pulumi-lang-python="`zip_file`" pulumi-lang-yaml="`zipFile`" pulumi-lang-java="`zipFile`">`zip_file`</span>.**
+  /// S3 key of your script. **Conflicts with `zip_file`.**
   final Input<String>? s3Key;
 
-  /// S3 version ID of your script. **Conflicts with <span pulumi-lang-nodejs="`zipFile`" pulumi-lang-dotnet="`ZipFile`" pulumi-lang-go="`zipFile`" pulumi-lang-python="`zip_file`" pulumi-lang-yaml="`zipFile`" pulumi-lang-java="`zipFile`">`zip_file`</span>.**
+  /// S3 version ID of your script. **Conflicts with `zip_file`.**
   final Input<String>? s3Version;
 
   /// Configuration block providing how often the canary is to run and when these test runs are to stop. Detailed below.
@@ -58,13 +58,13 @@ class CanaryArgs {
   /// Number of days to retain data about successful runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
   final Input<int>? successRetentionPeriod;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Configuration block. Detailed below.
   final Input<CanaryVpcConfig>? vpcConfig;
 
-  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with <span pulumi-lang-nodejs="`s3Bucket`" pulumi-lang-dotnet="`S3Bucket`" pulumi-lang-go="`s3Bucket`" pulumi-lang-python="`s3_bucket`" pulumi-lang-yaml="`s3Bucket`" pulumi-lang-java="`s3Bucket`">`s3_bucket`</span>, <span pulumi-lang-nodejs="`s3Key`" pulumi-lang-dotnet="`S3Key`" pulumi-lang-go="`s3Key`" pulumi-lang-python="`s3_key`" pulumi-lang-yaml="`s3Key`" pulumi-lang-java="`s3Key`">`s3_key`</span>, and <span pulumi-lang-nodejs="`s3Version`" pulumi-lang-dotnet="`S3Version`" pulumi-lang-go="`s3Version`" pulumi-lang-python="`s3_version`" pulumi-lang-yaml="`s3Version`" pulumi-lang-java="`s3Version`">`s3_version`</span>.**
+  /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3_bucket`, `s3_key`, and `s3_version`.**
   final Input<String>? zipFile;
 
   CanaryArgs({

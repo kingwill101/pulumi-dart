@@ -23,7 +23,7 @@ class GetBotResult {
   /// Set to true if natural language understanding improvements are enabled.
   final bool enableModelImprovements;
 
-  /// If the <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`">`status`</span> is `FAILED`, the reason why the bot failed to build.
+  /// If the `status` is `FAILED`, the reason why the bot failed to build.
   final String failureReason;
 
   /// The provider-assigned unique ID for this managed resource.

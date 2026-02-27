@@ -1,0 +1,3 @@
+library module_keyspaces_table_schema_definition_clustering_key;
+
+export 'table_schema_definition_clustering_key/table_schema_definition_clustering_key.dart';

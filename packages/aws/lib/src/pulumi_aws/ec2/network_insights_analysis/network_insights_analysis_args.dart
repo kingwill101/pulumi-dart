@@ -15,10 +15,10 @@ class NetworkInsightsAnalysisArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// If enabled, the resource will wait for the Network Insights Analysis status to change to <span pulumi-lang-nodejs="`succeeded`" pulumi-lang-dotnet="`Succeeded`" pulumi-lang-go="`succeeded`" pulumi-lang-python="`succeeded`" pulumi-lang-yaml="`succeeded`" pulumi-lang-java="`succeeded`">`succeeded`</span> or <span pulumi-lang-nodejs="`failed`" pulumi-lang-dotnet="`Failed`" pulumi-lang-go="`failed`" pulumi-lang-python="`failed`" pulumi-lang-yaml="`failed`" pulumi-lang-java="`failed`">`failed`</span>. Setting this to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> will skip the process. Default: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// If enabled, the resource will wait for the Network Insights Analysis status to change to `succeeded` or `failed`. Setting this to `false` will skip the process. Default: `true`.
   final Input<bool>? waitForCompletion;
 
   NetworkInsightsAnalysisArgs({

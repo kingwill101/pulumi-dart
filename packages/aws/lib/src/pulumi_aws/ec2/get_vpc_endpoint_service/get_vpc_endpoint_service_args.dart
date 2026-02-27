@@ -8,7 +8,7 @@ class GetVpcEndpointServiceArgs {
   /// Configuration block(s) for filtering. Detailed below.
   final Input<List<GetVpcEndpointServiceFilter>>? filters;
 
-  /// Common name of an AWS service (e.g., <span pulumi-lang-nodejs="`s3`" pulumi-lang-dotnet="`S3`" pulumi-lang-go="`s3`" pulumi-lang-python="`s3`" pulumi-lang-yaml="`s3`" pulumi-lang-java="`s3`">`s3`</span>).
+  /// Common name of an AWS service (e.g., `s3`).
   final Input<String>? service;
 
   /// Service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker AI Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
@@ -22,7 +22,7 @@ class GetVpcEndpointServiceArgs {
 
   /// Map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
   ///
-  /// > **NOTE:** Specifying <span pulumi-lang-nodejs="`service`" pulumi-lang-dotnet="`Service`" pulumi-lang-go="`service`" pulumi-lang-python="`service`" pulumi-lang-yaml="`service`" pulumi-lang-java="`service`">`service`</span> will not work for non-AWS services or AWS services that don't follow the standard <span pulumi-lang-nodejs="`serviceName`" pulumi-lang-dotnet="`ServiceName`" pulumi-lang-go="`serviceName`" pulumi-lang-python="`service_name`" pulumi-lang-yaml="`serviceName`" pulumi-lang-java="`serviceName`">`service_name`</span> pattern of `com.amazonaws.<region>.<service>`.
+  /// > **NOTE:** Specifying `service` will not work for non-AWS services or AWS services that don't follow the standard `service_name` pattern of `com.amazonaws.<region>.<service>`.
   final Input<Map<String, String>>? tags;
 
   GetVpcEndpointServiceArgs({

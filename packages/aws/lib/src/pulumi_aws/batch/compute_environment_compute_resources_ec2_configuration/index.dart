@@ -1,3 +1,0 @@
-library module_batch_compute_environment_compute_resources_ec2_configuration;
-
-export 'compute_environment_compute_resources_ec2_configuration.dart';

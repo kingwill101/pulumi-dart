@@ -7,7 +7,7 @@ class TableLocalSecondaryIndex {
   /// Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
   final List<String>? nonKeyAttributes;
 
-  /// One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects  into the index only the table and index<span pulumi-lang-nodejs=" hashKey " pulumi-lang-dotnet=" HashKey " pulumi-lang-go=" hashKey " pulumi-lang-python=" hash_key " pulumi-lang-yaml=" hashKey " pulumi-lang-java=" hashKey "> hash_key </span>and<span pulumi-lang-nodejs=" sortKey " pulumi-lang-dotnet=" SortKey " pulumi-lang-go=" sortKey " pulumi-lang-python=" sort_key " pulumi-lang-yaml=" sortKey " pulumi-lang-java=" sortKey "> sort_key </span>attributes ,  `INCLUDE` projects into the index all of the attributes that are defined in <span pulumi-lang-nodejs="`nonKeyAttributes`" pulumi-lang-dotnet="`NonKeyAttributes`" pulumi-lang-go="`nonKeyAttributes`" pulumi-lang-python="`non_key_attributes`" pulumi-lang-yaml="`nonKeyAttributes`" pulumi-lang-java="`nonKeyAttributes`">`non_key_attributes`</span> in addition to the attributes that that`KEYS_ONLY` project.
+  /// One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects  into the index only the table and index hash_key and sort_key attributes ,  `INCLUDE` projects into the index all of the attributes that are defined in `non_key_attributes` in addition to the attributes that that`KEYS_ONLY` project.
   final String projectionType;
 
   /// Name of the range key.

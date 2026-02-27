@@ -1,3 +1,0 @@
-library module_bcmdata_export_export_data_query;
-
-export 'export_export_data_query.dart';

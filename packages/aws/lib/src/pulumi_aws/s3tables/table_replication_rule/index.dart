@@ -1,3 +1,0 @@
-library module_s3tables_table_replication_rule;
-
-export 'table_replication_rule.dart';

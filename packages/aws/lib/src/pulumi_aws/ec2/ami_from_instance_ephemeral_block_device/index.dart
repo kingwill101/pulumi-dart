@@ -1,3 +1,0 @@
-library module_ec2_ami_from_instance_ephemeral_block_device;
-
-export 'ami_from_instance_ephemeral_block_device.dart';

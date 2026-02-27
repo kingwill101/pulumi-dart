@@ -1,0 +1,3 @@
+library module_resourcegroups_group_configuration_parameter;
+
+export 'group_configuration_parameter/group_configuration_parameter.dart';

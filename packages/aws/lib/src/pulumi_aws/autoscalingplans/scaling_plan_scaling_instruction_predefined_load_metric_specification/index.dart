@@ -1,3 +1,0 @@
-library module_autoscalingplans_scaling_plan_scaling_instruction_predefined_load_metric_specification;
-
-export 'scaling_plan_scaling_instruction_predefined_load_metric_specification.dart';

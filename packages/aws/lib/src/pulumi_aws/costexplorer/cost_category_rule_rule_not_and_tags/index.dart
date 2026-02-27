@@ -1,3 +1,0 @@
-library module_costexplorer_cost_category_rule_rule_not_and_tags;
-
-export 'cost_category_rule_rule_not_and_tags.dart';

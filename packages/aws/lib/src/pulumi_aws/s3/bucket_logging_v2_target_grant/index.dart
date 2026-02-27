@@ -1,3 +1,0 @@
-library module_s3_bucket_logging_v2_target_grant;
-
-export 'bucket_logging_v2_target_grant.dart';

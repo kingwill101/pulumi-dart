@@ -1,3 +1,0 @@
-library module_auditmanager_assessment_scope_aws_account;
-
-export 'assessment_scope_aws_account.dart';

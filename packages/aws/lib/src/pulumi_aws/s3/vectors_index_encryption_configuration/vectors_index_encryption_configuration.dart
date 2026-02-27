@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class VectorsIndexEncryptionConfiguration {
-  /// AWS Key Management Service (KMS) customer managed key ID to use for the encryption configuration. This parameter is allowed if and only if <span pulumi-lang-nodejs="`sseType`" pulumi-lang-dotnet="`SseType`" pulumi-lang-go="`sseType`" pulumi-lang-python="`sse_type`" pulumi-lang-yaml="`sseType`" pulumi-lang-java="`sseType`">`sse_type`</span> is set to `aws:kms`. To specify the KMS key, you must use the format of the KMS key Amazon Resource Name (ARN).
+  /// AWS Key Management Service (KMS) customer managed key ID to use for the encryption configuration. This parameter is allowed if and only if `sse_type` is set to `aws:kms`. To specify the KMS key, you must use the format of the KMS key Amazon Resource Name (ARN).
   final String kmsKeyArn;
 
   /// Type of encryption to use. Valid values: `AES256`, `aws:kms`. Defaults to `AES256`.

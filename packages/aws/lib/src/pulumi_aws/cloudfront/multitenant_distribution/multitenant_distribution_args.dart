@@ -37,10 +37,10 @@ class MultitenantDistributionArgs {
   /// Whether the distribution is enabled to accept end user requests for content.
   final Input<bool> enabled;
 
-  /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, <span pulumi-lang-nodejs="`http2`" pulumi-lang-dotnet="`Http2`" pulumi-lang-go="`http2`" pulumi-lang-python="`http2`" pulumi-lang-yaml="`http2`" pulumi-lang-java="`http2`">`http2`</span>, <span pulumi-lang-nodejs="`http2and3`" pulumi-lang-dotnet="`Http2and3`" pulumi-lang-go="`http2and3`" pulumi-lang-python="`http2and3`" pulumi-lang-yaml="`http2and3`" pulumi-lang-java="`http2and3`">`http2and3`</span>, and <span pulumi-lang-nodejs="`http3`" pulumi-lang-dotnet="`Http3`" pulumi-lang-go="`http3`" pulumi-lang-python="`http3`" pulumi-lang-yaml="`http3`" pulumi-lang-java="`http3`">`http3`</span>. Default: <span pulumi-lang-nodejs="`http2`" pulumi-lang-dotnet="`Http2`" pulumi-lang-go="`http2`" pulumi-lang-python="`http2`" pulumi-lang-yaml="`http2`" pulumi-lang-java="`http2`">`http2`</span>.
+  /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
   final Input<String>? httpVersion;
 
-  /// One or more<span pulumi-lang-nodejs=" originGroup " pulumi-lang-dotnet=" OriginGroup " pulumi-lang-go=" originGroup " pulumi-lang-python=" origin_group " pulumi-lang-yaml=" originGroup " pulumi-lang-java=" originGroup "> origin_group </span>for this distribution (multiples allowed). See Origin Group below.
+  /// One or more origin_group for this distribution (multiples allowed). See Origin Group below.
   final Input<List<MultitenantDistributionOriginGroup>>? originGroups;
 
   /// One or more origins for this distribution (multiples allowed). See Origin below.
@@ -49,7 +49,7 @@ class MultitenantDistributionArgs {
   /// Restriction configuration for this distribution. See Restrictions below.
   final Input<MultitenantDistributionRestrictions>? restrictions;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.

@@ -1,0 +1,3 @@
+library module_bedrock_agent_agent_collaborator_timeouts;
+
+export 'agent_agent_collaborator_timeouts/agent_agent_collaborator_timeouts.dart';

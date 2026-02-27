@@ -3,7 +3,7 @@
 import '../lifecycle_policy_policy_details_schedule_archive_rule_archive_retain_rule_retention_archive_tier/lifecycle_policy_policy_details_schedule_archive_rule_archive_retain_rule_retention_archive_tier.dart';
 
 class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule {
-  /// Information about retention period in the Amazon EBS Snapshots Archive. See the <span pulumi-lang-nodejs="`retentionArchiveTier`" pulumi-lang-dotnet="`RetentionArchiveTier`" pulumi-lang-go="`retentionArchiveTier`" pulumi-lang-python="`retention_archive_tier`" pulumi-lang-yaml="`retentionArchiveTier`" pulumi-lang-java="`retentionArchiveTier`">`retention_archive_tier`</span> block.
+  /// Information about retention period in the Amazon EBS Snapshots Archive. See the `retention_archive_tier` block.
   final LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier
       retentionArchiveTier;
 

@@ -23,7 +23,7 @@ class ElasticClusterArgs {
   /// Name of the Elastic DocumentDB cluster
   final Input<String>? name;
 
-  /// The daily time range during which automated backups are created if automated backups are enabled, as determined by the <span pulumi-lang-nodejs="`backupRetentionPeriod`" pulumi-lang-dotnet="`BackupRetentionPeriod`" pulumi-lang-go="`backupRetentionPeriod`" pulumi-lang-python="`backup_retention_period`" pulumi-lang-yaml="`backupRetentionPeriod`" pulumi-lang-java="`backupRetentionPeriod`">`backup_retention_period`</span>.
+  /// The daily time range during which automated backups are created if automated backups are enabled, as determined by the `backup_retention_period`.
   final Input<String>? preferredBackupWindow;
 
   /// Weekly time range during which system maintenance can occur in UTC. Format: `ddd:hh24:mi-ddd:hh24:mi`. If not specified, AWS will choose a random 30-minute window on a random day of the week.
@@ -43,7 +43,7 @@ class ElasticClusterArgs {
   /// IDs of subnets in which the Elastic DocumentDB Cluster operates.
   final Input<List<String>>? subnetIds;
 
-  /// A map of tags to assign to the collection. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<ElasticClusterTimeouts>? timeouts;
 

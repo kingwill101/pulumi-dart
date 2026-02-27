@@ -6,7 +6,7 @@ import '../directory_config_service_account_credentials/directory_config_service
 
 /// The set of arguments for DirectoryConfig.
 class DirectoryConfigArgs {
-  /// Configuration block for the certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances. See <span pulumi-lang-nodejs="`certificateBasedAuthProperties`" pulumi-lang-dotnet="`CertificateBasedAuthProperties`" pulumi-lang-go="`certificateBasedAuthProperties`" pulumi-lang-python="`certificate_based_auth_properties`" pulumi-lang-yaml="`certificateBasedAuthProperties`" pulumi-lang-java="`certificateBasedAuthProperties`">`certificate_based_auth_properties`</span> below.
+  /// Configuration block for the certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances. See `certificate_based_auth_properties` below.
   final Input<DirectoryConfigCertificateBasedAuthProperties>?
       certificateBasedAuthProperties;
 
@@ -19,7 +19,7 @@ class DirectoryConfigArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See <span pulumi-lang-nodejs="`serviceAccountCredentials`" pulumi-lang-dotnet="`ServiceAccountCredentials`" pulumi-lang-go="`serviceAccountCredentials`" pulumi-lang-python="`service_account_credentials`" pulumi-lang-yaml="`serviceAccountCredentials`" pulumi-lang-java="`serviceAccountCredentials`">`service_account_credentials`</span> below.
+  /// Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See `service_account_credentials` below.
   final Input<DirectoryConfigServiceAccountCredentials>
       serviceAccountCredentials;
 

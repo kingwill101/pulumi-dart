@@ -16,7 +16,7 @@ class CertificateAuthorityCertificateAuthorityConfigurationSubject {
   /// First name. Must be less than or equal to 16 characters in length.
   final String? givenName;
 
-  /// Concatenation that typically contains the first letter of the <span pulumi-lang-nodejs="`givenName`" pulumi-lang-dotnet="`GivenName`" pulumi-lang-go="`givenName`" pulumi-lang-python="`given_name`" pulumi-lang-yaml="`givenName`" pulumi-lang-java="`givenName`">`given_name`</span>, the first letter of the middle name if one exists, and the first letter of the <span pulumi-lang-nodejs="`surname`" pulumi-lang-dotnet="`Surname`" pulumi-lang-go="`surname`" pulumi-lang-python="`surname`" pulumi-lang-yaml="`surname`" pulumi-lang-java="`surname`">`surname`</span>. Must be less than or equal to 5 characters in length.
+  /// Concatenation that typically contains the first letter of the `given_name`, the first letter of the middle name if one exists, and the first letter of the `surname`. Must be less than or equal to 5 characters in length.
   final String? initials;
 
   /// Locality (such as a city or town) in which the certificate subject is located. Must be less than or equal to 128 characters in length.
@@ -28,7 +28,7 @@ class CertificateAuthorityCertificateAuthorityConfigurationSubject {
   /// Subdivision or unit of the organization (such as sales or finance) with which the certificate subject is affiliated. Must be less than or equal to 64 characters in length.
   final String? organizationalUnit;
 
-  /// Typically a shortened version of a longer <span pulumi-lang-nodejs="`givenName`" pulumi-lang-dotnet="`GivenName`" pulumi-lang-go="`givenName`" pulumi-lang-python="`given_name`" pulumi-lang-yaml="`givenName`" pulumi-lang-java="`givenName`">`given_name`</span>. For example, Jonathan is often shortened to John. Elizabeth is often shortened to Beth, Liz, or Eliza. Must be less than or equal to 128 characters in length.
+  /// Typically a shortened version of a longer `given_name`. For example, Jonathan is often shortened to John. Elizabeth is often shortened to Beth, Liz, or Eliza. Must be less than or equal to 128 characters in length.
   final String? pseudonym;
 
   /// State in which the subject of the certificate is located. Must be less than or equal to 128 characters in length.

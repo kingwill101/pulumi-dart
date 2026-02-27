@@ -1,0 +1,3 @@
+library module_cloudfront_response_headers_policy_cors_config_access_control_allow_origins;
+
+export 'response_headers_policy_cors_config_access_control_allow_origins/response_headers_policy_cors_config_access_control_allow_origins.dart';

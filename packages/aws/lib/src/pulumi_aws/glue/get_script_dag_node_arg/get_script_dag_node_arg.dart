@@ -4,7 +4,7 @@ class GetScriptDagNodeArg {
   /// Name of the argument or property.
   final String name;
 
-  /// Boolean if the value is used as a parameter. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean if the value is used as a parameter. Defaults to `false`.
   final bool? param;
 
   /// Value of the argument or property.

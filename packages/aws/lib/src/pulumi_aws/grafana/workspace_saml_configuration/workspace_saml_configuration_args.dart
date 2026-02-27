@@ -19,10 +19,10 @@ class WorkspaceSamlConfigurationArgs {
   /// The groups assertion.
   final Input<String>? groupsAssertion;
 
-  /// The IDP Metadata URL. Note that either <span pulumi-lang-nodejs="`idpMetadataUrl`" pulumi-lang-dotnet="`IdpMetadataUrl`" pulumi-lang-go="`idpMetadataUrl`" pulumi-lang-python="`idp_metadata_url`" pulumi-lang-yaml="`idpMetadataUrl`" pulumi-lang-java="`idpMetadataUrl`">`idp_metadata_url`</span> or <span pulumi-lang-nodejs="`idpMetadataXml`" pulumi-lang-dotnet="`IdpMetadataXml`" pulumi-lang-go="`idpMetadataXml`" pulumi-lang-python="`idp_metadata_xml`" pulumi-lang-yaml="`idpMetadataXml`" pulumi-lang-java="`idpMetadataXml`">`idp_metadata_xml`</span> (but not both) must be specified.
+  /// The IDP Metadata URL. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
   final Input<String>? idpMetadataUrl;
 
-  /// The IDP Metadata XML. Note that either <span pulumi-lang-nodejs="`idpMetadataUrl`" pulumi-lang-dotnet="`IdpMetadataUrl`" pulumi-lang-go="`idpMetadataUrl`" pulumi-lang-python="`idp_metadata_url`" pulumi-lang-yaml="`idpMetadataUrl`" pulumi-lang-java="`idpMetadataUrl`">`idp_metadata_url`</span> or <span pulumi-lang-nodejs="`idpMetadataXml`" pulumi-lang-dotnet="`IdpMetadataXml`" pulumi-lang-go="`idpMetadataXml`" pulumi-lang-python="`idp_metadata_xml`" pulumi-lang-yaml="`idpMetadataXml`" pulumi-lang-java="`idpMetadataXml`">`idp_metadata_xml`</span> (but not both) must be specified.
+  /// The IDP Metadata XML. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
   final Input<String>? idpMetadataXml;
 
   /// The login assertion.

@@ -1,3 +1,0 @@
-library module_backup_get_report_plan_report_delivery_channel;
-
-export 'get_report_plan_report_delivery_channel.dart';

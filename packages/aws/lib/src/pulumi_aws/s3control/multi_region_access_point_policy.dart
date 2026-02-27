@@ -1,0 +1,4 @@
+library module_s3control_multi_region_access_point_policy;
+
+export 'multi_region_access_point_policy/multi_region_access_point_policy.dart';
+export 'multi_region_access_point_policy/multi_region_access_point_policy_args.dart';

@@ -6,17 +6,17 @@ import '../get_instance_filter/get_instance_filter.dart';
 /// Arguments for getInstance.
 class GetInstanceArgs2 {
   /// One or more filters to apply to the search.
-  /// If multiple <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> blocks are provided, they all must be true.
+  /// If multiple `filter` blocks are provided, they all must be true.
   /// For a full reference of filter names, see [describe-instances in the AWS CLI reference][1].
-  /// See <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> Block below.
+  /// See `filter` Block below.
   final Input<List<GetInstanceFilter>>? filters;
 
-  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the <span pulumi-lang-nodejs="`passwordData`" pulumi-lang-dotnet="`PasswordData`" pulumi-lang-go="`passwordData`" pulumi-lang-python="`password_data`" pulumi-lang-yaml="`passwordData`" pulumi-lang-java="`passwordData`">`password_data`</span> attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+  /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
   final Input<bool>? getPasswordData;
 
-  /// Retrieve Base64 encoded User Data contents into the <span pulumi-lang-nodejs="`userDataBase64`" pulumi-lang-dotnet="`UserDataBase64`" pulumi-lang-go="`userDataBase64`" pulumi-lang-python="`user_data_base64`" pulumi-lang-yaml="`userDataBase64`" pulumi-lang-java="`userDataBase64`">`user_data_base64`</span> attribute. A SHA-1 hash of the User Data contents will always be present in the <span pulumi-lang-nodejs="`userData`" pulumi-lang-dotnet="`UserData`" pulumi-lang-go="`userData`" pulumi-lang-python="`user_data`" pulumi-lang-yaml="`userData`" pulumi-lang-java="`userData`">`user_data`</span> attribute. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Retrieve Base64 encoded User Data contents into the `user_data_base64` attribute. A SHA-1 hash of the User Data contents will always be present in the `user_data` attribute. Defaults to `false`.
   ///
-  /// > **NOTE:** At least one of <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span>, <span pulumi-lang-nodejs="`instanceTags`" pulumi-lang-dotnet="`InstanceTags`" pulumi-lang-go="`instanceTags`" pulumi-lang-python="`instance_tags`" pulumi-lang-yaml="`instanceTags`" pulumi-lang-java="`instanceTags`">`instance_tags`</span>, or <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> must be specified.
+  /// > **NOTE:** At least one of `filter`, `instance_tags`, or `instance_id` must be specified.
   ///
   /// > **NOTE:** If anything other than a single match is returned by the search,
   /// this call will fail. Ensure that your search is specific enough to return

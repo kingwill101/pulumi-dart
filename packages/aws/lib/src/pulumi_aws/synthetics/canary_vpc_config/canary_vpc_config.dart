@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class CanaryVpcConfig {
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, allow outbound IPv6 traffic on VPC canaries that are connected to dual-stack subnets. The default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If `true`, allow outbound IPv6 traffic on VPC canaries that are connected to dual-stack subnets. The default is `false`.
   final bool? ipv6AllowedForDualStack;
 
   /// IDs of the security groups for this canary.

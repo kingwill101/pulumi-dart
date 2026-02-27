@@ -1,3 +1,0 @@
-library module_autoscaling_group_instance_refresh;
-
-export 'group_instance_refresh.dart';

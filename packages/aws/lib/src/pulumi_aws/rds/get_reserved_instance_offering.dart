@@ -1,0 +1,5 @@
+library module_rds_get_reserved_instance_offering;
+
+export 'get_reserved_instance_offering/get_reserved_instance_offering.dart';
+export 'get_reserved_instance_offering/get_reserved_instance_offering_args.dart';
+export 'get_reserved_instance_offering/get_reserved_instance_offering_result.dart';

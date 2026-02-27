@@ -6,11 +6,11 @@ import 'role_association_args2.dart';
 /// * [Amazon RDS Oracle integration with Amazon S3](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-s3-integration.html)
 /// * [Importing Amazon S3 Data into an RDS PostgreSQL DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PostgreSQL.S3Import.html)
 ///
-/// > To manage the RDS DB Instance IAM Role for [Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html), see the <span pulumi-lang-nodejs="`aws.rds.Instance`" pulumi-lang-dotnet="`aws.rds.Instance`" pulumi-lang-go="`rds.Instance`" pulumi-lang-python="`rds.Instance`" pulumi-lang-yaml="`aws.rds.Instance`" pulumi-lang-java="`aws.rds.Instance`">`aws.rds.Instance`</span> resource <span pulumi-lang-nodejs="`monitoringRoleArn`" pulumi-lang-dotnet="`MonitoringRoleArn`" pulumi-lang-go="`monitoringRoleArn`" pulumi-lang-python="`monitoring_role_arn`" pulumi-lang-yaml="`monitoringRoleArn`" pulumi-lang-java="`monitoringRoleArn`">`monitoring_role_arn`</span> argument instead.
+/// > To manage the RDS DB Instance IAM Role for [Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html), see the `aws.rds.Instance` resource `monitoring_role_arn` argument instead.
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.rds.RoleAssociation`" pulumi-lang-dotnet="`aws.rds.RoleAssociation`" pulumi-lang-go="`rds.RoleAssociation`" pulumi-lang-python="`rds.RoleAssociation`" pulumi-lang-yaml="`aws.rds.RoleAssociation`" pulumi-lang-java="`aws.rds.RoleAssociation`">`aws.rds.RoleAssociation`</span> using the DB Instance Identifier and IAM Role ARN separated by a comma (`,`). For example:
+/// Using `pulumi import`, import `aws.rds.RoleAssociation` using the DB Instance Identifier and IAM Role ARN separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/roleAssociation:RoleAssociation example my-db-instance,arn:aws:iam::123456789012:role/my-role

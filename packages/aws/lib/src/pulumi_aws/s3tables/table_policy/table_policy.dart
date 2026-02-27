@@ -7,50 +7,11 @@ import 'table_policy_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```yaml
-/// resources:
-/// exampleTablePolicy:
-/// type: aws:s3tables:TablePolicy
-/// name: example
-/// properties:
-/// resourcePolicy: ${example.json}
-/// name: ${test.name}
-/// namespace: ${test.namespace}
-/// tableBucketArn: ${test.tableBucketArn}
-/// exampleTable:
-/// type: aws:s3tables:Table
-/// name: example
-/// properties:
-/// name: example_table
-/// namespace: ${exampleNamespace}
-/// tableBucketArn: ${exampleNamespace.tableBucketArn}
-/// format: ICEBERG
-/// exampleNamespace:
-/// type: aws:s3tables:Namespace
-/// name: example
-/// properties:
-/// namespace:
-/// - example-namespace
-/// tableBucketArn: ${exampleTableBucket.arn}
-/// exampleTableBucket:
-/// type: aws:s3tables:TableBucket
-/// name: example
-/// properties:
-/// name: example-bucket
-/// variables:
-/// example:
-/// fn::invoke:
-/// function: aws:iam:getPolicyDocument
-/// arguments:
-/// statements:
-/// - {}
-/// ```
-/// <!--End PulumiCodeChooser -->
+///
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Tables Table Policy using the <span pulumi-lang-nodejs="`tableBucketArn`" pulumi-lang-dotnet="`TableBucketArn`" pulumi-lang-go="`tableBucketArn`" pulumi-lang-python="`table_bucket_arn`" pulumi-lang-yaml="`tableBucketArn`" pulumi-lang-java="`tableBucketArn`">`table_bucket_arn`</span>, the value of <span pulumi-lang-nodejs="`namespace`" pulumi-lang-dotnet="`Namespace`" pulumi-lang-go="`namespace`" pulumi-lang-python="`namespace`" pulumi-lang-yaml="`namespace`" pulumi-lang-java="`namespace`">`namespace`</span>, and the value of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>, separated by a semicolon (`;`). For example:
+/// Using `pulumi import`, import S3 Tables Table Policy using the `table_bucket_arn`, the value of `namespace`, and the value of `name`, separated by a semicolon (`;`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3tables/tablePolicy:TablePolicy example 'arn:aws:s3tables:us-west-2:123456789012:bucket/example-bucket;example-namespace;example-table'

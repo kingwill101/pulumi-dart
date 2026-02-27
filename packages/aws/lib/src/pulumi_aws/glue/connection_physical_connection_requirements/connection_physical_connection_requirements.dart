@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ConnectionPhysicalConnectionRequirements {
-  /// The availability zone of the connection. This field is redundant and implied by <span pulumi-lang-nodejs="`subnetId`" pulumi-lang-dotnet="`SubnetId`" pulumi-lang-go="`subnetId`" pulumi-lang-python="`subnet_id`" pulumi-lang-yaml="`subnetId`" pulumi-lang-java="`subnetId`">`subnet_id`</span>, but is currently an api requirement.
+  /// The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
   final String? availabilityZone;
 
   /// The security group ID list used by the connection.

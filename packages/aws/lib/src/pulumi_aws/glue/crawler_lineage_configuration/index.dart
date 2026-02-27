@@ -1,3 +1,0 @@
-library module_glue_crawler_lineage_configuration;
-
-export 'crawler_lineage_configuration.dart';

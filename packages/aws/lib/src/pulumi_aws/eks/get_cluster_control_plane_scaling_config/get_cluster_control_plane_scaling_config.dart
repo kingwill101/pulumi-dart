@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetClusterControlPlaneScalingConfig {
-  /// The control plane scaling tier. Valid values are <span pulumi-lang-nodejs="`standard`" pulumi-lang-dotnet="`Standard`" pulumi-lang-go="`standard`" pulumi-lang-python="`standard`" pulumi-lang-yaml="`standard`" pulumi-lang-java="`standard`">`standard`</span>, `tier-xl`, `tier-2xl`, or `tier-4xl`.
+  /// The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, or `tier-4xl`.
   final String tier;
 
   GetClusterControlPlaneScalingConfig({

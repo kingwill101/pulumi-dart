@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for KeyPair.
 class KeyPairArgs {
-  /// The name for the key pair. If neither <span pulumi-lang-nodejs="`keyName`" pulumi-lang-dotnet="`KeyName`" pulumi-lang-go="`keyName`" pulumi-lang-python="`key_name`" pulumi-lang-yaml="`keyName`" pulumi-lang-java="`keyName`">`key_name`</span> nor <span pulumi-lang-nodejs="`keyNamePrefix`" pulumi-lang-dotnet="`KeyNamePrefix`" pulumi-lang-go="`keyNamePrefix`" pulumi-lang-python="`key_name_prefix`" pulumi-lang-yaml="`keyNamePrefix`" pulumi-lang-java="`keyNamePrefix`">`key_name_prefix`</span> is provided, the provider will create a unique key name.
+  /// The name for the key pair. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
   final Input<String>? keyName;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`keyName`" pulumi-lang-dotnet="`KeyName`" pulumi-lang-go="`keyName`" pulumi-lang-python="`key_name`" pulumi-lang-yaml="`keyName`" pulumi-lang-java="`keyName`">`key_name`</span>. If neither <span pulumi-lang-nodejs="`keyName`" pulumi-lang-dotnet="`KeyName`" pulumi-lang-go="`keyName`" pulumi-lang-python="`key_name`" pulumi-lang-yaml="`keyName`" pulumi-lang-java="`keyName`">`key_name`</span> nor <span pulumi-lang-nodejs="`keyNamePrefix`" pulumi-lang-dotnet="`KeyNamePrefix`" pulumi-lang-go="`keyNamePrefix`" pulumi-lang-python="`key_name_prefix`" pulumi-lang-yaml="`keyNamePrefix`" pulumi-lang-java="`keyNamePrefix`">`key_name_prefix`</span> is provided, the provider will create a unique key name.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `key_name`. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
   final Input<String>? keyNamePrefix;
 
   /// The public key material.
@@ -16,7 +16,7 @@ class KeyPairArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   KeyPairArgs({

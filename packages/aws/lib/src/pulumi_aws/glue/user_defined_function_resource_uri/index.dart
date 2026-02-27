@@ -1,3 +1,0 @@
-library module_glue_user_defined_function_resource_uri;
-
-export 'user_defined_function_resource_uri.dart';

@@ -7,7 +7,7 @@ class AppCustomRule {
   /// Source pattern for a URL rewrite or redirect rule.
   final String source;
 
-  /// Status code for a URL rewrite or redirect rule. Valid values: <span pulumi-lang-nodejs="`200`" pulumi-lang-dotnet="`200`" pulumi-lang-go="`200`" pulumi-lang-python="`200`" pulumi-lang-yaml="`200`" pulumi-lang-java="`200`">`200`</span>, <span pulumi-lang-nodejs="`301`" pulumi-lang-dotnet="`301`" pulumi-lang-go="`301`" pulumi-lang-python="`301`" pulumi-lang-yaml="`301`" pulumi-lang-java="`301`">`301`</span>, <span pulumi-lang-nodejs="`302`" pulumi-lang-dotnet="`302`" pulumi-lang-go="`302`" pulumi-lang-python="`302`" pulumi-lang-yaml="`302`" pulumi-lang-java="`302`">`302`</span>, <span pulumi-lang-nodejs="`404`" pulumi-lang-dotnet="`404`" pulumi-lang-go="`404`" pulumi-lang-python="`404`" pulumi-lang-yaml="`404`" pulumi-lang-java="`404`">`404`</span>, `404-200`.
+  /// Status code for a URL rewrite or redirect rule. Valid values: `200`, `301`, `302`, `404`, `404-200`.
   final String? status;
 
   /// Target pattern for a URL rewrite or redirect rule.

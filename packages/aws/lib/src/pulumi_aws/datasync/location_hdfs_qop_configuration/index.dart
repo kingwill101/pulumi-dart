@@ -1,3 +1,0 @@
-library module_datasync_location_hdfs_qop_configuration;
-
-export 'location_hdfs_qop_configuration.dart';

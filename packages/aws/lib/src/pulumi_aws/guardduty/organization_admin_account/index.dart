@@ -1,4 +1,0 @@
-library module_guardduty_organization_admin_account;
-
-export 'organization_admin_account2.dart';
-export 'organization_admin_account_args2.dart';

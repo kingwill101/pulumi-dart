@@ -1,3 +1,0 @@
-library module_comprehend_entity_recognizer_input_data_config_augmented_manifest;
-
-export 'entity_recognizer_input_data_config_augmented_manifest.dart';

@@ -1,0 +1,3 @@
+library module_rekognition_stream_processor_settings_face_search;
+
+export 'stream_processor_settings_face_search/stream_processor_settings_face_search.dart';

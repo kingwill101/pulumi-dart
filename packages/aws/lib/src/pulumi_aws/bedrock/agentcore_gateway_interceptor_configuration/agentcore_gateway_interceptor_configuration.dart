@@ -4,14 +4,14 @@ import '../agentcore_gateway_interceptor_configuration_input_configuration/agent
 import '../agentcore_gateway_interceptor_configuration_interceptor/agentcore_gateway_interceptor_configuration_interceptor.dart';
 
 class AgentcoreGatewayInterceptorConfiguration {
-  /// Input configuration for the interceptor. See <span pulumi-lang-nodejs="`inputConfiguration`" pulumi-lang-dotnet="`InputConfiguration`" pulumi-lang-go="`inputConfiguration`" pulumi-lang-python="`input_configuration`" pulumi-lang-yaml="`inputConfiguration`" pulumi-lang-java="`inputConfiguration`">`input_configuration`</span> below.
+  /// Input configuration for the interceptor. See `input_configuration` below.
   final AgentcoreGatewayInterceptorConfigurationInputConfiguration?
       inputConfiguration;
 
   /// Set of interception points. Valid values: `REQUEST`, `RESPONSE`.
   final List<String> interceptionPoints;
 
-  /// Interceptor infrastructure configuration. See <span pulumi-lang-nodejs="`interceptor`" pulumi-lang-dotnet="`Interceptor`" pulumi-lang-go="`interceptor`" pulumi-lang-python="`interceptor`" pulumi-lang-yaml="`interceptor`" pulumi-lang-java="`interceptor`">`interceptor`</span> below.
+  /// Interceptor infrastructure configuration. See `interceptor` below.
   final AgentcoreGatewayInterceptorConfigurationInterceptor? interceptor;
 
   AgentcoreGatewayInterceptorConfiguration({

@@ -1,0 +1,3 @@
+library module_datasync_task_task_report_config;
+
+export 'task_task_report_config/task_task_report_config.dart';

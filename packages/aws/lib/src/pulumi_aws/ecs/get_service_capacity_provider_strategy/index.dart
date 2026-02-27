@@ -1,3 +1,0 @@
-library module_ecs_get_service_capacity_provider_strategy;
-
-export 'get_service_capacity_provider_strategy.dart';

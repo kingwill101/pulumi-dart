@@ -22,7 +22,7 @@ class GetOrganizationalUnitChildAccountsAccount {
   /// State of the account in the organization.
   final String state;
 
-  /// (**Deprecated** use <span pulumi-lang-nodejs="`state`" pulumi-lang-dotnet="`State`" pulumi-lang-go="`state`" pulumi-lang-python="`state`" pulumi-lang-yaml="`state`" pulumi-lang-java="`state`">`state`</span> instead) Status of the account in the organization.
+  /// (**Deprecated** use `state` instead) Status of the account in the organization.
   final String status;
 
   GetOrganizationalUnitChildAccountsAccount({

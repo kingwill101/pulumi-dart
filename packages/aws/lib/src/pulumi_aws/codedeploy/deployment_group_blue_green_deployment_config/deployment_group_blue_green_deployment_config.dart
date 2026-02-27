@@ -15,7 +15,7 @@ class DeploymentGroupBlueGreenDeploymentConfig {
 
   /// Information about whether to terminate instances in the original fleet during a blue/green deployment (documented below).
   ///
-  /// _Only one <span pulumi-lang-nodejs="`blueGreenDeploymentConfig`" pulumi-lang-dotnet="`BlueGreenDeploymentConfig`" pulumi-lang-go="`blueGreenDeploymentConfig`" pulumi-lang-python="`blue_green_deployment_config`" pulumi-lang-yaml="`blueGreenDeploymentConfig`" pulumi-lang-java="`blueGreenDeploymentConfig`">`blue_green_deployment_config`</span> is allowed_.
+  /// _Only one `blue_green_deployment_config` is allowed_.
   final DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess?
       terminateBlueInstancesOnDeploymentSuccess;
 

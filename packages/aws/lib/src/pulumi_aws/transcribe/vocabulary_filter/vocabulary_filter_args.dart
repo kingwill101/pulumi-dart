@@ -10,10 +10,10 @@ class VocabularyFilterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the VocabularyFilter. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the VocabularyFilter. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with <span pulumi-lang-nodejs="`words`" pulumi-lang-dotnet="`Words`" pulumi-lang-go="`words`" pulumi-lang-python="`words`" pulumi-lang-yaml="`words`" pulumi-lang-java="`words`">`words`</span> argument.
+  /// The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
   final Input<String>? vocabularyFilterFileUri;
 
   /// The name of the VocabularyFilter.
@@ -21,7 +21,7 @@ class VocabularyFilterArgs {
   /// The following arguments are optional:
   final Input<String> vocabularyFilterName;
 
-  /// A list of terms to include in the vocabulary. Conflicts with <span pulumi-lang-nodejs="`vocabularyFilterFileUri`" pulumi-lang-dotnet="`VocabularyFilterFileUri`" pulumi-lang-go="`vocabularyFilterFileUri`" pulumi-lang-python="`vocabulary_filter_file_uri`" pulumi-lang-yaml="`vocabularyFilterFileUri`" pulumi-lang-java="`vocabularyFilterFileUri`">`vocabulary_filter_file_uri`</span> argument.
+  /// A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
   final Input<List<String>>? words;
 
   VocabularyFilterArgs({

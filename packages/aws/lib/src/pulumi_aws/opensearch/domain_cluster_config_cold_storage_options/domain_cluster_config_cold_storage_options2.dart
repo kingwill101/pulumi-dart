@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DomainClusterConfigColdStorageOptions2 {
-  /// Boolean to enable cold storage for an OpenSearch domain. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Master and ultrawarm nodes must be enabled for cold storage.
+  /// Boolean to enable cold storage for an OpenSearch domain. Defaults to `false`. Master and ultrawarm nodes must be enabled for cold storage.
   final bool? enabled;
 
   DomainClusterConfigColdStorageOptions2({

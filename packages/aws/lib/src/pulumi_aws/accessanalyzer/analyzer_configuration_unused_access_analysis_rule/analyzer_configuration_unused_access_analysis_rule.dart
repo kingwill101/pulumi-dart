@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../analyzer_configuration_unused_access_analysis_rule_exclusion/analyzer_configuration_unused_access_analysis_rule_exclusion.dart';
 
 class AnalyzerConfigurationUnusedAccessAnalysisRule {
-  /// List of rules for the analyzer containing criteria to exclude from analysis. Entities that meet the rule criteria will not generate findings. See <span pulumi-lang-nodejs="`exclusion`" pulumi-lang-dotnet="`Exclusion`" pulumi-lang-go="`exclusion`" pulumi-lang-python="`exclusion`" pulumi-lang-yaml="`exclusion`" pulumi-lang-java="`exclusion`">`exclusion`</span> Block for details.
+  /// List of rules for the analyzer containing criteria to exclude from analysis. Entities that meet the rule criteria will not generate findings. See `exclusion` Block for details.
   final List<AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion>?
       exclusions;
 

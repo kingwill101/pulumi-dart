@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TablePointInTimeRecovery {
-  /// Whether to enable point-in-time recovery. It can take 10 minutes to enable for new tables. If the <span pulumi-lang-nodejs="`pointInTimeRecovery`" pulumi-lang-dotnet="`PointInTimeRecovery`" pulumi-lang-go="`pointInTimeRecovery`" pulumi-lang-python="`point_in_time_recovery`" pulumi-lang-yaml="`pointInTimeRecovery`" pulumi-lang-java="`pointInTimeRecovery`">`point_in_time_recovery`</span> block is not provided, this defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable point-in-time recovery. It can take 10 minutes to enable for new tables. If the `point_in_time_recovery` block is not provided, this defaults to `false`.
   final bool enabled;
 
   /// Number of preceding days for which continuous backups are taken and maintained. Default is 35.

@@ -20,7 +20,7 @@ class GetReservedCacheNodeOfferingArgs {
   final Input<String> offeringType;
 
   /// Engine type for the reserved cache node.
-  /// Valid values are <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span>, <span pulumi-lang-nodejs="`valkey`" pulumi-lang-dotnet="`Valkey`" pulumi-lang-go="`valkey`" pulumi-lang-python="`valkey`" pulumi-lang-yaml="`valkey`" pulumi-lang-java="`valkey`">`valkey`</span> and <span pulumi-lang-nodejs="`memcached`" pulumi-lang-dotnet="`Memcached`" pulumi-lang-go="`memcached`" pulumi-lang-python="`memcached`" pulumi-lang-yaml="`memcached`" pulumi-lang-java="`memcached`">`memcached`</span>.
+  /// Valid values are `redis`, `valkey` and `memcached`.
   final Input<String> productDescription;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

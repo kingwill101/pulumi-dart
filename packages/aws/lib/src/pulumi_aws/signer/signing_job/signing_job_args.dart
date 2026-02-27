@@ -9,7 +9,7 @@ class SigningJobArgs {
   /// The S3 bucket in which to save your signed object. See Destination below for details.
   final Input<SigningJobDestination> destination;
 
-  /// Set this argument to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to ignore signing job failures and retrieve failed status and reason. Default <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Set this argument to `true` to ignore signing job failures and retrieve failed status and reason. Default `false`.
   final Input<bool>? ignoreSigningJobFailure;
 
   /// The name of the profile to initiate the signing operation.

@@ -7,7 +7,7 @@ class GetCoreNetworkPolicyDocumentNetworkFunctionGroup {
   /// This identifies the network function group container.
   final String name;
 
-  /// This will be either <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, that attachment acceptance is required, or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, that it is not required.
+  /// This will be either `true`, that attachment acceptance is required, or `false`, that it is not required.
   final bool requireAttachmentAcceptance;
 
   GetCoreNetworkPolicyDocumentNetworkFunctionGroup({

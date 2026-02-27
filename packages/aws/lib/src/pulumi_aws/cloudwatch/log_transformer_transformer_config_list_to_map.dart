@@ -1,0 +1,3 @@
+library module_cloudwatch_log_transformer_transformer_config_list_to_map;
+
+export 'log_transformer_transformer_config_list_to_map/log_transformer_transformer_config_list_to_map.dart';

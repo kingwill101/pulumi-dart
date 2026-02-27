@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TargetSuspendedState {
-  /// Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
   final bool? dynamicScalingInSuspended;
 
-  /// Whether scale out by a target tracking scaling policy or a step scaling policy is suspended. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether scale out by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
   final bool? dynamicScalingOutSuspended;
 
-  /// Whether scheduled scaling is suspended. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether scheduled scaling is suspended. Default is `false`.
   final bool? scheduledScalingSuspended;
 
   TargetSuspendedState({

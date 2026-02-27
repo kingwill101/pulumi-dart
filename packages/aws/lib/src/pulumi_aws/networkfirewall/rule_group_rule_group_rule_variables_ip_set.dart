@@ -1,0 +1,3 @@
+library module_networkfirewall_rule_group_rule_group_rule_variables_ip_set;
+
+export 'rule_group_rule_group_rule_variables_ip_set/rule_group_rule_group_rule_variables_ip_set.dart';

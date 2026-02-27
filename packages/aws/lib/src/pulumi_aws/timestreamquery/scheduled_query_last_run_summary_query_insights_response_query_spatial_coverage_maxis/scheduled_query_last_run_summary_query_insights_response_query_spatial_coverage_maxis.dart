@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis {
-  /// Partition key used for partitioning, which can be a default<span pulumi-lang-nodejs=" measureName " pulumi-lang-dotnet=" MeasureName " pulumi-lang-go=" measureName " pulumi-lang-python=" measure_name " pulumi-lang-yaml=" measureName " pulumi-lang-java=" measureName "> measure_name </span>or a customer defined partition key.
+  /// Partition key used for partitioning, which can be a default measure_name or a customer defined partition key.
   final List<String>? partitionKeys;
 
   /// ARN of the table which is queried with the largest time range.

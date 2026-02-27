@@ -1,0 +1,3 @@
+library module_appautoscaling_policy_step_scaling_policy_configuration_step_adjustment;
+
+export 'policy_step_scaling_policy_configuration_step_adjustment/policy_step_scaling_policy_configuration_step_adjustment.dart';

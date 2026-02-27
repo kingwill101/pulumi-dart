@@ -7,7 +7,7 @@ class RouteSpecGrpcRouteMatch {
   /// Data to match from the gRPC request.
   final List<RouteSpecGrpcRouteMatchMetadata>? metadatas;
 
-  /// Method name to match from the request. If you specify a name, you must also specify a <span pulumi-lang-nodejs="`serviceName`" pulumi-lang-dotnet="`ServiceName`" pulumi-lang-go="`serviceName`" pulumi-lang-python="`service_name`" pulumi-lang-yaml="`serviceName`" pulumi-lang-java="`serviceName`">`service_name`</span>.
+  /// Method name to match from the request. If you specify a name, you must also specify a `service_name`.
   final String? methodName;
 
   /// The port number to match from the request.

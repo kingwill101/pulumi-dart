@@ -1,4 +1,0 @@
-library module_workspacesweb_user_access_logging_settings;
-
-export 'user_access_logging_settings.dart';
-export 'user_access_logging_settings_args.dart';

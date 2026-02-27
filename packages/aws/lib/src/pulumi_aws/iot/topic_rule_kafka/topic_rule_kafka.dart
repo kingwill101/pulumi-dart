@@ -7,7 +7,7 @@ class TopicRuleKafka {
   /// Properties of the Apache Kafka producer client. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/apache-kafka-rule-action.html).
   final Map<String, String> clientProperties;
 
-  /// The ARN of Kafka action's VPC <span pulumi-lang-nodejs="`aws.iot.TopicRuleDestination`" pulumi-lang-dotnet="`aws.iot.TopicRuleDestination`" pulumi-lang-go="`iot.TopicRuleDestination`" pulumi-lang-python="`iot.TopicRuleDestination`" pulumi-lang-yaml="`aws.iot.TopicRuleDestination`" pulumi-lang-java="`aws.iot.TopicRuleDestination`">`aws.iot.TopicRuleDestination`</span>.
+  /// The ARN of Kafka action's VPC `aws.iot.TopicRuleDestination`.
   final String destinationArn;
 
   /// The list of Kafka headers that you specify. Nested arguments below.

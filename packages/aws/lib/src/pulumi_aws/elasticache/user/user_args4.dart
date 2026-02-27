@@ -11,7 +11,7 @@ class UserArgs4 {
   /// Denotes the user's authentication properties. Detailed below.
   final Input<UserAuthenticationMode>? authenticationMode;
 
-  /// The current supported values are <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span>, <span pulumi-lang-nodejs="`valkey`" pulumi-lang-dotnet="`Valkey`" pulumi-lang-go="`valkey`" pulumi-lang-python="`valkey`" pulumi-lang-yaml="`valkey`" pulumi-lang-java="`valkey`">`valkey`</span> (case insensitive).
+  /// The current supported values are `redis`, `valkey` (case insensitive).
   final Input<String> engine;
 
   /// Indicates a password is not required for this user.

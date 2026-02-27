@@ -1,0 +1,3 @@
+library module_lex_v2models_intent_initial_response_setting_conditional;
+
+export 'v2models_intent_initial_response_setting_conditional/v2models_intent_initial_response_setting_conditional.dart';

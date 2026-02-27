@@ -11,31 +11,31 @@ import '../get_instance_type_neuron_device/get_instance_type_neuron_device.dart'
 
 /// Result data returned by getInstanceType.
 class GetInstanceTypeResult {
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if auto recovery is supported.
+  /// `true` if auto recovery is supported.
   final bool autoRecoverySupported;
 
   /// A set of strings of valid settings for [configurable bandwidth weighting](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-bandwidth-weighting.html), if supported.
   final List<String> bandwidthWeightings;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if it is a bare metal instance type.
+  /// `true` if it is a bare metal instance type.
   final bool bareMetal;
 
   /// A set of strings of supported boot modes.
   final List<String> bootModes;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the instance type is a burstable performance instance type.
+  /// `true` if the instance type is a burstable performance instance type.
   final bool burstablePerformanceSupported;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>  if the instance type is a current generation.
+  /// `true`  if the instance type is a current generation.
   final bool currentGeneration;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if Dedicated Hosts are supported on the instance type.
+  /// `true` if Dedicated Hosts are supported on the instance type.
   final bool dedicatedHostsSupported;
 
   /// Default number of cores for the instance type.
   final int defaultCores;
 
-  /// The index of the default network card, starting at <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
+  /// The index of the default network card, starting at `0`.
   final int defaultNetworkCardIndex;
 
   /// The  default  number of threads per core for the instance type.
@@ -74,16 +74,16 @@ class GetInstanceTypeResult {
   /// The maximum number of Elastic Fabric Adapters for the instance type.
   final int efaMaximumInterfaces;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if Elastic Fabric Adapter (EFA) is supported.
+  /// `true` if Elastic Fabric Adapter (EFA) is supported.
   final bool efaSupported;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the instance type supports [ENA Express](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ena-express.html).
+  /// `true` if the instance type supports [ENA Express](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ena-express.html).
   final bool enaSrdSupported;
 
   /// Indicates whether Elastic Network Adapter (ENA) is `"supported"`, `"required"`, or `"unsupported"`.
   final String enaSupport;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if encryption in-transit between instances is supported.
+  /// `true` if encryption in-transit between instances is supported.
   final bool encryptionInTransitSupported;
 
   /// Describes the FPGA accelerator settings for the instance type.
@@ -93,7 +93,7 @@ class GetInstanceTypeResult {
   /// * `fpgas.#.name` - The name of the FPGA accelerator.
   final List<GetInstanceTypeFpga> fpgas;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the instance type is eligible for the free tier.
+  /// `true` if the instance type is eligible for the free tier.
   final bool freeTierEligible;
 
   /// Describes the GPU accelerators for the instance type.
@@ -103,7 +103,7 @@ class GetInstanceTypeResult {
   /// * `gpus.#.name` - The name of the GPU accelerator.
   final List<GetInstanceTypeGpus> gpuses;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if On-Demand hibernation is supported.
+  /// `true` if On-Demand hibernation is supported.
   final bool hibernationSupported;
 
   /// Hypervisor used for the instance type.
@@ -125,11 +125,11 @@ class GetInstanceTypeResult {
   /// * `instance_disks.#.type` - The type of disk.
   final List<GetInstanceTypeInstanceDisk> instanceDisks;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if instance storage is supported.
+  /// `true` if instance storage is supported.
   final bool instanceStorageSupported;
   final String instanceType;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if IPv6 is supported.
+  /// `true` if IPv6 is supported.
   final bool ipv6Supported;
 
   /// The maximum number of IPv4 addresses per network interface.
@@ -182,7 +182,7 @@ class GetInstanceTypeResult {
   /// A set of strings indicating the supported NitroTPM versions.
   final List<String> nitroTpmSupportedVersions;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if a local Precision Time Protocol (PTP) hardware clock (PHC) is supported.
+  /// `true` if a local Precision Time Protocol (PTP) hardware clock (PHC) is supported.
   final String phcSupport;
   final String region;
 

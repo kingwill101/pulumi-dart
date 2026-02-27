@@ -1,0 +1,3 @@
+library module_s3_bucket_replication_config_rule_destination_metrics_event_threshold;
+
+export 'bucket_replication_config_rule_destination_metrics_event_threshold/bucket_replication_config_rule_destination_metrics_event_threshold.dart';

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getWebAcl.
 class GetWebAclArgs3 {
-  /// Name of the WAFv2 Web ACL. Exactly one of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`resourceArn`" pulumi-lang-dotnet="`ResourceArn`" pulumi-lang-go="`resourceArn`" pulumi-lang-python="`resource_arn`" pulumi-lang-yaml="`resourceArn`" pulumi-lang-java="`resourceArn`">`resource_arn`</span> must be specified.
+  /// Name of the WAFv2 Web ACL. Exactly one of `name` or `resource_arn` must be specified.
   final Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// ARN of the AWS resource associated with the Web ACL. This can be an ARN of an Application Load Balancer, Amazon API Gateway REST API, AWS AppSync GraphQL API, Amazon Cognito user pool, AWS App Runner service, AWS Verified Access instance, or AWS Amplify application. Exactly one of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`resourceArn`" pulumi-lang-dotnet="`ResourceArn`" pulumi-lang-go="`resourceArn`" pulumi-lang-python="`resource_arn`" pulumi-lang-yaml="`resourceArn`" pulumi-lang-java="`resourceArn`">`resource_arn`</span> must be specified.
+  /// ARN of the AWS resource associated with the Web ACL. This can be an ARN of an Application Load Balancer, Amazon API Gateway REST API, AWS AppSync GraphQL API, Amazon Cognito user pool, AWS App Runner service, AWS Verified Access instance, or AWS Amplify application. Exactly one of `name` or `resource_arn` must be specified.
   final Input<String>? resourceArn;
 
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.

@@ -22,7 +22,7 @@ class TrafficMirrorFilterRuleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Action to take (accept | reject) on the filtered traffic. Valid values are <span pulumi-lang-nodejs="`accept`" pulumi-lang-dotnet="`Accept`" pulumi-lang-go="`accept`" pulumi-lang-python="`accept`" pulumi-lang-yaml="`accept`" pulumi-lang-java="`accept`">`accept`</span> and <span pulumi-lang-nodejs="`reject`" pulumi-lang-dotnet="`Reject`" pulumi-lang-go="`reject`" pulumi-lang-python="`reject`" pulumi-lang-yaml="`reject`" pulumi-lang-java="`reject`">`reject`</span>
+  /// Action to take (accept | reject) on the filtered traffic. Valid values are `accept` and `reject`
   final Input<String> ruleAction;
 
   /// Number of the Traffic Mirror rule. This number must be unique for each Traffic Mirror rule in a given direction. The rules are processed in ascending order by rule number.
@@ -34,7 +34,7 @@ class TrafficMirrorFilterRuleArgs {
   /// Source port range. Supported only when the protocol is set to TCP(6) or UDP(17). See Traffic mirror port range documented below
   final Input<TrafficMirrorFilterRuleSourcePortRange>? sourcePortRange;
 
-  /// Direction of traffic to be captured. Valid values are <span pulumi-lang-nodejs="`ingress`" pulumi-lang-dotnet="`Ingress`" pulumi-lang-go="`ingress`" pulumi-lang-python="`ingress`" pulumi-lang-yaml="`ingress`" pulumi-lang-java="`ingress`">`ingress`</span> and <span pulumi-lang-nodejs="`egress`" pulumi-lang-dotnet="`Egress`" pulumi-lang-go="`egress`" pulumi-lang-python="`egress`" pulumi-lang-yaml="`egress`" pulumi-lang-java="`egress`">`egress`</span>
+  /// Direction of traffic to be captured. Valid values are `ingress` and `egress`
   ///
   /// Traffic mirror port range support following attributes:
   final Input<String> trafficDirection;

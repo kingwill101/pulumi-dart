@@ -1,0 +1,4 @@
+library module_msk_single_scram_secret_association;
+
+export 'single_scram_secret_association/single_scram_secret_association.dart';
+export 'single_scram_secret_association/single_scram_secret_association_args.dart';

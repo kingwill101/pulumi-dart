@@ -1,3 +1,0 @@
-library module_wafv2_get_managed_rule_group_consumed_label;
-
-export 'get_managed_rule_group_consumed_label.dart';

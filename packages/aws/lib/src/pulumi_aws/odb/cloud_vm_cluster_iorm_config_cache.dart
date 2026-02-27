@@ -1,0 +1,3 @@
+library module_odb_cloud_vm_cluster_iorm_config_cache;
+
+export 'cloud_vm_cluster_iorm_config_cache/cloud_vm_cluster_iorm_config_cache.dart';

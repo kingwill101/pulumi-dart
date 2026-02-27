@@ -1,3 +1,0 @@
-library module_sesv2_get_configuration_set_reputation_option;
-
-export 'get_configuration_set_reputation_option.dart';

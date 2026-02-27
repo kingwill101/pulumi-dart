@@ -1,0 +1,3 @@
+library module_fsx_file_cache_data_repository_association;
+
+export 'file_cache_data_repository_association/file_cache_data_repository_association.dart';

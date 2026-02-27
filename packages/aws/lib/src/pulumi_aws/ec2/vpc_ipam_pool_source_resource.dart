@@ -1,0 +1,3 @@
+library module_ec2_vpc_ipam_pool_source_resource;
+
+export 'vpc_ipam_pool_source_resource/vpc_ipam_pool_source_resource.dart';

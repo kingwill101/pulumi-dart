@@ -4,7 +4,7 @@ class WebhookAuthenticationConfiguration {
   /// A valid CIDR block for `IP` filtering. Required for `IP`.
   final String? allowedIpRange;
 
-  /// The shared secret for the GitHub repository webhook. Set this as <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`">`secret`</span> in your <span pulumi-lang-nodejs="`githubRepositoryWebhook`" pulumi-lang-dotnet="`GithubRepositoryWebhook`" pulumi-lang-go="`githubRepositoryWebhook`" pulumi-lang-python="`github_repository_webhook`" pulumi-lang-yaml="`githubRepositoryWebhook`" pulumi-lang-java="`githubRepositoryWebhook`">`github_repository_webhook`</span>'s <span pulumi-lang-nodejs="`configuration`" pulumi-lang-dotnet="`Configuration`" pulumi-lang-go="`configuration`" pulumi-lang-python="`configuration`" pulumi-lang-yaml="`configuration`" pulumi-lang-java="`configuration`">`configuration`</span> block. Required for `GITHUB_HMAC`.
+  /// The shared secret for the GitHub repository webhook. Set this as `secret` in your `github_repository_webhook`'s `configuration` block. Required for `GITHUB_HMAC`.
   final String? secretToken;
 
   WebhookAuthenticationConfiguration({

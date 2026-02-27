@@ -1,3 +1,0 @@
-library module_ec2_spot_instance_request_credit_specification;
-
-export 'spot_instance_request_credit_specification.dart';

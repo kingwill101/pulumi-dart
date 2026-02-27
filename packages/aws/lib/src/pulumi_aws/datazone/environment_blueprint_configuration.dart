@@ -1,0 +1,4 @@
+library module_datazone_environment_blueprint_configuration;
+
+export 'environment_blueprint_configuration/environment_blueprint_configuration.dart';
+export 'environment_blueprint_configuration/environment_blueprint_configuration_args.dart';

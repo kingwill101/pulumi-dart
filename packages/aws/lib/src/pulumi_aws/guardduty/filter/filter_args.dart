@@ -14,7 +14,7 @@ class FilterArgs {
   /// ID of a GuardDuty detector, attached to your account.
   final Input<String> detectorId;
 
-  /// Represents the criteria to be used in the filter for querying findings. Contains one or more <span pulumi-lang-nodejs="`criterion`" pulumi-lang-dotnet="`Criterion`" pulumi-lang-go="`criterion`" pulumi-lang-python="`criterion`" pulumi-lang-yaml="`criterion`" pulumi-lang-java="`criterion`">`criterion`</span> blocks, documented below.
+  /// Represents the criteria to be used in the filter for querying findings. Contains one or more `criterion` blocks, documented below.
   final Input<FilterFindingCriteria> findingCriteria;
 
   /// The name of your filter.
@@ -26,7 +26,7 @@ class FilterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The tags that you want to add to the Filter resource. A tag consists of a key and a value. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// The tags that you want to add to the Filter resource. A tag consists of a key and a value. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   FilterArgs({

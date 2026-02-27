@@ -1,0 +1,3 @@
+library module_medialive_channel_encoder_settings_caption_description;
+
+export 'channel_encoder_settings_caption_description/channel_encoder_settings_caption_description.dart';

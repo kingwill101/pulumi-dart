@@ -1,3 +1,0 @@
-library module_apigateway_get_domain_name_endpoint_configuration;
-
-export 'get_domain_name_endpoint_configuration.dart';

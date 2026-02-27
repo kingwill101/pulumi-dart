@@ -1,3 +1,0 @@
-library module_quicksight_analysis_parameters_date_time_parameter;
-
-export 'analysis_parameters_date_time_parameter.dart';

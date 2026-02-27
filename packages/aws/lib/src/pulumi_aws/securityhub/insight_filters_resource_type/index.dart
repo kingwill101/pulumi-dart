@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_resource_type;
-
-export 'insight_filters_resource_type.dart';

@@ -21,13 +21,13 @@ class MetricAlarmMetricQuery {
   final MetricAlarmMetricQueryMetric? metric;
 
   /// Granularity in seconds of returned data points.
-  /// For metrics with regular resolution, valid values are any multiple of <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>.
-  /// For high-resolution metrics, valid values are <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>, <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>, <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span>, <span pulumi-lang-nodejs="`20`" pulumi-lang-dotnet="`20`" pulumi-lang-go="`20`" pulumi-lang-python="`20`" pulumi-lang-yaml="`20`" pulumi-lang-java="`20`">`20`</span>, <span pulumi-lang-nodejs="`30`" pulumi-lang-dotnet="`30`" pulumi-lang-go="`30`" pulumi-lang-python="`30`" pulumi-lang-yaml="`30`" pulumi-lang-java="`30`">`30`</span>, or any multiple of <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>.
+  /// For metrics with regular resolution, valid values are any multiple of `60`.
+  /// For high-resolution metrics, valid values are `1`, `5`, `10`, `20`, `30`, or any multiple of `60`.
   final int? period;
 
-  /// Specify exactly one <span pulumi-lang-nodejs="`metricQuery`" pulumi-lang-dotnet="`MetricQuery`" pulumi-lang-go="`metricQuery`" pulumi-lang-python="`metric_query`" pulumi-lang-yaml="`metricQuery`" pulumi-lang-java="`metricQuery`">`metric_query`</span> to be <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to use that <span pulumi-lang-nodejs="`metricQuery`" pulumi-lang-dotnet="`MetricQuery`" pulumi-lang-go="`metricQuery`" pulumi-lang-python="`metric_query`" pulumi-lang-yaml="`metricQuery`" pulumi-lang-java="`metricQuery`">`metric_query`</span> result as the alarm.
+  /// Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
   ///
-  /// > **NOTE:**  You must specify either <span pulumi-lang-nodejs="`metric`" pulumi-lang-dotnet="`Metric`" pulumi-lang-go="`metric`" pulumi-lang-python="`metric`" pulumi-lang-yaml="`metric`" pulumi-lang-java="`metric`">`metric`</span> or <span pulumi-lang-nodejs="`expression`" pulumi-lang-dotnet="`Expression`" pulumi-lang-go="`expression`" pulumi-lang-python="`expression`" pulumi-lang-yaml="`expression`" pulumi-lang-java="`expression`">`expression`</span>. Not both.
+  /// > **NOTE:**  You must specify either `metric` or `expression`. Not both.
   final bool? returnData;
 
   MetricAlarmMetricQuery({

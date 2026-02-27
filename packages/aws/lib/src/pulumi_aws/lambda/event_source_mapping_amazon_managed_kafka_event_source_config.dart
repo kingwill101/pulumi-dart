@@ -1,0 +1,3 @@
+library module_lambda_event_source_mapping_amazon_managed_kafka_event_source_config;
+
+export 'event_source_mapping_amazon_managed_kafka_event_source_config/event_source_mapping_amazon_managed_kafka_event_source_config.dart';

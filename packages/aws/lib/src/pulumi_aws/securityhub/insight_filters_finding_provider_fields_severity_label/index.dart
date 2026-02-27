@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_finding_provider_fields_severity_label;
-
-export 'insight_filters_finding_provider_fields_severity_label.dart';

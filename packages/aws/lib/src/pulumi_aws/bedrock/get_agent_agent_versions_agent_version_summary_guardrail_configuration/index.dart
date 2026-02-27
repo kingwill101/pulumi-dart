@@ -1,3 +1,0 @@
-library module_bedrock_get_agent_agent_versions_agent_version_summary_guardrail_configuration;
-
-export 'get_agent_agent_versions_agent_version_summary_guardrail_configuration.dart';

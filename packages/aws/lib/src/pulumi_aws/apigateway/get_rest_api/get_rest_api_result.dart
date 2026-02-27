@@ -20,7 +20,7 @@ class GetRestApiResult {
   /// The endpoint configuration of this RestApi showing the endpoint types of the API.
   final List<GetRestApiEndpointConfiguration> endpointConfigurations;
 
-  /// Execution ARN part to be used in <span pulumi-lang-nodejs="`lambdaPermission`" pulumi-lang-dotnet="`LambdaPermission`" pulumi-lang-go="`lambdaPermission`" pulumi-lang-python="`lambda_permission`" pulumi-lang-yaml="`lambdaPermission`" pulumi-lang-java="`lambdaPermission`">`lambda_permission`</span>'s <span pulumi-lang-nodejs="`sourceArn`" pulumi-lang-dotnet="`SourceArn`" pulumi-lang-go="`sourceArn`" pulumi-lang-python="`source_arn`" pulumi-lang-yaml="`sourceArn`" pulumi-lang-java="`sourceArn`">`source_arn`</span> when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
+  /// Execution ARN part to be used in `lambda_permission`'s `source_arn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j`, which can be concatenated with allowed stage, method and resource path.
   final String executionArn;
 
   /// The provider-assigned unique ID for this managed resource.

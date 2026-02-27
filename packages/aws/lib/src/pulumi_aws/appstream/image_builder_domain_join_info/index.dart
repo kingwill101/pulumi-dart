@@ -1,3 +1,0 @@
-library module_appstream_image_builder_domain_join_info;
-
-export 'image_builder_domain_join_info.dart';

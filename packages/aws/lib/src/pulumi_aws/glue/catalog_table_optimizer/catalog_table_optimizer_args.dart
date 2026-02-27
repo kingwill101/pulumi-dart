@@ -20,7 +20,7 @@ class CatalogTableOptimizerArgs {
   /// The name of the table.
   final Input<String> tableName;
 
-  /// The type of table optimizer. Valid values are <span pulumi-lang-nodejs="`compaction`" pulumi-lang-dotnet="`Compaction`" pulumi-lang-go="`compaction`" pulumi-lang-python="`compaction`" pulumi-lang-yaml="`compaction`" pulumi-lang-java="`compaction`">`compaction`</span>, <span pulumi-lang-nodejs="`retention`" pulumi-lang-dotnet="`Retention`" pulumi-lang-go="`retention`" pulumi-lang-python="`retention`" pulumi-lang-yaml="`retention`" pulumi-lang-java="`retention`">`retention`</span>, and <span pulumi-lang-nodejs="`orphanFileDeletion`" pulumi-lang-dotnet="`OrphanFileDeletion`" pulumi-lang-go="`orphanFileDeletion`" pulumi-lang-python="`orphan_file_deletion`" pulumi-lang-yaml="`orphanFileDeletion`" pulumi-lang-java="`orphanFileDeletion`">`orphan_file_deletion`</span>.
+  /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
   final Input<String> type;
 
   CatalogTableOptimizerArgs({

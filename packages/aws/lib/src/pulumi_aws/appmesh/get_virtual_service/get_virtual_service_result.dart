@@ -24,7 +24,7 @@ class GetVirtualServiceResult {
   /// Resource owner's AWS account ID.
   final String resourceOwner;
 
-  /// Virtual service specification. See the <span pulumi-lang-nodejs="`aws.appmesh.VirtualService`" pulumi-lang-dotnet="`aws.appmesh.VirtualService`" pulumi-lang-go="`appmesh.VirtualService`" pulumi-lang-python="`appmesh.VirtualService`" pulumi-lang-yaml="`aws.appmesh.VirtualService`" pulumi-lang-java="`aws.appmesh.VirtualService`">`aws.appmesh.VirtualService`</span> resource for details.
+  /// Virtual service specification. See the `aws.appmesh.VirtualService` resource for details.
   final List<GetVirtualServiceSpec> specs;
 
   /// Map of tags.

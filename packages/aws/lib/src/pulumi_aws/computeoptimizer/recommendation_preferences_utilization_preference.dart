@@ -1,0 +1,3 @@
+library module_computeoptimizer_recommendation_preferences_utilization_preference;
+
+export 'recommendation_preferences_utilization_preference/recommendation_preferences_utilization_preference.dart';

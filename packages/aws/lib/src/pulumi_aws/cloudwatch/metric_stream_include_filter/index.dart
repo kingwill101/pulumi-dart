@@ -1,3 +1,0 @@
-library module_cloudwatch_metric_stream_include_filter;
-
-export 'metric_stream_include_filter.dart';

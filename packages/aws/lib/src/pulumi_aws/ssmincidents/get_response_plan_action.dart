@@ -1,0 +1,3 @@
+library module_ssmincidents_get_response_plan_action;
+
+export 'get_response_plan_action/get_response_plan_action.dart';

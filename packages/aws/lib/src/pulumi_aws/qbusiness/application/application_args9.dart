@@ -7,7 +7,7 @@ import '../application_timeouts/application_timeouts3.dart';
 
 /// The set of arguments for Application.
 class ApplicationArgs9 {
-  /// Information about whether file upload functionality is activated or deactivated for your end user. See <span pulumi-lang-nodejs="`attachmentsConfiguration`" pulumi-lang-dotnet="`AttachmentsConfiguration`" pulumi-lang-go="`attachmentsConfiguration`" pulumi-lang-python="`attachments_configuration`" pulumi-lang-yaml="`attachmentsConfiguration`" pulumi-lang-java="`attachmentsConfiguration`">`attachments_configuration`</span> below.
+  /// Information about whether file upload functionality is activated or deactivated for your end user. See `attachments_configuration` below.
   final Input<ApplicationAttachmentsConfiguration> attachmentsConfiguration;
 
   /// Description of the Amazon Q application.
@@ -16,7 +16,7 @@ class ApplicationArgs9 {
   /// Name of the Amazon Q application.
   final Input<String> displayName;
 
-  /// Information about encryption configuration. See <span pulumi-lang-nodejs="`encryptionConfiguration`" pulumi-lang-dotnet="`EncryptionConfiguration`" pulumi-lang-go="`encryptionConfiguration`" pulumi-lang-python="`encryption_configuration`" pulumi-lang-yaml="`encryptionConfiguration`" pulumi-lang-java="`encryptionConfiguration`">`encryption_configuration`</span> below.
+  /// Information about encryption configuration. See `encryption_configuration` below.
   final Input<ApplicationEncryptionConfiguration>? encryptionConfiguration;
 
   /// ARN of an IAM role with permissions to access your Amazon CloudWatch logs and metrics.

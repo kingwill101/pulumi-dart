@@ -1,0 +1,3 @@
+library module_ec2_spot_instance_request_launch_template;
+
+export 'spot_instance_request_launch_template/spot_instance_request_launch_template.dart';

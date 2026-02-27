@@ -11,7 +11,7 @@ class GetClusterResult4 {
   /// Availability Zone for the cache cluster.
   final String availabilityZone;
 
-  /// List of node objects including <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>, <span pulumi-lang-nodejs="`address`" pulumi-lang-dotnet="`Address`" pulumi-lang-go="`address`" pulumi-lang-python="`address`" pulumi-lang-yaml="`address`" pulumi-lang-java="`address`">`address`</span>, <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span>, <span pulumi-lang-nodejs="`availabilityZone`" pulumi-lang-dotnet="`AvailabilityZone`" pulumi-lang-go="`availabilityZone`" pulumi-lang-python="`availability_zone`" pulumi-lang-yaml="`availabilityZone`" pulumi-lang-java="`availabilityZone`">`availability_zone`</span> and <span pulumi-lang-nodejs="`outpostArn`" pulumi-lang-dotnet="`OutpostArn`" pulumi-lang-go="`outpostArn`" pulumi-lang-python="`outpost_arn`" pulumi-lang-yaml="`outpostArn`" pulumi-lang-java="`outpostArn`">`outpost_arn`</span>.
+  /// List of node objects including `id`, `address`, `port`, `availability_zone` and `outpost_arn`.
   /// Referenceable e.g., as `${data.aws_elasticache_cluster.bar.cache_nodes.0.address}`
   final List<GetClusterCacheNode> cacheNodes;
 

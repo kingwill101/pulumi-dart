@@ -3,7 +3,7 @@
 import '../field_level_encryption_profile_encryption_entities_item_field_patterns/field_level_encryption_profile_encryption_entities_item_field_patterns.dart';
 
 class FieldLevelEncryptionProfileEncryptionEntitiesItem {
-  /// Object that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> that contains the list of field patterns in a field-level encryption content type profile specify the fields that you want to be encrypted.
+  /// Object that contains an attribute `items` that contains the list of field patterns in a field-level encryption content type profile specify the fields that you want to be encrypted.
   final FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns
       fieldPatterns;
 

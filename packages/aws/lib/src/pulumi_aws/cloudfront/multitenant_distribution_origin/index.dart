@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_origin;
-
-export 'multitenant_distribution_origin.dart';

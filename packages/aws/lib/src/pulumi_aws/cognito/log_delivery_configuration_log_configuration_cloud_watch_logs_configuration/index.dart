@@ -1,3 +1,0 @@
-library module_cognito_log_delivery_configuration_log_configuration_cloud_watch_logs_configuration;
-
-export 'log_delivery_configuration_log_configuration_cloud_watch_logs_configuration.dart';

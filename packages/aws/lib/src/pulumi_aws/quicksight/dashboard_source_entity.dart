@@ -1,0 +1,3 @@
+library module_quicksight_dashboard_source_entity;
+
+export 'dashboard_source_entity/dashboard_source_entity.dart';

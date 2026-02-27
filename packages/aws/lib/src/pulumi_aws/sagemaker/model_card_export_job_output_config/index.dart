@@ -1,3 +1,0 @@
-library module_sagemaker_model_card_export_job_output_config;
-
-export 'model_card_export_job_output_config.dart';

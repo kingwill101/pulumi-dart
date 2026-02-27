@@ -7,7 +7,7 @@ class AccountRegistrationArgs {
   /// Identifier for the delegated administrator account.
   final Input<String>? delegatedAdminAccount;
 
-  /// Flag to deregister AuditManager in the account upon destruction. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> (ie. AuditManager will remain active in the account, even if this resource is removed).
+  /// Flag to deregister AuditManager in the account upon destruction. Defaults to `false` (ie. AuditManager will remain active in the account, even if this resource is removed).
   final Input<bool>? deregisterOnDestroy;
 
   /// KMS key identifier.

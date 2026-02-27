@@ -6,7 +6,7 @@ import '../user_profile_user_settings_code_editor_app_settings_custom_image/user
 import '../user_profile_user_settings_code_editor_app_settings_default_resource_spec/user_profile_user_settings_code_editor_app_settings_default_resource_spec.dart';
 
 class UserProfileUserSettingsCodeEditorAppSettings {
-  /// Indicates whether idle shutdown is activated for JupyterLab applications. see <span pulumi-lang-nodejs="`appLifecycleManagement`" pulumi-lang-dotnet="`AppLifecycleManagement`" pulumi-lang-go="`appLifecycleManagement`" pulumi-lang-python="`app_lifecycle_management`" pulumi-lang-yaml="`appLifecycleManagement`" pulumi-lang-java="`appLifecycleManagement`">`app_lifecycle_management`</span> Block below.
+  /// Indicates whether idle shutdown is activated for JupyterLab applications. see `app_lifecycle_management` Block below.
   final UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement?
       appLifecycleManagement;
 

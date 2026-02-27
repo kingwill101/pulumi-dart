@@ -1,0 +1,3 @@
+library module_alb_target_group_target_group_health_dns_failover;
+
+export 'target_group_target_group_health_dns_failover/target_group_target_group_health_dns_failover.dart';

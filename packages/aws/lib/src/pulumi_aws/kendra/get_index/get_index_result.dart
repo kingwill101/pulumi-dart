@@ -49,7 +49,7 @@ class GetIndexResult {
   final List<GetIndexServerSideEncryptionConfiguration>
       serverSideEncryptionConfigurations;
 
-  /// Current status of the index. When the value is `ACTIVE`, the index is ready for use. If the Status field value is `FAILED`, the <span pulumi-lang-nodejs="`errorMessage`" pulumi-lang-dotnet="`ErrorMessage`" pulumi-lang-go="`errorMessage`" pulumi-lang-python="`error_message`" pulumi-lang-yaml="`errorMessage`" pulumi-lang-java="`errorMessage`">`error_message`</span> field contains a message that explains why.
+  /// Current status of the index. When the value is `ACTIVE`, the index is ready for use. If the Status field value is `FAILED`, the `error_message` field contains a message that explains why.
   final String status;
 
   /// Metadata that helps organize the Indices you create.

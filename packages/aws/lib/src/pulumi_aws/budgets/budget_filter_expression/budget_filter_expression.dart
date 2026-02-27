@@ -9,7 +9,7 @@ import '../budget_filter_expression_or/budget_filter_expression_or.dart';
 import '../budget_filter_expression_tags/budget_filter_expression_tags.dart';
 
 class BudgetFilterExpression {
-  /// (Optional) A list of filter expressions to combine with AND logic. Each <span pulumi-lang-nodejs="`and`" pulumi-lang-dotnet="`And`" pulumi-lang-go="`and`" pulumi-lang-python="`and`" pulumi-lang-yaml="`and`" pulumi-lang-java="`and`">`and`</span> block is one operand and must itself contain exactly one root.
+  /// (Optional) A list of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.
   final List<BudgetFilterExpressionAnd>? ands;
 
   /// (Optional) A Cost Category Filter block.
@@ -21,10 +21,10 @@ class BudgetFilterExpression {
   /// (Optional) A single filter expression to negate. Must contain exactly one root.
   final BudgetFilterExpressionNot? not;
 
-  /// (Optional) A list of filter expressions to combine with OR logic. Each <span pulumi-lang-nodejs="`or`" pulumi-lang-dotnet="`Or`" pulumi-lang-go="`or`" pulumi-lang-python="`or`" pulumi-lang-yaml="`or`" pulumi-lang-java="`or`">`or`</span> block is one operand and must itself contain exactly one root.
+  /// (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
   final List<BudgetFilterExpressionOr>? ors;
 
-  /// Map of tags assigned to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final BudgetFilterExpressionTags? tags;
 
   BudgetFilterExpression({

@@ -5,7 +5,7 @@ import '../smsvoicev2_phone_number_timeouts/smsvoicev2_phone_number_timeouts.dar
 
 /// The set of arguments for Smsvoicev2PhoneNumber.
 class Smsvoicev2PhoneNumberArgs {
-  /// By default this is set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. When set to true the phone number can’t be deleted.
+  /// By default this is set to `false`. When set to true the phone number can’t be deleted.
   final Input<bool>? deletionProtectionEnabled;
 
   /// The two-character code, in ISO 3166-1 alpha-2 format, for the country or region.
@@ -29,7 +29,7 @@ class Smsvoicev2PhoneNumberArgs {
   /// Use this field to attach your phone number for an external registration process.
   final Input<String>? registrationId;
 
-  /// When set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, AWS End User Messaging SMS and Voice automatically replies with a customizable message and adds the end recipient to the opt-out list. When set to true you’re responsible for responding to HELP and STOP requests. You’re also responsible for tracking and honoring opt-out request.
+  /// When set to `false` an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, AWS End User Messaging SMS and Voice automatically replies with a customizable message and adds the end recipient to the opt-out list. When set to true you’re responsible for responding to HELP and STOP requests. You’re also responsible for tracking and honoring opt-out request.
   final Input<bool>? selfManagedOptOutsEnabled;
   final Input<Map<String, String>>? tags;
   final Input<Smsvoicev2PhoneNumberTimeouts>? timeouts;
@@ -37,7 +37,7 @@ class Smsvoicev2PhoneNumberArgs {
   /// Configuration for two-way SMS. Specify an ARN to receive incoming SMS messages, or `connect.[region].amazonaws.com` (with `[region]` replaced by the AWS Region of the Amazon Connect instance) to set Amazon Connect as the inbound destination.
   final Input<String>? twoWayChannelArn;
 
-  /// By default this is set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> you can receive incoming text messages from your end recipients.
+  /// By default this is set to `false`. When set to `true` you can receive incoming text messages from your end recipients.
   final Input<bool>? twoWayChannelEnabled;
 
   /// IAM Role ARN for a service to assume, to be able to post inbound SMS messages.

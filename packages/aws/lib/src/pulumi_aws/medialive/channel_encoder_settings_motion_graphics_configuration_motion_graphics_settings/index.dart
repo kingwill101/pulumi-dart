@@ -1,3 +1,0 @@
-library module_medialive_channel_encoder_settings_motion_graphics_configuration_motion_graphics_settings;
-
-export 'channel_encoder_settings_motion_graphics_configuration_motion_graphics_settings.dart';

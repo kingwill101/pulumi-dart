@@ -6,7 +6,7 @@ import '../gateway_smb_active_directory_settings/gateway_smb_active_directory_se
 
 /// The set of arguments for Gateway.
 class GatewayArgs2 {
-  /// Gateway activation key during resource creation. Conflicts with <span pulumi-lang-nodejs="`gatewayIpAddress`" pulumi-lang-dotnet="`GatewayIpAddress`" pulumi-lang-go="`gatewayIpAddress`" pulumi-lang-python="`gateway_ip_address`" pulumi-lang-yaml="`gatewayIpAddress`" pulumi-lang-java="`gatewayIpAddress`">`gateway_ip_address`</span>. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
+  /// Gateway activation key during resource creation. Conflicts with `gateway_ip_address`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
   final Input<String>? activationKey;
 
   /// The average download bandwidth rate limit in bits per second. This is supported for the `CACHED`, `STORED`, and `VTL` gateway types.
@@ -18,7 +18,7 @@ class GatewayArgs2 {
   /// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
   final Input<String>? cloudwatchLogGroupArn;
 
-  /// Gateway IP address to retrieve activation key during resource creation. Conflicts with <span pulumi-lang-nodejs="`activationKey`" pulumi-lang-dotnet="`ActivationKey`" pulumi-lang-go="`activationKey`" pulumi-lang-python="`activation_key`" pulumi-lang-yaml="`activationKey`" pulumi-lang-java="`activationKey`">`activation_key`</span>. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
+  /// Gateway IP address to retrieve activation key during resource creation. Conflicts with `activation_key`. Gateway must be accessible on port 80 from where this provider is running. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
   final Input<String>? gatewayIpAddress;
 
   /// Name of the gateway.
@@ -54,9 +54,9 @@ class GatewayArgs2 {
   /// Specifies the type of security strategy. Valid values are: `ClientSpecified`, `MandatorySigning`, and `MandatoryEncryption`. See [Setting a Security Level for Your Gateway](https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-gateway-file.html#security-strategy) for more information.
   final Input<String>? smbSecurityStrategy;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// > **NOTE:** One of <span pulumi-lang-nodejs="`activationKey`" pulumi-lang-dotnet="`ActivationKey`" pulumi-lang-go="`activationKey`" pulumi-lang-python="`activation_key`" pulumi-lang-yaml="`activationKey`" pulumi-lang-java="`activationKey`">`activation_key`</span> or <span pulumi-lang-nodejs="`gatewayIpAddress`" pulumi-lang-dotnet="`GatewayIpAddress`" pulumi-lang-go="`gatewayIpAddress`" pulumi-lang-python="`gateway_ip_address`" pulumi-lang-yaml="`gatewayIpAddress`" pulumi-lang-java="`gatewayIpAddress`">`gateway_ip_address`</span> must be provided for resource creation (gateway activation). Neither is required for resource import. If using <span pulumi-lang-nodejs="`gatewayIpAddress`" pulumi-lang-dotnet="`GatewayIpAddress`" pulumi-lang-go="`gatewayIpAddress`" pulumi-lang-python="`gateway_ip_address`" pulumi-lang-yaml="`gatewayIpAddress`" pulumi-lang-java="`gatewayIpAddress`">`gateway_ip_address`</span>, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running.
+  /// > **NOTE:** One of `activation_key` or `gateway_ip_address` must be provided for resource creation (gateway activation). Neither is required for resource import. If using `gateway_ip_address`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running.
   final Input<Map<String, String>>? tags;
 
   /// Type of tape drive to use for tape gateway. This provider cannot detect drift of this argument. Valid values: `IBM-ULT3580-TD5`.

@@ -1,0 +1,3 @@
+library module_connect_quick_connect_quick_connect_config;
+
+export 'quick_connect_quick_connect_config/quick_connect_quick_connect_config.dart';

@@ -6,20 +6,20 @@ import '../object_copy_override_provider/object_copy_override_provider.dart';
 
 /// The set of arguments for ObjectCopy.
 class ObjectCopyArgs {
-  /// [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>, `public-read`, `public-read-write`, `authenticated-read`, `aws-exec-read`, `bucket-owner-read`, and `bucket-owner-full-control`. Conflicts with <span pulumi-lang-nodejs="`grant`" pulumi-lang-dotnet="`Grant`" pulumi-lang-go="`grant`" pulumi-lang-python="`grant`" pulumi-lang-yaml="`grant`" pulumi-lang-java="`grant`">`grant`</span>.
+  /// [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are `private`, `public-read`, `public-read-write`, `authenticated-read`, `aws-exec-read`, `bucket-owner-read`, and `bucket-owner-full-control`. Conflicts with `grant`.
   final Input<String>? acl;
 
   /// Name of the bucket to put the file in.
   final Input<String> bucket;
   final Input<bool>? bucketKeyEnabled;
 
-  /// Specifies caching behavior along the request/reply chain Read [w3c<span pulumi-lang-nodejs=" cacheControl]" pulumi-lang-dotnet=" CacheControl]" pulumi-lang-go=" cacheControl]" pulumi-lang-python=" cache_control]" pulumi-lang-yaml=" cacheControl]" pulumi-lang-java=" cacheControl]"> cache_control]</span>(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+  /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   final Input<String>? cacheControl;
 
   /// Indicates the algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
   final Input<String>? checksumAlgorithm;
 
-  /// Specifies presentational information for the object. Read [w3c<span pulumi-lang-nodejs=" contentDisposition]" pulumi-lang-dotnet=" ContentDisposition]" pulumi-lang-go=" contentDisposition]" pulumi-lang-python=" content_disposition]" pulumi-lang-yaml=" contentDisposition]" pulumi-lang-java=" contentDisposition]"> content_disposition]</span>(http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+  /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
   final Input<String>? contentDisposition;
 
   /// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
@@ -61,10 +61,10 @@ class ObjectCopyArgs {
   /// Date and time at which the object is no longer cacheable, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   final Input<String>? expires;
 
-  /// Allow the object to be deleted by removing any legal hold on any object version. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. This value should be set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> only if the bucket has S3 object lock enabled.
+  /// Allow the object to be deleted by removing any legal hold on any object version. Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
   final Input<bool>? forceDestroy;
 
-  /// Configuration block for header grants. Documented below. Conflicts with <span pulumi-lang-nodejs="`acl`" pulumi-lang-dotnet="`Acl`" pulumi-lang-go="`acl`" pulumi-lang-python="`acl`" pulumi-lang-yaml="`acl`" pulumi-lang-java="`acl`">`acl`</span>.
+  /// Configuration block for header grants. Documented below. Conflicts with `acl`.
   final Input<List<ObjectCopyGrant>>? grants;
 
   /// Name of the object once it is in the bucket.
@@ -73,7 +73,7 @@ class ObjectCopyArgs {
   /// Specifies the AWS KMS Encryption Context to use for object encryption. The value is a base64-encoded UTF-8 string holding JSON with the encryption context key-value pairs.
   final Input<String>? kmsEncryptionContext;
 
-  /// Specifies the AWS KMS Key ARN to use for object encryption. This value is a fully qualified **ARN** of the KMS Key. If using <span pulumi-lang-nodejs="`aws.kms.Key`" pulumi-lang-dotnet="`aws.kms.Key`" pulumi-lang-go="`kms.Key`" pulumi-lang-python="`kms.Key`" pulumi-lang-yaml="`aws.kms.Key`" pulumi-lang-java="`aws.kms.Key`">`aws.kms.Key`</span>, use the exported <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> attribute: <span pulumi-lang-nodejs="`kmsKeyId " pulumi-lang-dotnet="`KmsKeyId " pulumi-lang-go="`kmsKeyId " pulumi-lang-python="`kms_key_id " pulumi-lang-yaml="`kmsKeyId " pulumi-lang-java="`kmsKeyId ">`kms_key_id </span>= aws_kms_key.foo.arn`
+  /// Specifies the AWS KMS Key ARN to use for object encryption. This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`, use the exported `arn` attribute: `kms_key_id = aws_kms_key.foo.arn`
   final Input<String>? kmsKeyId;
 
   /// Map of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
@@ -95,7 +95,7 @@ class ObjectCopyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. For information about downloading objects from requester pays buckets, see Downloading Objects in Requestor Pays Buckets (https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html) in the Amazon S3 Developer Guide. If included, the only valid value is <span pulumi-lang-nodejs="`requester`" pulumi-lang-dotnet="`Requester`" pulumi-lang-go="`requester`" pulumi-lang-python="`requester`" pulumi-lang-yaml="`requester`" pulumi-lang-java="`requester`">`requester`</span>.
+  /// Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. For information about downloading objects from requester pays buckets, see Downloading Objects in Requestor Pays Buckets (https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html) in the Amazon S3 Developer Guide. If included, the only valid value is `requester`.
   final Input<String>? requestPayer;
 
   /// Specifies server-side encryption of the object in S3. Valid values are `AES256` and `aws:kms`.
@@ -121,7 +121,7 @@ class ObjectCopyArgs {
   /// Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request. Valid values are `COPY` and `REPLACE`.
   final Input<String>? taggingDirective;
 
-  /// Map of tags to assign to the object. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).

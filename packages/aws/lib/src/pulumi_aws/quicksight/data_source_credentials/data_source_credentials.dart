@@ -4,7 +4,7 @@ import '../data_source_credentials_credential_pair/data_source_credentials_crede
 
 class DataSourceCredentials {
   /// The Amazon Resource Name (ARN) of a data source that has the credential pair that you want to use.
-  /// When the value is not null, the <span pulumi-lang-nodejs="`credentialPair`" pulumi-lang-dotnet="`CredentialPair`" pulumi-lang-go="`credentialPair`" pulumi-lang-python="`credential_pair`" pulumi-lang-yaml="`credentialPair`" pulumi-lang-java="`credentialPair`">`credential_pair`</span> from the data source in the ARN is used.
+  /// When the value is not null, the `credential_pair` from the data source in the ARN is used.
   final String? copySourceArn;
 
   /// Credential pair. See Credential Pair below for more details.

@@ -37,7 +37,7 @@ class GetVpcPeeringConnectionResult {
   final String peerRegion;
   final String peerVpcId;
 
-  /// (**Deprecated**) Region of the requester VPC. Use <span pulumi-lang-nodejs="`requesterRegion`" pulumi-lang-dotnet="`RequesterRegion`" pulumi-lang-go="`requesterRegion`" pulumi-lang-python="`requester_region`" pulumi-lang-yaml="`requesterRegion`" pulumi-lang-java="`requesterRegion`">`requester_region`</span> instead.
+  /// (**Deprecated**) Region of the requester VPC. Use `requester_region` instead.
   final String region;
 
   /// Configuration block that describes [VPC Peering Connection]

@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class SecretRotationRotationRules {
-  /// Specifies the number of days between automatic scheduled rotations of the secret. Either <span pulumi-lang-nodejs="`automaticallyAfterDays`" pulumi-lang-dotnet="`AutomaticallyAfterDays`" pulumi-lang-go="`automaticallyAfterDays`" pulumi-lang-python="`automatically_after_days`" pulumi-lang-yaml="`automaticallyAfterDays`" pulumi-lang-java="`automaticallyAfterDays`">`automatically_after_days`</span> or <span pulumi-lang-nodejs="`scheduleExpression`" pulumi-lang-dotnet="`ScheduleExpression`" pulumi-lang-go="`scheduleExpression`" pulumi-lang-python="`schedule_expression`" pulumi-lang-yaml="`scheduleExpression`" pulumi-lang-java="`scheduleExpression`">`schedule_expression`</span> must be specified.
+  /// Specifies the number of days between automatic scheduled rotations of the secret. Either `automatically_after_days` or `schedule_expression` must be specified.
   final int? automaticallyAfterDays;
 
-  /// The length of the rotation window in hours. For example, <span pulumi-lang-nodejs="`3h`" pulumi-lang-dotnet="`3h`" pulumi-lang-go="`3h`" pulumi-lang-python="`3h`" pulumi-lang-yaml="`3h`" pulumi-lang-java="`3h`">`3h`</span> for a three hour window.
+  /// The length of the rotation window in hours. For example, `3h` for a three hour window.
   final String? duration;
 
-  /// A `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either <span pulumi-lang-nodejs="`automaticallyAfterDays`" pulumi-lang-dotnet="`AutomaticallyAfterDays`" pulumi-lang-go="`automaticallyAfterDays`" pulumi-lang-python="`automatically_after_days`" pulumi-lang-yaml="`automaticallyAfterDays`" pulumi-lang-java="`automaticallyAfterDays`">`automatically_after_days`</span> or <span pulumi-lang-nodejs="`scheduleExpression`" pulumi-lang-dotnet="`ScheduleExpression`" pulumi-lang-go="`scheduleExpression`" pulumi-lang-python="`schedule_expression`" pulumi-lang-yaml="`scheduleExpression`" pulumi-lang-java="`scheduleExpression`">`schedule_expression`</span> must be specified.
+  /// A `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either `automatically_after_days` or `schedule_expression` must be specified.
   final String? scheduleExpression;
 
   SecretRotationRotationRules({

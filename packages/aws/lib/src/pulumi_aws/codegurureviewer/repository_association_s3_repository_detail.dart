@@ -1,0 +1,3 @@
+library module_codegurureviewer_repository_association_s3_repository_detail;
+
+export 'repository_association_s3_repository_detail/repository_association_s3_repository_detail.dart';

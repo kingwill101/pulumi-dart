@@ -1,0 +1,3 @@
+library module_cloudtrail_trail_event_selector_data_resource;
+
+export 'trail_event_selector_data_resource/trail_event_selector_data_resource.dart';

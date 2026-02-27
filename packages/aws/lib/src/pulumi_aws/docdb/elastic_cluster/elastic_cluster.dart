@@ -8,123 +8,7 @@ import 'elastic_cluster_args.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.docdb.ElasticCluster("example", {
-/// name: "my-docdb-cluster",
-/// adminUserName: "foo",
-/// adminUserPassword: "mustbeeightchars",
-/// authType: "PLAIN_TEXT",
-/// shardCapacity: 2,
-/// shardCount: 1,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.docdb.ElasticCluster("example",
-/// name="my-docdb-cluster",
-/// admin_user_name="foo",
-/// admin_user_password="mustbeeightchars",
-/// auth_type="PLAIN_TEXT",
-/// shard_capacity=2,
-/// shard_count=1)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.DocDB.ElasticCluster("example", new()
-/// {
-/// Name = "my-docdb-cluster",
-/// AdminUserName = "foo",
-/// AdminUserPassword = "mustbeeightchars",
-/// AuthType = "PLAIN_TEXT",
-/// ShardCapacity = 2,
-/// ShardCount = 1,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/docdb"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := docdb.NewElasticCluster(ctx, "example", &docdb.ElasticClusterArgs{
-/// Name:              pulumi.String("my-docdb-cluster"),
-/// AdminUserName:     pulumi.String("foo"),
-/// AdminUserPassword: pulumi.String("mustbeeightchars"),
-/// AuthType:          pulumi.String("PLAIN_TEXT"),
-/// ShardCapacity:     pulumi.Int(2),
-/// ShardCount:        pulumi.Int(1),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.docdb.ElasticCluster;
-/// import com.pulumi.aws.docdb.ElasticClusterArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new ElasticCluster("example", ElasticClusterArgs.builder()
-/// .name("my-docdb-cluster")
-/// .adminUserName("foo")
-/// .adminUserPassword("mustbeeightchars")
-/// .authType("PLAIN_TEXT")
-/// .shardCapacity(2)
-/// .shardCount(1)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:docdb:ElasticCluster
-/// properties:
-/// name: my-docdb-cluster
-/// adminUserName: foo
-/// adminUserPassword: mustbeeightchars
-/// authType: PLAIN_TEXT
-/// shardCapacity: 2
-/// shardCount: 1
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -132,10 +16,10 @@ import 'elastic_cluster_args.dart';
 ///
 /// #### Required
 ///
-/// - <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Amazon Resource Name (ARN) of the DocDB Elastic cluster.
+/// - `arn` (String) Amazon Resource Name (ARN) of the DocDB Elastic cluster.
 ///
 ///
-/// Using `pulumi import`, import DocDB (DocumentDB) Elastic Cluster using the <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> argument. For example,
+/// Using `pulumi import`, import DocDB (DocumentDB) Elastic Cluster using the `arn` argument. For example,
 ///
 /// ```sh
 /// $ pulumi import aws:docdb/elasticCluster:ElasticCluster example arn:aws:docdb-elastic:us-east-1:000011112222:cluster/12345678-7abc-def0-1234-56789abcdef
@@ -165,7 +49,7 @@ class ElasticCluster extends CustomResource {
   /// Name of the Elastic DocumentDB cluster
   late final Output<String> name;
 
-  /// The daily time range during which automated backups are created if automated backups are enabled, as determined by the <span pulumi-lang-nodejs="`backupRetentionPeriod`" pulumi-lang-dotnet="`BackupRetentionPeriod`" pulumi-lang-go="`backupRetentionPeriod`" pulumi-lang-python="`backup_retention_period`" pulumi-lang-yaml="`backupRetentionPeriod`" pulumi-lang-java="`backupRetentionPeriod`">`backup_retention_period`</span>.
+  /// The daily time range during which automated backups are created if automated backups are enabled, as determined by the `backup_retention_period`.
   late final Output<String> preferredBackupWindow;
 
   /// Weekly time range during which system maintenance can occur in UTC. Format: `ddd:hh24:mi-ddd:hh24:mi`. If not specified, AWS will choose a random 30-minute window on a random day of the week.
@@ -185,7 +69,7 @@ class ElasticCluster extends CustomResource {
   /// IDs of subnets in which the Elastic DocumentDB Cluster operates.
   late final Output<List<String>> subnetIds;
 
-  /// A map of tags to assign to the collection. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
   late final Output<ElasticClusterTimeouts?> timeouts;

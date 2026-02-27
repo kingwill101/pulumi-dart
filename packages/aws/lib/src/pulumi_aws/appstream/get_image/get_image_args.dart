@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getImage.
 class GetImageArgs {
-  /// ARN of the image being searched for. Cannot be used with <span pulumi-lang-nodejs="`nameRegex`" pulumi-lang-dotnet="`NameRegex`" pulumi-lang-go="`nameRegex`" pulumi-lang-python="`name_regex`" pulumi-lang-yaml="`nameRegex`" pulumi-lang-java="`nameRegex`">`name_regex`</span> or <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// ARN of the image being searched for. Cannot be used with `name_regex` or `name`.
   final Input<String>? arn;
 
-  /// Boolean that if it is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> and there are multiple images returned the most recent will be returned. If it is set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> and there are multiple images return the datasource will error.
+  /// Boolean that if it is set to `true` and there are multiple images returned the most recent will be returned. If it is set to `false` and there are multiple images return the datasource will error.
   final Input<bool>? mostRecent;
 
-  /// Name of the image being searched for. Cannot be used with <span pulumi-lang-nodejs="`nameRegex`" pulumi-lang-dotnet="`NameRegex`" pulumi-lang-go="`nameRegex`" pulumi-lang-python="`name_regex`" pulumi-lang-yaml="`nameRegex`" pulumi-lang-java="`nameRegex`">`name_regex`</span> or <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>.
+  /// Name of the image being searched for. Cannot be used with `name_regex` or `arn`.
   final Input<String>? name;
 
-  /// Regular expression name of the image being searched for. Cannot be used with <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> or <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Regular expression name of the image being searched for. Cannot be used with `arn` or `name`.
   final Input<String>? nameRegex;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

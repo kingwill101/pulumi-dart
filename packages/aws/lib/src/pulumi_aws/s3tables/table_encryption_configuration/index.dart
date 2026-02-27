@@ -1,3 +1,0 @@
-library module_s3tables_table_encryption_configuration;
-
-export 'table_encryption_configuration.dart';

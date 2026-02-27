@@ -1,3 +1,0 @@
-library module_datazone_environment_profile_user_parameter;
-
-export 'environment_profile_user_parameter.dart';

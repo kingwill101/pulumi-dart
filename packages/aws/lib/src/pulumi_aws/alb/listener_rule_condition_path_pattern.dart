@@ -1,0 +1,3 @@
+library module_alb_listener_rule_condition_path_pattern;
+
+export 'listener_rule_condition_path_pattern/listener_rule_condition_path_pattern.dart';

@@ -10,7 +10,7 @@ class MemberArgs4 {
   /// The email of the member AWS account.
   final Input<String>? email;
 
-  /// Boolean whether to invite the account to Security Hub as a member. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
   final Input<bool>? invite;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

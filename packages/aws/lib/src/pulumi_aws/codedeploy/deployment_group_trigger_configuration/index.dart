@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_group_trigger_configuration;
-
-export 'deployment_group_trigger_configuration.dart';

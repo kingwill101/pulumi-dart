@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for AgentcoreApiKeyCredentialProvider.
 class AgentcoreApiKeyCredentialProviderArgs {
-  /// API key value. Cannot be used with <span pulumi-lang-nodejs="`apiKeyWo`" pulumi-lang-dotnet="`ApiKeyWo`" pulumi-lang-go="`apiKeyWo`" pulumi-lang-python="`api_key_wo`" pulumi-lang-yaml="`apiKeyWo`" pulumi-lang-java="`apiKeyWo`">`api_key_wo`</span>. This value will be visible in pulumi preview outputs and logs.
+  /// API key value. Cannot be used with `api_key_wo`. This value will be visible in pulumi preview outputs and logs.
   ///
   /// **Write-Only API Key (choose one approach):**
   final Input<String>? apiKey;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only API key value. Cannot be used with <span pulumi-lang-nodejs="`apiKey`" pulumi-lang-dotnet="`ApiKey`" pulumi-lang-go="`apiKey`" pulumi-lang-python="`api_key`" pulumi-lang-yaml="`apiKey`" pulumi-lang-java="`apiKey`">`api_key`</span>. Must be used together with <span pulumi-lang-nodejs="`apiKeyWoVersion`" pulumi-lang-dotnet="`ApiKeyWoVersion`" pulumi-lang-go="`apiKeyWoVersion`" pulumi-lang-python="`api_key_wo_version`" pulumi-lang-yaml="`apiKeyWoVersion`" pulumi-lang-java="`apiKeyWoVersion`">`api_key_wo_version`</span>.
+  /// Write-only API key value. Cannot be used with `api_key`. Must be used together with `api_key_wo_version`.
   final Input<String>? apiKeyWo;
 
-  /// Used together with <span pulumi-lang-nodejs="`apiKeyWo`" pulumi-lang-dotnet="`ApiKeyWo`" pulumi-lang-go="`apiKeyWo`" pulumi-lang-python="`api_key_wo`" pulumi-lang-yaml="`apiKeyWo`" pulumi-lang-java="`apiKeyWo`">`api_key_wo`</span> to trigger an update. Increment this value when an update to <span pulumi-lang-nodejs="`apiKeyWo`" pulumi-lang-dotnet="`ApiKeyWo`" pulumi-lang-go="`apiKeyWo`" pulumi-lang-python="`api_key_wo`" pulumi-lang-yaml="`apiKeyWo`" pulumi-lang-java="`apiKeyWo`">`api_key_wo`</span> is required.
+  /// Used together with `api_key_wo` to trigger an update. Increment this value when an update to `api_key_wo` is required.
   final Input<int>? apiKeyWoVersion;
 
   /// Name of the API Key credential provider. Forces replacement when changed.

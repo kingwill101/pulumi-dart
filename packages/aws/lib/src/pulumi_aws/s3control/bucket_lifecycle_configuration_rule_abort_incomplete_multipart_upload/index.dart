@@ -1,3 +1,0 @@
-library module_s3control_bucket_lifecycle_configuration_rule_abort_incomplete_multipart_upload;
-
-export 'bucket_lifecycle_configuration_rule_abort_incomplete_multipart_upload2.dart';

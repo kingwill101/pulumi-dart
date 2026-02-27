@@ -1,3 +1,0 @@
-library module_scheduler_schedule_target_retry_policy;
-
-export 'schedule_target_retry_policy.dart';

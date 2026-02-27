@@ -1,3 +1,0 @@
-library module_cloudwatch_event_target_ecs_target_placement_constraint;
-
-export 'event_target_ecs_target_placement_constraint.dart';

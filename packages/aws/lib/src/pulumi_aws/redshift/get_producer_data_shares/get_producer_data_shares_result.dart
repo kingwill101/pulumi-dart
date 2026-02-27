@@ -5,7 +5,7 @@ import '../get_producer_data_shares_data_share/get_producer_data_shares_data_sha
 
 /// Result data returned by getProducerDataShares.
 class GetProducerDataSharesResult {
-  /// An array of all data shares in the producer. See <span pulumi-lang-nodejs="`dataShares`" pulumi-lang-dotnet="`DataShares`" pulumi-lang-go="`dataShares`" pulumi-lang-python="`data_shares`" pulumi-lang-yaml="`dataShares`" pulumi-lang-java="`dataShares`">`data_shares`</span> below.
+  /// An array of all data shares in the producer. See `data_shares` below.
   final List<GetProducerDataSharesDataShare> dataShares;
 
   /// Producer ARN.

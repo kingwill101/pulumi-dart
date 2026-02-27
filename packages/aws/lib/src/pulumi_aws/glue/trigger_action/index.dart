@@ -1,3 +1,0 @@
-library module_glue_trigger_action;
-
-export 'trigger_action.dart';

@@ -1,0 +1,3 @@
+library module_ecs_express_gateway_service_ingress_path;
+
+export 'express_gateway_service_ingress_path/express_gateway_service_ingress_path.dart';

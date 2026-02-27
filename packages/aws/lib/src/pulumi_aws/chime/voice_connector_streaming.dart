@@ -1,0 +1,4 @@
+library module_chime_voice_connector_streaming;
+
+export 'voice_connector_streaming/voice_connector_streaming.dart';
+export 'voice_connector_streaming/voice_connector_streaming_args.dart';

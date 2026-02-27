@@ -1,3 +1,0 @@
-library module_autoscalingplans_scaling_plan_scaling_instruction_target_tracking_configuration;
-
-export 'scaling_plan_scaling_instruction_target_tracking_configuration.dart';

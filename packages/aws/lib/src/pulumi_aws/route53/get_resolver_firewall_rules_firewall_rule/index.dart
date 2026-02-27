@@ -1,3 +1,0 @@
-library module_route53_get_resolver_firewall_rules_firewall_rule;
-
-export 'get_resolver_firewall_rules_firewall_rule.dart';

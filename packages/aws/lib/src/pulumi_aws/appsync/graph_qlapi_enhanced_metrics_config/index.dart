@@ -1,3 +1,0 @@
-library module_appsync_graph_qlapi_enhanced_metrics_config;
-
-export 'graph_qlapi_enhanced_metrics_config.dart';

@@ -1,0 +1,3 @@
+library module_mskconnect_connector_capacity_autoscaling_scale_in_policy;
+
+export 'connector_capacity_autoscaling_scale_in_policy/connector_capacity_autoscaling_scale_in_policy.dart';

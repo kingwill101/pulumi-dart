@@ -1,3 +1,0 @@
-library module_lb_listener_default_action_authenticate_cognito;
-
-export 'listener_default_action_authenticate_cognito2.dart';

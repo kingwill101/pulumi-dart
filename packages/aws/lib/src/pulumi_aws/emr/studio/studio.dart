@@ -5,151 +5,11 @@ import 'studio_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.emr.Studio("example", {
-/// authMode: "SSO",
-/// defaultS3Location: `s3://${test.bucket}/test`,
-/// engineSecurityGroupId: testAwsSecurityGroup.id,
-/// name: "example",
-/// serviceRole: testAwsIamRole.arn,
-/// subnetIds: [testAwsSubnet.id],
-/// userRole: testAwsIamRole.arn,
-/// vpcId: testAwsVpc.id,
-/// workspaceSecurityGroupId: testAwsSecurityGroup.id,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.emr.Studio("example",
-/// auth_mode="SSO",
-/// default_s3_location=f"s3://{test['bucket']}/test",
-/// engine_security_group_id=test_aws_security_group["id"],
-/// name="example",
-/// service_role=test_aws_iam_role["arn"],
-/// subnet_ids=[test_aws_subnet["id"]],
-/// user_role=test_aws_iam_role["arn"],
-/// vpc_id=test_aws_vpc["id"],
-/// workspace_security_group_id=test_aws_security_group["id"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Emr.Studio("example", new()
-/// {
-/// AuthMode = "SSO",
-/// DefaultS3Location = $"s3://{test.Bucket}/test",
-/// EngineSecurityGroupId = testAwsSecurityGroup.Id,
-/// Name = "example",
-/// ServiceRole = testAwsIamRole.Arn,
-/// SubnetIds = new[]
-/// {
-/// testAwsSubnet.Id,
-/// },
-/// UserRole = testAwsIamRole.Arn,
-/// VpcId = testAwsVpc.Id,
-/// WorkspaceSecurityGroupId = testAwsSecurityGroup.Id,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/emr"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := emr.NewStudio(ctx, "example", &emr.StudioArgs{
-/// AuthMode:              pulumi.String("SSO"),
-/// DefaultS3Location:     pulumi.Sprintf("s3://%v/test", test.Bucket),
-/// EngineSecurityGroupId: pulumi.Any(testAwsSecurityGroup.Id),
-/// Name:                  pulumi.String("example"),
-/// ServiceRole:           pulumi.Any(testAwsIamRole.Arn),
-/// SubnetIds: pulumi.StringArray{
-/// testAwsSubnet.Id,
-/// },
-/// UserRole:                 pulumi.Any(testAwsIamRole.Arn),
-/// VpcId:                    pulumi.Any(testAwsVpc.Id),
-/// WorkspaceSecurityGroupId: pulumi.Any(testAwsSecurityGroup.Id),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.emr.Studio;
-/// import com.pulumi.aws.emr.StudioArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Studio("example", StudioArgs.builder()
-/// .authMode("SSO")
-/// .defaultS3Location(String.format("s3://%s/test", test.bucket()))
-/// .engineSecurityGroupId(testAwsSecurityGroup.id())
-/// .name("example")
-/// .serviceRole(testAwsIamRole.arn())
-/// .subnetIds(testAwsSubnet.id())
-/// .userRole(testAwsIamRole.arn())
-/// .vpcId(testAwsVpc.id())
-/// .workspaceSecurityGroupId(testAwsSecurityGroup.id())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:emr:Studio
-/// properties:
-/// authMode: SSO
-/// defaultS3Location: s3://${test.bucket}/test
-/// engineSecurityGroupId: ${testAwsSecurityGroup.id}
-/// name: example
-/// serviceRole: ${testAwsIamRole.arn}
-/// subnetIds:
-/// - ${testAwsSubnet.id}
-/// userRole: ${testAwsIamRole.arn}
-/// vpcId: ${testAwsVpc.id}
-/// workspaceSecurityGroupId: ${testAwsSecurityGroup.id}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EMR studios using the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import EMR studios using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:emr/studio:Studio studio es-123456ABCDEF
@@ -170,7 +30,7 @@ class Studio extends CustomResource {
   /// The AWS KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
   late final Output<String?> encryptionKeyArn;
 
-  /// The ID of the Amazon EMR Studio Engine security group. The Engine security group allows inbound network traffic from the Workspace security group, and it must be in the same VPC specified by <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span>.
+  /// The ID of the Amazon EMR Studio Engine security group. The Engine security group allows inbound network traffic from the Workspace security group, and it must be in the same VPC specified by `vpc_id`.
   late final Output<String> engineSecurityGroupId;
 
   /// The authentication endpoint of your identity provider (IdP). Specify this value when you use IAM authentication and want to let federated users log in to a Studio with the Studio URL and credentials from your IdP. Amazon EMR Studio redirects users to this endpoint to enter credentials.
@@ -188,10 +48,10 @@ class Studio extends CustomResource {
   /// The IAM role that the Amazon EMR Studio assumes. The service role provides a way for Amazon EMR Studio to interoperate with other Amazon Web Services services.
   late final Output<String> serviceRole;
 
-  /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC specified by <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span>. Studio users can create a Workspace in any of the specified subnets.
+  /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC specified by `vpc_id`. Studio users can create a Workspace in any of the specified subnets.
   late final Output<List<String>> subnetIds;
 
-  /// list of tags to apply to the EMR Cluster. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
 
@@ -204,7 +64,7 @@ class Studio extends CustomResource {
   /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the Studio.
   late final Output<String> vpcId;
 
-  /// The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by <span pulumi-lang-nodejs="`vpcId`" pulumi-lang-dotnet="`VpcId`" pulumi-lang-go="`vpcId`" pulumi-lang-python="`vpc_id`" pulumi-lang-yaml="`vpcId`" pulumi-lang-java="`vpcId`">`vpc_id`</span>.
+  /// The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpc_id`.
   ///
   /// The following arguments are optional:
   late final Output<String> workspaceSecurityGroupId;

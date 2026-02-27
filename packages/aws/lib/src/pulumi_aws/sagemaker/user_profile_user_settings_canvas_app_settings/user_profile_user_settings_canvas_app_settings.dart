@@ -15,7 +15,7 @@ class UserProfileUserSettingsCanvasAppSettings {
   final UserProfileUserSettingsCanvasAppSettingsDirectDeploySettings?
       directDeploySettings;
 
-  /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See <span pulumi-lang-nodejs="`emrServerlessSettings`" pulumi-lang-dotnet="`EmrServerlessSettings`" pulumi-lang-go="`emrServerlessSettings`" pulumi-lang-python="`emr_serverless_settings`" pulumi-lang-yaml="`emrServerlessSettings`" pulumi-lang-java="`emrServerlessSettings`">`emr_serverless_settings`</span> Block below.
+  /// The settings for running Amazon EMR Serverless jobs in SageMaker AI Canvas. See `emr_serverless_settings` Block below.
   final UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings?
       emrServerlessSettings;
   final UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings?

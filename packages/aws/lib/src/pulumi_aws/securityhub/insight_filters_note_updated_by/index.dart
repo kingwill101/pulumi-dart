@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_note_updated_by;
-
-export 'insight_filters_note_updated_by.dart';

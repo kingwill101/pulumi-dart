@@ -1,3 +1,0 @@
-library module_apprunner_service_encryption_configuration;
-
-export 'service_encryption_configuration.dart';

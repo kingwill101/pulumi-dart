@@ -1,3 +1,0 @@
-library module_mq_broker_maintenance_window_start_time;
-
-export 'broker_maintenance_window_start_time.dart';

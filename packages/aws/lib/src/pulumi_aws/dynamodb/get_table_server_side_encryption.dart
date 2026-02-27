@@ -1,0 +1,3 @@
+library module_dynamodb_get_table_server_side_encryption;
+
+export 'get_table_server_side_encryption/get_table_server_side_encryption.dart';

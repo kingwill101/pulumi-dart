@@ -34,7 +34,7 @@ class GetTaskExecutionArgs {
   /// Launch type on which to run your service. Valid values are `EC2`, `FARGATE`, and `EXTERNAL`.
   final Input<String>? launchType;
 
-  /// Network configuration for the service. This parameter is required for task definitions that use the <span pulumi-lang-nodejs="`awsvpc`" pulumi-lang-dotnet="`Awsvpc`" pulumi-lang-go="`awsvpc`" pulumi-lang-python="`awsvpc`" pulumi-lang-yaml="`awsvpc`" pulumi-lang-java="`awsvpc`">`awsvpc`</span> network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. See below.
+  /// Network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. See below.
   final Input<GetTaskExecutionNetworkConfiguration>? networkConfiguration;
 
   /// A list of container overrides that specify the name of a container in the specified task definition and the overrides it should receive.
@@ -61,10 +61,10 @@ class GetTaskExecutionArgs {
   /// An optional tag specified when a task is started.
   final Input<String>? startedBy;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// The <span pulumi-lang-nodejs="`family`" pulumi-lang-dotnet="`Family`" pulumi-lang-go="`family`" pulumi-lang-python="`family`" pulumi-lang-yaml="`family`" pulumi-lang-java="`family`">`family`</span> and <span pulumi-lang-nodejs="`revision`" pulumi-lang-dotnet="`Revision`" pulumi-lang-go="`revision`" pulumi-lang-python="`revision`" pulumi-lang-yaml="`revision`" pulumi-lang-java="`revision`">`revision`</span> (`family:revision`) or full ARN of the task definition to run. If a revision isn't specified, the latest `ACTIVE` revision is used.
+  /// The `family` and `revision` (`family:revision`) or full ARN of the task definition to run. If a revision isn't specified, the latest `ACTIVE` revision is used.
   ///
   /// The following arguments are optional:
   final Input<String> taskDefinition;

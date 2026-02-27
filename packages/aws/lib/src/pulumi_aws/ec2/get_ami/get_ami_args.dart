@@ -6,13 +6,13 @@ import '../get_ami_filter/get_ami_filter.dart';
 /// Arguments for getAmi.
 class GetAmiArgs {
   /// If true, allow unsafe filter values. With unsafe
-  /// filters and <span pulumi-lang-nodejs="`mostRecent`" pulumi-lang-dotnet="`MostRecent`" pulumi-lang-go="`mostRecent`" pulumi-lang-python="`most_recent`" pulumi-lang-yaml="`mostRecent`" pulumi-lang-java="`mostRecent`">`most_recent`</span> set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, a third party may introduce a new image which
+  /// filters and `most_recent` set to `true`, a third party may introduce a new image which
   /// will be returned by this data source. Consider filtering by owner or image ID rather
   /// than setting this argument.
   final Input<bool>? allowUnsafeFilter;
 
   /// Limit search to users with *explicit* launch permission on
-  /// the image. Valid items are the numeric account ID or <span pulumi-lang-nodejs="`self`" pulumi-lang-dotnet="`Self`" pulumi-lang-go="`self`" pulumi-lang-python="`self`" pulumi-lang-yaml="`self`" pulumi-lang-java="`self`">`self`</span>.
+  /// the image. Valid items are the numeric account ID or `self`.
   final Input<List<String>>? executableUsers;
 
   /// One or more name/value pairs to filter off of. There are
@@ -35,11 +35,11 @@ class GetAmiArgs {
   ///
   /// > **NOTE:** If more or less than a single match is returned by the search,
   /// this call will fail. Ensure that your search is specific enough to return
-  /// a single AMI ID only, or use <span pulumi-lang-nodejs="`mostRecent`" pulumi-lang-dotnet="`MostRecent`" pulumi-lang-go="`mostRecent`" pulumi-lang-python="`most_recent`" pulumi-lang-yaml="`mostRecent`" pulumi-lang-java="`mostRecent`">`most_recent`</span> to choose the most recent one. If
-  /// you want to match multiple AMIs, use the <span pulumi-lang-nodejs="`aws.ec2.getAmiIds`" pulumi-lang-dotnet="`aws.ec2.getAmiIds`" pulumi-lang-go="`ec2.getAmiIds`" pulumi-lang-python="`ec2_get_ami_ids`" pulumi-lang-yaml="`aws.ec2.getAmiIds`" pulumi-lang-java="`aws.ec2.getAmiIds`">`aws.ec2.getAmiIds`</span> data source instead.
+  /// a single AMI ID only, or use `most_recent` to choose the most recent one. If
+  /// you want to match multiple AMIs, use the `aws.ec2.getAmiIds` data source instead.
   final Input<String>? nameRegex;
 
-  /// List of AMI owners to limit search. Valid values: an AWS account ID, <span pulumi-lang-nodejs="`self`" pulumi-lang-dotnet="`Self`" pulumi-lang-go="`self`" pulumi-lang-python="`self`" pulumi-lang-yaml="`self`" pulumi-lang-java="`self`">`self`</span> (the current account), or an AWS owner alias (e.g., <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>, `aws-marketplace`, <span pulumi-lang-nodejs="`microsoft`" pulumi-lang-dotnet="`Microsoft`" pulumi-lang-go="`microsoft`" pulumi-lang-python="`microsoft`" pulumi-lang-yaml="`microsoft`" pulumi-lang-java="`microsoft`">`microsoft`</span>).
+  /// List of AMI owners to limit search. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g., `amazon`, `aws-marketplace`, `microsoft`).
   final Input<List<String>>? owners;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -1,0 +1,3 @@
+library module_organizations_get_delegated_administrators_delegated_administrator;
+
+export 'get_delegated_administrators_delegated_administrator/get_delegated_administrators_delegated_administrator.dart';

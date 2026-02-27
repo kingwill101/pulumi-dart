@@ -1,3 +1,0 @@
-library module_appstream_image_builder_access_endpoint;
-
-export 'image_builder_access_endpoint.dart';

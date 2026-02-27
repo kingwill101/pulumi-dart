@@ -7,12 +7,12 @@ import '../v2models_slot_type_value_selection_setting_regex_filter/v2models_slot
 class V2modelsSlotTypeValueSelectionSetting {
   /// Provides settings that enable advanced recognition settings for slot values.
   /// You can use this to enable using slot values as a custom vocabulary for recognizing user utterances.
-  /// See <span pulumi-lang-nodejs="`advancedRecognitionSetting`" pulumi-lang-dotnet="`AdvancedRecognitionSetting`" pulumi-lang-go="`advancedRecognitionSetting`" pulumi-lang-python="`advanced_recognition_setting`" pulumi-lang-yaml="`advancedRecognitionSetting`" pulumi-lang-java="`advancedRecognitionSetting`">`advanced_recognition_setting`</span> argument reference below.
+  /// See `advanced_recognition_setting` argument reference below.
   final List<V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting>?
       advancedRecognitionSettings;
 
   /// Used to validate the value of the slot.
-  /// See <span pulumi-lang-nodejs="`regexFilter`" pulumi-lang-dotnet="`RegexFilter`" pulumi-lang-go="`regexFilter`" pulumi-lang-python="`regex_filter`" pulumi-lang-yaml="`regexFilter`" pulumi-lang-java="`regexFilter`">`regex_filter`</span> argument reference below.
+  /// See `regex_filter` argument reference below.
   final List<V2modelsSlotTypeValueSelectionSettingRegexFilter>? regexFilters;
 
   /// Determines the slot resolution strategy that Amazon Lex uses to return slot type values.

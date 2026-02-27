@@ -1,3 +1,0 @@
-library module_pipes_pipe_target_parameters_kinesis_stream_parameters;
-
-export 'pipe_target_parameters_kinesis_stream_parameters.dart';

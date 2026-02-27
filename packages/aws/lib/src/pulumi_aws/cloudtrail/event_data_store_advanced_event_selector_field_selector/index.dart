@@ -1,3 +1,0 @@
-library module_cloudtrail_event_data_store_advanced_event_selector_field_selector;
-
-export 'event_data_store_advanced_event_selector_field_selector.dart';

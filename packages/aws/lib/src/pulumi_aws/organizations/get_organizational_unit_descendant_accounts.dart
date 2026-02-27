@@ -1,0 +1,5 @@
+library module_organizations_get_organizational_unit_descendant_accounts;
+
+export 'get_organizational_unit_descendant_accounts/get_organizational_unit_descendant_accounts.dart';
+export 'get_organizational_unit_descendant_accounts/get_organizational_unit_descendant_accounts_args.dart';
+export 'get_organizational_unit_descendant_accounts/get_organizational_unit_descendant_accounts_result.dart';

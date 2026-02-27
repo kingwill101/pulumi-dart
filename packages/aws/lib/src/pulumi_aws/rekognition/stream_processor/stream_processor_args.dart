@@ -11,10 +11,10 @@ import '../stream_processor_timeouts/stream_processor_timeouts.dart';
 
 /// The set of arguments for StreamProcessor.
 class StreamProcessorArgs {
-  /// See <span pulumi-lang-nodejs="`dataSharingPreference`" pulumi-lang-dotnet="`DataSharingPreference`" pulumi-lang-go="`dataSharingPreference`" pulumi-lang-python="`data_sharing_preference`" pulumi-lang-yaml="`dataSharingPreference`" pulumi-lang-java="`dataSharingPreference`">`data_sharing_preference`</span>.
+  /// See `data_sharing_preference`.
   final Input<StreamProcessorDataSharingPreference>? dataSharingPreference;
 
-  /// Input video stream. See <span pulumi-lang-nodejs="`input`" pulumi-lang-dotnet="`Input`" pulumi-lang-go="`input`" pulumi-lang-python="`input`" pulumi-lang-yaml="`input`" pulumi-lang-java="`input`">`input`</span>.
+  /// Input video stream. See `input`.
   final Input<StreamProcessorInput> input;
 
   /// Optional parameter for label detection stream processors.
@@ -23,27 +23,27 @@ class StreamProcessorArgs {
   /// The name of the Stream Processor.
   final Input<String>? name;
 
-  /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the completion status. See <span pulumi-lang-nodejs="`notificationChannel`" pulumi-lang-dotnet="`NotificationChannel`" pulumi-lang-go="`notificationChannel`" pulumi-lang-python="`notification_channel`" pulumi-lang-yaml="`notificationChannel`" pulumi-lang-java="`notificationChannel`">`notification_channel`</span>.
+  /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the completion status. See `notification_channel`.
   final Input<StreamProcessorNotificationChannel>? notificationChannel;
 
-  /// Kinesis data stream stream or Amazon S3 bucket location to which Amazon Rekognition Video puts the analysis results. See <span pulumi-lang-nodejs="`output`" pulumi-lang-dotnet="`Output`" pulumi-lang-go="`output`" pulumi-lang-python="`output`" pulumi-lang-yaml="`output`" pulumi-lang-java="`output`">`output`</span>.
+  /// Kinesis data stream stream or Amazon S3 bucket location to which Amazon Rekognition Video puts the analysis results. See `output`.
   final Input<StreamProcessorOutput> output;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Specifies locations in the frames where Amazon Rekognition checks for objects or people. See <span pulumi-lang-nodejs="`regionsOfInterest`" pulumi-lang-dotnet="`RegionsOfInterest`" pulumi-lang-go="`regionsOfInterest`" pulumi-lang-python="`regions_of_interest`" pulumi-lang-yaml="`regionsOfInterest`" pulumi-lang-java="`regionsOfInterest`">`regions_of_interest`</span>.
+  /// Specifies locations in the frames where Amazon Rekognition checks for objects or people. See `regions_of_interest`.
   final Input<List<StreamProcessorRegionsOfInterest>>? regionsOfInterests;
 
   /// The Amazon Resource Number (ARN) of the IAM role that allows access to the stream processor. The IAM role provides Rekognition read permissions for a Kinesis stream. It also provides write permissions to an Amazon S3 bucket and Amazon Simple Notification Service topic for a label detection stream processor. This is required for both face search and label detection stream processors.
   final Input<String> roleArn;
 
-  /// Input parameters used in a streaming video analyzed by a stream processor. See <span pulumi-lang-nodejs="`settings`" pulumi-lang-dotnet="`Settings`" pulumi-lang-go="`settings`" pulumi-lang-python="`settings`" pulumi-lang-yaml="`settings`" pulumi-lang-java="`settings`">`settings`</span>.
+  /// Input parameters used in a streaming video analyzed by a stream processor. See `settings`.
   ///
   /// The following arguments are optional:
   final Input<StreamProcessorSettings> settings;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<StreamProcessorTimeouts>? timeouts;
 

@@ -1,3 +1,0 @@
-library module_ssoadmin_application_portal_options;
-
-export 'application_portal_options.dart';

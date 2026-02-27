@@ -1,3 +1,0 @@
-library module_datapipeline_get_pipeline_definition_parameter_value;
-
-export 'get_pipeline_definition_parameter_value.dart';

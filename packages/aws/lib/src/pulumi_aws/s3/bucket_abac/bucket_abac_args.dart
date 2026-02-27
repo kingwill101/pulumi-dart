@@ -5,7 +5,7 @@ import '../bucket_abac_abac_status/bucket_abac_abac_status.dart';
 
 /// The set of arguments for BucketAbac.
 class BucketAbacArgs {
-  /// ABAC status configuration. See <span pulumi-lang-nodejs="`abacStatus`" pulumi-lang-dotnet="`AbacStatus`" pulumi-lang-go="`abacStatus`" pulumi-lang-python="`abac_status`" pulumi-lang-yaml="`abacStatus`" pulumi-lang-java="`abacStatus`">`abac_status`</span> Block for details.
+  /// ABAC status configuration. See `abac_status` Block for details.
   ///
   /// The following arguments are optional:
   final Input<BucketAbacAbacStatus> abacStatus;

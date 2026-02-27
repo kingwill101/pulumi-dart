@@ -4,7 +4,7 @@
 class GetOpenIdConnectProviderResult {
   final String arn;
 
-  /// List of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the<span pulumi-lang-nodejs=" clientId " pulumi-lang-dotnet=" ClientId " pulumi-lang-go=" clientId " pulumi-lang-python=" client_id " pulumi-lang-yaml=" clientId " pulumi-lang-java=" clientId "> client_id </span>parameter on OAuth requests.)
+  /// List of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the client_id parameter on OAuth requests.)
   final List<String> clientIdLists;
 
   /// The provider-assigned unique ID for this managed resource.

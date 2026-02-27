@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../event_sources_config_event_source_amazon_code_guru_profiler/event_sources_config_event_source_amazon_code_guru_profiler.dart';
 
 class EventSourcesConfigEventSource {
-  /// Stores whether DevOps Guru is configured to consume recommendations which are generated from AWS CodeGuru Profiler. See <span pulumi-lang-nodejs="`amazonCodeGuruProfiler`" pulumi-lang-dotnet="`AmazonCodeGuruProfiler`" pulumi-lang-go="`amazonCodeGuruProfiler`" pulumi-lang-python="`amazon_code_guru_profiler`" pulumi-lang-yaml="`amazonCodeGuruProfiler`" pulumi-lang-java="`amazonCodeGuruProfiler`">`amazon_code_guru_profiler`</span> below.
+  /// Stores whether DevOps Guru is configured to consume recommendations which are generated from AWS CodeGuru Profiler. See `amazon_code_guru_profiler` below.
   final List<EventSourcesConfigEventSourceAmazonCodeGuruProfiler>
       amazonCodeGuruProfilers;
 

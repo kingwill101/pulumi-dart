@@ -7,7 +7,7 @@ import '../get_coip_pools_filter/get_coip_pools_filter.dart';
 class GetCoipPoolsArgs {
   /// Custom filter block as described below.
   ///
-  /// More complex filters can be expressed using one or more <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> sub-blocks,
+  /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
   final Input<List<GetCoipPoolsFilter>>? filters;
 

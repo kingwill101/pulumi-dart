@@ -7,11 +7,11 @@ import '../cluster_timeouts/cluster_timeouts.dart';
 /// The set of arguments for Cluster.
 class ClusterArgs4 {
   /// Whether deletion protection is enabled in this cluster.
-  /// Default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Default value is `false`.
   final Input<bool>? deletionProtectionEnabled;
 
-  /// Destroys cluster even if <span pulumi-lang-nodejs="`deletionProtectionEnabled`" pulumi-lang-dotnet="`DeletionProtectionEnabled`" pulumi-lang-go="`deletionProtectionEnabled`" pulumi-lang-python="`deletion_protection_enabled`" pulumi-lang-yaml="`deletionProtectionEnabled`" pulumi-lang-java="`deletionProtectionEnabled`">`deletion_protection_enabled`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
-  /// Default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Destroys cluster even if `deletion_protection_enabled` is set to `true`.
+  /// Default value is `false`.
   final Input<bool>? forceDestroy;
 
   /// The ARN of the AWS KMS key that encrypts data in the DSQL Cluster, or `"AWS_OWNED_KMS_KEY"`.

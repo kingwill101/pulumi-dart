@@ -1,0 +1,3 @@
+library module_quicksight_get_theme_configuration_data_color_palette;
+
+export 'get_theme_configuration_data_color_palette/get_theme_configuration_data_color_palette.dart';

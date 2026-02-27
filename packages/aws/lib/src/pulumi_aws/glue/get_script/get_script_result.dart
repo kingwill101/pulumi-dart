@@ -13,11 +13,11 @@ class GetScriptResult {
   final String id;
   final String? language;
 
-  /// Python script generated from the DAG when the <span pulumi-lang-nodejs="`language`" pulumi-lang-dotnet="`Language`" pulumi-lang-go="`language`" pulumi-lang-python="`language`" pulumi-lang-yaml="`language`" pulumi-lang-java="`language`">`language`</span> argument is set to `PYTHON`.
+  /// Python script generated from the DAG when the `language` argument is set to `PYTHON`.
   final String pythonScript;
   final String region;
 
-  /// Scala code generated from the DAG when the <span pulumi-lang-nodejs="`language`" pulumi-lang-dotnet="`Language`" pulumi-lang-go="`language`" pulumi-lang-python="`language`" pulumi-lang-yaml="`language`" pulumi-lang-java="`language`">`language`</span> argument is set to `SCALA`.
+  /// Scala code generated from the DAG when the `language` argument is set to `SCALA`.
   final String scalaCode;
 
   GetScriptResult({

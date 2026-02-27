@@ -11,7 +11,7 @@ class AgentDataSourceArgs {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
   final Input<String>? dataDeletionPolicy;
 
-  /// Details about how the data source is stored. See <span pulumi-lang-nodejs="`dataSourceConfiguration`" pulumi-lang-dotnet="`DataSourceConfiguration`" pulumi-lang-go="`dataSourceConfiguration`" pulumi-lang-python="`data_source_configuration`" pulumi-lang-yaml="`dataSourceConfiguration`" pulumi-lang-java="`dataSourceConfiguration`">`data_source_configuration`</span> block for details.
+  /// Details about how the data source is stored. See `data_source_configuration` block for details.
   final Input<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration;
 
   /// Description of the data source.
@@ -28,12 +28,12 @@ class AgentDataSourceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Details about the configuration of the server-side encryption. See <span pulumi-lang-nodejs="`serverSideEncryptionConfiguration`" pulumi-lang-dotnet="`ServerSideEncryptionConfiguration`" pulumi-lang-go="`serverSideEncryptionConfiguration`" pulumi-lang-python="`server_side_encryption_configuration`" pulumi-lang-yaml="`serverSideEncryptionConfiguration`" pulumi-lang-java="`serverSideEncryptionConfiguration`">`server_side_encryption_configuration`</span> block for details.
+  /// Details about the configuration of the server-side encryption. See `server_side_encryption_configuration` block for details.
   final Input<AgentDataSourceServerSideEncryptionConfiguration>?
       serverSideEncryptionConfiguration;
   final Input<AgentDataSourceTimeouts>? timeouts;
 
-  /// Details about the configuration of the server-side encryption. See <span pulumi-lang-nodejs="`vectorIngestionConfiguration`" pulumi-lang-dotnet="`VectorIngestionConfiguration`" pulumi-lang-go="`vectorIngestionConfiguration`" pulumi-lang-python="`vector_ingestion_configuration`" pulumi-lang-yaml="`vectorIngestionConfiguration`" pulumi-lang-java="`vectorIngestionConfiguration`">`vector_ingestion_configuration`</span> block for details.
+  /// Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
   final Input<AgentDataSourceVectorIngestionConfiguration>?
       vectorIngestionConfiguration;
 

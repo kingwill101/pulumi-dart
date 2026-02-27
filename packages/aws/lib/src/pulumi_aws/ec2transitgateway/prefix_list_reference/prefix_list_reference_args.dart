@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for PrefixListReference.
 class PrefixListReferenceArgs {
-  /// Indicates whether to drop traffic that matches the Prefix List. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.
   final Input<bool>? blackhole;
 
   /// Identifier of EC2 Prefix List.

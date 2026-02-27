@@ -5,7 +5,7 @@ import '../v2models_slot_type_external_source_setting_grammar_slot_type_setting_
 
 class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting {
   /// Source of the grammar used to create the slot type.
-  /// See <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> argument reference below.
+  /// See `source` argument reference below.
   final List<V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource>?
       sources;
 

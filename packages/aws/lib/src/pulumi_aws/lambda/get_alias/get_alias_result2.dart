@@ -15,7 +15,7 @@ class GetAliasResult2 {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// ARN to be used for invoking Lambda Function from API Gateway - to be used in <span pulumi-lang-nodejs="`aws.apigateway.Integration`" pulumi-lang-dotnet="`aws.apigateway.Integration`" pulumi-lang-go="`apigateway.Integration`" pulumi-lang-python="`apigateway.Integration`" pulumi-lang-yaml="`aws.apigateway.Integration`" pulumi-lang-java="`aws.apigateway.Integration`">`aws.apigateway.Integration`</span>'s <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span>.
+  /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   final String invokeArn;
   final String name;
   final String region;

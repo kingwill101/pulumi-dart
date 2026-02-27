@@ -7,16 +7,16 @@ class ConnectorCapacityAutoscaling {
   /// The maximum number of workers allocated to the connector.
   final int maxWorkerCount;
 
-  /// The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>, <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span>, <span pulumi-lang-nodejs="`4`" pulumi-lang-dotnet="`4`" pulumi-lang-go="`4`" pulumi-lang-python="`4`" pulumi-lang-yaml="`4`" pulumi-lang-java="`4`">`4`</span>, <span pulumi-lang-nodejs="`8`" pulumi-lang-dotnet="`8`" pulumi-lang-go="`8`" pulumi-lang-python="`8`" pulumi-lang-yaml="`8`" pulumi-lang-java="`8`">`8`</span>. The default value is <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
   final int? mcuCount;
 
   /// The minimum number of workers allocated to the connector.
   final int minWorkerCount;
 
-  /// The scale-in policy for the connector. See <span pulumi-lang-nodejs="`scaleInPolicy`" pulumi-lang-dotnet="`ScaleInPolicy`" pulumi-lang-go="`scaleInPolicy`" pulumi-lang-python="`scale_in_policy`" pulumi-lang-yaml="`scaleInPolicy`" pulumi-lang-java="`scaleInPolicy`">`scale_in_policy`</span> Block for details.
+  /// The scale-in policy for the connector. See `scale_in_policy` Block for details.
   final ConnectorCapacityAutoscalingScaleInPolicy? scaleInPolicy;
 
-  /// The scale-out policy for the connector. See <span pulumi-lang-nodejs="`scaleOutPolicy`" pulumi-lang-dotnet="`ScaleOutPolicy`" pulumi-lang-go="`scaleOutPolicy`" pulumi-lang-python="`scale_out_policy`" pulumi-lang-yaml="`scaleOutPolicy`" pulumi-lang-java="`scaleOutPolicy`">`scale_out_policy`</span> Block for details.
+  /// The scale-out policy for the connector. See `scale_out_policy` Block for details.
   final ConnectorCapacityAutoscalingScaleOutPolicy? scaleOutPolicy;
 
   ConnectorCapacityAutoscaling({

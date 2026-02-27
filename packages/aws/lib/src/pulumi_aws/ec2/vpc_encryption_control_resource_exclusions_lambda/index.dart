@@ -1,3 +1,0 @@
-library module_ec2_vpc_encryption_control_resource_exclusions_lambda;
-
-export 'vpc_encryption_control_resource_exclusions_lambda.dart';

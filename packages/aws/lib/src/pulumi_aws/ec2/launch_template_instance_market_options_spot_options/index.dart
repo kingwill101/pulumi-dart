@@ -1,3 +1,0 @@
-library module_ec2_launch_template_instance_market_options_spot_options;
-
-export 'launch_template_instance_market_options_spot_options.dart';

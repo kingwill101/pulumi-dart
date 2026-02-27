@@ -16,7 +16,7 @@ class SourceCredentialArgs {
   final Input<String> serverType;
 
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
-  /// app password. When using an AWS CodeStar connection (<span pulumi-lang-nodejs="`authType " pulumi-lang-dotnet="`AuthType " pulumi-lang-go="`authType " pulumi-lang-python="`auth_type " pulumi-lang-yaml="`authType " pulumi-lang-java="`authType ">`auth_type </span>= "CODECONNECTIONS")`, this is an AWS CodeStar
+  /// app password. When using an AWS CodeStar connection (`auth_type = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
   final Input<String> token;
 

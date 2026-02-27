@@ -16,7 +16,7 @@ class LoadBalancerListener {
   final String lbProtocol;
 
   /// The ARN of an SSL certificate you have
-  /// uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when <span pulumi-lang-nodejs="`lbProtocol`" pulumi-lang-dotnet="`LbProtocol`" pulumi-lang-go="`lbProtocol`" pulumi-lang-python="`lb_protocol`" pulumi-lang-yaml="`lbProtocol`" pulumi-lang-java="`lbProtocol`">`lb_protocol`</span> is either HTTPS or SSL**
+  /// uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lb_protocol` is either HTTPS or SSL**
   final String? sslCertificateId;
 
   LoadBalancerListener({

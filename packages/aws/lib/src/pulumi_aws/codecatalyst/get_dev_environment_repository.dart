@@ -1,0 +1,3 @@
+library module_codecatalyst_get_dev_environment_repository;
+
+export 'get_dev_environment_repository/get_dev_environment_repository.dart';

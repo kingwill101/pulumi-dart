@@ -13,7 +13,7 @@ class GroupMembershipArgs3 {
   /// The name of the member to add to the group.
   final Input<String> memberName;
 
-  /// The namespace that you want the user to be a part of. Defaults to <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>.
+  /// The namespace that you want the user to be a part of. Defaults to `default`.
   final Input<String>? namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

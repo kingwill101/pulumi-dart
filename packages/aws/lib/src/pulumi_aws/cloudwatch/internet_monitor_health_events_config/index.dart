@@ -1,3 +1,0 @@
-library module_cloudwatch_internet_monitor_health_events_config;
-
-export 'internet_monitor_health_events_config.dart';

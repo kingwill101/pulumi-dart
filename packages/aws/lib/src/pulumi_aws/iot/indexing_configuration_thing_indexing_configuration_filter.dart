@@ -1,0 +1,3 @@
+library module_iot_indexing_configuration_thing_indexing_configuration_filter;
+
+export 'indexing_configuration_thing_indexing_configuration_filter/indexing_configuration_thing_indexing_configuration_filter.dart';

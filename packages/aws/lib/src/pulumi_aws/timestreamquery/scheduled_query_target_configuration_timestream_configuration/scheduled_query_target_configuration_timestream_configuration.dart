@@ -22,7 +22,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
           ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping>?
       mixedMeasureMappings;
 
-  /// Configuration block for multi-measure mappings. Only one of <span pulumi-lang-nodejs="`mixedMeasureMappings`" pulumi-lang-dotnet="`MixedMeasureMappings`" pulumi-lang-go="`mixedMeasureMappings`" pulumi-lang-python="`mixed_measure_mappings`" pulumi-lang-yaml="`mixedMeasureMappings`" pulumi-lang-java="`mixedMeasureMappings`">`mixed_measure_mappings`</span> or <span pulumi-lang-nodejs="`multiMeasureMappings`" pulumi-lang-dotnet="`MultiMeasureMappings`" pulumi-lang-go="`multiMeasureMappings`" pulumi-lang-python="`multi_measure_mappings`" pulumi-lang-yaml="`multiMeasureMappings`" pulumi-lang-java="`multiMeasureMappings`">`multi_measure_mappings`</span> can be provided. <span pulumi-lang-nodejs="`multiMeasureMappings`" pulumi-lang-dotnet="`MultiMeasureMappings`" pulumi-lang-go="`multiMeasureMappings`" pulumi-lang-python="`multi_measure_mappings`" pulumi-lang-yaml="`multiMeasureMappings`" pulumi-lang-java="`multiMeasureMappings`">`multi_measure_mappings`</span> can be used to ingest data as multi measures in the derived table. See below.
+  /// Configuration block for multi-measure mappings. Only one of `mixed_measure_mappings` or `multi_measure_mappings` can be provided. `multi_measure_mappings` can be used to ingest data as multi measures in the derived table. See below.
   final ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings?
       multiMeasureMappings;
 

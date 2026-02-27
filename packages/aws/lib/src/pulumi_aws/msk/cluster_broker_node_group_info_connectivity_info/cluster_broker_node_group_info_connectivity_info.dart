@@ -4,10 +4,10 @@ import '../cluster_broker_node_group_info_connectivity_info_public_access/cluste
 import '../cluster_broker_node_group_info_connectivity_info_vpc_connectivity/cluster_broker_node_group_info_connectivity_info_vpc_connectivity.dart';
 
 class ClusterBrokerNodeGroupInfoConnectivityInfo {
-  /// Access control settings for brokers. See<span pulumi-lang-nodejs=" connectivityInfo " pulumi-lang-dotnet=" ConnectivityInfo " pulumi-lang-go=" connectivityInfo " pulumi-lang-python=" connectivity_info " pulumi-lang-yaml=" connectivityInfo " pulumi-lang-java=" connectivityInfo "> connectivity_info </span>public_access Argument Reference below.
+  /// Access control settings for brokers. See connectivity_info public_access Argument Reference below.
   final ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess? publicAccess;
 
-  /// VPC connectivity access control for brokers. See<span pulumi-lang-nodejs=" connectivityInfo " pulumi-lang-dotnet=" ConnectivityInfo " pulumi-lang-go=" connectivityInfo " pulumi-lang-python=" connectivity_info " pulumi-lang-yaml=" connectivityInfo " pulumi-lang-java=" connectivityInfo "> connectivity_info </span>vpc_connectivity Argument Reference below.
+  /// VPC connectivity access control for brokers. See connectivity_info vpc_connectivity Argument Reference below.
   final ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity?
       vpcConnectivity;
 

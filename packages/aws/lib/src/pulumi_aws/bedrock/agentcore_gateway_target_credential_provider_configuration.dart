@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_target_credential_provider_configuration;
+
+export 'agentcore_gateway_target_credential_provider_configuration/agentcore_gateway_target_credential_provider_configuration.dart';

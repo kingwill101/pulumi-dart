@@ -1,3 +1,0 @@
-library module_s3_analytics_configuration_storage_class_analysis;
-
-export 'analytics_configuration_storage_class_analysis.dart';

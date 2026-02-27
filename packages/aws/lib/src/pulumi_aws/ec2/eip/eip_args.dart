@@ -13,7 +13,7 @@ class EipArgs {
   /// ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing).
   final Input<String>? customerOwnedIpv4Pool;
 
-  /// Indicates if this EIP is for use in VPC (<span pulumi-lang-nodejs="`vpc`" pulumi-lang-dotnet="`Vpc`" pulumi-lang-go="`vpc`" pulumi-lang-python="`vpc`" pulumi-lang-yaml="`vpc`" pulumi-lang-java="`vpc`">`vpc`</span>).
+  /// Indicates if this EIP is for use in VPC (`vpc`).
   final Input<String>? domain;
 
   /// EC2 instance ID.
@@ -28,20 +28,20 @@ class EipArgs {
   /// Network interface ID to associate with.
   final Input<String>? networkInterface;
 
-  /// EC2 IPv4 address pool identifier or <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>.
+  /// EC2 IPv4 address pool identifier or `amazon`.
   /// This option is only available for VPC EIPs.
   final Input<String>? publicIpv4Pool;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// > **NOTE:** You can specify either the <span pulumi-lang-nodejs="`instance`" pulumi-lang-dotnet="`Instance`" pulumi-lang-go="`instance`" pulumi-lang-python="`instance`" pulumi-lang-yaml="`instance`" pulumi-lang-java="`instance`">`instance`</span> ID or the <span pulumi-lang-nodejs="`networkInterface`" pulumi-lang-dotnet="`NetworkInterface`" pulumi-lang-go="`networkInterface`" pulumi-lang-python="`network_interface`" pulumi-lang-yaml="`networkInterface`" pulumi-lang-java="`networkInterface`">`network_interface`</span> ID, but not both.
+  /// > **NOTE:** You can specify either the `instance` ID or the `network_interface` ID, but not both.
   /// Including both will **not** return an error from the AWS API, but will have undefined behavior.
   /// See the relevant [AssociateAddress API Call][1] for more information.
   ///
-  /// > **NOTE:** Specifying both <span pulumi-lang-nodejs="`publicIpv4Pool`" pulumi-lang-dotnet="`PublicIpv4Pool`" pulumi-lang-go="`publicIpv4Pool`" pulumi-lang-python="`public_ipv4_pool`" pulumi-lang-yaml="`publicIpv4Pool`" pulumi-lang-java="`publicIpv4Pool`">`public_ipv4_pool`</span> and <span pulumi-lang-nodejs="`address`" pulumi-lang-dotnet="`Address`" pulumi-lang-go="`address`" pulumi-lang-python="`address`" pulumi-lang-yaml="`address`" pulumi-lang-java="`address`">`address`</span> won't cause an error, however, only <span pulumi-lang-nodejs="`address`" pulumi-lang-dotnet="`Address`" pulumi-lang-go="`address`" pulumi-lang-python="`address`" pulumi-lang-yaml="`address`" pulumi-lang-java="`address`">`address`</span> will be used if both options are defined as the API only requires one of the two.
+  /// > **NOTE:** Specifying both `public_ipv4_pool` and `address` won't cause an error, however, only `address` will be used if both options are defined as the API only requires one of the two.
   final Input<Map<String, String>>? tags;
 
   EipArgs({

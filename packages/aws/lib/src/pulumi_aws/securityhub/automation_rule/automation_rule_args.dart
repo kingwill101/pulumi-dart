@@ -15,7 +15,7 @@ class AutomationRuleArgs {
   /// The description of the rule.
   final Input<String> description;
 
-  /// Specifies whether a rule is the last to be applied with respect to a finding that matches the rule criteria. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether a rule is the last to be applied with respect to a finding that matches the rule criteria. Defaults to `false`.
   final Input<bool>? isTerminal;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

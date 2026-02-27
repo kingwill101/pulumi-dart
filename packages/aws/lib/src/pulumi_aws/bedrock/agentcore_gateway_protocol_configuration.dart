@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_protocol_configuration;
+
+export 'agentcore_gateway_protocol_configuration/agentcore_gateway_protocol_configuration.dart';

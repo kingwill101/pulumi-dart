@@ -1,0 +1,3 @@
+library module_cloudwatch_log_metric_filter_metric_transformation;
+
+export 'log_metric_filter_metric_transformation/log_metric_filter_metric_transformation.dart';

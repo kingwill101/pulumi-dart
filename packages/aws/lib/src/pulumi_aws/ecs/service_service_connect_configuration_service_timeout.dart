@@ -1,0 +1,3 @@
+library module_ecs_service_service_connect_configuration_service_timeout;
+
+export 'service_service_connect_configuration_service_timeout/service_service_connect_configuration_service_timeout.dart';

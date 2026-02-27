@@ -1,0 +1,3 @@
+library module_costexplorer_get_cost_category_rule_inherited_value;
+
+export 'get_cost_category_rule_inherited_value/get_cost_category_rule_inherited_value.dart';

@@ -1,3 +1,0 @@
-library module_codebuild_webhook_filter_group_filter;
-
-export 'webhook_filter_group_filter.dart';

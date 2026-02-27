@@ -1,0 +1,3 @@
+library module_identitystore_get_group_alternate_identifier_external_id;
+
+export 'get_group_alternate_identifier_external_id/get_group_alternate_identifier_external_id.dart';

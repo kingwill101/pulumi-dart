@@ -6,7 +6,7 @@ import '../directory_vpc_settings/directory_vpc_settings.dart';
 
 /// The set of arguments for Directory.
 class DirectoryArgs {
-  /// The alias for the directory (must be unique amongst all aliases in AWS). Required for <span pulumi-lang-nodejs="`enableSso`" pulumi-lang-dotnet="`EnableSso`" pulumi-lang-go="`enableSso`" pulumi-lang-python="`enable_sso`" pulumi-lang-yaml="`enableSso`" pulumi-lang-java="`enableSso`">`enable_sso`</span>.
+  /// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enable_sso`.
   final Input<String>? alias;
 
   /// Connector related information about the directory. Fields documented below.
@@ -15,13 +15,13 @@ class DirectoryArgs {
   /// A textual description for the directory.
   final Input<String>? description;
 
-  /// The number of domain controllers desired in the directory. Minimum value of <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span>. Scaling of domain controllers is only supported for `MicrosoftAD` directories.
+  /// The number of domain controllers desired in the directory. Minimum value of `2`. Scaling of domain controllers is only supported for `MicrosoftAD` directories.
   final Input<int>? desiredNumberOfDomainControllers;
 
   /// The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise`.
   final Input<String>? edition;
 
-  /// Whether to enable single-sign on for the directory. Requires <span pulumi-lang-nodejs="`alias`" pulumi-lang-dotnet="`Alias`" pulumi-lang-go="`alias`" pulumi-lang-python="`alias`" pulumi-lang-yaml="`alias`" pulumi-lang-java="`alias`">`alias`</span>. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
   final Input<bool>? enableSso;
 
   /// The fully qualified name for the directory, such as `corp.example.com`
@@ -39,7 +39,7 @@ class DirectoryArgs {
   /// (For `SimpleAD` and `ADConnector` types) The size of the directory (`Small` or `Large` are accepted values). `Large` by default.
   final Input<String>? size;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.

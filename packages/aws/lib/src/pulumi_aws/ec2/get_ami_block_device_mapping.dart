@@ -1,0 +1,3 @@
+library module_ec2_get_ami_block_device_mapping;
+
+export 'get_ami_block_device_mapping/get_ami_block_device_mapping.dart';

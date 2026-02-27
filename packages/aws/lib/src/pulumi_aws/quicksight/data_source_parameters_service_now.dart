@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_service_now;
+
+export 'data_source_parameters_service_now/data_source_parameters_service_now.dart';

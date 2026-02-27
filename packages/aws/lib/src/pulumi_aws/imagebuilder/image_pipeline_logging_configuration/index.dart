@@ -1,3 +1,0 @@
-library module_imagebuilder_image_pipeline_logging_configuration;
-
-export 'image_pipeline_logging_configuration.dart';

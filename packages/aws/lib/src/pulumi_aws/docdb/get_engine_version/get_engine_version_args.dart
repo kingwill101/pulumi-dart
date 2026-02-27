@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getEngineVersion.
 class GetEngineVersionArgs {
-  /// DB engine. (Default: <span pulumi-lang-nodejs="`docdb`" pulumi-lang-dotnet="`Docdb`" pulumi-lang-go="`docdb`" pulumi-lang-python="`docdb`" pulumi-lang-yaml="`docdb`" pulumi-lang-java="`docdb`">`docdb`</span>)
+  /// DB engine. (Default: `docdb`)
   final Input<String>? engine;
 
   /// Name of a specific DB parameter group family. An example parameter group family is `docdb3.6`.
   final Input<String>? parameterGroupFamily;
 
-  /// Ordered list of preferred engine versions. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. If both the <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> and <span pulumi-lang-nodejs="`preferredVersions`" pulumi-lang-dotnet="`PreferredVersions`" pulumi-lang-go="`preferredVersions`" pulumi-lang-python="`preferred_versions`" pulumi-lang-yaml="`preferredVersions`" pulumi-lang-java="`preferredVersions`">`preferred_versions`</span> arguments are not configured, the data source will return the default version for the engine.
+  /// Ordered list of preferred engine versions. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
   final Input<List<String>>? preferredVersions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Version of the DB engine. For example, `3.6.0`. If <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> and <span pulumi-lang-nodejs="`preferredVersions`" pulumi-lang-dotnet="`PreferredVersions`" pulumi-lang-go="`preferredVersions`" pulumi-lang-python="`preferred_versions`" pulumi-lang-yaml="`preferredVersions`" pulumi-lang-java="`preferredVersions`">`preferred_versions`</span> are not set, the data source will provide information for the AWS-defined default version. If both the <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> and <span pulumi-lang-nodejs="`preferredVersions`" pulumi-lang-dotnet="`PreferredVersions`" pulumi-lang-go="`preferredVersions`" pulumi-lang-python="`preferred_versions`" pulumi-lang-yaml="`preferredVersions`" pulumi-lang-java="`preferredVersions`">`preferred_versions`</span> arguments are not configured, the data source will return the default version for the engine.
+  /// Version of the DB engine. For example, `3.6.0`. If `version` and `preferred_versions` are not set, the data source will provide information for the AWS-defined default version. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
   final Input<String>? version;
 
   GetEngineVersionArgs({

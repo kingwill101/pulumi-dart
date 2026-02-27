@@ -1,3 +1,0 @@
-library module_elasticsearch_domain_auto_tune_options;
-
-export 'domain_auto_tune_options.dart';

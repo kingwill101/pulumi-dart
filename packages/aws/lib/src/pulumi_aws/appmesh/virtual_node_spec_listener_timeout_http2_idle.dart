@@ -1,0 +1,3 @@
+library module_appmesh_virtual_node_spec_listener_timeout_http2_idle;
+
+export 'virtual_node_spec_listener_timeout_http2_idle/virtual_node_spec_listener_timeout_http2_idle.dart';

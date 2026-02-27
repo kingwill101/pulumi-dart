@@ -5,7 +5,7 @@ import '../get_instance_master_user_secret/get_instance_master_user_secret.dart'
 
 /// Result data returned by getInstance.
 class GetInstanceResult3 {
-  /// Hostname of the RDS instance. See also <span pulumi-lang-nodejs="`endpoint`" pulumi-lang-dotnet="`Endpoint`" pulumi-lang-go="`endpoint`" pulumi-lang-python="`endpoint`" pulumi-lang-yaml="`endpoint`" pulumi-lang-java="`endpoint`">`endpoint`</span> and <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span>.
+  /// Hostname of the RDS instance. See also `endpoint` and `port`.
   final String address;
 
   /// Allocated storage size specified in gigabytes.
@@ -75,7 +75,7 @@ class GetInstanceResult3 {
   /// License model information for this DB instance.
   final String licenseModel;
 
-  /// Provides the master user secret. Only available when <span pulumi-lang-nodejs="`manageMasterUserPassword`" pulumi-lang-dotnet="`ManageMasterUserPassword`" pulumi-lang-go="`manageMasterUserPassword`" pulumi-lang-python="`manage_master_user_password`" pulumi-lang-yaml="`manageMasterUserPassword`" pulumi-lang-java="`manageMasterUserPassword`">`manage_master_user_password`</span> is set to true. Documented below.
+  /// Provides the master user secret. Only available when `manage_master_user_password` is set to true. Documented below.
   final List<GetInstanceMasterUserSecret> masterUserSecrets;
 
   /// Contains the master username for the DB instance.
@@ -99,7 +99,7 @@ class GetInstanceResult3 {
   /// Provides the list of option group memberships for this DB instance.
   final List<String> optionGroupMemberships;
 
-  /// Database endpoint port, primarily used by an Aurora DB cluster. For a conventional RDS DB instance, the <span pulumi-lang-nodejs="`dbInstancePort`" pulumi-lang-dotnet="`DbInstancePort`" pulumi-lang-go="`dbInstancePort`" pulumi-lang-python="`db_instance_port`" pulumi-lang-yaml="`dbInstancePort`" pulumi-lang-java="`dbInstancePort`">`db_instance_port`</span> is typically the preferred choice.
+  /// Database endpoint port, primarily used by an Aurora DB cluster. For a conventional RDS DB instance, the `db_instance_port` is typically the preferred choice.
   final int port;
 
   /// Specifies the daily time range during which automated backups are created.
@@ -131,7 +131,7 @@ class GetInstanceResult3 {
   /// Time zone of the DB instance.
   final String timezone;
 
-  /// Order in which the instances are upgraded (<span pulumi-lang-nodejs="`first`" pulumi-lang-dotnet="`First`" pulumi-lang-go="`first`" pulumi-lang-python="`first`" pulumi-lang-yaml="`first`" pulumi-lang-java="`first`">`first`</span>, <span pulumi-lang-nodejs="`second`" pulumi-lang-dotnet="`Second`" pulumi-lang-go="`second`" pulumi-lang-python="`second`" pulumi-lang-yaml="`second`" pulumi-lang-java="`second`">`second`</span>, <span pulumi-lang-nodejs="`last`" pulumi-lang-dotnet="`Last`" pulumi-lang-go="`last`" pulumi-lang-python="`last`" pulumi-lang-yaml="`last`" pulumi-lang-java="`last`">`last`</span>). See [the AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Maintenance.AMVU.UpgradeRollout.html) for details.
+  /// Order in which the instances are upgraded (`first`, `second`, `last`). See [the AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Maintenance.AMVU.UpgradeRollout.html) for details.
   final String upgradeRolloutOrder;
 
   /// Provides a list of VPC security group elements that the DB instance belongs to.

@@ -1,0 +1,3 @@
+library module_docdb_cluster_serverless_v2_scaling_configuration;
+
+export 'cluster_serverless_v2_scaling_configuration/cluster_serverless_v2_scaling_configuration.dart';

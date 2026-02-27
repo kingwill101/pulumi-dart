@@ -4,7 +4,7 @@ class DistributionLoggingConfig {
   /// Amazon S3 bucket for V1 logging where access logs are stored, for example, `myawslogbucket.s3.amazonaws.com`. V1 logging is enabled when this argument is specified. The bucket must have correct ACL attached with "FULL_CONTROL" permission for "awslogsdelivery" account (Canonical ID: "c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0") for log transfer to work.
   final String? bucket;
 
-  /// Whether to include cookies in access logs (default: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>). This argument applies to both V1 and V2 logging.
+  /// Whether to include cookies in access logs (default: `false`). This argument applies to both V1 and V2 logging.
   final bool? includeCookies;
 
   /// Prefix added to the access log file names for V1 logging, for example, `myprefix/`. This argument is effective only when V1 logging is enabled.

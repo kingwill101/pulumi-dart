@@ -3,7 +3,7 @@
 import '../firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_input_format_configuration_deserializer/firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_input_format_configuration_deserializer.dart';
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration {
-  /// Specifies which deserializer to use. You can choose either the Apache Hive JSON SerDe or the OpenX JSON SerDe. See <span pulumi-lang-nodejs="`deserializer`" pulumi-lang-dotnet="`Deserializer`" pulumi-lang-go="`deserializer`" pulumi-lang-python="`deserializer`" pulumi-lang-yaml="`deserializer`" pulumi-lang-java="`deserializer`">`deserializer`</span> block below for details.
+  /// Specifies which deserializer to use. You can choose either the Apache Hive JSON SerDe or the OpenX JSON SerDe. See `deserializer` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer
       deserializer;
 

@@ -1,3 +1,0 @@
-library module_networkfirewall_firewall_firewall_status_transit_gateway_attachment_sync_state;
-
-export 'firewall_firewall_status_transit_gateway_attachment_sync_state.dart';

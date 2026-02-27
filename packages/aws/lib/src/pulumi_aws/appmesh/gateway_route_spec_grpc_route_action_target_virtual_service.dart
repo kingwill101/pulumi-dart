@@ -1,0 +1,3 @@
+library module_appmesh_gateway_route_spec_grpc_route_action_target_virtual_service;
+
+export 'gateway_route_spec_grpc_route_action_target_virtual_service/gateway_route_spec_grpc_route_action_target_virtual_service.dart';

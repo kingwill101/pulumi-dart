@@ -1,4 +1,0 @@
-library module_sns_topic_policy;
-
-export 'topic_policy.dart';
-export 'topic_policy_args.dart';

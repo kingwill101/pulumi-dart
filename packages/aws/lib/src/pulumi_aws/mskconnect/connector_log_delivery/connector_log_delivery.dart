@@ -3,7 +3,7 @@
 import '../connector_log_delivery_worker_log_delivery/connector_log_delivery_worker_log_delivery.dart';
 
 class ConnectorLogDelivery {
-  /// The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See <span pulumi-lang-nodejs="`workerLogDelivery`" pulumi-lang-dotnet="`WorkerLogDelivery`" pulumi-lang-go="`workerLogDelivery`" pulumi-lang-python="`worker_log_delivery`" pulumi-lang-yaml="`workerLogDelivery`" pulumi-lang-java="`workerLogDelivery`">`worker_log_delivery`</span> Block for details.
+  /// The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See `worker_log_delivery` Block for details.
   final ConnectorLogDeliveryWorkerLogDelivery workerLogDelivery;
 
   ConnectorLogDelivery({

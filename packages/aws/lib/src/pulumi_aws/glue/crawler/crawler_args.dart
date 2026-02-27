@@ -82,9 +82,9 @@ class CrawlerArgs {
   /// The table prefix used for catalog tables that are created.
   final Input<String>? tablePrefix;
 
-  /// Key-value map of resource tags. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// > **NOTE:** Must specify at least one of <span pulumi-lang-nodejs="`dynamodbTarget`" pulumi-lang-dotnet="`DynamodbTarget`" pulumi-lang-go="`dynamodbTarget`" pulumi-lang-python="`dynamodb_target`" pulumi-lang-yaml="`dynamodbTarget`" pulumi-lang-java="`dynamodbTarget`">`dynamodb_target`</span>, <span pulumi-lang-nodejs="`jdbcTarget`" pulumi-lang-dotnet="`JdbcTarget`" pulumi-lang-go="`jdbcTarget`" pulumi-lang-python="`jdbc_target`" pulumi-lang-yaml="`jdbcTarget`" pulumi-lang-java="`jdbcTarget`">`jdbc_target`</span>, <span pulumi-lang-nodejs="`s3Target`" pulumi-lang-dotnet="`S3Target`" pulumi-lang-go="`s3Target`" pulumi-lang-python="`s3_target`" pulumi-lang-yaml="`s3Target`" pulumi-lang-java="`s3Target`">`s3_target`</span>, <span pulumi-lang-nodejs="`mongodbTarget`" pulumi-lang-dotnet="`MongodbTarget`" pulumi-lang-go="`mongodbTarget`" pulumi-lang-python="`mongodb_target`" pulumi-lang-yaml="`mongodbTarget`" pulumi-lang-java="`mongodbTarget`">`mongodb_target`</span> or <span pulumi-lang-nodejs="`catalogTarget`" pulumi-lang-dotnet="`CatalogTarget`" pulumi-lang-go="`catalogTarget`" pulumi-lang-python="`catalog_target`" pulumi-lang-yaml="`catalogTarget`" pulumi-lang-java="`catalogTarget`">`catalog_target`</span>.
+  /// > **NOTE:** Must specify at least one of `dynamodb_target`, `jdbc_target`, `s3_target`, `mongodb_target` or `catalog_target`.
   final Input<Map<String, String>>? tags;
 
   CrawlerArgs({

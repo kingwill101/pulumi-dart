@@ -8,10 +8,10 @@ import '../agentcore_gateway_timeouts/agentcore_gateway_timeouts.dart';
 
 /// The set of arguments for AgentcoreGateway.
 class AgentcoreGatewayArgs {
-  /// Configuration for request authorization. Required when <span pulumi-lang-nodejs="`authorizerType`" pulumi-lang-dotnet="`AuthorizerType`" pulumi-lang-go="`authorizerType`" pulumi-lang-python="`authorizer_type`" pulumi-lang-yaml="`authorizerType`" pulumi-lang-java="`authorizerType`">`authorizer_type`</span> is set to `CUSTOM_JWT`. See <span pulumi-lang-nodejs="`authorizerConfiguration`" pulumi-lang-dotnet="`AuthorizerConfiguration`" pulumi-lang-go="`authorizerConfiguration`" pulumi-lang-python="`authorizer_configuration`" pulumi-lang-yaml="`authorizerConfiguration`" pulumi-lang-java="`authorizerConfiguration`">`authorizer_configuration`</span> below.
+  /// Configuration for request authorization. Required when `authorizer_type` is set to `CUSTOM_JWT`. See `authorizer_configuration` below.
   final Input<AgentcoreGatewayAuthorizerConfiguration>? authorizerConfiguration;
 
-  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, <span pulumi-lang-nodejs="`authorizerConfiguration`" pulumi-lang-dotnet="`AuthorizerConfiguration`" pulumi-lang-go="`authorizerConfiguration`" pulumi-lang-python="`authorizer_configuration`" pulumi-lang-yaml="`authorizerConfiguration`" pulumi-lang-java="`authorizerConfiguration`">`authorizer_configuration`</span> block is required.
+  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizer_configuration` block is required.
   final Input<String> authorizerType;
 
   /// Description of the gateway.
@@ -20,7 +20,7 @@ class AgentcoreGatewayArgs {
   /// Exception level for the gateway. Valid values: `INFO`, `WARN`, `ERROR`.
   final Input<String>? exceptionLevel;
 
-  /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See <span pulumi-lang-nodejs="`interceptorConfiguration`" pulumi-lang-dotnet="`InterceptorConfiguration`" pulumi-lang-go="`interceptorConfiguration`" pulumi-lang-python="`interceptor_configuration`" pulumi-lang-yaml="`interceptorConfiguration`" pulumi-lang-java="`interceptorConfiguration`">`interceptor_configuration`</span> below.
+  /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptor_configuration` below.
   final Input<List<AgentcoreGatewayInterceptorConfiguration>>?
       interceptorConfigurations;
 
@@ -30,7 +30,7 @@ class AgentcoreGatewayArgs {
   /// Name of the gateway.
   final Input<String>? name;
 
-  /// Protocol-specific configuration for the gateway. See <span pulumi-lang-nodejs="`protocolConfiguration`" pulumi-lang-dotnet="`ProtocolConfiguration`" pulumi-lang-go="`protocolConfiguration`" pulumi-lang-python="`protocol_configuration`" pulumi-lang-yaml="`protocolConfiguration`" pulumi-lang-java="`protocolConfiguration`">`protocol_configuration`</span> below.
+  /// Protocol-specific configuration for the gateway. See `protocol_configuration` below.
   final Input<AgentcoreGatewayProtocolConfiguration>? protocolConfiguration;
 
   /// Protocol type for the gateway. Valid values: `MCP`.
@@ -44,7 +44,7 @@ class AgentcoreGatewayArgs {
   /// The following arguments are optional:
   final Input<String> roleArn;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<AgentcoreGatewayTimeouts>? timeouts;
 

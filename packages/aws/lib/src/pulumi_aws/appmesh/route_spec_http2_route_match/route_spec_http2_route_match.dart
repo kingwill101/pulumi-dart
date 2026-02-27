@@ -25,7 +25,7 @@ class RouteSpecHttp2RouteMatch {
   /// Client request query parameters to match on.
   final List<RouteSpecHttp2RouteMatchQueryParameter>? queryParameters;
 
-  /// Client request header scheme to match on. Valid values: <span pulumi-lang-nodejs="`http`" pulumi-lang-dotnet="`Http`" pulumi-lang-go="`http`" pulumi-lang-python="`http`" pulumi-lang-yaml="`http`" pulumi-lang-java="`http`">`http`</span>, <span pulumi-lang-nodejs="`https`" pulumi-lang-dotnet="`Https`" pulumi-lang-go="`https`" pulumi-lang-python="`https`" pulumi-lang-yaml="`https`" pulumi-lang-java="`https`">`https`</span>.
+  /// Client request header scheme to match on. Valid values: `http`, `https`.
   final String? scheme;
 
   RouteSpecHttp2RouteMatch({

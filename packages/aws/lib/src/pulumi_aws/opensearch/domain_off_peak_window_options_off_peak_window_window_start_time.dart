@@ -1,0 +1,3 @@
+library module_opensearch_domain_off_peak_window_options_off_peak_window_window_start_time;
+
+export 'domain_off_peak_window_options_off_peak_window_window_start_time/domain_off_peak_window_options_off_peak_window_window_start_time.dart';

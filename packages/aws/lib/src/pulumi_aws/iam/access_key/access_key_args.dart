@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for AccessKey.
 class AccessKeyArgs {
-  /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`, for use in the <span pulumi-lang-nodejs="`encryptedSecret`" pulumi-lang-dotnet="`EncryptedSecret`" pulumi-lang-go="`encryptedSecret`" pulumi-lang-python="`encrypted_secret`" pulumi-lang-yaml="`encryptedSecret`" pulumi-lang-java="`encryptedSecret`">`encrypted_secret`</span> output attribute. If providing a base-64 encoded PGP public key, make sure to provide the "raw" version and not the "armored" one (e.g. avoid passing the `-a` option to `gpg --export`).
+  /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`, for use in the `encrypted_secret` output attribute. If providing a base-64 encoded PGP public key, make sure to provide the "raw" version and not the "armored" one (e.g. avoid passing the `-a` option to `gpg --export`).
   final Input<String>? pgpKey;
 
   /// Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.

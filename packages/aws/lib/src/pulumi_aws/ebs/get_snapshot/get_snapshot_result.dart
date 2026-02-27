@@ -28,7 +28,7 @@ class GetSnapshotResult {
   /// ARN of the Outpost on which the snapshot is stored.
   final String outpostArn;
 
-  /// Value from an Amazon-maintained list (<span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>, `aws-marketplace`, <span pulumi-lang-nodejs="`microsoft`" pulumi-lang-dotnet="`Microsoft`" pulumi-lang-go="`microsoft`" pulumi-lang-python="`microsoft`" pulumi-lang-yaml="`microsoft`" pulumi-lang-java="`microsoft`">`microsoft`</span>) of snapshot owners.
+  /// Value from an Amazon-maintained list (`amazon`, `aws-marketplace`, `microsoft`) of snapshot owners.
   final String ownerAlias;
 
   /// AWS account ID of the EBS snapshot owner.

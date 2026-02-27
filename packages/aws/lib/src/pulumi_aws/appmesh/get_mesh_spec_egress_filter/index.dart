@@ -1,3 +1,0 @@
-library module_appmesh_get_mesh_spec_egress_filter;
-
-export 'get_mesh_spec_egress_filter.dart';

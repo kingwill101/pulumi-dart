@@ -7,7 +7,7 @@ class AccountArgs3 {
   /// If true, a deletion event will close the account. Otherwise, it will only remove from the organization. This is not supported for GovCloud accounts.
   final Input<bool>? closeOnDeletion;
 
-  /// Whether to also create a GovCloud account. The GovCloud account is tied to the main (commercial) account this resource creates. If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the GovCloud account ID is available in the <span pulumi-lang-nodejs="`govcloudId`" pulumi-lang-dotnet="`GovcloudId`" pulumi-lang-go="`govcloudId`" pulumi-lang-python="`govcloud_id`" pulumi-lang-yaml="`govcloudId`" pulumi-lang-java="`govcloudId`">`govcloud_id`</span> attribute. The only way to manage the GovCloud account with the provider is to subsequently import the account using this resource.
+  /// Whether to also create a GovCloud account. The GovCloud account is tied to the main (commercial) account this resource creates. If `true`, the GovCloud account ID is available in the `govcloud_id` attribute. The only way to manage the GovCloud account with the provider is to subsequently import the account using this resource.
   final Input<bool>? createGovcloud;
 
   /// Email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.
@@ -27,7 +27,7 @@ class AccountArgs3 {
   /// The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the root account, allowing users in the root account to assume the role, as permitted by the root account administrator. The role has administrator permissions in the new member account. The Organizations API provides no method for reading this information after account creation, so the provider cannot perform drift detection on its value and will always show a difference for a configured value after import unless `ignoreChanges` is used.
   final Input<String>? roleName;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   AccountArgs3({

@@ -1,3 +1,0 @@
-library module_appsync_graph_qlapi_additional_authentication_provider_openid_connect_config;
-
-export 'graph_qlapi_additional_authentication_provider_openid_connect_config.dart';

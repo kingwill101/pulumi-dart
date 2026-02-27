@@ -1,0 +1,3 @@
+library module_bedrock_agent_agent_prompt_override_configuration;
+
+export 'agent_agent_prompt_override_configuration/agent_agent_prompt_override_configuration.dart';

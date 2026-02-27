@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ScheduledActionScalableTargetAction {
-  /// Maximum capacity. At least one of <span pulumi-lang-nodejs="`maxCapacity`" pulumi-lang-dotnet="`MaxCapacity`" pulumi-lang-go="`maxCapacity`" pulumi-lang-python="`max_capacity`" pulumi-lang-yaml="`maxCapacity`" pulumi-lang-java="`maxCapacity`">`max_capacity`</span> or <span pulumi-lang-nodejs="`minCapacity`" pulumi-lang-dotnet="`MinCapacity`" pulumi-lang-go="`minCapacity`" pulumi-lang-python="`min_capacity`" pulumi-lang-yaml="`minCapacity`" pulumi-lang-java="`minCapacity`">`min_capacity`</span> must be set.
+  /// Maximum capacity. At least one of `max_capacity` or `min_capacity` must be set.
   final int? maxCapacity;
 
-  /// Minimum capacity. At least one of <span pulumi-lang-nodejs="`minCapacity`" pulumi-lang-dotnet="`MinCapacity`" pulumi-lang-go="`minCapacity`" pulumi-lang-python="`min_capacity`" pulumi-lang-yaml="`minCapacity`" pulumi-lang-java="`minCapacity`">`min_capacity`</span> or <span pulumi-lang-nodejs="`maxCapacity`" pulumi-lang-dotnet="`MaxCapacity`" pulumi-lang-go="`maxCapacity`" pulumi-lang-python="`max_capacity`" pulumi-lang-yaml="`maxCapacity`" pulumi-lang-java="`maxCapacity`">`max_capacity`</span> must be set.
+  /// Minimum capacity. At least one of `min_capacity` or `max_capacity` must be set.
   final int? minCapacity;
 
   ScheduledActionScalableTargetAction({

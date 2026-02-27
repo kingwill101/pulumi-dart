@@ -1,0 +1,3 @@
+library module_ec2_network_insights_path_filter_at_source;
+
+export 'network_insights_path_filter_at_source/network_insights_path_filter_at_source.dart';

@@ -5,7 +5,7 @@ class KxClusterVpcConfiguration {
   final String ipAddressType;
 
   /// Unique identifier of the VPC security group applied to the VPC endpoint ENI for the cluster.
-  /// * <span pulumi-lang-nodejs="`subnetIds " pulumi-lang-dotnet="`SubnetIds " pulumi-lang-go="`subnetIds " pulumi-lang-python="`subnet_ids " pulumi-lang-yaml="`subnetIds " pulumi-lang-java="`subnetIds ">`subnet_ids </span>`- (Required) Identifier of the subnet that the Privatelink VPC endpoint uses to connect to the cluster.
+  /// * `subnet_ids `- (Required) Identifier of the subnet that the Privatelink VPC endpoint uses to connect to the cluster.
   final List<String> securityGroupIds;
   final List<String> subnetIds;
 

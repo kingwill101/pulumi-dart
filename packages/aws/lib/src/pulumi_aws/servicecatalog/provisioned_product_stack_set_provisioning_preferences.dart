@@ -1,0 +1,3 @@
+library module_servicecatalog_provisioned_product_stack_set_provisioning_preferences;
+
+export 'provisioned_product_stack_set_provisioning_preferences/provisioned_product_stack_set_provisioning_preferences.dart';

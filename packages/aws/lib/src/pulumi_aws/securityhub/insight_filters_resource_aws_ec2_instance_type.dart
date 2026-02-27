@@ -1,0 +1,3 @@
+library module_securityhub_insight_filters_resource_aws_ec2_instance_type;
+
+export 'insight_filters_resource_aws_ec2_instance_type/insight_filters_resource_aws_ec2_instance_type.dart';

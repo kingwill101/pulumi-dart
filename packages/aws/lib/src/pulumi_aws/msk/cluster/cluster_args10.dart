@@ -11,19 +11,19 @@ import '../cluster_rebalancing/cluster_rebalancing.dart';
 
 /// The set of arguments for Cluster.
 class ClusterArgs10 {
-  /// Configuration block for the broker nodes of the Kafka cluster. See<span pulumi-lang-nodejs=" brokerNodeGroupInfo " pulumi-lang-dotnet=" BrokerNodeGroupInfo " pulumi-lang-go=" brokerNodeGroupInfo " pulumi-lang-python=" broker_node_group_info " pulumi-lang-yaml=" brokerNodeGroupInfo " pulumi-lang-java=" brokerNodeGroupInfo "> broker_node_group_info </span>Argument Reference below.
+  /// Configuration block for the broker nodes of the Kafka cluster. See broker_node_group_info Argument Reference below.
   final Input<ClusterBrokerNodeGroupInfo> brokerNodeGroupInfo;
 
-  /// Configuration block for specifying a client authentication. See<span pulumi-lang-nodejs=" clientAuthentication " pulumi-lang-dotnet=" ClientAuthentication " pulumi-lang-go=" clientAuthentication " pulumi-lang-python=" client_authentication " pulumi-lang-yaml=" clientAuthentication " pulumi-lang-java=" clientAuthentication "> client_authentication </span>Argument Reference below.
+  /// Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
   final Input<ClusterClientAuthentication>? clientAuthentication;
 
   /// Name of the MSK cluster.
   final Input<String>? clusterName;
 
-  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See<span pulumi-lang-nodejs=" configurationInfo " pulumi-lang-dotnet=" ConfigurationInfo " pulumi-lang-go=" configurationInfo " pulumi-lang-python=" configuration_info " pulumi-lang-yaml=" configurationInfo " pulumi-lang-java=" configurationInfo "> configuration_info </span>Argument Reference below.
+  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configuration_info Argument Reference below.
   final Input<ClusterConfigurationInfo>? configurationInfo;
 
-  /// Configuration block for specifying encryption. See<span pulumi-lang-nodejs=" encryptionInfo " pulumi-lang-dotnet=" EncryptionInfo " pulumi-lang-go=" encryptionInfo " pulumi-lang-python=" encryption_info " pulumi-lang-yaml=" encryptionInfo " pulumi-lang-java=" encryptionInfo "> encryption_info </span>Argument Reference below.
+  /// Configuration block for specifying encryption. See encryption_info Argument Reference below.
   final Input<ClusterEncryptionInfo>? encryptionInfo;
 
   /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
@@ -32,13 +32,13 @@ class ClusterArgs10 {
   /// Specify the desired Kafka software version.
   final Input<String> kafkaVersion;
 
-  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See<span pulumi-lang-nodejs=" loggingInfo " pulumi-lang-dotnet=" LoggingInfo " pulumi-lang-go=" loggingInfo " pulumi-lang-python=" logging_info " pulumi-lang-yaml=" loggingInfo " pulumi-lang-java=" loggingInfo "> logging_info </span>Argument Reference below.
+  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See logging_info Argument Reference below.
   final Input<ClusterLoggingInfo>? loggingInfo;
 
   /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
   final Input<int> numberOfBrokerNodes;
 
-  /// Configuration block for JMX and Node monitoring for the MSK cluster. See<span pulumi-lang-nodejs=" openMonitoring " pulumi-lang-dotnet=" OpenMonitoring " pulumi-lang-go=" openMonitoring " pulumi-lang-python=" open_monitoring " pulumi-lang-yaml=" openMonitoring " pulumi-lang-java=" openMonitoring "> open_monitoring </span>Argument Reference below.
+  /// Configuration block for JMX and Node monitoring for the MSK cluster. See open_monitoring Argument Reference below.
   final Input<ClusterOpenMonitoring>? openMonitoring;
 
   /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
@@ -50,7 +50,7 @@ class ClusterArgs10 {
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
   final Input<String>? storageMode;
 
-  /// A map of tags to assign to the resource. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ClusterArgs10({

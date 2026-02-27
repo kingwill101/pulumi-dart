@@ -1,0 +1,3 @@
+library module_alb_listener_default_action_redirect;
+
+export 'listener_default_action_redirect/listener_default_action_redirect.dart';

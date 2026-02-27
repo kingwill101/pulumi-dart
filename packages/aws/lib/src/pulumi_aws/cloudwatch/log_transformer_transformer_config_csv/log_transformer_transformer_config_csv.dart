@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class LogTransformerTransformerConfigCsv {
-  /// Specifies the names to use for the columns in the transformed log event. If not specified, default column names (`[column_1,<span pulumi-lang-nodejs=" column2 " pulumi-lang-dotnet=" Column2 " pulumi-lang-go=" column2 " pulumi-lang-python=" column_2 " pulumi-lang-yaml=" column2 " pulumi-lang-java=" column2 "> column_2 </span>...]`) are used.
+  /// Specifies the names to use for the columns in the transformed log event. If not specified, default column names (`[column_1, column_2 ...]`) are used.
   final List<String>? columns;
 
   /// Specifies the character used to separate each column in the original comma-separated value log event. Defaults to the comma `,` character.

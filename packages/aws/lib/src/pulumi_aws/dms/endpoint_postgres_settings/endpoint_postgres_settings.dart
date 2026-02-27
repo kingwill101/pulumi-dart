@@ -4,7 +4,7 @@ class EndpointPostgresSettings {
   /// For use with change data capture (CDC) only, this attribute has AWS DMS bypass foreign keys and user triggers to reduce the time it takes to bulk load data.
   final String? afterConnectScript;
 
-  /// Specifies the authentication method. Valid values: <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span>, <span pulumi-lang-nodejs="`iam`" pulumi-lang-dotnet="`Iam`" pulumi-lang-go="`iam`" pulumi-lang-python="`iam`" pulumi-lang-yaml="`iam`" pulumi-lang-java="`iam`">`iam`</span>.
+  /// Specifies the authentication method. Valid values: `password`, `iam`.
   final String? authenticationMethod;
 
   /// The Babelfish for Aurora PostgreSQL database name for the endpoint.
@@ -16,25 +16,25 @@ class EndpointPostgresSettings {
   /// Specifies the default behavior of the replication's handling of PostgreSQL- compatible endpoints that require some additional configuration, such as Babelfish endpoints.
   final String? databaseMode;
 
-  /// Sets the schema in which the operational DDL database artifacts are created. Default is <span pulumi-lang-nodejs="`public`" pulumi-lang-dotnet="`Public`" pulumi-lang-go="`public`" pulumi-lang-python="`public`" pulumi-lang-yaml="`public`" pulumi-lang-java="`public`">`public`</span>.
+  /// Sets the schema in which the operational DDL database artifacts are created. Default is `public`.
   final String? ddlArtifactsSchema;
 
-  /// Sets the client statement timeout for the PostgreSQL instance, in seconds. Default value is <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>.
+  /// Sets the client statement timeout for the PostgreSQL instance, in seconds. Default value is `60`.
   final int? executeTimeout;
 
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, this value causes a task to fail if the actual size of a LOB column is greater than the specified `LobMaxSize`. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// When set to `true`, this value causes a task to fail if the actual size of a LOB column is greater than the specified `LobMaxSize`. Default is `false`.
   final bool? failTasksOnLobTruncation;
 
   /// The write-ahead log (WAL) heartbeat feature mimics a dummy transaction. By doing this, it prevents idle logical replication slots from holding onto old WAL logs, which can result in storage full situations on the source.
   final bool? heartbeatEnable;
 
-  /// Sets the WAL heartbeat frequency (in minutes). Default value is <span pulumi-lang-nodejs="`5`" pulumi-lang-dotnet="`5`" pulumi-lang-go="`5`" pulumi-lang-python="`5`" pulumi-lang-yaml="`5`" pulumi-lang-java="`5`">`5`</span>.
+  /// Sets the WAL heartbeat frequency (in minutes). Default value is `5`.
   final int? heartbeatFrequency;
 
-  /// Sets the schema in which the heartbeat artifacts are created. Default value is <span pulumi-lang-nodejs="`public`" pulumi-lang-dotnet="`Public`" pulumi-lang-go="`public`" pulumi-lang-python="`public`" pulumi-lang-yaml="`public`" pulumi-lang-java="`public`">`public`</span>.
+  /// Sets the schema in which the heartbeat artifacts are created. Default value is `public`.
   final String? heartbeatSchema;
 
-  /// You can use PostgreSQL endpoint settings to map a boolean as a boolean from your PostgreSQL source to a Amazon Redshift target. Default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// You can use PostgreSQL endpoint settings to map a boolean as a boolean from your PostgreSQL source to a Amazon Redshift target. Default value is `false`.
   final bool? mapBooleanAsBoolean;
 
   /// Optional When true, DMS migrates JSONB values as CLOB.
@@ -46,7 +46,7 @@ class EndpointPostgresSettings {
   /// Specifies the maximum size (in KB) of any .csv file used to transfer data to PostgreSQL. Default is `32,768 KB`.
   final int? maxFileSize;
 
-  /// Specifies the plugin to use to create a replication slot. Valid values: <span pulumi-lang-nodejs="`pglogical`" pulumi-lang-dotnet="`Pglogical`" pulumi-lang-go="`pglogical`" pulumi-lang-python="`pglogical`" pulumi-lang-yaml="`pglogical`" pulumi-lang-java="`pglogical`">`pglogical`</span>, `test-decoding`.
+  /// Specifies the plugin to use to create a replication slot. Valid values: `pglogical`, `test-decoding`.
   final String? pluginName;
 
   /// Specifies the IAM role to use to authenticate the connection.

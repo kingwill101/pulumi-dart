@@ -1,33 +1,33 @@
 import 'package:pulumi/pulumi.dart';
 import 'base_path_mapping_args.dart';
 
-/// Connects a custom domain name registered via <span pulumi-lang-nodejs="`aws.apigateway.DomainName`" pulumi-lang-dotnet="`aws.apigateway.DomainName`" pulumi-lang-go="`apigateway.DomainName`" pulumi-lang-python="`apigateway.DomainName`" pulumi-lang-yaml="`aws.apigateway.DomainName`" pulumi-lang-java="`aws.apigateway.DomainName`">`aws.apigateway.DomainName`</span>
+/// Connects a custom domain name registered via `aws.apigateway.DomainName`
 /// with a deployed API so that its methods can be called via the
 /// custom domain name.
 ///
 /// ## Import
 ///
-/// For a non-root <span pulumi-lang-nodejs="`basePath`" pulumi-lang-dotnet="`BasePath`" pulumi-lang-go="`basePath`" pulumi-lang-python="`base_path`" pulumi-lang-yaml="`basePath`" pulumi-lang-java="`basePath`">`base_path`</span>:
+/// For a non-root `base_path`:
 ///
 ///
-/// For a non-root <span pulumi-lang-nodejs="`basePath`" pulumi-lang-dotnet="`BasePath`" pulumi-lang-go="`basePath`" pulumi-lang-python="`base_path`" pulumi-lang-yaml="`basePath`" pulumi-lang-java="`basePath`">`base_path`</span> and a private custom domain name:
+/// For a non-root `base_path` and a private custom domain name:
 ///
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.apigateway.BasePathMapping`" pulumi-lang-dotnet="`aws.apigateway.BasePathMapping`" pulumi-lang-go="`apigateway.BasePathMapping`" pulumi-lang-python="`apigateway.BasePathMapping`" pulumi-lang-yaml="`aws.apigateway.BasePathMapping`" pulumi-lang-java="`aws.apigateway.BasePathMapping`">`aws.apigateway.BasePathMapping`</span> using the domain name and base path or domain name, base path and domain name ID (for private custom domain names). For example:
+/// Using `pulumi import`, import `aws.apigateway.BasePathMapping` using the domain name and base path or domain name, base path and domain name ID (for private custom domain names). For example:
 ///
-/// For an empty <span pulumi-lang-nodejs="`basePath`" pulumi-lang-dotnet="`BasePath`" pulumi-lang-go="`basePath`" pulumi-lang-python="`base_path`" pulumi-lang-yaml="`basePath`" pulumi-lang-java="`basePath`">`base_path`</span> or, in other words, a root path (`/`):
+/// For an empty `base_path` or, in other words, a root path (`/`):
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example example.com/
 /// ```
 ///
-/// For a non-root <span pulumi-lang-nodejs="`basePath`" pulumi-lang-dotnet="`BasePath`" pulumi-lang-go="`basePath`" pulumi-lang-python="`base_path`" pulumi-lang-yaml="`basePath`" pulumi-lang-java="`basePath`">`base_path`</span>:
+/// For a non-root `base_path`:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example example.com/base-path
 /// ```
 ///
-/// For a non-root <span pulumi-lang-nodejs="`basePath`" pulumi-lang-dotnet="`BasePath`" pulumi-lang-go="`basePath`" pulumi-lang-python="`base_path`" pulumi-lang-yaml="`basePath`" pulumi-lang-java="`basePath`">`base_path`</span> and a private custom domain name:
+/// For a non-root `base_path` and a private custom domain name:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example api.internal.example.com/base-path/abcde12345

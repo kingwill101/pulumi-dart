@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../metric_stream_statistics_configuration_include_metric/metric_stream_statistics_configuration_include_metric.dart';
 
 class MetricStreamStatisticsConfiguration {
-  /// The additional statistics to stream for the metrics listed in <span pulumi-lang-nodejs="`includeMetrics`" pulumi-lang-dotnet="`IncludeMetrics`" pulumi-lang-go="`includeMetrics`" pulumi-lang-python="`include_metrics`" pulumi-lang-yaml="`includeMetrics`" pulumi-lang-java="`includeMetrics`">`include_metrics`</span>.
+  /// The additional statistics to stream for the metrics listed in `include_metrics`.
   final List<String> additionalStatistics;
 
   /// An array that defines the metrics that are to have additional statistics streamed. See details below.

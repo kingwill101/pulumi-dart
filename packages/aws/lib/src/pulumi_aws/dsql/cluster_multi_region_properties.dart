@@ -1,0 +1,3 @@
+library module_dsql_cluster_multi_region_properties;
+
+export 'cluster_multi_region_properties/cluster_multi_region_properties.dart';

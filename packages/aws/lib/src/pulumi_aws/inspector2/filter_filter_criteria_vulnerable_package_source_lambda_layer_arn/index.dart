@@ -1,3 +1,0 @@
-library module_inspector2_filter_filter_criteria_vulnerable_package_source_lambda_layer_arn;
-
-export 'filter_filter_criteria_vulnerable_package_source_lambda_layer_arn.dart';

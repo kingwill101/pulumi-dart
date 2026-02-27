@@ -8,7 +8,7 @@ class GetSecretsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// Map containing each <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`">`secret`</span> <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> as the key with its decrypted plaintext value
+  /// Map containing each `secret` `name` as the key with its decrypted plaintext value
   final Map<String, String> plaintext;
   final String region;
   final List<GetSecretsSecret> secrets;

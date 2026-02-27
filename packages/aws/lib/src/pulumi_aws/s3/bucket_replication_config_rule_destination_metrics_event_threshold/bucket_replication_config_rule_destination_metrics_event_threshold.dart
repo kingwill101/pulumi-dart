@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class BucketReplicationConfigRuleDestinationMetricsEventThreshold {
-  /// Time in minutes. Valid values: <span pulumi-lang-nodejs="`15`" pulumi-lang-dotnet="`15`" pulumi-lang-go="`15`" pulumi-lang-python="`15`" pulumi-lang-yaml="`15`" pulumi-lang-java="`15`">`15`</span>.
+  /// Time in minutes. Valid values: `15`.
   final int minutes;
 
   BucketReplicationConfigRuleDestinationMetricsEventThreshold({

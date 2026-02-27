@@ -7,22 +7,22 @@ import '../windows_file_system_self_managed_active_directory/windows_file_system
 
 /// The set of arguments for WindowsFileSystem.
 class WindowsFileSystemArgs {
-  /// The ID for an existing Microsoft Active Directory instance that the file system should join when it's created. Cannot be specified with <span pulumi-lang-nodejs="`selfManagedActiveDirectory`" pulumi-lang-dotnet="`SelfManagedActiveDirectory`" pulumi-lang-go="`selfManagedActiveDirectory`" pulumi-lang-python="`self_managed_active_directory`" pulumi-lang-yaml="`selfManagedActiveDirectory`" pulumi-lang-java="`selfManagedActiveDirectory`">`self_managed_active_directory`</span>.
+  /// The ID for an existing Microsoft Active Directory instance that the file system should join when it's created. Cannot be specified with `self_managed_active_directory`.
   final Input<String>? activeDirectoryId;
 
   /// An array DNS alias names that you want to associate with the Amazon FSx file system.  For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
   final Input<List<String>>? aliases;
 
-  /// The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system. See <span pulumi-lang-nodejs="`auditLogConfiguration`" pulumi-lang-dotnet="`AuditLogConfiguration`" pulumi-lang-go="`auditLogConfiguration`" pulumi-lang-python="`audit_log_configuration`" pulumi-lang-yaml="`auditLogConfiguration`" pulumi-lang-java="`auditLogConfiguration`">`audit_log_configuration`</span> Block for details.
+  /// The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system. See `audit_log_configuration` Block for details.
   final Input<WindowsFileSystemAuditLogConfiguration>? auditLogConfiguration;
 
-  /// The number of days to retain automatic backups. Minimum of <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and maximum of <span pulumi-lang-nodejs="`90`" pulumi-lang-dotnet="`90`" pulumi-lang-go="`90`" pulumi-lang-python="`90`" pulumi-lang-yaml="`90`" pulumi-lang-java="`90`">`90`</span>. Defaults to <span pulumi-lang-nodejs="`7`" pulumi-lang-dotnet="`7`" pulumi-lang-go="`7`" pulumi-lang-python="`7`" pulumi-lang-yaml="`7`" pulumi-lang-java="`7`">`7`</span>. Set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> to disable.
+  /// The number of days to retain automatic backups. Minimum of `0` and maximum of `90`. Defaults to `7`. Set to `0` to disable.
   final Input<int>? automaticBackupRetentionDays;
 
   /// The ID of the source backup to create the filesystem from.
   final Input<String>? backupId;
 
-  /// A boolean flag indicating whether tags on the file system should be copied to backups. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// A boolean flag indicating whether tags on the file system should be copied to backups. Defaults to `false`.
   final Input<bool>? copyTagsToBackups;
 
   /// The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
@@ -31,7 +31,7 @@ class WindowsFileSystemArgs {
   /// Specifies the file system deployment type, valid values are `MULTI_AZ_1`, `SINGLE_AZ_1` and `SINGLE_AZ_2`. Default value is `SINGLE_AZ_1`.
   final Input<String>? deploymentType;
 
-  /// The SSD IOPS configuration for the Amazon FSx for Windows File Server file system. See <span pulumi-lang-nodejs="`diskIopsConfiguration`" pulumi-lang-dotnet="`DiskIopsConfiguration`" pulumi-lang-go="`diskIopsConfiguration`" pulumi-lang-python="`disk_iops_configuration`" pulumi-lang-yaml="`diskIopsConfiguration`" pulumi-lang-java="`diskIopsConfiguration`">`disk_iops_configuration`</span> Block for details.
+  /// The SSD IOPS configuration for the Amazon FSx for Windows File Server file system. See `disk_iops_configuration` Block for details.
   final Input<WindowsFileSystemDiskIopsConfiguration>? diskIopsConfiguration;
 
   /// A map of tags to apply to the file system's final backup.
@@ -49,11 +49,11 @@ class WindowsFileSystemArgs {
   /// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
   final Input<List<String>>? securityGroupIds;
 
-  /// Configuration block that Amazon FSx uses to join the Windows File Server instance to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Cannot be specified with <span pulumi-lang-nodejs="`activeDirectoryId`" pulumi-lang-dotnet="`ActiveDirectoryId`" pulumi-lang-go="`activeDirectoryId`" pulumi-lang-python="`active_directory_id`" pulumi-lang-yaml="`activeDirectoryId`" pulumi-lang-java="`activeDirectoryId`">`active_directory_id`</span>. See <span pulumi-lang-nodejs="`selfManagedActiveDirectory`" pulumi-lang-dotnet="`SelfManagedActiveDirectory`" pulumi-lang-go="`selfManagedActiveDirectory`" pulumi-lang-python="`self_managed_active_directory`" pulumi-lang-yaml="`selfManagedActiveDirectory`" pulumi-lang-java="`selfManagedActiveDirectory`">`self_managed_active_directory`</span> Block for details.
+  /// Configuration block that Amazon FSx uses to join the Windows File Server instance to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Cannot be specified with `active_directory_id`. See `self_managed_active_directory` Block for details.
   final Input<WindowsFileSystemSelfManagedActiveDirectory>?
       selfManagedActiveDirectory;
 
-  /// When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
   final Input<bool>? skipFinalBackup;
 
   /// Storage capacity (GiB) of the file system. Minimum of 32 and maximum of 65536. If the storage type is set to `HDD` the minimum value is 2000. Required when not creating filesystem for a backup.
@@ -62,10 +62,10 @@ class WindowsFileSystemArgs {
   /// Specifies the storage type, Valid values are `SSD` and `HDD`. `HDD` is supported on `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types. Default value is `SSD`.
   final Input<String>? storageType;
 
-  /// A list of IDs for the subnets that the file system will be accessible from. To specify more than a single subnet set <span pulumi-lang-nodejs="`deploymentType`" pulumi-lang-dotnet="`DeploymentType`" pulumi-lang-go="`deploymentType`" pulumi-lang-python="`deployment_type`" pulumi-lang-yaml="`deploymentType`" pulumi-lang-java="`deploymentType`">`deployment_type`</span> to `MULTI_AZ_1`.
+  /// A list of IDs for the subnets that the file system will be accessible from. To specify more than a single subnet set `deployment_type` to `MULTI_AZ_1`.
   final Input<List<String>> subnetIds;
 
-  /// A map of tags to assign to the file system. .If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Throughput (megabytes per second) of the file system. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/performance.html).

@@ -1,0 +1,3 @@
+library module_lakeformation_resource_lf_tag_table_with_columns_column_wildcard;
+
+export 'resource_lf_tag_table_with_columns_column_wildcard/resource_lf_tag_table_with_columns_column_wildcard.dart';

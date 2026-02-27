@@ -19,11 +19,11 @@ class GetRoutingProfileResult {
   final String id;
   final String instanceId;
 
-  /// One or more <span pulumi-lang-nodejs="`mediaConcurrencies`" pulumi-lang-dotnet="`MediaConcurrencies`" pulumi-lang-go="`mediaConcurrencies`" pulumi-lang-python="`media_concurrencies`" pulumi-lang-yaml="`mediaConcurrencies`" pulumi-lang-java="`mediaConcurrencies`">`media_concurrencies`</span> blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The <span pulumi-lang-nodejs="`mediaConcurrencies`" pulumi-lang-dotnet="`MediaConcurrencies`" pulumi-lang-go="`mediaConcurrencies`" pulumi-lang-python="`media_concurrencies`" pulumi-lang-yaml="`mediaConcurrencies`" pulumi-lang-java="`mediaConcurrencies`">`media_concurrencies`</span> block is documented below.
+  /// One or more `media_concurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `media_concurrencies` block is documented below.
   final List<GetRoutingProfileMediaConcurrency> mediaConcurrencies;
   final String name;
 
-  /// One or more <span pulumi-lang-nodejs="`queueConfigs`" pulumi-lang-dotnet="`QueueConfigs`" pulumi-lang-go="`queueConfigs`" pulumi-lang-python="`queue_configs`" pulumi-lang-yaml="`queueConfigs`" pulumi-lang-java="`queueConfigs`">`queue_configs`</span> blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The <span pulumi-lang-nodejs="`queueConfigs`" pulumi-lang-dotnet="`QueueConfigs`" pulumi-lang-go="`queueConfigs`" pulumi-lang-python="`queue_configs`" pulumi-lang-yaml="`queueConfigs`" pulumi-lang-java="`queueConfigs`">`queue_configs`</span> block is documented below.
+  /// One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
   final List<GetRoutingProfileQueueConfig> queueConfigs;
   final String region;
   final String routingProfileId;

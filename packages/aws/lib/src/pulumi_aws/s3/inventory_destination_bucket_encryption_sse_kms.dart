@@ -1,0 +1,3 @@
+library module_s3_inventory_destination_bucket_encryption_sse_kms;
+
+export 'inventory_destination_bucket_encryption_sse_kms/inventory_destination_bucket_encryption_sse_kms.dart';

@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_group_auto_rollback_configuration;
-
-export 'deployment_group_auto_rollback_configuration.dart';

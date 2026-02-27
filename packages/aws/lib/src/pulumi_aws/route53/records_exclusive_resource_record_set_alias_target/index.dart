@@ -1,3 +1,0 @@
-library module_route53_records_exclusive_resource_record_set_alias_target;
-
-export 'records_exclusive_resource_record_set_alias_target.dart';

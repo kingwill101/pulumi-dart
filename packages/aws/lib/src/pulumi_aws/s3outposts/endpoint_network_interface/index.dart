@@ -1,3 +1,0 @@
-library module_s3outposts_endpoint_network_interface;
-
-export 'endpoint_network_interface.dart';

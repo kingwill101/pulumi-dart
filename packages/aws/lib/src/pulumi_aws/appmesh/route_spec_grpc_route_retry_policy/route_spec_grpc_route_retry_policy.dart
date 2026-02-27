@@ -4,7 +4,7 @@ import '../route_spec_grpc_route_retry_policy_per_retry_timeout/route_spec_grpc_
 
 class RouteSpecGrpcRouteRetryPolicy {
   /// List of gRPC retry events.
-  /// Valid values: <span pulumi-lang-nodejs="`cancelled`" pulumi-lang-dotnet="`Cancelled`" pulumi-lang-go="`cancelled`" pulumi-lang-python="`cancelled`" pulumi-lang-yaml="`cancelled`" pulumi-lang-java="`cancelled`">`cancelled`</span>, `deadline-exceeded`, <span pulumi-lang-nodejs="`internal`" pulumi-lang-dotnet="`Internal`" pulumi-lang-go="`internal`" pulumi-lang-python="`internal`" pulumi-lang-yaml="`internal`" pulumi-lang-java="`internal`">`internal`</span>, `resource-exhausted`, <span pulumi-lang-nodejs="`unavailable`" pulumi-lang-dotnet="`Unavailable`" pulumi-lang-go="`unavailable`" pulumi-lang-python="`unavailable`" pulumi-lang-yaml="`unavailable`" pulumi-lang-java="`unavailable`">`unavailable`</span>.
+  /// Valid values: `cancelled`, `deadline-exceeded`, `internal`, `resource-exhausted`, `unavailable`.
   final List<String>? grpcRetryEvents;
 
   /// List of HTTP retry events.

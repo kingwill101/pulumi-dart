@@ -3,12 +3,12 @@
 class ClusterCacheNode {
   final String? address;
 
-  /// Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use <span pulumi-lang-nodejs="`preferredAvailabilityZones`" pulumi-lang-dotnet="`PreferredAvailabilityZones`" pulumi-lang-go="`preferredAvailabilityZones`" pulumi-lang-python="`preferred_availability_zones`" pulumi-lang-yaml="`preferredAvailabilityZones`" pulumi-lang-java="`preferredAvailabilityZones`">`preferred_availability_zones`</span> instead. Default: System chosen Availability Zone. Changing this value will re-create the resource.
+  /// Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferred_availability_zones` instead. Default: System chosen Availability Zone. Changing this value will re-create the resource.
   final String? availabilityZone;
   final String? id;
   final String? outpostArn;
 
-  /// The port number on which each of the cache nodes will accept connections. For Memcached the default is 11211, and for Redis the default port is 6379. Cannot be provided with <span pulumi-lang-nodejs="`replicationGroupId`" pulumi-lang-dotnet="`ReplicationGroupId`" pulumi-lang-go="`replicationGroupId`" pulumi-lang-python="`replication_group_id`" pulumi-lang-yaml="`replicationGroupId`" pulumi-lang-java="`replicationGroupId`">`replication_group_id`</span>. Changing this value will re-create the resource.
+  /// The port number on which each of the cache nodes will accept connections. For Memcached the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replication_group_id`. Changing this value will re-create the resource.
   final int? port;
 
   ClusterCacheNode({

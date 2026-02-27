@@ -1,0 +1,3 @@
+library module_comprehend_entity_recognizer_input_data_config_entity_type;
+
+export 'entity_recognizer_input_data_config_entity_type/entity_recognizer_input_data_config_entity_type.dart';

@@ -1,3 +1,0 @@
-library module_msk_serverless_cluster_client_authentication;
-
-export 'serverless_cluster_client_authentication.dart';

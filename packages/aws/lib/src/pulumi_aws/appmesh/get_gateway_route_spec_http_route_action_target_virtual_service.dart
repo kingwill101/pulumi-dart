@@ -1,0 +1,3 @@
+library module_appmesh_get_gateway_route_spec_http_route_action_target_virtual_service;
+
+export 'get_gateway_route_spec_http_route_action_target_virtual_service/get_gateway_route_spec_http_route_action_target_virtual_service.dart';

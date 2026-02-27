@@ -1,3 +1,0 @@
-library module_datazone_glossary_term_term_relations;
-
-export 'glossary_term_term_relations.dart';

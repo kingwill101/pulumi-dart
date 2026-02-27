@@ -1,3 +1,0 @@
-library module_sagemaker_endpoint_configuration_data_capture_config_capture_content_type_header;
-
-export 'endpoint_configuration_data_capture_config_capture_content_type_header.dart';

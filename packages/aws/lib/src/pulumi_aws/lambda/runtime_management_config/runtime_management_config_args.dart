@@ -15,7 +15,7 @@ class RuntimeManagementConfigArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// ARN of the runtime version. Only required when <span pulumi-lang-nodejs="`updateRuntimeOn`" pulumi-lang-dotnet="`UpdateRuntimeOn`" pulumi-lang-go="`updateRuntimeOn`" pulumi-lang-python="`update_runtime_on`" pulumi-lang-yaml="`updateRuntimeOn`" pulumi-lang-java="`updateRuntimeOn`">`update_runtime_on`</span> is `Manual`.
+  /// ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
   final Input<String>? runtimeVersionArn;
 
   /// Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.

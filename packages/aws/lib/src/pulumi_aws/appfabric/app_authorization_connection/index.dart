@@ -1,4 +1,0 @@
-library module_appfabric_app_authorization_connection;
-
-export 'app_authorization_connection.dart';
-export 'app_authorization_connection_args.dart';

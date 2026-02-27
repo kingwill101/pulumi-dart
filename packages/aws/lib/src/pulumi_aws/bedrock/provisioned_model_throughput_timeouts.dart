@@ -1,0 +1,3 @@
+library module_bedrock_provisioned_model_throughput_timeouts;
+
+export 'provisioned_model_throughput_timeouts/provisioned_model_throughput_timeouts.dart';

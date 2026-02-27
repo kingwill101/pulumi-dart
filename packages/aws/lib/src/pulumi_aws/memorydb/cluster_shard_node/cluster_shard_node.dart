@@ -11,7 +11,7 @@ class ClusterShardNode {
   final String? createTime;
   final List<ClusterShardNodeEndpoint>? endpoints;
 
-  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final String? name;
 
   ClusterShardNode({

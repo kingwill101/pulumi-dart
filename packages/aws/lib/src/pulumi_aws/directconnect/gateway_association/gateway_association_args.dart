@@ -6,9 +6,9 @@ import 'package:pulumi/pulumi.dart';
 class GatewayAssociationArgs {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`dxGatewayId`" pulumi-lang-dotnet="`DxGatewayId`" pulumi-lang-go="`dxGatewayId`" pulumi-lang-python="`dx_gateway_id`" pulumi-lang-yaml="`dxGatewayId`" pulumi-lang-java="`dxGatewayId`">`dx_gateway_id`</span> and <span pulumi-lang-nodejs="`associatedGatewayId`" pulumi-lang-dotnet="`AssociatedGatewayId`" pulumi-lang-go="`associatedGatewayId`" pulumi-lang-python="`associated_gateway_id`" pulumi-lang-yaml="`associatedGatewayId`" pulumi-lang-java="`associatedGatewayId`">`associated_gateway_id`</span> must be specified for single account Direct Connect gateway associations.
+  /// > **NOTE:** `dx_gateway_id` and `associated_gateway_id` must be specified for single account Direct Connect gateway associations.
   ///
-  /// > **NOTE:** If the <span pulumi-lang-nodejs="`associatedGatewayId`" pulumi-lang-dotnet="`AssociatedGatewayId`" pulumi-lang-go="`associatedGatewayId`" pulumi-lang-python="`associated_gateway_id`" pulumi-lang-yaml="`associatedGatewayId`" pulumi-lang-java="`associatedGatewayId`">`associated_gateway_id`</span> is in another region, an alias in a new provider block for that region should be specified.
+  /// > **NOTE:** If the `associated_gateway_id` is in another region, an alias in a new provider block for that region should be specified.
   final Input<List<String>>? allowedPrefixes;
 
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.

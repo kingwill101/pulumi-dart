@@ -1,0 +1,3 @@
+library module_ec2_spot_fleet_request_spot_maintenance_strategies_capacity_rebalance;
+
+export 'spot_fleet_request_spot_maintenance_strategies_capacity_rebalance/spot_fleet_request_spot_maintenance_strategies_capacity_rebalance.dart';

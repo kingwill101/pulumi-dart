@@ -1,0 +1,22 @@
+library module_ssmincidents;
+
+export 'ssmincidents/get_replication_set.dart';
+export 'ssmincidents/get_replication_set_region.dart';
+export 'ssmincidents/get_response_plan.dart';
+export 'ssmincidents/get_response_plan_action.dart';
+export 'ssmincidents/get_response_plan_action_ssm_automation.dart';
+export 'ssmincidents/get_response_plan_action_ssm_automation_parameter.dart';
+export 'ssmincidents/get_response_plan_incident_template.dart';
+export 'ssmincidents/get_response_plan_incident_template_notification_target.dart';
+export 'ssmincidents/get_response_plan_integration.dart';
+export 'ssmincidents/get_response_plan_integration_pagerduty.dart';
+export 'ssmincidents/replication_set.dart';
+export 'ssmincidents/replication_set_region.dart';
+export 'ssmincidents/response_plan.dart';
+export 'ssmincidents/response_plan_action.dart';
+export 'ssmincidents/response_plan_action_ssm_automation.dart';
+export 'ssmincidents/response_plan_action_ssm_automation_parameter.dart';
+export 'ssmincidents/response_plan_incident_template.dart';
+export 'ssmincidents/response_plan_incident_template_notification_target.dart';
+export 'ssmincidents/response_plan_integration.dart';
+export 'ssmincidents/response_plan_integration_pagerduty.dart';

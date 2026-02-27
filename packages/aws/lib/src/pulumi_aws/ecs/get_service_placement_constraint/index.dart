@@ -1,3 +1,0 @@
-library module_ecs_get_service_placement_constraint;
-
-export 'get_service_placement_constraint.dart';

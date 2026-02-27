@@ -6,7 +6,7 @@ import '../network_insights_path_filter_at_source/network_insights_path_filter_a
 
 /// The set of arguments for NetworkInsightsPath.
 class NetworkInsightsPathArgs {
-  /// ID or ARN of the resource which is the destination of the path. Can be an Instance, Internet Gateway, Network Interface, Transit Gateway, VPC Endpoint, VPC Peering Connection or VPN Gateway. If the resource is in another account, you must specify an ARN. Either the <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span> argument or the <span pulumi-lang-nodejs="`destinationAddress`" pulumi-lang-dotnet="`DestinationAddress`" pulumi-lang-go="`destinationAddress`" pulumi-lang-python="`destination_address`" pulumi-lang-yaml="`destinationAddress`" pulumi-lang-java="`destinationAddress`">`destination_address`</span> argument in the <span pulumi-lang-nodejs="`filterAtSource`" pulumi-lang-dotnet="`FilterAtSource`" pulumi-lang-go="`filterAtSource`" pulumi-lang-python="`filter_at_source`" pulumi-lang-yaml="`filterAtSource`" pulumi-lang-java="`filterAtSource`">`filter_at_source`</span> block must be specified.
+  /// ID or ARN of the resource which is the destination of the path. Can be an Instance, Internet Gateway, Network Interface, Transit Gateway, VPC Endpoint, VPC Peering Connection or VPN Gateway. If the resource is in another account, you must specify an ARN. Either the `destination` argument or the `destination_address` argument in the `filter_at_source` block must be specified.
   final Input<String>? destination;
 
   /// IP address of the destination resource.
@@ -15,13 +15,13 @@ class NetworkInsightsPathArgs {
   /// Destination port to analyze access to.
   final Input<int>? destinationPort;
 
-  /// Scopes the analysis to network paths that match specific filters at the destination. If you specify this parameter, you can't specify <span pulumi-lang-nodejs="`destinationIp`" pulumi-lang-dotnet="`DestinationIp`" pulumi-lang-go="`destinationIp`" pulumi-lang-python="`destination_ip`" pulumi-lang-yaml="`destinationIp`" pulumi-lang-java="`destinationIp`">`destination_ip`</span>. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
+  /// Scopes the analysis to network paths that match specific filters at the destination. If you specify this parameter, you can't specify `destination_ip`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
   final Input<NetworkInsightsPathFilterAtDestination>? filterAtDestination;
 
-  /// Scopes the analysis to network paths that match specific filters at the source. If you specify this parameter, you can't specify <span pulumi-lang-nodejs="`sourceIp`" pulumi-lang-dotnet="`SourceIp`" pulumi-lang-go="`sourceIp`" pulumi-lang-python="`source_ip`" pulumi-lang-yaml="`sourceIp`" pulumi-lang-java="`sourceIp`">`source_ip`</span> or <span pulumi-lang-nodejs="`destinationPort`" pulumi-lang-dotnet="`DestinationPort`" pulumi-lang-go="`destinationPort`" pulumi-lang-python="`destination_port`" pulumi-lang-yaml="`destinationPort`" pulumi-lang-java="`destinationPort`">`destination_port`</span>. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
+  /// Scopes the analysis to network paths that match specific filters at the source. If you specify this parameter, you can't specify `source_ip` or `destination_port`. See below for details. Note that Terraform performs drift detection on this argument only when the value is provided.
   final Input<NetworkInsightsPathFilterAtSource>? filterAtSource;
 
-  /// Protocol to use for analysis. Valid options are <span pulumi-lang-nodejs="`tcp`" pulumi-lang-dotnet="`Tcp`" pulumi-lang-go="`tcp`" pulumi-lang-python="`tcp`" pulumi-lang-yaml="`tcp`" pulumi-lang-java="`tcp`">`tcp`</span> or <span pulumi-lang-nodejs="`udp`" pulumi-lang-dotnet="`Udp`" pulumi-lang-go="`udp`" pulumi-lang-python="`udp`" pulumi-lang-yaml="`udp`" pulumi-lang-java="`udp`">`udp`</span>.
+  /// Protocol to use for analysis. Valid options are `tcp` or `udp`.
   ///
   /// The following arguments are optional:
   final Input<String> protocol;
@@ -35,7 +35,7 @@ class NetworkInsightsPathArgs {
   /// IP address of the source resource.
   final Input<String>? sourceIp;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   NetworkInsightsPathArgs({

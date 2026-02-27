@@ -17,7 +17,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
           TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination>
       destinations;
 
-  /// Set of protocols to inspect for, specified using the protocol's assigned internet protocol number (IANA). Network Firewall currently supports TCP only. Valid values: <span pulumi-lang-nodejs="`6`" pulumi-lang-dotnet="`6`" pulumi-lang-go="`6`" pulumi-lang-python="`6`" pulumi-lang-yaml="`6`" pulumi-lang-java="`6`">`6`</span>
+  /// Set of protocols to inspect for, specified using the protocol's assigned internet protocol number (IANA). Network Firewall currently supports TCP only. Valid values: `6`
   final List<int> protocols;
 
   /// Set of configuration blocks describing the source ports to inspect for. If not specified, this matches with any source port. See Source Ports below for details.

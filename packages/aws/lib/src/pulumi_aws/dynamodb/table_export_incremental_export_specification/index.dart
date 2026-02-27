@@ -1,3 +1,0 @@
-library module_dynamodb_table_export_incremental_export_specification;
-
-export 'table_export_incremental_export_specification.dart';

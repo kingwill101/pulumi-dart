@@ -1,3 +1,0 @@
-library module_bedrock_agent_agent_collaborator_agent_descriptor;
-
-export 'agent_agent_collaborator_agent_descriptor.dart';

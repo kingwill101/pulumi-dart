@@ -10,13 +10,13 @@ class PermissionsTableWithColumns {
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
   final String databaseName;
 
-  /// Set of column names for the table to exclude. If <span pulumi-lang-nodejs="`excludedColumnNames`" pulumi-lang-dotnet="`ExcludedColumnNames`" pulumi-lang-go="`excludedColumnNames`" pulumi-lang-python="`excluded_column_names`" pulumi-lang-yaml="`excludedColumnNames`" pulumi-lang-java="`excludedColumnNames`">`excluded_column_names`</span> is included, <span pulumi-lang-nodejs="`wildcard`" pulumi-lang-dotnet="`Wildcard`" pulumi-lang-go="`wildcard`" pulumi-lang-python="`wildcard`" pulumi-lang-yaml="`wildcard`" pulumi-lang-java="`wildcard`">`wildcard`</span> must be set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to avoid the provider reporting a difference.
+  /// Set of column names for the table to exclude. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   final List<String>? excludedColumnNames;
 
   /// Name of the table resource.
   final String name;
 
-  /// Whether to use a column wildcard. If <span pulumi-lang-nodejs="`excludedColumnNames`" pulumi-lang-dotnet="`ExcludedColumnNames`" pulumi-lang-go="`excludedColumnNames`" pulumi-lang-python="`excluded_column_names`" pulumi-lang-yaml="`excludedColumnNames`" pulumi-lang-java="`excludedColumnNames`">`excluded_column_names`</span> is included, <span pulumi-lang-nodejs="`wildcard`" pulumi-lang-dotnet="`Wildcard`" pulumi-lang-go="`wildcard`" pulumi-lang-python="`wildcard`" pulumi-lang-yaml="`wildcard`" pulumi-lang-java="`wildcard`">`wildcard`</span> must be set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to avoid the provider reporting a difference.
+  /// Whether to use a column wildcard. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   ///
   /// The following arguments are optional:
   final bool? wildcard;

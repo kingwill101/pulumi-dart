@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ServiceObservabilityConfiguration {
-  /// ARN of the observability configuration that is associated with the service. Specified only when <span pulumi-lang-nodejs="`observabilityEnabled`" pulumi-lang-dotnet="`ObservabilityEnabled`" pulumi-lang-go="`observabilityEnabled`" pulumi-lang-python="`observability_enabled`" pulumi-lang-yaml="`observabilityEnabled`" pulumi-lang-java="`observabilityEnabled`">`observability_enabled`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// ARN of the observability configuration that is associated with the service. Specified only when `observability_enabled` is `true`.
   final String? observabilityConfigurationArn;
 
-  /// When <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, an observability configuration resource is associated with the service.
+  /// When `true`, an observability configuration resource is associated with the service.
   final bool observabilityEnabled;
 
   ServiceObservabilityConfiguration({

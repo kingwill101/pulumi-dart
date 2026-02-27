@@ -1,0 +1,3 @@
+library module_efs_file_system_size_in_byte;
+
+export 'file_system_size_in_byte/file_system_size_in_byte.dart';

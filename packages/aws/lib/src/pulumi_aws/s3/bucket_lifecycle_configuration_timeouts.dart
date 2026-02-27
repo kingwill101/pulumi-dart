@@ -1,0 +1,3 @@
+library module_s3_bucket_lifecycle_configuration_timeouts;
+
+export 'bucket_lifecycle_configuration_timeouts/bucket_lifecycle_configuration_timeouts.dart';

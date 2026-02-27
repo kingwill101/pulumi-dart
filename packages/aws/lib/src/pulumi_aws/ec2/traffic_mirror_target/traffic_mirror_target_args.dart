@@ -19,9 +19,9 @@ class TrafficMirrorTargetArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
-  /// **NOTE:** Either <span pulumi-lang-nodejs="`networkInterfaceId`" pulumi-lang-dotnet="`NetworkInterfaceId`" pulumi-lang-go="`networkInterfaceId`" pulumi-lang-python="`network_interface_id`" pulumi-lang-yaml="`networkInterfaceId`" pulumi-lang-java="`networkInterfaceId`">`network_interface_id`</span> or <span pulumi-lang-nodejs="`networkLoadBalancerArn`" pulumi-lang-dotnet="`NetworkLoadBalancerArn`" pulumi-lang-go="`networkLoadBalancerArn`" pulumi-lang-python="`network_load_balancer_arn`" pulumi-lang-yaml="`networkLoadBalancerArn`" pulumi-lang-java="`networkLoadBalancerArn`">`network_load_balancer_arn`</span> should be specified and both should not be specified together
+  /// **NOTE:** Either `network_interface_id` or `network_load_balancer_arn` should be specified and both should not be specified together
   final Input<Map<String, String>>? tags;
 
   TrafficMirrorTargetArgs({

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ExperimentTemplateStopCondition {
-  /// Source of the condition. One of <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>, `aws:cloudwatch:alarm`.
+  /// Source of the condition. One of `none`, `aws:cloudwatch:alarm`.
   final String source;
 
   /// ARN of the CloudWatch alarm. Required if the source is a CloudWatch alarm.

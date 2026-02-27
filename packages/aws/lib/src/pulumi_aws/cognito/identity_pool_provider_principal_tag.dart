@@ -1,0 +1,4 @@
+library module_cognito_identity_pool_provider_principal_tag;
+
+export 'identity_pool_provider_principal_tag/identity_pool_provider_principal_tag.dart';
+export 'identity_pool_provider_principal_tag/identity_pool_provider_principal_tag_args.dart';

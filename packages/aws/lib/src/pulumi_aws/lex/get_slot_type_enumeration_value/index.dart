@@ -1,3 +1,0 @@
-library module_lex_get_slot_type_enumeration_value;
-
-export 'get_slot_type_enumeration_value.dart';

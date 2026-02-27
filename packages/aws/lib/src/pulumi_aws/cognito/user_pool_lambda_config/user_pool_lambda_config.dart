@@ -8,13 +8,13 @@ class UserPoolLambdaConfig {
   /// ARN of the lambda creating an authentication challenge.
   final String? createAuthChallenge;
 
-  /// A custom email sender AWS Lambda trigger. See<span pulumi-lang-nodejs=" customEmailSender " pulumi-lang-dotnet=" CustomEmailSender " pulumi-lang-go=" customEmailSender " pulumi-lang-python=" custom_email_sender " pulumi-lang-yaml=" customEmailSender " pulumi-lang-java=" customEmailSender "> custom_email_sender </span>Below.
+  /// A custom email sender AWS Lambda trigger. See custom_email_sender Below.
   final UserPoolLambdaConfigCustomEmailSender? customEmailSender;
 
   /// Custom Message AWS Lambda trigger.
   final String? customMessage;
 
-  /// A custom SMS sender AWS Lambda trigger. See<span pulumi-lang-nodejs=" customSmsSender " pulumi-lang-dotnet=" CustomSmsSender " pulumi-lang-go=" customSmsSender " pulumi-lang-python=" custom_sms_sender " pulumi-lang-yaml=" customSmsSender " pulumi-lang-java=" customSmsSender "> custom_sms_sender </span>Below.
+  /// A custom SMS sender AWS Lambda trigger. See custom_sms_sender Below.
   final UserPoolLambdaConfigCustomSmsSender? customSmsSender;
 
   /// Defines the authentication challenge.
@@ -35,7 +35,7 @@ class UserPoolLambdaConfig {
   /// Pre-registration AWS Lambda trigger.
   final String? preSignUp;
 
-  /// Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the<span pulumi-lang-nodejs=" lambdaArn " pulumi-lang-dotnet=" LambdaArn " pulumi-lang-go=" lambdaArn " pulumi-lang-python=" lambda_arn " pulumi-lang-yaml=" lambdaArn " pulumi-lang-java=" lambdaArn "> lambda_arn </span>of <span pulumi-lang-nodejs="`preTokenGenerationConfig`" pulumi-lang-dotnet="`PreTokenGenerationConfig`" pulumi-lang-go="`preTokenGenerationConfig`" pulumi-lang-python="`pre_token_generation_config`" pulumi-lang-yaml="`preTokenGenerationConfig`" pulumi-lang-java="`preTokenGenerationConfig`">`pre_token_generation_config`</span>.
+  /// Allow to customize identity token claims before token generation. Set this parameter for legacy purposes; for new instances of pre token generation triggers, set the lambda_arn of `pre_token_generation_config`.
   final String? preTokenGeneration;
 
   /// Allow to customize access tokens. See pre_token_configuration_type

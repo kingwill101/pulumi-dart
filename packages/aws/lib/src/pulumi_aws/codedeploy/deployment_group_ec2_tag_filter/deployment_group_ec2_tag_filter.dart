@@ -9,7 +9,7 @@ class DeploymentGroupEc2TagFilter {
 
   /// The value of the tag filter.
   ///
-  /// Multiple occurrences of <span pulumi-lang-nodejs="`ec2TagFilter`" pulumi-lang-dotnet="`Ec2TagFilter`" pulumi-lang-go="`ec2TagFilter`" pulumi-lang-python="`ec2_tag_filter`" pulumi-lang-yaml="`ec2TagFilter`" pulumi-lang-java="`ec2TagFilter`">`ec2_tag_filter`</span> are allowed, where any instance that matches to at least one of the tag filters is selected.
+  /// Multiple occurrences of `ec2_tag_filter` are allowed, where any instance that matches to at least one of the tag filters is selected.
   final String? value;
 
   DeploymentGroupEc2TagFilter({

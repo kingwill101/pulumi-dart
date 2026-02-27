@@ -21,7 +21,7 @@ class ReportPlanArgs {
   /// An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   final Input<ReportPlanReportSetting> reportSetting;
 
-  /// Metadata that you can assign to help organize the report plans you create. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Metadata that you can assign to help organize the report plans you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   ReportPlanArgs({

@@ -1,0 +1,3 @@
+library module_appmesh_route_spec_http_route_action_weighted_target;
+
+export 'route_spec_http_route_action_weighted_target/route_spec_http_route_action_weighted_target.dart';

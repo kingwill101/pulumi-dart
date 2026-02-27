@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ClusterRestoreToPointInTime {
-  /// The date and time to restore from. Value must be a time in Universal Coordinated Time (UTC) format and must be before the latest restorable time for the DB instance. Cannot be specified with <span pulumi-lang-nodejs="`useLatestRestorableTime`" pulumi-lang-dotnet="`UseLatestRestorableTime`" pulumi-lang-go="`useLatestRestorableTime`" pulumi-lang-python="`use_latest_restorable_time`" pulumi-lang-yaml="`useLatestRestorableTime`" pulumi-lang-java="`useLatestRestorableTime`">`use_latest_restorable_time`</span>.
+  /// The date and time to restore from. Value must be a time in Universal Coordinated Time (UTC) format and must be before the latest restorable time for the DB instance. Cannot be specified with `use_latest_restorable_time`.
   final String? restoreToTime;
 
   /// The type of restore to be performed. Valid values are `full-copy`, `copy-on-write`.
@@ -10,7 +10,7 @@ class ClusterRestoreToPointInTime {
   /// The identifier of the source DB cluster from which to restore. Must match the identifier of an existing DB cluster.
   final String sourceClusterIdentifier;
 
-  /// A boolean value that indicates whether the DB cluster is restored from the latest backup time. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Cannot be specified with <span pulumi-lang-nodejs="`restoreToTime`" pulumi-lang-dotnet="`RestoreToTime`" pulumi-lang-go="`restoreToTime`" pulumi-lang-python="`restore_to_time`" pulumi-lang-yaml="`restoreToTime`" pulumi-lang-java="`restoreToTime`">`restore_to_time`</span>.
+  /// A boolean value that indicates whether the DB cluster is restored from the latest backup time. Defaults to `false`. Cannot be specified with `restore_to_time`.
   final bool? useLatestRestorableTime;
 
   ClusterRestoreToPointInTime({

@@ -8,14 +8,14 @@ class EndpointDeploymentConfigRollingUpdatePolicy {
   final EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize
       maximumBatchSize;
 
-  /// The time limit for the total deployment. Exceeding this limit causes a timeout. Valid values are between <span pulumi-lang-nodejs="`600`" pulumi-lang-dotnet="`600`" pulumi-lang-go="`600`" pulumi-lang-python="`600`" pulumi-lang-yaml="`600`" pulumi-lang-java="`600`">`600`</span> and <span pulumi-lang-nodejs="`14400`" pulumi-lang-dotnet="`14400`" pulumi-lang-go="`14400`" pulumi-lang-python="`14400`" pulumi-lang-yaml="`14400`" pulumi-lang-java="`14400`">`14400`</span>.
+  /// The time limit for the total deployment. Exceeding this limit causes a timeout. Valid values are between `600` and `14400`.
   final int? maximumExecutionTimeoutInSeconds;
 
   /// Batch size for rollback to the old endpoint fleet. Each rolling step to provision capacity and turn on traffic on the old endpoint fleet, and terminate capacity on the new endpoint fleet. If this field is absent, the default value will be set to 100% of total capacity which means to bring up the whole capacity of the old fleet at once during rollback. See Rollback Maximum Batch Size.
   final EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize?
       rollbackMaximumBatchSize;
 
-  /// The length of the baking period, during which SageMaker AI monitors alarms for each batch on the new fleet. Valid values are between <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span> and <span pulumi-lang-nodejs="`3600`" pulumi-lang-dotnet="`3600`" pulumi-lang-go="`3600`" pulumi-lang-python="`3600`" pulumi-lang-yaml="`3600`" pulumi-lang-java="`3600`">`3600`</span>.
+  /// The length of the baking period, during which SageMaker AI monitors alarms for each batch on the new fleet. Valid values are between `0` and `3600`.
   final int waitIntervalInSeconds;
 
   EndpointDeploymentConfigRollingUpdatePolicy({

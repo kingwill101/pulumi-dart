@@ -1,0 +1,3 @@
+library module_ssm_maintenance_window_target_target;
+
+export 'maintenance_window_target_target/maintenance_window_target_target.dart';

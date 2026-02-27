@@ -3,7 +3,7 @@
 import '../pipeline_artifact_store_encryption_key/pipeline_artifact_store_encryption_key.dart';
 
 class PipelineArtifactStore {
-  /// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An <span pulumi-lang-nodejs="`encryptionKey`" pulumi-lang-dotnet="`EncryptionKey`" pulumi-lang-go="`encryptionKey`" pulumi-lang-python="`encryption_key`" pulumi-lang-yaml="`encryptionKey`" pulumi-lang-java="`encryptionKey`">`encryption_key`</span> block is documented below.
+  /// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryption_key` block is documented below.
   final PipelineArtifactStoreEncryptionKey? encryptionKey;
 
   /// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.

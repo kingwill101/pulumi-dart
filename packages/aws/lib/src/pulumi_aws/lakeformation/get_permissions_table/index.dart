@@ -1,3 +1,0 @@
-library module_lakeformation_get_permissions_table;
-
-export 'get_permissions_table.dart';

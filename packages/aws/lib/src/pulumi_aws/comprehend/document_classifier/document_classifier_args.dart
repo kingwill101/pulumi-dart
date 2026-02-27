@@ -11,11 +11,11 @@ class DocumentClassifierArgs {
   final Input<String> dataAccessRoleArn;
 
   /// Configuration for the training and testing data.
-  /// See the <span pulumi-lang-nodejs="`inputDataConfig`" pulumi-lang-dotnet="`InputDataConfig`" pulumi-lang-go="`inputDataConfig`" pulumi-lang-python="`input_data_config`" pulumi-lang-yaml="`inputDataConfig`" pulumi-lang-java="`inputDataConfig`">`input_data_config`</span> Configuration Block section below.
+  /// See the `input_data_config` Configuration Block section below.
   final Input<DocumentClassifierInputDataConfig> inputDataConfig;
 
   /// Two-letter language code for the language.
-  /// One of <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span>, <span pulumi-lang-nodejs="`es`" pulumi-lang-dotnet="`Es`" pulumi-lang-go="`es`" pulumi-lang-python="`es`" pulumi-lang-yaml="`es`" pulumi-lang-java="`es`">`es`</span>, <span pulumi-lang-nodejs="`fr`" pulumi-lang-dotnet="`Fr`" pulumi-lang-go="`fr`" pulumi-lang-python="`fr`" pulumi-lang-yaml="`fr`" pulumi-lang-java="`fr`">`fr`</span>, <span pulumi-lang-nodejs="`it`" pulumi-lang-dotnet="`It`" pulumi-lang-go="`it`" pulumi-lang-python="`it`" pulumi-lang-yaml="`it`" pulumi-lang-java="`it`">`it`</span>, <span pulumi-lang-nodejs="`de`" pulumi-lang-dotnet="`De`" pulumi-lang-go="`de`" pulumi-lang-python="`de`" pulumi-lang-yaml="`de`" pulumi-lang-java="`de`">`de`</span>, or <span pulumi-lang-nodejs="`pt`" pulumi-lang-dotnet="`Pt`" pulumi-lang-go="`pt`" pulumi-lang-python="`pt`" pulumi-lang-yaml="`pt`" pulumi-lang-java="`pt`">`pt`</span>.
+  /// One of `en`, `es`, `fr`, `it`, `de`, or `pt`.
   final Input<String> languageCode;
 
   /// The document classification mode.
@@ -35,13 +35,13 @@ class DocumentClassifierArgs {
   final Input<String>? name;
 
   /// Configuration for the output results of training.
-  /// See the <span pulumi-lang-nodejs="`outputDataConfig`" pulumi-lang-dotnet="`OutputDataConfig`" pulumi-lang-go="`outputDataConfig`" pulumi-lang-python="`output_data_config`" pulumi-lang-yaml="`outputDataConfig`" pulumi-lang-java="`outputDataConfig`">`output_data_config`</span> Configuration Block section below.
+  /// See the `output_data_config` Configuration Block section below.
   final Input<DocumentClassifierOutputDataConfig>? outputDataConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Name for the version of the Document Classifier.
@@ -50,13 +50,13 @@ class DocumentClassifierArgs {
   /// If explicitly set to `""`, no version name will be set.
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
-  /// Conflicts with <span pulumi-lang-nodejs="`versionNamePrefix`" pulumi-lang-dotnet="`VersionNamePrefix`" pulumi-lang-go="`versionNamePrefix`" pulumi-lang-python="`version_name_prefix`" pulumi-lang-yaml="`versionNamePrefix`" pulumi-lang-java="`versionNamePrefix`">`version_name_prefix`</span>.
+  /// Conflicts with `version_name_prefix`.
   final Input<String>? versionName;
 
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
-  /// Conflicts with <span pulumi-lang-nodejs="`versionName`" pulumi-lang-dotnet="`VersionName`" pulumi-lang-go="`versionName`" pulumi-lang-python="`version_name`" pulumi-lang-yaml="`versionName`" pulumi-lang-java="`versionName`">`version_name`</span>.
+  /// Conflicts with `version_name`.
   final Input<String>? versionNamePrefix;
 
   /// KMS Key used to encrypt storage volumes during job processing.
@@ -64,7 +64,7 @@ class DocumentClassifierArgs {
   final Input<String>? volumeKmsKeyId;
 
   /// Configuration parameters for VPC to contain Document Classifier resources.
-  /// See the <span pulumi-lang-nodejs="`vpcConfig`" pulumi-lang-dotnet="`VpcConfig`" pulumi-lang-go="`vpcConfig`" pulumi-lang-python="`vpc_config`" pulumi-lang-yaml="`vpcConfig`" pulumi-lang-java="`vpcConfig`">`vpc_config`</span> Configuration Block section below.
+  /// See the `vpc_config` Configuration Block section below.
   final Input<DocumentClassifierVpcConfig>? vpcConfig;
 
   DocumentClassifierArgs({

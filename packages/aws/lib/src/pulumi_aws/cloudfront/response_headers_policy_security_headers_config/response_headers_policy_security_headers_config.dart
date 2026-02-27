@@ -12,7 +12,7 @@ class ResponseHeadersPolicySecurityHeadersConfig {
   final ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy?
       contentSecurityPolicy;
 
-  /// Determines whether CloudFront includes the `X-Content-Type-Options` HTTP response header with its value set to <span pulumi-lang-nodejs="`nosniff`" pulumi-lang-dotnet="`Nosniff`" pulumi-lang-go="`nosniff`" pulumi-lang-python="`nosniff`" pulumi-lang-yaml="`nosniff`" pulumi-lang-java="`nosniff`">`nosniff`</span>. See Content Type Options for more information.
+  /// Determines whether CloudFront includes the `X-Content-Type-Options` HTTP response header with its value set to `nosniff`. See Content Type Options for more information.
   final ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions?
       contentTypeOptions;
 

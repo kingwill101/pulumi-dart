@@ -1,3 +1,0 @@
-library module_appmesh_virtual_node_spec_backend_virtual_service_client_policy_tls_certificate;
-
-export 'virtual_node_spec_backend_virtual_service_client_policy_tls_certificate.dart';

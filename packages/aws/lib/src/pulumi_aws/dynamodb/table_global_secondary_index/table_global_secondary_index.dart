@@ -6,10 +6,10 @@ import '../table_global_secondary_index_on_demand_throughput/table_global_second
 import '../table_global_secondary_index_warm_throughput/table_global_secondary_index_warm_throughput.dart';
 
 class TableGlobalSecondaryIndex {
-  /// Name of the hash key in the index; must be defined as an attribute in the resource. Mutually exclusive with <span pulumi-lang-nodejs="`keySchema`" pulumi-lang-dotnet="`KeySchema`" pulumi-lang-go="`keySchema`" pulumi-lang-python="`key_schema`" pulumi-lang-yaml="`keySchema`" pulumi-lang-java="`keySchema`">`key_schema`</span>. Use <span pulumi-lang-nodejs="`keySchema`" pulumi-lang-dotnet="`KeySchema`" pulumi-lang-go="`keySchema`" pulumi-lang-python="`key_schema`" pulumi-lang-yaml="`keySchema`" pulumi-lang-java="`keySchema`">`key_schema`</span> instead.
+  /// Name of the hash key in the index; must be defined as an attribute in the resource. Mutually exclusive with `key_schema`. Use `key_schema` instead.
   final String? hashKey;
 
-  /// Configuration block(s) for the key schema. Mutually exclusive with <span pulumi-lang-nodejs="`hashKey`" pulumi-lang-dotnet="`HashKey`" pulumi-lang-go="`hashKey`" pulumi-lang-python="`hash_key`" pulumi-lang-yaml="`hashKey`" pulumi-lang-java="`hashKey`">`hash_key`</span> and <span pulumi-lang-nodejs="`rangeKey`" pulumi-lang-dotnet="`RangeKey`" pulumi-lang-go="`rangeKey`" pulumi-lang-python="`range_key`" pulumi-lang-yaml="`rangeKey`" pulumi-lang-java="`rangeKey`">`range_key`</span>. Required if <span pulumi-lang-nodejs="`hashKey`" pulumi-lang-dotnet="`HashKey`" pulumi-lang-go="`hashKey`" pulumi-lang-python="`hash_key`" pulumi-lang-yaml="`hashKey`" pulumi-lang-java="`hashKey`">`hash_key`</span> is not specified. Supports multi-attribute keys for the [Multi-Attribute Keys design pattern](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.DesignPattern.MultiAttributeKeys.html). See below.
+  /// Configuration block(s) for the key schema. Mutually exclusive with `hash_key` and `range_key`. Required if `hash_key` is not specified. Supports multi-attribute keys for the [Multi-Attribute Keys design pattern](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.DesignPattern.MultiAttributeKeys.html). See below.
   final List<TableGlobalSecondaryIndexKeySchema>? keySchemas;
 
   /// Name of the index.
@@ -21,19 +21,19 @@ class TableGlobalSecondaryIndex {
   /// Sets the maximum number of read and write units for the specified on-demand index. See below.
   final TableGlobalSecondaryIndexOnDemandThroughput? onDemandThroughput;
 
-  /// One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects into the index only the table and index<span pulumi-lang-nodejs=" hashKey " pulumi-lang-dotnet=" HashKey " pulumi-lang-go=" hashKey " pulumi-lang-python=" hash_key " pulumi-lang-yaml=" hashKey " pulumi-lang-java=" hashKey "> hash_key </span>and<span pulumi-lang-nodejs=" sortKey " pulumi-lang-dotnet=" SortKey " pulumi-lang-go=" sortKey " pulumi-lang-python=" sort_key " pulumi-lang-yaml=" sortKey " pulumi-lang-java=" sortKey "> sort_key </span>attributes, `INCLUDE` projects into the index all of the attributes that are defined in <span pulumi-lang-nodejs="`nonKeyAttributes`" pulumi-lang-dotnet="`NonKeyAttributes`" pulumi-lang-go="`nonKeyAttributes`" pulumi-lang-python="`non_key_attributes`" pulumi-lang-yaml="`nonKeyAttributes`" pulumi-lang-java="`nonKeyAttributes`">`non_key_attributes`</span> in addition to the attributes that `KEYS_ONLY` project.
+  /// One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects into the index only the table and index hash_key and sort_key attributes, `INCLUDE` projects into the index all of the attributes that are defined in `non_key_attributes` in addition to the attributes that `KEYS_ONLY` project.
   final String projectionType;
 
-  /// Name of the range key; must be defined as an attribute in the resource. Mutually exclusive with <span pulumi-lang-nodejs="`keySchema`" pulumi-lang-dotnet="`KeySchema`" pulumi-lang-go="`keySchema`" pulumi-lang-python="`key_schema`" pulumi-lang-yaml="`keySchema`" pulumi-lang-java="`keySchema`">`key_schema`</span>. Use <span pulumi-lang-nodejs="`keySchema`" pulumi-lang-dotnet="`KeySchema`" pulumi-lang-go="`keySchema`" pulumi-lang-python="`key_schema`" pulumi-lang-yaml="`keySchema`" pulumi-lang-java="`keySchema`">`key_schema`</span> instead.
+  /// Name of the range key; must be defined as an attribute in the resource. Mutually exclusive with `key_schema`. Use `key_schema` instead.
   final String? rangeKey;
 
-  /// Number of read units for this index. Must be set if<span pulumi-lang-nodejs=" billingMode " pulumi-lang-dotnet=" BillingMode " pulumi-lang-go=" billingMode " pulumi-lang-python=" billing_mode " pulumi-lang-yaml=" billingMode " pulumi-lang-java=" billingMode "> billing_mode </span>is set to PROVISIONED.
+  /// Number of read units for this index. Must be set if billing_mode is set to PROVISIONED.
   final int? readCapacity;
 
   /// Sets the number of warm read and write units for this index. See below.
   final TableGlobalSecondaryIndexWarmThroughput? warmThroughput;
 
-  /// Number of write units for this index. Must be set if<span pulumi-lang-nodejs=" billingMode " pulumi-lang-dotnet=" BillingMode " pulumi-lang-go=" billingMode " pulumi-lang-python=" billing_mode " pulumi-lang-yaml=" billingMode " pulumi-lang-java=" billingMode "> billing_mode </span>is set to PROVISIONED.
+  /// Number of write units for this index. Must be set if billing_mode is set to PROVISIONED.
   final int? writeCapacity;
 
   TableGlobalSecondaryIndex({

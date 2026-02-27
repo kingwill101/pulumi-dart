@@ -4,7 +4,7 @@ class ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfi
   /// Specifies how the application should be restored. Valid values: `RESTORE_FROM_CUSTOM_SNAPSHOT`, `RESTORE_FROM_LATEST_SNAPSHOT`, `SKIP_RESTORE_FROM_SNAPSHOT`.
   final String? applicationRestoreType;
 
-  /// The identifier of an existing snapshot of application state to use to restart an application. The application uses this value if `RESTORE_FROM_CUSTOM_SNAPSHOT` is specified for <span pulumi-lang-nodejs="`applicationRestoreType`" pulumi-lang-dotnet="`ApplicationRestoreType`" pulumi-lang-go="`applicationRestoreType`" pulumi-lang-python="`application_restore_type`" pulumi-lang-yaml="`applicationRestoreType`" pulumi-lang-java="`applicationRestoreType`">`application_restore_type`</span>.
+  /// The identifier of an existing snapshot of application state to use to restart an application. The application uses this value if `RESTORE_FROM_CUSTOM_SNAPSHOT` is specified for `application_restore_type`.
   final String? snapshotName;
 
   ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration({

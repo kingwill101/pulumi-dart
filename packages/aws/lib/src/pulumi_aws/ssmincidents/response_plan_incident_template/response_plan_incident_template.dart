@@ -13,7 +13,7 @@ class ResponsePlanIncidentTemplate {
   /// The tags assigned to an incident template. When an incident starts, Incident Manager assigns the tags specified in the template to the incident.
   final Map<String, String>? incidentTags;
 
-  /// The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The <span pulumi-lang-nodejs="`notificationTarget`" pulumi-lang-dotnet="`NotificationTarget`" pulumi-lang-go="`notificationTarget`" pulumi-lang-python="`notification_target`" pulumi-lang-yaml="`notificationTarget`" pulumi-lang-java="`notificationTarget`">`notification_target`</span> configuration block supports the following argument:
+  /// The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notification_target` configuration block supports the following argument:
   final List<ResponsePlanIncidentTemplateNotificationTarget>?
       notificationTargets;
 

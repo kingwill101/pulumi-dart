@@ -7,287 +7,14 @@ import 'object_copy_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.s3.ObjectCopy("test", {
-/// bucket: "destination_bucket",
-/// key: "destination_key",
-/// source: "source_bucket/source_key",
-/// grants: [{
-/// uri: "http://acs.amazonaws.com/groups/global/AllUsers",
-/// type: "Group",
-/// permissions: ["READ"],
-/// }],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
 ///
-/// test = aws.s3.ObjectCopy("test",
-/// bucket="destination_bucket",
-/// key="destination_key",
-/// source="source_bucket/source_key",
-/// grants=[{
-/// "uri": "http://acs.amazonaws.com/groups/global/AllUsers",
-/// "type": "Group",
-/// "permissions": ["READ"],
-/// }])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var test = new Aws.S3.ObjectCopy("test", new()
-/// {
-/// Bucket = "destination_bucket",
-/// Key = "destination_key",
-/// Source = "source_bucket/source_key",
-/// Grants = new[]
-/// {
-/// new Aws.S3.Inputs.ObjectCopyGrantArgs
-/// {
-/// Uri = "http://acs.amazonaws.com/groups/global/AllUsers",
-/// Type = "Group",
-/// Permissions = new[]
-/// {
-/// "READ",
-/// },
-/// },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := s3.NewObjectCopy(ctx, "test", &s3.ObjectCopyArgs{
-/// Bucket: pulumi.String("destination_bucket"),
-/// Key:    pulumi.String("destination_key"),
-/// Source: pulumi.String("source_bucket/source_key"),
-/// Grants: s3.ObjectCopyGrantArray{
-/// &s3.ObjectCopyGrantArgs{
-/// Uri:  pulumi.String("http://acs.amazonaws.com/groups/global/AllUsers"),
-/// Type: pulumi.String("Group"),
-/// Permissions: pulumi.StringArray{
-/// pulumi.String("READ"),
-/// },
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.s3.ObjectCopy;
-/// import com.pulumi.aws.s3.ObjectCopyArgs;
-/// import com.pulumi.aws.s3.inputs.ObjectCopyGrantArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var test = new ObjectCopy("test", ObjectCopyArgs.builder()
-/// .bucket("destination_bucket")
-/// .key("destination_key")
-/// .source("source_bucket/source_key")
-/// .grants(ObjectCopyGrantArgs.builder()
-/// .uri("http://acs.amazonaws.com/groups/global/AllUsers")
-/// .type("Group")
-/// .permissions("READ")
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// test:
-/// type: aws:s3:ObjectCopy
-/// properties:
-/// bucket: destination_bucket
-/// key: destination_key
-/// source: source_bucket/source_key
-/// grants:
-/// - uri: http://acs.amazonaws.com/groups/global/AllUsers
-/// type: Group
-/// permissions:
-/// - READ
-/// ```
-/// <!--End PulumiCodeChooser -->
-///
-/// ### Ignoring Provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span>
+/// ### Ignoring Provider `default_tags`
 ///
 /// S3 objects support a [maximum of 10 tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
-/// If the resource's own <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span> and the provider-level <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> would together lead to more than 10 tags on an S3 object copy, use the <span pulumi-lang-nodejs="`overrideProvider`" pulumi-lang-dotnet="`OverrideProvider`" pulumi-lang-go="`overrideProvider`" pulumi-lang-python="`override_provider`" pulumi-lang-yaml="`overrideProvider`" pulumi-lang-java="`overrideProvider`">`override_provider`</span> configuration block to suppress any provider-level <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span>.
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const test = new aws.s3.ObjectCopy("test", {
-/// bucket: "destination_bucket",
-/// key: "destination_key",
-/// source: "source_bucket/source_key",
-/// overrideProvider: {
-/// defaultTags: {
-/// tags: {},
-/// },
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// test = aws.s3.ObjectCopy("test",
-/// bucket="destination_bucket",
-/// key="destination_key",
-/// source="source_bucket/source_key",
-/// override_provider={
-/// "default_tags": {
-/// "tags": {},
-/// },
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var test = new Aws.S3.ObjectCopy("test", new()
-/// {
-/// Bucket = "destination_bucket",
-/// Key = "destination_key",
-/// Source = "source_bucket/source_key",
-/// OverrideProvider = new Aws.S3.Inputs.ObjectCopyOverrideProviderArgs
-/// {
-/// DefaultTags = new Aws.S3.Inputs.ObjectCopyOverrideProviderDefaultTagsArgs
-/// {
-/// Tags = null,
-/// },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := s3.NewObjectCopy(ctx, "test", &s3.ObjectCopyArgs{
-/// Bucket: pulumi.String("destination_bucket"),
-/// Key:    pulumi.String("destination_key"),
-/// Source: pulumi.String("source_bucket/source_key"),
-/// OverrideProvider: &s3.ObjectCopyOverrideProviderArgs{
-/// DefaultTags: &s3.ObjectCopyOverrideProviderDefaultTagsArgs{
-/// Tags: pulumi.StringMap{},
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.s3.ObjectCopy;
-/// import com.pulumi.aws.s3.ObjectCopyArgs;
-/// import com.pulumi.aws.s3.inputs.ObjectCopyOverrideProviderArgs;
-/// import com.pulumi.aws.s3.inputs.ObjectCopyOverrideProviderDefaultTagsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var test = new ObjectCopy("test", ObjectCopyArgs.builder()
-/// .bucket("destination_bucket")
-/// .key("destination_key")
-/// .source("source_bucket/source_key")
-/// .overrideProvider(ObjectCopyOverrideProviderArgs.builder()
-/// .defaultTags(ObjectCopyOverrideProviderDefaultTagsArgs.builder()
-/// .tags(Map.ofEntries(
-/// ))
-/// .build())
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// test:
-/// type: aws:s3:ObjectCopy
-/// properties:
-/// bucket: destination_bucket
-/// key: destination_key
-/// source: source_bucket/source_key
-/// overrideProvider:
-/// defaultTags:
-/// tags: {}
-/// ```
-/// <!--End PulumiCodeChooser -->
+/// If the resource's own `tags` and the provider-level `default_tags` would together lead to more than 10 tags on an S3 object copy, use the `override_provider` configuration block to suppress any provider-level `default_tags`.
 class ObjectCopy extends CustomResource {
-  /// [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>, `public-read`, `public-read-write`, `authenticated-read`, `aws-exec-read`, `bucket-owner-read`, and `bucket-owner-full-control`. Conflicts with <span pulumi-lang-nodejs="`grant`" pulumi-lang-dotnet="`Grant`" pulumi-lang-go="`grant`" pulumi-lang-python="`grant`" pulumi-lang-yaml="`grant`" pulumi-lang-java="`grant`">`grant`</span>.
+  /// [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are `private`, `public-read`, `public-read-write`, `authenticated-read`, `aws-exec-read`, `bucket-owner-read`, and `bucket-owner-full-control`. Conflicts with `grant`.
   late final Output<String> acl;
 
   /// ARN of the object.
@@ -297,7 +24,7 @@ class ObjectCopy extends CustomResource {
   late final Output<String> bucket;
   late final Output<bool> bucketKeyEnabled;
 
-  /// Specifies caching behavior along the request/reply chain Read [w3c<span pulumi-lang-nodejs=" cacheControl]" pulumi-lang-dotnet=" CacheControl]" pulumi-lang-go=" cacheControl]" pulumi-lang-python=" cache_control]" pulumi-lang-yaml=" cacheControl]" pulumi-lang-java=" cacheControl]"> cache_control]</span>(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+  /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
   late final Output<String> cacheControl;
 
   /// Indicates the algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
@@ -318,7 +45,7 @@ class ObjectCopy extends CustomResource {
   /// The base64-encoded, 256-bit SHA-256 digest of the object.
   late final Output<String> checksumSha256;
 
-  /// Specifies presentational information for the object. Read [w3c<span pulumi-lang-nodejs=" contentDisposition]" pulumi-lang-dotnet=" ContentDisposition]" pulumi-lang-go=" contentDisposition]" pulumi-lang-python=" content_disposition]" pulumi-lang-yaml=" contentDisposition]" pulumi-lang-java=" contentDisposition]"> content_disposition]</span>(http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+  /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
   late final Output<String> contentDisposition;
 
   /// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
@@ -366,10 +93,10 @@ class ObjectCopy extends CustomResource {
   /// Date and time at which the object is no longer cacheable, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final Output<String?> expires;
 
-  /// Allow the object to be deleted by removing any legal hold on any object version. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. This value should be set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> only if the bucket has S3 object lock enabled.
+  /// Allow the object to be deleted by removing any legal hold on any object version. Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
   late final Output<bool?> forceDestroy;
 
-  /// Configuration block for header grants. Documented below. Conflicts with <span pulumi-lang-nodejs="`acl`" pulumi-lang-dotnet="`Acl`" pulumi-lang-go="`acl`" pulumi-lang-python="`acl`" pulumi-lang-yaml="`acl`" pulumi-lang-java="`acl`">`acl`</span>.
+  /// Configuration block for header grants. Documented below. Conflicts with `acl`.
   late final Output<List<ObjectCopyGrant>?> grants;
 
   /// Name of the object once it is in the bucket.
@@ -378,7 +105,7 @@ class ObjectCopy extends CustomResource {
   /// Specifies the AWS KMS Encryption Context to use for object encryption. The value is a base64-encoded UTF-8 string holding JSON with the encryption context key-value pairs.
   late final Output<String> kmsEncryptionContext;
 
-  /// Specifies the AWS KMS Key ARN to use for object encryption. This value is a fully qualified **ARN** of the KMS Key. If using <span pulumi-lang-nodejs="`aws.kms.Key`" pulumi-lang-dotnet="`aws.kms.Key`" pulumi-lang-go="`kms.Key`" pulumi-lang-python="`kms.Key`" pulumi-lang-yaml="`aws.kms.Key`" pulumi-lang-java="`aws.kms.Key`">`aws.kms.Key`</span>, use the exported <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> attribute: <span pulumi-lang-nodejs="`kmsKeyId " pulumi-lang-dotnet="`KmsKeyId " pulumi-lang-go="`kmsKeyId " pulumi-lang-python="`kms_key_id " pulumi-lang-yaml="`kmsKeyId " pulumi-lang-java="`kmsKeyId ">`kms_key_id </span>= aws_kms_key.foo.arn`
+  /// Specifies the AWS KMS Key ARN to use for object encryption. This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`, use the exported `arn` attribute: `kms_key_id = aws_kms_key.foo.arn`
   late final Output<String> kmsKeyId;
 
   /// Returns the date that the object was last modified, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
@@ -406,7 +133,7 @@ class ObjectCopy extends CustomResource {
   /// If present, indicates that the requester was successfully charged for the request.
   late final Output<bool> requestCharged;
 
-  /// Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. For information about downloading objects from requester pays buckets, see Downloading Objects in Requestor Pays Buckets (https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html) in the Amazon S3 Developer Guide. If included, the only valid value is <span pulumi-lang-nodejs="`requester`" pulumi-lang-dotnet="`Requester`" pulumi-lang-go="`requester`" pulumi-lang-python="`requester`" pulumi-lang-yaml="`requester`" pulumi-lang-java="`requester`">`requester`</span>.
+  /// Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. For information about downloading objects from requester pays buckets, see Downloading Objects in Requestor Pays Buckets (https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html) in the Amazon S3 Developer Guide. If included, the only valid value is `requester`.
   late final Output<String?> requestPayer;
 
   /// Specifies server-side encryption of the object in S3. Valid values are `AES256` and `aws:kms`.
@@ -435,10 +162,10 @@ class ObjectCopy extends CustomResource {
   /// Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request. Valid values are `COPY` and `REPLACE`.
   late final Output<String?> taggingDirective;
 
-  /// Map of tags to assign to the object. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// Map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// Version ID of the newly created copy.

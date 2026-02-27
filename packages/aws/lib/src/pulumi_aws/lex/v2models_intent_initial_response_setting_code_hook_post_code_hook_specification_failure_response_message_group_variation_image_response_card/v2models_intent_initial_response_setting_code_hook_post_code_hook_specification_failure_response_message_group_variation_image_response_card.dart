@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../v2models_intent_initial_response_setting_code_hook_post_code_hook_specification_failure_response_message_group_variation_image_response_card_button/v2models_intent_initial_response_setting_code_hook_post_code_hook_specification_failure_response_message_group_variation_image_response_card_button.dart';
 
 class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureResponseMessageGroupVariationImageResponseCard {
-  /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See <span pulumi-lang-nodejs="`button`" pulumi-lang-dotnet="`Button`" pulumi-lang-go="`button`" pulumi-lang-python="`button`" pulumi-lang-yaml="`button`" pulumi-lang-java="`button`">`button`</span>.
+  /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
   final List<
           V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureResponseMessageGroupVariationImageResponseCardButton>?
       buttons;

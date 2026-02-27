@@ -18,7 +18,7 @@ class StandardsControlAssociationArgs {
   /// The following arguments are optional:
   final Input<String> standardsArn;
 
-  /// The reason for updating the control's enablement status in the standard. Required when <span pulumi-lang-nodejs="`associationStatus`" pulumi-lang-dotnet="`AssociationStatus`" pulumi-lang-go="`associationStatus`" pulumi-lang-python="`association_status`" pulumi-lang-yaml="`associationStatus`" pulumi-lang-java="`associationStatus`">`association_status`</span> is `DISABLED`.
+  /// The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
   final Input<String>? updatedReason;
 
   StandardsControlAssociationArgs({

@@ -10,7 +10,7 @@ class SpaceArgs {
   /// The ID of the associated Domain.
   final Input<String> domainId;
 
-  /// A collection of ownership settings. Required if <span pulumi-lang-nodejs="`spaceSharingSettings`" pulumi-lang-dotnet="`SpaceSharingSettings`" pulumi-lang-go="`spaceSharingSettings`" pulumi-lang-python="`space_sharing_settings`" pulumi-lang-yaml="`spaceSharingSettings`" pulumi-lang-java="`spaceSharingSettings`">`space_sharing_settings`</span> is set. See <span pulumi-lang-nodejs="`ownershipSettings`" pulumi-lang-dotnet="`OwnershipSettings`" pulumi-lang-go="`ownershipSettings`" pulumi-lang-python="`ownership_settings`" pulumi-lang-yaml="`ownershipSettings`" pulumi-lang-java="`ownershipSettings`">`ownership_settings`</span> Block below.
+  /// A collection of ownership settings. Required if `space_sharing_settings` is set. See `ownership_settings` Block below.
   final Input<SpaceOwnershipSettings>? ownershipSettings;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -22,13 +22,13 @@ class SpaceArgs {
   /// The name of the space.
   final Input<String> spaceName;
 
-  /// A collection of space settings. See <span pulumi-lang-nodejs="`spaceSettings`" pulumi-lang-dotnet="`SpaceSettings`" pulumi-lang-go="`spaceSettings`" pulumi-lang-python="`space_settings`" pulumi-lang-yaml="`spaceSettings`" pulumi-lang-java="`spaceSettings`">`space_settings`</span> Block below.
+  /// A collection of space settings. See `space_settings` Block below.
   final Input<SpaceSpaceSettings>? spaceSettings;
 
-  /// A collection of space sharing settings. Required if <span pulumi-lang-nodejs="`ownershipSettings`" pulumi-lang-dotnet="`OwnershipSettings`" pulumi-lang-go="`ownershipSettings`" pulumi-lang-python="`ownership_settings`" pulumi-lang-yaml="`ownershipSettings`" pulumi-lang-java="`ownershipSettings`">`ownership_settings`</span> is set. See <span pulumi-lang-nodejs="`spaceSharingSettings`" pulumi-lang-dotnet="`SpaceSharingSettings`" pulumi-lang-go="`spaceSharingSettings`" pulumi-lang-python="`space_sharing_settings`" pulumi-lang-yaml="`spaceSharingSettings`" pulumi-lang-java="`spaceSharingSettings`">`space_sharing_settings`</span> Block below.
+  /// A collection of space sharing settings. Required if `ownership_settings` is set. See `space_sharing_settings` Block below.
   final Input<SpaceSpaceSharingSettings>? spaceSharingSettings;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   SpaceArgs({

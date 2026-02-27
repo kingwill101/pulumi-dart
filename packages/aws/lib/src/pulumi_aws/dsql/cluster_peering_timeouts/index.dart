@@ -1,3 +1,0 @@
-library module_dsql_cluster_peering_timeouts;
-
-export 'cluster_peering_timeouts.dart';

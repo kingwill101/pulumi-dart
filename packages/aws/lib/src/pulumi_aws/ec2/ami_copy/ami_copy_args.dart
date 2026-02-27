@@ -20,7 +20,7 @@ class AmiCopyArgs {
   /// attached to created instances. The structure of this block is described below.
   final Input<List<AmiCopyEbsBlockDevice>>? ebsBlockDevices;
 
-  /// Whether the destination snapshots of the copied image should be encrypted. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Whether the destination snapshots of the copied image should be encrypted. Defaults to `false`
   final Input<bool>? encrypted;
 
   /// Nested block describing an ephemeral block device that
@@ -37,14 +37,14 @@ class AmiCopyArgs {
   final Input<String>? region;
 
   /// Id of the AMI to copy. This id must be valid in the region
-  /// given by <span pulumi-lang-nodejs="`sourceAmiRegion`" pulumi-lang-dotnet="`SourceAmiRegion`" pulumi-lang-go="`sourceAmiRegion`" pulumi-lang-python="`source_ami_region`" pulumi-lang-yaml="`sourceAmiRegion`" pulumi-lang-java="`sourceAmiRegion`">`source_ami_region`</span>.
+  /// given by `source_ami_region`.
   final Input<String> sourceAmiId;
 
   /// Region from which the AMI will be copied. This may be the
   /// same as the AWS provider region in order to create a copy within the same region.
   final Input<String> sourceAmiRegion;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   AmiCopyArgs({

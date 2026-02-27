@@ -1,0 +1,3 @@
+library module_ec2_vpc_encryption_control_resource_exclusions_elastic_file_system;
+
+export 'vpc_encryption_control_resource_exclusions_elastic_file_system/vpc_encryption_control_resource_exclusions_elastic_file_system.dart';

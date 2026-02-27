@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getSecretVersions.
 class GetSecretVersionsArgs {
   /// If true, all deprecated secret versions are included in the response.
-  /// If false, no deprecated secret versions are included in the response. If no value is specified, the default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If false, no deprecated secret versions are included in the response. If no value is specified, the default value is `false`.
   final Input<bool>? includeDeprecated;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

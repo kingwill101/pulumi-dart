@@ -5,10 +5,10 @@ import '../engine_type/engine_type.dart';
 
 /// The set of arguments for ClusterInstance.
 class ClusterInstanceArgs3 {
-  /// Specifies whether any database modifications are applied immediately, or during the next maintenance window. Default is<span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Specifies whether any database modifications are applied immediately, or during the next maintenance window. Default is`false`.
   final Input<bool>? applyImmediately;
 
-  /// Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Default <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Default `true`.
   final Input<bool>? autoMinorVersionUpgrade;
 
   /// EC2 Availability Zone that the DB instance is created in. See [docs](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html) about the details.
@@ -17,10 +17,10 @@ class ClusterInstanceArgs3 {
   /// Identifier of the CA certificate for the DB instance.
   final Input<String>? caCertIdentifier;
 
-  /// Identifier of the <span pulumi-lang-nodejs="`aws.rds.Cluster`" pulumi-lang-dotnet="`aws.rds.Cluster`" pulumi-lang-go="`rds.Cluster`" pulumi-lang-python="`rds.Cluster`" pulumi-lang-yaml="`aws.rds.Cluster`" pulumi-lang-java="`aws.rds.Cluster`">`aws.rds.Cluster`</span> in which to launch this instance.
+  /// Identifier of the `aws.rds.Cluster` in which to launch this instance.
   final Input<String> clusterIdentifier;
 
-  /// Indicates whether to copy all of the user-defined tags from the DB instance to snapshots of the DB instance. Default <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Indicates whether to copy all of the user-defined tags from the DB instance to snapshots of the DB instance. Default `false`.
   final Input<bool>? copyTagsToSnapshot;
 
   /// Instance profile associated with the underlying Amazon EC2 instance of an RDS Custom DB instance.
@@ -29,14 +29,14 @@ class ClusterInstanceArgs3 {
   /// Name of the DB parameter group to associate with this instance.
   final Input<String>? dbParameterGroupName;
 
-  /// Specifies the DB subnet group to associate with this DB instance. The default behavior varies depending on whether <span pulumi-lang-nodejs="`dbSubnetGroupName`" pulumi-lang-dotnet="`DbSubnetGroupName`" pulumi-lang-go="`dbSubnetGroupName`" pulumi-lang-python="`db_subnet_group_name`" pulumi-lang-yaml="`dbSubnetGroupName`" pulumi-lang-java="`dbSubnetGroupName`">`db_subnet_group_name`</span> is specified. Please refer to official [AWS documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html) to understand how <span pulumi-lang-nodejs="`dbSubnetGroupName`" pulumi-lang-dotnet="`DbSubnetGroupName`" pulumi-lang-go="`dbSubnetGroupName`" pulumi-lang-python="`db_subnet_group_name`" pulumi-lang-yaml="`dbSubnetGroupName`" pulumi-lang-java="`dbSubnetGroupName`">`db_subnet_group_name`</span> and <span pulumi-lang-nodejs="`publiclyAccessible`" pulumi-lang-dotnet="`PubliclyAccessible`" pulumi-lang-go="`publiclyAccessible`" pulumi-lang-python="`publicly_accessible`" pulumi-lang-yaml="`publiclyAccessible`" pulumi-lang-java="`publiclyAccessible`">`publicly_accessible`</span> parameters affect DB instance behaviour. **NOTE:** This must match the <span pulumi-lang-nodejs="`dbSubnetGroupName`" pulumi-lang-dotnet="`DbSubnetGroupName`" pulumi-lang-go="`dbSubnetGroupName`" pulumi-lang-python="`db_subnet_group_name`" pulumi-lang-yaml="`dbSubnetGroupName`" pulumi-lang-java="`dbSubnetGroupName`">`db_subnet_group_name`</span> of the attached <span pulumi-lang-nodejs="`aws.rds.Cluster`" pulumi-lang-dotnet="`aws.rds.Cluster`" pulumi-lang-go="`rds.Cluster`" pulumi-lang-python="`rds.Cluster`" pulumi-lang-yaml="`aws.rds.Cluster`" pulumi-lang-java="`aws.rds.Cluster`">`aws.rds.Cluster`</span>.
+  /// Specifies the DB subnet group to associate with this DB instance. The default behavior varies depending on whether `db_subnet_group_name` is specified. Please refer to official [AWS documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html) to understand how `db_subnet_group_name` and `publicly_accessible` parameters affect DB instance behaviour. **NOTE:** This must match the `db_subnet_group_name` of the attached `aws.rds.Cluster`.
   final Input<String>? dbSubnetGroupName;
 
   /// Name of the database engine to be used for the RDS cluster instance.
-  /// Valid Values: `aurora-mysql`, `aurora-postgresql`, <span pulumi-lang-nodejs="`mysql`" pulumi-lang-dotnet="`Mysql`" pulumi-lang-go="`mysql`" pulumi-lang-python="`mysql`" pulumi-lang-yaml="`mysql`" pulumi-lang-java="`mysql`">`mysql`</span>, <span pulumi-lang-nodejs="`postgres`" pulumi-lang-dotnet="`Postgres`" pulumi-lang-go="`postgres`" pulumi-lang-python="`postgres`" pulumi-lang-yaml="`postgres`" pulumi-lang-java="`postgres`">`postgres`</span>.(Note that <span pulumi-lang-nodejs="`mysql`" pulumi-lang-dotnet="`Mysql`" pulumi-lang-go="`mysql`" pulumi-lang-python="`mysql`" pulumi-lang-yaml="`mysql`" pulumi-lang-java="`mysql`">`mysql`</span> and <span pulumi-lang-nodejs="`postgres`" pulumi-lang-dotnet="`Postgres`" pulumi-lang-go="`postgres`" pulumi-lang-python="`postgres`" pulumi-lang-yaml="`postgres`" pulumi-lang-java="`postgres`">`postgres`</span> are Multi-AZ RDS clusters).
+  /// Valid Values: `aurora-mysql`, `aurora-postgresql`, `mysql`, `postgres`.(Note that `mysql` and `postgres` are Multi-AZ RDS clusters).
   final Input<EngineType> engine;
 
-  /// Database engine version. Please note that to upgrade the <span pulumi-lang-nodejs="`engineVersion`" pulumi-lang-dotnet="`EngineVersion`" pulumi-lang-go="`engineVersion`" pulumi-lang-python="`engine_version`" pulumi-lang-yaml="`engineVersion`" pulumi-lang-java="`engineVersion`">`engine_version`</span> of the instance, it must be done on the <span pulumi-lang-nodejs="`aws.rds.Cluster`" pulumi-lang-dotnet="`aws.rds.Cluster`" pulumi-lang-go="`rds.Cluster`" pulumi-lang-python="`rds.Cluster`" pulumi-lang-yaml="`aws.rds.Cluster`" pulumi-lang-java="`aws.rds.Cluster`">`aws.rds.Cluster`</span> <span pulumi-lang-nodejs="`engineVersion`" pulumi-lang-dotnet="`EngineVersion`" pulumi-lang-go="`engineVersion`" pulumi-lang-python="`engine_version`" pulumi-lang-yaml="`engineVersion`" pulumi-lang-java="`engineVersion`">`engine_version`</span>. Trying to upgrade in <span pulumi-lang-nodejs="`awsClusterInstance`" pulumi-lang-dotnet="`AwsClusterInstance`" pulumi-lang-go="`awsClusterInstance`" pulumi-lang-python="`aws_cluster_instance`" pulumi-lang-yaml="`awsClusterInstance`" pulumi-lang-java="`awsClusterInstance`">`aws_cluster_instance`</span> will not update the <span pulumi-lang-nodejs="`engineVersion`" pulumi-lang-dotnet="`EngineVersion`" pulumi-lang-go="`engineVersion`" pulumi-lang-python="`engine_version`" pulumi-lang-yaml="`engineVersion`" pulumi-lang-java="`engineVersion`">`engine_version`</span>.
+  /// Database engine version. Please note that to upgrade the `engine_version` of the instance, it must be done on the `aws.rds.Cluster` `engine_version`. Trying to upgrade in `aws_cluster_instance` will not update the `engine_version`.
   final Input<String>? engineVersion;
 
   /// Forces an instance to be destroyed when a part of a read replica cluster. **Note:** will promote the read replica to a standalone cluster before instance deletion.
@@ -45,7 +45,7 @@ class ClusterInstanceArgs3 {
   /// Identifier for the RDS instance, if omitted, Pulumi will assign a random, unique identifier.
   final Input<String>? identifier;
 
-  /// Creates a unique identifier beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`identifier`" pulumi-lang-dotnet="`Identifier`" pulumi-lang-go="`identifier`" pulumi-lang-python="`identifier`" pulumi-lang-yaml="`identifier`" pulumi-lang-java="`identifier`">`identifier`</span>.
+  /// Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
   final Input<String>? identifierPrefix;
 
   /// Instance class to use. For details on CPU and memory, see [Scaling Aurora DB Instances](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html). Aurora uses `db.*` instance classes/types. Please see [AWS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html) for currently available instance classes and complete details. For Aurora Serverless v2 use `db.serverless`.
@@ -57,16 +57,16 @@ class ClusterInstanceArgs3 {
   /// ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. You can find more information on the [AWS Documentation](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html) what IAM permissions are needed to allow Enhanced Monitoring for RDS Instances.
   final Input<String>? monitoringRoleArn;
 
-  /// Specifies whether Performance Insights is enabled or not. **NOTE:** When Performance Insights is configured at the cluster level through <span pulumi-lang-nodejs="`aws.rds.Cluster`" pulumi-lang-dotnet="`aws.rds.Cluster`" pulumi-lang-go="`rds.Cluster`" pulumi-lang-python="`rds.Cluster`" pulumi-lang-yaml="`aws.rds.Cluster`" pulumi-lang-java="`aws.rds.Cluster`">`aws.rds.Cluster`</span>, this argument cannot be set to a value that conflicts with the cluster's configuration.
+  /// Specifies whether Performance Insights is enabled or not. **NOTE:** When Performance Insights is configured at the cluster level through `aws.rds.Cluster`, this argument cannot be set to a value that conflicts with the cluster's configuration.
   final Input<bool>? performanceInsightsEnabled;
 
-  /// ARN for the KMS key to encrypt Performance Insights data. When specifying <span pulumi-lang-nodejs="`performanceInsightsKmsKeyId`" pulumi-lang-dotnet="`PerformanceInsightsKmsKeyId`" pulumi-lang-go="`performanceInsightsKmsKeyId`" pulumi-lang-python="`performance_insights_kms_key_id`" pulumi-lang-yaml="`performanceInsightsKmsKeyId`" pulumi-lang-java="`performanceInsightsKmsKeyId`">`performance_insights_kms_key_id`</span>, <span pulumi-lang-nodejs="`performanceInsightsEnabled`" pulumi-lang-dotnet="`PerformanceInsightsEnabled`" pulumi-lang-go="`performanceInsightsEnabled`" pulumi-lang-python="`performance_insights_enabled`" pulumi-lang-yaml="`performanceInsightsEnabled`" pulumi-lang-java="`performanceInsightsEnabled`">`performance_insights_enabled`</span> needs to be set to true.
+  /// ARN for the KMS key to encrypt Performance Insights data. When specifying `performance_insights_kms_key_id`, `performance_insights_enabled` needs to be set to true.
   final Input<String>? performanceInsightsKmsKeyId;
 
-  /// Amount of time in days to retain Performance Insights data. Valid values are <span pulumi-lang-nodejs="`7`" pulumi-lang-dotnet="`7`" pulumi-lang-go="`7`" pulumi-lang-python="`7`" pulumi-lang-yaml="`7`" pulumi-lang-java="`7`">`7`</span>, <span pulumi-lang-nodejs="`731`" pulumi-lang-dotnet="`731`" pulumi-lang-go="`731`" pulumi-lang-python="`731`" pulumi-lang-yaml="`731`" pulumi-lang-java="`731`">`731`</span> (2 years) or a multiple of <span pulumi-lang-nodejs="`31`" pulumi-lang-dotnet="`31`" pulumi-lang-go="`31`" pulumi-lang-python="`31`" pulumi-lang-yaml="`31`" pulumi-lang-java="`31`">`31`</span>. When specifying <span pulumi-lang-nodejs="`performanceInsightsRetentionPeriod`" pulumi-lang-dotnet="`PerformanceInsightsRetentionPeriod`" pulumi-lang-go="`performanceInsightsRetentionPeriod`" pulumi-lang-python="`performance_insights_retention_period`" pulumi-lang-yaml="`performanceInsightsRetentionPeriod`" pulumi-lang-java="`performanceInsightsRetentionPeriod`">`performance_insights_retention_period`</span>, <span pulumi-lang-nodejs="`performanceInsightsEnabled`" pulumi-lang-dotnet="`PerformanceInsightsEnabled`" pulumi-lang-go="`performanceInsightsEnabled`" pulumi-lang-python="`performance_insights_enabled`" pulumi-lang-yaml="`performanceInsightsEnabled`" pulumi-lang-java="`performanceInsightsEnabled`">`performance_insights_enabled`</span> needs to be set to true. Defaults to '7'.
+  /// Amount of time in days to retain Performance Insights data. Valid values are `7`, `731` (2 years) or a multiple of `31`. When specifying `performance_insights_retention_period`, `performance_insights_enabled` needs to be set to true. Defaults to '7'.
   final Input<int>? performanceInsightsRetentionPeriod;
 
-  /// Daily time range during which automated backups are created if automated backups are enabled. Eg: "04:00-09:00". **NOTE:** If <span pulumi-lang-nodejs="`preferredBackupWindow`" pulumi-lang-dotnet="`PreferredBackupWindow`" pulumi-lang-go="`preferredBackupWindow`" pulumi-lang-python="`preferred_backup_window`" pulumi-lang-yaml="`preferredBackupWindow`" pulumi-lang-java="`preferredBackupWindow`">`preferred_backup_window`</span> is set at the cluster level, this argument **must** be omitted.
+  /// Daily time range during which automated backups are created if automated backups are enabled. Eg: "04:00-09:00". **NOTE:** If `preferred_backup_window` is set at the cluster level, this argument **must** be omitted.
   final Input<String>? preferredBackupWindow;
 
   /// Window to perform maintenance in. Syntax: "ddd:hh24:mi-ddd:hh24:mi". Eg: "Mon:00:00-Mon:03:00".
@@ -75,13 +75,13 @@ class ClusterInstanceArgs3 {
   /// Default 0. Failover Priority setting on instance level. The reader who has lower tier has higher priority to get promoted to writer.
   final Input<int>? promotionTier;
 
-  /// Bool to control if instance is publicly accessible. Default <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. See the documentation on [Creating DB Instances](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html) for more details on controlling this property.
+  /// Bool to control if instance is publicly accessible. Default `false`. See the documentation on [Creating DB Instances](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html) for more details on controlling this property.
   final Input<bool>? publiclyAccessible;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Map of tags to assign to the instance. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html).

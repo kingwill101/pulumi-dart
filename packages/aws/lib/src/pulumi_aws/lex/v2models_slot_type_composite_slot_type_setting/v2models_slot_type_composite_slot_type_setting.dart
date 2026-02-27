@@ -5,7 +5,7 @@ import '../v2models_slot_type_composite_slot_type_setting_sub_slot/v2models_slot
 
 class V2modelsSlotTypeCompositeSlotTypeSetting {
   /// Sub slots in the composite slot.
-  /// See <span pulumi-lang-nodejs="`subSlots`" pulumi-lang-dotnet="`SubSlots`" pulumi-lang-go="`subSlots`" pulumi-lang-python="`sub_slots`" pulumi-lang-yaml="`subSlots`" pulumi-lang-java="`subSlots`">`sub_slots`</span> argument reference below.
+  /// See `sub_slots` argument reference below.
   final List<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>? subSlots;
 
   V2modelsSlotTypeCompositeSlotTypeSetting({

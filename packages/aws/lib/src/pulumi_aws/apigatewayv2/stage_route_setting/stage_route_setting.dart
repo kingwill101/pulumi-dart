@@ -2,10 +2,10 @@
 
 class StageRouteSetting {
   /// Whether data trace logging is enabled for the route. Affects the log entries pushed to Amazon CloudWatch Logs.
-  /// Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Supported only for WebSocket APIs.
+  /// Defaults to `false`. Supported only for WebSocket APIs.
   final bool? dataTraceEnabled;
 
-  /// Whether detailed metrics are enabled for the route. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether detailed metrics are enabled for the route. Defaults to `false`.
   final bool? detailedMetricsEnabled;
 
   /// Logging level for the route. Affects the log entries pushed to Amazon CloudWatch Logs.

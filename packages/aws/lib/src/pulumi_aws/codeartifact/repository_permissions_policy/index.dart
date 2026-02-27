@@ -1,4 +1,0 @@
-library module_codeartifact_repository_permissions_policy;
-
-export 'repository_permissions_policy.dart';
-export 'repository_permissions_policy_args.dart';

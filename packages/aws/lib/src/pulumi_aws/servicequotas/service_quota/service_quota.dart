@@ -8,109 +8,11 @@ import 'service_quota_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.servicequotas.ServiceQuota("example", {
-/// quotaCode: "L-F678F1CE",
-/// serviceCode: "vpc",
-/// value: 75,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.servicequotas.ServiceQuota("example",
-/// quota_code="L-F678F1CE",
-/// service_code="vpc",
-/// value=75)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.ServiceQuotas.ServiceQuota("example", new()
-/// {
-/// QuotaCode = "L-F678F1CE",
-/// ServiceCode = "vpc",
-/// Value = 75,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/servicequotas"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := servicequotas.NewServiceQuota(ctx, "example", &servicequotas.ServiceQuotaArgs{
-/// QuotaCode:   pulumi.String("L-F678F1CE"),
-/// ServiceCode: pulumi.String("vpc"),
-/// Value:       pulumi.Float64(75),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.servicequotas.ServiceQuota;
-/// import com.pulumi.aws.servicequotas.ServiceQuotaArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new ServiceQuota("example", ServiceQuotaArgs.builder()
-/// .quotaCode("L-F678F1CE")
-/// .serviceCode("vpc")
-/// .value(75.0)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:servicequotas:ServiceQuota
-/// properties:
-/// quotaCode: L-F678F1CE
-/// serviceCode: vpc
-/// value: 75
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import <span pulumi-lang-nodejs="`aws.servicequotas.ServiceQuota`" pulumi-lang-dotnet="`aws.servicequotas.ServiceQuota`" pulumi-lang-go="`servicequotas.ServiceQuota`" pulumi-lang-python="`servicequotas.ServiceQuota`" pulumi-lang-yaml="`aws.servicequotas.ServiceQuota`" pulumi-lang-java="`aws.servicequotas.ServiceQuota`">`aws.servicequotas.ServiceQuota`</span> using the service code and quota code, separated by a front slash (`/`). For example:
+/// Using `pulumi import`, import `aws.servicequotas.ServiceQuota` using the service code and quota code, separated by a front slash (`/`). For example:
 ///
 /// > **NOTE:** This resource does not require explicit import and will assume management of an existing service quota on Pulumi resource creation.
 ///
@@ -138,7 +40,7 @@ class ServiceQuota extends CustomResource {
   late final Output<String> requestId;
   late final Output<String> requestStatus;
 
-  /// Code of the service to track. For example: <span pulumi-lang-nodejs="`vpc`" pulumi-lang-dotnet="`Vpc`" pulumi-lang-go="`vpc`" pulumi-lang-python="`vpc`" pulumi-lang-yaml="`vpc`" pulumi-lang-java="`vpc`">`vpc`</span>. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
+  /// Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
   late final Output<String> serviceCode;
 
   /// Name of the service.

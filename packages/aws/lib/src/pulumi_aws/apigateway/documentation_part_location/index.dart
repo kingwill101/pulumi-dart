@@ -1,3 +1,0 @@
-library module_apigateway_documentation_part_location;
-
-export 'documentation_part_location.dart';

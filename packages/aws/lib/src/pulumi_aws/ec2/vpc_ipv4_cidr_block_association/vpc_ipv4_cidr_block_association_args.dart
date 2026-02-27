@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for VpcIpv4CidrBlockAssociation.
 class VpcIpv4CidrBlockAssociationArgs {
-  /// The IPv4 CIDR block for the VPC. CIDR can be explicitly set or it can be derived from IPAM using <span pulumi-lang-nodejs="`ipv4NetmaskLength`" pulumi-lang-dotnet="`Ipv4NetmaskLength`" pulumi-lang-go="`ipv4NetmaskLength`" pulumi-lang-python="`ipv4_netmask_length`" pulumi-lang-yaml="`ipv4NetmaskLength`" pulumi-lang-java="`ipv4NetmaskLength`">`ipv4_netmask_length`</span>.
+  /// The IPv4 CIDR block for the VPC. CIDR can be explicitly set or it can be derived from IPAM using `ipv4_netmask_length`.
   final Input<String>? cidrBlock;
 
   /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
   final Input<String>? ipv4IpamPoolId;
 
-  /// The netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a <span pulumi-lang-nodejs="`ipv4IpamPoolId`" pulumi-lang-dotnet="`Ipv4IpamPoolId`" pulumi-lang-go="`ipv4IpamPoolId`" pulumi-lang-python="`ipv4_ipam_pool_id`" pulumi-lang-yaml="`ipv4IpamPoolId`" pulumi-lang-java="`ipv4IpamPoolId`">`ipv4_ipam_pool_id`</span>.
+  /// The netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4_ipam_pool_id`.
   final Input<int>? ipv4NetmaskLength;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

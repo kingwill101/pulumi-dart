@@ -4,7 +4,7 @@ class LogTransformerTransformerConfigDateTimeConverter {
   /// Specifies the locale of the source field. Defaults to `locale.ROOT`.
   final String? locale;
 
-  /// Specifies the list of patterns to match against the <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> field.
+  /// Specifies the list of patterns to match against the `source` field.
   final List<String> matchPatterns;
 
   /// Specifies the key to apply the date conversion to.

@@ -9,7 +9,7 @@ class GetProtectionArgs {
 
   /// ARN (Amazon Resource Name) of the resource being protected.
   ///
-  /// > Exactly one of <span pulumi-lang-nodejs="`protectionId`" pulumi-lang-dotnet="`ProtectionId`" pulumi-lang-go="`protectionId`" pulumi-lang-python="`protection_id`" pulumi-lang-yaml="`protectionId`" pulumi-lang-java="`protectionId`">`protection_id`</span> or <span pulumi-lang-nodejs="`resourceArn`" pulumi-lang-dotnet="`ResourceArn`" pulumi-lang-go="`resourceArn`" pulumi-lang-python="`resource_arn`" pulumi-lang-yaml="`resourceArn`" pulumi-lang-java="`resourceArn`">`resource_arn`</span> is required.
+  /// > Exactly one of `protection_id` or `resource_arn` is required.
   final Input<String>? resourceArn;
 
   GetProtectionArgs({

@@ -20,7 +20,7 @@ class GetGroupResult {
   /// Desired size of the group.
   final int desiredCapacity;
 
-  /// The unit of measurement for the value returned for <span pulumi-lang-nodejs="`desiredCapacity`" pulumi-lang-dotnet="`DesiredCapacity`" pulumi-lang-go="`desiredCapacity`" pulumi-lang-python="`desired_capacity`" pulumi-lang-yaml="`desiredCapacity`" pulumi-lang-java="`desiredCapacity`">`desired_capacity`</span>.
+  /// The unit of measurement for the value returned for `desired_capacity`.
   final String desiredCapacityType;
 
   /// List of metrics enabled for collection.

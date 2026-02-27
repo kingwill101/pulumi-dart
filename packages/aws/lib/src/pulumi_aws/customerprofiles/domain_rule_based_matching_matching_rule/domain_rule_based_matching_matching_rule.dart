@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DomainRuleBasedMatchingMatchingRule {
-  /// A single rule level of the <span pulumi-lang-nodejs="`matchRules`" pulumi-lang-dotnet="`MatchRules`" pulumi-lang-go="`matchRules`" pulumi-lang-python="`match_rules`" pulumi-lang-yaml="`matchRules`" pulumi-lang-java="`matchRules`">`match_rules`</span>. Configures how the rule-based matching process should match profiles.
+  /// A single rule level of the `match_rules`. Configures how the rule-based matching process should match profiles.
   final List<String> rules;
 
   DomainRuleBasedMatchingMatchingRule({

@@ -24,21 +24,21 @@ class IntegrationArgs2 {
   /// Description of the integration.
   final Input<String>? description;
 
-  /// Integration's HTTP method. Must be specified if <span pulumi-lang-nodejs="`integrationType`" pulumi-lang-dotnet="`IntegrationType`" pulumi-lang-go="`integrationType`" pulumi-lang-python="`integration_type`" pulumi-lang-yaml="`integrationType`" pulumi-lang-java="`integrationType`">`integration_type`</span> is not `MOCK`.
+  /// Integration's HTTP method. Must be specified if `integration_type` is not `MOCK`.
   final Input<String>? integrationMethod;
 
-  /// AWS service action to invoke. Supported only for HTTP APIs when <span pulumi-lang-nodejs="`integrationType`" pulumi-lang-dotnet="`IntegrationType`" pulumi-lang-go="`integrationType`" pulumi-lang-python="`integration_type`" pulumi-lang-yaml="`integrationType`" pulumi-lang-java="`integrationType`">`integration_type`</span> is `AWS_PROXY`. See the [AWS service integration reference](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html) documentation for supported values. Must be between 1 and 128 characters in length.
+  /// AWS service action to invoke. Supported only for HTTP APIs when `integration_type` is `AWS_PROXY`. See the [AWS service integration reference](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html) documentation for supported values. Must be between 1 and 128 characters in length.
   final Input<String>? integrationSubtype;
 
   /// Integration type of an integration.
   /// Valid values: `AWS` (supported only for WebSocket APIs), `AWS_PROXY`, `HTTP` (supported only for WebSocket APIs), `HTTP_PROXY`, `MOCK` (supported only for WebSocket APIs). For an HTTP API private integration, use `HTTP_PROXY`.
   final Input<String> integrationType;
 
-  /// URI of the Lambda function for a Lambda proxy integration, when <span pulumi-lang-nodejs="`integrationType`" pulumi-lang-dotnet="`IntegrationType`" pulumi-lang-go="`integrationType`" pulumi-lang-python="`integration_type`" pulumi-lang-yaml="`integrationType`" pulumi-lang-java="`integrationType`">`integration_type`</span> is `AWS_PROXY`.
+  /// URI of the Lambda function for a Lambda proxy integration, when `integration_type` is `AWS_PROXY`.
   /// For an `HTTP` integration, specify a fully-qualified URL. For an HTTP API private integration, specify the ARN of an Application Load Balancer listener, Network Load Balancer listener, or AWS Cloud Map service.
   final Input<String>? integrationUri;
 
-  /// Pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the <span pulumi-lang-nodejs="`requestTemplates`" pulumi-lang-dotnet="`RequestTemplates`" pulumi-lang-go="`requestTemplates`" pulumi-lang-python="`request_templates`" pulumi-lang-yaml="`requestTemplates`" pulumi-lang-java="`requestTemplates`">`request_templates`</span> attribute.
+  /// Pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the `request_templates` attribute.
   /// Valid values: `WHEN_NO_MATCH`, `WHEN_NO_TEMPLATES`, `NEVER`. Default is `WHEN_NO_MATCH`. Supported only for WebSocket APIs.
   final Input<String>? passthroughBehavior;
 
@@ -49,8 +49,8 @@ class IntegrationArgs2 {
   final Input<String>? region;
 
   /// For WebSocket APIs, a key-value map specifying request parameters that are passed from the method request to the backend.
-  /// For HTTP APIs with a specified <span pulumi-lang-nodejs="`integrationSubtype`" pulumi-lang-dotnet="`IntegrationSubtype`" pulumi-lang-go="`integrationSubtype`" pulumi-lang-python="`integration_subtype`" pulumi-lang-yaml="`integrationSubtype`" pulumi-lang-java="`integrationSubtype`">`integration_subtype`</span>, a key-value map specifying parameters that are passed to `AWS_PROXY` integrations.
-  /// For HTTP APIs without a specified <span pulumi-lang-nodejs="`integrationSubtype`" pulumi-lang-dotnet="`IntegrationSubtype`" pulumi-lang-go="`integrationSubtype`" pulumi-lang-python="`integration_subtype`" pulumi-lang-yaml="`integrationSubtype`" pulumi-lang-java="`integrationSubtype`">`integration_subtype`</span>, a key-value map specifying how to transform HTTP requests before sending them to the backend.
+  /// For HTTP APIs with a specified `integration_subtype`, a key-value map specifying parameters that are passed to `AWS_PROXY` integrations.
+  /// For HTTP APIs without a specified `integration_subtype`, a key-value map specifying how to transform HTTP requests before sending them to the backend.
   /// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html) for details.
   final Input<Map<String, String>>? requestParameters;
 

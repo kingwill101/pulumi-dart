@@ -1,3 +1,0 @@
-library module_pipes_pipe_target_parameters_ecs_task_parameters_placement_strategy;
-
-export 'pipe_target_parameters_ecs_task_parameters_placement_strategy.dart';

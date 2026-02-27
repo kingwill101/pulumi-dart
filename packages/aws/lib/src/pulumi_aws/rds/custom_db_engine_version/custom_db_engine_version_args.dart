@@ -19,16 +19,16 @@ class CustomDbEngineVersionArgs {
   /// The version of the database engine.
   final Input<String> engineVersion;
 
-  /// The name of the manifest file within the local filesystem. Conflicts with <span pulumi-lang-nodejs="`manifest`" pulumi-lang-dotnet="`Manifest`" pulumi-lang-go="`manifest`" pulumi-lang-python="`manifest`" pulumi-lang-yaml="`manifest`" pulumi-lang-java="`manifest`">`manifest`</span>.
+  /// The name of the manifest file within the local filesystem. Conflicts with `manifest`.
   final Input<String>? filename;
 
   /// The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
   final Input<String>? kmsKeyId;
 
-  /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span>.
+  /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
   final Input<String>? manifest;
 
-  /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with <span pulumi-lang-nodejs="`filename`" pulumi-lang-dotnet="`Filename`" pulumi-lang-go="`filename`" pulumi-lang-python="`filename`" pulumi-lang-yaml="`filename`" pulumi-lang-java="`filename`">`filename`</span>. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
+  /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
   final Input<String>? manifestHash;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -37,10 +37,10 @@ class CustomDbEngineVersionArgs {
   /// The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
   final Input<String>? sourceImageId;
 
-  /// The status of the CEV. Valid values are <span pulumi-lang-nodejs="`available`" pulumi-lang-dotnet="`Available`" pulumi-lang-go="`available`" pulumi-lang-python="`available`" pulumi-lang-yaml="`available`" pulumi-lang-java="`available`">`available`</span>, <span pulumi-lang-nodejs="`inactive`" pulumi-lang-dotnet="`Inactive`" pulumi-lang-go="`inactive`" pulumi-lang-python="`inactive`" pulumi-lang-yaml="`inactive`" pulumi-lang-java="`inactive`">`inactive`</span>, `inactive-except-restore`.
+  /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   final Input<String>? status;
 
-  /// A mapping of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   CustomDbEngineVersionArgs({

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../service_dns_config_dns_record/service_dns_config_dns_record.dart';
 
 class ServiceDnsConfig {
-  /// An array that contains one DnsRecord object for each resource record set. See <span pulumi-lang-nodejs="`dnsRecords`" pulumi-lang-dotnet="`DnsRecords`" pulumi-lang-go="`dnsRecords`" pulumi-lang-python="`dns_records`" pulumi-lang-yaml="`dnsRecords`" pulumi-lang-java="`dnsRecords`">`dns_records`</span> Block for details.
+  /// An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
   final List<ServiceDnsConfigDnsRecord> dnsRecords;
 
   /// The ID of the namespace to use for DNS configuration.

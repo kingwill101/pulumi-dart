@@ -13,7 +13,7 @@ class IndexingConfigurationThingIndexingConfiguration {
   /// Device Defender indexing mode. Valid values: `VIOLATIONS`, `OFF`. Default: `OFF`.
   final String? deviceDefenderIndexingMode;
 
-  /// Required if <span pulumi-lang-nodejs="`namedShadowIndexingMode`" pulumi-lang-dotnet="`NamedShadowIndexingMode`" pulumi-lang-go="`namedShadowIndexingMode`" pulumi-lang-python="`named_shadow_indexing_mode`" pulumi-lang-yaml="`namedShadowIndexingMode`" pulumi-lang-java="`namedShadowIndexingMode`">`named_shadow_indexing_mode`</span> is `ON`. Enables to add named shadows filtered by <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> to fleet indexing configuration.
+  /// Required if `named_shadow_indexing_mode` is `ON`. Enables to add named shadows filtered by `filter` to fleet indexing configuration.
   final IndexingConfigurationThingIndexingConfigurationFilter? filter;
 
   /// Contains fields that are indexed and whose types are already known by the Fleet Indexing service. See below.

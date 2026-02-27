@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for CustomerGateway.
 class CustomerGatewayArgs {
-  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> to <span pulumi-lang-nodejs="`2147483647`" pulumi-lang-dotnet="`2147483647`" pulumi-lang-go="`2147483647`" pulumi-lang-python="`2147483647`" pulumi-lang-yaml="`2147483647`" pulumi-lang-java="`2147483647`">`2147483647`</span>. Conflicts with <span pulumi-lang-nodejs="`bgpAsnExtended`" pulumi-lang-dotnet="`BgpAsnExtended`" pulumi-lang-go="`bgpAsnExtended`" pulumi-lang-python="`bgp_asn_extended`" pulumi-lang-yaml="`bgpAsnExtended`" pulumi-lang-java="`bgpAsnExtended`">`bgp_asn_extended`</span>.
+  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  `1` to `2147483647`. Conflicts with `bgp_asn_extended`.
   final Input<String>? bgpAsn;
 
-  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  <span pulumi-lang-nodejs="`2147483648`" pulumi-lang-dotnet="`2147483648`" pulumi-lang-go="`2147483648`" pulumi-lang-python="`2147483648`" pulumi-lang-yaml="`2147483648`" pulumi-lang-java="`2147483648`">`2147483648`</span> to <span pulumi-lang-nodejs="`4294967295`" pulumi-lang-dotnet="`4294967295`" pulumi-lang-go="`4294967295`" pulumi-lang-python="`4294967295`" pulumi-lang-yaml="`4294967295`" pulumi-lang-java="`4294967295`">`4294967295`</span> Conflicts with <span pulumi-lang-nodejs="`bgpAsn`" pulumi-lang-dotnet="`BgpAsn`" pulumi-lang-go="`bgpAsn`" pulumi-lang-python="`bgp_asn`" pulumi-lang-yaml="`bgpAsn`" pulumi-lang-java="`bgpAsn`">`bgp_asn`</span>.
+  /// The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). Valid values are from  `2147483648` to `4294967295` Conflicts with `bgp_asn`.
   final Input<String>? bgpAsnExtended;
 
   /// The Amazon Resource Name (ARN) for the customer gateway certificate.
@@ -22,7 +22,7 @@ class CustomerGatewayArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Tags to apply to the gateway. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the gateway. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// The type of customer gateway. The only type AWS

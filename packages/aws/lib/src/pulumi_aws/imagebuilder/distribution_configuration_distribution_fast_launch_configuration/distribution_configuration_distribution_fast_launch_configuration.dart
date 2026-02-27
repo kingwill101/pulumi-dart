@@ -7,7 +7,7 @@ class DistributionConfigurationDistributionFastLaunchConfiguration {
   /// The owner account ID for the fast-launch enabled Windows AMI.
   final String accountId;
 
-  /// A Boolean that represents the current state of faster launching for the Windows AMI. Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to start using Windows faster launching, or <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> to stop using it.
+  /// A Boolean that represents the current state of faster launching for the Windows AMI. Set to `true` to start using Windows faster launching, or `false` to stop using it.
   final bool enabled;
 
   /// Configuration block for the launch template that the fast-launch enabled Windows AMI uses when it launches Windows instances to create pre-provisioned snapshots. Detailed below.

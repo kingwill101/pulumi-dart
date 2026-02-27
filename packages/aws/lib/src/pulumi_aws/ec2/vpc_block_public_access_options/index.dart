@@ -1,4 +1,0 @@
-library module_ec2_vpc_block_public_access_options;
-
-export 'vpc_block_public_access_options.dart';
-export 'vpc_block_public_access_options_args.dart';

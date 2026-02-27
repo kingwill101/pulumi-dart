@@ -20,104 +20,8 @@ import 'ami_from_instance_args.dart';
 /// resource. Ongoing updates to the referenced instance will not be propagated into
 /// the generated AMI. Users may taint or otherwise recreate the resource in order
 /// to produce a fresh snapshot.
-///
-/// ## Example Usage
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const example = new aws.ec2.AmiFromInstance("example", {
-/// name: "example",
-/// sourceInstanceId: "i-xxxxxxxx",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.ec2.AmiFromInstance("example",
-/// name="example",
-/// source_instance_id="i-xxxxxxxx")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Ec2.AmiFromInstance("example", new()
-/// {
-/// Name = "example",
-/// SourceInstanceId = "i-xxxxxxxx",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := ec2.NewAmiFromInstance(ctx, "example", &ec2.AmiFromInstanceArgs{
-/// Name:             pulumi.String("example"),
-/// SourceInstanceId: pulumi.String("i-xxxxxxxx"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.ec2.AmiFromInstance;
-/// import com.pulumi.aws.ec2.AmiFromInstanceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new AmiFromInstance("example", AmiFromInstanceArgs.builder()
-/// .name("example")
-/// .sourceInstanceId("i-xxxxxxxx")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:ec2:AmiFromInstance
-/// properties:
-/// name: example
-/// sourceInstanceId: i-xxxxxxxx
-/// ```
-/// <!--End PulumiCodeChooser -->
 class AmiFromInstance extends CustomResource {
-  /// Machine architecture for created instances. Defaults to <span pulumi-lang-nodejs="`x8664`" pulumi-lang-dotnet="`X8664`" pulumi-lang-go="`x8664`" pulumi-lang-python="`x86_64`" pulumi-lang-yaml="`x8664`" pulumi-lang-java="`x8664`">`x86_64`</span>.
+  /// Machine architecture for created instances. Defaults to `x86_64`.
   late final Output<String> architecture;
 
   /// ARN of the AMI.
@@ -136,7 +40,7 @@ class AmiFromInstance extends CustomResource {
   /// attached to created instances. The structure of this block is described below.
   late final Output<List<AmiFromInstanceEbsBlockDevice>> ebsBlockDevices;
 
-  /// Whether enhanced networking with ENA is enabled. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
   late final Output<bool> enaSupport;
 
   /// Nested block describing an ephemeral block device that
@@ -193,7 +97,7 @@ class AmiFromInstance extends CustomResource {
   /// for created instances. No other value is supported at this time.
   late final Output<String> sriovNetSupport;
 
-  /// Map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
   late final Output<Map<String, String>> tagsAll;
 

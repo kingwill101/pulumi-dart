@@ -1,0 +1,3 @@
+library module_lambda_get_function_dead_letter_config;
+
+export 'get_function_dead_letter_config/get_function_dead_letter_config.dart';

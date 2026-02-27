@@ -1,0 +1,3 @@
+library module_sagemaker_workforce_cognito_config;
+
+export 'workforce_cognito_config/workforce_cognito_config.dart';

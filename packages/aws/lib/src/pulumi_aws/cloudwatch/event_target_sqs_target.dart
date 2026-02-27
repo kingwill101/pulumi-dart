@@ -1,0 +1,3 @@
+library module_cloudwatch_event_target_sqs_target;
+
+export 'event_target_sqs_target/event_target_sqs_target.dart';

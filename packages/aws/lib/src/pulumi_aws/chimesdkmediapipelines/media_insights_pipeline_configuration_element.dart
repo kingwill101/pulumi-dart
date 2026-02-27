@@ -1,0 +1,3 @@
+library module_chimesdkmediapipelines_media_insights_pipeline_configuration_element;
+
+export 'media_insights_pipeline_configuration_element/media_insights_pipeline_configuration_element.dart';

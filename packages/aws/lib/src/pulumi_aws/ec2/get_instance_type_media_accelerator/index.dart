@@ -1,3 +1,0 @@
-library module_ec2_get_instance_type_media_accelerator;
-
-export 'get_instance_type_media_accelerator.dart';

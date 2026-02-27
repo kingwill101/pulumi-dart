@@ -1,3 +1,0 @@
-library module_odb_get_db_system_shapes_db_system_shape;
-
-export 'get_db_system_shapes_db_system_shape.dart';

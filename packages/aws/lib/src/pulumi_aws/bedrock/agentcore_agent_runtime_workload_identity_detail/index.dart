@@ -1,3 +1,0 @@
-library module_bedrock_agentcore_agent_runtime_workload_identity_detail;
-
-export 'agentcore_agent_runtime_workload_identity_detail.dart';

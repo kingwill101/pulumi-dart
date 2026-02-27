@@ -5,7 +5,7 @@ import '../get_multi_region_access_points_access_point/get_multi_region_access_p
 
 /// Result data returned by getMultiRegionAccessPoints.
 class GetMultiRegionAccessPointsResult {
-  /// List of multi-region access points. See <span pulumi-lang-nodejs="`accessPoints`" pulumi-lang-dotnet="`AccessPoints`" pulumi-lang-go="`accessPoints`" pulumi-lang-python="`access_points`" pulumi-lang-yaml="`accessPoints`" pulumi-lang-java="`accessPoints`">`access_points`</span> below.
+  /// List of multi-region access points. See `access_points` below.
   final List<GetMultiRegionAccessPointsAccessPoint> accessPoints;
   final String? accountId;
 

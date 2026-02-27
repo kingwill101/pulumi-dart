@@ -3,7 +3,7 @@
 import '../field_level_encryption_config_content_type_profile_config_content_type_profiles/field_level_encryption_config_content_type_profile_config_content_type_profiles.dart';
 
 class FieldLevelEncryptionConfigContentTypeProfileConfig {
-  /// Object that contains an attribute <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> that contains the list of configurations for a field-level encryption content type-profile. See Content Type Profile.
+  /// Object that contains an attribute `items` that contains the list of configurations for a field-level encryption content type-profile. See Content Type Profile.
   final FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles
       contentTypeProfiles;
 

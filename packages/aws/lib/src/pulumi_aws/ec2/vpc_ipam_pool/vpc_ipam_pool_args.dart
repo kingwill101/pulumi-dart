@@ -24,7 +24,7 @@ class VpcIpamPoolArgs {
   /// within the CIDR range in the pool.
   final Input<bool>? autoImport;
 
-  /// Limits which AWS service the pool can be used in. Only useable on public scopes. Valid Values: <span pulumi-lang-nodejs="`ec2`" pulumi-lang-dotnet="`Ec2`" pulumi-lang-go="`ec2`" pulumi-lang-python="`ec2`" pulumi-lang-yaml="`ec2`" pulumi-lang-java="`ec2`">`ec2`</span>.
+  /// Limits which AWS service the pool can be used in. Only useable on public scopes. Valid Values: `ec2`.
   final Input<String>? awsService;
 
   /// Enables you to quickly delete an IPAM pool and all resources within that pool, including provisioned CIDRs, allocations, and other pools.
@@ -39,10 +39,10 @@ class VpcIpamPoolArgs {
   /// The locale in which you would like to create the IPAM pool. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region. Possible values: Any AWS region, such as `us-east-1`.
   final Input<String>? locale;
 
-  /// The IP address source for pools in the public scope. Only used for provisioning IP address CIDRs to pools in the public scope. Valid values are <span pulumi-lang-nodejs="`byoip`" pulumi-lang-dotnet="`Byoip`" pulumi-lang-go="`byoip`" pulumi-lang-python="`byoip`" pulumi-lang-yaml="`byoip`" pulumi-lang-java="`byoip`">`byoip`</span> or <span pulumi-lang-nodejs="`amazon`" pulumi-lang-dotnet="`Amazon`" pulumi-lang-go="`amazon`" pulumi-lang-python="`amazon`" pulumi-lang-yaml="`amazon`" pulumi-lang-java="`amazon`">`amazon`</span>. Default is <span pulumi-lang-nodejs="`byoip`" pulumi-lang-dotnet="`Byoip`" pulumi-lang-go="`byoip`" pulumi-lang-python="`byoip`" pulumi-lang-yaml="`byoip`" pulumi-lang-java="`byoip`">`byoip`</span>.
+  /// The IP address source for pools in the public scope. Only used for provisioning IP address CIDRs to pools in the public scope. Valid values are `byoip` or `amazon`. Default is `byoip`.
   final Input<String>? publicIpSource;
 
-  /// Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if <span pulumi-lang-nodejs="`addressFamily " pulumi-lang-dotnet="`AddressFamily " pulumi-lang-go="`addressFamily " pulumi-lang-python="`address_family " pulumi-lang-yaml="`addressFamily " pulumi-lang-java="`addressFamily ">`address_family </span>= "ipv6"` and <span pulumi-lang-nodejs="`publicIpSource " pulumi-lang-dotnet="`PublicIpSource " pulumi-lang-go="`publicIpSource " pulumi-lang-python="`public_ip_source " pulumi-lang-yaml="`publicIpSource " pulumi-lang-java="`publicIpSource ">`public_ip_source </span>= "byoip"`, default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. This option is not available for IPv4 pool space or if <span pulumi-lang-nodejs="`publicIpSource " pulumi-lang-dotnet="`PublicIpSource " pulumi-lang-go="`publicIpSource " pulumi-lang-python="`public_ip_source " pulumi-lang-yaml="`publicIpSource " pulumi-lang-java="`publicIpSource ">`public_ip_source </span>= "amazon"`. Setting this argument to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> when it is not available may result in erroneous differences being reported.
+  /// Defines whether or not IPv6 pool space is publicly advertisable over the internet. This argument is required if `address_family = "ipv6"` and `public_ip_source = "byoip"`, default is `false`. This option is not available for IPv4 pool space or if `public_ip_source = "amazon"`. Setting this argument to `true` when it is not available may result in erroneous differences being reported.
   final Input<bool>? publiclyAdvertisable;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -51,10 +51,10 @@ class VpcIpamPoolArgs {
   /// The ID of the source IPAM pool. Use this argument to create a child pool within an existing pool.
   final Input<String>? sourceIpamPoolId;
 
-  /// Resource to use to use to configure a resource planning IPAM Pool. If configured, the <span pulumi-lang-nodejs="`locale`" pulumi-lang-dotnet="`Locale`" pulumi-lang-go="`locale`" pulumi-lang-python="`locale`" pulumi-lang-yaml="`locale`" pulumi-lang-java="`locale`">`locale`</span> of the parent pool must match the region that the vpc resides in.
+  /// Resource to use to use to configure a resource planning IPAM Pool. If configured, the `locale` of the parent pool must match the region that the vpc resides in.
   final Input<VpcIpamPoolSourceResource>? sourceResource;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   VpcIpamPoolArgs({

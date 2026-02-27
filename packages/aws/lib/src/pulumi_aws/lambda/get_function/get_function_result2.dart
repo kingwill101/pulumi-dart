@@ -75,10 +75,10 @@ class GetFunctionResult2 {
   /// Amount of memory in MB your Lambda Function can use at runtime.
   final int memorySize;
 
-  /// Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN identifying your Lambda Function. See also <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span>.
+  /// Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN identifying your Lambda Function. See also `arn`.
   final String qualifiedArn;
 
-  /// Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN to be used for invoking Lambda Function from API Gateway. See also <span pulumi-lang-nodejs="`invokeArn`" pulumi-lang-dotnet="`InvokeArn`" pulumi-lang-go="`invokeArn`" pulumi-lang-python="`invoke_arn`" pulumi-lang-yaml="`invokeArn`" pulumi-lang-java="`invokeArn`">`invoke_arn`</span>.
+  /// Qualified (`:QUALIFIER` or `:VERSION` suffix) ARN to be used for invoking Lambda Function from API Gateway. See also `invoke_arn`.
   final String qualifiedInvokeArn;
   final String? qualifier;
   final String region;
@@ -101,7 +101,7 @@ class GetFunctionResult2 {
   /// ARN for a signing profile version.
   final String signingProfileVersionArn;
 
-  /// (**Deprecated** use <span pulumi-lang-nodejs="`codeSha256`" pulumi-lang-dotnet="`CodeSha256`" pulumi-lang-go="`codeSha256`" pulumi-lang-python="`code_sha256`" pulumi-lang-yaml="`codeSha256`" pulumi-lang-java="`codeSha256`">`code_sha256`</span> instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
+  /// (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   final String sourceCodeHash;
 
   /// Size in bytes of the function .zip file.
@@ -122,7 +122,7 @@ class GetFunctionResult2 {
   /// Tracing settings of the function. See below.
   final GetFunctionTracingConfig tracingConfig;
 
-  /// Version of the Lambda function returned. If <span pulumi-lang-nodejs="`qualifier`" pulumi-lang-dotnet="`Qualifier`" pulumi-lang-go="`qualifier`" pulumi-lang-python="`qualifier`" pulumi-lang-yaml="`qualifier`" pulumi-lang-java="`qualifier`">`qualifier`</span> is not set, this will resolve to the most recent published version. If no published version of the function exists, <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> will resolve to `$LATEST`.
+  /// Version of the Lambda function returned. If `qualifier` is not set, this will resolve to the most recent published version. If no published version of the function exists, `version` will resolve to `$LATEST`.
   final String version;
 
   /// VPC configuration associated with your Lambda function. See below.

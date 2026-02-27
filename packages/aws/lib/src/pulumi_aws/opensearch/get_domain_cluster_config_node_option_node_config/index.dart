@@ -1,3 +1,0 @@
-library module_opensearch_get_domain_cluster_config_node_option_node_config;
-
-export 'get_domain_cluster_config_node_option_node_config.dart';

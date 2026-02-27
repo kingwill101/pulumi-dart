@@ -1,0 +1,3 @@
+library module_cognito_managed_login_branding_asset;
+
+export 'managed_login_branding_asset/managed_login_branding_asset.dart';

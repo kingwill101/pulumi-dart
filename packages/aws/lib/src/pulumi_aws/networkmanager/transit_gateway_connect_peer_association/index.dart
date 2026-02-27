@@ -1,4 +1,0 @@
-library module_networkmanager_transit_gateway_connect_peer_association;
-
-export 'transit_gateway_connect_peer_association.dart';
-export 'transit_gateway_connect_peer_association_args.dart';

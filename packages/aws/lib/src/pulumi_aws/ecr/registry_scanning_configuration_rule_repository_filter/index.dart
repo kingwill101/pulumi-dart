@@ -1,3 +1,0 @@
-library module_ecr_registry_scanning_configuration_rule_repository_filter;
-
-export 'registry_scanning_configuration_rule_repository_filter.dart';

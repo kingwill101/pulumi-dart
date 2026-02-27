@@ -17,10 +17,10 @@ class DataQualityRulesetArgs {
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   final Input<String> ruleset;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// A Configuration block specifying a target table associated with the data quality ruleset. See <span pulumi-lang-nodejs="`targetTable`" pulumi-lang-dotnet="`TargetTable`" pulumi-lang-go="`targetTable`" pulumi-lang-python="`target_table`" pulumi-lang-yaml="`targetTable`" pulumi-lang-java="`targetTable`">`target_table`</span> below.
+  /// A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
   final Input<DataQualityRulesetTargetTable>? targetTable;
 
   DataQualityRulesetArgs({

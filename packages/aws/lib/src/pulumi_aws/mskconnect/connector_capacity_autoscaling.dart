@@ -1,0 +1,3 @@
+library module_mskconnect_connector_capacity_autoscaling;
+
+export 'connector_capacity_autoscaling/connector_capacity_autoscaling.dart';

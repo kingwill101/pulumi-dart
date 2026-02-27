@@ -12,7 +12,7 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
   final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock?
       block;
 
-  /// Instructs AWS WAF to run a Captcha check against the web request. See <span pulumi-lang-nodejs="`captcha`" pulumi-lang-dotnet="`Captcha`" pulumi-lang-go="`captcha`" pulumi-lang-python="`captcha`" pulumi-lang-yaml="`captcha`" pulumi-lang-java="`captcha`">`captcha`</span> below for details.
+  /// Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
   final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha?
       captcha;
   final WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge?

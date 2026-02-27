@@ -1,3 +1,0 @@
-library module_memorydb_get_snapshot_cluster_configuration;
-
-export 'get_snapshot_cluster_configuration.dart';

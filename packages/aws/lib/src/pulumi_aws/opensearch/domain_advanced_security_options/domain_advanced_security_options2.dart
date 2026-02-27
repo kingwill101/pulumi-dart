@@ -3,13 +3,13 @@
 import '../domain_advanced_security_options_master_user_options/domain_advanced_security_options_master_user_options2.dart';
 
 class DomainAdvancedSecurityOptions2 {
-  /// Whether Anonymous auth is enabled. Enables fine-grained access control on an existing domain. Ignored unless <span pulumi-lang-nodejs="`advancedSecurityOptions`" pulumi-lang-dotnet="`AdvancedSecurityOptions`" pulumi-lang-go="`advancedSecurityOptions`" pulumi-lang-python="`advanced_security_options`" pulumi-lang-yaml="`advancedSecurityOptions`" pulumi-lang-java="`advancedSecurityOptions`">`advanced_security_options`</span> are enabled. _Can only be enabled on an existing domain._
+  /// Whether Anonymous auth is enabled. Enables fine-grained access control on an existing domain. Ignored unless `advanced_security_options` are enabled. _Can only be enabled on an existing domain._
   final bool? anonymousAuthEnabled;
 
   /// Whether advanced security is enabled.
   final bool enabled;
 
-  /// Whether the internal user database is enabled. Default is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether the internal user database is enabled. Default is `false`.
   final bool? internalUserDatabaseEnabled;
 
   /// Configuration block for the main user. Detailed below.

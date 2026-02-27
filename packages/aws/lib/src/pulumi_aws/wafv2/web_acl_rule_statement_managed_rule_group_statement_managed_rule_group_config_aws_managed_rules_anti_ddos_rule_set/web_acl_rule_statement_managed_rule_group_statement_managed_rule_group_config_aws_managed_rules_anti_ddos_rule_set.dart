@@ -3,7 +3,7 @@
 import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_anti_ddos_rule_set_client_side_action_config/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_aws_managed_rules_anti_ddos_rule_set_client_side_action_config.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet {
-  /// Configuration for the request handling that's applied by the managed rule group rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` during a distributed denial of service (DDoS) attack. See <span pulumi-lang-nodejs="`clientSideActionConfig`" pulumi-lang-dotnet="`ClientSideActionConfig`" pulumi-lang-go="`clientSideActionConfig`" pulumi-lang-python="`client_side_action_config`" pulumi-lang-yaml="`clientSideActionConfig`" pulumi-lang-java="`clientSideActionConfig`">`client_side_action_config`</span> for more details.
+  /// Configuration for the request handling that's applied by the managed rule group rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` during a distributed denial of service (DDoS) attack. See `client_side_action_config` for more details.
   final WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfig
       clientSideActionConfig;
 

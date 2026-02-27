@@ -4,7 +4,7 @@ class GetRepositoryCreationTemplateEncryptionConfiguration {
   /// Encryption type to use for any created repositories, either `AES256` or `KMS`.
   final String encryptionType;
 
-  /// If <span pulumi-lang-nodejs="`encryptionType`" pulumi-lang-dotnet="`EncryptionType`" pulumi-lang-go="`encryptionType`" pulumi-lang-python="`encryption_type`" pulumi-lang-yaml="`encryptionType`" pulumi-lang-java="`encryptionType`">`encryption_type`</span> is `KMS`, the ARN of the KMS key used.
+  /// If `encryption_type` is `KMS`, the ARN of the KMS key used.
   final String kmsKey;
 
   GetRepositoryCreationTemplateEncryptionConfiguration({

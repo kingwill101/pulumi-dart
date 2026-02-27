@@ -6,7 +6,7 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
   /// Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
   final String configurationState;
 
-  /// Encryption configuration for the inventory table. See <span pulumi-lang-nodejs="`encryptionConfiguration`" pulumi-lang-dotnet="`EncryptionConfiguration`" pulumi-lang-go="`encryptionConfiguration`" pulumi-lang-python="`encryption_configuration`" pulumi-lang-yaml="`encryptionConfiguration`" pulumi-lang-java="`encryptionConfiguration`">`encryption_configuration`</span> Block for details.
+  /// Encryption configuration for the inventory table. See `encryption_configuration` Block for details.
   final BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration?
       encryptionConfiguration;
 

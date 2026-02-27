@@ -1,3 +1,0 @@
-library module_ecs_express_gateway_service_scaling_target;
-
-export 'express_gateway_service_scaling_target.dart';

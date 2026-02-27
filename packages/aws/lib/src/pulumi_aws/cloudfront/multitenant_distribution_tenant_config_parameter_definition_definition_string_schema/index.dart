@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_tenant_config_parameter_definition_definition_string_schema;
-
-export 'multitenant_distribution_tenant_config_parameter_definition_definition_string_schema.dart';

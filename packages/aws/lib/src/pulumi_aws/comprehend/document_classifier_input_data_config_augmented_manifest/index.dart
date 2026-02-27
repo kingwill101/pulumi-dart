@@ -1,3 +1,0 @@
-library module_comprehend_document_classifier_input_data_config_augmented_manifest;
-
-export 'document_classifier_input_data_config_augmented_manifest.dart';

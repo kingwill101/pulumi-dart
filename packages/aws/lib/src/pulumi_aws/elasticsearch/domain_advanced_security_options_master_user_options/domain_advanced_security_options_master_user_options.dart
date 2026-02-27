@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DomainAdvancedSecurityOptionsMasterUserOptions {
-  /// ARN for the main user. Only specify if <span pulumi-lang-nodejs="`internalUserDatabaseEnabled`" pulumi-lang-dotnet="`InternalUserDatabaseEnabled`" pulumi-lang-go="`internalUserDatabaseEnabled`" pulumi-lang-python="`internal_user_database_enabled`" pulumi-lang-yaml="`internalUserDatabaseEnabled`" pulumi-lang-java="`internalUserDatabaseEnabled`">`internal_user_database_enabled`</span> is not set or set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// ARN for the main user. Only specify if `internal_user_database_enabled` is not set or set to `false`.
   final String? masterUserArn;
 
-  /// Main user's username, which is stored in the Amazon Elasticsearch Service domain's internal database. Only specify if <span pulumi-lang-nodejs="`internalUserDatabaseEnabled`" pulumi-lang-dotnet="`InternalUserDatabaseEnabled`" pulumi-lang-go="`internalUserDatabaseEnabled`" pulumi-lang-python="`internal_user_database_enabled`" pulumi-lang-yaml="`internalUserDatabaseEnabled`" pulumi-lang-java="`internalUserDatabaseEnabled`">`internal_user_database_enabled`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Main user's username, which is stored in the Amazon Elasticsearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
   final String? masterUserName;
 
-  /// Main user's password, which is stored in the Amazon Elasticsearch Service domain's internal database. Only specify if <span pulumi-lang-nodejs="`internalUserDatabaseEnabled`" pulumi-lang-dotnet="`InternalUserDatabaseEnabled`" pulumi-lang-go="`internalUserDatabaseEnabled`" pulumi-lang-python="`internal_user_database_enabled`" pulumi-lang-yaml="`internalUserDatabaseEnabled`" pulumi-lang-java="`internalUserDatabaseEnabled`">`internal_user_database_enabled`</span> is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Main user's password, which is stored in the Amazon Elasticsearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
   final String? masterUserPassword;
 
   DomainAdvancedSecurityOptionsMasterUserOptions({

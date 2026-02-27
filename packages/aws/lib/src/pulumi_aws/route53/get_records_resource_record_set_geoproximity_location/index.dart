@@ -1,3 +1,0 @@
-library module_route53_get_records_resource_record_set_geoproximity_location;
-
-export 'get_records_resource_record_set_geoproximity_location.dart';

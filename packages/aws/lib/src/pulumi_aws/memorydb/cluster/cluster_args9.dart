@@ -7,7 +7,7 @@ class ClusterArgs9 {
   /// The name of the Access Control List to associate with the cluster.
   final Input<String> aclName;
 
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the cluster will automatically receive minor engine version upgrades after launch. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// When set to `true`, the cluster will automatically receive minor engine version upgrades after launch. Defaults to `true`.
   final Input<bool>? autoMinorVersionUpgrade;
 
   /// Enables data tiering. This option is not supported by all instance types. For more information, see [Data tiering](https://docs.aws.amazon.com/memorydb/latest/devguide/data-tiering.html).
@@ -16,7 +16,7 @@ class ClusterArgs9 {
   /// Description for the cluster. Defaults to `"Managed by Pulumi"`.
   final Input<String>? description;
 
-  /// The engine that will run on your nodes. Supported values are <span pulumi-lang-nodejs="`redis`" pulumi-lang-dotnet="`Redis`" pulumi-lang-go="`redis`" pulumi-lang-python="`redis`" pulumi-lang-yaml="`redis`" pulumi-lang-java="`redis`">`redis`</span> and <span pulumi-lang-nodejs="`valkey`" pulumi-lang-dotnet="`Valkey`" pulumi-lang-go="`valkey`" pulumi-lang-python="`valkey`" pulumi-lang-yaml="`valkey`" pulumi-lang-java="`valkey`">`valkey`</span>.
+  /// The engine that will run on your nodes. Supported values are `redis` and `valkey`.
   final Input<String>? engine;
 
   /// Version number of the engine to be used for the cluster. Downgrades are not supported.
@@ -31,13 +31,13 @@ class ClusterArgs9 {
   /// Specifies the weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). The minimum maintenance window is a 60 minute period. Example: `sun:23:00-mon:01:30`.
   final Input<String>? maintenanceWindow;
 
-  /// The multi region cluster identifier specified on <span pulumi-lang-nodejs="`aws.memorydb.MultiRegionCluster`" pulumi-lang-dotnet="`aws.memorydb.MultiRegionCluster`" pulumi-lang-go="`memorydb.MultiRegionCluster`" pulumi-lang-python="`memorydb.MultiRegionCluster`" pulumi-lang-yaml="`aws.memorydb.MultiRegionCluster`" pulumi-lang-java="`aws.memorydb.MultiRegionCluster`">`aws.memorydb.MultiRegionCluster`</span>.
+  /// The multi region cluster identifier specified on `aws.memorydb.MultiRegionCluster`.
   final Input<String>? multiRegionClusterName;
 
-  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span>.
+  /// Name of the cluster. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final Input<String>? name;
 
-  /// Creates a unique name beginning with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// The compute and memory capacity of the nodes in the cluster. See AWS documentation on [supported node types](https://docs.aws.amazon.com/memorydb/latest/devguide/nodes.supportedtypes.html) as well as [vertical scaling](https://docs.aws.amazon.com/memorydb/latest/devguide/cluster-vertical-scaling.html).
@@ -45,16 +45,16 @@ class ClusterArgs9 {
   /// The following arguments are optional:
   final Input<String> nodeType;
 
-  /// The number of replicas to apply to each shard, up to a maximum of 5. Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span> (i.e. 2 nodes per shard).
+  /// The number of replicas to apply to each shard, up to a maximum of 5. Defaults to `1` (i.e. 2 nodes per shard).
   final Input<int>? numReplicasPerShard;
 
-  /// The number of shards in the cluster. Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// The number of shards in the cluster. Defaults to `1`.
   final Input<int>? numShards;
 
   /// The name of the parameter group associated with the cluster.
   final Input<String>? parameterGroupName;
 
-  /// The port number on which each of the nodes accepts connections. Defaults to <span pulumi-lang-nodejs="`6379`" pulumi-lang-dotnet="`6379`" pulumi-lang-go="`6379`" pulumi-lang-python="`6379`" pulumi-lang-yaml="`6379`" pulumi-lang-java="`6379`">`6379`</span>.
+  /// The port number on which each of the nodes accepts connections. Defaults to `6379`.
   final Input<int>? port;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -69,7 +69,7 @@ class ClusterArgs9 {
   /// The name of a snapshot from which to restore data into the new cluster.
   final Input<String>? snapshotName;
 
-  /// The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>, automatic backups are disabled. Defaults to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>.
+  /// The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled. Defaults to `0`.
   final Input<int>? snapshotRetentionLimit;
 
   /// The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: `05:00-09:00`.
@@ -81,10 +81,10 @@ class ClusterArgs9 {
   /// The name of the subnet group to be used for the cluster. Defaults to a subnet group consisting of default VPC subnets.
   final Input<String>? subnetGroupName;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// A flag to enable in-transit encryption on the cluster. When set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, the <span pulumi-lang-nodejs="`aclName`" pulumi-lang-dotnet="`AclName`" pulumi-lang-go="`aclName`" pulumi-lang-python="`acl_name`" pulumi-lang-yaml="`aclName`" pulumi-lang-java="`aclName`">`acl_name`</span> must be `open-access`. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// A flag to enable in-transit encryption on the cluster. When set to `false`, the `acl_name` must be `open-access`. Defaults to `true`.
   final Input<bool>? tlsEnabled;
 
   ClusterArgs9({

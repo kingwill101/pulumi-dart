@@ -1,0 +1,3 @@
+library module_securityhub_automation_rule_criteria_compliance_security_control_id;
+
+export 'automation_rule_criteria_compliance_security_control_id/automation_rule_criteria_compliance_security_control_id.dart';

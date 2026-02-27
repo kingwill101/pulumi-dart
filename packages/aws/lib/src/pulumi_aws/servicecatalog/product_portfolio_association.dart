@@ -1,0 +1,4 @@
+library module_servicecatalog_product_portfolio_association;
+
+export 'product_portfolio_association/product_portfolio_association.dart';
+export 'product_portfolio_association/product_portfolio_association_args.dart';

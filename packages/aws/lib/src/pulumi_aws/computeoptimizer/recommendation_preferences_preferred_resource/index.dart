@@ -1,3 +1,0 @@
-library module_computeoptimizer_recommendation_preferences_preferred_resource;
-
-export 'recommendation_preferences_preferred_resource.dart';

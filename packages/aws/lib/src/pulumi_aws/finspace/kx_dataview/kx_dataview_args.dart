@@ -34,18 +34,18 @@ class KxDataviewArgs {
   final Input<String>? name;
 
   /// The option to specify whether you want to make the dataview writable to perform database maintenance. The following are some considerations related to writable dataviews.
-  /// * You cannot create partial writable dataviews. When you create writeable dataviews you must provide the entire database path. You cannot perform updates on a writeable dataview. Hence, <span pulumi-lang-nodejs="`autoUpdate`" pulumi-lang-dotnet="`AutoUpdate`" pulumi-lang-go="`autoUpdate`" pulumi-lang-python="`auto_update`" pulumi-lang-yaml="`autoUpdate`" pulumi-lang-java="`autoUpdate`">`auto_update`</span> must be set as <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if <span pulumi-lang-nodejs="`readWrite`" pulumi-lang-dotnet="`ReadWrite`" pulumi-lang-go="`readWrite`" pulumi-lang-python="`read_write`" pulumi-lang-yaml="`readWrite`" pulumi-lang-java="`readWrite`">`read_write`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> for a dataview.
+  /// * You cannot create partial writable dataviews. When you create writeable dataviews you must provide the entire database path. You cannot perform updates on a writeable dataview. Hence, `auto_update` must be set as `false` if `read_write` is `true` for a dataview.
   /// * You must also use a unique volume for creating a writeable dataview. So, if you choose a volume that is already in use by another dataview, the dataview creation fails.
-  /// * Once you create a dataview as writeable, you cannot change it to read-only. So, you cannot update the <span pulumi-lang-nodejs="`readWrite`" pulumi-lang-dotnet="`ReadWrite`" pulumi-lang-go="`readWrite`" pulumi-lang-python="`read_write`" pulumi-lang-yaml="`readWrite`" pulumi-lang-java="`readWrite`">`read_write`</span> parameter later.
+  /// * Once you create a dataview as writeable, you cannot change it to read-only. So, you cannot update the `read_write` parameter later.
   final Input<bool>? readWrite;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment. See<span pulumi-lang-nodejs=" segmentConfigurations " pulumi-lang-dotnet=" SegmentConfigurations " pulumi-lang-go=" segmentConfigurations " pulumi-lang-python=" segment_configurations " pulumi-lang-yaml=" segmentConfigurations " pulumi-lang-java=" segmentConfigurations "> segment_configurations </span>below.
+  /// The configuration that contains the database path of the data that you want to place on each selected volume. Each segment must have a unique database path for each volume. If you do not explicitly specify any database path for a volume, they are accessible from the cluster through the default S3/object store segment. See segment_configurations below.
   final Input<List<KxDataviewSegmentConfiguration>>? segmentConfigurations;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   KxDataviewArgs({

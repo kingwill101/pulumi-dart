@@ -1,0 +1,3 @@
+library module_quicksight_dashboard_parameters_integer_parameter;
+
+export 'dashboard_parameters_integer_parameter/dashboard_parameters_integer_parameter.dart';

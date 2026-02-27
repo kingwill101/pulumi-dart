@@ -1,0 +1,3 @@
+library module_appmesh_get_gateway_route_spec_http_route_action_rewrite_prefix;
+
+export 'get_gateway_route_spec_http_route_action_rewrite_prefix/get_gateway_route_spec_http_route_action_rewrite_prefix.dart';

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getClusterVersions.
 class GetClusterVersionsArgs {
   /// Type of clusters to filter by.
-  /// Currently, the only valid value is <span pulumi-lang-nodejs="`eks`" pulumi-lang-dotnet="`Eks`" pulumi-lang-go="`eks`" pulumi-lang-python="`eks`" pulumi-lang-yaml="`eks`" pulumi-lang-java="`eks`">`eks`</span>.
+  /// Currently, the only valid value is `eks`.
   final Input<String>? clusterType;
   final Input<List<String>>? clusterVersionsOnlies;
 

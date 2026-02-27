@@ -16,7 +16,7 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
   /// Prefix for the CloudWatch log stream name.
   final String? logStreamNamePrefix;
 
-  /// The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See<span pulumi-lang-nodejs=" logTypes " pulumi-lang-dotnet=" LogTypes " pulumi-lang-go=" logTypes " pulumi-lang-python=" log_types " pulumi-lang-yaml=" logTypes " pulumi-lang-java=" logTypes "> log_types </span>for more details.
+  /// The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See log_types for more details.
   final List<
           ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType>?
       logTypes;

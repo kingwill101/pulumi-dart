@@ -7,7 +7,7 @@ class LogTransformerTransformerConfigSubstituteStringEntry {
   /// Specifies the key to modify.
   final String source;
 
-  /// Specifies the string to be substituted for each match of <span pulumi-lang-nodejs="`from`" pulumi-lang-dotnet="`From`" pulumi-lang-go="`from`" pulumi-lang-python="`from`" pulumi-lang-yaml="`from`" pulumi-lang-java="`from`">`from`</span>.
+  /// Specifies the string to be substituted for each match of `from`.
   final String to;
 
   LogTransformerTransformerConfigSubstituteStringEntry({

@@ -3,107 +3,15 @@ import 'group_args2.dart';
 
 /// Provides an IAM group.
 ///
-/// > **NOTE on user management:** Using <span pulumi-lang-nodejs="`aws.iam.GroupMembership`" pulumi-lang-dotnet="`aws.iam.GroupMembership`" pulumi-lang-go="`iam.GroupMembership`" pulumi-lang-python="`iam.GroupMembership`" pulumi-lang-yaml="`aws.iam.GroupMembership`" pulumi-lang-java="`aws.iam.GroupMembership`">`aws.iam.GroupMembership`</span> or <span pulumi-lang-nodejs="`aws.iam.UserGroupMembership`" pulumi-lang-dotnet="`aws.iam.UserGroupMembership`" pulumi-lang-go="`iam.UserGroupMembership`" pulumi-lang-python="`iam.UserGroupMembership`" pulumi-lang-yaml="`aws.iam.UserGroupMembership`" pulumi-lang-java="`aws.iam.UserGroupMembership`">`aws.iam.UserGroupMembership`</span> resources in addition to manually managing user/group membership using the console may lead to configuration drift or conflicts. For this reason, it's recommended to either manage membership entirely with the provider or entirely within the AWS console.
+/// > **NOTE on user management:** Using `aws.iam.GroupMembership` or `aws.iam.UserGroupMembership` resources in addition to manually managing user/group membership using the console may lead to configuration drift or conflicts. For this reason, it's recommended to either manage membership entirely with the provider or entirely within the AWS console.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const developers = new aws.iam.Group("developers", {
-/// name: "developers",
-/// path: "/users/",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// developers = aws.iam.Group("developers",
-/// name="developers",
-/// path="/users/")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var developers = new Aws.Iam.Group("developers", new()
-/// {
-/// Name = "developers",
-/// Path = "/users/",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := iam.NewGroup(ctx, "developers", &iam.GroupArgs{
-/// Name: pulumi.String("developers"),
-/// Path: pulumi.String("/users/"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.iam.Group;
-/// import com.pulumi.aws.iam.GroupArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var developers = new Group("developers", GroupArgs.builder()
-/// .name("developers")
-/// .path("/users/")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// developers:
-/// type: aws:iam:Group
-/// properties:
-/// name: developers
-/// path: /users/
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import IAM Groups using the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. For example:
+/// Using `pulumi import`, import IAM Groups using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iam/group:Group developers developers

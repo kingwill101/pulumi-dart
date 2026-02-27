@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TableBucketEncryptionConfiguration {
-  /// The ARN of a KMS Key to be used with `aws:kms` <span pulumi-lang-nodejs="`sseAlgorithm`" pulumi-lang-dotnet="`SseAlgorithm`" pulumi-lang-go="`sseAlgorithm`" pulumi-lang-python="`sse_algorithm`" pulumi-lang-yaml="`sseAlgorithm`" pulumi-lang-java="`sseAlgorithm`">`sse_algorithm`</span>
+  /// The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
   final String kmsKeyArn;
 
   /// One of `aws:kms` or `AES256`

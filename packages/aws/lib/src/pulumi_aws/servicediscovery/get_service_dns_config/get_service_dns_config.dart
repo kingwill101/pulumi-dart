@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../get_service_dns_config_dns_record/get_service_dns_config_dns_record.dart';
 
 class GetServiceDnsConfig {
-  /// An array that contains one DnsRecord object for each resource record set. See <span pulumi-lang-nodejs="`dnsRecords`" pulumi-lang-dotnet="`DnsRecords`" pulumi-lang-go="`dnsRecords`" pulumi-lang-python="`dns_records`" pulumi-lang-yaml="`dnsRecords`" pulumi-lang-java="`dnsRecords`">`dns_records`</span> Block for details.
+  /// An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
   final List<GetServiceDnsConfigDnsRecord> dnsRecords;
 
   /// ID of the namespace that the service belongs to.

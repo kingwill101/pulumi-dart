@@ -23,14 +23,14 @@ class ProjectArgs {
   final Input<int>? autoRetryLimit;
 
   /// Generates a publicly-accessible URL for the projects build badge. Available as
-  /// <span pulumi-lang-nodejs="`badgeUrl`" pulumi-lang-dotnet="`BadgeUrl`" pulumi-lang-go="`badgeUrl`" pulumi-lang-python="`badge_url`" pulumi-lang-yaml="`badgeUrl`" pulumi-lang-java="`badgeUrl`">`badge_url`</span> attribute when enabled.
+  /// `badge_url` attribute when enabled.
   final Input<bool>? badgeEnabled;
 
   /// Defines the batch build options for the project.
   final Input<ProjectBuildBatchConfig>? buildBatchConfig;
 
   /// Number of minutes, from 5 to 2160 (36 hours), for AWS CodeBuild to wait until timing out
-  /// any related build that does not get marked as completed. The default is 60 minutes. The <span pulumi-lang-nodejs="`buildTimeout`" pulumi-lang-dotnet="`BuildTimeout`" pulumi-lang-go="`buildTimeout`" pulumi-lang-python="`build_timeout`" pulumi-lang-yaml="`buildTimeout`" pulumi-lang-java="`buildTimeout`">`build_timeout`</span> property is
+  /// any related build that does not get marked as completed. The default is 60 minutes. The `build_timeout` property is
   /// not available on the `Lambda` compute type.
   final Input<int>? buildTimeout;
 
@@ -66,7 +66,7 @@ class ProjectArgs {
   final Input<String>? projectVisibility;
 
   /// Number of minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it
-  /// times out. The default is 8 hours. The <span pulumi-lang-nodejs="`queuedTimeout`" pulumi-lang-dotnet="`QueuedTimeout`" pulumi-lang-go="`queuedTimeout`" pulumi-lang-python="`queued_timeout`" pulumi-lang-yaml="`queuedTimeout`" pulumi-lang-java="`queuedTimeout`">`queued_timeout`</span> property is not available on the `Lambda` compute type.
+  /// times out. The default is 8 hours. The `queued_timeout` property is not available on the `Lambda` compute type.
   final Input<int>? queuedTimeout;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -74,7 +74,7 @@ class ProjectArgs {
 
   /// The ARN of the IAM role that enables CodeBuild to access the CloudWatch Logs and
   /// Amazon S3 artifacts for the project's builds in order to display them publicly. Only applicable if
-  /// <span pulumi-lang-nodejs="`projectVisibility`" pulumi-lang-dotnet="`ProjectVisibility`" pulumi-lang-go="`projectVisibility`" pulumi-lang-python="`project_visibility`" pulumi-lang-yaml="`projectVisibility`" pulumi-lang-java="`projectVisibility`">`project_visibility`</span> is `PUBLIC_READ`.
+  /// `project_visibility` is `PUBLIC_READ`.
   final Input<String>? resourceAccessRole;
 
   /// Configuration block. Detailed below.
@@ -100,7 +100,7 @@ class ProjectArgs {
   final Input<String>? sourceVersion;
 
   /// Map of tags to assign to the resource. If configured with a provider
-  /// <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block
+  /// `default_tags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 

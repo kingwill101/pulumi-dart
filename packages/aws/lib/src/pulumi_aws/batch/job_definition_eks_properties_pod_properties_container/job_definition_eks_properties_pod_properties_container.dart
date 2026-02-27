@@ -25,10 +25,10 @@ class JobDefinitionEksPropertiesPodPropertiesContainer {
   /// Name of the container. If the name isn't specified, the default name "Default" is used. Each container in a pod must have a unique name.
   final String? name;
 
-  /// Type and amount of resources to assign to a container. The supported resources include <span pulumi-lang-nodejs="`memory`" pulumi-lang-dotnet="`Memory`" pulumi-lang-go="`memory`" pulumi-lang-python="`memory`" pulumi-lang-yaml="`memory`" pulumi-lang-java="`memory`">`memory`</span>, <span pulumi-lang-nodejs="`cpu`" pulumi-lang-dotnet="`Cpu`" pulumi-lang-go="`cpu`" pulumi-lang-python="`cpu`" pulumi-lang-yaml="`cpu`" pulumi-lang-java="`cpu`">`cpu`</span>, and `nvidia.com/gpu`.
+  /// Type and amount of resources to assign to a container. The supported resources include `memory`, `cpu`, and `nvidia.com/gpu`.
   final JobDefinitionEksPropertiesPodPropertiesContainerResources? resources;
 
-  /// Security context for a job. See <span pulumi-lang-nodejs="`securityContext`" pulumi-lang-dotnet="`SecurityContext`" pulumi-lang-go="`securityContext`" pulumi-lang-python="`security_context`" pulumi-lang-yaml="`securityContext`" pulumi-lang-java="`securityContext`">`security_context`</span> below.
+  /// Security context for a job. See `security_context` below.
   final JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext?
       securityContext;
 

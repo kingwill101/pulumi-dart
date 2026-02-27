@@ -1,3 +1,0 @@
-library module_dlm_lifecycle_policy_policy_details_schedule_archive_rule;
-
-export 'lifecycle_policy_policy_details_schedule_archive_rule.dart';

@@ -1,0 +1,3 @@
+library module_ses_receipt_rule_lambda_action;
+
+export 'receipt_rule_lambda_action/receipt_rule_lambda_action.dart';

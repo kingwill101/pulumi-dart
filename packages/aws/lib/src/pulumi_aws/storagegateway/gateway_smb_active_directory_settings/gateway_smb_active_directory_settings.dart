@@ -17,7 +17,7 @@ class GatewaySmbActiveDirectorySettings {
   /// The password of the user who has permission to add the gateway to the Active Directory domain.
   final String password;
 
-  /// Specifies the time in seconds, in which the JoinDomain operation must complete. The default is <span pulumi-lang-nodejs="`20`" pulumi-lang-dotnet="`20`" pulumi-lang-go="`20`" pulumi-lang-python="`20`" pulumi-lang-yaml="`20`" pulumi-lang-java="`20`">`20`</span> seconds.
+  /// Specifies the time in seconds, in which the JoinDomain operation must complete. The default is `20` seconds.
   final int? timeoutInSeconds;
 
   /// The user name of user who has permission to add the gateway to the Active Directory domain.

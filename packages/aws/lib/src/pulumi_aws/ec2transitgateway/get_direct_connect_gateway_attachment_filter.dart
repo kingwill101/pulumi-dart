@@ -1,0 +1,3 @@
+library module_ec2transitgateway_get_direct_connect_gateway_attachment_filter;
+
+export 'get_direct_connect_gateway_attachment_filter/get_direct_connect_gateway_attachment_filter.dart';

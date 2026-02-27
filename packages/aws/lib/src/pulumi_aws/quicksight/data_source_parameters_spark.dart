@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_spark;
+
+export 'data_source_parameters_spark/data_source_parameters_spark.dart';

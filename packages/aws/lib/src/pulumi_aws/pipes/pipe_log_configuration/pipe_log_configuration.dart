@@ -12,7 +12,7 @@ class PipeLogConfiguration {
   /// Amazon Kinesis Data Firehose logging configuration settings for the pipe. Detailed below.
   final PipeLogConfigurationFirehoseLogDestination? firehoseLogDestination;
 
-  /// String list that specifies whether the execution data (specifically, the <span pulumi-lang-nodejs="`payload`" pulumi-lang-dotnet="`Payload`" pulumi-lang-go="`payload`" pulumi-lang-python="`payload`" pulumi-lang-yaml="`payload`" pulumi-lang-java="`payload`">`payload`</span>, `awsRequest`, and `awsResponse` fields) is included in the log messages for this pipe. This applies to all log destinations for the pipe. Valid values `ALL`.
+  /// String list that specifies whether the execution data (specifically, the `payload`, `awsRequest`, and `awsResponse` fields) is included in the log messages for this pipe. This applies to all log destinations for the pipe. Valid values `ALL`.
   final List<String>? includeExecutionDatas;
 
   /// The level of logging detail to include. Valid values `OFF`, `ERROR`, `INFO` and `TRACE`.

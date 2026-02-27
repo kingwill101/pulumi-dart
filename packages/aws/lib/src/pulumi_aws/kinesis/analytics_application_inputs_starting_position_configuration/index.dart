@@ -1,3 +1,0 @@
-library module_kinesis_analytics_application_inputs_starting_position_configuration;
-
-export 'analytics_application_inputs_starting_position_configuration.dart';

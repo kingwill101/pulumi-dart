@@ -1,0 +1,3 @@
+library module_bedrock_agentcore_gateway_target_target_configuration;
+
+export 'agentcore_gateway_target_target_configuration/agentcore_gateway_target_target_configuration.dart';

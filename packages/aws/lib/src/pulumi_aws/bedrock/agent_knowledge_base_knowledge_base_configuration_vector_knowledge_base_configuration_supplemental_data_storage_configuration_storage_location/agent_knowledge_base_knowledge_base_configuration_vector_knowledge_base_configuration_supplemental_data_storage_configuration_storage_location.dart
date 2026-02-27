@@ -3,7 +3,7 @@
 import '../agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_supplemental_data_storage_configuration_storage_location_s3_location/agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_supplemental_data_storage_configuration_storage_location_s3_location.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation {
-  /// Contains information about the Amazon S3 location for the extracted images.  See <span pulumi-lang-nodejs="`s3Location`" pulumi-lang-dotnet="`S3Location`" pulumi-lang-go="`s3Location`" pulumi-lang-python="`s3_location`" pulumi-lang-yaml="`s3Location`" pulumi-lang-java="`s3Location`">`s3_location`</span> block for details.
+  /// Contains information about the Amazon S3 location for the extracted images.  See `s3_location` block for details.
   final AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocationS3Location?
       s3Location;
 

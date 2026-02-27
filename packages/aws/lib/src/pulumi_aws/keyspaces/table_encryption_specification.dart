@@ -1,0 +1,3 @@
+library module_keyspaces_table_encryption_specification;
+
+export 'table_encryption_specification/table_encryption_specification.dart';

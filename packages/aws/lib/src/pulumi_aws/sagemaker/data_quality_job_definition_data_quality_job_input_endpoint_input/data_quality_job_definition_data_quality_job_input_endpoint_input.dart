@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DataQualityJobDefinitionDataQualityJobInputEndpointInput {
-  /// An endpoint in customer's account which has <span pulumi-lang-nodejs="`dataCaptureConfig`" pulumi-lang-dotnet="`DataCaptureConfig`" pulumi-lang-go="`dataCaptureConfig`" pulumi-lang-python="`data_capture_config`" pulumi-lang-yaml="`dataCaptureConfig`" pulumi-lang-java="`dataCaptureConfig`">`data_capture_config`</span> enabled.
+  /// An endpoint in customer's account which has `data_capture_config` enabled.
   final String endpointName;
 
   /// Path to the filesystem where the endpoint data is available to the container. Defaults to `/opt/ml/processing/input`.

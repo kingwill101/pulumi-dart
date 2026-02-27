@@ -30,7 +30,7 @@ class FlowArgs {
   /// The Source Flow Config that controls how Amazon AppFlow retrieves data from the source connector.
   final Input<FlowSourceFlowConfig> sourceFlowConfig;
 
-  /// Key-value mapping of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// A Task that Amazon AppFlow performs while transferring the data in the flow run.

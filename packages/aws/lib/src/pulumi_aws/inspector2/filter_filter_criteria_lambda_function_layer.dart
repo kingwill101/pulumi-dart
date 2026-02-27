@@ -1,0 +1,3 @@
+library module_inspector2_filter_filter_criteria_lambda_function_layer;
+
+export 'filter_filter_criteria_lambda_function_layer/filter_filter_criteria_lambda_function_layer.dart';

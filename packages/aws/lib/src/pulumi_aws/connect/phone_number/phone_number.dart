@@ -9,337 +9,15 @@ import 'phone_number_args.dart';
 ///
 /// ### Basic
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.connect.PhoneNumber("example", {
-/// targetArn: exampleAwsConnectInstance.arn,
-/// countryCode: "US",
-/// type: "DID",
-/// tags: {
-/// hello: "world",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.connect.PhoneNumber("example",
-/// target_arn=example_aws_connect_instance["arn"],
-/// country_code="US",
-/// type="DID",
-/// tags={
-/// "hello": "world",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Connect.PhoneNumber("example", new()
-/// {
-/// TargetArn = exampleAwsConnectInstance.Arn,
-/// CountryCode = "US",
-/// Type = "DID",
-/// Tags =
-/// {
-/// { "hello", "world" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/connect"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := connect.NewPhoneNumber(ctx, "example", &connect.PhoneNumberArgs{
-/// TargetArn:   pulumi.Any(exampleAwsConnectInstance.Arn),
-/// CountryCode: pulumi.String("US"),
-/// Type:        pulumi.String("DID"),
-/// Tags: pulumi.StringMap{
-/// "hello": pulumi.String("world"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.connect.PhoneNumber;
-/// import com.pulumi.aws.connect.PhoneNumberArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new PhoneNumber("example", PhoneNumberArgs.builder()
-/// .targetArn(exampleAwsConnectInstance.arn())
-/// .countryCode("US")
-/// .type("DID")
-/// .tags(Map.of("hello", "world"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:connect:PhoneNumber
-/// properties:
-/// targetArn: ${exampleAwsConnectInstance.arn}
-/// countryCode: US
-/// type: DID
-/// tags:
-/// hello: world
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Description
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.connect.PhoneNumber("example", {
-/// targetArn: exampleAwsConnectInstance.arn,
-/// countryCode: "US",
-/// type: "DID",
-/// description: "example description",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.connect.PhoneNumber("example",
-/// target_arn=example_aws_connect_instance["arn"],
-/// country_code="US",
-/// type="DID",
-/// description="example description")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Connect.PhoneNumber("example", new()
-/// {
-/// TargetArn = exampleAwsConnectInstance.Arn,
-/// CountryCode = "US",
-/// Type = "DID",
-/// Description = "example description",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/connect"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := connect.NewPhoneNumber(ctx, "example", &connect.PhoneNumberArgs{
-/// TargetArn:   pulumi.Any(exampleAwsConnectInstance.Arn),
-/// CountryCode: pulumi.String("US"),
-/// Type:        pulumi.String("DID"),
-/// Description: pulumi.String("example description"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.connect.PhoneNumber;
-/// import com.pulumi.aws.connect.PhoneNumberArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new PhoneNumber("example", PhoneNumberArgs.builder()
-/// .targetArn(exampleAwsConnectInstance.arn())
-/// .countryCode("US")
-/// .type("DID")
-/// .description("example description")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:connect:PhoneNumber
-/// properties:
-/// targetArn: ${exampleAwsConnectInstance.arn}
-/// countryCode: US
-/// type: DID
-/// description: example description
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Prefix to filter phone numbers
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.connect.PhoneNumber("example", {
-/// targetArn: exampleAwsConnectInstance.arn,
-/// countryCode: "US",
-/// type: "DID",
-/// prefix: "+18005",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.connect.PhoneNumber("example",
-/// target_arn=example_aws_connect_instance["arn"],
-/// country_code="US",
-/// type="DID",
-/// prefix="+18005")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Connect.PhoneNumber("example", new()
-/// {
-/// TargetArn = exampleAwsConnectInstance.Arn,
-/// CountryCode = "US",
-/// Type = "DID",
-/// Prefix = "+18005",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/connect"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := connect.NewPhoneNumber(ctx, "example", &connect.PhoneNumberArgs{
-/// TargetArn:   pulumi.Any(exampleAwsConnectInstance.Arn),
-/// CountryCode: pulumi.String("US"),
-/// Type:        pulumi.String("DID"),
-/// Prefix:      pulumi.String("+18005"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.connect.PhoneNumber;
-/// import com.pulumi.aws.connect.PhoneNumberArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new PhoneNumber("example", PhoneNumberArgs.builder()
-/// .targetArn(exampleAwsConnectInstance.arn())
-/// .countryCode("US")
-/// .type("DID")
-/// .prefix("+18005")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:connect:PhoneNumber
-/// properties:
-/// targetArn: ${exampleAwsConnectInstance.arn}
-/// countryCode: US
-/// type: DID
-/// prefix: '+18005'
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -347,15 +25,15 @@ import 'phone_number_args.dart';
 ///
 /// #### Required
 ///
-/// * <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> - (String) ID of the connect phone number.
+/// * `id` - (String) ID of the connect phone number.
 ///
 /// #### Optional
 ///
-/// - <span pulumi-lang-nodejs="`accountId`" pulumi-lang-dotnet="`AccountId`" pulumi-lang-go="`accountId`" pulumi-lang-python="`account_id`" pulumi-lang-yaml="`accountId`" pulumi-lang-java="`accountId`">`account_id`</span> (String) AWS Account where this resource is managed.
-/// - <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span> (String) Region where this resource is managed.
+/// - `account_id` (String) AWS Account where this resource is managed.
+/// - `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import Amazon Connect Phone Numbers using its <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>. For example:
+/// Using `pulumi import`, import Amazon Connect Phone Numbers using its `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/phoneNumber:PhoneNumber example 12345678-abcd-1234-efgh-9876543210ab
@@ -382,10 +60,10 @@ class PhoneNumber extends CustomResource {
   /// The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
   late final Output<List<PhoneNumberStatus>> statuses;
 
-  /// Tags to apply to the Phone Number. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Phone Number. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   /// The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.

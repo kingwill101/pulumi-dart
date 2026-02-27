@@ -1,3 +1,0 @@
-library module_cloudfront_key_value_store_timeouts;
-
-export 'key_value_store_timeouts.dart';

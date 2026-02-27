@@ -1,0 +1,3 @@
+library module_s3_bucket_v2_lifecycle_rule_noncurrent_version_transition;
+
+export 'bucket_v2_lifecycle_rule_noncurrent_version_transition/bucket_v2_lifecycle_rule_noncurrent_version_transition.dart';

@@ -1,3 +1,0 @@
-library module_connect_routing_profile_media_concurrency_cross_channel_behavior;
-
-export 'routing_profile_media_concurrency_cross_channel_behavior.dart';

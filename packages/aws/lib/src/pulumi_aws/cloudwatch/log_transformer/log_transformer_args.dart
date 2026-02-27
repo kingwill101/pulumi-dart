@@ -11,7 +11,7 @@ class LogTransformerArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See <span pulumi-lang-nodejs="`transformerConfig`" pulumi-lang-dotnet="`TransformerConfig`" pulumi-lang-go="`transformerConfig`" pulumi-lang-python="`transformer_config`" pulumi-lang-yaml="`transformerConfig`" pulumi-lang-java="`transformerConfig`">`transformer_config`</span> below for details.
+  /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformer_config` below for details.
   final Input<List<LogTransformerTransformerConfig>> transformerConfigs;
 
   LogTransformerArgs({

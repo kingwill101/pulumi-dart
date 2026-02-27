@@ -50,7 +50,7 @@ class DataSetArgs2 {
   /// Declares the physical tables that are available in the underlying data sources. See physical_table_map.
   final Input<List<DataSetPhysicalTableMap>>? physicalTableMaps;
 
-  /// The refresh properties for the data set. **NOTE**: Only valid when <span pulumi-lang-nodejs="`importMode`" pulumi-lang-dotnet="`ImportMode`" pulumi-lang-go="`importMode`" pulumi-lang-python="`import_mode`" pulumi-lang-yaml="`importMode`" pulumi-lang-java="`importMode`">`import_mode`</span> is set to `SPICE`. See refresh_properties.
+  /// The refresh properties for the data set. **NOTE**: Only valid when `import_mode` is set to `SPICE`. See refresh_properties.
   final Input<DataSetRefreshProperties>? refreshProperties;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -63,7 +63,7 @@ class DataSetArgs2 {
   final Input<DataSetRowLevelPermissionTagConfiguration>?
       rowLevelPermissionTagConfiguration;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   /// Specifies the purpose of the data set. The only valid value is `RLS_RULES`, which designates this data set as a Row Level Security (RLS) rules dataset. An RLS rules dataset is used to control access to data at the row level in QuickSight analyses and dashboards. See the [AWS documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSet.html#API_CreateDataSet_RequestSyntax) for details.

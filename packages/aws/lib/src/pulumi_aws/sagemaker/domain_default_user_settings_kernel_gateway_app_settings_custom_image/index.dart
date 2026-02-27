@@ -1,3 +1,0 @@
-library module_sagemaker_domain_default_user_settings_kernel_gateway_app_settings_custom_image;
-
-export 'domain_default_user_settings_kernel_gateway_app_settings_custom_image.dart';

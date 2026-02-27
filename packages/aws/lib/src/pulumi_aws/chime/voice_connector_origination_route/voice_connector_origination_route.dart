@@ -4,7 +4,7 @@ class VoiceConnectorOriginationRoute {
   /// The FQDN or IP address to contact for origination traffic.
   final String host;
 
-  /// The designated origination route port. Defaults to <span pulumi-lang-nodejs="`5060`" pulumi-lang-dotnet="`5060`" pulumi-lang-go="`5060`" pulumi-lang-python="`5060`" pulumi-lang-yaml="`5060`" pulumi-lang-java="`5060`">`5060`</span>.
+  /// The designated origination route port. Defaults to `5060`.
   final int? port;
 
   /// The priority associated with the host, with 1 being the highest priority. Higher priority hosts are attempted first.

@@ -1,3 +1,0 @@
-library module_ecr_replication_configuration_replication_configuration;
-
-export 'replication_configuration_replication_configuration.dart';

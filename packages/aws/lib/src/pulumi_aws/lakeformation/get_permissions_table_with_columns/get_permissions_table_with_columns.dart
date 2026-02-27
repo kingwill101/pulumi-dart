@@ -4,13 +4,13 @@ class GetPermissionsTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String catalogId;
 
-  /// Set of column names for the table. At least one of <span pulumi-lang-nodejs="`columnNames`" pulumi-lang-dotnet="`ColumnNames`" pulumi-lang-go="`columnNames`" pulumi-lang-python="`column_names`" pulumi-lang-yaml="`columnNames`" pulumi-lang-java="`columnNames`">`column_names`</span> or <span pulumi-lang-nodejs="`excludedColumnNames`" pulumi-lang-dotnet="`ExcludedColumnNames`" pulumi-lang-go="`excludedColumnNames`" pulumi-lang-python="`excluded_column_names`" pulumi-lang-yaml="`excludedColumnNames`" pulumi-lang-java="`excludedColumnNames`">`excluded_column_names`</span> is required.
+  /// Set of column names for the table. At least one of `column_names` or `excluded_column_names` is required.
   final List<String>? columnNames;
 
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
   final String databaseName;
 
-  /// Set of column names for the table to exclude. At least one of <span pulumi-lang-nodejs="`columnNames`" pulumi-lang-dotnet="`ColumnNames`" pulumi-lang-go="`columnNames`" pulumi-lang-python="`column_names`" pulumi-lang-yaml="`columnNames`" pulumi-lang-java="`columnNames`">`column_names`</span> or <span pulumi-lang-nodejs="`excludedColumnNames`" pulumi-lang-dotnet="`ExcludedColumnNames`" pulumi-lang-go="`excludedColumnNames`" pulumi-lang-python="`excluded_column_names`" pulumi-lang-yaml="`excludedColumnNames`" pulumi-lang-java="`excludedColumnNames`">`excluded_column_names`</span> is required.
+  /// Set of column names for the table to exclude. At least one of `column_names` or `excluded_column_names` is required.
   final List<String>? excludedColumnNames;
 
   /// Name of the table resource.
@@ -18,7 +18,7 @@ class GetPermissionsTableWithColumns {
   /// The following arguments are optional:
   final String name;
 
-  /// Whether to use a wildcard representing every table under a database. At least one of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`wildcard`" pulumi-lang-dotnet="`Wildcard`" pulumi-lang-go="`wildcard`" pulumi-lang-python="`wildcard`" pulumi-lang-yaml="`wildcard`" pulumi-lang-java="`wildcard`">`wildcard`</span> is required. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
   final bool? wildcard;
 
   GetPermissionsTableWithColumns({

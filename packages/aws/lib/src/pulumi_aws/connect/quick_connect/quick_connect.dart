@@ -7,167 +7,11 @@ import 'quick_connect_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.connect.QuickConnect("test", {
-/// instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-/// name: "Example Name",
-/// description: "quick connect phone number",
-/// quickConnectConfig: {
-/// quickConnectType: "PHONE_NUMBER",
-/// phoneConfigs: [{
-/// phoneNumber: "+12345678912",
-/// }],
-/// },
-/// tags: {
-/// Name: "Example Quick Connect",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// test = aws.connect.QuickConnect("test",
-/// instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
-/// name="Example Name",
-/// description="quick connect phone number",
-/// quick_connect_config={
-/// "quick_connect_type": "PHONE_NUMBER",
-/// "phone_configs": [{
-/// "phone_number": "+12345678912",
-/// }],
-/// },
-/// tags={
-/// "Name": "Example Quick Connect",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var test = new Aws.Connect.QuickConnect("test", new()
-/// {
-/// InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-/// Name = "Example Name",
-/// Description = "quick connect phone number",
-/// QuickConnectConfig = new Aws.Connect.Inputs.QuickConnectQuickConnectConfigArgs
-/// {
-/// QuickConnectType = "PHONE_NUMBER",
-/// PhoneConfigs = new[]
-/// {
-/// new Aws.Connect.Inputs.QuickConnectQuickConnectConfigPhoneConfigArgs
-/// {
-/// PhoneNumber = "+12345678912",
-/// },
-/// },
-/// },
-/// Tags =
-/// {
-/// { "Name", "Example Quick Connect" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/connect"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := connect.NewQuickConnect(ctx, "test", &connect.QuickConnectArgs{
-/// InstanceId:  pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
-/// Name:        pulumi.String("Example Name"),
-/// Description: pulumi.String("quick connect phone number"),
-/// QuickConnectConfig: &connect.QuickConnectQuickConnectConfigArgs{
-/// QuickConnectType: pulumi.String("PHONE_NUMBER"),
-/// PhoneConfigs: connect.QuickConnectQuickConnectConfigPhoneConfigArray{
-/// &connect.QuickConnectQuickConnectConfigPhoneConfigArgs{
-/// PhoneNumber: pulumi.String("+12345678912"),
-/// },
-/// },
-/// },
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("Example Quick Connect"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.connect.QuickConnect;
-/// import com.pulumi.aws.connect.QuickConnectArgs;
-/// import com.pulumi.aws.connect.inputs.QuickConnectQuickConnectConfigArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var test = new QuickConnect("test", QuickConnectArgs.builder()
-/// .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
-/// .name("Example Name")
-/// .description("quick connect phone number")
-/// .quickConnectConfig(QuickConnectQuickConnectConfigArgs.builder()
-/// .quickConnectType("PHONE_NUMBER")
-/// .phoneConfigs(QuickConnectQuickConnectConfigPhoneConfigArgs.builder()
-/// .phoneNumber("+12345678912")
-/// .build())
-/// .build())
-/// .tags(Map.of("Name", "Example Quick Connect"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// test:
-/// type: aws:connect:QuickConnect
-/// properties:
-/// instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
-/// name: Example Name
-/// description: quick connect phone number
-/// quickConnectConfig:
-/// quickConnectType: PHONE_NUMBER
-/// phoneConfigs:
-/// - phoneNumber: '+12345678912'
-/// tags:
-/// Name: Example Quick Connect
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Connect Quick Connects using the <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and <span pulumi-lang-nodejs="`quickConnectId`" pulumi-lang-dotnet="`QuickConnectId`" pulumi-lang-go="`quickConnectId`" pulumi-lang-python="`quick_connect_id`" pulumi-lang-yaml="`quickConnectId`" pulumi-lang-java="`quickConnectId`">`quick_connect_id`</span> separated by a colon (`:`). For example:
+/// Using `pulumi import`, import Amazon Connect Quick Connects using the `instance_id` and `quick_connect_id` separated by a colon (`:`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:connect/quickConnect:QuickConnect example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
@@ -185,7 +29,7 @@ class QuickConnect extends CustomResource {
   /// Specifies the name of the Quick Connect.
   late final Output<String> name;
 
-  /// A block that defines the configuration information for the Quick Connect: <span pulumi-lang-nodejs="`quickConnectType`" pulumi-lang-dotnet="`QuickConnectType`" pulumi-lang-go="`quickConnectType`" pulumi-lang-python="`quick_connect_type`" pulumi-lang-yaml="`quickConnectType`" pulumi-lang-java="`quickConnectType`">`quick_connect_type`</span> and one of <span pulumi-lang-nodejs="`phoneConfig`" pulumi-lang-dotnet="`PhoneConfig`" pulumi-lang-go="`phoneConfig`" pulumi-lang-python="`phone_config`" pulumi-lang-yaml="`phoneConfig`" pulumi-lang-java="`phoneConfig`">`phone_config`</span>, <span pulumi-lang-nodejs="`queueConfig`" pulumi-lang-dotnet="`QueueConfig`" pulumi-lang-go="`queueConfig`" pulumi-lang-python="`queue_config`" pulumi-lang-yaml="`queueConfig`" pulumi-lang-java="`queueConfig`">`queue_config`</span>, <span pulumi-lang-nodejs="`userConfig`" pulumi-lang-dotnet="`UserConfig`" pulumi-lang-go="`userConfig`" pulumi-lang-python="`user_config`" pulumi-lang-yaml="`userConfig`" pulumi-lang-java="`userConfig`">`user_config`</span> . The Quick Connect Config block is documented below.
+  /// A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
   late final Output<QuickConnectQuickConnectConfig> quickConnectConfig;
 
   /// The identifier for the Quick Connect.
@@ -194,10 +38,10 @@ class QuickConnect extends CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final Output<String> region;
 
-  /// Tags to apply to the Quick Connect. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Tags to apply to the Quick Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
 
   QuickConnect(

@@ -1,0 +1,3 @@
+library module_sagemaker_flow_definition_human_loop_activation_config;
+
+export 'flow_definition_human_loop_activation_config/flow_definition_human_loop_activation_config.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class StateMachineLoggingConfiguration {
-  /// Determines whether execution data is included in your log. When set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, data is excluded.
+  /// Determines whether execution data is included in your log. When set to `false`, data is excluded.
   final bool? includeExecutionData;
 
   /// Defines which category of execution history events are logged. Valid values: `ALL`, `ERROR`, `FATAL`, `OFF`

@@ -1,0 +1,3 @@
+library module_pipes_pipe_target_parameters_eventbridge_event_bus_parameters;
+
+export 'pipe_target_parameters_eventbridge_event_bus_parameters/pipe_target_parameters_eventbridge_event_bus_parameters.dart';

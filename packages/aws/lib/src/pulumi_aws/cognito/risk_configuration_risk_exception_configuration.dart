@@ -1,0 +1,3 @@
+library module_cognito_risk_configuration_risk_exception_configuration;
+
+export 'risk_configuration_risk_exception_configuration/risk_configuration_risk_exception_configuration.dart';

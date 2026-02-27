@@ -1,3 +1,0 @@
-library module_ec2_get_network_insights_analysis_explanation_route_table_route;
-
-export 'get_network_insights_analysis_explanation_route_table_route.dart';

@@ -21,7 +21,7 @@ class AddonArgs {
   /// custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
   final Input<String>? configurationValues;
 
-  /// Configuration block with EKS Pod Identity association settings. See <span pulumi-lang-nodejs="`podIdentityAssociation`" pulumi-lang-dotnet="`PodIdentityAssociation`" pulumi-lang-go="`podIdentityAssociation`" pulumi-lang-python="`pod_identity_association`" pulumi-lang-yaml="`podIdentityAssociation`" pulumi-lang-java="`podIdentityAssociation`">`pod_identity_association`</span> below for details.
+  /// Configuration block with EKS Pod Identity association settings. See `pod_identity_association` below for details.
   final Input<List<AddonPodIdentityAssociation>>? podIdentityAssociations;
 
   /// Indicates if you want to preserve the created resources when deleting the EKS add-on.
@@ -49,7 +49,7 @@ class AddonArgs {
   /// in the Amazon EKS User Guide.
   final Input<String>? serviceAccountRoleArn;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   AddonArgs({

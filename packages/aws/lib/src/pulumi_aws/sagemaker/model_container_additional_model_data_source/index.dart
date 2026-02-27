@@ -1,3 +1,0 @@
-library module_sagemaker_model_container_additional_model_data_source;
-
-export 'model_container_additional_model_data_source.dart';

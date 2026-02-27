@@ -1,4 +1,0 @@
-library module_connect_lambda_function_association;
-
-export 'lambda_function_association.dart';
-export 'lambda_function_association_args.dart';

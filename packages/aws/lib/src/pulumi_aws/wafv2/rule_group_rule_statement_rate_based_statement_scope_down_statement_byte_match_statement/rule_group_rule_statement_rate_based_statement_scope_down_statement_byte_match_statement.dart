@@ -9,10 +9,10 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
   final RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatch?
       fieldToMatch;
 
-  /// The area within the portion of a web request that you want AWS WAF to search for <span pulumi-lang-nodejs="`searchString`" pulumi-lang-dotnet="`SearchString`" pulumi-lang-go="`searchString`" pulumi-lang-python="`search_string`" pulumi-lang-yaml="`searchString`" pulumi-lang-java="`searchString`">`search_string`</span>. Valid values include the following: `EXACTLY`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CONTAINS_WORD`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchStatement.html) for more information.
+  /// The area within the portion of a web request that you want AWS WAF to search for `search_string`. Valid values include the following: `EXACTLY`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CONTAINS_WORD`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchStatement.html) for more information.
   final String positionalConstraint;
 
-  /// A string value that you want AWS WAF to search for. AWS WAF searches only in the part of web requests that you designate for inspection in <span pulumi-lang-nodejs="`fieldToMatch`" pulumi-lang-dotnet="`FieldToMatch`" pulumi-lang-go="`fieldToMatch`" pulumi-lang-python="`field_to_match`" pulumi-lang-yaml="`fieldToMatch`" pulumi-lang-java="`fieldToMatch`">`field_to_match`</span>. The maximum length of the value is 50 bytes.
+  /// A string value that you want AWS WAF to search for. AWS WAF searches only in the part of web requests that you designate for inspection in `field_to_match`. The maximum length of the value is 50 bytes.
   final String searchString;
 
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.

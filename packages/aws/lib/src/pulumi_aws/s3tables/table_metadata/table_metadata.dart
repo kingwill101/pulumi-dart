@@ -4,7 +4,7 @@ import '../table_metadata_iceberg/table_metadata_iceberg.dart';
 
 class TableMetadata {
   /// Contains details about the metadata for an Iceberg table. This block defines the schema structure for the Apache Iceberg table format.
-  /// See <span pulumi-lang-nodejs="`iceberg`" pulumi-lang-dotnet="`Iceberg`" pulumi-lang-go="`iceberg`" pulumi-lang-python="`iceberg`" pulumi-lang-yaml="`iceberg`" pulumi-lang-java="`iceberg`">`iceberg`</span> below.
+  /// See `iceberg` below.
   final TableMetadataIceberg iceberg;
 
   TableMetadata({

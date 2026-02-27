@@ -34,11 +34,11 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch {
           RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader>?
       headers;
 
-  /// Inspect the JA3 fingerprint. See <span pulumi-lang-nodejs="`ja3Fingerprint`" pulumi-lang-dotnet="`Ja3Fingerprint`" pulumi-lang-go="`ja3Fingerprint`" pulumi-lang-python="`ja3_fingerprint`" pulumi-lang-yaml="`ja3Fingerprint`" pulumi-lang-java="`ja3Fingerprint`">`ja3_fingerprint`</span> below for details.
+  /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
   final RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint?
       ja3Fingerprint;
 
-  /// Inspect the JA4 fingerprint. See <span pulumi-lang-nodejs="`ja4Fingerprint`" pulumi-lang-dotnet="`Ja4Fingerprint`" pulumi-lang-go="`ja4Fingerprint`" pulumi-lang-python="`ja4_fingerprint`" pulumi-lang-yaml="`ja4Fingerprint`" pulumi-lang-java="`ja4Fingerprint`">`ja4_fingerprint`</span> below for details.
+  /// Inspect the JA4 fingerprint. See `ja4_fingerprint` below for details.
   final RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa4Fingerprint?
       ja4Fingerprint;
 

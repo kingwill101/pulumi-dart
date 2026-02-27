@@ -7,7 +7,7 @@ class AgentAgentMemoryConfiguration {
   /// The type of memory being stored by the agent. See [AWS API documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_MemoryConfiguration.html) for possible values.
   final List<String> enabledMemoryTypes;
 
-  /// Configuration block for `SESSION_SUMMARY` memory type enabled for the agent. See <span pulumi-lang-nodejs="`sessionSummaryConfiguration`" pulumi-lang-dotnet="`SessionSummaryConfiguration`" pulumi-lang-go="`sessionSummaryConfiguration`" pulumi-lang-python="`session_summary_configuration`" pulumi-lang-yaml="`sessionSummaryConfiguration`" pulumi-lang-java="`sessionSummaryConfiguration`">`session_summary_configuration`</span> Block for details.
+  /// Configuration block for `SESSION_SUMMARY` memory type enabled for the agent. See `session_summary_configuration` Block for details.
   final List<AgentAgentMemoryConfigurationSessionSummaryConfiguration>
       sessionSummaryConfigurations;
 

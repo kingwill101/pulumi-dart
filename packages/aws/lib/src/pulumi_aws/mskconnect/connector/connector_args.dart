@@ -11,7 +11,7 @@ import '../connector_worker_configuration/connector_worker_configuration.dart';
 
 /// The set of arguments for Connector.
 class ConnectorArgs {
-  /// Information about the capacity allocated to the connector. See <span pulumi-lang-nodejs="`capacity`" pulumi-lang-dotnet="`Capacity`" pulumi-lang-go="`capacity`" pulumi-lang-python="`capacity`" pulumi-lang-yaml="`capacity`" pulumi-lang-java="`capacity`">`capacity`</span> Block for details.
+  /// Information about the capacity allocated to the connector. See `capacity` Block for details.
   final Input<ConnectorCapacity> capacity;
 
   /// A map of keys to values that represent the configuration for the connector.
@@ -20,27 +20,27 @@ class ConnectorArgs {
   /// A summary description of the connector.
   final Input<String>? description;
 
-  /// Specifies which Apache Kafka cluster to connect to. See <span pulumi-lang-nodejs="`kafkaCluster`" pulumi-lang-dotnet="`KafkaCluster`" pulumi-lang-go="`kafkaCluster`" pulumi-lang-python="`kafka_cluster`" pulumi-lang-yaml="`kafkaCluster`" pulumi-lang-java="`kafkaCluster`">`kafka_cluster`</span> Block for details.
+  /// Specifies which Apache Kafka cluster to connect to. See `kafka_cluster` Block for details.
   final Input<ConnectorKafkaCluster> kafkaCluster;
 
-  /// Details of the client authentication used by the Apache Kafka cluster. See <span pulumi-lang-nodejs="`kafkaClusterClientAuthentication`" pulumi-lang-dotnet="`KafkaClusterClientAuthentication`" pulumi-lang-go="`kafkaClusterClientAuthentication`" pulumi-lang-python="`kafka_cluster_client_authentication`" pulumi-lang-yaml="`kafkaClusterClientAuthentication`" pulumi-lang-java="`kafkaClusterClientAuthentication`">`kafka_cluster_client_authentication`</span> Block for details.
+  /// Details of the client authentication used by the Apache Kafka cluster. See `kafka_cluster_client_authentication` Block for details.
   final Input<ConnectorKafkaClusterClientAuthentication>
       kafkaClusterClientAuthentication;
 
-  /// Details of encryption in transit to the Apache Kafka cluster. See <span pulumi-lang-nodejs="`kafkaClusterEncryptionInTransit`" pulumi-lang-dotnet="`KafkaClusterEncryptionInTransit`" pulumi-lang-go="`kafkaClusterEncryptionInTransit`" pulumi-lang-python="`kafka_cluster_encryption_in_transit`" pulumi-lang-yaml="`kafkaClusterEncryptionInTransit`" pulumi-lang-java="`kafkaClusterEncryptionInTransit`">`kafka_cluster_encryption_in_transit`</span> Block for details.
+  /// Details of encryption in transit to the Apache Kafka cluster. See `kafka_cluster_encryption_in_transit` Block for details.
   final Input<ConnectorKafkaClusterEncryptionInTransit>
       kafkaClusterEncryptionInTransit;
 
   /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.
   final Input<String> kafkaconnectVersion;
 
-  /// Details about log delivery. See <span pulumi-lang-nodejs="`logDelivery`" pulumi-lang-dotnet="`LogDelivery`" pulumi-lang-go="`logDelivery`" pulumi-lang-python="`log_delivery`" pulumi-lang-yaml="`logDelivery`" pulumi-lang-java="`logDelivery`">`log_delivery`</span> Block for details.
+  /// Details about log delivery. See `log_delivery` Block for details.
   final Input<ConnectorLogDelivery>? logDelivery;
 
   /// The name of the connector.
   final Input<String>? name;
 
-  /// Specifies which plugins to use for the connector. See <span pulumi-lang-nodejs="`plugin`" pulumi-lang-dotnet="`Plugin`" pulumi-lang-go="`plugin`" pulumi-lang-python="`plugin`" pulumi-lang-yaml="`plugin`" pulumi-lang-java="`plugin`">`plugin`</span> Block for details.
+  /// Specifies which plugins to use for the connector. See `plugin` Block for details.
   final Input<List<ConnectorPlugin>> plugins;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -51,10 +51,10 @@ class ConnectorArgs {
   /// The following arguments are optional:
   final Input<String> serviceExecutionRoleArn;
 
-  /// A map of tags to assign to the resource. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
-  /// Specifies which worker configuration to use with the connector. See <span pulumi-lang-nodejs="`workerConfiguration`" pulumi-lang-dotnet="`WorkerConfiguration`" pulumi-lang-go="`workerConfiguration`" pulumi-lang-python="`worker_configuration`" pulumi-lang-yaml="`workerConfiguration`" pulumi-lang-java="`workerConfiguration`">`worker_configuration`</span> Block for details.
+  /// Specifies which worker configuration to use with the connector. See `worker_configuration` Block for details.
   final Input<ConnectorWorkerConfiguration>? workerConfiguration;
 
   ConnectorArgs({

@@ -8,13 +8,13 @@ class V2modelsIntentClosingSetting {
   /// Whether an intent's closing response is used. When this field is false, the closing response isn't sent to the user. If the active field isn't specified, the default is true.
   final bool? active;
 
-  /// Configuration block for response that Amazon Lex sends to the user when the intent is complete. See <span pulumi-lang-nodejs="`closingResponse`" pulumi-lang-dotnet="`ClosingResponse`" pulumi-lang-go="`closingResponse`" pulumi-lang-python="`closing_response`" pulumi-lang-yaml="`closingResponse`" pulumi-lang-java="`closingResponse`">`closing_response`</span>.
+  /// Configuration block for response that Amazon Lex sends to the user when the intent is complete. See `closing_response`.
   final V2modelsIntentClosingSettingClosingResponse? closingResponse;
 
-  /// Configuration block for list of conditional branches associated with the intent's closing response. These branches are executed when the <span pulumi-lang-nodejs="`nextStep`" pulumi-lang-dotnet="`NextStep`" pulumi-lang-go="`nextStep`" pulumi-lang-python="`next_step`" pulumi-lang-yaml="`nextStep`" pulumi-lang-java="`nextStep`">`next_step`</span> attribute is set to `EvalutateConditional`. See <span pulumi-lang-nodejs="`conditional`" pulumi-lang-dotnet="`Conditional`" pulumi-lang-go="`conditional`" pulumi-lang-python="`conditional`" pulumi-lang-yaml="`conditional`" pulumi-lang-java="`conditional`">`conditional`</span>.
+  /// Configuration block for list of conditional branches associated with the intent's closing response. These branches are executed when the `next_step` attribute is set to `EvalutateConditional`. See `conditional`.
   final V2modelsIntentClosingSettingConditional? conditional;
 
-  /// Next step that the bot executes after playing the intent's closing response. See <span pulumi-lang-nodejs="`nextStep`" pulumi-lang-dotnet="`NextStep`" pulumi-lang-go="`nextStep`" pulumi-lang-python="`next_step`" pulumi-lang-yaml="`nextStep`" pulumi-lang-java="`nextStep`">`next_step`</span>.
+  /// Next step that the bot executes after playing the intent's closing response. See `next_step`.
   final V2modelsIntentClosingSettingNextStep? nextStep;
 
   V2modelsIntentClosingSetting({

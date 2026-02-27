@@ -21,7 +21,7 @@ class BucketObjectLockConfigurationArgs {
   final Input<BucketObjectLockConfigurationRule>? rule;
 
   /// This argument is deprecated and no longer needed to enable Object Lock.
-  /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the <span pulumi-lang-nodejs="`aws.s3.BucketVersioning`" pulumi-lang-dotnet="`aws.s3.BucketVersioning`" pulumi-lang-go="`s3.BucketVersioning`" pulumi-lang-python="`s3.BucketVersioning`" pulumi-lang-yaml="`aws.s3.BucketVersioning`" pulumi-lang-java="`aws.s3.BucketVersioning`">`aws.s3.BucketVersioning`</span> resource.
+  /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   final Input<String>? token;
 
   BucketObjectLockConfigurationArgs({

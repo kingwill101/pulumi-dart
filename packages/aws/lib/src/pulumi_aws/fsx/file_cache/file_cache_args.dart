@@ -9,7 +9,7 @@ class FileCacheArgs {
   /// A boolean flag indicating whether tags for the cache should be copied to data repository associations. This value defaults to false.
   final Input<bool>? copyTagsToDataRepositoryAssociations;
 
-  /// See the <span pulumi-lang-nodejs="`dataRepositoryAssociation`" pulumi-lang-dotnet="`DataRepositoryAssociation`" pulumi-lang-go="`dataRepositoryAssociation`" pulumi-lang-python="`data_repository_association`" pulumi-lang-yaml="`dataRepositoryAssociation`" pulumi-lang-java="`dataRepositoryAssociation`">`data_repository_association`</span> configuration block. Max of 8.
+  /// See the `data_repository_association` configuration block. Max of 8.
   /// A list of up to 8 configurations for data repository associations (DRAs) to be created during the cache creation. The DRAs link the cache to either an Amazon S3 data repository or a Network File System (NFS) data repository that supports the NFSv3 protocol. The DRA configurations must meet the following requirements: 1) All configurations on the list must be of the same data repository type, either all S3 or all NFS. A cache can't link to different data repository types at the same time. 2) An NFS DRA must link to an NFS file system that supports the NFSv3 protocol. DRA automatic import and automatic export is not supported.
   final Input<List<FileCacheDataRepositoryAssociation>>?
       dataRepositoryAssociations;
@@ -23,7 +23,7 @@ class FileCacheArgs {
   /// Specifies the ID of the AWS Key Management Service (AWS KMS) key to use for encrypting data on an Amazon File Cache. If a KmsKeyId isn't specified, the Amazon FSx-managed AWS KMS key for your account is used.
   final Input<String>? kmsKeyId;
 
-  /// See the <span pulumi-lang-nodejs="`lustreConfiguration`" pulumi-lang-dotnet="`LustreConfiguration`" pulumi-lang-go="`lustreConfiguration`" pulumi-lang-python="`lustre_configuration`" pulumi-lang-yaml="`lustreConfiguration`" pulumi-lang-java="`lustreConfiguration`">`lustre_configuration`</span> block. Required when <span pulumi-lang-nodejs="`fileCacheType`" pulumi-lang-dotnet="`FileCacheType`" pulumi-lang-go="`fileCacheType`" pulumi-lang-python="`file_cache_type`" pulumi-lang-yaml="`fileCacheType`" pulumi-lang-java="`fileCacheType`">`file_cache_type`</span> is `LUSTRE`.
+  /// See the `lustre_configuration` block. Required when `file_cache_type` is `LUSTRE`.
   final Input<List<FileCacheLustreConfiguration>>? lustreConfigurations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -32,7 +32,7 @@ class FileCacheArgs {
   /// A list of IDs specifying the security groups to apply to all network interfaces created for Amazon File Cache access.
   final Input<List<String>>? securityGroupIds;
 
-  /// The storage capacity of the cache in gibibytes (GiB). Valid values are <span pulumi-lang-nodejs="`1200`" pulumi-lang-dotnet="`1200`" pulumi-lang-go="`1200`" pulumi-lang-python="`1200`" pulumi-lang-yaml="`1200`" pulumi-lang-java="`1200`">`1200`</span> GiB, <span pulumi-lang-nodejs="`2400`" pulumi-lang-dotnet="`2400`" pulumi-lang-go="`2400`" pulumi-lang-python="`2400`" pulumi-lang-yaml="`2400`" pulumi-lang-java="`2400`">`2400`</span> GiB, and increments of <span pulumi-lang-nodejs="`2400`" pulumi-lang-dotnet="`2400`" pulumi-lang-go="`2400`" pulumi-lang-python="`2400`" pulumi-lang-yaml="`2400`" pulumi-lang-java="`2400`">`2400`</span> GiB.
+  /// The storage capacity of the cache in gibibytes (GiB). Valid values are `1200` GiB, `2400` GiB, and increments of `2400` GiB.
   final Input<int> storageCapacity;
 
   /// A list of subnet IDs that the cache will be accessible from. You can specify only one subnet ID.
@@ -40,7 +40,7 @@ class FileCacheArgs {
   /// The following arguments are optional:
   final Input<List<String>> subnetIds;
 
-  /// A map of tags to assign to the file cache. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the file cache. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
 
   FileCacheArgs({

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class DataQualityJobDefinitionNetworkConfigVpcConfig {
-  /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for the VPC that is specified in the <span pulumi-lang-nodejs="`subnets`" pulumi-lang-dotnet="`Subnets`" pulumi-lang-go="`subnets`" pulumi-lang-python="`subnets`" pulumi-lang-yaml="`subnets`" pulumi-lang-java="`subnets`">`subnets`</span> field.
+  /// The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for the VPC that is specified in the `subnets` field.
   final List<String> securityGroupIds;
 
   /// The ID of the subnets in the VPC to which you want to connect your training job or model.

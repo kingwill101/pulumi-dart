@@ -1,0 +1,3 @@
+library module_s3tables_table_maintenance_configuration;
+
+export 'table_maintenance_configuration/table_maintenance_configuration.dart';

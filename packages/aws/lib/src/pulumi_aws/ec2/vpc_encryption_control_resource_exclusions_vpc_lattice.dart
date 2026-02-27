@@ -1,0 +1,3 @@
+library module_ec2_vpc_encryption_control_resource_exclusions_vpc_lattice;
+
+export 'vpc_encryption_control_resource_exclusions_vpc_lattice/vpc_encryption_control_resource_exclusions_vpc_lattice.dart';

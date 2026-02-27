@@ -1,3 +1,0 @@
-library module_sagemaker_model_card_export_job_timeouts;
-
-export 'model_card_export_job_timeouts.dart';

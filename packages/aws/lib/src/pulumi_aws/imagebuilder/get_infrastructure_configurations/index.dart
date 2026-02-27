@@ -1,5 +1,0 @@
-library module_imagebuilder_get_infrastructure_configurations;
-
-export 'get_infrastructure_configurations.dart';
-export 'get_infrastructure_configurations_args.dart';
-export 'get_infrastructure_configurations_result.dart';

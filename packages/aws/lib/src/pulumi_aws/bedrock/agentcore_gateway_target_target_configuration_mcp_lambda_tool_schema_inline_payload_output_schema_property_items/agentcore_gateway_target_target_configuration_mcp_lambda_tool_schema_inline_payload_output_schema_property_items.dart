@@ -12,7 +12,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems?
       items;
 
-  /// Set of property definitions for arrays of objects. See <span pulumi-lang-nodejs="`property`" pulumi-lang-dotnet="`Property`" pulumi-lang-go="`property`" pulumi-lang-python="`property`" pulumi-lang-yaml="`property`" pulumi-lang-java="`property`">`property`</span> below.
+  /// Set of property definitions for arrays of objects. See `property` below.
   final List<
           AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty>?
       properties;

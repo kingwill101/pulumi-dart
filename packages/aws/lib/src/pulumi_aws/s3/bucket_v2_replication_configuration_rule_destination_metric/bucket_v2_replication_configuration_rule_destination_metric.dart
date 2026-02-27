@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class BucketV2ReplicationConfigurationRuleDestinationMetric {
-  /// Threshold within which objects are to be replicated. The only valid value is <span pulumi-lang-nodejs="`15`" pulumi-lang-dotnet="`15`" pulumi-lang-go="`15`" pulumi-lang-python="`15`" pulumi-lang-yaml="`15`" pulumi-lang-java="`15`">`15`</span>.
+  /// Threshold within which objects are to be replicated. The only valid value is `15`.
   final int? minutes;
 
   /// Status of replication metrics. Either `Enabled` or `Disabled`.

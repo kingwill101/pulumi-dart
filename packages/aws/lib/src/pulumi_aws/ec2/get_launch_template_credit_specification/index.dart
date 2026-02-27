@@ -1,3 +1,0 @@
-library module_ec2_get_launch_template_credit_specification;
-
-export 'get_launch_template_credit_specification.dart';

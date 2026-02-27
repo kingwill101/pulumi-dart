@@ -20,7 +20,7 @@ class GetStateMachineResult {
   /// The revision identifier for the state machine.
   final String revisionId;
 
-  /// Set to the<span pulumi-lang-nodejs=" roleArn " pulumi-lang-dotnet=" RoleArn " pulumi-lang-go=" roleArn " pulumi-lang-python=" role_arn " pulumi-lang-yaml=" roleArn " pulumi-lang-java=" roleArn "> role_arn </span>used by the state function.
+  /// Set to the role_arn used by the state function.
   final String roleArn;
 
   /// Set to the current status of the state machine.

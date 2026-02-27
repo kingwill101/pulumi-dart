@@ -13,19 +13,19 @@ class SubscriberArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> Blocks below.
+  /// The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
   final Input<List<SubscriberSource>> sources;
 
   /// The description for your subscriber account in Security Lake.
   final Input<String>? subscriberDescription;
 
-  /// The AWS identity used to access your data. See <span pulumi-lang-nodejs="`subscriberIdentity`" pulumi-lang-dotnet="`SubscriberIdentity`" pulumi-lang-go="`subscriberIdentity`" pulumi-lang-python="`subscriber_identity`" pulumi-lang-yaml="`subscriberIdentity`" pulumi-lang-java="`subscriberIdentity`">`subscriber_identity`</span> Block below.
+  /// The AWS identity used to access your data. See `subscriber_identity` Block below.
   final Input<SubscriberSubscriberIdentity> subscriberIdentity;
 
   /// The name of your Security Lake subscriber account.
   final Input<String>? subscriberName;
 
-  /// Key-value map of resource tags. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final Input<Map<String, String>>? tags;
   final Input<SubscriberTimeouts>? timeouts;
 

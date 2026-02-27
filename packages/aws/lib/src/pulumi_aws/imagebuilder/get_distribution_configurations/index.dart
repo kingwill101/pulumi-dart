@@ -1,5 +1,0 @@
-library module_imagebuilder_get_distribution_configurations;
-
-export 'get_distribution_configurations.dart';
-export 'get_distribution_configurations_args.dart';
-export 'get_distribution_configurations_result.dart';

@@ -1,0 +1,3 @@
+library module_ec2_get_network_insights_analysis_forward_path_component_acl_rule;
+
+export 'get_network_insights_analysis_forward_path_component_acl_rule/get_network_insights_analysis_forward_path_component_acl_rule.dart';

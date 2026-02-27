@@ -8,7 +8,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   /// Description of the property.
   final String? description;
 
-  /// Items definition for array properties. See <span pulumi-lang-nodejs="`items`" pulumi-lang-dotnet="`Items`" pulumi-lang-go="`items`" pulumi-lang-python="`items`" pulumi-lang-yaml="`items`" pulumi-lang-java="`items`">`items`</span> above.
+  /// Items definition for array properties. See `items` above.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems?
       items;
 
@@ -20,7 +20,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
           AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyProperty>?
       properties;
 
-  /// Whether this property is required. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether this property is required. Defaults to `false`.
   final bool? required;
 
   /// Data type of the property.

@@ -10,7 +10,7 @@ class ServiceServiceRegistries {
   /// Port value used if your Service Discovery service specified an SRV record.
   final int? port;
 
-  /// ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(<span pulumi-lang-nodejs="`aws.servicediscovery.Service`" pulumi-lang-dotnet="`aws.servicediscovery.Service`" pulumi-lang-go="`servicediscovery.Service`" pulumi-lang-python="`servicediscovery.Service`" pulumi-lang-yaml="`aws.servicediscovery.Service`" pulumi-lang-java="`aws.servicediscovery.Service`">`aws.servicediscovery.Service`</span>). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
+  /// ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`aws.servicediscovery.Service`). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
   final String registryArn;
 
   ServiceServiceRegistries({

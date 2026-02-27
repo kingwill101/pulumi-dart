@@ -1,0 +1,3 @@
+library module_vpclattice_service_network_vpc_association_dns_options;
+
+export 'service_network_vpc_association_dns_options/service_network_vpc_association_dns_options.dart';

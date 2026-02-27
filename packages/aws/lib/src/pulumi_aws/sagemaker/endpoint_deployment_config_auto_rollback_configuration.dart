@@ -1,0 +1,3 @@
+library module_sagemaker_endpoint_deployment_config_auto_rollback_configuration;
+
+export 'endpoint_deployment_config_auto_rollback_configuration/endpoint_deployment_config_auto_rollback_configuration.dart';

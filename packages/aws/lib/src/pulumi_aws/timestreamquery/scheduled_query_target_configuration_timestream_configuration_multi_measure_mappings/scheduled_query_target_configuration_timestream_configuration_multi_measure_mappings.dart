@@ -9,7 +9,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappin
           ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>
       multiMeasureAttributeMappings;
 
-  /// Name of the target multi-measure name in the derived table. This input is required when <span pulumi-lang-nodejs="`measureNameColumn`" pulumi-lang-dotnet="`MeasureNameColumn`" pulumi-lang-go="`measureNameColumn`" pulumi-lang-python="`measure_name_column`" pulumi-lang-yaml="`measureNameColumn`" pulumi-lang-java="`measureNameColumn`">`measure_name_column`</span> is not provided. If <span pulumi-lang-nodejs="`measureNameColumn`" pulumi-lang-dotnet="`MeasureNameColumn`" pulumi-lang-go="`measureNameColumn`" pulumi-lang-python="`measure_name_column`" pulumi-lang-yaml="`measureNameColumn`" pulumi-lang-java="`measureNameColumn`">`measure_name_column`</span> is provided, then the value from that column will be used as the multi-measure name.
+  /// Name of the target multi-measure name in the derived table. This input is required when `measure_name_column` is not provided. If `measure_name_column` is provided, then the value from that column will be used as the multi-measure name.
   final String? targetMultiMeasureName;
 
   ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings({

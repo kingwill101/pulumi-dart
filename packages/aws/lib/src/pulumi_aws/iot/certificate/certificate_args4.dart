@@ -10,9 +10,9 @@ class CertificateArgs4 {
   /// The CA certificate for the certificate to be registered. If this is set, the CA needs to be registered with AWS IoT beforehand.
   final Input<String>? caPem;
 
-  /// The certificate to be registered. If <span pulumi-lang-nodejs="`caPem`" pulumi-lang-dotnet="`CaPem`" pulumi-lang-go="`caPem`" pulumi-lang-python="`ca_pem`" pulumi-lang-yaml="`caPem`" pulumi-lang-java="`caPem`">`ca_pem`</span> is unspecified, review
+  /// The certificate to be registered. If `ca_pem` is unspecified, review
   /// [RegisterCertificateWithoutCA](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificateWithoutCA.html).
-  /// If <span pulumi-lang-nodejs="`caPem`" pulumi-lang-dotnet="`CaPem`" pulumi-lang-go="`caPem`" pulumi-lang-python="`ca_pem`" pulumi-lang-yaml="`caPem`" pulumi-lang-java="`caPem`">`ca_pem`</span> is specified, review
+  /// If `ca_pem` is specified, review
   /// [RegisterCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_RegisterCertificate.html)
   /// for more information on registering a certificate.
   final Input<String>? certificatePem;

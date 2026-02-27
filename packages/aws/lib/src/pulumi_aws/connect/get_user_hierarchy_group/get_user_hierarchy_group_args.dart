@@ -12,7 +12,7 @@ class GetUserHierarchyGroupArgs {
 
   /// Returns information on a specific hierarchy group by name
   ///
-  /// > **NOTE:** <span pulumi-lang-nodejs="`instanceId`" pulumi-lang-dotnet="`InstanceId`" pulumi-lang-go="`instanceId`" pulumi-lang-python="`instance_id`" pulumi-lang-yaml="`instanceId`" pulumi-lang-java="`instanceId`">`instance_id`</span> and one of either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`hierarchyGroupId`" pulumi-lang-dotnet="`HierarchyGroupId`" pulumi-lang-go="`hierarchyGroupId`" pulumi-lang-python="`hierarchy_group_id`" pulumi-lang-yaml="`hierarchyGroupId`" pulumi-lang-java="`hierarchyGroupId`">`hierarchy_group_id`</span> is required.
+  /// > **NOTE:** `instance_id` and one of either `name` or `hierarchy_group_id` is required.
   final Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

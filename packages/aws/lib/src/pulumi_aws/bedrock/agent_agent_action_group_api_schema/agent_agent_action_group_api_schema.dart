@@ -4,11 +4,11 @@ import '../agent_agent_action_group_api_schema_s3/agent_agent_action_group_api_s
 
 class AgentAgentActionGroupApiSchema {
   /// JSON or YAML-formatted payload defining the OpenAPI schema for the action group.
-  /// Only one of <span pulumi-lang-nodejs="`payload`" pulumi-lang-dotnet="`Payload`" pulumi-lang-go="`payload`" pulumi-lang-python="`payload`" pulumi-lang-yaml="`payload`" pulumi-lang-java="`payload`">`payload`</span> or <span pulumi-lang-nodejs="`s3`" pulumi-lang-dotnet="`S3`" pulumi-lang-go="`s3`" pulumi-lang-python="`s3`" pulumi-lang-yaml="`s3`" pulumi-lang-java="`s3`">`s3`</span> can be specified.
+  /// Only one of `payload` or `s3` can be specified.
   final String? payload;
 
-  /// Details about the S3 object containing the OpenAPI schema for the action group. See <span pulumi-lang-nodejs="`s3`" pulumi-lang-dotnet="`S3`" pulumi-lang-go="`s3`" pulumi-lang-python="`s3`" pulumi-lang-yaml="`s3`" pulumi-lang-java="`s3`">`s3`</span> Block for details.
-  /// Only one of <span pulumi-lang-nodejs="`s3`" pulumi-lang-dotnet="`S3`" pulumi-lang-go="`s3`" pulumi-lang-python="`s3`" pulumi-lang-yaml="`s3`" pulumi-lang-java="`s3`">`s3`</span> or <span pulumi-lang-nodejs="`payload`" pulumi-lang-dotnet="`Payload`" pulumi-lang-go="`payload`" pulumi-lang-python="`payload`" pulumi-lang-yaml="`payload`" pulumi-lang-java="`payload`">`payload`</span> can be specified.
+  /// Details about the S3 object containing the OpenAPI schema for the action group. See `s3` Block for details.
+  /// Only one of `s3` or `payload` can be specified.
   final AgentAgentActionGroupApiSchemaS3? s3;
 
   AgentAgentActionGroupApiSchema({

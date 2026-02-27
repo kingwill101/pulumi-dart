@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getRuntimeVersion.
 class GetRuntimeVersionArgs {
-  /// Whether the latest version of the runtime should be fetched. Conflicts with <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>. Valid values: <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether the latest version of the runtime should be fetched. Conflicts with `version`. Valid values: `true`.
   final Input<bool>? latest;
 
   /// Name prefix of the runtime version (for example, `syn-nodejs-puppeteer`).
@@ -15,7 +15,7 @@ class GetRuntimeVersionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final Input<String>? region;
 
-  /// Version of the runtime to be fetched (for example, `9.0`). Conflicts with <span pulumi-lang-nodejs="`latest`" pulumi-lang-dotnet="`Latest`" pulumi-lang-go="`latest`" pulumi-lang-python="`latest`" pulumi-lang-yaml="`latest`" pulumi-lang-java="`latest`">`latest`</span>.
+  /// Version of the runtime to be fetched (for example, `9.0`). Conflicts with `latest`.
   final Input<String>? version;
 
   GetRuntimeVersionArgs({

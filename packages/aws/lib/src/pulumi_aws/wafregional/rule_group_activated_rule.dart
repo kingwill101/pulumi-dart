@@ -1,0 +1,3 @@
+library module_wafregional_rule_group_activated_rule;
+
+export 'rule_group_activated_rule/rule_group_activated_rule2.dart';

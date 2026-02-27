@@ -20,7 +20,7 @@ class BucketWebsiteConfigurationV2Args {
   /// Name of the index document for the website. See below.
   final Input<BucketWebsiteConfigurationV2IndexDocument>? indexDocument;
 
-  /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with <span pulumi-lang-nodejs="`errorDocument`" pulumi-lang-dotnet="`ErrorDocument`" pulumi-lang-go="`errorDocument`" pulumi-lang-python="`error_document`" pulumi-lang-yaml="`errorDocument`" pulumi-lang-java="`errorDocument`">`error_document`</span>, <span pulumi-lang-nodejs="`indexDocument`" pulumi-lang-dotnet="`IndexDocument`" pulumi-lang-go="`indexDocument`" pulumi-lang-python="`index_document`" pulumi-lang-yaml="`indexDocument`" pulumi-lang-java="`indexDocument`">`index_document`</span>, and <span pulumi-lang-nodejs="`routingRule`" pulumi-lang-dotnet="`RoutingRule`" pulumi-lang-go="`routingRule`" pulumi-lang-python="`routing_rule`" pulumi-lang-yaml="`routingRule`" pulumi-lang-java="`routingRule`">`routing_rule`</span>.
+  /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `error_document`, `index_document`, and `routing_rule`.
   final Input<BucketWebsiteConfigurationV2RedirectAllRequestsTo>?
       redirectAllRequestsTo;
 

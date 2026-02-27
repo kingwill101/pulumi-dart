@@ -1,0 +1,3 @@
+library module_ecr_get_repository_creation_template_encryption_configuration;
+
+export 'get_repository_creation_template_encryption_configuration/get_repository_creation_template_encryption_configuration.dart';

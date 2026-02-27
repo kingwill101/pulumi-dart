@@ -1,0 +1,3 @@
+library module_route53_get_records_resource_record_set_geolocation;
+
+export 'get_records_resource_record_set_geolocation/get_records_resource_record_set_geolocation.dart';

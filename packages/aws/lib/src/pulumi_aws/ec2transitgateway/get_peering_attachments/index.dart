@@ -1,5 +1,0 @@
-library module_ec2transitgateway_get_peering_attachments;
-
-export 'get_peering_attachments.dart';
-export 'get_peering_attachments_args.dart';
-export 'get_peering_attachments_result.dart';

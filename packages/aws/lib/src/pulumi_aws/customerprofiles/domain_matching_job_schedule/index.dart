@@ -1,3 +1,0 @@
-library module_customerprofiles_domain_matching_job_schedule;
-
-export 'domain_matching_job_schedule.dart';

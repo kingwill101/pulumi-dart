@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PeeringAttachmentOptions {
-  /// Indicates whether dynamic routing is enabled or disabled.. Supports <span pulumi-lang-nodejs="`enable`" pulumi-lang-dotnet="`Enable`" pulumi-lang-go="`enable`" pulumi-lang-python="`enable`" pulumi-lang-yaml="`enable`" pulumi-lang-java="`enable`">`enable`</span> and <span pulumi-lang-nodejs="`disable`" pulumi-lang-dotnet="`Disable`" pulumi-lang-go="`disable`" pulumi-lang-python="`disable`" pulumi-lang-yaml="`disable`" pulumi-lang-java="`disable`">`disable`</span>.
+  /// Indicates whether dynamic routing is enabled or disabled.. Supports `enable` and `disable`.
   final String? dynamicRouting;
 
   PeeringAttachmentOptions({

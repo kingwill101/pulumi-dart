@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart';
 import '../patch_baseline_approval_rule_patch_filter/patch_baseline_approval_rule_patch_filter.dart';
 
 class PatchBaselineApprovalRule {
-  /// Number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline. Valid Range: 0 to 360. Conflicts with <span pulumi-lang-nodejs="`approveUntilDate`" pulumi-lang-dotnet="`ApproveUntilDate`" pulumi-lang-go="`approveUntilDate`" pulumi-lang-python="`approve_until_date`" pulumi-lang-yaml="`approveUntilDate`" pulumi-lang-java="`approveUntilDate`">`approve_until_date`</span>.
+  /// Number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline. Valid Range: 0 to 360. Conflicts with `approve_until_date`.
   final int? approveAfterDays;
 
-  /// Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with <span pulumi-lang-nodejs="`approveAfterDays`" pulumi-lang-dotnet="`ApproveAfterDays`" pulumi-lang-go="`approveAfterDays`" pulumi-lang-python="`approve_after_days`" pulumi-lang-yaml="`approveAfterDays`" pulumi-lang-java="`approveAfterDays`">`approve_after_days`</span>
+  /// Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with `approve_after_days`
   final String? approveUntilDate;
 
   /// Compliance level for patches approved by this rule. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, and `UNSPECIFIED`. The default value is `UNSPECIFIED`.
   final String? complianceLevel;
 
-  /// Boolean enabling the application of non-security updates. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Valid for Linux instances only.
+  /// Boolean enabling the application of non-security updates. The default value is `false`. Valid for Linux instances only.
   final bool? enableNonSecurity;
 
-  /// Patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid combinations of these Keys and the <span pulumi-lang-nodejs="`operatingSystem`" pulumi-lang-dotnet="`OperatingSystem`" pulumi-lang-go="`operatingSystem`" pulumi-lang-python="`operating_system`" pulumi-lang-yaml="`operatingSystem`" pulumi-lang-java="`operatingSystem`">`operating_system`</span> value can be found in the [SSM DescribePatchProperties API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribePatchProperties.html). Valid Values are exact values for the patch property given as the key, or a wildcard `*`, which matches all values. `PATCH_SET` defaults to `OS` if unspecified
+  /// Patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid combinations of these Keys and the `operating_system` value can be found in the [SSM DescribePatchProperties API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribePatchProperties.html). Valid Values are exact values for the patch property given as the key, or a wildcard `*`, which matches all values. `PATCH_SET` defaults to `OS` if unspecified
   final List<PatchBaselineApprovalRulePatchFilter> patchFilters;
 
   PatchBaselineApprovalRule({

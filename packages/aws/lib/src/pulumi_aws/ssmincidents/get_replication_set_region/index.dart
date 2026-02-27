@@ -1,3 +1,0 @@
-library module_ssmincidents_get_replication_set_region;
-
-export 'get_replication_set_region.dart';

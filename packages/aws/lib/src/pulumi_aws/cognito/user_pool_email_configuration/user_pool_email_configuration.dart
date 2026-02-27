@@ -4,7 +4,7 @@ class UserPoolEmailConfiguration {
   /// Email configuration set name from SES.
   final String? configurationSet;
 
-  /// Email delivery method to use. `COGNITO_DEFAULT` for the default email functionality built into Cognito or `DEVELOPER` to use your Amazon SES configuration. Required to be `DEVELOPER` if <span pulumi-lang-nodejs="`fromEmailAddress`" pulumi-lang-dotnet="`FromEmailAddress`" pulumi-lang-go="`fromEmailAddress`" pulumi-lang-python="`from_email_address`" pulumi-lang-yaml="`fromEmailAddress`" pulumi-lang-java="`fromEmailAddress`">`from_email_address`</span> is set.
+  /// Email delivery method to use. `COGNITO_DEFAULT` for the default email functionality built into Cognito or `DEVELOPER` to use your Amazon SES configuration. Required to be `DEVELOPER` if `from_email_address` is set.
   final String? emailSendingAccount;
 
   /// Sender’s email address or sender’s display name with their email address (e.g., `john@example.com`, `John Smith <john@example.com>` or `\"John Smith Ph.D.\" <john@example.com>`). Escaped double quotes are required around display names that contain certain characters as specified in [RFC 5322](https://tools.ietf.org/html/rfc5322).
@@ -13,7 +13,7 @@ class UserPoolEmailConfiguration {
   /// REPLY-TO email address.
   final String? replyToEmailAddress;
 
-  /// ARN of the SES verified email identity to use. Required if <span pulumi-lang-nodejs="`emailSendingAccount`" pulumi-lang-dotnet="`EmailSendingAccount`" pulumi-lang-go="`emailSendingAccount`" pulumi-lang-python="`email_sending_account`" pulumi-lang-yaml="`emailSendingAccount`" pulumi-lang-java="`emailSendingAccount`">`email_sending_account`</span> is set to `DEVELOPER`.
+  /// ARN of the SES verified email identity to use. Required if `email_sending_account` is set to `DEVELOPER`.
   final String? sourceArn;
 
   UserPoolEmailConfiguration({

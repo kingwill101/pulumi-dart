@@ -1,0 +1,3 @@
+library module_inspector2_filter_filter_criteria_network_protocol;
+
+export 'filter_filter_criteria_network_protocol/filter_filter_criteria_network_protocol.dart';

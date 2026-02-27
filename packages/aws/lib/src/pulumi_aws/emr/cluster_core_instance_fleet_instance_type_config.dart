@@ -1,0 +1,3 @@
+library module_emr_cluster_core_instance_fleet_instance_type_config;
+
+export 'cluster_core_instance_fleet_instance_type_config/cluster_core_instance_fleet_instance_type_config.dart';

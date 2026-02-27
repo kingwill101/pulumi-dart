@@ -1,0 +1,3 @@
+library module_securitylake_custom_log_source_attribute;
+
+export 'custom_log_source_attribute/custom_log_source_attribute.dart';

@@ -1,0 +1,3 @@
+library module_finspace_kx_environment_transit_gateway_configuration;
+
+export 'kx_environment_transit_gateway_configuration/kx_environment_transit_gateway_configuration.dart';

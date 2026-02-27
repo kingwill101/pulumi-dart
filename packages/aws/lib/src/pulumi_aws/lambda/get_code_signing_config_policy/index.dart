@@ -1,3 +1,0 @@
-library module_lambda_get_code_signing_config_policy;
-
-export 'get_code_signing_config_policy.dart';

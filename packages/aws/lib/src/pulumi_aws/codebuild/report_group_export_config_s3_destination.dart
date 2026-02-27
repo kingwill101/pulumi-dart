@@ -1,0 +1,3 @@
+library module_codebuild_report_group_export_config_s3_destination;
+
+export 'report_group_export_config_s3_destination/report_group_export_config_s3_destination.dart';

@@ -1,3 +1,0 @@
-library module_cognito_risk_configuration_account_takeover_risk_configuration_actions_medium_action;
-
-export 'risk_configuration_account_takeover_risk_configuration_actions_medium_action.dart';

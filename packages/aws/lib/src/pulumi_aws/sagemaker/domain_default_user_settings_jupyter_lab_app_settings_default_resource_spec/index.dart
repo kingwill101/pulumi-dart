@@ -1,3 +1,0 @@
-library module_sagemaker_domain_default_user_settings_jupyter_lab_app_settings_default_resource_spec;
-
-export 'domain_default_user_settings_jupyter_lab_app_settings_default_resource_spec.dart';

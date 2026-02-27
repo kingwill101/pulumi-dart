@@ -9,7 +9,7 @@ class GetFunctionArgs2 {
   /// The following arguments are optional:
   final Input<String> functionName;
 
-  /// Alias name or version number of the Lambda function. E.g., `$LATEST`, `my-alias`, or <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. When not included: the data source resolves to the most recent published version; if no published version exists: it resolves to the most recent unpublished version.
+  /// Alias name or version number of the Lambda function. E.g., `$LATEST`, `my-alias`, or `1`. When not included: the data source resolves to the most recent published version; if no published version exists: it resolves to the most recent unpublished version.
   final Input<String>? qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

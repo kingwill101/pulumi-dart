@@ -1,3 +1,0 @@
-library module_sfn_state_machine_encryption_configuration;
-
-export 'state_machine_encryption_configuration.dart';

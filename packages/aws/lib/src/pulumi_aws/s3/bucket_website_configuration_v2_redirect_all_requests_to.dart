@@ -1,0 +1,3 @@
+library module_s3_bucket_website_configuration_v2_redirect_all_requests_to;
+
+export 'bucket_website_configuration_v2_redirect_all_requests_to/bucket_website_configuration_v2_redirect_all_requests_to.dart';

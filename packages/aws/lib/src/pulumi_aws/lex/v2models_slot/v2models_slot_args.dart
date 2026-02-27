@@ -25,14 +25,14 @@ class V2modelsSlotArgs {
   final Input<String> localeId;
 
   /// Whether the slot returns multiple values in one response.
-  /// See the <span pulumi-lang-nodejs="`multipleValuesSetting`" pulumi-lang-dotnet="`MultipleValuesSetting`" pulumi-lang-go="`multipleValuesSetting`" pulumi-lang-python="`multiple_values_setting`" pulumi-lang-yaml="`multipleValuesSetting`" pulumi-lang-java="`multipleValuesSetting`">`multiple_values_setting`</span> argument reference below.
+  /// See the `multiple_values_setting` argument reference below.
   final Input<List<V2modelsSlotMultipleValuesSetting>>? multipleValuesSettings;
 
   /// Name of the slot.
   final Input<String>? name;
 
   /// Determines how slot values are used in Amazon CloudWatch logs.
-  /// See the <span pulumi-lang-nodejs="`obfuscationSetting`" pulumi-lang-dotnet="`ObfuscationSetting`" pulumi-lang-go="`obfuscationSetting`" pulumi-lang-python="`obfuscation_setting`" pulumi-lang-yaml="`obfuscationSetting`" pulumi-lang-java="`obfuscationSetting`">`obfuscation_setting`</span> argument reference below.
+  /// See the `obfuscation_setting` argument reference below.
   final Input<List<V2modelsSlotObfuscationSetting>>? obfuscationSettings;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -42,15 +42,15 @@ class V2modelsSlotArgs {
   final Input<String>? slotTypeId;
 
   /// Specifications for the constituent sub slots and the expression for the composite slot.
-  /// See the <span pulumi-lang-nodejs="`subSlotSetting`" pulumi-lang-dotnet="`SubSlotSetting`" pulumi-lang-go="`subSlotSetting`" pulumi-lang-python="`sub_slot_setting`" pulumi-lang-yaml="`subSlotSetting`" pulumi-lang-java="`subSlotSetting`">`sub_slot_setting`</span> argument reference below.
+  /// See the `sub_slot_setting` argument reference below.
   final Input<List<V2modelsSlotSubSlotSetting>>? subSlotSettings;
   final Input<V2modelsSlotTimeouts>? timeouts;
 
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
-  /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default <span pulumi-lang-nodejs="`promptAttemptsSpecification`" pulumi-lang-dotnet="`PromptAttemptsSpecification`" pulumi-lang-go="`promptAttemptsSpecification`" pulumi-lang-python="`prompt_attempts_specification`" pulumi-lang-yaml="`promptAttemptsSpecification`" pulumi-lang-java="`promptAttemptsSpecification`">`prompt_attempts_specification`</span> blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
+  /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `prompt_attempts_specification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
   /// This will cause Terraform to report differences.
-  /// Use the <span pulumi-lang-nodejs="`valueElicitationSetting`" pulumi-lang-dotnet="`ValueElicitationSetting`" pulumi-lang-go="`valueElicitationSetting`" pulumi-lang-python="`value_elicitation_setting`" pulumi-lang-yaml="`valueElicitationSetting`" pulumi-lang-java="`valueElicitationSetting`">`value_elicitation_setting`</span> configuration above in the <span pulumi-lang-nodejs="`valueElicitationSetting`" pulumi-lang-dotnet="`ValueElicitationSetting`" pulumi-lang-go="`valueElicitationSetting`" pulumi-lang-python="`value_elicitation_setting`" pulumi-lang-yaml="`valueElicitationSetting`" pulumi-lang-java="`valueElicitationSetting`">`value_elicitation_setting`</span> example to avoid differences resulting from AWS default configurations.
-  /// See the <span pulumi-lang-nodejs="`valueElicitationSetting`" pulumi-lang-dotnet="`ValueElicitationSetting`" pulumi-lang-go="`valueElicitationSetting`" pulumi-lang-python="`value_elicitation_setting`" pulumi-lang-yaml="`valueElicitationSetting`" pulumi-lang-java="`valueElicitationSetting`">`value_elicitation_setting`</span> argument reference below.
+  /// Use the `value_elicitation_setting` configuration above in the `value_elicitation_setting` example to avoid differences resulting from AWS default configurations.
+  /// See the `value_elicitation_setting` argument reference below.
   ///
   /// The following arguments are optional:
   final Input<V2modelsSlotValueElicitationSetting> valueElicitationSetting;

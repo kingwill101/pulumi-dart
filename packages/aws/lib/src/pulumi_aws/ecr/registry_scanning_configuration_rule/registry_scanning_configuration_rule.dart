@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../registry_scanning_configuration_rule_repository_filter/registry_scanning_configuration_rule_repository_filter.dart';
 
 class RegistryScanningConfigurationRule {
-  /// One or more repository filter blocks, containing a <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> (required string filtering repositories, see pattern regex [here](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ScanningRepositoryFilter.html)) and a <span pulumi-lang-nodejs="`filterType`" pulumi-lang-dotnet="`FilterType`" pulumi-lang-go="`filterType`" pulumi-lang-python="`filter_type`" pulumi-lang-yaml="`filterType`" pulumi-lang-java="`filterType`">`filter_type`</span> (required string, currently only `WILDCARD` is supported).
+  /// One or more repository filter blocks, containing a `filter` (required string filtering repositories, see pattern regex [here](https://docs.aws.amazon.com/AmazonECR/latest/APIReference/API_ScanningRepositoryFilter.html)) and a `filter_type` (required string, currently only `WILDCARD` is supported).
   final List<RegistryScanningConfigurationRuleRepositoryFilter>
       repositoryFilters;
 

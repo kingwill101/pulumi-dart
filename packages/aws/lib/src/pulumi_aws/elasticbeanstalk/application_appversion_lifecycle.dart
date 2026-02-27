@@ -1,0 +1,3 @@
+library module_elasticbeanstalk_application_appversion_lifecycle;
+
+export 'application_appversion_lifecycle/application_appversion_lifecycle.dart';

@@ -1,3 +1,0 @@
-library module_ec2clientvpn_endpoint_client_route_enforcement_options;
-
-export 'endpoint_client_route_enforcement_options.dart';

@@ -1,0 +1,3 @@
+library module_msk_replicator_replication_info_list;
+
+export 'replicator_replication_info_list/replicator_replication_info_list.dart';

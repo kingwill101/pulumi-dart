@@ -1,3 +1,0 @@
-library module_autoscaling_get_group_mixed_instances_policy_launch_template_override_instance_requirement_memory_mib;
-
-export 'get_group_mixed_instances_policy_launch_template_override_instance_requirement_memory_mib.dart';

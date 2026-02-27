@@ -1,3 +1,0 @@
-library module_quicksight_get_data_set_logical_table_map_data_transform_tag_column_operation_tag;
-
-export 'get_data_set_logical_table_map_data_transform_tag_column_operation_tag.dart';

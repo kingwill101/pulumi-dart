@@ -1,0 +1,4 @@
+library module_chime_sdkvoice_voice_profile_domain;
+
+export 'sdkvoice_voice_profile_domain/sdkvoice_voice_profile_domain.dart';
+export 'sdkvoice_voice_profile_domain/sdkvoice_voice_profile_domain_args.dart';

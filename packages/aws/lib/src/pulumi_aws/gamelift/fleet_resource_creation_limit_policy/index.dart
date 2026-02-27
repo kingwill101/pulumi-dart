@@ -1,3 +1,0 @@
-library module_gamelift_fleet_resource_creation_limit_policy;
-
-export 'fleet_resource_creation_limit_policy.dart';

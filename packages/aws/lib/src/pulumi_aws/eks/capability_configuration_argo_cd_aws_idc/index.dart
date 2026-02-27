@@ -1,3 +1,0 @@
-library module_eks_capability_configuration_argo_cd_aws_idc;
-
-export 'capability_configuration_argo_cd_aws_idc.dart';

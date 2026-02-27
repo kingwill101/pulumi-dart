@@ -1,3 +1,0 @@
-library module_cfg_remediation_configuration_parameter;
-
-export 'remediation_configuration_parameter.dart';

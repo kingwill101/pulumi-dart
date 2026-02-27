@@ -3,7 +3,7 @@
 import '../policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set/policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set.dart';
 
 class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy {
-  /// Defines NACL entries for Network ACL policy. See the <span pulumi-lang-nodejs="`networkAclEntrySet`" pulumi-lang-dotnet="`NetworkAclEntrySet`" pulumi-lang-go="`networkAclEntrySet`" pulumi-lang-python="`network_acl_entry_set`" pulumi-lang-yaml="`networkAclEntrySet`" pulumi-lang-java="`networkAclEntrySet`">`network_acl_entry_set`</span> block.
+  /// Defines NACL entries for Network ACL policy. See the `network_acl_entry_set` block.
   final PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet?
       networkAclEntrySet;
 

@@ -5,11 +5,11 @@ import '../bucket_replication_configuration_rule_destination_metrics/bucket_repl
 import '../bucket_replication_configuration_rule_destination_replication_time/bucket_replication_configuration_rule_destination_replication_time.dart';
 
 class BucketReplicationConfigurationRuleDestination {
-  /// Specifies the overrides to use for object owners on replication (documented below). Must be used in conjunction with <span pulumi-lang-nodejs="`accountId`" pulumi-lang-dotnet="`AccountId`" pulumi-lang-go="`accountId`" pulumi-lang-python="`account_id`" pulumi-lang-yaml="`accountId`" pulumi-lang-java="`accountId`">`account_id`</span> owner override configuration.
+  /// Specifies the overrides to use for object owners on replication (documented below). Must be used in conjunction with `account_id` owner override configuration.
   final BucketReplicationConfigurationRuleDestinationAccessControlTranslation?
       accessControlTranslation;
 
-  /// Account ID to use for overriding the object owner on replication. Must be used in conjunction with <span pulumi-lang-nodejs="`accessControlTranslation`" pulumi-lang-dotnet="`AccessControlTranslation`" pulumi-lang-go="`accessControlTranslation`" pulumi-lang-python="`access_control_translation`" pulumi-lang-yaml="`accessControlTranslation`" pulumi-lang-java="`accessControlTranslation`">`access_control_translation`</span> override configuration.
+  /// Account ID to use for overriding the object owner on replication. Must be used in conjunction with `access_control_translation` override configuration.
   final String? accountId;
 
   /// ARN of the S3 bucket where you want Amazon S3 to store replicas of the object identified by the rule.
@@ -19,7 +19,7 @@ class BucketReplicationConfigurationRuleDestination {
   final BucketReplicationConfigurationRuleDestinationMetrics? metrics;
 
   /// Destination KMS encryption key ARN for SSE-KMS replication. Must be used in conjunction with
-  /// <span pulumi-lang-nodejs="`sseKmsEncryptedObjects`" pulumi-lang-dotnet="`SseKmsEncryptedObjects`" pulumi-lang-go="`sseKmsEncryptedObjects`" pulumi-lang-python="`sse_kms_encrypted_objects`" pulumi-lang-yaml="`sseKmsEncryptedObjects`" pulumi-lang-java="`sseKmsEncryptedObjects`">`sse_kms_encrypted_objects`</span> source selection criteria.
+  /// `sse_kms_encrypted_objects` source selection criteria.
   final String? replicaKmsKeyId;
 
   /// Enables S3 Replication Time Control (S3 RTC) (documented below).

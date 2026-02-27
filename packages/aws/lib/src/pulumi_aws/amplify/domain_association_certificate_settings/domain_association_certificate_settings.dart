@@ -5,7 +5,7 @@ class DomainAssociationCertificateSettings {
   final String? certificateVerificationDnsRecord;
 
   /// The Amazon resource name (ARN) for the custom certificate.
-  /// Required when <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> is `CUSTOM`.
+  /// Required when `type` is `CUSTOM`.
   final String? customCertificateArn;
 
   /// The certificate type.

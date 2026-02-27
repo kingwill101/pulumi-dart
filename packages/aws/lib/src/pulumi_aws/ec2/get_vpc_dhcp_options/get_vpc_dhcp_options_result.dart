@@ -11,7 +11,7 @@ class GetVpcDhcpOptionsResult {
   /// EC2 DHCP Options ID
   final String dhcpOptionsId;
 
-  /// Suffix domain name to used when resolving non Fully Qualified Domain NamesE.g., the <span pulumi-lang-nodejs="`search`" pulumi-lang-dotnet="`Search`" pulumi-lang-go="`search`" pulumi-lang-python="`search`" pulumi-lang-yaml="`search`" pulumi-lang-java="`search`">`search`</span> value in the `/etc/resolv.conf` file.
+  /// Suffix domain name to used when resolving non Fully Qualified Domain NamesE.g., the `search` value in the `/etc/resolv.conf` file.
   final String domainName;
 
   /// List of name servers.

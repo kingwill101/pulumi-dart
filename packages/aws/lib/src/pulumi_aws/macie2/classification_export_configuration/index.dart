@@ -1,4 +1,0 @@
-library module_macie2_classification_export_configuration;
-
-export 'classification_export_configuration.dart';
-export 'classification_export_configuration_args.dart';

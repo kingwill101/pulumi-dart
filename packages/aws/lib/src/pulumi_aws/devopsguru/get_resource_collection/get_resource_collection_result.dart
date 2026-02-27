@@ -6,14 +6,14 @@ import '../get_resource_collection_tag/get_resource_collection_tag.dart';
 
 /// Result data returned by getResourceCollection.
 class GetResourceCollectionResult {
-  /// A collection of AWS CloudFormation stacks. See <span pulumi-lang-nodejs="`cloudformation`" pulumi-lang-dotnet="`Cloudformation`" pulumi-lang-go="`cloudformation`" pulumi-lang-python="`cloudformation`" pulumi-lang-yaml="`cloudformation`" pulumi-lang-java="`cloudformation`">`cloudformation`</span> below for additional details.
+  /// A collection of AWS CloudFormation stacks. See `cloudformation` below for additional details.
   final List<GetResourceCollectionCloudformation> cloudformations;
 
-  /// Type of AWS resource collection to create (same value as <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span>).
+  /// Type of AWS resource collection to create (same value as `type`).
   final String id;
   final String region;
 
-  /// AWS tags used to filter the resources in the resource collection. See <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`">`tags`</span> below for additional details.
+  /// AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
   final List<GetResourceCollectionTag> tags;
   final String type;
 

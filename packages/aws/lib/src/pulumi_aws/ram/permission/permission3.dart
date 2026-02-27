@@ -8,176 +8,7 @@ import 'permission_args3.dart';
 ///
 /// ### Basic Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.ram.Permission("example", {
-/// name: "custom-backup",
-/// policyTemplate: `{
-/// \\"Effect\\": \\"Allow\\",
-/// \\"Action\\": [
-/// \\t\\"backup:ListProtectedResourcesByBackupVault\\",
-/// \\t\\"backup:ListRecoveryPointsByBackupVault\\",
-/// \\t\\"backup:DescribeRecoveryPoint\\",
-/// \\t\\"backup:DescribeBackupVault\\"
-/// ]
-/// }
-/// `,
-/// resourceType: "backup:BackupVault",
-/// tags: {
-/// Name: "custom-backup",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.ram.Permission("example",
-/// name="custom-backup",
-/// policy_template="""{
-/// \"Effect\": \"Allow\",
-/// \"Action\": [
-/// \t\"backup:ListProtectedResourcesByBackupVault\",
-/// \t\"backup:ListRecoveryPointsByBackupVault\",
-/// \t\"backup:DescribeRecoveryPoint\",
-/// \t\"backup:DescribeBackupVault\"
-/// ]
-/// }
-/// """,
-/// resource_type="backup:BackupVault",
-/// tags={
-/// "Name": "custom-backup",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Ram.Permission("example", new()
-/// {
-/// Name = "custom-backup",
-/// PolicyTemplate = @"{
-/// \""Effect\"": \""Allow\"",
-/// \""Action\"": [
-/// \t\""backup:ListProtectedResourcesByBackupVault\"",
-/// \t\""backup:ListRecoveryPointsByBackupVault\"",
-/// \t\""backup:DescribeRecoveryPoint\"",
-/// \t\""backup:DescribeBackupVault\""
-/// ]
-/// }
-/// ",
-/// ResourceType = "backup:BackupVault",
-/// Tags =
-/// {
-/// { "Name", "custom-backup" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ram"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := ram.NewPermission(ctx, "example", &ram.PermissionArgs{
-/// Name: pulumi.String("custom-backup"),
-/// PolicyTemplate: pulumi.String(`{
-/// \"Effect\": \"Allow\",
-/// \"Action\": [
-/// \t\"backup:ListProtectedResourcesByBackupVault\",
-/// \t\"backup:ListRecoveryPointsByBackupVault\",
-/// \t\"backup:DescribeRecoveryPoint\",
-/// \t\"backup:DescribeBackupVault\"
-/// ]
-/// }
-/// `),
-/// ResourceType: pulumi.String("backup:BackupVault"),
-/// Tags: pulumi.StringMap{
-/// "Name": pulumi.String("custom-backup"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.ram.Permission;
-/// import com.pulumi.aws.ram.PermissionArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Permission("example", PermissionArgs.builder()
-/// .name("custom-backup")
-/// .policyTemplate("""
-/// {
-/// \"Effect\": \"Allow\",
-/// \"Action\": [
-/// \t\"backup:ListProtectedResourcesByBackupVault\",
-/// \t\"backup:ListRecoveryPointsByBackupVault\",
-/// \t\"backup:DescribeRecoveryPoint\",
-/// \t\"backup:DescribeBackupVault\"
-/// ]
-/// }
-/// """)
-/// .resourceType("backup:BackupVault")
-/// .tags(Map.of("Name", "custom-backup"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:ram:Permission
-/// properties:
-/// name: custom-backup
-/// policyTemplate: |
-/// {
-/// \"Effect\": \"Allow\",
-/// \"Action\": [
-/// \t\"backup:ListProtectedResourcesByBackupVault\",
-/// \t\"backup:ListRecoveryPointsByBackupVault\",
-/// \t\"backup:DescribeRecoveryPoint\",
-/// \t\"backup:DescribeBackupVault\"
-/// ]
-/// }
-/// resourceType: backup:BackupVault
-/// tags:
-/// Name: custom-backup
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -185,10 +16,10 @@ import 'permission_args3.dart';
 ///
 /// #### Required
 ///
-/// * <span pulumi-lang-nodejs="`arn`" pulumi-lang-dotnet="`Arn`" pulumi-lang-go="`arn`" pulumi-lang-python="`arn`" pulumi-lang-yaml="`arn`" pulumi-lang-java="`arn`">`arn`</span> (String) Permission ARN.
+/// * `arn` (String) Permission ARN.
 ///
 ///
-/// Using `pulumi import`, import RAM (Resource Access Manager) Permission using the <span pulumi-lang-nodejs="`exampleIdArg`" pulumi-lang-dotnet="`ExampleIdArg`" pulumi-lang-go="`exampleIdArg`" pulumi-lang-python="`example_id_arg`" pulumi-lang-yaml="`exampleIdArg`" pulumi-lang-java="`exampleIdArg`">`example_id_arg`</span>. For example:
+/// Using `pulumi import`, import RAM (Resource Access Manager) Permission using the `example_id_arg`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ram/permission:Permission example arn:aws:ram:us-west-1:123456789012:permission/test-permission
@@ -215,10 +46,10 @@ class Permission3 extends CustomResource {
   /// The current status of the permission.
   late final Output<String> status;
 
-  /// A map of tags to assign to the resource share. If configured with a provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final Output<Map<String, String>?> tags;
 
-  /// A map of tags assigned to the resource, including those inherited from the provider <span pulumi-lang-nodejs="`defaultTags`" pulumi-lang-dotnet="`DefaultTags`" pulumi-lang-go="`defaultTags`" pulumi-lang-python="`default_tags`" pulumi-lang-yaml="`defaultTags`" pulumi-lang-java="`defaultTags`">`default_tags`</span> configuration block.
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final Output<Map<String, String>> tagsAll;
   late final Output<PermissionTimeouts?> timeouts;
 

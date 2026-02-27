@@ -1,3 +1,0 @@
-library module_verifiedaccess_instance_logging_configuration_access_logs;
-
-export 'instance_logging_configuration_access_logs.dart';

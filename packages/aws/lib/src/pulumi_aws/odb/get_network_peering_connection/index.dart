@@ -1,5 +1,0 @@
-library module_odb_get_network_peering_connection;
-
-export 'get_network_peering_connection.dart';
-export 'get_network_peering_connection_args.dart';
-export 'get_network_peering_connection_result.dart';

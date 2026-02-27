@@ -1,3 +1,0 @@
-library module_lb_get_listener_rule_transform_host_header_rewrite_config;
-
-export 'get_listener_rule_transform_host_header_rewrite_config.dart';

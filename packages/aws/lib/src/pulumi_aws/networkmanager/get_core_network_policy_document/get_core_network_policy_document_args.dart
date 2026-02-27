@@ -11,7 +11,7 @@ import '../get_core_network_policy_document_segment_action/get_core_network_poli
 
 /// Arguments for getCoreNetworkPolicyDocument.
 class GetCoreNetworkPolicyDocumentArgs {
-  /// In a core network, all attachments use the block argument <span pulumi-lang-nodejs="`attachmentPolicies`" pulumi-lang-dotnet="`AttachmentPolicies`" pulumi-lang-go="`attachmentPolicies`" pulumi-lang-python="`attachment_policies`" pulumi-lang-yaml="`attachmentPolicies`" pulumi-lang-java="`attachmentPolicies`">`attachment_policies`</span> section to map an attachment to a segment. Instead of manually associating a segment to each attachment, attachments use tags, and then the tags are used to associate the attachment to the specified segment. Detailed below.
+  /// In a core network, all attachments use the block argument `attachment_policies` section to map an attachment to a segment. Instead of manually associating a segment to each attachment, attachments use tags, and then the tags are used to associate the attachment to the specified segment. Detailed below.
   final Input<List<GetCoreNetworkPolicyDocumentAttachmentPolicy>>?
       attachmentPolicies;
 
@@ -30,10 +30,10 @@ class GetCoreNetworkPolicyDocumentArgs {
   /// Block argument that defines routing policies for controlling route propagation. Routing policies allow you to filter, modify, and control BGP routes advertised to and from your core network. Available in policy version `2025.11` and later. Detailed below.
   final Input<List<GetCoreNetworkPolicyDocumentRoutingPolicy>>? routingPolicies;
 
-  /// A block argument, <span pulumi-lang-nodejs="`segmentActions`" pulumi-lang-dotnet="`SegmentActions`" pulumi-lang-go="`segmentActions`" pulumi-lang-python="`segment_actions`" pulumi-lang-yaml="`segmentActions`" pulumi-lang-java="`segmentActions`">`segment_actions`</span> define how routing works between segments. By default, attachments can only communicate with other attachments in the same segment. Detailed below.
+  /// A block argument, `segment_actions` define how routing works between segments. By default, attachments can only communicate with other attachments in the same segment. Detailed below.
   final Input<List<GetCoreNetworkPolicyDocumentSegmentAction>>? segmentActions;
 
-  /// Block argument that defines the different segments in the network. Here you can provide descriptions, change defaults, and provide explicit Regional operational and route filters. The names defined for each segment are used in the <span pulumi-lang-nodejs="`segmentActions`" pulumi-lang-dotnet="`SegmentActions`" pulumi-lang-go="`segmentActions`" pulumi-lang-python="`segment_actions`" pulumi-lang-yaml="`segmentActions`" pulumi-lang-java="`segmentActions`">`segment_actions`</span> and <span pulumi-lang-nodejs="`attachmentPolicies`" pulumi-lang-dotnet="`AttachmentPolicies`" pulumi-lang-go="`attachmentPolicies`" pulumi-lang-python="`attachment_policies`" pulumi-lang-yaml="`attachmentPolicies`" pulumi-lang-java="`attachmentPolicies`">`attachment_policies`</span> section. Each segment is created, and operates, as a completely separated routing domain. By default, attachments can only communicate with other attachments in the same segment. Detailed below.
+  /// Block argument that defines the different segments in the network. Here you can provide descriptions, change defaults, and provide explicit Regional operational and route filters. The names defined for each segment are used in the `segment_actions` and `attachment_policies` section. Each segment is created, and operates, as a completely separated routing domain. By default, attachments can only communicate with other attachments in the same segment. Detailed below.
   final Input<List<GetCoreNetworkPolicyDocumentSegment>> segments;
 
   /// Version of the core network policy. Valid values: `2021.12`, `2025.11`. Default: `2021.12`.

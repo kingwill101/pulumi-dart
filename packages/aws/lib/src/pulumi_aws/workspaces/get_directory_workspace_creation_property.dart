@@ -1,0 +1,3 @@
+library module_workspaces_get_directory_workspace_creation_property;
+
+export 'get_directory_workspace_creation_property/get_directory_workspace_creation_property.dart';

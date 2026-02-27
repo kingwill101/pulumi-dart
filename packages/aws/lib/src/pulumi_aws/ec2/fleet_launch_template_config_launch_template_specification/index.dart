@@ -1,3 +1,0 @@
-library module_ec2_fleet_launch_template_config_launch_template_specification;
-
-export 'fleet_launch_template_config_launch_template_specification.dart';

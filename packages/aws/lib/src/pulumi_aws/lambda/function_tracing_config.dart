@@ -1,0 +1,3 @@
+library module_lambda_function_tracing_config;
+
+export 'function_tracing_config/function_tracing_config.dart';

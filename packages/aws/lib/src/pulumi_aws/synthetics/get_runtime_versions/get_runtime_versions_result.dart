@@ -9,7 +9,7 @@ class GetRuntimeVersionsResult {
   final String id;
   final String region;
 
-  /// List of runtime versions. See <span pulumi-lang-nodejs="`runtimeVersions`" pulumi-lang-dotnet="`RuntimeVersions`" pulumi-lang-go="`runtimeVersions`" pulumi-lang-python="`runtime_versions`" pulumi-lang-yaml="`runtimeVersions`" pulumi-lang-java="`runtimeVersions`">`runtime_versions`</span> attribute reference.
+  /// List of runtime versions. See `runtime_versions` attribute reference.
   final List<GetRuntimeVersionsRuntimeVersion> runtimeVersions;
 
   GetRuntimeVersionsResult({

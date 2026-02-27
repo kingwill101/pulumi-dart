@@ -5,254 +5,21 @@ import 'access_args.dart';
 
 /// Provides a AWS Transfer Access resource.
 ///
-/// > **NOTE:** We suggest using explicit JSON encoding or `aws.iam.getPolicyDocument` when assigning a value to <span pulumi-lang-nodejs="`policy`" pulumi-lang-dotnet="`Policy`" pulumi-lang-go="`policy`" pulumi-lang-python="`policy`" pulumi-lang-yaml="`policy`" pulumi-lang-java="`policy`">`policy`</span>. They seamlessly translate configuration to JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
+/// > **NOTE:** We suggest using explicit JSON encoding or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate configuration to JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
 /// ## Example Usage
 ///
 /// ### Basic S3
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.transfer.Access("example", {
-/// externalId: "S-1-1-12-1234567890-123456789-1234567890-1234",
-/// serverId: exampleAwsTransferServer.id,
-/// role: exampleAwsIamRole.arn,
-/// homeDirectory: `/${exampleAwsS3Bucket.id}/`,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.transfer.Access("example",
-/// external_id="S-1-1-12-1234567890-123456789-1234567890-1234",
-/// server_id=example_aws_transfer_server["id"],
-/// role=example_aws_iam_role["arn"],
-/// home_directory=f"/{example_aws_s3_bucket['id']}/")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Aws.Transfer.Access("example", new()
-/// {
-/// ExternalId = "S-1-1-12-1234567890-123456789-1234567890-1234",
-/// ServerId = exampleAwsTransferServer.Id,
-/// Role = exampleAwsIamRole.Arn,
-/// HomeDirectory = $"/{exampleAwsS3Bucket.Id}/",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/transfer"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := transfer.NewAccess(ctx, "example", &transfer.AccessArgs{
-/// ExternalId:    pulumi.String("S-1-1-12-1234567890-123456789-1234567890-1234"),
-/// ServerId:      pulumi.Any(exampleAwsTransferServer.Id),
-/// Role:          pulumi.Any(exampleAwsIamRole.Arn),
-/// HomeDirectory: pulumi.Sprintf("/%v/", exampleAwsS3Bucket.Id),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.transfer.Access;
-/// import com.pulumi.aws.transfer.AccessArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new Access("example", AccessArgs.builder()
-/// .externalId("S-1-1-12-1234567890-123456789-1234567890-1234")
-/// .serverId(exampleAwsTransferServer.id())
-/// .role(exampleAwsIamRole.arn())
-/// .homeDirectory(String.format("/%s/", exampleAwsS3Bucket.id()))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: aws:transfer:Access
-/// properties:
-/// externalId: S-1-1-12-1234567890-123456789-1234567890-1234
-/// serverId: ${exampleAwsTransferServer.id}
-/// role: ${exampleAwsIamRole.arn}
-/// homeDirectory: /${exampleAwsS3Bucket.id}/
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ### Basic EFS
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.transfer.Access("test", {
-/// externalId: "S-1-1-12-1234567890-123456789-1234567890-1234",
-/// serverId: testAwsTransferServer.id,
-/// role: testAwsIamRole.arn,
-/// homeDirectory: `/${testAwsEfsFileSystem.id}/`,
-/// posixProfile: {
-/// gid: 1000,
-/// uid: 1000,
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// test = aws.transfer.Access("test",
-/// external_id="S-1-1-12-1234567890-123456789-1234567890-1234",
-/// server_id=test_aws_transfer_server["id"],
-/// role=test_aws_iam_role["arn"],
-/// home_directory=f"/{test_aws_efs_file_system['id']}/",
-/// posix_profile={
-/// "gid": 1000,
-/// "uid": 1000,
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var test = new Aws.Transfer.Access("test", new()
-/// {
-/// ExternalId = "S-1-1-12-1234567890-123456789-1234567890-1234",
-/// ServerId = testAwsTransferServer.Id,
-/// Role = testAwsIamRole.Arn,
-/// HomeDirectory = $"/{testAwsEfsFileSystem.Id}/",
-/// PosixProfile = new Aws.Transfer.Inputs.AccessPosixProfileArgs
-/// {
-/// Gid = 1000,
-/// Uid = 1000,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-aws/sdk/v7/go/aws/transfer"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := transfer.NewAccess(ctx, "test", &transfer.AccessArgs{
-/// ExternalId:    pulumi.String("S-1-1-12-1234567890-123456789-1234567890-1234"),
-/// ServerId:      pulumi.Any(testAwsTransferServer.Id),
-/// Role:          pulumi.Any(testAwsIamRole.Arn),
-/// HomeDirectory: pulumi.Sprintf("/%v/", testAwsEfsFileSystem.Id),
-/// PosixProfile: &transfer.AccessPosixProfileArgs{
-/// Gid: pulumi.Int(1000),
-/// Uid: pulumi.Int(1000),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.transfer.Access;
-/// import com.pulumi.aws.transfer.AccessArgs;
-/// import com.pulumi.aws.transfer.inputs.AccessPosixProfileArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var test = new Access("test", AccessArgs.builder()
-/// .externalId("S-1-1-12-1234567890-123456789-1234567890-1234")
-/// .serverId(testAwsTransferServer.id())
-/// .role(testAwsIamRole.arn())
-/// .homeDirectory(String.format("/%s/", testAwsEfsFileSystem.id()))
-/// .posixProfile(AccessPosixProfileArgs.builder()
-/// .gid(1000)
-/// .uid(1000)
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// test:
-/// type: aws:transfer:Access
-/// properties:
-/// externalId: S-1-1-12-1234567890-123456789-1234567890-1234
-/// serverId: ${testAwsTransferServer.id}
-/// role: ${testAwsIamRole.arn}
-/// homeDirectory: /${testAwsEfsFileSystem.id}/
-/// posixProfile:
-/// gid: 1000
-/// uid: 1000
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Transfer Accesses using the <span pulumi-lang-nodejs="`serverId`" pulumi-lang-dotnet="`ServerId`" pulumi-lang-go="`serverId`" pulumi-lang-python="`server_id`" pulumi-lang-yaml="`serverId`" pulumi-lang-java="`serverId`">`server_id`</span> and <span pulumi-lang-nodejs="`externalId`" pulumi-lang-dotnet="`ExternalId`" pulumi-lang-go="`externalId`" pulumi-lang-python="`external_id`" pulumi-lang-yaml="`externalId`" pulumi-lang-java="`externalId`">`external_id`</span>. For example:
+/// Using `pulumi import`, import Transfer Accesses using the `server_id` and `external_id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:transfer/access:Access example s-12345678/S-1-1-12-1234567890-123456789-1234567890-1234
@@ -261,7 +28,7 @@ class Access extends CustomResource {
   /// The SID of a group in the directory connected to the Transfer Server (e.g., `S-1-1-12-1234567890-123456789-1234567890-1234`)
   late final Output<String> externalId;
 
-  /// The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to <span pulumi-lang-nodejs="`username`" pulumi-lang-dotnet="`Username`" pulumi-lang-go="`username`" pulumi-lang-python="`username`" pulumi-lang-yaml="`username`" pulumi-lang-java="`username`">`username`</span>.
+  /// The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
   late final Output<String?> homeDirectory;
 
   /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See Home Directory Mappings below.

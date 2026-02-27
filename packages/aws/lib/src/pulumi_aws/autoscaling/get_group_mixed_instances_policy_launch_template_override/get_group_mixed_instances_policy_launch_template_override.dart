@@ -6,7 +6,7 @@ import '../get_group_mixed_instances_policy_launch_template_override_launch_temp
 
 class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
   /// List of instance requirements objects.
-  /// * <span pulumi-lang-nodejs="`acceleratorCount " pulumi-lang-dotnet="`AcceleratorCount " pulumi-lang-go="`acceleratorCount " pulumi-lang-python="`accelerator_count " pulumi-lang-yaml="`acceleratorCount " pulumi-lang-java="`acceleratorCount ">`accelerator_count </span>- List of objects describing the minimum and maximum number of accelerators for an instance type.
+  /// * `accelerator_count - List of objects describing the minimum and maximum number of accelerators for an instance type.
   final List<
           GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement>
       instanceRequirements;

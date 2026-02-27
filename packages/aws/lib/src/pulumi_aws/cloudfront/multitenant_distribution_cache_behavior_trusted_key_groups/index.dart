@@ -1,3 +1,0 @@
-library module_cloudfront_multitenant_distribution_cache_behavior_trusted_key_groups;
-
-export 'multitenant_distribution_cache_behavior_trusted_key_groups.dart';

@@ -1,0 +1,3 @@
+library module_chime_sdkvoice_sip_rule_target_application;
+
+export 'sdkvoice_sip_rule_target_application/sdkvoice_sip_rule_target_application.dart';

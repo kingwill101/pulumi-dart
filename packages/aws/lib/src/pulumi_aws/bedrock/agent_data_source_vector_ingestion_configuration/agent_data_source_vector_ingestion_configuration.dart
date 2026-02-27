@@ -5,7 +5,7 @@ import '../agent_data_source_vector_ingestion_configuration_custom_transformatio
 import '../agent_data_source_vector_ingestion_configuration_parsing_configuration/agent_data_source_vector_ingestion_configuration_parsing_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfiguration {
-  /// Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See <span pulumi-lang-nodejs="`chunkingConfiguration`" pulumi-lang-dotnet="`ChunkingConfiguration`" pulumi-lang-go="`chunkingConfiguration`" pulumi-lang-python="`chunking_configuration`" pulumi-lang-yaml="`chunkingConfiguration`" pulumi-lang-java="`chunkingConfiguration`">`chunking_configuration`</span> block for details.
+  /// Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunking_configuration` block for details.
   final AgentDataSourceVectorIngestionConfigurationChunkingConfiguration?
       chunkingConfiguration;
 
@@ -13,7 +13,7 @@ class AgentDataSourceVectorIngestionConfiguration {
   final AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration?
       customTransformationConfiguration;
 
-  /// Configuration for custom parsing of data source documents. See <span pulumi-lang-nodejs="`parsingConfiguration`" pulumi-lang-dotnet="`ParsingConfiguration`" pulumi-lang-go="`parsingConfiguration`" pulumi-lang-python="`parsing_configuration`" pulumi-lang-yaml="`parsingConfiguration`" pulumi-lang-java="`parsingConfiguration`">`parsing_configuration`</span> block for details.
+  /// Configuration for custom parsing of data source documents. See `parsing_configuration` block for details.
   final AgentDataSourceVectorIngestionConfigurationParsingConfiguration?
       parsingConfiguration;
 

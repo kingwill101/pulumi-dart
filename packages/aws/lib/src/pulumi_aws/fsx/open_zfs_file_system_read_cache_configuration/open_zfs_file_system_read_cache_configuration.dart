@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class OpenZfsFileSystemReadCacheConfiguration {
-  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when <span pulumi-lang-nodejs="`sizingMode`" pulumi-lang-dotnet="`SizingMode`" pulumi-lang-go="`sizingMode`" pulumi-lang-python="`sizing_mode`" pulumi-lang-yaml="`sizingMode`" pulumi-lang-java="`sizingMode`">`sizing_mode`</span> is set to `USER_PROVISIONED`. Must not be set when any other <span pulumi-lang-nodejs="`sizingMode`" pulumi-lang-dotnet="`SizingMode`" pulumi-lang-go="`sizingMode`" pulumi-lang-python="`sizing_mode`" pulumi-lang-yaml="`sizingMode`" pulumi-lang-java="`sizingMode`">`sizing_mode`</span> is used.
+  /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when `sizing_mode` is set to `USER_PROVISIONED`. Must not be set when any other `sizing_mode` is used.
   final int? size;
 
   /// Specifies how the provisioned SSD read cache is sized. Valid values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`. See the [AWS API documentation](https://docs.aws.amazon.com/fsx/latest/APIReference/API_OpenZFSReadCacheConfiguration.html) for more information.

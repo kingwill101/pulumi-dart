@@ -1,0 +1,3 @@
+library module_vpclattice_resource_configuration_resource_configuration_definition;
+
+export 'resource_configuration_resource_configuration_definition/resource_configuration_resource_configuration_definition.dart';

@@ -1,3 +1,0 @@
-library module_ecs_express_gateway_service_primary_container_repository_credentials;
-
-export 'express_gateway_service_primary_container_repository_credentials.dart';

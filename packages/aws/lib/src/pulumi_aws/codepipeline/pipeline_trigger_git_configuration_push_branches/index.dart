@@ -1,3 +1,0 @@
-library module_codepipeline_pipeline_trigger_git_configuration_push_branches;
-
-export 'pipeline_trigger_git_configuration_push_branches.dart';

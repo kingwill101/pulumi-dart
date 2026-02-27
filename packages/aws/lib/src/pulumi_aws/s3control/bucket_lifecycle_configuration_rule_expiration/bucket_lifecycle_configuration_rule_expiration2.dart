@@ -7,7 +7,7 @@ class BucketLifecycleConfigurationRuleExpiration2 {
   /// Number of days before the object is to be deleted.
   final int? days;
 
-  /// Enable to remove a delete marker with no noncurrent versions. Cannot be specified with <span pulumi-lang-nodejs="`date`" pulumi-lang-dotnet="`Date`" pulumi-lang-go="`date`" pulumi-lang-python="`date`" pulumi-lang-yaml="`date`" pulumi-lang-java="`date`">`date`</span> or <span pulumi-lang-nodejs="`days`" pulumi-lang-dotnet="`Days`" pulumi-lang-go="`days`" pulumi-lang-python="`days`" pulumi-lang-yaml="`days`" pulumi-lang-java="`days`">`days`</span>.
+  /// Enable to remove a delete marker with no noncurrent versions. Cannot be specified with `date` or `days`.
   final bool? expiredObjectDeleteMarker;
 
   BucketLifecycleConfigurationRuleExpiration2({

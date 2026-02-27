@@ -1,0 +1,3 @@
+library module_ec2_get_network_insights_analysis_explanation_nat_gateway;
+
+export 'get_network_insights_analysis_explanation_nat_gateway/get_network_insights_analysis_explanation_nat_gateway.dart';

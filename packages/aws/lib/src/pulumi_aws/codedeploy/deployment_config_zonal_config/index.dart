@@ -1,3 +1,0 @@
-library module_codedeploy_deployment_config_zonal_config;
-
-export 'deployment_config_zonal_config.dart';

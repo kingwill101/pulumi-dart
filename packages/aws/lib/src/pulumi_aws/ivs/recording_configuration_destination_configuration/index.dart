@@ -1,3 +1,0 @@
-library module_ivs_recording_configuration_destination_configuration;
-
-export 'recording_configuration_destination_configuration.dart';

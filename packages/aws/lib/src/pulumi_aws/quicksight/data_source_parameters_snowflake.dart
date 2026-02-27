@@ -1,0 +1,3 @@
+library module_quicksight_data_source_parameters_snowflake;
+
+export 'data_source_parameters_snowflake/data_source_parameters_snowflake.dart';

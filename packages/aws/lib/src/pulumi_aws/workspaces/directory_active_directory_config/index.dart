@@ -1,3 +1,0 @@
-library module_workspaces_directory_active_directory_config;
-
-export 'directory_active_directory_config.dart';

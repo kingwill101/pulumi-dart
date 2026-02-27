@@ -1,0 +1,3 @@
+library module_lb_get_listener_rule_action_authenticate_cognito;
+
+export 'get_listener_rule_action_authenticate_cognito/get_listener_rule_action_authenticate_cognito.dart';

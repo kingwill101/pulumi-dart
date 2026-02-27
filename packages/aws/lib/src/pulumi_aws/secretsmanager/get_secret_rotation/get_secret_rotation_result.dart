@@ -15,7 +15,7 @@ class GetSecretRotationResult {
   /// Amazon Resource Name (ARN) of the lambda function used for rotation.
   final String rotationLambdaArn;
 
-  /// Configuration block for rotation rules. See <span pulumi-lang-nodejs="`rotationRules`" pulumi-lang-dotnet="`RotationRules`" pulumi-lang-go="`rotationRules`" pulumi-lang-python="`rotation_rules`" pulumi-lang-yaml="`rotationRules`" pulumi-lang-java="`rotationRules`">`rotation_rules`</span> below.
+  /// Configuration block for rotation rules. See `rotation_rules` below.
   final List<GetSecretRotationRotationRule> rotationRules;
   final String secretId;
 

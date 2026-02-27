@@ -1,3 +1,0 @@
-library module_securityhub_insight_filters_network_protocol;
-
-export 'insight_filters_network_protocol.dart';

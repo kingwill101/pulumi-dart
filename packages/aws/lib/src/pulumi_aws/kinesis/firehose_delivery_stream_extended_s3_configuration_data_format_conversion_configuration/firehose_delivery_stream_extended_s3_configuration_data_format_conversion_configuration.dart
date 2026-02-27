@@ -5,18 +5,18 @@ import '../firehose_delivery_stream_extended_s3_configuration_data_format_conver
 import '../firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_schema_configuration/firehose_delivery_stream_extended_s3_configuration_data_format_conversion_configuration_schema_configuration.dart';
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration {
-  /// Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Set it to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if you want to disable format conversion while preserving the configuration details.
+  /// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
   final bool? enabled;
 
-  /// Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See <span pulumi-lang-nodejs="`inputFormatConfiguration`" pulumi-lang-dotnet="`InputFormatConfiguration`" pulumi-lang-go="`inputFormatConfiguration`" pulumi-lang-python="`input_format_configuration`" pulumi-lang-yaml="`inputFormatConfiguration`" pulumi-lang-java="`inputFormatConfiguration`">`input_format_configuration`</span> block below for details.
+  /// Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See `input_format_configuration` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration
       inputFormatConfiguration;
 
-  /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See <span pulumi-lang-nodejs="`outputFormatConfiguration`" pulumi-lang-dotnet="`OutputFormatConfiguration`" pulumi-lang-go="`outputFormatConfiguration`" pulumi-lang-python="`output_format_configuration`" pulumi-lang-yaml="`outputFormatConfiguration`" pulumi-lang-java="`outputFormatConfiguration`">`output_format_configuration`</span> block below for details.
+  /// Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See `output_format_configuration` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration
       outputFormatConfiguration;
 
-  /// Specifies the AWS Glue Data Catalog table that contains the column information. See <span pulumi-lang-nodejs="`schemaConfiguration`" pulumi-lang-dotnet="`SchemaConfiguration`" pulumi-lang-go="`schemaConfiguration`" pulumi-lang-python="`schema_configuration`" pulumi-lang-yaml="`schemaConfiguration`" pulumi-lang-java="`schemaConfiguration`">`schema_configuration`</span> block below for details.
+  /// Specifies the AWS Glue Data Catalog table that contains the column information. See `schema_configuration` block below for details.
   final FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration
       schemaConfiguration;
 

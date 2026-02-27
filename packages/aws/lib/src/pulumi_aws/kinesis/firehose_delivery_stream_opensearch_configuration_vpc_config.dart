@@ -1,0 +1,3 @@
+library module_kinesis_firehose_delivery_stream_opensearch_configuration_vpc_config;
+
+export 'firehose_delivery_stream_opensearch_configuration_vpc_config/firehose_delivery_stream_opensearch_configuration_vpc_config.dart';

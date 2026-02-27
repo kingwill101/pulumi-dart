@@ -1,0 +1,3 @@
+library module_elasticache_get_serverless_cache_endpoint;
+
+export 'get_serverless_cache_endpoint/get_serverless_cache_endpoint.dart';
