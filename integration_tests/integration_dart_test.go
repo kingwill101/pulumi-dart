@@ -23,6 +23,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/pulumi/pulumi/pkg/v3/engine"
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -60,6 +61,14 @@ func TestLogDebugDart(t *testing.T) {
 			// More than 25 debug log events on such a simple program is likely unintended.
 			assert.LessOrEqualf(t, count, 25, "%v is too many debug log events", count)
 		},
+	})
+}
+
+// Test targeting modern compiler options works for Dart programs.
+func TestCompilerOptionsDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "compiler_options",
+		Quick: true,
 	})
 }
 
@@ -318,6 +327,19 @@ func TestConfigCaptureDart(t *testing.T) {
 	})
 }
 
+func TestESMTSSpecifierResolutionDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "esm_ts_specifier_resolution",
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			require.Equal(t, 42.0, stack.Outputs["otherx"])
+			res, ok := stack.Outputs["res"].(string)
+			require.True(t, ok)
+			assert.Contains(t, res, "name: esm_ts_specifier_resolution_dart")
+		},
+	})
+}
+
 // Tests missing required config failure behavior from the perspective of a Pulumi Dart program.
 func TestConfigMissingDart(t *testing.T) {
 	e := ptesting.NewEnvironment(t)
@@ -504,6 +526,20 @@ func TestLargeResourceDart(t *testing.T) {
 	})
 }
 
+// Tests enum outputs.
+func TestEnumOutputDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   filepath.Join("enums", "dart"),
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			require.NotNil(t, stack.Outputs)
+			assert.Equal(t, "Burgundy", stack.Outputs["myTreeType"])
+			assert.Equal(t, "Pulumi Planters Inc.foo", stack.Outputs["myTreeFarmChanged"])
+			assert.Equal(t, "My Burgundy Rubber tree is from Pulumi Planters Inc.", stack.Outputs["mySentence"])
+		},
+	})
+}
+
 // tests that when a resource transformation throws an exception, the program exits
 // and doesn't hang indefinitely.
 func TestFailingTransfomationExitsProgram(t *testing.T) {
@@ -515,6 +551,32 @@ func TestFailingTransfomationExitsProgram(t *testing.T) {
 	})
 
 	assert.Contains(t, stderr.String(), "Boom!")
+}
+
+// Tests errors in dynamic resource create behavior.
+func TestErrorCreateDynamicDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:           filepath.Join("dynamic", "error_create_dart"),
+		Quick:         true,
+		ExpectFailure: true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			foundError := false
+			for _, event := range stack.Events {
+				if event.ResOpFailedEvent != nil {
+					foundError = true
+					assert.Equal(t, apitype.OpType("create"), event.ResOpFailedEvent.Metadata.Op)
+				}
+				if event.DiagnosticEvent != nil &&
+					strings.Contains(
+						event.DiagnosticEvent.Message,
+						"could not find latest version for provider custom-provider",
+					) {
+					foundError = true
+				}
+			}
+			assert.True(t, foundError, "Did not see create error")
+		},
+	})
 }
 
 // Test remote component construction with a child resource that takes a long time to be created.
@@ -829,6 +891,33 @@ func TestPackageAddDart(t *testing.T) {
 	require.NotEmpty(t, strings.TrimSpace(stackOutput))
 }
 
+func TestConvertMultipleTerraformProviderDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+
+	e.ImportDirectory("convertmultiplefromterraform")
+
+	_, _ = e.RunCommand("pulumi", "plugin", "install", "converter", "terraform")
+	_, _ = e.RunCommand("pulumi", "plugin", "install", "resource", "terraform-provider")
+	stdout, stderr, err := e.GetCommandResults("pulumi", "convert", "--from", "terraform", "--language", "dart", "--out", "dartdir")
+	if err != nil {
+		if strings.Contains(stdout+stderr, "no language plugin 'pulumi-language-terraform' found") {
+			t.Skip("pulumi-language-terraform is not available in PATH for convert integration test")
+		}
+		require.NoError(t, err)
+	}
+
+	assert.True(t, e.PathExists(filepath.Join("dartdir", "pubspec.yaml")))
+	assert.True(t, e.PathExists(filepath.Join("dartdir", "sdks", "supabase", "pubspec.yaml")))
+	assert.True(t, e.PathExists(filepath.Join("dartdir", "sdks", "b2", "pubspec.yaml")))
+
+	pubspecData, err := os.ReadFile(filepath.Join(e.CWD, "dartdir", "pubspec.yaml"))
+	require.NoError(t, err)
+	pubspec := string(pubspecData)
+	assert.Contains(t, pubspec, "sdks/supabase")
+	assert.Contains(t, pubspec, "sdks/b2")
+}
+
 func TestPackageAddNamespaceDart(t *testing.T) {
 	e := ptesting.NewEnvironment(t)
 	defer e.DeleteIfNotFailed()
@@ -956,6 +1045,25 @@ func TestTracePropagationDart(t *testing.T) {
 	traceInfo, err := os.Stat(tracePath)
 	require.NoError(t, err)
 	assert.Greater(t, traceInfo.Size(), int64(0))
+}
+
+// Regression test for https://github.com/pulumi/pulumi/issues/12301.
+func TestRegression12301Dart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "regression_12301",
+		Quick: true,
+		PostPrepareProject: func(project *engine.Projinfo) error {
+			jsonPath := filepath.Join(project.Root, "regression_12301.json")
+			dirName := filepath.Base(project.Root)
+			newPath := filepath.Join(project.Root, "..", dirName+".json")
+			return os.Rename(jsonPath, newPath) //nolint:forbidigo // os.Rename is OK for tests
+		},
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			require.Len(t, stack.Outputs, 1)
+			assert.Contains(t, stack.Outputs, "bar")
+			assert.Equal(t, 3.0, stack.Outputs["bar"].(float64))
+		},
+	})
 }
 
 // TestResourceRefsGetResourceDart tests that invoking the built-in 'pulumi:pulumi:getResource' function

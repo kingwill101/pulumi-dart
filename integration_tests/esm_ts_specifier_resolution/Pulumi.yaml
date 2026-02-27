@@ -1,0 +1,3 @@
+name: esm_ts_specifier_resolution_dart
+runtime: dart
+description: A Dart program that validates module specifier resolution.

@@ -1,0 +1,8 @@
+name: compiler_options_dart
+description: A minimal Dart Pulumi project for compiler options integration tests.
+version: 0.0.1
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  pulumi: any
