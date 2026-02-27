@@ -20,9 +20,6 @@ class InputUnion<T0, T1> extends _Input<Union<T0, T1>> {
 
   static InputUnion<T0, T1> fromT1<T0, T1>(T1 value) =>
       InputUnion._(Output.create(Union<T0, T1>.fromT1(value)));
-
-  @override
-  Output<Union<T0, T1>> toOutput() => _output;
 }
 
 extension OutputToInput<T> on Output<T> {
