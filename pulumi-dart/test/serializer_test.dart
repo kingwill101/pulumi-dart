@@ -17,6 +17,8 @@ class _DeferredDependencyResource extends Resource {
   }
 }
 
+class _UnknownAssetOrArchive implements AssetOrArchive {}
+
 void main() {
   late MockDeploymentImpl mockDeployment;
   late Serializer serializer;
@@ -71,6 +73,128 @@ void main() {
           Constants.specialSigKey: Constants.specialArchiveSig,
           Constants.assetOrArchivePathName: 'path/to/archive.zip',
         }),
+      );
+    });
+
+    test(
+      'Serialize asset/archive variants include string, remote, nested, and remote archive',
+      () async {
+        final stringAsset = StringAsset('inline-content');
+        final remoteAsset = RemoteAsset('https://example.com/asset.txt');
+        final assetArchive = AssetArchive({
+          'file': FileAsset('/tmp/file.txt'),
+          'remote': RemoteAsset('https://example.com/a'),
+        });
+        final remoteArchive = RemoteArchive('https://example.com/archive.zip');
+
+        final stringResult = await serializer.serializeAsync(
+          'test',
+          stringAsset,
+          false,
+        );
+        expect(
+          stringResult,
+          equals({
+            Constants.specialSigKey: Constants.specialAssetSig,
+            Constants.assetTextName: 'inline-content',
+          }),
+        );
+
+        final remoteResult = await serializer.serializeAsync(
+          'test',
+          remoteAsset,
+          false,
+        );
+        expect(
+          remoteResult,
+          equals({
+            Constants.specialSigKey: Constants.specialAssetSig,
+            Constants.assetOrArchiveUriName: 'https://example.com/asset.txt',
+          }),
+        );
+
+        final archiveResult = await serializer.serializeAsync(
+          'test',
+          assetArchive,
+          false,
+        );
+        expect(
+          archiveResult[Constants.specialSigKey],
+          equals(Constants.specialArchiveSig),
+        );
+        expect(
+          (archiveResult[Constants.archiveAssetsName] as Map<String, dynamic>)
+              .containsKey('file'),
+          isTrue,
+        );
+
+        final remoteArchiveResult = await serializer.serializeAsync(
+          'test',
+          remoteArchive,
+          false,
+        );
+        expect(
+          remoteArchiveResult,
+          equals({
+            Constants.specialSigKey: Constants.specialArchiveSig,
+            Constants.assetOrArchiveUriName: 'https://example.com/archive.zip',
+          }),
+        );
+      },
+    );
+
+    test('Serialize unknown asset/archive type throws parity error', () async {
+      await expectLater(
+        serializer.serializeAsync('test', _UnknownAssetOrArchive(), false),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('Unknown asset or archive type'),
+          ),
+        ),
+      );
+    });
+
+    test('Serialize Inputs and debug map/list paths remain stable', () async {
+      final debugSerializer = Serializer(excessiveDebugOutput: true);
+      final inputs = <String, Input<dynamic>>{
+        'name': Input.fromValue('demo'),
+        'enabled': Input.fromValue(true),
+      };
+
+      final result = await debugSerializer.serializeAsync('ctx', {
+        'args': inputs,
+        'list': [1, 2, 3],
+      }, false);
+
+      expect(result, isA<Map<String, dynamic>>());
+      final map = result as Map<String, dynamic>;
+      expect(map['args'], equals({'name': 'demo', 'enabled': true}));
+      expect(map['list'], equals([1, 2, 3]));
+    });
+
+    test('Serialize rejects Future and unsupported argument types', () async {
+      await expectLater(
+        serializer.serializeAsync('test', Future.value('value'), false),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('Futures are not allowed inside ResourceArgs'),
+          ),
+        ),
+      );
+
+      await expectLater(
+        serializer.serializeAsync('test', DateTime.utc(2026, 1, 1), false),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('is not a supported argument type'),
+          ),
+        ),
       );
     });
 
@@ -172,6 +296,34 @@ void main() {
         expect(
           result,
           equals('urn:pulumi:stack::project::test:index:Component::component'),
+        );
+      },
+    );
+
+    test(
+      'Serialize ComponentResource with keepResources emits resource signature envelope',
+      () async {
+        final mockResource = MockComponentResource();
+        when(mockResource.getResourceType()).thenReturn('test:index:Component');
+        when(mockResource.getResourceName()).thenReturn('component');
+        when(mockResource.urn).thenReturn(
+          Output.create(
+            'urn:pulumi:stack::project::test:index:Component::component',
+          ),
+        );
+
+        final result = await serializer.serializeAsync(
+          'test',
+          mockResource,
+          true,
+        );
+        expect(
+          result,
+          equals({
+            Constants.specialSigKey: Constants.specialResourceSig,
+            Constants.resourceUrnName:
+                'urn:pulumi:stack::project::test:index:Component::component',
+          }),
         );
       },
     );
