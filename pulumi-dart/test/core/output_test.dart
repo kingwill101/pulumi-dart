@@ -37,6 +37,16 @@ void main() {
       expect(data.value, isNull);
     });
 
+    test('apply resolves inner futures wrapped in returned outputs', () async {
+      var o1 = createOutput(0, true);
+      var o2 = o1.apply(
+        (a) => createOutput(Future.value('inner-future'), true),
+      );
+      var data = await o2.getData();
+      expect(data.isKnown, isTrue);
+      expect(data.value, equals('inner-future'));
+    });
+
     test('apply produces unknown default on unknown', () async {
       var o1 = createOutput(0, false);
       var o2 = o1.apply((a) async => a + 1);
@@ -245,6 +255,11 @@ void main() {
       var data = await output.getData();
       expect(data.isKnown, isFalse);
       expect(data.value, isNull);
+    });
+
+    test('getValue on unknown output without fallback throws', () async {
+      final output = createOutput('value', false);
+      await expectLater(output.getValue(), throwsStateError);
     });
 
     test('create secret sets secret', () async {
