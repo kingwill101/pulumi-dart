@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_account_access_token_args.dart';
 import 'get_account_access_token_result.dart';
 
@@ -24,13 +24,13 @@ import 'get_account_access_token_result.dart';
 /// > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
 Future<GetAccountAccessTokenResult> getAccountAccessToken(
   GetAccountAccessTokenArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccountAccessTokenResult.fromMap(result);
 }

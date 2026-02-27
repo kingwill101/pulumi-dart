@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../generator_summarization_context_few_shot_example_conversation_context_message_entry/generator_summarization_context_few_shot_example_conversation_context_message_entry.dart';
 
 class GeneratorSummarizationContextFewShotExampleConversationContext {
@@ -18,7 +18,7 @@ class GeneratorSummarizationContextFewShotExampleConversationContext {
     final map = <String, dynamic>{};
     final messageEntriesValue = messageEntries;
     if (messageEntriesValue != null) {
-      map['messageEntries'] = Input.encodeList<
+      map['messageEntries'] = pulumi.Input.encodeList<
           GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry,
           Map<String, dynamic>>(messageEntriesValue, (value) => value.toMap());
     }
@@ -30,7 +30,7 @@ class GeneratorSummarizationContextFewShotExampleConversationContext {
     return GeneratorSummarizationContextFewShotExampleConversationContext(
       messageEntries: map['messageEntries'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry>(
               map['messageEntries'],
               (value) =>

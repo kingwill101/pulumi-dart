@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../worker_pool_network_config/worker_pool_network_config.dart';
 import '../worker_pool_private_service_connect/worker_pool_private_service_connect.dart';
 import '../worker_pool_worker_config/worker_pool_worker_config.dart';
@@ -37,62 +37,63 @@ import 'worker_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default {{location}}/{{name}}
 /// ```
-class WorkerPool extends CustomResource {
+class WorkerPool extends pulumi.CustomResource {
   /// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Output only. Time at which the request to create the `WorkerPool` was received.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Output only. Time at which the request to delete the `WorkerPool` was received.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// User-defined name of the `WorkerPool`.
   ///
   ///
   /// - - -
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Network configuration for the `WorkerPool`. Structure is documented below.
-  late final Output<WorkerPoolNetworkConfig?> networkConfig;
+  late final pulumi.Output<WorkerPoolNetworkConfig?> networkConfig;
 
   /// Private Service Connect configuration for the pool.
-  late final Output<WorkerPoolPrivateServiceConnect?> privateServiceConnect;
+  late final pulumi.Output<WorkerPoolPrivateServiceConnect?>
+      privateServiceConnect;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. A unique identifier for the `WorkerPool`.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. Time at which the request to update the `WorkerPool` was received.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
-  late final Output<WorkerPoolWorkerConfig> workerConfig;
+  late final pulumi.Output<WorkerPoolWorkerConfig> workerConfig;
 
   WorkerPool(
     String name, {
     WorkerPoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudbuild/workerPool:WorkerPool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');

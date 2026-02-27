@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_default_node_config_default_containerd_config_private_registry_access_config_certificate_authority_domain_config_gcp_secret_manager_certificate_config/get_cluster_node_pool_default_node_config_default_containerd_config_private_registry_access_config_certificate_authority_domain_config_gcp_secret_manager_certificate_config.dart';
 
 class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
@@ -20,7 +20,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryA
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['fqdns'] = fqdns;
-    map['gcpSecretManagerCertificateConfigs'] = Input.encodeList<
+    map['gcpSecretManagerCertificateConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig,
             Map<String, dynamic>>(
         gcpSecretManagerCertificateConfigs, (value) => value.toMap());
@@ -31,7 +31,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryA
       Map<String, dynamic> map) {
     return GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig(
       fqdns: (map['fqdns'] as List).cast<String>(),
-      gcpSecretManagerCertificateConfigs: Input.decodeList<
+      gcpSecretManagerCertificateConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig>(
           map['gcpSecretManagerCertificateConfigs'],
           (value) =>

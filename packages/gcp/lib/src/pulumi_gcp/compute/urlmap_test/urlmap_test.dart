@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_test_header/urlmap_test_header.dart';
 
 class URLMapTest {
@@ -56,8 +56,9 @@ class URLMapTest {
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<URLMapTestHeader, Map<String, dynamic>>(
-          headersValue, (value) => value.toMap());
+      map['headers'] =
+          pulumi.Input.encodeList<URLMapTestHeader, Map<String, dynamic>>(
+              headersValue, (value) => value.toMap());
     }
     map['host'] = host;
     map['path'] = path;
@@ -80,7 +81,7 @@ class URLMapTest {
           : map['expectedRedirectResponseCode'] as int,
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<URLMapTestHeader>(
+          : pulumi.Input.decodeList<URLMapTestHeader>(
               map['headers'],
               (value) => URLMapTestHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),

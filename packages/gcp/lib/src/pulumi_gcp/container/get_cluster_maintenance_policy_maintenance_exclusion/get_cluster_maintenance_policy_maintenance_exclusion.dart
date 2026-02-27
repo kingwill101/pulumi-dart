@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_maintenance_policy_maintenance_exclusion_exclusion_option/get_cluster_maintenance_policy_maintenance_exclusion_exclusion_option.dart';
 
 class GetClusterMaintenancePolicyMaintenanceExclusion {
@@ -23,7 +23,7 @@ class GetClusterMaintenancePolicyMaintenanceExclusion {
     final map = <String, dynamic>{};
     map['endTime'] = endTime;
     map['exclusionName'] = exclusionName;
-    map['exclusionOptions'] = Input.encodeList<
+    map['exclusionOptions'] = pulumi.Input.encodeList<
         GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption,
         Map<String, dynamic>>(exclusionOptions, (value) => value.toMap());
     map['startTime'] = startTime;
@@ -35,7 +35,7 @@ class GetClusterMaintenancePolicyMaintenanceExclusion {
     return GetClusterMaintenancePolicyMaintenanceExclusion(
       endTime: map['endTime'] as String,
       exclusionName: map['exclusionName'] as String,
-      exclusionOptions: Input.decodeList<
+      exclusionOptions: pulumi.Input.decodeList<
               GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption>(
           map['exclusionOptions'],
           (value) =>

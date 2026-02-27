@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config/get_feature_fleet_default_member_config.dart';
 import '../get_feature_resource_state/get_feature_resource_state.dart';
 import '../get_feature_spec/get_feature_spec.dart';
@@ -47,7 +47,7 @@ class GetFeatureResult {
     map['createTime'] = createTime;
     map['deleteTime'] = deleteTime;
     map['effectiveLabels'] = effectiveLabels;
-    map['fleetDefaultMemberConfigs'] = Input.encodeList<
+    map['fleetDefaultMemberConfigs'] = pulumi.Input.encodeList<
             GetFeatureFleetDefaultMemberConfig, Map<String, dynamic>>(
         fleetDefaultMemberConfigs, (value) => value.toMap());
     map['id'] = id;
@@ -60,12 +60,14 @@ class GetFeatureResult {
     }
     map['pulumiLabels'] = pulumiLabels;
     map['resourceStates'] =
-        Input.encodeList<GetFeatureResourceState, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetFeatureResourceState, Map<String, dynamic>>(
             resourceStates, (value) => value.toMap());
-    map['specs'] = Input.encodeList<GetFeatureSpec, Map<String, dynamic>>(
-        specs, (value) => value.toMap());
-    map['states'] = Input.encodeList<GetFeatureState, Map<String, dynamic>>(
-        states, (value) => value.toMap());
+    map['specs'] =
+        pulumi.Input.encodeList<GetFeatureSpec, Map<String, dynamic>>(
+            specs, (value) => value.toMap());
+    map['states'] =
+        pulumi.Input.encodeList<GetFeatureState, Map<String, dynamic>>(
+            states, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
   }
@@ -76,7 +78,7 @@ class GetFeatureResult {
       deleteTime: map['deleteTime'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       fleetDefaultMemberConfigs:
-          Input.decodeList<GetFeatureFleetDefaultMemberConfig>(
+          pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfig>(
               map['fleetDefaultMemberConfigs'],
               (value) => GetFeatureFleetDefaultMemberConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -86,15 +88,15 @@ class GetFeatureResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      resourceStates: Input.decodeList<GetFeatureResourceState>(
+      resourceStates: pulumi.Input.decodeList<GetFeatureResourceState>(
           map['resourceStates'],
           (value) => GetFeatureResourceState.fromMap(
               (value as Map).cast<String, dynamic>())),
-      specs: Input.decodeList<GetFeatureSpec>(
+      specs: pulumi.Input.decodeList<GetFeatureSpec>(
           map['specs'],
           (value) =>
               GetFeatureSpec.fromMap((value as Map).cast<String, dynamic>())),
-      states: Input.decodeList<GetFeatureState>(
+      states: pulumi.Input.decodeList<GetFeatureState>(
           map['states'],
           (value) =>
               GetFeatureState.fromMap((value as Map).cast<String, dynamic>())),

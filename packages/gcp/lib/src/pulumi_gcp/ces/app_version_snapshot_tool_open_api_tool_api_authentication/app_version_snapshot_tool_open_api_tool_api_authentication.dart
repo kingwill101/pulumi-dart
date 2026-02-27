@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_open_api_tool_api_authentication_api_key_config/app_version_snapshot_tool_open_api_tool_api_authentication_api_key_config.dart';
 import '../app_version_snapshot_tool_open_api_tool_api_authentication_oauth_config/app_version_snapshot_tool_open_api_tool_api_authentication_oauth_config.dart';
 import '../app_version_snapshot_tool_open_api_tool_api_authentication_service_account_auth_config/app_version_snapshot_tool_open_api_tool_api_authentication_service_account_auth_config.dart';
@@ -42,19 +42,19 @@ class AppVersionSnapshotToolOpenApiToolApiAuthentication {
     final map = <String, dynamic>{};
     final apiKeyConfigsValue = apiKeyConfigs;
     if (apiKeyConfigsValue != null) {
-      map['apiKeyConfigs'] = Input.encodeList<
+      map['apiKeyConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig,
           Map<String, dynamic>>(apiKeyConfigsValue, (value) => value.toMap());
     }
     final oauthConfigsValue = oauthConfigs;
     if (oauthConfigsValue != null) {
-      map['oauthConfigs'] = Input.encodeList<
+      map['oauthConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig,
           Map<String, dynamic>>(oauthConfigsValue, (value) => value.toMap());
     }
     final serviceAccountAuthConfigsValue = serviceAccountAuthConfigs;
     if (serviceAccountAuthConfigsValue != null) {
-      map['serviceAccountAuthConfigs'] = Input.encodeList<
+      map['serviceAccountAuthConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig,
           Map<String,
               dynamic>>(serviceAccountAuthConfigsValue, (value) => value.toMap());
@@ -72,7 +72,7 @@ class AppVersionSnapshotToolOpenApiToolApiAuthentication {
     return AppVersionSnapshotToolOpenApiToolApiAuthentication(
       apiKeyConfigs: map['apiKeyConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig>(
               map['apiKeyConfigs'],
               (value) =>
@@ -80,7 +80,7 @@ class AppVersionSnapshotToolOpenApiToolApiAuthentication {
                       .fromMap((value as Map).cast<String, dynamic>())),
       oauthConfigs: map['oauthConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig>(
               map['oauthConfigs'],
               (value) =>
@@ -88,7 +88,7 @@ class AppVersionSnapshotToolOpenApiToolApiAuthentication {
                       .fromMap((value as Map).cast<String, dynamic>())),
       serviceAccountAuthConfigs: map['serviceAccountAuthConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>(
               map['serviceAccountAuthConfigs'],
               (value) =>

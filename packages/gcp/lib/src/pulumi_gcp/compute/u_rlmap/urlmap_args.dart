@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_default_custom_error_response_policy/urlmap_default_custom_error_response_policy.dart';
 import '../urlmap_default_route_action/urlmap_default_route_action.dart';
 import '../urlmap_default_url_redirect/urlmap_default_url_redirect.dart';
@@ -20,7 +20,7 @@ class URLMapArgs {
   /// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
   /// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
   /// Structure is documented below.
-  final Input<URLMapDefaultCustomErrorResponsePolicy>?
+  final pulumi.Input<URLMapDefaultCustomErrorResponsePolicy>?
       defaultCustomErrorResponsePolicy;
 
   /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
@@ -29,30 +29,30 @@ class URLMapArgs {
   /// is set, defaultRouteAction cannot contain any weightedBackendServices.
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
   /// Structure is documented below.
-  final Input<URLMapDefaultRouteAction>? defaultRouteAction;
+  final pulumi.Input<URLMapDefaultRouteAction>? defaultRouteAction;
 
   /// The backend service or backend bucket to use when none of the given rules match.
-  final Input<String>? defaultService;
+  final pulumi.Input<String>? defaultService;
 
   /// When none of the specified hostRules match, the request is redirected to a URL specified
   /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
-  final Input<URLMapDefaultUrlRedirect>? defaultUrlRedirect;
+  final pulumi.Input<URLMapDefaultUrlRedirect>? defaultUrlRedirect;
 
   /// An optional description of this resource. Provide this property when you create
   /// the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService. The headerAction specified here take effect after
   /// headerAction specified under pathMatcher.
   /// Structure is documented below.
-  final Input<URLMapHeaderAction>? headerAction;
+  final pulumi.Input<URLMapHeaderAction>? headerAction;
 
   /// The list of HostRules to use against the URL.
   /// Structure is documented below.
-  final Input<List<URLMapHostRule>>? hostRules;
+  final pulumi.Input<List<URLMapHostRule>>? hostRules;
 
   /// Name of the resource. Provided by the client when the resource is created. The
   /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -60,21 +60,21 @@ class URLMapArgs {
   /// `a-z?` which means the first character must be a lowercase
   /// letter, and all following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The list of named PathMatchers to use against the URL.
   /// Structure is documented below.
-  final Input<List<URLMapPathMatcher>>? pathMatchers;
+  final pulumi.Input<List<URLMapPathMatcher>>? pathMatchers;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The list of expected URL mapping tests. Request to update this UrlMap will
   /// succeed only if all of the test cases pass. You can specify a maximum of 100
   /// tests per UrlMap.
   /// Structure is documented below.
-  final Input<List<URLMapTest>>? tests;
+  final pulumi.Input<List<URLMapTest>>? tests;
 
   URLMapArgs({
     this.defaultCustomErrorResponsePolicy,
@@ -95,13 +95,14 @@ class URLMapArgs {
     final defaultCustomErrorResponsePolicyValue =
         defaultCustomErrorResponsePolicy;
     if (defaultCustomErrorResponsePolicyValue != null) {
-      map['defaultCustomErrorResponsePolicy'] = Input.mapOptionalInputValue<
-              URLMapDefaultCustomErrorResponsePolicy, Map<String, dynamic>>(
-          defaultCustomErrorResponsePolicyValue, (value) => value.toMap());
+      map['defaultCustomErrorResponsePolicy'] =
+          pulumi.Input.mapOptionalInputValue<
+                  URLMapDefaultCustomErrorResponsePolicy, Map<String, dynamic>>(
+              defaultCustomErrorResponsePolicyValue, (value) => value.toMap());
     }
     final defaultRouteActionValue = defaultRouteAction;
     if (defaultRouteActionValue != null) {
-      map['defaultRouteAction'] = Input.mapOptionalInputValue<
+      map['defaultRouteAction'] = pulumi.Input.mapOptionalInputValue<
               URLMapDefaultRouteAction, Map<String, dynamic>>(
           defaultRouteActionValue, (value) => value.toMap());
     }
@@ -111,7 +112,7 @@ class URLMapArgs {
     }
     final defaultUrlRedirectValue = defaultUrlRedirect;
     if (defaultUrlRedirectValue != null) {
-      map['defaultUrlRedirect'] = Input.mapOptionalInputValue<
+      map['defaultUrlRedirect'] = pulumi.Input.mapOptionalInputValue<
               URLMapDefaultUrlRedirect, Map<String, dynamic>>(
           defaultUrlRedirectValue, (value) => value.toMap());
     }
@@ -121,17 +122,18 @@ class URLMapArgs {
     }
     final headerActionValue = headerAction;
     if (headerActionValue != null) {
-      map['headerAction'] =
-          Input.mapOptionalInputValue<URLMapHeaderAction, Map<String, dynamic>>(
-              headerActionValue, (value) => value.toMap());
+      map['headerAction'] = pulumi.Input.mapOptionalInputValue<
+          URLMapHeaderAction,
+          Map<String, dynamic>>(headerActionValue, (value) => value.toMap());
     }
     final hostRulesValue = hostRules;
     if (hostRulesValue != null) {
-      map['hostRules'] = Input.mapOptionalInputValue<List<URLMapHostRule>,
-              List<Map<String, dynamic>>>(
+      map['hostRules'] = pulumi.Input.mapOptionalInputValue<
+              List<URLMapHostRule>, List<Map<String, dynamic>>>(
           hostRulesValue,
-          (value) => Input.encodeList<URLMapHostRule, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<URLMapHostRule, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -139,11 +141,12 @@ class URLMapArgs {
     }
     final pathMatchersValue = pathMatchers;
     if (pathMatchersValue != null) {
-      map['pathMatchers'] = Input.mapOptionalInputValue<List<URLMapPathMatcher>,
-              List<Map<String, dynamic>>>(
+      map['pathMatchers'] = pulumi.Input.mapOptionalInputValue<
+              List<URLMapPathMatcher>, List<Map<String, dynamic>>>(
           pathMatchersValue,
-          (value) => Input.encodeList<URLMapPathMatcher, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<URLMapPathMatcher, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -151,10 +154,10 @@ class URLMapArgs {
     }
     final testsValue = tests;
     if (testsValue != null) {
-      map['tests'] = Input.mapOptionalInputValue<List<URLMapTest>,
+      map['tests'] = pulumi.Input.mapOptionalInputValue<List<URLMapTest>,
               List<Map<String, dynamic>>>(
           testsValue,
-          (value) => Input.encodeList<URLMapTest, Map<String, dynamic>>(
+          (value) => pulumi.Input.encodeList<URLMapTest, Map<String, dynamic>>(
               value, (value) => value.toMap()));
     }
     return map;
@@ -163,22 +166,26 @@ class URLMapArgs {
   factory URLMapArgs.fromMap(Map<String, dynamic> map) {
     return URLMapArgs(
       defaultCustomErrorResponsePolicy:
-          Input.asOptionalInput<URLMapDefaultCustomErrorResponsePolicy>(
+          pulumi.Input.asOptionalInput<URLMapDefaultCustomErrorResponsePolicy>(
               map['defaultCustomErrorResponsePolicy']),
-      defaultRouteAction: Input.asOptionalInput<URLMapDefaultRouteAction>(
-          map['defaultRouteAction']),
-      defaultService: Input.asOptionalInput<String>(map['defaultService']),
-      defaultUrlRedirect: Input.asOptionalInput<URLMapDefaultUrlRedirect>(
-          map['defaultUrlRedirect']),
-      description: Input.asOptionalInput<String>(map['description']),
+      defaultRouteAction:
+          pulumi.Input.asOptionalInput<URLMapDefaultRouteAction>(
+              map['defaultRouteAction']),
+      defaultService:
+          pulumi.Input.asOptionalInput<String>(map['defaultService']),
+      defaultUrlRedirect:
+          pulumi.Input.asOptionalInput<URLMapDefaultUrlRedirect>(
+              map['defaultUrlRedirect']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       headerAction:
-          Input.asOptionalInput<URLMapHeaderAction>(map['headerAction']),
-      hostRules: Input.asOptionalInput<List<URLMapHostRule>>(map['hostRules']),
-      name: Input.asOptionalInput<String>(map['name']),
-      pathMatchers:
-          Input.asOptionalInput<List<URLMapPathMatcher>>(map['pathMatchers']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tests: Input.asOptionalInput<List<URLMapTest>>(map['tests']),
+          pulumi.Input.asOptionalInput<URLMapHeaderAction>(map['headerAction']),
+      hostRules:
+          pulumi.Input.asOptionalInput<List<URLMapHostRule>>(map['hostRules']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      pathMatchers: pulumi.Input.asOptionalInput<List<URLMapPathMatcher>>(
+          map['pathMatchers']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tests: pulumi.Input.asOptionalInput<List<URLMapTest>>(map['tests']),
     );
   }
 }

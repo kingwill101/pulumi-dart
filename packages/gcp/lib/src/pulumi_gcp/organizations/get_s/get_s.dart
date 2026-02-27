@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_sargs.dart';
 import 'get_sresult.dart';
 
@@ -7,13 +7,13 @@ import 'get_sresult.dart';
 /// and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
 Future<GetSResult> getS(
   GetSArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:organizations/getS:getS',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSResult.fromMap(result);
 }

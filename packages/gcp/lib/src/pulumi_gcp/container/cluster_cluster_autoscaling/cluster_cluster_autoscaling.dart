@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_autoscaling_auto_provisioning_defaults/cluster_cluster_autoscaling_auto_provisioning_defaults.dart';
 import '../cluster_cluster_autoscaling_resource_limit/cluster_cluster_autoscaling_resource_limit.dart';
 
@@ -68,7 +68,7 @@ class ClusterClusterAutoscaling {
     }
     final resourceLimitsValue = resourceLimits;
     if (resourceLimitsValue != null) {
-      map['resourceLimits'] = Input.encodeList<
+      map['resourceLimits'] = pulumi.Input.encodeList<
           ClusterClusterAutoscalingResourceLimit,
           Map<String, dynamic>>(resourceLimitsValue, (value) => value.toMap());
     }
@@ -93,7 +93,7 @@ class ClusterClusterAutoscaling {
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       resourceLimits: map['resourceLimits'] == null
           ? null
-          : Input.decodeList<ClusterClusterAutoscalingResourceLimit>(
+          : pulumi.Input.decodeList<ClusterClusterAutoscalingResourceLimit>(
               map['resourceLimits'],
               (value) => ClusterClusterAutoscalingResourceLimit.fromMap(
                   (value as Map).cast<String, dynamic>())),

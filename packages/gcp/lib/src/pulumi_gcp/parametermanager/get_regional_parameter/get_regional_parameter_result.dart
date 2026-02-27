@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_regional_parameter_policy_member/get_regional_parameter_policy_member.dart';
 
 /// Result data returned by getRegionalParameter.
@@ -48,7 +48,8 @@ class GetRegionalParameterResult {
     map['location'] = location;
     map['name'] = name;
     map['parameterId'] = parameterId;
-    map['policyMembers'] = Input.encodeList<GetRegionalParameterPolicyMember,
+    map['policyMembers'] = pulumi.Input.encodeList<
+        GetRegionalParameterPolicyMember,
         Map<String, dynamic>>(policyMembers, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
@@ -70,7 +71,7 @@ class GetRegionalParameterResult {
       location: map['location'] as String,
       name: map['name'] as String,
       parameterId: map['parameterId'] as String,
-      policyMembers: Input.decodeList<GetRegionalParameterPolicyMember>(
+      policyMembers: pulumi.Input.decodeList<GetRegionalParameterPolicyMember>(
           map['policyMembers'],
           (value) => GetRegionalParameterPolicyMember.fromMap(
               (value as Map).cast<String, dynamic>())),

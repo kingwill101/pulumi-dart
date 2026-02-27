@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getConnectionIamPolicy.
 class GetConnectionIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> connectionId;
+  final pulumi.Input<String> connectionId;
 
   /// The geographic location where the connection should reside.
   /// Cloud SQL instance must be in the same location as the connection
@@ -16,11 +16,11 @@ class GetConnectionIamPolicyArgs {
   /// Azure allowed regions are azure-eastus2 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetConnectionIamPolicyArgs({
     required this.connectionId,
@@ -44,9 +44,9 @@ class GetConnectionIamPolicyArgs {
 
   factory GetConnectionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionIamPolicyArgs(
-      connectionId: Input.asInput<String>(map['connectionId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      connectionId: pulumi.Input.asInput<String>(map['connectionId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

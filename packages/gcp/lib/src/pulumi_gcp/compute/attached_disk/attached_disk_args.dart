@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AttachedDisk.
 class AttachedDiskArgs {
@@ -13,19 +13,19 @@ class AttachedDiskArgs {
   /// If not specified, the server chooses a default device name to apply
   /// to this disk, in the form persistent-disks-x, where x is a number
   /// assigned by Google Compute Engine.
-  final Input<String>? deviceName;
+  final pulumi.Input<String>? deviceName;
 
   /// `name` or `self_link` of the disk that will be attached.
   ///
   ///
   /// - - -
-  final Input<String> disk;
+  final pulumi.Input<String> disk;
 
   /// `name` or `self_link` of the compute instance that the disk will be attached to.
   /// If the `self_link` is provided then `zone` and `project` are extracted from the
   /// self link. If only the name is used then `zone` and `project` must be defined
   /// as properties on the resource or provider.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The disk interface used for attaching this disk.
   ///
@@ -36,7 +36,7 @@ class AttachedDiskArgs {
   /// Possible values:
   /// "SCSI"
   /// "NVME"
-  final Input<String>? interface;
+  final pulumi.Input<String>? interface;
 
   /// The mode in which to attach this disk, either READ_WRITE or
   /// READ_ONLY. If not specified, the default is to attach the disk in
@@ -45,15 +45,15 @@ class AttachedDiskArgs {
   /// Possible values:
   /// "READ_ONLY"
   /// "READ_WRITE"
-  final Input<String>? mode;
+  final pulumi.Input<String>? mode;
 
   /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// `self_link` the project defined in the link will take precedence.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
   /// `self_link` the zone defined in the link will take precedence.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   AttachedDiskArgs({
     this.deviceName,
@@ -94,13 +94,13 @@ class AttachedDiskArgs {
 
   factory AttachedDiskArgs.fromMap(Map<String, dynamic> map) {
     return AttachedDiskArgs(
-      deviceName: Input.asOptionalInput<String>(map['deviceName']),
-      disk: Input.asInput<String>(map['disk']),
-      instance: Input.asInput<String>(map['instance']),
-      interface: Input.asOptionalInput<String>(map['interface']),
-      mode: Input.asOptionalInput<String>(map['mode']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      deviceName: pulumi.Input.asOptionalInput<String>(map['deviceName']),
+      disk: pulumi.Input.asInput<String>(map['disk']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      interface: pulumi.Input.asOptionalInput<String>(map['interface']),
+      mode: pulumi.Input.asOptionalInput<String>(map['mode']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

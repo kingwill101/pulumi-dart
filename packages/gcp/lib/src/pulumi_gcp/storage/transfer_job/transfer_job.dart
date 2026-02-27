@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../transfer_job_event_stream/transfer_job_event_stream.dart';
 import '../transfer_job_logging_config/transfer_job_logging_config.dart';
 import '../transfer_job_notification_config/transfer_job_notification_config.dart';
@@ -33,61 +33,61 @@ import 'transfer_job_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789
 /// ```
-class TransferJob extends CustomResource {
+class TransferJob extends pulumi.CustomResource {
   /// When the Transfer Job was created.
-  late final Output<String> creationTime;
+  late final pulumi.Output<String> creationTime;
 
   /// When the Transfer Job was deleted.
-  late final Output<String> deletionTime;
+  late final pulumi.Output<String> deletionTime;
 
   /// Unique description to identify the Transfer Job.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
-  late final Output<TransferJobEventStream?> eventStream;
+  late final pulumi.Output<TransferJobEventStream?> eventStream;
 
   /// When the Transfer Job was last modified.
-  late final Output<String> lastModificationTime;
+  late final pulumi.Output<String> lastModificationTime;
 
   /// Logging configuration. Structure documented below.
-  late final Output<TransferJobLoggingConfig?> loggingConfig;
+  late final pulumi.Output<TransferJobLoggingConfig?> loggingConfig;
 
   /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
-  late final Output<TransferJobNotificationConfig?> notificationConfig;
+  late final pulumi.Output<TransferJobNotificationConfig?> notificationConfig;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
   ///
   /// - - -
-  late final Output<TransferJobReplicationSpec?> replicationSpec;
+  late final pulumi.Output<TransferJobReplicationSpec?> replicationSpec;
 
   /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
-  late final Output<TransferJobSchedule?> schedule;
+  late final pulumi.Output<TransferJobSchedule?> schedule;
 
   /// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
-  late final Output<String?> serviceAccount;
+  late final pulumi.Output<String?> serviceAccount;
 
   /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
-  late final Output<TransferJobTransferSpec?> transferSpec;
+  late final pulumi.Output<TransferJobTransferSpec?> transferSpec;
 
   TransferJob(
     String name, {
     TransferJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/transferJob:TransferJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTime = registerOutput<String>('creationTime');
     this.deletionTime = registerOutput<String>('deletionTime');

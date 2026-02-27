@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tag_value_iam_binding_condition/tag_value_iam_binding_condition.dart';
 
 /// The set of arguments for TagValueIamBinding.
 class TagValueIamBindingArgs {
-  final Input<TagValueIamBindingCondition>? condition;
+  final pulumi.Input<TagValueIamBindingCondition>? condition;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -19,15 +19,15 @@ class TagValueIamBindingArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final Input<List<String>> members;
+  final pulumi.Input<List<String>> members;
 
   /// The role that should be applied. Only one
   /// `gcp.tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> tagValue;
+  final pulumi.Input<String> tagValue;
 
   TagValueIamBindingArgs({
     this.condition,
@@ -40,7 +40,7 @@ class TagValueIamBindingArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           TagValueIamBindingCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -52,11 +52,11 @@ class TagValueIamBindingArgs {
 
   factory TagValueIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TagValueIamBindingArgs(
-      condition:
-          Input.asOptionalInput<TagValueIamBindingCondition>(map['condition']),
-      members: Input.asInput<List<String>>(map['members']),
-      role: Input.asInput<String>(map['role']),
-      tagValue: Input.asInput<String>(map['tagValue']),
+      condition: pulumi.Input.asOptionalInput<TagValueIamBindingCondition>(
+          map['condition']),
+      members: pulumi.Input.asInput<List<String>>(map['members']),
+      role: pulumi.Input.asInput<String>(map['role']),
+      tagValue: pulumi.Input.asInput<String>(map['tagValue']),
     );
   }
 }

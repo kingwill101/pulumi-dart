@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_hub_instance_config/api_hub_instance_config.dart';
 import 'api_hub_instance_args.dart';
 
@@ -42,48 +42,48 @@ import 'api_hub_instance_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apihub/apiHubInstance:ApiHubInstance default {{location}}/{{api_hub_instance_id}}
 /// ```
-class ApiHubInstance extends CustomResource {
+class ApiHubInstance extends pulumi.CustomResource {
   /// Optional. Identifier to assign to the Api Hub instance. Must be unique within
   /// scope of the parent resource. If the field is not provided,
   /// system generated id will be used.
   /// This value should be 4-40 characters, and valid characters
   /// are `/a-z[0-9]-_/`.
-  late final Output<String?> apiHubInstanceId;
+  late final pulumi.Output<String?> apiHubInstanceId;
 
   /// Available configurations to provision an ApiHub Instance.
   /// Structure is documented below.
-  late final Output<ApiHubInstanceConfig> config;
+  late final pulumi.Output<ApiHubInstanceConfig> config;
 
   /// Output only. Creation timestamp.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Description of the ApiHub instance.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. Instance labels to represent user-provided metadata.
   /// Refer to cloud documentation on labels for more details.
   /// https://cloud.google.com/compute/docs/labeling-resources
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. Format:
   /// `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. The current state of the ApiHub instance.
   /// Possible values:
@@ -94,24 +94,24 @@ class ApiHubInstance extends CustomResource {
   /// UPDATING
   /// DELETING
   /// FAILED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. Extra information about ApiHub instance state. Currently the message
   /// would be populated when state is `FAILED`.
-  late final Output<String> stateMessage;
+  late final pulumi.Output<String> stateMessage;
 
   /// Output only. Last update timestamp.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ApiHubInstance(
     String name, {
     ApiHubInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apihub/apiHubInstance:ApiHubInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiHubInstanceId = registerOutput<String?>('apiHubInstanceId');
     this.config = registerOutput<ApiHubInstanceConfig>('config');

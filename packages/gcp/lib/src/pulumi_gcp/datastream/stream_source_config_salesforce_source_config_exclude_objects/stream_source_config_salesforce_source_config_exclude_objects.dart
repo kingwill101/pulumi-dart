@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_salesforce_source_config_exclude_objects_object/stream_source_config_salesforce_source_config_exclude_objects_object.dart';
 
 class StreamSourceConfigSalesforceSourceConfigExcludeObjects {
@@ -15,7 +15,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['objects'] = Input.encodeList<
+    map['objects'] = pulumi.Input.encodeList<
         StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject,
         Map<String, dynamic>>(objects, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjects {
   factory StreamSourceConfigSalesforceSourceConfigExcludeObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfigExcludeObjects(
-      objects: Input.decodeList<
+      objects: pulumi.Input.decodeList<
               StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject>(
           map['objects'],
           (value) =>

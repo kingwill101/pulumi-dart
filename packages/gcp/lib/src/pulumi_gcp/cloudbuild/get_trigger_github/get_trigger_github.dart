@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_github_pull_request/get_trigger_github_pull_request.dart';
 import '../get_trigger_github_push/get_trigger_github_push.dart';
 
@@ -36,11 +36,10 @@ class GetTriggerGithub {
     map['enterpriseConfigResourceName'] = enterpriseConfigResourceName;
     map['name'] = name;
     map['owner'] = owner;
-    map['pullRequests'] =
-        Input.encodeList<GetTriggerGithubPullRequest, Map<String, dynamic>>(
-            pullRequests, (value) => value.toMap());
+    map['pullRequests'] = pulumi.Input.encodeList<GetTriggerGithubPullRequest,
+        Map<String, dynamic>>(pullRequests, (value) => value.toMap());
     map['pushes'] =
-        Input.encodeList<GetTriggerGithubPush, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerGithubPush, Map<String, dynamic>>(
             pushes, (value) => value.toMap());
     return map;
   }
@@ -51,11 +50,11 @@ class GetTriggerGithub {
           map['enterpriseConfigResourceName'] as String,
       name: map['name'] as String,
       owner: map['owner'] as String,
-      pullRequests: Input.decodeList<GetTriggerGithubPullRequest>(
+      pullRequests: pulumi.Input.decodeList<GetTriggerGithubPullRequest>(
           map['pullRequests'],
           (value) => GetTriggerGithubPullRequest.fromMap(
               (value as Map).cast<String, dynamic>())),
-      pushes: Input.decodeList<GetTriggerGithubPush>(
+      pushes: pulumi.Input.decodeList<GetTriggerGithubPush>(
           map['pushes'],
           (value) => GetTriggerGithubPush.fromMap(
               (value as Map).cast<String, dynamic>())),

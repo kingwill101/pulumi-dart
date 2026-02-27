@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_level_condition_device_policy/access_level_condition_device_policy.dart';
 import '../access_level_condition_vpc_network_source/access_level_condition_vpc_network_source.dart';
 
 /// The set of arguments for AccessLevelCondition.
 class AccessLevelConditionArgs {
   /// The name of the Access Level to add this condition to.
-  final Input<String> accessLevel;
+  final pulumi.Input<String> accessLevel;
 
   /// Device specific restrictions, all restrictions must hold for
   /// the Condition to be true. If not specified, all devices are
   /// allowed.
   /// Structure is documented below.
-  final Input<AccessLevelConditionDevicePolicy>? devicePolicy;
+  final pulumi.Input<AccessLevelConditionDevicePolicy>? devicePolicy;
 
   /// A list of CIDR block IP subnetwork specification. May be IPv4
   /// or IPv6.
@@ -25,7 +25,7 @@ class AccessLevelConditionArgs {
   /// is not. The originating IP of a request must be in one of the
   /// listed subnets in order for this Condition to be true.
   /// If empty, all IP addresses are allowed.
-  final Input<List<String>>? ipSubnetworks;
+  final pulumi.Input<List<String>>? ipSubnetworks;
 
   /// An allowed list of members (users, service accounts).
   /// Using groups is not supported yet.
@@ -34,28 +34,29 @@ class AccessLevelConditionArgs {
   /// from any user (logged in/not logged in, not present in any
   /// groups, etc.).
   /// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
-  final Input<List<String>>? members;
+  final pulumi.Input<List<String>>? members;
 
   /// Whether to negate the Condition. If true, the Condition becomes
   /// a NAND over its non-empty fields, each field must be false for
   /// the Condition overall to be satisfied. Defaults to false.
-  final Input<bool>? negate;
+  final pulumi.Input<bool>? negate;
 
   /// The request must originate from one of the provided
   /// countries/regions.
   /// Format: A valid ISO 3166-1 alpha-2 code.
-  final Input<List<String>>? regions;
+  final pulumi.Input<List<String>>? regions;
 
   /// A list of other access levels defined in the same Policy,
   /// referenced by resource name. Referencing an AccessLevel which
   /// does not exist is an error. All access levels listed must be
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-  final Input<List<String>>? requiredAccessLevels;
+  final pulumi.Input<List<String>>? requiredAccessLevels;
 
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
   /// Structure is documented below.
-  final Input<List<AccessLevelConditionVpcNetworkSource>>? vpcNetworkSources;
+  final pulumi.Input<List<AccessLevelConditionVpcNetworkSource>>?
+      vpcNetworkSources;
 
   AccessLevelConditionArgs({
     required this.accessLevel,
@@ -73,7 +74,7 @@ class AccessLevelConditionArgs {
     map['accessLevel'] = accessLevel;
     final devicePolicyValue = devicePolicy;
     if (devicePolicyValue != null) {
-      map['devicePolicy'] = Input.mapOptionalInputValue<
+      map['devicePolicy'] = pulumi.Input.mapOptionalInputValue<
           AccessLevelConditionDevicePolicy,
           Map<String, dynamic>>(devicePolicyValue, (value) => value.toMap());
     }
@@ -99,11 +100,12 @@ class AccessLevelConditionArgs {
     }
     final vpcNetworkSourcesValue = vpcNetworkSources;
     if (vpcNetworkSourcesValue != null) {
-      map['vpcNetworkSources'] = Input.mapOptionalInputValue<
+      map['vpcNetworkSources'] = pulumi.Input.mapOptionalInputValue<
               List<AccessLevelConditionVpcNetworkSource>,
               List<Map<String, dynamic>>>(
           vpcNetworkSourcesValue,
-          (value) => Input.encodeList<AccessLevelConditionVpcNetworkSource,
+          (value) => pulumi.Input.encodeList<
+              AccessLevelConditionVpcNetworkSource,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
@@ -111,18 +113,19 @@ class AccessLevelConditionArgs {
 
   factory AccessLevelConditionArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelConditionArgs(
-      accessLevel: Input.asInput<String>(map['accessLevel']),
-      devicePolicy: Input.asOptionalInput<AccessLevelConditionDevicePolicy>(
-          map['devicePolicy']),
-      ipSubnetworks: Input.asOptionalInput<List<String>>(map['ipSubnetworks']),
-      members: Input.asOptionalInput<List<String>>(map['members']),
-      negate: Input.asOptionalInput<bool>(map['negate']),
-      regions: Input.asOptionalInput<List<String>>(map['regions']),
-      requiredAccessLevels:
-          Input.asOptionalInput<List<String>>(map['requiredAccessLevels']),
-      vpcNetworkSources:
-          Input.asOptionalInput<List<AccessLevelConditionVpcNetworkSource>>(
-              map['vpcNetworkSources']),
+      accessLevel: pulumi.Input.asInput<String>(map['accessLevel']),
+      devicePolicy:
+          pulumi.Input.asOptionalInput<AccessLevelConditionDevicePolicy>(
+              map['devicePolicy']),
+      ipSubnetworks:
+          pulumi.Input.asOptionalInput<List<String>>(map['ipSubnetworks']),
+      members: pulumi.Input.asOptionalInput<List<String>>(map['members']),
+      negate: pulumi.Input.asOptionalInput<bool>(map['negate']),
+      regions: pulumi.Input.asOptionalInput<List<String>>(map['regions']),
+      requiredAccessLevels: pulumi.Input.asOptionalInput<List<String>>(
+          map['requiredAccessLevels']),
+      vpcNetworkSources: pulumi.Input.asOptionalInput<
+          List<AccessLevelConditionVpcNetworkSource>>(map['vpcNetworkSources']),
     );
   }
 }

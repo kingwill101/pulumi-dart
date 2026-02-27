@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SQuotaAdjusterSettings.
 class SQuotaAdjusterSettingsArgs {
   /// Required. The configured value of the enablement at the given resource.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final Input<String> enablement;
+  final pulumi.Input<String> enablement;
 
   /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   SQuotaAdjusterSettingsArgs({
     required this.enablement,
@@ -28,8 +28,8 @@ class SQuotaAdjusterSettingsArgs {
 
   factory SQuotaAdjusterSettingsArgs.fromMap(Map<String, dynamic> map) {
     return SQuotaAdjusterSettingsArgs(
-      enablement: Input.asInput<String>(map['enablement']),
-      parent: Input.asOptionalInput<String>(map['parent']),
+      enablement: pulumi.Input.asInput<String>(map['enablement']),
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpn_connection_detail_cloud_router/vpn_connection_detail_cloud_router.dart';
 import '../vpn_connection_detail_cloud_vpn/vpn_connection_detail_cloud_vpn.dart';
 
@@ -34,14 +34,14 @@ class VpnConnectionDetail {
     final map = <String, dynamic>{};
     final cloudRoutersValue = cloudRouters;
     if (cloudRoutersValue != null) {
-      map['cloudRouters'] = Input.encodeList<VpnConnectionDetailCloudRouter,
+      map['cloudRouters'] = pulumi.Input.encodeList<
+          VpnConnectionDetailCloudRouter,
           Map<String, dynamic>>(cloudRoutersValue, (value) => value.toMap());
     }
     final cloudVpnsValue = cloudVpns;
     if (cloudVpnsValue != null) {
-      map['cloudVpns'] =
-          Input.encodeList<VpnConnectionDetailCloudVpn, Map<String, dynamic>>(
-              cloudVpnsValue, (value) => value.toMap());
+      map['cloudVpns'] = pulumi.Input.encodeList<VpnConnectionDetailCloudVpn,
+          Map<String, dynamic>>(cloudVpnsValue, (value) => value.toMap());
     }
     final errorValue = error;
     if (errorValue != null) {
@@ -58,13 +58,13 @@ class VpnConnectionDetail {
     return VpnConnectionDetail(
       cloudRouters: map['cloudRouters'] == null
           ? null
-          : Input.decodeList<VpnConnectionDetailCloudRouter>(
+          : pulumi.Input.decodeList<VpnConnectionDetailCloudRouter>(
               map['cloudRouters'],
               (value) => VpnConnectionDetailCloudRouter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       cloudVpns: map['cloudVpns'] == null
           ? null
-          : Input.decodeList<VpnConnectionDetailCloudVpn>(
+          : pulumi.Input.decodeList<VpnConnectionDetailCloudVpn>(
               map['cloudVpns'],
               (value) => VpnConnectionDetailCloudVpn.fromMap(
                   (value as Map).cast<String, dynamic>())),

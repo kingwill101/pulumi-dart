@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../toolset_open_api_toolset_tls_config_ca_cert/toolset_open_api_toolset_tls_config_ca_cert.dart';
 
 class ToolsetOpenApiToolsetTlsConfig {
@@ -15,14 +15,15 @@ class ToolsetOpenApiToolsetTlsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['caCerts'] = Input.encodeList<ToolsetOpenApiToolsetTlsConfigCaCert,
+    map['caCerts'] = pulumi.Input.encodeList<
+        ToolsetOpenApiToolsetTlsConfigCaCert,
         Map<String, dynamic>>(caCerts, (value) => value.toMap());
     return map;
   }
 
   factory ToolsetOpenApiToolsetTlsConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetTlsConfig(
-      caCerts: Input.decodeList<ToolsetOpenApiToolsetTlsConfigCaCert>(
+      caCerts: pulumi.Input.decodeList<ToolsetOpenApiToolsetTlsConfigCaCert>(
           map['caCerts'],
           (value) => ToolsetOpenApiToolsetTlsConfigCaCert.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for View.
 class ViewArgs {
   /// The human-readable display name of the view.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A filter to reduce conversation results to a specific subset.
   /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
   /// for details.
-  final Input<String>? value;
+  final pulumi.Input<String>? value;
 
   ViewArgs({
     this.displayName,
@@ -46,10 +46,10 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      value: Input.asOptionalInput<String>(map['value']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      value: pulumi.Input.asOptionalInput<String>(map['value']),
     );
   }
 }

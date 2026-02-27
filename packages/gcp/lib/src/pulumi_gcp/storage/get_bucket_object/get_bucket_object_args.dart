@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucketObject.
 class GetBucketObjectArgs {
   /// The name of the containing bucket.
-  final Input<String>? bucket;
+  final pulumi.Input<String>? bucket;
 
   /// The name of the object.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   GetBucketObjectArgs({
     this.bucket,
@@ -30,8 +30,8 @@ class GetBucketObjectArgs {
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
-      bucket: Input.asOptionalInput<String>(map['bucket']),
-      name: Input.asOptionalInput<String>(map['name']),
+      bucket: pulumi.Input.asOptionalInput<String>(map['bucket']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

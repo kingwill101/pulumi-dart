@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_security_policy_advanced_options_config/get_region_security_policy_advanced_options_config.dart';
 import '../get_region_security_policy_ddos_protection_config/get_region_security_policy_ddos_protection_config.dart';
 import '../get_region_security_policy_rule/get_region_security_policy_rule.dart';
@@ -45,10 +45,10 @@ class GetRegionSecurityPolicyResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['advancedOptionsConfigs'] = Input.encodeList<
+    map['advancedOptionsConfigs'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyAdvancedOptionsConfig,
         Map<String, dynamic>>(advancedOptionsConfigs, (value) => value.toMap());
-    map['ddosProtectionConfigs'] = Input.encodeList<
+    map['ddosProtectionConfigs'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyDdosProtectionConfig,
         Map<String, dynamic>>(ddosProtectionConfigs, (value) => value.toMap());
     map['description'] = description;
@@ -64,13 +64,12 @@ class GetRegionSecurityPolicyResult {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['rules'] =
-        Input.encodeList<GetRegionSecurityPolicyRule, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<GetRegionSecurityPolicyRule,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['selfLinkWithPolicyId'] = selfLinkWithPolicyId;
     map['type'] = type;
-    map['userDefinedFields'] = Input.encodeList<
+    map['userDefinedFields'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyUserDefinedField,
         Map<String, dynamic>>(userDefinedFields, (value) => value.toMap());
     return map;
@@ -79,12 +78,12 @@ class GetRegionSecurityPolicyResult {
   factory GetRegionSecurityPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyResult(
       advancedOptionsConfigs:
-          Input.decodeList<GetRegionSecurityPolicyAdvancedOptionsConfig>(
+          pulumi.Input.decodeList<GetRegionSecurityPolicyAdvancedOptionsConfig>(
               map['advancedOptionsConfigs'],
               (value) => GetRegionSecurityPolicyAdvancedOptionsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ddosProtectionConfigs:
-          Input.decodeList<GetRegionSecurityPolicyDdosProtectionConfig>(
+          pulumi.Input.decodeList<GetRegionSecurityPolicyDdosProtectionConfig>(
               map['ddosProtectionConfigs'],
               (value) => GetRegionSecurityPolicyDdosProtectionConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -95,7 +94,7 @@ class GetRegionSecurityPolicyResult {
       policyId: map['policyId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      rules: Input.decodeList<GetRegionSecurityPolicyRule>(
+      rules: pulumi.Input.decodeList<GetRegionSecurityPolicyRule>(
           map['rules'],
           (value) => GetRegionSecurityPolicyRule.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -103,7 +102,7 @@ class GetRegionSecurityPolicyResult {
       selfLinkWithPolicyId: map['selfLinkWithPolicyId'] as String,
       type: map['type'] as String,
       userDefinedFields:
-          Input.decodeList<GetRegionSecurityPolicyUserDefinedField>(
+          pulumi.Input.decodeList<GetRegionSecurityPolicyUserDefinedField>(
               map['userDefinedFields'],
               (value) => GetRegionSecurityPolicyUserDefinedField.fromMap(
                   (value as Map).cast<String, dynamic>())),

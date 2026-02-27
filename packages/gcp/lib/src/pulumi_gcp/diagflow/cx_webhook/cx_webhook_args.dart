@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_webhook_generic_web_service/cx_webhook_generic_web_service.dart';
 import '../cx_webhook_service_directory/cx_webhook_service_directory.dart';
 
 /// The set of arguments for CxWebhook.
 class CxWebhookArgs {
   /// Indicates whether the webhook is disabled.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// The human-readable name of the webhook, unique within the agent.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
-  final Input<bool>? enableSpellCorrection;
+  final pulumi.Input<bool>? enableSpellCorrection;
 
   /// Deprecated. Determines whether this agent should log conversation queries.
-  final Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool>? enableStackdriverLogging;
 
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
-  final Input<CxWebhookGenericWebService>? genericWebService;
+  final pulumi.Input<CxWebhookGenericWebService>? genericWebService;
 
   /// The agent to create a webhook for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-  final Input<String>? securitySettings;
+  final pulumi.Input<String>? securitySettings;
 
   /// Configuration for a Service Directory service.
   /// Structure is documented below.
-  final Input<CxWebhookServiceDirectory>? serviceDirectory;
+  final pulumi.Input<CxWebhookServiceDirectory>? serviceDirectory;
 
   /// Webhook execution timeout.
-  final Input<String>? timeout;
+  final pulumi.Input<String>? timeout;
 
   CxWebhookArgs({
     this.disabled,
@@ -65,7 +65,7 @@ class CxWebhookArgs {
     }
     final genericWebServiceValue = genericWebService;
     if (genericWebServiceValue != null) {
-      map['genericWebService'] = Input.mapOptionalInputValue<
+      map['genericWebService'] = pulumi.Input.mapOptionalInputValue<
               CxWebhookGenericWebService, Map<String, dynamic>>(
           genericWebServiceValue, (value) => value.toMap());
     }
@@ -79,7 +79,7 @@ class CxWebhookArgs {
     }
     final serviceDirectoryValue = serviceDirectory;
     if (serviceDirectoryValue != null) {
-      map['serviceDirectory'] = Input.mapOptionalInputValue<
+      map['serviceDirectory'] = pulumi.Input.mapOptionalInputValue<
               CxWebhookServiceDirectory, Map<String, dynamic>>(
           serviceDirectoryValue, (value) => value.toMap());
     }
@@ -92,19 +92,21 @@ class CxWebhookArgs {
 
   factory CxWebhookArgs.fromMap(Map<String, dynamic> map) {
     return CxWebhookArgs(
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      displayName: Input.asInput<String>(map['displayName']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
       enableSpellCorrection:
-          Input.asOptionalInput<bool>(map['enableSpellCorrection']),
+          pulumi.Input.asOptionalInput<bool>(map['enableSpellCorrection']),
       enableStackdriverLogging:
-          Input.asOptionalInput<bool>(map['enableStackdriverLogging']),
-      genericWebService: Input.asOptionalInput<CxWebhookGenericWebService>(
-          map['genericWebService']),
-      parent: Input.asOptionalInput<String>(map['parent']),
-      securitySettings: Input.asOptionalInput<String>(map['securitySettings']),
-      serviceDirectory: Input.asOptionalInput<CxWebhookServiceDirectory>(
+          pulumi.Input.asOptionalInput<bool>(map['enableStackdriverLogging']),
+      genericWebService:
+          pulumi.Input.asOptionalInput<CxWebhookGenericWebService>(
+              map['genericWebService']),
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
+      securitySettings:
+          pulumi.Input.asOptionalInput<String>(map['securitySettings']),
+      serviceDirectory: pulumi.Input.asOptionalInput<CxWebhookServiceDirectory>(
           map['serviceDirectory']),
-      timeout: Input.asOptionalInput<String>(map['timeout']),
+      timeout: pulumi.Input.asOptionalInput<String>(map['timeout']),
     );
   }
 }

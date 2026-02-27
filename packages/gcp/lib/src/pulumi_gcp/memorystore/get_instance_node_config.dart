@@ -1,3 +1,3 @@
 library module_memorystore_get_instance_node_config;
 
-export 'get_instance_node_config/get_instance_node_config2.dart';
+export 'get_instance_node_config/get_instance_node_config_memorystore.dart';

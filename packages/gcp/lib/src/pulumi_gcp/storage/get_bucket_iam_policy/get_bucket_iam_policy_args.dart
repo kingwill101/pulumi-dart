@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucketIamPolicy.
 class GetBucketIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   GetBucketIamPolicyArgs({
     required this.bucket,
@@ -19,7 +19,7 @@ class GetBucketIamPolicyArgs {
 
   factory GetBucketIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketIamPolicyArgs(
-      bucket: Input.asInput<String>(map['bucket']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config_image_transformations_transform/prevention_deidentify_template_deidentify_config_image_transformations_transform.dart';
 
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
@@ -16,7 +16,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['transforms'] = Input.encodeList<
+    map['transforms'] = pulumi.Input.encodeList<
         PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform,
         Map<String, dynamic>>(transforms, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
   factory PreventionDeidentifyTemplateDeidentifyConfigImageTransformations.fromMap(
       Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigImageTransformations(
-      transforms: Input.decodeList<
+      transforms: pulumi.Input.decodeList<
               PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform>(
           map['transforms'],
           (value) =>

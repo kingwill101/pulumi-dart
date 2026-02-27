@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../internal_range_allocation_options/internal_range_allocation_options.dart';
 import '../internal_range_migration/internal_range_migration.dart';
 
@@ -8,64 +8,64 @@ import '../internal_range_migration/internal_range_migration.dart';
 class InternalRangeArgs {
   /// Options for automatically allocating a free range with a size given by prefixLength.
   /// Structure is documented below.
-  final Input<InternalRangeAllocationOptions>? allocationOptions;
+  final pulumi.Input<InternalRangeAllocationOptions>? allocationOptions;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
   /// Only IPv4 CIDR ranges are supported.
-  final Input<List<String>>? excludeCidrRanges;
+  final pulumi.Input<List<String>>? excludeCidrRanges;
 
   /// Immutable ranges cannot have their fields modified, except for labels and description.
-  final Input<bool>? immutable;
+  final pulumi.Input<bool>? immutable;
 
   /// The IP range that this internal range defines.
   /// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
   /// NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
-  final Input<String>? ipCidrRange;
+  final pulumi.Input<String>? ipCidrRange;
 
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Specification for migration with source and target resource names.
   /// Structure is documented below.
-  final Input<InternalRangeMigration>? migration;
+  final pulumi.Input<InternalRangeMigration>? migration;
 
   /// The name of the policy based route.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
-  final Input<String> network;
+  final pulumi.Input<String> network;
 
   /// Optional. Types of resources that are allowed to overlap with the current internal range.
   /// Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
-  final Input<List<String>>? overlaps;
+  final pulumi.Input<List<String>>? overlaps;
 
   /// The type of peering set for this internal range.
   /// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-  final Input<String> peering;
+  final pulumi.Input<String> peering;
 
   /// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
   /// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
   /// NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
   /// a redundant parameter.
-  final Input<int>? prefixLength;
+  final pulumi.Input<int>? prefixLength;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Optional. Can be set to narrow down or pick a different address space while searching for a free range.
   /// If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
-  final Input<List<String>>? targetCidrRanges;
+  final pulumi.Input<List<String>>? targetCidrRanges;
 
   /// The type of usage set for this InternalRange.
   /// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
-  final Input<String> usage;
+  final pulumi.Input<String> usage;
 
   InternalRangeArgs({
     this.allocationOptions,
@@ -89,7 +89,7 @@ class InternalRangeArgs {
     final map = <String, dynamic>{};
     final allocationOptionsValue = allocationOptions;
     if (allocationOptionsValue != null) {
-      map['allocationOptions'] = Input.mapOptionalInputValue<
+      map['allocationOptions'] = pulumi.Input.mapOptionalInputValue<
               InternalRangeAllocationOptions, Map<String, dynamic>>(
           allocationOptionsValue, (value) => value.toMap());
     }
@@ -115,7 +115,8 @@ class InternalRangeArgs {
     }
     final migrationValue = migration;
     if (migrationValue != null) {
-      map['migration'] = Input.mapOptionalInputValue<InternalRangeMigration,
+      map['migration'] = pulumi.Input.mapOptionalInputValue<
+          InternalRangeMigration,
           Map<String, dynamic>>(migrationValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -146,25 +147,26 @@ class InternalRangeArgs {
 
   factory InternalRangeArgs.fromMap(Map<String, dynamic> map) {
     return InternalRangeArgs(
-      allocationOptions: Input.asOptionalInput<InternalRangeAllocationOptions>(
-          map['allocationOptions']),
-      description: Input.asOptionalInput<String>(map['description']),
+      allocationOptions:
+          pulumi.Input.asOptionalInput<InternalRangeAllocationOptions>(
+              map['allocationOptions']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       excludeCidrRanges:
-          Input.asOptionalInput<List<String>>(map['excludeCidrRanges']),
-      immutable: Input.asOptionalInput<bool>(map['immutable']),
-      ipCidrRange: Input.asOptionalInput<String>(map['ipCidrRange']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      migration:
-          Input.asOptionalInput<InternalRangeMigration>(map['migration']),
-      name: Input.asOptionalInput<String>(map['name']),
-      network: Input.asInput<String>(map['network']),
-      overlaps: Input.asOptionalInput<List<String>>(map['overlaps']),
-      peering: Input.asInput<String>(map['peering']),
-      prefixLength: Input.asOptionalInput<int>(map['prefixLength']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<List<String>>(map['excludeCidrRanges']),
+      immutable: pulumi.Input.asOptionalInput<bool>(map['immutable']),
+      ipCidrRange: pulumi.Input.asOptionalInput<String>(map['ipCidrRange']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      migration: pulumi.Input.asOptionalInput<InternalRangeMigration>(
+          map['migration']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      network: pulumi.Input.asInput<String>(map['network']),
+      overlaps: pulumi.Input.asOptionalInput<List<String>>(map['overlaps']),
+      peering: pulumi.Input.asInput<String>(map['peering']),
+      prefixLength: pulumi.Input.asOptionalInput<int>(map['prefixLength']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       targetCidrRanges:
-          Input.asOptionalInput<List<String>>(map['targetCidrRanges']),
-      usage: Input.asInput<String>(map['usage']),
+          pulumi.Input.asOptionalInput<List<String>>(map['targetCidrRanges']),
+      usage: pulumi.Input.asInput<String>(map['usage']),
     );
   }
 }

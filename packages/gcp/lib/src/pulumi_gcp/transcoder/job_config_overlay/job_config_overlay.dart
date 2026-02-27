@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_config_overlay_animation/job_config_overlay_animation.dart';
 import '../job_config_overlay_image/job_config_overlay_image.dart';
 
@@ -22,9 +22,8 @@ class JobConfigOverlay {
     final map = <String, dynamic>{};
     final animationsValue = animations;
     if (animationsValue != null) {
-      map['animations'] =
-          Input.encodeList<JobConfigOverlayAnimation, Map<String, dynamic>>(
-              animationsValue, (value) => value.toMap());
+      map['animations'] = pulumi.Input.encodeList<JobConfigOverlayAnimation,
+          Map<String, dynamic>>(animationsValue, (value) => value.toMap());
     }
     final imageValue = image;
     if (imageValue != null) {
@@ -37,7 +36,7 @@ class JobConfigOverlay {
     return JobConfigOverlay(
       animations: map['animations'] == null
           ? null
-          : Input.decodeList<JobConfigOverlayAnimation>(
+          : pulumi.Input.decodeList<JobConfigOverlayAnimation>(
               map['animations'],
               (value) => JobConfigOverlayAnimation.fromMap(
                   (value as Map).cast<String, dynamic>())),

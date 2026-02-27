@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDiscoveredService.
 class GetDiscoveredServiceArgs {
   /// The location of the discovered service.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The host project of the discovered service.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The uri of the service.
-  final Input<String> serviceUri;
+  final pulumi.Input<String> serviceUri;
 
   GetDiscoveredServiceArgs({
     required this.location,
@@ -32,9 +32,9 @@ class GetDiscoveredServiceArgs {
 
   factory GetDiscoveredServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredServiceArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceUri: Input.asInput<String>(map['serviceUri']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceUri: pulumi.Input.asInput<String>(map['serviceUri']),
     );
   }
 }

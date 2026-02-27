@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connectivity_test_run_reachability_detail/get_connectivity_test_run_reachability_detail.dart';
 
 /// Result data returned by getConnectivityTestRun.
@@ -26,7 +26,7 @@ class GetConnectivityTestRunResult {
     map['id'] = id;
     map['name'] = name;
     map['project'] = project;
-    map['reachabilityDetails'] = Input.encodeList<
+    map['reachabilityDetails'] = pulumi.Input.encodeList<
         GetConnectivityTestRunReachabilityDetail,
         Map<String, dynamic>>(reachabilityDetails, (value) => value.toMap());
     return map;
@@ -38,7 +38,7 @@ class GetConnectivityTestRunResult {
       name: map['name'] as String,
       project: map['project'] as String,
       reachabilityDetails:
-          Input.decodeList<GetConnectivityTestRunReachabilityDetail>(
+          pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetail>(
               map['reachabilityDetails'],
               (value) => GetConnectivityTestRunReachabilityDetail.fromMap(
                   (value as Map).cast<String, dynamic>())),

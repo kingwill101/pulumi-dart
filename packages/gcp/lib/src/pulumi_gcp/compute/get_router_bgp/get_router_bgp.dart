@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_router_bgp_advertised_ip_range/get_router_bgp_advertised_ip_range.dart';
 
 class GetRouterBgp {
@@ -61,9 +61,9 @@ class GetRouterBgp {
     final map = <String, dynamic>{};
     map['advertiseMode'] = advertiseMode;
     map['advertisedGroups'] = advertisedGroups;
-    map['advertisedIpRanges'] =
-        Input.encodeList<GetRouterBgpAdvertisedIpRange, Map<String, dynamic>>(
-            advertisedIpRanges, (value) => value.toMap());
+    map['advertisedIpRanges'] = pulumi.Input.encodeList<
+        GetRouterBgpAdvertisedIpRange,
+        Map<String, dynamic>>(advertisedIpRanges, (value) => value.toMap());
     map['asn'] = asn;
     map['identifierRange'] = identifierRange;
     map['keepaliveInterval'] = keepaliveInterval;
@@ -74,10 +74,11 @@ class GetRouterBgp {
     return GetRouterBgp(
       advertiseMode: map['advertiseMode'] as String,
       advertisedGroups: (map['advertisedGroups'] as List).cast<String>(),
-      advertisedIpRanges: Input.decodeList<GetRouterBgpAdvertisedIpRange>(
-          map['advertisedIpRanges'],
-          (value) => GetRouterBgpAdvertisedIpRange.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      advertisedIpRanges:
+          pulumi.Input.decodeList<GetRouterBgpAdvertisedIpRange>(
+              map['advertisedIpRanges'],
+              (value) => GetRouterBgpAdvertisedIpRange.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       asn: map['asn'] as int,
       identifierRange: map['identifierRange'] as String,
       keepaliveInterval: map['keepaliveInterval'] as int,

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_character_mask_config_characters_to_ignore/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_character_mask_config_characters_to_ignore.dart';
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
@@ -34,7 +34,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     final map = <String, dynamic>{};
     final charactersToIgnoresValue = charactersToIgnores;
     if (charactersToIgnoresValue != null) {
-      map['charactersToIgnores'] = Input.encodeList<
+      map['charactersToIgnores'] = pulumi.Input.encodeList<
           PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore,
           Map<String,
               dynamic>>(charactersToIgnoresValue, (value) => value.toMap());
@@ -59,7 +59,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(
       charactersToIgnores: map['charactersToIgnores'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>(
               map['charactersToIgnores'],
               (value) =>

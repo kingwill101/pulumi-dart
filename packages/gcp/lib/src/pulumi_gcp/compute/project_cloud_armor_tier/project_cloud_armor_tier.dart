@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_cloud_armor_tier_args.dart';
 
 /// Sets the Cloud Armor tier of the project.
@@ -38,24 +38,24 @@ import 'project_cloud_armor_tier_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier default {{project}}
 /// ```
-class ProjectCloudArmorTier extends CustomResource {
+class ProjectCloudArmorTier extends pulumi.CustomResource {
   /// Managed protection tier to be set.
   /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-  late final Output<String> cloudArmorTier;
+  late final pulumi.Output<String> cloudArmorTier;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   ProjectCloudArmorTier(
     String name, {
     ProjectCloudArmorTierArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloudArmorTier = registerOutput<String>('cloudArmorTier');
     this.project = registerOutput<String>('project');

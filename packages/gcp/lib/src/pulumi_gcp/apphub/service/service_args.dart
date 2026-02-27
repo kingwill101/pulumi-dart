@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_attributes/service_attributes.dart';
 
 /// The set of arguments for Service.
 class ServiceArgs {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// Consumer provided attributes.
   /// Structure is documented below.
-  final Input<ServiceAttributes>? attributes;
+  final pulumi.Input<ServiceAttributes>? attributes;
 
   /// User-defined description of a Service.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Immutable. The resource name of the original discovered service.
-  final Input<String> discoveredService;
+  final pulumi.Input<String> discoveredService;
 
   /// User-defined name for the Service.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Service identifier.
-  final Input<String> serviceId;
+  final pulumi.Input<String> serviceId;
 
   ServiceArgs({
     required this.applicationId,
@@ -47,9 +47,8 @@ class ServiceArgs {
     map['applicationId'] = applicationId;
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] =
-          Input.mapOptionalInputValue<ServiceAttributes, Map<String, dynamic>>(
-              attributesValue, (value) => value.toMap());
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<ServiceAttributes,
+          Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -71,14 +70,15 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
-      attributes: Input.asOptionalInput<ServiceAttributes>(map['attributes']),
-      description: Input.asOptionalInput<String>(map['description']),
-      discoveredService: Input.asInput<String>(map['discoveredService']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceId: Input.asInput<String>(map['serviceId']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      attributes:
+          pulumi.Input.asOptionalInput<ServiceAttributes>(map['attributes']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      discoveredService: pulumi.Input.asInput<String>(map['discoveredService']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceId: pulumi.Input.asInput<String>(map['serviceId']),
     );
   }
 }

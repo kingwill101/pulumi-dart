@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_objects_bucket_object/get_bucket_objects_bucket_object.dart';
 
 /// Result data returned by getBucketObjects.
@@ -26,9 +26,8 @@ class GetBucketObjectsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['bucket'] = bucket;
-    map['bucketObjects'] =
-        Input.encodeList<GetBucketObjectsBucketObject, Map<String, dynamic>>(
-            bucketObjects, (value) => value.toMap());
+    map['bucketObjects'] = pulumi.Input.encodeList<GetBucketObjectsBucketObject,
+        Map<String, dynamic>>(bucketObjects, (value) => value.toMap());
     map['id'] = id;
     final matchGlobValue = matchGlob;
     if (matchGlobValue != null) {
@@ -44,7 +43,7 @@ class GetBucketObjectsResult {
   factory GetBucketObjectsResult.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsResult(
       bucket: map['bucket'] as String,
-      bucketObjects: Input.decodeList<GetBucketObjectsBucketObject>(
+      bucketObjects: pulumi.Input.decodeList<GetBucketObjectsBucketObject>(
           map['bucketObjects'],
           (value) => GetBucketObjectsBucketObject.fromMap(
               (value as Map).cast<String, dynamic>())),

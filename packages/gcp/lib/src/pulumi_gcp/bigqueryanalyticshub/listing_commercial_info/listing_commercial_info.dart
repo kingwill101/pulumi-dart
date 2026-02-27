@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../listing_commercial_info_cloud_marketplace/listing_commercial_info_cloud_marketplace.dart';
 
 class ListingCommercialInfo {
@@ -17,7 +17,7 @@ class ListingCommercialInfo {
     final map = <String, dynamic>{};
     final cloudMarketplacesValue = cloudMarketplaces;
     if (cloudMarketplacesValue != null) {
-      map['cloudMarketplaces'] = Input.encodeList<
+      map['cloudMarketplaces'] = pulumi.Input.encodeList<
               ListingCommercialInfoCloudMarketplace, Map<String, dynamic>>(
           cloudMarketplacesValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class ListingCommercialInfo {
     return ListingCommercialInfo(
       cloudMarketplaces: map['cloudMarketplaces'] == null
           ? null
-          : Input.decodeList<ListingCommercialInfoCloudMarketplace>(
+          : pulumi.Input.decodeList<ListingCommercialInfoCloudMarketplace>(
               map['cloudMarketplaces'],
               (value) => ListingCommercialInfoCloudMarketplace.fromMap(
                   (value as Map).cast<String, dynamic>())),

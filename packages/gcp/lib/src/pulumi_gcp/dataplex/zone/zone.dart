@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../zone_asset_status/zone_asset_status.dart';
 import '../zone_discovery_spec/zone_discovery_spec.dart';
 import '../zone_resource_spec/zone_resource_spec.dart';
@@ -35,70 +35,70 @@ import 'zone_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataplex/zone:Zone default {{location}}/{{lake}}/{{name}}
 /// ```
-class Zone extends CustomResource {
+class Zone extends pulumi.CustomResource {
   /// Output only. Aggregated status of the underlying assets of the zone.
-  late final Output<List<ZoneAssetStatus>> assetStatuses;
+  late final pulumi.Output<List<ZoneAssetStatus>> assetStatuses;
 
   /// Output only. The time when the zone was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Description of the zone.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Required. Specification of the discovery feature applied to data in this zone.
-  late final Output<ZoneDiscoverySpec> discoverySpec;
+  late final pulumi.Output<ZoneDiscoverySpec> discoverySpec;
 
   /// Optional. User friendly display name.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. User defined labels for the zone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The lake for the resource
-  late final Output<String> lake;
+  late final pulumi.Output<String> lake;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the zone.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
-  late final Output<ZoneResourceSpec> resourceSpec;
+  late final pulumi.Output<ZoneResourceSpec> resourceSpec;
 
   /// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The time when the zone was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Zone(
     String name, {
     ZoneArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataplex/zone:Zone',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assetStatuses = registerOutput<List<ZoneAssetStatus>>('assetStatuses');
     this.createTime = registerOutput<String>('createTime');

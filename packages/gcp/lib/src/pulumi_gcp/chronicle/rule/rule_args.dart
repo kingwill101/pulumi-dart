@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Rule.
 class RuleArgs {
@@ -11,27 +11,27 @@ class RuleArgs {
   /// associated detections. Regardless of this field's value, the rule
   /// deployment associated with this rule will also be deleted.
   /// Possible values: DEFAULT, FORCE
-  final Input<String>? deletionPolicy;
+  final pulumi.Input<String>? deletionPolicy;
 
   /// The etag for this rule.
   /// If this is provided on update, the request will succeed if and only if it
   /// matches the server-computed value, and will fail with an ABORTED error
   /// otherwise.
   /// Populated in BASIC view and FULL view.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Rule Id is the ID of the Rule.
-  final Input<String>? ruleId;
+  final pulumi.Input<String>? ruleId;
 
   /// Resource name of the DataAccessScope bound to this rule.
   /// Populated in BASIC view and FULL view.
@@ -40,11 +40,11 @@ class RuleArgs {
   /// both the user's and the rule's scopes.
   /// The scope should be in the format:
   /// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
-  final Input<String>? scope;
+  final pulumi.Input<String>? scope;
 
   /// The YARA-L content of the rule.
   /// Populated in FULL view.
-  final Input<String>? text;
+  final pulumi.Input<String>? text;
 
   RuleArgs({
     this.deletionPolicy,
@@ -90,14 +90,15 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      deletionPolicy: Input.asOptionalInput<String>(map['deletionPolicy']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      instance: Input.asInput<String>(map['instance']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      ruleId: Input.asOptionalInput<String>(map['ruleId']),
-      scope: Input.asOptionalInput<String>(map['scope']),
-      text: Input.asOptionalInput<String>(map['text']),
+      deletionPolicy:
+          pulumi.Input.asOptionalInput<String>(map['deletionPolicy']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      ruleId: pulumi.Input.asOptionalInput<String>(map['ruleId']),
+      scope: pulumi.Input.asOptionalInput<String>(map['scope']),
+      text: pulumi.Input.asOptionalInput<String>(map['text']),
     );
   }
 }

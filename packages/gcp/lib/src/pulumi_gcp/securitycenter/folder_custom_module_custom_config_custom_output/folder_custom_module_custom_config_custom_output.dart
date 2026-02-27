@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_custom_module_custom_config_custom_output_property/folder_custom_module_custom_config_custom_output_property.dart';
 
 class FolderCustomModuleCustomConfigCustomOutput {
@@ -16,7 +16,7 @@ class FolderCustomModuleCustomConfigCustomOutput {
     final map = <String, dynamic>{};
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.encodeList<
+      map['properties'] = pulumi.Input.encodeList<
           FolderCustomModuleCustomConfigCustomOutputProperty,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class FolderCustomModuleCustomConfigCustomOutput {
     return FolderCustomModuleCustomConfigCustomOutput(
       properties: map['properties'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FolderCustomModuleCustomConfigCustomOutputProperty>(
               map['properties'],
               (value) =>

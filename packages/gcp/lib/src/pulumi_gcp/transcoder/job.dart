@@ -1,4 +1,4 @@
 library module_transcoder_job;
 
-export 'job/job6.dart';
-export 'job/job_args6.dart';
+export 'job/job_transcoder.dart';
+export 'job/job_transcoder_args.dart';

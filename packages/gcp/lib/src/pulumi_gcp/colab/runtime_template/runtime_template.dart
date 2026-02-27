@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../runtime_template_data_persistent_disk_spec/runtime_template_data_persistent_disk_spec.dart';
 import '../runtime_template_encryption_spec/runtime_template_encryption_spec.dart';
 import '../runtime_template_euc_config/runtime_template_euc_config.dart';
@@ -58,80 +58,81 @@ import 'runtime_template_args.dart';
 /// ```sh
 /// $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{location}}/{{name}}
 /// ```
-class RuntimeTemplate extends CustomResource {
+class RuntimeTemplate extends pulumi.CustomResource {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
-  late final Output<RuntimeTemplateDataPersistentDiskSpec>
+  late final pulumi.Output<RuntimeTemplateDataPersistentDiskSpec>
       dataPersistentDiskSpec;
 
   /// The description of the Runtime Template.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Required. The display name of the Runtime Template.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Customer-managed encryption key spec for the notebook runtime.
   /// Structure is documented below.
-  late final Output<RuntimeTemplateEncryptionSpec?> encryptionSpec;
+  late final pulumi.Output<RuntimeTemplateEncryptionSpec?> encryptionSpec;
 
   /// EUC configuration of the NotebookRuntimeTemplate.
   /// Structure is documented below.
-  late final Output<RuntimeTemplateEucConfig> eucConfig;
+  late final pulumi.Output<RuntimeTemplateEucConfig> eucConfig;
 
   /// Notebook Idle Shutdown configuration for the runtime.
   /// Structure is documented below.
-  late final Output<RuntimeTemplateIdleShutdownConfig> idleShutdownConfig;
+  late final pulumi.Output<RuntimeTemplateIdleShutdownConfig>
+      idleShutdownConfig;
 
   /// Labels to identify and group the runtime template.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>> labels;
+  late final pulumi.Output<Map<String, String>> labels;
 
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// 'The machine configuration of the runtime.'
   /// Structure is documented below.
-  late final Output<RuntimeTemplateMachineSpec> machineSpec;
+  late final pulumi.Output<RuntimeTemplateMachineSpec> machineSpec;
 
   /// The resource name of the Runtime Template
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network configuration for the runtime.
   /// Structure is documented below.
-  late final Output<RuntimeTemplateNetworkSpec> networkSpec;
+  late final pulumi.Output<RuntimeTemplateNetworkSpec> networkSpec;
 
   /// Applies the given Compute Engine tags to the runtime.
-  late final Output<List<String>?> networkTags;
+  late final pulumi.Output<List<String>?> networkTags;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Runtime Shielded VM spec.
   /// Structure is documented below.
-  late final Output<RuntimeTemplateShieldedVmConfig> shieldedVmConfig;
+  late final pulumi.Output<RuntimeTemplateShieldedVmConfig> shieldedVmConfig;
 
   /// The notebook software configuration of the notebook runtime.
   /// Structure is documented below.
-  late final Output<RuntimeTemplateSoftwareConfig> softwareConfig;
+  late final pulumi.Output<RuntimeTemplateSoftwareConfig> softwareConfig;
 
   RuntimeTemplate(
     String name, {
     RuntimeTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:colab/runtimeTemplate:RuntimeTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataPersistentDiskSpec =
         registerOutput<RuntimeTemplateDataPersistentDiskSpec>(

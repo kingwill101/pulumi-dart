@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../inbound_saml_config_idp_config_idp_certificate/inbound_saml_config_idp_config_idp_certificate.dart';
 
 class InboundSamlConfigIdpConfig {
@@ -26,7 +26,7 @@ class InboundSamlConfigIdpConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['idpCertificates'] = Input.encodeList<
+    map['idpCertificates'] = pulumi.Input.encodeList<
         InboundSamlConfigIdpConfigIdpCertificate,
         Map<String, dynamic>>(idpCertificates, (value) => value.toMap());
     map['idpEntityId'] = idpEntityId;
@@ -41,7 +41,7 @@ class InboundSamlConfigIdpConfig {
   factory InboundSamlConfigIdpConfig.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigIdpConfig(
       idpCertificates:
-          Input.decodeList<InboundSamlConfigIdpConfigIdpCertificate>(
+          pulumi.Input.decodeList<InboundSamlConfigIdpConfigIdpCertificate>(
               map['idpCertificates'],
               (value) => InboundSamlConfigIdpConfigIdpCertificate.fromMap(
                   (value as Map).cast<String, dynamic>())),

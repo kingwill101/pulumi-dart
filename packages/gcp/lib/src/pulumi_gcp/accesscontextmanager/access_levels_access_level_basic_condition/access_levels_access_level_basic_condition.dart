@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_levels_access_level_basic_condition_device_policy/access_levels_access_level_basic_condition_device_policy.dart';
 import '../access_levels_access_level_basic_condition_vpc_network_source/access_levels_access_level_basic_condition_vpc_network_source.dart';
 
@@ -92,7 +92,7 @@ class AccessLevelsAccessLevelBasicCondition {
     }
     final vpcNetworkSourcesValue = vpcNetworkSources;
     if (vpcNetworkSourcesValue != null) {
-      map['vpcNetworkSources'] = Input.encodeList<
+      map['vpcNetworkSources'] = pulumi.Input.encodeList<
               AccessLevelsAccessLevelBasicConditionVpcNetworkSource,
               Map<String, dynamic>>(
           vpcNetworkSourcesValue, (value) => value.toMap());
@@ -122,7 +122,7 @@ class AccessLevelsAccessLevelBasicCondition {
           : (map['requiredAccessLevels'] as List).cast<String>(),
       vpcNetworkSources: map['vpcNetworkSources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AccessLevelsAccessLevelBasicConditionVpcNetworkSource>(
               map['vpcNetworkSources'],
               (value) =>

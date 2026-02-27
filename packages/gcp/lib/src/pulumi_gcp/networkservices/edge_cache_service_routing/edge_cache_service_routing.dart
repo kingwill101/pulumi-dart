@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../edge_cache_service_routing_host_rule/edge_cache_service_routing_host_rule.dart';
 import '../edge_cache_service_routing_path_matcher/edge_cache_service_routing_path_matcher.dart';
 
@@ -20,21 +20,21 @@ class EdgeCacheServiceRouting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['hostRules'] =
-        Input.encodeList<EdgeCacheServiceRoutingHostRule, Map<String, dynamic>>(
-            hostRules, (value) => value.toMap());
-    map['pathMatchers'] = Input.encodeList<EdgeCacheServiceRoutingPathMatcher,
+    map['hostRules'] = pulumi.Input.encodeList<EdgeCacheServiceRoutingHostRule,
+        Map<String, dynamic>>(hostRules, (value) => value.toMap());
+    map['pathMatchers'] = pulumi.Input.encodeList<
+        EdgeCacheServiceRoutingPathMatcher,
         Map<String, dynamic>>(pathMatchers, (value) => value.toMap());
     return map;
   }
 
   factory EdgeCacheServiceRouting.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRouting(
-      hostRules: Input.decodeList<EdgeCacheServiceRoutingHostRule>(
+      hostRules: pulumi.Input.decodeList<EdgeCacheServiceRoutingHostRule>(
           map['hostRules'],
           (value) => EdgeCacheServiceRoutingHostRule.fromMap(
               (value as Map).cast<String, dynamic>())),
-      pathMatchers: Input.decodeList<EdgeCacheServiceRoutingPathMatcher>(
+      pathMatchers: pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcher>(
           map['pathMatchers'],
           (value) => EdgeCacheServiceRoutingPathMatcher.fromMap(
               (value as Map).cast<String, dynamic>())),

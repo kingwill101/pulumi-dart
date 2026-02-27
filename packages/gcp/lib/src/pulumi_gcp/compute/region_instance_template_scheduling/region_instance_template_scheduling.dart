@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_instance_template_scheduling_graceful_shutdown/region_instance_template_scheduling_graceful_shutdown.dart';
 import '../region_instance_template_scheduling_local_ssd_recovery_timeout/region_instance_template_scheduling_local_ssd_recovery_timeout.dart';
 import '../region_instance_template_scheduling_max_run_duration/region_instance_template_scheduling_max_run_duration.dart';
@@ -116,7 +116,7 @@ class RegionInstanceTemplateScheduling {
     }
     final localSsdRecoveryTimeoutsValue = localSsdRecoveryTimeouts;
     if (localSsdRecoveryTimeoutsValue != null) {
-      map['localSsdRecoveryTimeouts'] = Input.encodeList<
+      map['localSsdRecoveryTimeouts'] = pulumi.Input.encodeList<
               RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout,
               Map<String, dynamic>>(
           localSsdRecoveryTimeoutsValue, (value) => value.toMap());
@@ -135,7 +135,7 @@ class RegionInstanceTemplateScheduling {
     }
     final nodeAffinitiesValue = nodeAffinities;
     if (nodeAffinitiesValue != null) {
-      map['nodeAffinities'] = Input.encodeList<
+      map['nodeAffinities'] = pulumi.Input.encodeList<
           RegionInstanceTemplateSchedulingNodeAffinity,
           Map<String, dynamic>>(nodeAffinitiesValue, (value) => value.toMap());
     }
@@ -186,7 +186,7 @@ class RegionInstanceTemplateScheduling {
           : map['instanceTerminationAction'] as String,
       localSsdRecoveryTimeouts: map['localSsdRecoveryTimeouts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>(
               map['localSsdRecoveryTimeouts'],
               (value) => RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout
@@ -202,7 +202,8 @@ class RegionInstanceTemplateScheduling {
           map['minNodeCpus'] == null ? null : map['minNodeCpus'] as int,
       nodeAffinities: map['nodeAffinities'] == null
           ? null
-          : Input.decodeList<RegionInstanceTemplateSchedulingNodeAffinity>(
+          : pulumi.Input.decodeList<
+                  RegionInstanceTemplateSchedulingNodeAffinity>(
               map['nodeAffinities'],
               (value) => RegionInstanceTemplateSchedulingNodeAffinity.fromMap(
                   (value as Map).cast<String, dynamic>())),

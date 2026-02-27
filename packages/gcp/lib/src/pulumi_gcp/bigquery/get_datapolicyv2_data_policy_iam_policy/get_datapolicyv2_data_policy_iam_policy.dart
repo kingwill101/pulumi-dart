@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_datapolicyv2_data_policy_iam_policy_args.dart';
 import 'get_datapolicyv2_data_policy_iam_policy_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_datapolicyv2_data_policy_iam_policy_result.dart';
 Future<GetDatapolicyv2DataPolicyIamPolicyResult>
     getDatapolicyv2DataPolicyIamPolicy(
   GetDatapolicyv2DataPolicyIamPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:bigquery/getDatapolicyv2DataPolicyIamPolicy:getDatapolicyv2DataPolicyIamPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatapolicyv2DataPolicyIamPolicyResult.fromMap(result);
 }

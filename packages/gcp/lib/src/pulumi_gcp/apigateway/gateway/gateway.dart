@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_args.dart';
 
 /// A consumable API that can be used by multiple Gateways.
@@ -40,53 +40,53 @@ import 'gateway_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
 /// ```
-class Gateway extends CustomResource {
+class Gateway extends pulumi.CustomResource {
   /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
   /// When changing api configs please ensure the new config is a new resource and the
   /// lifecycle rule `create_before_destroy` is set.
-  late final Output<String> apiConfig;
+  late final pulumi.Output<String> apiConfig;
 
   /// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
-  late final Output<String> defaultHostname;
+  late final pulumi.Output<String> defaultHostname;
 
   /// A user-visible name for the API.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-  late final Output<String> gatewayId;
+  late final pulumi.Output<String> gatewayId;
 
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The region of the gateway for the API.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   Gateway(
     String name, {
     GatewayArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigateway/gateway:Gateway',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiConfig = registerOutput<String>('apiConfig');
     this.defaultHostname = registerOutput<String>('defaultHostname');

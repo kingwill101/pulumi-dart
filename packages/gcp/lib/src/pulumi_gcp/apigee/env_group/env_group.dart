@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'env_group_args.dart';
 
 /// An `Environment group` in Apigee.
@@ -34,26 +34,26 @@ import 'env_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/{{name}}
 /// ```
-class EnvGroup extends CustomResource {
+class EnvGroup extends pulumi.CustomResource {
   /// Hostnames of the environment group.
-  late final Output<List<String>?> hostnames;
+  late final pulumi.Output<List<String>?> hostnames;
 
   /// The resource ID of the environment group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee environment group,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   EnvGroup(
     String name, {
     EnvGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/envGroup:EnvGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.hostnames = registerOutput<List<String>?>('hostnames');
     this.name = registerOutput<String>('name');

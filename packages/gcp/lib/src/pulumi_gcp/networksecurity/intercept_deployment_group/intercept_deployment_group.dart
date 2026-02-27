@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../intercept_deployment_group_connected_endpoint_group/intercept_deployment_group_connected_endpoint_group.dart';
 import '../intercept_deployment_group_location/intercept_deployment_group_location.dart';
 import 'intercept_deployment_group_args.dart';
@@ -39,63 +39,63 @@ import 'intercept_deployment_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup default {{location}}/{{intercept_deployment_group_id}}
 /// ```
-class InterceptDeploymentGroup extends CustomResource {
+class InterceptDeploymentGroup extends pulumi.CustomResource {
   /// The list of endpoint groups that are connected to this resource.
   /// Structure is documented below.
-  late final Output<List<InterceptDeploymentGroupConnectedEndpointGroup>>
+  late final pulumi.Output<List<InterceptDeploymentGroupConnectedEndpointGroup>>
       connectedEndpointGroups;
 
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// User-provided description of the deployment group.
   /// Used as additional context for the deployment group.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The ID to use for the new deployment group, which will become the final
   /// component of the deployment group's resource name.
-  late final Output<String> interceptDeploymentGroupId;
+  late final pulumi.Output<String> interceptDeploymentGroupId;
 
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The cloud location of the deployment group, currently restricted to `global`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The list of locations where the deployment group is present.
   /// Structure is documented below.
-  late final Output<List<InterceptDeploymentGroupLocation>> locations;
+  late final pulumi.Output<List<InterceptDeploymentGroupLocation>> locations;
 
   /// (Output)
   /// The connected endpoint group's resource name, for example:
   /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network that will be used for all child deployments, for example:
   /// `projects/{project}/global/networks/{network}`.
   /// See https://google.aip.dev/124.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The current state of the resource does not match the user's intended state,
   /// and the system is working to reconcile them. This is part of the normal
   /// operation (e.g. adding a new deployment to the group)
   /// See https://google.aip.dev/128.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// (Output)
   /// The current state of the association in this location.
@@ -103,21 +103,21 @@ class InterceptDeploymentGroup extends CustomResource {
   /// STATE_UNSPECIFIED
   /// ACTIVE
   /// OUT_OF_SYNC
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The timestamp when the resource was most recently updated.
   /// See https://google.aip.dev/148#timestamps.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   InterceptDeploymentGroup(
     String name, {
     InterceptDeploymentGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.connectedEndpointGroups =
         registerOutput<List<InterceptDeploymentGroupConnectedEndpointGroup>>(

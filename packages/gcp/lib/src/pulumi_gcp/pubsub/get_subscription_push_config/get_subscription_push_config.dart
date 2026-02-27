@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subscription_push_config_no_wrapper/get_subscription_push_config_no_wrapper.dart';
 import '../get_subscription_push_config_oidc_token/get_subscription_push_config_oidc_token.dart';
 
@@ -53,9 +53,11 @@ class GetSubscriptionPushConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['attributes'] = attributes;
-    map['noWrappers'] = Input.encodeList<GetSubscriptionPushConfigNoWrapper,
+    map['noWrappers'] = pulumi.Input.encodeList<
+        GetSubscriptionPushConfigNoWrapper,
         Map<String, dynamic>>(noWrappers, (value) => value.toMap());
-    map['oidcTokens'] = Input.encodeList<GetSubscriptionPushConfigOidcToken,
+    map['oidcTokens'] = pulumi.Input.encodeList<
+        GetSubscriptionPushConfigOidcToken,
         Map<String, dynamic>>(oidcTokens, (value) => value.toMap());
     map['pushEndpoint'] = pushEndpoint;
     return map;
@@ -64,11 +66,11 @@ class GetSubscriptionPushConfig {
   factory GetSubscriptionPushConfig.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionPushConfig(
       attributes: (map['attributes'] as Map).cast<String, String>(),
-      noWrappers: Input.decodeList<GetSubscriptionPushConfigNoWrapper>(
+      noWrappers: pulumi.Input.decodeList<GetSubscriptionPushConfigNoWrapper>(
           map['noWrappers'],
           (value) => GetSubscriptionPushConfigNoWrapper.fromMap(
               (value as Map).cast<String, dynamic>())),
-      oidcTokens: Input.decodeList<GetSubscriptionPushConfigOidcToken>(
+      oidcTokens: pulumi.Input.decodeList<GetSubscriptionPushConfigOidcToken>(
           map['oidcTokens'],
           (value) => GetSubscriptionPushConfigOidcToken.fromMap(
               (value as Map).cast<String, dynamic>())),

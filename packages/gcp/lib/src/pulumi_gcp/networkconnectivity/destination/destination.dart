@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../destination_endpoint/destination_endpoint.dart';
 import '../destination_state_timeline/destination_state_timeline.dart';
 import 'destination_args.dart';
@@ -42,75 +42,75 @@ import 'destination_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/destination:Destination default {{location}}/{{multicloud_data_transfer_config}}/{{name}}
 /// ```
-class Destination extends CustomResource {
+class Destination extends pulumi.CustomResource {
   /// Time when the `Destination` resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The list of DestinationEndpoint resources configured for the IP prefix.
   /// Structure is documented below.
-  late final Output<List<DestinationEndpoint>> endpoints;
+  late final pulumi.Output<List<DestinationEndpoint>> endpoints;
 
   /// The etag is computed by the server, and might be sent with update and
   /// delete requests so that the client has an up-to-date value before
   /// proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The IP prefix that represents your workload on another CSP.
-  late final Output<String> ipPrefix;
+  late final pulumi.Output<String> ipPrefix;
 
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the destination.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The multicloud data transfer config of the destination.
-  late final Output<String> multicloudDataTransferConfig;
+  late final pulumi.Output<String> multicloudDataTransferConfig;
 
   /// The name of the destination.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The timeline of the expected `Destination` states or the current rest
   /// state. If a state change is expected, the value is `ADDING`,
   /// `DELETING` or `SUSPENDING`, depending on the action specified.
   /// Structure is documented below.
-  late final Output<List<DestinationStateTimeline>> stateTimelines;
+  late final pulumi.Output<List<DestinationStateTimeline>> stateTimelines;
 
   /// The Google-generated unique ID for the `Destination` resource.
   /// This value is unique across all `Destination` resources.
   /// If a resource is deleted and another with the same name is
   /// created, the new resource is assigned a different and unique ID.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time when the `Destination` resource was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Destination(
     String name, {
     DestinationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkconnectivity/destination:Destination',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_product_grpc_operation_group_operation_config/api_product_grpc_operation_group_operation_config.dart';
 
 class ApiProductGrpcOperationGroup {
@@ -16,7 +16,7 @@ class ApiProductGrpcOperationGroup {
     final map = <String, dynamic>{};
     final operationConfigsValue = operationConfigs;
     if (operationConfigsValue != null) {
-      map['operationConfigs'] = Input.encodeList<
+      map['operationConfigs'] = pulumi.Input.encodeList<
               ApiProductGrpcOperationGroupOperationConfig,
               Map<String, dynamic>>(
           operationConfigsValue, (value) => value.toMap());
@@ -28,7 +28,8 @@ class ApiProductGrpcOperationGroup {
     return ApiProductGrpcOperationGroup(
       operationConfigs: map['operationConfigs'] == null
           ? null
-          : Input.decodeList<ApiProductGrpcOperationGroupOperationConfig>(
+          : pulumi.Input.decodeList<
+                  ApiProductGrpcOperationGroupOperationConfig>(
               map['operationConfigs'],
               (value) => ApiProductGrpcOperationGroupOperationConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

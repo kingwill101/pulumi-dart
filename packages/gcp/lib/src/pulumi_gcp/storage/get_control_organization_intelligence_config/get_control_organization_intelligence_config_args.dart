@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getControlOrganizationIntelligenceConfig.
 class GetControlOrganizationIntelligenceConfigArgs {
   /// The id of GCP organization.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   GetControlOrganizationIntelligenceConfigArgs({
     required this.name,
@@ -20,7 +20,7 @@ class GetControlOrganizationIntelligenceConfigArgs {
   factory GetControlOrganizationIntelligenceConfigArgs.fromMap(
       Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigArgs(
-      name: Input.asInput<String>(map['name']),
+      name: pulumi.Input.asInput<String>(map['name']),
     );
   }
 }

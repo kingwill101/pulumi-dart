@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../config_iam_member_condition/config_iam_member_condition.dart';
 
 /// The set of arguments for ConfigIamMember.
 class ConfigIamMemberArgs {
-  final Input<ConfigIamMemberCondition>? condition;
+  final pulumi.Input<ConfigIamMemberCondition>? condition;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> config;
+  final pulumi.Input<String> config;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -22,16 +22,16 @@ class ConfigIamMemberArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final Input<String> member;
+  final pulumi.Input<String> member;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The role that should be applied. Only one
   /// `gcp.runtimeconfig.ConfigIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   ConfigIamMemberArgs({
     this.condition,
@@ -45,7 +45,8 @@ class ConfigIamMemberArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<ConfigIamMemberCondition,
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
+          ConfigIamMemberCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
     map['config'] = config;
@@ -60,12 +61,12 @@ class ConfigIamMemberArgs {
 
   factory ConfigIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ConfigIamMemberArgs(
-      condition:
-          Input.asOptionalInput<ConfigIamMemberCondition>(map['condition']),
-      config: Input.asInput<String>(map['config']),
-      member: Input.asInput<String>(map['member']),
-      project: Input.asOptionalInput<String>(map['project']),
-      role: Input.asInput<String>(map['role']),
+      condition: pulumi.Input.asOptionalInput<ConfigIamMemberCondition>(
+          map['condition']),
+      config: pulumi.Input.asInput<String>(map['config']),
+      member: pulumi.Input.asInput<String>(map['member']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

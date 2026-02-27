@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../private_connection_error/private_connection_error.dart';
 import '../private_connection_vpc_peering_config/private_connection_vpc_peering_config.dart';
 import 'private_connection_args.dart';
@@ -42,59 +42,59 @@ import 'private_connection_args.dart';
 /// ```sh
 /// $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default {{location}}/{{private_connection_id}}
 /// ```
-class PrivateConnection extends CustomResource {
+class PrivateConnection extends pulumi.CustomResource {
   /// If set to true, will skip validations.
-  late final Output<bool?> createWithoutValidation;
+  late final pulumi.Output<bool?> createWithoutValidation;
 
   /// Display name.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The PrivateConnection error in case of failure.
   /// Structure is documented below.
-  late final Output<List<PrivateConnectionError>> errors;
+  late final pulumi.Output<List<PrivateConnectionError>> errors;
 
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The name of the location this private connection is located in.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource's name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The private connectivity identifier.
-  late final Output<String> privateConnectionId;
+  late final pulumi.Output<String> privateConnectionId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// State of the PrivateConnection.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The VPC Peering configuration is used to create VPC peering
   /// between databasemigrationservice and the consumer's VPC.
   /// Structure is documented below.
-  late final Output<PrivateConnectionVpcPeeringConfig> vpcPeeringConfig;
+  late final pulumi.Output<PrivateConnectionVpcPeeringConfig> vpcPeeringConfig;
 
   PrivateConnection(
     String name, {
     PrivateConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:databasemigrationservice/privateConnection:PrivateConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createWithoutValidation =
         registerOutput<bool?>('createWithoutValidation');

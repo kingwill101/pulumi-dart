@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_policy_with_rules_predefined_rule_match/firewall_policy_with_rules_predefined_rule_match.dart';
 import '../firewall_policy_with_rules_predefined_rule_target_secure_tag/firewall_policy_with_rules_predefined_rule_target_secure_tag.dart';
 
@@ -126,7 +126,7 @@ class FirewallPolicyWithRulesPredefinedRule {
     }
     final matchesValue = matches;
     if (matchesValue != null) {
-      map['matches'] = Input.encodeList<
+      map['matches'] = pulumi.Input.encodeList<
           FirewallPolicyWithRulesPredefinedRuleMatch,
           Map<String, dynamic>>(matchesValue, (value) => value.toMap());
     }
@@ -148,7 +148,7 @@ class FirewallPolicyWithRulesPredefinedRule {
     }
     final targetSecureTagsValue = targetSecureTags;
     if (targetSecureTagsValue != null) {
-      map['targetSecureTags'] = Input.encodeList<
+      map['targetSecureTags'] = pulumi.Input.encodeList<
               FirewallPolicyWithRulesPredefinedRuleTargetSecureTag,
               Map<String, dynamic>>(
           targetSecureTagsValue, (value) => value.toMap());
@@ -176,7 +176,7 @@ class FirewallPolicyWithRulesPredefinedRule {
           map['enableLogging'] == null ? null : map['enableLogging'] as bool,
       matches: map['matches'] == null
           ? null
-          : Input.decodeList<FirewallPolicyWithRulesPredefinedRuleMatch>(
+          : pulumi.Input.decodeList<FirewallPolicyWithRulesPredefinedRuleMatch>(
               map['matches'],
               (value) => FirewallPolicyWithRulesPredefinedRuleMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -190,7 +190,7 @@ class FirewallPolicyWithRulesPredefinedRule {
           : (map['targetResources'] as List).cast<String>(),
       targetSecureTags: map['targetSecureTags'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirewallPolicyWithRulesPredefinedRuleTargetSecureTag>(
               map['targetSecureTags'],
               (value) =>

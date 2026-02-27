@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNpmPackage.
 class GetNpmPackageArgs {
   /// The location of the Artifact Registry repository.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of the package to fetch. Can optionally include a specific version (e.g., `my_pkg:1.2.3`). If no version is provided, the latest version is used.
-  final Input<String> packageName;
+  final pulumi.Input<String> packageName;
 
   /// The ID of the project that owns the repository. If not provided, the provider-level project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The ID of the repository containing the NPM package.
-  final Input<String> repositoryId;
+  final pulumi.Input<String> repositoryId;
 
   GetNpmPackageArgs({
     required this.location,
@@ -37,10 +37,10 @@ class GetNpmPackageArgs {
 
   factory GetNpmPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetNpmPackageArgs(
-      location: Input.asInput<String>(map['location']),
-      packageName: Input.asInput<String>(map['packageName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      packageName: pulumi.Input.asInput<String>(map['packageName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
     );
   }
 }

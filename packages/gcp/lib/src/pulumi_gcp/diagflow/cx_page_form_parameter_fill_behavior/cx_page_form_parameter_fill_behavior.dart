@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment/cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment.dart';
 import '../cx_page_form_parameter_fill_behavior_reprompt_event_handler/cx_page_form_parameter_fill_behavior_reprompt_event_handler.dart';
 
@@ -38,7 +38,7 @@ class CxPageFormParameterFillBehavior {
     }
     final repromptEventHandlersValue = repromptEventHandlers;
     if (repromptEventHandlersValue != null) {
-      map['repromptEventHandlers'] = Input.encodeList<
+      map['repromptEventHandlers'] = pulumi.Input.encodeList<
               CxPageFormParameterFillBehaviorRepromptEventHandler,
               Map<String, dynamic>>(
           repromptEventHandlersValue, (value) => value.toMap());
@@ -54,7 +54,7 @@ class CxPageFormParameterFillBehavior {
               (map['initialPromptFulfillment'] as Map).cast<String, dynamic>()),
       repromptEventHandlers: map['repromptEventHandlers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageFormParameterFillBehaviorRepromptEventHandler>(
               map['repromptEventHandlers'],
               (value) =>

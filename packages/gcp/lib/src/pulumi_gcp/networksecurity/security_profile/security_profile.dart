@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_profile_custom_intercept_profile/security_profile_custom_intercept_profile.dart';
 import '../security_profile_custom_mirroring_profile/security_profile_custom_mirroring_profile.dart';
 import '../security_profile_threat_prevention_profile/security_profile_threat_prevention_profile.dart';
@@ -52,82 +52,83 @@ import 'security_profile_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile default {{parent}}/locations/{{location}}/securityProfiles/{{name}}
 /// ```
-class SecurityProfile extends CustomResource {
+class SecurityProfile extends pulumi.CustomResource {
   /// Time the security profile was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The configuration for defining the Intercept Endpoint Group used to
   /// intercept traffic to third-party firewall appliances.
   /// Structure is documented below.
-  late final Output<SecurityProfileCustomInterceptProfile?>
+  late final pulumi.Output<SecurityProfileCustomInterceptProfile?>
       customInterceptProfile;
 
   /// The configuration for defining the Mirroring Endpoint Group used to
   /// mirror traffic to third-party collectors.
   /// Structure is documented below.
-  late final Output<SecurityProfileCustomMirroringProfile?>
+  late final pulumi.Output<SecurityProfileCustomMirroringProfile?>
       customMirroringProfile;
 
   /// An optional description of the security profile. The Max length is 512 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// This checksum is computed by the server based on the value of other fields,
   /// and may be sent on update and delete requests to ensure the client has an up-to-date
   /// value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the security profile.
   /// The default value is `global`.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The name of the security profile resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the parent this security profile belongs to.
   /// Format: organizations/{organization_id}.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Server-defined URL of this resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The threat prevention configuration for the security profile.
   /// Structure is documented below.
-  late final Output<SecurityProfileThreatPreventionProfile?>
+  late final pulumi.Output<SecurityProfileThreatPreventionProfile?>
       threatPreventionProfile;
 
   /// The type of security profile.
   /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Time the security profile was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The url filtering configuration for the security profile.
   /// Structure is documented below.
-  late final Output<SecurityProfileUrlFilteringProfile?> urlFilteringProfile;
+  late final pulumi.Output<SecurityProfileUrlFilteringProfile?>
+      urlFilteringProfile;
 
   SecurityProfile(
     String name, {
     SecurityProfileArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/securityProfile:SecurityProfile',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.customInterceptProfile =

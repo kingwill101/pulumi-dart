@@ -1,33 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TenantOauthIdpConfig.
 class TenantOauthIdpConfigArgs {
   /// The client id of an OAuth client.
-  final Input<String> clientId;
+  final pulumi.Input<String> clientId;
 
   /// The client secret of the OAuth client, to enable OIDC code flow.
-  final Input<String>? clientSecret;
+  final pulumi.Input<String>? clientSecret;
 
   /// Human friendly display name.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// If this config allows users to sign in with the provider.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// For OIDC Idps, the issuer identifier.
-  final Input<String> issuer;
+  final pulumi.Input<String> issuer;
 
   /// The name of the OauthIdpConfig. Must start with `oidc.`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The name of the tenant where this OIDC IDP configuration resource exists
-  final Input<String> tenant;
+  final pulumi.Input<String> tenant;
 
   TenantOauthIdpConfigArgs({
     required this.clientId,
@@ -67,14 +67,14 @@ class TenantOauthIdpConfigArgs {
 
   factory TenantOauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return TenantOauthIdpConfigArgs(
-      clientId: Input.asInput<String>(map['clientId']),
-      clientSecret: Input.asOptionalInput<String>(map['clientSecret']),
-      displayName: Input.asInput<String>(map['displayName']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      issuer: Input.asInput<String>(map['issuer']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tenant: Input.asInput<String>(map['tenant']),
+      clientId: pulumi.Input.asInput<String>(map['clientId']),
+      clientSecret: pulumi.Input.asOptionalInput<String>(map['clientSecret']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      issuer: pulumi.Input.asInput<String>(map['issuer']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tenant: pulumi.Input.asInput<String>(map['tenant']),
     );
   }
 }

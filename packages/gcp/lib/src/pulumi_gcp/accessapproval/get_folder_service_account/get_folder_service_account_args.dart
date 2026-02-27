@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolderServiceAccount.
 class GetFolderServiceAccountArgs {
   /// The folder ID the service account was created for.
-  final Input<String> folderId;
+  final pulumi.Input<String> folderId;
 
   GetFolderServiceAccountArgs({
     required this.folderId,
@@ -19,7 +19,7 @@ class GetFolderServiceAccountArgs {
 
   factory GetFolderServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderServiceAccountArgs(
-      folderId: Input.asInput<String>(map['folderId']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
     );
   }
 }

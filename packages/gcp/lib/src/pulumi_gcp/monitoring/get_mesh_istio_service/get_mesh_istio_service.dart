@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_mesh_istio_service_args.dart';
 import 'get_mesh_istio_service_result.dart';
 
@@ -22,13 +22,13 @@ import 'get_mesh_istio_service_result.dart';
 /// ### Monitoring Mesh Istio Service
 Future<GetMeshIstioServiceResult> getMeshIstioService(
   GetMeshIstioServiceArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:monitoring/getMeshIstioService:getMeshIstioService',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMeshIstioServiceResult.fromMap(result);
 }

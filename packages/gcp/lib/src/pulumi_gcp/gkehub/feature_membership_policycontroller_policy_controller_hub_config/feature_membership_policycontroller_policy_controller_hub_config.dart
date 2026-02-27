@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_membership_policycontroller_policy_controller_hub_config_deployment_config/feature_membership_policycontroller_policy_controller_hub_config_deployment_config.dart';
 import '../feature_membership_policycontroller_policy_controller_hub_config_monitoring/feature_membership_policycontroller_policy_controller_hub_config_monitoring.dart';
 import '../feature_membership_policycontroller_policy_controller_hub_config_policy_content/feature_membership_policycontroller_policy_controller_hub_config_policy_content.dart';
@@ -65,7 +65,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
     }
     final deploymentConfigsValue = deploymentConfigs;
     if (deploymentConfigsValue != null) {
-      map['deploymentConfigs'] = Input.encodeList<
+      map['deploymentConfigs'] = pulumi.Input.encodeList<
           FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig,
           Map<String,
               dynamic>>(deploymentConfigsValue, (value) => value.toMap());
@@ -112,7 +112,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
           : map['constraintViolationLimit'] as int,
       deploymentConfigs: map['deploymentConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(
               map['deploymentConfigs'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_notification_config_pubsub_filter/get_cluster_notification_config_pubsub_filter.dart';
 
 class GetClusterNotificationConfigPubsub {
@@ -22,7 +22,8 @@ class GetClusterNotificationConfigPubsub {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabled'] = enabled;
-    map['filters'] = Input.encodeList<GetClusterNotificationConfigPubsubFilter,
+    map['filters'] = pulumi.Input.encodeList<
+        GetClusterNotificationConfigPubsubFilter,
         Map<String, dynamic>>(filters, (value) => value.toMap());
     map['topic'] = topic;
     return map;
@@ -31,10 +32,11 @@ class GetClusterNotificationConfigPubsub {
   factory GetClusterNotificationConfigPubsub.fromMap(Map<String, dynamic> map) {
     return GetClusterNotificationConfigPubsub(
       enabled: map['enabled'] as bool,
-      filters: Input.decodeList<GetClusterNotificationConfigPubsubFilter>(
-          map['filters'],
-          (value) => GetClusterNotificationConfigPubsubFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      filters:
+          pulumi.Input.decodeList<GetClusterNotificationConfigPubsubFilter>(
+              map['filters'],
+              (value) => GetClusterNotificationConfigPubsubFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       topic: map['topic'] as String,
     );
   }

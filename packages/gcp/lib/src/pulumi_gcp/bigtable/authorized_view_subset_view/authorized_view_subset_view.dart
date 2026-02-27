@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authorized_view_subset_view_family_subset/authorized_view_subset_view_family_subset.dart';
 
 class AuthorizedViewSubsetView {
@@ -21,7 +21,7 @@ class AuthorizedViewSubsetView {
     final map = <String, dynamic>{};
     final familySubsetsValue = familySubsets;
     if (familySubsetsValue != null) {
-      map['familySubsets'] = Input.encodeList<
+      map['familySubsets'] = pulumi.Input.encodeList<
           AuthorizedViewSubsetViewFamilySubset,
           Map<String, dynamic>>(familySubsetsValue, (value) => value.toMap());
     }
@@ -36,7 +36,7 @@ class AuthorizedViewSubsetView {
     return AuthorizedViewSubsetView(
       familySubsets: map['familySubsets'] == null
           ? null
-          : Input.decodeList<AuthorizedViewSubsetViewFamilySubset>(
+          : pulumi.Input.decodeList<AuthorizedViewSubsetViewFamilySubset>(
               map['familySubsets'],
               (value) => AuthorizedViewSubsetViewFamilySubset.fromMap(
                   (value as Map).cast<String, dynamic>())),

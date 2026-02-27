@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'release_args.dart';
 
 /// For more information, see:
@@ -21,38 +21,38 @@ import 'release_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebaserules/release:Release default projects/{{project}}/releases/{{name}}
 /// ```
-class Release extends CustomResource {
+class Release extends pulumi.CustomResource {
   /// Output only. Time the release was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
-  late final Output<bool> disabled;
+  late final pulumi.Output<bool> disabled;
 
   /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   ///
   ///
   ///
   /// - - -
-  late final Output<String> rulesetName;
+  late final pulumi.Output<String> rulesetName;
 
   /// Output only. Time the release was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Release(
     String name, {
     ReleaseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebaserules/release:Release',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.disabled = registerOutput<bool>('disabled');

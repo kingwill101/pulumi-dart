@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for FirewallRule.
 class FirewallRuleArgs {
   /// The action to take if this rule matches.
   /// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-  final Input<String> action;
+  final pulumi.Input<String> action;
 
   /// An optional string description of this rule.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A positive integer that defines the order of rule evaluation.
   /// Rules with the lowest priority are evaluated first.
   /// A default rule at priority Int32.MaxValue matches all IPv4 and
   /// IPv6 traffic when no previous rule matches. Only the action of
   /// this rule can be modified by the user.
-  final Input<int>? priority;
+  final pulumi.Input<int>? priority;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// IP address or range, defined using CIDR notation, of requests that this rule applies to.
-  final Input<String> sourceRange;
+  final pulumi.Input<String> sourceRange;
 
   FirewallRuleArgs({
     required this.action,
@@ -54,11 +54,11 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      action: Input.asInput<String>(map['action']),
-      description: Input.asOptionalInput<String>(map['description']),
-      priority: Input.asOptionalInput<int>(map['priority']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sourceRange: Input.asInput<String>(map['sourceRange']),
+      action: pulumi.Input.asInput<String>(map['action']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      priority: pulumi.Input.asOptionalInput<int>(map['priority']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sourceRange: pulumi.Input.asInput<String>(map['sourceRange']),
     );
   }
 }

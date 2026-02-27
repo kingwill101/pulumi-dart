@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAiIndex.
 class GetAiIndexArgs {
   /// The name of the index.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The ID of the project in which the resource belongs.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region of the index.
   ///
   /// - - -
-  final Input<String> region;
+  final pulumi.Input<String> region;
 
   GetAiIndexArgs({
     required this.name,
@@ -34,9 +34,9 @@ class GetAiIndexArgs {
 
   factory GetAiIndexArgs.fromMap(Map<String, dynamic> map) {
     return GetAiIndexArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

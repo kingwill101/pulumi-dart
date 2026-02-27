@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PolicyTag.
 class PolicyTagArgs {
@@ -8,20 +8,20 @@ class PolicyTagArgs {
   /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
   /// encoded in UTF-8. If not set, defaults to an empty description.
   /// If not set, defaults to an empty description.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User defined name of this policy tag. It must: be unique within the parent
   /// taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
   /// not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Resource name of this policy tag's parent policy tag.
   /// If empty, it means this policy tag is a top level policy tag.
   /// If not set, defaults to an empty string.
-  final Input<String>? parentPolicyTag;
+  final pulumi.Input<String>? parentPolicyTag;
 
   /// Taxonomy the policy tag is associated with
-  final Input<String> taxonomy;
+  final pulumi.Input<String> taxonomy;
 
   PolicyTagArgs({
     this.description,
@@ -47,10 +47,11 @@ class PolicyTagArgs {
 
   factory PolicyTagArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      parentPolicyTag: Input.asOptionalInput<String>(map['parentPolicyTag']),
-      taxonomy: Input.asInput<String>(map['taxonomy']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      parentPolicyTag:
+          pulumi.Input.asOptionalInput<String>(map['parentPolicyTag']),
+      taxonomy: pulumi.Input.asInput<String>(map['taxonomy']),
     );
   }
 }

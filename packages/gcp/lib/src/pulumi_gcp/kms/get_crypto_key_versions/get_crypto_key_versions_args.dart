@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCryptoKeyVersions.
 class GetCryptoKeyVersionsArgs {
   /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// `gcp.kms.CryptoKey` resource/datasource.
-  final Input<String> cryptoKey;
+  final pulumi.Input<String> cryptoKey;
 
   /// The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
   ///
@@ -16,7 +16,7 @@ class GetCryptoKeyVersionsArgs {
   /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring/cryptoKeys/my-key-1/cryptoKeyVersions/my-version-1"` will only retrieve a key with that exact name.
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   GetCryptoKeyVersionsArgs({
     required this.cryptoKey,
@@ -35,8 +35,8 @@ class GetCryptoKeyVersionsArgs {
 
   factory GetCryptoKeyVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyVersionsArgs(
-      cryptoKey: Input.asInput<String>(map['cryptoKey']),
-      filter: Input.asOptionalInput<String>(map['filter']),
+      cryptoKey: pulumi.Input.asInput<String>(map['cryptoKey']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
     );
   }
 }

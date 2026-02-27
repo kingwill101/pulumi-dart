@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_addons_config_cloudrun_config/cluster_addons_config_cloudrun_config.dart';
 import '../cluster_addons_config_config_connector_config/cluster_addons_config_config_connector_config.dart';
 import '../cluster_addons_config_dns_cache_config/cluster_addons_config_dns_cache_config.dart';
@@ -217,7 +217,7 @@ class ClusterAddonsConfig {
     }
     final rayOperatorConfigsValue = rayOperatorConfigs;
     if (rayOperatorConfigsValue != null) {
-      map['rayOperatorConfigs'] = Input.encodeList<
+      map['rayOperatorConfigs'] = pulumi.Input.encodeList<
               ClusterAddonsConfigRayOperatorConfig, Map<String, dynamic>>(
           rayOperatorConfigsValue, (value) => value.toMap());
     }
@@ -296,7 +296,7 @@ class ClusterAddonsConfig {
               (map['podSnapshotConfig'] as Map).cast<String, dynamic>()),
       rayOperatorConfigs: map['rayOperatorConfigs'] == null
           ? null
-          : Input.decodeList<ClusterAddonsConfigRayOperatorConfig>(
+          : pulumi.Input.decodeList<ClusterAddonsConfigRayOperatorConfig>(
               map['rayOperatorConfigs'],
               (value) => ClusterAddonsConfigRayOperatorConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

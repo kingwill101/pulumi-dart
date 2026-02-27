@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties_network_interface_access_config/restore_workload_compute_instance_restore_properties_network_interface_access_config.dart';
 import '../restore_workload_compute_instance_restore_properties_network_interface_alias_ip_range/restore_workload_compute_instance_restore_properties_network_interface_alias_ip_range.dart';
 import '../restore_workload_compute_instance_restore_properties_network_interface_ipv6_access_config/restore_workload_compute_instance_restore_properties_network_interface_ipv6_access_config.dart';
@@ -71,13 +71,13 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
     final map = <String, dynamic>{};
     final accessConfigsValue = accessConfigs;
     if (accessConfigsValue != null) {
-      map['accessConfigs'] = Input.encodeList<
+      map['accessConfigs'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig,
           Map<String, dynamic>>(accessConfigsValue, (value) => value.toMap());
     }
     final aliasIpRangesValue = aliasIpRanges;
     if (aliasIpRangesValue != null) {
-      map['aliasIpRanges'] = Input.encodeList<
+      map['aliasIpRanges'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange,
           Map<String, dynamic>>(aliasIpRangesValue, (value) => value.toMap());
     }
@@ -91,7 +91,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
     }
     final ipv6AccessConfigsValue = ipv6AccessConfigs;
     if (ipv6AccessConfigsValue != null) {
-      map['ipv6AccessConfigs'] = Input.encodeList<
+      map['ipv6AccessConfigs'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig,
           Map<String,
               dynamic>>(ipv6AccessConfigsValue, (value) => value.toMap());
@@ -136,7 +136,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface(
       accessConfigs: map['accessConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig>(
               map['accessConfigs'],
               (value) =>
@@ -144,7 +144,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
                       .fromMap((value as Map).cast<String, dynamic>())),
       aliasIpRanges: map['aliasIpRanges'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange>(
               map['aliasIpRanges'],
               (value) =>
@@ -156,7 +156,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
       ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
       ipv6AccessConfigs: map['ipv6AccessConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig>(
               map['ipv6AccessConfigs'],
               (value) =>

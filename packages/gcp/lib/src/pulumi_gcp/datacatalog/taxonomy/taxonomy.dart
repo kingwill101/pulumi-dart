@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'taxonomy_args.dart';
 
 /// A collection of policy tags that classify data along a common axis.
@@ -28,44 +28,44 @@ import 'taxonomy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
 /// ```
-class Taxonomy extends CustomResource {
+class Taxonomy extends pulumi.CustomResource {
   /// A list of policy types that are activated for this taxonomy. If not set,
   /// defaults to an empty list.
   /// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
-  late final Output<List<String>?> activatedPolicyTypes;
+  late final pulumi.Output<List<String>?> activatedPolicyTypes;
 
   /// Description of this taxonomy. It must: contain only unicode characters,
   /// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
   /// long when encoded in UTF-8. If not set, defaults to an empty description.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User defined name of this taxonomy.
   /// The taxonomy display name must be unique within an organization.
   /// It must: contain only unicode letters, numbers, underscores, dashes
   /// and spaces; not start or end with spaces; and be at most 200 bytes
   /// long when encoded in UTF-8.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Resource name of this taxonomy, whose format is:
   /// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Taxonomy location region.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   Taxonomy(
     String name, {
     TaxonomyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:datacatalog/taxonomy:Taxonomy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activatedPolicyTypes =
         registerOutput<List<String>?>('activatedPolicyTypes');

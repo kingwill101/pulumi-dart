@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getStoragePoolTypes.
 class GetStoragePoolTypesArgs {
-  final Input<String>? project;
-  final Input<String> storagePoolType;
-  final Input<String> zone;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> storagePoolType;
+  final pulumi.Input<String> zone;
 
   GetStoragePoolTypesArgs({
     this.project,
@@ -27,9 +27,9 @@ class GetStoragePoolTypesArgs {
 
   factory GetStoragePoolTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolTypesArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      storagePoolType: Input.asInput<String>(map['storagePoolType']),
-      zone: Input.asInput<String>(map['zone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      storagePoolType: pulumi.Input.asInput<String>(map['storagePoolType']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_object_aclargs.dart';
 
 /// Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
@@ -24,24 +24,24 @@ import 'default_object_aclargs.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class DefaultObjectACL extends CustomResource {
+class DefaultObjectACL extends pulumi.CustomResource {
   /// The name of the bucket it applies to.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// List of role/entity pairs in the form `ROLE:entity`.
   /// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Omitting the field is the same as providing an empty list.
-  late final Output<List<String>> roleEntities;
+  late final pulumi.Output<List<String>> roleEntities;
 
   DefaultObjectACL(
     String name, {
     DefaultObjectACLArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/defaultObjectACL:DefaultObjectACL',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.roleEntities = registerOutput<List<String>>('roleEntities');

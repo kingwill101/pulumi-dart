@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config/prevention_deidentify_template_deidentify_config.dart';
 
 /// The set of arguments for PreventionDeidentifyTemplate.
 class PreventionDeidentifyTemplateArgs {
   /// Configuration of the deidentify template
   /// Structure is documented below.
-  final Input<PreventionDeidentifyTemplateDeidentifyConfig> deidentifyConfig;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfig>
+      deidentifyConfig;
 
   /// A description of the template.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User set display name of the template.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The parent of the template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
-  final Input<String>? templateId;
+  final pulumi.Input<String>? templateId;
 
   PreventionDeidentifyTemplateArgs({
     required this.deidentifyConfig,
@@ -37,7 +38,7 @@ class PreventionDeidentifyTemplateArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['deidentifyConfig'] = Input.mapInputValue<
+    map['deidentifyConfig'] = pulumi.Input.mapInputValue<
         PreventionDeidentifyTemplateDeidentifyConfig,
         Map<String, dynamic>>(deidentifyConfig, (value) => value.toMap());
     final descriptionValue = description;
@@ -59,12 +60,12 @@ class PreventionDeidentifyTemplateArgs {
   factory PreventionDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateArgs(
       deidentifyConfig:
-          Input.asInput<PreventionDeidentifyTemplateDeidentifyConfig>(
+          pulumi.Input.asInput<PreventionDeidentifyTemplateDeidentifyConfig>(
               map['deidentifyConfig']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      parent: Input.asInput<String>(map['parent']),
-      templateId: Input.asOptionalInput<String>(map['templateId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      templateId: pulumi.Input.asOptionalInput<String>(map['templateId']),
     );
   }
 }

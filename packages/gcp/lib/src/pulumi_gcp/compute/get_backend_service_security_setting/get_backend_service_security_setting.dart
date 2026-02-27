@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_service_security_setting_aws_v4_authentication/get_backend_service_security_setting_aws_v4_authentication.dart';
 
 class GetBackendServiceSecuritySetting {
@@ -27,7 +27,7 @@ class GetBackendServiceSecuritySetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['awsV4Authentications'] = Input.encodeList<
+    map['awsV4Authentications'] = pulumi.Input.encodeList<
         GetBackendServiceSecuritySettingAwsV4Authentication,
         Map<String, dynamic>>(awsV4Authentications, (value) => value.toMap());
     map['clientTlsPolicy'] = clientTlsPolicy;
@@ -37,12 +37,12 @@ class GetBackendServiceSecuritySetting {
 
   factory GetBackendServiceSecuritySetting.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceSecuritySetting(
-      awsV4Authentications:
-          Input.decodeList<GetBackendServiceSecuritySettingAwsV4Authentication>(
-              map['awsV4Authentications'],
-              (value) =>
-                  GetBackendServiceSecuritySettingAwsV4Authentication.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      awsV4Authentications: pulumi.Input.decodeList<
+              GetBackendServiceSecuritySettingAwsV4Authentication>(
+          map['awsV4Authentications'],
+          (value) =>
+              GetBackendServiceSecuritySettingAwsV4Authentication.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       clientTlsPolicy: map['clientTlsPolicy'] as String,
       subjectAltNames: (map['subjectAltNames'] as List).cast<String>(),
     );

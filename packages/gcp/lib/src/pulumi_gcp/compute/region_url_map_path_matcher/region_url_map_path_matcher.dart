@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_url_map_path_matcher_default_route_action/region_url_map_path_matcher_default_route_action.dart';
 import '../region_url_map_path_matcher_default_url_redirect/region_url_map_path_matcher_default_url_redirect.dart';
 import '../region_url_map_path_matcher_header_action/region_url_map_path_matcher_header_action.dart';
@@ -94,12 +94,14 @@ class RegionUrlMapPathMatcher {
     map['name'] = name;
     final pathRulesValue = pathRules;
     if (pathRulesValue != null) {
-      map['pathRules'] = Input.encodeList<RegionUrlMapPathMatcherPathRule,
+      map['pathRules'] = pulumi.Input.encodeList<
+          RegionUrlMapPathMatcherPathRule,
           Map<String, dynamic>>(pathRulesValue, (value) => value.toMap());
     }
     final routeRulesValue = routeRules;
     if (routeRulesValue != null) {
-      map['routeRules'] = Input.encodeList<RegionUrlMapPathMatcherRouteRule,
+      map['routeRules'] = pulumi.Input.encodeList<
+          RegionUrlMapPathMatcherRouteRule,
           Map<String, dynamic>>(routeRulesValue, (value) => value.toMap());
     }
     return map;
@@ -127,13 +129,13 @@ class RegionUrlMapPathMatcher {
       name: map['name'] as String,
       pathRules: map['pathRules'] == null
           ? null
-          : Input.decodeList<RegionUrlMapPathMatcherPathRule>(
+          : pulumi.Input.decodeList<RegionUrlMapPathMatcherPathRule>(
               map['pathRules'],
               (value) => RegionUrlMapPathMatcherPathRule.fromMap(
                   (value as Map).cast<String, dynamic>())),
       routeRules: map['routeRules'] == null
           ? null
-          : Input.decodeList<RegionUrlMapPathMatcherRouteRule>(
+          : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRule>(
               map['routeRules'],
               (value) => RegionUrlMapPathMatcherRouteRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

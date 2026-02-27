@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_firewall_policy_association_args.dart';
 
 /// The Compute NetworkFirewallPolicyAssociation resource
@@ -38,32 +38,32 @@ import 'network_firewall_policy_association_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
 /// ```
-class NetworkFirewallPolicyAssociation extends CustomResource {
+class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
   /// The target that the firewall policy is attached to.
-  late final Output<String> attachmentTarget;
+  late final pulumi.Output<String> attachmentTarget;
 
   /// The firewall policy of the resource.
-  late final Output<String> firewallPolicy;
+  late final pulumi.Output<String> firewallPolicy;
 
   /// The name for an association.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The short name of the firewall policy of the association.
-  late final Output<String> shortName;
+  late final pulumi.Output<String> shortName;
 
   NetworkFirewallPolicyAssociation(
     String name, {
     NetworkFirewallPolicyAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attachmentTarget = registerOutput<String>('attachmentTarget');
     this.firewallPolicy = registerOutput<String>('firewallPolicy');

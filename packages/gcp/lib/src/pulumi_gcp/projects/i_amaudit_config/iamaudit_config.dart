@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../iamaudit_config_audit_log_config/iamaudit_config_audit_log_config.dart';
 import 'iamaudit_config_args.dart';
 
@@ -113,29 +113,29 @@ import 'iamaudit_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig default "{{project_id}} foo.googleapis.com"
 /// ```
-class IAMAuditConfig extends CustomResource {
+class IAMAuditConfig extends pulumi.CustomResource {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  late final Output<List<IAMAuditConfigAuditLogConfig>> auditLogConfigs;
+  late final pulumi.Output<List<IAMAuditConfigAuditLogConfig>> auditLogConfigs;
 
   /// (Computed) The etag of the project's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The project id of the target project. This is not
   /// inferred from the provider.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-  late final Output<String> service;
+  late final pulumi.Output<String> service;
 
   IAMAuditConfig(
     String name, {
     IAMAuditConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:projects/iAMAuditConfig:IAMAuditConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.auditLogConfigs =
         registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs');

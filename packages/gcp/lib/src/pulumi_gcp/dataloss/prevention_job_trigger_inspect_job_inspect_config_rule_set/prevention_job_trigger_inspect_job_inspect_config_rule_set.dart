@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_job_trigger_inspect_job_inspect_config_rule_set_info_type/prevention_job_trigger_inspect_job_inspect_config_rule_set_info_type.dart';
 import '../prevention_job_trigger_inspect_job_inspect_config_rule_set_rule/prevention_job_trigger_inspect_job_inspect_config_rule_set_rule.dart';
 
@@ -23,11 +23,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSet {
     final map = <String, dynamic>{};
     final infoTypesValue = infoTypes;
     if (infoTypesValue != null) {
-      map['infoTypes'] = Input.encodeList<
+      map['infoTypes'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType,
           Map<String, dynamic>>(infoTypesValue, (value) => value.toMap());
     }
-    map['rules'] = Input.encodeList<
+    map['rules'] = pulumi.Input.encodeList<
         PreventionJobTriggerInspectJobInspectConfigRuleSetRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
@@ -38,13 +38,13 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSet {
     return PreventionJobTriggerInspectJobInspectConfigRuleSet(
       infoTypes: map['infoTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType>(
               map['infoTypes'],
               (value) =>
                   PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType
                       .fromMap((value as Map).cast<String, dynamic>())),
-      rules: Input.decodeList<
+      rules: pulumi.Input.decodeList<
               PreventionJobTriggerInspectJobInspectConfigRuleSetRule>(
           map['rules'],
           (value) =>

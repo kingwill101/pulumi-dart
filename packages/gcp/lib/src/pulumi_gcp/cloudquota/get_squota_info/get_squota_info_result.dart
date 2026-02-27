@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_squota_info_dimensions_info/get_squota_info_dimensions_info.dart';
 import '../get_squota_info_quota_increase_eligibility/get_squota_info_quota_increase_eligibility.dart';
 
@@ -79,9 +79,9 @@ class GetSQuotaInfoResult {
     final map = <String, dynamic>{};
     map['containerType'] = containerType;
     map['dimensions'] = dimensions;
-    map['dimensionsInfos'] =
-        Input.encodeList<GetSQuotaInfoDimensionsInfo, Map<String, dynamic>>(
-            dimensionsInfos, (value) => value.toMap());
+    map['dimensionsInfos'] = pulumi.Input.encodeList<
+        GetSQuotaInfoDimensionsInfo,
+        Map<String, dynamic>>(dimensionsInfos, (value) => value.toMap());
     map['id'] = id;
     map['isConcurrent'] = isConcurrent;
     map['isFixed'] = isFixed;
@@ -93,7 +93,7 @@ class GetSQuotaInfoResult {
     map['parent'] = parent;
     map['quotaDisplayName'] = quotaDisplayName;
     map['quotaId'] = quotaId;
-    map['quotaIncreaseEligibilities'] = Input.encodeList<
+    map['quotaIncreaseEligibilities'] = pulumi.Input.encodeList<
             GetSQuotaInfoQuotaIncreaseEligibility, Map<String, dynamic>>(
         quotaIncreaseEligibilities, (value) => value.toMap());
     map['refreshInterval'] = refreshInterval;
@@ -106,7 +106,7 @@ class GetSQuotaInfoResult {
     return GetSQuotaInfoResult(
       containerType: map['containerType'] as String,
       dimensions: (map['dimensions'] as List).cast<String>(),
-      dimensionsInfos: Input.decodeList<GetSQuotaInfoDimensionsInfo>(
+      dimensionsInfos: pulumi.Input.decodeList<GetSQuotaInfoDimensionsInfo>(
           map['dimensionsInfos'],
           (value) => GetSQuotaInfoDimensionsInfo.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -122,7 +122,7 @@ class GetSQuotaInfoResult {
       quotaDisplayName: map['quotaDisplayName'] as String,
       quotaId: map['quotaId'] as String,
       quotaIncreaseEligibilities:
-          Input.decodeList<GetSQuotaInfoQuotaIncreaseEligibility>(
+          pulumi.Input.decodeList<GetSQuotaInfoQuotaIncreaseEligibility>(
               map['quotaIncreaseEligibilities'],
               (value) => GetSQuotaInfoQuotaIncreaseEligibility.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_entitlement_args.dart';
 import 'get_entitlement_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_entitlement_result.dart';
 /// * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
 Future<GetEntitlementResult> getEntitlement(
   GetEntitlementArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:privilegedaccessmanager/getEntitlement:getEntitlement',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEntitlementResult.fromMap(result);
 }

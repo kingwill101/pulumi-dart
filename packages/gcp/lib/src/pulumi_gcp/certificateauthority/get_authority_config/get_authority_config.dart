@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_authority_config_subject_config/get_authority_config_subject_config.dart';
 import '../get_authority_config_subject_key_id/get_authority_config_subject_key_id.dart';
 import '../get_authority_config_x509_config/get_authority_config_x509_config.dart';
@@ -23,29 +23,28 @@ class GetAuthorityConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['subjectConfigs'] =
-        Input.encodeList<GetAuthorityConfigSubjectConfig, Map<String, dynamic>>(
-            subjectConfigs, (value) => value.toMap());
-    map['subjectKeyIds'] =
-        Input.encodeList<GetAuthorityConfigSubjectKeyId, Map<String, dynamic>>(
-            subjectKeyIds, (value) => value.toMap());
-    map['x509Configs'] =
-        Input.encodeList<GetAuthorityConfigX509Config, Map<String, dynamic>>(
-            x509Configs, (value) => value.toMap());
+    map['subjectConfigs'] = pulumi.Input.encodeList<
+        GetAuthorityConfigSubjectConfig,
+        Map<String, dynamic>>(subjectConfigs, (value) => value.toMap());
+    map['subjectKeyIds'] = pulumi.Input.encodeList<
+        GetAuthorityConfigSubjectKeyId,
+        Map<String, dynamic>>(subjectKeyIds, (value) => value.toMap());
+    map['x509Configs'] = pulumi.Input.encodeList<GetAuthorityConfigX509Config,
+        Map<String, dynamic>>(x509Configs, (value) => value.toMap());
     return map;
   }
 
   factory GetAuthorityConfig.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfig(
-      subjectConfigs: Input.decodeList<GetAuthorityConfigSubjectConfig>(
+      subjectConfigs: pulumi.Input.decodeList<GetAuthorityConfigSubjectConfig>(
           map['subjectConfigs'],
           (value) => GetAuthorityConfigSubjectConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      subjectKeyIds: Input.decodeList<GetAuthorityConfigSubjectKeyId>(
+      subjectKeyIds: pulumi.Input.decodeList<GetAuthorityConfigSubjectKeyId>(
           map['subjectKeyIds'],
           (value) => GetAuthorityConfigSubjectKeyId.fromMap(
               (value as Map).cast<String, dynamic>())),
-      x509Configs: Input.decodeList<GetAuthorityConfigX509Config>(
+      x509Configs: pulumi.Input.decodeList<GetAuthorityConfigX509Config>(
           map['x509Configs'],
           (value) => GetAuthorityConfigX509Config.fromMap(
               (value as Map).cast<String, dynamic>())),

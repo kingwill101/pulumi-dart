@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_group_attribute/app_group_attribute.dart';
 import 'app_group_args.dart';
 
@@ -39,52 +39,52 @@ import 'app_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/appGroup:AppGroup default {{org_id}}/{{name}}
 /// ```
-class AppGroup extends CustomResource {
+class AppGroup extends pulumi.CustomResource {
   /// Internal identifier that cannot be edited
-  late final Output<String> appGroupId;
+  late final pulumi.Output<String> appGroupId;
 
   /// A list of attributes
   /// Structure is documented below.
-  late final Output<List<AppGroupAttribute>?> attributes;
+  late final pulumi.Output<List<AppGroupAttribute>?> attributes;
 
   /// Channel identifier identifies the owner maintaining this grouping.
-  late final Output<String?> channelId;
+  late final pulumi.Output<String?> channelId;
 
   /// A reference to the associated storefront/marketplace.
-  late final Output<String?> channelUri;
+  late final pulumi.Output<String?> channelUri;
 
   /// Created time as milliseconds since epoch.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// App group name displayed in the UI
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Modified time as milliseconds since epoch.
-  late final Output<String> lastModifiedAt;
+  late final pulumi.Output<String> lastModifiedAt;
 
   /// Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee app group,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// App group name displayed in the UI
-  late final Output<String> organization;
+  late final pulumi.Output<String> organization;
 
   /// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
   /// Possible values are: `active`, `inactive`.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   AppGroup(
     String name, {
     AppGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/appGroup:AppGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appGroupId = registerOutput<String>('appGroupId');
     this.attributes = registerOutput<List<AppGroupAttribute>?>('attributes');

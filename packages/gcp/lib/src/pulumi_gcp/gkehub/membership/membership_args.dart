@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../membership_authority/membership_authority.dart';
 import '../membership_endpoint/membership_endpoint.dart';
 
@@ -10,28 +10,28 @@ class MembershipArgs {
   /// See the workload identity documentation for more details:
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
   /// Structure is documented below.
-  final Input<MembershipAuthority>? authority;
+  final pulumi.Input<MembershipAuthority>? authority;
 
   /// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
   /// Structure is documented below.
-  final Input<MembershipEndpoint>? endpoint;
+  final pulumi.Input<MembershipEndpoint>? endpoint;
 
   /// Labels to apply to this membership.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Location of the membership.
   /// The default value is `global`.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The client-provided identifier of the membership.
-  final Input<String> membershipId;
+  final pulumi.Input<String> membershipId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   MembershipArgs({
     this.authority,
@@ -46,14 +46,13 @@ class MembershipArgs {
     final map = <String, dynamic>{};
     final authorityValue = authority;
     if (authorityValue != null) {
-      map['authority'] = Input.mapOptionalInputValue<MembershipAuthority,
+      map['authority'] = pulumi.Input.mapOptionalInputValue<MembershipAuthority,
           Map<String, dynamic>>(authorityValue, (value) => value.toMap());
     }
     final endpointValue = endpoint;
     if (endpointValue != null) {
-      map['endpoint'] =
-          Input.mapOptionalInputValue<MembershipEndpoint, Map<String, dynamic>>(
-              endpointValue, (value) => value.toMap());
+      map['endpoint'] = pulumi.Input.mapOptionalInputValue<MembershipEndpoint,
+          Map<String, dynamic>>(endpointValue, (value) => value.toMap());
     }
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -73,12 +72,14 @@ class MembershipArgs {
 
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
-      authority: Input.asOptionalInput<MembershipAuthority>(map['authority']),
-      endpoint: Input.asOptionalInput<MembershipEndpoint>(map['endpoint']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      membershipId: Input.asInput<String>(map['membershipId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      authority:
+          pulumi.Input.asOptionalInput<MembershipAuthority>(map['authority']),
+      endpoint:
+          pulumi.Input.asOptionalInput<MembershipEndpoint>(map['endpoint']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      membershipId: pulumi.Input.asInput<String>(map['membershipId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

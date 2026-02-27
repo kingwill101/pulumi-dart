@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getV2RuntimeVersions.
 class GetV2RuntimeVersionsArgs {
   /// The project to list versions for. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The zone to list versions for. If it
   /// is not provided, the provider zone is used.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetV2RuntimeVersionsArgs({
     this.project,
@@ -32,8 +32,8 @@ class GetV2RuntimeVersionsArgs {
 
   factory GetV2RuntimeVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetV2RuntimeVersionsArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

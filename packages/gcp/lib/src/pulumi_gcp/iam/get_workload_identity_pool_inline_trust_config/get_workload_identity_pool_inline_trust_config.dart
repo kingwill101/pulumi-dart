@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_workload_identity_pool_inline_trust_config_additional_trust_bundle/get_workload_identity_pool_inline_trust_config_additional_trust_bundle.dart';
 
 class GetWorkloadIdentityPoolInlineTrustConfig {
@@ -21,7 +21,7 @@ class GetWorkloadIdentityPoolInlineTrustConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additionalTrustBundles'] = Input.encodeList<
+    map['additionalTrustBundles'] = pulumi.Input.encodeList<
         GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle,
         Map<String, dynamic>>(additionalTrustBundles, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GetWorkloadIdentityPoolInlineTrustConfig {
   factory GetWorkloadIdentityPoolInlineTrustConfig.fromMap(
       Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolInlineTrustConfig(
-      additionalTrustBundles: Input.decodeList<
+      additionalTrustBundles: pulumi.Input.decodeList<
               GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>(
           map['additionalTrustBundles'],
           (value) =>

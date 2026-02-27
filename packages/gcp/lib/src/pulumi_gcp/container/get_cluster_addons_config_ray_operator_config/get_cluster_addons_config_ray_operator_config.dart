@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_addons_config_ray_operator_config_ray_cluster_logging_config/get_cluster_addons_config_ray_operator_config_ray_cluster_logging_config.dart';
 import '../get_cluster_addons_config_ray_operator_config_ray_cluster_monitoring_config/get_cluster_addons_config_ray_operator_config_ray_cluster_monitoring_config.dart';
 
@@ -24,11 +24,11 @@ class GetClusterAddonsConfigRayOperatorConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabled'] = enabled;
-    map['rayClusterLoggingConfigs'] = Input.encodeList<
+    map['rayClusterLoggingConfigs'] = pulumi.Input.encodeList<
             GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig,
             Map<String, dynamic>>(
         rayClusterLoggingConfigs, (value) => value.toMap());
-    map['rayClusterMonitoringConfigs'] = Input.encodeList<
+    map['rayClusterMonitoringConfigs'] = pulumi.Input.encodeList<
             GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig,
             Map<String, dynamic>>(
         rayClusterMonitoringConfigs, (value) => value.toMap());
@@ -39,13 +39,13 @@ class GetClusterAddonsConfigRayOperatorConfig {
       Map<String, dynamic> map) {
     return GetClusterAddonsConfigRayOperatorConfig(
       enabled: map['enabled'] as bool,
-      rayClusterLoggingConfigs: Input.decodeList<
+      rayClusterLoggingConfigs: pulumi.Input.decodeList<
               GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig>(
           map['rayClusterLoggingConfigs'],
           (value) =>
               GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
-      rayClusterMonitoringConfigs: Input.decodeList<
+      rayClusterMonitoringConfigs: pulumi.Input.decodeList<
               GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig>(
           map['rayClusterMonitoringConfigs'],
           (value) =>

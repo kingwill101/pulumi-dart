@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tag_template_field_type_enum_type_allowed_value/tag_template_field_type_enum_type_allowed_value.dart';
 
 class TagTemplateFieldTypeEnumType {
@@ -18,7 +18,7 @@ class TagTemplateFieldTypeEnumType {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allowedValues'] = Input.encodeList<
+    map['allowedValues'] = pulumi.Input.encodeList<
         TagTemplateFieldTypeEnumTypeAllowedValue,
         Map<String, dynamic>>(allowedValues, (value) => value.toMap());
     return map;
@@ -26,10 +26,11 @@ class TagTemplateFieldTypeEnumType {
 
   factory TagTemplateFieldTypeEnumType.fromMap(Map<String, dynamic> map) {
     return TagTemplateFieldTypeEnumType(
-      allowedValues: Input.decodeList<TagTemplateFieldTypeEnumTypeAllowedValue>(
-          map['allowedValues'],
-          (value) => TagTemplateFieldTypeEnumTypeAllowedValue.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allowedValues:
+          pulumi.Input.decodeList<TagTemplateFieldTypeEnumTypeAllowedValue>(
+              map['allowedValues'],
+              (value) => TagTemplateFieldTypeEnumTypeAllowedValue.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

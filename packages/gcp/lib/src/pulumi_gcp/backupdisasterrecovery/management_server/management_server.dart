@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../management_server_management_uri/management_server_management_uri.dart';
 import '../management_server_network/management_server_network.dart';
 import 'management_server_args.dart';
@@ -42,42 +42,42 @@ import 'management_server_args.dart';
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default {{location}}/{{name}}
 /// ```
-class ManagementServer extends CustomResource {
+class ManagementServer extends pulumi.CustomResource {
   /// The location for the management server (management console)
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The management console URI
   /// Structure is documented below.
-  late final Output<List<ManagementServerManagementUri>> managementUris;
+  late final pulumi.Output<List<ManagementServerManagementUri>> managementUris;
 
   /// The name of management server (management console)
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Network details to create management server (management console).
   /// Structure is documented below.
-  late final Output<List<ManagementServerNetwork>?> networks;
+  late final pulumi.Output<List<ManagementServerNetwork>?> networks;
 
   /// The oauth2ClientId of management console.
-  late final Output<String> oauth2ClientId;
+  late final pulumi.Output<String> oauth2ClientId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The type of management server (management console).
   /// Default value is `BACKUP_RESTORE`.
   /// Possible values are: `BACKUP_RESTORE`.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   ManagementServer(
     String name, {
     ManagementServerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:backupdisasterrecovery/managementServer:ManagementServer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.location = registerOutput<String>('location');
     this.managementUris =

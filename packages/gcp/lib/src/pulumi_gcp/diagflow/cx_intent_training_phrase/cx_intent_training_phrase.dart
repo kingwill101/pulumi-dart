@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_intent_training_phrase_part/cx_intent_training_phrase_part.dart';
 
 class CxIntentTrainingPhrase {
@@ -33,9 +33,8 @@ class CxIntentTrainingPhrase {
     if (idValue != null) {
       map['id'] = idValue;
     }
-    map['parts'] =
-        Input.encodeList<CxIntentTrainingPhrasePart, Map<String, dynamic>>(
-            parts, (value) => value.toMap());
+    map['parts'] = pulumi.Input.encodeList<CxIntentTrainingPhrasePart,
+        Map<String, dynamic>>(parts, (value) => value.toMap());
     final repeatCountValue = repeatCount;
     if (repeatCountValue != null) {
       map['repeatCount'] = repeatCountValue;
@@ -46,7 +45,7 @@ class CxIntentTrainingPhrase {
   factory CxIntentTrainingPhrase.fromMap(Map<String, dynamic> map) {
     return CxIntentTrainingPhrase(
       id: map['id'] == null ? null : map['id'] as String,
-      parts: Input.decodeList<CxIntentTrainingPhrasePart>(
+      parts: pulumi.Input.decodeList<CxIntentTrainingPhrasePart>(
           map['parts'],
           (value) => CxIntentTrainingPhrasePart.fromMap(
               (value as Map).cast<String, dynamic>())),

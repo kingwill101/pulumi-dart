@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_query_connection_property/job_query_connection_property.dart';
 import '../job_query_default_dataset/job_query_default_dataset.dart';
 import '../job_query_destination_encryption_configuration/job_query_destination_encryption_configuration.dart';
@@ -137,9 +137,9 @@ class JobQuery {
     }
     final connectionPropertiesValue = connectionProperties;
     if (connectionPropertiesValue != null) {
-      map['connectionProperties'] =
-          Input.encodeList<JobQueryConnectionProperty, Map<String, dynamic>>(
-              connectionPropertiesValue, (value) => value.toMap());
+      map['connectionProperties'] = pulumi.Input.encodeList<
+              JobQueryConnectionProperty, Map<String, dynamic>>(
+          connectionPropertiesValue, (value) => value.toMap());
     }
     final continuousValue = continuous;
     if (continuousValue != null) {
@@ -202,7 +202,7 @@ class JobQuery {
     }
     final userDefinedFunctionResourcesValue = userDefinedFunctionResources;
     if (userDefinedFunctionResourcesValue != null) {
-      map['userDefinedFunctionResources'] = Input.encodeList<
+      map['userDefinedFunctionResources'] = pulumi.Input.encodeList<
               JobQueryUserDefinedFunctionResource, Map<String, dynamic>>(
           userDefinedFunctionResourcesValue, (value) => value.toMap());
     }
@@ -220,7 +220,7 @@ class JobQuery {
           : map['allowLargeResults'] as bool,
       connectionProperties: map['connectionProperties'] == null
           ? null
-          : Input.decodeList<JobQueryConnectionProperty>(
+          : pulumi.Input.decodeList<JobQueryConnectionProperty>(
               map['connectionProperties'],
               (value) => JobQueryConnectionProperty.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -267,7 +267,7 @@ class JobQuery {
           map['useQueryCache'] == null ? null : map['useQueryCache'] as bool,
       userDefinedFunctionResources: map['userDefinedFunctionResources'] == null
           ? null
-          : Input.decodeList<JobQueryUserDefinedFunctionResource>(
+          : pulumi.Input.decodeList<JobQueryUserDefinedFunctionResource>(
               map['userDefinedFunctionResources'],
               (value) => JobQueryUserDefinedFunctionResource.fromMap(
                   (value as Map).cast<String, dynamic>())),

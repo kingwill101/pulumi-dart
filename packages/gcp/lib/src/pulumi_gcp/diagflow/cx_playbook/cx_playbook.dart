@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_playbook_instruction/cx_playbook_instruction.dart';
 import '../cx_playbook_llm_model_settings/cx_playbook_llm_model_settings.dart';
 import 'cx_playbook_args.dart';
@@ -40,62 +40,62 @@ import 'cx_playbook_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/{{name}}
 /// ```
-class CxPlaybook extends CustomResource {
+class CxPlaybook extends pulumi.CustomResource {
   /// The timestamp of initial playbook creation.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The human-readable name of the playbook, unique within an agent.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
-  late final Output<String> goal;
+  late final pulumi.Output<String> goal;
 
   /// Instruction to accomplish target goal.
   /// Structure is documented below.
-  late final Output<CxPlaybookInstruction?> instruction;
+  late final pulumi.Output<CxPlaybookInstruction?> instruction;
 
   /// Llm model settings for the playbook.
   /// Structure is documented below.
-  late final Output<CxPlaybookLlmModelSettings?> llmModelSettings;
+  late final pulumi.Output<CxPlaybookLlmModelSettings?> llmModelSettings;
 
   /// The unique identifier of the Playbook.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/playbooks/<Playbook ID>.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The agent to create a Playbook for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// Type of the playbook.
   /// Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
-  late final Output<String?> playbookType;
+  late final pulumi.Output<String?> playbookType;
 
   /// The resource name of flows referenced by the current playbook in the instructions.
-  late final Output<List<String>> referencedFlows;
+  late final pulumi.Output<List<String>> referencedFlows;
 
   /// The resource name of other playbooks referenced by the current playbook in the instructions.
-  late final Output<List<String>> referencedPlaybooks;
+  late final pulumi.Output<List<String>> referencedPlaybooks;
 
   /// The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
-  late final Output<List<String>?> referencedTools;
+  late final pulumi.Output<List<String>?> referencedTools;
 
   /// Estimated number of tokes current playbook takes when sent to the LLM.
-  late final Output<String> tokenCount;
+  late final pulumi.Output<String> tokenCount;
 
   /// Last time the playbook version was updated.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   CxPlaybook(
     String name, {
     CxPlaybookArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/cxPlaybook:CxPlaybook',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');

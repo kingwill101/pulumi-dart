@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBackupRun.
 class GetBackupRunArgs {
   /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
   /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
-  final Input<int>? backupId;
+  final pulumi.Input<int>? backupId;
 
   /// The name of the instance the backup is taken from.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// Toggles use of the most recent backup run if multiple backups exist for a
   /// Cloud SQL instance.
-  final Input<bool>? mostRecent;
+  final pulumi.Input<bool>? mostRecent;
 
   /// The project to list instances for. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetBackupRunArgs({
     this.backupId,
@@ -46,10 +46,10 @@ class GetBackupRunArgs {
 
   factory GetBackupRunArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupRunArgs(
-      backupId: Input.asOptionalInput<int>(map['backupId']),
-      instance: Input.asInput<String>(map['instance']),
-      mostRecent: Input.asOptionalInput<bool>(map['mostRecent']),
-      project: Input.asOptionalInput<String>(map['project']),
+      backupId: pulumi.Input.asOptionalInput<int>(map['backupId']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      mostRecent: pulumi.Input.asOptionalInput<bool>(map['mostRecent']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

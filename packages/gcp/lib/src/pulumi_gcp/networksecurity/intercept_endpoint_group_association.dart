@@ -1,5 +1,5 @@
 library module_networksecurity_intercept_endpoint_group_association;
 
 export 'intercept_endpoint_group_association/intercept_endpoint_group_association.dart';
-export 'intercept_endpoint_group_association/intercept_endpoint_group_association2.dart';
 export 'intercept_endpoint_group_association/intercept_endpoint_group_association_args.dart';
+export 'intercept_endpoint_group_association/intercept_endpoint_group_association_networksecurity.dart';

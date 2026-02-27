@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSubnetworks.
 class GetSubnetworksArgs {
   /// A string filter as defined in the [REST API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list#query-parameters).
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region this subnetwork has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetSubnetworksArgs({
     this.filter,
@@ -40,9 +40,9 @@ class GetSubnetworksArgs {
 
   factory GetSubnetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetworksArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

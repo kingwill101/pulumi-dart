@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_guardrail_action/app_version_snapshot_guardrail_action.dart';
 import '../app_version_snapshot_guardrail_code_callback/app_version_snapshot_guardrail_code_callback.dart';
 import '../app_version_snapshot_guardrail_content_filter/app_version_snapshot_guardrail_content_filter.dart';
@@ -94,18 +94,19 @@ class AppVersionSnapshotGuardrail {
     final map = <String, dynamic>{};
     final actionsValue = actions;
     if (actionsValue != null) {
-      map['actions'] = Input.encodeList<AppVersionSnapshotGuardrailAction,
+      map['actions'] = pulumi.Input.encodeList<
+          AppVersionSnapshotGuardrailAction,
           Map<String, dynamic>>(actionsValue, (value) => value.toMap());
     }
     final codeCallbacksValue = codeCallbacks;
     if (codeCallbacksValue != null) {
-      map['codeCallbacks'] = Input.encodeList<
+      map['codeCallbacks'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailCodeCallback,
           Map<String, dynamic>>(codeCallbacksValue, (value) => value.toMap());
     }
     final contentFiltersValue = contentFilters;
     if (contentFiltersValue != null) {
-      map['contentFilters'] = Input.encodeList<
+      map['contentFilters'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailContentFilter,
           Map<String, dynamic>>(contentFiltersValue, (value) => value.toMap());
     }
@@ -131,20 +132,20 @@ class AppVersionSnapshotGuardrail {
     }
     final llmPoliciesValue = llmPolicies;
     if (llmPoliciesValue != null) {
-      map['llmPolicies'] = Input.encodeList<
+      map['llmPolicies'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailLlmPolicy,
           Map<String, dynamic>>(llmPoliciesValue, (value) => value.toMap());
     }
     final llmPromptSecuritiesValue = llmPromptSecurities;
     if (llmPromptSecuritiesValue != null) {
-      map['llmPromptSecurities'] = Input.encodeList<
+      map['llmPromptSecurities'] = pulumi.Input.encodeList<
               AppVersionSnapshotGuardrailLlmPromptSecurity,
               Map<String, dynamic>>(
           llmPromptSecuritiesValue, (value) => value.toMap());
     }
     final modelSafetiesValue = modelSafeties;
     if (modelSafetiesValue != null) {
-      map['modelSafeties'] = Input.encodeList<
+      map['modelSafeties'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailModelSafety,
           Map<String, dynamic>>(modelSafetiesValue, (value) => value.toMap());
     }
@@ -163,19 +164,19 @@ class AppVersionSnapshotGuardrail {
     return AppVersionSnapshotGuardrail(
       actions: map['actions'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotGuardrailAction>(
+          : pulumi.Input.decodeList<AppVersionSnapshotGuardrailAction>(
               map['actions'],
               (value) => AppVersionSnapshotGuardrailAction.fromMap(
                   (value as Map).cast<String, dynamic>())),
       codeCallbacks: map['codeCallbacks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotGuardrailCodeCallback>(
+          : pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallback>(
               map['codeCallbacks'],
               (value) => AppVersionSnapshotGuardrailCodeCallback.fromMap(
                   (value as Map).cast<String, dynamic>())),
       contentFilters: map['contentFilters'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotGuardrailContentFilter>(
+          : pulumi.Input.decodeList<AppVersionSnapshotGuardrailContentFilter>(
               map['contentFilters'],
               (value) => AppVersionSnapshotGuardrailContentFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -189,19 +190,20 @@ class AppVersionSnapshotGuardrail {
       etag: map['etag'] == null ? null : map['etag'] as String,
       llmPolicies: map['llmPolicies'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotGuardrailLlmPolicy>(
+          : pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPolicy>(
               map['llmPolicies'],
               (value) => AppVersionSnapshotGuardrailLlmPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       llmPromptSecurities: map['llmPromptSecurities'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotGuardrailLlmPromptSecurity>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotGuardrailLlmPromptSecurity>(
               map['llmPromptSecurities'],
               (value) => AppVersionSnapshotGuardrailLlmPromptSecurity.fromMap(
                   (value as Map).cast<String, dynamic>())),
       modelSafeties: map['modelSafeties'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotGuardrailModelSafety>(
+          : pulumi.Input.decodeList<AppVersionSnapshotGuardrailModelSafety>(
               map['modelSafeties'],
               (value) => AppVersionSnapshotGuardrailModelSafety.fromMap(
                   (value as Map).cast<String, dynamic>())),

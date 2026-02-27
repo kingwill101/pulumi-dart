@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deploy_policy_rule_rollout_restriction_time_windows_one_time_window/deploy_policy_rule_rollout_restriction_time_windows_one_time_window.dart';
 import '../deploy_policy_rule_rollout_restriction_time_windows_weekly_window/deploy_policy_rule_rollout_restriction_time_windows_weekly_window.dart';
 
@@ -28,14 +28,14 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows {
     final map = <String, dynamic>{};
     final oneTimeWindowsValue = oneTimeWindows;
     if (oneTimeWindowsValue != null) {
-      map['oneTimeWindows'] = Input.encodeList<
+      map['oneTimeWindows'] = pulumi.Input.encodeList<
           DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow,
           Map<String, dynamic>>(oneTimeWindowsValue, (value) => value.toMap());
     }
     map['timeZone'] = timeZone;
     final weeklyWindowsValue = weeklyWindows;
     if (weeklyWindowsValue != null) {
-      map['weeklyWindows'] = Input.encodeList<
+      map['weeklyWindows'] = pulumi.Input.encodeList<
           DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow,
           Map<String, dynamic>>(weeklyWindowsValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows {
     return DeployPolicyRuleRolloutRestrictionTimeWindows(
       oneTimeWindows: map['oneTimeWindows'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>(
               map['oneTimeWindows'],
               (value) =>
@@ -56,7 +56,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows {
       timeZone: map['timeZone'] as String,
       weeklyWindows: map['weeklyWindows'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>(
               map['weeklyWindows'],
               (value) =>

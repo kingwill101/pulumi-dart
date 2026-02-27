@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_guardrail_code_callback_after_agent_callback/app_version_snapshot_guardrail_code_callback_after_agent_callback.dart';
 import '../app_version_snapshot_guardrail_code_callback_after_model_callback/app_version_snapshot_guardrail_code_callback_after_model_callback.dart';
 import '../app_version_snapshot_guardrail_code_callback_before_agent_callback/app_version_snapshot_guardrail_code_callback_before_agent_callback.dart';
@@ -46,28 +46,28 @@ class AppVersionSnapshotGuardrailCodeCallback {
     final map = <String, dynamic>{};
     final afterAgentCallbacksValue = afterAgentCallbacks;
     if (afterAgentCallbacksValue != null) {
-      map['afterAgentCallbacks'] = Input.encodeList<
+      map['afterAgentCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback,
               Map<String, dynamic>>(
           afterAgentCallbacksValue, (value) => value.toMap());
     }
     final afterModelCallbacksValue = afterModelCallbacks;
     if (afterModelCallbacksValue != null) {
-      map['afterModelCallbacks'] = Input.encodeList<
+      map['afterModelCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback,
               Map<String, dynamic>>(
           afterModelCallbacksValue, (value) => value.toMap());
     }
     final beforeAgentCallbacksValue = beforeAgentCallbacks;
     if (beforeAgentCallbacksValue != null) {
-      map['beforeAgentCallbacks'] = Input.encodeList<
+      map['beforeAgentCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback,
               Map<String, dynamic>>(
           beforeAgentCallbacksValue, (value) => value.toMap());
     }
     final beforeModelCallbacksValue = beforeModelCallbacks;
     if (beforeModelCallbacksValue != null) {
-      map['beforeModelCallbacks'] = Input.encodeList<
+      map['beforeModelCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback,
               Map<String, dynamic>>(
           beforeModelCallbacksValue, (value) => value.toMap());
@@ -80,7 +80,7 @@ class AppVersionSnapshotGuardrailCodeCallback {
     return AppVersionSnapshotGuardrailCodeCallback(
       afterAgentCallbacks: map['afterAgentCallbacks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback>(
               map['afterAgentCallbacks'],
               (value) =>
@@ -88,7 +88,7 @@ class AppVersionSnapshotGuardrailCodeCallback {
                       .fromMap((value as Map).cast<String, dynamic>())),
       afterModelCallbacks: map['afterModelCallbacks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback>(
               map['afterModelCallbacks'],
               (value) =>
@@ -96,7 +96,7 @@ class AppVersionSnapshotGuardrailCodeCallback {
                       .fromMap((value as Map).cast<String, dynamic>())),
       beforeAgentCallbacks: map['beforeAgentCallbacks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback>(
               map['beforeAgentCallbacks'],
               (value) =>
@@ -104,7 +104,7 @@ class AppVersionSnapshotGuardrailCodeCallback {
                       .fromMap((value as Map).cast<String, dynamic>())),
       beforeModelCallbacks: map['beforeModelCallbacks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback>(
               map['beforeModelCallbacks'],
               (value) =>

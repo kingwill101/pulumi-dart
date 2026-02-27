@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_template_template/get_job_template_template.dart';
 
 class GetJobTemplate {
@@ -44,7 +44,7 @@ class GetJobTemplate {
     map['parallelism'] = parallelism;
     map['taskCount'] = taskCount;
     map['templates'] =
-        Input.encodeList<GetJobTemplateTemplate, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetJobTemplateTemplate, Map<String, dynamic>>(
             templates, (value) => value.toMap());
     return map;
   }
@@ -55,7 +55,7 @@ class GetJobTemplate {
       labels: (map['labels'] as Map).cast<String, String>(),
       parallelism: map['parallelism'] as int,
       taskCount: map['taskCount'] as int,
-      templates: Input.decodeList<GetJobTemplateTemplate>(
+      templates: pulumi.Input.decodeList<GetJobTemplateTemplate>(
           map['templates'],
           (value) => GetJobTemplateTemplate.fromMap(
               (value as Map).cast<String, dynamic>())),

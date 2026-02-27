@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_admission_whitelist_pattern/policy_admission_whitelist_pattern.dart';
 import '../policy_cluster_admission_rule/policy_cluster_admission_rule.dart';
 import '../policy_default_admission_rule/policy_default_admission_rule.dart';
@@ -41,12 +41,12 @@ import 'policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:binaryauthorization/policy:Policy default {{project}}
 /// ```
-class Policy extends CustomResource {
+class Policy extends pulumi.CustomResource {
   /// A whitelist of image patterns to exclude from admission rules. If an
   /// image's name matches a whitelist pattern, the image's admission
   /// requests will always be permitted regardless of your admission rules.
   /// Structure is documented below.
-  late final Output<List<PolicyAdmissionWhitelistPattern>?>
+  late final pulumi.Output<List<PolicyAdmissionWhitelistPattern>?>
       admissionWhitelistPatterns;
 
   /// Per-cluster admission rules. An admission rule specifies either that
@@ -59,35 +59,36 @@ class Policy extends CustomResource {
   /// A location is either a compute zone (e.g. `us-central1-a`) or a region
   /// (e.g. `us-central1`).
   /// Structure is documented below.
-  late final Output<List<PolicyClusterAdmissionRule>?> clusterAdmissionRules;
+  late final pulumi.Output<List<PolicyClusterAdmissionRule>?>
+      clusterAdmissionRules;
 
   /// Default admission rule for a cluster without a per-cluster admission
   /// rule.
   /// Structure is documented below.
-  late final Output<PolicyDefaultAdmissionRule> defaultAdmissionRule;
+  late final pulumi.Output<PolicyDefaultAdmissionRule> defaultAdmissionRule;
 
   /// A descriptive comment.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Controls the evaluation of a Google-maintained global admission policy
   /// for common system-level images. Images not covered by the global
   /// policy will be subject to the project admission policy.
   /// Possible values are: `ENABLE`, `DISABLE`.
-  late final Output<String> globalPolicyEvaluationMode;
+  late final pulumi.Output<String> globalPolicyEvaluationMode;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   Policy(
     String name, {
     PolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:binaryauthorization/policy:Policy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.admissionWhitelistPatterns =
         registerOutput<List<PolicyAdmissionWhitelistPattern>?>(

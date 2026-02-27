@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_v2_runtime_versions_args.dart';
 import 'get_v2_runtime_versions_result.dart';
 
@@ -12,13 +12,13 @@ import 'get_v2_runtime_versions_result.dart';
 /// ### Configure Basic TPU VM With Available Version
 Future<GetV2RuntimeVersionsResult> getV2RuntimeVersions(
   GetV2RuntimeVersionsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetV2RuntimeVersionsResult.fromMap(result);
 }

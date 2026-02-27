@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EnvironmentApiRevisionDeployment.
 class EnvironmentApiRevisionDeploymentArgs {
   /// Apigee API proxy name.
-  final Input<String> api;
+  final pulumi.Input<String> api;
 
   /// Apigee environment name.
-  final Input<String> environment;
+  final pulumi.Input<String> environment;
 
   /// Apigee organization ID.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// If true, replaces other deployed revisions of this proxy in the environment.
-  final Input<bool>? override;
+  final pulumi.Input<bool>? override;
 
   /// API proxy revision number to deploy.
-  final Input<int> revision;
+  final pulumi.Input<int> revision;
 
   /// If true, enables sequenced rollout for safe traffic switching.
-  final Input<bool>? sequencedRollout;
+  final pulumi.Input<bool>? sequencedRollout;
 
   /// Optional service account the deployed proxy runs as.
-  final Input<String>? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   EnvironmentApiRevisionDeploymentArgs({
     required this.api,
@@ -59,13 +59,15 @@ class EnvironmentApiRevisionDeploymentArgs {
   factory EnvironmentApiRevisionDeploymentArgs.fromMap(
       Map<String, dynamic> map) {
     return EnvironmentApiRevisionDeploymentArgs(
-      api: Input.asInput<String>(map['api']),
-      environment: Input.asInput<String>(map['environment']),
-      orgId: Input.asInput<String>(map['orgId']),
-      override: Input.asOptionalInput<bool>(map['override']),
-      revision: Input.asInput<int>(map['revision']),
-      sequencedRollout: Input.asOptionalInput<bool>(map['sequencedRollout']),
-      serviceAccount: Input.asOptionalInput<String>(map['serviceAccount']),
+      api: pulumi.Input.asInput<String>(map['api']),
+      environment: pulumi.Input.asInput<String>(map['environment']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      override: pulumi.Input.asOptionalInput<bool>(map['override']),
+      revision: pulumi.Input.asInput<int>(map['revision']),
+      sequencedRollout:
+          pulumi.Input.asOptionalInput<bool>(map['sequencedRollout']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<String>(map['serviceAccount']),
     );
   }
 }

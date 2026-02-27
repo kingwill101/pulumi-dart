@@ -1,3 +1,3 @@
 library module_cloudrun_iam_member_condition;
 
-export 'iam_member_condition/iam_member_condition2.dart';
+export 'iam_member_condition/iam_member_condition_cloudrun.dart';

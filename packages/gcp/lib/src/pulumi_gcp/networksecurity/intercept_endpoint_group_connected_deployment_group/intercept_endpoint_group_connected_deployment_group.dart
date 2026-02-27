@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../intercept_endpoint_group_connected_deployment_group_location/intercept_endpoint_group_connected_deployment_group_location.dart';
 
 class InterceptEndpointGroupConnectedDeploymentGroup {
@@ -24,7 +24,7 @@ class InterceptEndpointGroupConnectedDeploymentGroup {
     final map = <String, dynamic>{};
     final locationsValue = locations;
     if (locationsValue != null) {
-      map['locations'] = Input.encodeList<
+      map['locations'] = pulumi.Input.encodeList<
           InterceptEndpointGroupConnectedDeploymentGroupLocation,
           Map<String, dynamic>>(locationsValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class InterceptEndpointGroupConnectedDeploymentGroup {
     return InterceptEndpointGroupConnectedDeploymentGroup(
       locations: map['locations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterceptEndpointGroupConnectedDeploymentGroupLocation>(
               map['locations'],
               (value) => InterceptEndpointGroupConnectedDeploymentGroupLocation

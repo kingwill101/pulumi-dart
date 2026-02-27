@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_metastore_service_scaling_config_autoscaling_config_limit_config/get_metastore_service_scaling_config_autoscaling_config_limit_config.dart';
 
 class GetMetastoreServiceScalingConfigAutoscalingConfig {
@@ -24,7 +24,7 @@ class GetMetastoreServiceScalingConfigAutoscalingConfig {
     final map = <String, dynamic>{};
     map['autoscalingEnabled'] = autoscalingEnabled;
     map['autoscalingFactor'] = autoscalingFactor;
-    map['limitConfigs'] = Input.encodeList<
+    map['limitConfigs'] = pulumi.Input.encodeList<
         GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig,
         Map<String, dynamic>>(limitConfigs, (value) => value.toMap());
     return map;
@@ -35,7 +35,7 @@ class GetMetastoreServiceScalingConfigAutoscalingConfig {
     return GetMetastoreServiceScalingConfigAutoscalingConfig(
       autoscalingEnabled: map['autoscalingEnabled'] as bool,
       autoscalingFactor: map['autoscalingFactor'] as double,
-      limitConfigs: Input.decodeList<
+      limitConfigs: pulumi.Input.decodeList<
               GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig>(
           map['limitConfigs'],
           (value) =>

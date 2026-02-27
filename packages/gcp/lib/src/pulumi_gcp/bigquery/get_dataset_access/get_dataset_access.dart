@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dataset_access_condition/get_dataset_access_condition.dart';
 import '../get_dataset_access_dataset/get_dataset_access_dataset.dart';
 import '../get_dataset_access_routine/get_dataset_access_routine.dart';
@@ -72,33 +72,33 @@ class GetDatasetAccess {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['conditions'] =
-        Input.encodeList<GetDatasetAccessCondition, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<GetDatasetAccessCondition,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     map['datasets'] =
-        Input.encodeList<GetDatasetAccessDataset, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDatasetAccessDataset, Map<String, dynamic>>(
             datasets, (value) => value.toMap());
     map['domain'] = domain;
     map['groupByEmail'] = groupByEmail;
     map['iamMember'] = iamMember;
     map['role'] = role;
     map['routines'] =
-        Input.encodeList<GetDatasetAccessRoutine, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDatasetAccessRoutine, Map<String, dynamic>>(
             routines, (value) => value.toMap());
     map['specialGroup'] = specialGroup;
     map['userByEmail'] = userByEmail;
-    map['views'] = Input.encodeList<GetDatasetAccessView, Map<String, dynamic>>(
-        views, (value) => value.toMap());
+    map['views'] =
+        pulumi.Input.encodeList<GetDatasetAccessView, Map<String, dynamic>>(
+            views, (value) => value.toMap());
     return map;
   }
 
   factory GetDatasetAccess.fromMap(Map<String, dynamic> map) {
     return GetDatasetAccess(
-      conditions: Input.decodeList<GetDatasetAccessCondition>(
+      conditions: pulumi.Input.decodeList<GetDatasetAccessCondition>(
           map['conditions'],
           (value) => GetDatasetAccessCondition.fromMap(
               (value as Map).cast<String, dynamic>())),
-      datasets: Input.decodeList<GetDatasetAccessDataset>(
+      datasets: pulumi.Input.decodeList<GetDatasetAccessDataset>(
           map['datasets'],
           (value) => GetDatasetAccessDataset.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -106,13 +106,13 @@ class GetDatasetAccess {
       groupByEmail: map['groupByEmail'] as String,
       iamMember: map['iamMember'] as String,
       role: map['role'] as String,
-      routines: Input.decodeList<GetDatasetAccessRoutine>(
+      routines: pulumi.Input.decodeList<GetDatasetAccessRoutine>(
           map['routines'],
           (value) => GetDatasetAccessRoutine.fromMap(
               (value as Map).cast<String, dynamic>())),
       specialGroup: map['specialGroup'] as String,
       userByEmail: map['userByEmail'] as String,
-      views: Input.decodeList<GetDatasetAccessView>(
+      views: pulumi.Input.decodeList<GetDatasetAccessView>(
           map['views'],
           (value) => GetDatasetAccessView.fromMap(
               (value as Map).cast<String, dynamic>())),

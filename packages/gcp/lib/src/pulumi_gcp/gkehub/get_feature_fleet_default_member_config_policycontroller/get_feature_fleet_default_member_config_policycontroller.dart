@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config.dart';
 
 class GetFeatureFleetDefaultMemberConfigPolicycontroller {
@@ -19,7 +19,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontroller {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['policyControllerHubConfigs'] = Input.encodeList<
+    map['policyControllerHubConfigs'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig,
         Map<String,
             dynamic>>(policyControllerHubConfigs, (value) => value.toMap());
@@ -30,7 +30,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontroller {
   factory GetFeatureFleetDefaultMemberConfigPolicycontroller.fromMap(
       Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontroller(
-      policyControllerHubConfigs: Input.decodeList<
+      policyControllerHubConfigs: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig>(
           map['policyControllerHubConfigs'],
           (value) =>

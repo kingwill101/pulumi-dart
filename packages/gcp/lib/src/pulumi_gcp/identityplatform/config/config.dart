@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../config_blocking_functions/config_blocking_functions.dart';
 import '../config_client/config_client.dart';
 import '../config_mfa/config_mfa.dart';
@@ -56,61 +56,61 @@ import 'config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:identityplatform/config:Config default {{project}}
 /// ```
-class Config extends CustomResource {
+class Config extends pulumi.CustomResource {
   /// List of domains authorized for OAuth redirects.
-  late final Output<List<String>> authorizedDomains;
+  late final pulumi.Output<List<String>> authorizedDomains;
 
   /// Whether anonymous users will be auto-deleted after a period of 30 days
-  late final Output<bool?> autodeleteAnonymousUsers;
+  late final pulumi.Output<bool?> autodeleteAnonymousUsers;
 
   /// Configuration related to blocking functions.
   /// Structure is documented below.
-  late final Output<ConfigBlockingFunctions?> blockingFunctions;
+  late final pulumi.Output<ConfigBlockingFunctions?> blockingFunctions;
 
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
-  late final Output<ConfigClient> client;
+  late final pulumi.Output<ConfigClient> client;
 
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
-  late final Output<ConfigMfa> mfa;
+  late final pulumi.Output<ConfigMfa> mfa;
 
   /// Configuration related to monitoring project activity.
   /// Structure is documented below.
-  late final Output<ConfigMonitoring> monitoring;
+  late final pulumi.Output<ConfigMonitoring> monitoring;
 
   /// Configuration related to multi-tenant functionality.
   /// Structure is documented below.
-  late final Output<ConfigMultiTenant?> multiTenant;
+  late final pulumi.Output<ConfigMultiTenant?> multiTenant;
 
   /// The name of the Config resource
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Configuration related to quotas.
   /// Structure is documented below.
-  late final Output<ConfigQuota?> quota;
+  late final pulumi.Output<ConfigQuota?> quota;
 
   /// Configuration related to local sign in methods.
   /// Structure is documented below.
-  late final Output<ConfigSignIn> signIn;
+  late final pulumi.Output<ConfigSignIn> signIn;
 
   /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
   /// Structure is documented below.
-  late final Output<ConfigSmsRegionConfig> smsRegionConfig;
+  late final pulumi.Output<ConfigSmsRegionConfig> smsRegionConfig;
 
   Config(
     String name, {
     ConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:identityplatform/config:Config',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authorizedDomains = registerOutput<List<String>>('authorizedDomains');
     this.autodeleteAnonymousUsers =

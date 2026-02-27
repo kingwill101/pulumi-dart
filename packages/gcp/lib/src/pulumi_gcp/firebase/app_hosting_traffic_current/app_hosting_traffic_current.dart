@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_traffic_current_split/app_hosting_traffic_current_split.dart';
 
 class AppHostingTrafficCurrent {
@@ -17,9 +17,8 @@ class AppHostingTrafficCurrent {
     final map = <String, dynamic>{};
     final splitsValue = splits;
     if (splitsValue != null) {
-      map['splits'] =
-          Input.encodeList<AppHostingTrafficCurrentSplit, Map<String, dynamic>>(
-              splitsValue, (value) => value.toMap());
+      map['splits'] = pulumi.Input.encodeList<AppHostingTrafficCurrentSplit,
+          Map<String, dynamic>>(splitsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -28,7 +27,7 @@ class AppHostingTrafficCurrent {
     return AppHostingTrafficCurrent(
       splits: map['splits'] == null
           ? null
-          : Input.decodeList<AppHostingTrafficCurrentSplit>(
+          : pulumi.Input.decodeList<AppHostingTrafficCurrentSplit>(
               map['splits'],
               (value) => AppHostingTrafficCurrentSplit.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEnvironment.
 class GetEnvironmentArgs {
   /// Name of the environment.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The location or Compute Engine region of the environment.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetEnvironmentArgs({
     required this.name,
@@ -36,9 +36,9 @@ class GetEnvironmentArgs {
 
   factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

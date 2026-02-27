@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_configmanagement/get_feature_fleet_default_member_config_configmanagement.dart';
 import '../get_feature_fleet_default_member_config_mesh/get_feature_fleet_default_member_config_mesh.dart';
 import '../get_feature_fleet_default_member_config_policycontroller/get_feature_fleet_default_member_config_policycontroller.dart';
@@ -25,12 +25,13 @@ class GetFeatureFleetDefaultMemberConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['configmanagements'] = Input.encodeList<
+    map['configmanagements'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigConfigmanagement,
         Map<String, dynamic>>(configmanagements, (value) => value.toMap());
-    map['meshes'] = Input.encodeList<GetFeatureFleetDefaultMemberConfigMesh,
+    map['meshes'] = pulumi.Input.encodeList<
+        GetFeatureFleetDefaultMemberConfigMesh,
         Map<String, dynamic>>(meshes, (value) => value.toMap());
-    map['policycontrollers'] = Input.encodeList<
+    map['policycontrollers'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontroller,
         Map<String, dynamic>>(policycontrollers, (value) => value.toMap());
     return map;
@@ -38,22 +39,20 @@ class GetFeatureFleetDefaultMemberConfig {
 
   factory GetFeatureFleetDefaultMemberConfig.fromMap(Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfig(
-      configmanagements:
-          Input.decodeList<GetFeatureFleetDefaultMemberConfigConfigmanagement>(
-              map['configmanagements'],
-              (value) =>
-                  GetFeatureFleetDefaultMemberConfigConfigmanagement.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      meshes: Input.decodeList<GetFeatureFleetDefaultMemberConfigMesh>(
+      configmanagements: pulumi.Input.decodeList<
+              GetFeatureFleetDefaultMemberConfigConfigmanagement>(
+          map['configmanagements'],
+          (value) => GetFeatureFleetDefaultMemberConfigConfigmanagement.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      meshes: pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfigMesh>(
           map['meshes'],
           (value) => GetFeatureFleetDefaultMemberConfigMesh.fromMap(
               (value as Map).cast<String, dynamic>())),
-      policycontrollers:
-          Input.decodeList<GetFeatureFleetDefaultMemberConfigPolicycontroller>(
-              map['policycontrollers'],
-              (value) =>
-                  GetFeatureFleetDefaultMemberConfigPolicycontroller.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      policycontrollers: pulumi.Input.decodeList<
+              GetFeatureFleetDefaultMemberConfigPolicycontroller>(
+          map['policycontrollers'],
+          (value) => GetFeatureFleetDefaultMemberConfigPolicycontroller.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

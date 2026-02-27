@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCryptoKeys.
 class GetCryptoKeysArgs {
@@ -12,10 +12,10 @@ class GetCryptoKeysArgs {
   /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring/cryptoKeys/my-key-1"` will only retrieve a key with that exact name.
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
-  final Input<String> keyRing;
+  final pulumi.Input<String> keyRing;
 
   GetCryptoKeysArgs({
     this.filter,
@@ -34,8 +34,8 @@ class GetCryptoKeysArgs {
 
   factory GetCryptoKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      keyRing: Input.asInput<String>(map['keyRing']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      keyRing: pulumi.Input.asInput<String>(map['keyRing']),
     );
   }
 }

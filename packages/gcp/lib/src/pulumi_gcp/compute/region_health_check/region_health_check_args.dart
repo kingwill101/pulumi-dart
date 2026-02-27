@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_health_check_grpc_health_check/region_health_check_grpc_health_check.dart';
 import '../region_health_check_grpc_tls_health_check/region_health_check_grpc_tls_health_check.dart';
 import '../region_health_check_http2_health_check/region_health_check_http2_health_check.dart';
@@ -14,39 +14,39 @@ import '../region_health_check_tcp_health_check/region_health_check_tcp_health_c
 class RegionHealthCheckArgs {
   /// How often (in seconds) to send a health check. The default value is 5
   /// seconds.
-  final Input<int>? checkIntervalSec;
+  final pulumi.Input<int>? checkIntervalSec;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<RegionHealthCheckGrpcHealthCheck>? grpcHealthCheck;
+  final pulumi.Input<RegionHealthCheckGrpcHealthCheck>? grpcHealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<RegionHealthCheckGrpcTlsHealthCheck>? grpcTlsHealthCheck;
+  final pulumi.Input<RegionHealthCheckGrpcTlsHealthCheck>? grpcTlsHealthCheck;
 
   /// A so-far unhealthy instance will be marked healthy after this many
   /// consecutive successes. The default value is 2.
-  final Input<int>? healthyThreshold;
+  final pulumi.Input<int>? healthyThreshold;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<RegionHealthCheckHttp2HealthCheck>? http2HealthCheck;
+  final pulumi.Input<RegionHealthCheckHttp2HealthCheck>? http2HealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<RegionHealthCheckHttpHealthCheck>? httpHealthCheck;
+  final pulumi.Input<RegionHealthCheckHttpHealthCheck>? httpHealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<RegionHealthCheckHttpsHealthCheck>? httpsHealthCheck;
+  final pulumi.Input<RegionHealthCheckHttpsHealthCheck>? httpsHealthCheck;
 
   /// Configure logging on this health check.
   /// Structure is documented below.
-  final Input<RegionHealthCheckLogConfig>? logConfig;
+  final pulumi.Input<RegionHealthCheckLogConfig>? logConfig;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -55,32 +55,32 @@ class RegionHealthCheckArgs {
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Region in which the created health check should reside.
   /// If it is not provided, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<RegionHealthCheckSslHealthCheck>? sslHealthCheck;
+  final pulumi.Input<RegionHealthCheckSslHealthCheck>? sslHealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<RegionHealthCheckTcpHealthCheck>? tcpHealthCheck;
+  final pulumi.Input<RegionHealthCheckTcpHealthCheck>? tcpHealthCheck;
 
   /// How long (in seconds) to wait before claiming failure.
   /// The default value is 5 seconds.  It is invalid for timeoutSec to have
   /// greater value than checkIntervalSec.
-  final Input<int>? timeoutSec;
+  final pulumi.Input<int>? timeoutSec;
 
   /// A so-far healthy instance will be marked unhealthy after this many
   /// consecutive failures. The default value is 2.
-  final Input<int>? unhealthyThreshold;
+  final pulumi.Input<int>? unhealthyThreshold;
 
   RegionHealthCheckArgs({
     this.checkIntervalSec,
@@ -113,13 +113,13 @@ class RegionHealthCheckArgs {
     }
     final grpcHealthCheckValue = grpcHealthCheck;
     if (grpcHealthCheckValue != null) {
-      map['grpcHealthCheck'] = Input.mapOptionalInputValue<
+      map['grpcHealthCheck'] = pulumi.Input.mapOptionalInputValue<
           RegionHealthCheckGrpcHealthCheck,
           Map<String, dynamic>>(grpcHealthCheckValue, (value) => value.toMap());
     }
     final grpcTlsHealthCheckValue = grpcTlsHealthCheck;
     if (grpcTlsHealthCheckValue != null) {
-      map['grpcTlsHealthCheck'] = Input.mapOptionalInputValue<
+      map['grpcTlsHealthCheck'] = pulumi.Input.mapOptionalInputValue<
               RegionHealthCheckGrpcTlsHealthCheck, Map<String, dynamic>>(
           grpcTlsHealthCheckValue, (value) => value.toMap());
     }
@@ -129,25 +129,26 @@ class RegionHealthCheckArgs {
     }
     final http2HealthCheckValue = http2HealthCheck;
     if (http2HealthCheckValue != null) {
-      map['http2HealthCheck'] = Input.mapOptionalInputValue<
+      map['http2HealthCheck'] = pulumi.Input.mapOptionalInputValue<
               RegionHealthCheckHttp2HealthCheck, Map<String, dynamic>>(
           http2HealthCheckValue, (value) => value.toMap());
     }
     final httpHealthCheckValue = httpHealthCheck;
     if (httpHealthCheckValue != null) {
-      map['httpHealthCheck'] = Input.mapOptionalInputValue<
+      map['httpHealthCheck'] = pulumi.Input.mapOptionalInputValue<
           RegionHealthCheckHttpHealthCheck,
           Map<String, dynamic>>(httpHealthCheckValue, (value) => value.toMap());
     }
     final httpsHealthCheckValue = httpsHealthCheck;
     if (httpsHealthCheckValue != null) {
-      map['httpsHealthCheck'] = Input.mapOptionalInputValue<
+      map['httpsHealthCheck'] = pulumi.Input.mapOptionalInputValue<
               RegionHealthCheckHttpsHealthCheck, Map<String, dynamic>>(
           httpsHealthCheckValue, (value) => value.toMap());
     }
     final logConfigValue = logConfig;
     if (logConfigValue != null) {
-      map['logConfig'] = Input.mapOptionalInputValue<RegionHealthCheckLogConfig,
+      map['logConfig'] = pulumi.Input.mapOptionalInputValue<
+          RegionHealthCheckLogConfig,
           Map<String, dynamic>>(logConfigValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -164,13 +165,13 @@ class RegionHealthCheckArgs {
     }
     final sslHealthCheckValue = sslHealthCheck;
     if (sslHealthCheckValue != null) {
-      map['sslHealthCheck'] = Input.mapOptionalInputValue<
+      map['sslHealthCheck'] = pulumi.Input.mapOptionalInputValue<
           RegionHealthCheckSslHealthCheck,
           Map<String, dynamic>>(sslHealthCheckValue, (value) => value.toMap());
     }
     final tcpHealthCheckValue = tcpHealthCheck;
     if (tcpHealthCheckValue != null) {
-      map['tcpHealthCheck'] = Input.mapOptionalInputValue<
+      map['tcpHealthCheck'] = pulumi.Input.mapOptionalInputValue<
           RegionHealthCheckTcpHealthCheck,
           Map<String, dynamic>>(tcpHealthCheckValue, (value) => value.toMap());
     }
@@ -187,33 +188,40 @@ class RegionHealthCheckArgs {
 
   factory RegionHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckArgs(
-      checkIntervalSec: Input.asOptionalInput<int>(map['checkIntervalSec']),
-      description: Input.asOptionalInput<String>(map['description']),
-      grpcHealthCheck: Input.asOptionalInput<RegionHealthCheckGrpcHealthCheck>(
-          map['grpcHealthCheck']),
+      checkIntervalSec:
+          pulumi.Input.asOptionalInput<int>(map['checkIntervalSec']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      grpcHealthCheck:
+          pulumi.Input.asOptionalInput<RegionHealthCheckGrpcHealthCheck>(
+              map['grpcHealthCheck']),
       grpcTlsHealthCheck:
-          Input.asOptionalInput<RegionHealthCheckGrpcTlsHealthCheck>(
+          pulumi.Input.asOptionalInput<RegionHealthCheckGrpcTlsHealthCheck>(
               map['grpcTlsHealthCheck']),
-      healthyThreshold: Input.asOptionalInput<int>(map['healthyThreshold']),
+      healthyThreshold:
+          pulumi.Input.asOptionalInput<int>(map['healthyThreshold']),
       http2HealthCheck:
-          Input.asOptionalInput<RegionHealthCheckHttp2HealthCheck>(
+          pulumi.Input.asOptionalInput<RegionHealthCheckHttp2HealthCheck>(
               map['http2HealthCheck']),
-      httpHealthCheck: Input.asOptionalInput<RegionHealthCheckHttpHealthCheck>(
-          map['httpHealthCheck']),
+      httpHealthCheck:
+          pulumi.Input.asOptionalInput<RegionHealthCheckHttpHealthCheck>(
+              map['httpHealthCheck']),
       httpsHealthCheck:
-          Input.asOptionalInput<RegionHealthCheckHttpsHealthCheck>(
+          pulumi.Input.asOptionalInput<RegionHealthCheckHttpsHealthCheck>(
               map['httpsHealthCheck']),
-      logConfig:
-          Input.asOptionalInput<RegionHealthCheckLogConfig>(map['logConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sslHealthCheck: Input.asOptionalInput<RegionHealthCheckSslHealthCheck>(
-          map['sslHealthCheck']),
-      tcpHealthCheck: Input.asOptionalInput<RegionHealthCheckTcpHealthCheck>(
-          map['tcpHealthCheck']),
-      timeoutSec: Input.asOptionalInput<int>(map['timeoutSec']),
-      unhealthyThreshold: Input.asOptionalInput<int>(map['unhealthyThreshold']),
+      logConfig: pulumi.Input.asOptionalInput<RegionHealthCheckLogConfig>(
+          map['logConfig']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sslHealthCheck:
+          pulumi.Input.asOptionalInput<RegionHealthCheckSslHealthCheck>(
+              map['sslHealthCheck']),
+      tcpHealthCheck:
+          pulumi.Input.asOptionalInput<RegionHealthCheckTcpHealthCheck>(
+              map['tcpHealthCheck']),
+      timeoutSec: pulumi.Input.asOptionalInput<int>(map['timeoutSec']),
+      unhealthyThreshold:
+          pulumi.Input.asOptionalInput<int>(map['unhealthyThreshold']),
     );
   }
 }

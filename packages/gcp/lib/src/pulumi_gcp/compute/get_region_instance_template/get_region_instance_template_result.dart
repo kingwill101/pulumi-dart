@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_instance_template_advanced_machine_feature/get_region_instance_template_advanced_machine_feature.dart';
 import '../get_region_instance_template_confidential_instance_config/get_region_instance_template_confidential_instance_config.dart';
 import '../get_region_instance_template_disk/get_region_instance_template_disk.dart';
@@ -173,27 +173,26 @@ class GetRegionInstanceTemplateResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['advancedMachineFeatures'] = Input.encodeList<
+    map['advancedMachineFeatures'] = pulumi.Input.encodeList<
             GetRegionInstanceTemplateAdvancedMachineFeature,
             Map<String, dynamic>>(
         advancedMachineFeatures, (value) => value.toMap());
     map['canIpForward'] = canIpForward;
-    map['confidentialInstanceConfigs'] = Input.encodeList<
+    map['confidentialInstanceConfigs'] = pulumi.Input.encodeList<
             GetRegionInstanceTemplateConfidentialInstanceConfig,
             Map<String, dynamic>>(
         confidentialInstanceConfigs, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
-    map['disks'] =
-        Input.encodeList<GetRegionInstanceTemplateDisk, Map<String, dynamic>>(
-            disks, (value) => value.toMap());
+    map['disks'] = pulumi.Input.encodeList<GetRegionInstanceTemplateDisk,
+        Map<String, dynamic>>(disks, (value) => value.toMap());
     map['effectiveLabels'] = effectiveLabels;
     map['enableDisplay'] = enableDisplay;
     final filterValue = filter;
     if (filterValue != null) {
       map['filter'] = filterValue;
     }
-    map['guestAccelerators'] = Input.encodeList<
+    map['guestAccelerators'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateGuestAccelerator,
         Map<String, dynamic>>(guestAccelerators, (value) => value.toMap());
     map['id'] = id;
@@ -214,10 +213,10 @@ class GetRegionInstanceTemplateResult {
       map['name'] = nameValue;
     }
     map['namePrefix'] = namePrefix;
-    map['networkInterfaces'] = Input.encodeList<
+    map['networkInterfaces'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateNetworkInterface,
         Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
-    map['networkPerformanceConfigs'] = Input.encodeList<
+    map['networkPerformanceConfigs'] = pulumi.Input.encodeList<
             GetRegionInstanceTemplateNetworkPerformanceConfig,
             Map<String, dynamic>>(
         networkPerformanceConfigs, (value) => value.toMap());
@@ -232,18 +231,19 @@ class GetRegionInstanceTemplateResult {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['reservationAffinities'] = Input.encodeList<
+    map['reservationAffinities'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateReservationAffinity,
         Map<String, dynamic>>(reservationAffinities, (value) => value.toMap());
     map['resourceManagerTags'] = resourceManagerTags;
     map['resourcePolicies'] = resourcePolicies;
-    map['schedulings'] = Input.encodeList<GetRegionInstanceTemplateScheduling,
+    map['schedulings'] = pulumi.Input.encodeList<
+        GetRegionInstanceTemplateScheduling,
         Map<String, dynamic>>(schedulings, (value) => value.toMap());
     map['selfLink'] = selfLink;
-    map['serviceAccounts'] = Input.encodeList<
+    map['serviceAccounts'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateServiceAccount,
         Map<String, dynamic>>(serviceAccounts, (value) => value.toMap());
-    map['shieldedInstanceConfigs'] = Input.encodeList<
+    map['shieldedInstanceConfigs'] = pulumi.Input.encodeList<
             GetRegionInstanceTemplateShieldedInstanceConfig,
             Map<String, dynamic>>(
         shieldedInstanceConfigs, (value) => value.toMap());
@@ -254,22 +254,21 @@ class GetRegionInstanceTemplateResult {
 
   factory GetRegionInstanceTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateResult(
-      advancedMachineFeatures:
-          Input.decodeList<GetRegionInstanceTemplateAdvancedMachineFeature>(
-              map['advancedMachineFeatures'],
-              (value) =>
-                  GetRegionInstanceTemplateAdvancedMachineFeature.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      advancedMachineFeatures: pulumi.Input.decodeList<
+              GetRegionInstanceTemplateAdvancedMachineFeature>(
+          map['advancedMachineFeatures'],
+          (value) => GetRegionInstanceTemplateAdvancedMachineFeature.fromMap(
+              (value as Map).cast<String, dynamic>())),
       canIpForward: map['canIpForward'] as bool,
-      confidentialInstanceConfigs:
-          Input.decodeList<GetRegionInstanceTemplateConfidentialInstanceConfig>(
-              map['confidentialInstanceConfigs'],
-              (value) =>
-                  GetRegionInstanceTemplateConfidentialInstanceConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      confidentialInstanceConfigs: pulumi.Input.decodeList<
+              GetRegionInstanceTemplateConfidentialInstanceConfig>(
+          map['confidentialInstanceConfigs'],
+          (value) =>
+              GetRegionInstanceTemplateConfidentialInstanceConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      disks: Input.decodeList<GetRegionInstanceTemplateDisk>(
+      disks: pulumi.Input.decodeList<GetRegionInstanceTemplateDisk>(
           map['disks'],
           (value) => GetRegionInstanceTemplateDisk.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -277,7 +276,7 @@ class GetRegionInstanceTemplateResult {
       enableDisplay: map['enableDisplay'] as bool,
       filter: map['filter'] == null ? null : map['filter'] as String,
       guestAccelerators:
-          Input.decodeList<GetRegionInstanceTemplateGuestAccelerator>(
+          pulumi.Input.decodeList<GetRegionInstanceTemplateGuestAccelerator>(
               map['guestAccelerators'],
               (value) => GetRegionInstanceTemplateGuestAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -294,45 +293,43 @@ class GetRegionInstanceTemplateResult {
       name: map['name'] == null ? null : map['name'] as String,
       namePrefix: map['namePrefix'] as String,
       networkInterfaces:
-          Input.decodeList<GetRegionInstanceTemplateNetworkInterface>(
+          pulumi.Input.decodeList<GetRegionInstanceTemplateNetworkInterface>(
               map['networkInterfaces'],
               (value) => GetRegionInstanceTemplateNetworkInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      networkPerformanceConfigs:
-          Input.decodeList<GetRegionInstanceTemplateNetworkPerformanceConfig>(
-              map['networkPerformanceConfigs'],
-              (value) =>
-                  GetRegionInstanceTemplateNetworkPerformanceConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      networkPerformanceConfigs: pulumi.Input.decodeList<
+              GetRegionInstanceTemplateNetworkPerformanceConfig>(
+          map['networkPerformanceConfigs'],
+          (value) => GetRegionInstanceTemplateNetworkPerformanceConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       numericId: map['numericId'] as String,
       partnerMetadata: (map['partnerMetadata'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
       reservationAffinities:
-          Input.decodeList<GetRegionInstanceTemplateReservationAffinity>(
+          pulumi.Input.decodeList<GetRegionInstanceTemplateReservationAffinity>(
               map['reservationAffinities'],
               (value) => GetRegionInstanceTemplateReservationAffinity.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceManagerTags:
           (map['resourceManagerTags'] as Map).cast<String, String>(),
       resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
-      schedulings: Input.decodeList<GetRegionInstanceTemplateScheduling>(
+      schedulings: pulumi.Input.decodeList<GetRegionInstanceTemplateScheduling>(
           map['schedulings'],
           (value) => GetRegionInstanceTemplateScheduling.fromMap(
               (value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       serviceAccounts:
-          Input.decodeList<GetRegionInstanceTemplateServiceAccount>(
+          pulumi.Input.decodeList<GetRegionInstanceTemplateServiceAccount>(
               map['serviceAccounts'],
               (value) => GetRegionInstanceTemplateServiceAccount.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      shieldedInstanceConfigs:
-          Input.decodeList<GetRegionInstanceTemplateShieldedInstanceConfig>(
-              map['shieldedInstanceConfigs'],
-              (value) =>
-                  GetRegionInstanceTemplateShieldedInstanceConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      shieldedInstanceConfigs: pulumi.Input.decodeList<
+              GetRegionInstanceTemplateShieldedInstanceConfig>(
+          map['shieldedInstanceConfigs'],
+          (value) => GetRegionInstanceTemplateShieldedInstanceConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as List).cast<String>(),
       tagsFingerprint: map['tagsFingerprint'] as String,
     );

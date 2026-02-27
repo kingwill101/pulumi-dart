@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties_params_resource_manager_tag/restore_workload_compute_instance_restore_properties_params_resource_manager_tag.dart';
 
 class RestoreWorkloadComputeInstanceRestorePropertiesParams {
@@ -17,7 +17,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParams {
     final map = <String, dynamic>{};
     final resourceManagerTagsValue = resourceManagerTags;
     if (resourceManagerTagsValue != null) {
-      map['resourceManagerTags'] = Input.encodeList<
+      map['resourceManagerTags'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag,
           Map<String,
               dynamic>>(resourceManagerTagsValue, (value) => value.toMap());
@@ -30,7 +30,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParams {
     return RestoreWorkloadComputeInstanceRestorePropertiesParams(
       resourceManagerTags: map['resourceManagerTags'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag>(
               map['resourceManagerTags'],
               (value) =>

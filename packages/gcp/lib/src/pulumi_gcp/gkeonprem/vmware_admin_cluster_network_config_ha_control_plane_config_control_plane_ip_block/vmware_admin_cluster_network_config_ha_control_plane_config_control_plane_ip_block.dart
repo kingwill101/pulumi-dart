@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_admin_cluster_network_config_ha_control_plane_config_control_plane_ip_block_ip/vmware_admin_cluster_network_config_ha_control_plane_config_control_plane_ip_block_ip.dart';
 
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
@@ -25,7 +25,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['gateway'] = gateway;
-    map['ips'] = Input.encodeList<
+    map['ips'] = pulumi.Input.encodeList<
         VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp,
         Map<String, dynamic>>(ips, (value) => value.toMap());
     map['netmask'] = netmask;
@@ -36,7 +36,7 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
       Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock(
       gateway: map['gateway'] as String,
-      ips: Input.decodeList<
+      ips: pulumi.Input.decodeList<
               VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp>(
           map['ips'],
           (value) =>

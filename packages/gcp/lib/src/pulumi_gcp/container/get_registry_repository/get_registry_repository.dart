@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_registry_repository_args.dart';
 import 'get_registry_repository_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_registry_repository_result.dart';
 /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
 Future<GetRegistryRepositoryResult> getRegistryRepository(
   GetRegistryRepositoryArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:container/getRegistryRepository:getRegistryRepository',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryRepositoryResult.fromMap(result);
 }

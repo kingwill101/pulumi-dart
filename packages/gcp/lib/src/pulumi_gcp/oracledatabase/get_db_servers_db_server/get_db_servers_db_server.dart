@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_db_servers_db_server_property/get_db_servers_db_server_property.dart';
 
 class GetDbServersDbServer {
@@ -16,16 +16,15 @@ class GetDbServersDbServer {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['displayName'] = displayName;
-    map['properties'] =
-        Input.encodeList<GetDbServersDbServerProperty, Map<String, dynamic>>(
-            properties, (value) => value.toMap());
+    map['properties'] = pulumi.Input.encodeList<GetDbServersDbServerProperty,
+        Map<String, dynamic>>(properties, (value) => value.toMap());
     return map;
   }
 
   factory GetDbServersDbServer.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServer(
       displayName: map['displayName'] as String,
-      properties: Input.decodeList<GetDbServersDbServerProperty>(
+      properties: pulumi.Input.decodeList<GetDbServersDbServerProperty>(
           map['properties'],
           (value) => GetDbServersDbServerProperty.fromMap(
               (value as Map).cast<String, dynamic>())),

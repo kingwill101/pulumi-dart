@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_folders_folder/get_folders_folder.dart';
 
 /// Result data returned by getFolders.
@@ -20,8 +20,9 @@ class GetFoldersResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['folders'] = Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(
-        folders, (value) => value.toMap());
+    map['folders'] =
+        pulumi.Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(
+            folders, (value) => value.toMap());
     map['id'] = id;
     map['parentId'] = parentId;
     return map;
@@ -29,7 +30,7 @@ class GetFoldersResult {
 
   factory GetFoldersResult.fromMap(Map<String, dynamic> map) {
     return GetFoldersResult(
-      folders: Input.decodeList<GetFoldersFolder>(
+      folders: pulumi.Input.decodeList<GetFoldersFolder>(
           map['folders'],
           (value) =>
               GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>())),

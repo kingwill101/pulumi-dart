@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccessPolicy.
 class AccessPolicyArgs {
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// Format: 'organizations/{{organization_id}}'
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// Folder or project on which this policy is applicable.
   /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
-  final Input<String>? scopes;
+  final pulumi.Input<String>? scopes;
 
   /// Human readable title. Does not affect behavior.
-  final Input<String> title;
+  final pulumi.Input<String> title;
 
   AccessPolicyArgs({
     required this.parent,
@@ -34,9 +34,9 @@ class AccessPolicyArgs {
 
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
-      parent: Input.asInput<String>(map['parent']),
-      scopes: Input.asOptionalInput<String>(map['scopes']),
-      title: Input.asInput<String>(map['title']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      scopes: pulumi.Input.asOptionalInput<String>(map['scopes']),
+      title: pulumi.Input.asInput<String>(map['title']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_for_organization_orchestrated_resource/v2_policy_orchestrator_for_organization_orchestrated_resource.dart';
 import '../v2_policy_orchestrator_for_organization_orchestration_scope/v2_policy_orchestrator_for_organization_orchestration_scope.dart';
 import '../v2_policy_orchestrator_for_organization_orchestration_state/v2_policy_orchestrator_for_organization_orchestration_state.dart';
@@ -34,60 +34,63 @@ import 'v2_policy_orchestrator_for_organization_args.dart';
 /// ```sh
 /// $ pulumi import gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization default {{organization_id}}/{{policy_orchestrator_id}}
 /// ```
-class V2PolicyOrchestratorForOrganization extends CustomResource {
+class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
   /// Required. Action to be done by the orchestrator in
   /// `projects/{project_id}/zones/{zone_id}` locations defined by the
   /// `orchestration_scope`. Allowed values:
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
-  late final Output<String> action;
+  late final pulumi.Output<String> action;
 
   /// Output only. Timestamp when the policy orchestrator resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Freeform text describing the purpose of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Output only. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Immutable. Identifier. In form of
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
-  late final Output<V2PolicyOrchestratorForOrganizationOrchestratedResource>
+  late final pulumi
+      .Output<V2PolicyOrchestratorForOrganizationOrchestratedResource>
       orchestratedResource;
 
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  late final Output<V2PolicyOrchestratorForOrganizationOrchestrationScope?>
+  late final pulumi
+      .Output<V2PolicyOrchestratorForOrganizationOrchestrationScope?>
       orchestrationScope;
 
   /// Describes the state of the orchestration process.
   /// Structure is documented below.
-  late final Output<List<V2PolicyOrchestratorForOrganizationOrchestrationState>>
+  late final pulumi
+      .Output<List<V2PolicyOrchestratorForOrganizationOrchestrationState>>
       orchestrationStates;
 
   /// Part of `parent`. Required. The parent resource name in the form of:
   /// * `organizations/{organization_id}/locations/global`
   /// * `folders/{folder_id}/locations/global`
   /// * `projects/{project_id_or_number}/locations/global`
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> organizationId;
 
   /// Required. The logical identifier of the policy orchestrator, with the following
   /// restrictions:
@@ -96,15 +99,15 @@ class V2PolicyOrchestratorForOrganization extends CustomResource {
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the parent.
-  late final Output<String> policyOrchestratorId;
+  late final pulumi.Output<String> policyOrchestratorId;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. Set to true, if the there are ongoing changes being applied by the
   /// orchestrator.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
@@ -113,20 +116,20 @@ class V2PolicyOrchestratorForOrganization extends CustomResource {
   /// Note: There might be more states added in the future. We use string here
   /// instead of an enum, to avoid the need of propagating new states to all the
   /// client code.
-  late final Output<String?> state;
+  late final pulumi.Output<String?> state;
 
   /// Output only. Timestamp when the policy orchestrator resource was last modified.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   V2PolicyOrchestratorForOrganization(
     String name, {
     V2PolicyOrchestratorForOrganizationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<String>('action');
     this.createTime = registerOutput<String>('createTime');

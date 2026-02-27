@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_audio_processing_config_ambient_sound_config/app_audio_processing_config_ambient_sound_config.dart';
 import '../app_audio_processing_config_barge_in_config/app_audio_processing_config_barge_in_config.dart';
 import '../app_audio_processing_config_synthesize_speech_config/app_audio_processing_config_synthesize_speech_config.dart';
@@ -54,7 +54,7 @@ class AppAudioProcessingConfig {
     }
     final synthesizeSpeechConfigsValue = synthesizeSpeechConfigs;
     if (synthesizeSpeechConfigsValue != null) {
-      map['synthesizeSpeechConfigs'] = Input.encodeList<
+      map['synthesizeSpeechConfigs'] = pulumi.Input.encodeList<
               AppAudioProcessingConfigSynthesizeSpeechConfig,
               Map<String, dynamic>>(
           synthesizeSpeechConfigsValue, (value) => value.toMap());
@@ -77,7 +77,8 @@ class AppAudioProcessingConfig {
           : map['inactivityTimeout'] as String,
       synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null
           ? null
-          : Input.decodeList<AppAudioProcessingConfigSynthesizeSpeechConfig>(
+          : pulumi.Input.decodeList<
+                  AppAudioProcessingConfigSynthesizeSpeechConfig>(
               map['synthesizeSpeechConfigs'],
               (value) => AppAudioProcessingConfigSynthesizeSpeechConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

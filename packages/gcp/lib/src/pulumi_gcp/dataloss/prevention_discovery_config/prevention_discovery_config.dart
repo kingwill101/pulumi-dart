@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_discovery_config_action/prevention_discovery_config_action.dart';
 import '../prevention_discovery_config_error/prevention_discovery_config_error.dart';
 import '../prevention_discovery_config_org_config/prevention_discovery_config_org_config.dart';
@@ -34,67 +34,67 @@ import 'prevention_discovery_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig default {{parent}}/{{name}}
 /// ```
-class PreventionDiscoveryConfig extends CustomResource {
+class PreventionDiscoveryConfig extends pulumi.CustomResource {
   /// Actions to execute at the completion of scanning
   /// Structure is documented below.
-  late final Output<List<PreventionDiscoveryConfigAction>?> actions;
+  late final pulumi.Output<List<PreventionDiscoveryConfigAction>?> actions;
 
   /// Output only. The creation timestamp of a DiscoveryConfig.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Display Name (max 1000 Chars)
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
   /// Structure is documented below.
-  late final Output<List<PreventionDiscoveryConfigError>> errors;
+  late final pulumi.Output<List<PreventionDiscoveryConfigError>> errors;
 
   /// Detection logic for profile generation
-  late final Output<List<String>?> inspectTemplates;
+  late final pulumi.Output<List<String>?> inspectTemplates;
 
   /// Output only. The timestamp of the last time this config was executed
-  late final Output<String> lastRunTime;
+  late final pulumi.Output<String> lastRunTime;
 
   /// Location to create the discovery config in.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<PreventionDiscoveryConfigOrgConfig?> orgConfig;
+  late final pulumi.Output<PreventionDiscoveryConfigOrgConfig?> orgConfig;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<PreventionDiscoveryConfigOtherCloudStartingLocation?>
+  late final pulumi.Output<PreventionDiscoveryConfigOtherCloudStartingLocation?>
       otherCloudStartingLocation;
 
   /// The parent of the discovery config in any of the following formats:
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Required. A status for this configuration
   /// Possible values are: `RUNNING`, `PAUSED`.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// Target to match against for determining what to scan and how frequently
   /// Structure is documented below.
-  late final Output<List<PreventionDiscoveryConfigTarget>?> targets;
+  late final pulumi.Output<List<PreventionDiscoveryConfigTarget>?> targets;
 
   /// Output only. The last update timestamp of a DiscoveryConfig.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   PreventionDiscoveryConfig(
     String name, {
     PreventionDiscoveryConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.actions =
         registerOutput<List<PreventionDiscoveryConfigAction>?>('actions');

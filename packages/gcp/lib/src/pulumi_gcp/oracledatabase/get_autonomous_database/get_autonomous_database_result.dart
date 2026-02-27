@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_autonomous_database_property/get_autonomous_database_property.dart';
 import '../get_autonomous_database_source_config/get_autonomous_database_source_config.dart';
 
@@ -81,11 +81,11 @@ class GetAutonomousDatabaseResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['properties'] =
-        Input.encodeList<GetAutonomousDatabaseProperty, Map<String, dynamic>>(
-            properties, (value) => value.toMap());
+    map['properties'] = pulumi.Input.encodeList<GetAutonomousDatabaseProperty,
+        Map<String, dynamic>>(properties, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
-    map['sourceConfigs'] = Input.encodeList<GetAutonomousDatabaseSourceConfig,
+    map['sourceConfigs'] = pulumi.Input.encodeList<
+        GetAutonomousDatabaseSourceConfig,
         Map<String, dynamic>>(sourceConfigs, (value) => value.toMap());
     return map;
   }
@@ -113,12 +113,12 @@ class GetAutonomousDatabaseResult {
       peerAutonomousDatabases:
           (map['peerAutonomousDatabases'] as List).cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
-      properties: Input.decodeList<GetAutonomousDatabaseProperty>(
+      properties: pulumi.Input.decodeList<GetAutonomousDatabaseProperty>(
           map['properties'],
           (value) => GetAutonomousDatabaseProperty.fromMap(
               (value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      sourceConfigs: Input.decodeList<GetAutonomousDatabaseSourceConfig>(
+      sourceConfigs: pulumi.Input.decodeList<GetAutonomousDatabaseSourceConfig>(
           map['sourceConfigs'],
           (value) => GetAutonomousDatabaseSourceConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

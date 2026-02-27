@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_app_connector_principal_info_service_account/get_app_connector_principal_info_service_account.dart';
 
 class GetAppConnectorPrincipalInfo {
@@ -13,7 +13,7 @@ class GetAppConnectorPrincipalInfo {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['serviceAccounts'] = Input.encodeList<
+    map['serviceAccounts'] = pulumi.Input.encodeList<
         GetAppConnectorPrincipalInfoServiceAccount,
         Map<String, dynamic>>(serviceAccounts, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetAppConnectorPrincipalInfo {
   factory GetAppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
     return GetAppConnectorPrincipalInfo(
       serviceAccounts:
-          Input.decodeList<GetAppConnectorPrincipalInfoServiceAccount>(
+          pulumi.Input.decodeList<GetAppConnectorPrincipalInfoServiceAccount>(
               map['serviceAccounts'],
               (value) => GetAppConnectorPrincipalInfoServiceAccount.fromMap(
                   (value as Map).cast<String, dynamic>())),

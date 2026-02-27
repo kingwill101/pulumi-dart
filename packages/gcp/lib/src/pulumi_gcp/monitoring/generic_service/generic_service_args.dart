@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../generic_service_basic_service/generic_service_basic_service.dart';
 
 /// The set of arguments for GenericService.
@@ -9,18 +9,18 @@ class GenericServiceArgs {
   /// Valid values of service types and services labels are described at
   /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
   /// Structure is documented below.
-  final Input<GenericServiceBasicService>? basicService;
+  final pulumi.Input<GenericServiceBasicService>? basicService;
 
   /// Name used for UI elements listing this Service.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// An optional service ID to use. If not given, the server will generate a
   /// service ID.
-  final Input<String> serviceId;
+  final pulumi.Input<String> serviceId;
 
   /// Labels which have been used to annotate the service. Label keys must start
   /// with a letter. Label keys and values may contain lowercase letters,
@@ -28,7 +28,7 @@ class GenericServiceArgs {
   /// length of 63 characters, and must be less than 128 bytes in size. Up to 64
   /// label entries may be stored. For labels which do not have a semantic value,
   /// the empty string may be supplied for the label value.
-  final Input<Map<String, String>>? userLabels;
+  final pulumi.Input<Map<String, String>>? userLabels;
 
   GenericServiceArgs({
     this.basicService,
@@ -42,7 +42,7 @@ class GenericServiceArgs {
     final map = <String, dynamic>{};
     final basicServiceValue = basicService;
     if (basicServiceValue != null) {
-      map['basicService'] = Input.mapOptionalInputValue<
+      map['basicService'] = pulumi.Input.mapOptionalInputValue<
           GenericServiceBasicService,
           Map<String, dynamic>>(basicServiceValue, (value) => value.toMap());
     }
@@ -64,12 +64,13 @@ class GenericServiceArgs {
 
   factory GenericServiceArgs.fromMap(Map<String, dynamic> map) {
     return GenericServiceArgs(
-      basicService: Input.asOptionalInput<GenericServiceBasicService>(
+      basicService: pulumi.Input.asOptionalInput<GenericServiceBasicService>(
           map['basicService']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceId: Input.asInput<String>(map['serviceId']),
-      userLabels: Input.asOptionalInput<Map<String, String>>(map['userLabels']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceId: pulumi.Input.asInput<String>(map['serviceId']),
+      userLabels:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['userLabels']),
     );
   }
 }

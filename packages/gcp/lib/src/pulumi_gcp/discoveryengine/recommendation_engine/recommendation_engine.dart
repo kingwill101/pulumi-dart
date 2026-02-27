@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../recommendation_engine_common_config/recommendation_engine_common_config.dart';
 import '../recommendation_engine_media_recommendation_engine_config/recommendation_engine_media_recommendation_engine_config.dart';
 import 'recommendation_engine_args.dart';
@@ -46,59 +46,59 @@ import 'recommendation_engine_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{location}}/{{engine_id}}
 /// ```
-class RecommendationEngine extends CustomResource {
+class RecommendationEngine extends pulumi.CustomResource {
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
-  late final Output<RecommendationEngineCommonConfig?> commonConfig;
+  late final pulumi.Output<RecommendationEngineCommonConfig?> commonConfig;
 
   /// Timestamp the Engine was created at.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
-  late final Output<List<String>> dataStoreIds;
+  late final pulumi.Output<List<String>> dataStoreIds;
 
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Unique ID to use for Recommendation Engine.
-  late final Output<String> engineId;
+  late final pulumi.Output<String> engineId;
 
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`.
-  late final Output<String?> industryVertical;
+  late final pulumi.Output<String?> industryVertical;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Configurations for a Media Recommendation Engine. Only applicable on the data stores
   /// with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
   /// Structure is documented below.
-  late final Output<RecommendationEngineMediaRecommendationEngineConfig?>
+  late final pulumi.Output<RecommendationEngineMediaRecommendationEngineConfig?>
       mediaRecommendationEngineConfig;
 
   /// The unique full resource name of the recommendation engine. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Timestamp the Engine was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   RecommendationEngine(
     String name, {
     RecommendationEngineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/recommendationEngine:RecommendationEngine',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.commonConfig =
         registerOutput<RecommendationEngineCommonConfig?>('commonConfig');

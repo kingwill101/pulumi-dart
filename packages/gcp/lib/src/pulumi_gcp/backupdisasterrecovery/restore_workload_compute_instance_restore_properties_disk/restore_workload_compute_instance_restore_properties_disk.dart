@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties_disk_disk_encryption_key/restore_workload_compute_instance_restore_properties_disk_disk_encryption_key.dart';
 import '../restore_workload_compute_instance_restore_properties_disk_guest_os_feature/restore_workload_compute_instance_restore_properties_disk_guest_os_feature.dart';
 import '../restore_workload_compute_instance_restore_properties_disk_initialize_params/restore_workload_compute_instance_restore_properties_disk_initialize_params.dart';
@@ -115,7 +115,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisk {
     }
     final guestOsFeaturesValue = guestOsFeatures;
     if (guestOsFeaturesValue != null) {
-      map['guestOsFeatures'] = Input.encodeList<
+      map['guestOsFeatures'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature,
           Map<String, dynamic>>(guestOsFeaturesValue, (value) => value.toMap());
     }
@@ -172,7 +172,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisk {
       diskType: map['diskType'] == null ? null : map['diskType'] as String,
       guestOsFeatures: map['guestOsFeatures'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature>(
               map['guestOsFeatures'],
               (value) =>

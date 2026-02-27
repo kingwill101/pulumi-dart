@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_guardrail_llm_prompt_security_custom_policy_model_setting/app_version_snapshot_guardrail_llm_prompt_security_custom_policy_model_setting.dart';
 
 class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy {
@@ -57,7 +57,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy {
     }
     final modelSettingsValue = modelSettings;
     if (modelSettingsValue != null) {
-      map['modelSettings'] = Input.encodeList<
+      map['modelSettings'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting,
           Map<String, dynamic>>(modelSettingsValue, (value) => value.toMap());
     }
@@ -81,7 +81,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy {
           : map['maxConversationMessages'] as int,
       modelSettings: map['modelSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSetting>(
               map['modelSettings'],
               (value) =>

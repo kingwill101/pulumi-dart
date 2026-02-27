@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dashboard_args.dart';
 
 /// A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver web application.
@@ -38,23 +38,23 @@ import 'dashboard_args.dart';
 /// ```sh
 /// $ pulumi import gcp:monitoring/dashboard:Dashboard default {{dashboard_id}}
 /// ```
-class Dashboard extends CustomResource {
+class Dashboard extends pulumi.CustomResource {
   /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-  late final Output<String> dashboardJson;
+  late final pulumi.Output<String> dashboardJson;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   Dashboard(
     String name, {
     DashboardArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:monitoring/dashboard:Dashboard',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dashboardJson = registerOutput<String>('dashboardJson');
     this.project = registerOutput<String>('project');

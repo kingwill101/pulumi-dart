@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_application_aware_interconnect_bandwidth_percentage_policy/interconnect_application_aware_interconnect_bandwidth_percentage_policy.dart';
 import '../interconnect_application_aware_interconnect_shape_average_percentage/interconnect_application_aware_interconnect_shape_average_percentage.dart';
 
@@ -42,7 +42,7 @@ class InterconnectApplicationAwareInterconnect {
     }
     final shapeAveragePercentagesValue = shapeAveragePercentages;
     if (shapeAveragePercentagesValue != null) {
-      map['shapeAveragePercentages'] = Input.encodeList<
+      map['shapeAveragePercentages'] = pulumi.Input.encodeList<
               InterconnectApplicationAwareInterconnectShapeAveragePercentage,
               Map<String, dynamic>>(
           shapeAveragePercentagesValue, (value) => value.toMap());
@@ -67,7 +67,7 @@ class InterconnectApplicationAwareInterconnect {
           : map['profileDescription'] as String,
       shapeAveragePercentages: map['shapeAveragePercentages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterconnectApplicationAwareInterconnectShapeAveragePercentage>(
               map['shapeAveragePercentages'],
               (value) =>

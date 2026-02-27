@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_url_map_path_matcher_route_rule_match_rule_header_match/region_url_map_path_matcher_route_rule_match_rule_header_match.dart';
 import '../region_url_map_path_matcher_route_rule_match_rule_metadata_filter/region_url_map_path_matcher_route_rule_match_rule_metadata_filter.dart';
 import '../region_url_map_path_matcher_route_rule_match_rule_query_parameter_match/region_url_map_path_matcher_route_rule_match_rule_query_parameter_match.dart';
@@ -86,7 +86,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
     }
     final headerMatchesValue = headerMatches;
     if (headerMatchesValue != null) {
-      map['headerMatches'] = Input.encodeList<
+      map['headerMatches'] = pulumi.Input.encodeList<
           RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch,
           Map<String, dynamic>>(headerMatchesValue, (value) => value.toMap());
     }
@@ -96,7 +96,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
     }
     final metadataFiltersValue = metadataFilters;
     if (metadataFiltersValue != null) {
-      map['metadataFilters'] = Input.encodeList<
+      map['metadataFilters'] = pulumi.Input.encodeList<
           RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter,
           Map<String, dynamic>>(metadataFiltersValue, (value) => value.toMap());
     }
@@ -110,7 +110,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
     }
     final queryParameterMatchesValue = queryParameterMatches;
     if (queryParameterMatchesValue != null) {
-      map['queryParameterMatches'] = Input.encodeList<
+      map['queryParameterMatches'] = pulumi.Input.encodeList<
               RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch,
               Map<String, dynamic>>(
           queryParameterMatchesValue, (value) => value.toMap());
@@ -129,7 +129,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
           map['fullPathMatch'] == null ? null : map['fullPathMatch'] as String,
       headerMatches: map['headerMatches'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>(
               map['headerMatches'],
               (value) =>
@@ -138,7 +138,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
       ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
       metadataFilters: map['metadataFilters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>(
               map['metadataFilters'],
               (value) => RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter
@@ -150,7 +150,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
           map['prefixMatch'] == null ? null : map['prefixMatch'] as String,
       queryParameterMatches: map['queryParameterMatches'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>(
               map['queryParameterMatches'],
               (value) =>

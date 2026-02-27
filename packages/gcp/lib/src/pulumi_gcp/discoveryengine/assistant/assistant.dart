@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../assistant_customer_policy/assistant_customer_policy.dart';
 import '../assistant_generation_config/assistant_generation_config.dart';
 import 'assistant_args.dart';
@@ -40,59 +40,59 @@ import 'assistant_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/assistant:Assistant default {{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
 /// ```
-class Assistant extends CustomResource {
+class Assistant extends pulumi.CustomResource {
   /// The unique id of the assistant.
-  late final Output<String> assistantId;
+  late final pulumi.Output<String> assistantId;
 
   /// The unique id of the collection.
-  late final Output<String> collectionId;
+  late final pulumi.Output<String> collectionId;
 
   /// Customer policy for the assistant.
   /// Structure is documented below.
-  late final Output<AssistantCustomerPolicy?> customerPolicy;
+  late final pulumi.Output<AssistantCustomerPolicy?> customerPolicy;
 
   /// Description for additional information. Expected to be shown on the
   /// configuration UI, not to the users of the assistant.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The assistant display name.
   /// It must be a UTF-8 encoded string with a length limit of 128 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The unique id of the engine.
-  late final Output<String> engineId;
+  late final pulumi.Output<String> engineId;
 
   /// Configuration for the generation of the assistant response.
   /// Structure is documented below.
-  late final Output<AssistantGenerationConfig?> generationConfig;
+  late final pulumi.Output<AssistantGenerationConfig?> generationConfig;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Resource name of the assistant.
   /// Format:
   /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`
   /// It must be a UTF-8 encoded string with a length limit of 1024 characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The type of web grounding to use.
   /// The supported values: 'WEB_GROUNDING_TYPE_DISABLED', 'WEB_GROUNDING_TYPE_GOOGLE_SEARCH', 'WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH'.
-  late final Output<String?> webGroundingType;
+  late final pulumi.Output<String?> webGroundingType;
 
   Assistant(
     String name, {
     AssistantArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/assistant:Assistant',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assistantId = registerOutput<String>('assistantId');
     this.collectionId = registerOutput<String>('collectionId');

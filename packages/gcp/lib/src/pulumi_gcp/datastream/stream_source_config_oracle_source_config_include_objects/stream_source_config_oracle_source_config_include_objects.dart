@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_oracle_source_config_include_objects_oracle_schema/stream_source_config_oracle_source_config_include_objects_oracle_schema.dart';
 
 class StreamSourceConfigOracleSourceConfigIncludeObjects {
@@ -15,7 +15,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['oracleSchemas'] = Input.encodeList<
+    map['oracleSchemas'] = pulumi.Input.encodeList<
         StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema,
         Map<String, dynamic>>(oracleSchemas, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjects {
   factory StreamSourceConfigOracleSourceConfigIncludeObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamSourceConfigOracleSourceConfigIncludeObjects(
-      oracleSchemas: Input.decodeList<
+      oracleSchemas: pulumi.Input.decodeList<
               StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema>(
           map['oracleSchemas'],
           (value) =>

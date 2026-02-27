@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_orchestration_scope_selector/v2_policy_orchestrator_orchestration_scope_selector.dart';
 
 class V2PolicyOrchestratorOrchestrationScope {
@@ -20,7 +20,7 @@ class V2PolicyOrchestratorOrchestrationScope {
     final map = <String, dynamic>{};
     final selectorsValue = selectors;
     if (selectorsValue != null) {
-      map['selectors'] = Input.encodeList<
+      map['selectors'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorOrchestrationScopeSelector,
           Map<String, dynamic>>(selectorsValue, (value) => value.toMap());
     }
@@ -32,7 +32,8 @@ class V2PolicyOrchestratorOrchestrationScope {
     return V2PolicyOrchestratorOrchestrationScope(
       selectors: map['selectors'] == null
           ? null
-          : Input.decodeList<V2PolicyOrchestratorOrchestrationScopeSelector>(
+          : pulumi.Input.decodeList<
+                  V2PolicyOrchestratorOrchestrationScopeSelector>(
               map['selectors'],
               (value) => V2PolicyOrchestratorOrchestrationScopeSelector.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,3 +1,3 @@
 library module_redis_get_instance_persistence_config;
 
-export 'get_instance_persistence_config/get_instance_persistence_config2.dart';
+export 'get_instance_persistence_config/get_instance_persistence_config_redis.dart';

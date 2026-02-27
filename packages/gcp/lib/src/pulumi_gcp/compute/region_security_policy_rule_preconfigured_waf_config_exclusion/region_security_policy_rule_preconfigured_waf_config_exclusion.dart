@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_security_policy_rule_preconfigured_waf_config_exclusion_request_cooky/region_security_policy_rule_preconfigured_waf_config_exclusion_request_cooky.dart';
 import '../region_security_policy_rule_preconfigured_waf_config_exclusion_request_header/region_security_policy_rule_preconfigured_waf_config_exclusion_request_header.dart';
 import '../region_security_policy_rule_preconfigured_waf_config_exclusion_request_query_param/region_security_policy_rule_preconfigured_waf_config_exclusion_request_query_param.dart';
@@ -52,26 +52,26 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
     final map = <String, dynamic>{};
     final requestCookiesValue = requestCookies;
     if (requestCookiesValue != null) {
-      map['requestCookies'] = Input.encodeList<
+      map['requestCookies'] = pulumi.Input.encodeList<
           RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky,
           Map<String, dynamic>>(requestCookiesValue, (value) => value.toMap());
     }
     final requestHeadersValue = requestHeaders;
     if (requestHeadersValue != null) {
-      map['requestHeaders'] = Input.encodeList<
+      map['requestHeaders'] = pulumi.Input.encodeList<
           RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader,
           Map<String, dynamic>>(requestHeadersValue, (value) => value.toMap());
     }
     final requestQueryParamsValue = requestQueryParams;
     if (requestQueryParamsValue != null) {
-      map['requestQueryParams'] = Input.encodeList<
+      map['requestQueryParams'] = pulumi.Input.encodeList<
           RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam,
           Map<String,
               dynamic>>(requestQueryParamsValue, (value) => value.toMap());
     }
     final requestUrisValue = requestUris;
     if (requestUrisValue != null) {
-      map['requestUris'] = Input.encodeList<
+      map['requestUris'] = pulumi.Input.encodeList<
           RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri,
           Map<String, dynamic>>(requestUrisValue, (value) => value.toMap());
     }
@@ -88,7 +88,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
     return RegionSecurityPolicyRulePreconfiguredWafConfigExclusion(
       requestCookies: map['requestCookies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky>(
               map['requestCookies'],
               (value) =>
@@ -96,7 +96,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
                       .fromMap((value as Map).cast<String, dynamic>())),
       requestHeaders: map['requestHeaders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader>(
               map['requestHeaders'],
               (value) =>
@@ -104,7 +104,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
                       .fromMap((value as Map).cast<String, dynamic>())),
       requestQueryParams: map['requestQueryParams'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam>(
               map['requestQueryParams'],
               (value) =>
@@ -112,7 +112,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
                       .fromMap((value as Map).cast<String, dynamic>())),
       requestUris: map['requestUris'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri>(
               map['requestUris'],
               (value) =>

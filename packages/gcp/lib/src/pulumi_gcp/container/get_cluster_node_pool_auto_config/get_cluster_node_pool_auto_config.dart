@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_auto_config_linux_node_config/get_cluster_node_pool_auto_config_linux_node_config.dart';
 import '../get_cluster_node_pool_auto_config_network_tag/get_cluster_node_pool_auto_config_network_tag.dart';
 import '../get_cluster_node_pool_auto_config_node_kubelet_config/get_cluster_node_pool_auto_config_node_kubelet_config.dart';
@@ -27,13 +27,13 @@ class GetClusterNodePoolAutoConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['linuxNodeConfigs'] = Input.encodeList<
+    map['linuxNodeConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolAutoConfigLinuxNodeConfig,
         Map<String, dynamic>>(linuxNodeConfigs, (value) => value.toMap());
-    map['networkTags'] = Input.encodeList<
+    map['networkTags'] = pulumi.Input.encodeList<
         GetClusterNodePoolAutoConfigNetworkTag,
         Map<String, dynamic>>(networkTags, (value) => value.toMap());
-    map['nodeKubeletConfigs'] = Input.encodeList<
+    map['nodeKubeletConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolAutoConfigNodeKubeletConfig,
         Map<String, dynamic>>(nodeKubeletConfigs, (value) => value.toMap());
     map['resourceManagerTags'] = resourceManagerTags;
@@ -43,19 +43,20 @@ class GetClusterNodePoolAutoConfig {
   factory GetClusterNodePoolAutoConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolAutoConfig(
       linuxNodeConfigs:
-          Input.decodeList<GetClusterNodePoolAutoConfigLinuxNodeConfig>(
+          pulumi.Input.decodeList<GetClusterNodePoolAutoConfigLinuxNodeConfig>(
               map['linuxNodeConfigs'],
               (value) => GetClusterNodePoolAutoConfigLinuxNodeConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      networkTags: Input.decodeList<GetClusterNodePoolAutoConfigNetworkTag>(
-          map['networkTags'],
-          (value) => GetClusterNodePoolAutoConfigNetworkTag.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      nodeKubeletConfigs:
-          Input.decodeList<GetClusterNodePoolAutoConfigNodeKubeletConfig>(
-              map['nodeKubeletConfigs'],
-              (value) => GetClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(
+      networkTags:
+          pulumi.Input.decodeList<GetClusterNodePoolAutoConfigNetworkTag>(
+              map['networkTags'],
+              (value) => GetClusterNodePoolAutoConfigNetworkTag.fromMap(
                   (value as Map).cast<String, dynamic>())),
+      nodeKubeletConfigs: pulumi.Input.decodeList<
+              GetClusterNodePoolAutoConfigNodeKubeletConfig>(
+          map['nodeKubeletConfigs'],
+          (value) => GetClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       resourceManagerTags:
           (map['resourceManagerTags'] as Map).cast<String, String>(),
     );

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_workload_identity_pool_provider_x509_trust_store/get_workload_identity_pool_provider_x509_trust_store.dart';
 
 class GetWorkloadIdentityPoolProviderX509 {
@@ -17,7 +17,7 @@ class GetWorkloadIdentityPoolProviderX509 {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['trustStores'] = Input.encodeList<
+    map['trustStores'] = pulumi.Input.encodeList<
         GetWorkloadIdentityPoolProviderX509TrustStore,
         Map<String, dynamic>>(trustStores, (value) => value.toMap());
     return map;
@@ -26,11 +26,11 @@ class GetWorkloadIdentityPoolProviderX509 {
   factory GetWorkloadIdentityPoolProviderX509.fromMap(
       Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderX509(
-      trustStores:
-          Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStore>(
-              map['trustStores'],
-              (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      trustStores: pulumi.Input.decodeList<
+              GetWorkloadIdentityPoolProviderX509TrustStore>(
+          map['trustStores'],
+          (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

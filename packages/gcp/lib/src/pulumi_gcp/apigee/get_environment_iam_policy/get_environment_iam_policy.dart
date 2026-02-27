@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_environment_iam_policy_args.dart';
 import 'get_environment_iam_policy_result.dart';
 
 /// Retrieves the current IAM policy data for environment
 Future<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicy(
   GetEnvironmentIamPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentIamPolicyResult.fromMap(result);
 }

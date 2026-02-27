@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getManagedZones.
 class GetManagedZonesArgs {
   /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetManagedZonesArgs({
     this.project,
@@ -22,7 +22,7 @@ class GetManagedZonesArgs {
 
   factory GetManagedZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedZonesArgs(
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

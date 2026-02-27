@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_routers_router/get_routers_router.dart';
 
 /// Result data returned by getRouters.
@@ -23,8 +23,9 @@ class GetRoutersResult {
     map['id'] = id;
     map['project'] = project;
     map['region'] = region;
-    map['routers'] = Input.encodeList<GetRoutersRouter, Map<String, dynamic>>(
-        routers, (value) => value.toMap());
+    map['routers'] =
+        pulumi.Input.encodeList<GetRoutersRouter, Map<String, dynamic>>(
+            routers, (value) => value.toMap());
     return map;
   }
 
@@ -33,7 +34,7 @@ class GetRoutersResult {
       id: map['id'] as String,
       project: map['project'] as String,
       region: map['region'] as String,
-      routers: Input.decodeList<GetRoutersRouter>(
+      routers: pulumi.Input.decodeList<GetRoutersRouter>(
           map['routers'],
           (value) =>
               GetRoutersRouter.fromMap((value as Map).cast<String, dynamic>())),

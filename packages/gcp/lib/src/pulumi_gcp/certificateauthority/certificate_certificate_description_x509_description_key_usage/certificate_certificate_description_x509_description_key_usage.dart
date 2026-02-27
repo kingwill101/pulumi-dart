@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_certificate_description_x509_description_key_usage_base_key_usage/certificate_certificate_description_x509_description_key_usage_base_key_usage.dart';
 import '../certificate_certificate_description_x509_description_key_usage_extended_key_usage/certificate_certificate_description_x509_description_key_usage_extended_key_usage.dart';
 import '../certificate_certificate_description_x509_description_key_usage_unknown_extended_key_usage/certificate_certificate_description_x509_description_key_usage_unknown_extended_key_usage.dart';
@@ -34,20 +34,20 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage {
     final map = <String, dynamic>{};
     final baseKeyUsagesValue = baseKeyUsages;
     if (baseKeyUsagesValue != null) {
-      map['baseKeyUsages'] = Input.encodeList<
+      map['baseKeyUsages'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage,
           Map<String, dynamic>>(baseKeyUsagesValue, (value) => value.toMap());
     }
     final extendedKeyUsagesValue = extendedKeyUsages;
     if (extendedKeyUsagesValue != null) {
-      map['extendedKeyUsages'] = Input.encodeList<
+      map['extendedKeyUsages'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage,
           Map<String,
               dynamic>>(extendedKeyUsagesValue, (value) => value.toMap());
     }
     final unknownExtendedKeyUsagesValue = unknownExtendedKeyUsages;
     if (unknownExtendedKeyUsagesValue != null) {
-      map['unknownExtendedKeyUsages'] = Input.encodeList<
+      map['unknownExtendedKeyUsages'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage,
           Map<String,
               dynamic>>(unknownExtendedKeyUsagesValue, (value) => value.toMap());
@@ -60,7 +60,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage {
     return CertificateCertificateDescriptionX509DescriptionKeyUsage(
       baseKeyUsages: map['baseKeyUsages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage>(
               map['baseKeyUsages'],
               (value) =>
@@ -68,7 +68,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage {
                       .fromMap((value as Map).cast<String, dynamic>())),
       extendedKeyUsages: map['extendedKeyUsages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage>(
               map['extendedKeyUsages'],
               (value) =>
@@ -76,7 +76,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage {
                       .fromMap((value as Map).cast<String, dynamic>())),
       unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage>(
               map['unknownExtendedKeyUsages'],
               (value) =>

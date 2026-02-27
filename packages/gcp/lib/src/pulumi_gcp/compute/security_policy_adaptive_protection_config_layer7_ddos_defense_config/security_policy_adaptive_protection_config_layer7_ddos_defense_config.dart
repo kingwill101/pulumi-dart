@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config/security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config.dart';
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
@@ -33,7 +33,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
     }
     final thresholdConfigsValue = thresholdConfigs;
     if (thresholdConfigsValue != null) {
-      map['thresholdConfigs'] = Input.encodeList<
+      map['thresholdConfigs'] = pulumi.Input.encodeList<
           SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig,
           Map<String,
               dynamic>>(thresholdConfigsValue, (value) => value.toMap());
@@ -50,7 +50,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
           : map['ruleVisibility'] as String,
       thresholdConfigs: map['thresholdConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>(
               map['thresholdConfigs'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../auth_config_client_certificate/auth_config_client_certificate.dart';
 import '../auth_config_decrypted_credential/auth_config_decrypted_credential.dart';
 
@@ -8,36 +8,36 @@ import '../auth_config_decrypted_credential/auth_config_decrypted_credential.dar
 class AuthConfigArgs {
   /// Raw client certificate
   /// Structure is documented below.
-  final Input<AuthConfigClientCertificate>? clientCertificate;
+  final pulumi.Input<AuthConfigClientCertificate>? clientCertificate;
 
   /// Raw auth credentials.
   /// Structure is documented below.
-  final Input<AuthConfigDecryptedCredential>? decryptedCredential;
+  final pulumi.Input<AuthConfigDecryptedCredential>? decryptedCredential;
 
   /// A description of the auth config.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The name of the auth config.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final Input<List<String>>? expiryNotificationDurations;
+  final pulumi.Input<List<String>>? expiryNotificationDurations;
 
   /// Location in which client needs to be provisioned.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final Input<String>? overrideValidTime;
+  final pulumi.Input<String>? overrideValidTime;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The visibility of the auth config.
   /// Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
-  final Input<String>? visibility;
+  final pulumi.Input<String>? visibility;
 
   AuthConfigArgs({
     this.clientCertificate,
@@ -55,13 +55,13 @@ class AuthConfigArgs {
     final map = <String, dynamic>{};
     final clientCertificateValue = clientCertificate;
     if (clientCertificateValue != null) {
-      map['clientCertificate'] = Input.mapOptionalInputValue<
+      map['clientCertificate'] = pulumi.Input.mapOptionalInputValue<
               AuthConfigClientCertificate, Map<String, dynamic>>(
           clientCertificateValue, (value) => value.toMap());
     }
     final decryptedCredentialValue = decryptedCredential;
     if (decryptedCredentialValue != null) {
-      map['decryptedCredential'] = Input.mapOptionalInputValue<
+      map['decryptedCredential'] = pulumi.Input.mapOptionalInputValue<
               AuthConfigDecryptedCredential, Map<String, dynamic>>(
           decryptedCredentialValue, (value) => value.toMap());
     }
@@ -92,19 +92,21 @@ class AuthConfigArgs {
 
   factory AuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return AuthConfigArgs(
-      clientCertificate: Input.asOptionalInput<AuthConfigClientCertificate>(
-          map['clientCertificate']),
-      decryptedCredential: Input.asOptionalInput<AuthConfigDecryptedCredential>(
-          map['decryptedCredential']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      expiryNotificationDurations: Input.asOptionalInput<List<String>>(
+      clientCertificate:
+          pulumi.Input.asOptionalInput<AuthConfigClientCertificate>(
+              map['clientCertificate']),
+      decryptedCredential:
+          pulumi.Input.asOptionalInput<AuthConfigDecryptedCredential>(
+              map['decryptedCredential']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      expiryNotificationDurations: pulumi.Input.asOptionalInput<List<String>>(
           map['expiryNotificationDurations']),
-      location: Input.asInput<String>(map['location']),
+      location: pulumi.Input.asInput<String>(map['location']),
       overrideValidTime:
-          Input.asOptionalInput<String>(map['overrideValidTime']),
-      project: Input.asOptionalInput<String>(map['project']),
-      visibility: Input.asOptionalInput<String>(map['visibility']),
+          pulumi.Input.asOptionalInput<String>(map['overrideValidTime']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      visibility: pulumi.Input.asOptionalInput<String>(map['visibility']),
     );
   }
 }

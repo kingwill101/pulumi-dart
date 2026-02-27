@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWebRegionForwardingRuleServiceIamPolicy.
 class GetWebRegionForwardingRuleServiceIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> forwardingRuleRegionServiceName;
+  final pulumi.Input<String> forwardingRuleRegionServiceName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetWebRegionForwardingRuleServiceIamPolicyArgs({
     required this.forwardingRuleRegionServiceName,
@@ -40,9 +40,9 @@ class GetWebRegionForwardingRuleServiceIamPolicyArgs {
       Map<String, dynamic> map) {
     return GetWebRegionForwardingRuleServiceIamPolicyArgs(
       forwardingRuleRegionServiceName:
-          Input.asInput<String>(map['forwardingRuleRegionServiceName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['forwardingRuleRegionServiceName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

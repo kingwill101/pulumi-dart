@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../runtime_notebook_runtime_template_ref/runtime_notebook_runtime_template_ref.dart';
 import 'runtime_args.dart';
 
@@ -49,58 +49,58 @@ import 'runtime_args.dart';
 /// ```sh
 /// $ pulumi import gcp:colab/runtime:Runtime default {{location}}/{{name}}
 /// ```
-class Runtime extends CustomResource {
+class Runtime extends pulumi.CustomResource {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
-  late final Output<bool?> autoUpgrade;
+  late final pulumi.Output<bool?> autoUpgrade;
 
   /// The description of the Runtime.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
-  late final Output<String?> desiredState;
+  late final pulumi.Output<String?> desiredState;
 
   /// Required. The display name of the Runtime.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Output only. Timestamp when this NotebookRuntime will be expired.
-  late final Output<String> expirationTime;
+  late final pulumi.Output<String> expirationTime;
 
   /// Output only. Checks if the NotebookRuntime is upgradable.
-  late final Output<bool> isUpgradable;
+  late final pulumi.Output<bool> isUpgradable;
 
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the Runtime
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// 'Runtime specific information used for NotebookRuntime creation.'
   /// Structure is documented below.
-  late final Output<RuntimeNotebookRuntimeTemplateRef?>
+  late final pulumi.Output<RuntimeNotebookRuntimeTemplateRef?>
       notebookRuntimeTemplateRef;
 
   /// Output only. The type of the notebook runtime.
-  late final Output<String> notebookRuntimeType;
+  late final pulumi.Output<String> notebookRuntimeType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The user email of the NotebookRuntime.
-  late final Output<String> runtimeUser;
+  late final pulumi.Output<String> runtimeUser;
 
   /// Output only. The state of the runtime.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   Runtime(
     String name, {
     RuntimeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:colab/runtime:Runtime',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autoUpgrade = registerOutput<bool?>('autoUpgrade');
     this.description = registerOutput<String?>('description');

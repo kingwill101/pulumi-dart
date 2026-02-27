@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment_conditional_case/cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment_conditional_case.dart';
 import '../cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment_message/cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment_message.dart';
 import '../cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment_set_parameter_action/cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment_set_parameter_action.dart';
@@ -45,14 +45,14 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
     final map = <String, dynamic>{};
     final conditionalCasesValue = conditionalCases;
     if (conditionalCasesValue != null) {
-      map['conditionalCases'] = Input.encodeList<
+      map['conditionalCases'] = pulumi.Input.encodeList<
           CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase,
           Map<String,
               dynamic>>(conditionalCasesValue, (value) => value.toMap());
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] = Input.encodeList<
+      map['messages'] = pulumi.Input.encodeList<
           CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage,
           Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
@@ -62,7 +62,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
     }
     final setParameterActionsValue = setParameterActions;
     if (setParameterActionsValue != null) {
-      map['setParameterActions'] = Input.encodeList<
+      map['setParameterActions'] = pulumi.Input.encodeList<
           CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction,
           Map<String,
               dynamic>>(setParameterActionsValue, (value) => value.toMap());
@@ -83,7 +83,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillment(
       conditionalCases: map['conditionalCases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase>(
               map['conditionalCases'],
               (value) =>
@@ -91,7 +91,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
                       .fromMap((value as Map).cast<String, dynamic>())),
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage>(
               map['messages'],
               (value) =>
@@ -102,7 +102,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
           : map['returnPartialResponses'] as bool,
       setParameterActions: map['setParameterActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction>(
               map['setParameterActions'],
               (value) =>

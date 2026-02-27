@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_cluster_autoscaling_auto_provisioning_default_management_upgrade_option/get_cluster_cluster_autoscaling_auto_provisioning_default_management_upgrade_option.dart';
 
 class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
@@ -25,7 +25,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
     final map = <String, dynamic>{};
     map['autoRepair'] = autoRepair;
     map['autoUpgrade'] = autoUpgrade;
-    map['upgradeOptions'] = Input.encodeList<
+    map['upgradeOptions'] = pulumi.Input.encodeList<
         GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption,
         Map<String, dynamic>>(upgradeOptions, (value) => value.toMap());
     return map;
@@ -36,7 +36,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultManagement(
       autoRepair: map['autoRepair'] as bool,
       autoUpgrade: map['autoUpgrade'] as bool,
-      upgradeOptions: Input.decodeList<
+      upgradeOptions: pulumi.Input.decodeList<
               GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption>(
           map['upgradeOptions'],
           (value) =>

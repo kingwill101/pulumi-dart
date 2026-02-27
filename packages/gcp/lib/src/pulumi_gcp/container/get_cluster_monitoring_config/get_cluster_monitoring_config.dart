@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_monitoring_config_advanced_datapath_observability_config/get_cluster_monitoring_config_advanced_datapath_observability_config.dart';
 import '../get_cluster_monitoring_config_managed_prometheus/get_cluster_monitoring_config_managed_prometheus.dart';
 
@@ -23,12 +23,12 @@ class GetClusterMonitoringConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['advancedDatapathObservabilityConfigs'] = Input.encodeList<
+    map['advancedDatapathObservabilityConfigs'] = pulumi.Input.encodeList<
             GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig,
             Map<String, dynamic>>(
         advancedDatapathObservabilityConfigs, (value) => value.toMap());
     map['enableComponents'] = enableComponents;
-    map['managedPrometheuses'] = Input.encodeList<
+    map['managedPrometheuses'] = pulumi.Input.encodeList<
         GetClusterMonitoringConfigManagedPrometheus,
         Map<String, dynamic>>(managedPrometheuses, (value) => value.toMap());
     return map;
@@ -36,7 +36,7 @@ class GetClusterMonitoringConfig {
 
   factory GetClusterMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterMonitoringConfig(
-      advancedDatapathObservabilityConfigs: Input.decodeList<
+      advancedDatapathObservabilityConfigs: pulumi.Input.decodeList<
               GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig>(
           map['advancedDatapathObservabilityConfigs'],
           (value) =>
@@ -44,7 +44,7 @@ class GetClusterMonitoringConfig {
                   .fromMap((value as Map).cast<String, dynamic>())),
       enableComponents: (map['enableComponents'] as List).cast<String>(),
       managedPrometheuses:
-          Input.decodeList<GetClusterMonitoringConfigManagedPrometheus>(
+          pulumi.Input.decodeList<GetClusterMonitoringConfigManagedPrometheus>(
               map['managedPrometheuses'],
               (value) => GetClusterMonitoringConfigManagedPrometheus.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plugin_config_template_additional_config_template/plugin_config_template_additional_config_template.dart';
 import '../plugin_config_template_auth_config_template/plugin_config_template_auth_config_template.dart';
 
@@ -24,7 +24,7 @@ class PluginConfigTemplate {
     final map = <String, dynamic>{};
     final additionalConfigTemplatesValue = additionalConfigTemplates;
     if (additionalConfigTemplatesValue != null) {
-      map['additionalConfigTemplates'] = Input.encodeList<
+      map['additionalConfigTemplates'] = pulumi.Input.encodeList<
               PluginConfigTemplateAdditionalConfigTemplate,
               Map<String, dynamic>>(
           additionalConfigTemplatesValue, (value) => value.toMap());
@@ -40,7 +40,8 @@ class PluginConfigTemplate {
     return PluginConfigTemplate(
       additionalConfigTemplates: map['additionalConfigTemplates'] == null
           ? null
-          : Input.decodeList<PluginConfigTemplateAdditionalConfigTemplate>(
+          : pulumi.Input.decodeList<
+                  PluginConfigTemplateAdditionalConfigTemplate>(
               map['additionalConfigTemplates'],
               (value) => PluginConfigTemplateAdditionalConfigTemplate.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_application_attribute/get_application_attribute.dart';
 import '../get_application_scope/get_application_scope.dart';
 
@@ -42,7 +42,7 @@ class GetApplicationResult {
     final map = <String, dynamic>{};
     map['applicationId'] = applicationId;
     map['attributes'] =
-        Input.encodeList<GetApplicationAttribute, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetApplicationAttribute, Map<String, dynamic>>(
             attributes, (value) => value.toMap());
     map['createTime'] = createTime;
     map['description'] = description;
@@ -51,8 +51,9 @@ class GetApplicationResult {
     map['location'] = location;
     map['name'] = name;
     map['project'] = project;
-    map['scopes'] = Input.encodeList<GetApplicationScope, Map<String, dynamic>>(
-        scopes, (value) => value.toMap());
+    map['scopes'] =
+        pulumi.Input.encodeList<GetApplicationScope, Map<String, dynamic>>(
+            scopes, (value) => value.toMap());
     map['state'] = state;
     map['uid'] = uid;
     map['updateTime'] = updateTime;
@@ -62,7 +63,7 @@ class GetApplicationResult {
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
       applicationId: map['applicationId'] as String,
-      attributes: Input.decodeList<GetApplicationAttribute>(
+      attributes: pulumi.Input.decodeList<GetApplicationAttribute>(
           map['attributes'],
           (value) => GetApplicationAttribute.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -73,7 +74,7 @@ class GetApplicationResult {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] as String,
-      scopes: Input.decodeList<GetApplicationScope>(
+      scopes: pulumi.Input.decodeList<GetApplicationScope>(
           map['scopes'],
           (value) => GetApplicationScope.fromMap(
               (value as Map).cast<String, dynamic>())),

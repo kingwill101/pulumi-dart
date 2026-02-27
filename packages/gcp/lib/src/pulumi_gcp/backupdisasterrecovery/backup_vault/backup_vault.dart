@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_vault_encryption_config/backup_vault_encryption_config.dart';
 import 'backup_vault_args.dart';
 
@@ -40,56 +40,56 @@ import 'backup_vault_args.dart';
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
 /// ```
-class BackupVault extends CustomResource {
+class BackupVault extends pulumi.CustomResource {
   /// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
   /// Default value is `WITHIN_ORGANIZATION`.
   /// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
-  late final Output<String?> accessRestriction;
+  late final pulumi.Output<String?> accessRestriction;
 
   /// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
-  late final Output<bool?> allowMissing;
+  late final pulumi.Output<bool?> allowMissing;
 
   /// Optional. User annotations. See https://google.aip.dev/128#annotations
   /// Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Output only. The number of backups in this backup vault.
-  late final Output<String> backupCount;
+  late final pulumi.Output<String> backupCount;
 
   /// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
-  late final Output<String> backupMinimumEnforcedRetentionDuration;
+  late final pulumi.Output<String> backupMinimumEnforcedRetentionDuration;
 
   /// How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
   /// Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
-  late final Output<String?> backupRetentionInheritance;
+  late final pulumi.Output<String?> backupRetentionInheritance;
 
   /// Required. ID of the requesting object.
-  late final Output<String> backupVaultId;
+  late final pulumi.Output<String> backupVaultId;
 
   /// Output only. The time when the instance was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Output only. Set to true when there are no backups nested under this resource.
-  late final Output<bool> deletable;
+  late final pulumi.Output<bool> deletable;
 
   /// Optional. The description of the BackupVault instance (2048 characters or less).
-  late final Output<String?> description;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> description;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. Time after which the BackupVault resource is locked.
-  late final Output<String?> effectiveTime;
+  late final pulumi.Output<String?> effectiveTime;
 
   /// Encryption configuration for the backup vault.
   /// Structure is documented below.
-  late final Output<BackupVaultEncryptionConfig?> encryptionConfig;
+  late final pulumi.Output<BackupVaultEncryptionConfig?> encryptionConfig;
 
   /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// (Optional, Deprecated)
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -97,43 +97,43 @@ class BackupVault extends CustomResource {
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
   ///
   /// > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
-  late final Output<bool?> forceDelete;
+  late final pulumi.Output<bool?> forceDelete;
 
   /// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
   /// the restriction against conflicting retention periods. This conflict may occur when the
   /// expiration schedule defined by the associated backup plan is shorter than the minimum
   /// retention set by the backup vault.
-  late final Output<bool?> forceUpdate;
+  late final pulumi.Output<bool?> forceUpdate;
 
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
-  late final Output<bool?> ignoreBackupPlanReferences;
+  late final pulumi.Output<bool?> ignoreBackupPlanReferences;
 
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
-  late final Output<bool?> ignoreInactiveDatasources;
+  late final pulumi.Output<bool?> ignoreInactiveDatasources;
 
   /// Optional. Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The GCP location for the backup vault.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Output only. Identifier. The resource name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. Service account used by the BackupVault Service for this BackupVault.  The user should grant this account permissions in their workload project to enable the service to run backups and restores there.
-  late final Output<String> serviceAccount;
+  late final pulumi.Output<String> serviceAccount;
 
   /// Output only. The BackupVault resource instance state.
   /// Possible values:
@@ -142,26 +142,26 @@ class BackupVault extends CustomResource {
   /// ACTIVE
   /// DELETING
   /// ERROR
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. Total size of the storage used by all backup resources.
-  late final Output<String> totalStoredBytes;
+  late final pulumi.Output<String> totalStoredBytes;
 
   /// Output only. Output only Immutable after resource creation until resource deletion.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The time when the instance was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BackupVault(
     String name, {
     BackupVaultArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:backupdisasterrecovery/backupVault:BackupVault',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessRestriction = registerOutput<String?>('accessRestriction');
     this.allowMissing = registerOutput<bool?>('allowMissing');

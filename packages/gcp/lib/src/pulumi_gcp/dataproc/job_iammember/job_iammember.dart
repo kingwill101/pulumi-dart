@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_iammember_condition/job_iammember_condition.dart';
 import 'job_iammember_args.dart';
 
@@ -61,12 +61,12 @@ import 'job_iammember_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember default "projects/{project}/regions/{region}/jobs/{job_id}"
 /// ```
-class JobIAMMember extends CustomResource {
-  late final Output<JobIAMMemberCondition?> condition;
+class JobIAMMember extends pulumi.CustomResource {
+  late final pulumi.Output<JobIAMMemberCondition?> condition;
 
   /// (Computed) The etag of the jobs's IAM policy.
-  late final Output<String> etag;
-  late final Output<String> jobId;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> jobId;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -76,32 +76,32 @@ class JobIAMMember extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The project in which the job belongs. If it
   /// is not provided, the provider will use a default.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region in which the job belongs. If it
   /// is not provided, the provider will use a default.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The role that should be applied. Only one
   /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   ///
   /// `gcp.dataproc.JobIAMPolicy` only:
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   JobIAMMember(
     String name, {
     JobIAMMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataproc/jobIAMMember:JobIAMMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<JobIAMMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');

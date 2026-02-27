@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../target_anthos_cluster/target_anthos_cluster.dart';
 import '../target_associated_entity/target_associated_entity.dart';
 import '../target_custom_target/target_custom_target.dart';
@@ -15,56 +15,56 @@ class TargetArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Information specifying an Anthos Cluster.
-  final Input<TargetAnthosCluster>? anthosCluster;
+  final pulumi.Input<TargetAnthosCluster>? anthosCluster;
 
   /// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-  final Input<List<TargetAssociatedEntity>>? associatedEntities;
+  final pulumi.Input<List<TargetAssociatedEntity>>? associatedEntities;
 
   /// Optional. Information specifying a Custom Target.
-  final Input<TargetCustomTarget>? customTarget;
+  final pulumi.Input<TargetCustomTarget>? customTarget;
 
   /// Optional. The deploy parameters to use for this target.
-  final Input<Map<String, String>>? deployParameters;
+  final pulumi.Input<Map<String, String>>? deployParameters;
 
   /// Optional. Description of the `Target`. Max length is 255 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-  final Input<List<TargetExecutionConfig>>? executionConfigs;
+  final pulumi.Input<List<TargetExecutionConfig>>? executionConfigs;
 
   /// Information specifying a GKE Cluster.
-  final Input<TargetGke>? gke;
+  final pulumi.Input<TargetGke>? gke;
 
   /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Information specifying a multiTarget.
-  final Input<TargetMultiTarget>? multiTarget;
+  final pulumi.Input<TargetMultiTarget>? multiTarget;
 
   /// Name of the `Target`. Format is `a-z?`.
   ///
   ///
   ///
   /// - - -
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Optional. Whether or not the `Target` requires approval.
-  final Input<bool>? requireApproval;
+  final pulumi.Input<bool>? requireApproval;
 
   /// Information specifying a Cloud Run deployment target.
-  final Input<TargetRun>? run;
+  final pulumi.Input<TargetRun>? run;
 
   TargetArgs({
     this.annotations,
@@ -92,23 +92,23 @@ class TargetArgs {
     }
     final anthosClusterValue = anthosCluster;
     if (anthosClusterValue != null) {
-      map['anthosCluster'] = Input.mapOptionalInputValue<TargetAnthosCluster,
+      map['anthosCluster'] = pulumi.Input.mapOptionalInputValue<
+          TargetAnthosCluster,
           Map<String, dynamic>>(anthosClusterValue, (value) => value.toMap());
     }
     final associatedEntitiesValue = associatedEntities;
     if (associatedEntitiesValue != null) {
-      map['associatedEntities'] = Input.mapOptionalInputValue<
+      map['associatedEntities'] = pulumi.Input.mapOptionalInputValue<
               List<TargetAssociatedEntity>, List<Map<String, dynamic>>>(
           associatedEntitiesValue,
-          (value) =>
-              Input.encodeList<TargetAssociatedEntity, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<TargetAssociatedEntity,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final customTargetValue = customTarget;
     if (customTargetValue != null) {
-      map['customTarget'] =
-          Input.mapOptionalInputValue<TargetCustomTarget, Map<String, dynamic>>(
-              customTargetValue, (value) => value.toMap());
+      map['customTarget'] = pulumi.Input.mapOptionalInputValue<
+          TargetCustomTarget,
+          Map<String, dynamic>>(customTargetValue, (value) => value.toMap());
     }
     final deployParametersValue = deployParameters;
     if (deployParametersValue != null) {
@@ -120,17 +120,17 @@ class TargetArgs {
     }
     final executionConfigsValue = executionConfigs;
     if (executionConfigsValue != null) {
-      map['executionConfigs'] = Input.mapOptionalInputValue<
+      map['executionConfigs'] = pulumi.Input.mapOptionalInputValue<
               List<TargetExecutionConfig>, List<Map<String, dynamic>>>(
           executionConfigsValue,
-          (value) =>
-              Input.encodeList<TargetExecutionConfig, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<TargetExecutionConfig,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final gkeValue = gke;
     if (gkeValue != null) {
-      map['gke'] = Input.mapOptionalInputValue<TargetGke, Map<String, dynamic>>(
-          gkeValue, (value) => value.toMap());
+      map['gke'] =
+          pulumi.Input.mapOptionalInputValue<TargetGke, Map<String, dynamic>>(
+              gkeValue, (value) => value.toMap());
     }
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -139,9 +139,8 @@ class TargetArgs {
     map['location'] = location;
     final multiTargetValue = multiTarget;
     if (multiTargetValue != null) {
-      map['multiTarget'] =
-          Input.mapOptionalInputValue<TargetMultiTarget, Map<String, dynamic>>(
-              multiTargetValue, (value) => value.toMap());
+      map['multiTarget'] = pulumi.Input.mapOptionalInputValue<TargetMultiTarget,
+          Map<String, dynamic>>(multiTargetValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -157,8 +156,9 @@ class TargetArgs {
     }
     final runValue = run;
     if (runValue != null) {
-      map['run'] = Input.mapOptionalInputValue<TargetRun, Map<String, dynamic>>(
-          runValue, (value) => value.toMap());
+      map['run'] =
+          pulumi.Input.mapOptionalInputValue<TargetRun, Map<String, dynamic>>(
+              runValue, (value) => value.toMap());
     }
     return map;
   }
@@ -166,26 +166,30 @@ class TargetArgs {
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      anthosCluster:
-          Input.asOptionalInput<TargetAnthosCluster>(map['anthosCluster']),
-      associatedEntities: Input.asOptionalInput<List<TargetAssociatedEntity>>(
-          map['associatedEntities']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      anthosCluster: pulumi.Input.asOptionalInput<TargetAnthosCluster>(
+          map['anthosCluster']),
+      associatedEntities:
+          pulumi.Input.asOptionalInput<List<TargetAssociatedEntity>>(
+              map['associatedEntities']),
       customTarget:
-          Input.asOptionalInput<TargetCustomTarget>(map['customTarget']),
-      deployParameters:
-          Input.asOptionalInput<Map<String, String>>(map['deployParameters']),
-      description: Input.asOptionalInput<String>(map['description']),
-      executionConfigs: Input.asOptionalInput<List<TargetExecutionConfig>>(
-          map['executionConfigs']),
-      gke: Input.asOptionalInput<TargetGke>(map['gke']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      multiTarget: Input.asOptionalInput<TargetMultiTarget>(map['multiTarget']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requireApproval: Input.asOptionalInput<bool>(map['requireApproval']),
-      run: Input.asOptionalInput<TargetRun>(map['run']),
+          pulumi.Input.asOptionalInput<TargetCustomTarget>(map['customTarget']),
+      deployParameters: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['deployParameters']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      executionConfigs:
+          pulumi.Input.asOptionalInput<List<TargetExecutionConfig>>(
+              map['executionConfigs']),
+      gke: pulumi.Input.asOptionalInput<TargetGke>(map['gke']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      multiTarget:
+          pulumi.Input.asOptionalInput<TargetMultiTarget>(map['multiTarget']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requireApproval:
+          pulumi.Input.asOptionalInput<bool>(map['requireApproval']),
+      run: pulumi.Input.asOptionalInput<TargetRun>(map['run']),
     );
   }
 }

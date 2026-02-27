@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ManagementOrganizationEventThreatDetectionCustomModule.
 class ManagementOrganizationEventThreatDetectionCustomModuleArgs {
   /// Config for the module. For the resident module, its config value is defined at this level.
   /// For the inherited module, its config value is inherited from the ancestor module.
-  final Input<String>? config;
+  final pulumi.Input<String>? config;
 
   /// The human readable name to be displayed for the module.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The state of enablement for the module at the given level of the hierarchy.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final Input<String>? enablementState;
+  final pulumi.Input<String>? enablementState;
 
   /// Location ID of the parent organization. Only global is supported at the moment.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Numerical ID of the parent organization.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   /// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   ManagementOrganizationEventThreatDetectionCustomModuleArgs({
     this.config,
@@ -62,12 +62,13 @@ class ManagementOrganizationEventThreatDetectionCustomModuleArgs {
   factory ManagementOrganizationEventThreatDetectionCustomModuleArgs.fromMap(
       Map<String, dynamic> map) {
     return ManagementOrganizationEventThreatDetectionCustomModuleArgs(
-      config: Input.asOptionalInput<String>(map['config']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      enablementState: Input.asOptionalInput<String>(map['enablementState']),
-      location: Input.asOptionalInput<String>(map['location']),
-      organization: Input.asInput<String>(map['organization']),
-      type: Input.asOptionalInput<String>(map['type']),
+      config: pulumi.Input.asOptionalInput<String>(map['config']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      enablementState:
+          pulumi.Input.asOptionalInput<String>(map['enablementState']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

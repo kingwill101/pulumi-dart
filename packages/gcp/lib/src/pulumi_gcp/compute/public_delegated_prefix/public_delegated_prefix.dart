@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../public_delegated_prefix_public_delegated_sub_prefix/public_delegated_prefix_public_delegated_sub_prefix.dart';
 import 'public_delegated_prefix_args.dart';
 
@@ -59,20 +59,20 @@ import 'public_delegated_prefix_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
 /// ```
-class PublicDelegatedPrefix extends CustomResource {
+class PublicDelegatedPrefix extends pulumi.CustomResource {
   /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
-  late final Output<int> allocatablePrefixLength;
+  late final pulumi.Output<int> allocatablePrefixLength;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// (Output)
   /// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
   /// Applicable for IPv4 sub-PDPs only.
-  late final Output<bool> enableEnhancedIpv4Allocation;
+  late final pulumi.Output<bool> enableEnhancedIpv4Allocation;
 
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
-  late final Output<String> ipCidrRange;
+  late final pulumi.Output<String> ipCidrRange;
 
   /// (Output)
   /// The internet access type for IPv6 Public Delegated Prefixes. Inherited
@@ -82,10 +82,10 @@ class PublicDelegatedPrefix extends CustomResource {
   /// * INTERNAL: The prefix won’t be announced to the internet. Prefix will
   /// be used privately within Google Cloud. All children PDPs will have
   /// access type as INTERNAL.
-  late final Output<String> ipv6AccessType;
+  late final pulumi.Output<String> ipv6AccessType;
 
   /// If true, the prefix will be live migrated.
-  late final Output<bool?> isLiveMigration;
+  late final pulumi.Output<bool?> isLiveMigration;
 
   /// Specifies the mode of this IPv6 PDP. MODE must be one of:
   /// * DELEGATION
@@ -93,7 +93,7 @@ class PublicDelegatedPrefix extends CustomResource {
   /// * EXTERNAL_IPV6_SUBNETWORK_CREATION
   /// * INTERNAL_IPV6_SUBNETWORK_CREATION
   /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
-  late final Output<String?> mode;
+  late final pulumi.Output<String?> mode;
 
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -101,37 +101,37 @@ class PublicDelegatedPrefix extends CustomResource {
   /// which means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
-  late final Output<String> parentPrefix;
+  late final pulumi.Output<String> parentPrefix;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// List of sub public delegated fixes for BYO IP functionality.
   /// Each item in this array represents a sub prefix that can be
   /// used to create addresses or further allocations.
   /// Structure is documented below.
-  late final Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>
+  late final pulumi.Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>
       publicDelegatedSubPrefixs;
 
   /// A region where the prefix will reside.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   PublicDelegatedPrefix(
     String name, {
     PublicDelegatedPrefixArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allocatablePrefixLength =
         registerOutput<int>('allocatablePrefixLength');

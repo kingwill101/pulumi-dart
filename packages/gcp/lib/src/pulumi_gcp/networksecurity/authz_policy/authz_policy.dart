@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authz_policy_custom_provider/authz_policy_custom_provider.dart';
 import '../authz_policy_http_rule/authz_policy_http_rule.dart';
 import '../authz_policy_target/authz_policy_target.dart';
@@ -42,7 +42,7 @@ import 'authz_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/authzPolicy:AuthzPolicy default {{name}}
 /// ```
-class AuthzPolicy extends CustomResource {
+class AuthzPolicy extends pulumi.CustomResource {
   /// When the action is CUSTOM, customProvider must be specified.
   /// When the action is ALLOW, only requests matching the policy will be allowed.
   /// When the action is DENY, only requests matching the policy will be denied.
@@ -52,62 +52,62 @@ class AuthzPolicy extends CustomResource {
   /// 3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
   /// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
   /// Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
-  late final Output<String> action;
+  late final pulumi.Output<String> action;
 
   /// The timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
   /// Structure is documented below.
-  late final Output<AuthzPolicyCustomProvider?> customProvider;
+  late final pulumi.Output<AuthzPolicyCustomProvider?> customProvider;
 
   /// A human-readable description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
   /// Limited to 5 rules.
   /// Structure is documented below.
-  late final Output<List<AuthzPolicyHttpRule>?> httpRules;
+  late final pulumi.Output<List<AuthzPolicyHttpRule>?> httpRules;
 
   /// Set of labels associated with the AuthzExtension resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. Name of the AuthzPolicy resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Specifies the set of resources to which this policy should be applied to.
   /// Structure is documented below.
-  late final Output<AuthzPolicyTarget> target;
+  late final pulumi.Output<AuthzPolicyTarget> target;
 
   /// The timestamp when the resource was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AuthzPolicy(
     String name, {
     AuthzPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/authzPolicy:AuthzPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<String>('action');
     this.createTime = registerOutput<String>('createTime');

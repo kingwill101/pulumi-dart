@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_config_linux_node_config_hugepages_config/get_cluster_node_config_linux_node_config_hugepages_config.dart';
 import '../get_cluster_node_config_linux_node_config_node_kernel_module_loading/get_cluster_node_config_linux_node_config_node_kernel_module_loading.dart';
 
@@ -37,10 +37,10 @@ class GetClusterNodeConfigLinuxNodeConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['cgroupMode'] = cgroupMode;
-    map['hugepagesConfigs'] = Input.encodeList<
+    map['hugepagesConfigs'] = pulumi.Input.encodeList<
         GetClusterNodeConfigLinuxNodeConfigHugepagesConfig,
         Map<String, dynamic>>(hugepagesConfigs, (value) => value.toMap());
-    map['nodeKernelModuleLoadings'] = Input.encodeList<
+    map['nodeKernelModuleLoadings'] = pulumi.Input.encodeList<
             GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading,
             Map<String, dynamic>>(
         nodeKernelModuleLoadings, (value) => value.toMap());
@@ -54,13 +54,12 @@ class GetClusterNodeConfigLinuxNodeConfig {
       Map<String, dynamic> map) {
     return GetClusterNodeConfigLinuxNodeConfig(
       cgroupMode: map['cgroupMode'] as String,
-      hugepagesConfigs:
-          Input.decodeList<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig>(
-              map['hugepagesConfigs'],
-              (value) =>
-                  GetClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      nodeKernelModuleLoadings: Input.decodeList<
+      hugepagesConfigs: pulumi.Input.decodeList<
+              GetClusterNodeConfigLinuxNodeConfigHugepagesConfig>(
+          map['hugepagesConfigs'],
+          (value) => GetClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      nodeKernelModuleLoadings: pulumi.Input.decodeList<
               GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading>(
           map['nodeKernelModuleLoadings'],
           (value) => GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading

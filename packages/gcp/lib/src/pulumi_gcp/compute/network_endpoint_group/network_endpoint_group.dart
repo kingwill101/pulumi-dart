@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_endpoint_group_args.dart';
 
 /// Network endpoint groups (NEGs) are zonal resources that represent
@@ -63,17 +63,17 @@ import 'network_endpoint_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
 /// ```
-class NetworkEndpointGroup extends CustomResource {
+class NetworkEndpointGroup extends pulumi.CustomResource {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
-  late final Output<int?> defaultPort;
+  late final pulumi.Output<int?> defaultPort;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The uniquely generated identifier for the resource. This identifier is defined by the server.
-  late final Output<int> generatedId;
+  late final pulumi.Output<int> generatedId;
 
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -82,11 +82,11 @@ class NetworkEndpointGroup extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network to which all network endpoints in the NEG belong.
   /// Uses "default" project network if unspecified.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// Type of network endpoints in this network endpoint group.
   /// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -98,33 +98,33 @@ class NetworkEndpointGroup extends CustomResource {
   /// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT.
   /// Default value is `GCE_VM_IP_PORT`.
   /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
-  late final Output<String?> networkEndpointType;
+  late final pulumi.Output<String?> networkEndpointType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Number of network endpoints in the network endpoint group.
-  late final Output<int> size;
+  late final pulumi.Output<int> size;
 
   /// Optional subnetwork to which all network endpoints in the NEG belong.
-  late final Output<String?> subnetwork;
+  late final pulumi.Output<String?> subnetwork;
 
   /// Zone where the network endpoint group is located.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   NetworkEndpointGroup(
     String name, {
     NetworkEndpointGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkEndpointGroup:NetworkEndpointGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.defaultPort = registerOutput<int?>('defaultPort');
     this.description = registerOutput<String?>('description');

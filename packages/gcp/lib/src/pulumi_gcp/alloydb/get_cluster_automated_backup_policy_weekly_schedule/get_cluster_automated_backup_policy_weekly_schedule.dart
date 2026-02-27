@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_automated_backup_policy_weekly_schedule_start_time/get_cluster_automated_backup_policy_weekly_schedule_start_time.dart';
 
 class GetClusterAutomatedBackupPolicyWeeklySchedule {
@@ -18,7 +18,7 @@ class GetClusterAutomatedBackupPolicyWeeklySchedule {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['daysOfWeeks'] = daysOfWeeks;
-    map['startTimes'] = Input.encodeList<
+    map['startTimes'] = pulumi.Input.encodeList<
         GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime,
         Map<String, dynamic>>(startTimes, (value) => value.toMap());
     return map;
@@ -28,7 +28,7 @@ class GetClusterAutomatedBackupPolicyWeeklySchedule {
       Map<String, dynamic> map) {
     return GetClusterAutomatedBackupPolicyWeeklySchedule(
       daysOfWeeks: (map['daysOfWeeks'] as List).cast<String>(),
-      startTimes: Input.decodeList<
+      startTimes: pulumi.Input.decodeList<
               GetClusterAutomatedBackupPolicyWeeklyScheduleStartTime>(
           map['startTimes'],
           (value) =>

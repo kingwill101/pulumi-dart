@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_iam_policy_args.dart';
 
 /// A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -37,24 +37,24 @@ import 'source_iam_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/sourceIamPolicy:SourceIamPolicy default {{organization}}/{{name}}
 /// ```
-class SourceIamPolicy extends CustomResource {
-  late final Output<String> etag;
+class SourceIamPolicy extends pulumi.CustomResource {
+  late final pulumi.Output<String> etag;
 
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
-  late final Output<String> organization;
-  late final Output<String> policyData;
-  late final Output<String> source;
+  late final pulumi.Output<String> organization;
+  late final pulumi.Output<String> policyData;
+  late final pulumi.Output<String> source;
 
   SourceIamPolicy(
     String name, {
     SourceIamPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securitycenter/sourceIamPolicy:SourceIamPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.etag = registerOutput<String>('etag');
     this.organization = registerOutput<String>('organization');

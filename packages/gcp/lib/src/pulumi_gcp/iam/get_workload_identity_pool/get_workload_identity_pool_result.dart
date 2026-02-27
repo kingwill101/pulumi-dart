@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_workload_identity_pool_inline_certificate_issuance_config/get_workload_identity_pool_inline_certificate_issuance_config.dart';
 import '../get_workload_identity_pool_inline_trust_config/get_workload_identity_pool_inline_trust_config.dart';
 
@@ -41,11 +41,11 @@ class GetWorkloadIdentityPoolResult {
     map['disabled'] = disabled;
     map['displayName'] = displayName;
     map['id'] = id;
-    map['inlineCertificateIssuanceConfigs'] = Input.encodeList<
+    map['inlineCertificateIssuanceConfigs'] = pulumi.Input.encodeList<
             GetWorkloadIdentityPoolInlineCertificateIssuanceConfig,
             Map<String, dynamic>>(
         inlineCertificateIssuanceConfigs, (value) => value.toMap());
-    map['inlineTrustConfigs'] = Input.encodeList<
+    map['inlineTrustConfigs'] = pulumi.Input.encodeList<
         GetWorkloadIdentityPoolInlineTrustConfig,
         Map<String, dynamic>>(inlineTrustConfigs, (value) => value.toMap());
     map['mode'] = mode;
@@ -65,14 +65,14 @@ class GetWorkloadIdentityPoolResult {
       disabled: map['disabled'] as bool,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      inlineCertificateIssuanceConfigs: Input.decodeList<
+      inlineCertificateIssuanceConfigs: pulumi.Input.decodeList<
               GetWorkloadIdentityPoolInlineCertificateIssuanceConfig>(
           map['inlineCertificateIssuanceConfigs'],
           (value) =>
               GetWorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       inlineTrustConfigs:
-          Input.decodeList<GetWorkloadIdentityPoolInlineTrustConfig>(
+          pulumi.Input.decodeList<GetWorkloadIdentityPoolInlineTrustConfig>(
               map['inlineTrustConfigs'],
               (value) => GetWorkloadIdentityPoolInlineTrustConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

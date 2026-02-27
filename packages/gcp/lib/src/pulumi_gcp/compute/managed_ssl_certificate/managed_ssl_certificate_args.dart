@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_ssl_certificate_managed/managed_ssl_certificate_managed.dart';
 
 /// The set of arguments for ManagedSslCertificate.
 class ManagedSslCertificateArgs {
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Properties relevant to a managed certificate.  These will be used if the
   /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
   /// Structure is documented below.
-  final Input<ManagedSslCertificateManaged>? managed;
+  final pulumi.Input<ManagedSslCertificateManaged>? managed;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -21,17 +21,17 @@ class ManagedSslCertificateArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Enum field whose value is always `MANAGED` - used to signal to the API
   /// which type this is.
   /// Default value is `MANAGED`.
   /// Possible values are: `MANAGED`.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   ManagedSslCertificateArgs({
     this.description,
@@ -49,7 +49,8 @@ class ManagedSslCertificateArgs {
     }
     final managedValue = managed;
     if (managedValue != null) {
-      map['managed'] = Input.mapOptionalInputValue<ManagedSslCertificateManaged,
+      map['managed'] = pulumi.Input.mapOptionalInputValue<
+          ManagedSslCertificateManaged,
           Map<String, dynamic>>(managedValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -69,12 +70,12 @@ class ManagedSslCertificateArgs {
 
   factory ManagedSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ManagedSslCertificateArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      managed:
-          Input.asOptionalInput<ManagedSslCertificateManaged>(map['managed']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asOptionalInput<String>(map['type']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      managed: pulumi.Input.asOptionalInput<ManagedSslCertificateManaged>(
+          map['managed']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

@@ -1,78 +1,78 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ActiveDirectory.
 class ActiveDirectoryArgs {
   /// Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
-  final Input<List<String>>? administrators;
+  final pulumi.Input<List<String>>? administrators;
 
   /// Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
-  final Input<bool>? aesEncryption;
+  final pulumi.Input<bool>? aesEncryption;
 
   /// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
-  final Input<List<String>>? backupOperators;
+  final pulumi.Input<List<String>>? backupOperators;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Comma separated list of DNS server IP addresses for the Active Directory domain.
-  final Input<String> dns;
+  final pulumi.Input<String> dns;
 
   /// Fully qualified domain name for the Active Directory domain.
-  final Input<String> domain;
+  final pulumi.Input<String> domain;
 
   /// If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
-  final Input<bool>? encryptDcConnections;
+  final pulumi.Input<bool>? encryptDcConnections;
 
   /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
-  final Input<String>? kdcHostname;
+  final pulumi.Input<String>? kdcHostname;
 
   /// IP address of the Active Directory server used as Kerberos Key Distribution Center.
-  final Input<String>? kdcIp;
+  final pulumi.Input<String>? kdcIp;
 
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Specifies whether or not the LDAP traffic needs to be signed.
-  final Input<bool>? ldapSigning;
+  final pulumi.Input<bool>? ldapSigning;
 
   /// Name of the region for the policy to apply to.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The resource name of the Active Directory pool. Needs to be unique per location.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// NetBIOS name prefix of the server to be created.
   /// A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
   /// `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
-  final Input<String> netBiosPrefix;
+  final pulumi.Input<String> netBiosPrefix;
 
   /// Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
   /// This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
-  final Input<bool>? nfsUsersWithLdap;
+  final pulumi.Input<bool>? nfsUsersWithLdap;
 
   /// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
   /// Defaults to `CN=Computers` if left empty.
-  final Input<String>? organizationalUnit;
-  final Input<String> password;
+  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String> password;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
-  final Input<List<String>>? securityOperators;
+  final pulumi.Input<List<String>>? securityOperators;
 
   /// Specifies an Active Directory site to manage domain controller selection.
   /// Use when Active Directory domain controllers in multiple regions are configured. Defaults to `Default-First-Site-Name` if left empty.
-  final Input<String>? site;
+  final pulumi.Input<String>? site;
 
   /// Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
-  final Input<String> username;
+  final pulumi.Input<String> username;
 
   ActiveDirectoryArgs({
     this.administrators,
@@ -172,31 +172,32 @@ class ActiveDirectoryArgs {
   factory ActiveDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryArgs(
       administrators:
-          Input.asOptionalInput<List<String>>(map['administrators']),
-      aesEncryption: Input.asOptionalInput<bool>(map['aesEncryption']),
+          pulumi.Input.asOptionalInput<List<String>>(map['administrators']),
+      aesEncryption: pulumi.Input.asOptionalInput<bool>(map['aesEncryption']),
       backupOperators:
-          Input.asOptionalInput<List<String>>(map['backupOperators']),
-      description: Input.asOptionalInput<String>(map['description']),
-      dns: Input.asInput<String>(map['dns']),
-      domain: Input.asInput<String>(map['domain']),
+          pulumi.Input.asOptionalInput<List<String>>(map['backupOperators']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      dns: pulumi.Input.asInput<String>(map['dns']),
+      domain: pulumi.Input.asInput<String>(map['domain']),
       encryptDcConnections:
-          Input.asOptionalInput<bool>(map['encryptDcConnections']),
-      kdcHostname: Input.asOptionalInput<String>(map['kdcHostname']),
-      kdcIp: Input.asOptionalInput<String>(map['kdcIp']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      ldapSigning: Input.asOptionalInput<bool>(map['ldapSigning']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      netBiosPrefix: Input.asInput<String>(map['netBiosPrefix']),
-      nfsUsersWithLdap: Input.asOptionalInput<bool>(map['nfsUsersWithLdap']),
+          pulumi.Input.asOptionalInput<bool>(map['encryptDcConnections']),
+      kdcHostname: pulumi.Input.asOptionalInput<String>(map['kdcHostname']),
+      kdcIp: pulumi.Input.asOptionalInput<String>(map['kdcIp']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      ldapSigning: pulumi.Input.asOptionalInput<bool>(map['ldapSigning']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      netBiosPrefix: pulumi.Input.asInput<String>(map['netBiosPrefix']),
+      nfsUsersWithLdap:
+          pulumi.Input.asOptionalInput<bool>(map['nfsUsersWithLdap']),
       organizationalUnit:
-          Input.asOptionalInput<String>(map['organizationalUnit']),
-      password: Input.asInput<String>(map['password']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['organizationalUnit']),
+      password: pulumi.Input.asInput<String>(map['password']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       securityOperators:
-          Input.asOptionalInput<List<String>>(map['securityOperators']),
-      site: Input.asOptionalInput<String>(map['site']),
-      username: Input.asInput<String>(map['username']),
+          pulumi.Input.asOptionalInput<List<String>>(map['securityOperators']),
+      site: pulumi.Input.asOptionalInput<String>(map['site']),
+      username: pulumi.Input.asInput<String>(map['username']),
     );
   }
 }

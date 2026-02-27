@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OdbSubnet.
 class OdbSubnetArgs {
   /// The CIDR range of the subnet.
-  final Input<String> cidrRange;
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<String> cidrRange;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// Labels or tags associated with the resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the OdbSubnet to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
-  final Input<String> odbSubnetId;
+  final pulumi.Input<String> odbSubnetId;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> odbnetwork;
+  final pulumi.Input<String> odbnetwork;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Purpose of the subnet.
   /// Possible values:
   /// CLIENT_SUBNET
   /// BACKUP_SUBNET
-  final Input<String> purpose;
+  final pulumi.Input<String> purpose;
 
   OdbSubnetArgs({
     required this.cidrRange,
@@ -70,15 +70,15 @@ class OdbSubnetArgs {
 
   factory OdbSubnetArgs.fromMap(Map<String, dynamic> map) {
     return OdbSubnetArgs(
-      cidrRange: Input.asInput<String>(map['cidrRange']),
+      cidrRange: pulumi.Input.asInput<String>(map['cidrRange']),
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      odbSubnetId: Input.asInput<String>(map['odbSubnetId']),
-      odbnetwork: Input.asInput<String>(map['odbnetwork']),
-      project: Input.asOptionalInput<String>(map['project']),
-      purpose: Input.asInput<String>(map['purpose']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      odbSubnetId: pulumi.Input.asInput<String>(map['odbSubnetId']),
+      odbnetwork: pulumi.Input.asInput<String>(map['odbnetwork']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      purpose: pulumi.Input.asInput<String>(map['purpose']),
     );
   }
 }

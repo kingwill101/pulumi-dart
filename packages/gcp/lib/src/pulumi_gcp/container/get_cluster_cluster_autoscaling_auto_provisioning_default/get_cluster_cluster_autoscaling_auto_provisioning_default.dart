@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_cluster_autoscaling_auto_provisioning_default_management/get_cluster_cluster_autoscaling_auto_provisioning_default_management.dart';
 import '../get_cluster_cluster_autoscaling_auto_provisioning_default_shielded_instance_config/get_cluster_cluster_autoscaling_auto_provisioning_default_shielded_instance_config.dart';
 import '../get_cluster_cluster_autoscaling_auto_provisioning_default_upgrade_setting/get_cluster_cluster_autoscaling_auto_provisioning_default_upgrade_setting.dart';
@@ -59,17 +59,17 @@ class GetClusterClusterAutoscalingAutoProvisioningDefault {
     map['diskSize'] = diskSize;
     map['diskType'] = diskType;
     map['imageType'] = imageType;
-    map['managements'] = Input.encodeList<
+    map['managements'] = pulumi.Input.encodeList<
         GetClusterClusterAutoscalingAutoProvisioningDefaultManagement,
         Map<String, dynamic>>(managements, (value) => value.toMap());
     map['minCpuPlatform'] = minCpuPlatform;
     map['oauthScopes'] = oauthScopes;
     map['serviceAccount'] = serviceAccount;
-    map['shieldedInstanceConfigs'] = Input.encodeList<
+    map['shieldedInstanceConfigs'] = pulumi.Input.encodeList<
         GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig,
         Map<String,
             dynamic>>(shieldedInstanceConfigs, (value) => value.toMap());
-    map['upgradeSettings'] = Input.encodeList<
+    map['upgradeSettings'] = pulumi.Input.encodeList<
         GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting,
         Map<String, dynamic>>(upgradeSettings, (value) => value.toMap());
     return map;
@@ -82,7 +82,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefault {
       diskSize: map['diskSize'] as int,
       diskType: map['diskType'] as String,
       imageType: map['imageType'] as String,
-      managements: Input.decodeList<
+      managements: pulumi.Input.decodeList<
               GetClusterClusterAutoscalingAutoProvisioningDefaultManagement>(
           map['managements'],
           (value) =>
@@ -91,13 +91,13 @@ class GetClusterClusterAutoscalingAutoProvisioningDefault {
       minCpuPlatform: map['minCpuPlatform'] as String,
       oauthScopes: (map['oauthScopes'] as List).cast<String>(),
       serviceAccount: map['serviceAccount'] as String,
-      shieldedInstanceConfigs: Input.decodeList<
+      shieldedInstanceConfigs: pulumi.Input.decodeList<
               GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig>(
           map['shieldedInstanceConfigs'],
           (value) =>
               GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
-      upgradeSettings: Input.decodeList<
+      upgradeSettings: pulumi.Input.decodeList<
               GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting>(
           map['upgradeSettings'],
           (value) =>

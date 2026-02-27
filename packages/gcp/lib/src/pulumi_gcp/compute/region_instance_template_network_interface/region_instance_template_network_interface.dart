@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_instance_template_network_interface_access_config/region_instance_template_network_interface_access_config.dart';
 import '../region_instance_template_network_interface_alias_ip_range/region_instance_template_network_interface_alias_ip_range.dart';
 import '../region_instance_template_network_interface_ipv6_access_config/region_instance_template_network_interface_ipv6_access_config.dart';
@@ -83,13 +83,13 @@ class RegionInstanceTemplateNetworkInterface {
     final map = <String, dynamic>{};
     final accessConfigsValue = accessConfigs;
     if (accessConfigsValue != null) {
-      map['accessConfigs'] = Input.encodeList<
+      map['accessConfigs'] = pulumi.Input.encodeList<
           RegionInstanceTemplateNetworkInterfaceAccessConfig,
           Map<String, dynamic>>(accessConfigsValue, (value) => value.toMap());
     }
     final aliasIpRangesValue = aliasIpRanges;
     if (aliasIpRangesValue != null) {
-      map['aliasIpRanges'] = Input.encodeList<
+      map['aliasIpRanges'] = pulumi.Input.encodeList<
           RegionInstanceTemplateNetworkInterfaceAliasIpRange,
           Map<String, dynamic>>(aliasIpRangesValue, (value) => value.toMap());
     }
@@ -103,7 +103,7 @@ class RegionInstanceTemplateNetworkInterface {
     }
     final ipv6AccessConfigsValue = ipv6AccessConfigs;
     if (ipv6AccessConfigsValue != null) {
-      map['ipv6AccessConfigs'] = Input.encodeList<
+      map['ipv6AccessConfigs'] = pulumi.Input.encodeList<
               RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig,
               Map<String, dynamic>>(
           ipv6AccessConfigsValue, (value) => value.toMap());
@@ -156,7 +156,7 @@ class RegionInstanceTemplateNetworkInterface {
     return RegionInstanceTemplateNetworkInterface(
       accessConfigs: map['accessConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionInstanceTemplateNetworkInterfaceAccessConfig>(
               map['accessConfigs'],
               (value) =>
@@ -164,7 +164,7 @@ class RegionInstanceTemplateNetworkInterface {
                       (value as Map).cast<String, dynamic>())),
       aliasIpRanges: map['aliasIpRanges'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionInstanceTemplateNetworkInterfaceAliasIpRange>(
               map['aliasIpRanges'],
               (value) =>
@@ -176,7 +176,7 @@ class RegionInstanceTemplateNetworkInterface {
           : map['internalIpv6PrefixLength'] as int,
       ipv6AccessConfigs: map['ipv6AccessConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(
               map['ipv6AccessConfigs'],
               (value) => RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig

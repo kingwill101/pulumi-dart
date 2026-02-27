@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ai_index_deployed_index/get_ai_index_deployed_index.dart';
 import '../get_ai_index_encryption_spec/get_ai_index_encryption_spec.dart';
 import '../get_ai_index_index_stat/get_ai_index_index_stat.dart';
@@ -54,24 +54,24 @@ class GetAiIndexResult {
     final map = <String, dynamic>{};
     map['createTime'] = createTime;
     map['deployedIndexes'] =
-        Input.encodeList<GetAiIndexDeployedIndex, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAiIndexDeployedIndex, Map<String, dynamic>>(
             deployedIndexes, (value) => value.toMap());
     map['description'] = description;
     map['displayName'] = displayName;
     map['effectiveLabels'] = effectiveLabels;
     map['encryptionSpecs'] =
-        Input.encodeList<GetAiIndexEncryptionSpec, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAiIndexEncryptionSpec, Map<String, dynamic>>(
             encryptionSpecs, (value) => value.toMap());
     map['etag'] = etag;
     map['id'] = id;
     map['indexStats'] =
-        Input.encodeList<GetAiIndexIndexStat, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAiIndexIndexStat, Map<String, dynamic>>(
             indexStats, (value) => value.toMap());
     map['indexUpdateMethod'] = indexUpdateMethod;
     map['labels'] = labels;
     map['metadataSchemaUri'] = metadataSchemaUri;
     map['metadatas'] =
-        Input.encodeList<GetAiIndexMetadata, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAiIndexMetadata, Map<String, dynamic>>(
             metadatas, (value) => value.toMap());
     map['name'] = name;
     final projectValue = project;
@@ -87,27 +87,27 @@ class GetAiIndexResult {
   factory GetAiIndexResult.fromMap(Map<String, dynamic> map) {
     return GetAiIndexResult(
       createTime: map['createTime'] as String,
-      deployedIndexes: Input.decodeList<GetAiIndexDeployedIndex>(
+      deployedIndexes: pulumi.Input.decodeList<GetAiIndexDeployedIndex>(
           map['deployedIndexes'],
           (value) => GetAiIndexDeployedIndex.fromMap(
               (value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      encryptionSpecs: Input.decodeList<GetAiIndexEncryptionSpec>(
+      encryptionSpecs: pulumi.Input.decodeList<GetAiIndexEncryptionSpec>(
           map['encryptionSpecs'],
           (value) => GetAiIndexEncryptionSpec.fromMap(
               (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       id: map['id'] as String,
-      indexStats: Input.decodeList<GetAiIndexIndexStat>(
+      indexStats: pulumi.Input.decodeList<GetAiIndexIndexStat>(
           map['indexStats'],
           (value) => GetAiIndexIndexStat.fromMap(
               (value as Map).cast<String, dynamic>())),
       indexUpdateMethod: map['indexUpdateMethod'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       metadataSchemaUri: map['metadataSchemaUri'] as String,
-      metadatas: Input.decodeList<GetAiIndexMetadata>(
+      metadatas: pulumi.Input.decodeList<GetAiIndexMetadata>(
           map['metadatas'],
           (value) => GetAiIndexMetadata.fromMap(
               (value as Map).cast<String, dynamic>())),

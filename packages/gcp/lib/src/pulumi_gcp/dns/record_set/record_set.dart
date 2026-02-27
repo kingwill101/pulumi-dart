@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../record_set_routing_policy/record_set_routing_policy.dart';
 import 'record_set_args.dart';
 
@@ -66,41 +66,41 @@ import 'record_set_args.dart';
 /// ```
 ///
 /// Note: The record name must include the trailing dot at the end.
-class RecordSet extends CustomResource {
+class RecordSet extends pulumi.CustomResource {
   /// The name of the zone in which this record set will
   /// reside.
-  late final Output<String> managedZone;
+  late final pulumi.Output<String> managedZone;
 
   /// The DNS name this record set will apply to.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The configuration for steering traffic based on query.
   /// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
   /// Structure is documented below.
-  late final Output<RecordSetRoutingPolicy?> routingPolicy;
-  late final Output<List<String>?> rrdatas;
+  late final pulumi.Output<RecordSetRoutingPolicy?> routingPolicy;
+  late final pulumi.Output<List<String>?> rrdatas;
 
   /// The time-to-live of this record set (seconds).
-  late final Output<int?> ttl;
+  late final pulumi.Output<int?> ttl;
 
   /// The DNS record set type.
   ///
   /// - - -
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   RecordSet(
     String name, {
     RecordSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dns/recordSet:RecordSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');

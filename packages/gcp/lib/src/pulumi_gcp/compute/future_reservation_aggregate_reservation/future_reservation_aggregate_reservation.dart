@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../future_reservation_aggregate_reservation_reserved_resource/future_reservation_aggregate_reservation_reserved_resource.dart';
 
 class FutureReservationAggregateReservation {
@@ -25,7 +25,7 @@ class FutureReservationAggregateReservation {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['reservedResources'] = Input.encodeList<
+    map['reservedResources'] = pulumi.Input.encodeList<
         FutureReservationAggregateReservationReservedResource,
         Map<String, dynamic>>(reservedResources, (value) => value.toMap());
     final vmFamilyValue = vmFamily;
@@ -42,7 +42,7 @@ class FutureReservationAggregateReservation {
   factory FutureReservationAggregateReservation.fromMap(
       Map<String, dynamic> map) {
     return FutureReservationAggregateReservation(
-      reservedResources: Input.decodeList<
+      reservedResources: pulumi.Input.decodeList<
               FutureReservationAggregateReservationReservedResource>(
           map['reservedResources'],
           (value) =>

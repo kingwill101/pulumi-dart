@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_spec_clusterupgrade/get_feature_spec_clusterupgrade.dart';
 import '../get_feature_spec_fleetobservability/get_feature_spec_fleetobservability.dart';
 import '../get_feature_spec_multiclusteringress/get_feature_spec_multiclusteringress.dart';
@@ -28,16 +28,16 @@ class GetFeatureSpec {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['clusterupgrades'] =
-        Input.encodeList<GetFeatureSpecClusterupgrade, Map<String, dynamic>>(
-            clusterupgrades, (value) => value.toMap());
-    map['fleetobservabilities'] = Input.encodeList<
+    map['clusterupgrades'] = pulumi.Input.encodeList<
+        GetFeatureSpecClusterupgrade,
+        Map<String, dynamic>>(clusterupgrades, (value) => value.toMap());
+    map['fleetobservabilities'] = pulumi.Input.encodeList<
         GetFeatureSpecFleetobservability,
         Map<String, dynamic>>(fleetobservabilities, (value) => value.toMap());
-    map['multiclusteringresses'] = Input.encodeList<
+    map['multiclusteringresses'] = pulumi.Input.encodeList<
         GetFeatureSpecMulticlusteringress,
         Map<String, dynamic>>(multiclusteringresses, (value) => value.toMap());
-    map['rbacrolebindingactuations'] = Input.encodeList<
+    map['rbacrolebindingactuations'] = pulumi.Input.encodeList<
             GetFeatureSpecRbacrolebindingactuation, Map<String, dynamic>>(
         rbacrolebindingactuations, (value) => value.toMap());
     return map;
@@ -45,21 +45,22 @@ class GetFeatureSpec {
 
   factory GetFeatureSpec.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpec(
-      clusterupgrades: Input.decodeList<GetFeatureSpecClusterupgrade>(
+      clusterupgrades: pulumi.Input.decodeList<GetFeatureSpecClusterupgrade>(
           map['clusterupgrades'],
           (value) => GetFeatureSpecClusterupgrade.fromMap(
               (value as Map).cast<String, dynamic>())),
-      fleetobservabilities: Input.decodeList<GetFeatureSpecFleetobservability>(
-          map['fleetobservabilities'],
-          (value) => GetFeatureSpecFleetobservability.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fleetobservabilities:
+          pulumi.Input.decodeList<GetFeatureSpecFleetobservability>(
+              map['fleetobservabilities'],
+              (value) => GetFeatureSpecFleetobservability.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       multiclusteringresses:
-          Input.decodeList<GetFeatureSpecMulticlusteringress>(
+          pulumi.Input.decodeList<GetFeatureSpecMulticlusteringress>(
               map['multiclusteringresses'],
               (value) => GetFeatureSpecMulticlusteringress.fromMap(
                   (value as Map).cast<String, dynamic>())),
       rbacrolebindingactuations:
-          Input.decodeList<GetFeatureSpecRbacrolebindingactuation>(
+          pulumi.Input.decodeList<GetFeatureSpecRbacrolebindingactuation>(
               map['rbacrolebindingactuations'],
               (value) => GetFeatureSpecRbacrolebindingactuation.fromMap(
                   (value as Map).cast<String, dynamic>())),

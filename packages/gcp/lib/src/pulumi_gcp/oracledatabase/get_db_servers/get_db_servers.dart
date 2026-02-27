@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_db_servers_args.dart';
 import 'get_db_servers_result.dart';
 
@@ -52,13 +52,13 @@ import 'get_db_servers_result.dart';
 /// * `db_node_ids` - The OCID of database nodes associated with the database server.
 Future<GetDbServersResult> getDbServers(
   GetDbServersArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:oracledatabase/getDbServers:getDbServers',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbServersResult.fromMap(result);
 }

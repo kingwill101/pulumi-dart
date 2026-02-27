@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_rule_set_customization_rule/stream_rule_set_customization_rule.dart';
 import '../stream_rule_set_object_filter/stream_rule_set_object_filter.dart';
 
@@ -20,19 +20,20 @@ class StreamRuleSet {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customizationRules'] =
-        Input.encodeList<StreamRuleSetCustomizationRule, Map<String, dynamic>>(
-            customizationRules, (value) => value.toMap());
+    map['customizationRules'] = pulumi.Input.encodeList<
+        StreamRuleSetCustomizationRule,
+        Map<String, dynamic>>(customizationRules, (value) => value.toMap());
     map['objectFilter'] = objectFilter.toMap();
     return map;
   }
 
   factory StreamRuleSet.fromMap(Map<String, dynamic> map) {
     return StreamRuleSet(
-      customizationRules: Input.decodeList<StreamRuleSetCustomizationRule>(
-          map['customizationRules'],
-          (value) => StreamRuleSetCustomizationRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customizationRules:
+          pulumi.Input.decodeList<StreamRuleSetCustomizationRule>(
+              map['customizationRules'],
+              (value) => StreamRuleSetCustomizationRule.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       objectFilter: StreamRuleSetObjectFilter.fromMap(
           (map['objectFilter'] as Map).cast<String, dynamic>()),
     );

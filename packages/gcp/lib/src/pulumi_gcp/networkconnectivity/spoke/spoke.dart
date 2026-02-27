@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../spoke_gateway/spoke_gateway.dart';
 import '../spoke_linked_interconnect_attachments/spoke_linked_interconnect_attachments.dart';
 import '../spoke_linked_producer_vpc_network/spoke_linked_producer_vpc_network.dart';
@@ -79,89 +79,90 @@ import 'spoke_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/spoke:Spoke default {{location}}/{{name}}
 /// ```
-class Spoke extends CustomResource {
+class Spoke extends pulumi.CustomResource {
   /// Output only. The time the spoke was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// An optional description of the spoke.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// This is a gateway that can apply specialized processing to traffic going through it.
   /// Structure is documented below.
-  late final Output<SpokeGateway?> gateway;
+  late final pulumi.Output<SpokeGateway?> gateway;
 
   /// The name of the group that this spoke is associated with.
-  late final Output<String> group;
+  late final pulumi.Output<String> group;
 
   /// Immutable. The URI of the hub that this spoke is attached to.
-  late final Output<String> hub;
+  late final pulumi.Output<String> hub;
 
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
   /// Structure is documented below.
-  late final Output<SpokeLinkedInterconnectAttachments?>
+  late final pulumi.Output<SpokeLinkedInterconnectAttachments?>
       linkedInterconnectAttachments;
 
   /// Producer VPC network that is associated with the spoke.
   /// Structure is documented below.
-  late final Output<SpokeLinkedProducerVpcNetwork?> linkedProducerVpcNetwork;
+  late final pulumi.Output<SpokeLinkedProducerVpcNetwork?>
+      linkedProducerVpcNetwork;
 
   /// The URIs of linked Router appliance resources
   /// Structure is documented below.
-  late final Output<SpokeLinkedRouterApplianceInstances?>
+  late final pulumi.Output<SpokeLinkedRouterApplianceInstances?>
       linkedRouterApplianceInstances;
 
   /// VPC network that is associated with the spoke.
   /// Structure is documented below.
-  late final Output<SpokeLinkedVpcNetwork?> linkedVpcNetwork;
+  late final pulumi.Output<SpokeLinkedVpcNetwork?> linkedVpcNetwork;
 
   /// The URIs of linked VPN tunnel resources
   /// Structure is documented below.
-  late final Output<SpokeLinkedVpnTunnels?> linkedVpnTunnels;
+  late final pulumi.Output<SpokeLinkedVpnTunnels?> linkedVpnTunnels;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Immutable. The name of the spoke. Spoke names must be unique.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The reasons for the current state in the lifecycle
   /// Structure is documented below.
-  late final Output<List<SpokeReason>> reasons;
+  late final pulumi.Output<List<SpokeReason>> reasons;
 
   /// Output only. The current lifecycle state of this spoke.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
-  late final Output<String> uniqueId;
+  late final pulumi.Output<String> uniqueId;
 
   /// Output only. The time the spoke was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Spoke(
     String name, {
     SpokeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkconnectivity/spoke:Spoke',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

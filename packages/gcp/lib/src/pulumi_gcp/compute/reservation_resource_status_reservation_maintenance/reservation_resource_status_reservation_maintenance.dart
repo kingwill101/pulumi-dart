@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../reservation_resource_status_reservation_maintenance_upcoming_group_maintenance/reservation_resource_status_reservation_maintenance_upcoming_group_maintenance.dart';
 
 class ReservationResourceStatusReservationMaintenance {
@@ -90,7 +90,7 @@ class ReservationResourceStatusReservationMaintenance {
     }
     final upcomingGroupMaintenancesValue = upcomingGroupMaintenances;
     if (upcomingGroupMaintenancesValue != null) {
-      map['upcomingGroupMaintenances'] = Input.encodeList<
+      map['upcomingGroupMaintenances'] = pulumi.Input.encodeList<
           ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance,
           Map<String,
               dynamic>>(upcomingGroupMaintenancesValue, (value) => value.toMap());
@@ -128,7 +128,7 @@ class ReservationResourceStatusReservationMaintenance {
               : map['subblockInfraMaintenancePendingCount'] as int,
       upcomingGroupMaintenances: map['upcomingGroupMaintenances'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance>(
               map['upcomingGroupMaintenances'],
               (value) =>

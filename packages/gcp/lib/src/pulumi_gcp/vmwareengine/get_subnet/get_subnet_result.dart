@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subnet_dhcp_address_range/get_subnet_dhcp_address_range.dart';
 
 /// Result data returned by getSubnet.
@@ -42,9 +42,9 @@ class GetSubnetResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['createTime'] = createTime;
-    map['dhcpAddressRanges'] =
-        Input.encodeList<GetSubnetDhcpAddressRange, Map<String, dynamic>>(
-            dhcpAddressRanges, (value) => value.toMap());
+    map['dhcpAddressRanges'] = pulumi.Input.encodeList<
+        GetSubnetDhcpAddressRange,
+        Map<String, dynamic>>(dhcpAddressRanges, (value) => value.toMap());
     map['gatewayId'] = gatewayId;
     map['gatewayIp'] = gatewayIp;
     map['id'] = id;
@@ -63,7 +63,7 @@ class GetSubnetResult {
   factory GetSubnetResult.fromMap(Map<String, dynamic> map) {
     return GetSubnetResult(
       createTime: map['createTime'] as String,
-      dhcpAddressRanges: Input.decodeList<GetSubnetDhcpAddressRange>(
+      dhcpAddressRanges: pulumi.Input.decodeList<GetSubnetDhcpAddressRange>(
           map['dhcpAddressRanges'],
           (value) => GetSubnetDhcpAddressRange.fromMap(
               (value as Map).cast<String, dynamic>())),

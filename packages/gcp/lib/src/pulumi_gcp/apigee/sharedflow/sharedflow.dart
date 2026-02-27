@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sharedflow_meta_data/sharedflow_meta_data.dart';
 import 'sharedflow_args.dart';
 
@@ -28,41 +28,41 @@ import 'sharedflow_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
 /// ```
-class Sharedflow extends CustomResource {
+class Sharedflow extends pulumi.CustomResource {
   /// Path to the config zip bundle.
   ///
   /// - - -
-  late final Output<String> configBundle;
-  late final Output<String?> detectMd5hash;
+  late final pulumi.Output<String> configBundle;
+  late final pulumi.Output<String?> detectMd5hash;
 
   /// The id of the most recently created revision for this shared flow.
-  late final Output<String> latestRevisionId;
+  late final pulumi.Output<String> latestRevisionId;
 
   /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
-  late final Output<String> md5hash;
+  late final pulumi.Output<String> md5hash;
 
   /// Metadata describing the shared flow.
   /// Structure is documented below.
-  late final Output<List<SharedflowMetaData>> metaDatas;
+  late final pulumi.Output<List<SharedflowMetaData>> metaDatas;
 
   /// The ID of the shared flow.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization name associated with the Apigee instance.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// A list of revisions of this shared flow.
-  late final Output<List<String>> revisions;
+  late final pulumi.Output<List<String>> revisions;
 
   Sharedflow(
     String name, {
     SharedflowArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/sharedflow:Sharedflow',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configBundle = registerOutput<String>('configBundle');
     this.detectMd5hash = registerOutput<String?>('detectMd5hash');

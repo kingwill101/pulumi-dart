@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_backend_service_cdn_policy_cache_key_policy/get_region_backend_service_cdn_policy_cache_key_policy.dart';
 import '../get_region_backend_service_cdn_policy_negative_caching_policy/get_region_backend_service_cdn_policy_negative_caching_policy.dart';
 
@@ -59,7 +59,7 @@ class GetRegionBackendServiceCdnPolicy {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cacheKeyPolicies'] = Input.encodeList<
+    map['cacheKeyPolicies'] = pulumi.Input.encodeList<
         GetRegionBackendServiceCdnPolicyCacheKeyPolicy,
         Map<String, dynamic>>(cacheKeyPolicies, (value) => value.toMap());
     map['cacheMode'] = cacheMode;
@@ -67,7 +67,7 @@ class GetRegionBackendServiceCdnPolicy {
     map['defaultTtl'] = defaultTtl;
     map['maxTtl'] = maxTtl;
     map['negativeCaching'] = negativeCaching;
-    map['negativeCachingPolicies'] = Input.encodeList<
+    map['negativeCachingPolicies'] = pulumi.Input.encodeList<
             GetRegionBackendServiceCdnPolicyNegativeCachingPolicy,
             Map<String, dynamic>>(
         negativeCachingPolicies, (value) => value.toMap());
@@ -78,17 +78,17 @@ class GetRegionBackendServiceCdnPolicy {
 
   factory GetRegionBackendServiceCdnPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceCdnPolicy(
-      cacheKeyPolicies:
-          Input.decodeList<GetRegionBackendServiceCdnPolicyCacheKeyPolicy>(
-              map['cacheKeyPolicies'],
-              (value) => GetRegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      cacheKeyPolicies: pulumi.Input.decodeList<
+              GetRegionBackendServiceCdnPolicyCacheKeyPolicy>(
+          map['cacheKeyPolicies'],
+          (value) => GetRegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       cacheMode: map['cacheMode'] as String,
       clientTtl: map['clientTtl'] as int,
       defaultTtl: map['defaultTtl'] as int,
       maxTtl: map['maxTtl'] as int,
       negativeCaching: map['negativeCaching'] as bool,
-      negativeCachingPolicies: Input.decodeList<
+      negativeCachingPolicies: pulumi.Input.decodeList<
               GetRegionBackendServiceCdnPolicyNegativeCachingPolicy>(
           map['negativeCachingPolicies'],
           (value) =>

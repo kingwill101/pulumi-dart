@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../router_status_best_route/router_status_best_route.dart';
 import '../router_status_best_routes_for_router/router_status_best_routes_for_router.dart';
 
@@ -35,11 +35,11 @@ class RouterStatusResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['bestRoutes'] =
-        Input.encodeList<RouterStatusBestRoute, Map<String, dynamic>>(
+        pulumi.Input.encodeList<RouterStatusBestRoute, Map<String, dynamic>>(
             bestRoutes, (value) => value.toMap());
-    map['bestRoutesForRouters'] =
-        Input.encodeList<RouterStatusBestRoutesForRouter, Map<String, dynamic>>(
-            bestRoutesForRouters, (value) => value.toMap());
+    map['bestRoutesForRouters'] = pulumi.Input.encodeList<
+        RouterStatusBestRoutesForRouter,
+        Map<String, dynamic>>(bestRoutesForRouters, (value) => value.toMap());
     map['id'] = id;
     map['name'] = name;
     map['network'] = network;
@@ -53,14 +53,15 @@ class RouterStatusResult {
 
   factory RouterStatusResult.fromMap(Map<String, dynamic> map) {
     return RouterStatusResult(
-      bestRoutes: Input.decodeList<RouterStatusBestRoute>(
+      bestRoutes: pulumi.Input.decodeList<RouterStatusBestRoute>(
           map['bestRoutes'],
           (value) => RouterStatusBestRoute.fromMap(
               (value as Map).cast<String, dynamic>())),
-      bestRoutesForRouters: Input.decodeList<RouterStatusBestRoutesForRouter>(
-          map['bestRoutesForRouters'],
-          (value) => RouterStatusBestRoutesForRouter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      bestRoutesForRouters:
+          pulumi.Input.decodeList<RouterStatusBestRoutesForRouter>(
+              map['bestRoutesForRouters'],
+              (value) => RouterStatusBestRoutesForRouter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       network: map['network'] as String,

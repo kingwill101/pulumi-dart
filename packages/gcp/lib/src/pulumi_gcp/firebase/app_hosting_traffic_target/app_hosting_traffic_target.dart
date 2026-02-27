@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_traffic_target_split/app_hosting_traffic_target_split.dart';
 
 class AppHostingTrafficTarget {
@@ -14,15 +14,14 @@ class AppHostingTrafficTarget {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['splits'] =
-        Input.encodeList<AppHostingTrafficTargetSplit, Map<String, dynamic>>(
-            splits, (value) => value.toMap());
+    map['splits'] = pulumi.Input.encodeList<AppHostingTrafficTargetSplit,
+        Map<String, dynamic>>(splits, (value) => value.toMap());
     return map;
   }
 
   factory AppHostingTrafficTarget.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficTarget(
-      splits: Input.decodeList<AppHostingTrafficTargetSplit>(
+      splits: pulumi.Input.decodeList<AppHostingTrafficTargetSplit>(
           map['splits'],
           (value) => AppHostingTrafficTargetSplit.fromMap(
               (value as Map).cast<String, dynamic>())),

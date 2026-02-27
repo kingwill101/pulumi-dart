@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_vm_accelerator_config/v2_vm_accelerator_config.dart';
 import '../v2_vm_data_disk/v2_vm_data_disk.dart';
 import '../v2_vm_network_config/v2_vm_network_config.dart';
@@ -57,18 +57,18 @@ import 'v2_vm_args.dart';
 /// ```sh
 /// $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
 /// ```
-class V2Vm extends CustomResource {
+class V2Vm extends pulumi.CustomResource {
   /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
   /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
   /// Structure is documented below.
-  late final Output<V2VmAcceleratorConfig> acceleratorConfig;
+  late final pulumi.Output<V2VmAcceleratorConfig> acceleratorConfig;
 
   /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
   /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
-  late final Output<String> acceleratorType;
+  late final pulumi.Output<String> acceleratorType;
 
   /// The API version that created this Node.
-  late final Output<String> apiVersion;
+  late final pulumi.Output<String> apiVersion;
 
   /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
   /// be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
@@ -76,101 +76,101 @@ class V2Vm extends CustomResource {
   /// CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
   /// with any subnetworks in the user's provided network, or the provided network is peered with
   /// another network that is using that CIDR block.
-  late final Output<String> cidrBlock;
+  late final pulumi.Output<String> cidrBlock;
 
   /// The additional data disks for the Node.
   /// Structure is documented below.
-  late final Output<List<V2VmDataDisk>?> dataDisks;
+  late final pulumi.Output<List<V2VmDataDisk>?> dataDisks;
 
   /// Text description of the TPU.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The health status of the TPU node.
-  late final Output<String> health;
+  late final pulumi.Output<String> health;
 
   /// If this field is populated, it contains a description of why the TPU Node is unhealthy.
-  late final Output<String> healthDescription;
+  late final pulumi.Output<String> healthDescription;
 
   /// Resource labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
-  late final Output<Map<String, String>?> metadata;
+  late final pulumi.Output<Map<String, String>?> metadata;
 
   /// Whether the Node belongs to a Multislice group.
-  late final Output<bool> multisliceNode;
+  late final pulumi.Output<bool> multisliceNode;
 
   /// The immutable name of the TPU.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Network configurations for the TPU node.
   /// Structure is documented below.
-  late final Output<V2VmNetworkConfig> networkConfig;
+  late final pulumi.Output<V2VmNetworkConfig> networkConfig;
 
   /// Repeated network configurations for the TPU node. This field is used to specify multiple
   /// network configs for the TPU node.
   /// Structure is documented below.
-  late final Output<List<V2VmNetworkConfig>?> networkConfigs;
+  late final pulumi.Output<List<V2VmNetworkConfig>?> networkConfigs;
 
   /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that
   /// runtime clients of the node reach out to the 0th entry in this map first.
   /// Structure is documented below.
-  late final Output<List<V2VmNetworkEndpoint>> networkEndpoints;
+  late final pulumi.Output<List<V2VmNetworkEndpoint>> networkEndpoints;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The qualified name of the QueuedResource that requested this Node.
-  late final Output<String> queuedResource;
+  late final pulumi.Output<String> queuedResource;
 
   /// Runtime version for the TPU.
-  late final Output<String> runtimeVersion;
+  late final pulumi.Output<String> runtimeVersion;
 
   /// The scheduling options for this node.
   /// Structure is documented below.
-  late final Output<V2VmSchedulingConfig?> schedulingConfig;
+  late final pulumi.Output<V2VmSchedulingConfig?> schedulingConfig;
 
   /// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
   /// specified, the default compute service account will be used.
   /// Structure is documented below.
-  late final Output<V2VmServiceAccount> serviceAccount;
+  late final pulumi.Output<V2VmServiceAccount> serviceAccount;
 
   /// Shielded Instance options.
   /// Structure is documented below.
-  late final Output<V2VmShieldedInstanceConfig?> shieldedInstanceConfig;
+  late final pulumi.Output<V2VmShieldedInstanceConfig?> shieldedInstanceConfig;
 
   /// The current state for the TPU Node.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The Symptoms that have occurred to the TPU Node.
   /// Structure is documented below.
-  late final Output<List<V2VmSymptom>> symptoms;
+  late final pulumi.Output<List<V2VmSymptom>> symptoms;
 
   /// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
-  late final Output<List<String>?> tags;
+  late final pulumi.Output<List<String>?> tags;
 
   /// The GCP location for the TPU. If it is not provided, the provider zone is used.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   V2Vm(
     String name, {
     V2VmArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:tpu/v2Vm:V2Vm',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acceleratorConfig =
         registerOutput<V2VmAcceleratorConfig>('acceleratorConfig');

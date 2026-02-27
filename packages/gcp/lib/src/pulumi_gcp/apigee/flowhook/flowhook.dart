@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flowhook_args.dart';
 
 /// Represents a sharedflow attachment to a flowhook point.
@@ -27,34 +27,34 @@ import 'flowhook_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/flowhook:Flowhook default {{org_id}}/{{environment}}/{{flow_hook_point}}
 /// ```
-class Flowhook extends CustomResource {
+class Flowhook extends pulumi.CustomResource {
   /// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
-  late final Output<bool?> continueOnError;
+  late final pulumi.Output<bool?> continueOnError;
 
   /// Description of the flow hook.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The resource ID of the environment.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
-  late final Output<String> flowHookPoint;
+  late final pulumi.Output<String> flowHookPoint;
 
   /// The Apigee Organization associated with the environment
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// Id of the Sharedflow attaching to a flowhook point.
-  late final Output<String> sharedflow;
+  late final pulumi.Output<String> sharedflow;
 
   Flowhook(
     String name, {
     FlowhookArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/flowhook:Flowhook',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.continueOnError = registerOutput<bool?>('continueOnError');
     this.description = registerOutput<String?>('description');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_product_grpc_operation_group_operation_config_attribute/api_product_grpc_operation_group_operation_config_attribute.dart';
 import '../api_product_grpc_operation_group_operation_config_quota/api_product_grpc_operation_group_operation_config_quota.dart';
 
@@ -40,7 +40,7 @@ class ApiProductGrpcOperationGroupOperationConfig {
     }
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.encodeList<
+      map['attributes'] = pulumi.Input.encodeList<
           ApiProductGrpcOperationGroupOperationConfigAttribute,
           Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
@@ -65,7 +65,7 @@ class ApiProductGrpcOperationGroupOperationConfig {
       apiSource: map['apiSource'] == null ? null : map['apiSource'] as String,
       attributes: map['attributes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ApiProductGrpcOperationGroupOperationConfigAttribute>(
               map['attributes'],
               (value) =>

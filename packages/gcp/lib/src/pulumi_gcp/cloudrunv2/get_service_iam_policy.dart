@@ -1,5 +1,5 @@
 library module_cloudrunv2_get_service_iam_policy;
 
-export 'get_service_iam_policy/get_service_iam_policy2.dart';
-export 'get_service_iam_policy/get_service_iam_policy_args2.dart';
-export 'get_service_iam_policy/get_service_iam_policy_result2.dart';
+export 'get_service_iam_policy/get_service_iam_policy_cloudrunv2.dart';
+export 'get_service_iam_policy/get_service_iam_policy_cloudrunv2_args.dart';
+export 'get_service_iam_policy/get_service_iam_policy_cloudrunv2_result.dart';

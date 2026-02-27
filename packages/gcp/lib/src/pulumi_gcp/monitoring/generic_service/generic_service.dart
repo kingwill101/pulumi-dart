@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../generic_service_basic_service/generic_service_basic_service.dart';
 import '../generic_service_telemetry/generic_service_telemetry.dart';
 import 'generic_service_args.dart';
@@ -47,31 +47,31 @@ import 'generic_service_args.dart';
 /// ```sh
 /// $ pulumi import gcp:monitoring/genericService:GenericService default {{service_id}}
 /// ```
-class GenericService extends CustomResource {
+class GenericService extends pulumi.CustomResource {
   /// A well-known service type, defined by its service type and service labels.
   /// Valid values of service types and services labels are described at
   /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
   /// Structure is documented below.
-  late final Output<GenericServiceBasicService?> basicService;
+  late final pulumi.Output<GenericServiceBasicService?> basicService;
 
   /// Name used for UI elements listing this Service.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The full resource name for this service. The syntax is:
   /// projects/[PROJECT_ID]/services/[SERVICE_ID].
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// An optional service ID to use. If not given, the server will generate a
   /// service ID.
-  late final Output<String> serviceId;
+  late final pulumi.Output<String> serviceId;
 
   /// Configuration for how to query telemetry on a Service.
   /// Structure is documented below.
-  late final Output<List<GenericServiceTelemetry>> telemetries;
+  late final pulumi.Output<List<GenericServiceTelemetry>> telemetries;
 
   /// Labels which have been used to annotate the service. Label keys must start
   /// with a letter. Label keys and values may contain lowercase letters,
@@ -79,17 +79,17 @@ class GenericService extends CustomResource {
   /// length of 63 characters, and must be less than 128 bytes in size. Up to 64
   /// label entries may be stored. For labels which do not have a semantic value,
   /// the empty string may be supplied for the label value.
-  late final Output<Map<String, String>?> userLabels;
+  late final pulumi.Output<Map<String, String>?> userLabels;
 
   GenericService(
     String name, {
     GenericServiceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:monitoring/genericService:GenericService',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.basicService =
         registerOutput<GenericServiceBasicService?>('basicService');

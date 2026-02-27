@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../database_hive_options/database_hive_options.dart';
 
 /// The set of arguments for Database.
 class DatabaseArgs {
   /// The parent catalog.
-  final Input<String> catalog;
+  final pulumi.Input<String> catalog;
 
   /// Options of a Hive database.
   /// Structure is documented below.
-  final Input<DatabaseHiveOptions> hiveOptions;
+  final pulumi.Input<DatabaseHiveOptions> hiveOptions;
 
   /// The name of the database.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The database type.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   DatabaseArgs({
     required this.catalog,
@@ -29,7 +29,7 @@ class DatabaseArgs {
     final map = <String, dynamic>{};
     map['catalog'] = catalog;
     map['hiveOptions'] =
-        Input.mapInputValue<DatabaseHiveOptions, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<DatabaseHiveOptions, Map<String, dynamic>>(
             hiveOptions, (value) => value.toMap());
     final nameValue = name;
     if (nameValue != null) {
@@ -41,10 +41,11 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      catalog: Input.asInput<String>(map['catalog']),
-      hiveOptions: Input.asInput<DatabaseHiveOptions>(map['hiveOptions']),
-      name: Input.asOptionalInput<String>(map['name']),
-      type: Input.asInput<String>(map['type']),
+      catalog: pulumi.Input.asInput<String>(map['catalog']),
+      hiveOptions:
+          pulumi.Input.asInput<DatabaseHiveOptions>(map['hiveOptions']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

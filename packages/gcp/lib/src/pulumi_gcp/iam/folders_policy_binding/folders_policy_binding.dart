@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folders_policy_binding_condition/folders_policy_binding_condition.dart';
 import '../folders_policy_binding_target/folders_policy_binding_target.dart';
 import 'folders_policy_binding_args.dart';
@@ -27,12 +27,12 @@ import 'folders_policy_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/foldersPolicyBinding:FoldersPolicyBinding default {{folder}}/{{location}}/{{policy_binding_id}}
 /// ```
-class FoldersPolicyBinding extends CustomResource {
+class FoldersPolicyBinding extends pulumi.CustomResource {
   /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -58,60 +58,60 @@ class FoldersPolicyBinding extends CustomResource {
   /// determined by the service that evaluates it. See the service documentation for
   /// additional information.
   /// Structure is documented below.
-  late final Output<FoldersPolicyBindingCondition?> condition;
+  late final pulumi.Output<FoldersPolicyBindingCondition?> condition;
 
   /// Output only. The time when the policy binding was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The parent folder for the PolicyBinding.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// The location of the PolicyBinding.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// The Policy Binding ID.
-  late final Output<String> policyBindingId;
+  late final pulumi.Output<String> policyBindingId;
 
   /// Immutable. The kind of the policy to attach in this binding. This
   /// field must be one of the following:  - Left empty (will be automatically set
   /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
-  late final Output<String?> policyKind;
+  late final pulumi.Output<String?> policyKind;
 
   /// Output only. The globally unique ID of the policy to be bound.
-  late final Output<String> policyUid;
+  late final pulumi.Output<String> policyUid;
 
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
   /// Structure is documented below.
-  late final Output<FoldersPolicyBindingTarget> target;
+  late final pulumi.Output<FoldersPolicyBindingTarget> target;
 
   /// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The time when the policy binding was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   FoldersPolicyBinding(
     String name, {
     FoldersPolicyBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/foldersPolicyBinding:FoldersPolicyBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.condition =

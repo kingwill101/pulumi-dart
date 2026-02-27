@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_network_peering_args.dart';
 import 'get_network_peering_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_network_peering_result.dart';
 /// [API](https://cloud.google.com/compute/docs/reference/latest/networks).
 Future<GetNetworkPeeringResult> getNetworkPeering(
   GetNetworkPeeringArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getNetworkPeering:getNetworkPeering',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkPeeringResult.fromMap(result);
 }

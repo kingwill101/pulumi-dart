@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpngateway_args.dart';
 
 /// Represents a VPN gateway running in GCP. This virtual device is managed
@@ -48,15 +48,15 @@ import 'vpngateway_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
 /// ```
-class VPNGateway extends CustomResource {
+class VPNGateway extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The unique identifier for the resource.
-  late final Output<int> gatewayId;
+  late final pulumi.Output<int> gatewayId;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -65,30 +65,30 @@ class VPNGateway extends CustomResource {
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network this VPN gateway is accepting traffic for.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region this gateway should sit in.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   VPNGateway(
     String name, {
     VPNGatewayArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/vPNGateway:VPNGateway',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

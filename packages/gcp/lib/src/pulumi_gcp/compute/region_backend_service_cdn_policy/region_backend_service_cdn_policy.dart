@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_backend_service_cdn_policy_cache_key_policy/region_backend_service_cdn_policy_cache_key_policy.dart';
 import '../region_backend_service_cdn_policy_negative_caching_policy/region_backend_service_cdn_policy_negative_caching_policy.dart';
 
@@ -87,7 +87,7 @@ class RegionBackendServiceCdnPolicy {
     }
     final negativeCachingPoliciesValue = negativeCachingPolicies;
     if (negativeCachingPoliciesValue != null) {
-      map['negativeCachingPolicies'] = Input.encodeList<
+      map['negativeCachingPolicies'] = pulumi.Input.encodeList<
               RegionBackendServiceCdnPolicyNegativeCachingPolicy,
               Map<String, dynamic>>(
           negativeCachingPoliciesValue, (value) => value.toMap());
@@ -118,7 +118,7 @@ class RegionBackendServiceCdnPolicy {
           : map['negativeCaching'] as bool,
       negativeCachingPolicies: map['negativeCachingPolicies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionBackendServiceCdnPolicyNegativeCachingPolicy>(
               map['negativeCachingPolicies'],
               (value) =>

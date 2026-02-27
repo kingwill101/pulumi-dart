@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_zone_args.dart';
 import 'get_managed_zone_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_managed_zone_result.dart';
 /// [API](https://cloud.google.com/dns/api/v1/managedZones).
 Future<GetManagedZoneResult> getManagedZone(
   GetManagedZoneArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:dns/getManagedZone:getManagedZone',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedZoneResult.fromMap(result);
 }

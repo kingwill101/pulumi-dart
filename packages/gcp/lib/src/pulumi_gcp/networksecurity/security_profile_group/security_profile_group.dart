@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_profile_group_args.dart';
 
 /// A security profile group defines a container for security profiles.
@@ -41,66 +41,66 @@ import 'security_profile_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/securityProfileGroup:SecurityProfileGroup default {{parent}}/locations/{{location}}/securityProfileGroups/{{name}}
 /// ```
-class SecurityProfileGroup extends CustomResource {
+class SecurityProfileGroup extends pulumi.CustomResource {
   /// Time the security profile group was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Reference to a SecurityProfile with the CustomIntercept configuration.
-  late final Output<String?> customInterceptProfile;
+  late final pulumi.Output<String?> customInterceptProfile;
 
   /// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
-  late final Output<String?> customMirroringProfile;
+  late final pulumi.Output<String?> customMirroringProfile;
 
   /// An optional description of the profile. The Max length is 512 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// This checksum is computed by the server based on the value of other fields,
   /// and may be sent on update and delete requests to ensure the client has an up-to-date
   /// value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the security profile group.
   /// The default value is `global`.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The name of the security profile group resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the parent this security profile group belongs to.
   /// Format: organizations/{organization_id}.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
-  late final Output<String?> threatPreventionProfile;
+  late final pulumi.Output<String?> threatPreventionProfile;
 
   /// Time the security profile group was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
-  late final Output<String?> urlFilteringProfile;
+  late final pulumi.Output<String?> urlFilteringProfile;
 
   SecurityProfileGroup(
     String name, {
     SecurityProfileGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/securityProfileGroup:SecurityProfileGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.customInterceptProfile =

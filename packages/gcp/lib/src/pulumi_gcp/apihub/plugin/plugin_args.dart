@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plugin_actions_config/plugin_actions_config.dart';
 import '../plugin_config_template/plugin_config_template.dart';
 import '../plugin_documentation/plugin_documentation.dart';
@@ -10,37 +10,37 @@ import '../plugin_hosting_service/plugin_hosting_service.dart';
 class PluginArgs {
   /// The configuration of actions supported by the plugin.
   /// Structure is documented below.
-  final Input<List<PluginActionsConfig>>? actionsConfigs;
+  final pulumi.Input<List<PluginActionsConfig>>? actionsConfigs;
 
   /// ConfigTemplate represents the configuration template for a plugin.
   /// Structure is documented below.
-  final Input<PluginConfigTemplate>? configTemplate;
+  final pulumi.Input<PluginConfigTemplate>? configTemplate;
 
   /// The plugin description. Max length is 2000 characters (Unicode code
   /// points).
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the plugin. Max length is 50 characters (Unicode code
   /// points).
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Documentation details.
   /// Structure is documented below.
-  final Input<PluginDocumentation>? documentation;
+  final pulumi.Input<PluginDocumentation>? documentation;
 
   /// The information related to the service implemented by the plugin
   /// developer, used to invoke the plugin's functionality.
   /// Structure is documented below.
-  final Input<PluginHostingService>? hostingService;
+  final pulumi.Input<PluginHostingService>? hostingService;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Possible values:
   /// PLUGIN_CATEGORY_UNSPECIFIED
   /// API_GATEWAY
   /// API_PRODUCER
-  final Input<String>? pluginCategory;
+  final pulumi.Input<String>? pluginCategory;
 
   /// The ID to use for the Plugin resource, which will become the final
   /// component of the Plugin's resource name. This field is optional.
@@ -53,11 +53,11 @@ class PluginArgs {
   /// `projects/{project}/locations/{location}/plugins/{plugin}`,
   /// its length is limited to 1000 characters and valid characters are
   /// /a-z[0-9]-_/.
-  final Input<String> pluginId;
+  final pulumi.Input<String> pluginId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   PluginArgs({
     this.actionsConfigs,
@@ -76,16 +76,16 @@ class PluginArgs {
     final map = <String, dynamic>{};
     final actionsConfigsValue = actionsConfigs;
     if (actionsConfigsValue != null) {
-      map['actionsConfigs'] = Input.mapOptionalInputValue<
+      map['actionsConfigs'] = pulumi.Input.mapOptionalInputValue<
               List<PluginActionsConfig>, List<Map<String, dynamic>>>(
           actionsConfigsValue,
-          (value) =>
-              Input.encodeList<PluginActionsConfig, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<PluginActionsConfig,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final configTemplateValue = configTemplate;
     if (configTemplateValue != null) {
-      map['configTemplate'] = Input.mapOptionalInputValue<PluginConfigTemplate,
+      map['configTemplate'] = pulumi.Input.mapOptionalInputValue<
+          PluginConfigTemplate,
           Map<String, dynamic>>(configTemplateValue, (value) => value.toMap());
     }
     final descriptionValue = description;
@@ -95,12 +95,14 @@ class PluginArgs {
     map['displayName'] = displayName;
     final documentationValue = documentation;
     if (documentationValue != null) {
-      map['documentation'] = Input.mapOptionalInputValue<PluginDocumentation,
+      map['documentation'] = pulumi.Input.mapOptionalInputValue<
+          PluginDocumentation,
           Map<String, dynamic>>(documentationValue, (value) => value.toMap());
     }
     final hostingServiceValue = hostingService;
     if (hostingServiceValue != null) {
-      map['hostingService'] = Input.mapOptionalInputValue<PluginHostingService,
+      map['hostingService'] = pulumi.Input.mapOptionalInputValue<
+          PluginHostingService,
           Map<String, dynamic>>(hostingServiceValue, (value) => value.toMap());
     }
     map['location'] = location;
@@ -118,20 +120,21 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      actionsConfigs: Input.asOptionalInput<List<PluginActionsConfig>>(
+      actionsConfigs: pulumi.Input.asOptionalInput<List<PluginActionsConfig>>(
           map['actionsConfigs']),
-      configTemplate:
-          Input.asOptionalInput<PluginConfigTemplate>(map['configTemplate']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      documentation:
-          Input.asOptionalInput<PluginDocumentation>(map['documentation']),
-      hostingService:
-          Input.asOptionalInput<PluginHostingService>(map['hostingService']),
-      location: Input.asInput<String>(map['location']),
-      pluginCategory: Input.asOptionalInput<String>(map['pluginCategory']),
-      pluginId: Input.asInput<String>(map['pluginId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      configTemplate: pulumi.Input.asOptionalInput<PluginConfigTemplate>(
+          map['configTemplate']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      documentation: pulumi.Input.asOptionalInput<PluginDocumentation>(
+          map['documentation']),
+      hostingService: pulumi.Input.asOptionalInput<PluginHostingService>(
+          map['hostingService']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      pluginCategory:
+          pulumi.Input.asOptionalInput<String>(map['pluginCategory']),
+      pluginId: pulumi.Input.asInput<String>(map['pluginId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

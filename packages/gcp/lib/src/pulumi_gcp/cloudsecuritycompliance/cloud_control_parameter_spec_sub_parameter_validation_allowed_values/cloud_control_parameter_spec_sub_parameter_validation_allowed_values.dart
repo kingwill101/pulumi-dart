@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_control_parameter_spec_sub_parameter_validation_allowed_values_value/cloud_control_parameter_spec_sub_parameter_validation_allowed_values_value.dart';
 
 class CloudControlParameterSpecSubParameterValidationAllowedValues {
@@ -15,7 +15,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValues {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['values'] = Input.encodeList<
+    map['values'] = pulumi.Input.encodeList<
         CloudControlParameterSpecSubParameterValidationAllowedValuesValue,
         Map<String, dynamic>>(values, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValues {
   factory CloudControlParameterSpecSubParameterValidationAllowedValues.fromMap(
       Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameterValidationAllowedValues(
-      values: Input.decodeList<
+      values: pulumi.Input.decodeList<
               CloudControlParameterSpecSubParameterValidationAllowedValuesValue>(
           map['values'],
           (value) =>

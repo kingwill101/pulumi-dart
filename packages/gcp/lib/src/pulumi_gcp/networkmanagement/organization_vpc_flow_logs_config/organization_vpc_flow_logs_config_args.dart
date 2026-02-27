@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OrganizationVpcFlowLogsConfig.
 class OrganizationVpcFlowLogsConfigArgs {
   /// Optional. The aggregation interval for the logs. Default value is
   /// INTERVAL_5_SEC.   Possible values: INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
-  final Input<String>? aggregationInterval;
+  final pulumi.Input<String>? aggregationInterval;
 
   /// Determines whether to include cross project annotations in the logs.
   /// This field is available only for organization configurations. If not
@@ -15,51 +15,51 @@ class OrganizationVpcFlowLogsConfigArgs {
   /// CROSS_PROJECT_METADATA_ENABLED
   /// CROSS_PROJECT_METADATA_DISABLED
   /// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
-  final Input<String>? crossProjectMetadata;
+  final pulumi.Input<String>? crossProjectMetadata;
 
   /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
   /// of 512 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. Export filter used to define which VPC Flow Logs should be logged.
-  final Input<String>? filterExpr;
+  final pulumi.Input<String>? filterExpr;
 
   /// Optional. The value of the field must be in (0, 1]. The sampling rate
   /// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
   /// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
   /// the state field instead. Default value is 1.0
-  final Input<double>? flowSampling;
+  final pulumi.Input<double>? flowSampling;
 
   /// Optional. Resource labels to represent the user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource
   /// within its parent collection as described in https://google.aip.dev/122. See documentation
   /// for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Optional. Configures whether all, none or a subset of metadata fields
   /// should be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
   /// Possible values:  METADATA_UNSPECIFIED INCLUDE_ALL_METADATA EXCLUDE_ALL_METADATA CUSTOM_METADATA
-  final Input<String>? metadata;
+  final pulumi.Input<String>? metadata;
 
   /// Optional. Custom metadata fields to include in the reported VPC flow
   /// logs. Can only be specified if \"metadata\" was set to CUSTOM_METADATA.
-  final Input<List<String>>? metadataFields;
+  final pulumi.Input<List<String>>? metadataFields;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   /// Optional. The state of the VPC Flow Log configuration. Default value
   /// is ENABLED. When creating a new configuration, it must be enabled.
   /// Possible values: ENABLED DISABLED
-  final Input<String>? state;
+  final pulumi.Input<String>? state;
 
   /// Required. ID of the `VpcFlowLogsConfig`.
-  final Input<String> vpcFlowLogsConfigId;
+  final pulumi.Input<String> vpcFlowLogsConfigId;
 
   OrganizationVpcFlowLogsConfigArgs({
     this.aggregationInterval,
@@ -123,20 +123,21 @@ class OrganizationVpcFlowLogsConfigArgs {
   factory OrganizationVpcFlowLogsConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationVpcFlowLogsConfigArgs(
       aggregationInterval:
-          Input.asOptionalInput<String>(map['aggregationInterval']),
+          pulumi.Input.asOptionalInput<String>(map['aggregationInterval']),
       crossProjectMetadata:
-          Input.asOptionalInput<String>(map['crossProjectMetadata']),
-      description: Input.asOptionalInput<String>(map['description']),
-      filterExpr: Input.asOptionalInput<String>(map['filterExpr']),
-      flowSampling: Input.asOptionalInput<double>(map['flowSampling']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      metadata: Input.asOptionalInput<String>(map['metadata']),
+          pulumi.Input.asOptionalInput<String>(map['crossProjectMetadata']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      filterExpr: pulumi.Input.asOptionalInput<String>(map['filterExpr']),
+      flowSampling: pulumi.Input.asOptionalInput<double>(map['flowSampling']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      metadata: pulumi.Input.asOptionalInput<String>(map['metadata']),
       metadataFields:
-          Input.asOptionalInput<List<String>>(map['metadataFields']),
-      organization: Input.asInput<String>(map['organization']),
-      state: Input.asOptionalInput<String>(map['state']),
-      vpcFlowLogsConfigId: Input.asInput<String>(map['vpcFlowLogsConfigId']),
+          pulumi.Input.asOptionalInput<List<String>>(map['metadataFields']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
+      state: pulumi.Input.asOptionalInput<String>(map['state']),
+      vpcFlowLogsConfigId:
+          pulumi.Input.asInput<String>(map['vpcFlowLogsConfigId']),
     );
   }
 }

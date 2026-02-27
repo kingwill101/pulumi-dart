@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNetworks.
 class GetNetworksArgs {
   /// The name of the project.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetNetworksArgs({
     this.project,
@@ -22,7 +22,7 @@ class GetNetworksArgs {
 
   factory GetNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworksArgs(
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

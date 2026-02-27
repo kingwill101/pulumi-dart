@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_testable_permissions_permission/get_testable_permissions_permission.dart';
 
 /// Result data returned by getTestablePermissions.
@@ -32,7 +32,8 @@ class GetTestablePermissionsResult {
     }
     map['fullResourceName'] = fullResourceName;
     map['id'] = id;
-    map['permissions'] = Input.encodeList<GetTestablePermissionsPermission,
+    map['permissions'] = pulumi.Input.encodeList<
+        GetTestablePermissionsPermission,
         Map<String, dynamic>>(permissions, (value) => value.toMap());
     final stagesValue = stages;
     if (stagesValue != null) {
@@ -48,7 +49,7 @@ class GetTestablePermissionsResult {
           : map['customSupportLevel'] as String,
       fullResourceName: map['fullResourceName'] as String,
       id: map['id'] as String,
-      permissions: Input.decodeList<GetTestablePermissionsPermission>(
+      permissions: pulumi.Input.decodeList<GetTestablePermissionsPermission>(
           map['permissions'],
           (value) => GetTestablePermissionsPermission.fromMap(
               (value as Map).cast<String, dynamic>())),

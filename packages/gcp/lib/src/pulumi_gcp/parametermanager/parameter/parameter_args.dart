@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Parameter.
 class ParameterArgs {
   /// The format type of the parameter resource.
   /// Default value is `UNFORMATTED`.
   /// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
-  final Input<String>? format;
+  final pulumi.Input<String>? format;
 
   /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
-  final Input<String>? kmsKey;
+  final pulumi.Input<String>? kmsKey;
 
   /// The labels assigned to this Parameter.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -24,14 +24,14 @@ class ParameterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// This must be unique within the project.
-  final Input<String> parameterId;
+  final pulumi.Input<String> parameterId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   ParameterArgs({
     this.format,
@@ -65,11 +65,11 @@ class ParameterArgs {
 
   factory ParameterArgs.fromMap(Map<String, dynamic> map) {
     return ParameterArgs(
-      format: Input.asOptionalInput<String>(map['format']),
-      kmsKey: Input.asOptionalInput<String>(map['kmsKey']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      parameterId: Input.asInput<String>(map['parameterId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      format: pulumi.Input.asOptionalInput<String>(map['format']),
+      kmsKey: pulumi.Input.asOptionalInput<String>(map['kmsKey']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      parameterId: pulumi.Input.asInput<String>(map['parameterId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

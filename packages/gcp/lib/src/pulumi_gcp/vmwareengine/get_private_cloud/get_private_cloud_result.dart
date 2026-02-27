@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_private_cloud_hcx/get_private_cloud_hcx.dart';
 import '../get_private_cloud_management_cluster/get_private_cloud_management_cluster.dart';
 import '../get_private_cloud_network_config/get_private_cloud_network_config.dart';
@@ -60,19 +60,21 @@ class GetPrivateCloudResult {
     map['deletionDelayHours'] = deletionDelayHours;
     map['description'] = description;
     map['expireTime'] = expireTime;
-    map['hcxes'] = Input.encodeList<GetPrivateCloudHcx, Map<String, dynamic>>(
-        hcxes, (value) => value.toMap());
+    map['hcxes'] =
+        pulumi.Input.encodeList<GetPrivateCloudHcx, Map<String, dynamic>>(
+            hcxes, (value) => value.toMap());
     map['id'] = id;
     map['location'] = location;
-    map['managementClusters'] = Input.encodeList<
+    map['managementClusters'] = pulumi.Input.encodeList<
         GetPrivateCloudManagementCluster,
         Map<String, dynamic>>(managementClusters, (value) => value.toMap());
     map['name'] = name;
-    map['networkConfigs'] =
-        Input.encodeList<GetPrivateCloudNetworkConfig, Map<String, dynamic>>(
-            networkConfigs, (value) => value.toMap());
-    map['nsxes'] = Input.encodeList<GetPrivateCloudNsx, Map<String, dynamic>>(
-        nsxes, (value) => value.toMap());
+    map['networkConfigs'] = pulumi.Input.encodeList<
+        GetPrivateCloudNetworkConfig,
+        Map<String, dynamic>>(networkConfigs, (value) => value.toMap());
+    map['nsxes'] =
+        pulumi.Input.encodeList<GetPrivateCloudNsx, Map<String, dynamic>>(
+            nsxes, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -83,7 +85,7 @@ class GetPrivateCloudResult {
     map['uid'] = uid;
     map['updateTime'] = updateTime;
     map['vcenters'] =
-        Input.encodeList<GetPrivateCloudVcenter, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetPrivateCloudVcenter, Map<String, dynamic>>(
             vcenters, (value) => value.toMap());
     return map;
   }
@@ -95,22 +97,23 @@ class GetPrivateCloudResult {
       deletionDelayHours: map['deletionDelayHours'] as int,
       description: map['description'] as String,
       expireTime: map['expireTime'] as String,
-      hcxes: Input.decodeList<GetPrivateCloudHcx>(
+      hcxes: pulumi.Input.decodeList<GetPrivateCloudHcx>(
           map['hcxes'],
           (value) => GetPrivateCloudHcx.fromMap(
               (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
-      managementClusters: Input.decodeList<GetPrivateCloudManagementCluster>(
-          map['managementClusters'],
-          (value) => GetPrivateCloudManagementCluster.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      managementClusters:
+          pulumi.Input.decodeList<GetPrivateCloudManagementCluster>(
+              map['managementClusters'],
+              (value) => GetPrivateCloudManagementCluster.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      networkConfigs: Input.decodeList<GetPrivateCloudNetworkConfig>(
+      networkConfigs: pulumi.Input.decodeList<GetPrivateCloudNetworkConfig>(
           map['networkConfigs'],
           (value) => GetPrivateCloudNetworkConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      nsxes: Input.decodeList<GetPrivateCloudNsx>(
+      nsxes: pulumi.Input.decodeList<GetPrivateCloudNsx>(
           map['nsxes'],
           (value) => GetPrivateCloudNsx.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -120,7 +123,7 @@ class GetPrivateCloudResult {
       type: map['type'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
-      vcenters: Input.decodeList<GetPrivateCloudVcenter>(
+      vcenters: pulumi.Input.decodeList<GetPrivateCloudVcenter>(
           map['vcenters'],
           (value) => GetPrivateCloudVcenter.fromMap(
               (value as Map).cast<String, dynamic>())),

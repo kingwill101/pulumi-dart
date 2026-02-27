@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_channel_profile/deployment_channel_profile.dart';
 import 'deployment_args.dart';
 
@@ -36,55 +36,55 @@ import 'deployment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:ces/deployment:Deployment default {{location}}/{{app}}/{{name}}
 /// ```
-class DeploymentType extends CustomResource {
+class DeploymentType extends pulumi.CustomResource {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> app;
+  late final pulumi.Output<String> app;
 
   /// The resource name of the app version to deploy.
   /// Format:
   /// projects/{project}/locations/{location}/apps/{app}/versions/{version}
-  late final Output<String> appVersion;
+  late final pulumi.Output<String> appVersion;
 
   /// A ChannelProfile configures the agent's behavior for a specific communication
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
-  late final Output<DeploymentChannelProfile> channelProfile;
+  late final pulumi.Output<DeploymentChannelProfile> channelProfile;
 
   /// Timestamp when this deployment was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Display name of the deployment.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the deployment.
   /// Format:
   /// projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Timestamp when this deployment was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DeploymentType(
     String name, {
     DeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:ces/deployment:Deployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.app = registerOutput<String>('app');
     this.appVersion = registerOutput<String>('appVersion');

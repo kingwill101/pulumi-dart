@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../template_filter_config/template_filter_config.dart';
 import '../template_template_metadata/template_template_metadata.dart';
 import 'template_args.dart';
@@ -37,57 +37,57 @@ import 'template_args.dart';
 /// ```sh
 /// $ pulumi import gcp:modelarmor/template:Template default {{location}}/{{template_id}}
 /// ```
-class Template extends CustomResource {
+class Template extends pulumi.CustomResource {
   /// Create time stamp
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Filters configuration.
   /// Structure is documented below.
-  late final Output<TemplateFilterConfig> filterConfig;
+  late final pulumi.Output<TemplateFilterConfig> filterConfig;
 
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. name of resource
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Id of the requesting object
   /// If auto-generating Id server-side, remove this field and
   /// template_id from the method_signature of Create RPC
-  late final Output<String> templateId;
+  late final pulumi.Output<String> templateId;
 
   /// Message describing TemplateMetadata
   /// Structure is documented below.
-  late final Output<TemplateTemplateMetadata?> templateMetadata;
+  late final pulumi.Output<TemplateTemplateMetadata?> templateMetadata;
 
   /// Update time stamp
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Template(
     String name, {
     TemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:modelarmor/template:Template',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.effectiveLabels =

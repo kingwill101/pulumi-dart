@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_ssl_certificate_args.dart';
 
 /// A RegionSslCertificate resource, used for HTTPS load balancing. This resource
@@ -45,24 +45,24 @@ import 'region_ssl_certificate_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
 /// ```
-class RegionSslCertificate extends CustomResource {
+class RegionSslCertificate extends pulumi.CustomResource {
   /// The certificate in PEM format.
   /// The certificate chain must be no greater than 5 certs long.
   /// The chain must include at least one intermediate cert.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> certificate;
+  late final pulumi.Output<String> certificate;
 
   /// The unique identifier for the resource.
-  late final Output<int> certificateId;
+  late final pulumi.Output<int> certificateId;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Expire time of the certificate in RFC3339 text format.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -72,7 +72,7 @@ class RegionSslCertificate extends CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Creates a unique name beginning with the
   /// specified prefix. Conflicts with `name`. Max length is 54 characters.
@@ -82,32 +82,32 @@ class RegionSslCertificate extends CustomResource {
   /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `name_prefix` 38 - 54 characters:
   /// `name_prefix` + YYmmdd + 3 digit incremental counter
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> namePrefix;
 
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> privateKey;
+  late final pulumi.Output<String> privateKey;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Region in which the created regional ssl certificate should reside.
   /// If it is not provided, the provider region is used.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   RegionSslCertificate(
     String name, {
     RegionSslCertificateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionSslCertificate:RegionSslCertificate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificate = registerOutput<String>('certificate');
     this.certificateId = registerOutput<int>('certificateId');

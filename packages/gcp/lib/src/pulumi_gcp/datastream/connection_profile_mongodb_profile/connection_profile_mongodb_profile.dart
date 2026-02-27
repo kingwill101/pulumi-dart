@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_profile_mongodb_profile_host_address/connection_profile_mongodb_profile_host_address.dart';
 import '../connection_profile_mongodb_profile_ssl_config/connection_profile_mongodb_profile_ssl_config.dart';
 import '../connection_profile_mongodb_profile_standard_connection_format/connection_profile_mongodb_profile_standard_connection_format.dart';
@@ -52,7 +52,7 @@ class ConnectionProfileMongodbProfile {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['hostAddresses'] = Input.encodeList<
+    map['hostAddresses'] = pulumi.Input.encodeList<
         ConnectionProfileMongodbProfileHostAddress,
         Map<String, dynamic>>(hostAddresses, (value) => value.toMap());
     final passwordValue = password;
@@ -86,7 +86,7 @@ class ConnectionProfileMongodbProfile {
   factory ConnectionProfileMongodbProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileMongodbProfile(
       hostAddresses:
-          Input.decodeList<ConnectionProfileMongodbProfileHostAddress>(
+          pulumi.Input.decodeList<ConnectionProfileMongodbProfileHostAddress>(
               map['hostAddresses'],
               (value) => ConnectionProfileMongodbProfileHostAddress.fromMap(
                   (value as Map).cast<String, dynamic>())),

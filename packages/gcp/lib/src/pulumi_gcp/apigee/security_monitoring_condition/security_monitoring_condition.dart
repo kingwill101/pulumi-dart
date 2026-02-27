@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_monitoring_condition_args.dart';
 
 /// Security monitoring condition for risk assessment version 2 in Apigee.
@@ -34,48 +34,48 @@ import 'security_monitoring_condition_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition default {{org_id}}/{{condition_id}}
 /// ```
-class SecurityMonitoringCondition extends CustomResource {
+class SecurityMonitoringCondition extends pulumi.CustomResource {
   /// Resource ID of the security monitoring condition.
-  late final Output<String> conditionId;
+  late final pulumi.Output<String> conditionId;
 
   /// The timestamp at which this profile was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A nested object resource.
-  late final Output<Map<String, dynamic>?> includeAllResources;
+  late final pulumi.Output<Map<String, dynamic>?> includeAllResources;
 
   /// Name of the security monitoring condition resource,
   /// in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// ID of security profile of the security monitoring condition.
-  late final Output<String> profile;
+  late final pulumi.Output<String> profile;
 
   /// ID of security profile of the security monitoring condition.
-  late final Output<String> scope;
+  late final pulumi.Output<String> scope;
 
   /// Total number of deployed resources within scope.
-  late final Output<int> totalDeployedResources;
+  late final pulumi.Output<int> totalDeployedResources;
 
   /// Total number of monitored resources within this condition.
-  late final Output<int> totalMonitoredResources;
+  late final pulumi.Output<int> totalMonitoredResources;
 
   /// The timestamp at which this profile was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   SecurityMonitoringCondition(
     String name, {
     SecurityMonitoringConditionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.conditionId = registerOutput<String>('conditionId');
     this.createTime = registerOutput<String>('createTime');

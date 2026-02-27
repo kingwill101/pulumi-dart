@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_certificates_certificate_managed/get_certificates_certificate_managed.dart';
 
 class GetCertificatesCertificate {
@@ -72,7 +72,7 @@ class GetCertificatesCertificate {
     map['effectiveLabels'] = effectiveLabels;
     map['labels'] = labels;
     map['location'] = location;
-    map['manageds'] = Input.encodeList<GetCertificatesCertificateManaged,
+    map['manageds'] = pulumi.Input.encodeList<GetCertificatesCertificateManaged,
         Map<String, dynamic>>(manageds, (value) => value.toMap());
     map['name'] = name;
     map['project'] = project;
@@ -88,7 +88,7 @@ class GetCertificatesCertificate {
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      manageds: Input.decodeList<GetCertificatesCertificateManaged>(
+      manageds: pulumi.Input.decodeList<GetCertificatesCertificateManaged>(
           map['manageds'],
           (value) => GetCertificatesCertificateManaged.fromMap(
               (value as Map).cast<String, dynamic>())),

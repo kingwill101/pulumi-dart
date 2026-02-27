@@ -1,47 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../assistant_customer_policy/assistant_customer_policy.dart';
 import '../assistant_generation_config/assistant_generation_config.dart';
 
 /// The set of arguments for Assistant.
 class AssistantArgs {
   /// The unique id of the assistant.
-  final Input<String> assistantId;
+  final pulumi.Input<String> assistantId;
 
   /// The unique id of the collection.
-  final Input<String> collectionId;
+  final pulumi.Input<String> collectionId;
 
   /// Customer policy for the assistant.
   /// Structure is documented below.
-  final Input<AssistantCustomerPolicy>? customerPolicy;
+  final pulumi.Input<AssistantCustomerPolicy>? customerPolicy;
 
   /// Description for additional information. Expected to be shown on the
   /// configuration UI, not to the users of the assistant.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The assistant display name.
   /// It must be a UTF-8 encoded string with a length limit of 128 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The unique id of the engine.
-  final Input<String> engineId;
+  final pulumi.Input<String> engineId;
 
   /// Configuration for the generation of the assistant response.
   /// Structure is documented below.
-  final Input<AssistantGenerationConfig>? generationConfig;
+  final pulumi.Input<AssistantGenerationConfig>? generationConfig;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The type of web grounding to use.
   /// The supported values: 'WEB_GROUNDING_TYPE_DISABLED', 'WEB_GROUNDING_TYPE_GOOGLE_SEARCH', 'WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH'.
-  final Input<String>? webGroundingType;
+  final pulumi.Input<String>? webGroundingType;
 
   AssistantArgs({
     required this.assistantId,
@@ -62,7 +62,7 @@ class AssistantArgs {
     map['collectionId'] = collectionId;
     final customerPolicyValue = customerPolicy;
     if (customerPolicyValue != null) {
-      map['customerPolicy'] = Input.mapOptionalInputValue<
+      map['customerPolicy'] = pulumi.Input.mapOptionalInputValue<
           AssistantCustomerPolicy,
           Map<String, dynamic>>(customerPolicyValue, (value) => value.toMap());
     }
@@ -74,7 +74,7 @@ class AssistantArgs {
     map['engineId'] = engineId;
     final generationConfigValue = generationConfig;
     if (generationConfigValue != null) {
-      map['generationConfig'] = Input.mapOptionalInputValue<
+      map['generationConfig'] = pulumi.Input.mapOptionalInputValue<
               AssistantGenerationConfig, Map<String, dynamic>>(
           generationConfigValue, (value) => value.toMap());
     }
@@ -92,18 +92,19 @@ class AssistantArgs {
 
   factory AssistantArgs.fromMap(Map<String, dynamic> map) {
     return AssistantArgs(
-      assistantId: Input.asInput<String>(map['assistantId']),
-      collectionId: Input.asInput<String>(map['collectionId']),
-      customerPolicy:
-          Input.asOptionalInput<AssistantCustomerPolicy>(map['customerPolicy']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      engineId: Input.asInput<String>(map['engineId']),
-      generationConfig: Input.asOptionalInput<AssistantGenerationConfig>(
+      assistantId: pulumi.Input.asInput<String>(map['assistantId']),
+      collectionId: pulumi.Input.asInput<String>(map['collectionId']),
+      customerPolicy: pulumi.Input.asOptionalInput<AssistantCustomerPolicy>(
+          map['customerPolicy']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      engineId: pulumi.Input.asInput<String>(map['engineId']),
+      generationConfig: pulumi.Input.asOptionalInput<AssistantGenerationConfig>(
           map['generationConfig']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      webGroundingType: Input.asOptionalInput<String>(map['webGroundingType']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      webGroundingType:
+          pulumi.Input.asOptionalInput<String>(map['webGroundingType']),
     );
   }
 }

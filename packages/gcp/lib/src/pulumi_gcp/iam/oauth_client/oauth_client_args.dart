@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OauthClient.
 class OauthClientArgs {
   /// Required. The list of OAuth grant types is allowed for the OauthClient.
-  final Input<List<String>> allowedGrantTypes;
+  final pulumi.Input<List<String>> allowedGrantTypes;
 
   /// Required. The list of redirect uris that is allowed to redirect back
   /// when authorization process is completed.
-  final Input<List<String>> allowedRedirectUris;
+  final pulumi.Input<List<String>> allowedRedirectUris;
 
   /// Required. The list of scopes that the OauthClient is allowed to request during
   /// OAuth flows.
@@ -17,7 +17,7 @@ class OauthClientArgs {
   /// * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
   /// and delete your Google Cloud data and see the email address for your Google
   /// Account.
-  final Input<List<String>> allowedScopes;
+  final pulumi.Input<List<String>> allowedScopes;
 
   /// Immutable. The type of OauthClient. Either public or private.
   /// For private clients, the client secret can be managed using the dedicated
@@ -26,33 +26,33 @@ class OauthClientArgs {
   /// CLIENT_TYPE_UNSPECIFIED
   /// PUBLIC_CLIENT
   /// CONFIDENTIAL_CLIENT
-  final Input<String>? clientType;
+  final pulumi.Input<String>? clientType;
 
   /// A user-specified description of the OauthClient.
   /// Cannot exceed 256 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether the OauthClient is disabled. You cannot use a disabled OAuth
   /// client.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// A user-specified display name of the OauthClient.
   /// Cannot exceed 32 characters.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Required. The ID to use for the OauthClient, which becomes the final component of
   /// the resource name. This value should be a string of 6 to 63 lowercase
   /// letters, digits, or hyphens. It must start with a letter, and cannot have a
   /// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
   /// not be specified.
-  final Input<String> oauthClientId;
+  final pulumi.Input<String> oauthClientId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   OauthClientArgs({
     required this.allowedGrantTypes,
@@ -99,17 +99,18 @@ class OauthClientArgs {
 
   factory OauthClientArgs.fromMap(Map<String, dynamic> map) {
     return OauthClientArgs(
-      allowedGrantTypes: Input.asInput<List<String>>(map['allowedGrantTypes']),
+      allowedGrantTypes:
+          pulumi.Input.asInput<List<String>>(map['allowedGrantTypes']),
       allowedRedirectUris:
-          Input.asInput<List<String>>(map['allowedRedirectUris']),
-      allowedScopes: Input.asInput<List<String>>(map['allowedScopes']),
-      clientType: Input.asOptionalInput<String>(map['clientType']),
-      description: Input.asOptionalInput<String>(map['description']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      oauthClientId: Input.asInput<String>(map['oauthClientId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<List<String>>(map['allowedRedirectUris']),
+      allowedScopes: pulumi.Input.asInput<List<String>>(map['allowedScopes']),
+      clientType: pulumi.Input.asOptionalInput<String>(map['clientType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      oauthClientId: pulumi.Input.asInput<String>(map['oauthClientId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

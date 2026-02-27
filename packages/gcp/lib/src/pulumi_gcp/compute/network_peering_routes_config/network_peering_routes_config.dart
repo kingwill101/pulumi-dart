@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_peering_routes_config_args.dart';
 
 /// Manage a network peering's route settings without managing the peering as
@@ -43,42 +43,42 @@ import 'network_peering_routes_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
 /// ```
-class NetworkPeeringRoutesConfig extends CustomResource {
+class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
   /// Whether to export the custom routes to the peer network.
-  late final Output<bool> exportCustomRoutes;
+  late final pulumi.Output<bool> exportCustomRoutes;
 
   /// Whether subnet routes with public IP range are exported.
   /// IPv4 special-use ranges are always exported to peers and
   /// are not controlled by this field.
-  late final Output<bool> exportSubnetRoutesWithPublicIp;
+  late final pulumi.Output<bool> exportSubnetRoutesWithPublicIp;
 
   /// Whether to import the custom routes to the peer network.
-  late final Output<bool> importCustomRoutes;
+  late final pulumi.Output<bool> importCustomRoutes;
 
   /// Whether subnet routes with public IP range are imported.
   /// IPv4 special-use ranges are always imported from peers and
   /// are not controlled by this field.
-  late final Output<bool> importSubnetRoutesWithPublicIp;
+  late final pulumi.Output<bool> importSubnetRoutesWithPublicIp;
 
   /// The name of the primary network for the peering.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// Name of the peering.
-  late final Output<String> peering;
+  late final pulumi.Output<String> peering;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   NetworkPeeringRoutesConfig(
     String name, {
     NetworkPeeringRoutesConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.exportCustomRoutes = registerOutput<bool>('exportCustomRoutes');
     this.exportSubnetRoutesWithPublicIp =

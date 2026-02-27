@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_network_config_additional_node_network_config/get_cluster_node_pool_network_config_additional_node_network_config.dart';
 import '../get_cluster_node_pool_network_config_additional_pod_network_config/get_cluster_node_pool_network_config_additional_pod_network_config.dart';
 import '../get_cluster_node_pool_network_config_network_performance_config/get_cluster_node_pool_network_config_network_performance_config.dart';
@@ -57,21 +57,21 @@ class GetClusterNodePoolNetworkConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['acceleratorNetworkProfile'] = acceleratorNetworkProfile;
-    map['additionalNodeNetworkConfigs'] = Input.encodeList<
+    map['additionalNodeNetworkConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig,
             Map<String, dynamic>>(
         additionalNodeNetworkConfigs, (value) => value.toMap());
-    map['additionalPodNetworkConfigs'] = Input.encodeList<
+    map['additionalPodNetworkConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig,
             Map<String, dynamic>>(
         additionalPodNetworkConfigs, (value) => value.toMap());
     map['createPodRange'] = createPodRange;
     map['enablePrivateNodes'] = enablePrivateNodes;
-    map['networkPerformanceConfigs'] = Input.encodeList<
+    map['networkPerformanceConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNetworkConfigNetworkPerformanceConfig,
             Map<String, dynamic>>(
         networkPerformanceConfigs, (value) => value.toMap());
-    map['podCidrOverprovisionConfigs'] = Input.encodeList<
+    map['podCidrOverprovisionConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig,
             Map<String, dynamic>>(
         podCidrOverprovisionConfigs, (value) => value.toMap());
@@ -84,12 +84,12 @@ class GetClusterNodePoolNetworkConfig {
   factory GetClusterNodePoolNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNetworkConfig(
       acceleratorNetworkProfile: map['acceleratorNetworkProfile'] as String,
-      additionalNodeNetworkConfigs: Input.decodeList<
+      additionalNodeNetworkConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig>(
           map['additionalNodeNetworkConfigs'],
           (value) => GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig
               .fromMap((value as Map).cast<String, dynamic>())),
-      additionalPodNetworkConfigs: Input.decodeList<
+      additionalPodNetworkConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig>(
           map['additionalPodNetworkConfigs'],
           (value) =>
@@ -97,13 +97,13 @@ class GetClusterNodePoolNetworkConfig {
                   (value as Map).cast<String, dynamic>())),
       createPodRange: map['createPodRange'] as bool,
       enablePrivateNodes: map['enablePrivateNodes'] as bool,
-      networkPerformanceConfigs: Input.decodeList<
+      networkPerformanceConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolNetworkConfigNetworkPerformanceConfig>(
           map['networkPerformanceConfigs'],
           (value) =>
               GetClusterNodePoolNetworkConfigNetworkPerformanceConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      podCidrOverprovisionConfigs: Input.decodeList<
+      podCidrOverprovisionConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig>(
           map['podCidrOverprovisionConfigs'],
           (value) =>

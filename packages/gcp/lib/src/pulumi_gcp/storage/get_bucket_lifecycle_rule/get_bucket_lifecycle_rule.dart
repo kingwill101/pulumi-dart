@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_lifecycle_rule_action/get_bucket_lifecycle_rule_action.dart';
 import '../get_bucket_lifecycle_rule_condition/get_bucket_lifecycle_rule_condition.dart';
 
@@ -18,22 +18,20 @@ class GetBucketLifecycleRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] =
-        Input.encodeList<GetBucketLifecycleRuleAction, Map<String, dynamic>>(
-            actions, (value) => value.toMap());
-    map['conditions'] =
-        Input.encodeList<GetBucketLifecycleRuleCondition, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['actions'] = pulumi.Input.encodeList<GetBucketLifecycleRuleAction,
+        Map<String, dynamic>>(actions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<GetBucketLifecycleRuleCondition,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     return map;
   }
 
   factory GetBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return GetBucketLifecycleRule(
-      actions: Input.decodeList<GetBucketLifecycleRuleAction>(
+      actions: pulumi.Input.decodeList<GetBucketLifecycleRuleAction>(
           map['actions'],
           (value) => GetBucketLifecycleRuleAction.fromMap(
               (value as Map).cast<String, dynamic>())),
-      conditions: Input.decodeList<GetBucketLifecycleRuleCondition>(
+      conditions: pulumi.Input.decodeList<GetBucketLifecycleRuleCondition>(
           map['conditions'],
           (value) => GetBucketLifecycleRuleCondition.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_allow/firewall_allow.dart';
 import '../firewall_deny/firewall_deny.dart';
 import '../firewall_log_config/firewall_log_config.dart';
@@ -59,50 +59,50 @@ import 'firewall_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/firewall:Firewall default {{name}}
 /// ```
-class Firewall extends CustomResource {
+class Firewall extends pulumi.CustomResource {
   /// The list of ALLOW rules specified by this firewall. Each rule
   /// specifies a protocol and port-range tuple that describes a permitted
   /// connection.
   /// Structure is documented below.
-  late final Output<List<FirewallAllow>?> allows;
+  late final pulumi.Output<List<FirewallAllow>?> allows;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// The list of DENY rules specified by this firewall. Each rule specifies
   /// a protocol and port-range tuple that describes a denied connection.
   /// Structure is documented below.
-  late final Output<List<FirewallDeny>?> denies;
+  late final pulumi.Output<List<FirewallDeny>?> denies;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// If destination ranges are specified, the firewall will apply only to
   /// traffic that has destination IP address in these ranges. These ranges
   /// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
-  late final Output<List<String>> destinationRanges;
+  late final pulumi.Output<List<String>> destinationRanges;
 
   /// Direction of traffic to which this firewall applies; default is
   /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
   /// `source_tags` or `source_service_accounts` is required.
   /// Possible values are: `INGRESS`, `EGRESS`.
-  late final Output<String> direction;
+  late final pulumi.Output<String> direction;
 
   /// Denotes whether the firewall rule is disabled, i.e not applied to the
   /// network it is associated with. When set to true, the firewall rule is
   /// not enforced and the network behaves as if it did not exist. If this
   /// is unspecified, the firewall rule will be enabled.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// This field denotes whether to enable logging for a particular firewall rule.
   /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
-  late final Output<bool> enableLogging;
+  late final pulumi.Output<bool> enableLogging;
 
   /// This field denotes the logging options for a particular firewall rule.
   /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
   /// Structure is documented below.
-  late final Output<FirewallLogConfig?> logConfig;
+  late final pulumi.Output<FirewallLogConfig?> logConfig;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -111,14 +111,14 @@ class Firewall extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name or self_link of the network to attach this firewall to.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  late final Output<FirewallParams?> params;
+  late final pulumi.Output<FirewallParams?> params;
 
   /// Priority for this rule. This is an integer between 0 and 65535, both
   /// inclusive. When not specified, the value assumed is 1000. Relative
@@ -126,14 +126,14 @@ class Firewall extends CustomResource {
   /// priority implies higher precedence (eg, a rule with priority 0 has
   /// higher precedence than a rule with priority 1). DENY rules take
   /// precedence over ALLOW rules having equal priority.
-  late final Output<int?> priority;
+  late final pulumi.Output<int?> priority;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// If source ranges are specified, the firewall will apply only to
   /// traffic that has source IP address in these ranges. These ranges must
@@ -144,7 +144,7 @@ class Firewall extends CustomResource {
   /// connection does not need to match both properties for the firewall to
   /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
   /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
-  late final Output<List<String>?> sourceRanges;
+  late final pulumi.Output<List<String>?> sourceRanges;
 
   /// If source service accounts are specified, the firewall will apply only
   /// to traffic originating from an instance with a service account in this
@@ -158,7 +158,7 @@ class Firewall extends CustomResource {
   /// properties for the firewall to apply. sourceServiceAccounts cannot be
   /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
   /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
-  late final Output<List<String>?> sourceServiceAccounts;
+  late final pulumi.Output<List<String>?> sourceServiceAccounts;
 
   /// If source tags are specified, the firewall will apply only to traffic
   /// with source IP that belongs to a tag listed in source tags. Source
@@ -170,7 +170,7 @@ class Firewall extends CustomResource {
   /// a tag listed in the sourceTags property. The connection does not need
   /// to match both properties for the firewall to apply. For INGRESS traffic,
   /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
-  late final Output<List<String>?> sourceTags;
+  late final pulumi.Output<List<String>?> sourceTags;
 
   /// A list of service accounts indicating sets of instances located in the
   /// network that may make network connections as specified in allowed[].
@@ -178,23 +178,23 @@ class Firewall extends CustomResource {
   /// sourceTags. If neither targetServiceAccounts nor targetTags are
   /// specified, the firewall rule applies to all instances on the specified
   /// network.
-  late final Output<List<String>?> targetServiceAccounts;
+  late final pulumi.Output<List<String>?> targetServiceAccounts;
 
   /// A list of instance tags indicating sets of instances located in the
   /// network that may make network connections as specified in allowed[].
   /// If no targetTags are specified, the firewall rule applies to all
   /// instances on the specified network.
-  late final Output<List<String>?> targetTags;
+  late final pulumi.Output<List<String>?> targetTags;
 
   Firewall(
     String name, {
     FirewallArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/firewall:Firewall',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allows = registerOutput<List<FirewallAllow>?>('allows');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

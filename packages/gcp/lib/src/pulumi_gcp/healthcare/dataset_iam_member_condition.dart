@@ -1,3 +1,3 @@
 library module_healthcare_dataset_iam_member_condition;
 
-export 'dataset_iam_member_condition/dataset_iam_member_condition2.dart';
+export 'dataset_iam_member_condition/dataset_iam_member_condition_healthcare.dart';

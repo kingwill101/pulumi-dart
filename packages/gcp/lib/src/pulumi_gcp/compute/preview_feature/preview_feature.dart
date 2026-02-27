@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../preview_feature_rollout_operation/preview_feature_rollout_operation.dart';
 import 'preview_feature_args.dart';
 
@@ -41,31 +41,31 @@ import 'preview_feature_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/previewFeature:PreviewFeature default {{name}}
 /// ```
-class PreviewFeature extends CustomResource {
+class PreviewFeature extends pulumi.CustomResource {
   /// The activation status of the preview feature.
   /// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
-  late final Output<String> activationStatus;
+  late final pulumi.Output<String> activationStatus;
 
   /// The name of the preview feature.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The rollout operation of the feature.
   /// Structure is documented below.
-  late final Output<PreviewFeatureRolloutOperation?> rolloutOperation;
+  late final pulumi.Output<PreviewFeatureRolloutOperation?> rolloutOperation;
 
   PreviewFeature(
     String name, {
     PreviewFeatureArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/previewFeature:PreviewFeature',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activationStatus = registerOutput<String>('activationStatus');
     this.name = registerOutput<String>('name');

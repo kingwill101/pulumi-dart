@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../grpc_route_rule_action_destination/grpc_route_rule_action_destination.dart';
 import '../grpc_route_rule_action_fault_injection_policy/grpc_route_rule_action_fault_injection_policy.dart';
 import '../grpc_route_rule_action_retry_policy/grpc_route_rule_action_retry_policy.dart';
@@ -32,7 +32,8 @@ class GrpcRouteRuleAction {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.encodeList<GrpcRouteRuleActionDestination,
+      map['destinations'] = pulumi.Input.encodeList<
+          GrpcRouteRuleActionDestination,
           Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
     final faultInjectionPolicyValue = faultInjectionPolicy;
@@ -54,7 +55,7 @@ class GrpcRouteRuleAction {
     return GrpcRouteRuleAction(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<GrpcRouteRuleActionDestination>(
+          : pulumi.Input.decodeList<GrpcRouteRuleActionDestination>(
               map['destinations'],
               (value) => GrpcRouteRuleActionDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),

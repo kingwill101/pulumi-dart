@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../encryption_spec_encryption_spec/encryption_spec_encryption_spec.dart';
 import 'encryption_spec_args.dart';
 
@@ -22,27 +22,27 @@ import 'encryption_spec_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class EncryptionSpec extends CustomResource {
+class EncryptionSpec extends pulumi.CustomResource {
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<EncryptionSpecEncryptionSpec> encryptionSpec;
+  late final pulumi.Output<EncryptionSpecEncryptionSpec> encryptionSpec;
 
   /// The location in which the encryptionSpec is to be initialized.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   EncryptionSpec(
     String name, {
     EncryptionSpecArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/encryptionSpec:EncryptionSpec',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.encryptionSpec =
         registerOutput<EncryptionSpecEncryptionSpec>('encryptionSpec');

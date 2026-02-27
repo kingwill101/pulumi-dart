@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_profile_alloydb/connection_profile_alloydb.dart';
 import '../connection_profile_cloudsql/connection_profile_cloudsql.dart';
 import '../connection_profile_error/connection_profile_error.dart';
@@ -80,78 +80,78 @@ import 'connection_profile_args.dart';
 /// ```sh
 /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
 /// ```
-class ConnectionProfile extends CustomResource {
+class ConnectionProfile extends pulumi.CustomResource {
   /// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
   /// Structure is documented below.
-  late final Output<ConnectionProfileAlloydb?> alloydb;
+  late final pulumi.Output<ConnectionProfileAlloydb?> alloydb;
 
   /// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
   /// Structure is documented below.
-  late final Output<ConnectionProfileCloudsql?> cloudsql;
+  late final pulumi.Output<ConnectionProfileCloudsql?> cloudsql;
 
   /// The ID of the connection profile.
-  late final Output<String> connectionProfileId;
+  late final pulumi.Output<String> connectionProfileId;
 
   /// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The database provider.
-  late final Output<String> dbprovider;
+  late final pulumi.Output<String> dbprovider;
 
   /// The connection profile display name.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Output only. The error details in case of state FAILED.
   /// Structure is documented below.
-  late final Output<List<ConnectionProfileError>> errors;
+  late final pulumi.Output<List<ConnectionProfileError>> errors;
 
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location where the connection profile should reside.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// Specifies connection parameters required specifically for MySQL databases.
   /// Structure is documented below.
-  late final Output<ConnectionProfileMysql?> mysql;
+  late final pulumi.Output<ConnectionProfileMysql?> mysql;
 
   /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Specifies connection parameters required specifically for Oracle databases.
   /// Structure is documented below.
-  late final Output<ConnectionProfileOracle?> oracle;
+  late final pulumi.Output<ConnectionProfileOracle?> oracle;
 
   /// Specifies connection parameters required specifically for PostgreSQL databases.
   /// Structure is documented below.
-  late final Output<ConnectionProfilePostgresql?> postgresql;
+  late final pulumi.Output<ConnectionProfilePostgresql?> postgresql;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The current connection profile state.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   ConnectionProfile(
     String name, {
     ConnectionProfileArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:databasemigrationservice/connectionProfile:ConnectionProfile',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.alloydb = registerOutput<ConnectionProfileAlloydb?>('alloydb');
     this.cloudsql = registerOutput<ConnectionProfileCloudsql?>('cloudsql');

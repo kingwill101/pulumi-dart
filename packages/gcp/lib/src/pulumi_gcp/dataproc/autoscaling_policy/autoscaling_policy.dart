@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../autoscaling_policy_basic_algorithm/autoscaling_policy_basic_algorithm.dart';
 import '../autoscaling_policy_secondary_worker_config/autoscaling_policy_secondary_worker_config.dart';
 import '../autoscaling_policy_worker_config/autoscaling_policy_worker_config.dart';
@@ -38,45 +38,45 @@ import 'autoscaling_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
 /// ```
-class AutoscalingPolicy extends CustomResource {
+class AutoscalingPolicy extends pulumi.CustomResource {
   /// Basic algorithm for autoscaling.
   /// Structure is documented below.
-  late final Output<AutoscalingPolicyBasicAlgorithm?> basicAlgorithm;
+  late final pulumi.Output<AutoscalingPolicyBasicAlgorithm?> basicAlgorithm;
 
   /// The  location where the autoscaling policy should reside.
   /// The default value is `global`.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The "resource name" of the autoscaling policy.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
   /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
   /// 3 and 50 characters.
-  late final Output<String> policyId;
+  late final pulumi.Output<String> policyId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Describes how the autoscaler will operate for secondary workers.
   /// Structure is documented below.
-  late final Output<AutoscalingPolicySecondaryWorkerConfig?>
+  late final pulumi.Output<AutoscalingPolicySecondaryWorkerConfig?>
       secondaryWorkerConfig;
 
   /// Describes how the autoscaler will operate for primary workers.
   /// Structure is documented below.
-  late final Output<AutoscalingPolicyWorkerConfig?> workerConfig;
+  late final pulumi.Output<AutoscalingPolicyWorkerConfig?> workerConfig;
 
   AutoscalingPolicy(
     String name, {
     AutoscalingPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataproc/autoscalingPolicy:AutoscalingPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.basicAlgorithm =
         registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm');

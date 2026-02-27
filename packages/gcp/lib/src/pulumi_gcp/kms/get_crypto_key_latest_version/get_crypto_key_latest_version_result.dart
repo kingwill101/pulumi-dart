@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_crypto_key_latest_version_public_key/get_crypto_key_latest_version_public_key.dart';
 
 /// Result data returned by getCryptoKeyLatestVersion.
@@ -47,7 +47,8 @@ class GetCryptoKeyLatestVersionResult {
     map['id'] = id;
     map['name'] = name;
     map['protectionLevel'] = protectionLevel;
-    map['publicKeys'] = Input.encodeList<GetCryptoKeyLatestVersionPublicKey,
+    map['publicKeys'] = pulumi.Input.encodeList<
+        GetCryptoKeyLatestVersionPublicKey,
         Map<String, dynamic>>(publicKeys, (value) => value.toMap());
     map['state'] = state;
     map['version'] = version;
@@ -62,7 +63,7 @@ class GetCryptoKeyLatestVersionResult {
       id: map['id'] as String,
       name: map['name'] as String,
       protectionLevel: map['protectionLevel'] as String,
-      publicKeys: Input.decodeList<GetCryptoKeyLatestVersionPublicKey>(
+      publicKeys: pulumi.Input.decodeList<GetCryptoKeyLatestVersionPublicKey>(
           map['publicKeys'],
           (value) => GetCryptoKeyLatestVersionPublicKey.fromMap(
               (value as Map).cast<String, dynamic>())),

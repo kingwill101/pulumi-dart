@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dataset_access_dataset_dataset/get_dataset_access_dataset_dataset.dart';
 
 class GetDatasetAccessDataset {
@@ -18,16 +18,15 @@ class GetDatasetAccessDataset {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['datasets'] =
-        Input.encodeList<GetDatasetAccessDatasetDataset, Map<String, dynamic>>(
-            datasets, (value) => value.toMap());
+    map['datasets'] = pulumi.Input.encodeList<GetDatasetAccessDatasetDataset,
+        Map<String, dynamic>>(datasets, (value) => value.toMap());
     map['targetTypes'] = targetTypes;
     return map;
   }
 
   factory GetDatasetAccessDataset.fromMap(Map<String, dynamic> map) {
     return GetDatasetAccessDataset(
-      datasets: Input.decodeList<GetDatasetAccessDatasetDataset>(
+      datasets: pulumi.Input.decodeList<GetDatasetAccessDatasetDataset>(
           map['datasets'],
           (value) => GetDatasetAccessDatasetDataset.fromMap(
               (value as Map).cast<String, dynamic>())),

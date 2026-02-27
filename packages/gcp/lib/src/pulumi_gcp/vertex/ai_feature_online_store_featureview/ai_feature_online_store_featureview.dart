@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_feature_online_store_featureview_big_query_source/ai_feature_online_store_featureview_big_query_source.dart';
 import '../ai_feature_online_store_featureview_feature_registry_source/ai_feature_online_store_featureview_feature_registry_source.dart';
 import '../ai_feature_online_store_featureview_sync_config/ai_feature_online_store_featureview_sync_config.dart';
@@ -62,67 +62,69 @@ import 'ai_feature_online_store_featureview_args.dart';
 /// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
 /// ```
-class AiFeatureOnlineStoreFeatureview extends CustomResource {
+class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
   /// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  late final Output<AiFeatureOnlineStoreFeatureviewBigQuerySource?>
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewBigQuerySource?>
       bigQuerySource;
 
   /// The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The name of the FeatureOnlineStore to use for the featureview.
-  late final Output<String> featureOnlineStore;
+  late final pulumi.Output<String> featureOnlineStore;
 
   /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  late final Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>
+  late final pulumi
+      .Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>
       featureRegistrySource;
 
   /// A set of key/value label pairs to assign to this FeatureView.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The region for the resource. It should be the same as the featureonlinestore region.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// Structure is documented below.
-  late final Output<AiFeatureOnlineStoreFeatureviewSyncConfig?> syncConfig;
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewSyncConfig?>
+      syncConfig;
 
   /// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
   /// Structure is documented below.
-  late final Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>
+  late final pulumi.Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>
       vectorSearchConfig;
 
   AiFeatureOnlineStoreFeatureview(
     String name, {
     AiFeatureOnlineStoreFeatureviewArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bigQuerySource =
         registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>(

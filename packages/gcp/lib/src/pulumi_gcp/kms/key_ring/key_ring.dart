@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_ring_args.dart';
 
 /// A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
@@ -45,27 +45,27 @@ import 'key_ring_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
 /// ```
-class KeyRing extends CustomResource {
+class KeyRing extends pulumi.CustomResource {
   /// The location for the KeyRing.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name for the KeyRing.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   KeyRing(
     String name, {
     KeyRingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/keyRing:KeyRing',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

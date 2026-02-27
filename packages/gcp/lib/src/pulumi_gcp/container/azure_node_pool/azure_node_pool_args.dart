@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../azure_node_pool_autoscaling/azure_node_pool_autoscaling.dart';
 import '../azure_node_pool_config/azure_node_pool_config.dart';
 import '../azure_node_pool_management/azure_node_pool_management.dart';
@@ -12,40 +12,40 @@ class AzureNodePoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Autoscaler configuration for this node pool.
-  final Input<AzureNodePoolAutoscaling> autoscaling;
+  final pulumi.Input<AzureNodePoolAutoscaling> autoscaling;
 
   /// Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
-  final Input<String>? azureAvailabilityZone;
+  final pulumi.Input<String>? azureAvailabilityZone;
 
   /// The azureCluster for the resource
-  final Input<String> cluster;
+  final pulumi.Input<String> cluster;
 
   /// The node configuration of the node pool.
-  final Input<AzureNodePoolConfig> config;
+  final pulumi.Input<AzureNodePoolConfig> config;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The Management configuration for this node pool.
-  final Input<AzureNodePoolManagement>? management;
+  final pulumi.Input<AzureNodePoolManagement>? management;
 
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  final Input<AzureNodePoolMaxPodsConstraint> maxPodsConstraint;
+  final pulumi.Input<AzureNodePoolMaxPodsConstraint> maxPodsConstraint;
 
   /// The name of this resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
-  final Input<String> subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
-  final Input<String> version;
+  final pulumi.Input<String> version;
 
   AzureNodePoolArgs({
     this.annotations,
@@ -68,24 +68,24 @@ class AzureNodePoolArgs {
     if (annotationsValue != null) {
       map['annotations'] = annotationsValue;
     }
-    map['autoscaling'] =
-        Input.mapInputValue<AzureNodePoolAutoscaling, Map<String, dynamic>>(
-            autoscaling, (value) => value.toMap());
+    map['autoscaling'] = pulumi.Input.mapInputValue<AzureNodePoolAutoscaling,
+        Map<String, dynamic>>(autoscaling, (value) => value.toMap());
     final azureAvailabilityZoneValue = azureAvailabilityZone;
     if (azureAvailabilityZoneValue != null) {
       map['azureAvailabilityZone'] = azureAvailabilityZoneValue;
     }
     map['cluster'] = cluster;
     map['config'] =
-        Input.mapInputValue<AzureNodePoolConfig, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<AzureNodePoolConfig, Map<String, dynamic>>(
             config, (value) => value.toMap());
     map['location'] = location;
     final managementValue = management;
     if (managementValue != null) {
-      map['management'] = Input.mapOptionalInputValue<AzureNodePoolManagement,
+      map['management'] = pulumi.Input.mapOptionalInputValue<
+          AzureNodePoolManagement,
           Map<String, dynamic>>(managementValue, (value) => value.toMap());
     }
-    map['maxPodsConstraint'] = Input.mapInputValue<
+    map['maxPodsConstraint'] = pulumi.Input.mapInputValue<
         AzureNodePoolMaxPodsConstraint,
         Map<String, dynamic>>(maxPodsConstraint, (value) => value.toMap());
     final nameValue = name;
@@ -104,21 +104,22 @@ class AzureNodePoolArgs {
   factory AzureNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      autoscaling: Input.asInput<AzureNodePoolAutoscaling>(map['autoscaling']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      autoscaling:
+          pulumi.Input.asInput<AzureNodePoolAutoscaling>(map['autoscaling']),
       azureAvailabilityZone:
-          Input.asOptionalInput<String>(map['azureAvailabilityZone']),
-      cluster: Input.asInput<String>(map['cluster']),
-      config: Input.asInput<AzureNodePoolConfig>(map['config']),
-      location: Input.asInput<String>(map['location']),
-      management:
-          Input.asOptionalInput<AzureNodePoolManagement>(map['management']),
-      maxPodsConstraint: Input.asInput<AzureNodePoolMaxPodsConstraint>(
+          pulumi.Input.asOptionalInput<String>(map['azureAvailabilityZone']),
+      cluster: pulumi.Input.asInput<String>(map['cluster']),
+      config: pulumi.Input.asInput<AzureNodePoolConfig>(map['config']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      management: pulumi.Input.asOptionalInput<AzureNodePoolManagement>(
+          map['management']),
+      maxPodsConstraint: pulumi.Input.asInput<AzureNodePoolMaxPodsConstraint>(
           map['maxPodsConstraint']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      subnetId: Input.asInput<String>(map['subnetId']),
-      version: Input.asInput<String>(map['version']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      subnetId: pulumi.Input.asInput<String>(map['subnetId']),
+      version: pulumi.Input.asInput<String>(map['version']),
     );
   }
 }

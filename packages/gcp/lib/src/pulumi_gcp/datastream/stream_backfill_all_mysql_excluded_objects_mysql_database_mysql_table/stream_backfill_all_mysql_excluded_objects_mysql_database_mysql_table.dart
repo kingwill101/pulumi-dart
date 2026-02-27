@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_mysql_excluded_objects_mysql_database_mysql_table_mysql_column/stream_backfill_all_mysql_excluded_objects_mysql_database_mysql_table_mysql_column.dart';
 
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
@@ -22,7 +22,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
     final map = <String, dynamic>{};
     final mysqlColumnsValue = mysqlColumns;
     if (mysqlColumnsValue != null) {
-      map['mysqlColumns'] = Input.encodeList<
+      map['mysqlColumns'] = pulumi.Input.encodeList<
           StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn,
           Map<String, dynamic>>(mysqlColumnsValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
     return StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(
       mysqlColumns: map['mysqlColumns'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>(
               map['mysqlColumns'],
               (value) =>

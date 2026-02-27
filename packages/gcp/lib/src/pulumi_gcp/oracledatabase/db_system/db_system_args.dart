@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../db_system_properties/db_system_properties.dart';
 
 /// The set of arguments for DbSystem.
@@ -9,44 +9,44 @@ class DbSystemArgs {
   /// restricted to (^a-z?$) and must be a maximum of
   /// 63 characters in length. The value must start with a letter and end with a
   /// letter or a number.
-  final Input<String> dbSystemId;
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<String> dbSystemId;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// The display name for the System db. The name does not have to
   /// be unique within your project.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The GCP Oracle zone where Oracle DbSystem is hosted.
   /// Example: us-east4-b-r2.
   /// If not specified, the system will pick a zone based on availability.
-  final Input<String>? gcpOracleZone;
+  final pulumi.Input<String>? gcpOracleZone;
 
   /// The labels or tags associated with the DbSystem.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of the OdbNetwork associated with the DbSystem.
   /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the OdbSubnet.
-  final Input<String>? odbNetwork;
+  final pulumi.Input<String>? odbNetwork;
 
   /// The name of the OdbSubnet associated with the DbSystem for IP
   /// allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  final Input<String> odbSubnet;
+  final pulumi.Input<String> odbSubnet;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The properties of a DbSystem.
   /// Structure is documented below.
-  final Input<DbSystemProperties>? properties;
+  final pulumi.Input<DbSystemProperties>? properties;
 
   DbSystemArgs({
     required this.dbSystemId,
@@ -89,26 +89,26 @@ class DbSystemArgs {
     }
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] =
-          Input.mapOptionalInputValue<DbSystemProperties, Map<String, dynamic>>(
-              propertiesValue, (value) => value.toMap());
+      map['properties'] = pulumi.Input.mapOptionalInputValue<DbSystemProperties,
+          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory DbSystemArgs.fromMap(Map<String, dynamic> map) {
     return DbSystemArgs(
-      dbSystemId: Input.asInput<String>(map['dbSystemId']),
+      dbSystemId: pulumi.Input.asInput<String>(map['dbSystemId']),
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      displayName: Input.asInput<String>(map['displayName']),
-      gcpOracleZone: Input.asOptionalInput<String>(map['gcpOracleZone']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      odbNetwork: Input.asOptionalInput<String>(map['odbNetwork']),
-      odbSubnet: Input.asInput<String>(map['odbSubnet']),
-      project: Input.asOptionalInput<String>(map['project']),
-      properties: Input.asOptionalInput<DbSystemProperties>(map['properties']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      gcpOracleZone: pulumi.Input.asOptionalInput<String>(map['gcpOracleZone']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      odbNetwork: pulumi.Input.asOptionalInput<String>(map['odbNetwork']),
+      odbSubnet: pulumi.Input.asInput<String>(map['odbSubnet']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      properties:
+          pulumi.Input.asOptionalInput<DbSystemProperties>(map['properties']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_bucket_cdn_policy/get_backend_bucket_cdn_policy.dart';
 import '../get_backend_bucket_param/get_backend_bucket_param.dart';
 
@@ -43,9 +43,8 @@ class GetBackendBucketResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['bucketName'] = bucketName;
-    map['cdnPolicies'] =
-        Input.encodeList<GetBackendBucketCdnPolicy, Map<String, dynamic>>(
-            cdnPolicies, (value) => value.toMap());
+    map['cdnPolicies'] = pulumi.Input.encodeList<GetBackendBucketCdnPolicy,
+        Map<String, dynamic>>(cdnPolicies, (value) => value.toMap());
     map['compressionMode'] = compressionMode;
     map['creationTimestamp'] = creationTimestamp;
     map['customResponseHeaders'] = customResponseHeaders;
@@ -56,7 +55,7 @@ class GetBackendBucketResult {
     map['loadBalancingScheme'] = loadBalancingScheme;
     map['name'] = name;
     map['params'] =
-        Input.encodeList<GetBackendBucketParam, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBackendBucketParam, Map<String, dynamic>>(
             params, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
@@ -69,7 +68,7 @@ class GetBackendBucketResult {
   factory GetBackendBucketResult.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketResult(
       bucketName: map['bucketName'] as String,
-      cdnPolicies: Input.decodeList<GetBackendBucketCdnPolicy>(
+      cdnPolicies: pulumi.Input.decodeList<GetBackendBucketCdnPolicy>(
           map['cdnPolicies'],
           (value) => GetBackendBucketCdnPolicy.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -83,7 +82,7 @@ class GetBackendBucketResult {
       id: map['id'] as String,
       loadBalancingScheme: map['loadBalancingScheme'] as String,
       name: map['name'] as String,
-      params: Input.decodeList<GetBackendBucketParam>(
+      params: pulumi.Input.decodeList<GetBackendBucketParam>(
           map['params'],
           (value) => GetBackendBucketParam.fromMap(
               (value as Map).cast<String, dynamic>())),

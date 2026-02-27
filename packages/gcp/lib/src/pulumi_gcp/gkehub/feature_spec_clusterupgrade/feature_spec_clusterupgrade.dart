@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_spec_clusterupgrade_gke_upgrade_override/feature_spec_clusterupgrade_gke_upgrade_override.dart';
 import '../feature_spec_clusterupgrade_post_conditions/feature_spec_clusterupgrade_post_conditions.dart';
 
@@ -26,7 +26,7 @@ class FeatureSpecClusterupgrade {
     final map = <String, dynamic>{};
     final gkeUpgradeOverridesValue = gkeUpgradeOverrides;
     if (gkeUpgradeOverridesValue != null) {
-      map['gkeUpgradeOverrides'] = Input.encodeList<
+      map['gkeUpgradeOverrides'] = pulumi.Input.encodeList<
               FeatureSpecClusterupgradeGkeUpgradeOverride,
               Map<String, dynamic>>(
           gkeUpgradeOverridesValue, (value) => value.toMap());
@@ -43,7 +43,8 @@ class FeatureSpecClusterupgrade {
     return FeatureSpecClusterupgrade(
       gkeUpgradeOverrides: map['gkeUpgradeOverrides'] == null
           ? null
-          : Input.decodeList<FeatureSpecClusterupgradeGkeUpgradeOverride>(
+          : pulumi.Input.decodeList<
+                  FeatureSpecClusterupgradeGkeUpgradeOverride>(
               map['gkeUpgradeOverrides'],
               (value) => FeatureSpecClusterupgradeGkeUpgradeOverride.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../metastore_service_network_config_consumer/metastore_service_network_config_consumer.dart';
 
 class MetastoreServiceNetworkConfig {
@@ -18,7 +18,8 @@ class MetastoreServiceNetworkConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['consumers'] = Input.encodeList<MetastoreServiceNetworkConfigConsumer,
+    map['consumers'] = pulumi.Input.encodeList<
+        MetastoreServiceNetworkConfigConsumer,
         Map<String, dynamic>>(consumers, (value) => value.toMap());
     final customRoutesEnabledValue = customRoutesEnabled;
     if (customRoutesEnabledValue != null) {
@@ -29,7 +30,7 @@ class MetastoreServiceNetworkConfig {
 
   factory MetastoreServiceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceNetworkConfig(
-      consumers: Input.decodeList<MetastoreServiceNetworkConfigConsumer>(
+      consumers: pulumi.Input.decodeList<MetastoreServiceNetworkConfigConsumer>(
           map['consumers'],
           (value) => MetastoreServiceNetworkConfigConsumer.fromMap(
               (value as Map).cast<String, dynamic>())),

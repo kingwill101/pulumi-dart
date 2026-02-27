@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_for_folder_orchestration_state_current_iteration_state_error/v2_policy_orchestrator_for_folder_orchestration_state_current_iteration_state_error.dart';
 
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
@@ -66,7 +66,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
     final map = <String, dynamic>{};
     final errorsValue = errors;
     if (errorsValue != null) {
-      map['errors'] = Input.encodeList<
+      map['errors'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError,
           Map<String, dynamic>>(errorsValue, (value) => value.toMap());
     }
@@ -106,7 +106,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
     return V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState(
       errors: map['errors'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError>(
               map['errors'],
               (value) =>

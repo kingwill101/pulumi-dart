@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_rule_match_expr_option_recaptcha_option/get_security_policy_rule_match_expr_option_recaptcha_option.dart';
 
 class GetSecurityPolicyRuleMatchExprOption {
@@ -14,7 +14,7 @@ class GetSecurityPolicyRuleMatchExprOption {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['recaptchaOptions'] = Input.encodeList<
+    map['recaptchaOptions'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleMatchExprOptionRecaptchaOption,
         Map<String, dynamic>>(recaptchaOptions, (value) => value.toMap());
     return map;
@@ -23,12 +23,12 @@ class GetSecurityPolicyRuleMatchExprOption {
   factory GetSecurityPolicyRuleMatchExprOption.fromMap(
       Map<String, dynamic> map) {
     return GetSecurityPolicyRuleMatchExprOption(
-      recaptchaOptions:
-          Input.decodeList<GetSecurityPolicyRuleMatchExprOptionRecaptchaOption>(
-              map['recaptchaOptions'],
-              (value) =>
-                  GetSecurityPolicyRuleMatchExprOptionRecaptchaOption.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      recaptchaOptions: pulumi.Input.decodeList<
+              GetSecurityPolicyRuleMatchExprOptionRecaptchaOption>(
+          map['recaptchaOptions'],
+          (value) =>
+              GetSecurityPolicyRuleMatchExprOptionRecaptchaOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

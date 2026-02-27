@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authorization_policy_rule_destination/authorization_policy_rule_destination.dart';
 import '../authorization_policy_rule_source/authorization_policy_rule_source.dart';
 
@@ -24,14 +24,14 @@ class AuthorizationPolicyRule {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.encodeList<AuthorizationPolicyRuleDestination,
+      map['destinations'] = pulumi.Input.encodeList<
+          AuthorizationPolicyRuleDestination,
           Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
     final sourcesValue = sources;
     if (sourcesValue != null) {
-      map['sources'] =
-          Input.encodeList<AuthorizationPolicyRuleSource, Map<String, dynamic>>(
-              sourcesValue, (value) => value.toMap());
+      map['sources'] = pulumi.Input.encodeList<AuthorizationPolicyRuleSource,
+          Map<String, dynamic>>(sourcesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -40,13 +40,13 @@ class AuthorizationPolicyRule {
     return AuthorizationPolicyRule(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<AuthorizationPolicyRuleDestination>(
+          : pulumi.Input.decodeList<AuthorizationPolicyRuleDestination>(
               map['destinations'],
               (value) => AuthorizationPolicyRuleDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),
       sources: map['sources'] == null
           ? null
-          : Input.decodeList<AuthorizationPolicyRuleSource>(
+          : pulumi.Input.decodeList<AuthorizationPolicyRuleSource>(
               map['sources'],
               (value) => AuthorizationPolicyRuleSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_tags_tag/get_tags_tag.dart';
 
 /// Result data returned by getTags.
@@ -41,7 +41,7 @@ class GetTagsResult {
       map['project'] = projectValue;
     }
     map['repositoryId'] = repositoryId;
-    map['tags'] = Input.encodeList<GetTagsTag, Map<String, dynamic>>(
+    map['tags'] = pulumi.Input.encodeList<GetTagsTag, Map<String, dynamic>>(
         tags, (value) => value.toMap());
     return map;
   }
@@ -54,7 +54,7 @@ class GetTagsResult {
       packageName: map['packageName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       repositoryId: map['repositoryId'] as String,
-      tags: Input.decodeList<GetTagsTag>(
+      tags: pulumi.Input.decodeList<GetTagsTag>(
           map['tags'],
           (value) =>
               GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),

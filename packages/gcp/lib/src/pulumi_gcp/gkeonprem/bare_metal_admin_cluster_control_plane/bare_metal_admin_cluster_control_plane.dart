@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_admin_cluster_control_plane_api_server_arg/bare_metal_admin_cluster_control_plane_api_server_arg.dart';
 import '../bare_metal_admin_cluster_control_plane_control_plane_node_pool_config/bare_metal_admin_cluster_control_plane_control_plane_node_pool_config.dart';
 
@@ -26,7 +26,7 @@ class BareMetalAdminClusterControlPlane {
     final map = <String, dynamic>{};
     final apiServerArgsValue = apiServerArgs;
     if (apiServerArgsValue != null) {
-      map['apiServerArgs'] = Input.encodeList<
+      map['apiServerArgs'] = pulumi.Input.encodeList<
           BareMetalAdminClusterControlPlaneApiServerArg,
           Map<String, dynamic>>(apiServerArgsValue, (value) => value.toMap());
     }
@@ -38,7 +38,8 @@ class BareMetalAdminClusterControlPlane {
     return BareMetalAdminClusterControlPlane(
       apiServerArgs: map['apiServerArgs'] == null
           ? null
-          : Input.decodeList<BareMetalAdminClusterControlPlaneApiServerArg>(
+          : pulumi.Input.decodeList<
+                  BareMetalAdminClusterControlPlaneApiServerArg>(
               map['apiServerArgs'],
               (value) => BareMetalAdminClusterControlPlaneApiServerArg.fromMap(
                   (value as Map).cast<String, dynamic>())),

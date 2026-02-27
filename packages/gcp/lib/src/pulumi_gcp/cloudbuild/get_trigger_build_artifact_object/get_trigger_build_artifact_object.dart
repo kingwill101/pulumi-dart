@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_build_artifact_object_timing/get_trigger_build_artifact_object_timing.dart';
 
 class GetTriggerBuildArtifactObject {
@@ -25,7 +25,8 @@ class GetTriggerBuildArtifactObject {
     final map = <String, dynamic>{};
     map['location'] = location;
     map['paths'] = paths;
-    map['timings'] = Input.encodeList<GetTriggerBuildArtifactObjectTiming,
+    map['timings'] = pulumi.Input.encodeList<
+        GetTriggerBuildArtifactObjectTiming,
         Map<String, dynamic>>(timings, (value) => value.toMap());
     return map;
   }
@@ -34,7 +35,7 @@ class GetTriggerBuildArtifactObject {
     return GetTriggerBuildArtifactObject(
       location: map['location'] as String,
       paths: (map['paths'] as List).cast<String>(),
-      timings: Input.decodeList<GetTriggerBuildArtifactObjectTiming>(
+      timings: pulumi.Input.decodeList<GetTriggerBuildArtifactObjectTiming>(
           map['timings'],
           (value) => GetTriggerBuildArtifactObjectTiming.fromMap(
               (value as Map).cast<String, dynamic>())),

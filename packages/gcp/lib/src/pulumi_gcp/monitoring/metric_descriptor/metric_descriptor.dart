@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../metric_descriptor_label/metric_descriptor_label.dart';
 import '../metric_descriptor_metadata/metric_descriptor_metadata.dart';
 import 'metric_descriptor_args.dart';
@@ -46,41 +46,41 @@ import 'metric_descriptor_args.dart';
 /// ```sh
 /// $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
 /// ```
-class MetricDescriptor extends CustomResource {
+class MetricDescriptor extends pulumi.CustomResource {
   /// A detailed description of the metric, which can be used in documentation.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
   /// Structure is documented below.
-  late final Output<List<MetricDescriptorLabel>?> labels;
+  late final pulumi.Output<List<MetricDescriptorLabel>?> labels;
 
   /// The launch stage of the metric definition.
   /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-  late final Output<String?> launchStage;
+  late final pulumi.Output<String?> launchStage;
 
   /// Metadata which can be used to guide usage of the metric.
   /// Structure is documented below.
-  late final Output<MetricDescriptorMetadata?> metadata;
+  late final pulumi.Output<MetricDescriptorMetadata?> metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
-  late final Output<String> metricKind;
+  late final pulumi.Output<String> metricKind;
 
   /// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
-  late final Output<List<String>> monitoredResourceTypes;
+  late final pulumi.Output<List<String>> monitoredResourceTypes;
 
   /// The resource name of the metric descriptor.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// The units in which the metric value is reported. It is only applicable if the
   /// valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
@@ -99,21 +99,21 @@ class MetricDescriptor extends CustomResource {
   /// The supported units are a subset of The Unified Code for Units of Measure standard.
   /// More info can be found in the API documentation
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
-  late final Output<String?> unit;
+  late final pulumi.Output<String?> unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-  late final Output<String> valueType;
+  late final pulumi.Output<String> valueType;
 
   MetricDescriptor(
     String name, {
     MetricDescriptorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:monitoring/metricDescriptor:MetricDescriptor',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_project_attachment_args.dart';
 
 /// Represents a Service project attachment to the Host Project.
@@ -39,40 +39,40 @@ import 'service_project_attachment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment default {{service_project_attachment_id}}
 /// ```
-class ServiceProjectAttachment extends CustomResource {
+class ServiceProjectAttachment extends pulumi.CustomResource {
   /// Output only. Create time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// "Immutable. Service project name in the format: \"projects/abc\"
   /// or \"projects/123\". As input, project name with either project id or number
   /// are accepted. As output, this field will contain project number."
-  late final Output<String?> serviceProject;
+  late final pulumi.Output<String?> serviceProject;
 
   /// Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-  late final Output<String> serviceProjectAttachmentId;
+  late final pulumi.Output<String> serviceProjectAttachmentId;
 
   /// ServiceProjectAttachment state.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   ServiceProjectAttachment(
     String name, {
     ServiceProjectAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');

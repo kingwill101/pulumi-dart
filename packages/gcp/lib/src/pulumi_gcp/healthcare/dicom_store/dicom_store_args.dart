@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dicom_store_notification_config/dicom_store_notification_config.dart';
 import '../dicom_store_stream_config/dicom_store_stream_config.dart';
 
@@ -8,7 +8,7 @@ import '../dicom_store_stream_config/dicom_store_stream_config.dart';
 class DicomStoreArgs {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-  final Input<String> dataset;
+  final pulumi.Input<String> dataset;
 
   /// User-supplied key-value pairs used to organize DICOM stores.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -21,20 +21,20 @@ class DicomStoreArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The resource name for the DicomStore.
   /// ** Changing this property may recreate the Dicom store (removing all data) **
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<DicomStoreNotificationConfig>? notificationConfig;
+  final pulumi.Input<DicomStoreNotificationConfig>? notificationConfig;
 
   /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
   /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
   /// Structure is documented below.
-  final Input<List<DicomStoreStreamConfig>>? streamConfigs;
+  final pulumi.Input<List<DicomStoreStreamConfig>>? streamConfigs;
 
   DicomStoreArgs({
     required this.dataset,
@@ -57,30 +57,30 @@ class DicomStoreArgs {
     }
     final notificationConfigValue = notificationConfig;
     if (notificationConfigValue != null) {
-      map['notificationConfig'] = Input.mapOptionalInputValue<
+      map['notificationConfig'] = pulumi.Input.mapOptionalInputValue<
               DicomStoreNotificationConfig, Map<String, dynamic>>(
           notificationConfigValue, (value) => value.toMap());
     }
     final streamConfigsValue = streamConfigs;
     if (streamConfigsValue != null) {
-      map['streamConfigs'] = Input.mapOptionalInputValue<
+      map['streamConfigs'] = pulumi.Input.mapOptionalInputValue<
               List<DicomStoreStreamConfig>, List<Map<String, dynamic>>>(
           streamConfigsValue,
-          (value) =>
-              Input.encodeList<DicomStoreStreamConfig, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<DicomStoreStreamConfig,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
   }
 
   factory DicomStoreArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreArgs(
-      dataset: Input.asInput<String>(map['dataset']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      name: Input.asOptionalInput<String>(map['name']),
-      notificationConfig: Input.asOptionalInput<DicomStoreNotificationConfig>(
-          map['notificationConfig']),
-      streamConfigs: Input.asOptionalInput<List<DicomStoreStreamConfig>>(
+      dataset: pulumi.Input.asInput<String>(map['dataset']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      notificationConfig:
+          pulumi.Input.asOptionalInput<DicomStoreNotificationConfig>(
+              map['notificationConfig']),
+      streamConfigs: pulumi.Input.asOptionalInput<List<DicomStoreStreamConfig>>(
           map['streamConfigs']),
     );
   }

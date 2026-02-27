@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_worker_pool_template_container_liveness_probe_http_get_http_header/get_worker_pool_template_container_liveness_probe_http_get_http_header.dart';
 
 class GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
@@ -22,7 +22,7 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['httpHeaders'] = Input.encodeList<
+    map['httpHeaders'] = pulumi.Input.encodeList<
         GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader,
         Map<String, dynamic>>(httpHeaders, (value) => value.toMap());
     map['path'] = path;
@@ -33,7 +33,7 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
   factory GetWorkerPoolTemplateContainerLivenessProbeHttpGet.fromMap(
       Map<String, dynamic> map) {
     return GetWorkerPoolTemplateContainerLivenessProbeHttpGet(
-      httpHeaders: Input.decodeList<
+      httpHeaders: pulumi.Input.decodeList<
               GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>(
           map['httpHeaders'],
           (value) =>

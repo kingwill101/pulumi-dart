@@ -1,3 +1,3 @@
 library module_datafusion_instance_network_config;
 
-export 'instance_network_config/instance_network_config2.dart';
+export 'instance_network_config/instance_network_config_datafusion.dart';

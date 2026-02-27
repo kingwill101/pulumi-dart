@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../delivery_pipeline_serial_pipeline_stage_deploy_parameter/delivery_pipeline_serial_pipeline_stage_deploy_parameter.dart';
 import '../delivery_pipeline_serial_pipeline_stage_strategy/delivery_pipeline_serial_pipeline_stage_strategy.dart';
 
@@ -29,7 +29,7 @@ class DeliveryPipelineSerialPipelineStage {
     final map = <String, dynamic>{};
     final deployParametersValue = deployParameters;
     if (deployParametersValue != null) {
-      map['deployParameters'] = Input.encodeList<
+      map['deployParameters'] = pulumi.Input.encodeList<
               DeliveryPipelineSerialPipelineStageDeployParameter,
               Map<String, dynamic>>(
           deployParametersValue, (value) => value.toMap());
@@ -54,7 +54,7 @@ class DeliveryPipelineSerialPipelineStage {
     return DeliveryPipelineSerialPipelineStage(
       deployParameters: map['deployParameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DeliveryPipelineSerialPipelineStageDeployParameter>(
               map['deployParameters'],
               (value) =>

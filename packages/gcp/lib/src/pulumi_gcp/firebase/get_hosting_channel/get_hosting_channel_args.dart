@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHostingChannel.
 class GetHostingChannelArgs {
   /// The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
-  final Input<String> channelId;
+  final pulumi.Input<String> channelId;
 
   /// The ID of the site this channel belongs to.
-  final Input<String> siteId;
+  final pulumi.Input<String> siteId;
 
   GetHostingChannelArgs({
     required this.channelId,
@@ -24,8 +24,8 @@ class GetHostingChannelArgs {
 
   factory GetHostingChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetHostingChannelArgs(
-      channelId: Input.asInput<String>(map['channelId']),
-      siteId: Input.asInput<String>(map['siteId']),
+      channelId: pulumi.Input.asInput<String>(map['channelId']),
+      siteId: pulumi.Input.asInput<String>(map['siteId']),
     );
   }
 }

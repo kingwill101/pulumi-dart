@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_squota_infos_quota_info_dimensions_info/get_squota_infos_quota_info_dimensions_info.dart';
 import '../get_squota_infos_quota_info_quota_increase_eligibility/get_squota_infos_quota_info_quota_increase_eligibility.dart';
 
@@ -75,7 +75,7 @@ class GetSQuotaInfosQuotaInfo {
     final map = <String, dynamic>{};
     map['containerType'] = containerType;
     map['dimensions'] = dimensions;
-    map['dimensionsInfos'] = Input.encodeList<
+    map['dimensionsInfos'] = pulumi.Input.encodeList<
         GetSQuotaInfosQuotaInfoDimensionsInfo,
         Map<String, dynamic>>(dimensionsInfos, (value) => value.toMap());
     map['isConcurrent'] = isConcurrent;
@@ -87,7 +87,7 @@ class GetSQuotaInfosQuotaInfo {
     map['name'] = name;
     map['quotaDisplayName'] = quotaDisplayName;
     map['quotaId'] = quotaId;
-    map['quotaIncreaseEligibilities'] = Input.encodeList<
+    map['quotaIncreaseEligibilities'] = pulumi.Input.encodeList<
             GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility,
             Map<String, dynamic>>(
         quotaIncreaseEligibilities, (value) => value.toMap());
@@ -101,10 +101,11 @@ class GetSQuotaInfosQuotaInfo {
     return GetSQuotaInfosQuotaInfo(
       containerType: map['containerType'] as String,
       dimensions: (map['dimensions'] as List).cast<String>(),
-      dimensionsInfos: Input.decodeList<GetSQuotaInfosQuotaInfoDimensionsInfo>(
-          map['dimensionsInfos'],
-          (value) => GetSQuotaInfosQuotaInfoDimensionsInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dimensionsInfos:
+          pulumi.Input.decodeList<GetSQuotaInfosQuotaInfoDimensionsInfo>(
+              map['dimensionsInfos'],
+              (value) => GetSQuotaInfosQuotaInfoDimensionsInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       isConcurrent: map['isConcurrent'] as bool,
       isFixed: map['isFixed'] as bool,
       isPrecise: map['isPrecise'] as bool,
@@ -114,12 +115,11 @@ class GetSQuotaInfosQuotaInfo {
       name: map['name'] as String,
       quotaDisplayName: map['quotaDisplayName'] as String,
       quotaId: map['quotaId'] as String,
-      quotaIncreaseEligibilities:
-          Input.decodeList<GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility>(
-              map['quotaIncreaseEligibilities'],
-              (value) =>
-                  GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      quotaIncreaseEligibilities: pulumi.Input.decodeList<
+              GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility>(
+          map['quotaIncreaseEligibilities'],
+          (value) => GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility.fromMap(
+              (value as Map).cast<String, dynamic>())),
       refreshInterval: map['refreshInterval'] as String,
       service: map['service'] as String,
       serviceRequestQuotaUri: map['serviceRequestQuotaUri'] as String,

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../snapshot_snapshot_encryption_key/snapshot_snapshot_encryption_key.dart';
 import '../snapshot_source_disk_encryption_key/snapshot_source_disk_encryption_key.dart';
 import 'snapshot_args.dart';
@@ -68,44 +68,44 @@ import 'snapshot_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
 /// ```
-class Snapshot extends CustomResource {
+class Snapshot extends pulumi.CustomResource {
   /// Creates the new snapshot in the snapshot chain labeled with the
   /// specified name. The chain name must be 1-63 characters long and
   /// comply with RFC1035. This is an uncommon option only for advanced
   /// service owners who needs to create separate snapshot chains, for
   /// example, for chargeback tracking.  When you describe your snapshot
   /// resource, this field is visible only if it has a non-empty value.
-  late final Output<String?> chainName;
+  late final pulumi.Output<String?> chainName;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Size of the snapshot, specified in GB.
-  late final Output<int> diskSizeGb;
+  late final pulumi.Output<int> diskSizeGb;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
-  late final Output<bool?> guestFlush;
+  late final pulumi.Output<bool?> guestFlush;
 
   /// The fingerprint used for optimistic locking of this resource. Used
   /// internally during updates.
-  late final Output<String> labelFingerprint;
+  late final pulumi.Output<String> labelFingerprint;
 
   /// Labels to apply to this Snapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// A list of public visible licenses that apply to this snapshot. This
   /// can be because the original image had licenses attached (such as a
   /// Windows image).  snapshotEncryptionKey nested object Encrypts the
   /// snapshot using a customer-supplied encryption key.
-  late final Output<List<String>> licenses;
+  late final pulumi.Output<List<String>> licenses;
 
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -114,18 +114,18 @@ class Snapshot extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Encrypts the snapshot using a customer-supplied encryption key.
   /// After you encrypt a snapshot using a customer-supplied key, you must
@@ -138,47 +138,49 @@ class Snapshot extends CustomResource {
   /// then the snapshot will be encrypted using an automatically generated
   /// key and you do not need to provide a key to use the snapshot later.
   /// Structure is documented below.
-  late final Output<SnapshotSnapshotEncryptionKey?> snapshotEncryptionKey;
+  late final pulumi.Output<SnapshotSnapshotEncryptionKey?>
+      snapshotEncryptionKey;
 
   /// The unique identifier for the resource.
-  late final Output<int> snapshotId;
+  late final pulumi.Output<int> snapshotId;
 
   /// Indicates the type of the snapshot.
   /// Possible values are: `ARCHIVE`, `STANDARD`.
-  late final Output<String?> snapshotType;
+  late final pulumi.Output<String?> snapshotType;
 
   /// A reference to the disk used to create this snapshot.
-  late final Output<String> sourceDisk;
+  late final pulumi.Output<String> sourceDisk;
 
   /// The customer-supplied encryption key of the source snapshot. Required
   /// if the source snapshot is protected by a customer-supplied encryption
   /// key.
   /// Structure is documented below.
-  late final Output<SnapshotSourceDiskEncryptionKey?> sourceDiskEncryptionKey;
+  late final pulumi.Output<SnapshotSourceDiskEncryptionKey?>
+      sourceDiskEncryptionKey;
 
   /// A reference to the instant snapshot used to create this snapshot.
-  late final Output<String?> sourceInstantSnapshot;
+  late final pulumi.Output<String?> sourceInstantSnapshot;
 
   /// A size of the storage used by the snapshot. As snapshots share
   /// storage, this number is expected to change with snapshot
   /// creation/deletion.
-  late final Output<int> storageBytes;
+  late final pulumi.Output<int> storageBytes;
 
   /// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
-  late final Output<List<String>> storageLocations;
+  late final pulumi.Output<List<String>> storageLocations;
 
   /// A reference to the zone where the disk is hosted.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   Snapshot(
     String name, {
     SnapshotArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/snapshot:Snapshot',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.chainName = registerOutput<String?>('chainName');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

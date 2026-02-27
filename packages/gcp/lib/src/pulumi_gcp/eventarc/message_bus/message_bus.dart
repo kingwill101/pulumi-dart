@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../message_bus_logging_config/message_bus_logging_config.dart';
 import 'message_bus_args.dart';
 
@@ -41,78 +41,78 @@ import 'message_bus_args.dart';
 /// ```sh
 /// $ pulumi import gcp:eventarc/messageBus:MessageBus default {{location}}/{{message_bus_id}}
 /// ```
-class MessageBus extends CustomResource {
+class MessageBus extends pulumi.CustomResource {
   /// Optional. Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Output only. The creation time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt their event data.
   /// It must match the pattern
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  late final Output<String?> cryptoKeyName;
+  late final pulumi.Output<String?> cryptoKeyName;
 
   /// Optional. Resource display name.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Output only. This checksum is computed by the server based on the value of other
   /// fields, and might be sent only on update and delete requests to ensure that
   /// the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Optional. Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The configuration for Platform Telemetry logging for Eventarc Advanced
   /// resources.
   /// Structure is documented below.
-  late final Output<MessageBusLoggingConfig> loggingConfig;
+  late final pulumi.Output<MessageBusLoggingConfig> loggingConfig;
 
   /// Required. The user-provided ID to be assigned to the MessageBus. It should match the
   /// format `^a-z?$`.
-  late final Output<String> messageBusId;
+  late final pulumi.Output<String> messageBusId;
 
   /// Identifier. Resource name of the form
   /// projects/{project}/locations/{location}/messageBuses/{message_bus}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. Server assigned unique identifier for the channel. The value is a UUID4
   /// string and guaranteed to remain unchanged until the resource is deleted.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The last-modified time.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   MessageBus(
     String name, {
     MessageBusArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:eventarc/messageBus:MessageBus',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');

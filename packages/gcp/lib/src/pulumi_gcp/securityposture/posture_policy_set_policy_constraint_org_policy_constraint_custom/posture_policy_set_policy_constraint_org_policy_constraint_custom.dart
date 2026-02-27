@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../posture_policy_set_policy_constraint_org_policy_constraint_custom_custom_constraint/posture_policy_set_policy_constraint_org_policy_constraint_custom_custom_constraint.dart';
 import '../posture_policy_set_policy_constraint_org_policy_constraint_custom_policy_rule/posture_policy_set_policy_constraint_org_policy_constraint_custom_policy_rule.dart';
 
@@ -27,7 +27,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
     if (customConstraintValue != null) {
       map['customConstraint'] = customConstraintValue.toMap();
     }
-    map['policyRules'] = Input.encodeList<
+    map['policyRules'] = pulumi.Input.encodeList<
         PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule,
         Map<String, dynamic>>(policyRules, (value) => value.toMap());
     return map;
@@ -41,7 +41,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
           : PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint
               .fromMap(
                   (map['customConstraint'] as Map).cast<String, dynamic>()),
-      policyRules: Input.decodeList<
+      policyRules: pulumi.Input.decodeList<
               PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule>(
           map['policyRules'],
           (value) =>

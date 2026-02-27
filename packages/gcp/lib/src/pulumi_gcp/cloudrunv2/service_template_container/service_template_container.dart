@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_template_container_build_info/service_template_container_build_info.dart';
 import '../service_template_container_env/service_template_container_env.dart';
 import '../service_template_container_liveness_probe/service_template_container_liveness_probe.dart';
@@ -96,7 +96,8 @@ class ServiceTemplateContainer {
     }
     final buildInfosValue = buildInfos;
     if (buildInfosValue != null) {
-      map['buildInfos'] = Input.encodeList<ServiceTemplateContainerBuildInfo,
+      map['buildInfos'] = pulumi.Input.encodeList<
+          ServiceTemplateContainerBuildInfo,
           Map<String, dynamic>>(buildInfosValue, (value) => value.toMap());
     }
     final commandsValue = commands;
@@ -109,9 +110,8 @@ class ServiceTemplateContainer {
     }
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] =
-          Input.encodeList<ServiceTemplateContainerEnv, Map<String, dynamic>>(
-              envsValue, (value) => value.toMap());
+      map['envs'] = pulumi.Input.encodeList<ServiceTemplateContainerEnv,
+          Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
     map['image'] = image;
     final livenessProbeValue = livenessProbe;
@@ -140,7 +140,7 @@ class ServiceTemplateContainer {
     }
     final volumeMountsValue = volumeMounts;
     if (volumeMountsValue != null) {
-      map['volumeMounts'] = Input.encodeList<
+      map['volumeMounts'] = pulumi.Input.encodeList<
           ServiceTemplateContainerVolumeMount,
           Map<String, dynamic>>(volumeMountsValue, (value) => value.toMap());
     }
@@ -158,7 +158,7 @@ class ServiceTemplateContainer {
           map['baseImageUri'] == null ? null : map['baseImageUri'] as String,
       buildInfos: map['buildInfos'] == null
           ? null
-          : Input.decodeList<ServiceTemplateContainerBuildInfo>(
+          : pulumi.Input.decodeList<ServiceTemplateContainerBuildInfo>(
               map['buildInfos'],
               (value) => ServiceTemplateContainerBuildInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -170,7 +170,7 @@ class ServiceTemplateContainer {
           : (map['dependsOns'] as List).cast<String>(),
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<ServiceTemplateContainerEnv>(
+          : pulumi.Input.decodeList<ServiceTemplateContainerEnv>(
               map['envs'],
               (value) => ServiceTemplateContainerEnv.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -198,7 +198,7 @@ class ServiceTemplateContainer {
               (map['startupProbe'] as Map).cast<String, dynamic>()),
       volumeMounts: map['volumeMounts'] == null
           ? null
-          : Input.decodeList<ServiceTemplateContainerVolumeMount>(
+          : pulumi.Input.decodeList<ServiceTemplateContainerVolumeMount>(
               map['volumeMounts'],
               (value) => ServiceTemplateContainerVolumeMount.fromMap(
                   (value as Map).cast<String, dynamic>())),

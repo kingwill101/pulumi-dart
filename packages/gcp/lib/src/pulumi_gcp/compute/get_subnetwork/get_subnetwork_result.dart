@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subnetwork_secondary_ip_range/get_subnetwork_secondary_ip_range.dart';
 
 /// Result data returned by getSubnetwork.
@@ -86,9 +86,9 @@ class GetSubnetworkResult {
     map['privateIpGoogleAccess'] = privateIpGoogleAccess;
     map['project'] = project;
     map['region'] = region;
-    map['secondaryIpRanges'] =
-        Input.encodeList<GetSubnetworkSecondaryIpRange, Map<String, dynamic>>(
-            secondaryIpRanges, (value) => value.toMap());
+    map['secondaryIpRanges'] = pulumi.Input.encodeList<
+        GetSubnetworkSecondaryIpRange,
+        Map<String, dynamic>>(secondaryIpRanges, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['stackType'] = stackType;
     map['subnetworkId'] = subnetworkId;
@@ -109,7 +109,7 @@ class GetSubnetworkResult {
       privateIpGoogleAccess: map['privateIpGoogleAccess'] as bool,
       project: map['project'] as String,
       region: map['region'] as String,
-      secondaryIpRanges: Input.decodeList<GetSubnetworkSecondaryIpRange>(
+      secondaryIpRanges: pulumi.Input.decodeList<GetSubnetworkSecondaryIpRange>(
           map['secondaryIpRanges'],
           (value) => GetSubnetworkSecondaryIpRange.fromMap(
               (value as Map).cast<String, dynamic>())),

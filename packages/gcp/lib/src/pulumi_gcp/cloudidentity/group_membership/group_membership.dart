@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../group_membership_member_key/group_membership_member_key.dart';
 import '../group_membership_preferred_member_key/group_membership_preferred_member_key.dart';
 import '../group_membership_role/group_membership_role.dart';
@@ -41,47 +41,48 @@ import 'group_membership_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
 /// ```
-class GroupMembership extends CustomResource {
+class GroupMembership extends pulumi.CustomResource {
   /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
-  late final Output<bool?> createIgnoreAlreadyExists;
+  late final pulumi.Output<bool?> createIgnoreAlreadyExists;
 
   /// The time when the Membership was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The name of the Group to create this membership in.
-  late final Output<String> group;
+  late final pulumi.Output<String> group;
 
   /// EntityKey of the member.
   /// Structure is documented below.
-  late final Output<GroupMembershipMemberKey> memberKey;
+  late final pulumi.Output<GroupMembershipMemberKey> memberKey;
 
   /// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// EntityKey of the member.
   /// Structure is documented below.
-  late final Output<GroupMembershipPreferredMemberKey> preferredMemberKey;
+  late final pulumi.Output<GroupMembershipPreferredMemberKey>
+      preferredMemberKey;
 
   /// The MembershipRoles that apply to the Membership.
   /// Must not contain duplicate MembershipRoles with the same name.
   /// Structure is documented below.
-  late final Output<List<GroupMembershipRole>> roles;
+  late final pulumi.Output<List<GroupMembershipRole>> roles;
 
   /// The type of the membership.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// The time when the Membership was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   GroupMembership(
     String name, {
     GroupMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudidentity/groupMembership:GroupMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createIgnoreAlreadyExists =
         registerOutput<bool?>('createIgnoreAlreadyExists');

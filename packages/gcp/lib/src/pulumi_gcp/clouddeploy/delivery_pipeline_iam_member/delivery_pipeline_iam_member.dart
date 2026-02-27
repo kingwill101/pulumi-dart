@@ -1,25 +1,25 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../delivery_pipeline_iam_member_condition/delivery_pipeline_iam_member_condition.dart';
 import 'delivery_pipeline_iam_member_args.dart';
 
-class DeliveryPipelineIamMember extends CustomResource {
-  late final Output<DeliveryPipelineIamMemberCondition?> condition;
-  late final Output<String> etag;
-  late final Output<String> location;
-  late final Output<String> member;
-  late final Output<String> name;
-  late final Output<String> project;
-  late final Output<String> role;
+class DeliveryPipelineIamMember extends pulumi.CustomResource {
+  late final pulumi.Output<DeliveryPipelineIamMemberCondition?> condition;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> location;
+  late final pulumi.Output<String> member;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+  late final pulumi.Output<String> role;
 
   DeliveryPipelineIamMember(
     String name, {
     DeliveryPipelineIamMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition =
         registerOutput<DeliveryPipelineIamMemberCondition?>('condition');

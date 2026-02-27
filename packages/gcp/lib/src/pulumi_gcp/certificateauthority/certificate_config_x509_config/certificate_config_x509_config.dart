@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_config_x509_config_additional_extension/certificate_config_x509_config_additional_extension.dart';
 import '../certificate_config_x509_config_ca_options/certificate_config_x509_config_ca_options.dart';
 import '../certificate_config_x509_config_key_usage/certificate_config_x509_config_key_usage.dart';
@@ -52,7 +52,7 @@ class CertificateConfigX509Config {
     final map = <String, dynamic>{};
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
-      map['additionalExtensions'] = Input.encodeList<
+      map['additionalExtensions'] = pulumi.Input.encodeList<
               CertificateConfigX509ConfigAdditionalExtension,
               Map<String, dynamic>>(
           additionalExtensionsValue, (value) => value.toMap());
@@ -72,7 +72,8 @@ class CertificateConfigX509Config {
     }
     final policyIdsValue = policyIds;
     if (policyIdsValue != null) {
-      map['policyIds'] = Input.encodeList<CertificateConfigX509ConfigPolicyId,
+      map['policyIds'] = pulumi.Input.encodeList<
+          CertificateConfigX509ConfigPolicyId,
           Map<String, dynamic>>(policyIdsValue, (value) => value.toMap());
     }
     return map;
@@ -82,7 +83,8 @@ class CertificateConfigX509Config {
     return CertificateConfigX509Config(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<CertificateConfigX509ConfigAdditionalExtension>(
+          : pulumi.Input.decodeList<
+                  CertificateConfigX509ConfigAdditionalExtension>(
               map['additionalExtensions'],
               (value) => CertificateConfigX509ConfigAdditionalExtension.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -101,7 +103,7 @@ class CertificateConfigX509Config {
               (map['nameConstraints'] as Map).cast<String, dynamic>()),
       policyIds: map['policyIds'] == null
           ? null
-          : Input.decodeList<CertificateConfigX509ConfigPolicyId>(
+          : pulumi.Input.decodeList<CertificateConfigX509ConfigPolicyId>(
               map['policyIds'],
               (value) => CertificateConfigX509ConfigPolicyId.fromMap(
                   (value as Map).cast<String, dynamic>())),

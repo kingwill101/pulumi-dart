@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_backend_service_ha_policy_leader_network_endpoint/get_region_backend_service_ha_policy_leader_network_endpoint.dart';
 
 class GetRegionBackendServiceHaPolicyLeader {
@@ -20,7 +20,7 @@ class GetRegionBackendServiceHaPolicyLeader {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['backendGroup'] = backendGroup;
-    map['networkEndpoints'] = Input.encodeList<
+    map['networkEndpoints'] = pulumi.Input.encodeList<
         GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint,
         Map<String, dynamic>>(networkEndpoints, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GetRegionBackendServiceHaPolicyLeader {
       Map<String, dynamic> map) {
     return GetRegionBackendServiceHaPolicyLeader(
       backendGroup: map['backendGroup'] as String,
-      networkEndpoints: Input.decodeList<
+      networkEndpoints: pulumi.Input.decodeList<
               GetRegionBackendServiceHaPolicyLeaderNetworkEndpoint>(
           map['networkEndpoints'],
           (value) =>

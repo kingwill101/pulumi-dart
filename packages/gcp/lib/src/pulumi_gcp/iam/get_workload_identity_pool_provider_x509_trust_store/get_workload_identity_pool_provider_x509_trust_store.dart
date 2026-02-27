@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_workload_identity_pool_provider_x509_trust_store_intermediate_ca/get_workload_identity_pool_provider_x509_trust_store_intermediate_ca.dart';
 import '../get_workload_identity_pool_provider_x509_trust_store_trust_anchor/get_workload_identity_pool_provider_x509_trust_store_trust_anchor.dart';
 
@@ -24,10 +24,10 @@ class GetWorkloadIdentityPoolProviderX509TrustStore {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['intermediateCas'] = Input.encodeList<
+    map['intermediateCas'] = pulumi.Input.encodeList<
         GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa,
         Map<String, dynamic>>(intermediateCas, (value) => value.toMap());
-    map['trustAnchors'] = Input.encodeList<
+    map['trustAnchors'] = pulumi.Input.encodeList<
         GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor,
         Map<String, dynamic>>(trustAnchors, (value) => value.toMap());
     return map;
@@ -36,12 +36,12 @@ class GetWorkloadIdentityPoolProviderX509TrustStore {
   factory GetWorkloadIdentityPoolProviderX509TrustStore.fromMap(
       Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolProviderX509TrustStore(
-      intermediateCas: Input.decodeList<
+      intermediateCas: pulumi.Input.decodeList<
               GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa>(
           map['intermediateCas'],
           (value) => GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa
               .fromMap((value as Map).cast<String, dynamic>())),
-      trustAnchors: Input.decodeList<
+      trustAnchors: pulumi.Input.decodeList<
               GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor>(
           map['trustAnchors'],
           (value) =>

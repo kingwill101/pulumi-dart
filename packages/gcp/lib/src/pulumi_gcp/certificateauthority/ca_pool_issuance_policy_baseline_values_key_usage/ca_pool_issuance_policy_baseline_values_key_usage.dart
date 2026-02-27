@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ca_pool_issuance_policy_baseline_values_key_usage_base_key_usage/ca_pool_issuance_policy_baseline_values_key_usage_base_key_usage.dart';
 import '../ca_pool_issuance_policy_baseline_values_key_usage_extended_key_usage/ca_pool_issuance_policy_baseline_values_key_usage_extended_key_usage.dart';
 import '../ca_pool_issuance_policy_baseline_values_key_usage_unknown_extended_key_usage/ca_pool_issuance_policy_baseline_values_key_usage_unknown_extended_key_usage.dart';
@@ -32,7 +32,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage {
     map['extendedKeyUsage'] = extendedKeyUsage.toMap();
     final unknownExtendedKeyUsagesValue = unknownExtendedKeyUsages;
     if (unknownExtendedKeyUsagesValue != null) {
-      map['unknownExtendedKeyUsages'] = Input.encodeList<
+      map['unknownExtendedKeyUsages'] = pulumi.Input.encodeList<
               CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage,
               Map<String, dynamic>>(
           unknownExtendedKeyUsagesValue, (value) => value.toMap());
@@ -51,7 +51,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage {
               (map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
       unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>(
               map['unknownExtendedKeyUsages'],
               (value) =>

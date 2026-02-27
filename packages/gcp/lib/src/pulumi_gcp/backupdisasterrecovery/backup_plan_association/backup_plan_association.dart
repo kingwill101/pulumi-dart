@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_plan_association_rules_config_info/backup_plan_association_rules_config_info.dart';
 import 'backup_plan_association_args.dart';
 
@@ -41,59 +41,59 @@ import 'backup_plan_association_args.dart';
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation default {{location}}/{{backup_plan_association_id}}
 /// ```
-class BackupPlanAssociation extends CustomResource {
+class BackupPlanAssociation extends pulumi.CustomResource {
   /// The BP with which resource needs to be created
   /// Note:
   /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
-  late final Output<String> backupPlan;
+  late final pulumi.Output<String> backupPlan;
 
   /// The id of backupplan association
-  late final Output<String> backupPlanAssociationId;
+  late final pulumi.Output<String> backupPlanAssociationId;
 
   /// The time when the instance was created
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Resource name of data source which will be used as storage location for backups taken
-  late final Output<String> dataSource;
+  late final pulumi.Output<String> dataSource;
 
   /// The point in time when the last successful backup was captured from the source
-  late final Output<String> lastSuccessfulBackupConsistencyTime;
+  late final pulumi.Output<String> lastSuccessfulBackupConsistencyTime;
 
   /// The location for the backupplan association
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of backup plan association resource created
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The resource for which BPA needs to be created
-  late final Output<String> resource;
+  late final pulumi.Output<String> resource;
 
   /// The resource type of workload on which backupplan is applied.
   /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// Message for rules config info
   /// Structure is documented below.
-  late final Output<List<BackupPlanAssociationRulesConfigInfo>>
+  late final pulumi.Output<List<BackupPlanAssociationRulesConfigInfo>>
       rulesConfigInfos;
 
   /// The time when the instance was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BackupPlanAssociation(
     String name, {
     BackupPlanAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backupPlan = registerOutput<String>('backupPlan');
     this.backupPlanAssociationId =

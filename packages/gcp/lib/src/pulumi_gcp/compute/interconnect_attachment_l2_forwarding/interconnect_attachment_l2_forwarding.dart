@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_attachment_l2_forwarding_appliance_mapping/interconnect_attachment_l2_forwarding_appliance_mapping.dart';
 import '../interconnect_attachment_l2_forwarding_geneve_header/interconnect_attachment_l2_forwarding_geneve_header.dart';
 
@@ -35,7 +35,7 @@ class InterconnectAttachmentL2Forwarding {
     final map = <String, dynamic>{};
     final applianceMappingsValue = applianceMappings;
     if (applianceMappingsValue != null) {
-      map['applianceMappings'] = Input.encodeList<
+      map['applianceMappings'] = pulumi.Input.encodeList<
               InterconnectAttachmentL2ForwardingApplianceMapping,
               Map<String, dynamic>>(
           applianceMappingsValue, (value) => value.toMap());
@@ -63,7 +63,7 @@ class InterconnectAttachmentL2Forwarding {
     return InterconnectAttachmentL2Forwarding(
       applianceMappings: map['applianceMappings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterconnectAttachmentL2ForwardingApplianceMapping>(
               map['applianceMappings'],
               (value) =>

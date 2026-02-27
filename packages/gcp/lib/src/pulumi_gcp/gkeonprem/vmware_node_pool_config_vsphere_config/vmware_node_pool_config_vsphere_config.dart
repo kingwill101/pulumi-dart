@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_node_pool_config_vsphere_config_tag/vmware_node_pool_config_vsphere_config_tag.dart';
 
 class VMwareNodePoolConfigVsphereConfig {
@@ -32,7 +32,8 @@ class VMwareNodePoolConfigVsphereConfig {
     }
     final tagsValue = tags;
     if (tagsValue != null) {
-      map['tags'] = Input.encodeList<VMwareNodePoolConfigVsphereConfigTag,
+      map['tags'] = pulumi.Input.encodeList<
+          VMwareNodePoolConfigVsphereConfigTag,
           Map<String, dynamic>>(tagsValue, (value) => value.toMap());
     }
     return map;
@@ -46,7 +47,7 @@ class VMwareNodePoolConfigVsphereConfig {
           : (map['hostGroups'] as List).cast<String>(),
       tags: map['tags'] == null
           ? null
-          : Input.decodeList<VMwareNodePoolConfigVsphereConfigTag>(
+          : pulumi.Input.decodeList<VMwareNodePoolConfigVsphereConfigTag>(
               map['tags'],
               (value) => VMwareNodePoolConfigVsphereConfigTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

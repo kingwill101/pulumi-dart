@@ -1,4 +1,4 @@
 library module_cloudbuildv2_repository;
 
-export 'repository/repository2.dart';
-export 'repository/repository_args2.dart';
+export 'repository/repository_cloudbuildv2.dart';
+export 'repository/repository_cloudbuildv2_args.dart';

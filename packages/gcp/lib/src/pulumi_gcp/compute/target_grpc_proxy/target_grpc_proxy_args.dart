@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TargetGrpcProxy.
 class TargetGrpcProxyArgs {
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the resource. Provided by the client when the resource
   /// is created. The name must be 1-63 characters long, and comply
@@ -14,16 +14,16 @@ class TargetGrpcProxyArgs {
   /// means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// URL to the UrlMap resource that defines the mapping from URL to
   /// the BackendService. The protocol field in the BackendService
   /// must be set to GRPC.
-  final Input<String>? urlMap;
+  final pulumi.Input<String>? urlMap;
 
   /// If true, indicates that the BackendServices referenced by
   /// the urlMap may be accessed by gRPC applications without using
@@ -35,7 +35,7 @@ class TargetGrpcProxyArgs {
   /// applications via a sidecar proxy. In this case, a gRPC application
   /// must not use "xds:///" scheme in the target URI of the service
   /// it is connecting to
-  final Input<bool>? validateForProxyless;
+  final pulumi.Input<bool>? validateForProxyless;
 
   TargetGrpcProxyArgs({
     this.description,
@@ -72,12 +72,12 @@ class TargetGrpcProxyArgs {
 
   factory TargetGrpcProxyArgs.fromMap(Map<String, dynamic> map) {
     return TargetGrpcProxyArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      urlMap: Input.asOptionalInput<String>(map['urlMap']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      urlMap: pulumi.Input.asOptionalInput<String>(map['urlMap']),
       validateForProxyless:
-          Input.asOptionalInput<bool>(map['validateForProxyless']),
+          pulumi.Input.asOptionalInput<bool>(map['validateForProxyless']),
     );
   }
 }

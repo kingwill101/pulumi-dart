@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDatabase.
 class GetDatabaseArgs {
   /// The name of the database's spanner instance.
   ///
   /// - - -
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The name of the spanner database.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetDatabaseArgs({
     required this.instance,
@@ -35,9 +35,9 @@ class GetDatabaseArgs {
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      instance: Input.asInput<String>(map['instance']),
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

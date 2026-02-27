@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_stored_info_type_dictionary/prevention_stored_info_type_dictionary.dart';
 import '../prevention_stored_info_type_large_custom_dictionary/prevention_stored_info_type_large_custom_dictionary.dart';
 import '../prevention_stored_info_type_regex/prevention_stored_info_type_regex.dart';
@@ -49,50 +49,50 @@ import 'prevention_stored_info_type_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
 /// ```
-class PreventionStoredInfoType extends CustomResource {
+class PreventionStoredInfoType extends pulumi.CustomResource {
   /// A description of the info type.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  late final Output<PreventionStoredInfoTypeDictionary?> dictionary;
+  late final pulumi.Output<PreventionStoredInfoTypeDictionary?> dictionary;
 
   /// User set display name of the info type.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  late final Output<PreventionStoredInfoTypeLargeCustomDictionary?>
+  late final pulumi.Output<PreventionStoredInfoTypeLargeCustomDictionary?>
       largeCustomDictionary;
 
   /// The resource name of the info type. Set by the server.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of the info type in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  late final Output<PreventionStoredInfoTypeRegex?> regex;
+  late final pulumi.Output<PreventionStoredInfoTypeRegex?> regex;
 
   /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
   /// characters. Can be empty to allow the system to generate one.
-  late final Output<String> storedInfoTypeId;
+  late final pulumi.Output<String> storedInfoTypeId;
 
   PreventionStoredInfoType(
     String name, {
     PreventionStoredInfoTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.dictionary =

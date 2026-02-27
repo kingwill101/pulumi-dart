@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../snapshot_settings_storage_location_location/snapshot_settings_storage_location_location.dart';
 
 class SnapshotSettingsStorageLocation {
@@ -23,7 +23,7 @@ class SnapshotSettingsStorageLocation {
     final map = <String, dynamic>{};
     final locationsValue = locations;
     if (locationsValue != null) {
-      map['locations'] = Input.encodeList<
+      map['locations'] = pulumi.Input.encodeList<
           SnapshotSettingsStorageLocationLocation,
           Map<String, dynamic>>(locationsValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class SnapshotSettingsStorageLocation {
     return SnapshotSettingsStorageLocation(
       locations: map['locations'] == null
           ? null
-          : Input.decodeList<SnapshotSettingsStorageLocationLocation>(
+          : pulumi.Input.decodeList<SnapshotSettingsStorageLocationLocation>(
               map['locations'],
               (value) => SnapshotSettingsStorageLocationLocation.fromMap(
                   (value as Map).cast<String, dynamic>())),

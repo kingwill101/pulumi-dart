@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_private_cloud_args.dart';
 import 'get_private_cloud_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_private_cloud_result.dart';
 /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
 Future<GetPrivateCloudResult> getPrivateCloud(
   GetPrivateCloudArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:vmwareengine/getPrivateCloud:getPrivateCloud',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateCloudResult.fromMap(result);
 }

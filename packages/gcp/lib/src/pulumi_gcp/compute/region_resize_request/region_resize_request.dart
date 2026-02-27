@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_resize_request_requested_run_duration/region_resize_request_requested_run_duration.dart';
 import '../region_resize_request_status/region_resize_request_status.dart';
 import 'region_resize_request_args.dart';
@@ -51,50 +51,50 @@ import 'region_resize_request_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{instance_group_manager}}/{{name}}
 /// ```
-class RegionResizeRequest extends CustomResource {
+class RegionResizeRequest extends pulumi.CustomResource {
   /// The creation timestamp for this resize request in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resize-request.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The reference of the regional instance group manager this ResizeRequest is a part of.
-  late final Output<String> instanceGroupManager;
+  late final pulumi.Output<String> instanceGroupManager;
 
   /// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The reference of the compute region scoping this request. If it is not provided, the provider region is used.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
   /// Structure is documented below.
-  late final Output<RegionResizeRequestRequestedRunDuration?>
+  late final pulumi.Output<RegionResizeRequestRequestedRunDuration?>
       requestedRunDuration;
 
   /// The number of instances to be created by this resize request. The group's target size will be increased by this number.
-  late final Output<int> resizeBy;
+  late final pulumi.Output<int> resizeBy;
 
   /// Current state of the request.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Status of the request.
   /// Structure is documented below.
-  late final Output<List<RegionResizeRequestStatus>> statuses;
+  late final pulumi.Output<List<RegionResizeRequestStatus>> statuses;
 
   RegionResizeRequest(
     String name, {
     RegionResizeRequestArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionResizeRequest:RegionResizeRequest',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

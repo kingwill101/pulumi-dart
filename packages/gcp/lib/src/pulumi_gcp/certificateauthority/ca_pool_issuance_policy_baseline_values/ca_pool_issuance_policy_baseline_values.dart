@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ca_pool_issuance_policy_baseline_values_additional_extension/ca_pool_issuance_policy_baseline_values_additional_extension.dart';
 import '../ca_pool_issuance_policy_baseline_values_ca_options/ca_pool_issuance_policy_baseline_values_ca_options.dart';
 import '../ca_pool_issuance_policy_baseline_values_key_usage/ca_pool_issuance_policy_baseline_values_key_usage.dart';
@@ -46,7 +46,7 @@ class CaPoolIssuancePolicyBaselineValues {
     final map = <String, dynamic>{};
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
-      map['additionalExtensions'] = Input.encodeList<
+      map['additionalExtensions'] = pulumi.Input.encodeList<
               CaPoolIssuancePolicyBaselineValuesAdditionalExtension,
               Map<String, dynamic>>(
           additionalExtensionsValue, (value) => value.toMap());
@@ -63,7 +63,7 @@ class CaPoolIssuancePolicyBaselineValues {
     }
     final policyIdsValue = policyIds;
     if (policyIdsValue != null) {
-      map['policyIds'] = Input.encodeList<
+      map['policyIds'] = pulumi.Input.encodeList<
           CaPoolIssuancePolicyBaselineValuesPolicyId,
           Map<String, dynamic>>(policyIdsValue, (value) => value.toMap());
     }
@@ -74,7 +74,7 @@ class CaPoolIssuancePolicyBaselineValues {
     return CaPoolIssuancePolicyBaselineValues(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CaPoolIssuancePolicyBaselineValuesAdditionalExtension>(
               map['additionalExtensions'],
               (value) =>
@@ -93,7 +93,7 @@ class CaPoolIssuancePolicyBaselineValues {
               (map['nameConstraints'] as Map).cast<String, dynamic>()),
       policyIds: map['policyIds'] == null
           ? null
-          : Input.decodeList<CaPoolIssuancePolicyBaselineValuesPolicyId>(
+          : pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesPolicyId>(
               map['policyIds'],
               (value) => CaPoolIssuancePolicyBaselineValuesPolicyId.fromMap(
                   (value as Map).cast<String, dynamic>())),

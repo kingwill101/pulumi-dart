@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_network_settings_network_settings/service_network_settings_network_settings.dart';
 import 'service_network_settings_args.dart';
 
@@ -39,27 +39,28 @@ import 'service_network_settings_args.dart';
 /// ```sh
 /// $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{service}}
 /// ```
-class ServiceNetworkSettings extends CustomResource {
+class ServiceNetworkSettings extends pulumi.CustomResource {
   /// Ingress settings for this service. Will apply to all versions.
   /// Structure is documented below.
-  late final Output<ServiceNetworkSettingsNetworkSettings> networkSettings;
+  late final pulumi.Output<ServiceNetworkSettingsNetworkSettings>
+      networkSettings;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The name of the service these settings apply to.
-  late final Output<String> service;
+  late final pulumi.Output<String> service;
 
   ServiceNetworkSettings(
     String name, {
     ServiceNetworkSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.networkSettings =
         registerOutput<ServiceNetworkSettingsNetworkSettings>(

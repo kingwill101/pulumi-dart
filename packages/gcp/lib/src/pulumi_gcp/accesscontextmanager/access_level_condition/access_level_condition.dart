@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_level_condition_device_policy/access_level_condition_device_policy.dart';
 import '../access_level_condition_vpc_network_source/access_level_condition_vpc_network_source.dart';
 import 'access_level_condition_args.dart';
@@ -35,18 +35,18 @@ import 'access_level_condition_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class AccessLevelCondition extends CustomResource {
+class AccessLevelCondition extends pulumi.CustomResource {
   /// The name of the Access Level to add this condition to.
-  late final Output<String> accessLevel;
+  late final pulumi.Output<String> accessLevel;
 
   /// The name of the Access Policy this resource belongs to.
-  late final Output<String> accessPolicyId;
+  late final pulumi.Output<String> accessPolicyId;
 
   /// Device specific restrictions, all restrictions must hold for
   /// the Condition to be true. If not specified, all devices are
   /// allowed.
   /// Structure is documented below.
-  late final Output<AccessLevelConditionDevicePolicy?> devicePolicy;
+  late final pulumi.Output<AccessLevelConditionDevicePolicy?> devicePolicy;
 
   /// A list of CIDR block IP subnetwork specification. May be IPv4
   /// or IPv6.
@@ -58,7 +58,7 @@ class AccessLevelCondition extends CustomResource {
   /// is not. The originating IP of a request must be in one of the
   /// listed subnets in order for this Condition to be true.
   /// If empty, all IP addresses are allowed.
-  late final Output<List<String>?> ipSubnetworks;
+  late final pulumi.Output<List<String>?> ipSubnetworks;
 
   /// An allowed list of members (users, service accounts).
   /// Using groups is not supported yet.
@@ -67,39 +67,39 @@ class AccessLevelCondition extends CustomResource {
   /// from any user (logged in/not logged in, not present in any
   /// groups, etc.).
   /// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
-  late final Output<List<String>?> members;
+  late final pulumi.Output<List<String>?> members;
 
   /// Whether to negate the Condition. If true, the Condition becomes
   /// a NAND over its non-empty fields, each field must be false for
   /// the Condition overall to be satisfied. Defaults to false.
-  late final Output<bool?> negate;
+  late final pulumi.Output<bool?> negate;
 
   /// The request must originate from one of the provided
   /// countries/regions.
   /// Format: A valid ISO 3166-1 alpha-2 code.
-  late final Output<List<String>?> regions;
+  late final pulumi.Output<List<String>?> regions;
 
   /// A list of other access levels defined in the same Policy,
   /// referenced by resource name. Referencing an AccessLevel which
   /// does not exist is an error. All access levels listed must be
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-  late final Output<List<String>?> requiredAccessLevels;
+  late final pulumi.Output<List<String>?> requiredAccessLevels;
 
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
   /// Structure is documented below.
-  late final Output<List<AccessLevelConditionVpcNetworkSource>?>
+  late final pulumi.Output<List<AccessLevelConditionVpcNetworkSource>?>
       vpcNetworkSources;
 
   AccessLevelCondition(
     String name, {
     AccessLevelConditionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessLevel = registerOutput<String>('accessLevel');
     this.accessPolicyId = registerOutput<String>('accessPolicyId');

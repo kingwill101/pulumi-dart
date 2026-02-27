@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../datapolicyv2_data_policy_iam_binding_condition/datapolicyv2_data_policy_iam_binding_condition.dart';
 
 /// The set of arguments for Datapolicyv2DataPolicyIamBinding.
 class Datapolicyv2DataPolicyIamBindingArgs {
-  final Input<Datapolicyv2DataPolicyIamBindingCondition>? condition;
+  final pulumi.Input<Datapolicyv2DataPolicyIamBindingCondition>? condition;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> dataPolicyId;
+  final pulumi.Input<String> dataPolicyId;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -27,16 +27,16 @@ class Datapolicyv2DataPolicyIamBindingArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final Input<List<String>> members;
+  final pulumi.Input<List<String>> members;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The role that should be applied. Only one
   /// `gcp.bigquery.Datapolicyv2DataPolicyIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   Datapolicyv2DataPolicyIamBindingArgs({
     this.condition,
@@ -51,7 +51,7 @@ class Datapolicyv2DataPolicyIamBindingArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           Datapolicyv2DataPolicyIamBindingCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -72,14 +72,13 @@ class Datapolicyv2DataPolicyIamBindingArgs {
   factory Datapolicyv2DataPolicyIamBindingArgs.fromMap(
       Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyIamBindingArgs(
-      condition:
-          Input.asOptionalInput<Datapolicyv2DataPolicyIamBindingCondition>(
-              map['condition']),
-      dataPolicyId: Input.asInput<String>(map['dataPolicyId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      members: Input.asInput<List<String>>(map['members']),
-      project: Input.asOptionalInput<String>(map['project']),
-      role: Input.asInput<String>(map['role']),
+      condition: pulumi.Input.asOptionalInput<
+          Datapolicyv2DataPolicyIamBindingCondition>(map['condition']),
+      dataPolicyId: pulumi.Input.asInput<String>(map['dataPolicyId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      members: pulumi.Input.asInput<List<String>>(map['members']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

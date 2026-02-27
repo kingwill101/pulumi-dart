@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_app_audio_processing_config_ambient_sound_config/app_version_snapshot_app_audio_processing_config_ambient_sound_config.dart';
 import '../app_version_snapshot_app_audio_processing_config_barge_in_config/app_version_snapshot_app_audio_processing_config_barge_in_config.dart';
 import '../app_version_snapshot_app_audio_processing_config_synthesize_speech_config/app_version_snapshot_app_audio_processing_config_synthesize_speech_config.dart';
@@ -48,14 +48,14 @@ class AppVersionSnapshotAppAudioProcessingConfig {
     final map = <String, dynamic>{};
     final ambientSoundConfigsValue = ambientSoundConfigs;
     if (ambientSoundConfigsValue != null) {
-      map['ambientSoundConfigs'] = Input.encodeList<
+      map['ambientSoundConfigs'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig,
               Map<String, dynamic>>(
           ambientSoundConfigsValue, (value) => value.toMap());
     }
     final bargeInConfigsValue = bargeInConfigs;
     if (bargeInConfigsValue != null) {
-      map['bargeInConfigs'] = Input.encodeList<
+      map['bargeInConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotAppAudioProcessingConfigBargeInConfig,
           Map<String, dynamic>>(bargeInConfigsValue, (value) => value.toMap());
     }
@@ -65,7 +65,7 @@ class AppVersionSnapshotAppAudioProcessingConfig {
     }
     final synthesizeSpeechConfigsValue = synthesizeSpeechConfigs;
     if (synthesizeSpeechConfigsValue != null) {
-      map['synthesizeSpeechConfigs'] = Input.encodeList<
+      map['synthesizeSpeechConfigs'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig,
               Map<String, dynamic>>(
           synthesizeSpeechConfigsValue, (value) => value.toMap());
@@ -78,7 +78,7 @@ class AppVersionSnapshotAppAudioProcessingConfig {
     return AppVersionSnapshotAppAudioProcessingConfig(
       ambientSoundConfigs: map['ambientSoundConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig>(
               map['ambientSoundConfigs'],
               (value) =>
@@ -86,7 +86,7 @@ class AppVersionSnapshotAppAudioProcessingConfig {
                       .fromMap((value as Map).cast<String, dynamic>())),
       bargeInConfigs: map['bargeInConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotAppAudioProcessingConfigBargeInConfig>(
               map['bargeInConfigs'],
               (value) => AppVersionSnapshotAppAudioProcessingConfigBargeInConfig
@@ -96,7 +96,7 @@ class AppVersionSnapshotAppAudioProcessingConfig {
           : map['inactivityTimeout'] as String,
       synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig>(
               map['synthesizeSpeechConfigs'],
               (value) =>

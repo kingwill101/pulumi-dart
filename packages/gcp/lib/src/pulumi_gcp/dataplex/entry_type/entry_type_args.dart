@@ -1,44 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entry_type_required_aspect/entry_type_required_aspect.dart';
 
 /// The set of arguments for EntryType.
 class EntryTypeArgs {
   /// Description of the EntryType.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User friendly display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The entry type id of the entry type.
-  final Input<String>? entryTypeId;
+  final pulumi.Input<String>? entryTypeId;
 
   /// User-defined labels for the EntryType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location where entry type will be created in.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The platform that Entries of this type belongs to.
-  final Input<String>? platform;
+  final pulumi.Input<String>? platform;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// AspectInfo for the entry type.
   /// Structure is documented below.
-  final Input<List<EntryTypeRequiredAspect>>? requiredAspects;
+  final pulumi.Input<List<EntryTypeRequiredAspect>>? requiredAspects;
 
   /// The system that Entries of this type belongs to.
-  final Input<String>? system;
+  final pulumi.Input<String>? system;
 
   /// Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
-  final Input<List<String>>? typeAliases;
+  final pulumi.Input<List<String>>? typeAliases;
 
   EntryTypeArgs({
     this.description,
@@ -85,12 +85,11 @@ class EntryTypeArgs {
     }
     final requiredAspectsValue = requiredAspects;
     if (requiredAspectsValue != null) {
-      map['requiredAspects'] = Input.mapOptionalInputValue<
+      map['requiredAspects'] = pulumi.Input.mapOptionalInputValue<
               List<EntryTypeRequiredAspect>, List<Map<String, dynamic>>>(
           requiredAspectsValue,
-          (value) =>
-              Input.encodeList<EntryTypeRequiredAspect, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<EntryTypeRequiredAspect,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final systemValue = system;
     if (systemValue != null) {
@@ -105,17 +104,19 @@ class EntryTypeArgs {
 
   factory EntryTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntryTypeArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      entryTypeId: Input.asOptionalInput<String>(map['entryTypeId']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      platform: Input.asOptionalInput<String>(map['platform']),
-      project: Input.asOptionalInput<String>(map['project']),
-      requiredAspects: Input.asOptionalInput<List<EntryTypeRequiredAspect>>(
-          map['requiredAspects']),
-      system: Input.asOptionalInput<String>(map['system']),
-      typeAliases: Input.asOptionalInput<List<String>>(map['typeAliases']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      entryTypeId: pulumi.Input.asOptionalInput<String>(map['entryTypeId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      platform: pulumi.Input.asOptionalInput<String>(map['platform']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      requiredAspects:
+          pulumi.Input.asOptionalInput<List<EntryTypeRequiredAspect>>(
+              map['requiredAspects']),
+      system: pulumi.Input.asOptionalInput<String>(map['system']),
+      typeAliases:
+          pulumi.Input.asOptionalInput<List<String>>(map['typeAliases']),
     );
   }
 }

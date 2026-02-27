@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_test_case_test_case_conversation_turn_virtual_agent_output_current_page/cx_test_case_test_case_conversation_turn_virtual_agent_output_current_page.dart';
 import '../cx_test_case_test_case_conversation_turn_virtual_agent_output_text_response/cx_test_case_test_case_conversation_turn_virtual_agent_output_text_response.dart';
 import '../cx_test_case_test_case_conversation_turn_virtual_agent_output_triggered_intent/cx_test_case_test_case_conversation_turn_virtual_agent_output_triggered_intent.dart';
@@ -43,7 +43,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
     }
     final textResponsesValue = textResponses;
     if (textResponsesValue != null) {
-      map['textResponses'] = Input.encodeList<
+      map['textResponses'] = pulumi.Input.encodeList<
           CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse,
           Map<String, dynamic>>(textResponsesValue, (value) => value.toMap());
     }
@@ -66,7 +66,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
           : map['sessionParameters'] as String,
       textResponses: map['textResponses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse>(
               map['textResponses'],
               (value) =>

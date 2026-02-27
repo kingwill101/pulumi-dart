@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_config_guest_accelerator_gpu_driver_installation_config/get_cluster_node_config_guest_accelerator_gpu_driver_installation_config.dart';
 import '../get_cluster_node_config_guest_accelerator_gpu_sharing_config/get_cluster_node_config_guest_accelerator_gpu_sharing_config.dart';
 
@@ -33,12 +33,12 @@ class GetClusterNodeConfigGuestAccelerator {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['count'] = count;
-    map['gpuDriverInstallationConfigs'] = Input.encodeList<
+    map['gpuDriverInstallationConfigs'] = pulumi.Input.encodeList<
             GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig,
             Map<String, dynamic>>(
         gpuDriverInstallationConfigs, (value) => value.toMap());
     map['gpuPartitionSize'] = gpuPartitionSize;
-    map['gpuSharingConfigs'] = Input.encodeList<
+    map['gpuSharingConfigs'] = pulumi.Input.encodeList<
         GetClusterNodeConfigGuestAcceleratorGpuSharingConfig,
         Map<String, dynamic>>(gpuSharingConfigs, (value) => value.toMap());
     map['type'] = type;
@@ -49,14 +49,14 @@ class GetClusterNodeConfigGuestAccelerator {
       Map<String, dynamic> map) {
     return GetClusterNodeConfigGuestAccelerator(
       count: map['count'] as int,
-      gpuDriverInstallationConfigs: Input.decodeList<
+      gpuDriverInstallationConfigs: pulumi.Input.decodeList<
               GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig>(
           map['gpuDriverInstallationConfigs'],
           (value) =>
               GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
       gpuPartitionSize: map['gpuPartitionSize'] as String,
-      gpuSharingConfigs: Input.decodeList<
+      gpuSharingConfigs: pulumi.Input.decodeList<
               GetClusterNodeConfigGuestAcceleratorGpuSharingConfig>(
           map['gpuSharingConfigs'],
           (value) =>

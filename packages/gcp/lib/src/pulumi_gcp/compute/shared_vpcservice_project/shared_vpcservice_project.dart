@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'shared_vpcservice_project_args.dart';
 
 /// Enables the Google Compute Engine
@@ -28,25 +28,25 @@ import 'shared_vpcservice_project_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
 /// ```
-class SharedVPCServiceProject extends CustomResource {
+class SharedVPCServiceProject extends pulumi.CustomResource {
   /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
-  late final Output<String?> deletionPolicy;
+  late final pulumi.Output<String?> deletionPolicy;
 
   /// The ID of a host project to associate.
-  late final Output<String> hostProject;
+  late final pulumi.Output<String> hostProject;
 
   /// The ID of the project that will serve as a Shared VPC service project.
-  late final Output<String> serviceProject;
+  late final pulumi.Output<String> serviceProject;
 
   SharedVPCServiceProject(
     String name, {
     SharedVPCServiceProjectArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deletionPolicy = registerOutput<String?>('deletionPolicy');
     this.hostProject = registerOutput<String>('hostProject');

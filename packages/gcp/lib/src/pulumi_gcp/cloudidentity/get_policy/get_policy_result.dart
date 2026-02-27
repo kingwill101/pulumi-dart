@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_policy_policy_query/get_policy_policy_query.dart';
 
 /// Result data returned by getPolicy.
@@ -38,7 +38,7 @@ class GetPolicyResult {
     map['id'] = id;
     map['name'] = name;
     map['policyQueries'] =
-        Input.encodeList<GetPolicyPolicyQuery, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetPolicyPolicyQuery, Map<String, dynamic>>(
             policyQueries, (value) => value.toMap());
     map['setting'] = setting;
     map['type'] = type;
@@ -50,7 +50,7 @@ class GetPolicyResult {
       customer: map['customer'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      policyQueries: Input.decodeList<GetPolicyPolicyQuery>(
+      policyQueries: pulumi.Input.decodeList<GetPolicyPolicyQuery>(
           map['policyQueries'],
           (value) => GetPolicyPolicyQuery.fromMap(
               (value as Map).cast<String, dynamic>())),

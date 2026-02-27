@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_path_matcher_default_route_action_weighted_backend_service_header_action_request_headers_to_add/urlmap_path_matcher_default_route_action_weighted_backend_service_header_action_request_headers_to_add.dart';
 import '../urlmap_path_matcher_default_route_action_weighted_backend_service_header_action_response_headers_to_add/urlmap_path_matcher_default_route_action_weighted_backend_service_header_action_response_headers_to_add.dart';
 
@@ -36,7 +36,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction {
     final map = <String, dynamic>{};
     final requestHeadersToAddsValue = requestHeadersToAdds;
     if (requestHeadersToAddsValue != null) {
-      map['requestHeadersToAdds'] = Input.encodeList<
+      map['requestHeadersToAdds'] = pulumi.Input.encodeList<
           URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd,
           Map<String,
               dynamic>>(requestHeadersToAddsValue, (value) => value.toMap());
@@ -47,7 +47,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction {
     }
     final responseHeadersToAddsValue = responseHeadersToAdds;
     if (responseHeadersToAddsValue != null) {
-      map['responseHeadersToAdds'] = Input.encodeList<
+      map['responseHeadersToAdds'] = pulumi.Input.encodeList<
           URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd,
           Map<String,
               dynamic>>(responseHeadersToAddsValue, (value) => value.toMap());
@@ -64,7 +64,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction {
     return URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction(
       requestHeadersToAdds: map['requestHeadersToAdds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd>(
               map['requestHeadersToAdds'],
               (value) =>
@@ -75,7 +75,7 @@ class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction {
           : (map['requestHeadersToRemoves'] as List).cast<String>(),
       responseHeadersToAdds: map['responseHeadersToAdds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd>(
               map['responseHeadersToAdds'],
               (value) =>

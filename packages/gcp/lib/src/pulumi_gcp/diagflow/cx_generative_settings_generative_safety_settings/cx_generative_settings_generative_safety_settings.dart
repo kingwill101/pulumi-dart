@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_generative_settings_generative_safety_settings_banned_phrase/cx_generative_settings_generative_safety_settings_banned_phrase.dart';
 
 class CxGenerativeSettingsGenerativeSafetySettings {
@@ -22,7 +22,7 @@ class CxGenerativeSettingsGenerativeSafetySettings {
     final map = <String, dynamic>{};
     final bannedPhrasesValue = bannedPhrases;
     if (bannedPhrasesValue != null) {
-      map['bannedPhrases'] = Input.encodeList<
+      map['bannedPhrases'] = pulumi.Input.encodeList<
           CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase,
           Map<String, dynamic>>(bannedPhrasesValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class CxGenerativeSettingsGenerativeSafetySettings {
     return CxGenerativeSettingsGenerativeSafetySettings(
       bannedPhrases: map['bannedPhrases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase>(
               map['bannedPhrases'],
               (value) =>

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecrets.
 class GetSecretsArgs {
   /// Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The ID of the project.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetSecretsArgs({
     this.filter,
@@ -30,8 +30,8 @@ class GetSecretsArgs {
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretsArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      project: Input.asOptionalInput<String>(map['project']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

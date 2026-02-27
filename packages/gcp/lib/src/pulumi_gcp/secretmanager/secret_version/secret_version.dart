@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_version_args.dart';
 
 /// A secret version resource.
@@ -53,9 +53,9 @@ import 'secret_version_args.dart';
 /// ```sh
 /// $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}
 /// ```
-class SecretVersion extends CustomResource {
+class SecretVersion extends pulumi.CustomResource {
   /// The time at which the Secret was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
@@ -63,31 +63,31 @@ class SecretVersion extends CustomResource {
   /// * DELETE
   /// * DISABLE
   /// * ABANDON
-  late final Output<String?> deletionPolicy;
+  late final pulumi.Output<String?> deletionPolicy;
 
   /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
-  late final Output<String> destroyTime;
+  late final pulumi.Output<String> destroyTime;
 
   /// The current state of the SecretVersion.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
-  late final Output<bool?> isSecretDataBase64;
+  late final pulumi.Output<bool?> isSecretDataBase64;
 
   /// The resource name of the SecretVersion. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Secret Manager secret resource
-  late final Output<String> secret;
+  late final pulumi.Output<String> secret;
 
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String?> secretData;
+  late final pulumi.Output<String?> secretData;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
@@ -95,23 +95,23 @@ class SecretVersion extends CustomResource {
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
-  late final Output<String?> secretDataWo;
+  late final pulumi.Output<String?> secretDataWo;
 
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  late final Output<int?> secretDataWoVersion;
+  late final pulumi.Output<int?> secretDataWoVersion;
 
   /// The version of the Secret.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   SecretVersion(
     String name, {
     SecretVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:secretmanager/secretVersion:SecretVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deletionPolicy = registerOutput<String?>('deletionPolicy');

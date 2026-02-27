@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_anti_affinity_groups/vmware_cluster_anti_affinity_groups.dart';
 import '../vmware_cluster_authorization/vmware_cluster_authorization.dart';
 import '../vmware_cluster_auto_repair_config/vmware_cluster_auto_repair_config.dart';
@@ -59,12 +59,12 @@ import 'vmware_cluster_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
 /// ```
-class VMwareCluster extends CustomResource {
+class VMwareCluster extends pulumi.CustomResource {
   /// The admin cluster this VMware User Cluster belongs to.
   /// This is the full resource name of the admin cluster's hub membership.
   /// In the future, references to other resource types might be allowed if
   /// admin clusters are modeled as their own resources.
-  late final Output<String> adminClusterMembership;
+  late final pulumi.Output<String> adminClusterMembership;
 
   /// Annotations on the VMware User Cluster.
   /// This field has the same restrictions as Kubernetes annotations.
@@ -77,65 +77,65 @@ class VMwareCluster extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
   /// least three physical hosts in the datacenter.
   /// Structure is documented below.
-  late final Output<VMwareClusterAntiAffinityGroups> antiAffinityGroups;
+  late final pulumi.Output<VMwareClusterAntiAffinityGroups> antiAffinityGroups;
 
   /// RBAC policy that will be applied and managed by GKE On-Prem.
   /// Structure is documented below.
-  late final Output<VMwareClusterAuthorization?> authorization;
+  late final pulumi.Output<VMwareClusterAuthorization?> authorization;
 
   /// Configuration for auto repairing.
   /// Structure is documented below.
-  late final Output<VMwareClusterAutoRepairConfig> autoRepairConfig;
+  late final pulumi.Output<VMwareClusterAutoRepairConfig> autoRepairConfig;
 
   /// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
   /// Structure is documented below.
-  late final Output<VMwareClusterControlPlaneNode> controlPlaneNode;
+  late final pulumi.Output<VMwareClusterControlPlaneNode> controlPlaneNode;
 
   /// The time at which VMware User Cluster was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
   /// Structure is documented below.
-  late final Output<VMwareClusterDataplaneV2> dataplaneV2;
+  late final pulumi.Output<VMwareClusterDataplaneV2> dataplaneV2;
 
   /// The time at which VMware User Cluster was deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// A human readable description of this VMware User Cluster.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Disable bundled ingress.
-  late final Output<bool?> disableBundledIngress;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<bool?> disableBundledIngress;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// Enable advanced cluster. Default to false.
-  late final Output<bool?> enableAdvancedCluster;
+  late final pulumi.Output<bool?> enableAdvancedCluster;
 
   /// Enable control plane V2. Default to false.
-  late final Output<bool?> enableControlPlaneV2;
+  late final pulumi.Output<bool?> enableControlPlaneV2;
 
   /// The DNS name of VMware User Cluster's API server.
-  late final Output<String> endpoint;
+  late final pulumi.Output<String> endpoint;
 
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Fleet configuration for the cluster.
   /// Structure is documented below.
-  late final Output<List<VMwareClusterFleet>> fleets;
+  late final pulumi.Output<List<VMwareClusterFleet>> fleets;
 
   /// Load Balancer configuration.
   /// Structure is documented below.
-  late final Output<VMwareClusterLoadBalancer?> loadBalancer;
+  late final pulumi.Output<VMwareClusterLoadBalancer?> loadBalancer;
 
   /// The object name of the VMware OnPremUserCluster custom resource on the
   /// associated admin cluster. This field is used to support conflicting
@@ -147,72 +147,72 @@ class VMwareCluster extends CustomResource {
   /// All users should use this name to access their cluster using gkectl or
   /// kubectl and should expect to see the local name when viewing admin
   /// cluster controller logs.
-  late final Output<String> localName;
+  late final pulumi.Output<String> localName;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The VMware cluster name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The VMware User Cluster network configuration.
   /// Structure is documented below.
-  late final Output<VMwareClusterNetworkConfig?> networkConfig;
+  late final pulumi.Output<VMwareClusterNetworkConfig?> networkConfig;
 
   /// The Anthos clusters on the VMware version for your user cluster.
-  late final Output<String> onPremVersion;
+  late final pulumi.Output<String> onPremVersion;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// If set, there are currently changes in flight to the VMware User Cluster.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// (Output)
   /// The lifecycle state of the condition.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
-  late final Output<List<VMwareClusterStatus>> statuses;
+  late final pulumi.Output<List<VMwareClusterStatus>> statuses;
 
   /// Storage configuration.
   /// Structure is documented below.
-  late final Output<VMwareClusterStorage> storage;
+  late final pulumi.Output<VMwareClusterStorage> storage;
 
   /// The unique identifier of the VMware User Cluster.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time at which VMware User Cluster was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Specifies upgrade policy for the cluster.
   /// Structure is documented below.
-  late final Output<VMwareClusterUpgradePolicy?> upgradePolicy;
+  late final pulumi.Output<VMwareClusterUpgradePolicy?> upgradePolicy;
 
   /// ValidationCheck represents the result of the preflight check job.
   /// Structure is documented below.
-  late final Output<List<VMwareClusterValidationCheck>> validationChecks;
+  late final pulumi.Output<List<VMwareClusterValidationCheck>> validationChecks;
 
   /// VmwareVCenterConfig specifies vCenter config for the user cluster.
   /// Inherited from the admin cluster.
   /// Structure is documented below.
-  late final Output<VMwareClusterVcenter> vcenter;
+  late final pulumi.Output<VMwareClusterVcenter> vcenter;
 
   /// Enable VM tracking.
-  late final Output<bool> vmTrackingEnabled;
+  late final pulumi.Output<bool> vmTrackingEnabled;
 
   VMwareCluster(
     String name, {
     VMwareClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkeonprem/vMwareCluster:VMwareCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.adminClusterMembership =
         registerOutput<String>('adminClusterMembership');

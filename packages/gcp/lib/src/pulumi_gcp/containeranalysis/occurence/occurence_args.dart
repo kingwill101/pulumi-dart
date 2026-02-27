@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../occurence_attestation/occurence_attestation.dart';
 
 /// The set of arguments for Occurence.
@@ -14,24 +14,24 @@ class OccurenceArgs {
   /// know the authority and artifact to be verified) and intent (for
   /// which authority this attestation was intended to sign.
   /// Structure is documented below.
-  final Input<OccurenceAttestation> attestation;
+  final pulumi.Input<OccurenceAttestation> attestation;
 
   /// The analysis note associated with this occurrence, in the form of
   /// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
   /// filter in list requests.
-  final Input<String> noteName;
+  final pulumi.Input<String> noteName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A description of actions that can be taken to remedy the note.
-  final Input<String>? remediation;
+  final pulumi.Input<String>? remediation;
 
   /// Required. Immutable. A URI that represents the resource for which
   /// the occurrence applies. For example,
   /// https://gcr.io/project/image@sha256:123abc for a Docker image.
-  final Input<String> resourceUri;
+  final pulumi.Input<String> resourceUri;
 
   OccurenceArgs({
     required this.attestation,
@@ -44,7 +44,7 @@ class OccurenceArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['attestation'] =
-        Input.mapInputValue<OccurenceAttestation, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<OccurenceAttestation, Map<String, dynamic>>(
             attestation, (value) => value.toMap());
     map['noteName'] = noteName;
     final projectValue = project;
@@ -61,11 +61,12 @@ class OccurenceArgs {
 
   factory OccurenceArgs.fromMap(Map<String, dynamic> map) {
     return OccurenceArgs(
-      attestation: Input.asInput<OccurenceAttestation>(map['attestation']),
-      noteName: Input.asInput<String>(map['noteName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      remediation: Input.asOptionalInput<String>(map['remediation']),
-      resourceUri: Input.asInput<String>(map['resourceUri']),
+      attestation:
+          pulumi.Input.asInput<OccurenceAttestation>(map['attestation']),
+      noteName: pulumi.Input.asInput<String>(map['noteName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      remediation: pulumi.Input.asOptionalInput<String>(map['remediation']),
+      resourceUri: pulumi.Input.asInput<String>(map['resourceUri']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_for_folder_orchestrated_resource_os_policy_assignment_v1_payload_os_policy_resource_group_inventory_filter/v2_policy_orchestrator_for_folder_orchestrated_resource_os_policy_assignment_v1_payload_os_policy_resource_group_inventory_filter.dart';
 import '../v2_policy_orchestrator_for_folder_orchestrated_resource_os_policy_assignment_v1_payload_os_policy_resource_group_resource/v2_policy_orchestrator_for_folder_orchestrated_resource_os_policy_assignment_v1_payload_os_policy_resource_group_resource.dart';
 
@@ -36,12 +36,12 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     final map = <String, dynamic>{};
     final inventoryFiltersValue = inventoryFilters;
     if (inventoryFiltersValue != null) {
-      map['inventoryFilters'] = Input.encodeList<
+      map['inventoryFilters'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter,
           Map<String,
               dynamic>>(inventoryFiltersValue, (value) => value.toMap());
     }
-    map['resources'] = Input.encodeList<
+    map['resources'] = pulumi.Input.encodeList<
         V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource,
         Map<String, dynamic>>(resources, (value) => value.toMap());
     return map;
@@ -52,13 +52,13 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup(
       inventoryFilters: map['inventoryFilters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter>(
               map['inventoryFilters'],
               (value) =>
                   V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter
                       .fromMap((value as Map).cast<String, dynamic>())),
-      resources: Input.decodeList<
+      resources: pulumi.Input.decodeList<
               V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource>(
           map['resources'],
           (value) =>

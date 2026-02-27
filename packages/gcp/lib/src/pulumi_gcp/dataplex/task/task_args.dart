@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../task_execution_spec/task_execution_spec.dart';
 import '../task_notebook/task_notebook.dart';
 import '../task_spark/task_spark.dart';
@@ -9,45 +9,45 @@ import '../task_trigger_spec/task_trigger_spec.dart';
 /// The set of arguments for Task.
 class TaskArgs {
   /// User-provided description of the task.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User friendly display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Configuration for the cluster
   /// Structure is documented below.
-  final Input<TaskExecutionSpec> executionSpec;
+  final pulumi.Input<TaskExecutionSpec> executionSpec;
 
   /// User-defined labels for the task.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The lake in which the task will be created in.
-  final Input<String>? lake;
+  final pulumi.Input<String>? lake;
 
   /// The location in which the task will be created in.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
-  final Input<TaskNotebook>? notebook;
+  final pulumi.Input<TaskNotebook>? notebook;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
-  final Input<TaskSpark>? spark;
+  final pulumi.Input<TaskSpark>? spark;
 
   /// The task Id of the task.
-  final Input<String>? taskId;
+  final pulumi.Input<String>? taskId;
 
   /// Configuration for the cluster
   /// Structure is documented below.
-  final Input<TaskTriggerSpec> triggerSpec;
+  final pulumi.Input<TaskTriggerSpec> triggerSpec;
 
   TaskArgs({
     this.description,
@@ -74,7 +74,7 @@ class TaskArgs {
       map['displayName'] = displayNameValue;
     }
     map['executionSpec'] =
-        Input.mapInputValue<TaskExecutionSpec, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<TaskExecutionSpec, Map<String, dynamic>>(
             executionSpec, (value) => value.toMap());
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -90,9 +90,8 @@ class TaskArgs {
     }
     final notebookValue = notebook;
     if (notebookValue != null) {
-      map['notebook'] =
-          Input.mapOptionalInputValue<TaskNotebook, Map<String, dynamic>>(
-              notebookValue, (value) => value.toMap());
+      map['notebook'] = pulumi.Input.mapOptionalInputValue<TaskNotebook,
+          Map<String, dynamic>>(notebookValue, (value) => value.toMap());
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -101,7 +100,7 @@ class TaskArgs {
     final sparkValue = spark;
     if (sparkValue != null) {
       map['spark'] =
-          Input.mapOptionalInputValue<TaskSpark, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<TaskSpark, Map<String, dynamic>>(
               sparkValue, (value) => value.toMap());
     }
     final taskIdValue = taskId;
@@ -109,24 +108,25 @@ class TaskArgs {
       map['taskId'] = taskIdValue;
     }
     map['triggerSpec'] =
-        Input.mapInputValue<TaskTriggerSpec, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<TaskTriggerSpec, Map<String, dynamic>>(
             triggerSpec, (value) => value.toMap());
     return map;
   }
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      executionSpec: Input.asInput<TaskExecutionSpec>(map['executionSpec']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      lake: Input.asOptionalInput<String>(map['lake']),
-      location: Input.asOptionalInput<String>(map['location']),
-      notebook: Input.asOptionalInput<TaskNotebook>(map['notebook']),
-      project: Input.asOptionalInput<String>(map['project']),
-      spark: Input.asOptionalInput<TaskSpark>(map['spark']),
-      taskId: Input.asOptionalInput<String>(map['taskId']),
-      triggerSpec: Input.asInput<TaskTriggerSpec>(map['triggerSpec']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      executionSpec:
+          pulumi.Input.asInput<TaskExecutionSpec>(map['executionSpec']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      lake: pulumi.Input.asOptionalInput<String>(map['lake']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      notebook: pulumi.Input.asOptionalInput<TaskNotebook>(map['notebook']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      spark: pulumi.Input.asOptionalInput<TaskSpark>(map['spark']),
+      taskId: pulumi.Input.asOptionalInput<String>(map['taskId']),
+      triggerSpec: pulumi.Input.asInput<TaskTriggerSpec>(map['triggerSpec']),
     );
   }
 }

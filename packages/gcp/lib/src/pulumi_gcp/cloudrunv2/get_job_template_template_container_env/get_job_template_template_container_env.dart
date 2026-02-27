@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_template_template_container_env_value_source/get_job_template_template_container_env_value_source.dart';
 
 class GetJobTemplateTemplateContainerEnv {
@@ -23,7 +23,7 @@ class GetJobTemplateTemplateContainerEnv {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['value'] = value;
-    map['valueSources'] = Input.encodeList<
+    map['valueSources'] = pulumi.Input.encodeList<
         GetJobTemplateTemplateContainerEnvValueSource,
         Map<String, dynamic>>(valueSources, (value) => value.toMap());
     return map;
@@ -33,11 +33,11 @@ class GetJobTemplateTemplateContainerEnv {
     return GetJobTemplateTemplateContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
-      valueSources:
-          Input.decodeList<GetJobTemplateTemplateContainerEnvValueSource>(
-              map['valueSources'],
-              (value) => GetJobTemplateTemplateContainerEnvValueSource.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      valueSources: pulumi.Input.decodeList<
+              GetJobTemplateTemplateContainerEnvValueSource>(
+          map['valueSources'],
+          (value) => GetJobTemplateTemplateContainerEnvValueSource.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_postgresql_excluded_objects_postgresql_schema/stream_backfill_all_postgresql_excluded_objects_postgresql_schema.dart';
 
 class StreamBackfillAllPostgresqlExcludedObjects {
@@ -15,7 +15,7 @@ class StreamBackfillAllPostgresqlExcludedObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['postgresqlSchemas'] = Input.encodeList<
+    map['postgresqlSchemas'] = pulumi.Input.encodeList<
         StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema,
         Map<String, dynamic>>(postgresqlSchemas, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class StreamBackfillAllPostgresqlExcludedObjects {
   factory StreamBackfillAllPostgresqlExcludedObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamBackfillAllPostgresqlExcludedObjects(
-      postgresqlSchemas: Input.decodeList<
+      postgresqlSchemas: pulumi.Input.decodeList<
               StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema>(
           map['postgresqlSchemas'],
           (value) => StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema

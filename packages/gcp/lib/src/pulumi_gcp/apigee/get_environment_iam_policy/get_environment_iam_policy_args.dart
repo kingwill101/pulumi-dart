@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEnvironmentIamPolicy.
 class GetEnvironmentIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> envId;
+  final pulumi.Input<String> envId;
 
   /// The Apigee Organization associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}`.
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   GetEnvironmentIamPolicyArgs({
     required this.envId,
@@ -26,8 +26,8 @@ class GetEnvironmentIamPolicyArgs {
 
   factory GetEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentIamPolicyArgs(
-      envId: Input.asInput<String>(map['envId']),
-      orgId: Input.asInput<String>(map['orgId']),
+      envId: pulumi.Input.asInput<String>(map['envId']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
     );
   }
 }

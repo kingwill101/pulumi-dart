@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resource_limit/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resource_limit.dart';
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resource_request/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resource_request.dart';
 
@@ -22,10 +22,10 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['limits'] = Input.encodeList<
+    map['limits'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit,
         Map<String, dynamic>>(limits, (value) => value.toMap());
-    map['requests'] = Input.encodeList<
+    map['requests'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest,
         Map<String, dynamic>>(requests, (value) => value.toMap());
     return map;
@@ -34,13 +34,13 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource.fromMap(
       Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource(
-      limits: Input.decodeList<
+      limits: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit>(
           map['limits'],
           (value) =>
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit
                   .fromMap((value as Map).cast<String, dynamic>())),
-      requests: Input.decodeList<
+      requests: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest>(
           map['requests'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_reservation_block_args.dart';
 import 'get_reservation_block_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_reservation_block_result.dart';
 /// and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/reservationBlocks).
 Future<GetReservationBlockResult> getReservationBlock(
   GetReservationBlockArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getReservationBlock:getReservationBlock',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationBlockResult.fromMap(result);
 }

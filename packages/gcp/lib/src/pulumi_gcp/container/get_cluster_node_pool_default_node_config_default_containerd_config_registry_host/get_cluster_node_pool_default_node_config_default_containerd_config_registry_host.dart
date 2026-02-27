@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_default_node_config_default_containerd_config_registry_host_host/get_cluster_node_pool_default_node_config_default_containerd_config_registry_host_host.dart';
 
 class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost {
@@ -19,7 +19,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['hosts'] = Input.encodeList<
+    map['hosts'] = pulumi.Input.encodeList<
         GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost,
         Map<String, dynamic>>(hosts, (value) => value.toMap());
     map['server'] = server;
@@ -29,7 +29,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost {
   factory GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost.fromMap(
       Map<String, dynamic> map) {
     return GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost(
-      hosts: Input.decodeList<
+      hosts: pulumi.Input.decodeList<
               GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost>(
           map['hosts'],
           (value) =>

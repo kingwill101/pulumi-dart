@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lite_subscription_delivery_config/lite_subscription_delivery_config.dart';
 
 /// The set of arguments for LiteSubscription.
 class LiteSubscriptionArgs {
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
-  final Input<LiteSubscriptionDeliveryConfig>? deliveryConfig;
+  final pulumi.Input<LiteSubscriptionDeliveryConfig>? deliveryConfig;
 
   /// Name of the subscription.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region of the pubsub lite topic.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A reference to a Topic resource.
-  final Input<String> topic;
+  final pulumi.Input<String> topic;
 
   /// The zone of the pubsub lite topic.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   LiteSubscriptionArgs({
     this.deliveryConfig,
@@ -38,7 +38,7 @@ class LiteSubscriptionArgs {
     final map = <String, dynamic>{};
     final deliveryConfigValue = deliveryConfig;
     if (deliveryConfigValue != null) {
-      map['deliveryConfig'] = Input.mapOptionalInputValue<
+      map['deliveryConfig'] = pulumi.Input.mapOptionalInputValue<
           LiteSubscriptionDeliveryConfig,
           Map<String, dynamic>>(deliveryConfigValue, (value) => value.toMap());
     }
@@ -64,13 +64,14 @@ class LiteSubscriptionArgs {
 
   factory LiteSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LiteSubscriptionArgs(
-      deliveryConfig: Input.asOptionalInput<LiteSubscriptionDeliveryConfig>(
-          map['deliveryConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      topic: Input.asInput<String>(map['topic']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      deliveryConfig:
+          pulumi.Input.asOptionalInput<LiteSubscriptionDeliveryConfig>(
+              map['deliveryConfig']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      topic: pulumi.Input.asInput<String>(map['topic']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

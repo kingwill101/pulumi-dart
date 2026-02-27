@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRecordSet.
 class GetRecordSetArgs {
   /// The Name of the zone.
-  final Input<String> managedZone;
+  final pulumi.Input<String> managedZone;
 
   /// The DNS name for the resource.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The ID of the project for the Google Cloud.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   GetRecordSetArgs({
     required this.managedZone,
@@ -37,10 +37,10 @@ class GetRecordSetArgs {
 
   factory GetRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordSetArgs(
-      managedZone: Input.asInput<String>(map['managedZone']),
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asInput<String>(map['type']),
+      managedZone: pulumi.Input.asInput<String>(map['managedZone']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

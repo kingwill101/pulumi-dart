@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'branch_rule_args.dart';
 
 /// BranchRule is the protection rule to enforce pre-defined rules on designated branches within a repository.
@@ -50,65 +50,65 @@ import 'branch_rule_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securesourcemanager/branchRule:BranchRule default {{branch_rule_id}}
 /// ```
-class BranchRule extends CustomResource {
+class BranchRule extends pulumi.CustomResource {
   /// Determines if allow stale reviews or approvals before merging to the branch.
-  late final Output<bool?> allowStaleReviews;
+  late final pulumi.Output<bool?> allowStaleReviews;
 
   /// The ID for the BranchRule.
-  late final Output<String> branchRuleId;
+  late final pulumi.Output<String> branchRuleId;
 
   /// Time the BranchRule was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Determines if the branch rule is disabled or not.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
-  late final Output<String> includePattern;
+  late final pulumi.Output<String> includePattern;
 
   /// The location for the Repository.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The minimum number of approvals required for the branch rule to be matched.
-  late final Output<int?> minimumApprovalsCount;
+  late final pulumi.Output<int?> minimumApprovalsCount;
 
   /// The minimum number of reviews required for the branch rule to be matched.
-  late final Output<int?> minimumReviewsCount;
+  late final pulumi.Output<int?> minimumReviewsCount;
 
   /// The resource name for the BranchRule.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The ID for the Repository.
-  late final Output<String> repositoryId;
+  late final pulumi.Output<String> repositoryId;
 
   /// Determines if require comments resolved before merging to the branch.
-  late final Output<bool?> requireCommentsResolved;
+  late final pulumi.Output<bool?> requireCommentsResolved;
 
   /// Determines if require linear history before merging to the branch.
-  late final Output<bool?> requireLinearHistory;
+  late final pulumi.Output<bool?> requireLinearHistory;
 
   /// Determines if the branch rule requires a pull request or not.
-  late final Output<bool?> requirePullRequest;
+  late final pulumi.Output<bool?> requirePullRequest;
 
   /// Unique identifier of the BranchRule.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time the BranchRule was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BranchRule(
     String name, {
     BranchRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securesourcemanager/branchRule:BranchRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     this.branchRuleId = registerOutput<String>('branchRuleId');

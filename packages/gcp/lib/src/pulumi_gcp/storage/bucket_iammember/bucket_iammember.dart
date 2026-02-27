@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_iammember_condition/bucket_iammember_condition.dart';
 import 'bucket_iammember_args.dart';
 
@@ -118,16 +118,16 @@ import 'bucket_iammember_args.dart';
 /// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-class BucketIAMMember extends CustomResource {
+class BucketIAMMember extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<BucketIAMMemberCondition?> condition;
+  late final pulumi.Output<BucketIAMMemberCondition?> condition;
 
   /// (Computed) The etag of the IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -140,22 +140,22 @@ class BucketIAMMember extends CustomResource {
   /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The role that should be applied. Only one
   /// `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   BucketIAMMember(
     String name, {
     BucketIAMMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/bucketIAMMember:BucketIAMMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.condition = registerOutput<BucketIAMMemberCondition?>('condition');

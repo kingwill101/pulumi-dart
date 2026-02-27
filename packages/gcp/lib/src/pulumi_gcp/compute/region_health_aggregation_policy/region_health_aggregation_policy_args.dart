@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RegionHealthAggregationPolicy.
 class RegionHealthAggregationPolicyArgs {
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
@@ -19,7 +19,7 @@ class RegionHealthAggregationPolicyArgs {
   /// for HEALTHY to be the aggregated result. "Endpoints" refers to network
   /// endpoints within a Network Endpoint Group or instances within an Instance
   /// Group.
-  final Input<int>? healthyPercentThreshold;
+  final pulumi.Input<int>? healthyPercentThreshold;
 
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
@@ -32,7 +32,7 @@ class RegionHealthAggregationPolicyArgs {
   /// order for HEALTHY to be the aggregated result. "Endpoints" refers to
   /// network endpoints within a Network Endpoint Group or instances within an
   /// Instance Group.
-  final Input<int>? minHealthyThreshold;
+  final pulumi.Input<int>? minHealthyThreshold;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -41,7 +41,7 @@ class RegionHealthAggregationPolicyArgs {
   /// character must be a lowercase letter, and all following characters must
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Specifies the type of the healthAggregationPolicy. The only allowed value
   /// for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
@@ -50,14 +50,14 @@ class RegionHealthAggregationPolicyArgs {
   /// mutated.
   /// Default value is `BACKEND_SERVICE_POLICY`.
   /// Possible values are: `DNS_PUBLIC_IP_POLICY`, `BACKEND_SERVICE_POLICY`.
-  final Input<String>? policyType;
+  final pulumi.Input<String>? policyType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// URL of the region where the health aggregation policy resides.
-  final Input<String> region;
+  final pulumi.Input<String> region;
 
   RegionHealthAggregationPolicyArgs({
     this.description,
@@ -101,15 +101,15 @@ class RegionHealthAggregationPolicyArgs {
 
   factory RegionHealthAggregationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthAggregationPolicyArgs(
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       healthyPercentThreshold:
-          Input.asOptionalInput<int>(map['healthyPercentThreshold']),
+          pulumi.Input.asOptionalInput<int>(map['healthyPercentThreshold']),
       minHealthyThreshold:
-          Input.asOptionalInput<int>(map['minHealthyThreshold']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policyType: Input.asOptionalInput<String>(map['policyType']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<int>(map['minHealthyThreshold']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policyType: pulumi.Input.asOptionalInput<String>(map['policyType']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

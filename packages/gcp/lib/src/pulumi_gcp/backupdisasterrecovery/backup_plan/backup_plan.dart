@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_plan_backup_rule/backup_plan_backup_rule.dart';
 import 'backup_plan_args.dart';
 
@@ -49,61 +49,61 @@ import 'backup_plan_args.dart';
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/backupPlan:BackupPlan default {{location}}/{{backup_plan_id}}
 /// ```
-class BackupPlan extends CustomResource {
+class BackupPlan extends pulumi.CustomResource {
   /// The ID of the backup plan
-  late final Output<String> backupPlanId;
+  late final pulumi.Output<String> backupPlanId;
 
   /// The backup rules for this `BackupPlan`. There must be at least one `BackupRule` message.
   /// Structure is documented below.
-  late final Output<List<BackupPlanBackupRule>> backupRules;
+  late final pulumi.Output<List<BackupPlanBackupRule>> backupRules;
 
   /// Backup vault where the backups gets stored using this Backup plan.
-  late final Output<String> backupVault;
+  late final pulumi.Output<String> backupVault;
 
   /// The Google Cloud Platform Service Account to be used by the BackupVault for taking backups.
-  late final Output<String> backupVaultServiceAccount;
+  late final pulumi.Output<String> backupVaultServiceAccount;
 
   /// When the `BackupPlan` was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The description allows for additional details about `BackupPlan` and its use cases to be provided.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The location for the backup plan
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
-  late final Output<int?> logRetentionDays;
+  late final pulumi.Output<int?> logRetentionDays;
 
   /// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
-  late final Output<int?> maxCustomOnDemandRetentionDays;
+  late final pulumi.Output<int?> maxCustomOnDemandRetentionDays;
 
   /// The name of backup plan resource created
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The resource type to which the `BackupPlan` will be applied.
   /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// The list of all resource types to which the `BackupPlan` can be applied.
-  late final Output<List<String>> supportedResourceTypes;
+  late final pulumi.Output<List<String>> supportedResourceTypes;
 
   /// When the `BackupPlan` was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BackupPlan(
     String name, {
     BackupPlanArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backupPlanId = registerOutput<String>('backupPlanId');
     this.backupRules =

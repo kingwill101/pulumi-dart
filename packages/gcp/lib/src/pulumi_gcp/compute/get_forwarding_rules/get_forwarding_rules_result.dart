@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_forwarding_rules_rule/get_forwarding_rules_rule.dart';
 
 /// Result data returned by getForwardingRules.
@@ -36,7 +36,7 @@ class GetForwardingRulesResult {
       map['region'] = regionValue;
     }
     map['rules'] =
-        Input.encodeList<GetForwardingRulesRule, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetForwardingRulesRule, Map<String, dynamic>>(
             rules, (value) => value.toMap());
     return map;
   }
@@ -46,7 +46,7 @@ class GetForwardingRulesResult {
       id: map['id'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      rules: Input.decodeList<GetForwardingRulesRule>(
+      rules: pulumi.Input.decodeList<GetForwardingRulesRule>(
           map['rules'],
           (value) => GetForwardingRulesRule.fromMap(
               (value as Map).cast<String, dynamic>())),

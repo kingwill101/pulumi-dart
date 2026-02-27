@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_properties_property/environment_properties_property.dart';
 
 class EnvironmentProperties {
@@ -16,9 +16,8 @@ class EnvironmentProperties {
     final map = <String, dynamic>{};
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] =
-          Input.encodeList<EnvironmentPropertiesProperty, Map<String, dynamic>>(
-              propertiesValue, (value) => value.toMap());
+      map['properties'] = pulumi.Input.encodeList<EnvironmentPropertiesProperty,
+          Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +26,7 @@ class EnvironmentProperties {
     return EnvironmentProperties(
       properties: map['properties'] == null
           ? null
-          : Input.decodeList<EnvironmentPropertiesProperty>(
+          : pulumi.Input.decodeList<EnvironmentPropertiesProperty>(
               map['properties'],
               (value) => EnvironmentPropertiesProperty.fromMap(
                   (value as Map).cast<String, dynamic>())),

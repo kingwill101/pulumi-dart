@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../database_instance_settings_active_directory_config/database_instance_settings_active_directory_config.dart';
 import '../database_instance_settings_advanced_machine_features/database_instance_settings_advanced_machine_features.dart';
 import '../database_instance_settings_backup_configuration/database_instance_settings_backup_configuration.dart';
@@ -194,7 +194,7 @@ class DatabaseInstanceSettings {
     }
     final connectionPoolConfigsValue = connectionPoolConfigs;
     if (connectionPoolConfigsValue != null) {
-      map['connectionPoolConfigs'] = Input.encodeList<
+      map['connectionPoolConfigs'] = pulumi.Input.encodeList<
               DatabaseInstanceSettingsConnectionPoolConfig,
               Map<String, dynamic>>(
           connectionPoolConfigsValue, (value) => value.toMap());
@@ -217,7 +217,7 @@ class DatabaseInstanceSettings {
     }
     final databaseFlagsValue = databaseFlags;
     if (databaseFlagsValue != null) {
-      map['databaseFlags'] = Input.encodeList<
+      map['databaseFlags'] = pulumi.Input.encodeList<
           DatabaseInstanceSettingsDatabaseFlag,
           Map<String, dynamic>>(databaseFlagsValue, (value) => value.toMap());
     }
@@ -340,7 +340,8 @@ class DatabaseInstanceSettings {
       collation: map['collation'] == null ? null : map['collation'] as String,
       connectionPoolConfigs: map['connectionPoolConfigs'] == null
           ? null
-          : Input.decodeList<DatabaseInstanceSettingsConnectionPoolConfig>(
+          : pulumi.Input.decodeList<
+                  DatabaseInstanceSettingsConnectionPoolConfig>(
               map['connectionPoolConfigs'],
               (value) => DatabaseInstanceSettingsConnectionPoolConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -360,7 +361,7 @@ class DatabaseInstanceSettings {
               : map['dataDiskProvisionedThroughput'] as int,
       databaseFlags: map['databaseFlags'] == null
           ? null
-          : Input.decodeList<DatabaseInstanceSettingsDatabaseFlag>(
+          : pulumi.Input.decodeList<DatabaseInstanceSettingsDatabaseFlag>(
               map['databaseFlags'],
               (value) => DatabaseInstanceSettingsDatabaseFlag.fromMap(
                   (value as Map).cast<String, dynamic>())),

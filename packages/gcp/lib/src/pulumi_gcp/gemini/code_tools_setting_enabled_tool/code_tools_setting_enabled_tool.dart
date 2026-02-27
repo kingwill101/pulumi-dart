@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../code_tools_setting_enabled_tool_config/code_tools_setting_enabled_tool_config.dart';
 
 class CodeToolsSettingEnabledTool {
@@ -37,7 +37,8 @@ class CodeToolsSettingEnabledTool {
     }
     final configsValue = configs;
     if (configsValue != null) {
-      map['configs'] = Input.encodeList<CodeToolsSettingEnabledToolConfig,
+      map['configs'] = pulumi.Input.encodeList<
+          CodeToolsSettingEnabledToolConfig,
           Map<String, dynamic>>(configsValue, (value) => value.toMap());
     }
     map['handle'] = handle;
@@ -56,7 +57,7 @@ class CodeToolsSettingEnabledTool {
           : map['accountConnector'] as String,
       configs: map['configs'] == null
           ? null
-          : Input.decodeList<CodeToolsSettingEnabledToolConfig>(
+          : pulumi.Input.decodeList<CodeToolsSettingEnabledToolConfig>(
               map['configs'],
               (value) => CodeToolsSettingEnabledToolConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

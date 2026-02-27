@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_membership_policycontroller_policy_controller_hub_config_policy_content_bundle/feature_membership_policycontroller_policy_controller_hub_config_policy_content_bundle.dart';
 import '../feature_membership_policycontroller_policy_controller_hub_config_policy_content_template_library/feature_membership_policycontroller_policy_controller_hub_config_policy_content_template_library.dart';
 
@@ -23,7 +23,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
     final map = <String, dynamic>{};
     final bundlesValue = bundles;
     if (bundlesValue != null) {
-      map['bundles'] = Input.encodeList<
+      map['bundles'] = pulumi.Input.encodeList<
           FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle,
           Map<String, dynamic>>(bundlesValue, (value) => value.toMap());
     }
@@ -39,7 +39,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent(
       bundles: map['bundles'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>(
               map['bundles'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_cluster_load_balancer_bgp_lb_config_address_pool/bare_metal_cluster_load_balancer_bgp_lb_config_address_pool.dart';
 import '../bare_metal_cluster_load_balancer_bgp_lb_config_bgp_peer_config/bare_metal_cluster_load_balancer_bgp_lb_config_bgp_peer_config.dart';
 import '../bare_metal_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config/bare_metal_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config.dart';
@@ -41,11 +41,11 @@ class BareMetalClusterLoadBalancerBgpLbConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['addressPools'] = Input.encodeList<
+    map['addressPools'] = pulumi.Input.encodeList<
         BareMetalClusterLoadBalancerBgpLbConfigAddressPool,
         Map<String, dynamic>>(addressPools, (value) => value.toMap());
     map['asn'] = asn;
-    map['bgpPeerConfigs'] = Input.encodeList<
+    map['bgpPeerConfigs'] = pulumi.Input.encodeList<
         BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig,
         Map<String, dynamic>>(bgpPeerConfigs, (value) => value.toMap());
     final loadBalancerNodePoolConfigValue = loadBalancerNodePoolConfig;
@@ -59,14 +59,13 @@ class BareMetalClusterLoadBalancerBgpLbConfig {
   factory BareMetalClusterLoadBalancerBgpLbConfig.fromMap(
       Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerBgpLbConfig(
-      addressPools:
-          Input.decodeList<BareMetalClusterLoadBalancerBgpLbConfigAddressPool>(
-              map['addressPools'],
-              (value) =>
-                  BareMetalClusterLoadBalancerBgpLbConfigAddressPool.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      addressPools: pulumi.Input.decodeList<
+              BareMetalClusterLoadBalancerBgpLbConfigAddressPool>(
+          map['addressPools'],
+          (value) => BareMetalClusterLoadBalancerBgpLbConfigAddressPool.fromMap(
+              (value as Map).cast<String, dynamic>())),
       asn: map['asn'] as int,
-      bgpPeerConfigs: Input.decodeList<
+      bgpPeerConfigs: pulumi.Input.decodeList<
               BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig>(
           map['bgpPeerConfigs'],
           (value) =>

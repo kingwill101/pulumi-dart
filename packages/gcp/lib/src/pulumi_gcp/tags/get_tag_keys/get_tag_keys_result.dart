@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_tag_keys_key/get_tag_keys_key.dart';
 
 /// Result data returned by getTagKeys.
@@ -21,7 +21,7 @@ class GetTagKeysResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['keys'] = Input.encodeList<GetTagKeysKey, Map<String, dynamic>>(
+    map['keys'] = pulumi.Input.encodeList<GetTagKeysKey, Map<String, dynamic>>(
         keys, (value) => value.toMap());
     map['parent'] = parent;
     return map;
@@ -30,7 +30,7 @@ class GetTagKeysResult {
   factory GetTagKeysResult.fromMap(Map<String, dynamic> map) {
     return GetTagKeysResult(
       id: map['id'] as String,
-      keys: Input.decodeList<GetTagKeysKey>(
+      keys: pulumi.Input.decodeList<GetTagKeysKey>(
           map['keys'],
           (value) =>
               GetTagKeysKey.fromMap((value as Map).cast<String, dynamic>())),

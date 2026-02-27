@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_discovery_config_action_tag_resources_tag_condition/prevention_discovery_config_action_tag_resources_tag_condition.dart';
 
 class PreventionDiscoveryConfigActionTagResources {
@@ -34,7 +34,7 @@ class PreventionDiscoveryConfigActionTagResources {
     }
     final tagConditionsValue = tagConditions;
     if (tagConditionsValue != null) {
-      map['tagConditions'] = Input.encodeList<
+      map['tagConditions'] = pulumi.Input.encodeList<
           PreventionDiscoveryConfigActionTagResourcesTagCondition,
           Map<String, dynamic>>(tagConditionsValue, (value) => value.toMap());
     }
@@ -52,7 +52,7 @@ class PreventionDiscoveryConfigActionTagResources {
           : (map['profileGenerationsToTags'] as List).cast<String>(),
       tagConditions: map['tagConditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDiscoveryConfigActionTagResourcesTagCondition>(
               map['tagConditions'],
               (value) => PreventionDiscoveryConfigActionTagResourcesTagCondition

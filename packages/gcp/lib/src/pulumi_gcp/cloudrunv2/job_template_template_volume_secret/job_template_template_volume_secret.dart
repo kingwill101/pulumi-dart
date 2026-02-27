@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_template_template_volume_secret_item/job_template_template_volume_secret_item.dart';
 
 class JobTemplateTemplateVolumeSecret {
@@ -28,7 +28,8 @@ class JobTemplateTemplateVolumeSecret {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<JobTemplateTemplateVolumeSecretItem,
+      map['items'] = pulumi.Input.encodeList<
+          JobTemplateTemplateVolumeSecretItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
     map['secret'] = secret;
@@ -41,7 +42,7 @@ class JobTemplateTemplateVolumeSecret {
           map['defaultMode'] == null ? null : map['defaultMode'] as int,
       items: map['items'] == null
           ? null
-          : Input.decodeList<JobTemplateTemplateVolumeSecretItem>(
+          : pulumi.Input.decodeList<JobTemplateTemplateVolumeSecretItem>(
               map['items'],
               (value) => JobTemplateTemplateVolumeSecretItem.fromMap(
                   (value as Map).cast<String, dynamic>())),

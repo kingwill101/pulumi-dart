@@ -1,41 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BackendAuthenticationConfig.
 class BackendAuthenticationConfigArgs {
   /// Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
   /// Used by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client certificate. Must have a CLIENT_AUTH scope.
-  final Input<String>? clientCertificate;
+  final pulumi.Input<String>? clientCertificate;
 
   /// A free-text description of the resource. Max length 1024 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Set of label tags associated with the BackendAuthenticationConfig resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location of the backend authentication config.
   /// The default value is `global`.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Name of the BackendAuthenticationConfig resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
   /// A BackendService uses the chain of trust represented by this TrustConfig, if specified, to validate the server certificates presented by the backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS.
-  final Input<String>? trustConfig;
+  final pulumi.Input<String>? trustConfig;
 
   /// Well known roots to use for server certificate validation. If set to NONE, the BackendService will only validate server certificates against roots specified in TrustConfig.
   /// If set to PUBLIC_ROOTS, the BackendService uses a set of well-known public roots, in addition to any roots specified in the trustConfig field, when validating the server certificates presented by the backend.
   /// Validation with these roots is only considered when the TlsSettings.sni field in the BackendService is set. The well-known roots are a set of root CAs managed by Google. CAs in this set can be added or removed without notice.
   /// Possible values are: `NONE`, `PUBLIC_ROOTS`.
-  final Input<String>? wellKnownRoots;
+  final pulumi.Input<String>? wellKnownRoots;
 
   BackendAuthenticationConfigArgs({
     this.clientCertificate,
@@ -88,14 +88,15 @@ class BackendAuthenticationConfigArgs {
   factory BackendAuthenticationConfigArgs.fromMap(Map<String, dynamic> map) {
     return BackendAuthenticationConfigArgs(
       clientCertificate:
-          Input.asOptionalInput<String>(map['clientCertificate']),
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      trustConfig: Input.asOptionalInput<String>(map['trustConfig']),
-      wellKnownRoots: Input.asOptionalInput<String>(map['wellKnownRoots']),
+          pulumi.Input.asOptionalInput<String>(map['clientCertificate']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      trustConfig: pulumi.Input.asOptionalInput<String>(map['trustConfig']),
+      wellKnownRoots:
+          pulumi.Input.asOptionalInput<String>(map['wellKnownRoots']),
     );
   }
 }

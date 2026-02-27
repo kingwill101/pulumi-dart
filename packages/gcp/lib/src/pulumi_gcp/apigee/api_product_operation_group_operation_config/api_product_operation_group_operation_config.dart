@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_product_operation_group_operation_config_attribute/api_product_operation_group_operation_config_attribute.dart';
 import '../api_product_operation_group_operation_config_operation/api_product_operation_group_operation_config_operation.dart';
 import '../api_product_operation_group_operation_config_quota/api_product_operation_group_operation_config_quota.dart';
@@ -37,13 +37,13 @@ class ApiProductOperationGroupOperationConfig {
     }
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.encodeList<
+      map['attributes'] = pulumi.Input.encodeList<
           ApiProductOperationGroupOperationConfigAttribute,
           Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
     final operationsValue = operations;
     if (operationsValue != null) {
-      map['operations'] = Input.encodeList<
+      map['operations'] = pulumi.Input.encodeList<
           ApiProductOperationGroupOperationConfigOperation,
           Map<String, dynamic>>(operationsValue, (value) => value.toMap());
     }
@@ -60,14 +60,16 @@ class ApiProductOperationGroupOperationConfig {
       apiSource: map['apiSource'] == null ? null : map['apiSource'] as String,
       attributes: map['attributes'] == null
           ? null
-          : Input.decodeList<ApiProductOperationGroupOperationConfigAttribute>(
+          : pulumi.Input.decodeList<
+                  ApiProductOperationGroupOperationConfigAttribute>(
               map['attributes'],
               (value) =>
                   ApiProductOperationGroupOperationConfigAttribute.fromMap(
                       (value as Map).cast<String, dynamic>())),
       operations: map['operations'] == null
           ? null
-          : Input.decodeList<ApiProductOperationGroupOperationConfigOperation>(
+          : pulumi.Input.decodeList<
+                  ApiProductOperationGroupOperationConfigOperation>(
               map['operations'],
               (value) =>
                   ApiProductOperationGroupOperationConfigOperation.fromMap(

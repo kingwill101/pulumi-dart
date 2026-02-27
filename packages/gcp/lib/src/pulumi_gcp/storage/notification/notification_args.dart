@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Notification.
 class NotificationArgs {
   /// The name of the bucket.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
-  final Input<Map<String, String>>? customAttributes;
+  final pulumi.Input<Map<String, String>>? customAttributes;
 
   /// List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
-  final Input<List<String>>? eventTypes;
+  final pulumi.Input<List<String>>? eventTypes;
 
   /// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
-  final Input<String>? objectNamePrefix;
+  final pulumi.Input<String>? objectNamePrefix;
 
   /// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
-  final Input<String> payloadFormat;
+  final pulumi.Input<String> payloadFormat;
 
   /// The Cloud PubSub topic to which this subscription publishes. Expects either the
   /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
@@ -25,7 +25,7 @@ class NotificationArgs {
   /// you will need to use the project-level name.
   ///
   /// - - -
-  final Input<String> topic;
+  final pulumi.Input<String> topic;
 
   NotificationArgs({
     required this.bucket,
@@ -58,13 +58,14 @@ class NotificationArgs {
 
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      customAttributes:
-          Input.asOptionalInput<Map<String, String>>(map['customAttributes']),
-      eventTypes: Input.asOptionalInput<List<String>>(map['eventTypes']),
-      objectNamePrefix: Input.asOptionalInput<String>(map['objectNamePrefix']),
-      payloadFormat: Input.asInput<String>(map['payloadFormat']),
-      topic: Input.asInput<String>(map['topic']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      customAttributes: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['customAttributes']),
+      eventTypes: pulumi.Input.asOptionalInput<List<String>>(map['eventTypes']),
+      objectNamePrefix:
+          pulumi.Input.asOptionalInput<String>(map['objectNamePrefix']),
+      payloadFormat: pulumi.Input.asInput<String>(map['payloadFormat']),
+      topic: pulumi.Input.asInput<String>(map['topic']),
     );
   }
 }

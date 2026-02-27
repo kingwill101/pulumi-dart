@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_vm_clusters_cloud_vm_cluster_property/get_cloud_vm_clusters_cloud_vm_cluster_property.dart';
 
 class GetCloudVmClustersCloudVmCluster {
@@ -121,7 +121,7 @@ class GetCloudVmClustersCloudVmCluster {
     map['odbNetwork'] = odbNetwork;
     map['odbSubnet'] = odbSubnet;
     map['project'] = project;
-    map['properties'] = Input.encodeList<
+    map['properties'] = pulumi.Input.encodeList<
         GetCloudVmClustersCloudVmClusterProperty,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
@@ -147,10 +147,11 @@ class GetCloudVmClustersCloudVmCluster {
       odbNetwork: map['odbNetwork'] as String,
       odbSubnet: map['odbSubnet'] as String,
       project: map['project'] as String,
-      properties: Input.decodeList<GetCloudVmClustersCloudVmClusterProperty>(
-          map['properties'],
-          (value) => GetCloudVmClustersCloudVmClusterProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      properties:
+          pulumi.Input.decodeList<GetCloudVmClustersCloudVmClusterProperty>(
+              map['properties'],
+              (value) => GetCloudVmClustersCloudVmClusterProperty.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
     );
   }

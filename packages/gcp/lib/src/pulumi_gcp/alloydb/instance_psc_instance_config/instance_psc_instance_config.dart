@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_psc_instance_config_psc_auto_connection/instance_psc_instance_config_psc_auto_connection.dart';
 import '../instance_psc_instance_config_psc_interface_config/instance_psc_instance_config_psc_interface_config.dart';
 
@@ -45,7 +45,7 @@ class InstancePscInstanceConfig {
     }
     final pscAutoConnectionsValue = pscAutoConnections;
     if (pscAutoConnectionsValue != null) {
-      map['pscAutoConnections'] = Input.encodeList<
+      map['pscAutoConnections'] = pulumi.Input.encodeList<
               InstancePscInstanceConfigPscAutoConnection, Map<String, dynamic>>(
           pscAutoConnectionsValue, (value) => value.toMap());
     }
@@ -55,7 +55,7 @@ class InstancePscInstanceConfig {
     }
     final pscInterfaceConfigsValue = pscInterfaceConfigs;
     if (pscInterfaceConfigsValue != null) {
-      map['pscInterfaceConfigs'] = Input.encodeList<
+      map['pscInterfaceConfigs'] = pulumi.Input.encodeList<
               InstancePscInstanceConfigPscInterfaceConfig,
               Map<String, dynamic>>(
           pscInterfaceConfigsValue, (value) => value.toMap());
@@ -74,7 +74,7 @@ class InstancePscInstanceConfig {
           : (map['allowedConsumerProjects'] as List).cast<String>(),
       pscAutoConnections: map['pscAutoConnections'] == null
           ? null
-          : Input.decodeList<InstancePscInstanceConfigPscAutoConnection>(
+          : pulumi.Input.decodeList<InstancePscInstanceConfigPscAutoConnection>(
               map['pscAutoConnections'],
               (value) => InstancePscInstanceConfigPscAutoConnection.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -82,7 +82,8 @@ class InstancePscInstanceConfig {
           map['pscDnsName'] == null ? null : map['pscDnsName'] as String,
       pscInterfaceConfigs: map['pscInterfaceConfigs'] == null
           ? null
-          : Input.decodeList<InstancePscInstanceConfigPscInterfaceConfig>(
+          : pulumi.Input.decodeList<
+                  InstancePscInstanceConfigPscInterfaceConfig>(
               map['pscInterfaceConfigs'],
               (value) => InstancePscInstanceConfigPscInterfaceConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

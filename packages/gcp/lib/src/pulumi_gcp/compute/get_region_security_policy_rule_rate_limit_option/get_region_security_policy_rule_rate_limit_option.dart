@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_security_policy_rule_rate_limit_option_ban_threshold/get_region_security_policy_rule_rate_limit_option_ban_threshold.dart';
 import '../get_region_security_policy_rule_rate_limit_option_enforce_on_key_config/get_region_security_policy_rule_rate_limit_option_enforce_on_key_config.dart';
 import '../get_region_security_policy_rule_rate_limit_option_rate_limit_threshold/get_region_security_policy_rule_rate_limit_option_rate_limit_threshold.dart';
@@ -66,17 +66,17 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['banDurationSec'] = banDurationSec;
-    map['banThresholds'] = Input.encodeList<
+    map['banThresholds'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold,
         Map<String, dynamic>>(banThresholds, (value) => value.toMap());
     map['conformAction'] = conformAction;
     map['enforceOnKey'] = enforceOnKey;
-    map['enforceOnKeyConfigs'] = Input.encodeList<
+    map['enforceOnKeyConfigs'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig,
         Map<String, dynamic>>(enforceOnKeyConfigs, (value) => value.toMap());
     map['enforceOnKeyName'] = enforceOnKeyName;
     map['exceedAction'] = exceedAction;
-    map['rateLimitThresholds'] = Input.encodeList<
+    map['rateLimitThresholds'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold,
         Map<String, dynamic>>(rateLimitThresholds, (value) => value.toMap());
     return map;
@@ -86,7 +86,7 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
       Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleRateLimitOption(
       banDurationSec: map['banDurationSec'] as int,
-      banThresholds: Input.decodeList<
+      banThresholds: pulumi.Input.decodeList<
               GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>(
           map['banThresholds'],
           (value) =>
@@ -94,7 +94,7 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
                   (value as Map).cast<String, dynamic>())),
       conformAction: map['conformAction'] as String,
       enforceOnKey: map['enforceOnKey'] as String,
-      enforceOnKeyConfigs: Input.decodeList<
+      enforceOnKeyConfigs: pulumi.Input.decodeList<
               GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>(
           map['enforceOnKeyConfigs'],
           (value) =>
@@ -102,7 +102,7 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
                   .fromMap((value as Map).cast<String, dynamic>())),
       enforceOnKeyName: map['enforceOnKeyName'] as String,
       exceedAction: map['exceedAction'] as String,
-      rateLimitThresholds: Input.decodeList<
+      rateLimitThresholds: pulumi.Input.decodeList<
               GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold>(
           map['rateLimitThresholds'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeter_spec_egress_policy/service_perimeter_spec_egress_policy.dart';
 import '../service_perimeter_spec_ingress_policy/service_perimeter_spec_ingress_policy.dart';
 import '../service_perimeter_spec_vpc_accessible_services/service_perimeter_spec_vpc_accessible_services.dart';
@@ -65,12 +65,13 @@ class ServicePerimeterSpec {
     }
     final egressPoliciesValue = egressPolicies;
     if (egressPoliciesValue != null) {
-      map['egressPolicies'] = Input.encodeList<ServicePerimeterSpecEgressPolicy,
+      map['egressPolicies'] = pulumi.Input.encodeList<
+          ServicePerimeterSpecEgressPolicy,
           Map<String, dynamic>>(egressPoliciesValue, (value) => value.toMap());
     }
     final ingressPoliciesValue = ingressPolicies;
     if (ingressPoliciesValue != null) {
-      map['ingressPolicies'] = Input.encodeList<
+      map['ingressPolicies'] = pulumi.Input.encodeList<
           ServicePerimeterSpecIngressPolicy,
           Map<String, dynamic>>(ingressPoliciesValue, (value) => value.toMap());
     }
@@ -96,13 +97,13 @@ class ServicePerimeterSpec {
           : (map['accessLevels'] as List).cast<String>(),
       egressPolicies: map['egressPolicies'] == null
           ? null
-          : Input.decodeList<ServicePerimeterSpecEgressPolicy>(
+          : pulumi.Input.decodeList<ServicePerimeterSpecEgressPolicy>(
               map['egressPolicies'],
               (value) => ServicePerimeterSpecEgressPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ingressPolicies: map['ingressPolicies'] == null
           ? null
-          : Input.decodeList<ServicePerimeterSpecIngressPolicy>(
+          : pulumi.Input.decodeList<ServicePerimeterSpecIngressPolicy>(
               map['ingressPolicies'],
               (value) => ServicePerimeterSpecIngressPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),

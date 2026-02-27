@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_function_service_config_direct_vpc_network_interface/get_function_service_config_direct_vpc_network_interface.dart';
 import '../get_function_service_config_secret_environment_variable/get_function_service_config_secret_environment_variable.dart';
 import '../get_function_service_config_secret_volume/get_function_service_config_secret_volume.dart';
@@ -104,7 +104,7 @@ class GetFunctionServiceConfig {
     map['availableMemory'] = availableMemory;
     map['binaryAuthorizationPolicy'] = binaryAuthorizationPolicy;
     map['directVpcEgress'] = directVpcEgress;
-    map['directVpcNetworkInterfaces'] = Input.encodeList<
+    map['directVpcNetworkInterfaces'] = pulumi.Input.encodeList<
             GetFunctionServiceConfigDirectVpcNetworkInterface,
             Map<String, dynamic>>(
         directVpcNetworkInterfaces, (value) => value.toMap());
@@ -114,11 +114,11 @@ class GetFunctionServiceConfig {
     map['maxInstanceCount'] = maxInstanceCount;
     map['maxInstanceRequestConcurrency'] = maxInstanceRequestConcurrency;
     map['minInstanceCount'] = minInstanceCount;
-    map['secretEnvironmentVariables'] = Input.encodeList<
+    map['secretEnvironmentVariables'] = pulumi.Input.encodeList<
             GetFunctionServiceConfigSecretEnvironmentVariable,
             Map<String, dynamic>>(
         secretEnvironmentVariables, (value) => value.toMap());
-    map['secretVolumes'] = Input.encodeList<
+    map['secretVolumes'] = pulumi.Input.encodeList<
         GetFunctionServiceConfigSecretVolume,
         Map<String, dynamic>>(secretVolumes, (value) => value.toMap());
     map['service'] = service;
@@ -137,12 +137,11 @@ class GetFunctionServiceConfig {
       availableMemory: map['availableMemory'] as String,
       binaryAuthorizationPolicy: map['binaryAuthorizationPolicy'] as String,
       directVpcEgress: map['directVpcEgress'] as String,
-      directVpcNetworkInterfaces:
-          Input.decodeList<GetFunctionServiceConfigDirectVpcNetworkInterface>(
-              map['directVpcNetworkInterfaces'],
-              (value) =>
-                  GetFunctionServiceConfigDirectVpcNetworkInterface.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      directVpcNetworkInterfaces: pulumi.Input.decodeList<
+              GetFunctionServiceConfigDirectVpcNetworkInterface>(
+          map['directVpcNetworkInterfaces'],
+          (value) => GetFunctionServiceConfigDirectVpcNetworkInterface.fromMap(
+              (value as Map).cast<String, dynamic>())),
       environmentVariables:
           (map['environmentVariables'] as Map).cast<String, String>(),
       gcfUri: map['gcfUri'] as String,
@@ -151,16 +150,16 @@ class GetFunctionServiceConfig {
       maxInstanceRequestConcurrency:
           map['maxInstanceRequestConcurrency'] as int,
       minInstanceCount: map['minInstanceCount'] as int,
-      secretEnvironmentVariables:
-          Input.decodeList<GetFunctionServiceConfigSecretEnvironmentVariable>(
-              map['secretEnvironmentVariables'],
-              (value) =>
-                  GetFunctionServiceConfigSecretEnvironmentVariable.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      secretVolumes: Input.decodeList<GetFunctionServiceConfigSecretVolume>(
-          map['secretVolumes'],
-          (value) => GetFunctionServiceConfigSecretVolume.fromMap(
+      secretEnvironmentVariables: pulumi.Input.decodeList<
+              GetFunctionServiceConfigSecretEnvironmentVariable>(
+          map['secretEnvironmentVariables'],
+          (value) => GetFunctionServiceConfigSecretEnvironmentVariable.fromMap(
               (value as Map).cast<String, dynamic>())),
+      secretVolumes:
+          pulumi.Input.decodeList<GetFunctionServiceConfigSecretVolume>(
+              map['secretVolumes'],
+              (value) => GetFunctionServiceConfigSecretVolume.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       service: map['service'] as String,
       serviceAccountEmail: map['serviceAccountEmail'] as String,
       timeoutSeconds: map['timeoutSeconds'] as int,

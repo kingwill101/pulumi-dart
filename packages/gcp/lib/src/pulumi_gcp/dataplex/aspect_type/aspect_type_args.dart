@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AspectType.
 class AspectTypeArgs {
   /// The aspect type id of the aspect type.
-  final Input<String>? aspectTypeId;
+  final pulumi.Input<String>? aspectTypeId;
 
   /// Classifies the data stored by the aspect.
   /// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
   /// while `METADATA_AND_DATA` indicates data derived content.
   /// <br><br>
   /// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
-  final Input<String>? dataClassification;
+  final pulumi.Input<String>? dataClassification;
 
   /// Description of the AspectType.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User friendly display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// User-defined labels for the AspectType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location where aspect type will be created in.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// MetadataTemplate of the Aspect.
-  final Input<String>? metadataTemplate;
+  final pulumi.Input<String>? metadataTemplate;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   AspectTypeArgs({
     this.aspectTypeId,
@@ -86,15 +86,16 @@ class AspectTypeArgs {
 
   factory AspectTypeArgs.fromMap(Map<String, dynamic> map) {
     return AspectTypeArgs(
-      aspectTypeId: Input.asOptionalInput<String>(map['aspectTypeId']),
+      aspectTypeId: pulumi.Input.asOptionalInput<String>(map['aspectTypeId']),
       dataClassification:
-          Input.asOptionalInput<String>(map['dataClassification']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      metadataTemplate: Input.asOptionalInput<String>(map['metadataTemplate']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['dataClassification']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      metadataTemplate:
+          pulumi.Input.asOptionalInput<String>(map['metadataTemplate']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

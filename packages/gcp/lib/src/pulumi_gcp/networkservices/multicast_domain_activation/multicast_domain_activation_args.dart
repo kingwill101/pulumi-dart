@@ -1,45 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multicast_domain_activation_traffic_spec/multicast_domain_activation_traffic_spec.dart';
 
 /// The set of arguments for MulticastDomainActivation.
 class MulticastDomainActivationArgs {
   /// An optional text description of the multicast domain activation.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Option to allow disabling placement policy for multicast infrastructure.
   /// Only applicable if the activation is for a domain associating with a
   /// multicast domain group.
-  final Input<bool>? disablePlacementPolicy;
+  final pulumi.Input<bool>? disablePlacementPolicy;
 
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The resource name of the multicast domain to activate.
   /// Use the following format:
   /// `projects/*/locations/global/multicastDomains/*`.
-  final Input<String> multicastDomain;
+  final pulumi.Input<String> multicastDomain;
 
   /// A unique name for the multicast domain activation.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
-  final Input<String> multicastDomainActivationId;
+  final pulumi.Input<String> multicastDomainActivationId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Specifies the traffic volume and multicast group scale parameters that are
   /// used to set up multicast infrastructure for a multicast domain in a zone.
   /// Structure is documented below.
-  final Input<MulticastDomainActivationTrafficSpec>? trafficSpec;
+  final pulumi.Input<MulticastDomainActivationTrafficSpec>? trafficSpec;
 
   MulticastDomainActivationArgs({
     this.description,
@@ -75,7 +75,7 @@ class MulticastDomainActivationArgs {
     }
     final trafficSpecValue = trafficSpec;
     if (trafficSpecValue != null) {
-      map['trafficSpec'] = Input.mapOptionalInputValue<
+      map['trafficSpec'] = pulumi.Input.mapOptionalInputValue<
           MulticastDomainActivationTrafficSpec,
           Map<String, dynamic>>(trafficSpecValue, (value) => value.toMap());
     }
@@ -84,17 +84,18 @@ class MulticastDomainActivationArgs {
 
   factory MulticastDomainActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainActivationArgs(
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       disablePlacementPolicy:
-          Input.asOptionalInput<bool>(map['disablePlacementPolicy']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      multicastDomain: Input.asInput<String>(map['multicastDomain']),
+          pulumi.Input.asOptionalInput<bool>(map['disablePlacementPolicy']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      multicastDomain: pulumi.Input.asInput<String>(map['multicastDomain']),
       multicastDomainActivationId:
-          Input.asInput<String>(map['multicastDomainActivationId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      trafficSpec: Input.asOptionalInput<MulticastDomainActivationTrafficSpec>(
-          map['trafficSpec']),
+          pulumi.Input.asInput<String>(map['multicastDomainActivationId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      trafficSpec:
+          pulumi.Input.asOptionalInput<MulticastDomainActivationTrafficSpec>(
+              map['trafficSpec']),
     );
   }
 }

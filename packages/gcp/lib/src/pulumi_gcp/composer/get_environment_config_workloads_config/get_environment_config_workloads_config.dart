@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_environment_config_workloads_config_dag_processor/get_environment_config_workloads_config_dag_processor.dart';
 import '../get_environment_config_workloads_config_scheduler/get_environment_config_workloads_config_scheduler.dart';
 import '../get_environment_config_workloads_config_triggerer/get_environment_config_workloads_config_triggerer.dart';
@@ -33,19 +33,20 @@ class GetEnvironmentConfigWorkloadsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dagProcessors'] = Input.encodeList<
+    map['dagProcessors'] = pulumi.Input.encodeList<
         GetEnvironmentConfigWorkloadsConfigDagProcessor,
         Map<String, dynamic>>(dagProcessors, (value) => value.toMap());
-    map['schedulers'] = Input.encodeList<
+    map['schedulers'] = pulumi.Input.encodeList<
         GetEnvironmentConfigWorkloadsConfigScheduler,
         Map<String, dynamic>>(schedulers, (value) => value.toMap());
-    map['triggerers'] = Input.encodeList<
+    map['triggerers'] = pulumi.Input.encodeList<
         GetEnvironmentConfigWorkloadsConfigTriggerer,
         Map<String, dynamic>>(triggerers, (value) => value.toMap());
-    map['webServers'] = Input.encodeList<
+    map['webServers'] = pulumi.Input.encodeList<
         GetEnvironmentConfigWorkloadsConfigWebServer,
         Map<String, dynamic>>(webServers, (value) => value.toMap());
-    map['workers'] = Input.encodeList<GetEnvironmentConfigWorkloadsConfigWorker,
+    map['workers'] = pulumi.Input.encodeList<
+        GetEnvironmentConfigWorkloadsConfigWorker,
         Map<String, dynamic>>(workers, (value) => value.toMap());
     return map;
   }
@@ -53,31 +54,31 @@ class GetEnvironmentConfigWorkloadsConfig {
   factory GetEnvironmentConfigWorkloadsConfig.fromMap(
       Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfig(
-      dagProcessors:
-          Input.decodeList<GetEnvironmentConfigWorkloadsConfigDagProcessor>(
-              map['dagProcessors'],
-              (value) =>
-                  GetEnvironmentConfigWorkloadsConfigDagProcessor.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      dagProcessors: pulumi.Input.decodeList<
+              GetEnvironmentConfigWorkloadsConfigDagProcessor>(
+          map['dagProcessors'],
+          (value) => GetEnvironmentConfigWorkloadsConfigDagProcessor.fromMap(
+              (value as Map).cast<String, dynamic>())),
       schedulers:
-          Input.decodeList<GetEnvironmentConfigWorkloadsConfigScheduler>(
+          pulumi.Input.decodeList<GetEnvironmentConfigWorkloadsConfigScheduler>(
               map['schedulers'],
               (value) => GetEnvironmentConfigWorkloadsConfigScheduler.fromMap(
                   (value as Map).cast<String, dynamic>())),
       triggerers:
-          Input.decodeList<GetEnvironmentConfigWorkloadsConfigTriggerer>(
+          pulumi.Input.decodeList<GetEnvironmentConfigWorkloadsConfigTriggerer>(
               map['triggerers'],
               (value) => GetEnvironmentConfigWorkloadsConfigTriggerer.fromMap(
                   (value as Map).cast<String, dynamic>())),
       webServers:
-          Input.decodeList<GetEnvironmentConfigWorkloadsConfigWebServer>(
+          pulumi.Input.decodeList<GetEnvironmentConfigWorkloadsConfigWebServer>(
               map['webServers'],
               (value) => GetEnvironmentConfigWorkloadsConfigWebServer.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      workers: Input.decodeList<GetEnvironmentConfigWorkloadsConfigWorker>(
-          map['workers'],
-          (value) => GetEnvironmentConfigWorkloadsConfigWorker.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      workers:
+          pulumi.Input.decodeList<GetEnvironmentConfigWorkloadsConfigWorker>(
+              map['workers'],
+              (value) => GetEnvironmentConfigWorkloadsConfigWorker.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

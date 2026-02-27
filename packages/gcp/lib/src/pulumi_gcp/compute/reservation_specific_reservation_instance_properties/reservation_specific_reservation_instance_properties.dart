@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../reservation_specific_reservation_instance_properties_guest_accelerator/reservation_specific_reservation_instance_properties_guest_accelerator.dart';
 import '../reservation_specific_reservation_instance_properties_local_ssd/reservation_specific_reservation_instance_properties_local_ssd.dart';
 
@@ -46,14 +46,14 @@ class ReservationSpecificReservationInstanceProperties {
     final map = <String, dynamic>{};
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.encodeList<
+      map['guestAccelerators'] = pulumi.Input.encodeList<
               ReservationSpecificReservationInstancePropertiesGuestAccelerator,
               Map<String, dynamic>>(
           guestAcceleratorsValue, (value) => value.toMap());
     }
     final localSsdsValue = localSsds;
     if (localSsdsValue != null) {
-      map['localSsds'] = Input.encodeList<
+      map['localSsds'] = pulumi.Input.encodeList<
           ReservationSpecificReservationInstancePropertiesLocalSsd,
           Map<String, dynamic>>(localSsdsValue, (value) => value.toMap());
     }
@@ -78,7 +78,7 @@ class ReservationSpecificReservationInstanceProperties {
     return ReservationSpecificReservationInstanceProperties(
       guestAccelerators: map['guestAccelerators'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ReservationSpecificReservationInstancePropertiesGuestAccelerator>(
               map['guestAccelerators'],
               (value) =>
@@ -86,7 +86,7 @@ class ReservationSpecificReservationInstanceProperties {
                       .fromMap((value as Map).cast<String, dynamic>())),
       localSsds: map['localSsds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ReservationSpecificReservationInstancePropertiesLocalSsd>(
               map['localSsds'],
               (value) =>

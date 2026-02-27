@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_config_grpc_service_file_descriptor_set/api_config_grpc_service_file_descriptor_set.dart';
 import '../api_config_grpc_service_source/api_config_grpc_service_source.dart';
 
@@ -25,9 +25,8 @@ class ApiConfigGrpcService {
     map['fileDescriptorSet'] = fileDescriptorSet.toMap();
     final sourcesValue = sources;
     if (sourcesValue != null) {
-      map['sources'] =
-          Input.encodeList<ApiConfigGrpcServiceSource, Map<String, dynamic>>(
-              sourcesValue, (value) => value.toMap());
+      map['sources'] = pulumi.Input.encodeList<ApiConfigGrpcServiceSource,
+          Map<String, dynamic>>(sourcesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -38,7 +37,7 @@ class ApiConfigGrpcService {
           (map['fileDescriptorSet'] as Map).cast<String, dynamic>()),
       sources: map['sources'] == null
           ? null
-          : Input.decodeList<ApiConfigGrpcServiceSource>(
+          : pulumi.Input.decodeList<ApiConfigGrpcServiceSource>(
               map['sources'],
               (value) => ApiConfigGrpcServiceSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

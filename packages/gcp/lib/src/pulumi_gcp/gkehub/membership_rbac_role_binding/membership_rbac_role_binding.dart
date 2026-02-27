@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../membership_rbac_role_binding_role/membership_rbac_role_binding_role.dart';
 import '../membership_rbac_role_binding_state/membership_rbac_role_binding_state.dart';
 import 'membership_rbac_role_binding_args.dart';
@@ -41,58 +41,58 @@ import 'membership_rbac_role_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
 /// ```
-class MembershipRbacRoleBinding extends CustomResource {
+class MembershipRbacRoleBinding extends pulumi.CustomResource {
   /// Time the RBAC Role Binding was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time the RBAC Role Binding was deleted in UTC.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Location of the Membership
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Id of the membership
-  late final Output<String> membershipId;
+  late final pulumi.Output<String> membershipId;
 
   /// The client-provided identifier of the RBAC Role Binding.
-  late final Output<String> membershipRbacRoleBindingId;
+  late final pulumi.Output<String> membershipRbacRoleBindingId;
 
   /// The resource name for the RBAC Role Binding
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Role to bind to the principal.
   /// Structure is documented below.
-  late final Output<MembershipRbacRoleBindingRole> role;
+  late final pulumi.Output<MembershipRbacRoleBindingRole> role;
 
   /// State of the RBAC Role Binding resource.
   /// Structure is documented below.
-  late final Output<List<MembershipRbacRoleBindingState>> states;
+  late final pulumi.Output<List<MembershipRbacRoleBindingState>> states;
 
   /// Google-generated UUID for this resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time the RBAC Role Binding was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// user is the name of the user as seen by the kubernetes cluster, example
   /// "alice" or "alice@domain.tld"
-  late final Output<String> user;
+  late final pulumi.Output<String> user;
 
   MembershipRbacRoleBinding(
     String name, {
     MembershipRbacRoleBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

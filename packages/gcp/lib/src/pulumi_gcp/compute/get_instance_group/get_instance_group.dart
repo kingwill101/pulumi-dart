@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_group_args.dart';
 import 'get_instance_group_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_instance_group_result.dart';
 /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 Future<GetInstanceGroupResult> getInstanceGroup(
   GetInstanceGroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getInstanceGroup:getInstanceGroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGroupResult.fromMap(result);
 }

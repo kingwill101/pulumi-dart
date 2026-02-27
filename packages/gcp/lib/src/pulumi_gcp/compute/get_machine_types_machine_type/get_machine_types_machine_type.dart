@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_machine_types_machine_type_accelerator/get_machine_types_machine_type_accelerator.dart';
 import '../get_machine_types_machine_type_bundled_local_ssd/get_machine_types_machine_type_bundled_local_ssd.dart';
 import '../get_machine_types_machine_type_deprecated/get_machine_types_machine_type_deprecated.dart';
@@ -55,13 +55,14 @@ class GetMachineTypesMachineType {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accelerators'] = Input.encodeList<
+    map['accelerators'] = pulumi.Input.encodeList<
         GetMachineTypesMachineTypeAccelerator,
         Map<String, dynamic>>(accelerators, (value) => value.toMap());
-    map['bundledLocalSsds'] = Input.encodeList<
+    map['bundledLocalSsds'] = pulumi.Input.encodeList<
         GetMachineTypesMachineTypeBundledLocalSsd,
         Map<String, dynamic>>(bundledLocalSsds, (value) => value.toMap());
-    map['deprecateds'] = Input.encodeList<GetMachineTypesMachineTypeDeprecated,
+    map['deprecateds'] = pulumi.Input.encodeList<
+        GetMachineTypesMachineTypeDeprecated,
         Map<String, dynamic>>(deprecateds, (value) => value.toMap());
     map['description'] = description;
     map['guestCpus'] = guestCpus;
@@ -76,19 +77,21 @@ class GetMachineTypesMachineType {
 
   factory GetMachineTypesMachineType.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesMachineType(
-      accelerators: Input.decodeList<GetMachineTypesMachineTypeAccelerator>(
-          map['accelerators'],
-          (value) => GetMachineTypesMachineTypeAccelerator.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accelerators:
+          pulumi.Input.decodeList<GetMachineTypesMachineTypeAccelerator>(
+              map['accelerators'],
+              (value) => GetMachineTypesMachineTypeAccelerator.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       bundledLocalSsds:
-          Input.decodeList<GetMachineTypesMachineTypeBundledLocalSsd>(
+          pulumi.Input.decodeList<GetMachineTypesMachineTypeBundledLocalSsd>(
               map['bundledLocalSsds'],
               (value) => GetMachineTypesMachineTypeBundledLocalSsd.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      deprecateds: Input.decodeList<GetMachineTypesMachineTypeDeprecated>(
-          map['deprecateds'],
-          (value) => GetMachineTypesMachineTypeDeprecated.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      deprecateds:
+          pulumi.Input.decodeList<GetMachineTypesMachineTypeDeprecated>(
+              map['deprecateds'],
+              (value) => GetMachineTypesMachineTypeDeprecated.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       guestCpus: map['guestCpus'] as int,
       isSharedCpus: map['isSharedCpus'] as bool,

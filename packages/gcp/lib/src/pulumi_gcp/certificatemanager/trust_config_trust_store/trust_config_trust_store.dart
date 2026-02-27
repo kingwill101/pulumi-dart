@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trust_config_trust_store_intermediate_ca/trust_config_trust_store_intermediate_ca.dart';
 import '../trust_config_trust_store_trust_anchor/trust_config_trust_store_trust_anchor.dart';
 
@@ -23,13 +23,14 @@ class TrustConfigTrustStore {
     final map = <String, dynamic>{};
     final intermediateCasValue = intermediateCas;
     if (intermediateCasValue != null) {
-      map['intermediateCas'] = Input.encodeList<
+      map['intermediateCas'] = pulumi.Input.encodeList<
           TrustConfigTrustStoreIntermediateCa,
           Map<String, dynamic>>(intermediateCasValue, (value) => value.toMap());
     }
     final trustAnchorsValue = trustAnchors;
     if (trustAnchorsValue != null) {
-      map['trustAnchors'] = Input.encodeList<TrustConfigTrustStoreTrustAnchor,
+      map['trustAnchors'] = pulumi.Input.encodeList<
+          TrustConfigTrustStoreTrustAnchor,
           Map<String, dynamic>>(trustAnchorsValue, (value) => value.toMap());
     }
     return map;
@@ -39,13 +40,13 @@ class TrustConfigTrustStore {
     return TrustConfigTrustStore(
       intermediateCas: map['intermediateCas'] == null
           ? null
-          : Input.decodeList<TrustConfigTrustStoreIntermediateCa>(
+          : pulumi.Input.decodeList<TrustConfigTrustStoreIntermediateCa>(
               map['intermediateCas'],
               (value) => TrustConfigTrustStoreIntermediateCa.fromMap(
                   (value as Map).cast<String, dynamic>())),
       trustAnchors: map['trustAnchors'] == null
           ? null
-          : Input.decodeList<TrustConfigTrustStoreTrustAnchor>(
+          : pulumi.Input.decodeList<TrustConfigTrustStoreTrustAnchor>(
               map['trustAnchors'],
               (value) => TrustConfigTrustStoreTrustAnchor.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trigger_build_available_secrets_secret_manager/trigger_build_available_secrets_secret_manager.dart';
 
 class TriggerBuildAvailableSecrets {
@@ -14,7 +14,7 @@ class TriggerBuildAvailableSecrets {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['secretManagers'] = Input.encodeList<
+    map['secretManagers'] = pulumi.Input.encodeList<
         TriggerBuildAvailableSecretsSecretManager,
         Map<String, dynamic>>(secretManagers, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class TriggerBuildAvailableSecrets {
   factory TriggerBuildAvailableSecrets.fromMap(Map<String, dynamic> map) {
     return TriggerBuildAvailableSecrets(
       secretManagers:
-          Input.decodeList<TriggerBuildAvailableSecretsSecretManager>(
+          pulumi.Input.decodeList<TriggerBuildAvailableSecretsSecretManager>(
               map['secretManagers'],
               (value) => TriggerBuildAvailableSecretsSecretManager.fromMap(
                   (value as Map).cast<String, dynamic>())),

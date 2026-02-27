@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_page_knowledge_connector_settings_trigger_fulfillment_message_conversation_success/cx_page_knowledge_connector_settings_trigger_fulfillment_message_conversation_success.dart';
 import '../cx_page_knowledge_connector_settings_trigger_fulfillment_message_live_agent_handoff/cx_page_knowledge_connector_settings_trigger_fulfillment_message_live_agent_handoff.dart';
 import '../cx_page_knowledge_connector_settings_trigger_fulfillment_message_mixed_audio/cx_page_knowledge_connector_settings_trigger_fulfillment_message_mixed_audio.dart';
@@ -118,7 +118,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage {
     }
     final mixedAudiosValue = mixedAudios;
     if (mixedAudiosValue != null) {
-      map['mixedAudios'] = Input.encodeList<
+      map['mixedAudios'] = pulumi.Input.encodeList<
           CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio,
           Map<String, dynamic>>(mixedAudiosValue, (value) => value.toMap());
     }
@@ -167,7 +167,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage {
                   (map['liveAgentHandoff'] as Map).cast<String, dynamic>()),
       mixedAudios: map['mixedAudios'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio>(
               map['mixedAudios'],
               (value) =>

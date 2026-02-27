@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNetblockIPRanges.
 class GetNetblockIPRangesArgs {
@@ -27,7 +27,7 @@ class GetNetblockIPRangesArgs {
   /// * `health-checkers` - Corresponds to the IP addresses used for health checking in Cloud Load Balancing. [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
   ///
   /// * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
-  final Input<String>? rangeType;
+  final pulumi.Input<String>? rangeType;
 
   GetNetblockIPRangesArgs({
     this.rangeType,
@@ -44,7 +44,7 @@ class GetNetblockIPRangesArgs {
 
   factory GetNetblockIPRangesArgs.fromMap(Map<String, dynamic> map) {
     return GetNetblockIPRangesArgs(
-      rangeType: Input.asOptionalInput<String>(map['rangeType']),
+      rangeType: pulumi.Input.asOptionalInput<String>(map['rangeType']),
     );
   }
 }

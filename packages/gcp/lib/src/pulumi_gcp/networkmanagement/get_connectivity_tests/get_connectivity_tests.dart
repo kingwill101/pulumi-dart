@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_connectivity_tests_args.dart';
 import 'get_connectivity_tests_result.dart';
 
@@ -14,13 +14,13 @@ import 'get_connectivity_tests_result.dart';
 /// * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 Future<GetConnectivityTestsResult> getConnectivityTests(
   GetConnectivityTestsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:networkmanagement/getConnectivityTests:getConnectivityTests',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectivityTestsResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_target_type_custom_actions/custom_target_type_custom_actions.dart';
 import 'custom_target_type_args.dart';
 
@@ -54,66 +54,66 @@ import 'custom_target_type_args.dart';
 /// ```sh
 /// $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default {{location}}/{{name}}
 /// ```
-class CustomTargetType extends CustomResource {
+class CustomTargetType extends pulumi.CustomResource {
   /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Time at which the `CustomTargetType` was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
   /// Structure is documented below.
-  late final Output<CustomTargetTypeCustomActions?> customActions;
+  late final pulumi.Output<CustomTargetTypeCustomActions?> customActions;
 
   /// Resource id of the `CustomTargetType`.
-  late final Output<String> customTargetTypeId;
+  late final pulumi.Output<String> customTargetTypeId;
 
   /// Description of the `CustomTargetType`. Max length is 255 characters.
-  late final Output<String?> description;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> description;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The weak etag of the `CustomTargetType` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the source.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the `CustomTargetType`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Unique identifier of the `CustomTargetType`.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time at which the `CustomTargetType` was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   CustomTargetType(
     String name, {
     CustomTargetTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:clouddeploy/customTargetType:CustomTargetType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');

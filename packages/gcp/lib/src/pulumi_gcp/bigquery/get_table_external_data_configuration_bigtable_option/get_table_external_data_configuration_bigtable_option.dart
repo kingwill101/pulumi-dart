@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_table_external_data_configuration_bigtable_option_column_family/get_table_external_data_configuration_bigtable_option_column_family.dart';
 
 class GetTableExternalDataConfigurationBigtableOption {
@@ -26,7 +26,7 @@ class GetTableExternalDataConfigurationBigtableOption {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['columnFamilies'] = Input.encodeList<
+    map['columnFamilies'] = pulumi.Input.encodeList<
         GetTableExternalDataConfigurationBigtableOptionColumnFamily,
         Map<String, dynamic>>(columnFamilies, (value) => value.toMap());
     map['ignoreUnspecifiedColumnFamilies'] = ignoreUnspecifiedColumnFamilies;
@@ -38,7 +38,7 @@ class GetTableExternalDataConfigurationBigtableOption {
   factory GetTableExternalDataConfigurationBigtableOption.fromMap(
       Map<String, dynamic> map) {
     return GetTableExternalDataConfigurationBigtableOption(
-      columnFamilies: Input.decodeList<
+      columnFamilies: pulumi.Input.decodeList<
               GetTableExternalDataConfigurationBigtableOptionColumnFamily>(
           map['columnFamilies'],
           (value) => GetTableExternalDataConfigurationBigtableOptionColumnFamily

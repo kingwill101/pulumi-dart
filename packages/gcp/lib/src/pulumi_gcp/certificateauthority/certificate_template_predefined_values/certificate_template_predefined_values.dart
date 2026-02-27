@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_template_predefined_values_additional_extension/certificate_template_predefined_values_additional_extension.dart';
 import '../certificate_template_predefined_values_ca_options/certificate_template_predefined_values_ca_options.dart';
 import '../certificate_template_predefined_values_key_usage/certificate_template_predefined_values_key_usage.dart';
@@ -45,7 +45,7 @@ class CertificateTemplatePredefinedValues {
     final map = <String, dynamic>{};
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
-      map['additionalExtensions'] = Input.encodeList<
+      map['additionalExtensions'] = pulumi.Input.encodeList<
               CertificateTemplatePredefinedValuesAdditionalExtension,
               Map<String, dynamic>>(
           additionalExtensionsValue, (value) => value.toMap());
@@ -68,7 +68,7 @@ class CertificateTemplatePredefinedValues {
     }
     final policyIdsValue = policyIds;
     if (policyIdsValue != null) {
-      map['policyIds'] = Input.encodeList<
+      map['policyIds'] = pulumi.Input.encodeList<
           CertificateTemplatePredefinedValuesPolicyId,
           Map<String, dynamic>>(policyIdsValue, (value) => value.toMap());
     }
@@ -80,7 +80,7 @@ class CertificateTemplatePredefinedValues {
     return CertificateTemplatePredefinedValues(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateTemplatePredefinedValuesAdditionalExtension>(
               map['additionalExtensions'],
               (value) => CertificateTemplatePredefinedValuesAdditionalExtension
@@ -102,7 +102,8 @@ class CertificateTemplatePredefinedValues {
               (map['nameConstraints'] as Map).cast<String, dynamic>()),
       policyIds: map['policyIds'] == null
           ? null
-          : Input.decodeList<CertificateTemplatePredefinedValuesPolicyId>(
+          : pulumi.Input.decodeList<
+                  CertificateTemplatePredefinedValuesPolicyId>(
               map['policyIds'],
               (value) => CertificateTemplatePredefinedValuesPolicyId.fromMap(
                   (value as Map).cast<String, dynamic>())),

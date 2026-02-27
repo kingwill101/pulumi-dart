@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_feature_group_big_query/ai_feature_group_big_query.dart';
 import 'ai_feature_group_args.dart';
 
@@ -47,54 +47,54 @@ import 'ai_feature_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{name}}
 /// ```
-class AiFeatureGroup extends CustomResource {
+class AiFeatureGroup extends pulumi.CustomResource {
   /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
   /// Structure is documented below.
-  late final Output<AiFeatureGroupBigQuery?> bigQuery;
+  late final pulumi.Output<AiFeatureGroupBigQuery?> bigQuery;
 
   /// The timestamp of when the FeatureGroup was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The description of the FeatureGroup.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Used to perform consistent read-modify-write updates.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The labels with user-defined metadata to organize your FeatureGroup.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The resource name of the Feature Group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The region of feature group. eg us-central1
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AiFeatureGroup(
     String name, {
     AiFeatureGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiFeatureGroup:AiFeatureGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bigQuery = registerOutput<AiFeatureGroupBigQuery?>('bigQuery');
     this.createTime = registerOutput<String>('createTime');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../slo_basic_sli/slo_basic_sli.dart';
 import '../slo_request_based_sli/slo_request_based_sli.dart';
 import '../slo_windows_based_sli/slo_windows_based_sli.dart';
@@ -70,7 +70,7 @@ import 'slo_args.dart';
 /// ```sh
 /// $ pulumi import gcp:monitoring/slo:Slo default {{name}}
 /// ```
-class Slo extends CustomResource {
+class Slo extends pulumi.CustomResource {
   /// Basic Service-Level Indicator (SLI) on a well-known service type.
   /// Performance will be computed on the basis of pre-defined metrics.
   /// SLIs are used to measure and calculate the quality of the Service's
@@ -78,27 +78,27 @@ class Slo extends CustomResource {
   /// Exactly one of the following must be set:
   /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
-  late final Output<SloBasicSli?> basicSli;
+  late final pulumi.Output<SloBasicSli?> basicSli;
 
   /// A calendar period, semantically "since the start of the current
   /// <calendarPeriod>".
   /// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
-  late final Output<String?> calendarPeriod;
+  late final pulumi.Output<String?> calendarPeriod;
 
   /// Name used for UI elements listing this SLO.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The fraction of service that must be good in order for this objective
   /// to be met. 0 < goal <= 0.999
-  late final Output<double> goal;
+  late final pulumi.Output<double> goal;
 
   /// The full resource name for this service. The syntax is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A request-based SLI defines a SLI for which atomic units of
   /// service are counted directly.
@@ -108,24 +108,24 @@ class Slo extends CustomResource {
   /// Exactly one of the following must be set:
   /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
-  late final Output<SloRequestBasedSli?> requestBasedSli;
+  late final pulumi.Output<SloRequestBasedSli?> requestBasedSli;
 
   /// A rolling time period, semantically "in the past X days".
   /// Must be between 1 to 30 days, inclusive.
-  late final Output<int?> rollingPeriodDays;
+  late final pulumi.Output<int?> rollingPeriodDays;
 
   /// ID of the service to which this SLO belongs.
-  late final Output<String> service;
+  late final pulumi.Output<String> service;
 
   /// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
-  late final Output<String> sloId;
+  late final pulumi.Output<String> sloId;
 
   /// This field is intended to be used for organizing and identifying the AlertPolicy
   /// objects.The field can contain up to 64 entries. Each key and value is limited
   /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
   /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
   /// must begin with a letter.
-  late final Output<Map<String, String>?> userLabels;
+  late final pulumi.Output<Map<String, String>?> userLabels;
 
   /// A windows-based SLI defines the criteria for time windows.
   /// good_service is defined based off the count of these time windows
@@ -136,17 +136,17 @@ class Slo extends CustomResource {
   /// Exactly one of the following must be set:
   /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
-  late final Output<SloWindowsBasedSli?> windowsBasedSli;
+  late final pulumi.Output<SloWindowsBasedSli?> windowsBasedSli;
 
   Slo(
     String name, {
     SloArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:monitoring/slo:Slo',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.basicSli = registerOutput<SloBasicSli?>('basicSli');
     this.calendarPeriod = registerOutput<String?>('calendarPeriod');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_postgresql_source_config_exclude_objects_postgresql_schema_postgresql_table/stream_source_config_postgresql_source_config_exclude_objects_postgresql_schema_postgresql_table.dart';
 
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
@@ -22,7 +22,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
     final map = <String, dynamic>{};
     final postgresqlTablesValue = postgresqlTables;
     if (postgresqlTablesValue != null) {
-      map['postgresqlTables'] = Input.encodeList<
+      map['postgresqlTables'] = pulumi.Input.encodeList<
           StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable,
           Map<String,
               dynamic>>(postgresqlTablesValue, (value) => value.toMap());
@@ -36,7 +36,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
     return StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema(
       postgresqlTables: map['postgresqlTables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>(
               map['postgresqlTables'],
               (value) =>

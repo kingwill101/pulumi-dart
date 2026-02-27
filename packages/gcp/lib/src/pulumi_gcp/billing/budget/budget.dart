@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../budget_all_updates_rule/budget_all_updates_rule.dart';
 import '../budget_amount/budget_amount.dart';
 import '../budget_budget_filter/budget_budget_filter.dart';
@@ -70,53 +70,53 @@ import 'budget_args.dart';
 /// ```sh
 /// $ pulumi import gcp:billing/budget:Budget default {{name}}
 /// ```
-class Budget extends CustomResource {
+class Budget extends pulumi.CustomResource {
   /// Defines notifications that are sent on every update to the
   /// billing account's spend, regardless of the thresholds defined
   /// using threshold rules.
   /// Structure is documented below.
-  late final Output<BudgetAllUpdatesRule?> allUpdatesRule;
+  late final pulumi.Output<BudgetAllUpdatesRule?> allUpdatesRule;
 
   /// The budgeted amount for each usage period.
   /// Structure is documented below.
-  late final Output<BudgetAmount> amount;
+  late final pulumi.Output<BudgetAmount> amount;
 
   /// ID of the billing account to set a budget on.
-  late final Output<String> billingAccount;
+  late final pulumi.Output<String> billingAccount;
 
   /// Filters that define which resources are used to compute the actual
   /// spend against the budget.
   /// Structure is documented below.
-  late final Output<BudgetBudgetFilter> budgetFilter;
+  late final pulumi.Output<BudgetBudgetFilter> budgetFilter;
 
   /// User data for display name in UI. Must be <= 60 chars.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Resource name of the budget. The resource name
   /// implies the scope of a budget. Values are of the form
   /// billingAccounts/{billingAccountId}/budgets/{budgetId}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ownership scope of the budget. The ownership scope and users'
   /// IAM permissions determine who has full access to the budget's data.
   /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
-  late final Output<String?> ownershipScope;
+  late final pulumi.Output<String?> ownershipScope;
 
   /// Rules that trigger alerts (notifications of thresholds being
   /// crossed) when spend exceeds the specified percentages of the
   /// budget.
   /// Structure is documented below.
-  late final Output<List<BudgetThresholdRule>?> thresholdRules;
+  late final pulumi.Output<List<BudgetThresholdRule>?> thresholdRules;
 
   Budget(
     String name, {
     BudgetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:billing/budget:Budget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allUpdatesRule =
         registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule');

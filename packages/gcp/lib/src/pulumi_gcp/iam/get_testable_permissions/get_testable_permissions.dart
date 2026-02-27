@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_testable_permissions_args.dart';
 import 'get_testable_permissions_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_testable_permissions_result.dart';
 /// Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
 Future<GetTestablePermissionsResult> getTestablePermissions(
   GetTestablePermissionsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:iam/getTestablePermissions:getTestablePermissions',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTestablePermissionsResult.fromMap(result);
 }

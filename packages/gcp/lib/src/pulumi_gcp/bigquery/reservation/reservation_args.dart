@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../reservation_autoscale/reservation_autoscale.dart';
 
 /// The set of arguments for Reservation.
 class ReservationArgs {
   /// The configuration parameters for the auto scaling feature.
   /// Structure is documented below.
-  final Input<ReservationAutoscale>? autoscale;
+  final pulumi.Input<ReservationAutoscale>? autoscale;
 
   /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
-  final Input<int>? concurrency;
+  final pulumi.Input<int>? concurrency;
 
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
-  final Input<String>? edition;
+  final pulumi.Input<String>? edition;
 
   /// If false, any query using this reservation will use idle slots from other reservations within
   /// the same admin project. If true, a query using this reservation will execute with the slot
   /// capacity specified above at most.
-  final Input<bool>? ignoreIdleSlots;
+  final pulumi.Input<bool>? ignoreIdleSlots;
 
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
   /// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
@@ -56,14 +56,14 @@ class ReservationArgs {
   /// Please note that if maxSlots is set to 0, we will treat it as unset. Customers can set
   /// maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
   /// feature.
-  final Input<int>? maxSlots;
+  final pulumi.Input<int>? maxSlots;
 
   /// The name of the reservation. This field must only contain alphanumeric characters or dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
   /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
@@ -98,17 +98,17 @@ class ReservationArgs {
   /// autoscaling slots. Please note, in this mode, the ignoreIdleSlots field must be set to false.
   /// Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
   /// Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
-  final Input<String>? scalingMode;
+  final pulumi.Input<String>? scalingMode;
 
   /// The current location of the reservation's secondary replica. This field is only set for
   /// reservations using the managed disaster recovery feature. Users can set this in create
   /// reservation calls to create a failover reservation or in update reservation calls to convert
   /// a non-failover reservation to a failover reservation(or vice versa).
-  final Input<String>? secondaryLocation;
+  final pulumi.Input<String>? secondaryLocation;
 
   /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
   /// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
-  final Input<int> slotCapacity;
+  final pulumi.Input<int> slotCapacity;
 
   ReservationArgs({
     this.autoscale,
@@ -128,7 +128,8 @@ class ReservationArgs {
     final map = <String, dynamic>{};
     final autoscaleValue = autoscale;
     if (autoscaleValue != null) {
-      map['autoscale'] = Input.mapOptionalInputValue<ReservationAutoscale,
+      map['autoscale'] = pulumi.Input.mapOptionalInputValue<
+          ReservationAutoscale,
           Map<String, dynamic>>(autoscaleValue, (value) => value.toMap());
     }
     final concurrencyValue = concurrency;
@@ -173,18 +174,20 @@ class ReservationArgs {
 
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
-      autoscale: Input.asOptionalInput<ReservationAutoscale>(map['autoscale']),
-      concurrency: Input.asOptionalInput<int>(map['concurrency']),
-      edition: Input.asOptionalInput<String>(map['edition']),
-      ignoreIdleSlots: Input.asOptionalInput<bool>(map['ignoreIdleSlots']),
-      location: Input.asOptionalInput<String>(map['location']),
-      maxSlots: Input.asOptionalInput<int>(map['maxSlots']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      scalingMode: Input.asOptionalInput<String>(map['scalingMode']),
+      autoscale:
+          pulumi.Input.asOptionalInput<ReservationAutoscale>(map['autoscale']),
+      concurrency: pulumi.Input.asOptionalInput<int>(map['concurrency']),
+      edition: pulumi.Input.asOptionalInput<String>(map['edition']),
+      ignoreIdleSlots:
+          pulumi.Input.asOptionalInput<bool>(map['ignoreIdleSlots']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      maxSlots: pulumi.Input.asOptionalInput<int>(map['maxSlots']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      scalingMode: pulumi.Input.asOptionalInput<String>(map['scalingMode']),
       secondaryLocation:
-          Input.asOptionalInput<String>(map['secondaryLocation']),
-      slotCapacity: Input.asInput<int>(map['slotCapacity']),
+          pulumi.Input.asOptionalInput<String>(map['secondaryLocation']),
+      slotCapacity: pulumi.Input.asInput<int>(map['slotCapacity']),
     );
   }
 }

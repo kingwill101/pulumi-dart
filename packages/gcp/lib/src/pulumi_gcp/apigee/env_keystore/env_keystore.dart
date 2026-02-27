@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'env_keystore_args.dart';
 
 /// An `Environment KeyStore` in Apigee.
@@ -27,26 +27,26 @@ import 'env_keystore_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/{{name}}
 /// ```
-class EnvKeystore extends CustomResource {
+class EnvKeystore extends pulumi.CustomResource {
   /// Aliases in this keystore.
-  late final Output<List<String>> aliases;
+  late final pulumi.Output<List<String>> aliases;
 
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  late final Output<String> envId;
+  late final pulumi.Output<String> envId;
 
   /// The name of the newly created keystore.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   EnvKeystore(
     String name, {
     EnvKeystoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/envKeystore:EnvKeystore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aliases = registerOutput<List<String>>('aliases');
     this.envId = registerOutput<String>('envId');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_from_template_advanced_machine_features/instance_from_template_advanced_machine_features.dart';
 import '../instance_from_template_attached_disk/instance_from_template_attached_disk.dart';
 import '../instance_from_template_boot_disk/instance_from_template_boot_disk.dart';
@@ -32,135 +32,136 @@ import 'instance_from_template_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class InstanceFromTemplate extends CustomResource {
+class InstanceFromTemplate extends pulumi.CustomResource {
   /// Controls for advanced machine-related behavior features.
-  late final Output<InstanceFromTemplateAdvancedMachineFeatures>
+  late final pulumi.Output<InstanceFromTemplateAdvancedMachineFeatures>
       advancedMachineFeatures;
-  late final Output<bool> allowStoppingForUpdate;
+  late final pulumi.Output<bool> allowStoppingForUpdate;
 
   /// List of disks attached to the instance
-  late final Output<List<InstanceFromTemplateAttachedDisk>> attachedDisks;
+  late final pulumi.Output<List<InstanceFromTemplateAttachedDisk>>
+      attachedDisks;
 
   /// The boot disk for the instance.
-  late final Output<InstanceFromTemplateBootDisk> bootDisk;
+  late final pulumi.Output<InstanceFromTemplateBootDisk> bootDisk;
 
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-  late final Output<bool> canIpForward;
+  late final pulumi.Output<bool> canIpForward;
 
   /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
-  late final Output<InstanceFromTemplateConfidentialInstanceConfig>
+  late final pulumi.Output<InstanceFromTemplateConfidentialInstanceConfig>
       confidentialInstanceConfig;
 
   /// The CPU platform used by this instance.
-  late final Output<String> cpuPlatform;
+  late final pulumi.Output<String> cpuPlatform;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// Current status of the instance.
   /// This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
   /// For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
-  late final Output<String> currentStatus;
+  late final pulumi.Output<String> currentStatus;
 
   /// Whether deletion protection is enabled on this instance.
-  late final Output<bool> deletionProtection;
+  late final pulumi.Output<bool> deletionProtection;
 
   /// A brief description of the resource.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
-  late final Output<String> desiredStatus;
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<String> desiredStatus;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Whether the instance has virtual displays enabled.
-  late final Output<bool> enableDisplay;
+  late final pulumi.Output<bool> enableDisplay;
 
   /// List of the type and count of accelerator cards attached to the instance.
-  late final Output<List<InstanceFromTemplateGuestAccelerator>>
+  late final pulumi.Output<List<InstanceFromTemplateGuestAccelerator>>
       guestAccelerators;
 
   /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-  late final Output<String> hostname;
+  late final pulumi.Output<String> hostname;
 
   /// Encryption key used to provide data encryption on the given instance.
-  late final Output<InstanceFromTemplateInstanceEncryptionKey>
+  late final pulumi.Output<InstanceFromTemplateInstanceEncryptionKey>
       instanceEncryptionKey;
 
   /// The server-assigned unique identifier of this instance.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
-  late final Output<String> keyRevocationActionType;
+  late final pulumi.Output<String> keyRevocationActionType;
 
   /// The unique fingerprint of the labels.
-  late final Output<String> labelFingerprint;
+  late final pulumi.Output<String> labelFingerprint;
 
   /// A set of key/value label pairs assigned to the instance.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-  late final Output<Map<String, String>> labels;
+  late final pulumi.Output<Map<String, String>> labels;
 
   /// The machine type to create.
-  late final Output<String> machineType;
+  late final pulumi.Output<String> machineType;
 
   /// Metadata key/value pairs made available within the instance.
-  late final Output<Map<String, String>> metadata;
+  late final pulumi.Output<Map<String, String>> metadata;
 
   /// The unique fingerprint of the metadata.
-  late final Output<String> metadataFingerprint;
+  late final pulumi.Output<String> metadataFingerprint;
 
   /// Metadata startup scripts made available within the instance.
-  late final Output<String> metadataStartupScript;
+  late final pulumi.Output<String> metadataStartupScript;
 
   /// The minimum CPU platform specified for the VM instance.
-  late final Output<String> minCpuPlatform;
+  late final pulumi.Output<String> minCpuPlatform;
 
   /// A unique name for the resource, required by GCE.
   /// Changing this forces a new resource to be created.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The networks attached to the instance.
-  late final Output<List<InstanceFromTemplateNetworkInterface>>
+  late final pulumi.Output<List<InstanceFromTemplateNetworkInterface>>
       networkInterfaces;
 
   /// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
-  late final Output<InstanceFromTemplateNetworkPerformanceConfig>
+  late final pulumi.Output<InstanceFromTemplateNetworkPerformanceConfig>
       networkPerformanceConfig;
 
   /// Stores additional params passed with the request, but not persisted as part of resource payload.
-  late final Output<InstanceFromTemplateParams> params;
+  late final pulumi.Output<InstanceFromTemplateParams> params;
 
   /// Partner Metadata Map made available within the instance.
-  late final Output<Map<String, String>> partnerMetadata;
+  late final pulumi.Output<Map<String, String>> partnerMetadata;
 
   /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Specifies the reservations that this instance can consume from.
-  late final Output<InstanceFromTemplateReservationAffinity>
+  late final pulumi.Output<InstanceFromTemplateReservationAffinity>
       reservationAffinity;
 
   /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
-  late final Output<String> resourcePolicies;
+  late final pulumi.Output<String> resourcePolicies;
 
   /// The scheduling strategy being used by the instance.
-  late final Output<InstanceFromTemplateScheduling> scheduling;
+  late final pulumi.Output<InstanceFromTemplateScheduling> scheduling;
 
   /// The scratch disks attached to the instance.
-  late final Output<List<InstanceFromTemplateScratchDisk>> scratchDisks;
+  late final pulumi.Output<List<InstanceFromTemplateScratchDisk>> scratchDisks;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The service account to attach to the instance.
-  late final Output<InstanceFromTemplateServiceAccount> serviceAccount;
+  late final pulumi.Output<InstanceFromTemplateServiceAccount> serviceAccount;
 
   /// The shielded vm config being used by the instance.
-  late final Output<InstanceFromTemplateShieldedInstanceConfig>
+  late final pulumi.Output<InstanceFromTemplateShieldedInstanceConfig>
       shieldedInstanceConfig;
 
   /// Name or self link of an instance
@@ -168,13 +169,13 @@ class InstanceFromTemplate extends CustomResource {
   /// instance templates through their unique id (`self_link_unique` attribute).
   ///
   /// - - -
-  late final Output<String> sourceInstanceTemplate;
+  late final pulumi.Output<String> sourceInstanceTemplate;
 
   /// The list of tags attached to the instance.
-  late final Output<List<String>> tags;
+  late final pulumi.Output<List<String>> tags;
 
   /// The unique fingerprint of the tags.
-  late final Output<String> tagsFingerprint;
+  late final pulumi.Output<String> tagsFingerprint;
 
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
@@ -182,17 +183,17 @@ class InstanceFromTemplate extends CustomResource {
   /// In addition to these, all arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the template. All exported attributes
   /// from `gcp.compute.Instance` are likewise exported here.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   InstanceFromTemplate(
     String name, {
     InstanceFromTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/instanceFromTemplate:InstanceFromTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.advancedMachineFeatures =
         registerOutput<InstanceFromTemplateAdvancedMachineFeatures>(

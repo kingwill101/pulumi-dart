@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_service_args.dart';
 import 'get_service_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_service_result.dart';
 /// and [API](https://cloud.google.com/run/docs/apis).
 Future<GetServiceResult> getService(
   GetServiceArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:cloudrun/getService:getService',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
 }

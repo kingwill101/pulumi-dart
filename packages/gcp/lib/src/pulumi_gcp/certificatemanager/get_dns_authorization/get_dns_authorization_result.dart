@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dns_authorization_dns_resource_record/get_dns_authorization_dns_resource_record.dart';
 
 /// Result data returned by getDnsAuthorization.
@@ -36,7 +36,7 @@ class GetDnsAuthorizationResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['description'] = description;
-    map['dnsResourceRecords'] = Input.encodeList<
+    map['dnsResourceRecords'] = pulumi.Input.encodeList<
         GetDnsAuthorizationDnsResourceRecord,
         Map<String, dynamic>>(dnsResourceRecords, (value) => value.toMap());
     map['domain'] = domain;
@@ -61,7 +61,7 @@ class GetDnsAuthorizationResult {
     return GetDnsAuthorizationResult(
       description: map['description'] as String,
       dnsResourceRecords:
-          Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(
+          pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(
               map['dnsResourceRecords'],
               (value) => GetDnsAuthorizationDnsResourceRecord.fromMap(
                   (value as Map).cast<String, dynamic>())),

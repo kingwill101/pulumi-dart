@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_autonomous_databases_autonomous_database_property/get_autonomous_databases_autonomous_database_property.dart';
 import '../get_autonomous_databases_autonomous_database_source_config/get_autonomous_databases_autonomous_database_source_config.dart';
 
@@ -132,11 +132,11 @@ class GetAutonomousDatabasesAutonomousDatabase {
     map['odbSubnet'] = odbSubnet;
     map['peerAutonomousDatabases'] = peerAutonomousDatabases;
     map['project'] = project;
-    map['properties'] = Input.encodeList<
+    map['properties'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabaseProperty,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
-    map['sourceConfigs'] = Input.encodeList<
+    map['sourceConfigs'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabaseSourceConfig,
         Map<String, dynamic>>(sourceConfigs, (value) => value.toMap());
     return map;
@@ -165,14 +165,13 @@ class GetAutonomousDatabasesAutonomousDatabase {
       peerAutonomousDatabases:
           (map['peerAutonomousDatabases'] as List).cast<String>(),
       project: map['project'] as String,
-      properties:
-          Input.decodeList<GetAutonomousDatabasesAutonomousDatabaseProperty>(
-              map['properties'],
-              (value) =>
-                  GetAutonomousDatabasesAutonomousDatabaseProperty.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<
+              GetAutonomousDatabasesAutonomousDatabaseProperty>(
+          map['properties'],
+          (value) => GetAutonomousDatabasesAutonomousDatabaseProperty.fromMap(
+              (value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      sourceConfigs: Input.decodeList<
+      sourceConfigs: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabaseSourceConfig>(
           map['sourceConfigs'],
           (value) =>

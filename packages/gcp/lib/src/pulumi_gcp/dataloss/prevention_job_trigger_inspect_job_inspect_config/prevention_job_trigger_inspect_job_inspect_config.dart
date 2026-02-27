@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_job_trigger_inspect_job_inspect_config_custom_info_type/prevention_job_trigger_inspect_job_inspect_config_custom_info_type.dart';
 import '../prevention_job_trigger_inspect_job_inspect_config_info_type/prevention_job_trigger_inspect_job_inspect_config_info_type.dart';
 import '../prevention_job_trigger_inspect_job_inspect_config_limits/prevention_job_trigger_inspect_job_inspect_config_limits.dart';
@@ -53,7 +53,7 @@ class PreventionJobTriggerInspectJobInspectConfig {
     final map = <String, dynamic>{};
     final customInfoTypesValue = customInfoTypes;
     if (customInfoTypesValue != null) {
-      map['customInfoTypes'] = Input.encodeList<
+      map['customInfoTypes'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobInspectConfigCustomInfoType,
           Map<String, dynamic>>(customInfoTypesValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class PreventionJobTriggerInspectJobInspectConfig {
     }
     final infoTypesValue = infoTypes;
     if (infoTypesValue != null) {
-      map['infoTypes'] = Input.encodeList<
+      map['infoTypes'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobInspectConfigInfoType,
           Map<String, dynamic>>(infoTypesValue, (value) => value.toMap());
     }
@@ -81,7 +81,7 @@ class PreventionJobTriggerInspectJobInspectConfig {
     }
     final ruleSetsValue = ruleSets;
     if (ruleSetsValue != null) {
-      map['ruleSets'] = Input.encodeList<
+      map['ruleSets'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobInspectConfigRuleSet,
           Map<String, dynamic>>(ruleSetsValue, (value) => value.toMap());
     }
@@ -93,7 +93,7 @@ class PreventionJobTriggerInspectJobInspectConfig {
     return PreventionJobTriggerInspectJobInspectConfig(
       customInfoTypes: map['customInfoTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobInspectConfigCustomInfoType>(
               map['customInfoTypes'],
               (value) =>
@@ -106,7 +106,7 @@ class PreventionJobTriggerInspectJobInspectConfig {
           map['includeQuote'] == null ? null : map['includeQuote'] as bool,
       infoTypes: map['infoTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobInspectConfigInfoType>(
               map['infoTypes'],
               (value) =>
@@ -120,7 +120,7 @@ class PreventionJobTriggerInspectJobInspectConfig {
           map['minLikelihood'] == null ? null : map['minLikelihood'] as String,
       ruleSets: map['ruleSets'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobInspectConfigRuleSet>(
               map['ruleSets'],
               (value) =>

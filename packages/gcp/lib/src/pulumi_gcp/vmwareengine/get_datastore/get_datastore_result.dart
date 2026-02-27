@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_datastore_nfs_datastore/get_datastore_nfs_datastore.dart';
 
 /// Result data returned by getDatastore.
@@ -42,7 +42,7 @@ class GetDatastoreResult {
     map['location'] = location;
     map['name'] = name;
     map['nfsDatastores'] =
-        Input.encodeList<GetDatastoreNfsDatastore, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDatastoreNfsDatastore, Map<String, dynamic>>(
             nfsDatastores, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
@@ -62,7 +62,7 @@ class GetDatastoreResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nfsDatastores: Input.decodeList<GetDatastoreNfsDatastore>(
+      nfsDatastores: pulumi.Input.decodeList<GetDatastoreNfsDatastore>(
           map['nfsDatastores'],
           (value) => GetDatastoreNfsDatastore.fromMap(
               (value as Map).cast<String, dynamic>())),

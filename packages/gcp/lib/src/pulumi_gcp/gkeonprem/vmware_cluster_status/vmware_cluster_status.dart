@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_status_condition/vmware_cluster_status_condition.dart';
 
 class VMwareClusterStatus {
@@ -26,9 +26,8 @@ class VMwareClusterStatus {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] =
-          Input.encodeList<VMwareClusterStatusCondition, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
+      map['conditions'] = pulumi.Input.encodeList<VMwareClusterStatusCondition,
+          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final errorMessageValue = errorMessage;
     if (errorMessageValue != null) {
@@ -41,7 +40,7 @@ class VMwareClusterStatus {
     return VMwareClusterStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<VMwareClusterStatusCondition>(
+          : pulumi.Input.decodeList<VMwareClusterStatusCondition>(
               map['conditions'],
               (value) => VMwareClusterStatusCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),

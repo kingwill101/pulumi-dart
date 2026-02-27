@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceGroup.
 class GetInstanceGroupArgs {
   /// The name of the instance group. Either `name` or `self_link` must be provided.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The self link of the instance group. Either `name` or `self_link` must be provided.
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   /// The zone of the instance group. If referencing the instance group by name
   /// and `zone` is not provided, the provider zone is used.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetInstanceGroupArgs({
     this.name,
@@ -48,10 +48,10 @@ class GetInstanceGroupArgs {
 
   factory GetInstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

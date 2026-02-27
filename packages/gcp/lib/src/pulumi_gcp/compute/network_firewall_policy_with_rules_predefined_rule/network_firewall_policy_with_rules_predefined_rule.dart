@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_firewall_policy_with_rules_predefined_rule_match/network_firewall_policy_with_rules_predefined_rule_match.dart';
 import '../network_firewall_policy_with_rules_predefined_rule_target_secure_tag/network_firewall_policy_with_rules_predefined_rule_target_secure_tag.dart';
 
@@ -118,7 +118,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRule {
     }
     final matchesValue = matches;
     if (matchesValue != null) {
-      map['matches'] = Input.encodeList<
+      map['matches'] = pulumi.Input.encodeList<
           NetworkFirewallPolicyWithRulesPredefinedRuleMatch,
           Map<String, dynamic>>(matchesValue, (value) => value.toMap());
     }
@@ -136,7 +136,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRule {
     }
     final targetSecureTagsValue = targetSecureTags;
     if (targetSecureTagsValue != null) {
-      map['targetSecureTags'] = Input.encodeList<
+      map['targetSecureTags'] = pulumi.Input.encodeList<
               NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag,
               Map<String, dynamic>>(
           targetSecureTagsValue, (value) => value.toMap());
@@ -164,7 +164,8 @@ class NetworkFirewallPolicyWithRulesPredefinedRule {
           map['enableLogging'] == null ? null : map['enableLogging'] as bool,
       matches: map['matches'] == null
           ? null
-          : Input.decodeList<NetworkFirewallPolicyWithRulesPredefinedRuleMatch>(
+          : pulumi.Input.decodeList<
+                  NetworkFirewallPolicyWithRulesPredefinedRuleMatch>(
               map['matches'],
               (value) =>
                   NetworkFirewallPolicyWithRulesPredefinedRuleMatch.fromMap(
@@ -176,7 +177,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRule {
           : map['securityProfileGroup'] as String,
       targetSecureTags: map['targetSecureTags'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag>(
               map['targetSecureTags'],
               (value) =>

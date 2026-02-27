@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_notification_config_streaming_config/project_notification_config_streaming_config.dart';
 import 'project_notification_config_args.dart';
 
@@ -35,42 +35,43 @@ import 'project_notification_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig default {{name}}
 /// ```
-class ProjectNotificationConfig extends CustomResource {
+class ProjectNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
-  late final Output<String> configId;
+  late final pulumi.Output<String> configId;
 
   /// The description of the notification config (max of 1024 characters).
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The resource name of this notification config, in the format
   /// `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
-  late final Output<String> pubsubTopic;
+  late final pulumi.Output<String> pubsubTopic;
 
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
-  late final Output<String> serviceAccount;
+  late final pulumi.Output<String> serviceAccount;
 
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final Output<ProjectNotificationConfigStreamingConfig> streamingConfig;
+  late final pulumi.Output<ProjectNotificationConfigStreamingConfig>
+      streamingConfig;
 
   ProjectNotificationConfig(
     String name, {
     ProjectNotificationConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configId = registerOutput<String>('configId');
     this.description = registerOutput<String?>('description');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_example_message/app_version_snapshot_example_message.dart';
 
 class AppVersionSnapshotExample {
@@ -86,7 +86,8 @@ class AppVersionSnapshotExample {
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] = Input.encodeList<AppVersionSnapshotExampleMessage,
+      map['messages'] = pulumi.Input.encodeList<
+          AppVersionSnapshotExampleMessage,
           Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -114,7 +115,7 @@ class AppVersionSnapshotExample {
       invalid: map['invalid'] == null ? null : map['invalid'] as bool,
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotExampleMessage>(
+          : pulumi.Input.decodeList<AppVersionSnapshotExampleMessage>(
               map['messages'],
               (value) => AppVersionSnapshotExampleMessage.fromMap(
                   (value as Map).cast<String, dynamic>())),

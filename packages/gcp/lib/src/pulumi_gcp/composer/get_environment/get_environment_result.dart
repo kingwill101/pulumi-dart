@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_environment_config/get_environment_config.dart';
 import '../get_environment_storage_config/get_environment_storage_config.dart';
 
@@ -34,7 +34,7 @@ class GetEnvironmentResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['configs'] =
-        Input.encodeList<GetEnvironmentConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetEnvironmentConfig, Map<String, dynamic>>(
             configs, (value) => value.toMap());
     map['effectiveLabels'] = effectiveLabels;
     map['id'] = id;
@@ -49,15 +49,14 @@ class GetEnvironmentResult {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['storageConfigs'] =
-        Input.encodeList<GetEnvironmentStorageConfig, Map<String, dynamic>>(
-            storageConfigs, (value) => value.toMap());
+    map['storageConfigs'] = pulumi.Input.encodeList<GetEnvironmentStorageConfig,
+        Map<String, dynamic>>(storageConfigs, (value) => value.toMap());
     return map;
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      configs: Input.decodeList<GetEnvironmentConfig>(
+      configs: pulumi.Input.decodeList<GetEnvironmentConfig>(
           map['configs'],
           (value) => GetEnvironmentConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -68,7 +67,7 @@ class GetEnvironmentResult {
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
-      storageConfigs: Input.decodeList<GetEnvironmentStorageConfig>(
+      storageConfigs: pulumi.Input.decodeList<GetEnvironmentStorageConfig>(
           map['storageConfigs'],
           (value) => GetEnvironmentStorageConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

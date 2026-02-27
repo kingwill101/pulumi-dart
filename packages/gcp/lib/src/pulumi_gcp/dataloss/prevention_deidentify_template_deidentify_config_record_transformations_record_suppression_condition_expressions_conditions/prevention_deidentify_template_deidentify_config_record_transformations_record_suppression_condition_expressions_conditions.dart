@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config_record_transformations_record_suppression_condition_expressions_conditions_condition/prevention_deidentify_template_deidentify_config_record_transformations_record_suppression_condition_expressions_conditions_condition.dart';
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
@@ -18,7 +18,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<
+      map['conditions'] = pulumi.Input.encodeList<
           PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
@@ -30,7 +30,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition>(
               map['conditions'],
               (value) =>

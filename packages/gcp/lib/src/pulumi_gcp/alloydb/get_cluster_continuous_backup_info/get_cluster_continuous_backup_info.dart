@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_continuous_backup_info_encryption_info/get_cluster_continuous_backup_info_encryption_info.dart';
 
 class GetClusterContinuousBackupInfo {
@@ -27,7 +27,7 @@ class GetClusterContinuousBackupInfo {
     final map = <String, dynamic>{};
     map['earliestRestorableTime'] = earliestRestorableTime;
     map['enabledTime'] = enabledTime;
-    map['encryptionInfos'] = Input.encodeList<
+    map['encryptionInfos'] = pulumi.Input.encodeList<
         GetClusterContinuousBackupInfoEncryptionInfo,
         Map<String, dynamic>>(encryptionInfos, (value) => value.toMap());
     map['schedules'] = schedules;
@@ -39,7 +39,7 @@ class GetClusterContinuousBackupInfo {
       earliestRestorableTime: map['earliestRestorableTime'] as String,
       enabledTime: map['enabledTime'] as String,
       encryptionInfos:
-          Input.decodeList<GetClusterContinuousBackupInfoEncryptionInfo>(
+          pulumi.Input.decodeList<GetClusterContinuousBackupInfoEncryptionInfo>(
               map['encryptionInfos'],
               (value) => GetClusterContinuousBackupInfoEncryptionInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),

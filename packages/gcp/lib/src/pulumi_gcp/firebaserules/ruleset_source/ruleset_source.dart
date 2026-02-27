@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ruleset_source_file/ruleset_source_file.dart';
 
 class RulesetSource {
@@ -19,8 +19,9 @@ class RulesetSource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['files'] = Input.encodeList<RulesetSourceFile, Map<String, dynamic>>(
-        files, (value) => value.toMap());
+    map['files'] =
+        pulumi.Input.encodeList<RulesetSourceFile, Map<String, dynamic>>(
+            files, (value) => value.toMap());
     final languageValue = language;
     if (languageValue != null) {
       map['language'] = languageValue;
@@ -30,7 +31,7 @@ class RulesetSource {
 
   factory RulesetSource.fromMap(Map<String, dynamic> map) {
     return RulesetSource(
-      files: Input.decodeList<RulesetSourceFile>(
+      files: pulumi.Input.decodeList<RulesetSourceFile>(
           map['files'],
           (value) => RulesetSourceFile.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_channel_config_args.dart';
 
 /// The Eventarc GoogleChannelConfig resource
@@ -40,32 +40,32 @@ import 'google_channel_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default {{location}}
 /// ```
-class GoogleChannelConfig extends CustomResource {
+class GoogleChannelConfig extends pulumi.CustomResource {
   /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  late final Output<String?> cryptoKeyName;
+  late final pulumi.Output<String?> cryptoKeyName;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. The last-modified time.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   GoogleChannelConfig(
     String name, {
     GoogleChannelConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:eventarc/googleChannelConfig:GoogleChannelConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     this.location = registerOutput<String>('location');

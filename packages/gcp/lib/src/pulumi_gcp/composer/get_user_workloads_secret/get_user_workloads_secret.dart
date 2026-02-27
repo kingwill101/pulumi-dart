@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_user_workloads_secret_args.dart';
 import 'get_user_workloads_secret_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_user_workloads_secret_result.dart';
 /// * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 Future<GetUserWorkloadsSecretResult> getUserWorkloadsSecret(
   GetUserWorkloadsSecretArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserWorkloadsSecretResult.fromMap(result);
 }

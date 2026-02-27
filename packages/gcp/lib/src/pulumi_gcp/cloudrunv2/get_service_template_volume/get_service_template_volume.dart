@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_volume_cloud_sql_instance/get_service_template_volume_cloud_sql_instance.dart';
 import '../get_service_template_volume_empty_dir/get_service_template_volume_empty_dir.dart';
 import '../get_service_template_volume_gc/get_service_template_volume_gc.dart';
@@ -37,45 +37,42 @@ class GetServiceTemplateVolume {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudSqlInstances'] = Input.encodeList<
+    map['cloudSqlInstances'] = pulumi.Input.encodeList<
         GetServiceTemplateVolumeCloudSqlInstance,
         Map<String, dynamic>>(cloudSqlInstances, (value) => value.toMap());
-    map['emptyDirs'] = Input.encodeList<GetServiceTemplateVolumeEmptyDir,
+    map['emptyDirs'] = pulumi.Input.encodeList<GetServiceTemplateVolumeEmptyDir,
         Map<String, dynamic>>(emptyDirs, (value) => value.toMap());
-    map['gcs'] =
-        Input.encodeList<GetServiceTemplateVolumeGc, Map<String, dynamic>>(
-            gcs, (value) => value.toMap());
+    map['gcs'] = pulumi.Input.encodeList<GetServiceTemplateVolumeGc,
+        Map<String, dynamic>>(gcs, (value) => value.toMap());
     map['name'] = name;
-    map['nfs'] =
-        Input.encodeList<GetServiceTemplateVolumeNf, Map<String, dynamic>>(
-            nfs, (value) => value.toMap());
-    map['secrets'] =
-        Input.encodeList<GetServiceTemplateVolumeSecret, Map<String, dynamic>>(
-            secrets, (value) => value.toMap());
+    map['nfs'] = pulumi.Input.encodeList<GetServiceTemplateVolumeNf,
+        Map<String, dynamic>>(nfs, (value) => value.toMap());
+    map['secrets'] = pulumi.Input.encodeList<GetServiceTemplateVolumeSecret,
+        Map<String, dynamic>>(secrets, (value) => value.toMap());
     return map;
   }
 
   factory GetServiceTemplateVolume.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateVolume(
       cloudSqlInstances:
-          Input.decodeList<GetServiceTemplateVolumeCloudSqlInstance>(
+          pulumi.Input.decodeList<GetServiceTemplateVolumeCloudSqlInstance>(
               map['cloudSqlInstances'],
               (value) => GetServiceTemplateVolumeCloudSqlInstance.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      emptyDirs: Input.decodeList<GetServiceTemplateVolumeEmptyDir>(
+      emptyDirs: pulumi.Input.decodeList<GetServiceTemplateVolumeEmptyDir>(
           map['emptyDirs'],
           (value) => GetServiceTemplateVolumeEmptyDir.fromMap(
               (value as Map).cast<String, dynamic>())),
-      gcs: Input.decodeList<GetServiceTemplateVolumeGc>(
+      gcs: pulumi.Input.decodeList<GetServiceTemplateVolumeGc>(
           map['gcs'],
           (value) => GetServiceTemplateVolumeGc.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      nfs: Input.decodeList<GetServiceTemplateVolumeNf>(
+      nfs: pulumi.Input.decodeList<GetServiceTemplateVolumeNf>(
           map['nfs'],
           (value) => GetServiceTemplateVolumeNf.fromMap(
               (value as Map).cast<String, dynamic>())),
-      secrets: Input.decodeList<GetServiceTemplateVolumeSecret>(
+      secrets: pulumi.Input.decodeList<GetServiceTemplateVolumeSecret>(
           map['secrets'],
           (value) => GetServiceTemplateVolumeSecret.fromMap(
               (value as Map).cast<String, dynamic>())),

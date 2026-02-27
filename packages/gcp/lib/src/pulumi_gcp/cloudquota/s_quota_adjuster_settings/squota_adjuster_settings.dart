@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'squota_adjuster_settings_args.dart';
 
 /// QuotaAdjusterSettings resource represents your quota adjuster settings for a particular project. When enabled, the quota adjuster monitors your usage for the specified resources and issues quota adjustment requests when resource usage approaches its quota value.
@@ -27,41 +27,41 @@ import 'squota_adjuster_settings_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings default {{parent}}/locations/global/quotaAdjusterSettings
 /// ```
-class SQuotaAdjusterSettings extends CustomResource {
+class SQuotaAdjusterSettings extends pulumi.CustomResource {
   /// (Deprecated)
   /// The resource container that determines if the quota adjuster is set for this project.
   /// Expect this field to be empty currently.
-  late final Output<String> effectiveContainer;
+  late final pulumi.Output<String> effectiveContainer;
 
   /// (Deprecated)
   /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
   /// Expect this field to be empty currently.
-  late final Output<String> effectiveEnablement;
+  late final pulumi.Output<String> effectiveEnablement;
 
   /// Required. The configured value of the enablement at the given resource.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  late final Output<String> enablement;
+  late final pulumi.Output<String> enablement;
 
   /// Indicates whether the setting is inherited or explicitly specified.
-  late final Output<bool> inherited;
+  late final pulumi.Output<bool> inherited;
 
   /// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
   /// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
   /// The value will be empty when `enablement` is specified on this resource container.
-  late final Output<String> inheritedFrom;
+  late final pulumi.Output<String> inheritedFrom;
 
   /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   SQuotaAdjusterSettings(
     String name, {
     SQuotaAdjusterSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.effectiveContainer = registerOutput<String>('effectiveContainer');
     this.effectiveEnablement = registerOutput<String>('effectiveEnablement');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy/get_private_cloud_management_cluster_autoscaling_setting_autoscaling_policy.dart';
 
 class GetPrivateCloudManagementClusterAutoscalingSetting {
@@ -43,7 +43,7 @@ class GetPrivateCloudManagementClusterAutoscalingSetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscalingPolicies'] = Input.encodeList<
+    map['autoscalingPolicies'] = pulumi.Input.encodeList<
         GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy,
         Map<String, dynamic>>(autoscalingPolicies, (value) => value.toMap());
     map['coolDownPeriod'] = coolDownPeriod;
@@ -55,7 +55,7 @@ class GetPrivateCloudManagementClusterAutoscalingSetting {
   factory GetPrivateCloudManagementClusterAutoscalingSetting.fromMap(
       Map<String, dynamic> map) {
     return GetPrivateCloudManagementClusterAutoscalingSetting(
-      autoscalingPolicies: Input.decodeList<
+      autoscalingPolicies: pulumi.Input.decodeList<
               GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy>(
           map['autoscalingPolicies'],
           (value) =>

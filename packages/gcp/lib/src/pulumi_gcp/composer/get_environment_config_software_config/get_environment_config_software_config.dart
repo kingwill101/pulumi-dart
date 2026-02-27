@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_environment_config_software_config_cloud_data_lineage_integration/get_environment_config_software_config_cloud_data_lineage_integration.dart';
 
 class GetEnvironmentConfigSoftwareConfig {
@@ -43,7 +43,7 @@ class GetEnvironmentConfigSoftwareConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['airflowConfigOverrides'] = airflowConfigOverrides;
-    map['cloudDataLineageIntegrations'] = Input.encodeList<
+    map['cloudDataLineageIntegrations'] = pulumi.Input.encodeList<
             GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration,
             Map<String, dynamic>>(
         cloudDataLineageIntegrations, (value) => value.toMap());
@@ -60,7 +60,7 @@ class GetEnvironmentConfigSoftwareConfig {
     return GetEnvironmentConfigSoftwareConfig(
       airflowConfigOverrides:
           (map['airflowConfigOverrides'] as Map).cast<String, String>(),
-      cloudDataLineageIntegrations: Input.decodeList<
+      cloudDataLineageIntegrations: pulumi.Input.decodeList<
               GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration>(
           map['cloudDataLineageIntegrations'],
           (value) =>

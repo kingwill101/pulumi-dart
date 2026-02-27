@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_nat_address_args.dart';
 
 /// A resource used to set the list of IP addresses to be used in a NAT service and manage the draining of destroyed IPs.
@@ -45,37 +45,37 @@ import 'router_nat_address_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{router}}/{{router_nat}}
 /// ```
-class RouterNatAddress extends CustomResource {
+class RouterNatAddress extends pulumi.CustomResource {
   /// A list of URLs of the IP resources to be drained. These IPs must be
   /// valid static external IPs that have been assigned to the NAT.
-  late final Output<List<String>?> drainNatIps;
+  late final pulumi.Output<List<String>?> drainNatIps;
 
   /// Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
   /// natIpAllocateOption is set to MANUAL_ONLY.
-  late final Output<List<String>> natIps;
+  late final pulumi.Output<List<String>> natIps;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where the NAT service reside.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the Cloud Router in which the referenced NAT service is configured.
-  late final Output<String> router;
+  late final pulumi.Output<String> router;
 
   /// The name of the Nat service in which this address will be configured.
-  late final Output<String> routerNat;
+  late final pulumi.Output<String> routerNat;
 
   RouterNatAddress(
     String name, {
     RouterNatAddressArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/routerNatAddress:RouterNatAddress',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.drainNatIps = registerOutput<List<String>?>('drainNatIps');
     this.natIps = registerOutput<List<String>>('natIps');

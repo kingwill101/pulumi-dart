@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../secret_replication/secret_replication.dart';
 import '../secret_rotation/secret_rotation.dart';
 import '../secret_topic/secret_topic.dart';
@@ -55,7 +55,7 @@ import 'secret_args.dart';
 /// ```sh
 /// $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
 /// ```
-class Secret extends CustomResource {
+class Secret extends pulumi.CustomResource {
   /// Custom metadata about the secret.
   /// Annotations are distinct from various forms of labels. Annotations exist to allow
   /// client tools to store their own state information without requiring a database.
@@ -69,20 +69,20 @@ class Secret extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// The time at which the Secret was created.
-  late final Output<String> createTime;
-  late final Output<bool?> deletionProtection;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<bool?> deletionProtection;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   /// Only one of `expire_time` or `ttl` can be provided.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// The labels assigned to this Secret.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -95,45 +95,45 @@ class Secret extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The resource name of the Secret. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The replication policy of the secret data attached to the Secret. It cannot be changed
   /// after the Secret has been created.
   /// Structure is documented below.
-  late final Output<SecretReplication> replication;
+  late final pulumi.Output<SecretReplication> replication;
 
   /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
   /// Structure is documented below.
-  late final Output<SecretRotation?> rotation;
+  late final pulumi.Output<SecretRotation?> rotation;
 
   /// This must be unique within the project.
-  late final Output<String> secretId;
+  late final pulumi.Output<String> secretId;
 
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
   /// Structure is documented below.
-  late final Output<List<SecretTopic>?> topics;
+  late final pulumi.Output<List<SecretTopic>?> topics;
 
   /// The TTL for the Secret.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   /// Only one of `ttl` or `expire_time` can be provided.
-  late final Output<String?> ttl;
+  late final pulumi.Output<String?> ttl;
 
   /// Mapping from version alias to version name.
   /// A version alias is a string with a maximum length of 63 characters and can contain
@@ -142,24 +142,24 @@ class Secret extends CustomResource {
   /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
   /// An object containing a list of "key": value pairs. Example:
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  late final Output<Map<String, String>?> versionAliases;
+  late final pulumi.Output<Map<String, String>?> versionAliases;
 
   /// Secret Version TTL after destruction request.
   /// This is a part of the delayed delete feature on Secret Version.
   /// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
   /// on calling destroy instead the version goes to a disabled state and
   /// the actual destruction happens after this TTL expires.
-  late final Output<String?> versionDestroyTtl;
+  late final pulumi.Output<String?> versionDestroyTtl;
 
   Secret(
     String name, {
     SecretArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:secretmanager/secret:Secret',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');

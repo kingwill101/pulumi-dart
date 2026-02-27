@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../attestor_attestation_authority_note_public_key/attestor_attestation_authority_note_public_key.dart';
 
 class AttestorAttestationAuthorityNote {
@@ -50,7 +50,7 @@ class AttestorAttestationAuthorityNote {
     map['noteReference'] = noteReference;
     final publicKeysValue = publicKeys;
     if (publicKeysValue != null) {
-      map['publicKeys'] = Input.encodeList<
+      map['publicKeys'] = pulumi.Input.encodeList<
           AttestorAttestationAuthorityNotePublicKey,
           Map<String, dynamic>>(publicKeysValue, (value) => value.toMap());
     }
@@ -66,7 +66,7 @@ class AttestorAttestationAuthorityNote {
       noteReference: map['noteReference'] as String,
       publicKeys: map['publicKeys'] == null
           ? null
-          : Input.decodeList<AttestorAttestationAuthorityNotePublicKey>(
+          : pulumi.Input.decodeList<AttestorAttestationAuthorityNotePublicKey>(
               map['publicKeys'],
               (value) => AttestorAttestationAuthorityNotePublicKey.fromMap(
                   (value as Map).cast<String, dynamic>())),

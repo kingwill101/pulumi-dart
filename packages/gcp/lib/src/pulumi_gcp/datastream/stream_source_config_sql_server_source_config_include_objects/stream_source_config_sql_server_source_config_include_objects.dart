@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_sql_server_source_config_include_objects_schema/stream_source_config_sql_server_source_config_include_objects_schema.dart';
 
 class StreamSourceConfigSqlServerSourceConfigIncludeObjects {
@@ -15,7 +15,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['schemas'] = Input.encodeList<
+    map['schemas'] = pulumi.Input.encodeList<
         StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema,
         Map<String, dynamic>>(schemas, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjects {
   factory StreamSourceConfigSqlServerSourceConfigIncludeObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamSourceConfigSqlServerSourceConfigIncludeObjects(
-      schemas: Input.decodeList<
+      schemas: pulumi.Input.decodeList<
               StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema>(
           map['schemas'],
           (value) => StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema

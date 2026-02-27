@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_organization_notification_config_streaming_config/v2_organization_notification_config_streaming_config.dart';
 import 'v2_organization_notification_config_args.dart';
 
@@ -29,46 +29,46 @@ import 'v2_organization_notification_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig default {{name}}
 /// ```
-class V2OrganizationNotificationConfig extends CustomResource {
+class V2OrganizationNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
-  late final Output<String> configId;
+  late final pulumi.Output<String> configId;
 
   /// The description of the notification config (max of 1024 characters).
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// location Id is provided by organization. If not provided, Use global as default.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The resource name of this notification config, in the format
   /// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The organization whose Cloud Security Command Center the Notification
   /// Config lives in.
-  late final Output<String> organization;
+  late final pulumi.Output<String> organization;
 
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
-  late final Output<String> pubsubTopic;
+  late final pulumi.Output<String> pubsubTopic;
 
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
-  late final Output<String> serviceAccount;
+  late final pulumi.Output<String> serviceAccount;
 
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final Output<V2OrganizationNotificationConfigStreamingConfig>
+  late final pulumi.Output<V2OrganizationNotificationConfigStreamingConfig>
       streamingConfig;
 
   V2OrganizationNotificationConfig(
     String name, {
     V2OrganizationNotificationConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configId = registerOutput<String>('configId');
     this.description = registerOutput<String?>('description');

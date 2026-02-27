@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_product_graphql_operation_group_operation_config/api_product_graphql_operation_group_operation_config.dart';
 
 class ApiProductGraphqlOperationGroup {
@@ -25,7 +25,7 @@ class ApiProductGraphqlOperationGroup {
     }
     final operationConfigsValue = operationConfigs;
     if (operationConfigsValue != null) {
-      map['operationConfigs'] = Input.encodeList<
+      map['operationConfigs'] = pulumi.Input.encodeList<
               ApiProductGraphqlOperationGroupOperationConfig,
               Map<String, dynamic>>(
           operationConfigsValue, (value) => value.toMap());
@@ -40,7 +40,8 @@ class ApiProductGraphqlOperationGroup {
           : map['operationConfigType'] as String,
       operationConfigs: map['operationConfigs'] == null
           ? null
-          : Input.decodeList<ApiProductGraphqlOperationGroupOperationConfig>(
+          : pulumi.Input.decodeList<
+                  ApiProductGraphqlOperationGroupOperationConfig>(
               map['operationConfigs'],
               (value) => ApiProductGraphqlOperationGroupOperationConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

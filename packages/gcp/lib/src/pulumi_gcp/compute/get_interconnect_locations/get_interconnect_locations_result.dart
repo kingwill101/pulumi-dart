@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_interconnect_locations_location/get_interconnect_locations_location.dart';
 
 /// Result data returned by getInterconnectLocations.
@@ -21,7 +21,7 @@ class GetInterconnectLocationsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['locations'] = Input.encodeList<GetInterconnectLocationsLocation,
+    map['locations'] = pulumi.Input.encodeList<GetInterconnectLocationsLocation,
         Map<String, dynamic>>(locations, (value) => value.toMap());
     map['project'] = project;
     return map;
@@ -30,7 +30,7 @@ class GetInterconnectLocationsResult {
   factory GetInterconnectLocationsResult.fromMap(Map<String, dynamic> map) {
     return GetInterconnectLocationsResult(
       id: map['id'] as String,
-      locations: Input.decodeList<GetInterconnectLocationsLocation>(
+      locations: pulumi.Input.decodeList<GetInterconnectLocationsLocation>(
           map['locations'],
           (value) => GetInterconnectLocationsLocation.fromMap(
               (value as Map).cast<String, dynamic>())),

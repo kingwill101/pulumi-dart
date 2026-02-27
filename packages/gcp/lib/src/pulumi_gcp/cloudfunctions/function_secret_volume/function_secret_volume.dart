@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../function_secret_volume_version/function_secret_volume_version.dart';
 
 class FunctionSecretVolume {
@@ -33,9 +33,8 @@ class FunctionSecretVolume {
     map['secret'] = secret;
     final versionsValue = versions;
     if (versionsValue != null) {
-      map['versions'] =
-          Input.encodeList<FunctionSecretVolumeVersion, Map<String, dynamic>>(
-              versionsValue, (value) => value.toMap());
+      map['versions'] = pulumi.Input.encodeList<FunctionSecretVolumeVersion,
+          Map<String, dynamic>>(versionsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -47,7 +46,7 @@ class FunctionSecretVolume {
       secret: map['secret'] as String,
       versions: map['versions'] == null
           ? null
-          : Input.decodeList<FunctionSecretVolumeVersion>(
+          : pulumi.Input.decodeList<FunctionSecretVolumeVersion>(
               map['versions'],
               (value) => FunctionSecretVolumeVersion.fromMap(
                   (value as Map).cast<String, dynamic>())),

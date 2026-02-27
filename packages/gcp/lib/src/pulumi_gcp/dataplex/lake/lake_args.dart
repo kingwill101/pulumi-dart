@@ -1,37 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lake_metastore/lake_metastore.dart';
 
 /// The set of arguments for Lake.
 class LakeArgs {
   /// Optional. Description of the lake.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Optional. User friendly display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. User-defined labels for the lake.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Optional. Settings to manage lake and Dataproc Metastore service instance association.
-  final Input<LakeMetastore>? metastore;
+  final pulumi.Input<LakeMetastore>? metastore;
 
   /// The name of the lake.
   ///
   ///
   ///
   /// - - -
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   LakeArgs({
     this.description,
@@ -60,9 +60,8 @@ class LakeArgs {
     map['location'] = location;
     final metastoreValue = metastore;
     if (metastoreValue != null) {
-      map['metastore'] =
-          Input.mapOptionalInputValue<LakeMetastore, Map<String, dynamic>>(
-              metastoreValue, (value) => value.toMap());
+      map['metastore'] = pulumi.Input.mapOptionalInputValue<LakeMetastore,
+          Map<String, dynamic>>(metastoreValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -77,13 +76,13 @@ class LakeArgs {
 
   factory LakeArgs.fromMap(Map<String, dynamic> map) {
     return LakeArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      metastore: Input.asOptionalInput<LakeMetastore>(map['metastore']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      metastore: pulumi.Input.asOptionalInput<LakeMetastore>(map['metastore']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

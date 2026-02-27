@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_trigger_args.dart';
 import 'get_trigger_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_trigger_result.dart';
 /// * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
 Future<GetTriggerResult> getTrigger(
   GetTriggerArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:cloudbuild/getTrigger:getTrigger',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTriggerResult.fromMap(result);
 }

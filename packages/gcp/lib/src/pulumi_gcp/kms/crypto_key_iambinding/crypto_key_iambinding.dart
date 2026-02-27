@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../crypto_key_iambinding_condition/crypto_key_iambinding_condition.dart';
 import 'crypto_key_iambinding_args.dart';
 
@@ -55,19 +55,19 @@ import 'crypto_key_iambinding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
 /// ```
-class CryptoKeyIAMBinding extends CustomResource {
+class CryptoKeyIAMBinding extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<CryptoKeyIAMBindingCondition?> condition;
+  late final pulumi.Output<CryptoKeyIAMBindingCondition?> condition;
 
   /// The crypto key ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
   /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
   /// the provider's project setting will be used as a fallback.
-  late final Output<String> cryptoKeyId;
+  late final pulumi.Output<String> cryptoKeyId;
 
   /// (Computed) The etag of the project's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -77,21 +77,21 @@ class CryptoKeyIAMBinding extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<List<String>> members;
+  late final pulumi.Output<List<String>> members;
 
   /// The role that should be applied. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   CryptoKeyIAMBinding(
     String name, {
     CryptoKeyIAMBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<CryptoKeyIAMBindingCondition?>('condition');
     this.cryptoKeyId = registerOutput<String>('cryptoKeyId');

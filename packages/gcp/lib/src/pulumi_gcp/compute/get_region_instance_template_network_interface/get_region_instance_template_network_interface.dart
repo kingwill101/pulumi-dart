@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_instance_template_network_interface_access_config/get_region_instance_template_network_interface_access_config.dart';
 import '../get_region_instance_template_network_interface_alias_ip_range/get_region_instance_template_network_interface_alias_ip_range.dart';
 import '../get_region_instance_template_network_interface_ipv6_access_config/get_region_instance_template_network_interface_ipv6_access_config.dart';
@@ -81,15 +81,15 @@ class GetRegionInstanceTemplateNetworkInterface {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accessConfigs'] = Input.encodeList<
+    map['accessConfigs'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateNetworkInterfaceAccessConfig,
         Map<String, dynamic>>(accessConfigs, (value) => value.toMap());
-    map['aliasIpRanges'] = Input.encodeList<
+    map['aliasIpRanges'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateNetworkInterfaceAliasIpRange,
         Map<String, dynamic>>(aliasIpRanges, (value) => value.toMap());
     map['igmpQuery'] = igmpQuery;
     map['internalIpv6PrefixLength'] = internalIpv6PrefixLength;
-    map['ipv6AccessConfigs'] = Input.encodeList<
+    map['ipv6AccessConfigs'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig,
         Map<String, dynamic>>(ipv6AccessConfigs, (value) => value.toMap());
     map['ipv6AccessType'] = ipv6AccessType;
@@ -108,13 +108,13 @@ class GetRegionInstanceTemplateNetworkInterface {
   factory GetRegionInstanceTemplateNetworkInterface.fromMap(
       Map<String, dynamic> map) {
     return GetRegionInstanceTemplateNetworkInterface(
-      accessConfigs: Input.decodeList<
+      accessConfigs: pulumi.Input.decodeList<
               GetRegionInstanceTemplateNetworkInterfaceAccessConfig>(
           map['accessConfigs'],
           (value) =>
               GetRegionInstanceTemplateNetworkInterfaceAccessConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      aliasIpRanges: Input.decodeList<
+      aliasIpRanges: pulumi.Input.decodeList<
               GetRegionInstanceTemplateNetworkInterfaceAliasIpRange>(
           map['aliasIpRanges'],
           (value) =>
@@ -122,7 +122,7 @@ class GetRegionInstanceTemplateNetworkInterface {
                   (value as Map).cast<String, dynamic>())),
       igmpQuery: map['igmpQuery'] as String,
       internalIpv6PrefixLength: map['internalIpv6PrefixLength'] as int,
-      ipv6AccessConfigs: Input.decodeList<
+      ipv6AccessConfigs: pulumi.Input.decodeList<
               GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(
           map['ipv6AccessConfigs'],
           (value) =>

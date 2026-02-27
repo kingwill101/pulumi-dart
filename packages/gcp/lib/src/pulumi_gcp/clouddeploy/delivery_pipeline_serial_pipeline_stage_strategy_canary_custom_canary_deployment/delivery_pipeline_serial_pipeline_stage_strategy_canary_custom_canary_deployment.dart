@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment_phase_config/delivery_pipeline_serial_pipeline_stage_strategy_canary_custom_canary_deployment_phase_config.dart';
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
@@ -15,7 +15,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['phaseConfigs'] = Input.encodeList<
+    map['phaseConfigs'] = pulumi.Input.encodeList<
         DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig,
         Map<String, dynamic>>(phaseConfigs, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap(
       Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(
-      phaseConfigs: Input.decodeList<
+      phaseConfigs: pulumi.Input.decodeList<
               DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig>(
           map['phaseConfigs'],
           (value) =>

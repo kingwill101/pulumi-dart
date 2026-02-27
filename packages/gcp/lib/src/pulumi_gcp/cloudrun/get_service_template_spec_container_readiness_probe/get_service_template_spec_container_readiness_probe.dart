@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_container_readiness_probe_grpc/get_service_template_spec_container_readiness_probe_grpc.dart';
 import '../get_service_template_spec_container_readiness_probe_http_get/get_service_template_spec_container_readiness_probe_http_get.dart';
 
@@ -39,10 +39,10 @@ class GetServiceTemplateSpecContainerReadinessProbe {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['failureThreshold'] = failureThreshold;
-    map['grpcs'] = Input.encodeList<
+    map['grpcs'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerReadinessProbeGrpc,
         Map<String, dynamic>>(grpcs, (value) => value.toMap());
-    map['httpGets'] = Input.encodeList<
+    map['httpGets'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerReadinessProbeHttpGet,
         Map<String, dynamic>>(httpGets, (value) => value.toMap());
     map['periodSeconds'] = periodSeconds;
@@ -55,13 +55,12 @@ class GetServiceTemplateSpecContainerReadinessProbe {
       Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerReadinessProbe(
       failureThreshold: map['failureThreshold'] as int,
-      grpcs:
-          Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeGrpc>(
-              map['grpcs'],
-              (value) =>
-                  GetServiceTemplateSpecContainerReadinessProbeGrpc.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      httpGets: Input.decodeList<
+      grpcs: pulumi.Input.decodeList<
+              GetServiceTemplateSpecContainerReadinessProbeGrpc>(
+          map['grpcs'],
+          (value) => GetServiceTemplateSpecContainerReadinessProbeGrpc.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      httpGets: pulumi.Input.decodeList<
               GetServiceTemplateSpecContainerReadinessProbeHttpGet>(
           map['httpGets'],
           (value) =>

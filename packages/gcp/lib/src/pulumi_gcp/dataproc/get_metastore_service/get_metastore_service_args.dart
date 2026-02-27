@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMetastoreService.
 class GetMetastoreServiceArgs {
   /// The location where the metastore service resides.
   ///
   /// - - -
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The ID of the metastore service.
-  final Input<String> serviceId;
+  final pulumi.Input<String> serviceId;
 
   GetMetastoreServiceArgs({
     required this.location,
@@ -35,9 +35,9 @@ class GetMetastoreServiceArgs {
 
   factory GetMetastoreServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceId: Input.asInput<String>(map['serviceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceId: pulumi.Input.asInput<String>(map['serviceId']),
     );
   }
 }

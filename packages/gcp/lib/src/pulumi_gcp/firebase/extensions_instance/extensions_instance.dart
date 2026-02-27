@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../extensions_instance_config/extensions_instance_config.dart';
 import '../extensions_instance_error_status/extensions_instance_error_status.dart';
 import '../extensions_instance_runtime_data/extensions_instance_runtime_data.dart';
@@ -40,65 +40,65 @@ import 'extensions_instance_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{instance_id}}
 /// ```
-class ExtensionsInstance extends CustomResource {
+class ExtensionsInstance extends pulumi.CustomResource {
   /// The current Config of the Extension Instance.
   /// Structure is documented below.
-  late final Output<ExtensionsInstanceConfig> config;
+  late final pulumi.Output<ExtensionsInstanceConfig> config;
 
   /// The time at which the Extension Instance was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
-  late final Output<List<ExtensionsInstanceErrorStatus>> errorStatuses;
+  late final pulumi.Output<List<ExtensionsInstanceErrorStatus>> errorStatuses;
 
   /// A weak etag that is computed by the server based on other configuration
   /// values and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The ID to use for the Extension Instance, which will become the final
   /// component of the instance's name.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// The name of the last operation that acted on this Extension
   /// Instance
-  late final Output<String> lastOperationName;
+  late final pulumi.Output<String> lastOperationName;
 
   /// The type of the last operation that acted on the Extension Instance.
-  late final Output<String> lastOperationType;
+  late final pulumi.Output<String> lastOperationType;
 
   /// The fully-qualified resource name of the Extension Instance.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Data set by the extension instance at runtime.
   /// Structure is documented below.
-  late final Output<List<ExtensionsInstanceRuntimeData>> runtimeDatas;
+  late final pulumi.Output<List<ExtensionsInstanceRuntimeData>> runtimeDatas;
 
   /// The email of the service account to be used at runtime by compute resources
   /// created for the operation of the Extension instance.
-  late final Output<String> serviceAccountEmail;
+  late final pulumi.Output<String> serviceAccountEmail;
 
   /// The processing state of the extension instance.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The time at which the Extension Instance was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ExtensionsInstance(
     String name, {
     ExtensionsInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/extensionsInstance:ExtensionsInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.config = registerOutput<ExtensionsInstanceConfig>('config');
     this.createTime = registerOutput<String>('createTime');

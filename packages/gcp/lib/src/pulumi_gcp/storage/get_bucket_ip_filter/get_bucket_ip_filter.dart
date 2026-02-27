@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_ip_filter_public_network_source/get_bucket_ip_filter_public_network_source.dart';
 import '../get_bucket_ip_filter_vpc_network_source/get_bucket_ip_filter_vpc_network_source.dart';
 
@@ -33,10 +33,10 @@ class GetBucketIpFilter {
     map['allowAllServiceAgentAccess'] = allowAllServiceAgentAccess;
     map['allowCrossOrgVpcs'] = allowCrossOrgVpcs;
     map['mode'] = mode;
-    map['publicNetworkSources'] = Input.encodeList<
+    map['publicNetworkSources'] = pulumi.Input.encodeList<
         GetBucketIpFilterPublicNetworkSource,
         Map<String, dynamic>>(publicNetworkSources, (value) => value.toMap());
-    map['vpcNetworkSources'] = Input.encodeList<
+    map['vpcNetworkSources'] = pulumi.Input.encodeList<
         GetBucketIpFilterVpcNetworkSource,
         Map<String, dynamic>>(vpcNetworkSources, (value) => value.toMap());
     return map;
@@ -48,14 +48,15 @@ class GetBucketIpFilter {
       allowCrossOrgVpcs: map['allowCrossOrgVpcs'] as bool,
       mode: map['mode'] as String,
       publicNetworkSources:
-          Input.decodeList<GetBucketIpFilterPublicNetworkSource>(
+          pulumi.Input.decodeList<GetBucketIpFilterPublicNetworkSource>(
               map['publicNetworkSources'],
               (value) => GetBucketIpFilterPublicNetworkSource.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      vpcNetworkSources: Input.decodeList<GetBucketIpFilterVpcNetworkSource>(
-          map['vpcNetworkSources'],
-          (value) => GetBucketIpFilterVpcNetworkSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      vpcNetworkSources:
+          pulumi.Input.decodeList<GetBucketIpFilterVpcNetworkSource>(
+              map['vpcNetworkSources'],
+              (value) => GetBucketIpFilterVpcNetworkSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

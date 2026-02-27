@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../future_reservation_share_settings_project_map/future_reservation_share_settings_project_map.dart';
 
 class FutureReservationShareSettings {
@@ -25,7 +25,7 @@ class FutureReservationShareSettings {
     final map = <String, dynamic>{};
     final projectMapsValue = projectMaps;
     if (projectMapsValue != null) {
-      map['projectMaps'] = Input.encodeList<
+      map['projectMaps'] = pulumi.Input.encodeList<
           FutureReservationShareSettingsProjectMap,
           Map<String, dynamic>>(projectMapsValue, (value) => value.toMap());
     }
@@ -44,7 +44,7 @@ class FutureReservationShareSettings {
     return FutureReservationShareSettings(
       projectMaps: map['projectMaps'] == null
           ? null
-          : Input.decodeList<FutureReservationShareSettingsProjectMap>(
+          : pulumi.Input.decodeList<FutureReservationShareSettingsProjectMap>(
               map['projectMaps'],
               (value) => FutureReservationShareSettingsProjectMap.fromMap(
                   (value as Map).cast<String, dynamic>())),

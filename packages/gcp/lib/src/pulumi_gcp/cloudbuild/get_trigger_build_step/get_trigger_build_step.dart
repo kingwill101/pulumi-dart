@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_build_step_volume/get_trigger_build_step_volume.dart';
 
 class GetTriggerBuildStep {
@@ -142,9 +142,8 @@ class GetTriggerBuildStep {
     map['secretEnvs'] = secretEnvs;
     map['timeout'] = timeout;
     map['timing'] = timing;
-    map['volumes'] =
-        Input.encodeList<GetTriggerBuildStepVolume, Map<String, dynamic>>(
-            volumes, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<GetTriggerBuildStepVolume,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
     map['waitFors'] = waitFors;
     return map;
   }
@@ -163,7 +162,7 @@ class GetTriggerBuildStep {
       secretEnvs: (map['secretEnvs'] as List).cast<String>(),
       timeout: map['timeout'] as String,
       timing: map['timing'] as String,
-      volumes: Input.decodeList<GetTriggerBuildStepVolume>(
+      volumes: pulumi.Input.decodeList<GetTriggerBuildStepVolume>(
           map['volumes'],
           (value) => GetTriggerBuildStepVolume.fromMap(
               (value as Map).cast<String, dynamic>())),

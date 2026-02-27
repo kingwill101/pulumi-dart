@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAutokeyConfig.
 class GetAutokeyConfigArgs {
   /// The folder in which the AutokeyConfig is configured. If it
   /// is not provided, the provider folder is used.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   GetAutokeyConfigArgs({
     required this.folder,
@@ -20,7 +20,7 @@ class GetAutokeyConfigArgs {
 
   factory GetAutokeyConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetAutokeyConfigArgs(
-      folder: Input.asInput<String>(map['folder']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
     );
   }
 }

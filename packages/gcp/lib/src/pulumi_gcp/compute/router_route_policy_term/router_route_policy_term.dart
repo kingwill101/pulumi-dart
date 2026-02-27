@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../router_route_policy_term_action/router_route_policy_term_action.dart';
 import '../router_route_policy_term_match/router_route_policy_term_match.dart';
 
@@ -26,9 +26,8 @@ class RouterRoutePolicyTerm {
     final map = <String, dynamic>{};
     final actionsValue = actions;
     if (actionsValue != null) {
-      map['actions'] =
-          Input.encodeList<RouterRoutePolicyTermAction, Map<String, dynamic>>(
-              actionsValue, (value) => value.toMap());
+      map['actions'] = pulumi.Input.encodeList<RouterRoutePolicyTermAction,
+          Map<String, dynamic>>(actionsValue, (value) => value.toMap());
     }
     map['match'] = match.toMap();
     map['priority'] = priority;
@@ -39,7 +38,7 @@ class RouterRoutePolicyTerm {
     return RouterRoutePolicyTerm(
       actions: map['actions'] == null
           ? null
-          : Input.decodeList<RouterRoutePolicyTermAction>(
+          : pulumi.Input.decodeList<RouterRoutePolicyTermAction>(
               map['actions'],
               (value) => RouterRoutePolicyTermAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../membership_binding_state/membership_binding_state.dart';
 import 'membership_binding_args.dart';
 
@@ -41,65 +41,65 @@ import 'membership_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default {{location}}/{{membership_id}}/{{membership_binding_id}}
 /// ```
-class MembershipBinding extends CustomResource {
+class MembershipBinding extends pulumi.CustomResource {
   /// Time the MembershipBinding was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time the MembershipBinding was deleted in UTC.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Labels for this Membership binding.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location of the membership
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The client-provided identifier of the membership binding.
-  late final Output<String> membershipBindingId;
+  late final pulumi.Output<String> membershipBindingId;
 
   /// Id of the membership
-  late final Output<String> membershipId;
+  late final pulumi.Output<String> membershipId;
 
   /// The resource name for the membershipbinding itself
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// A Workspace resource name in the format
   /// `projects/*/locations/*/scopes/*`.
-  late final Output<String> scope;
+  late final pulumi.Output<String> scope;
 
   /// State of the membership binding resource.
   /// Structure is documented below.
-  late final Output<List<MembershipBindingState>> states;
+  late final pulumi.Output<List<MembershipBindingState>> states;
 
   /// Google-generated UUID for this resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time the MembershipBinding was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   MembershipBinding(
     String name, {
     MembershipBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/membershipBinding:MembershipBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceGuestAttributes.
 class GetInstanceGuestAttributesArgs {
   /// The name or self_link of the instance.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If `self_link` is provided, this value is ignored.  If neither `self_link`
   /// nor `project` are provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Path to query for the guest attributes. Consists of
   /// `namespace` name for the attributes followed with a `/`.
-  final Input<String>? queryPath;
-  final Input<String>? region;
+  final pulumi.Input<String>? queryPath;
+  final pulumi.Input<String>? region;
 
   /// Key of a variable to get the value of. Consists of
   /// `namespace` name and `key` name for the variable separated by a `/`.
-  final Input<String>? variableKey;
+  final pulumi.Input<String>? variableKey;
 
   /// The zone of the instance. If `self_link` is provided, this
   /// value is ignored.  If neither `self_link` nor `zone` are provided, the
   /// provider zone is used.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetInstanceGuestAttributesArgs({
     required this.name,
@@ -63,12 +63,12 @@ class GetInstanceGuestAttributesArgs {
 
   factory GetInstanceGuestAttributesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGuestAttributesArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      queryPath: Input.asOptionalInput<String>(map['queryPath']),
-      region: Input.asOptionalInput<String>(map['region']),
-      variableKey: Input.asOptionalInput<String>(map['variableKey']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      queryPath: pulumi.Input.asOptionalInput<String>(map['queryPath']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      variableKey: pulumi.Input.asOptionalInput<String>(map['variableKey']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

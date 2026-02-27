@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_db_servers_db_server/get_db_servers_db_server.dart';
 
 /// Result data returned by getDbServers.
@@ -25,7 +25,7 @@ class GetDbServersResult {
     final map = <String, dynamic>{};
     map['cloudExadataInfrastructure'] = cloudExadataInfrastructure;
     map['dbServers'] =
-        Input.encodeList<GetDbServersDbServer, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDbServersDbServer, Map<String, dynamic>>(
             dbServers, (value) => value.toMap());
     map['id'] = id;
     map['location'] = location;
@@ -39,7 +39,7 @@ class GetDbServersResult {
   factory GetDbServersResult.fromMap(Map<String, dynamic> map) {
     return GetDbServersResult(
       cloudExadataInfrastructure: map['cloudExadataInfrastructure'] as String,
-      dbServers: Input.decodeList<GetDbServersDbServer>(
+      dbServers: pulumi.Input.decodeList<GetDbServersDbServer>(
           map['dbServers'],
           (value) => GetDbServersDbServer.fromMap(
               (value as Map).cast<String, dynamic>())),

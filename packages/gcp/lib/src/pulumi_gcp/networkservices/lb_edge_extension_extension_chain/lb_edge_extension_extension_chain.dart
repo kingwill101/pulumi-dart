@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lb_edge_extension_extension_chain_extension/lb_edge_extension_extension_chain_extension.dart';
 import '../lb_edge_extension_extension_chain_match_condition/lb_edge_extension_extension_chain_match_condition.dart';
 
@@ -29,7 +29,8 @@ class LbEdgeExtensionExtensionChain {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['extensions'] = Input.encodeList<LbEdgeExtensionExtensionChainExtension,
+    map['extensions'] = pulumi.Input.encodeList<
+        LbEdgeExtensionExtensionChainExtension,
         Map<String, dynamic>>(extensions, (value) => value.toMap());
     map['matchCondition'] = matchCondition.toMap();
     map['name'] = name;
@@ -38,10 +39,11 @@ class LbEdgeExtensionExtensionChain {
 
   factory LbEdgeExtensionExtensionChain.fromMap(Map<String, dynamic> map) {
     return LbEdgeExtensionExtensionChain(
-      extensions: Input.decodeList<LbEdgeExtensionExtensionChainExtension>(
-          map['extensions'],
-          (value) => LbEdgeExtensionExtensionChainExtension.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      extensions:
+          pulumi.Input.decodeList<LbEdgeExtensionExtensionChainExtension>(
+              map['extensions'],
+              (value) => LbEdgeExtensionExtensionChainExtension.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       matchCondition: LbEdgeExtensionExtensionChainMatchCondition.fromMap(
           (map['matchCondition'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,

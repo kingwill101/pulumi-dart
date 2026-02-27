@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resource/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resource.dart';
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_pod_toleration/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_pod_toleration.dart';
 
@@ -34,11 +34,11 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['component'] = component;
-    map['containerResources'] = Input.encodeList<
+    map['containerResources'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource,
         Map<String, dynamic>>(containerResources, (value) => value.toMap());
     map['podAffinity'] = podAffinity;
-    map['podTolerations'] = Input.encodeList<
+    map['podTolerations'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration,
         Map<String, dynamic>>(podTolerations, (value) => value.toMap());
     map['replicaCount'] = replicaCount;
@@ -49,14 +49,14 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
       Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig(
       component: map['component'] as String,
-      containerResources: Input.decodeList<
+      containerResources: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource>(
           map['containerResources'],
           (value) =>
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource
                   .fromMap((value as Map).cast<String, dynamic>())),
       podAffinity: map['podAffinity'] as String,
-      podTolerations: Input.decodeList<
+      podTolerations: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(
           map['podTolerations'],
           (value) =>

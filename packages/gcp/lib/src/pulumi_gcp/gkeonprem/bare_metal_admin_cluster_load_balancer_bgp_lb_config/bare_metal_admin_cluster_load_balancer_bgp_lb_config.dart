@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_admin_cluster_load_balancer_bgp_lb_config_address_pool/bare_metal_admin_cluster_load_balancer_bgp_lb_config_address_pool.dart';
 import '../bare_metal_admin_cluster_load_balancer_bgp_lb_config_bgp_peer_config/bare_metal_admin_cluster_load_balancer_bgp_lb_config_bgp_peer_config.dart';
 import '../bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config/bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config.dart';
@@ -36,7 +36,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfig {
     final map = <String, dynamic>{};
     final addressPoolsValue = addressPools;
     if (addressPoolsValue != null) {
-      map['addressPools'] = Input.encodeList<
+      map['addressPools'] = pulumi.Input.encodeList<
           BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool,
           Map<String, dynamic>>(addressPoolsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfig {
     }
     final bgpPeerConfigsValue = bgpPeerConfigs;
     if (bgpPeerConfigsValue != null) {
-      map['bgpPeerConfigs'] = Input.encodeList<
+      map['bgpPeerConfigs'] = pulumi.Input.encodeList<
           BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig,
           Map<String, dynamic>>(bgpPeerConfigsValue, (value) => value.toMap());
     }
@@ -63,7 +63,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfig {
     return BareMetalAdminClusterLoadBalancerBgpLbConfig(
       addressPools: map['addressPools'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool>(
               map['addressPools'],
               (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool
@@ -71,7 +71,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfig {
       asn: map['asn'] == null ? null : map['asn'] as int,
       bgpPeerConfigs: map['bgpPeerConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig>(
               map['bgpPeerConfigs'],
               (value) =>

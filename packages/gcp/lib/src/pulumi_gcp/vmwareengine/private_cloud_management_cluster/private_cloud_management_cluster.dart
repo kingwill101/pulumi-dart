@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../private_cloud_management_cluster_autoscaling_settings/private_cloud_management_cluster_autoscaling_settings.dart';
 import '../private_cloud_management_cluster_node_type_config/private_cloud_management_cluster_node_type_config.dart';
 import '../private_cloud_management_cluster_stretched_cluster_config/private_cloud_management_cluster_stretched_cluster_config.dart';
@@ -45,7 +45,7 @@ class PrivateCloudManagementCluster {
     map['clusterId'] = clusterId;
     final nodeTypeConfigsValue = nodeTypeConfigs;
     if (nodeTypeConfigsValue != null) {
-      map['nodeTypeConfigs'] = Input.encodeList<
+      map['nodeTypeConfigs'] = pulumi.Input.encodeList<
           PrivateCloudManagementClusterNodeTypeConfig,
           Map<String, dynamic>>(nodeTypeConfigsValue, (value) => value.toMap());
     }
@@ -65,7 +65,8 @@ class PrivateCloudManagementCluster {
       clusterId: map['clusterId'] as String,
       nodeTypeConfigs: map['nodeTypeConfigs'] == null
           ? null
-          : Input.decodeList<PrivateCloudManagementClusterNodeTypeConfig>(
+          : pulumi.Input.decodeList<
+                  PrivateCloudManagementClusterNodeTypeConfig>(
               map['nodeTypeConfigs'],
               (value) => PrivateCloudManagementClusterNodeTypeConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

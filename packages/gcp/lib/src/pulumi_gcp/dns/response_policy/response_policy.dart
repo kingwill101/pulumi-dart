@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../response_policy_gke_cluster/response_policy_gke_cluster.dart';
 import '../response_policy_network/response_policy_network.dart';
 import 'response_policy_args.dart';
@@ -38,34 +38,34 @@ import 'response_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default {{response_policy_name}}
 /// ```
-class ResponsePolicy extends CustomResource {
+class ResponsePolicy extends pulumi.CustomResource {
   /// The description of the response policy, such as `My new response policy`.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
-  late final Output<List<ResponsePolicyGkeCluster>?> gkeClusters;
+  late final pulumi.Output<List<ResponsePolicyGkeCluster>?> gkeClusters;
 
   /// The list of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
-  late final Output<List<ResponsePolicyNetwork>?> networks;
+  late final pulumi.Output<List<ResponsePolicyNetwork>?> networks;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
-  late final Output<String> responsePolicyName;
+  late final pulumi.Output<String> responsePolicyName;
 
   ResponsePolicy(
     String name, {
     ResponsePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dns/responsePolicy:ResponsePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.gkeClusters =

@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Channel.
 class ChannelArgs {
   /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  final Input<String>? cryptoKeyName;
+  final pulumi.Input<String>? cryptoKeyName;
 
   /// User-defined labels for the channel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The resource name of the channel. Must be unique within the location on the project.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-  final Input<String>? thirdPartyProvider;
+  final pulumi.Input<String>? thirdPartyProvider;
 
   ChannelArgs({
     this.cryptoKeyName,
@@ -62,13 +62,13 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      cryptoKeyName: Input.asOptionalInput<String>(map['cryptoKeyName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      cryptoKeyName: pulumi.Input.asOptionalInput<String>(map['cryptoKeyName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       thirdPartyProvider:
-          Input.asOptionalInput<String>(map['thirdPartyProvider']),
+          pulumi.Input.asOptionalInput<String>(map['thirdPartyProvider']),
     );
   }
 }

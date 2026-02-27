@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../conversation_profile_automated_agent_config/conversation_profile_automated_agent_config.dart';
 import '../conversation_profile_human_agent_assistant_config/conversation_profile_human_agent_assistant_config.dart';
 import '../conversation_profile_human_agent_handoff_config/conversation_profile_human_agent_handoff_config.dart';
@@ -41,81 +41,84 @@ import 'conversation_profile_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/conversationProfile:ConversationProfile default {{name}}
 /// ```
-class ConversationProfile extends CustomResource {
+class ConversationProfile extends pulumi.CustomResource {
   /// Configuration for an automated agent to use with this profile
   /// Structure is documented below.
-  late final Output<ConversationProfileAutomatedAgentConfig?>
+  late final pulumi.Output<ConversationProfileAutomatedAgentConfig?>
       automatedAgentConfig;
 
   /// Required. Human readable name for this profile. Max length 1024 bytes.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Configuration for connecting to a live agent
   /// Structure is documented below.
-  late final Output<ConversationProfileHumanAgentAssistantConfig?>
+  late final pulumi.Output<ConversationProfileHumanAgentAssistantConfig?>
       humanAgentAssistantConfig;
 
   /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
   /// Structure is documented below.
-  late final Output<ConversationProfileHumanAgentHandoffConfig?>
+  late final pulumi.Output<ConversationProfileHumanAgentHandoffConfig?>
       humanAgentHandoffConfig;
 
   /// Language code for the conversation profile. This should be a BCP-47 language tag.
-  late final Output<String> languageCode;
+  late final pulumi.Output<String> languageCode;
 
   /// desc
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Defines logging behavior for conversation lifecycle events.
   /// Structure is documented below.
-  late final Output<ConversationProfileLoggingConfig?> loggingConfig;
+  late final pulumi.Output<ConversationProfileLoggingConfig?> loggingConfig;
 
   /// name
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
   /// Structure is documented below.
-  late final Output<ConversationProfileNewMessageEventNotificationConfig?>
+  late final pulumi
+      .Output<ConversationProfileNewMessageEventNotificationConfig?>
       newMessageEventNotificationConfig;
 
   /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
   /// Structure is documented below.
-  late final Output<ConversationProfileNewRecognitionResultNotificationConfig?>
+  late final pulumi
+      .Output<ConversationProfileNewRecognitionResultNotificationConfig?>
       newRecognitionResultNotificationConfig;
 
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
   /// Structure is documented below.
-  late final Output<ConversationProfileNotificationConfig?> notificationConfig;
+  late final pulumi.Output<ConversationProfileNotificationConfig?>
+      notificationConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Name of the CX SecuritySettings reference for the agent.
-  late final Output<String?> securitySettings;
+  late final pulumi.Output<String?> securitySettings;
 
   /// Settings for speech transcription.
   /// Structure is documented below.
-  late final Output<ConversationProfileSttConfig?> sttConfig;
+  late final pulumi.Output<ConversationProfileSttConfig?> sttConfig;
 
   /// The time zone of this conversational profile.
-  late final Output<String?> timeZone;
+  late final pulumi.Output<String?> timeZone;
 
   /// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
   /// Structure is documented below.
-  late final Output<ConversationProfileTtsConfig?> ttsConfig;
+  late final pulumi.Output<ConversationProfileTtsConfig?> ttsConfig;
 
   ConversationProfile(
     String name, {
     ConversationProfileArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/conversationProfile:ConversationProfile',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.automatedAgentConfig =
         registerOutput<ConversationProfileAutomatedAgentConfig?>(

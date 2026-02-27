@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../transfer_agent_pool_bandwidth_limit/transfer_agent_pool_bandwidth_limit.dart';
 import 'transfer_agent_pool_args.dart';
 
@@ -41,13 +41,13 @@ import 'transfer_agent_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
 /// ```
-class TransferAgentPool extends CustomResource {
+class TransferAgentPool extends pulumi.CustomResource {
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   /// Structure is documented below.
-  late final Output<TransferAgentPoolBandwidthLimit?> bandwidthLimit;
+  late final pulumi.Output<TransferAgentPoolBandwidthLimit?> bandwidthLimit;
 
   /// Specifies the client-specified AgentPool description.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The ID of the agent pool to create.
   /// The agentPoolId must meet the following requirements:
@@ -57,24 +57,24 @@ class TransferAgentPool extends CustomResource {
   /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
   /// * One or more numerals or lowercase ASCII characters.
   /// As expressed by the regular expression: ^(?!goog)a-z?$.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Specifies the state of the AgentPool.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   TransferAgentPool(
     String name, {
     TransferAgentPoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/transferAgentPool:TransferAgentPool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bandwidthLimit =
         registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit');

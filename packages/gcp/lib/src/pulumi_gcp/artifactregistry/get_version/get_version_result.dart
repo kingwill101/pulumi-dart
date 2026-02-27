@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_version_related_tag/get_version_related_tag.dart';
 
 /// Result data returned by getVersion.
@@ -62,7 +62,7 @@ class GetVersionResult {
       map['project'] = projectValue;
     }
     map['relatedTags'] =
-        Input.encodeList<GetVersionRelatedTag, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetVersionRelatedTag, Map<String, dynamic>>(
             relatedTags, (value) => value.toMap());
     map['repositoryId'] = repositoryId;
     map['updateTime'] = updateTime;
@@ -84,7 +84,7 @@ class GetVersionResult {
       name: map['name'] as String,
       packageName: map['packageName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      relatedTags: Input.decodeList<GetVersionRelatedTag>(
+      relatedTags: pulumi.Input.decodeList<GetVersionRelatedTag>(
           map['relatedTags'],
           (value) => GetVersionRelatedTag.fromMap(
               (value as Map).cast<String, dynamic>())),

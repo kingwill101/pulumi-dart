@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../toolset_open_api_toolset/toolset_open_api_toolset.dart';
 import 'toolset_args.dart';
 
@@ -52,63 +52,63 @@ import 'toolset_args.dart';
 /// ```sh
 /// $ pulumi import gcp:ces/toolset:Toolset default {{location}}/{{app}}/{{toolset_id}}
 /// ```
-class Toolset extends CustomResource {
+class Toolset extends pulumi.CustomResource {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> app;
+  late final pulumi.Output<String> app;
 
   /// Timestamp when the toolset was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The description of the toolset.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The display name of the toolset. Must be unique within the same app.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Possible values:
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
-  late final Output<String?> executionType;
+  late final pulumi.Output<String?> executionType;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A toolset that contains a list of tools that are defined by an OpenAPI
   /// schema.
   /// Structure is documented below.
-  late final Output<ToolsetOpenApiToolset?> openApiToolset;
+  late final pulumi.Output<ToolsetOpenApiToolset?> openApiToolset;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The ID to use for the toolset, which will become the final component of
   /// the toolset's resource name. If not provided, a unique ID will be
   /// automatically assigned for the toolset.
-  late final Output<String> toolsetId;
+  late final pulumi.Output<String> toolsetId;
 
   /// Timestamp when the toolset was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Toolset(
     String name, {
     ToolsetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:ces/toolset:Toolset',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.app = registerOutput<String>('app');
     this.createTime = registerOutput<String>('createTime');

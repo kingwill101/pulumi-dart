@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_reasoning_engine_spec_deployment_spec_env/ai_reasoning_engine_spec_deployment_spec_env.dart';
 import '../ai_reasoning_engine_spec_deployment_spec_psc_interface_config/ai_reasoning_engine_spec_deployment_spec_psc_interface_config.dart';
 import '../ai_reasoning_engine_spec_deployment_spec_secret_env/ai_reasoning_engine_spec_deployment_spec_secret_env.dart';
@@ -66,7 +66,8 @@ class AiReasoningEngineSpecDeploymentSpec {
     }
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] = Input.encodeList<AiReasoningEngineSpecDeploymentSpecEnv,
+      map['envs'] = pulumi.Input.encodeList<
+          AiReasoningEngineSpecDeploymentSpecEnv,
           Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
     final maxInstancesValue = maxInstances;
@@ -87,7 +88,7 @@ class AiReasoningEngineSpecDeploymentSpec {
     }
     final secretEnvsValue = secretEnvs;
     if (secretEnvsValue != null) {
-      map['secretEnvs'] = Input.encodeList<
+      map['secretEnvs'] = pulumi.Input.encodeList<
           AiReasoningEngineSpecDeploymentSpecSecretEnv,
           Map<String, dynamic>>(secretEnvsValue, (value) => value.toMap());
     }
@@ -102,7 +103,7 @@ class AiReasoningEngineSpecDeploymentSpec {
           : map['containerConcurrency'] as int,
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(
+          : pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(
               map['envs'],
               (value) => AiReasoningEngineSpecDeploymentSpecEnv.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -119,7 +120,8 @@ class AiReasoningEngineSpecDeploymentSpec {
           : (map['resourceLimits'] as Map).cast<String, String>(),
       secretEnvs: map['secretEnvs'] == null
           ? null
-          : Input.decodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv>(
+          : pulumi.Input.decodeList<
+                  AiReasoningEngineSpecDeploymentSpecSecretEnv>(
               map['secretEnvs'],
               (value) => AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap(
                   (value as Map).cast<String, dynamic>())),

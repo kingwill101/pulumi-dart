@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_bucket_signed_url_key_args.dart';
 
 /// A key for signing Cloud CDN signed URLs for BackendBuckets.
@@ -22,31 +22,31 @@ import 'backend_bucket_signed_url_key_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class BackendBucketSignedUrlKey extends CustomResource {
+class BackendBucketSignedUrlKey extends pulumi.CustomResource {
   /// The backend bucket this signed URL key belongs.
-  late final Output<String> backendBucket;
+  late final pulumi.Output<String> backendBucket;
 
   /// 128-bit key value used for signing the URL. The key value must be a
   /// valid RFC 4648 Section 5 base64url encoded string.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> keyValue;
+  late final pulumi.Output<String> keyValue;
 
   /// Name of the signed URL key.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   BackendBucketSignedUrlKey(
     String name, {
     BackendBucketSignedUrlKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backendBucket = registerOutput<String>('backendBucket');
     this.keyValue = registerOutput<String>('keyValue');

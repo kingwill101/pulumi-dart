@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_zone_cloud_logging_config/managed_zone_cloud_logging_config.dart';
 import '../managed_zone_dnssec_config/managed_zone_dnssec_config.dart';
 import '../managed_zone_forwarding_config/managed_zone_forwarding_config.dart';
@@ -12,65 +12,66 @@ import '../managed_zone_service_directory_config/managed_zone_service_directory_
 class ManagedZoneArgs {
   /// Cloud logging configuration
   /// Structure is documented below.
-  final Input<ManagedZoneCloudLoggingConfig>? cloudLoggingConfig;
+  final pulumi.Input<ManagedZoneCloudLoggingConfig>? cloudLoggingConfig;
 
   /// A textual description field. Defaults to 'Managed by Pulumi'.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The DNS name of this managed zone, for instance "example.com.".
-  final Input<String> dnsName;
+  final pulumi.Input<String> dnsName;
 
   /// DNSSEC configuration
   /// Structure is documented below.
-  final Input<ManagedZoneDnssecConfig>? dnssecConfig;
+  final pulumi.Input<ManagedZoneDnssecConfig>? dnssecConfig;
 
   /// Set this true to delete all records in the zone.
-  final Input<bool>? forceDestroy;
+  final pulumi.Input<bool>? forceDestroy;
 
   /// The presence for this field indicates that outbound forwarding is enabled
   /// for this zone. The value of this field contains the set of destinations
   /// to forward to.
   /// Structure is documented below.
-  final Input<ManagedZoneForwardingConfig>? forwardingConfig;
+  final pulumi.Input<ManagedZoneForwardingConfig>? forwardingConfig;
 
   /// A set of key/value label pairs to assign to this ManagedZone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// User assigned name for this resource.
   /// Must be unique within the project.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The presence of this field indicates that DNS Peering is enabled for this
   /// zone. The value of this field contains the network to peer with.
   /// Structure is documented below.
-  final Input<ManagedZonePeeringConfig>? peeringConfig;
+  final pulumi.Input<ManagedZonePeeringConfig>? peeringConfig;
 
   /// For privately visible zones, the set of Virtual Private Cloud
   /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
   /// Structure is documented below.
-  final Input<ManagedZonePrivateVisibilityConfig>? privateVisibilityConfig;
+  final pulumi.Input<ManagedZonePrivateVisibilityConfig>?
+      privateVisibilityConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
   /// lookup queries using automatically configured records for VPC resources. This only applies
   /// to networks listed under `private_visibility_config`.
-  final Input<bool>? reverseLookup;
+  final pulumi.Input<bool>? reverseLookup;
 
   /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
   /// Structure is documented below.
-  final Input<ManagedZoneServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ManagedZoneServiceDirectoryConfig>? serviceDirectoryConfig;
 
   /// The zone's visibility: public zones are exposed to the Internet,
   /// while private zones are visible only to Virtual Private Cloud resources.
   /// Default value is `public`.
   /// Possible values are: `private`, `public`.
-  final Input<String>? visibility;
+  final pulumi.Input<String>? visibility;
 
   ManagedZoneArgs({
     this.cloudLoggingConfig,
@@ -93,7 +94,7 @@ class ManagedZoneArgs {
     final map = <String, dynamic>{};
     final cloudLoggingConfigValue = cloudLoggingConfig;
     if (cloudLoggingConfigValue != null) {
-      map['cloudLoggingConfig'] = Input.mapOptionalInputValue<
+      map['cloudLoggingConfig'] = pulumi.Input.mapOptionalInputValue<
               ManagedZoneCloudLoggingConfig, Map<String, dynamic>>(
           cloudLoggingConfigValue, (value) => value.toMap());
     }
@@ -104,7 +105,8 @@ class ManagedZoneArgs {
     map['dnsName'] = dnsName;
     final dnssecConfigValue = dnssecConfig;
     if (dnssecConfigValue != null) {
-      map['dnssecConfig'] = Input.mapOptionalInputValue<ManagedZoneDnssecConfig,
+      map['dnssecConfig'] = pulumi.Input.mapOptionalInputValue<
+          ManagedZoneDnssecConfig,
           Map<String, dynamic>>(dnssecConfigValue, (value) => value.toMap());
     }
     final forceDestroyValue = forceDestroy;
@@ -113,7 +115,7 @@ class ManagedZoneArgs {
     }
     final forwardingConfigValue = forwardingConfig;
     if (forwardingConfigValue != null) {
-      map['forwardingConfig'] = Input.mapOptionalInputValue<
+      map['forwardingConfig'] = pulumi.Input.mapOptionalInputValue<
               ManagedZoneForwardingConfig, Map<String, dynamic>>(
           forwardingConfigValue, (value) => value.toMap());
     }
@@ -127,13 +129,13 @@ class ManagedZoneArgs {
     }
     final peeringConfigValue = peeringConfig;
     if (peeringConfigValue != null) {
-      map['peeringConfig'] = Input.mapOptionalInputValue<
+      map['peeringConfig'] = pulumi.Input.mapOptionalInputValue<
           ManagedZonePeeringConfig,
           Map<String, dynamic>>(peeringConfigValue, (value) => value.toMap());
     }
     final privateVisibilityConfigValue = privateVisibilityConfig;
     if (privateVisibilityConfigValue != null) {
-      map['privateVisibilityConfig'] = Input.mapOptionalInputValue<
+      map['privateVisibilityConfig'] = pulumi.Input.mapOptionalInputValue<
               ManagedZonePrivateVisibilityConfig, Map<String, dynamic>>(
           privateVisibilityConfigValue, (value) => value.toMap());
     }
@@ -147,7 +149,7 @@ class ManagedZoneArgs {
     }
     final serviceDirectoryConfigValue = serviceDirectoryConfig;
     if (serviceDirectoryConfigValue != null) {
-      map['serviceDirectoryConfig'] = Input.mapOptionalInputValue<
+      map['serviceDirectoryConfig'] = pulumi.Input.mapOptionalInputValue<
               ManagedZoneServiceDirectoryConfig, Map<String, dynamic>>(
           serviceDirectoryConfigValue, (value) => value.toMap());
     }
@@ -160,28 +162,30 @@ class ManagedZoneArgs {
 
   factory ManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneArgs(
-      cloudLoggingConfig: Input.asOptionalInput<ManagedZoneCloudLoggingConfig>(
-          map['cloudLoggingConfig']),
-      description: Input.asOptionalInput<String>(map['description']),
-      dnsName: Input.asInput<String>(map['dnsName']),
-      dnssecConfig:
-          Input.asOptionalInput<ManagedZoneDnssecConfig>(map['dnssecConfig']),
-      forceDestroy: Input.asOptionalInput<bool>(map['forceDestroy']),
-      forwardingConfig: Input.asOptionalInput<ManagedZoneForwardingConfig>(
-          map['forwardingConfig']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      name: Input.asOptionalInput<String>(map['name']),
-      peeringConfig:
-          Input.asOptionalInput<ManagedZonePeeringConfig>(map['peeringConfig']),
+      cloudLoggingConfig:
+          pulumi.Input.asOptionalInput<ManagedZoneCloudLoggingConfig>(
+              map['cloudLoggingConfig']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      dnsName: pulumi.Input.asInput<String>(map['dnsName']),
+      dnssecConfig: pulumi.Input.asOptionalInput<ManagedZoneDnssecConfig>(
+          map['dnssecConfig']),
+      forceDestroy: pulumi.Input.asOptionalInput<bool>(map['forceDestroy']),
+      forwardingConfig:
+          pulumi.Input.asOptionalInput<ManagedZoneForwardingConfig>(
+              map['forwardingConfig']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      peeringConfig: pulumi.Input.asOptionalInput<ManagedZonePeeringConfig>(
+          map['peeringConfig']),
       privateVisibilityConfig:
-          Input.asOptionalInput<ManagedZonePrivateVisibilityConfig>(
+          pulumi.Input.asOptionalInput<ManagedZonePrivateVisibilityConfig>(
               map['privateVisibilityConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
-      reverseLookup: Input.asOptionalInput<bool>(map['reverseLookup']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      reverseLookup: pulumi.Input.asOptionalInput<bool>(map['reverseLookup']),
       serviceDirectoryConfig:
-          Input.asOptionalInput<ManagedZoneServiceDirectoryConfig>(
+          pulumi.Input.asOptionalInput<ManagedZoneServiceDirectoryConfig>(
               map['serviceDirectoryConfig']),
-      visibility: Input.asOptionalInput<String>(map['visibility']),
+      visibility: pulumi.Input.asOptionalInput<String>(map['visibility']),
     );
   }
 }

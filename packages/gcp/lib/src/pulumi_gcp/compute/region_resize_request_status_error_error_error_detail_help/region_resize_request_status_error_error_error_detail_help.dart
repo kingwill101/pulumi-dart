@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_resize_request_status_error_error_error_detail_help_link/region_resize_request_status_error_error_error_detail_help_link.dart';
 
 class RegionResizeRequestStatusErrorErrorErrorDetailHelp {
@@ -17,7 +17,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetailHelp {
     final map = <String, dynamic>{};
     final linksValue = links;
     if (linksValue != null) {
-      map['links'] = Input.encodeList<
+      map['links'] = pulumi.Input.encodeList<
           RegionResizeRequestStatusErrorErrorErrorDetailHelpLink,
           Map<String, dynamic>>(linksValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetailHelp {
     return RegionResizeRequestStatusErrorErrorErrorDetailHelp(
       links: map['links'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionResizeRequestStatusErrorErrorErrorDetailHelpLink>(
               map['links'],
               (value) => RegionResizeRequestStatusErrorErrorErrorDetailHelpLink

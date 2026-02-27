@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_advertised_prefix_args.dart';
 
 /// Represents a PublicAdvertisedPrefix for use with bring your own IP addresses (BYOIP).
@@ -48,15 +48,15 @@ import 'public_advertised_prefix_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{name}}
 /// ```
-class PublicAdvertisedPrefix extends CustomResource {
+class PublicAdvertisedPrefix extends pulumi.CustomResource {
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The IPv4 address to be used for reverse DNS verification.
-  late final Output<String?> dnsVerificationIp;
+  late final pulumi.Output<String?> dnsVerificationIp;
 
   /// The address range, in CIDR format, represented by this public advertised prefix.
-  late final Output<String> ipCidrRange;
+  late final pulumi.Output<String> ipCidrRange;
 
   /// The internet access type for IPv6 Public Advertised Prefixes. It can be
   /// set to one of following:
@@ -66,7 +66,7 @@ class PublicAdvertisedPrefix extends CustomResource {
   /// be used privately within Google Cloud. All children PDPs will have
   /// access type as INTERNAL.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
-  late final Output<String> ipv6AccessType;
+  late final pulumi.Output<String> ipv6AccessType;
 
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -74,7 +74,7 @@ class PublicAdvertisedPrefix extends CustomResource {
   /// which means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Specifies how child public delegated prefix will be scoped. pdpScope
   /// must be one of: GLOBAL, REGIONAL
@@ -83,27 +83,27 @@ class PublicAdvertisedPrefix extends CustomResource {
   /// * GLOBAL: The public delegated prefix is global only. The provisioning
   /// will take ~4 weeks.
   /// Possible values are: `GLOBAL`, `REGIONAL`.
-  late final Output<String?> pdpScope;
+  late final pulumi.Output<String?> pdpScope;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Output Only. The shared secret to be used for reverse DNS verification.
-  late final Output<String> sharedSecret;
+  late final pulumi.Output<String> sharedSecret;
 
   PublicAdvertisedPrefix(
     String name, {
     PublicAdvertisedPrefixArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.dnsVerificationIp = registerOutput<String?>('dnsVerificationIp');

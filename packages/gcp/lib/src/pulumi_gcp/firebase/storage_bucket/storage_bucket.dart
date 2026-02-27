@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_bucket_args.dart';
 
 /// An association between a Firebase project and a Google Cloud Storage bucket.
@@ -40,26 +40,26 @@ import 'storage_bucket_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
 /// ```
-class StorageBucket extends CustomResource {
+class StorageBucket extends pulumi.CustomResource {
   /// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
-  late final Output<String?> bucketId;
+  late final pulumi.Output<String?> bucketId;
 
   /// Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   StorageBucket(
     String name, {
     StorageBucketArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/storageBucket:StorageBucket',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucketId = registerOutput<String?>('bucketId');
     this.name = registerOutput<String>('name');

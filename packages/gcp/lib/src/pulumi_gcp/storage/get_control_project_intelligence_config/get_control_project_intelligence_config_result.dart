@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_control_project_intelligence_config_effective_intelligence_config/get_control_project_intelligence_config_effective_intelligence_config.dart';
 import '../get_control_project_intelligence_config_filter/get_control_project_intelligence_config_filter.dart';
 import '../get_control_project_intelligence_config_trial_config/get_control_project_intelligence_config_trial_config.dart';
@@ -31,15 +31,16 @@ class GetControlProjectIntelligenceConfigResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['editionConfig'] = editionConfig;
-    map['effectiveIntelligenceConfigs'] = Input.encodeList<
+    map['effectiveIntelligenceConfigs'] = pulumi.Input.encodeList<
             GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig,
             Map<String, dynamic>>(
         effectiveIntelligenceConfigs, (value) => value.toMap());
-    map['filters'] = Input.encodeList<GetControlProjectIntelligenceConfigFilter,
+    map['filters'] = pulumi.Input.encodeList<
+        GetControlProjectIntelligenceConfigFilter,
         Map<String, dynamic>>(filters, (value) => value.toMap());
     map['id'] = id;
     map['name'] = name;
-    map['trialConfigs'] = Input.encodeList<
+    map['trialConfigs'] = pulumi.Input.encodeList<
         GetControlProjectIntelligenceConfigTrialConfig,
         Map<String, dynamic>>(trialConfigs, (value) => value.toMap());
     map['updateTime'] = updateTime;
@@ -50,23 +51,24 @@ class GetControlProjectIntelligenceConfigResult {
       Map<String, dynamic> map) {
     return GetControlProjectIntelligenceConfigResult(
       editionConfig: map['editionConfig'] as String,
-      effectiveIntelligenceConfigs: Input.decodeList<
+      effectiveIntelligenceConfigs: pulumi.Input.decodeList<
               GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig>(
           map['effectiveIntelligenceConfigs'],
           (value) =>
               GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
-      filters: Input.decodeList<GetControlProjectIntelligenceConfigFilter>(
-          map['filters'],
-          (value) => GetControlProjectIntelligenceConfigFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      filters:
+          pulumi.Input.decodeList<GetControlProjectIntelligenceConfigFilter>(
+              map['filters'],
+              (value) => GetControlProjectIntelligenceConfigFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
-      trialConfigs:
-          Input.decodeList<GetControlProjectIntelligenceConfigTrialConfig>(
-              map['trialConfigs'],
-              (value) => GetControlProjectIntelligenceConfigTrialConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      trialConfigs: pulumi.Input.decodeList<
+              GetControlProjectIntelligenceConfigTrialConfig>(
+          map['trialConfigs'],
+          (value) => GetControlProjectIntelligenceConfigTrialConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       updateTime: map['updateTime'] as String,
     );
   }

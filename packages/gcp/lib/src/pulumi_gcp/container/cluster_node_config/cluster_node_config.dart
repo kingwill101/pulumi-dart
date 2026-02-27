@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_node_config_advanced_machine_features/cluster_node_config_advanced_machine_features.dart';
 import '../cluster_node_config_boot_disk/cluster_node_config_boot_disk.dart';
 import '../cluster_node_config_confidential_nodes/cluster_node_config_confidential_nodes.dart';
@@ -308,7 +308,8 @@ class ClusterNodeConfig {
     }
     final effectiveTaintsValue = effectiveTaints;
     if (effectiveTaintsValue != null) {
-      map['effectiveTaints'] = Input.encodeList<ClusterNodeConfigEffectiveTaint,
+      map['effectiveTaints'] = pulumi.Input.encodeList<
+          ClusterNodeConfigEffectiveTaint,
           Map<String, dynamic>>(effectiveTaintsValue, (value) => value.toMap());
     }
     final enableConfidentialStorageValue = enableConfidentialStorage;
@@ -338,7 +339,7 @@ class ClusterNodeConfig {
     }
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.encodeList<
+      map['guestAccelerators'] = pulumi.Input.encodeList<
               ClusterNodeConfigGuestAccelerator, Map<String, dynamic>>(
           guestAcceleratorsValue, (value) => value.toMap());
     }
@@ -428,7 +429,7 @@ class ClusterNodeConfig {
     }
     final secondaryBootDisksValue = secondaryBootDisks;
     if (secondaryBootDisksValue != null) {
-      map['secondaryBootDisks'] = Input.encodeList<
+      map['secondaryBootDisks'] = pulumi.Input.encodeList<
               ClusterNodeConfigSecondaryBootDisk, Map<String, dynamic>>(
           secondaryBootDisksValue, (value) => value.toMap());
     }
@@ -459,7 +460,7 @@ class ClusterNodeConfig {
     final taintsValue = taints;
     if (taintsValue != null) {
       map['taints'] =
-          Input.encodeList<ClusterNodeConfigTaint, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ClusterNodeConfigTaint, Map<String, dynamic>>(
               taintsValue, (value) => value.toMap());
     }
     final windowsNodeConfigValue = windowsNodeConfig;
@@ -498,7 +499,7 @@ class ClusterNodeConfig {
       diskType: map['diskType'] == null ? null : map['diskType'] as String,
       effectiveTaints: map['effectiveTaints'] == null
           ? null
-          : Input.decodeList<ClusterNodeConfigEffectiveTaint>(
+          : pulumi.Input.decodeList<ClusterNodeConfigEffectiveTaint>(
               map['effectiveTaints'],
               (value) => ClusterNodeConfigEffectiveTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -526,7 +527,7 @@ class ClusterNodeConfig {
               (map['gcfsConfig'] as Map).cast<String, dynamic>()),
       guestAccelerators: map['guestAccelerators'] == null
           ? null
-          : Input.decodeList<ClusterNodeConfigGuestAccelerator>(
+          : pulumi.Input.decodeList<ClusterNodeConfigGuestAccelerator>(
               map['guestAccelerators'],
               (value) => ClusterNodeConfigGuestAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -595,7 +596,7 @@ class ClusterNodeConfig {
               (map['sandboxConfig'] as Map).cast<String, dynamic>()),
       secondaryBootDisks: map['secondaryBootDisks'] == null
           ? null
-          : Input.decodeList<ClusterNodeConfigSecondaryBootDisk>(
+          : pulumi.Input.decodeList<ClusterNodeConfigSecondaryBootDisk>(
               map['secondaryBootDisks'],
               (value) => ClusterNodeConfigSecondaryBootDisk.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -617,7 +618,7 @@ class ClusterNodeConfig {
       tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<ClusterNodeConfigTaint>(
+          : pulumi.Input.decodeList<ClusterNodeConfigTaint>(
               map['taints'],
               (value) => ClusterNodeConfigTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_guest_attributes_query_value/get_instance_guest_attributes_query_value.dart';
 
 /// Result data returned by getInstanceGuestAttributes.
@@ -41,7 +41,8 @@ class GetInstanceGuestAttributesResult {
     if (queryPathValue != null) {
       map['queryPath'] = queryPathValue;
     }
-    map['queryValues'] = Input.encodeList<GetInstanceGuestAttributesQueryValue,
+    map['queryValues'] = pulumi.Input.encodeList<
+        GetInstanceGuestAttributesQueryValue,
         Map<String, dynamic>>(queryValues, (value) => value.toMap());
     map['region'] = region;
     final variableKeyValue = variableKey;
@@ -59,10 +60,11 @@ class GetInstanceGuestAttributesResult {
       name: map['name'] as String,
       project: map['project'] as String,
       queryPath: map['queryPath'] == null ? null : map['queryPath'] as String,
-      queryValues: Input.decodeList<GetInstanceGuestAttributesQueryValue>(
-          map['queryValues'],
-          (value) => GetInstanceGuestAttributesQueryValue.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      queryValues:
+          pulumi.Input.decodeList<GetInstanceGuestAttributesQueryValue>(
+              map['queryValues'],
+              (value) => GetInstanceGuestAttributesQueryValue.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       variableKey:
           map['variableKey'] == null ? null : map['variableKey'] as String,

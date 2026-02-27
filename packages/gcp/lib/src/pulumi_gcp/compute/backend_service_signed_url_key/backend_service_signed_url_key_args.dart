@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BackendServiceSignedUrlKey.
 class BackendServiceSignedUrlKeyArgs {
   /// The backend service this signed URL key belongs.
-  final Input<String> backendService;
+  final pulumi.Input<String> backendService;
 
   /// 128-bit key value used for signing the URL. The key value must be a
   /// valid RFC 4648 Section 5 base64url encoded string.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String> keyValue;
+  final pulumi.Input<String> keyValue;
 
   /// Name of the signed URL key.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   BackendServiceSignedUrlKeyArgs({
     required this.backendService,
@@ -43,10 +43,10 @@ class BackendServiceSignedUrlKeyArgs {
 
   factory BackendServiceSignedUrlKeyArgs.fromMap(Map<String, dynamic> map) {
     return BackendServiceSignedUrlKeyArgs(
-      backendService: Input.asInput<String>(map['backendService']),
-      keyValue: Input.asInput<String>(map['keyValue']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      backendService: pulumi.Input.asInput<String>(map['backendService']),
+      keyValue: pulumi.Input.asInput<String>(map['keyValue']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

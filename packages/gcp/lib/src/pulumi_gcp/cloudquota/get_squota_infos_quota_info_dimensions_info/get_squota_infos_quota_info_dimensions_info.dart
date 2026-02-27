@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_squota_infos_quota_info_dimensions_info_detail/get_squota_infos_quota_info_dimensions_info_detail.dart';
 
 class GetSQuotaInfosQuotaInfoDimensionsInfo {
@@ -22,7 +22,7 @@ class GetSQuotaInfosQuotaInfoDimensionsInfo {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['applicableLocations'] = applicableLocations;
-    map['details'] = Input.encodeList<
+    map['details'] = pulumi.Input.encodeList<
         GetSQuotaInfosQuotaInfoDimensionsInfoDetail,
         Map<String, dynamic>>(details, (value) => value.toMap());
     map['dimensions'] = dimensions;
@@ -33,10 +33,11 @@ class GetSQuotaInfosQuotaInfoDimensionsInfo {
       Map<String, dynamic> map) {
     return GetSQuotaInfosQuotaInfoDimensionsInfo(
       applicableLocations: (map['applicableLocations'] as List).cast<String>(),
-      details: Input.decodeList<GetSQuotaInfosQuotaInfoDimensionsInfoDetail>(
-          map['details'],
-          (value) => GetSQuotaInfosQuotaInfoDimensionsInfoDetail.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      details:
+          pulumi.Input.decodeList<GetSQuotaInfosQuotaInfoDimensionsInfoDetail>(
+              map['details'],
+              (value) => GetSQuotaInfosQuotaInfoDimensionsInfoDetail.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       dimensions: (map['dimensions'] as Map).cast<String, String>(),
     );
   }

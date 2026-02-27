@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_table_biglake_configuration/get_table_biglake_configuration.dart';
 import '../get_table_encryption_configuration/get_table_encryption_configuration.dart';
 import '../get_table_external_catalog_table_option/get_table_external_catalog_table_option.dart';
@@ -103,24 +103,24 @@ class GetTableResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['biglakeConfigurations'] =
-        Input.encodeList<GetTableBiglakeConfiguration, Map<String, dynamic>>(
-            biglakeConfigurations, (value) => value.toMap());
+    map['biglakeConfigurations'] = pulumi.Input.encodeList<
+        GetTableBiglakeConfiguration,
+        Map<String, dynamic>>(biglakeConfigurations, (value) => value.toMap());
     map['clusterings'] = clusterings;
     map['creationTime'] = creationTime;
     map['datasetId'] = datasetId;
     map['deletionProtection'] = deletionProtection;
     map['description'] = description;
     map['effectiveLabels'] = effectiveLabels;
-    map['encryptionConfigurations'] =
-        Input.encodeList<GetTableEncryptionConfiguration, Map<String, dynamic>>(
-            encryptionConfigurations, (value) => value.toMap());
+    map['encryptionConfigurations'] = pulumi.Input.encodeList<
+            GetTableEncryptionConfiguration, Map<String, dynamic>>(
+        encryptionConfigurations, (value) => value.toMap());
     map['etag'] = etag;
     map['expirationTime'] = expirationTime;
-    map['externalCatalogTableOptions'] = Input.encodeList<
+    map['externalCatalogTableOptions'] = pulumi.Input.encodeList<
             GetTableExternalCatalogTableOption, Map<String, dynamic>>(
         externalCatalogTableOptions, (value) => value.toMap());
-    map['externalDataConfigurations'] = Input.encodeList<
+    map['externalDataConfigurations'] = pulumi.Input.encodeList<
             GetTableExternalDataConfiguration, Map<String, dynamic>>(
         externalDataConfigurations, (value) => value.toMap());
     map['friendlyName'] = friendlyName;
@@ -132,7 +132,7 @@ class GetTableResult {
     map['lastModifiedTime'] = lastModifiedTime;
     map['location'] = location;
     map['materializedViews'] =
-        Input.encodeList<GetTableMaterializedView, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTableMaterializedView, Map<String, dynamic>>(
             materializedViews, (value) => value.toMap());
     map['maxStaleness'] = maxStaleness;
     map['numBytes'] = numBytes;
@@ -143,39 +143,40 @@ class GetTableResult {
       map['project'] = projectValue;
     }
     map['pulumiLabels'] = pulumiLabels;
-    map['rangePartitionings'] =
-        Input.encodeList<GetTableRangePartitioning, Map<String, dynamic>>(
-            rangePartitionings, (value) => value.toMap());
+    map['rangePartitionings'] = pulumi.Input.encodeList<
+        GetTableRangePartitioning,
+        Map<String, dynamic>>(rangePartitionings, (value) => value.toMap());
     map['requirePartitionFilter'] = requirePartitionFilter;
     map['resourceTags'] = resourceTags;
     map['schema'] = schema;
-    map['schemaForeignTypeInfos'] =
-        Input.encodeList<GetTableSchemaForeignTypeInfo, Map<String, dynamic>>(
-            schemaForeignTypeInfos, (value) => value.toMap());
+    map['schemaForeignTypeInfos'] = pulumi.Input.encodeList<
+        GetTableSchemaForeignTypeInfo,
+        Map<String, dynamic>>(schemaForeignTypeInfos, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['tableConstraints'] =
-        Input.encodeList<GetTableTableConstraint, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTableTableConstraint, Map<String, dynamic>>(
             tableConstraints, (value) => value.toMap());
     map['tableId'] = tableId;
     map['tableMetadataView'] = tableMetadataView;
-    map['tableReplicationInfos'] =
-        Input.encodeList<GetTableTableReplicationInfo, Map<String, dynamic>>(
-            tableReplicationInfos, (value) => value.toMap());
+    map['tableReplicationInfos'] = pulumi.Input.encodeList<
+        GetTableTableReplicationInfo,
+        Map<String, dynamic>>(tableReplicationInfos, (value) => value.toMap());
     map['timePartitionings'] =
-        Input.encodeList<GetTableTimePartitioning, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTableTimePartitioning, Map<String, dynamic>>(
             timePartitionings, (value) => value.toMap());
     map['type'] = type;
-    map['views'] = Input.encodeList<GetTableView, Map<String, dynamic>>(
+    map['views'] = pulumi.Input.encodeList<GetTableView, Map<String, dynamic>>(
         views, (value) => value.toMap());
     return map;
   }
 
   factory GetTableResult.fromMap(Map<String, dynamic> map) {
     return GetTableResult(
-      biglakeConfigurations: Input.decodeList<GetTableBiglakeConfiguration>(
-          map['biglakeConfigurations'],
-          (value) => GetTableBiglakeConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      biglakeConfigurations:
+          pulumi.Input.decodeList<GetTableBiglakeConfiguration>(
+              map['biglakeConfigurations'],
+              (value) => GetTableBiglakeConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       clusterings: (map['clusterings'] as List).cast<String>(),
       creationTime: map['creationTime'] as int,
       datasetId: map['datasetId'] as String,
@@ -183,19 +184,19 @@ class GetTableResult {
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       encryptionConfigurations:
-          Input.decodeList<GetTableEncryptionConfiguration>(
+          pulumi.Input.decodeList<GetTableEncryptionConfiguration>(
               map['encryptionConfigurations'],
               (value) => GetTableEncryptionConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       expirationTime: map['expirationTime'] as int,
       externalCatalogTableOptions:
-          Input.decodeList<GetTableExternalCatalogTableOption>(
+          pulumi.Input.decodeList<GetTableExternalCatalogTableOption>(
               map['externalCatalogTableOptions'],
               (value) => GetTableExternalCatalogTableOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
       externalDataConfigurations:
-          Input.decodeList<GetTableExternalDataConfiguration>(
+          pulumi.Input.decodeList<GetTableExternalDataConfiguration>(
               map['externalDataConfigurations'],
               (value) => GetTableExternalDataConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -207,7 +208,7 @@ class GetTableResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       lastModifiedTime: map['lastModifiedTime'] as int,
       location: map['location'] as String,
-      materializedViews: Input.decodeList<GetTableMaterializedView>(
+      materializedViews: pulumi.Input.decodeList<GetTableMaterializedView>(
           map['materializedViews'],
           (value) => GetTableMaterializedView.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -217,34 +218,36 @@ class GetTableResult {
       numRows: map['numRows'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      rangePartitionings: Input.decodeList<GetTableRangePartitioning>(
+      rangePartitionings: pulumi.Input.decodeList<GetTableRangePartitioning>(
           map['rangePartitionings'],
           (value) => GetTableRangePartitioning.fromMap(
               (value as Map).cast<String, dynamic>())),
       requirePartitionFilter: map['requirePartitionFilter'] as bool,
       resourceTags: (map['resourceTags'] as Map).cast<String, String>(),
       schema: map['schema'] as String,
-      schemaForeignTypeInfos: Input.decodeList<GetTableSchemaForeignTypeInfo>(
-          map['schemaForeignTypeInfos'],
-          (value) => GetTableSchemaForeignTypeInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      schemaForeignTypeInfos:
+          pulumi.Input.decodeList<GetTableSchemaForeignTypeInfo>(
+              map['schemaForeignTypeInfos'],
+              (value) => GetTableSchemaForeignTypeInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
-      tableConstraints: Input.decodeList<GetTableTableConstraint>(
+      tableConstraints: pulumi.Input.decodeList<GetTableTableConstraint>(
           map['tableConstraints'],
           (value) => GetTableTableConstraint.fromMap(
               (value as Map).cast<String, dynamic>())),
       tableId: map['tableId'] as String,
       tableMetadataView: map['tableMetadataView'] as String,
-      tableReplicationInfos: Input.decodeList<GetTableTableReplicationInfo>(
-          map['tableReplicationInfos'],
-          (value) => GetTableTableReplicationInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      timePartitionings: Input.decodeList<GetTableTimePartitioning>(
+      tableReplicationInfos:
+          pulumi.Input.decodeList<GetTableTableReplicationInfo>(
+              map['tableReplicationInfos'],
+              (value) => GetTableTableReplicationInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      timePartitionings: pulumi.Input.decodeList<GetTableTimePartitioning>(
           map['timePartitionings'],
           (value) => GetTableTimePartitioning.fromMap(
               (value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      views: Input.decodeList<GetTableView>(
+      views: pulumi.Input.decodeList<GetTableView>(
           map['views'],
           (value) =>
               GetTableView.fromMap((value as Map).cast<String, dynamic>())),

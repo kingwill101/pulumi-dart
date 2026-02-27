@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_environment_config_node_config_ip_allocation_policy/get_environment_config_node_config_ip_allocation_policy.dart';
 
 class GetEnvironmentConfigNodeConfig {
@@ -66,7 +66,7 @@ class GetEnvironmentConfigNodeConfig {
     map['composerNetworkAttachment'] = composerNetworkAttachment;
     map['diskSizeGb'] = diskSizeGb;
     map['enableIpMasqAgent'] = enableIpMasqAgent;
-    map['ipAllocationPolicies'] = Input.encodeList<
+    map['ipAllocationPolicies'] = pulumi.Input.encodeList<
         GetEnvironmentConfigNodeConfigIpAllocationPolicy,
         Map<String, dynamic>>(ipAllocationPolicies, (value) => value.toMap());
     map['machineType'] = machineType;
@@ -87,12 +87,11 @@ class GetEnvironmentConfigNodeConfig {
       composerNetworkAttachment: map['composerNetworkAttachment'] as String,
       diskSizeGb: map['diskSizeGb'] as int,
       enableIpMasqAgent: map['enableIpMasqAgent'] as bool,
-      ipAllocationPolicies:
-          Input.decodeList<GetEnvironmentConfigNodeConfigIpAllocationPolicy>(
-              map['ipAllocationPolicies'],
-              (value) =>
-                  GetEnvironmentConfigNodeConfigIpAllocationPolicy.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      ipAllocationPolicies: pulumi.Input.decodeList<
+              GetEnvironmentConfigNodeConfigIpAllocationPolicy>(
+          map['ipAllocationPolicies'],
+          (value) => GetEnvironmentConfigNodeConfigIpAllocationPolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       machineType: map['machineType'] as String,
       maxPodsPerNode: map['maxPodsPerNode'] as int,
       network: map['network'] as String,

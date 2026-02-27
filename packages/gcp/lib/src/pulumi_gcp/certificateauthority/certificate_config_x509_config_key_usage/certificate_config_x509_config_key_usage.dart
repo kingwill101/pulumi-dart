@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_config_x509_config_key_usage_base_key_usage/certificate_config_x509_config_key_usage_base_key_usage.dart';
 import '../certificate_config_x509_config_key_usage_extended_key_usage/certificate_config_x509_config_key_usage_extended_key_usage.dart';
 import '../certificate_config_x509_config_key_usage_unknown_extended_key_usage/certificate_config_x509_config_key_usage_unknown_extended_key_usage.dart';
@@ -31,7 +31,7 @@ class CertificateConfigX509ConfigKeyUsage {
     map['extendedKeyUsage'] = extendedKeyUsage.toMap();
     final unknownExtendedKeyUsagesValue = unknownExtendedKeyUsages;
     if (unknownExtendedKeyUsagesValue != null) {
-      map['unknownExtendedKeyUsages'] = Input.encodeList<
+      map['unknownExtendedKeyUsages'] = pulumi.Input.encodeList<
               CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage,
               Map<String, dynamic>>(
           unknownExtendedKeyUsagesValue, (value) => value.toMap());
@@ -49,7 +49,7 @@ class CertificateConfigX509ConfigKeyUsage {
               (map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
       unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>(
               map['unknownExtendedKeyUsages'],
               (value) =>

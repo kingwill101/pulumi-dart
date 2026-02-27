@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_test_case_last_test_result_conversation_turn/cx_test_case_last_test_result_conversation_turn.dart';
 
 class CxTestCaseLastTestResult {
@@ -36,7 +36,7 @@ class CxTestCaseLastTestResult {
     final map = <String, dynamic>{};
     final conversationTurnsValue = conversationTurns;
     if (conversationTurnsValue != null) {
-      map['conversationTurns'] = Input.encodeList<
+      map['conversationTurns'] = pulumi.Input.encodeList<
               CxTestCaseLastTestResultConversationTurn, Map<String, dynamic>>(
           conversationTurnsValue, (value) => value.toMap());
     }
@@ -63,7 +63,7 @@ class CxTestCaseLastTestResult {
     return CxTestCaseLastTestResult(
       conversationTurns: map['conversationTurns'] == null
           ? null
-          : Input.decodeList<CxTestCaseLastTestResultConversationTurn>(
+          : pulumi.Input.decodeList<CxTestCaseLastTestResultConversationTurn>(
               map['conversationTurns'],
               (value) => CxTestCaseLastTestResultConversationTurn.fromMap(
                   (value as Map).cast<String, dynamic>())),

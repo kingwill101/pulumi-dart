@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_gateway_iam_binding_condition/security_gateway_iam_binding_condition.dart';
 import 'security_gateway_iam_binding_args.dart';
 
@@ -123,18 +123,18 @@ import 'security_gateway_iam_binding_args.dart';
 /// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-class SecurityGatewayIamBinding extends CustomResource {
+class SecurityGatewayIamBinding extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<SecurityGatewayIamBindingCondition?> condition;
+  late final pulumi.Output<SecurityGatewayIamBindingCondition?> condition;
 
   /// (Computed) The etag of the IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -148,29 +148,29 @@ class SecurityGatewayIamBinding extends CustomResource {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  late final Output<List<String>> members;
+  late final pulumi.Output<List<String>> members;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The role that should be applied. Only one
   /// `gcp.beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   /// Used to find the parent resource to bind the IAM policy to
-  late final Output<String> securityGatewayId;
+  late final pulumi.Output<String> securityGatewayId;
 
   SecurityGatewayIamBinding(
     String name, {
     SecurityGatewayIamBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition =
         registerOutput<SecurityGatewayIamBindingCondition?>('condition');

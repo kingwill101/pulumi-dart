@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../snapshot_snapshot_encryption_key/snapshot_snapshot_encryption_key.dart';
 import '../snapshot_source_disk_encryption_key/snapshot_source_disk_encryption_key.dart';
 
@@ -12,18 +12,18 @@ class SnapshotArgs {
   /// service owners who needs to create separate snapshot chains, for
   /// example, for chargeback tracking.  When you describe your snapshot
   /// resource, this field is visible only if it has a non-empty value.
-  final Input<String>? chainName;
+  final pulumi.Input<String>? chainName;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
-  final Input<bool>? guestFlush;
+  final pulumi.Input<bool>? guestFlush;
 
   /// Labels to apply to this Snapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -32,11 +32,11 @@ class SnapshotArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Encrypts the snapshot using a customer-supplied encryption key.
   /// After you encrypt a snapshot using a customer-supplied key, you must
@@ -49,29 +49,29 @@ class SnapshotArgs {
   /// then the snapshot will be encrypted using an automatically generated
   /// key and you do not need to provide a key to use the snapshot later.
   /// Structure is documented below.
-  final Input<SnapshotSnapshotEncryptionKey>? snapshotEncryptionKey;
+  final pulumi.Input<SnapshotSnapshotEncryptionKey>? snapshotEncryptionKey;
 
   /// Indicates the type of the snapshot.
   /// Possible values are: `ARCHIVE`, `STANDARD`.
-  final Input<String>? snapshotType;
+  final pulumi.Input<String>? snapshotType;
 
   /// A reference to the disk used to create this snapshot.
-  final Input<String>? sourceDisk;
+  final pulumi.Input<String>? sourceDisk;
 
   /// The customer-supplied encryption key of the source snapshot. Required
   /// if the source snapshot is protected by a customer-supplied encryption
   /// key.
   /// Structure is documented below.
-  final Input<SnapshotSourceDiskEncryptionKey>? sourceDiskEncryptionKey;
+  final pulumi.Input<SnapshotSourceDiskEncryptionKey>? sourceDiskEncryptionKey;
 
   /// A reference to the instant snapshot used to create this snapshot.
-  final Input<String>? sourceInstantSnapshot;
+  final pulumi.Input<String>? sourceInstantSnapshot;
 
   /// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
-  final Input<List<String>>? storageLocations;
+  final pulumi.Input<List<String>>? storageLocations;
 
   /// A reference to the zone where the disk is hosted.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   SnapshotArgs({
     this.chainName,
@@ -117,7 +117,7 @@ class SnapshotArgs {
     }
     final snapshotEncryptionKeyValue = snapshotEncryptionKey;
     if (snapshotEncryptionKeyValue != null) {
-      map['snapshotEncryptionKey'] = Input.mapOptionalInputValue<
+      map['snapshotEncryptionKey'] = pulumi.Input.mapOptionalInputValue<
               SnapshotSnapshotEncryptionKey, Map<String, dynamic>>(
           snapshotEncryptionKeyValue, (value) => value.toMap());
     }
@@ -131,7 +131,7 @@ class SnapshotArgs {
     }
     final sourceDiskEncryptionKeyValue = sourceDiskEncryptionKey;
     if (sourceDiskEncryptionKeyValue != null) {
-      map['sourceDiskEncryptionKey'] = Input.mapOptionalInputValue<
+      map['sourceDiskEncryptionKey'] = pulumi.Input.mapOptionalInputValue<
               SnapshotSourceDiskEncryptionKey, Map<String, dynamic>>(
           sourceDiskEncryptionKeyValue, (value) => value.toMap());
     }
@@ -152,25 +152,25 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      chainName: Input.asOptionalInput<String>(map['chainName']),
-      description: Input.asOptionalInput<String>(map['description']),
-      guestFlush: Input.asOptionalInput<bool>(map['guestFlush']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      chainName: pulumi.Input.asOptionalInput<String>(map['chainName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      guestFlush: pulumi.Input.asOptionalInput<bool>(map['guestFlush']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       snapshotEncryptionKey:
-          Input.asOptionalInput<SnapshotSnapshotEncryptionKey>(
+          pulumi.Input.asOptionalInput<SnapshotSnapshotEncryptionKey>(
               map['snapshotEncryptionKey']),
-      snapshotType: Input.asOptionalInput<String>(map['snapshotType']),
-      sourceDisk: Input.asOptionalInput<String>(map['sourceDisk']),
+      snapshotType: pulumi.Input.asOptionalInput<String>(map['snapshotType']),
+      sourceDisk: pulumi.Input.asOptionalInput<String>(map['sourceDisk']),
       sourceDiskEncryptionKey:
-          Input.asOptionalInput<SnapshotSourceDiskEncryptionKey>(
+          pulumi.Input.asOptionalInput<SnapshotSourceDiskEncryptionKey>(
               map['sourceDiskEncryptionKey']),
       sourceInstantSnapshot:
-          Input.asOptionalInput<String>(map['sourceInstantSnapshot']),
+          pulumi.Input.asOptionalInput<String>(map['sourceInstantSnapshot']),
       storageLocations:
-          Input.asOptionalInput<List<String>>(map['storageLocations']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+          pulumi.Input.asOptionalInput<List<String>>(map['storageLocations']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

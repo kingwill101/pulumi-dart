@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_certificate_map_gclb_target/get_certificate_map_gclb_target.dart';
 
 /// Result data returned by getCertificateMap.
@@ -36,9 +36,8 @@ class GetCertificateMapResult {
     map['createTime'] = createTime;
     map['description'] = description;
     map['effectiveLabels'] = effectiveLabels;
-    map['gclbTargets'] =
-        Input.encodeList<GetCertificateMapGclbTarget, Map<String, dynamic>>(
-            gclbTargets, (value) => value.toMap());
+    map['gclbTargets'] = pulumi.Input.encodeList<GetCertificateMapGclbTarget,
+        Map<String, dynamic>>(gclbTargets, (value) => value.toMap());
     map['id'] = id;
     map['labels'] = labels;
     map['name'] = name;
@@ -56,7 +55,7 @@ class GetCertificateMapResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      gclbTargets: Input.decodeList<GetCertificateMapGclbTarget>(
+      gclbTargets: pulumi.Input.decodeList<GetCertificateMapGclbTarget>(
           map['gclbTargets'],
           (value) => GetCertificateMapGclbTarget.fromMap(
               (value as Map).cast<String, dynamic>())),

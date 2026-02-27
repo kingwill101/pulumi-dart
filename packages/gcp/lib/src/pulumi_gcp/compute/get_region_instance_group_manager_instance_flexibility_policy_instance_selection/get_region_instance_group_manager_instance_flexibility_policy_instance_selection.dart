@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk/get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk.dart';
 
 class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
@@ -31,7 +31,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['disks'] = Input.encodeList<
+    map['disks'] = pulumi.Input.encodeList<
         GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk,
         Map<String, dynamic>>(disks, (value) => value.toMap());
     map['machineTypes'] = machineTypes;
@@ -44,7 +44,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromMap(
       Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(
-      disks: Input.decodeList<
+      disks: pulumi.Input.decodeList<
               GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk>(
           map['disks'],
           (value) =>

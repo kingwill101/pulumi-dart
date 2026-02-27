@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_policy_attachment_args.dart';
 
 /// Adds existing resource policies to a compute instance. You can only add one policy
@@ -46,30 +46,30 @@ import 'resource_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment default {{instance}}/{{name}}
 /// ```
-class ResourcePolicyAttachment extends CustomResource {
+class ResourcePolicyAttachment extends pulumi.CustomResource {
   /// The name of the instance in which the resource policies are attached to.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// The resource policy to be attached to the instance for scheduling start/stop
   /// operations. Do not specify the self link.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A reference to the zone where the instance resides.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   ResourcePolicyAttachment(
     String name, {
     ResourcePolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');

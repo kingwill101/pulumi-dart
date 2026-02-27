@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_guardrail_action_respond_immediately_response/app_version_snapshot_guardrail_action_respond_immediately_response.dart';
 
 class AppVersionSnapshotGuardrailActionRespondImmediately {
@@ -19,7 +19,7 @@ class AppVersionSnapshotGuardrailActionRespondImmediately {
     final map = <String, dynamic>{};
     final responsesValue = responses;
     if (responsesValue != null) {
-      map['responses'] = Input.encodeList<
+      map['responses'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailActionRespondImmediatelyResponse,
           Map<String, dynamic>>(responsesValue, (value) => value.toMap());
     }
@@ -31,7 +31,7 @@ class AppVersionSnapshotGuardrailActionRespondImmediately {
     return AppVersionSnapshotGuardrailActionRespondImmediately(
       responses: map['responses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>(
               map['responses'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entry_gcs_fileset_spec_sample_gcs_file_spec/entry_gcs_fileset_spec_sample_gcs_file_spec.dart';
 
 class EntryGcsFilesetSpec {
@@ -35,7 +35,7 @@ class EntryGcsFilesetSpec {
     map['filePatterns'] = filePatterns;
     final sampleGcsFileSpecsValue = sampleGcsFileSpecs;
     if (sampleGcsFileSpecsValue != null) {
-      map['sampleGcsFileSpecs'] = Input.encodeList<
+      map['sampleGcsFileSpecs'] = pulumi.Input.encodeList<
               EntryGcsFilesetSpecSampleGcsFileSpec, Map<String, dynamic>>(
           sampleGcsFileSpecsValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class EntryGcsFilesetSpec {
       filePatterns: (map['filePatterns'] as List).cast<String>(),
       sampleGcsFileSpecs: map['sampleGcsFileSpecs'] == null
           ? null
-          : Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(
+          : pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(
               map['sampleGcsFileSpecs'],
               (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),

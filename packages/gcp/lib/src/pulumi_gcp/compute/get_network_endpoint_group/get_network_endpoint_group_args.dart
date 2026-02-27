@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNetworkEndpointGroup.
 class GetNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name.
   /// Provide either this or a `self_link`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Network Endpoint Group self_link.
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   /// The Network Endpoint Group availability zone.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetNetworkEndpointGroupArgs({
     this.name,
@@ -48,10 +48,10 @@ class GetNetworkEndpointGroupArgs {
 
   factory GetNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkEndpointGroupArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

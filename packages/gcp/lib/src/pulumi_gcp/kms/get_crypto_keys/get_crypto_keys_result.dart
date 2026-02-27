@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_crypto_keys_key/get_crypto_keys_key.dart';
 
 /// Result data returned by getCryptoKeys.
@@ -29,8 +29,9 @@ class GetCryptoKeysResult {
     }
     map['id'] = id;
     map['keyRing'] = keyRing;
-    map['keys'] = Input.encodeList<GetCryptoKeysKey, Map<String, dynamic>>(
-        keys, (value) => value.toMap());
+    map['keys'] =
+        pulumi.Input.encodeList<GetCryptoKeysKey, Map<String, dynamic>>(
+            keys, (value) => value.toMap());
     return map;
   }
 
@@ -39,7 +40,7 @@ class GetCryptoKeysResult {
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
       keyRing: map['keyRing'] as String,
-      keys: Input.decodeList<GetCryptoKeysKey>(
+      keys: pulumi.Input.decodeList<GetCryptoKeysKey>(
           map['keys'],
           (value) =>
               GetCryptoKeysKey.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_encryption_config/backup_encryption_config.dart';
 
 /// The set of arguments for Backup.
@@ -10,40 +10,40 @@ class BackupArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// The ID of the alloydb backup.
-  final Input<String> backupId;
+  final pulumi.Input<String> backupId;
 
   /// The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
-  final Input<String> clusterName;
+  final pulumi.Input<String> clusterName;
 
   /// User-provided description of the backup.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User-settable and human-readable display name for the Backup.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
   /// Structure is documented below.
-  final Input<BackupEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<BackupEncryptionConfig>? encryptionConfig;
 
   /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location where the alloydb backup should reside.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The backup type, which suggests the trigger for the backup.
   /// Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   BackupArgs({
     this.annotations,
@@ -76,7 +76,7 @@ class BackupArgs {
     }
     final encryptionConfigValue = encryptionConfig;
     if (encryptionConfigValue != null) {
-      map['encryptionConfig'] = Input.mapOptionalInputValue<
+      map['encryptionConfig'] = pulumi.Input.mapOptionalInputValue<
               BackupEncryptionConfig, Map<String, dynamic>>(
           encryptionConfigValue, (value) => value.toMap());
     }
@@ -99,17 +99,17 @@ class BackupArgs {
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      backupId: Input.asInput<String>(map['backupId']),
-      clusterName: Input.asInput<String>(map['clusterName']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      encryptionConfig: Input.asOptionalInput<BackupEncryptionConfig>(
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      backupId: pulumi.Input.asInput<String>(map['backupId']),
+      clusterName: pulumi.Input.asInput<String>(map['clusterName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      encryptionConfig: pulumi.Input.asOptionalInput<BackupEncryptionConfig>(
           map['encryptionConfig']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asOptionalInput<String>(map['type']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

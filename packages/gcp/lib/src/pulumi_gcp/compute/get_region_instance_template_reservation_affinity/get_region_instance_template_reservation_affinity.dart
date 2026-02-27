@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_instance_template_reservation_affinity_specific_reservation/get_region_instance_template_reservation_affinity_specific_reservation.dart';
 
 class GetRegionInstanceTemplateReservationAffinity {
@@ -18,7 +18,7 @@ class GetRegionInstanceTemplateReservationAffinity {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['specificReservations'] = Input.encodeList<
+    map['specificReservations'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateReservationAffinitySpecificReservation,
         Map<String, dynamic>>(specificReservations, (value) => value.toMap());
     map['type'] = type;
@@ -28,7 +28,7 @@ class GetRegionInstanceTemplateReservationAffinity {
   factory GetRegionInstanceTemplateReservationAffinity.fromMap(
       Map<String, dynamic> map) {
     return GetRegionInstanceTemplateReservationAffinity(
-      specificReservations: Input.decodeList<
+      specificReservations: pulumi.Input.decodeList<
               GetRegionInstanceTemplateReservationAffinitySpecificReservation>(
           map['specificReservations'],
           (value) =>

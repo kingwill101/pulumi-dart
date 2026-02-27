@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workforce_pool_provider_extended_attributes_oauth2_client/workforce_pool_provider_extended_attributes_oauth2_client.dart';
 import '../workforce_pool_provider_extra_attributes_oauth2_client/workforce_pool_provider_extra_attributes_oauth2_client.dart';
 import '../workforce_pool_provider_oidc/workforce_pool_provider_oidc.dart';
@@ -71,13 +71,13 @@ import 'workforce_pool_provider_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default {{location}}/{{workforce_pool_id}}/{{provider_id}}
 /// ```
-class WorkforcePoolProvider extends CustomResource {
+class WorkforcePoolProvider extends pulumi.CustomResource {
   /// A [Common Expression Language](https://opensource.google/projects/cel) expression, in
   /// plain text, to restrict what otherwise valid authentication credentials issued by the
   /// provider should not be accepted.
   /// The expression must output a boolean representing whether to allow the federation.
   /// The following keywords may be referenced in the expressions:
-  late final Output<String?> attributeCondition;
+  late final pulumi.Output<String?> attributeCondition;
 
   /// Maps attributes from the authentication credentials issued by an external identity provider
   /// to Google Cloud attributes, such as `subject` and `segment`.
@@ -121,17 +121,17 @@ class WorkforcePoolProvider extends CustomResource {
   /// ```
   /// An object containing a list of `"key": value` pairs.
   /// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-  late final Output<Map<String, String>?> attributeMapping;
+  late final pulumi.Output<Map<String, String>?> attributeMapping;
 
   /// A user-specified description of the provider. Cannot exceed 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// However, existing tokens still grant access.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// A user-specified display name for the provider. Cannot exceed 32 characters.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The configuration for OAuth 2.0 client used to get the extended group
   /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
@@ -144,7 +144,7 @@ class WorkforcePoolProvider extends CustomResource {
   /// active session. Each user identity in the workforce identity pool must map
   /// to a unique Microsoft Entra ID user.
   /// Structure is documented below.
-  late final Output<WorkforcePoolProviderExtendedAttributesOauth2Client?>
+  late final pulumi.Output<WorkforcePoolProviderExtendedAttributesOauth2Client?>
       extendedAttributesOauth2Client;
 
   /// The configuration for OAuth 2.0 client used to get the additional user
@@ -152,28 +152,28 @@ class WorkforcePoolProvider extends CustomResource {
   /// in authentication credentials. Currently this configuration is only
   /// supported with SAML and OIDC protocol.
   /// Structure is documented below.
-  late final Output<WorkforcePoolProviderExtraAttributesOauth2Client?>
+  late final pulumi.Output<WorkforcePoolProviderExtraAttributesOauth2Client?>
       extraAttributesOauth2Client;
 
   /// The location for the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Output only. The resource name of the provider.
   /// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Represents an OpenId Connect 1.0 identity provider.
   /// Structure is documented below.
-  late final Output<WorkforcePoolProviderOidc?> oidc;
+  late final pulumi.Output<WorkforcePoolProviderOidc?> oidc;
 
   /// The ID for the provider, which becomes the final component of the resource name.
   /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  late final Output<String> providerId;
+  late final pulumi.Output<String> providerId;
 
   /// Represents a SAML identity provider.
   /// Structure is documented below.
-  late final Output<WorkforcePoolProviderSaml?> saml;
+  late final pulumi.Output<WorkforcePoolProviderSaml?> saml;
 
   /// Agentspace only. Specifies whether the workforce identity pool
   /// provider uses SCIM-managed groups instead of the `google.groups`
@@ -185,7 +185,7 @@ class WorkforcePoolProvider extends CustomResource {
   /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
   /// attribute mapping for authorization checks
   /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
-  late final Output<String?> scimUsage;
+  late final pulumi.Output<String?> scimUsage;
 
   /// The current state of the provider.
   /// * STATE_UNSPECIFIED: State unspecified.
@@ -193,23 +193,23 @@ class WorkforcePoolProvider extends CustomResource {
   /// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
   /// deleted after approximately 30 days. You can restore a soft-deleted provider using
   /// [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The ID to use for the pool, which becomes the final component of the resource name.
   /// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
   /// It must start with a letter, and cannot have a trailing hyphen.
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  late final Output<String> workforcePoolId;
+  late final pulumi.Output<String> workforcePoolId;
 
   WorkforcePoolProvider(
     String name, {
     WorkforcePoolProviderArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/workforcePoolProvider:WorkforcePoolProvider',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attributeCondition = registerOutput<String?>('attributeCondition');
     this.attributeMapping =

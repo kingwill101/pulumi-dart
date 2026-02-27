@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_admin_cluster_status_condition/bare_metal_admin_cluster_status_condition.dart';
 
 class BareMetalAdminClusterStatus {
@@ -26,7 +26,8 @@ class BareMetalAdminClusterStatus {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<BareMetalAdminClusterStatusCondition,
+      map['conditions'] = pulumi.Input.encodeList<
+          BareMetalAdminClusterStatusCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final errorMessageValue = errorMessage;
@@ -40,7 +41,7 @@ class BareMetalAdminClusterStatus {
     return BareMetalAdminClusterStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<BareMetalAdminClusterStatusCondition>(
+          : pulumi.Input.decodeList<BareMetalAdminClusterStatusCondition>(
               map['conditions'],
               (value) => BareMetalAdminClusterStatusCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),

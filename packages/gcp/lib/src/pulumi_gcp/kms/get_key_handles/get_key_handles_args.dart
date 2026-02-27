@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKeyHandles.
 class GetKeyHandlesArgs {
   /// The Google Cloud Platform location for the KeyHandle.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
   ///
   /// - - -
-  final Input<String> resourceTypeSelector;
+  final pulumi.Input<String> resourceTypeSelector;
 
   GetKeyHandlesArgs({
     required this.location,
@@ -36,9 +36,10 @@ class GetKeyHandlesArgs {
 
   factory GetKeyHandlesArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyHandlesArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resourceTypeSelector: Input.asInput<String>(map['resourceTypeSelector']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resourceTypeSelector:
+          pulumi.Input.asInput<String>(map['resourceTypeSelector']),
     );
   }
 }

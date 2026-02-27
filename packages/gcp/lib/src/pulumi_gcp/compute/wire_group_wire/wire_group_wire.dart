@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../wire_group_wire_endpoint/wire_group_wire_endpoint.dart';
 import '../wire_group_wire_wire_property/wire_group_wire_wire_property.dart';
 
@@ -35,7 +35,7 @@ class WireGroupWire {
     final endpointsValue = endpoints;
     if (endpointsValue != null) {
       map['endpoints'] =
-          Input.encodeList<WireGroupWireEndpoint, Map<String, dynamic>>(
+          pulumi.Input.encodeList<WireGroupWireEndpoint, Map<String, dynamic>>(
               endpointsValue, (value) => value.toMap());
     }
     final labelValue = label;
@@ -44,9 +44,8 @@ class WireGroupWire {
     }
     final wirePropertiesValue = wireProperties;
     if (wirePropertiesValue != null) {
-      map['wireProperties'] =
-          Input.encodeList<WireGroupWireWireProperty, Map<String, dynamic>>(
-              wirePropertiesValue, (value) => value.toMap());
+      map['wireProperties'] = pulumi.Input.encodeList<WireGroupWireWireProperty,
+          Map<String, dynamic>>(wirePropertiesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -57,14 +56,14 @@ class WireGroupWire {
           map['adminEnabled'] == null ? null : map['adminEnabled'] as bool,
       endpoints: map['endpoints'] == null
           ? null
-          : Input.decodeList<WireGroupWireEndpoint>(
+          : pulumi.Input.decodeList<WireGroupWireEndpoint>(
               map['endpoints'],
               (value) => WireGroupWireEndpoint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       label: map['label'] == null ? null : map['label'] as String,
       wireProperties: map['wireProperties'] == null
           ? null
-          : Input.decodeList<WireGroupWireWireProperty>(
+          : pulumi.Input.decodeList<WireGroupWireWireProperty>(
               map['wireProperties'],
               (value) => WireGroupWireWireProperty.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_ip_filter_public_network_source/bucket_ip_filter_public_network_source.dart';
 import '../bucket_ip_filter_vpc_network_source/bucket_ip_filter_vpc_network_source.dart';
 
@@ -49,7 +49,7 @@ class BucketIpFilter {
     }
     final vpcNetworkSourcesValue = vpcNetworkSources;
     if (vpcNetworkSourcesValue != null) {
-      map['vpcNetworkSources'] = Input.encodeList<
+      map['vpcNetworkSources'] = pulumi.Input.encodeList<
               BucketIpFilterVpcNetworkSource, Map<String, dynamic>>(
           vpcNetworkSourcesValue, (value) => value.toMap());
     }
@@ -71,7 +71,7 @@ class BucketIpFilter {
               (map['publicNetworkSource'] as Map).cast<String, dynamic>()),
       vpcNetworkSources: map['vpcNetworkSources'] == null
           ? null
-          : Input.decodeList<BucketIpFilterVpcNetworkSource>(
+          : pulumi.Input.decodeList<BucketIpFilterVpcNetworkSource>(
               map['vpcNetworkSources'],
               (value) => BucketIpFilterVpcNetworkSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

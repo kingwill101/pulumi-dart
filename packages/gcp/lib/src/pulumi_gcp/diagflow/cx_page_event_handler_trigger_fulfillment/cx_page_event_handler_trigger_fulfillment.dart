@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_page_event_handler_trigger_fulfillment_conditional_case/cx_page_event_handler_trigger_fulfillment_conditional_case.dart';
 import '../cx_page_event_handler_trigger_fulfillment_message/cx_page_event_handler_trigger_fulfillment_message.dart';
 import '../cx_page_event_handler_trigger_fulfillment_set_parameter_action/cx_page_event_handler_trigger_fulfillment_set_parameter_action.dart';
@@ -42,14 +42,14 @@ class CxPageEventHandlerTriggerFulfillment {
     final map = <String, dynamic>{};
     final conditionalCasesValue = conditionalCases;
     if (conditionalCasesValue != null) {
-      map['conditionalCases'] = Input.encodeList<
+      map['conditionalCases'] = pulumi.Input.encodeList<
               CxPageEventHandlerTriggerFulfillmentConditionalCase,
               Map<String, dynamic>>(
           conditionalCasesValue, (value) => value.toMap());
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] = Input.encodeList<
+      map['messages'] = pulumi.Input.encodeList<
           CxPageEventHandlerTriggerFulfillmentMessage,
           Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
@@ -59,7 +59,7 @@ class CxPageEventHandlerTriggerFulfillment {
     }
     final setParameterActionsValue = setParameterActions;
     if (setParameterActionsValue != null) {
-      map['setParameterActions'] = Input.encodeList<
+      map['setParameterActions'] = pulumi.Input.encodeList<
               CxPageEventHandlerTriggerFulfillmentSetParameterAction,
               Map<String, dynamic>>(
           setParameterActionsValue, (value) => value.toMap());
@@ -80,7 +80,7 @@ class CxPageEventHandlerTriggerFulfillment {
     return CxPageEventHandlerTriggerFulfillment(
       conditionalCases: map['conditionalCases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageEventHandlerTriggerFulfillmentConditionalCase>(
               map['conditionalCases'],
               (value) =>
@@ -88,7 +88,8 @@ class CxPageEventHandlerTriggerFulfillment {
                       (value as Map).cast<String, dynamic>())),
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<CxPageEventHandlerTriggerFulfillmentMessage>(
+          : pulumi.Input.decodeList<
+                  CxPageEventHandlerTriggerFulfillmentMessage>(
               map['messages'],
               (value) => CxPageEventHandlerTriggerFulfillmentMessage.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -97,7 +98,7 @@ class CxPageEventHandlerTriggerFulfillment {
           : map['returnPartialResponses'] as bool,
       setParameterActions: map['setParameterActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageEventHandlerTriggerFulfillmentSetParameterAction>(
               map['setParameterActions'],
               (value) => CxPageEventHandlerTriggerFulfillmentSetParameterAction

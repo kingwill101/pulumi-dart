@@ -1,41 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hook_push_option/hook_push_option.dart';
 
 /// The set of arguments for Hook.
 class HookArgs {
   /// Determines if the hook disabled or not.
   /// Set to true to stop sending traffic.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// The events that trigger hook on.
   /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
-  final Input<List<String>>? events;
+  final pulumi.Input<List<String>>? events;
 
   /// The ID for the Hook.
-  final Input<String> hookId;
+  final pulumi.Input<String> hookId;
 
   /// The location for the Repository.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The trigger option for push events.
   /// Structure is documented below.
-  final Input<HookPushOption>? pushOption;
+  final pulumi.Input<HookPushOption>? pushOption;
 
   /// The ID for the Repository.
-  final Input<String> repositoryId;
+  final pulumi.Input<String> repositoryId;
 
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String>? sensitiveQueryString;
+  final pulumi.Input<String>? sensitiveQueryString;
 
   /// The target URI to which the payloads will be delivered.
-  final Input<String> targetUri;
+  final pulumi.Input<String> targetUri;
 
   HookArgs({
     this.disabled,
@@ -67,9 +67,8 @@ class HookArgs {
     }
     final pushOptionValue = pushOption;
     if (pushOptionValue != null) {
-      map['pushOption'] =
-          Input.mapOptionalInputValue<HookPushOption, Map<String, dynamic>>(
-              pushOptionValue, (value) => value.toMap());
+      map['pushOption'] = pulumi.Input.mapOptionalInputValue<HookPushOption,
+          Map<String, dynamic>>(pushOptionValue, (value) => value.toMap());
     }
     map['repositoryId'] = repositoryId;
     final sensitiveQueryStringValue = sensitiveQueryString;
@@ -82,16 +81,17 @@ class HookArgs {
 
   factory HookArgs.fromMap(Map<String, dynamic> map) {
     return HookArgs(
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      events: Input.asOptionalInput<List<String>>(map['events']),
-      hookId: Input.asInput<String>(map['hookId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      pushOption: Input.asOptionalInput<HookPushOption>(map['pushOption']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      events: pulumi.Input.asOptionalInput<List<String>>(map['events']),
+      hookId: pulumi.Input.asInput<String>(map['hookId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      pushOption:
+          pulumi.Input.asOptionalInput<HookPushOption>(map['pushOption']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
       sensitiveQueryString:
-          Input.asOptionalInput<String>(map['sensitiveQueryString']),
-      targetUri: Input.asInput<String>(map['targetUri']),
+          pulumi.Input.asOptionalInput<String>(map['sensitiveQueryString']),
+      targetUri: pulumi.Input.asInput<String>(map['targetUri']),
     );
   }
 }

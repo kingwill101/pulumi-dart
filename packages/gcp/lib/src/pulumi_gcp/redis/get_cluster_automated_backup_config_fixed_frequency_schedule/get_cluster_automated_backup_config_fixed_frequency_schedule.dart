@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_automated_backup_config_fixed_frequency_schedule_start_time/get_cluster_automated_backup_config_fixed_frequency_schedule_start_time.dart';
 
 class GetClusterAutomatedBackupConfigFixedFrequencySchedule {
@@ -15,7 +15,7 @@ class GetClusterAutomatedBackupConfigFixedFrequencySchedule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['startTimes'] = Input.encodeList<
+    map['startTimes'] = pulumi.Input.encodeList<
         GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime,
         Map<String, dynamic>>(startTimes, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GetClusterAutomatedBackupConfigFixedFrequencySchedule {
   factory GetClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(
       Map<String, dynamic> map) {
     return GetClusterAutomatedBackupConfigFixedFrequencySchedule(
-      startTimes: Input.decodeList<
+      startTimes: pulumi.Input.decodeList<
               GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime>(
           map['startTimes'],
           (value) =>

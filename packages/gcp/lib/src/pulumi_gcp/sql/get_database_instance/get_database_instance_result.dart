@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_database_instance_clone/get_database_instance_clone.dart';
 import '../get_database_instance_dns_name/get_database_instance_dns_name.dart';
 import '../get_database_instance_ip_address/get_database_instance_ip_address.dart';
@@ -95,28 +95,26 @@ class GetDatabaseInstanceResult {
     map['availableMaintenanceVersions'] = availableMaintenanceVersions;
     map['backupdrBackup'] = backupdrBackup;
     map['clones'] =
-        Input.encodeList<GetDatabaseInstanceClone, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDatabaseInstanceClone, Map<String, dynamic>>(
             clones, (value) => value.toMap());
     map['connectionName'] = connectionName;
     map['databaseVersion'] = databaseVersion;
     map['deletionProtection'] = deletionProtection;
     map['dnsName'] = dnsName;
-    map['dnsNames'] =
-        Input.encodeList<GetDatabaseInstanceDnsName, Map<String, dynamic>>(
-            dnsNames, (value) => value.toMap());
+    map['dnsNames'] = pulumi.Input.encodeList<GetDatabaseInstanceDnsName,
+        Map<String, dynamic>>(dnsNames, (value) => value.toMap());
     map['encryptionKeyName'] = encryptionKeyName;
     map['finalBackupDescription'] = finalBackupDescription;
     map['firstIpAddress'] = firstIpAddress;
     map['id'] = id;
     map['instanceType'] = instanceType;
-    map['ipAddresses'] =
-        Input.encodeList<GetDatabaseInstanceIpAddress, Map<String, dynamic>>(
-            ipAddresses, (value) => value.toMap());
+    map['ipAddresses'] = pulumi.Input.encodeList<GetDatabaseInstanceIpAddress,
+        Map<String, dynamic>>(ipAddresses, (value) => value.toMap());
     map['maintenanceVersion'] = maintenanceVersion;
     map['masterInstanceName'] = masterInstanceName;
     map['name'] = name;
     map['nodeCount'] = nodeCount;
-    map['pointInTimeRestoreContexts'] = Input.encodeList<
+    map['pointInTimeRestoreContexts'] = pulumi.Input.encodeList<
             GetDatabaseInstancePointInTimeRestoreContext, Map<String, dynamic>>(
         pointInTimeRestoreContexts, (value) => value.toMap());
     map['privateIpAddress'] = privateIpAddress;
@@ -127,27 +125,26 @@ class GetDatabaseInstanceResult {
     map['pscServiceAttachmentLink'] = pscServiceAttachmentLink;
     map['publicIpAddress'] = publicIpAddress;
     map['region'] = region;
-    map['replicaConfigurations'] = Input.encodeList<
+    map['replicaConfigurations'] = pulumi.Input.encodeList<
         GetDatabaseInstanceReplicaConfiguration,
         Map<String, dynamic>>(replicaConfigurations, (value) => value.toMap());
     map['replicaNames'] = replicaNames;
-    map['replicationClusters'] = Input.encodeList<
+    map['replicationClusters'] = pulumi.Input.encodeList<
         GetDatabaseInstanceReplicationCluster,
         Map<String, dynamic>>(replicationClusters, (value) => value.toMap());
-    map['restoreBackupContexts'] = Input.encodeList<
+    map['restoreBackupContexts'] = pulumi.Input.encodeList<
         GetDatabaseInstanceRestoreBackupContext,
         Map<String, dynamic>>(restoreBackupContexts, (value) => value.toMap());
     map['rootPassword'] = rootPassword;
     map['rootPasswordWo'] = rootPasswordWo;
     map['rootPasswordWoVersion'] = rootPasswordWoVersion;
     map['selfLink'] = selfLink;
-    map['serverCaCerts'] =
-        Input.encodeList<GetDatabaseInstanceServerCaCert, Map<String, dynamic>>(
-            serverCaCerts, (value) => value.toMap());
+    map['serverCaCerts'] = pulumi.Input.encodeList<
+        GetDatabaseInstanceServerCaCert,
+        Map<String, dynamic>>(serverCaCerts, (value) => value.toMap());
     map['serviceAccountEmailAddress'] = serviceAccountEmailAddress;
-    map['settings'] =
-        Input.encodeList<GetDatabaseInstanceSetting, Map<String, dynamic>>(
-            settings, (value) => value.toMap());
+    map['settings'] = pulumi.Input.encodeList<GetDatabaseInstanceSetting,
+        Map<String, dynamic>>(settings, (value) => value.toMap());
     return map;
   }
 
@@ -156,7 +153,7 @@ class GetDatabaseInstanceResult {
       availableMaintenanceVersions:
           (map['availableMaintenanceVersions'] as List).cast<String>(),
       backupdrBackup: map['backupdrBackup'] as String,
-      clones: Input.decodeList<GetDatabaseInstanceClone>(
+      clones: pulumi.Input.decodeList<GetDatabaseInstanceClone>(
           map['clones'],
           (value) => GetDatabaseInstanceClone.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -164,7 +161,7 @@ class GetDatabaseInstanceResult {
       databaseVersion: map['databaseVersion'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       dnsName: map['dnsName'] as String,
-      dnsNames: Input.decodeList<GetDatabaseInstanceDnsName>(
+      dnsNames: pulumi.Input.decodeList<GetDatabaseInstanceDnsName>(
           map['dnsNames'],
           (value) => GetDatabaseInstanceDnsName.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -173,7 +170,7 @@ class GetDatabaseInstanceResult {
       firstIpAddress: map['firstIpAddress'] as String,
       id: map['id'] as String,
       instanceType: map['instanceType'] as String,
-      ipAddresses: Input.decodeList<GetDatabaseInstanceIpAddress>(
+      ipAddresses: pulumi.Input.decodeList<GetDatabaseInstanceIpAddress>(
           map['ipAddresses'],
           (value) => GetDatabaseInstanceIpAddress.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -182,7 +179,7 @@ class GetDatabaseInstanceResult {
       name: map['name'] as String,
       nodeCount: map['nodeCount'] as int,
       pointInTimeRestoreContexts:
-          Input.decodeList<GetDatabaseInstancePointInTimeRestoreContext>(
+          pulumi.Input.decodeList<GetDatabaseInstancePointInTimeRestoreContext>(
               map['pointInTimeRestoreContexts'],
               (value) => GetDatabaseInstancePointInTimeRestoreContext.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -192,18 +189,18 @@ class GetDatabaseInstanceResult {
       publicIpAddress: map['publicIpAddress'] as String,
       region: map['region'] as String,
       replicaConfigurations:
-          Input.decodeList<GetDatabaseInstanceReplicaConfiguration>(
+          pulumi.Input.decodeList<GetDatabaseInstanceReplicaConfiguration>(
               map['replicaConfigurations'],
               (value) => GetDatabaseInstanceReplicaConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       replicaNames: (map['replicaNames'] as List).cast<String>(),
       replicationClusters:
-          Input.decodeList<GetDatabaseInstanceReplicationCluster>(
+          pulumi.Input.decodeList<GetDatabaseInstanceReplicationCluster>(
               map['replicationClusters'],
               (value) => GetDatabaseInstanceReplicationCluster.fromMap(
                   (value as Map).cast<String, dynamic>())),
       restoreBackupContexts:
-          Input.decodeList<GetDatabaseInstanceRestoreBackupContext>(
+          pulumi.Input.decodeList<GetDatabaseInstanceRestoreBackupContext>(
               map['restoreBackupContexts'],
               (value) => GetDatabaseInstanceRestoreBackupContext.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -211,12 +208,12 @@ class GetDatabaseInstanceResult {
       rootPasswordWo: map['rootPasswordWo'] as String,
       rootPasswordWoVersion: map['rootPasswordWoVersion'] as String,
       selfLink: map['selfLink'] as String,
-      serverCaCerts: Input.decodeList<GetDatabaseInstanceServerCaCert>(
+      serverCaCerts: pulumi.Input.decodeList<GetDatabaseInstanceServerCaCert>(
           map['serverCaCerts'],
           (value) => GetDatabaseInstanceServerCaCert.fromMap(
               (value as Map).cast<String, dynamic>())),
       serviceAccountEmailAddress: map['serviceAccountEmailAddress'] as String,
-      settings: Input.decodeList<GetDatabaseInstanceSetting>(
+      settings: pulumi.Input.decodeList<GetDatabaseInstanceSetting>(
           map['settings'],
           (value) => GetDatabaseInstanceSetting.fromMap(
               (value as Map).cast<String, dynamic>())),

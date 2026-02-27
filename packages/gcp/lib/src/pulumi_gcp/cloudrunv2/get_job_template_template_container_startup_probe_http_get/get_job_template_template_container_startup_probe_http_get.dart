@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_template_template_container_startup_probe_http_get_http_header/get_job_template_template_container_startup_probe_http_get_http_header.dart';
 
 class GetJobTemplateTemplateContainerStartupProbeHttpGet {
@@ -23,7 +23,7 @@ class GetJobTemplateTemplateContainerStartupProbeHttpGet {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['httpHeaders'] = Input.encodeList<
+    map['httpHeaders'] = pulumi.Input.encodeList<
         GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader,
         Map<String, dynamic>>(httpHeaders, (value) => value.toMap());
     map['path'] = path;
@@ -34,7 +34,7 @@ class GetJobTemplateTemplateContainerStartupProbeHttpGet {
   factory GetJobTemplateTemplateContainerStartupProbeHttpGet.fromMap(
       Map<String, dynamic> map) {
     return GetJobTemplateTemplateContainerStartupProbeHttpGet(
-      httpHeaders: Input.decodeList<
+      httpHeaders: pulumi.Input.decodeList<
               GetJobTemplateTemplateContainerStartupProbeHttpGetHttpHeader>(
           map['httpHeaders'],
           (value) =>

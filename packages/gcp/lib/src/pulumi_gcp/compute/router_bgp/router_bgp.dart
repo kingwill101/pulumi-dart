@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../router_bgp_advertised_ip_range/router_bgp_advertised_ip_range.dart';
 
 class RouterBgp {
@@ -70,9 +70,9 @@ class RouterBgp {
     }
     final advertisedIpRangesValue = advertisedIpRanges;
     if (advertisedIpRangesValue != null) {
-      map['advertisedIpRanges'] =
-          Input.encodeList<RouterBgpAdvertisedIpRange, Map<String, dynamic>>(
-              advertisedIpRangesValue, (value) => value.toMap());
+      map['advertisedIpRanges'] = pulumi.Input.encodeList<
+              RouterBgpAdvertisedIpRange, Map<String, dynamic>>(
+          advertisedIpRangesValue, (value) => value.toMap());
     }
     map['asn'] = asn;
     final identifierRangeValue = identifierRange;
@@ -95,7 +95,7 @@ class RouterBgp {
           : (map['advertisedGroups'] as List).cast<String>(),
       advertisedIpRanges: map['advertisedIpRanges'] == null
           ? null
-          : Input.decodeList<RouterBgpAdvertisedIpRange>(
+          : pulumi.Input.decodeList<RouterBgpAdvertisedIpRange>(
               map['advertisedIpRanges'],
               (value) => RouterBgpAdvertisedIpRange.fromMap(
                   (value as Map).cast<String, dynamic>())),

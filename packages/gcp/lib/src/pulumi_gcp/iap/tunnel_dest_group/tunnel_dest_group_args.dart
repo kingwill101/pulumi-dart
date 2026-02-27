@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TunnelDestGroup.
 class TunnelDestGroupArgs {
   /// List of CIDRs that this group applies to.
-  final Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>>? cidrs;
 
   /// List of FQDNs that this group applies to.
-  final Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>>? fqdns;
 
   /// Unique tunnel destination group name.
-  final Input<String> groupName;
+  final pulumi.Input<String> groupName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region of the tunnel group. Must be the same as the network resources in the group.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   TunnelDestGroupArgs({
     this.cidrs,
@@ -52,11 +52,11 @@ class TunnelDestGroupArgs {
 
   factory TunnelDestGroupArgs.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupArgs(
-      cidrs: Input.asOptionalInput<List<String>>(map['cidrs']),
-      fqdns: Input.asOptionalInput<List<String>>(map['fqdns']),
-      groupName: Input.asInput<String>(map['groupName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      cidrs: pulumi.Input.asOptionalInput<List<String>>(map['cidrs']),
+      fqdns: pulumi.Input.asOptionalInput<List<String>>(map['fqdns']),
+      groupName: pulumi.Input.asInput<String>(map['groupName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

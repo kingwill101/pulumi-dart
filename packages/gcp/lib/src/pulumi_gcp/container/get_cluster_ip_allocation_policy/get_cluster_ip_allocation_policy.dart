@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_ip_allocation_policy_additional_ip_ranges_config/get_cluster_ip_allocation_policy_additional_ip_ranges_config.dart';
 import '../get_cluster_ip_allocation_policy_additional_pod_ranges_config/get_cluster_ip_allocation_policy_additional_pod_ranges_config.dart';
 import '../get_cluster_ip_allocation_policy_auto_ipam_config/get_cluster_ip_allocation_policy_auto_ipam_config.dart';
@@ -56,23 +56,23 @@ class GetClusterIpAllocationPolicy {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additionalIpRangesConfigs'] = Input.encodeList<
+    map['additionalIpRangesConfigs'] = pulumi.Input.encodeList<
             GetClusterIpAllocationPolicyAdditionalIpRangesConfig,
             Map<String, dynamic>>(
         additionalIpRangesConfigs, (value) => value.toMap());
-    map['additionalPodRangesConfigs'] = Input.encodeList<
+    map['additionalPodRangesConfigs'] = pulumi.Input.encodeList<
             GetClusterIpAllocationPolicyAdditionalPodRangesConfig,
             Map<String, dynamic>>(
         additionalPodRangesConfigs, (value) => value.toMap());
-    map['autoIpamConfigs'] = Input.encodeList<
+    map['autoIpamConfigs'] = pulumi.Input.encodeList<
         GetClusterIpAllocationPolicyAutoIpamConfig,
         Map<String, dynamic>>(autoIpamConfigs, (value) => value.toMap());
     map['clusterIpv4CidrBlock'] = clusterIpv4CidrBlock;
     map['clusterSecondaryRangeName'] = clusterSecondaryRangeName;
-    map['networkTierConfigs'] = Input.encodeList<
+    map['networkTierConfigs'] = pulumi.Input.encodeList<
         GetClusterIpAllocationPolicyNetworkTierConfig,
         Map<String, dynamic>>(networkTierConfigs, (value) => value.toMap());
-    map['podCidrOverprovisionConfigs'] = Input.encodeList<
+    map['podCidrOverprovisionConfigs'] = pulumi.Input.encodeList<
             GetClusterIpAllocationPolicyPodCidrOverprovisionConfig,
             Map<String, dynamic>>(
         podCidrOverprovisionConfigs, (value) => value.toMap());
@@ -84,31 +84,31 @@ class GetClusterIpAllocationPolicy {
 
   factory GetClusterIpAllocationPolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterIpAllocationPolicy(
-      additionalIpRangesConfigs: Input.decodeList<
+      additionalIpRangesConfigs: pulumi.Input.decodeList<
               GetClusterIpAllocationPolicyAdditionalIpRangesConfig>(
           map['additionalIpRangesConfigs'],
           (value) =>
               GetClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      additionalPodRangesConfigs: Input.decodeList<
+      additionalPodRangesConfigs: pulumi.Input.decodeList<
               GetClusterIpAllocationPolicyAdditionalPodRangesConfig>(
           map['additionalPodRangesConfigs'],
           (value) =>
               GetClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       autoIpamConfigs:
-          Input.decodeList<GetClusterIpAllocationPolicyAutoIpamConfig>(
+          pulumi.Input.decodeList<GetClusterIpAllocationPolicyAutoIpamConfig>(
               map['autoIpamConfigs'],
               (value) => GetClusterIpAllocationPolicyAutoIpamConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] as String,
       clusterSecondaryRangeName: map['clusterSecondaryRangeName'] as String,
-      networkTierConfigs:
-          Input.decodeList<GetClusterIpAllocationPolicyNetworkTierConfig>(
-              map['networkTierConfigs'],
-              (value) => GetClusterIpAllocationPolicyNetworkTierConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      podCidrOverprovisionConfigs: Input.decodeList<
+      networkTierConfigs: pulumi.Input.decodeList<
+              GetClusterIpAllocationPolicyNetworkTierConfig>(
+          map['networkTierConfigs'],
+          (value) => GetClusterIpAllocationPolicyNetworkTierConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      podCidrOverprovisionConfigs: pulumi.Input.decodeList<
               GetClusterIpAllocationPolicyPodCidrOverprovisionConfig>(
           map['podCidrOverprovisionConfigs'],
           (value) =>

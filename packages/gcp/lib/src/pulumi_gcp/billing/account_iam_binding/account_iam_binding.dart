@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../account_iam_binding_condition/account_iam_binding_condition.dart';
 import 'account_iam_binding_args.dart';
 
@@ -61,15 +61,15 @@ import 'account_iam_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding default {{billing_account_id}}
 /// ```
-class AccountIamBinding extends CustomResource {
+class AccountIamBinding extends pulumi.CustomResource {
   /// The billing account id.
   ///
   /// For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
-  late final Output<String> billingAccountId;
-  late final Output<AccountIamBindingCondition?> condition;
+  late final pulumi.Output<String> billingAccountId;
+  late final pulumi.Output<AccountIamBindingCondition?> condition;
 
   /// (Computed) The etag of the billing account's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -77,24 +77,24 @@ class AccountIamBinding extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<List<String>> members;
+  late final pulumi.Output<List<String>> members;
 
   /// The role that should be applied. Only one
   /// `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   ///
   /// `gcp.billing.AccountIamPolicy` only:
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   AccountIamBinding(
     String name, {
     AccountIamBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:billing/accountIamBinding:AccountIamBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.billingAccountId = registerOutput<String>('billingAccountId');
     this.condition = registerOutput<AccountIamBindingCondition?>('condition');

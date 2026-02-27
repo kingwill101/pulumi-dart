@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_dataset_encryption_spec/ai_dataset_encryption_spec.dart';
 
 /// The set of arguments for AiDataset.
 class AiDatasetArgs {
   /// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
   /// Structure is documented below.
-  final Input<AiDatasetEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiDatasetEncryptionSpec>? encryptionSpec;
 
   /// A set of key/value label pairs to assign to this Workflow.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-  final Input<String> metadataSchemaUri;
+  final pulumi.Input<String> metadataSchemaUri;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region of the dataset. eg us-central1
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AiDatasetArgs({
     required this.displayName,
@@ -42,7 +42,7 @@ class AiDatasetArgs {
     map['displayName'] = displayName;
     final encryptionSpecValue = encryptionSpec;
     if (encryptionSpecValue != null) {
-      map['encryptionSpec'] = Input.mapOptionalInputValue<
+      map['encryptionSpec'] = pulumi.Input.mapOptionalInputValue<
           AiDatasetEncryptionSpec,
           Map<String, dynamic>>(encryptionSpecValue, (value) => value.toMap());
     }
@@ -64,13 +64,13 @@ class AiDatasetArgs {
 
   factory AiDatasetArgs.fromMap(Map<String, dynamic> map) {
     return AiDatasetArgs(
-      displayName: Input.asInput<String>(map['displayName']),
-      encryptionSpec:
-          Input.asOptionalInput<AiDatasetEncryptionSpec>(map['encryptionSpec']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      metadataSchemaUri: Input.asInput<String>(map['metadataSchemaUri']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      encryptionSpec: pulumi.Input.asOptionalInput<AiDatasetEncryptionSpec>(
+          map['encryptionSpec']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      metadataSchemaUri: pulumi.Input.asInput<String>(map['metadataSchemaUri']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../routine_argument/routine_argument.dart';
 import '../routine_external_runtime_options/routine_external_runtime_options.dart';
 import '../routine_python_options/routine_python_options.dart';
@@ -77,67 +77,68 @@ import 'routine_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
 /// ```
-class Routine extends CustomResource {
+class Routine extends pulumi.CustomResource {
   /// Input/output argument of a function or a stored procedure.
   /// Structure is documented below.
-  late final Output<List<RoutineArgument>?> arguments;
+  late final pulumi.Output<List<RoutineArgument>?> arguments;
 
   /// The time when this routine was created, in milliseconds since the
   /// epoch.
-  late final Output<int> creationTime;
+  late final pulumi.Output<int> creationTime;
 
   /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
   /// Possible values are: `DATA_MASKING`.
-  late final Output<String?> dataGovernanceType;
+  late final pulumi.Output<String?> dataGovernanceType;
 
   /// The ID of the dataset containing this routine
-  late final Output<String> datasetId;
+  late final pulumi.Output<String> datasetId;
 
   /// The body of the routine. For functions, this is the expression in the AS clause.
   /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-  late final Output<String> definitionBody;
+  late final pulumi.Output<String> definitionBody;
 
   /// The description of the routine if defined.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The determinism level of the JavaScript UDF if defined.
   /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
-  late final Output<String?> determinismLevel;
+  late final pulumi.Output<String?> determinismLevel;
 
   /// Options for the runtime of the external system.
   /// This field is only applicable for Python UDFs.
   /// Structure is documented below.
-  late final Output<RoutineExternalRuntimeOptions?> externalRuntimeOptions;
+  late final pulumi.Output<RoutineExternalRuntimeOptions?>
+      externalRuntimeOptions;
 
   /// Optional. If language = "JAVASCRIPT", this field stores the path of the
   /// imported JAVASCRIPT libraries.
-  late final Output<List<String>?> importedLibraries;
+  late final pulumi.Output<List<String>?> importedLibraries;
 
   /// The language of the routine.
   /// Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
-  late final Output<String?> language;
+  late final pulumi.Output<String?> language;
 
   /// The time when this routine was modified, in milliseconds since the
   /// epoch.
-  late final Output<int> lastModifiedTime;
+  late final pulumi.Output<int> lastModifiedTime;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Options for a user-defined Python function.
   /// Structure is documented below.
-  late final Output<RoutinePythonOptions?> pythonOptions;
+  late final pulumi.Output<RoutinePythonOptions?> pythonOptions;
 
   /// Remote function specific options.
   /// Structure is documented below.
-  late final Output<RoutineRemoteFunctionOptions?> remoteFunctionOptions;
+  late final pulumi.Output<RoutineRemoteFunctionOptions?> remoteFunctionOptions;
 
   /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
   /// If absent, the return table type is inferred from definitionBody at query time in each query
   /// that references this routine. If present, then the columns in the evaluated table result will
   /// be cast to match the column types specificed in return table type, at query time.
-  late final Output<String?> returnTableType;
+  late final pulumi.Output<String?> returnTableType;
 
   /// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
   /// If absent, the return type is inferred from definitionBody at query time in each query
@@ -148,32 +149,32 @@ class Routine extends CustomResource {
   /// d the order of values or replaced STRUCT field type with RECORD field type, we currently
   /// cannot suppress the recurring diff this causes. As a workaround, we recommend using
   /// the schema as returned by the API.
-  late final Output<String?> returnType;
+  late final pulumi.Output<String?> returnType;
 
   /// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-  late final Output<String> routineId;
+  late final pulumi.Output<String> routineId;
 
   /// The type of routine.
   /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-  late final Output<String> routineType;
+  late final pulumi.Output<String> routineType;
 
   /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
   /// Possible values are: `DEFINER`, `INVOKER`.
-  late final Output<String?> securityMode;
+  late final pulumi.Output<String?> securityMode;
 
   /// Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
   /// Structure is documented below.
-  late final Output<RoutineSparkOptions?> sparkOptions;
+  late final pulumi.Output<RoutineSparkOptions?> sparkOptions;
 
   Routine(
     String name, {
     RoutineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/routine:Routine',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arguments = registerOutput<List<RoutineArgument>?>('arguments');
     this.creationTime = registerOutput<int>('creationTime');

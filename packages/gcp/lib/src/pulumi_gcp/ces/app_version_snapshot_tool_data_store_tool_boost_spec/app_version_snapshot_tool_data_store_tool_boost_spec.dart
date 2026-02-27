@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_data_store_tool_boost_spec_spec/app_version_snapshot_tool_data_store_tool_boost_spec_spec.dart';
 
 class AppVersionSnapshotToolDataStoreToolBoostSpec {
@@ -28,7 +28,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpec {
     }
     final specsValue = specs;
     if (specsValue != null) {
-      map['specs'] = Input.encodeList<
+      map['specs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolDataStoreToolBoostSpecSpec,
           Map<String, dynamic>>(specsValue, (value) => value.toMap());
     }
@@ -43,7 +43,8 @@ class AppVersionSnapshotToolDataStoreToolBoostSpec {
           : (map['dataStores'] as List).cast<String>(),
       specs: map['specs'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpec>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotToolDataStoreToolBoostSpecSpec>(
               map['specs'],
               (value) =>
                   AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap(

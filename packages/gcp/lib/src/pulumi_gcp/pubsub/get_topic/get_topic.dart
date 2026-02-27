@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_topic_args.dart';
 import 'get_topic_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_topic_result.dart';
 /// and [API](https://cloud.google.com/pubsub/docs/apis).
 Future<GetTopicResult> getTopic(
   GetTopicArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:pubsub/getTopic:getTopic',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicResult.fromMap(result);
 }

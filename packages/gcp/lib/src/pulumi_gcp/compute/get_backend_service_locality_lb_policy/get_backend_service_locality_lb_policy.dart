@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_service_locality_lb_policy_custom_policy/get_backend_service_locality_lb_policy_custom_policy.dart';
 import '../get_backend_service_locality_lb_policy_policy/get_backend_service_locality_lb_policy_policy.dart';
 
@@ -19,25 +19,27 @@ class GetBackendServiceLocalityLbPolicy {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customPolicies'] = Input.encodeList<
+    map['customPolicies'] = pulumi.Input.encodeList<
         GetBackendServiceLocalityLbPolicyCustomPolicy,
         Map<String, dynamic>>(customPolicies, (value) => value.toMap());
-    map['policies'] = Input.encodeList<GetBackendServiceLocalityLbPolicyPolicy,
+    map['policies'] = pulumi.Input.encodeList<
+        GetBackendServiceLocalityLbPolicyPolicy,
         Map<String, dynamic>>(policies, (value) => value.toMap());
     return map;
   }
 
   factory GetBackendServiceLocalityLbPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceLocalityLbPolicy(
-      customPolicies:
-          Input.decodeList<GetBackendServiceLocalityLbPolicyCustomPolicy>(
-              map['customPolicies'],
-              (value) => GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      policies: Input.decodeList<GetBackendServiceLocalityLbPolicyPolicy>(
-          map['policies'],
-          (value) => GetBackendServiceLocalityLbPolicyPolicy.fromMap(
+      customPolicies: pulumi.Input.decodeList<
+              GetBackendServiceLocalityLbPolicyCustomPolicy>(
+          map['customPolicies'],
+          (value) => GetBackendServiceLocalityLbPolicyCustomPolicy.fromMap(
               (value as Map).cast<String, dynamic>())),
+      policies:
+          pulumi.Input.decodeList<GetBackendServiceLocalityLbPolicyPolicy>(
+              map['policies'],
+              (value) => GetBackendServiceLocalityLbPolicyPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

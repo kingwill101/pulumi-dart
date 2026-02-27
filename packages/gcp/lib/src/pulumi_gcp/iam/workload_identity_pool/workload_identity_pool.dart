@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workload_identity_pool_inline_certificate_issuance_config/workload_identity_pool_inline_certificate_issuance_config.dart';
 import '../workload_identity_pool_inline_trust_config/workload_identity_pool_inline_trust_config.dart';
 import 'workload_identity_pool_args.dart';
@@ -53,23 +53,23 @@ import 'workload_identity_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
 /// ```
-class WorkloadIdentityPool extends CustomResource {
+class WorkloadIdentityPool extends pulumi.CustomResource {
   /// A description of the pool. Cannot exceed 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
   /// existing tokens to access resources. If the pool is re-enabled, existing tokens grant
   /// access again.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// A display name for the pool. Cannot exceed 32 characters.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
   /// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
   /// required for issuance and rotation of mTLS workload certificates.
   /// Structure is documented below.
-  late final Output<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>
+  late final pulumi.Output<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>
       inlineCertificateIssuanceConfig;
 
   /// Represents config to add additional trusted trust domains. Defines configuration for extending
@@ -78,7 +78,8 @@ class WorkloadIdentityPool extends CustomResource {
   /// Note that a trust domain automatically trusts itself, eliminating the need for explicit
   /// configuration.
   /// Structure is documented below.
-  late final Output<WorkloadIdentityPoolInlineTrustConfig?> inlineTrustConfig;
+  late final pulumi.Output<WorkloadIdentityPoolInlineTrustConfig?>
+      inlineTrustConfig;
 
   /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
   /// are in `FEDERATION_ONLY` mode.
@@ -98,15 +99,15 @@ class WorkloadIdentityPool extends CustomResource {
   /// `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
   /// mode pools.
   /// Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
-  late final Output<String?> mode;
+  late final pulumi.Output<String?> mode;
 
   /// The resource name of the pool as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The state of the pool.
   /// * `STATE_UNSPECIFIED`: State unspecified.
@@ -117,22 +118,22 @@ class WorkloadIdentityPool extends CustomResource {
   /// permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
   /// use existing tokens to access resources. If the pool is undeleted, existing tokens grant
   /// access again.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  late final Output<String> workloadIdentityPoolId;
+  late final pulumi.Output<String> workloadIdentityPoolId;
 
   WorkloadIdentityPool(
     String name, {
     WorkloadIdentityPoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/workloadIdentityPool:WorkloadIdentityPool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.disabled = registerOutput<bool?>('disabled');

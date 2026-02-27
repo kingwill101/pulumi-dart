@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../engine_split_traffic_split/engine_split_traffic_split.dart';
 
 /// The set of arguments for EngineSplitTraffic.
 class EngineSplitTrafficArgs {
   /// If set to true traffic will be migrated to this version.
-  final Input<bool>? migrateTraffic;
+  final pulumi.Input<bool>? migrateTraffic;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The name of the service these settings apply to.
-  final Input<String> service;
+  final pulumi.Input<String> service;
 
   /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
   /// Structure is documented below.
-  final Input<EngineSplitTrafficSplit> split;
+  final pulumi.Input<EngineSplitTrafficSplit> split;
 
   EngineSplitTrafficArgs({
     this.migrateTraffic,
@@ -37,18 +37,17 @@ class EngineSplitTrafficArgs {
       map['project'] = projectValue;
     }
     map['service'] = service;
-    map['split'] =
-        Input.mapInputValue<EngineSplitTrafficSplit, Map<String, dynamic>>(
-            split, (value) => value.toMap());
+    map['split'] = pulumi.Input.mapInputValue<EngineSplitTrafficSplit,
+        Map<String, dynamic>>(split, (value) => value.toMap());
     return map;
   }
 
   factory EngineSplitTrafficArgs.fromMap(Map<String, dynamic> map) {
     return EngineSplitTrafficArgs(
-      migrateTraffic: Input.asOptionalInput<bool>(map['migrateTraffic']),
-      project: Input.asOptionalInput<String>(map['project']),
-      service: Input.asInput<String>(map['service']),
-      split: Input.asInput<EngineSplitTrafficSplit>(map['split']),
+      migrateTraffic: pulumi.Input.asOptionalInput<bool>(map['migrateTraffic']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      service: pulumi.Input.asInput<String>(map['service']),
+      split: pulumi.Input.asInput<EngineSplitTrafficSplit>(map['split']),
     );
   }
 }

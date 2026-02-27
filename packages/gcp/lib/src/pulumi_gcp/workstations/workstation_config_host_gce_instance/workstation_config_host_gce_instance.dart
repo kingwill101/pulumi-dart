@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workstation_config_host_gce_instance_accelerator/workstation_config_host_gce_instance_accelerator.dart';
 import '../workstation_config_host_gce_instance_boost_config/workstation_config_host_gce_instance_boost_config.dart';
 import '../workstation_config_host_gce_instance_confidential_instance_config/workstation_config_host_gce_instance_confidential_instance_config.dart';
@@ -81,13 +81,13 @@ class WorkstationConfigHostGceInstance {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] = Input.encodeList<
+      map['accelerators'] = pulumi.Input.encodeList<
           WorkstationConfigHostGceInstanceAccelerator,
           Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
     }
     final boostConfigsValue = boostConfigs;
     if (boostConfigsValue != null) {
-      map['boostConfigs'] = Input.encodeList<
+      map['boostConfigs'] = pulumi.Input.encodeList<
           WorkstationConfigHostGceInstanceBoostConfig,
           Map<String, dynamic>>(boostConfigsValue, (value) => value.toMap());
     }
@@ -147,13 +147,15 @@ class WorkstationConfigHostGceInstance {
     return WorkstationConfigHostGceInstance(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<WorkstationConfigHostGceInstanceAccelerator>(
+          : pulumi.Input.decodeList<
+                  WorkstationConfigHostGceInstanceAccelerator>(
               map['accelerators'],
               (value) => WorkstationConfigHostGceInstanceAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),
       boostConfigs: map['boostConfigs'] == null
           ? null
-          : Input.decodeList<WorkstationConfigHostGceInstanceBoostConfig>(
+          : pulumi.Input.decodeList<
+                  WorkstationConfigHostGceInstanceBoostConfig>(
               map['boostConfigs'],
               (value) => WorkstationConfigHostGceInstanceBoostConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

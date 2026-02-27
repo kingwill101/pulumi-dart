@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_inspect_template_inspect_config/prevention_inspect_template_inspect_config.dart';
 import 'prevention_inspect_template_args.dart';
 
@@ -47,41 +47,42 @@ import 'prevention_inspect_template_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
 /// ```
-class PreventionInspectTemplate extends CustomResource {
+class PreventionInspectTemplate extends pulumi.CustomResource {
   /// A description of the inspect template.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User set display name of the inspect template.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The core content of the template.
   /// Structure is documented below.
-  late final Output<PreventionInspectTemplateInspectConfig?> inspectConfig;
+  late final pulumi.Output<PreventionInspectTemplateInspectConfig?>
+      inspectConfig;
 
   /// The resource name of the inspect template. Set by the server.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of the inspect template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
-  late final Output<String> templateId;
+  late final pulumi.Output<String> templateId;
 
   PreventionInspectTemplate(
     String name, {
     PreventionInspectTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_connect_service_args.dart';
 
 /// A Firebase Data Connect service.
@@ -44,42 +44,42 @@ import 'data_connect_service_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
 /// ```
-class DataConnectService extends CustomResource {
+class DataConnectService extends pulumi.CustomResource {
   /// Optional. Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Output only. [Output only] Create time stamp.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The deletion policy for the database. Setting the field to FORCE allows the
   /// Service to be deleted even if a Schema or Connector is present. By default,
   /// the Service deletion will only succeed when no Schema or Connectors are
   /// present.
   /// Possible values: DEFAULT, FORCE
-  late final Output<String?> deletionPolicy;
+  late final pulumi.Output<String?> deletionPolicy;
 
   /// Optional. Mutable human-readable name. 63 character limit.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Output only. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// [AIP-154](https://google.aip.dev/154)
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The region in which the service resides, e.g. "us-central1" or "asia-east1".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The relative resource name of the Firebase Data Connect service, in the
   /// format:
@@ -89,39 +89,39 @@ class DataConnectService extends CustomResource {
   /// Note that the service ID is specific to Firebase Data Connect and does not
   /// correspond to any of the instance IDs of the underlying data source
   /// connections.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. A field that if true, indicates that the system is working update the
   /// service.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Required. The ID to use for the service, which will become the final component of the
   /// service's resource name.
-  late final Output<String> serviceId;
+  late final pulumi.Output<String> serviceId;
 
   /// Output only. System-assigned, unique identifier.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. [Output only] Update time stamp.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DataConnectService(
     String name, {
     DataConnectServiceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/dataConnectService:DataConnectService',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');

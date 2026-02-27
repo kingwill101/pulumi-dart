@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEntitlement.
 class GetEntitlementArgs {
   /// ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
-  final Input<String>? entitlementId;
+  final pulumi.Input<String>? entitlementId;
 
   /// The region of the Entitlement resource.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   GetEntitlementArgs({
     this.entitlementId,
@@ -38,9 +38,9 @@ class GetEntitlementArgs {
 
   factory GetEntitlementArgs.fromMap(Map<String, dynamic> map) {
     return GetEntitlementArgs(
-      entitlementId: Input.asOptionalInput<String>(map['entitlementId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      parent: Input.asOptionalInput<String>(map['parent']),
+      entitlementId: pulumi.Input.asOptionalInput<String>(map['entitlementId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
     );
   }
 }

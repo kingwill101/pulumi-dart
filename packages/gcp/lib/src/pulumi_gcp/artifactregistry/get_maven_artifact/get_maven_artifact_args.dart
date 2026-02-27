@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMavenArtifact.
 class GetMavenArtifactArgs {
   /// The name of the artifact to fetch. Can optionally include a specific version (e.g., `my_artifact:1.2.3`). If no version is provided, the latest version is used.
-  final Input<String> artifactId;
+  final pulumi.Input<String> artifactId;
 
   /// Group ID for the artifact. Example: `com.google.guava`
-  final Input<String> groupId;
+  final pulumi.Input<String> groupId;
 
   /// The location of the Artifact Registry repository.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project that owns the repository. If not provided, the provider-level project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The ID of the repository containing the Maven artifact.
-  final Input<String> repositoryId;
+  final pulumi.Input<String> repositoryId;
 
   GetMavenArtifactArgs({
     required this.artifactId,
@@ -42,11 +42,11 @@ class GetMavenArtifactArgs {
 
   factory GetMavenArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetMavenArtifactArgs(
-      artifactId: Input.asInput<String>(map['artifactId']),
-      groupId: Input.asInput<String>(map['groupId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
+      artifactId: pulumi.Input.asInput<String>(map['artifactId']),
+      groupId: pulumi.Input.asInput<String>(map['groupId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
     );
   }
 }

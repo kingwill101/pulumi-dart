@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_as_path/route_as_path.dart';
 import '../route_params/route_params.dart';
 import '../route_warning/route_warning.dart';
@@ -72,20 +72,20 @@ import 'route_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/route:Route default {{name}}
 /// ```
-class Route extends CustomResource {
+class Route extends pulumi.CustomResource {
   /// Structure is documented below.
-  late final Output<List<RouteAsPath>> asPaths;
+  late final pulumi.Output<List<RouteAsPath>> asPaths;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The destination range of outgoing packets that this route applies to.
   /// Only IPv4 is supported.
-  late final Output<String> destRange;
+  late final pulumi.Output<String> destRange;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -94,10 +94,10 @@ class Route extends CustomResource {
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network that this route applies to.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// URL to a gateway that should handle matching packets.
   /// Currently, you can only specify the internet gateway, using a full or
@@ -106,10 +106,10 @@ class Route extends CustomResource {
   /// * `projects/project/global/gateways/default-internet-gateway`
   /// * `global/gateways/default-internet-gateway`
   /// * The string `default-internet-gateway`.
-  late final Output<String?> nextHopGateway;
+  late final pulumi.Output<String?> nextHopGateway;
 
   /// The hub network that should handle matching packets, which should conform to RFC1035.
-  late final Output<String> nextHopHub;
+  late final pulumi.Output<String> nextHopHub;
 
   /// The IP address or URL to a forwarding rule of type
   /// loadBalancingScheme=INTERNAL that should handle matching
@@ -124,7 +124,7 @@ class Route extends CustomResource {
   /// of a forwarding rule from the same VPC or any peered VPC.
   /// Note that this can only be used when the destinationRange is
   /// a public (non-RFC 1918) IP CIDR range.
-  late final Output<String?> nextHopIlb;
+  late final pulumi.Output<String?> nextHopIlb;
 
   /// URL to an instance that should handle matching packets.
   /// You can specify this as a full or partial URL. For example:
@@ -132,81 +132,81 @@ class Route extends CustomResource {
   /// * `projects/project/zones/zone/instances/instance`
   /// * `zones/zone/instances/instance`
   /// * Just the instance name, with the zone in `next_hop_instance_zone`.
-  late final Output<String?> nextHopInstance;
+  late final pulumi.Output<String?> nextHopInstance;
 
   /// (Optional when `next_hop_instance` is
   /// specified)  The zone of the instance specified in
   /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
   /// a URL.
-  late final Output<String> nextHopInstanceZone;
+  late final pulumi.Output<String> nextHopInstanceZone;
 
   /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
-  late final Output<String> nextHopInterRegionCost;
+  late final pulumi.Output<String> nextHopInterRegionCost;
 
   /// Network IP address of an instance that should handle matching packets.
-  late final Output<String> nextHopIp;
+  late final pulumi.Output<String> nextHopIp;
 
   /// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
-  late final Output<String> nextHopMed;
+  late final pulumi.Output<String> nextHopMed;
 
   /// URL to a Network that should handle matching packets.
-  late final Output<String> nextHopNetwork;
+  late final pulumi.Output<String> nextHopNetwork;
 
   /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
-  late final Output<String> nextHopOrigin;
+  late final pulumi.Output<String> nextHopOrigin;
 
   /// The network peering name that should handle matching packets, which should conform to RFC1035.
-  late final Output<String> nextHopPeering;
+  late final pulumi.Output<String> nextHopPeering;
 
   /// URL to a VpnTunnel that should handle matching packets.
-  late final Output<String?> nextHopVpnTunnel;
+  late final pulumi.Output<String?> nextHopVpnTunnel;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  late final Output<RouteParams?> params;
+  late final pulumi.Output<RouteParams?> params;
 
   /// The priority of this route. Priority is used to break ties in cases
   /// where there is more than one matching route of equal prefix length.
   /// In the case of two routes with equal prefix length, the one with the
   /// lowest-numbered priority value wins.
   /// Default value is 1000. Valid range is 0 through 65535.
-  late final Output<int?> priority;
+  late final pulumi.Output<int?> priority;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The status of the route, which can be one of the following values:
   /// - 'ACTIVE' for an active route
   /// - 'INACTIVE' for an inactive route
-  late final Output<String> routeStatus;
+  late final pulumi.Output<String> routeStatus;
 
   /// The type of this route, which can be one of the following values:
   /// - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
   /// - 'SUBNET' for a route from a subnet of the VPC
   /// - 'BGP' for a route learned from a BGP peer of this router
   /// - 'STATIC' for a static route
-  late final Output<String> routeType;
+  late final pulumi.Output<String> routeType;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// A list of instance tags to which this route applies.
-  late final Output<List<String>?> tags;
+  late final pulumi.Output<List<String>?> tags;
 
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
   /// Structure is documented below.
-  late final Output<List<RouteWarning>> warnings;
+  late final pulumi.Output<List<RouteWarning>> warnings;
 
   Route(
     String name, {
     RouteArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/route:Route',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.asPaths = registerOutput<List<RouteAsPath>>('asPaths');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

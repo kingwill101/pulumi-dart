@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_levels_access_level_basic_condition_device_policy_os_constraint/access_levels_access_level_basic_condition_device_policy_os_constraint.dart';
 
 class AccessLevelsAccessLevelBasicConditionDevicePolicy {
@@ -51,7 +51,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy {
     }
     final osConstraintsValue = osConstraints;
     if (osConstraintsValue != null) {
-      map['osConstraints'] = Input.encodeList<
+      map['osConstraints'] = pulumi.Input.encodeList<
           AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint,
           Map<String, dynamic>>(osConstraintsValue, (value) => value.toMap());
     }
@@ -82,7 +82,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy {
           : (map['allowedEncryptionStatuses'] as List).cast<String>(),
       osConstraints: map['osConstraints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint>(
               map['osConstraints'],
               (value) =>

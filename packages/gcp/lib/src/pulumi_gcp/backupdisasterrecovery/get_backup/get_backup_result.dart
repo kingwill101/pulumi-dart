@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backup_backup/get_backup_backup.dart';
 
 /// Result data returned by getBackup.
@@ -41,8 +41,9 @@ class GetBackupResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['backupVaultId'] = backupVaultId;
-    map['backups'] = Input.encodeList<GetBackupBackup, Map<String, dynamic>>(
-        backups, (value) => value.toMap());
+    map['backups'] =
+        pulumi.Input.encodeList<GetBackupBackup, Map<String, dynamic>>(
+            backups, (value) => value.toMap());
     map['createTime'] = createTime;
     map['dataSourceId'] = dataSourceId;
     map['id'] = id;
@@ -55,7 +56,7 @@ class GetBackupResult {
   factory GetBackupResult.fromMap(Map<String, dynamic> map) {
     return GetBackupResult(
       backupVaultId: map['backupVaultId'] as String,
-      backups: Input.decodeList<GetBackupBackup>(
+      backups: pulumi.Input.decodeList<GetBackupBackup>(
           map['backups'],
           (value) =>
               GetBackupBackup.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_job_trigger_inspect_job_storage_config_big_query_options_excluded_field/prevention_job_trigger_inspect_job_storage_config_big_query_options_excluded_field.dart';
 import '../prevention_job_trigger_inspect_job_storage_config_big_query_options_identifying_field/prevention_job_trigger_inspect_job_storage_config_big_query_options_identifying_field.dart';
 import '../prevention_job_trigger_inspect_job_storage_config_big_query_options_included_field/prevention_job_trigger_inspect_job_storage_config_big_query_options_included_field.dart';
@@ -63,20 +63,20 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     final map = <String, dynamic>{};
     final excludedFieldsValue = excludedFields;
     if (excludedFieldsValue != null) {
-      map['excludedFields'] = Input.encodeList<
+      map['excludedFields'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField,
           Map<String, dynamic>>(excludedFieldsValue, (value) => value.toMap());
     }
     final identifyingFieldsValue = identifyingFields;
     if (identifyingFieldsValue != null) {
-      map['identifyingFields'] = Input.encodeList<
+      map['identifyingFields'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField,
           Map<String,
               dynamic>>(identifyingFieldsValue, (value) => value.toMap());
     }
     final includedFieldsValue = includedFields;
     if (includedFieldsValue != null) {
-      map['includedFields'] = Input.encodeList<
+      map['includedFields'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField,
           Map<String, dynamic>>(includedFieldsValue, (value) => value.toMap());
     }
@@ -101,7 +101,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(
       excludedFields: map['excludedFields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField>(
               map['excludedFields'],
               (value) =>
@@ -109,7 +109,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
                       .fromMap((value as Map).cast<String, dynamic>())),
       identifyingFields: map['identifyingFields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField>(
               map['identifyingFields'],
               (value) =>
@@ -117,7 +117,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
                       .fromMap((value as Map).cast<String, dynamic>())),
       includedFields: map['includedFields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField>(
               map['includedFields'],
               (value) =>

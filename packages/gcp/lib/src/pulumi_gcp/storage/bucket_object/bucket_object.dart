@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_object_contexts/bucket_object_contexts.dart';
 import '../bucket_object_customer_encryption/bucket_object_customer_encryption.dart';
 import '../bucket_object_retention/bucket_object_retention.dart';
@@ -33,106 +33,106 @@ import 'bucket_object_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class BucketObject extends CustomResource {
+class BucketObject extends pulumi.CustomResource {
   /// The name of the containing bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
   /// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-  late final Output<String?> cacheControl;
+  late final pulumi.Output<String?> cacheControl;
 
   /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
-  late final Output<String> content;
+  late final pulumi.Output<String> content;
 
   /// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
-  late final Output<String?> contentDisposition;
+  late final pulumi.Output<String?> contentDisposition;
 
   /// [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
-  late final Output<String?> contentEncoding;
+  late final pulumi.Output<String?> contentEncoding;
 
   /// [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
-  late final Output<String?> contentLanguage;
+  late final pulumi.Output<String?> contentLanguage;
 
   /// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-  late final Output<String> contentType;
+  late final pulumi.Output<String> contentType;
 
   /// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
-  late final Output<BucketObjectContexts?> contexts;
+  late final pulumi.Output<BucketObjectContexts?> contexts;
 
   /// (Computed) Base 64 CRC32 hash of the uploaded data.
-  late final Output<String> crc32c;
+  late final pulumi.Output<String> crc32c;
 
   /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
   /// Structure is documented below.
-  late final Output<BucketObjectCustomerEncryption?> customerEncryption;
-  late final Output<String?> deletionPolicy;
-  late final Output<String?> detectMd5hash;
+  late final pulumi.Output<BucketObjectCustomerEncryption?> customerEncryption;
+  late final pulumi.Output<String?> deletionPolicy;
+  late final pulumi.Output<String?> detectMd5hash;
 
   /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
-  late final Output<bool?> eventBasedHold;
+  late final pulumi.Output<bool?> eventBasedHold;
 
   /// When set to true, it ensure the object's Content-Type is empty.
-  late final Output<bool?> forceEmptyContentType;
+  late final pulumi.Output<bool?> forceEmptyContentType;
 
   /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
-  late final Output<int> generation;
+  late final pulumi.Output<int> generation;
 
   /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
-  late final Output<String> kmsKeyName;
+  late final pulumi.Output<String> kmsKeyName;
 
   /// (Computed) Base 64 MD5 hash of the uploaded data.
-  late final Output<String> md5hash;
+  late final pulumi.Output<String> md5hash;
 
   /// (Computed) Hex value of md5hash`
-  late final Output<String> md5hexhash;
+  late final pulumi.Output<String> md5hexhash;
 
   /// (Computed) A url reference to download this object.
-  late final Output<String> mediaLink;
+  late final pulumi.Output<String> mediaLink;
 
   /// User-provided metadata, in key/value pairs.
   ///
   /// One of the following is required:
-  late final Output<Map<String, String>?> metadata;
+  late final pulumi.Output<Map<String, String>?> metadata;
 
   /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
   /// `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
-  late final Output<String> outputName;
+  late final pulumi.Output<String> outputName;
 
   /// The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
-  late final Output<BucketObjectRetention?> retention;
+  late final pulumi.Output<BucketObjectRetention?> retention;
 
   /// (Computed) A url reference to this object.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// A path to the data you want to upload. Must be defined
   /// if `content` is not.
   ///
   /// - - -
-  late final Output<dynamic> source;
+  late final pulumi.Output<dynamic> source;
 
   /// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
-  late final Output<String?> sourceMd5hash;
+  late final pulumi.Output<String?> sourceMd5hash;
 
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
   /// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
   /// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-  late final Output<String> storageClass;
+  late final pulumi.Output<String> storageClass;
 
   /// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
-  late final Output<bool?> temporaryHold;
+  late final pulumi.Output<bool?> temporaryHold;
 
   BucketObject(
     String name, {
     BucketObjectArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/bucketObject:BucketObject',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.cacheControl = registerOutput<String?>('cacheControl');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_discovery_config_action_pub_sub_notification_pubsub_condition_expressions_condition/prevention_discovery_config_action_pub_sub_notification_pubsub_condition_expressions_condition.dart';
 
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions {
@@ -23,7 +23,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<
+      map['conditions'] = pulumi.Input.encodeList<
           PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
@@ -39,7 +39,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>(
               map['conditions'],
               (value) =>

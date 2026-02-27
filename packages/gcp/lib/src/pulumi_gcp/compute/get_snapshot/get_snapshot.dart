@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_snapshot_args.dart';
 import 'get_snapshot_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_snapshot_result.dart';
 /// * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 Future<GetSnapshotResult> getSnapshot(
   GetSnapshotArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getSnapshot:getSnapshot',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
 }

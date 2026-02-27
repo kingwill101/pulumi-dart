@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_ring_import_job_attestation/key_ring_import_job_attestation.dart';
 import '../key_ring_import_job_public_key/key_ring_import_job_public_key.dart';
 import 'key_ring_import_job_args.dart';
@@ -33,52 +33,52 @@ import 'key_ring_import_job_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
 /// ```
-class KeyRingImportJob extends CustomResource {
+class KeyRingImportJob extends pulumi.CustomResource {
   /// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
   /// Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
   /// Only present if the chosen ImportMethod is one with a protection level of HSM.
   /// Structure is documented below.
-  late final Output<List<KeyRingImportJobAttestation>> attestations;
+  late final pulumi.Output<List<KeyRingImportJobAttestation>> attestations;
 
   /// The time at which this resource is scheduled for expiration and can no longer be used.
   /// This is in RFC3339 text format.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-  late final Output<String> importJobId;
+  late final pulumi.Output<String> importJobId;
 
   /// The wrapping method to be used for incoming key material.
   /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
-  late final Output<String> importMethod;
+  late final pulumi.Output<String> importMethod;
 
   /// The KeyRing that this import job belongs to.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-  late final Output<String> keyRing;
+  late final pulumi.Output<String> keyRing;
 
   /// The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The protection level of the ImportJob. This must match the protectionLevel of the
   /// versionTemplate on the CryptoKey you attempt to import into.
   /// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
-  late final Output<String> protectionLevel;
+  late final pulumi.Output<String> protectionLevel;
 
   /// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
   /// Structure is documented below.
-  late final Output<List<KeyRingImportJobPublicKey>> publicKeys;
+  late final pulumi.Output<List<KeyRingImportJobPublicKey>> publicKeys;
 
   /// The current state of the ImportJob, indicating if it can be used.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   KeyRingImportJob(
     String name, {
     KeyRingImportJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/keyRingImportJob:KeyRingImportJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attestations =
         registerOutput<List<KeyRingImportJobAttestation>>('attestations');

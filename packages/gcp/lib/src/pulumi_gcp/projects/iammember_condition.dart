@@ -1,3 +1,3 @@
 library module_projects_iammember_condition;
 
-export 'iammember_condition/iammember_condition3.dart';
+export 'iammember_condition/iammember_condition_projects.dart';

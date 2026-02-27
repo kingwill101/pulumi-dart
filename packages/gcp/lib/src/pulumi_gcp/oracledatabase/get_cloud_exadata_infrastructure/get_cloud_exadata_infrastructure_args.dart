@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCloudExadataInfrastructure.
 class GetCloudExadataInfrastructureArgs {
   /// The ID of the ExadataInfrastructure.
-  final Input<String> cloudExadataInfrastructureId;
+  final pulumi.Input<String> cloudExadataInfrastructureId;
 
   /// The location of the resource.
   ///
   /// - - -
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetCloudExadataInfrastructureArgs({
     required this.cloudExadataInfrastructureId,
@@ -36,9 +36,9 @@ class GetCloudExadataInfrastructureArgs {
   factory GetCloudExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructureArgs(
       cloudExadataInfrastructureId:
-          Input.asInput<String>(map['cloudExadataInfrastructureId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['cloudExadataInfrastructureId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

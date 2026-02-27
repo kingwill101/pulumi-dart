@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_project_args.dart';
 import 'get_project_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_project_result.dart';
 /// [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
 Future<GetProjectResult> getProject(
   GetProjectArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:organizations/getProject:getProject',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectResult.fromMap(result);
 }

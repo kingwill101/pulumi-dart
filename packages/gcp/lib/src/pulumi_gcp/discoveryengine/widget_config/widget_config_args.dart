@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../widget_config_access_settings/widget_config_access_settings.dart';
 import '../widget_config_homepage_setting/widget_config_homepage_setting.dart';
 import '../widget_config_ui_branding/widget_config_ui_branding.dart';
@@ -10,38 +10,38 @@ import '../widget_config_ui_settings/widget_config_ui_settings.dart';
 class WidgetConfigArgs {
   /// Describes widget access settings.
   /// Structure is documented below.
-  final Input<WidgetConfigAccessSettings>? accessSettings;
+  final pulumi.Input<WidgetConfigAccessSettings>? accessSettings;
 
   /// The collection ID.
-  final Input<String>? collectionId;
+  final pulumi.Input<String>? collectionId;
 
   /// The engine ID.
-  final Input<String> engineId;
+  final pulumi.Input<String> engineId;
 
   /// Describes the homepage setting of the widget. It includes all homepage related settings
   /// and configurations, such as shortcuts.
   /// Structure is documented below.
-  final Input<WidgetConfigHomepageSetting>? homepageSetting;
+  final pulumi.Input<WidgetConfigHomepageSetting>? homepageSetting;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Describes search widget UI branding settings, such as the widget title, logo,
   /// favicons, and colors.
   /// Structure is documented below.
-  final Input<WidgetConfigUiBranding>? uiBranding;
+  final pulumi.Input<WidgetConfigUiBranding>? uiBranding;
 
   /// Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// Structure is documented below.
-  final Input<WidgetConfigUiSettings>? uiSettings;
+  final pulumi.Input<WidgetConfigUiSettings>? uiSettings;
 
   /// The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
-  final Input<String>? widgetConfigId;
+  final pulumi.Input<String>? widgetConfigId;
 
   WidgetConfigArgs({
     this.accessSettings,
@@ -59,7 +59,7 @@ class WidgetConfigArgs {
     final map = <String, dynamic>{};
     final accessSettingsValue = accessSettings;
     if (accessSettingsValue != null) {
-      map['accessSettings'] = Input.mapOptionalInputValue<
+      map['accessSettings'] = pulumi.Input.mapOptionalInputValue<
           WidgetConfigAccessSettings,
           Map<String, dynamic>>(accessSettingsValue, (value) => value.toMap());
     }
@@ -70,7 +70,7 @@ class WidgetConfigArgs {
     map['engineId'] = engineId;
     final homepageSettingValue = homepageSetting;
     if (homepageSettingValue != null) {
-      map['homepageSetting'] = Input.mapOptionalInputValue<
+      map['homepageSetting'] = pulumi.Input.mapOptionalInputValue<
           WidgetConfigHomepageSetting,
           Map<String, dynamic>>(homepageSettingValue, (value) => value.toMap());
     }
@@ -81,12 +81,14 @@ class WidgetConfigArgs {
     }
     final uiBrandingValue = uiBranding;
     if (uiBrandingValue != null) {
-      map['uiBranding'] = Input.mapOptionalInputValue<WidgetConfigUiBranding,
+      map['uiBranding'] = pulumi.Input.mapOptionalInputValue<
+          WidgetConfigUiBranding,
           Map<String, dynamic>>(uiBrandingValue, (value) => value.toMap());
     }
     final uiSettingsValue = uiSettings;
     if (uiSettingsValue != null) {
-      map['uiSettings'] = Input.mapOptionalInputValue<WidgetConfigUiSettings,
+      map['uiSettings'] = pulumi.Input.mapOptionalInputValue<
+          WidgetConfigUiSettings,
           Map<String, dynamic>>(uiSettingsValue, (value) => value.toMap());
     }
     final widgetConfigIdValue = widgetConfigId;
@@ -98,19 +100,21 @@ class WidgetConfigArgs {
 
   factory WidgetConfigArgs.fromMap(Map<String, dynamic> map) {
     return WidgetConfigArgs(
-      accessSettings: Input.asOptionalInput<WidgetConfigAccessSettings>(
+      accessSettings: pulumi.Input.asOptionalInput<WidgetConfigAccessSettings>(
           map['accessSettings']),
-      collectionId: Input.asOptionalInput<String>(map['collectionId']),
-      engineId: Input.asInput<String>(map['engineId']),
-      homepageSetting: Input.asOptionalInput<WidgetConfigHomepageSetting>(
-          map['homepageSetting']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      uiBranding:
-          Input.asOptionalInput<WidgetConfigUiBranding>(map['uiBranding']),
-      uiSettings:
-          Input.asOptionalInput<WidgetConfigUiSettings>(map['uiSettings']),
-      widgetConfigId: Input.asOptionalInput<String>(map['widgetConfigId']),
+      collectionId: pulumi.Input.asOptionalInput<String>(map['collectionId']),
+      engineId: pulumi.Input.asInput<String>(map['engineId']),
+      homepageSetting:
+          pulumi.Input.asOptionalInput<WidgetConfigHomepageSetting>(
+              map['homepageSetting']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      uiBranding: pulumi.Input.asOptionalInput<WidgetConfigUiBranding>(
+          map['uiBranding']),
+      uiSettings: pulumi.Input.asOptionalInput<WidgetConfigUiSettings>(
+          map['uiSettings']),
+      widgetConfigId:
+          pulumi.Input.asOptionalInput<String>(map['widgetConfigId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_scheduling_graceful_shutdown/get_instance_scheduling_graceful_shutdown.dart';
 import '../get_instance_scheduling_local_ssd_recovery_timeout/get_instance_scheduling_local_ssd_recovery_timeout.dart';
 import '../get_instance_scheduling_max_run_duration/get_instance_scheduling_max_run_duration.dart';
@@ -86,23 +86,24 @@ class GetInstanceScheduling {
     final map = <String, dynamic>{};
     map['automaticRestart'] = automaticRestart;
     map['availabilityDomain'] = availabilityDomain;
-    map['gracefulShutdowns'] = Input.encodeList<
+    map['gracefulShutdowns'] = pulumi.Input.encodeList<
         GetInstanceSchedulingGracefulShutdown,
         Map<String, dynamic>>(gracefulShutdowns, (value) => value.toMap());
     map['hostErrorTimeoutSeconds'] = hostErrorTimeoutSeconds;
     map['instanceTerminationAction'] = instanceTerminationAction;
-    map['localSsdRecoveryTimeouts'] = Input.encodeList<
+    map['localSsdRecoveryTimeouts'] = pulumi.Input.encodeList<
             GetInstanceSchedulingLocalSsdRecoveryTimeout, Map<String, dynamic>>(
         localSsdRecoveryTimeouts, (value) => value.toMap());
     map['maintenanceInterval'] = maintenanceInterval;
-    map['maxRunDurations'] = Input.encodeList<
+    map['maxRunDurations'] = pulumi.Input.encodeList<
         GetInstanceSchedulingMaxRunDuration,
         Map<String, dynamic>>(maxRunDurations, (value) => value.toMap());
     map['minNodeCpus'] = minNodeCpus;
-    map['nodeAffinities'] = Input.encodeList<GetInstanceSchedulingNodeAffinity,
+    map['nodeAffinities'] = pulumi.Input.encodeList<
+        GetInstanceSchedulingNodeAffinity,
         Map<String, dynamic>>(nodeAffinities, (value) => value.toMap());
     map['onHostMaintenance'] = onHostMaintenance;
-    map['onInstanceStopActions'] = Input.encodeList<
+    map['onInstanceStopActions'] = pulumi.Input.encodeList<
         GetInstanceSchedulingOnInstanceStopAction,
         Map<String, dynamic>>(onInstanceStopActions, (value) => value.toMap());
     map['preemptible'] = preemptible;
@@ -117,30 +118,32 @@ class GetInstanceScheduling {
       automaticRestart: map['automaticRestart'] as bool,
       availabilityDomain: map['availabilityDomain'] as int,
       gracefulShutdowns:
-          Input.decodeList<GetInstanceSchedulingGracefulShutdown>(
+          pulumi.Input.decodeList<GetInstanceSchedulingGracefulShutdown>(
               map['gracefulShutdowns'],
               (value) => GetInstanceSchedulingGracefulShutdown.fromMap(
                   (value as Map).cast<String, dynamic>())),
       hostErrorTimeoutSeconds: map['hostErrorTimeoutSeconds'] as int,
       instanceTerminationAction: map['instanceTerminationAction'] as String,
       localSsdRecoveryTimeouts:
-          Input.decodeList<GetInstanceSchedulingLocalSsdRecoveryTimeout>(
+          pulumi.Input.decodeList<GetInstanceSchedulingLocalSsdRecoveryTimeout>(
               map['localSsdRecoveryTimeouts'],
               (value) => GetInstanceSchedulingLocalSsdRecoveryTimeout.fromMap(
                   (value as Map).cast<String, dynamic>())),
       maintenanceInterval: map['maintenanceInterval'] as String,
-      maxRunDurations: Input.decodeList<GetInstanceSchedulingMaxRunDuration>(
-          map['maxRunDurations'],
-          (value) => GetInstanceSchedulingMaxRunDuration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      maxRunDurations:
+          pulumi.Input.decodeList<GetInstanceSchedulingMaxRunDuration>(
+              map['maxRunDurations'],
+              (value) => GetInstanceSchedulingMaxRunDuration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       minNodeCpus: map['minNodeCpus'] as int,
-      nodeAffinities: Input.decodeList<GetInstanceSchedulingNodeAffinity>(
-          map['nodeAffinities'],
-          (value) => GetInstanceSchedulingNodeAffinity.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeAffinities:
+          pulumi.Input.decodeList<GetInstanceSchedulingNodeAffinity>(
+              map['nodeAffinities'],
+              (value) => GetInstanceSchedulingNodeAffinity.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       onHostMaintenance: map['onHostMaintenance'] as String,
       onInstanceStopActions:
-          Input.decodeList<GetInstanceSchedulingOnInstanceStopAction>(
+          pulumi.Input.decodeList<GetInstanceSchedulingOnInstanceStopAction>(
               map['onInstanceStopActions'],
               (value) => GetInstanceSchedulingOnInstanceStopAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

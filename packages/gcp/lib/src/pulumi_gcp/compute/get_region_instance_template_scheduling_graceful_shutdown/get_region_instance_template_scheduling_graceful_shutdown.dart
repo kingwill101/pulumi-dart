@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_instance_template_scheduling_graceful_shutdown_max_duration/get_region_instance_template_scheduling_graceful_shutdown_max_duration.dart';
 
 class GetRegionInstanceTemplateSchedulingGracefulShutdown {
@@ -21,7 +21,7 @@ class GetRegionInstanceTemplateSchedulingGracefulShutdown {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabled'] = enabled;
-    map['maxDurations'] = Input.encodeList<
+    map['maxDurations'] = pulumi.Input.encodeList<
         GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration,
         Map<String, dynamic>>(maxDurations, (value) => value.toMap());
     return map;
@@ -31,7 +31,7 @@ class GetRegionInstanceTemplateSchedulingGracefulShutdown {
       Map<String, dynamic> map) {
     return GetRegionInstanceTemplateSchedulingGracefulShutdown(
       enabled: map['enabled'] as bool,
-      maxDurations: Input.decodeList<
+      maxDurations: pulumi.Input.decodeList<
               GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration>(
           map['maxDurations'],
           (value) =>

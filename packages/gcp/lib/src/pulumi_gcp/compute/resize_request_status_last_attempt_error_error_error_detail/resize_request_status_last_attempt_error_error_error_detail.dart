@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resize_request_status_last_attempt_error_error_error_detail_error_info/resize_request_status_last_attempt_error_error_error_detail_error_info.dart';
 import '../resize_request_status_last_attempt_error_error_error_detail_help/resize_request_status_last_attempt_error_error_error_detail_help.dart';
 import '../resize_request_status_last_attempt_error_error_error_detail_localized_message/resize_request_status_last_attempt_error_error_error_detail_localized_message.dart';
@@ -42,26 +42,26 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
     final map = <String, dynamic>{};
     final errorInfosValue = errorInfos;
     if (errorInfosValue != null) {
-      map['errorInfos'] = Input.encodeList<
+      map['errorInfos'] = pulumi.Input.encodeList<
           ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo,
           Map<String, dynamic>>(errorInfosValue, (value) => value.toMap());
     }
     final helpsValue = helps;
     if (helpsValue != null) {
-      map['helps'] = Input.encodeList<
+      map['helps'] = pulumi.Input.encodeList<
           ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp,
           Map<String, dynamic>>(helpsValue, (value) => value.toMap());
     }
     final localizedMessagesValue = localizedMessages;
     if (localizedMessagesValue != null) {
-      map['localizedMessages'] = Input.encodeList<
+      map['localizedMessages'] = pulumi.Input.encodeList<
           ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage,
           Map<String,
               dynamic>>(localizedMessagesValue, (value) => value.toMap());
     }
     final quotaInfosValue = quotaInfos;
     if (quotaInfosValue != null) {
-      map['quotaInfos'] = Input.encodeList<
+      map['quotaInfos'] = pulumi.Input.encodeList<
           ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo,
           Map<String, dynamic>>(quotaInfosValue, (value) => value.toMap());
     }
@@ -73,7 +73,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
     return ResizeRequestStatusLastAttemptErrorErrorErrorDetail(
       errorInfos: map['errorInfos'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>(
               map['errorInfos'],
               (value) =>
@@ -81,14 +81,14 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
                       .fromMap((value as Map).cast<String, dynamic>())),
       helps: map['helps'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>(
               map['helps'],
               (value) => ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp
                   .fromMap((value as Map).cast<String, dynamic>())),
       localizedMessages: map['localizedMessages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>(
               map['localizedMessages'],
               (value) =>
@@ -96,7 +96,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
                       .fromMap((value as Map).cast<String, dynamic>())),
       quotaInfos: map['quotaInfos'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>(
               map['quotaInfos'],
               (value) =>

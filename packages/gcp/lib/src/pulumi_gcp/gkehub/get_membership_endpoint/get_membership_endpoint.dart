@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_membership_endpoint_gke_cluster/get_membership_endpoint_gke_cluster.dart';
 
 class GetMembershipEndpoint {
@@ -13,15 +13,15 @@ class GetMembershipEndpoint {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['gkeClusters'] =
-        Input.encodeList<GetMembershipEndpointGkeCluster, Map<String, dynamic>>(
-            gkeClusters, (value) => value.toMap());
+    map['gkeClusters'] = pulumi.Input.encodeList<
+        GetMembershipEndpointGkeCluster,
+        Map<String, dynamic>>(gkeClusters, (value) => value.toMap());
     return map;
   }
 
   factory GetMembershipEndpoint.fromMap(Map<String, dynamic> map) {
     return GetMembershipEndpoint(
-      gkeClusters: Input.decodeList<GetMembershipEndpointGkeCluster>(
+      gkeClusters: pulumi.Input.decodeList<GetMembershipEndpointGkeCluster>(
           map['gkeClusters'],
           (value) => GetMembershipEndpointGkeCluster.fromMap(
               (value as Map).cast<String, dynamic>())),

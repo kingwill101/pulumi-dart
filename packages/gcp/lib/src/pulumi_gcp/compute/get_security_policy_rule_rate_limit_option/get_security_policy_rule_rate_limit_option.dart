@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_rule_rate_limit_option_ban_threshold/get_security_policy_rule_rate_limit_option_ban_threshold.dart';
 import '../get_security_policy_rule_rate_limit_option_enforce_on_key_config/get_security_policy_rule_rate_limit_option_enforce_on_key_config.dart';
 import '../get_security_policy_rule_rate_limit_option_exceed_redirect_option/get_security_policy_rule_rate_limit_option_exceed_redirect_option.dart';
@@ -52,20 +52,20 @@ class GetSecurityPolicyRuleRateLimitOption {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['banDurationSec'] = banDurationSec;
-    map['banThresholds'] = Input.encodeList<
+    map['banThresholds'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleRateLimitOptionBanThreshold,
         Map<String, dynamic>>(banThresholds, (value) => value.toMap());
     map['conformAction'] = conformAction;
     map['enforceOnKey'] = enforceOnKey;
-    map['enforceOnKeyConfigs'] = Input.encodeList<
+    map['enforceOnKeyConfigs'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig,
         Map<String, dynamic>>(enforceOnKeyConfigs, (value) => value.toMap());
     map['enforceOnKeyName'] = enforceOnKeyName;
     map['exceedAction'] = exceedAction;
-    map['exceedRedirectOptions'] = Input.encodeList<
+    map['exceedRedirectOptions'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption,
         Map<String, dynamic>>(exceedRedirectOptions, (value) => value.toMap());
-    map['rateLimitThresholds'] = Input.encodeList<
+    map['rateLimitThresholds'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold,
         Map<String, dynamic>>(rateLimitThresholds, (value) => value.toMap());
     return map;
@@ -75,15 +75,14 @@ class GetSecurityPolicyRuleRateLimitOption {
       Map<String, dynamic> map) {
     return GetSecurityPolicyRuleRateLimitOption(
       banDurationSec: map['banDurationSec'] as int,
-      banThresholds:
-          Input.decodeList<GetSecurityPolicyRuleRateLimitOptionBanThreshold>(
-              map['banThresholds'],
-              (value) =>
-                  GetSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      banThresholds: pulumi.Input.decodeList<
+              GetSecurityPolicyRuleRateLimitOptionBanThreshold>(
+          map['banThresholds'],
+          (value) => GetSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap(
+              (value as Map).cast<String, dynamic>())),
       conformAction: map['conformAction'] as String,
       enforceOnKey: map['enforceOnKey'] as String,
-      enforceOnKeyConfigs: Input.decodeList<
+      enforceOnKeyConfigs: pulumi.Input.decodeList<
               GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>(
           map['enforceOnKeyConfigs'],
           (value) =>
@@ -91,13 +90,13 @@ class GetSecurityPolicyRuleRateLimitOption {
                   (value as Map).cast<String, dynamic>())),
       enforceOnKeyName: map['enforceOnKeyName'] as String,
       exceedAction: map['exceedAction'] as String,
-      exceedRedirectOptions: Input.decodeList<
+      exceedRedirectOptions: pulumi.Input.decodeList<
               GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption>(
           map['exceedRedirectOptions'],
           (value) =>
               GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      rateLimitThresholds: Input.decodeList<
+      rateLimitThresholds: pulumi.Input.decodeList<
               GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold>(
           map['rateLimitThresholds'],
           (value) =>

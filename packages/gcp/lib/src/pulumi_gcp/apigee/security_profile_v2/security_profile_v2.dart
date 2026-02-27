@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_profile_v2_profile_assessment_config/security_profile_v2_profile_assessment_config.dart';
 import 'security_profile_v2_args.dart';
 
@@ -35,41 +35,41 @@ import 'security_profile_v2_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/{{profile_id}}
 /// ```
-class SecurityProfileV2 extends CustomResource {
+class SecurityProfileV2 extends pulumi.CustomResource {
   /// The timestamp at which this profile was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Description of the security profile.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the security profile v2 resource,
   /// in the format `organizations/{{org_name}}/securityProfilesV2/{{profile_id}}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee Security Profile V2,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// A map of the assessment name and the assessment config.
   /// Structure is documented below.
-  late final Output<List<SecurityProfileV2ProfileAssessmentConfig>>
+  late final pulumi.Output<List<SecurityProfileV2ProfileAssessmentConfig>>
       profileAssessmentConfigs;
 
   /// Resource ID of the security profile.
-  late final Output<String> profileId;
+  late final pulumi.Output<String> profileId;
 
   /// The timestamp at which this profile was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   SecurityProfileV2(
     String name, {
     SecurityProfileV2Args? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/securityProfileV2:SecurityProfileV2',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

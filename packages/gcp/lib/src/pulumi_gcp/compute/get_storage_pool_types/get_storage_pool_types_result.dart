@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_storage_pool_types_deprecated/get_storage_pool_types_deprecated.dart';
 
 /// Result data returned by getStoragePoolTypes.
@@ -48,9 +48,8 @@ class GetStoragePoolTypesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['creationTimestamp'] = creationTimestamp;
-    map['deprecateds'] =
-        Input.encodeList<GetStoragePoolTypesDeprecated, Map<String, dynamic>>(
-            deprecateds, (value) => value.toMap());
+    map['deprecateds'] = pulumi.Input.encodeList<GetStoragePoolTypesDeprecated,
+        Map<String, dynamic>>(deprecateds, (value) => value.toMap());
     map['description'] = description;
     map['id'] = id;
     map['kind'] = kind;
@@ -73,7 +72,7 @@ class GetStoragePoolTypesResult {
   factory GetStoragePoolTypesResult.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolTypesResult(
       creationTimestamp: map['creationTimestamp'] as String,
-      deprecateds: Input.decodeList<GetStoragePoolTypesDeprecated>(
+      deprecateds: pulumi.Input.decodeList<GetStoragePoolTypesDeprecated>(
           map['deprecateds'],
           (value) => GetStoragePoolTypesDeprecated.fromMap(
               (value as Map).cast<String, dynamic>())),

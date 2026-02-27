@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_workload_identity_pool_args.dart';
 import 'get_workload_identity_pool_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_workload_identity_pool_result.dart';
 /// > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
 Future<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(
   GetWorkloadIdentityPoolArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadIdentityPoolResult.fromMap(result);
 }

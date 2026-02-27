@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_function_build_config_on_deploy_update_policy/get_function_build_config_on_deploy_update_policy.dart';
 import '../get_function_build_config_source/get_function_build_config_source.dart';
 
@@ -62,14 +62,13 @@ class GetFunctionBuildConfig {
     map['dockerRepository'] = dockerRepository;
     map['entryPoint'] = entryPoint;
     map['environmentVariables'] = environmentVariables;
-    map['onDeployUpdatePolicies'] = Input.encodeList<
+    map['onDeployUpdatePolicies'] = pulumi.Input.encodeList<
         GetFunctionBuildConfigOnDeployUpdatePolicy,
         Map<String, dynamic>>(onDeployUpdatePolicies, (value) => value.toMap());
     map['runtime'] = runtime;
     map['serviceAccount'] = serviceAccount;
-    map['sources'] =
-        Input.encodeList<GetFunctionBuildConfigSource, Map<String, dynamic>>(
-            sources, (value) => value.toMap());
+    map['sources'] = pulumi.Input.encodeList<GetFunctionBuildConfigSource,
+        Map<String, dynamic>>(sources, (value) => value.toMap());
     map['workerPool'] = workerPool;
     return map;
   }
@@ -84,13 +83,13 @@ class GetFunctionBuildConfig {
       environmentVariables:
           (map['environmentVariables'] as Map).cast<String, String>(),
       onDeployUpdatePolicies:
-          Input.decodeList<GetFunctionBuildConfigOnDeployUpdatePolicy>(
+          pulumi.Input.decodeList<GetFunctionBuildConfigOnDeployUpdatePolicy>(
               map['onDeployUpdatePolicies'],
               (value) => GetFunctionBuildConfigOnDeployUpdatePolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       runtime: map['runtime'] as String,
       serviceAccount: map['serviceAccount'] as String,
-      sources: Input.decodeList<GetFunctionBuildConfigSource>(
+      sources: pulumi.Input.decodeList<GetFunctionBuildConfigSource>(
           map['sources'],
           (value) => GetFunctionBuildConfigSource.fromMap(
               (value as Map).cast<String, dynamic>())),

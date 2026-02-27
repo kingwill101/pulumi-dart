@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../config_mfa_provider_config/config_mfa_provider_config.dart';
 
 class ConfigMfa {
@@ -31,9 +31,8 @@ class ConfigMfa {
     }
     final providerConfigsValue = providerConfigs;
     if (providerConfigsValue != null) {
-      map['providerConfigs'] =
-          Input.encodeList<ConfigMfaProviderConfig, Map<String, dynamic>>(
-              providerConfigsValue, (value) => value.toMap());
+      map['providerConfigs'] = pulumi.Input.encodeList<ConfigMfaProviderConfig,
+          Map<String, dynamic>>(providerConfigsValue, (value) => value.toMap());
     }
     final stateValue = state;
     if (stateValue != null) {
@@ -49,7 +48,7 @@ class ConfigMfa {
           : (map['enabledProviders'] as List).cast<String>(),
       providerConfigs: map['providerConfigs'] == null
           ? null
-          : Input.decodeList<ConfigMfaProviderConfig>(
+          : pulumi.Input.decodeList<ConfigMfaProviderConfig>(
               map['providerConfigs'],
               (value) => ConfigMfaProviderConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

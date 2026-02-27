@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tcp_route_rule_action/tcp_route_rule_action.dart';
 import '../tcp_route_rule_match/tcp_route_rule_match.dart';
 
@@ -25,7 +25,7 @@ class TcpRouteRule {
     final matchesValue = matches;
     if (matchesValue != null) {
       map['matches'] =
-          Input.encodeList<TcpRouteRuleMatch, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TcpRouteRuleMatch, Map<String, dynamic>>(
               matchesValue, (value) => value.toMap());
     }
     return map;
@@ -37,7 +37,7 @@ class TcpRouteRule {
           (map['action'] as Map).cast<String, dynamic>()),
       matches: map['matches'] == null
           ? null
-          : Input.decodeList<TcpRouteRuleMatch>(
+          : pulumi.Input.decodeList<TcpRouteRuleMatch>(
               map['matches'],
               (value) => TcpRouteRuleMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),

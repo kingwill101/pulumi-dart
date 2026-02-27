@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_endpoint_endpoint_settings/firewall_endpoint_endpoint_settings.dart';
 
 /// The set of arguments for FirewallEndpoint.
 class FirewallEndpointArgs {
   /// Project to bill on endpoint uptime usage.
-  final Input<String> billingProjectId;
+  final pulumi.Input<String> billingProjectId;
 
   /// Settings for the endpoint.
   /// Structure is documented below.
-  final Input<FirewallEndpointEndpointSettings>? endpointSettings;
+  final pulumi.Input<FirewallEndpointEndpointSettings>? endpointSettings;
 
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location (zone) of the firewall endpoint.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of the firewall endpoint resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The name of the parent this firewall endpoint belongs to.
   /// Format: organizations/{organization_id}.
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   FirewallEndpointArgs({
     required this.billingProjectId,
@@ -42,7 +42,7 @@ class FirewallEndpointArgs {
     map['billingProjectId'] = billingProjectId;
     final endpointSettingsValue = endpointSettings;
     if (endpointSettingsValue != null) {
-      map['endpointSettings'] = Input.mapOptionalInputValue<
+      map['endpointSettings'] = pulumi.Input.mapOptionalInputValue<
               FirewallEndpointEndpointSettings, Map<String, dynamic>>(
           endpointSettingsValue, (value) => value.toMap());
     }
@@ -61,13 +61,14 @@ class FirewallEndpointArgs {
 
   factory FirewallEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointArgs(
-      billingProjectId: Input.asInput<String>(map['billingProjectId']),
-      endpointSettings: Input.asOptionalInput<FirewallEndpointEndpointSettings>(
-          map['endpointSettings']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parent: Input.asInput<String>(map['parent']),
+      billingProjectId: pulumi.Input.asInput<String>(map['billingProjectId']),
+      endpointSettings:
+          pulumi.Input.asOptionalInput<FirewallEndpointEndpointSettings>(
+              map['endpointSettings']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
     );
   }
 }

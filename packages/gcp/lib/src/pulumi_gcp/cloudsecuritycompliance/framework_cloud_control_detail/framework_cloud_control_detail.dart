@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_cloud_control_detail_parameter/framework_cloud_control_detail_parameter.dart';
 
 class FrameworkCloudControlDetail {
@@ -29,7 +29,8 @@ class FrameworkCloudControlDetail {
     map['name'] = name;
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<FrameworkCloudControlDetailParameter,
+      map['parameters'] = pulumi.Input.encodeList<
+          FrameworkCloudControlDetailParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
     return map;
@@ -41,7 +42,7 @@ class FrameworkCloudControlDetail {
       name: map['name'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<FrameworkCloudControlDetailParameter>(
+          : pulumi.Input.decodeList<FrameworkCloudControlDetailParameter>(
               map['parameters'],
               (value) => FrameworkCloudControlDetailParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

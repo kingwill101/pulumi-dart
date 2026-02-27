@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_control_plane_encryption_kms_status/cluster_control_plane_encryption_kms_status.dart';
 
 class ClusterControlPlaneEncryption {
@@ -55,7 +55,7 @@ class ClusterControlPlaneEncryption {
     }
     final kmsStatusesValue = kmsStatuses;
     if (kmsStatusesValue != null) {
-      map['kmsStatuses'] = Input.encodeList<
+      map['kmsStatuses'] = pulumi.Input.encodeList<
           ClusterControlPlaneEncryptionKmsStatus,
           Map<String, dynamic>>(kmsStatusesValue, (value) => value.toMap());
     }
@@ -72,7 +72,7 @@ class ClusterControlPlaneEncryption {
           map['kmsKeyState'] == null ? null : map['kmsKeyState'] as String,
       kmsStatuses: map['kmsStatuses'] == null
           ? null
-          : Input.decodeList<ClusterControlPlaneEncryptionKmsStatus>(
+          : pulumi.Input.decodeList<ClusterControlPlaneEncryptionKmsStatus>(
               map['kmsStatuses'],
               (value) => ClusterControlPlaneEncryptionKmsStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),

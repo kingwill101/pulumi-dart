@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iampolicy_args.dart';
 
 /// Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -97,12 +97,12 @@ import 'iampolicy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:folder/iAMPolicy:IAMPolicy default "folder/{{folder_id}} foo.googleapis.com"
 /// ```
-class IAMPolicy extends CustomResource {
+class IAMPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the folder's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the folder. The policy will be
@@ -112,17 +112,17 @@ class IAMPolicy extends CustomResource {
   ///
   /// Deleting this removes all policies from the folder, locking out users without
   /// folder-level access.
-  late final Output<String> policyData;
+  late final pulumi.Output<String> policyData;
 
   IAMPolicy(
     String name, {
     IAMPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:folder/iAMPolicy:IAMPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.etag = registerOutput<String>('etag');
     this.folder = registerOutput<String>('folder');

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResourcePolicy.
 class GetResourcePolicyArgs {
   /// The name of the Resource Policy.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Project from which to list the Resource Policy. Defaults to project declared in the provider.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Region where the Resource Policy resides.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetResourcePolicyArgs({
     required this.name,
@@ -35,9 +35,9 @@ class GetResourcePolicyArgs {
 
   factory GetResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicyArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

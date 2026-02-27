@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_vm_accelerator_config/v2_vm_accelerator_config.dart';
 import '../v2_vm_data_disk/v2_vm_data_disk.dart';
 import '../v2_vm_network_config/v2_vm_network_config.dart';
@@ -13,11 +13,11 @@ class V2VmArgs {
   /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
   /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
   /// Structure is documented below.
-  final Input<V2VmAcceleratorConfig>? acceleratorConfig;
+  final pulumi.Input<V2VmAcceleratorConfig>? acceleratorConfig;
 
   /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
   /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
-  final Input<String>? acceleratorType;
+  final pulumi.Input<String>? acceleratorType;
 
   /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
   /// be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger
@@ -25,60 +25,60 @@ class V2VmArgs {
   /// CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts
   /// with any subnetworks in the user's provided network, or the provided network is peered with
   /// another network that is using that CIDR block.
-  final Input<String>? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
 
   /// The additional data disks for the Node.
   /// Structure is documented below.
-  final Input<List<V2VmDataDisk>>? dataDisks;
+  final pulumi.Input<List<V2VmDataDisk>>? dataDisks;
 
   /// Text description of the TPU.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Resource labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
-  final Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// The immutable name of the TPU.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Network configurations for the TPU node.
   /// Structure is documented below.
-  final Input<V2VmNetworkConfig>? networkConfig;
+  final pulumi.Input<V2VmNetworkConfig>? networkConfig;
 
   /// Repeated network configurations for the TPU node. This field is used to specify multiple
   /// network configs for the TPU node.
   /// Structure is documented below.
-  final Input<List<V2VmNetworkConfig>>? networkConfigs;
+  final pulumi.Input<List<V2VmNetworkConfig>>? networkConfigs;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Runtime version for the TPU.
-  final Input<String> runtimeVersion;
+  final pulumi.Input<String> runtimeVersion;
 
   /// The scheduling options for this node.
   /// Structure is documented below.
-  final Input<V2VmSchedulingConfig>? schedulingConfig;
+  final pulumi.Input<V2VmSchedulingConfig>? schedulingConfig;
 
   /// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
   /// specified, the default compute service account will be used.
   /// Structure is documented below.
-  final Input<V2VmServiceAccount>? serviceAccount;
+  final pulumi.Input<V2VmServiceAccount>? serviceAccount;
 
   /// Shielded Instance options.
   /// Structure is documented below.
-  final Input<V2VmShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<V2VmShieldedInstanceConfig>? shieldedInstanceConfig;
 
   /// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
-  final Input<List<String>>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   /// The GCP location for the TPU. If it is not provided, the provider zone is used.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   V2VmArgs({
     this.acceleratorConfig,
@@ -104,7 +104,7 @@ class V2VmArgs {
     final map = <String, dynamic>{};
     final acceleratorConfigValue = acceleratorConfig;
     if (acceleratorConfigValue != null) {
-      map['acceleratorConfig'] = Input.mapOptionalInputValue<
+      map['acceleratorConfig'] = pulumi.Input.mapOptionalInputValue<
               V2VmAcceleratorConfig, Map<String, dynamic>>(
           acceleratorConfigValue, (value) => value.toMap());
     }
@@ -118,11 +118,12 @@ class V2VmArgs {
     }
     final dataDisksValue = dataDisks;
     if (dataDisksValue != null) {
-      map['dataDisks'] = Input.mapOptionalInputValue<List<V2VmDataDisk>,
+      map['dataDisks'] = pulumi.Input.mapOptionalInputValue<List<V2VmDataDisk>,
               List<Map<String, dynamic>>>(
           dataDisksValue,
-          (value) => Input.encodeList<V2VmDataDisk, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<V2VmDataDisk, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -142,17 +143,18 @@ class V2VmArgs {
     }
     final networkConfigValue = networkConfig;
     if (networkConfigValue != null) {
-      map['networkConfig'] =
-          Input.mapOptionalInputValue<V2VmNetworkConfig, Map<String, dynamic>>(
-              networkConfigValue, (value) => value.toMap());
+      map['networkConfig'] = pulumi.Input.mapOptionalInputValue<
+          V2VmNetworkConfig,
+          Map<String, dynamic>>(networkConfigValue, (value) => value.toMap());
     }
     final networkConfigsValue = networkConfigs;
     if (networkConfigsValue != null) {
-      map['networkConfigs'] = Input.mapOptionalInputValue<
+      map['networkConfigs'] = pulumi.Input.mapOptionalInputValue<
               List<V2VmNetworkConfig>, List<Map<String, dynamic>>>(
           networkConfigsValue,
-          (value) => Input.encodeList<V2VmNetworkConfig, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<V2VmNetworkConfig, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -161,19 +163,19 @@ class V2VmArgs {
     map['runtimeVersion'] = runtimeVersion;
     final schedulingConfigValue = schedulingConfig;
     if (schedulingConfigValue != null) {
-      map['schedulingConfig'] = Input.mapOptionalInputValue<
+      map['schedulingConfig'] = pulumi.Input.mapOptionalInputValue<
               V2VmSchedulingConfig, Map<String, dynamic>>(
           schedulingConfigValue, (value) => value.toMap());
     }
     final serviceAccountValue = serviceAccount;
     if (serviceAccountValue != null) {
-      map['serviceAccount'] =
-          Input.mapOptionalInputValue<V2VmServiceAccount, Map<String, dynamic>>(
-              serviceAccountValue, (value) => value.toMap());
+      map['serviceAccount'] = pulumi.Input.mapOptionalInputValue<
+          V2VmServiceAccount,
+          Map<String, dynamic>>(serviceAccountValue, (value) => value.toMap());
     }
     final shieldedInstanceConfigValue = shieldedInstanceConfig;
     if (shieldedInstanceConfigValue != null) {
-      map['shieldedInstanceConfig'] = Input.mapOptionalInputValue<
+      map['shieldedInstanceConfig'] = pulumi.Input.mapOptionalInputValue<
               V2VmShieldedInstanceConfig, Map<String, dynamic>>(
           shieldedInstanceConfigValue, (value) => value.toMap());
     }
@@ -190,29 +192,33 @@ class V2VmArgs {
 
   factory V2VmArgs.fromMap(Map<String, dynamic> map) {
     return V2VmArgs(
-      acceleratorConfig: Input.asOptionalInput<V2VmAcceleratorConfig>(
+      acceleratorConfig: pulumi.Input.asOptionalInput<V2VmAcceleratorConfig>(
           map['acceleratorConfig']),
-      acceleratorType: Input.asOptionalInput<String>(map['acceleratorType']),
-      cidrBlock: Input.asOptionalInput<String>(map['cidrBlock']),
-      dataDisks: Input.asOptionalInput<List<V2VmDataDisk>>(map['dataDisks']),
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      metadata: Input.asOptionalInput<Map<String, String>>(map['metadata']),
-      name: Input.asOptionalInput<String>(map['name']),
+      acceleratorType:
+          pulumi.Input.asOptionalInput<String>(map['acceleratorType']),
+      cidrBlock: pulumi.Input.asOptionalInput<String>(map['cidrBlock']),
+      dataDisks:
+          pulumi.Input.asOptionalInput<List<V2VmDataDisk>>(map['dataDisks']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      metadata:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['metadata']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       networkConfig:
-          Input.asOptionalInput<V2VmNetworkConfig>(map['networkConfig']),
-      networkConfigs:
-          Input.asOptionalInput<List<V2VmNetworkConfig>>(map['networkConfigs']),
-      project: Input.asOptionalInput<String>(map['project']),
-      runtimeVersion: Input.asInput<String>(map['runtimeVersion']),
-      schedulingConfig:
-          Input.asOptionalInput<V2VmSchedulingConfig>(map['schedulingConfig']),
-      serviceAccount:
-          Input.asOptionalInput<V2VmServiceAccount>(map['serviceAccount']),
-      shieldedInstanceConfig: Input.asOptionalInput<V2VmShieldedInstanceConfig>(
-          map['shieldedInstanceConfig']),
-      tags: Input.asOptionalInput<List<String>>(map['tags']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+          pulumi.Input.asOptionalInput<V2VmNetworkConfig>(map['networkConfig']),
+      networkConfigs: pulumi.Input.asOptionalInput<List<V2VmNetworkConfig>>(
+          map['networkConfigs']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      runtimeVersion: pulumi.Input.asInput<String>(map['runtimeVersion']),
+      schedulingConfig: pulumi.Input.asOptionalInput<V2VmSchedulingConfig>(
+          map['schedulingConfig']),
+      serviceAccount: pulumi.Input.asOptionalInput<V2VmServiceAccount>(
+          map['serviceAccount']),
+      shieldedInstanceConfig:
+          pulumi.Input.asOptionalInput<V2VmShieldedInstanceConfig>(
+              map['shieldedInstanceConfig']),
+      tags: pulumi.Input.asOptionalInput<List<String>>(map['tags']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

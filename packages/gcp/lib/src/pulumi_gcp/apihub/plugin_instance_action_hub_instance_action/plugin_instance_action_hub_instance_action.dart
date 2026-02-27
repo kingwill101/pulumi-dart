@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plugin_instance_action_hub_instance_action_last_execution/plugin_instance_action_hub_instance_action_last_execution.dart';
 
 class PluginInstanceActionHubInstanceAction {
@@ -28,7 +28,7 @@ class PluginInstanceActionHubInstanceAction {
     }
     final lastExecutionsValue = lastExecutions;
     if (lastExecutionsValue != null) {
-      map['lastExecutions'] = Input.encodeList<
+      map['lastExecutions'] = pulumi.Input.encodeList<
           PluginInstanceActionHubInstanceActionLastExecution,
           Map<String, dynamic>>(lastExecutionsValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class PluginInstanceActionHubInstanceAction {
           : map['currentExecutionState'] as String,
       lastExecutions: map['lastExecutions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PluginInstanceActionHubInstanceActionLastExecution>(
               map['lastExecutions'],
               (value) =>

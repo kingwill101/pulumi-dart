@@ -1,33 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../machine_image_machine_image_encryption_key/machine_image_machine_image_encryption_key.dart';
 
 /// The set of arguments for MachineImage.
 class MachineImageArgs {
   /// A text description of the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
   /// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-  final Input<bool>? guestFlush;
+  final pulumi.Input<bool>? guestFlush;
 
   /// Encrypts the machine image using a customer-supplied encryption key.
   /// After you encrypt a machine image with a customer-supplied key, you must
   /// provide the same key if you use the machine image later (e.g. to create a
   /// instance from the image)
   /// Structure is documented below.
-  final Input<MachineImageMachineImageEncryptionKey>? machineImageEncryptionKey;
+  final pulumi.Input<MachineImageMachineImageEncryptionKey>?
+      machineImageEncryptionKey;
 
   /// Name of the resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-  final Input<String> sourceInstance;
+  final pulumi.Input<String> sourceInstance;
 
   MachineImageArgs({
     this.description,
@@ -50,7 +51,7 @@ class MachineImageArgs {
     }
     final machineImageEncryptionKeyValue = machineImageEncryptionKey;
     if (machineImageEncryptionKeyValue != null) {
-      map['machineImageEncryptionKey'] = Input.mapOptionalInputValue<
+      map['machineImageEncryptionKey'] = pulumi.Input.mapOptionalInputValue<
               MachineImageMachineImageEncryptionKey, Map<String, dynamic>>(
           machineImageEncryptionKeyValue, (value) => value.toMap());
     }
@@ -68,14 +69,14 @@ class MachineImageArgs {
 
   factory MachineImageArgs.fromMap(Map<String, dynamic> map) {
     return MachineImageArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      guestFlush: Input.asOptionalInput<bool>(map['guestFlush']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      guestFlush: pulumi.Input.asOptionalInput<bool>(map['guestFlush']),
       machineImageEncryptionKey:
-          Input.asOptionalInput<MachineImageMachineImageEncryptionKey>(
+          pulumi.Input.asOptionalInput<MachineImageMachineImageEncryptionKey>(
               map['machineImageEncryptionKey']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sourceInstance: Input.asInput<String>(map['sourceInstance']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sourceInstance: pulumi.Input.asInput<String>(map['sourceInstance']),
     );
   }
 }

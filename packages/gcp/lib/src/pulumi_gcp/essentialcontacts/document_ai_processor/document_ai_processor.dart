@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_ai_processor_args.dart';
 
 /// The first-class citizen for Document AI. Each processor defines how to extract structural information from a document.
@@ -40,35 +40,35 @@ import 'document_ai_processor_args.dart';
 /// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default {{location}}/{{name}}
 /// ```
-class DocumentAiProcessor extends CustomResource {
+class DocumentAiProcessor extends pulumi.CustomResource {
   /// The display name. Must be unique.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
-  late final Output<String?> kmsKeyName;
+  late final pulumi.Output<String?> kmsKeyName;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the processor.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   DocumentAiProcessor(
     String name, {
     DocumentAiProcessorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String>('displayName');
     this.kmsKeyName = registerOutput<String?>('kmsKeyName');

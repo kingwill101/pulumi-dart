@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBackupVault.
 class GetBackupVaultArgs {
   /// The id of Backup Vault resource.
   ///
   /// - - -
-  final Input<String> backupVaultId;
+  final pulumi.Input<String> backupVaultId;
 
   /// The location in which the Backup Vault resource belongs.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetBackupVaultArgs({
     required this.backupVaultId,
@@ -35,9 +35,9 @@ class GetBackupVaultArgs {
 
   factory GetBackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupVaultArgs(
-      backupVaultId: Input.asInput<String>(map['backupVaultId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      backupVaultId: pulumi.Input.asInput<String>(map['backupVaultId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

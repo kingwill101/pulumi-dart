@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../membership_authority/membership_authority.dart';
 import '../membership_endpoint/membership_endpoint.dart';
 import 'membership_args.dart';
@@ -50,53 +50,53 @@ import 'membership_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
 /// ```
-class Membership extends CustomResource {
+class Membership extends pulumi.CustomResource {
   /// Authority encodes how Google will recognize identities from this Membership.
   /// See the workload identity documentation for more details:
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
   /// Structure is documented below.
-  late final Output<MembershipAuthority?> authority;
+  late final pulumi.Output<MembershipAuthority?> authority;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
   /// Structure is documented below.
-  late final Output<MembershipEndpoint?> endpoint;
+  late final pulumi.Output<MembershipEndpoint?> endpoint;
 
   /// Labels to apply to this membership.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location of the membership.
   /// The default value is `global`.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The client-provided identifier of the membership.
-  late final Output<String> membershipId;
+  late final pulumi.Output<String> membershipId;
 
   /// The unique identifier of the membership.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   Membership(
     String name, {
     MembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/membership:Membership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authority = registerOutput<MembershipAuthority?>('authority');
     this.effectiveLabels =

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_istio_canonical_service_telemetry/get_istio_canonical_service_telemetry.dart';
 
 /// Result data returned by getIstioCanonicalService.
@@ -51,7 +51,8 @@ class GetIstioCanonicalServiceResult {
       map['project'] = projectValue;
     }
     map['serviceId'] = serviceId;
-    map['telemetries'] = Input.encodeList<GetIstioCanonicalServiceTelemetry,
+    map['telemetries'] = pulumi.Input.encodeList<
+        GetIstioCanonicalServiceTelemetry,
         Map<String, dynamic>>(telemetries, (value) => value.toMap());
     map['userLabels'] = userLabels;
     return map;
@@ -67,7 +68,7 @@ class GetIstioCanonicalServiceResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       serviceId: map['serviceId'] as String,
-      telemetries: Input.decodeList<GetIstioCanonicalServiceTelemetry>(
+      telemetries: pulumi.Input.decodeList<GetIstioCanonicalServiceTelemetry>(
           map['telemetries'],
           (value) => GetIstioCanonicalServiceTelemetry.fromMap(
               (value as Map).cast<String, dynamic>())),

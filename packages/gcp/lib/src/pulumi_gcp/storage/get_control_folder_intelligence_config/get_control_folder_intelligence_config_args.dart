@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getControlFolderIntelligenceConfig.
 class GetControlFolderIntelligenceConfigArgs {
   /// The number of GCP folder.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   GetControlFolderIntelligenceConfigArgs({
     required this.name,
@@ -20,7 +20,7 @@ class GetControlFolderIntelligenceConfigArgs {
   factory GetControlFolderIntelligenceConfigArgs.fromMap(
       Map<String, dynamic> map) {
     return GetControlFolderIntelligenceConfigArgs(
-      name: Input.asInput<String>(map['name']),
+      name: pulumi.Input.asInput<String>(map['name']),
     );
   }
 }

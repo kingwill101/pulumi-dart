@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_aclargs.dart';
 
 /// Authoritatively manages a bucket's ACLs in Google cloud storage service (GCS). For more information see
@@ -21,30 +21,30 @@ import 'bucket_aclargs.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class BucketACL extends CustomResource {
+class BucketACL extends pulumi.CustomResource {
   /// The name of the bucket it applies to.
   ///
   /// - - -
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Configure this ACL to be the default ACL.
-  late final Output<String?> defaultAcl;
+  late final pulumi.Output<String?> defaultAcl;
 
   /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
-  late final Output<String?> predefinedAcl;
+  late final pulumi.Output<String?> predefinedAcl;
 
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
-  late final Output<List<String>> roleEntities;
+  late final pulumi.Output<List<String>> roleEntities;
 
   BucketACL(
     String name, {
     BucketACLArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/bucketACL:BucketACL',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.defaultAcl = registerOutput<String?>('defaultAcl');

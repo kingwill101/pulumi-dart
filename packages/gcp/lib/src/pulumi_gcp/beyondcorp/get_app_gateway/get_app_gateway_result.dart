@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_app_gateway_allocated_connection/get_app_gateway_allocated_connection.dart';
 
 /// Result data returned by getAppGateway.
@@ -39,7 +39,7 @@ class GetAppGatewayResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allocatedConnections'] = Input.encodeList<
+    map['allocatedConnections'] = pulumi.Input.encodeList<
         GetAppGatewayAllocatedConnection,
         Map<String, dynamic>>(allocatedConnections, (value) => value.toMap());
     map['displayName'] = displayName;
@@ -65,10 +65,11 @@ class GetAppGatewayResult {
 
   factory GetAppGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayResult(
-      allocatedConnections: Input.decodeList<GetAppGatewayAllocatedConnection>(
-          map['allocatedConnections'],
-          (value) => GetAppGatewayAllocatedConnection.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allocatedConnections:
+          pulumi.Input.decodeList<GetAppGatewayAllocatedConnection>(
+              map['allocatedConnections'],
+              (value) => GetAppGatewayAllocatedConnection.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       hostType: map['hostType'] as String,

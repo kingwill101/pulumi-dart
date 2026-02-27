@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for FolderSccBigQueryExport.
 class FolderSccBigQueryExportArgs {
   /// This must be unique within the organization.
-  final Input<String> bigQueryExportId;
+  final pulumi.Input<String> bigQueryExportId;
 
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
-  final Input<String> dataset;
+  final pulumi.Input<String> dataset;
 
   /// The description of the export (max of 1024 characters).
-  final Input<String> description;
+  final pulumi.Input<String> description;
 
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
@@ -34,11 +34,11 @@ class FolderSccBigQueryExportArgs {
   /// See
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
-  final Input<String> filter;
+  final pulumi.Input<String> filter;
 
   /// The folder where Cloud Security Command Center Big Query Export
   /// Config lives in.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   FolderSccBigQueryExportArgs({
     required this.bigQueryExportId,
@@ -60,11 +60,11 @@ class FolderSccBigQueryExportArgs {
 
   factory FolderSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return FolderSccBigQueryExportArgs(
-      bigQueryExportId: Input.asInput<String>(map['bigQueryExportId']),
-      dataset: Input.asInput<String>(map['dataset']),
-      description: Input.asInput<String>(map['description']),
-      filter: Input.asInput<String>(map['filter']),
-      folder: Input.asInput<String>(map['folder']),
+      bigQueryExportId: pulumi.Input.asInput<String>(map['bigQueryExportId']),
+      dataset: pulumi.Input.asInput<String>(map['dataset']),
+      description: pulumi.Input.asInput<String>(map['description']),
+      filter: pulumi.Input.asInput<String>(map['filter']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
     );
   }
 }

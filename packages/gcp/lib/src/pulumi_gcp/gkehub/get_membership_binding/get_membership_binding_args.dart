@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMembershipBinding.
 class GetMembershipBindingArgs {
   /// The location for the GKE Hub Membership Binding.
   /// Currently only `global` is supported.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the membership binding.
-  final Input<String> membershipBindingId;
+  final pulumi.Input<String> membershipBindingId;
 
   /// The ID of the membership that this binding applies to.
-  final Input<String> membershipId;
+  final pulumi.Input<String> membershipId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetMembershipBindingArgs({
     required this.location,
@@ -39,10 +39,11 @@ class GetMembershipBindingArgs {
 
   factory GetMembershipBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetMembershipBindingArgs(
-      location: Input.asInput<String>(map['location']),
-      membershipBindingId: Input.asInput<String>(map['membershipBindingId']),
-      membershipId: Input.asInput<String>(map['membershipId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      membershipBindingId:
+          pulumi.Input.asInput<String>(map['membershipBindingId']),
+      membershipId: pulumi.Input.asInput<String>(map['membershipId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

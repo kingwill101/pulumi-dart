@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_audio_processing_config/app_audio_processing_config.dart';
 import '../app_client_certificate_settings/app_client_certificate_settings.dart';
 import '../app_data_store_settings/app_data_store_settings.dart';
@@ -49,116 +49,117 @@ import 'app_args.dart';
 /// ```sh
 /// $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
 /// ```
-class App extends CustomResource {
+class App extends pulumi.CustomResource {
   /// The ID to use for the app, which will become the final component of
   /// the app's resource name. If not provided, a unique ID will be
   /// automatically assigned for the app.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// Configuration for how the input and output audio should be processed and
   /// delivered.
   /// Structure is documented below.
-  late final Output<AppAudioProcessingConfig?> audioProcessingConfig;
+  late final pulumi.Output<AppAudioProcessingConfig?> audioProcessingConfig;
 
   /// The default client certificate settings for the app.
   /// Structure is documented below.
-  late final Output<AppClientCertificateSettings?> clientCertificateSettings;
+  late final pulumi.Output<AppClientCertificateSettings?>
+      clientCertificateSettings;
 
   /// Timestamp when the app was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Data store related settings for the app.
   /// Structure is documented below.
-  late final Output<AppDataStoreSettings?> dataStoreSettings;
+  late final pulumi.Output<AppDataStoreSettings?> dataStoreSettings;
 
   /// A ChannelProfile configures the agent's behavior for a specific communication
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
-  late final Output<AppDefaultChannelProfile?> defaultChannelProfile;
+  late final pulumi.Output<AppDefaultChannelProfile?> defaultChannelProfile;
 
   /// Number of deployments in the app.
-  late final Output<int> deploymentCount;
+  late final pulumi.Output<int> deploymentCount;
 
   /// Human-readable description of the app.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Display name of the app.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Threshold settings for metrics in an Evaluation.
   /// Structure is documented below.
-  late final Output<AppEvaluationMetricsThresholds?>
+  late final pulumi.Output<AppEvaluationMetricsThresholds?>
       evaluationMetricsThresholds;
 
   /// Instructions for all the agents in the app.
   /// You can use this instruction to set up a stable identity or personality
   /// across all the agents.
-  late final Output<String?> globalInstruction;
+  late final pulumi.Output<String?> globalInstruction;
 
   /// List of guardrails for the app.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-  late final Output<List<String>?> guardrails;
+  late final pulumi.Output<List<String>?> guardrails;
 
   /// Language settings of the app.
   /// Structure is documented below.
-  late final Output<AppLanguageSettings?> languageSettings;
+  late final pulumi.Output<AppLanguageSettings?> languageSettings;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Settings to describe the logging behaviors for the app.
   /// Structure is documented below.
-  late final Output<AppLoggingSettings?> loggingSettings;
+  late final pulumi.Output<AppLoggingSettings?> loggingSettings;
 
   /// Metadata about the app. This field can be used to store additional
   /// information relevant to the app's details or intended usages.
-  late final Output<Map<String, String>?> metadata;
+  late final pulumi.Output<Map<String, String>?> metadata;
 
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  late final Output<AppModelSettings?> modelSettings;
+  late final pulumi.Output<AppModelSettings?> modelSettings;
 
   /// Identifier. The unique identifier of the app.
   /// Format: `projects/{project}/locations/{location}/apps/{app}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Whether the app is pinned in the app list.
-  late final Output<bool?> pinned;
+  late final pulumi.Output<bool?> pinned;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The root agent is the entry point of the app.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  late final Output<String?> rootAgent;
+  late final pulumi.Output<String?> rootAgent;
 
   /// TimeZone settings of the app.
   /// Structure is documented below.
-  late final Output<AppTimeZoneSettings?> timeZoneSettings;
+  late final pulumi.Output<AppTimeZoneSettings?> timeZoneSettings;
 
   /// Timestamp when the app was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The declarations of the variables.
   /// Structure is documented below.
-  late final Output<List<AppVariableDeclaration>?> variableDeclarations;
+  late final pulumi.Output<List<AppVariableDeclaration>?> variableDeclarations;
 
   App(
     String name, {
     AppArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:ces/app:App',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.audioProcessingConfig =

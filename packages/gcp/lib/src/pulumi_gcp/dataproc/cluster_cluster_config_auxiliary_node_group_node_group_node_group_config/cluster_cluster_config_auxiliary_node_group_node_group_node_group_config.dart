@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_config_auxiliary_node_group_node_group_node_group_config_accelerator/cluster_cluster_config_auxiliary_node_group_node_group_node_group_config_accelerator.dart';
 import '../cluster_cluster_config_auxiliary_node_group_node_group_node_group_config_disk_config/cluster_cluster_config_auxiliary_node_group_node_group_node_group_config_disk_config.dart';
 
@@ -46,7 +46,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] = Input.encodeList<
+      map['accelerators'] = pulumi.Input.encodeList<
           ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator,
           Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
     }
@@ -78,7 +78,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
     return ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator>(
               map['accelerators'],
               (value) =>

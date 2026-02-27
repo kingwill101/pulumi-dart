@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_function_event_trigger/get_function_event_trigger.dart';
 import '../get_function_on_deploy_update_policy/get_function_on_deploy_update_policy.dart';
 import '../get_function_secret_environment_variable/get_function_secret_environment_variable.dart';
@@ -141,7 +141,7 @@ class GetFunctionResult {
     map['entryPoint'] = entryPoint;
     map['environmentVariables'] = environmentVariables;
     map['eventTriggers'] =
-        Input.encodeList<GetFunctionEventTrigger, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetFunctionEventTrigger, Map<String, dynamic>>(
             eventTriggers, (value) => value.toMap());
     map['httpsTriggerSecurityLevel'] = httpsTriggerSecurityLevel;
     map['httpsTriggerUrl'] = httpsTriggerUrl;
@@ -152,9 +152,9 @@ class GetFunctionResult {
     map['maxInstances'] = maxInstances;
     map['minInstances'] = minInstances;
     map['name'] = name;
-    map['onDeployUpdatePolicies'] =
-        Input.encodeList<GetFunctionOnDeployUpdatePolicy, Map<String, dynamic>>(
-            onDeployUpdatePolicies, (value) => value.toMap());
+    map['onDeployUpdatePolicies'] = pulumi.Input.encodeList<
+        GetFunctionOnDeployUpdatePolicy,
+        Map<String, dynamic>>(onDeployUpdatePolicies, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -165,18 +165,18 @@ class GetFunctionResult {
       map['region'] = regionValue;
     }
     map['runtime'] = runtime;
-    map['secretEnvironmentVariables'] = Input.encodeList<
+    map['secretEnvironmentVariables'] = pulumi.Input.encodeList<
             GetFunctionSecretEnvironmentVariable, Map<String, dynamic>>(
         secretEnvironmentVariables, (value) => value.toMap());
     map['secretVolumes'] =
-        Input.encodeList<GetFunctionSecretVolume, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetFunctionSecretVolume, Map<String, dynamic>>(
             secretVolumes, (value) => value.toMap());
     map['serviceAccountEmail'] = serviceAccountEmail;
     map['sourceArchiveBucket'] = sourceArchiveBucket;
     map['sourceArchiveObject'] = sourceArchiveObject;
-    map['sourceRepositories'] =
-        Input.encodeList<GetFunctionSourceRepository, Map<String, dynamic>>(
-            sourceRepositories, (value) => value.toMap());
+    map['sourceRepositories'] = pulumi.Input.encodeList<
+        GetFunctionSourceRepository,
+        Map<String, dynamic>>(sourceRepositories, (value) => value.toMap());
     map['status'] = status;
     map['timeout'] = timeout;
     map['triggerHttp'] = triggerHttp;
@@ -202,7 +202,7 @@ class GetFunctionResult {
       entryPoint: map['entryPoint'] as String,
       environmentVariables:
           (map['environmentVariables'] as Map).cast<String, String>(),
-      eventTriggers: Input.decodeList<GetFunctionEventTrigger>(
+      eventTriggers: pulumi.Input.decodeList<GetFunctionEventTrigger>(
           map['eventTriggers'],
           (value) => GetFunctionEventTrigger.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -215,27 +215,28 @@ class GetFunctionResult {
       maxInstances: map['maxInstances'] as int,
       minInstances: map['minInstances'] as int,
       name: map['name'] as String,
-      onDeployUpdatePolicies: Input.decodeList<GetFunctionOnDeployUpdatePolicy>(
-          map['onDeployUpdatePolicies'],
-          (value) => GetFunctionOnDeployUpdatePolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      onDeployUpdatePolicies:
+          pulumi.Input.decodeList<GetFunctionOnDeployUpdatePolicy>(
+              map['onDeployUpdatePolicies'],
+              (value) => GetFunctionOnDeployUpdatePolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
       runtime: map['runtime'] as String,
       secretEnvironmentVariables:
-          Input.decodeList<GetFunctionSecretEnvironmentVariable>(
+          pulumi.Input.decodeList<GetFunctionSecretEnvironmentVariable>(
               map['secretEnvironmentVariables'],
               (value) => GetFunctionSecretEnvironmentVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      secretVolumes: Input.decodeList<GetFunctionSecretVolume>(
+      secretVolumes: pulumi.Input.decodeList<GetFunctionSecretVolume>(
           map['secretVolumes'],
           (value) => GetFunctionSecretVolume.fromMap(
               (value as Map).cast<String, dynamic>())),
       serviceAccountEmail: map['serviceAccountEmail'] as String,
       sourceArchiveBucket: map['sourceArchiveBucket'] as String,
       sourceArchiveObject: map['sourceArchiveObject'] as String,
-      sourceRepositories: Input.decodeList<GetFunctionSourceRepository>(
+      sourceRepositories: pulumi.Input.decodeList<GetFunctionSourceRepository>(
           map['sourceRepositories'],
           (value) => GetFunctionSourceRepository.fromMap(
               (value as Map).cast<String, dynamic>())),

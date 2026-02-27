@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_reasoning_engine_spec_deployment_spec_psc_interface_config_dns_peering_config/ai_reasoning_engine_spec_deployment_spec_psc_interface_config_dns_peering_config.dart';
 
 class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
@@ -30,7 +30,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
     final map = <String, dynamic>{};
     final dnsPeeringConfigsValue = dnsPeeringConfigs;
     if (dnsPeeringConfigsValue != null) {
-      map['dnsPeeringConfigs'] = Input.encodeList<
+      map['dnsPeeringConfigs'] = pulumi.Input.encodeList<
           AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig,
           Map<String,
               dynamic>>(dnsPeeringConfigsValue, (value) => value.toMap());
@@ -47,7 +47,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
     return AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig(
       dnsPeeringConfigs: map['dnsPeeringConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>(
               map['dnsPeeringConfigs'],
               (value) =>

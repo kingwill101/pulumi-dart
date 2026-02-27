@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_routers_args.dart';
 import 'get_routers_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_routers_result.dart';
 /// the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
 Future<GetRoutersResult> getRouters(
   GetRoutersArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getRouters:getRouters',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoutersResult.fromMap(result);
 }

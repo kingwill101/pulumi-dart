@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organization_properties_property/organization_properties_property.dart';
 
 class OrganizationProperties {
@@ -16,7 +16,8 @@ class OrganizationProperties {
     final map = <String, dynamic>{};
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.encodeList<OrganizationPropertiesProperty,
+      map['properties'] = pulumi.Input.encodeList<
+          OrganizationPropertiesProperty,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +27,7 @@ class OrganizationProperties {
     return OrganizationProperties(
       properties: map['properties'] == null
           ? null
-          : Input.decodeList<OrganizationPropertiesProperty>(
+          : pulumi.Input.decodeList<OrganizationPropertiesProperty>(
               map['properties'],
               (value) => OrganizationPropertiesProperty.fromMap(
                   (value as Map).cast<String, dynamic>())),

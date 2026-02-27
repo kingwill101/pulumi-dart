@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_authorization_admin_user/vmware_cluster_authorization_admin_user.dart';
 
 class VMwareClusterAuthorization {
@@ -17,7 +17,8 @@ class VMwareClusterAuthorization {
     final map = <String, dynamic>{};
     final adminUsersValue = adminUsers;
     if (adminUsersValue != null) {
-      map['adminUsers'] = Input.encodeList<VMwareClusterAuthorizationAdminUser,
+      map['adminUsers'] = pulumi.Input.encodeList<
+          VMwareClusterAuthorizationAdminUser,
           Map<String, dynamic>>(adminUsersValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +28,7 @@ class VMwareClusterAuthorization {
     return VMwareClusterAuthorization(
       adminUsers: map['adminUsers'] == null
           ? null
-          : Input.decodeList<VMwareClusterAuthorizationAdminUser>(
+          : pulumi.Input.decodeList<VMwareClusterAuthorizationAdminUser>(
               map['adminUsers'],
               (value) => VMwareClusterAuthorizationAdminUser.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../task_execution_status_latest_job/task_execution_status_latest_job.dart';
 
 class TaskExecutionStatus {
@@ -22,9 +22,8 @@ class TaskExecutionStatus {
     final map = <String, dynamic>{};
     final latestJobsValue = latestJobs;
     if (latestJobsValue != null) {
-      map['latestJobs'] =
-          Input.encodeList<TaskExecutionStatusLatestJob, Map<String, dynamic>>(
-              latestJobsValue, (value) => value.toMap());
+      map['latestJobs'] = pulumi.Input.encodeList<TaskExecutionStatusLatestJob,
+          Map<String, dynamic>>(latestJobsValue, (value) => value.toMap());
     }
     final updateTimeValue = updateTime;
     if (updateTimeValue != null) {
@@ -37,7 +36,7 @@ class TaskExecutionStatus {
     return TaskExecutionStatus(
       latestJobs: map['latestJobs'] == null
           ? null
-          : Input.decodeList<TaskExecutionStatusLatestJob>(
+          : pulumi.Input.decodeList<TaskExecutionStatusLatestJob>(
               map['latestJobs'],
               (value) => TaskExecutionStatusLatestJob.fromMap(
                   (value as Map).cast<String, dynamic>())),

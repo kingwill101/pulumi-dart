@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../datastore_nfs_datastore/datastore_nfs_datastore.dart';
 
 /// The set of arguments for Datastore.
 class DatastoreArgs {
   /// User-provided description for this datastore
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The user-provided identifier of the datastore to be created.
   /// This identifier must be unique among each `Datastore` within the parent
@@ -21,15 +21,15 @@ class DatastoreArgs {
   /// * Not formatted as a UUID
   /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
   /// (section 3.5)
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The NFS datastore configuration.
   /// Structure is documented below.
-  final Input<DatastoreNfsDatastore> nfsDatastore;
+  final pulumi.Input<DatastoreNfsDatastore> nfsDatastore;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   DatastoreArgs({
     this.description,
@@ -51,7 +51,7 @@ class DatastoreArgs {
       map['name'] = nameValue;
     }
     map['nfsDatastore'] =
-        Input.mapInputValue<DatastoreNfsDatastore, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<DatastoreNfsDatastore, Map<String, dynamic>>(
             nfsDatastore, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
@@ -62,11 +62,12 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      nfsDatastore: Input.asInput<DatastoreNfsDatastore>(map['nfsDatastore']),
-      project: Input.asOptionalInput<String>(map['project']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      nfsDatastore:
+          pulumi.Input.asInput<DatastoreNfsDatastore>(map['nfsDatastore']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

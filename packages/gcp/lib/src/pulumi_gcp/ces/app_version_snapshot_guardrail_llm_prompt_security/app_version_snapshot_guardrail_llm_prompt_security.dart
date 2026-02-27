@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_guardrail_llm_prompt_security_custom_policy/app_version_snapshot_guardrail_llm_prompt_security_custom_policy.dart';
 import '../app_version_snapshot_guardrail_llm_prompt_security_default_setting/app_version_snapshot_guardrail_llm_prompt_security_default_setting.dart';
 
@@ -27,13 +27,13 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity {
     final map = <String, dynamic>{};
     final customPoliciesValue = customPolicies;
     if (customPoliciesValue != null) {
-      map['customPolicies'] = Input.encodeList<
+      map['customPolicies'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy,
           Map<String, dynamic>>(customPoliciesValue, (value) => value.toMap());
     }
     final defaultSettingsValue = defaultSettings;
     if (defaultSettingsValue != null) {
-      map['defaultSettings'] = Input.encodeList<
+      map['defaultSettings'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting,
           Map<String, dynamic>>(defaultSettingsValue, (value) => value.toMap());
     }
@@ -45,7 +45,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity {
     return AppVersionSnapshotGuardrailLlmPromptSecurity(
       customPolicies: map['customPolicies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy>(
               map['customPolicies'],
               (value) =>
@@ -53,7 +53,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity {
                       .fromMap((value as Map).cast<String, dynamic>())),
       defaultSettings: map['defaultSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting>(
               map['defaultSettings'],
               (value) =>

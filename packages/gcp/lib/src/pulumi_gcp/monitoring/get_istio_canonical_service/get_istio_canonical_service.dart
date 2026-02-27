@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_istio_canonical_service_args.dart';
 import 'get_istio_canonical_service_result.dart';
 
@@ -22,13 +22,13 @@ import 'get_istio_canonical_service_result.dart';
 /// ### Monitoring Istio Canonical Service
 Future<GetIstioCanonicalServiceResult> getIstioCanonicalService(
   GetIstioCanonicalServiceArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIstioCanonicalServiceResult.fromMap(result);
 }

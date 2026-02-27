@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ExternalAddress.
 class ExternalAddressArgs {
   /// User-provided description for this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The internal IP address of a workload VM.
-  final Input<String> internalIp;
+  final pulumi.Input<String> internalIp;
 
   /// The ID of the external IP Address.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The resource name of the private cloud to create a new external address in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   ExternalAddressArgs({
     this.description,
@@ -42,10 +42,10 @@ class ExternalAddressArgs {
 
   factory ExternalAddressArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAddressArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      internalIp: Input.asInput<String>(map['internalIp']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parent: Input.asInput<String>(map['parent']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      internalIp: pulumi.Input.asInput<String>(map['internalIp']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
     );
   }
 }

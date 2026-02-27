@@ -1,3 +1,3 @@
 library module_edgecontainer_node_pool_node_config;
 
-export 'node_pool_node_config/node_pool_node_config2.dart';
+export 'node_pool_node_config/node_pool_node_config_edgecontainer.dart';

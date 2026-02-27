@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../router_status_best_route_warning_data/router_status_best_route_warning_data.dart';
 
 class RouterStatusBestRouteWarning {
@@ -24,7 +24,7 @@ class RouterStatusBestRouteWarning {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['code'] = code;
-    map['datas'] = Input.encodeList<RouterStatusBestRouteWarningData,
+    map['datas'] = pulumi.Input.encodeList<RouterStatusBestRouteWarningData,
         Map<String, dynamic>>(datas, (value) => value.toMap());
     map['message'] = message;
     return map;
@@ -33,7 +33,7 @@ class RouterStatusBestRouteWarning {
   factory RouterStatusBestRouteWarning.fromMap(Map<String, dynamic> map) {
     return RouterStatusBestRouteWarning(
       code: map['code'] as String,
-      datas: Input.decodeList<RouterStatusBestRouteWarningData>(
+      datas: pulumi.Input.decodeList<RouterStatusBestRouteWarningData>(
           map['datas'],
           (value) => RouterStatusBestRouteWarningData.fromMap(
               (value as Map).cast<String, dynamic>())),

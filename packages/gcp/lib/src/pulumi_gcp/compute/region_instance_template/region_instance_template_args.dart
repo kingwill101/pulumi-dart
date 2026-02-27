@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_instance_template_advanced_machine_features/region_instance_template_advanced_machine_features.dart';
 import '../region_instance_template_confidential_instance_config/region_instance_template_confidential_instance_config.dart';
 import '../region_instance_template_disk/region_instance_template_disk.dart';
@@ -15,67 +15,68 @@ import '../region_instance_template_shielded_instance_config/region_instance_tem
 /// The set of arguments for RegionInstanceTemplate.
 class RegionInstanceTemplateArgs {
   /// Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
-  final Input<RegionInstanceTemplateAdvancedMachineFeatures>?
+  final pulumi.Input<RegionInstanceTemplateAdvancedMachineFeatures>?
       advancedMachineFeatures;
 
   /// Whether to allow sending and receiving of
   /// packets with non-matching source or destination IPs. This defaults to false.
-  final Input<bool>? canIpForward;
+  final pulumi.Input<bool>? canIpForward;
 
   /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
-  final Input<RegionInstanceTemplateConfidentialInstanceConfig>?
+  final pulumi.Input<RegionInstanceTemplateConfidentialInstanceConfig>?
       confidentialInstanceConfig;
 
   /// A brief description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Disks to attach to instances created from this template.
   /// This can be specified multiple times for multiple disks. Structure is
   /// documented below.
-  final Input<List<RegionInstanceTemplateDisk>> disks;
+  final pulumi.Input<List<RegionInstanceTemplateDisk>> disks;
 
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
   /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
-  final Input<bool>? enableDisplay;
+  final pulumi.Input<bool>? enableDisplay;
 
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-  final Input<List<RegionInstanceTemplateGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<RegionInstanceTemplateGuestAccelerator>>?
+      guestAccelerators;
 
   /// A brief description to use for instances
   /// created from this template.
-  final Input<String>? instanceDescription;
+  final pulumi.Input<String>? instanceDescription;
 
   /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
-  final Input<String>? keyRevocationActionType;
+  final pulumi.Input<String>? keyRevocationActionType;
 
   /// A set of key/value label pairs to assign to instances
   /// created from this template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The machine type to create.
   ///
   /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
   ///
   /// - - -
-  final Input<String> machineType;
+  final pulumi.Input<String> machineType;
 
   /// Metadata key/value pairs to make available from
   /// within instances created from this template.
-  final Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// An alternative to using the
   /// startup-script metadata key, mostly to match the compute_instance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
-  final Input<String>? metadataStartupScript;
+  final pulumi.Input<String>? metadataStartupScript;
 
   /// Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
   /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-  final Input<String>? minCpuPlatform;
-  final Input<String>? name;
+  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`. Max length is 54 characters.
@@ -86,12 +87,13 @@ class RegionInstanceTemplateArgs {
   /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `name_prefix` 38 - 54 characters:
   /// `name_prefix` + YYmmdd + 3 digit incremental counter
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Networks to attach to instances created from
   /// this template. This can be specified multiple times for multiple networks.
   /// Structure is documented below.
-  final Input<List<RegionInstanceTemplateNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<RegionInstanceTemplateNetworkInterface>>?
+      networkInterfaces;
 
   /// Configures network performance settings for the instance created from the
   /// template. Structure is documented below. **Note**: `machine_type`
@@ -99,44 +101,45 @@ class RegionInstanceTemplateArgs {
   /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
   /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
   /// in order for this setting to take effect.
-  final Input<RegionInstanceTemplateNetworkPerformanceConfig>?
+  final pulumi.Input<RegionInstanceTemplateNetworkPerformanceConfig>?
       networkPerformanceConfig;
 
   /// Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
-  final Input<Map<String, String>>? partnerMetadata;
+  final pulumi.Input<Map<String, String>>? partnerMetadata;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Region in which the resource belongs.
   /// If region is not provided, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specifies the reservations that this instance can consume from.
   /// Structure is documented below.
-  final Input<RegionInstanceTemplateReservationAffinity>? reservationAffinity;
+  final pulumi.Input<RegionInstanceTemplateReservationAffinity>?
+      reservationAffinity;
 
   /// A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
-  final Input<Map<String, String>>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>>? resourceManagerTags;
 
   /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
-  final Input<String>? resourcePolicies;
+  final pulumi.Input<String>? resourcePolicies;
 
   /// The scheduling strategy to use. More details about
   /// this configuration option are detailed below.
-  final Input<RegionInstanceTemplateScheduling>? scheduling;
+  final pulumi.Input<RegionInstanceTemplateScheduling>? scheduling;
 
   /// Service account to attach to the instance. Structure is documented below.
-  final Input<RegionInstanceTemplateServiceAccount>? serviceAccount;
+  final pulumi.Input<RegionInstanceTemplateServiceAccount>? serviceAccount;
 
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-  final Input<RegionInstanceTemplateShieldedInstanceConfig>?
+  final pulumi.Input<RegionInstanceTemplateShieldedInstanceConfig>?
       shieldedInstanceConfig;
 
   /// Tags to attach to the instance.
-  final Input<List<String>>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   RegionInstanceTemplateArgs({
     this.advancedMachineFeatures,
@@ -173,7 +176,7 @@ class RegionInstanceTemplateArgs {
     final map = <String, dynamic>{};
     final advancedMachineFeaturesValue = advancedMachineFeatures;
     if (advancedMachineFeaturesValue != null) {
-      map['advancedMachineFeatures'] = Input.mapOptionalInputValue<
+      map['advancedMachineFeatures'] = pulumi.Input.mapOptionalInputValue<
               RegionInstanceTemplateAdvancedMachineFeatures,
               Map<String, dynamic>>(
           advancedMachineFeaturesValue, (value) => value.toMap());
@@ -184,7 +187,7 @@ class RegionInstanceTemplateArgs {
     }
     final confidentialInstanceConfigValue = confidentialInstanceConfig;
     if (confidentialInstanceConfigValue != null) {
-      map['confidentialInstanceConfig'] = Input.mapOptionalInputValue<
+      map['confidentialInstanceConfig'] = pulumi.Input.mapOptionalInputValue<
               RegionInstanceTemplateConfidentialInstanceConfig,
               Map<String, dynamic>>(
           confidentialInstanceConfigValue, (value) => value.toMap());
@@ -193,23 +196,23 @@ class RegionInstanceTemplateArgs {
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
     }
-    map['disks'] = Input.mapInputValue<List<RegionInstanceTemplateDisk>,
+    map['disks'] = pulumi.Input.mapInputValue<List<RegionInstanceTemplateDisk>,
             List<Map<String, dynamic>>>(
         disks,
-        (value) =>
-            Input.encodeList<RegionInstanceTemplateDisk, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
+        (value) => pulumi.Input.encodeList<RegionInstanceTemplateDisk,
+            Map<String, dynamic>>(value, (value) => value.toMap()));
     final enableDisplayValue = enableDisplay;
     if (enableDisplayValue != null) {
       map['enableDisplay'] = enableDisplayValue;
     }
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.mapOptionalInputValue<
+      map['guestAccelerators'] = pulumi.Input.mapOptionalInputValue<
               List<RegionInstanceTemplateGuestAccelerator>,
               List<Map<String, dynamic>>>(
           guestAcceleratorsValue,
-          (value) => Input.encodeList<RegionInstanceTemplateGuestAccelerator,
+          (value) => pulumi.Input.encodeList<
+              RegionInstanceTemplateGuestAccelerator,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final instanceDescriptionValue = instanceDescription;
@@ -247,16 +250,17 @@ class RegionInstanceTemplateArgs {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.mapOptionalInputValue<
+      map['networkInterfaces'] = pulumi.Input.mapOptionalInputValue<
               List<RegionInstanceTemplateNetworkInterface>,
               List<Map<String, dynamic>>>(
           networkInterfacesValue,
-          (value) => Input.encodeList<RegionInstanceTemplateNetworkInterface,
+          (value) => pulumi.Input.encodeList<
+              RegionInstanceTemplateNetworkInterface,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final networkPerformanceConfigValue = networkPerformanceConfig;
     if (networkPerformanceConfigValue != null) {
-      map['networkPerformanceConfig'] = Input.mapOptionalInputValue<
+      map['networkPerformanceConfig'] = pulumi.Input.mapOptionalInputValue<
               RegionInstanceTemplateNetworkPerformanceConfig,
               Map<String, dynamic>>(
           networkPerformanceConfigValue, (value) => value.toMap());
@@ -275,7 +279,7 @@ class RegionInstanceTemplateArgs {
     }
     final reservationAffinityValue = reservationAffinity;
     if (reservationAffinityValue != null) {
-      map['reservationAffinity'] = Input.mapOptionalInputValue<
+      map['reservationAffinity'] = pulumi.Input.mapOptionalInputValue<
               RegionInstanceTemplateReservationAffinity, Map<String, dynamic>>(
           reservationAffinityValue, (value) => value.toMap());
     }
@@ -289,19 +293,19 @@ class RegionInstanceTemplateArgs {
     }
     final schedulingValue = scheduling;
     if (schedulingValue != null) {
-      map['scheduling'] = Input.mapOptionalInputValue<
+      map['scheduling'] = pulumi.Input.mapOptionalInputValue<
           RegionInstanceTemplateScheduling,
           Map<String, dynamic>>(schedulingValue, (value) => value.toMap());
     }
     final serviceAccountValue = serviceAccount;
     if (serviceAccountValue != null) {
-      map['serviceAccount'] = Input.mapOptionalInputValue<
+      map['serviceAccount'] = pulumi.Input.mapOptionalInputValue<
           RegionInstanceTemplateServiceAccount,
           Map<String, dynamic>>(serviceAccountValue, (value) => value.toMap());
     }
     final shieldedInstanceConfigValue = shieldedInstanceConfig;
     if (shieldedInstanceConfigValue != null) {
-      map['shieldedInstanceConfig'] = Input.mapOptionalInputValue<
+      map['shieldedInstanceConfig'] = pulumi.Input.mapOptionalInputValue<
               RegionInstanceTemplateShieldedInstanceConfig,
               Map<String, dynamic>>(
           shieldedInstanceConfigValue, (value) => value.toMap());
@@ -315,56 +319,61 @@ class RegionInstanceTemplateArgs {
 
   factory RegionInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateArgs(
-      advancedMachineFeatures:
-          Input.asOptionalInput<RegionInstanceTemplateAdvancedMachineFeatures>(
-              map['advancedMachineFeatures']),
-      canIpForward: Input.asOptionalInput<bool>(map['canIpForward']),
-      confidentialInstanceConfig: Input.asOptionalInput<
+      advancedMachineFeatures: pulumi.Input.asOptionalInput<
+              RegionInstanceTemplateAdvancedMachineFeatures>(
+          map['advancedMachineFeatures']),
+      canIpForward: pulumi.Input.asOptionalInput<bool>(map['canIpForward']),
+      confidentialInstanceConfig: pulumi.Input.asOptionalInput<
               RegionInstanceTemplateConfidentialInstanceConfig>(
           map['confidentialInstanceConfig']),
-      description: Input.asOptionalInput<String>(map['description']),
-      disks: Input.asInput<List<RegionInstanceTemplateDisk>>(map['disks']),
-      enableDisplay: Input.asOptionalInput<bool>(map['enableDisplay']),
-      guestAccelerators:
-          Input.asOptionalInput<List<RegionInstanceTemplateGuestAccelerator>>(
-              map['guestAccelerators']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disks:
+          pulumi.Input.asInput<List<RegionInstanceTemplateDisk>>(map['disks']),
+      enableDisplay: pulumi.Input.asOptionalInput<bool>(map['enableDisplay']),
+      guestAccelerators: pulumi.Input.asOptionalInput<
+              List<RegionInstanceTemplateGuestAccelerator>>(
+          map['guestAccelerators']),
       instanceDescription:
-          Input.asOptionalInput<String>(map['instanceDescription']),
+          pulumi.Input.asOptionalInput<String>(map['instanceDescription']),
       keyRevocationActionType:
-          Input.asOptionalInput<String>(map['keyRevocationActionType']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      machineType: Input.asInput<String>(map['machineType']),
-      metadata: Input.asOptionalInput<Map<String, String>>(map['metadata']),
+          pulumi.Input.asOptionalInput<String>(map['keyRevocationActionType']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      machineType: pulumi.Input.asInput<String>(map['machineType']),
+      metadata:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['metadata']),
       metadataStartupScript:
-          Input.asOptionalInput<String>(map['metadataStartupScript']),
-      minCpuPlatform: Input.asOptionalInput<String>(map['minCpuPlatform']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      networkInterfaces:
-          Input.asOptionalInput<List<RegionInstanceTemplateNetworkInterface>>(
-              map['networkInterfaces']),
-      networkPerformanceConfig:
-          Input.asOptionalInput<RegionInstanceTemplateNetworkPerformanceConfig>(
-              map['networkPerformanceConfig']),
-      partnerMetadata:
-          Input.asOptionalInput<Map<String, String>>(map['partnerMetadata']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      reservationAffinity:
-          Input.asOptionalInput<RegionInstanceTemplateReservationAffinity>(
-              map['reservationAffinity']),
-      resourceManagerTags: Input.asOptionalInput<Map<String, String>>(
+          pulumi.Input.asOptionalInput<String>(map['metadataStartupScript']),
+      minCpuPlatform:
+          pulumi.Input.asOptionalInput<String>(map['minCpuPlatform']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      networkInterfaces: pulumi.Input.asOptionalInput<
+              List<RegionInstanceTemplateNetworkInterface>>(
+          map['networkInterfaces']),
+      networkPerformanceConfig: pulumi.Input.asOptionalInput<
+              RegionInstanceTemplateNetworkPerformanceConfig>(
+          map['networkPerformanceConfig']),
+      partnerMetadata: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['partnerMetadata']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      reservationAffinity: pulumi.Input.asOptionalInput<
+              RegionInstanceTemplateReservationAffinity>(
+          map['reservationAffinity']),
+      resourceManagerTags: pulumi.Input.asOptionalInput<Map<String, String>>(
           map['resourceManagerTags']),
-      resourcePolicies: Input.asOptionalInput<String>(map['resourcePolicies']),
-      scheduling: Input.asOptionalInput<RegionInstanceTemplateScheduling>(
-          map['scheduling']),
+      resourcePolicies:
+          pulumi.Input.asOptionalInput<String>(map['resourcePolicies']),
+      scheduling:
+          pulumi.Input.asOptionalInput<RegionInstanceTemplateScheduling>(
+              map['scheduling']),
       serviceAccount:
-          Input.asOptionalInput<RegionInstanceTemplateServiceAccount>(
+          pulumi.Input.asOptionalInput<RegionInstanceTemplateServiceAccount>(
               map['serviceAccount']),
-      shieldedInstanceConfig:
-          Input.asOptionalInput<RegionInstanceTemplateShieldedInstanceConfig>(
-              map['shieldedInstanceConfig']),
-      tags: Input.asOptionalInput<List<String>>(map['tags']),
+      shieldedInstanceConfig: pulumi.Input.asOptionalInput<
+              RegionInstanceTemplateShieldedInstanceConfig>(
+          map['shieldedInstanceConfig']),
+      tags: pulumi.Input.asOptionalInput<List<String>>(map['tags']),
     );
   }
 }

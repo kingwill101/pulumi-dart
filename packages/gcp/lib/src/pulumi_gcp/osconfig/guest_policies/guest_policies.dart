@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guest_policies_assignment/guest_policies_assignment.dart';
 import '../guest_policies_package/guest_policies_package.dart';
 import '../guest_policies_package_repository/guest_policies_package_repository.dart';
@@ -53,7 +53,7 @@ import 'guest_policies_args.dart';
 /// ```sh
 /// $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
 /// ```
-class GuestPolicies extends CustomResource {
+class GuestPolicies extends pulumi.CustomResource {
   /// Specifies the VM instances that are assigned to this policy. This allows you to target sets
   /// or groups of VM instances by different parameters such as labels, names, OS, or zones.
   /// If left empty, all VM instances underneath this policy are targeted.
@@ -62,17 +62,17 @@ class GuestPolicies extends CustomResource {
   /// For more information, see how the service
   /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
   /// Structure is documented below.
-  late final Output<GuestPoliciesAssignment> assignment;
+  late final pulumi.Output<GuestPoliciesAssignment> assignment;
 
   /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The logical name of the guest policy in the project with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -80,42 +80,43 @@ class GuestPolicies extends CustomResource {
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
-  late final Output<String> guestPolicyId;
+  late final pulumi.Output<String> guestPolicyId;
 
   /// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A list of package repositories to configure on the VM instance.
   /// This is done before any other configs are applied so they can use these repos.
   /// Package repositories are only configured if the corresponding package manager(s) are available.
   /// Structure is documented below.
-  late final Output<List<GuestPoliciesPackageRepository>?> packageRepositories;
+  late final pulumi.Output<List<GuestPoliciesPackageRepository>?>
+      packageRepositories;
 
   /// The software packages to be managed by this policy.
   /// Structure is documented below.
-  late final Output<List<GuestPoliciesPackage>?> packages;
+  late final pulumi.Output<List<GuestPoliciesPackage>?> packages;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A list of Recipes to install on the VM instance.
   /// Structure is documented below.
-  late final Output<List<GuestPoliciesRecipe>?> recipes;
+  late final pulumi.Output<List<GuestPoliciesRecipe>?> recipes;
 
   /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   GuestPolicies(
     String name, {
     GuestPoliciesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:osconfig/guestPolicies:GuestPolicies',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assignment = registerOutput<GuestPoliciesAssignment>('assignment');
     this.createTime = registerOutput<String>('createTime');

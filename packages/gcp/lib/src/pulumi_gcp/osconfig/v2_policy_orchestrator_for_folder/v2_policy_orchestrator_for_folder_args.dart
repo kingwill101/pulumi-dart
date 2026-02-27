@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_for_folder_orchestrated_resource/v2_policy_orchestrator_for_folder_orchestrated_resource.dart';
 import '../v2_policy_orchestrator_for_folder_orchestration_scope/v2_policy_orchestrator_for_folder_orchestration_scope.dart';
 
@@ -11,28 +11,28 @@ class V2PolicyOrchestratorForFolderArgs {
   /// `orchestration_scope`. Allowed values:
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
-  final Input<String> action;
+  final pulumi.Input<String> action;
 
   /// Freeform text describing the purpose of the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The parent resource name in the form of `folders/{folder_id}/locations/global`.
-  final Input<String> folderId;
+  final pulumi.Input<String> folderId;
 
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
-  final Input<V2PolicyOrchestratorForFolderOrchestratedResource>
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResource>
       orchestratedResource;
 
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  final Input<V2PolicyOrchestratorForFolderOrchestrationScope>?
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScope>?
       orchestrationScope;
 
   /// The logical identifier of the policy orchestrator, with the following
@@ -42,7 +42,7 @@ class V2PolicyOrchestratorForFolderArgs {
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the parent.
-  final Input<String> policyOrchestratorId;
+  final pulumi.Input<String> policyOrchestratorId;
 
   /// State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
@@ -51,7 +51,7 @@ class V2PolicyOrchestratorForFolderArgs {
   /// Note: There might be more states added in the future. We use string here
   /// instead of an enum, to avoid the need of propagating new states to all the
   /// client code.
-  final Input<String>? state;
+  final pulumi.Input<String>? state;
 
   V2PolicyOrchestratorForFolderArgs({
     required this.action,
@@ -76,12 +76,12 @@ class V2PolicyOrchestratorForFolderArgs {
     if (labelsValue != null) {
       map['labels'] = labelsValue;
     }
-    map['orchestratedResource'] = Input.mapInputValue<
+    map['orchestratedResource'] = pulumi.Input.mapInputValue<
         V2PolicyOrchestratorForFolderOrchestratedResource,
         Map<String, dynamic>>(orchestratedResource, (value) => value.toMap());
     final orchestrationScopeValue = orchestrationScope;
     if (orchestrationScopeValue != null) {
-      map['orchestrationScope'] = Input.mapOptionalInputValue<
+      map['orchestrationScope'] = pulumi.Input.mapOptionalInputValue<
               V2PolicyOrchestratorForFolderOrchestrationScope,
               Map<String, dynamic>>(
           orchestrationScopeValue, (value) => value.toMap());
@@ -96,18 +96,19 @@ class V2PolicyOrchestratorForFolderArgs {
 
   factory V2PolicyOrchestratorForFolderArgs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderArgs(
-      action: Input.asInput<String>(map['action']),
-      description: Input.asOptionalInput<String>(map['description']),
-      folderId: Input.asInput<String>(map['folderId']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      orchestratedResource:
-          Input.asInput<V2PolicyOrchestratorForFolderOrchestratedResource>(
-              map['orchestratedResource']),
-      orchestrationScope: Input.asOptionalInput<
+      action: pulumi.Input.asInput<String>(map['action']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      folderId: pulumi.Input.asInput<String>(map['folderId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      orchestratedResource: pulumi.Input.asInput<
+              V2PolicyOrchestratorForFolderOrchestratedResource>(
+          map['orchestratedResource']),
+      orchestrationScope: pulumi.Input.asOptionalInput<
               V2PolicyOrchestratorForFolderOrchestrationScope>(
           map['orchestrationScope']),
-      policyOrchestratorId: Input.asInput<String>(map['policyOrchestratorId']),
-      state: Input.asOptionalInput<String>(map['state']),
+      policyOrchestratorId:
+          pulumi.Input.asInput<String>(map['policyOrchestratorId']),
+      state: pulumi.Input.asOptionalInput<String>(map['state']),
     );
   }
 }

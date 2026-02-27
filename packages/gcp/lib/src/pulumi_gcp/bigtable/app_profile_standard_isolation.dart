@@ -1,3 +1,3 @@
 library module_bigtable_app_profile_standard_isolation;
 
-export 'app_profile_standard_isolation/app_profile_standard_isolation2.dart';
+export 'app_profile_standard_isolation/app_profile_standard_isolation_bigtable.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../unit_maintenance/unit_maintenance.dart';
 
 /// The set of arguments for Unit.
@@ -11,23 +11,23 @@ class UnitArgs {
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Captures requested directives for performing future maintenance on the
   /// unit. This includes a request for the unit to skip maintenance for a period
   /// of time and remain pinned to its current release as well as controls for
   /// postponing maintenance scheduled in future.
   /// Structure is documented below.
-  final Input<UnitMaintenance>? maintenance;
+  final pulumi.Input<UnitMaintenance>? maintenance;
 
   /// Indicates whether the Unit life cycle is controlled
   /// by the user or by the system.
@@ -35,22 +35,22 @@ class UnitArgs {
   /// Possible values:
   /// MANAGEMENT_MODE_USER
   /// MANAGEMENT_MODE_SYSTEM
-  final Input<String>? managementMode;
+  final pulumi.Input<String>? managementMode;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Reference to the Saas Tenant resource this unit belongs to. This for
   /// example informs the maintenance policies to use for scheduling future
   /// updates on a unit. (optional and immutable once created)
-  final Input<String>? tenant;
+  final pulumi.Input<String>? tenant;
 
   /// The ID value for the new unit.
-  final Input<String> unitId;
+  final pulumi.Input<String> unitId;
 
   /// Reference to the UnitKind this Unit belongs to. Immutable once set.
-  final Input<String>? unitKind;
+  final pulumi.Input<String>? unitKind;
 
   UnitArgs({
     this.annotations,
@@ -77,9 +77,8 @@ class UnitArgs {
     map['location'] = location;
     final maintenanceValue = maintenance;
     if (maintenanceValue != null) {
-      map['maintenance'] =
-          Input.mapOptionalInputValue<UnitMaintenance, Map<String, dynamic>>(
-              maintenanceValue, (value) => value.toMap());
+      map['maintenance'] = pulumi.Input.mapOptionalInputValue<UnitMaintenance,
+          Map<String, dynamic>>(maintenanceValue, (value) => value.toMap());
     }
     final managementModeValue = managementMode;
     if (managementModeValue != null) {
@@ -104,15 +103,17 @@ class UnitArgs {
   factory UnitArgs.fromMap(Map<String, dynamic> map) {
     return UnitArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      maintenance: Input.asOptionalInput<UnitMaintenance>(map['maintenance']),
-      managementMode: Input.asOptionalInput<String>(map['managementMode']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tenant: Input.asOptionalInput<String>(map['tenant']),
-      unitId: Input.asInput<String>(map['unitId']),
-      unitKind: Input.asOptionalInput<String>(map['unitKind']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      maintenance:
+          pulumi.Input.asOptionalInput<UnitMaintenance>(map['maintenance']),
+      managementMode:
+          pulumi.Input.asOptionalInput<String>(map['managementMode']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tenant: pulumi.Input.asOptionalInput<String>(map['tenant']),
+      unitId: pulumi.Input.asInput<String>(map['unitId']),
+      unitKind: pulumi.Input.asOptionalInput<String>(map['unitKind']),
     );
   }
 }

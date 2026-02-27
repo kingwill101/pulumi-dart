@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_disk_resource_policy_attachment_args.dart';
 
 /// Adds existing resource policies to a disk. You can only add one policy
@@ -45,30 +45,30 @@ import 'region_disk_resource_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
 /// ```
-class RegionDiskResourcePolicyAttachment extends CustomResource {
+class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
   /// The name of the regional disk in which the resource policies are attached to.
-  late final Output<String> disk;
+  late final pulumi.Output<String> disk;
 
   /// The resource policy to be attached to the disk for scheduling snapshot
   /// creation. Do not specify the self link.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A reference to the region where the disk resides.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   RegionDiskResourcePolicyAttachment(
     String name, {
     RegionDiskResourcePolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');

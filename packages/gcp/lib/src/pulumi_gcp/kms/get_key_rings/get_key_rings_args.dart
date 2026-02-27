@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKeyRings.
 class GetKeyRingsArgs {
@@ -12,13 +12,13 @@ class GetKeyRingsArgs {
   /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring"` will only retrieve a key with that exact name.
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The location that the underlying key ring resides in. e.g us-west1
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The Project ID of the project.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetKeyRingsArgs({
     this.filter,
@@ -42,9 +42,9 @@ class GetKeyRingsArgs {
 
   factory GetKeyRingsArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyRingsArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_parameters_args.dart';
 import 'get_parameters_result.dart';
 
 /// Use this data source to list the Parameter Manager Parameters.
 Future<GetParametersResult> getParameters(
   GetParametersArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:parametermanager/getParameters:getParameters',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetParametersResult.fromMap(result);
 }

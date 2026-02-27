@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config_traffic_granularity_config/security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config_traffic_granularity_config.dart';
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
@@ -81,7 +81,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
     map['name'] = name;
     final trafficGranularityConfigsValue = trafficGranularityConfigs;
     if (trafficGranularityConfigsValue != null) {
-      map['trafficGranularityConfigs'] = Input.encodeList<
+      map['trafficGranularityConfigs'] = pulumi.Input.encodeList<
           SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig,
           Map<String,
               dynamic>>(trafficGranularityConfigsValue, (value) => value.toMap());
@@ -119,7 +119,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
       name: map['name'] as String,
       trafficGranularityConfigs: map['trafficGranularityConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>(
               map['trafficGranularityConfigs'],
               (value) =>

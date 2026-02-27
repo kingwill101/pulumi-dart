@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_template_template_container/get_job_template_template_container.dart';
 import '../get_job_template_template_node_selector/get_job_template_template_node_selector.dart';
 import '../get_job_template_template_volume/get_job_template_template_volume.dart';
@@ -54,29 +54,28 @@ class GetJobTemplateTemplate {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['containers'] =
-        Input.encodeList<GetJobTemplateTemplateContainer, Map<String, dynamic>>(
-            containers, (value) => value.toMap());
+    map['containers'] = pulumi.Input.encodeList<GetJobTemplateTemplateContainer,
+        Map<String, dynamic>>(containers, (value) => value.toMap());
     map['encryptionKey'] = encryptionKey;
     map['executionEnvironment'] = executionEnvironment;
     map['gpuZonalRedundancyDisabled'] = gpuZonalRedundancyDisabled;
     map['maxRetries'] = maxRetries;
-    map['nodeSelectors'] = Input.encodeList<GetJobTemplateTemplateNodeSelector,
+    map['nodeSelectors'] = pulumi.Input.encodeList<
+        GetJobTemplateTemplateNodeSelector,
         Map<String, dynamic>>(nodeSelectors, (value) => value.toMap());
     map['serviceAccount'] = serviceAccount;
     map['timeout'] = timeout;
-    map['volumes'] =
-        Input.encodeList<GetJobTemplateTemplateVolume, Map<String, dynamic>>(
-            volumes, (value) => value.toMap());
-    map['vpcAccesses'] =
-        Input.encodeList<GetJobTemplateTemplateVpcAccess, Map<String, dynamic>>(
-            vpcAccesses, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<GetJobTemplateTemplateVolume,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
+    map['vpcAccesses'] = pulumi.Input.encodeList<
+        GetJobTemplateTemplateVpcAccess,
+        Map<String, dynamic>>(vpcAccesses, (value) => value.toMap());
     return map;
   }
 
   factory GetJobTemplateTemplate.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplate(
-      containers: Input.decodeList<GetJobTemplateTemplateContainer>(
+      containers: pulumi.Input.decodeList<GetJobTemplateTemplateContainer>(
           map['containers'],
           (value) => GetJobTemplateTemplateContainer.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -84,17 +83,18 @@ class GetJobTemplateTemplate {
       executionEnvironment: map['executionEnvironment'] as String,
       gpuZonalRedundancyDisabled: map['gpuZonalRedundancyDisabled'] as bool,
       maxRetries: map['maxRetries'] as int,
-      nodeSelectors: Input.decodeList<GetJobTemplateTemplateNodeSelector>(
-          map['nodeSelectors'],
-          (value) => GetJobTemplateTemplateNodeSelector.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeSelectors:
+          pulumi.Input.decodeList<GetJobTemplateTemplateNodeSelector>(
+              map['nodeSelectors'],
+              (value) => GetJobTemplateTemplateNodeSelector.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       serviceAccount: map['serviceAccount'] as String,
       timeout: map['timeout'] as String,
-      volumes: Input.decodeList<GetJobTemplateTemplateVolume>(
+      volumes: pulumi.Input.decodeList<GetJobTemplateTemplateVolume>(
           map['volumes'],
           (value) => GetJobTemplateTemplateVolume.fromMap(
               (value as Map).cast<String, dynamic>())),
-      vpcAccesses: Input.decodeList<GetJobTemplateTemplateVpcAccess>(
+      vpcAccesses: pulumi.Input.decodeList<GetJobTemplateTemplateVpcAccess>(
           map['vpcAccesses'],
           (value) => GetJobTemplateTemplateVpcAccess.fromMap(
               (value as Map).cast<String, dynamic>())),

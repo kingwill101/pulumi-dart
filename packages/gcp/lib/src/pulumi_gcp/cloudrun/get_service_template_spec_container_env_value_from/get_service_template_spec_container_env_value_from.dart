@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_container_env_value_from_secret_key_ref/get_service_template_spec_container_env_value_from_secret_key_ref.dart';
 
 class GetServiceTemplateSpecContainerEnvValueFrom {
@@ -14,7 +14,7 @@ class GetServiceTemplateSpecContainerEnvValueFrom {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['secretKeyReves'] = Input.encodeList<
+    map['secretKeyReves'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef,
         Map<String, dynamic>>(secretKeyReves, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetServiceTemplateSpecContainerEnvValueFrom {
   factory GetServiceTemplateSpecContainerEnvValueFrom.fromMap(
       Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerEnvValueFrom(
-      secretKeyReves: Input.decodeList<
+      secretKeyReves: pulumi.Input.decodeList<
               GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef>(
           map['secretKeyReves'],
           (value) =>

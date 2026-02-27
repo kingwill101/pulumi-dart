@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_anti_affinity_groups/vmware_cluster_anti_affinity_groups.dart';
 import '../vmware_cluster_authorization/vmware_cluster_authorization.dart';
 import '../vmware_cluster_auto_repair_config/vmware_cluster_auto_repair_config.dart';
@@ -18,7 +18,7 @@ class VMwareClusterArgs {
   /// This is the full resource name of the admin cluster's hub membership.
   /// In the future, references to other resource types might be allowed if
   /// admin clusters are modeled as their own resources.
-  final Input<String> adminClusterMembership;
+  final pulumi.Input<String> adminClusterMembership;
 
   /// Annotations on the VMware User Cluster.
   /// This field has the same restrictions as Kubernetes annotations.
@@ -31,77 +31,77 @@ class VMwareClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
   /// least three physical hosts in the datacenter.
   /// Structure is documented below.
-  final Input<VMwareClusterAntiAffinityGroups>? antiAffinityGroups;
+  final pulumi.Input<VMwareClusterAntiAffinityGroups>? antiAffinityGroups;
 
   /// RBAC policy that will be applied and managed by GKE On-Prem.
   /// Structure is documented below.
-  final Input<VMwareClusterAuthorization>? authorization;
+  final pulumi.Input<VMwareClusterAuthorization>? authorization;
 
   /// Configuration for auto repairing.
   /// Structure is documented below.
-  final Input<VMwareClusterAutoRepairConfig>? autoRepairConfig;
+  final pulumi.Input<VMwareClusterAutoRepairConfig>? autoRepairConfig;
 
   /// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
   /// Structure is documented below.
-  final Input<VMwareClusterControlPlaneNode> controlPlaneNode;
+  final pulumi.Input<VMwareClusterControlPlaneNode> controlPlaneNode;
 
   /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
   /// Structure is documented below.
-  final Input<VMwareClusterDataplaneV2>? dataplaneV2;
+  final pulumi.Input<VMwareClusterDataplaneV2>? dataplaneV2;
 
   /// A human readable description of this VMware User Cluster.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Disable bundled ingress.
-  final Input<bool>? disableBundledIngress;
+  final pulumi.Input<bool>? disableBundledIngress;
 
   /// Enable advanced cluster. Default to false.
-  final Input<bool>? enableAdvancedCluster;
+  final pulumi.Input<bool>? enableAdvancedCluster;
 
   /// Enable control plane V2. Default to false.
-  final Input<bool>? enableControlPlaneV2;
+  final pulumi.Input<bool>? enableControlPlaneV2;
 
   /// Load Balancer configuration.
   /// Structure is documented below.
-  final Input<VMwareClusterLoadBalancer>? loadBalancer;
+  final pulumi.Input<VMwareClusterLoadBalancer>? loadBalancer;
 
   /// The location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The VMware cluster name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The VMware User Cluster network configuration.
   /// Structure is documented below.
-  final Input<VMwareClusterNetworkConfig>? networkConfig;
+  final pulumi.Input<VMwareClusterNetworkConfig>? networkConfig;
 
   /// The Anthos clusters on the VMware version for your user cluster.
-  final Input<String> onPremVersion;
+  final pulumi.Input<String> onPremVersion;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Storage configuration.
   /// Structure is documented below.
-  final Input<VMwareClusterStorage>? storage;
+  final pulumi.Input<VMwareClusterStorage>? storage;
 
   /// Specifies upgrade policy for the cluster.
   /// Structure is documented below.
-  final Input<VMwareClusterUpgradePolicy>? upgradePolicy;
+  final pulumi.Input<VMwareClusterUpgradePolicy>? upgradePolicy;
 
   /// VmwareVCenterConfig specifies vCenter config for the user cluster.
   /// Inherited from the admin cluster.
   /// Structure is documented below.
-  final Input<VMwareClusterVcenter>? vcenter;
+  final pulumi.Input<VMwareClusterVcenter>? vcenter;
 
   /// Enable VM tracking.
-  final Input<bool>? vmTrackingEnabled;
+  final pulumi.Input<bool>? vmTrackingEnabled;
 
   VMwareClusterArgs({
     required this.adminClusterMembership,
@@ -136,27 +136,29 @@ class VMwareClusterArgs {
     }
     final antiAffinityGroupsValue = antiAffinityGroups;
     if (antiAffinityGroupsValue != null) {
-      map['antiAffinityGroups'] = Input.mapOptionalInputValue<
+      map['antiAffinityGroups'] = pulumi.Input.mapOptionalInputValue<
               VMwareClusterAntiAffinityGroups, Map<String, dynamic>>(
           antiAffinityGroupsValue, (value) => value.toMap());
     }
     final authorizationValue = authorization;
     if (authorizationValue != null) {
-      map['authorization'] = Input.mapOptionalInputValue<
+      map['authorization'] = pulumi.Input.mapOptionalInputValue<
           VMwareClusterAuthorization,
           Map<String, dynamic>>(authorizationValue, (value) => value.toMap());
     }
     final autoRepairConfigValue = autoRepairConfig;
     if (autoRepairConfigValue != null) {
-      map['autoRepairConfig'] = Input.mapOptionalInputValue<
+      map['autoRepairConfig'] = pulumi.Input.mapOptionalInputValue<
               VMwareClusterAutoRepairConfig, Map<String, dynamic>>(
           autoRepairConfigValue, (value) => value.toMap());
     }
-    map['controlPlaneNode'] = Input.mapInputValue<VMwareClusterControlPlaneNode,
+    map['controlPlaneNode'] = pulumi.Input.mapInputValue<
+        VMwareClusterControlPlaneNode,
         Map<String, dynamic>>(controlPlaneNode, (value) => value.toMap());
     final dataplaneV2Value = dataplaneV2;
     if (dataplaneV2Value != null) {
-      map['dataplaneV2'] = Input.mapOptionalInputValue<VMwareClusterDataplaneV2,
+      map['dataplaneV2'] = pulumi.Input.mapOptionalInputValue<
+          VMwareClusterDataplaneV2,
           Map<String, dynamic>>(dataplaneV2Value, (value) => value.toMap());
     }
     final descriptionValue = description;
@@ -177,7 +179,7 @@ class VMwareClusterArgs {
     }
     final loadBalancerValue = loadBalancer;
     if (loadBalancerValue != null) {
-      map['loadBalancer'] = Input.mapOptionalInputValue<
+      map['loadBalancer'] = pulumi.Input.mapOptionalInputValue<
           VMwareClusterLoadBalancer,
           Map<String, dynamic>>(loadBalancerValue, (value) => value.toMap());
     }
@@ -188,7 +190,7 @@ class VMwareClusterArgs {
     }
     final networkConfigValue = networkConfig;
     if (networkConfigValue != null) {
-      map['networkConfig'] = Input.mapOptionalInputValue<
+      map['networkConfig'] = pulumi.Input.mapOptionalInputValue<
           VMwareClusterNetworkConfig,
           Map<String, dynamic>>(networkConfigValue, (value) => value.toMap());
     }
@@ -199,18 +201,18 @@ class VMwareClusterArgs {
     }
     final storageValue = storage;
     if (storageValue != null) {
-      map['storage'] = Input.mapOptionalInputValue<VMwareClusterStorage,
+      map['storage'] = pulumi.Input.mapOptionalInputValue<VMwareClusterStorage,
           Map<String, dynamic>>(storageValue, (value) => value.toMap());
     }
     final upgradePolicyValue = upgradePolicy;
     if (upgradePolicyValue != null) {
-      map['upgradePolicy'] = Input.mapOptionalInputValue<
+      map['upgradePolicy'] = pulumi.Input.mapOptionalInputValue<
           VMwareClusterUpgradePolicy,
           Map<String, dynamic>>(upgradePolicyValue, (value) => value.toMap());
     }
     final vcenterValue = vcenter;
     if (vcenterValue != null) {
-      map['vcenter'] = Input.mapOptionalInputValue<VMwareClusterVcenter,
+      map['vcenter'] = pulumi.Input.mapOptionalInputValue<VMwareClusterVcenter,
           Map<String, dynamic>>(vcenterValue, (value) => value.toMap());
     }
     final vmTrackingEnabledValue = vmTrackingEnabled;
@@ -223,40 +225,44 @@ class VMwareClusterArgs {
   factory VMwareClusterArgs.fromMap(Map<String, dynamic> map) {
     return VMwareClusterArgs(
       adminClusterMembership:
-          Input.asInput<String>(map['adminClusterMembership']),
+          pulumi.Input.asInput<String>(map['adminClusterMembership']),
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
       antiAffinityGroups:
-          Input.asOptionalInput<VMwareClusterAntiAffinityGroups>(
+          pulumi.Input.asOptionalInput<VMwareClusterAntiAffinityGroups>(
               map['antiAffinityGroups']),
-      authorization: Input.asOptionalInput<VMwareClusterAuthorization>(
+      authorization: pulumi.Input.asOptionalInput<VMwareClusterAuthorization>(
           map['authorization']),
-      autoRepairConfig: Input.asOptionalInput<VMwareClusterAutoRepairConfig>(
-          map['autoRepairConfig']),
-      controlPlaneNode:
-          Input.asInput<VMwareClusterControlPlaneNode>(map['controlPlaneNode']),
-      dataplaneV2:
-          Input.asOptionalInput<VMwareClusterDataplaneV2>(map['dataplaneV2']),
-      description: Input.asOptionalInput<String>(map['description']),
+      autoRepairConfig:
+          pulumi.Input.asOptionalInput<VMwareClusterAutoRepairConfig>(
+              map['autoRepairConfig']),
+      controlPlaneNode: pulumi.Input.asInput<VMwareClusterControlPlaneNode>(
+          map['controlPlaneNode']),
+      dataplaneV2: pulumi.Input.asOptionalInput<VMwareClusterDataplaneV2>(
+          map['dataplaneV2']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       disableBundledIngress:
-          Input.asOptionalInput<bool>(map['disableBundledIngress']),
+          pulumi.Input.asOptionalInput<bool>(map['disableBundledIngress']),
       enableAdvancedCluster:
-          Input.asOptionalInput<bool>(map['enableAdvancedCluster']),
+          pulumi.Input.asOptionalInput<bool>(map['enableAdvancedCluster']),
       enableControlPlaneV2:
-          Input.asOptionalInput<bool>(map['enableControlPlaneV2']),
-      loadBalancer:
-          Input.asOptionalInput<VMwareClusterLoadBalancer>(map['loadBalancer']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      networkConfig: Input.asOptionalInput<VMwareClusterNetworkConfig>(
+          pulumi.Input.asOptionalInput<bool>(map['enableControlPlaneV2']),
+      loadBalancer: pulumi.Input.asOptionalInput<VMwareClusterLoadBalancer>(
+          map['loadBalancer']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      networkConfig: pulumi.Input.asOptionalInput<VMwareClusterNetworkConfig>(
           map['networkConfig']),
-      onPremVersion: Input.asInput<String>(map['onPremVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      storage: Input.asOptionalInput<VMwareClusterStorage>(map['storage']),
-      upgradePolicy: Input.asOptionalInput<VMwareClusterUpgradePolicy>(
+      onPremVersion: pulumi.Input.asInput<String>(map['onPremVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      storage:
+          pulumi.Input.asOptionalInput<VMwareClusterStorage>(map['storage']),
+      upgradePolicy: pulumi.Input.asOptionalInput<VMwareClusterUpgradePolicy>(
           map['upgradePolicy']),
-      vcenter: Input.asOptionalInput<VMwareClusterVcenter>(map['vcenter']),
-      vmTrackingEnabled: Input.asOptionalInput<bool>(map['vmTrackingEnabled']),
+      vcenter:
+          pulumi.Input.asOptionalInput<VMwareClusterVcenter>(map['vcenter']),
+      vmTrackingEnabled:
+          pulumi.Input.asOptionalInput<bool>(map['vmTrackingEnabled']),
     );
   }
 }

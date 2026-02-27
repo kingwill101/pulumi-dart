@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../patch_deployment_instance_filter_group_label/patch_deployment_instance_filter_group_label.dart';
 
 class PatchDeploymentInstanceFilter {
@@ -39,7 +39,7 @@ class PatchDeploymentInstanceFilter {
     }
     final groupLabelsValue = groupLabels;
     if (groupLabelsValue != null) {
-      map['groupLabels'] = Input.encodeList<
+      map['groupLabels'] = pulumi.Input.encodeList<
           PatchDeploymentInstanceFilterGroupLabel,
           Map<String, dynamic>>(groupLabelsValue, (value) => value.toMap());
     }
@@ -63,7 +63,7 @@ class PatchDeploymentInstanceFilter {
       all: map['all'] == null ? null : map['all'] as bool,
       groupLabels: map['groupLabels'] == null
           ? null
-          : Input.decodeList<PatchDeploymentInstanceFilterGroupLabel>(
+          : pulumi.Input.decodeList<PatchDeploymentInstanceFilterGroupLabel>(
               map['groupLabels'],
               (value) => PatchDeploymentInstanceFilterGroupLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),

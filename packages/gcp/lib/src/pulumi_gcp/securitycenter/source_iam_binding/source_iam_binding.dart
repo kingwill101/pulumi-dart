@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../source_iam_binding_condition/source_iam_binding_condition.dart';
 import 'source_iam_binding_args.dart';
 
@@ -38,26 +38,26 @@ import 'source_iam_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/sourceIamBinding:SourceIamBinding default {{organization}}/{{name}}
 /// ```
-class SourceIamBinding extends CustomResource {
-  late final Output<SourceIamBindingCondition?> condition;
-  late final Output<String> etag;
-  late final Output<List<String>> members;
+class SourceIamBinding extends pulumi.CustomResource {
+  late final pulumi.Output<SourceIamBindingCondition?> condition;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<List<String>> members;
 
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
-  late final Output<String> organization;
-  late final Output<String> role;
-  late final Output<String> source;
+  late final pulumi.Output<String> organization;
+  late final pulumi.Output<String> role;
+  late final pulumi.Output<String> source;
 
   SourceIamBinding(
     String name, {
     SourceIamBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<SourceIamBindingCondition?>('condition');
     this.etag = registerOutput<String>('etag');

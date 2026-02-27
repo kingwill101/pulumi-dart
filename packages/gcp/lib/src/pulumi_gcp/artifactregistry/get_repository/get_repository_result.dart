@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_repository_cleanup_policy/get_repository_cleanup_policy.dart';
 import '../get_repository_docker_config/get_repository_docker_config.dart';
 import '../get_repository_maven_config/get_repository_maven_config.dart';
@@ -63,15 +63,13 @@ class GetRepositoryResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cleanupPolicies'] =
-        Input.encodeList<GetRepositoryCleanupPolicy, Map<String, dynamic>>(
-            cleanupPolicies, (value) => value.toMap());
+    map['cleanupPolicies'] = pulumi.Input.encodeList<GetRepositoryCleanupPolicy,
+        Map<String, dynamic>>(cleanupPolicies, (value) => value.toMap());
     map['cleanupPolicyDryRun'] = cleanupPolicyDryRun;
     map['createTime'] = createTime;
     map['description'] = description;
-    map['dockerConfigs'] =
-        Input.encodeList<GetRepositoryDockerConfig, Map<String, dynamic>>(
-            dockerConfigs, (value) => value.toMap());
+    map['dockerConfigs'] = pulumi.Input.encodeList<GetRepositoryDockerConfig,
+        Map<String, dynamic>>(dockerConfigs, (value) => value.toMap());
     map['effectiveLabels'] = effectiveLabels;
     map['format'] = format;
     map['id'] = id;
@@ -79,7 +77,7 @@ class GetRepositoryResult {
     map['labels'] = labels;
     map['location'] = location;
     map['mavenConfigs'] =
-        Input.encodeList<GetRepositoryMavenConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRepositoryMavenConfig, Map<String, dynamic>>(
             mavenConfigs, (value) => value.toMap());
     map['mode'] = mode;
     map['name'] = name;
@@ -89,15 +87,15 @@ class GetRepositoryResult {
     }
     map['pulumiLabels'] = pulumiLabels;
     map['registryUri'] = registryUri;
-    map['remoteRepositoryConfigs'] = Input.encodeList<
+    map['remoteRepositoryConfigs'] = pulumi.Input.encodeList<
             GetRepositoryRemoteRepositoryConfig, Map<String, dynamic>>(
         remoteRepositoryConfigs, (value) => value.toMap());
     map['repositoryId'] = repositoryId;
     map['updateTime'] = updateTime;
-    map['virtualRepositoryConfigs'] = Input.encodeList<
+    map['virtualRepositoryConfigs'] = pulumi.Input.encodeList<
             GetRepositoryVirtualRepositoryConfig, Map<String, dynamic>>(
         virtualRepositoryConfigs, (value) => value.toMap());
-    map['vulnerabilityScanningConfigs'] = Input.encodeList<
+    map['vulnerabilityScanningConfigs'] = pulumi.Input.encodeList<
             GetRepositoryVulnerabilityScanningConfig, Map<String, dynamic>>(
         vulnerabilityScanningConfigs, (value) => value.toMap());
     return map;
@@ -105,14 +103,14 @@ class GetRepositoryResult {
 
   factory GetRepositoryResult.fromMap(Map<String, dynamic> map) {
     return GetRepositoryResult(
-      cleanupPolicies: Input.decodeList<GetRepositoryCleanupPolicy>(
+      cleanupPolicies: pulumi.Input.decodeList<GetRepositoryCleanupPolicy>(
           map['cleanupPolicies'],
           (value) => GetRepositoryCleanupPolicy.fromMap(
               (value as Map).cast<String, dynamic>())),
       cleanupPolicyDryRun: map['cleanupPolicyDryRun'] as bool,
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      dockerConfigs: Input.decodeList<GetRepositoryDockerConfig>(
+      dockerConfigs: pulumi.Input.decodeList<GetRepositoryDockerConfig>(
           map['dockerConfigs'],
           (value) => GetRepositoryDockerConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -122,7 +120,7 @@ class GetRepositoryResult {
       kmsKeyName: map['kmsKeyName'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      mavenConfigs: Input.decodeList<GetRepositoryMavenConfig>(
+      mavenConfigs: pulumi.Input.decodeList<GetRepositoryMavenConfig>(
           map['mavenConfigs'],
           (value) => GetRepositoryMavenConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -132,19 +130,19 @@ class GetRepositoryResult {
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       registryUri: map['registryUri'] as String,
       remoteRepositoryConfigs:
-          Input.decodeList<GetRepositoryRemoteRepositoryConfig>(
+          pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfig>(
               map['remoteRepositoryConfigs'],
               (value) => GetRepositoryRemoteRepositoryConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       repositoryId: map['repositoryId'] as String,
       updateTime: map['updateTime'] as String,
       virtualRepositoryConfigs:
-          Input.decodeList<GetRepositoryVirtualRepositoryConfig>(
+          pulumi.Input.decodeList<GetRepositoryVirtualRepositoryConfig>(
               map['virtualRepositoryConfigs'],
               (value) => GetRepositoryVirtualRepositoryConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vulnerabilityScanningConfigs:
-          Input.decodeList<GetRepositoryVulnerabilityScanningConfig>(
+          pulumi.Input.decodeList<GetRepositoryVulnerabilityScanningConfig>(
               map['vulnerabilityScanningConfigs'],
               (value) => GetRepositoryVulnerabilityScanningConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../document_ai_warehouse_document_schema_property_definition_enum_type_options/document_ai_warehouse_document_schema_property_definition_enum_type_options.dart';
 import '../document_ai_warehouse_document_schema_property_definition_property_type_options/document_ai_warehouse_document_schema_property_definition_property_type_options.dart';
 import '../document_ai_warehouse_document_schema_property_definition_schema_source/document_ai_warehouse_document_schema_property_definition_schema_source.dart';
@@ -141,7 +141,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
     }
     final schemaSourcesValue = schemaSources;
     if (schemaSourcesValue != null) {
-      map['schemaSources'] = Input.encodeList<
+      map['schemaSources'] = pulumi.Input.encodeList<
           DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource,
           Map<String, dynamic>>(schemaSourcesValue, (value) => value.toMap());
     }
@@ -196,7 +196,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
           : map['retrievalImportance'] as String,
       schemaSources: map['schemaSources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>(
               map['schemaSources'],
               (value) =>

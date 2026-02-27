@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getParameter.
 class GetParameterArgs {
   /// The name of the parameter.
-  final Input<String> parameterId;
+  final pulumi.Input<String> parameterId;
 
   /// The ID of the project in which the resource belongs.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetParameterArgs({
     required this.parameterId,
@@ -27,8 +27,8 @@ class GetParameterArgs {
 
   factory GetParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetParameterArgs(
-      parameterId: Input.asInput<String>(map['parameterId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      parameterId: pulumi.Input.asInput<String>(map['parameterId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

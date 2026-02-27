@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_persistence_config_aof_config/get_cluster_persistence_config_aof_config.dart';
 import '../get_cluster_persistence_config_rdb_config/get_cluster_persistence_config_rdb_config.dart';
 
@@ -26,22 +26,24 @@ class GetClusterPersistenceConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['aofConfigs'] = Input.encodeList<GetClusterPersistenceConfigAofConfig,
+    map['aofConfigs'] = pulumi.Input.encodeList<
+        GetClusterPersistenceConfigAofConfig,
         Map<String, dynamic>>(aofConfigs, (value) => value.toMap());
     map['mode'] = mode;
-    map['rdbConfigs'] = Input.encodeList<GetClusterPersistenceConfigRdbConfig,
+    map['rdbConfigs'] = pulumi.Input.encodeList<
+        GetClusterPersistenceConfigRdbConfig,
         Map<String, dynamic>>(rdbConfigs, (value) => value.toMap());
     return map;
   }
 
   factory GetClusterPersistenceConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPersistenceConfig(
-      aofConfigs: Input.decodeList<GetClusterPersistenceConfigAofConfig>(
+      aofConfigs: pulumi.Input.decodeList<GetClusterPersistenceConfigAofConfig>(
           map['aofConfigs'],
           (value) => GetClusterPersistenceConfigAofConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
-      rdbConfigs: Input.decodeList<GetClusterPersistenceConfigRdbConfig>(
+      rdbConfigs: pulumi.Input.decodeList<GetClusterPersistenceConfigRdbConfig>(
           map['rdbConfigs'],
           (value) => GetClusterPersistenceConfigRdbConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

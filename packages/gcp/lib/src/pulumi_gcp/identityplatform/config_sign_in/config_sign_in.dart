@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../config_sign_in_anonymous/config_sign_in_anonymous.dart';
 import '../config_sign_in_email/config_sign_in_email.dart';
 import '../config_sign_in_hash_config/config_sign_in_hash_config.dart';
@@ -52,7 +52,7 @@ class ConfigSignIn {
     final hashConfigsValue = hashConfigs;
     if (hashConfigsValue != null) {
       map['hashConfigs'] =
-          Input.encodeList<ConfigSignInHashConfig, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ConfigSignInHashConfig, Map<String, dynamic>>(
               hashConfigsValue, (value) => value.toMap());
     }
     final phoneNumberValue = phoneNumber;
@@ -77,7 +77,7 @@ class ConfigSignIn {
               (map['email'] as Map).cast<String, dynamic>()),
       hashConfigs: map['hashConfigs'] == null
           ? null
-          : Input.decodeList<ConfigSignInHashConfig>(
+          : pulumi.Input.decodeList<ConfigSignInHashConfig>(
               map['hashConfigs'],
               (value) => ConfigSignInHashConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

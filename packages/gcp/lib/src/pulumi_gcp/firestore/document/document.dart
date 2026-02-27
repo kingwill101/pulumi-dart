@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_args.dart';
 
 /// In Cloud Firestore, the unit of storage is the document. A document is a lightweight record
@@ -42,45 +42,45 @@ import 'document_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firestore/document:Document default {{name}}
 /// ```
-class Document extends CustomResource {
+class Document extends pulumi.CustomResource {
   /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
-  late final Output<String> collection;
+  late final pulumi.Output<String> collection;
 
   /// Creation timestamp in RFC3339 format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The Firestore database id. Defaults to `"(default)"`.
-  late final Output<String?> database;
+  late final pulumi.Output<String?> database;
 
   /// The client-assigned document ID to use for this document during creation.
-  late final Output<String> documentId;
+  late final pulumi.Output<String> documentId;
 
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
-  late final Output<String> fields;
+  late final pulumi.Output<String> fields;
 
   /// A server defined name for this document. Format:
   /// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A relative path to the collection this document exists within
-  late final Output<String> path;
+  late final pulumi.Output<String> path;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Last update timestamp in RFC3339 format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Document(
     String name, {
     DocumentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firestore/document:Document',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.collection = registerOutput<String>('collection');
     this.createTime = registerOutput<String>('createTime');

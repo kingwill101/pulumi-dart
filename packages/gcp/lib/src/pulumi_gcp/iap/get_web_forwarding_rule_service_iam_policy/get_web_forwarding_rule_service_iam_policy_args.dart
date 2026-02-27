@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWebForwardingRuleServiceIamPolicy.
 class GetWebForwardingRuleServiceIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> forwardingRuleServiceName;
+  final pulumi.Input<String> forwardingRuleServiceName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetWebForwardingRuleServiceIamPolicyArgs({
     required this.forwardingRuleServiceName,
@@ -30,8 +30,8 @@ class GetWebForwardingRuleServiceIamPolicyArgs {
       Map<String, dynamic> map) {
     return GetWebForwardingRuleServiceIamPolicyArgs(
       forwardingRuleServiceName:
-          Input.asInput<String>(map['forwardingRuleServiceName']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['forwardingRuleServiceName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

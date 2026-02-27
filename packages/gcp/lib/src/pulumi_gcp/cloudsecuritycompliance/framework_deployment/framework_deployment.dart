@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_deployment_cloud_control_deployment_reference/framework_deployment_cloud_control_deployment_reference.dart';
 import '../framework_deployment_cloud_control_metadata/framework_deployment_cloud_control_metadata.dart';
 import '../framework_deployment_framework/framework_deployment_framework.dart';
@@ -31,7 +31,7 @@ import 'framework_deployment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment default {{organization}}/{{location}}/{{framework_deployment_id}}
 /// ```
-class FrameworkDeployment extends CustomResource {
+class FrameworkDeployment extends pulumi.CustomResource {
   /// The references to the cloud control deployments. It has all the
   /// CloudControlDeployments which are either directly added in the framework or
   /// through a CloudControlGroup.
@@ -48,23 +48,24 @@ class FrameworkDeployment extends CustomResource {
   /// "organizations/{organization}/locations/{location}/cloudControlDeployments/cc-deployment-2"
   /// }
   /// Structure is documented below.
-  late final Output<List<FrameworkDeploymentCloudControlDeploymentReference>>
+  late final pulumi
+      .Output<List<FrameworkDeploymentCloudControlDeploymentReference>>
       cloudControlDeploymentReferences;
 
   /// Deployment mode and parameters for each of the Cloud Controls in
   /// the framework. Every Cloud Control in the framework must have a
   /// CloudControlMetadata.
   /// Structure is documented below.
-  late final Output<List<FrameworkDeploymentCloudControlMetadata>>
+  late final pulumi.Output<List<FrameworkDeploymentCloudControlMetadata>>
       cloudControlMetadatas;
 
   /// The resource on which the Framework is deployed based on the provided
   /// TargetResourceConfig in the following format:
   /// organizations/{organization}, folders/{folder} or projects/{project}
-  late final Output<String> computedTargetResource;
+  late final pulumi.Output<String> computedTargetResource;
 
   /// The time at which the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The deployment state of the framework.
   /// Possible values:
@@ -75,57 +76,57 @@ class FrameworkDeployment extends CustomResource {
   /// DEPLOYMENT_STATE_READY
   /// DEPLOYMENT_STATE_PARTIALLY_DEPLOYED
   /// DEPLOYMENT_STATE_PARTIALLY_DELETED
-  late final Output<String> deploymentState;
+  late final pulumi.Output<String> deploymentState;
 
   /// User provided description of the Framework deployment
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// To prevent concurrent updates from overwriting each other, always provide
   /// the `etag` when you update a FrameworkDeployment. You can also
   /// provide the `etag` when you delete a FrameworkDeployment, to help
   /// ensure that you're deleting the intended version of the
   /// FrameworkDeployment.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// FrameworkReference contains the reference of a framework.
   /// Structure is documented below.
-  late final Output<FrameworkDeploymentFramework> framework;
+  late final pulumi.Output<FrameworkDeploymentFramework> framework;
 
   /// User provided identifier. It should be unique in scope of a parent.
   /// This is optional and if not provided, a random UUID will be generated.
-  late final Output<String> frameworkDeploymentId;
+  late final pulumi.Output<String> frameworkDeploymentId;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. FrameworkDeployment name in the following format:
   /// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> organization;
+  late final pulumi.Output<String> organization;
 
   /// TargetResourceConfig contains either the name of the target_resource or
   /// contains the config to create a new target_resource.
   /// Structure is documented below.
-  late final Output<FrameworkDeploymentTargetResourceConfig>
+  late final pulumi.Output<FrameworkDeploymentTargetResourceConfig>
       targetResourceConfig;
 
   /// The display name of the target resource.
-  late final Output<String> targetResourceDisplayName;
+  late final pulumi.Output<String> targetResourceDisplayName;
 
   /// The time at which the resource last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   FrameworkDeployment(
     String name, {
     FrameworkDeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloudControlDeploymentReferences = registerOutput<
             List<FrameworkDeploymentCloudControlDeploymentReference>>(

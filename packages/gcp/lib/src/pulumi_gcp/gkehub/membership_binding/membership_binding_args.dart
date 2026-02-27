@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MembershipBinding.
 class MembershipBindingArgs {
@@ -8,24 +8,24 @@ class MembershipBindingArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Location of the membership
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The client-provided identifier of the membership binding.
-  final Input<String> membershipBindingId;
+  final pulumi.Input<String> membershipBindingId;
 
   /// Id of the membership
-  final Input<String> membershipId;
+  final pulumi.Input<String> membershipId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A Workspace resource name in the format
   /// `projects/*/locations/*/scopes/*`.
-  final Input<String> scope;
+  final pulumi.Input<String> scope;
 
   MembershipBindingArgs({
     this.labels,
@@ -55,12 +55,13 @@ class MembershipBindingArgs {
 
   factory MembershipBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipBindingArgs(
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      membershipBindingId: Input.asInput<String>(map['membershipBindingId']),
-      membershipId: Input.asInput<String>(map['membershipId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      scope: Input.asInput<String>(map['scope']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      membershipBindingId:
+          pulumi.Input.asInput<String>(map['membershipBindingId']),
+      membershipId: pulumi.Input.asInput<String>(map['membershipId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      scope: pulumi.Input.asInput<String>(map['scope']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_account_id_token_args.dart';
 import 'get_account_id_token_result.dart';
 
@@ -21,13 +21,13 @@ import 'get_account_id_token_result.dart';
 /// `roles/iam.serviceAccountTokenCreator` role on itself.
 Future<GetAccountIdTokenResult> getAccountIdToken(
   GetAccountIdTokenArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:serviceaccount/getAccountIdToken:getAccountIdToken',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccountIdTokenResult.fromMap(result);
 }

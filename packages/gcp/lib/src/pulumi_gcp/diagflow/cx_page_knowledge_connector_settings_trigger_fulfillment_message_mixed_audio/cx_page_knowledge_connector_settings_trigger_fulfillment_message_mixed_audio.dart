@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_page_knowledge_connector_settings_trigger_fulfillment_message_mixed_audio_segment/cx_page_knowledge_connector_settings_trigger_fulfillment_message_mixed_audio_segment.dart';
 
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
@@ -17,7 +17,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
     final map = <String, dynamic>{};
     final segmentsValue = segments;
     if (segmentsValue != null) {
-      map['segments'] = Input.encodeList<
+      map['segments'] = pulumi.Input.encodeList<
           CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment,
           Map<String, dynamic>>(segmentsValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio(
       segments: map['segments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>(
               map['segments'],
               (value) =>

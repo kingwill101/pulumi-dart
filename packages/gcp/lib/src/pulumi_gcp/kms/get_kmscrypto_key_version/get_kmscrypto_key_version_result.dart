@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_kmscrypto_key_version_public_key/get_kmscrypto_key_version_public_key.dart';
 
 /// Result data returned by getKMSCryptoKeyVersion.
@@ -43,9 +43,8 @@ class GetKMSCryptoKeyVersionResult {
     map['id'] = id;
     map['name'] = name;
     map['protectionLevel'] = protectionLevel;
-    map['publicKeys'] =
-        Input.encodeList<GetKMSCryptoKeyVersionPublicKey, Map<String, dynamic>>(
-            publicKeys, (value) => value.toMap());
+    map['publicKeys'] = pulumi.Input.encodeList<GetKMSCryptoKeyVersionPublicKey,
+        Map<String, dynamic>>(publicKeys, (value) => value.toMap());
     map['state'] = state;
     final versionValue = version;
     if (versionValue != null) {
@@ -61,7 +60,7 @@ class GetKMSCryptoKeyVersionResult {
       id: map['id'] as String,
       name: map['name'] as String,
       protectionLevel: map['protectionLevel'] as String,
-      publicKeys: Input.decodeList<GetKMSCryptoKeyVersionPublicKey>(
+      publicKeys: pulumi.Input.decodeList<GetKMSCryptoKeyVersionPublicKey>(
           map['publicKeys'],
           (value) => GetKMSCryptoKeyVersionPublicKey.fromMap(
               (value as Map).cast<String, dynamic>())),

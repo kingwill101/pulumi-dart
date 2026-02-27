@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_storage_pool_resource_status/get_storage_pool_resource_status.dart';
 import '../get_storage_pool_status/get_storage_pool_status.dart';
 
@@ -71,11 +71,11 @@ class GetStoragePoolResult {
       map['project'] = projectValue;
     }
     map['pulumiLabels'] = pulumiLabels;
-    map['resourceStatuses'] =
-        Input.encodeList<GetStoragePoolResourceStatus, Map<String, dynamic>>(
-            resourceStatuses, (value) => value.toMap());
+    map['resourceStatuses'] = pulumi.Input.encodeList<
+        GetStoragePoolResourceStatus,
+        Map<String, dynamic>>(resourceStatuses, (value) => value.toMap());
     map['statuses'] =
-        Input.encodeList<GetStoragePoolStatus, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetStoragePoolStatus, Map<String, dynamic>>(
             statuses, (value) => value.toMap());
     map['storagePoolType'] = storagePoolType;
     map['zone'] = zone;
@@ -100,11 +100,11 @@ class GetStoragePoolResult {
       poolProvisionedThroughput: map['poolProvisionedThroughput'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      resourceStatuses: Input.decodeList<GetStoragePoolResourceStatus>(
+      resourceStatuses: pulumi.Input.decodeList<GetStoragePoolResourceStatus>(
           map['resourceStatuses'],
           (value) => GetStoragePoolResourceStatus.fromMap(
               (value as Map).cast<String, dynamic>())),
-      statuses: Input.decodeList<GetStoragePoolStatus>(
+      statuses: pulumi.Input.decodeList<GetStoragePoolStatus>(
           map['statuses'],
           (value) => GetStoragePoolStatus.fromMap(
               (value as Map).cast<String, dynamic>())),

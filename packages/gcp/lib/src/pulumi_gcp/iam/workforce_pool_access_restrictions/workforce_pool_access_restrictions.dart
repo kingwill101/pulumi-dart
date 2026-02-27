@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workforce_pool_access_restrictions_allowed_service/workforce_pool_access_restrictions_allowed_service.dart';
 
 class WorkforcePoolAccessRestrictions {
@@ -22,7 +22,7 @@ class WorkforcePoolAccessRestrictions {
     final map = <String, dynamic>{};
     final allowedServicesValue = allowedServices;
     if (allowedServicesValue != null) {
-      map['allowedServices'] = Input.encodeList<
+      map['allowedServices'] = pulumi.Input.encodeList<
           WorkforcePoolAccessRestrictionsAllowedService,
           Map<String, dynamic>>(allowedServicesValue, (value) => value.toMap());
     }
@@ -37,7 +37,8 @@ class WorkforcePoolAccessRestrictions {
     return WorkforcePoolAccessRestrictions(
       allowedServices: map['allowedServices'] == null
           ? null
-          : Input.decodeList<WorkforcePoolAccessRestrictionsAllowedService>(
+          : pulumi.Input.decodeList<
+                  WorkforcePoolAccessRestrictionsAllowedService>(
               map['allowedServices'],
               (value) => WorkforcePoolAccessRestrictionsAllowedService.fromMap(
                   (value as Map).cast<String, dynamic>())),

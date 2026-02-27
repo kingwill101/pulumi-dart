@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_ssl_config_additional_variable/connection_ssl_config_additional_variable.dart';
 import '../connection_ssl_config_client_certificate/connection_ssl_config_client_certificate.dart';
 import '../connection_ssl_config_client_private_key/connection_ssl_config_client_private_key.dart';
@@ -64,7 +64,7 @@ class ConnectionSslConfig {
     final map = <String, dynamic>{};
     final additionalVariablesValue = additionalVariables;
     if (additionalVariablesValue != null) {
-      map['additionalVariables'] = Input.encodeList<
+      map['additionalVariables'] = pulumi.Input.encodeList<
               ConnectionSslConfigAdditionalVariable, Map<String, dynamic>>(
           additionalVariablesValue, (value) => value.toMap());
     }
@@ -108,7 +108,7 @@ class ConnectionSslConfig {
     return ConnectionSslConfig(
       additionalVariables: map['additionalVariables'] == null
           ? null
-          : Input.decodeList<ConnectionSslConfigAdditionalVariable>(
+          : pulumi.Input.decodeList<ConnectionSslConfigAdditionalVariable>(
               map['additionalVariables'],
               (value) => ConnectionSslConfigAdditionalVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),

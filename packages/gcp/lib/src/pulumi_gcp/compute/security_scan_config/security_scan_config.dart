@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_scan_config_authentication/security_scan_config_authentication.dart';
 import '../security_scan_config_schedule/security_scan_config_schedule.dart';
 import 'security_scan_config_args.dart';
@@ -43,61 +43,61 @@ import 'security_scan_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
 /// ```
-class SecurityScanConfig extends CustomResource {
+class SecurityScanConfig extends pulumi.CustomResource {
   /// The authentication configuration.
   /// If specified, service will use the authentication configuration during scanning.
   /// Structure is documented below.
-  late final Output<SecurityScanConfigAuthentication?> authentication;
+  late final pulumi.Output<SecurityScanConfigAuthentication?> authentication;
 
   /// The blacklist URL patterns as described in
   /// https://cloud.google.com/security-scanner/docs/excluded-urls
-  late final Output<List<String>?> blacklistPatterns;
+  late final pulumi.Output<List<String>?> blacklistPatterns;
 
   /// The user provider display name of the ScanConfig.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Controls export of scan configurations and results to Cloud Security Command Center.
   /// Default value is `ENABLED`.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  late final Output<String?> exportToSecurityCommandCenter;
+  late final pulumi.Output<String?> exportToSecurityCommandCenter;
 
   /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
   /// Defaults to 15.
-  late final Output<int?> maxQps;
+  late final pulumi.Output<int?> maxQps;
 
   /// A server defined name for this index. Format:
   /// `projects/{{project}}/scanConfigs/{{server_generated_id}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The schedule of the ScanConfig
   /// Structure is documented below.
-  late final Output<SecurityScanConfigSchedule?> schedule;
+  late final pulumi.Output<SecurityScanConfigSchedule?> schedule;
 
   /// The starting URLs from which the scanner finds site pages.
-  late final Output<List<String>> startingUrls;
+  late final pulumi.Output<List<String>> startingUrls;
 
   /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
   /// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
-  late final Output<List<String>?> targetPlatforms;
+  late final pulumi.Output<List<String>?> targetPlatforms;
 
   /// Type of the user agents used for scanning
   /// Default value is `CHROME_LINUX`.
   /// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
-  late final Output<String?> userAgent;
+  late final pulumi.Output<String?> userAgent;
 
   SecurityScanConfig(
     String name, {
     SecurityScanConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/securityScanConfig:SecurityScanConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authentication =
         registerOutput<SecurityScanConfigAuthentication?>('authentication');

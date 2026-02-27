@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IAMCustomRole.
 class IAMCustomRoleArgs {
   /// A human-readable description for the role.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The numeric ID of the organization in which you want to create a custom role.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
-  final Input<List<String>> permissions;
+  final pulumi.Input<List<String>> permissions;
 
   /// The role id to use for this role.
-  final Input<String>? roleId;
+  final pulumi.Input<String>? roleId;
 
   /// The current launch stage of the role.
   /// Defaults to `GA`.
   /// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
-  final Input<String>? stage;
+  final pulumi.Input<String>? stage;
 
   /// A human-readable title for the role.
-  final Input<String> title;
+  final pulumi.Input<String> title;
 
   IAMCustomRoleArgs({
     this.description,
@@ -55,12 +55,12 @@ class IAMCustomRoleArgs {
 
   factory IAMCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      orgId: Input.asInput<String>(map['orgId']),
-      permissions: Input.asInput<List<String>>(map['permissions']),
-      roleId: Input.asOptionalInput<String>(map['roleId']),
-      stage: Input.asOptionalInput<String>(map['stage']),
-      title: Input.asInput<String>(map['title']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      permissions: pulumi.Input.asInput<List<String>>(map['permissions']),
+      roleId: pulumi.Input.asOptionalInput<String>(map['roleId']),
+      stage: pulumi.Input.asOptionalInput<String>(map['stage']),
+      title: pulumi.Input.asInput<String>(map['title']),
     );
   }
 }

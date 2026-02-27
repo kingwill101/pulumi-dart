@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../control_condition_active_time_range/control_condition_active_time_range.dart';
 import '../control_condition_query_term/control_condition_query_term.dart';
 
@@ -26,7 +26,7 @@ class ControlCondition {
     final map = <String, dynamic>{};
     final activeTimeRangesValue = activeTimeRanges;
     if (activeTimeRangesValue != null) {
-      map['activeTimeRanges'] = Input.encodeList<
+      map['activeTimeRanges'] = pulumi.Input.encodeList<
               ControlConditionActiveTimeRange, Map<String, dynamic>>(
           activeTimeRangesValue, (value) => value.toMap());
     }
@@ -36,9 +36,8 @@ class ControlCondition {
     }
     final queryTermsValue = queryTerms;
     if (queryTermsValue != null) {
-      map['queryTerms'] =
-          Input.encodeList<ControlConditionQueryTerm, Map<String, dynamic>>(
-              queryTermsValue, (value) => value.toMap());
+      map['queryTerms'] = pulumi.Input.encodeList<ControlConditionQueryTerm,
+          Map<String, dynamic>>(queryTermsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -47,7 +46,7 @@ class ControlCondition {
     return ControlCondition(
       activeTimeRanges: map['activeTimeRanges'] == null
           ? null
-          : Input.decodeList<ControlConditionActiveTimeRange>(
+          : pulumi.Input.decodeList<ControlConditionActiveTimeRange>(
               map['activeTimeRanges'],
               (value) => ControlConditionActiveTimeRange.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -55,7 +54,7 @@ class ControlCondition {
           map['queryRegex'] == null ? null : map['queryRegex'] as String,
       queryTerms: map['queryTerms'] == null
           ? null
-          : Input.decodeList<ControlConditionQueryTerm>(
+          : pulumi.Input.decodeList<ControlConditionQueryTerm>(
               map['queryTerms'],
               (value) => ControlConditionQueryTerm.fromMap(
                   (value as Map).cast<String, dynamic>())),

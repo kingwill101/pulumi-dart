@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MonitoredProject.
 class MonitoredProjectArgs {
   /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-  final Input<String> metricsScope;
+  final pulumi.Input<String> metricsScope;
 
   /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   MonitoredProjectArgs({
     required this.metricsScope,
@@ -27,8 +27,8 @@ class MonitoredProjectArgs {
 
   factory MonitoredProjectArgs.fromMap(Map<String, dynamic> map) {
     return MonitoredProjectArgs(
-      metricsScope: Input.asInput<String>(map['metricsScope']),
-      name: Input.asOptionalInput<String>(map['name']),
+      metricsScope: pulumi.Input.asInput<String>(map['metricsScope']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

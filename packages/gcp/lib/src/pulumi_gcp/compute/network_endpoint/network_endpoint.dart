@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_endpoint_args.dart';
 
 /// A Network endpoint represents a IP address and port combination that is
@@ -54,41 +54,41 @@ import 'network_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
 /// ```
-class NetworkEndpoint extends CustomResource {
+class NetworkEndpoint extends pulumi.CustomResource {
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORT.
   /// The instance must be in the same zone of network endpoint group.
-  late final Output<String?> instance;
+  late final pulumi.Output<String?> instance;
 
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
-  late final Output<String> ipAddress;
+  late final pulumi.Output<String> ipAddress;
 
   /// The network endpoint group this endpoint is part of.
-  late final Output<String> networkEndpointGroup;
+  late final pulumi.Output<String> networkEndpointGroup;
 
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
-  late final Output<int?> port;
+  late final pulumi.Output<int?> port;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Zone where the containing network endpoint group is located.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   NetworkEndpoint(
     String name, {
     NetworkEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkEndpoint:NetworkEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instance = registerOutput<String?>('instance');
     this.ipAddress = registerOutput<String>('ipAddress');

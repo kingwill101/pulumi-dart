@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trigger_build_options_volume/trigger_build_options_volume.dart';
 
 class TriggerBuildOptions {
@@ -123,9 +123,8 @@ class TriggerBuildOptions {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] =
-          Input.encodeList<TriggerBuildOptionsVolume, Map<String, dynamic>>(
-              volumesValue, (value) => value.toMap());
+      map['volumes'] = pulumi.Input.encodeList<TriggerBuildOptionsVolume,
+          Map<String, dynamic>>(volumesValue, (value) => value.toMap());
     }
     final workerPoolValue = workerPool;
     if (workerPoolValue != null) {
@@ -161,7 +160,7 @@ class TriggerBuildOptions {
           : map['substitutionOption'] as String,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<TriggerBuildOptionsVolume>(
+          : pulumi.Input.decodeList<TriggerBuildOptionsVolume>(
               map['volumes'],
               (value) => TriggerBuildOptionsVolume.fromMap(
                   (value as Map).cast<String, dynamic>())),

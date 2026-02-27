@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_tables_args.dart';
 import 'get_tables_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_tables_result.dart';
 /// and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
 Future<GetTablesResult> getTables(
   GetTablesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:bigquery/getTables:getTables',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTablesResult.fromMap(result);
 }

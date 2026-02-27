@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_master_auth_client_certificate_config/get_cluster_master_auth_client_certificate_config.dart';
 
 class GetClusterMasterAuth {
@@ -27,7 +27,7 @@ class GetClusterMasterAuth {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['clientCertificate'] = clientCertificate;
-    map['clientCertificateConfigs'] = Input.encodeList<
+    map['clientCertificateConfigs'] = pulumi.Input.encodeList<
             GetClusterMasterAuthClientCertificateConfig, Map<String, dynamic>>(
         clientCertificateConfigs, (value) => value.toMap());
     map['clientKey'] = clientKey;
@@ -39,7 +39,7 @@ class GetClusterMasterAuth {
     return GetClusterMasterAuth(
       clientCertificate: map['clientCertificate'] as String,
       clientCertificateConfigs:
-          Input.decodeList<GetClusterMasterAuthClientCertificateConfig>(
+          pulumi.Input.decodeList<GetClusterMasterAuthClientCertificateConfig>(
               map['clientCertificateConfigs'],
               (value) => GetClusterMasterAuthClientCertificateConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

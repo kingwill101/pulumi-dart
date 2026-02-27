@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_args.dart';
 
 /// A database user in an AlloyDB cluster.
@@ -49,20 +49,20 @@ import 'user_args.dart';
 /// ```sh
 /// $ pulumi import gcp:alloydb/user:User default {{location}}/{{cluster}}/{{user_id}}
 /// ```
-class User extends CustomResource {
+class User extends pulumi.CustomResource {
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  late final Output<String> cluster;
+  late final pulumi.Output<String> cluster;
 
   /// List of database roles this database user has.
-  late final Output<List<String>?> databaseRoles;
+  late final pulumi.Output<List<String>?> databaseRoles;
 
   /// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Password for this database user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String?> password;
+  late final pulumi.Output<String?> password;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
@@ -70,27 +70,27 @@ class User extends CustomResource {
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// > **Note:** One of `password` or `password_wo` can only be set.
-  late final Output<String?> passwordWo;
+  late final pulumi.Output<String?> passwordWo;
 
   /// Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  late final Output<String?> passwordWoVersion;
+  late final pulumi.Output<String?> passwordWoVersion;
 
   /// The database role name of the user.
-  late final Output<String> userId;
+  late final pulumi.Output<String> userId;
 
   /// The type of this user.
   /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-  late final Output<String> userType;
+  late final pulumi.Output<String> userType;
 
   User(
     String name, {
     UserArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:alloydb/user:User',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cluster = registerOutput<String>('cluster');
     this.databaseRoles = registerOutput<List<String>?>('databaseRoles');

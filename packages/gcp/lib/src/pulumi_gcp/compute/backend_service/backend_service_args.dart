@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backend_service_backend/backend_service_backend.dart';
 import '../backend_service_cdn_policy/backend_service_cdn_policy.dart';
 import '../backend_service_circuit_breakers/backend_service_circuit_breakers.dart';
@@ -25,28 +25,28 @@ class BackendServiceArgs {
   /// only until the end of the browser session (or equivalent). The
   /// maximum allowed value for TTL is one day.
   /// When the load balancing scheme is INTERNAL, this field is not used.
-  final Input<int>? affinityCookieTtlSec;
+  final pulumi.Input<int>? affinityCookieTtlSec;
 
   /// The set of backends that serve this BackendService.
   /// Structure is documented below.
-  final Input<List<BackendServiceBackend>>? backends;
+  final pulumi.Input<List<BackendServiceBackend>>? backends;
 
   /// Cloud CDN configuration for this BackendService.
   /// Structure is documented below.
-  final Input<BackendServiceCdnPolicy>? cdnPolicy;
+  final pulumi.Input<BackendServiceCdnPolicy>? cdnPolicy;
 
   /// Settings controlling the volume of connections to a backend service. This field
   /// is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  final Input<BackendServiceCircuitBreakers>? circuitBreakers;
+  final pulumi.Input<BackendServiceCircuitBreakers>? circuitBreakers;
 
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
   /// Possible values are: `AUTOMATIC`, `DISABLED`.
-  final Input<String>? compressionMode;
+  final pulumi.Input<String>? compressionMode;
 
   /// Time for which instance will be drained (not accept new
   /// connections, but still work to finish started).
-  final Input<int>? connectionDrainingTimeoutSec;
+  final pulumi.Input<int>? connectionDrainingTimeoutSec;
 
   /// Consistent Hash-based load balancing can be used to provide soft session
   /// affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -57,33 +57,33 @@ class BackendServiceArgs {
   /// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is
   /// set to MAGLEV or RING_HASH.
   /// Structure is documented below.
-  final Input<BackendServiceConsistentHash>? consistentHash;
+  final pulumi.Input<BackendServiceConsistentHash>? consistentHash;
 
   /// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// Structure is documented below.
-  final Input<List<BackendServiceCustomMetric>>? customMetrics;
+  final pulumi.Input<List<BackendServiceCustomMetric>>? customMetrics;
 
   /// Headers that the HTTP/S load balancer should add to proxied
   /// requests.
-  final Input<List<String>>? customRequestHeaders;
+  final pulumi.Input<List<String>>? customRequestHeaders;
 
   /// Headers that the HTTP/S load balancer should add to proxied
   /// responses.
-  final Input<List<String>>? customResponseHeaders;
+  final pulumi.Input<List<String>>? customResponseHeaders;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
-  final Input<BackendServiceDynamicForwarding>? dynamicForwarding;
+  final pulumi.Input<BackendServiceDynamicForwarding>? dynamicForwarding;
 
   /// The resource URL for the edge security policy associated with this backend service.
-  final Input<String>? edgeSecurityPolicy;
+  final pulumi.Input<String>? edgeSecurityPolicy;
 
   /// If true, enable Cloud CDN for this BackendService.
-  final Input<bool>? enableCdn;
+  final pulumi.Input<bool>? enableCdn;
 
   /// Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
   /// TEST_ALL_TRAFFIC.
@@ -96,7 +96,7 @@ class BackendServiceArgs {
   /// the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
   /// back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
   /// Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
-  final Input<String>? externalManagedMigrationState;
+  final pulumi.Input<String>? externalManagedMigrationState;
 
   /// Determines the fraction of requests that should be processed by the Global external
   /// Application Load Balancer.
@@ -105,7 +105,7 @@ class BackendServiceArgs {
   /// see: Session Affinity.
   /// This value can only be set if the loadBalancingScheme in the backend service is set to
   /// EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
-  final Input<double>? externalManagedMigrationTestingPercentage;
+  final pulumi.Input<double>? externalManagedMigrationTestingPercentage;
 
   /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
   /// for health checking this BackendService. Currently at most one health
@@ -113,16 +113,16 @@ class BackendServiceArgs {
   /// A health check must be specified unless the backend service uses an internet
   /// or serverless NEG as a backend.
   /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-  final Input<String>? healthChecks;
+  final pulumi.Input<String>? healthChecks;
 
   /// Settings for enabling Cloud Identity Aware Proxy.
   /// If OAuth client is not set, the Google-managed OAuth client is used.
   /// Structure is documented below.
-  final Input<BackendServiceIap>? iap;
+  final pulumi.Input<BackendServiceIap>? iap;
 
   /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
   /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
-  final Input<String>? ipAddressSelectionPolicy;
+  final pulumi.Input<String>? ipAddressSelectionPolicy;
 
   /// Indicates whether the backend service will be used with internal or
   /// external load balancing. A backend service created for one type of
@@ -130,7 +130,7 @@ class BackendServiceArgs {
   /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
   /// Default value is `EXTERNAL`.
   /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-  final Input<String>? loadBalancingScheme;
+  final pulumi.Input<String>? loadBalancingScheme;
 
   /// A list of locality load balancing policies to be used in order of
   /// preference. Either the policy or the customPolicy field should be set.
@@ -139,7 +139,7 @@ class BackendServiceArgs {
   /// by a URL Map that is referenced by a target gRPC proxy that has the
   /// validateForProxyless field set to true.
   /// Structure is documented below.
-  final Input<List<BackendServiceLocalityLbPolicy>>? localityLbPolicies;
+  final pulumi.Input<List<BackendServiceLocalityLbPolicy>>? localityLbPolicies;
 
   /// The load balancing algorithm used within the scope of the locality.
   /// The possible values are:
@@ -193,12 +193,12 @@ class BackendServiceArgs {
   /// by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
-  final Input<String>? localityLbPolicy;
+  final pulumi.Input<String>? localityLbPolicy;
 
   /// This field denotes the logging options for the load balancer traffic served by this backend service.
   /// If logging is enabled, logs will be exported to Stackdriver.
   /// Structure is documented below.
-  final Input<BackendServiceLogConfig>? logConfig;
+  final pulumi.Input<BackendServiceLogConfig>? logConfig;
 
   /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
   /// beginning of the stream until the response has been completely processed, including all retries. A stream that
@@ -207,7 +207,7 @@ class BackendServiceArgs {
   /// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
   /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  final Input<BackendServiceMaxStreamDuration>? maxStreamDuration;
+  final pulumi.Input<BackendServiceMaxStreamDuration>? maxStreamDuration;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -216,31 +216,31 @@ class BackendServiceArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Configures traffic steering properties of internal passthrough Network Load Balancers.
   /// Structure is documented below.
-  final Input<BackendServiceNetworkPassThroughLbTrafficPolicy>?
+  final pulumi.Input<BackendServiceNetworkPassThroughLbTrafficPolicy>?
       networkPassThroughLbTrafficPolicy;
 
   /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
   /// Applicable backend service types can be a global backend service with the
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
   /// Structure is documented below.
-  final Input<BackendServiceOutlierDetection>? outlierDetection;
+  final pulumi.Input<BackendServiceOutlierDetection>? outlierDetection;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final Input<BackendServiceParams>? params;
+  final pulumi.Input<BackendServiceParams>? params;
 
   /// Name of backend port. The same name should appear in the instance
   /// groups referenced by this service. Required when the load balancing
   /// scheme is EXTERNAL.
-  final Input<String>? portName;
+  final pulumi.Input<String>? portName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The protocol this BackendService uses to communicate with backends.
   /// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
@@ -248,41 +248,41 @@ class BackendServiceArgs {
   /// for more information. Must be set to GRPC when the backend service is referenced
   /// by a URL map that is bound to target gRPC proxy.
   /// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
-  final Input<String>? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// The security policy associated with this backend service.
-  final Input<String>? securityPolicy;
+  final pulumi.Input<String>? securityPolicy;
 
   /// The security settings that apply to this backend service. This field is applicable to either
   /// a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
   /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
   /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  final Input<BackendServiceSecuritySettings>? securitySettings;
+  final pulumi.Input<BackendServiceSecuritySettings>? securitySettings;
 
   /// URL to networkservices.ServiceLbPolicy resource.
   /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
-  final Input<String>? serviceLbPolicy;
+  final pulumi.Input<String>? serviceLbPolicy;
 
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
   /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
-  final Input<String>? sessionAffinity;
+  final pulumi.Input<String>? sessionAffinity;
 
   /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
   /// Structure is documented below.
-  final Input<BackendServiceStrongSessionAffinityCookie>?
+  final pulumi.Input<BackendServiceStrongSessionAffinityCookie>?
       strongSessionAffinityCookie;
 
   /// The backend service timeout has a different meaning depending on the type of load balancer.
   /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
   /// The default is 30 seconds.
   /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
-  final Input<int>? timeoutSec;
+  final pulumi.Input<int>? timeoutSec;
 
   /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
   /// Structure is documented below.
-  final Input<BackendServiceTlsSettings>? tlsSettings;
+  final pulumi.Input<BackendServiceTlsSettings>? tlsSettings;
 
   BackendServiceArgs({
     this.affinityCookieTtlSec,
@@ -333,21 +333,21 @@ class BackendServiceArgs {
     }
     final backendsValue = backends;
     if (backendsValue != null) {
-      map['backends'] = Input.mapOptionalInputValue<List<BackendServiceBackend>,
-              List<Map<String, dynamic>>>(
+      map['backends'] = pulumi.Input.mapOptionalInputValue<
+              List<BackendServiceBackend>, List<Map<String, dynamic>>>(
           backendsValue,
-          (value) =>
-              Input.encodeList<BackendServiceBackend, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<BackendServiceBackend,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final cdnPolicyValue = cdnPolicy;
     if (cdnPolicyValue != null) {
-      map['cdnPolicy'] = Input.mapOptionalInputValue<BackendServiceCdnPolicy,
+      map['cdnPolicy'] = pulumi.Input.mapOptionalInputValue<
+          BackendServiceCdnPolicy,
           Map<String, dynamic>>(cdnPolicyValue, (value) => value.toMap());
     }
     final circuitBreakersValue = circuitBreakers;
     if (circuitBreakersValue != null) {
-      map['circuitBreakers'] = Input.mapOptionalInputValue<
+      map['circuitBreakers'] = pulumi.Input.mapOptionalInputValue<
           BackendServiceCircuitBreakers,
           Map<String, dynamic>>(circuitBreakersValue, (value) => value.toMap());
     }
@@ -361,16 +361,16 @@ class BackendServiceArgs {
     }
     final consistentHashValue = consistentHash;
     if (consistentHashValue != null) {
-      map['consistentHash'] = Input.mapOptionalInputValue<
+      map['consistentHash'] = pulumi.Input.mapOptionalInputValue<
           BackendServiceConsistentHash,
           Map<String, dynamic>>(consistentHashValue, (value) => value.toMap());
     }
     final customMetricsValue = customMetrics;
     if (customMetricsValue != null) {
-      map['customMetrics'] = Input.mapOptionalInputValue<
+      map['customMetrics'] = pulumi.Input.mapOptionalInputValue<
               List<BackendServiceCustomMetric>, List<Map<String, dynamic>>>(
           customMetricsValue,
-          (value) => Input.encodeList<BackendServiceCustomMetric,
+          (value) => pulumi.Input.encodeList<BackendServiceCustomMetric,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final customRequestHeadersValue = customRequestHeaders;
@@ -387,7 +387,7 @@ class BackendServiceArgs {
     }
     final dynamicForwardingValue = dynamicForwarding;
     if (dynamicForwardingValue != null) {
-      map['dynamicForwarding'] = Input.mapOptionalInputValue<
+      map['dynamicForwarding'] = pulumi.Input.mapOptionalInputValue<
               BackendServiceDynamicForwarding, Map<String, dynamic>>(
           dynamicForwardingValue, (value) => value.toMap());
     }
@@ -415,9 +415,8 @@ class BackendServiceArgs {
     }
     final iapValue = iap;
     if (iapValue != null) {
-      map['iap'] =
-          Input.mapOptionalInputValue<BackendServiceIap, Map<String, dynamic>>(
-              iapValue, (value) => value.toMap());
+      map['iap'] = pulumi.Input.mapOptionalInputValue<BackendServiceIap,
+          Map<String, dynamic>>(iapValue, (value) => value.toMap());
     }
     final ipAddressSelectionPolicyValue = ipAddressSelectionPolicy;
     if (ipAddressSelectionPolicyValue != null) {
@@ -429,10 +428,10 @@ class BackendServiceArgs {
     }
     final localityLbPoliciesValue = localityLbPolicies;
     if (localityLbPoliciesValue != null) {
-      map['localityLbPolicies'] = Input.mapOptionalInputValue<
+      map['localityLbPolicies'] = pulumi.Input.mapOptionalInputValue<
               List<BackendServiceLocalityLbPolicy>, List<Map<String, dynamic>>>(
           localityLbPoliciesValue,
-          (value) => Input.encodeList<BackendServiceLocalityLbPolicy,
+          (value) => pulumi.Input.encodeList<BackendServiceLocalityLbPolicy,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final localityLbPolicyValue = localityLbPolicy;
@@ -441,12 +440,13 @@ class BackendServiceArgs {
     }
     final logConfigValue = logConfig;
     if (logConfigValue != null) {
-      map['logConfig'] = Input.mapOptionalInputValue<BackendServiceLogConfig,
+      map['logConfig'] = pulumi.Input.mapOptionalInputValue<
+          BackendServiceLogConfig,
           Map<String, dynamic>>(logConfigValue, (value) => value.toMap());
     }
     final maxStreamDurationValue = maxStreamDuration;
     if (maxStreamDurationValue != null) {
-      map['maxStreamDuration'] = Input.mapOptionalInputValue<
+      map['maxStreamDuration'] = pulumi.Input.mapOptionalInputValue<
               BackendServiceMaxStreamDuration, Map<String, dynamic>>(
           maxStreamDurationValue, (value) => value.toMap());
     }
@@ -457,20 +457,21 @@ class BackendServiceArgs {
     final networkPassThroughLbTrafficPolicyValue =
         networkPassThroughLbTrafficPolicy;
     if (networkPassThroughLbTrafficPolicyValue != null) {
-      map['networkPassThroughLbTrafficPolicy'] = Input.mapOptionalInputValue<
-              BackendServiceNetworkPassThroughLbTrafficPolicy,
-              Map<String, dynamic>>(
-          networkPassThroughLbTrafficPolicyValue, (value) => value.toMap());
+      map['networkPassThroughLbTrafficPolicy'] =
+          pulumi.Input.mapOptionalInputValue<
+                  BackendServiceNetworkPassThroughLbTrafficPolicy,
+                  Map<String, dynamic>>(
+              networkPassThroughLbTrafficPolicyValue, (value) => value.toMap());
     }
     final outlierDetectionValue = outlierDetection;
     if (outlierDetectionValue != null) {
-      map['outlierDetection'] = Input.mapOptionalInputValue<
+      map['outlierDetection'] = pulumi.Input.mapOptionalInputValue<
               BackendServiceOutlierDetection, Map<String, dynamic>>(
           outlierDetectionValue, (value) => value.toMap());
     }
     final paramsValue = params;
     if (paramsValue != null) {
-      map['params'] = Input.mapOptionalInputValue<BackendServiceParams,
+      map['params'] = pulumi.Input.mapOptionalInputValue<BackendServiceParams,
           Map<String, dynamic>>(paramsValue, (value) => value.toMap());
     }
     final portNameValue = portName;
@@ -491,7 +492,7 @@ class BackendServiceArgs {
     }
     final securitySettingsValue = securitySettings;
     if (securitySettingsValue != null) {
-      map['securitySettings'] = Input.mapOptionalInputValue<
+      map['securitySettings'] = pulumi.Input.mapOptionalInputValue<
               BackendServiceSecuritySettings, Map<String, dynamic>>(
           securitySettingsValue, (value) => value.toMap());
     }
@@ -505,7 +506,7 @@ class BackendServiceArgs {
     }
     final strongSessionAffinityCookieValue = strongSessionAffinityCookie;
     if (strongSessionAffinityCookieValue != null) {
-      map['strongSessionAffinityCookie'] = Input.mapOptionalInputValue<
+      map['strongSessionAffinityCookie'] = pulumi.Input.mapOptionalInputValue<
               BackendServiceStrongSessionAffinityCookie, Map<String, dynamic>>(
           strongSessionAffinityCookieValue, (value) => value.toMap());
     }
@@ -515,7 +516,7 @@ class BackendServiceArgs {
     }
     final tlsSettingsValue = tlsSettings;
     if (tlsSettingsValue != null) {
-      map['tlsSettings'] = Input.mapOptionalInputValue<
+      map['tlsSettings'] = pulumi.Input.mapOptionalInputValue<
           BackendServiceTlsSettings,
           Map<String, dynamic>>(tlsSettingsValue, (value) => value.toMap());
     }
@@ -525,69 +526,82 @@ class BackendServiceArgs {
   factory BackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return BackendServiceArgs(
       affinityCookieTtlSec:
-          Input.asOptionalInput<int>(map['affinityCookieTtlSec']),
-      backends:
-          Input.asOptionalInput<List<BackendServiceBackend>>(map['backends']),
-      cdnPolicy:
-          Input.asOptionalInput<BackendServiceCdnPolicy>(map['cdnPolicy']),
-      circuitBreakers: Input.asOptionalInput<BackendServiceCircuitBreakers>(
-          map['circuitBreakers']),
-      compressionMode: Input.asOptionalInput<String>(map['compressionMode']),
-      connectionDrainingTimeoutSec:
-          Input.asOptionalInput<int>(map['connectionDrainingTimeoutSec']),
-      consistentHash: Input.asOptionalInput<BackendServiceConsistentHash>(
-          map['consistentHash']),
-      customMetrics: Input.asOptionalInput<List<BackendServiceCustomMetric>>(
-          map['customMetrics']),
-      customRequestHeaders:
-          Input.asOptionalInput<List<String>>(map['customRequestHeaders']),
-      customResponseHeaders:
-          Input.asOptionalInput<List<String>>(map['customResponseHeaders']),
-      description: Input.asOptionalInput<String>(map['description']),
-      dynamicForwarding: Input.asOptionalInput<BackendServiceDynamicForwarding>(
-          map['dynamicForwarding']),
+          pulumi.Input.asOptionalInput<int>(map['affinityCookieTtlSec']),
+      backends: pulumi.Input.asOptionalInput<List<BackendServiceBackend>>(
+          map['backends']),
+      cdnPolicy: pulumi.Input.asOptionalInput<BackendServiceCdnPolicy>(
+          map['cdnPolicy']),
+      circuitBreakers:
+          pulumi.Input.asOptionalInput<BackendServiceCircuitBreakers>(
+              map['circuitBreakers']),
+      compressionMode:
+          pulumi.Input.asOptionalInput<String>(map['compressionMode']),
+      connectionDrainingTimeoutSec: pulumi.Input.asOptionalInput<int>(
+          map['connectionDrainingTimeoutSec']),
+      consistentHash:
+          pulumi.Input.asOptionalInput<BackendServiceConsistentHash>(
+              map['consistentHash']),
+      customMetrics:
+          pulumi.Input.asOptionalInput<List<BackendServiceCustomMetric>>(
+              map['customMetrics']),
+      customRequestHeaders: pulumi.Input.asOptionalInput<List<String>>(
+          map['customRequestHeaders']),
+      customResponseHeaders: pulumi.Input.asOptionalInput<List<String>>(
+          map['customResponseHeaders']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      dynamicForwarding:
+          pulumi.Input.asOptionalInput<BackendServiceDynamicForwarding>(
+              map['dynamicForwarding']),
       edgeSecurityPolicy:
-          Input.asOptionalInput<String>(map['edgeSecurityPolicy']),
-      enableCdn: Input.asOptionalInput<bool>(map['enableCdn']),
-      externalManagedMigrationState:
-          Input.asOptionalInput<String>(map['externalManagedMigrationState']),
-      externalManagedMigrationTestingPercentage: Input.asOptionalInput<double>(
-          map['externalManagedMigrationTestingPercentage']),
-      healthChecks: Input.asOptionalInput<String>(map['healthChecks']),
-      iap: Input.asOptionalInput<BackendServiceIap>(map['iap']),
+          pulumi.Input.asOptionalInput<String>(map['edgeSecurityPolicy']),
+      enableCdn: pulumi.Input.asOptionalInput<bool>(map['enableCdn']),
+      externalManagedMigrationState: pulumi.Input.asOptionalInput<String>(
+          map['externalManagedMigrationState']),
+      externalManagedMigrationTestingPercentage:
+          pulumi.Input.asOptionalInput<double>(
+              map['externalManagedMigrationTestingPercentage']),
+      healthChecks: pulumi.Input.asOptionalInput<String>(map['healthChecks']),
+      iap: pulumi.Input.asOptionalInput<BackendServiceIap>(map['iap']),
       ipAddressSelectionPolicy:
-          Input.asOptionalInput<String>(map['ipAddressSelectionPolicy']),
+          pulumi.Input.asOptionalInput<String>(map['ipAddressSelectionPolicy']),
       loadBalancingScheme:
-          Input.asOptionalInput<String>(map['loadBalancingScheme']),
+          pulumi.Input.asOptionalInput<String>(map['loadBalancingScheme']),
       localityLbPolicies:
-          Input.asOptionalInput<List<BackendServiceLocalityLbPolicy>>(
+          pulumi.Input.asOptionalInput<List<BackendServiceLocalityLbPolicy>>(
               map['localityLbPolicies']),
-      localityLbPolicy: Input.asOptionalInput<String>(map['localityLbPolicy']),
-      logConfig:
-          Input.asOptionalInput<BackendServiceLogConfig>(map['logConfig']),
-      maxStreamDuration: Input.asOptionalInput<BackendServiceMaxStreamDuration>(
-          map['maxStreamDuration']),
-      name: Input.asOptionalInput<String>(map['name']),
-      networkPassThroughLbTrafficPolicy: Input.asOptionalInput<
+      localityLbPolicy:
+          pulumi.Input.asOptionalInput<String>(map['localityLbPolicy']),
+      logConfig: pulumi.Input.asOptionalInput<BackendServiceLogConfig>(
+          map['logConfig']),
+      maxStreamDuration:
+          pulumi.Input.asOptionalInput<BackendServiceMaxStreamDuration>(
+              map['maxStreamDuration']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      networkPassThroughLbTrafficPolicy: pulumi.Input.asOptionalInput<
               BackendServiceNetworkPassThroughLbTrafficPolicy>(
           map['networkPassThroughLbTrafficPolicy']),
-      outlierDetection: Input.asOptionalInput<BackendServiceOutlierDetection>(
-          map['outlierDetection']),
-      params: Input.asOptionalInput<BackendServiceParams>(map['params']),
-      portName: Input.asOptionalInput<String>(map['portName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      protocol: Input.asOptionalInput<String>(map['protocol']),
-      securityPolicy: Input.asOptionalInput<String>(map['securityPolicy']),
-      securitySettings: Input.asOptionalInput<BackendServiceSecuritySettings>(
-          map['securitySettings']),
-      serviceLbPolicy: Input.asOptionalInput<String>(map['serviceLbPolicy']),
-      sessionAffinity: Input.asOptionalInput<String>(map['sessionAffinity']),
-      strongSessionAffinityCookie:
-          Input.asOptionalInput<BackendServiceStrongSessionAffinityCookie>(
-              map['strongSessionAffinityCookie']),
-      timeoutSec: Input.asOptionalInput<int>(map['timeoutSec']),
-      tlsSettings:
-          Input.asOptionalInput<BackendServiceTlsSettings>(map['tlsSettings']),
+      outlierDetection:
+          pulumi.Input.asOptionalInput<BackendServiceOutlierDetection>(
+              map['outlierDetection']),
+      params: pulumi.Input.asOptionalInput<BackendServiceParams>(map['params']),
+      portName: pulumi.Input.asOptionalInput<String>(map['portName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      protocol: pulumi.Input.asOptionalInput<String>(map['protocol']),
+      securityPolicy:
+          pulumi.Input.asOptionalInput<String>(map['securityPolicy']),
+      securitySettings:
+          pulumi.Input.asOptionalInput<BackendServiceSecuritySettings>(
+              map['securitySettings']),
+      serviceLbPolicy:
+          pulumi.Input.asOptionalInput<String>(map['serviceLbPolicy']),
+      sessionAffinity:
+          pulumi.Input.asOptionalInput<String>(map['sessionAffinity']),
+      strongSessionAffinityCookie: pulumi.Input.asOptionalInput<
+              BackendServiceStrongSessionAffinityCookie>(
+          map['strongSessionAffinityCookie']),
+      timeoutSec: pulumi.Input.asOptionalInput<int>(map['timeoutSec']),
+      tlsSettings: pulumi.Input.asOptionalInput<BackendServiceTlsSettings>(
+          map['tlsSettings']),
     );
   }
 }

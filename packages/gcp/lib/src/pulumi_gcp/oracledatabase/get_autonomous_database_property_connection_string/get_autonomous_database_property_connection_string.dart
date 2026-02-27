@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_autonomous_database_property_connection_string_all_connection_string/get_autonomous_database_property_connection_string_all_connection_string.dart';
 import '../get_autonomous_database_property_connection_string_profile/get_autonomous_database_property_connection_string_profile.dart';
 
@@ -41,14 +41,14 @@ class GetAutonomousDatabasePropertyConnectionString {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allConnectionStrings'] = Input.encodeList<
+    map['allConnectionStrings'] = pulumi.Input.encodeList<
         GetAutonomousDatabasePropertyConnectionStringAllConnectionString,
         Map<String, dynamic>>(allConnectionStrings, (value) => value.toMap());
     map['dedicated'] = dedicated;
     map['high'] = high;
     map['low'] = low;
     map['medium'] = medium;
-    map['profiles'] = Input.encodeList<
+    map['profiles'] = pulumi.Input.encodeList<
         GetAutonomousDatabasePropertyConnectionStringProfile,
         Map<String, dynamic>>(profiles, (value) => value.toMap());
     return map;
@@ -57,7 +57,7 @@ class GetAutonomousDatabasePropertyConnectionString {
   factory GetAutonomousDatabasePropertyConnectionString.fromMap(
       Map<String, dynamic> map) {
     return GetAutonomousDatabasePropertyConnectionString(
-      allConnectionStrings: Input.decodeList<
+      allConnectionStrings: pulumi.Input.decodeList<
               GetAutonomousDatabasePropertyConnectionStringAllConnectionString>(
           map['allConnectionStrings'],
           (value) =>
@@ -67,7 +67,7 @@ class GetAutonomousDatabasePropertyConnectionString {
       high: map['high'] as String,
       low: map['low'] as String,
       medium: map['medium'] as String,
-      profiles: Input.decodeList<
+      profiles: pulumi.Input.decodeList<
               GetAutonomousDatabasePropertyConnectionStringProfile>(
           map['profiles'],
           (value) =>

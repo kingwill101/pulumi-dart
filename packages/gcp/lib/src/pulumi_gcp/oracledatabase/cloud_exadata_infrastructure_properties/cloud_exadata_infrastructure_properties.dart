@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_exadata_infrastructure_properties_customer_contact/cloud_exadata_infrastructure_properties_customer_contact.dart';
 import '../cloud_exadata_infrastructure_properties_maintenance_window/cloud_exadata_infrastructure_properties_maintenance_window.dart';
 
@@ -185,7 +185,7 @@ class CloudExadataInfrastructureProperties {
     }
     final customerContactsValue = customerContacts;
     if (customerContactsValue != null) {
-      map['customerContacts'] = Input.encodeList<
+      map['customerContacts'] = pulumi.Input.encodeList<
               CloudExadataInfrastructurePropertiesCustomerContact,
               Map<String, dynamic>>(
           customerContactsValue, (value) => value.toMap());
@@ -292,7 +292,7 @@ class CloudExadataInfrastructureProperties {
       cpuCount: map['cpuCount'] == null ? null : map['cpuCount'] as int,
       customerContacts: map['customerContacts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CloudExadataInfrastructurePropertiesCustomerContact>(
               map['customerContacts'],
               (value) =>

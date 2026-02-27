@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_transfer_config_email_preferences/data_transfer_config_email_preferences.dart';
 import '../data_transfer_config_encryption_configuration/data_transfer_config_encryption_configuration.dart';
 import '../data_transfer_config_schedule_options/data_transfer_config_schedule_options.dart';
@@ -13,47 +13,47 @@ class DataTransferConfigArgs {
   /// reingests data for [today-10, today-1], rather than ingesting data for
   /// just [today-1]. Only valid if the data source supports the feature.
   /// Set the value to 0 to use the default value.
-  final Input<int>? dataRefreshWindowDays;
+  final pulumi.Input<int>? dataRefreshWindowDays;
 
   /// The data source id. Cannot be changed once the transfer config is created.
-  final Input<String> dataSourceId;
+  final pulumi.Input<String> dataSourceId;
 
   /// The BigQuery target dataset id.
-  final Input<String>? destinationDatasetId;
+  final pulumi.Input<String>? destinationDatasetId;
 
   /// When set to true, no runs are scheduled for a given transfer.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// The user specified display name for the transfer config.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Email notifications will be sent according to these preferences to the
   /// email address of the user who owns this transfer config.
   /// Structure is documented below.
-  final Input<DataTransferConfigEmailPreferences>? emailPreferences;
+  final pulumi.Input<DataTransferConfigEmailPreferences>? emailPreferences;
 
   /// Represents the encryption configuration for a transfer.
   /// Structure is documented below.
-  final Input<DataTransferConfigEncryptionConfiguration>?
+  final pulumi.Input<DataTransferConfigEncryptionConfiguration>?
       encryptionConfiguration;
 
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Pub/Sub topic where notifications will be sent after transfer runs
   /// associated with this transfer config finish.
-  final Input<String>? notificationPubsubTopic;
+  final pulumi.Input<String>? notificationPubsubTopic;
 
   /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
   /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
   /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
   /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-  final Input<Map<String, String>> params;
+  final pulumi.Input<Map<String, String>> params;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Data transfer schedule. If the data source does not support a custom
   /// schedule, this should be empty. If it is empty, the default value for
@@ -64,11 +64,11 @@ class DataTransferConfigArgs {
   /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
   /// NOTE: The minimum interval time between recurring transfers depends
   /// on the data source; refer to the documentation for your data source.
-  final Input<String>? schedule;
+  final pulumi.Input<String>? schedule;
 
   /// Options customizing the data transfer schedule.
   /// Structure is documented below.
-  final Input<DataTransferConfigScheduleOptions>? scheduleOptions;
+  final pulumi.Input<DataTransferConfigScheduleOptions>? scheduleOptions;
 
   /// Different parameters are configured primarily using the the `params` field on this
   /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
@@ -77,12 +77,12 @@ class DataTransferConfigArgs {
   /// Credentials may not be specified in both locations and will cause an error. Changing from one location
   /// to a different credential configuration in the config will require an apply to update state.
   /// Structure is documented below.
-  final Input<DataTransferConfigSensitiveParams>? sensitiveParams;
+  final pulumi.Input<DataTransferConfigSensitiveParams>? sensitiveParams;
 
   /// Service account email. If this field is set, transfer config will
   /// be created with this service account credentials. It requires that
   /// requesting user calling this API has permissions to act as this service account.
-  final Input<String>? serviceAccountName;
+  final pulumi.Input<String>? serviceAccountName;
 
   DataTransferConfigArgs({
     this.dataRefreshWindowDays,
@@ -120,13 +120,13 @@ class DataTransferConfigArgs {
     map['displayName'] = displayName;
     final emailPreferencesValue = emailPreferences;
     if (emailPreferencesValue != null) {
-      map['emailPreferences'] = Input.mapOptionalInputValue<
+      map['emailPreferences'] = pulumi.Input.mapOptionalInputValue<
               DataTransferConfigEmailPreferences, Map<String, dynamic>>(
           emailPreferencesValue, (value) => value.toMap());
     }
     final encryptionConfigurationValue = encryptionConfiguration;
     if (encryptionConfigurationValue != null) {
-      map['encryptionConfiguration'] = Input.mapOptionalInputValue<
+      map['encryptionConfiguration'] = pulumi.Input.mapOptionalInputValue<
               DataTransferConfigEncryptionConfiguration, Map<String, dynamic>>(
           encryptionConfigurationValue, (value) => value.toMap());
     }
@@ -149,13 +149,13 @@ class DataTransferConfigArgs {
     }
     final scheduleOptionsValue = scheduleOptions;
     if (scheduleOptionsValue != null) {
-      map['scheduleOptions'] = Input.mapOptionalInputValue<
+      map['scheduleOptions'] = pulumi.Input.mapOptionalInputValue<
           DataTransferConfigScheduleOptions,
           Map<String, dynamic>>(scheduleOptionsValue, (value) => value.toMap());
     }
     final sensitiveParamsValue = sensitiveParams;
     if (sensitiveParamsValue != null) {
-      map['sensitiveParams'] = Input.mapOptionalInputValue<
+      map['sensitiveParams'] = pulumi.Input.mapOptionalInputValue<
           DataTransferConfigSensitiveParams,
           Map<String, dynamic>>(sensitiveParamsValue, (value) => value.toMap());
     }
@@ -169,30 +169,32 @@ class DataTransferConfigArgs {
   factory DataTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigArgs(
       dataRefreshWindowDays:
-          Input.asOptionalInput<int>(map['dataRefreshWindowDays']),
-      dataSourceId: Input.asInput<String>(map['dataSourceId']),
+          pulumi.Input.asOptionalInput<int>(map['dataRefreshWindowDays']),
+      dataSourceId: pulumi.Input.asInput<String>(map['dataSourceId']),
       destinationDatasetId:
-          Input.asOptionalInput<String>(map['destinationDatasetId']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      displayName: Input.asInput<String>(map['displayName']),
+          pulumi.Input.asOptionalInput<String>(map['destinationDatasetId']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
       emailPreferences:
-          Input.asOptionalInput<DataTransferConfigEmailPreferences>(
+          pulumi.Input.asOptionalInput<DataTransferConfigEmailPreferences>(
               map['emailPreferences']),
-      encryptionConfiguration:
-          Input.asOptionalInput<DataTransferConfigEncryptionConfiguration>(
-              map['encryptionConfiguration']),
-      location: Input.asOptionalInput<String>(map['location']),
+      encryptionConfiguration: pulumi.Input.asOptionalInput<
+              DataTransferConfigEncryptionConfiguration>(
+          map['encryptionConfiguration']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
       notificationPubsubTopic:
-          Input.asOptionalInput<String>(map['notificationPubsubTopic']),
-      params: Input.asInput<Map<String, String>>(map['params']),
-      project: Input.asOptionalInput<String>(map['project']),
-      schedule: Input.asOptionalInput<String>(map['schedule']),
-      scheduleOptions: Input.asOptionalInput<DataTransferConfigScheduleOptions>(
-          map['scheduleOptions']),
-      sensitiveParams: Input.asOptionalInput<DataTransferConfigSensitiveParams>(
-          map['sensitiveParams']),
+          pulumi.Input.asOptionalInput<String>(map['notificationPubsubTopic']),
+      params: pulumi.Input.asInput<Map<String, String>>(map['params']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      schedule: pulumi.Input.asOptionalInput<String>(map['schedule']),
+      scheduleOptions:
+          pulumi.Input.asOptionalInput<DataTransferConfigScheduleOptions>(
+              map['scheduleOptions']),
+      sensitiveParams:
+          pulumi.Input.asOptionalInput<DataTransferConfigSensitiveParams>(
+              map['sensitiveParams']),
       serviceAccountName:
-          Input.asOptionalInput<String>(map['serviceAccountName']),
+          pulumi.Input.asOptionalInput<String>(map['serviceAccountName']),
     );
   }
 }

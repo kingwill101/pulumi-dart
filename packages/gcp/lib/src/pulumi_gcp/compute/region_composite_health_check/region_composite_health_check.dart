@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_composite_health_check_args.dart';
 
 /// A composite health check resource specifies the health source resources and
@@ -47,13 +47,13 @@ import 'region_composite_health_check_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default {{name}}
 /// ```
-class RegionCompositeHealthCheck extends CustomResource {
+class RegionCompositeHealthCheck extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Fingerprint of this resource. A hash of the contents stored in this object.
   /// This field is used in optimistic locking. This field will be ignored when
@@ -62,7 +62,7 @@ class RegionCompositeHealthCheck extends CustomResource {
   /// the request will fail with error `412 conditionNotMet`. To see
   /// the latest fingerprint, make a `get()` request to retrieve the
   /// CompositeHealthCheck.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// URL to the destination resource. Must be set. Must be a
   /// ForwardingRule. The ForwardingRule must have
@@ -70,14 +70,14 @@ class RegionCompositeHealthCheck extends CustomResource {
   /// INTERNAL_MANAGED and must be regional and in the same region
   /// as the CompositeHealthCheck (cross-region deployment for
   /// INTERNAL_MANAGED is not supported). Can be mutated.
-  late final Output<String> healthDestination;
+  late final pulumi.Output<String> healthDestination;
 
   /// URLs to the HealthSource resources whose results are AND'ed.
   /// I.e. he aggregated result is is HEALTHY only if all sources
   /// are HEALTHY. Must have at least 1. Must not have more than 10.
   /// Must be regional and in the same region as the
   /// CompositeHealthCheck. Can be mutated.
-  late final Output<List<String>?> healthSources;
+  late final pulumi.Output<List<String>?> healthSources;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -86,27 +86,27 @@ class RegionCompositeHealthCheck extends CustomResource {
   /// character must be a lowercase letter, and all following characters must
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// URL of the region where the composite health check resides.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Server-defined URL with id for the resource.
-  late final Output<String> selfLinkWithId;
+  late final pulumi.Output<String> selfLinkWithId;
 
   RegionCompositeHealthCheck(
     String name, {
     RegionCompositeHealthCheckArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

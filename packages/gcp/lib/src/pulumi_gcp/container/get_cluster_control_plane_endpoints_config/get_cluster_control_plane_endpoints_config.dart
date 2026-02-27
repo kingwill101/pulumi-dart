@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_control_plane_endpoints_config_dns_endpoint_config/get_cluster_control_plane_endpoints_config_dns_endpoint_config.dart';
 import '../get_cluster_control_plane_endpoints_config_ip_endpoints_config/get_cluster_control_plane_endpoints_config_ip_endpoints_config.dart';
 
@@ -20,10 +20,10 @@ class GetClusterControlPlaneEndpointsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dnsEndpointConfigs'] = Input.encodeList<
+    map['dnsEndpointConfigs'] = pulumi.Input.encodeList<
         GetClusterControlPlaneEndpointsConfigDnsEndpointConfig,
         Map<String, dynamic>>(dnsEndpointConfigs, (value) => value.toMap());
-    map['ipEndpointsConfigs'] = Input.encodeList<
+    map['ipEndpointsConfigs'] = pulumi.Input.encodeList<
         GetClusterControlPlaneEndpointsConfigIpEndpointsConfig,
         Map<String, dynamic>>(ipEndpointsConfigs, (value) => value.toMap());
     return map;
@@ -32,13 +32,13 @@ class GetClusterControlPlaneEndpointsConfig {
   factory GetClusterControlPlaneEndpointsConfig.fromMap(
       Map<String, dynamic> map) {
     return GetClusterControlPlaneEndpointsConfig(
-      dnsEndpointConfigs: Input.decodeList<
+      dnsEndpointConfigs: pulumi.Input.decodeList<
               GetClusterControlPlaneEndpointsConfigDnsEndpointConfig>(
           map['dnsEndpointConfigs'],
           (value) =>
               GetClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      ipEndpointsConfigs: Input.decodeList<
+      ipEndpointsConfigs: pulumi.Input.decodeList<
               GetClusterControlPlaneEndpointsConfigIpEndpointsConfig>(
           map['ipEndpointsConfigs'],
           (value) =>

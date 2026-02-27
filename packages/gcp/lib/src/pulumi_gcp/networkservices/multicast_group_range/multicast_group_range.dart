@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multicast_group_range_log_config/multicast_group_range_log_config.dart';
 import '../multicast_group_range_state/multicast_group_range_state.dart';
 import 'multicast_group_range_args.dart';
@@ -42,7 +42,7 @@ import 'multicast_group_range_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
 /// ```
-class MulticastGroupRange extends CustomResource {
+class MulticastGroupRange extends pulumi.CustomResource {
   /// A list of consumer projects that are allowed to subscribe to the multicast
   /// IP addresses within the range defined by this MulticastGroupRange. The
   /// project can be specified using its project ID or project number. If left
@@ -50,14 +50,14 @@ class MulticastGroupRange extends CustomResource {
   /// require_explicit_accept is set to true) once they have VPC networks
   /// associated to the multicast domain. The current max length of the accept
   /// list is 100.
-  late final Output<List<String>?> consumerAcceptLists;
+  late final pulumi.Output<List<String>?> consumerAcceptLists;
 
   /// [Output only] The timestamp when the multicast group range was
   /// created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// An optional text description of the multicast group range.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Multicast group range's distribution scope. Intra-zone or intra-region
   /// cross-zone is supported, with default value being intra-region. Cross
@@ -65,53 +65,53 @@ class MulticastGroupRange extends CustomResource {
   /// Possible values:
   /// INTRA_ZONE
   /// INTRA_REGION
-  late final Output<String?> distributionScope;
+  late final pulumi.Output<String?> distributionScope;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// [Output only] The multicast group IP address range.
-  late final Output<String> ipCidrRange;
+  late final pulumi.Output<String> ipCidrRange;
 
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The logging configuration.
   /// Structure is documented below.
-  late final Output<MulticastGroupRangeLogConfig?> logConfig;
+  late final pulumi.Output<MulticastGroupRangeLogConfig?> logConfig;
 
   /// The resource name of the multicast domain in which to create this
   /// multicast group range.
   /// Use the following format:
   /// `projects/*/locations/global/multicastDomains/*`.
-  late final Output<String> multicastDomain;
+  late final pulumi.Output<String> multicastDomain;
 
   /// A unique name for the multicast group range.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
-  late final Output<String> multicastGroupRangeId;
+  late final pulumi.Output<String> multicastGroupRangeId;
 
   /// Identifier. The resource name of the multicast group range.
   /// Use the following format:
   /// `projects/*/locations/global/multicastGroupRanges/*`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Whether an empty consumer_accept_list will deny all consumer projects.
-  late final Output<bool?> requireExplicitAccept;
+  late final pulumi.Output<bool?> requireExplicitAccept;
 
   /// The resource name of the internal range reserved for this
   /// multicast group range.
@@ -119,7 +119,7 @@ class MulticastGroupRange extends CustomResource {
   /// and have a prefix length >= 23.
   /// Use the following format:
   /// `projects/*/locations/global/internalRanges/*`.
-  late final Output<String> reservedInternalRange;
+  late final pulumi.Output<String> reservedInternalRange;
 
   /// (Output)
   /// The state of the multicast resource.
@@ -131,27 +131,27 @@ class MulticastGroupRange extends CustomResource {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  late final Output<List<MulticastGroupRangeState>> states;
+  late final pulumi.Output<List<MulticastGroupRangeState>> states;
 
   /// [Output only] The Google-generated UUID for the resource. This value is
   /// unique across all multicast group range resources. If a group
   /// range is deleted and another with the same name is created, the new
   /// group range is assigned a different unique_id.
-  late final Output<String> uniqueId;
+  late final pulumi.Output<String> uniqueId;
 
   /// [Output only] The timestamp when the multicast group range was most
   /// recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   MulticastGroupRange(
     String name, {
     MulticastGroupRangeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/multicastGroupRange:MulticastGroupRange',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.consumerAcceptLists =
         registerOutput<List<String>?>('consumerAcceptLists');

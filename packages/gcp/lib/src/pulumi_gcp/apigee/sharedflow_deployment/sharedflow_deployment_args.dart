@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SharedflowDeployment.
 class SharedflowDeploymentArgs {
   /// The resource ID of the environment.
-  final Input<String> environment;
+  final pulumi.Input<String> environment;
 
   /// The Apigee Organization associated with the Sharedflow
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// Revision of the Sharedflow to be deployed.
   ///
   ///
   /// - - -
-  final Input<String> revision;
+  final pulumi.Input<String> revision;
 
   /// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
-  final Input<String>? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   /// Id of the Sharedflow to be deployed.
-  final Input<String> sharedflowId;
+  final pulumi.Input<String> sharedflowId;
 
   SharedflowDeploymentArgs({
     required this.environment,
@@ -45,11 +45,12 @@ class SharedflowDeploymentArgs {
 
   factory SharedflowDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowDeploymentArgs(
-      environment: Input.asInput<String>(map['environment']),
-      orgId: Input.asInput<String>(map['orgId']),
-      revision: Input.asInput<String>(map['revision']),
-      serviceAccount: Input.asOptionalInput<String>(map['serviceAccount']),
-      sharedflowId: Input.asInput<String>(map['sharedflowId']),
+      environment: pulumi.Input.asInput<String>(map['environment']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      revision: pulumi.Input.asInput<String>(map['revision']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<String>(map['serviceAccount']),
+      sharedflowId: pulumi.Input.asInput<String>(map['sharedflowId']),
     );
   }
 }

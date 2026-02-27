@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../os_policy_assignment_os_policy_resource_group/os_policy_assignment_os_policy_resource_group.dart';
 
 class OsPolicyAssignmentOsPolicy {
@@ -56,7 +56,7 @@ class OsPolicyAssignmentOsPolicy {
     }
     map['id'] = id;
     map['mode'] = mode;
-    map['resourceGroups'] = Input.encodeList<
+    map['resourceGroups'] = pulumi.Input.encodeList<
         OsPolicyAssignmentOsPolicyResourceGroup,
         Map<String, dynamic>>(resourceGroups, (value) => value.toMap());
     return map;
@@ -71,10 +71,11 @@ class OsPolicyAssignmentOsPolicy {
           map['description'] == null ? null : map['description'] as String,
       id: map['id'] as String,
       mode: map['mode'] as String,
-      resourceGroups: Input.decodeList<OsPolicyAssignmentOsPolicyResourceGroup>(
-          map['resourceGroups'],
-          (value) => OsPolicyAssignmentOsPolicyResourceGroup.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      resourceGroups:
+          pulumi.Input.decodeList<OsPolicyAssignmentOsPolicyResourceGroup>(
+              map['resourceGroups'],
+              (value) => OsPolicyAssignmentOsPolicyResourceGroup.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

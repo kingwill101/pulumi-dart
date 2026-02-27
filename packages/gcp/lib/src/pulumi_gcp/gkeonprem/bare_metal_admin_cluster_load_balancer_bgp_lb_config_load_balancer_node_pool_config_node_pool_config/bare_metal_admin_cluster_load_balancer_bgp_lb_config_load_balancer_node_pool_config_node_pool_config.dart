@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config_node_pool_config_kubelet_config/bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config_node_pool_config_kubelet_config.dart';
 import '../bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config_node_pool_config_node_config/bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config_node_pool_config_node_config.dart';
 import '../bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config_node_pool_config_taint/bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_config_node_pool_config_taint.dart';
@@ -50,7 +50,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
     }
     final nodeConfigsValue = nodeConfigs;
     if (nodeConfigsValue != null) {
-      map['nodeConfigs'] = Input.encodeList<
+      map['nodeConfigs'] = pulumi.Input.encodeList<
           BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig,
           Map<String, dynamic>>(nodeConfigsValue, (value) => value.toMap());
     }
@@ -60,7 +60,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.encodeList<
+      map['taints'] = pulumi.Input.encodeList<
           BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint,
           Map<String, dynamic>>(taintsValue, (value) => value.toMap());
     }
@@ -79,7 +79,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
           : (map['labels'] as Map).cast<String, String>(),
       nodeConfigs: map['nodeConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(
               map['nodeConfigs'],
               (value) =>
@@ -90,7 +90,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
           : map['operatingSystem'] as String,
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(
               map['taints'],
               (value) =>

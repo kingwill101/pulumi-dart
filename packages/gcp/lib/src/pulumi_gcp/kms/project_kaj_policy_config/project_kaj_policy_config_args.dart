@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_kaj_policy_config_default_key_access_justification_policy/project_kaj_policy_config_default_key_access_justification_policy.dart';
 
 /// The set of arguments for ProjectKajPolicyConfig.
@@ -9,12 +9,12 @@ class ProjectKajPolicyConfigArgs {
   /// created in this project. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final Input<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
+  final pulumi.Input<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
       defaultKeyAccessJustificationPolicy;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   ProjectKajPolicyConfigArgs({
     this.defaultKeyAccessJustificationPolicy,
@@ -26,10 +26,12 @@ class ProjectKajPolicyConfigArgs {
     final defaultKeyAccessJustificationPolicyValue =
         defaultKeyAccessJustificationPolicy;
     if (defaultKeyAccessJustificationPolicyValue != null) {
-      map['defaultKeyAccessJustificationPolicy'] = Input.mapOptionalInputValue<
-              ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy,
-              Map<String, dynamic>>(
-          defaultKeyAccessJustificationPolicyValue, (value) => value.toMap());
+      map['defaultKeyAccessJustificationPolicy'] =
+          pulumi.Input.mapOptionalInputValue<
+                  ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy,
+                  Map<String, dynamic>>(
+              defaultKeyAccessJustificationPolicyValue,
+              (value) => value.toMap());
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -40,10 +42,10 @@ class ProjectKajPolicyConfigArgs {
 
   factory ProjectKajPolicyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProjectKajPolicyConfigArgs(
-      defaultKeyAccessJustificationPolicy: Input.asOptionalInput<
+      defaultKeyAccessJustificationPolicy: pulumi.Input.asOptionalInput<
               ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy>(
           map['defaultKeyAccessJustificationPolicy']),
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

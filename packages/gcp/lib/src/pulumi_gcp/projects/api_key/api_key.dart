@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_key_restrictions/api_key_restrictions.dart';
 import 'api_key_args.dart';
 
@@ -47,41 +47,41 @@ import 'api_key_args.dart';
 /// ```sh
 /// $ pulumi import gcp:projects/apiKey:ApiKey default {{name}}
 /// ```
-class ApiKey extends CustomResource {
+class ApiKey extends pulumi.CustomResource {
   /// Human-readable display name of this API key. Modifiable by user.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
-  late final Output<String> keyString;
+  late final pulumi.Output<String> keyString;
 
   /// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
   ///
   ///
   ///
   /// - - -
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Key restrictions.
-  late final Output<ApiKeyRestrictions?> restrictions;
+  late final pulumi.Output<ApiKeyRestrictions?> restrictions;
 
   /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
-  late final Output<String?> serviceAccountEmail;
+  late final pulumi.Output<String?> serviceAccountEmail;
 
   /// Output only. Unique id in UUID4 format.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   ApiKey(
     String name, {
     ApiKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:projects/apiKey:ApiKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String?>('displayName');
     this.keyString = registerOutput<String>('keyString');

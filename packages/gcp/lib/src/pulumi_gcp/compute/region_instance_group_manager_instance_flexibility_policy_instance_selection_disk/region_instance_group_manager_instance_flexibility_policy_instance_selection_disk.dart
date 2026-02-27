@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_disk_encryption_key/region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_disk_encryption_key.dart';
 import '../region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_label/region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_label.dart';
 import '../region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_resource_manager_tag/region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_resource_manager_tag.dart';
@@ -151,7 +151,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] = Input.encodeList<
+      map['labels'] = pulumi.Input.encodeList<
           RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel,
           Map<String, dynamic>>(labelsValue, (value) => value.toMap());
     }
@@ -169,7 +169,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
     }
     final resourceManagerTagsValue = resourceManagerTags;
     if (resourceManagerTagsValue != null) {
-      map['resourceManagerTags'] = Input.encodeList<
+      map['resourceManagerTags'] = pulumi.Input.encodeList<
           RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag,
           Map<String,
               dynamic>>(resourceManagerTagsValue, (value) => value.toMap());
@@ -229,7 +229,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
       interface: map['interface'] == null ? null : map['interface'] as String,
       labels: map['labels'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel>(
               map['labels'],
               (value) =>
@@ -243,7 +243,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
           : map['provisionedThroughput'] as int,
       resourceManagerTags: map['resourceManagerTags'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag>(
               map['resourceManagerTags'],
               (value) =>

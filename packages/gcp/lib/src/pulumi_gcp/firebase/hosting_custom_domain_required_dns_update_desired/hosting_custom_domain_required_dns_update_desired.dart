@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hosting_custom_domain_required_dns_update_desired_record/hosting_custom_domain_required_dns_update_desired_record.dart';
 
 class HostingCustomDomainRequiredDnsUpdateDesired {
@@ -24,7 +24,7 @@ class HostingCustomDomainRequiredDnsUpdateDesired {
     }
     final recordsValue = records;
     if (recordsValue != null) {
-      map['records'] = Input.encodeList<
+      map['records'] = pulumi.Input.encodeList<
           HostingCustomDomainRequiredDnsUpdateDesiredRecord,
           Map<String, dynamic>>(recordsValue, (value) => value.toMap());
     }
@@ -38,7 +38,8 @@ class HostingCustomDomainRequiredDnsUpdateDesired {
           map['domainName'] == null ? null : map['domainName'] as String,
       records: map['records'] == null
           ? null
-          : Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesiredRecord>(
+          : pulumi.Input.decodeList<
+                  HostingCustomDomainRequiredDnsUpdateDesiredRecord>(
               map['records'],
               (value) =>
                   HostingCustomDomainRequiredDnsUpdateDesiredRecord.fromMap(

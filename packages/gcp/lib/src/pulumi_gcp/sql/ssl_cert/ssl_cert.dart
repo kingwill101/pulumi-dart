@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_cert_args.dart';
 
 /// Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
@@ -14,51 +14,51 @@ import 'ssl_cert_args.dart';
 /// ## Import
 ///
 /// Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
-class SslCert extends CustomResource {
+class SslCert extends pulumi.CustomResource {
   /// The actual certificate data for this client certificate.
-  late final Output<String> cert;
+  late final pulumi.Output<String> cert;
 
   /// The serial number extracted from the certificate data.
-  late final Output<String> certSerialNumber;
+  late final pulumi.Output<String> certSerialNumber;
 
   /// The common name to be used in the certificate to identify the
   /// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
-  late final Output<String> commonName;
+  late final pulumi.Output<String> commonName;
 
   /// The time when the certificate was created in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The time when the certificate expires in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
-  late final Output<String> expirationTime;
+  late final pulumi.Output<String> expirationTime;
 
   /// The name of the Cloud SQL instance. Changing this
   /// forces a new resource to be created.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// The private key associated with the client certificate.
-  late final Output<String> privateKey;
+  late final pulumi.Output<String> privateKey;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The CA cert of the server this client cert was generated from.
-  late final Output<String> serverCaCert;
+  late final pulumi.Output<String> serverCaCert;
 
   /// The SHA1 Fingerprint of the certificate.
-  late final Output<String> sha1Fingerprint;
+  late final pulumi.Output<String> sha1Fingerprint;
 
   SslCert(
     String name, {
     SslCertArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:sql/sslCert:SslCert',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cert = registerOutput<String>('cert');
     this.certSerialNumber = registerOutput<String>('certSerialNumber');

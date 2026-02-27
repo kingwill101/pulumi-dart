@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecurityPolicy.
 class GetSecurityPolicyArgs {
   /// The name of the security policy. Provide either this or a `self_link`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The project in which the resource belongs. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The self_link of the security policy. Provide either this or a `name`
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   GetSecurityPolicyArgs({
     this.name,
@@ -38,9 +38,9 @@ class GetSecurityPolicyArgs {
 
   factory GetSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
     );
   }
 }

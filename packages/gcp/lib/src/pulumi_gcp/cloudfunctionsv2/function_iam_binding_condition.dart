@@ -1,3 +1,3 @@
 library module_cloudfunctionsv2_function_iam_binding_condition;
 
-export 'function_iam_binding_condition/function_iam_binding_condition2.dart';
+export 'function_iam_binding_condition/function_iam_binding_condition_cloudfunctionsv2.dart';

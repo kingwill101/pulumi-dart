@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tool_open_api_tool_api_authentication_api_key_config/tool_open_api_tool_api_authentication_api_key_config.dart';
 import '../tool_open_api_tool_api_authentication_bearer_token_config/tool_open_api_tool_api_authentication_bearer_token_config.dart';
 import '../tool_open_api_tool_api_authentication_oauth_config/tool_open_api_tool_api_authentication_oauth_config.dart';
@@ -47,26 +47,26 @@ class ToolOpenApiToolApiAuthentication {
     final map = <String, dynamic>{};
     final apiKeyConfigsValue = apiKeyConfigs;
     if (apiKeyConfigsValue != null) {
-      map['apiKeyConfigs'] = Input.encodeList<
+      map['apiKeyConfigs'] = pulumi.Input.encodeList<
           ToolOpenApiToolApiAuthenticationApiKeyConfig,
           Map<String, dynamic>>(apiKeyConfigsValue, (value) => value.toMap());
     }
     final bearerTokenConfigsValue = bearerTokenConfigs;
     if (bearerTokenConfigsValue != null) {
-      map['bearerTokenConfigs'] = Input.encodeList<
+      map['bearerTokenConfigs'] = pulumi.Input.encodeList<
               ToolOpenApiToolApiAuthenticationBearerTokenConfig,
               Map<String, dynamic>>(
           bearerTokenConfigsValue, (value) => value.toMap());
     }
     final oauthConfigsValue = oauthConfigs;
     if (oauthConfigsValue != null) {
-      map['oauthConfigs'] = Input.encodeList<
+      map['oauthConfigs'] = pulumi.Input.encodeList<
           ToolOpenApiToolApiAuthenticationOauthConfig,
           Map<String, dynamic>>(oauthConfigsValue, (value) => value.toMap());
     }
     final serviceAccountAuthConfigsValue = serviceAccountAuthConfigs;
     if (serviceAccountAuthConfigsValue != null) {
-      map['serviceAccountAuthConfigs'] = Input.encodeList<
+      map['serviceAccountAuthConfigs'] = pulumi.Input.encodeList<
               ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig,
               Map<String, dynamic>>(
           serviceAccountAuthConfigsValue, (value) => value.toMap());
@@ -83,26 +83,29 @@ class ToolOpenApiToolApiAuthentication {
     return ToolOpenApiToolApiAuthentication(
       apiKeyConfigs: map['apiKeyConfigs'] == null
           ? null
-          : Input.decodeList<ToolOpenApiToolApiAuthenticationApiKeyConfig>(
+          : pulumi.Input.decodeList<
+                  ToolOpenApiToolApiAuthenticationApiKeyConfig>(
               map['apiKeyConfigs'],
               (value) => ToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       bearerTokenConfigs: map['bearerTokenConfigs'] == null
           ? null
-          : Input.decodeList<ToolOpenApiToolApiAuthenticationBearerTokenConfig>(
+          : pulumi.Input.decodeList<
+                  ToolOpenApiToolApiAuthenticationBearerTokenConfig>(
               map['bearerTokenConfigs'],
               (value) =>
                   ToolOpenApiToolApiAuthenticationBearerTokenConfig.fromMap(
                       (value as Map).cast<String, dynamic>())),
       oauthConfigs: map['oauthConfigs'] == null
           ? null
-          : Input.decodeList<ToolOpenApiToolApiAuthenticationOauthConfig>(
+          : pulumi.Input.decodeList<
+                  ToolOpenApiToolApiAuthenticationOauthConfig>(
               map['oauthConfigs'],
               (value) => ToolOpenApiToolApiAuthenticationOauthConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       serviceAccountAuthConfigs: map['serviceAccountAuthConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>(
               map['serviceAccountAuthConfigs'],
               (value) =>

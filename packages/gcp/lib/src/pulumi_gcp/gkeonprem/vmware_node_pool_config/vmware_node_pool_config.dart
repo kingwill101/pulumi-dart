@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_node_pool_config_taint/vmware_node_pool_config_taint.dart';
 import '../vmware_node_pool_config_vsphere_config/vmware_node_pool_config_vsphere_config.dart';
 
@@ -90,9 +90,8 @@ class VMwareNodePoolConfig {
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] =
-          Input.encodeList<VMwareNodePoolConfigTaint, Map<String, dynamic>>(
-              taintsValue, (value) => value.toMap());
+      map['taints'] = pulumi.Input.encodeList<VMwareNodePoolConfigTaint,
+          Map<String, dynamic>>(taintsValue, (value) => value.toMap());
     }
     final vsphereConfigValue = vsphereConfig;
     if (vsphereConfigValue != null) {
@@ -118,7 +117,7 @@ class VMwareNodePoolConfig {
       replicas: map['replicas'] == null ? null : map['replicas'] as int,
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<VMwareNodePoolConfigTaint>(
+          : pulumi.Input.decodeList<VMwareNodePoolConfigTaint>(
               map['taints'],
               (value) => VMwareNodePoolConfigTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),

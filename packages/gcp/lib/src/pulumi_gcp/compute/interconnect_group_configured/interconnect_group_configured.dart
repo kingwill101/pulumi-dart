@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_group_configured_topology_capability/interconnect_group_configured_topology_capability.dart';
 
 class InterconnectGroupConfigured {
@@ -20,7 +20,7 @@ class InterconnectGroupConfigured {
     final map = <String, dynamic>{};
     final topologyCapabilitiesValue = topologyCapabilities;
     if (topologyCapabilitiesValue != null) {
-      map['topologyCapabilities'] = Input.encodeList<
+      map['topologyCapabilities'] = pulumi.Input.encodeList<
               InterconnectGroupConfiguredTopologyCapability,
               Map<String, dynamic>>(
           topologyCapabilitiesValue, (value) => value.toMap());
@@ -32,7 +32,8 @@ class InterconnectGroupConfigured {
     return InterconnectGroupConfigured(
       topologyCapabilities: map['topologyCapabilities'] == null
           ? null
-          : Input.decodeList<InterconnectGroupConfiguredTopologyCapability>(
+          : pulumi.Input.decodeList<
+                  InterconnectGroupConfiguredTopologyCapability>(
               map['topologyCapabilities'],
               (value) => InterconnectGroupConfiguredTopologyCapability.fromMap(
                   (value as Map).cast<String, dynamic>())),

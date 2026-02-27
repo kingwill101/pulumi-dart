@@ -1,45 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multicast_group_range_activation_log_config/multicast_group_range_activation_log_config.dart';
 
 /// The set of arguments for MulticastGroupRangeActivation.
 class MulticastGroupRangeActivationArgs {
   /// An optional text description of the multicast group range activation.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The logging configuration.
   /// Structure is documented below.
-  final Input<MulticastGroupRangeActivationLogConfig>? logConfig;
+  final pulumi.Input<MulticastGroupRangeActivationLogConfig>? logConfig;
 
   /// The resource name of a multicast domain activation that is in the
   /// same zone as this multicast group.
   /// Use the following format:
   /// `projects/*/locations/*/multicastDomainActivations/*`
-  final Input<String> multicastDomainActivation;
+  final pulumi.Input<String> multicastDomainActivation;
 
   /// The resource name of the global multicast group range for the
   /// group. Use the following format:
   /// `projects/*/locations/global/multicastGroupRanges/*`
-  final Input<String> multicastGroupRange;
+  final pulumi.Input<String> multicastGroupRange;
 
   /// A unique name for the multicast group range activation.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
-  final Input<String> multicastGroupRangeActivationId;
+  final pulumi.Input<String> multicastGroupRangeActivationId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   MulticastGroupRangeActivationArgs({
     this.description,
@@ -65,7 +65,7 @@ class MulticastGroupRangeActivationArgs {
     map['location'] = location;
     final logConfigValue = logConfig;
     if (logConfigValue != null) {
-      map['logConfig'] = Input.mapOptionalInputValue<
+      map['logConfig'] = pulumi.Input.mapOptionalInputValue<
           MulticastGroupRangeActivationLogConfig,
           Map<String, dynamic>>(logConfigValue, (value) => value.toMap());
     }
@@ -81,17 +81,19 @@ class MulticastGroupRangeActivationArgs {
 
   factory MulticastGroupRangeActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupRangeActivationArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      logConfig: Input.asOptionalInput<MulticastGroupRangeActivationLogConfig>(
-          map['logConfig']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      logConfig:
+          pulumi.Input.asOptionalInput<MulticastGroupRangeActivationLogConfig>(
+              map['logConfig']),
       multicastDomainActivation:
-          Input.asInput<String>(map['multicastDomainActivation']),
-      multicastGroupRange: Input.asInput<String>(map['multicastGroupRange']),
+          pulumi.Input.asInput<String>(map['multicastDomainActivation']),
+      multicastGroupRange:
+          pulumi.Input.asInput<String>(map['multicastGroupRange']),
       multicastGroupRangeActivationId:
-          Input.asInput<String>(map['multicastGroupRangeActivationId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['multicastGroupRangeActivationId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

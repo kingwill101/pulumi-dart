@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_levels_access_level/access_levels_access_level.dart';
 
 /// The set of arguments for AccessLevels.
 class AccessLevelsArgs {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
-  final Input<List<AccessLevelsAccessLevel>>? accessLevels;
+  final pulumi.Input<List<AccessLevelsAccessLevel>>? accessLevels;
 
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   AccessLevelsArgs({
     this.accessLevels,
@@ -22,12 +22,11 @@ class AccessLevelsArgs {
     final map = <String, dynamic>{};
     final accessLevelsValue = accessLevels;
     if (accessLevelsValue != null) {
-      map['accessLevels'] = Input.mapOptionalInputValue<
+      map['accessLevels'] = pulumi.Input.mapOptionalInputValue<
               List<AccessLevelsAccessLevel>, List<Map<String, dynamic>>>(
           accessLevelsValue,
-          (value) =>
-              Input.encodeList<AccessLevelsAccessLevel, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AccessLevelsAccessLevel,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['parent'] = parent;
     return map;
@@ -35,9 +34,9 @@ class AccessLevelsArgs {
 
   factory AccessLevelsArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelsArgs(
-      accessLevels: Input.asOptionalInput<List<AccessLevelsAccessLevel>>(
+      accessLevels: pulumi.Input.asOptionalInput<List<AccessLevelsAccessLevel>>(
           map['accessLevels']),
-      parent: Input.asInput<String>(map['parent']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
     );
   }
 }

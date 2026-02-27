@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_certificates_certificate_managed_authorization_attempt_info/get_certificates_certificate_managed_authorization_attempt_info.dart';
 import '../get_certificates_certificate_managed_provisioning_issue/get_certificates_certificate_managed_provisioning_issue.dart';
 
@@ -40,14 +40,14 @@ class GetCertificatesCertificateManaged {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['authorizationAttemptInfos'] = Input.encodeList<
+    map['authorizationAttemptInfos'] = pulumi.Input.encodeList<
             GetCertificatesCertificateManagedAuthorizationAttemptInfo,
             Map<String, dynamic>>(
         authorizationAttemptInfos, (value) => value.toMap());
     map['dnsAuthorizations'] = dnsAuthorizations;
     map['domains'] = domains;
     map['issuanceConfig'] = issuanceConfig;
-    map['provisioningIssues'] = Input.encodeList<
+    map['provisioningIssues'] = pulumi.Input.encodeList<
         GetCertificatesCertificateManagedProvisioningIssue,
         Map<String, dynamic>>(provisioningIssues, (value) => value.toMap());
     map['state'] = state;
@@ -56,7 +56,7 @@ class GetCertificatesCertificateManaged {
 
   factory GetCertificatesCertificateManaged.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificateManaged(
-      authorizationAttemptInfos: Input.decodeList<
+      authorizationAttemptInfos: pulumi.Input.decodeList<
               GetCertificatesCertificateManagedAuthorizationAttemptInfo>(
           map['authorizationAttemptInfos'],
           (value) =>
@@ -65,12 +65,11 @@ class GetCertificatesCertificateManaged {
       dnsAuthorizations: (map['dnsAuthorizations'] as List).cast<String>(),
       domains: (map['domains'] as List).cast<String>(),
       issuanceConfig: map['issuanceConfig'] as String,
-      provisioningIssues:
-          Input.decodeList<GetCertificatesCertificateManagedProvisioningIssue>(
-              map['provisioningIssues'],
-              (value) =>
-                  GetCertificatesCertificateManagedProvisioningIssue.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      provisioningIssues: pulumi.Input.decodeList<
+              GetCertificatesCertificateManagedProvisioningIssue>(
+          map['provisioningIssues'],
+          (value) => GetCertificatesCertificateManagedProvisioningIssue.fromMap(
+              (value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
     );
   }

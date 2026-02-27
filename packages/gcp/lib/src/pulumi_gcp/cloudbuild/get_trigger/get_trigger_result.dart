@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_approval_config/get_trigger_approval_config.dart';
 import '../get_trigger_bitbucket_server_trigger_config/get_trigger_bitbucket_server_trigger_config.dart';
 import '../get_trigger_build/get_trigger_build.dart';
@@ -80,26 +80,28 @@ class GetTriggerResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['approvalConfigs'] =
-        Input.encodeList<GetTriggerApprovalConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerApprovalConfig, Map<String, dynamic>>(
             approvalConfigs, (value) => value.toMap());
-    map['bitbucketServerTriggerConfigs'] = Input.encodeList<
+    map['bitbucketServerTriggerConfigs'] = pulumi.Input.encodeList<
             GetTriggerBitbucketServerTriggerConfig, Map<String, dynamic>>(
         bitbucketServerTriggerConfigs, (value) => value.toMap());
-    map['builds'] = Input.encodeList<GetTriggerBuild, Map<String, dynamic>>(
-        builds, (value) => value.toMap());
+    map['builds'] =
+        pulumi.Input.encodeList<GetTriggerBuild, Map<String, dynamic>>(
+            builds, (value) => value.toMap());
     map['createTime'] = createTime;
     map['description'] = description;
-    map['developerConnectEventConfigs'] = Input.encodeList<
+    map['developerConnectEventConfigs'] = pulumi.Input.encodeList<
             GetTriggerDeveloperConnectEventConfig, Map<String, dynamic>>(
         developerConnectEventConfigs, (value) => value.toMap());
     map['disabled'] = disabled;
     map['filename'] = filename;
     map['filter'] = filter;
     map['gitFileSources'] =
-        Input.encodeList<GetTriggerGitFileSource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerGitFileSource, Map<String, dynamic>>(
             gitFileSources, (value) => value.toMap());
-    map['githubs'] = Input.encodeList<GetTriggerGithub, Map<String, dynamic>>(
-        githubs, (value) => value.toMap());
+    map['githubs'] =
+        pulumi.Input.encodeList<GetTriggerGithub, Map<String, dynamic>>(
+            githubs, (value) => value.toMap());
     map['id'] = id;
     map['ignoredFiles'] = ignoredFiles;
     map['includeBuildLogs'] = includeBuildLogs;
@@ -111,57 +113,56 @@ class GetTriggerResult {
       map['project'] = projectValue;
     }
     map['pubsubConfigs'] =
-        Input.encodeList<GetTriggerPubsubConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerPubsubConfig, Map<String, dynamic>>(
             pubsubConfigs, (value) => value.toMap());
-    map['repositoryEventConfigs'] =
-        Input.encodeList<GetTriggerRepositoryEventConfig, Map<String, dynamic>>(
-            repositoryEventConfigs, (value) => value.toMap());
+    map['repositoryEventConfigs'] = pulumi.Input.encodeList<
+        GetTriggerRepositoryEventConfig,
+        Map<String, dynamic>>(repositoryEventConfigs, (value) => value.toMap());
     map['serviceAccount'] = serviceAccount;
     map['sourceToBuilds'] =
-        Input.encodeList<GetTriggerSourceToBuild, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerSourceToBuild, Map<String, dynamic>>(
             sourceToBuilds, (value) => value.toMap());
     map['substitutions'] = substitutions;
     map['tags'] = tags;
     map['triggerId'] = triggerId;
-    map['triggerTemplates'] =
-        Input.encodeList<GetTriggerTriggerTemplate, Map<String, dynamic>>(
-            triggerTemplates, (value) => value.toMap());
+    map['triggerTemplates'] = pulumi.Input.encodeList<GetTriggerTriggerTemplate,
+        Map<String, dynamic>>(triggerTemplates, (value) => value.toMap());
     map['webhookConfigs'] =
-        Input.encodeList<GetTriggerWebhookConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerWebhookConfig, Map<String, dynamic>>(
             webhookConfigs, (value) => value.toMap());
     return map;
   }
 
   factory GetTriggerResult.fromMap(Map<String, dynamic> map) {
     return GetTriggerResult(
-      approvalConfigs: Input.decodeList<GetTriggerApprovalConfig>(
+      approvalConfigs: pulumi.Input.decodeList<GetTriggerApprovalConfig>(
           map['approvalConfigs'],
           (value) => GetTriggerApprovalConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       bitbucketServerTriggerConfigs:
-          Input.decodeList<GetTriggerBitbucketServerTriggerConfig>(
+          pulumi.Input.decodeList<GetTriggerBitbucketServerTriggerConfig>(
               map['bitbucketServerTriggerConfigs'],
               (value) => GetTriggerBitbucketServerTriggerConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      builds: Input.decodeList<GetTriggerBuild>(
+      builds: pulumi.Input.decodeList<GetTriggerBuild>(
           map['builds'],
           (value) =>
               GetTriggerBuild.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       developerConnectEventConfigs:
-          Input.decodeList<GetTriggerDeveloperConnectEventConfig>(
+          pulumi.Input.decodeList<GetTriggerDeveloperConnectEventConfig>(
               map['developerConnectEventConfigs'],
               (value) => GetTriggerDeveloperConnectEventConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       disabled: map['disabled'] as bool,
       filename: map['filename'] as String,
       filter: map['filter'] as String,
-      gitFileSources: Input.decodeList<GetTriggerGitFileSource>(
+      gitFileSources: pulumi.Input.decodeList<GetTriggerGitFileSource>(
           map['gitFileSources'],
           (value) => GetTriggerGitFileSource.fromMap(
               (value as Map).cast<String, dynamic>())),
-      githubs: Input.decodeList<GetTriggerGithub>(
+      githubs: pulumi.Input.decodeList<GetTriggerGithub>(
           map['githubs'],
           (value) =>
               GetTriggerGithub.fromMap((value as Map).cast<String, dynamic>())),
@@ -172,27 +173,28 @@ class GetTriggerResult {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      pubsubConfigs: Input.decodeList<GetTriggerPubsubConfig>(
+      pubsubConfigs: pulumi.Input.decodeList<GetTriggerPubsubConfig>(
           map['pubsubConfigs'],
           (value) => GetTriggerPubsubConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      repositoryEventConfigs: Input.decodeList<GetTriggerRepositoryEventConfig>(
-          map['repositoryEventConfigs'],
-          (value) => GetTriggerRepositoryEventConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      repositoryEventConfigs:
+          pulumi.Input.decodeList<GetTriggerRepositoryEventConfig>(
+              map['repositoryEventConfigs'],
+              (value) => GetTriggerRepositoryEventConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       serviceAccount: map['serviceAccount'] as String,
-      sourceToBuilds: Input.decodeList<GetTriggerSourceToBuild>(
+      sourceToBuilds: pulumi.Input.decodeList<GetTriggerSourceToBuild>(
           map['sourceToBuilds'],
           (value) => GetTriggerSourceToBuild.fromMap(
               (value as Map).cast<String, dynamic>())),
       substitutions: (map['substitutions'] as Map).cast<String, String>(),
       tags: (map['tags'] as List).cast<String>(),
       triggerId: map['triggerId'] as String,
-      triggerTemplates: Input.decodeList<GetTriggerTriggerTemplate>(
+      triggerTemplates: pulumi.Input.decodeList<GetTriggerTriggerTemplate>(
           map['triggerTemplates'],
           (value) => GetTriggerTriggerTemplate.fromMap(
               (value as Map).cast<String, dynamic>())),
-      webhookConfigs: Input.decodeList<GetTriggerWebhookConfig>(
+      webhookConfigs: pulumi.Input.decodeList<GetTriggerWebhookConfig>(
           map['webhookConfigs'],
           (value) => GetTriggerWebhookConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

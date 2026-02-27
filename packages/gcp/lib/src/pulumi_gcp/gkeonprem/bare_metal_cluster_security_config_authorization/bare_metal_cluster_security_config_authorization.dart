@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_cluster_security_config_authorization_admin_user/bare_metal_cluster_security_config_authorization_admin_user.dart';
 
 class BareMetalClusterSecurityConfigAuthorization {
@@ -14,7 +14,7 @@ class BareMetalClusterSecurityConfigAuthorization {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['adminUsers'] = Input.encodeList<
+    map['adminUsers'] = pulumi.Input.encodeList<
         BareMetalClusterSecurityConfigAuthorizationAdminUser,
         Map<String, dynamic>>(adminUsers, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class BareMetalClusterSecurityConfigAuthorization {
   factory BareMetalClusterSecurityConfigAuthorization.fromMap(
       Map<String, dynamic> map) {
     return BareMetalClusterSecurityConfigAuthorization(
-      adminUsers: Input.decodeList<
+      adminUsers: pulumi.Input.decodeList<
               BareMetalClusterSecurityConfigAuthorizationAdminUser>(
           map['adminUsers'],
           (value) =>

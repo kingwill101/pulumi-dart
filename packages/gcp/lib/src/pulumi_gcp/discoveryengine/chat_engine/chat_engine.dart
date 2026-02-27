@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../chat_engine_chat_engine_config/chat_engine_chat_engine_config.dart';
 import '../chat_engine_chat_engine_metadata/chat_engine_chat_engine_metadata.dart';
 import '../chat_engine_common_config/chat_engine_common_config.dart';
@@ -47,64 +47,65 @@ import 'chat_engine_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{location}}/{{collection_id}}/{{engine_id}}
 /// ```
-class ChatEngine extends CustomResource {
+class ChatEngine extends pulumi.CustomResource {
   /// Configurations for a chat Engine.
   /// Structure is documented below.
-  late final Output<ChatEngineChatEngineConfig> chatEngineConfig;
+  late final pulumi.Output<ChatEngineChatEngineConfig> chatEngineConfig;
 
   /// Additional information of the Chat Engine.
   /// Structure is documented below.
-  late final Output<List<ChatEngineChatEngineMetadata>> chatEngineMetadatas;
+  late final pulumi.Output<List<ChatEngineChatEngineMetadata>>
+      chatEngineMetadatas;
 
   /// The collection ID.
-  late final Output<String> collectionId;
+  late final pulumi.Output<String> collectionId;
 
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
-  late final Output<ChatEngineCommonConfig?> commonConfig;
+  late final pulumi.Output<ChatEngineCommonConfig?> commonConfig;
 
   /// Timestamp the Engine was created at.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
-  late final Output<List<String>> dataStoreIds;
+  late final pulumi.Output<List<String>> dataStoreIds;
 
   /// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The ID to use for chat engine.
-  late final Output<String> engineId;
+  late final pulumi.Output<String> engineId;
 
   /// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`.
-  late final Output<String?> industryVertical;
+  late final pulumi.Output<String?> industryVertical;
 
   /// Location.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique full resource name of the chat engine. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Timestamp the Engine was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ChatEngine(
     String name, {
     ChatEngineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/chatEngine:ChatEngine',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.chatEngineConfig =
         registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig');

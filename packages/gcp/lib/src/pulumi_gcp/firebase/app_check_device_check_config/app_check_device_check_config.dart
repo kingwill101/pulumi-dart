@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_check_device_check_config_args.dart';
 
 /// An app's DeviceCheck configuration object. Note that the Team ID registered with your
@@ -43,43 +43,43 @@ import 'app_check_device_check_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig default {{app_id}}
 /// ```
-class AppCheckDeviceCheckConfig extends CustomResource {
+class AppCheckDeviceCheckConfig extends pulumi.CustomResource {
   /// The ID of an
   /// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
-  late final Output<String> keyId;
+  late final pulumi.Output<String> keyId;
 
   /// The relative resource name of the DeviceCheck configuration object
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The contents of the private key (.p8) file associated with the key specified by keyId.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> privateKey;
+  late final pulumi.Output<String> privateKey;
 
   /// Whether the privateKey field was previously set. Since App Check will never return the
   /// privateKey field, this field is the only way to find out whether it was previously set.
-  late final Output<bool> privateKeySet;
+  late final pulumi.Output<bool> privateKeySet;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
   /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  late final Output<String> tokenTtl;
+  late final pulumi.Output<String> tokenTtl;
 
   AppCheckDeviceCheckConfig(
     String name, {
     AppCheckDeviceCheckConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.keyId = registerOutput<String>('keyId');

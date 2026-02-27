@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hosting_custom_domain_required_dns_update_desired/hosting_custom_domain_required_dns_update_desired.dart';
 import '../hosting_custom_domain_required_dns_update_discovered/hosting_custom_domain_required_dns_update_discovered.dart';
 
@@ -30,13 +30,13 @@ class HostingCustomDomainRequiredDnsUpdate {
     }
     final desiredsValue = desireds;
     if (desiredsValue != null) {
-      map['desireds'] = Input.encodeList<
+      map['desireds'] = pulumi.Input.encodeList<
           HostingCustomDomainRequiredDnsUpdateDesired,
           Map<String, dynamic>>(desiredsValue, (value) => value.toMap());
     }
     final discoveredsValue = discovereds;
     if (discoveredsValue != null) {
-      map['discovereds'] = Input.encodeList<
+      map['discovereds'] = pulumi.Input.encodeList<
           HostingCustomDomainRequiredDnsUpdateDiscovered,
           Map<String, dynamic>>(discoveredsValue, (value) => value.toMap());
     }
@@ -49,13 +49,15 @@ class HostingCustomDomainRequiredDnsUpdate {
       checkTime: map['checkTime'] == null ? null : map['checkTime'] as String,
       desireds: map['desireds'] == null
           ? null
-          : Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesired>(
+          : pulumi.Input.decodeList<
+                  HostingCustomDomainRequiredDnsUpdateDesired>(
               map['desireds'],
               (value) => HostingCustomDomainRequiredDnsUpdateDesired.fromMap(
                   (value as Map).cast<String, dynamic>())),
       discovereds: map['discovereds'] == null
           ? null
-          : Input.decodeList<HostingCustomDomainRequiredDnsUpdateDiscovered>(
+          : pulumi.Input.decodeList<
+                  HostingCustomDomainRequiredDnsUpdateDiscovered>(
               map['discovereds'],
               (value) => HostingCustomDomainRequiredDnsUpdateDiscovered.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_secret_manager_config_rotation_config/get_cluster_secret_manager_config_rotation_config.dart';
 
 class GetClusterSecretManagerConfig {
@@ -18,7 +18,7 @@ class GetClusterSecretManagerConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabled'] = enabled;
-    map['rotationConfigs'] = Input.encodeList<
+    map['rotationConfigs'] = pulumi.Input.encodeList<
         GetClusterSecretManagerConfigRotationConfig,
         Map<String, dynamic>>(rotationConfigs, (value) => value.toMap());
     return map;
@@ -28,7 +28,7 @@ class GetClusterSecretManagerConfig {
     return GetClusterSecretManagerConfig(
       enabled: map['enabled'] as bool,
       rotationConfigs:
-          Input.decodeList<GetClusterSecretManagerConfigRotationConfig>(
+          pulumi.Input.decodeList<GetClusterSecretManagerConfigRotationConfig>(
               map['rotationConfigs'],
               (value) => GetClusterSecretManagerConfigRotationConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

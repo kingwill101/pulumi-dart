@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_initial_replication_replica/instance_initial_replication_replica.dart';
 
 class InstanceInitialReplication {
@@ -22,7 +22,8 @@ class InstanceInitialReplication {
     final map = <String, dynamic>{};
     final replicasValue = replicas;
     if (replicasValue != null) {
-      map['replicas'] = Input.encodeList<InstanceInitialReplicationReplica,
+      map['replicas'] = pulumi.Input.encodeList<
+          InstanceInitialReplicationReplica,
           Map<String, dynamic>>(replicasValue, (value) => value.toMap());
     }
     final roleValue = role;
@@ -36,7 +37,7 @@ class InstanceInitialReplication {
     return InstanceInitialReplication(
       replicas: map['replicas'] == null
           ? null
-          : Input.decodeList<InstanceInitialReplicationReplica>(
+          : pulumi.Input.decodeList<InstanceInitialReplicationReplica>(
               map['replicas'],
               (value) => InstanceInitialReplicationReplica.fromMap(
                   (value as Map).cast<String, dynamic>())),

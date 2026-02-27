@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_docker_images_args.dart';
 import 'get_docker_images_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_docker_images_result.dart';
 /// and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages/list).
 Future<GetDockerImagesResult> getDockerImages(
   GetDockerImagesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:artifactregistry/getDockerImages:getDockerImages',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDockerImagesResult.fromMap(result);
 }

@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MaterializedView.
 class MaterializedViewArgs {
   /// Set to true to make the MaterializedView protected against deletion.
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// The name of the instance to create the materialized view within.
-  final Input<String>? instance;
+  final pulumi.Input<String>? instance;
 
   /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-  final Input<String> materializedViewId;
+  final pulumi.Input<String> materializedViewId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The materialized view's select query.
-  final Input<String> query;
+  final pulumi.Input<String> query;
 
   MaterializedViewArgs({
     this.deletionProtection,
@@ -50,11 +50,12 @@ class MaterializedViewArgs {
   factory MaterializedViewArgs.fromMap(Map<String, dynamic> map) {
     return MaterializedViewArgs(
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      instance: Input.asOptionalInput<String>(map['instance']),
-      materializedViewId: Input.asInput<String>(map['materializedViewId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      query: Input.asInput<String>(map['query']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      instance: pulumi.Input.asOptionalInput<String>(map['instance']),
+      materializedViewId:
+          pulumi.Input.asInput<String>(map['materializedViewId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      query: pulumi.Input.asInput<String>(map['query']),
     );
   }
 }

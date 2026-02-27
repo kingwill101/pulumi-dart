@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_agent_advanced_settings/cx_agent_advanced_settings.dart';
 import '../cx_agent_answer_feedback_settings/cx_agent_answer_feedback_settings.dart';
 import '../cx_agent_client_certificate_settings/cx_agent_client_certificate_settings.dart';
@@ -50,114 +50,117 @@ import 'cx_agent_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxAgent:CxAgent default {{location}}/{{name}}
 /// ```
-class CxAgent extends CustomResource {
+class CxAgent extends pulumi.CustomResource {
   /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
   /// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
   /// Structure is documented below.
-  late final Output<CxAgentAdvancedSettings> advancedSettings;
+  late final pulumi.Output<CxAgentAdvancedSettings> advancedSettings;
 
   /// Answer feedback collection settings.
   /// Structure is documented below.
-  late final Output<CxAgentAnswerFeedbackSettings?> answerFeedbackSettings;
+  late final pulumi.Output<CxAgentAnswerFeedbackSettings?>
+      answerFeedbackSettings;
 
   /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
-  late final Output<String?> avatarUri;
+  late final pulumi.Output<String?> avatarUri;
 
   /// Settings for custom client certificates.
   /// Structure is documented below.
-  late final Output<CxAgentClientCertificateSettings?>
+  late final pulumi.Output<CxAgentClientCertificateSettings?>
       clientCertificateSettings;
 
   /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
   /// for a list of the currently supported language codes. This field cannot be updated after creation.
-  late final Output<String> defaultLanguageCode;
-  late final Output<bool?> deleteChatEngineOnDestroy;
+  late final pulumi.Output<String> defaultLanguageCode;
+  late final pulumi.Output<bool?> deleteChatEngineOnDestroy;
 
   /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The human-readable name of the agent, unique within the location.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
-  late final Output<bool?> enableMultiLanguageTraining;
+  late final pulumi.Output<bool?> enableMultiLanguageTraining;
 
   /// Indicates if automatic spell correction is enabled in detect intent requests.
-  late final Output<bool?> enableSpellCorrection;
+  late final pulumi.Output<bool?> enableSpellCorrection;
 
   /// (Optional, Deprecated)
   /// Determines whether this agent should log conversation queries.
   ///
   /// > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
-  late final Output<bool?> enableStackdriverLogging;
+  late final pulumi.Output<bool?> enableStackdriverLogging;
 
   /// Gen App Builder-related agent-level settings.
   /// Structure is documented below.
-  late final Output<CxAgentGenAppBuilderSettings> genAppBuilderSettings;
+  late final pulumi.Output<CxAgentGenAppBuilderSettings> genAppBuilderSettings;
 
   /// Git integration settings for this agent.
   /// Structure is documented below.
-  late final Output<CxAgentGitIntegrationSettings?> gitIntegrationSettings;
+  late final pulumi.Output<CxAgentGitIntegrationSettings?>
+      gitIntegrationSettings;
 
   /// The name of the location this agent is located in.
   /// > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
   /// This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
   /// Another options is to use global location so you don't need to manually configure location settings.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
-  late final Output<bool?> locked;
+  late final pulumi.Output<bool?> locked;
 
   /// The unique identifier of the agent.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Settings for end user personalization.
   /// Structure is documented below.
-  late final Output<CxAgentPersonalizationSettings?> personalizationSettings;
+  late final pulumi.Output<CxAgentPersonalizationSettings?>
+      personalizationSettings;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A read only boolean field reflecting Zone Isolation status of the agent.
-  late final Output<bool> satisfiesPzi;
+  late final pulumi.Output<bool> satisfiesPzi;
 
   /// A read only boolean field reflecting Zone Separation status of the agent.
-  late final Output<bool> satisfiesPzs;
+  late final pulumi.Output<bool> satisfiesPzs;
 
   /// Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-  late final Output<String?> securitySettings;
+  late final pulumi.Output<String?> securitySettings;
 
   /// Settings related to speech recognition.
   /// Structure is documented below.
-  late final Output<CxAgentSpeechToTextSettings?> speechToTextSettings;
+  late final pulumi.Output<CxAgentSpeechToTextSettings?> speechToTextSettings;
 
   /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-  late final Output<String> startFlow;
+  late final pulumi.Output<String> startFlow;
 
   /// Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
-  late final Output<String?> startPlaybook;
+  late final pulumi.Output<String?> startPlaybook;
 
   /// The list of all languages supported by this agent (except for the default_language_code).
-  late final Output<List<String>?> supportedLanguageCodes;
+  late final pulumi.Output<List<String>?> supportedLanguageCodes;
 
   /// Settings related to speech synthesizing.
   /// Structure is documented below.
-  late final Output<CxAgentTextToSpeechSettings?> textToSpeechSettings;
+  late final pulumi.Output<CxAgentTextToSpeechSettings?> textToSpeechSettings;
 
   /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
   /// Europe/Paris.
-  late final Output<String> timeZone;
+  late final pulumi.Output<String> timeZone;
 
   CxAgent(
     String name, {
     CxAgentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/cxAgent:CxAgent',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.advancedSettings =
         registerOutput<CxAgentAdvancedSettings>('advancedSettings');

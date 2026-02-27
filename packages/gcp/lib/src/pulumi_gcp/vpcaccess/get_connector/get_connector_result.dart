@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connector_subnet/get_connector_subnet.dart';
 
 /// Result data returned by getConnector.
@@ -63,8 +63,9 @@ class GetConnectorResult {
     }
     map['selfLink'] = selfLink;
     map['state'] = state;
-    map['subnets'] = Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(
-        subnets, (value) => value.toMap());
+    map['subnets'] =
+        pulumi.Input.encodeList<GetConnectorSubnet, Map<String, dynamic>>(
+            subnets, (value) => value.toMap());
     return map;
   }
 
@@ -84,7 +85,7 @@ class GetConnectorResult {
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] as String,
       state: map['state'] as String,
-      subnets: Input.decodeList<GetConnectorSubnet>(
+      subnets: pulumi.Input.decodeList<GetConnectorSubnet>(
           map['subnets'],
           (value) => GetConnectorSubnet.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_backend_service_outlier_detection_base_ejection_time/get_region_backend_service_outlier_detection_base_ejection_time.dart';
 import '../get_region_backend_service_outlier_detection_interval/get_region_backend_service_outlier_detection_interval.dart';
 
@@ -81,7 +81,7 @@ class GetRegionBackendServiceOutlierDetection {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['baseEjectionTimes'] = Input.encodeList<
+    map['baseEjectionTimes'] = pulumi.Input.encodeList<
         GetRegionBackendServiceOutlierDetectionBaseEjectionTime,
         Map<String, dynamic>>(baseEjectionTimes, (value) => value.toMap());
     map['consecutiveErrors'] = consecutiveErrors;
@@ -90,7 +90,7 @@ class GetRegionBackendServiceOutlierDetection {
     map['enforcingConsecutiveGatewayFailure'] =
         enforcingConsecutiveGatewayFailure;
     map['enforcingSuccessRate'] = enforcingSuccessRate;
-    map['intervals'] = Input.encodeList<
+    map['intervals'] = pulumi.Input.encodeList<
         GetRegionBackendServiceOutlierDetectionInterval,
         Map<String, dynamic>>(intervals, (value) => value.toMap());
     map['maxEjectionPercent'] = maxEjectionPercent;
@@ -103,7 +103,7 @@ class GetRegionBackendServiceOutlierDetection {
   factory GetRegionBackendServiceOutlierDetection.fromMap(
       Map<String, dynamic> map) {
     return GetRegionBackendServiceOutlierDetection(
-      baseEjectionTimes: Input.decodeList<
+      baseEjectionTimes: pulumi.Input.decodeList<
               GetRegionBackendServiceOutlierDetectionBaseEjectionTime>(
           map['baseEjectionTimes'],
           (value) =>
@@ -115,12 +115,11 @@ class GetRegionBackendServiceOutlierDetection {
       enforcingConsecutiveGatewayFailure:
           map['enforcingConsecutiveGatewayFailure'] as int,
       enforcingSuccessRate: map['enforcingSuccessRate'] as int,
-      intervals:
-          Input.decodeList<GetRegionBackendServiceOutlierDetectionInterval>(
-              map['intervals'],
-              (value) =>
-                  GetRegionBackendServiceOutlierDetectionInterval.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      intervals: pulumi.Input.decodeList<
+              GetRegionBackendServiceOutlierDetectionInterval>(
+          map['intervals'],
+          (value) => GetRegionBackendServiceOutlierDetectionInterval.fromMap(
+              (value as Map).cast<String, dynamic>())),
       maxEjectionPercent: map['maxEjectionPercent'] as int,
       successRateMinimumHosts: map['successRateMinimumHosts'] as int,
       successRateRequestVolume: map['successRateRequestVolume'] as int,

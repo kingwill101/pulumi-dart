@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_membership_authority/get_membership_authority.dart';
 import '../get_membership_endpoint/get_membership_endpoint.dart';
 
@@ -35,11 +35,11 @@ class GetMembershipResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['authorities'] =
-        Input.encodeList<GetMembershipAuthority, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetMembershipAuthority, Map<String, dynamic>>(
             authorities, (value) => value.toMap());
     map['effectiveLabels'] = effectiveLabels;
     map['endpoints'] =
-        Input.encodeList<GetMembershipEndpoint, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetMembershipEndpoint, Map<String, dynamic>>(
             endpoints, (value) => value.toMap());
     map['id'] = id;
     map['labels'] = labels;
@@ -56,12 +56,12 @@ class GetMembershipResult {
 
   factory GetMembershipResult.fromMap(Map<String, dynamic> map) {
     return GetMembershipResult(
-      authorities: Input.decodeList<GetMembershipAuthority>(
+      authorities: pulumi.Input.decodeList<GetMembershipAuthority>(
           map['authorities'],
           (value) => GetMembershipAuthority.fromMap(
               (value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      endpoints: Input.decodeList<GetMembershipEndpoint>(
+      endpoints: pulumi.Input.decodeList<GetMembershipEndpoint>(
           map['endpoints'],
           (value) => GetMembershipEndpoint.fromMap(
               (value as Map).cast<String, dynamic>())),

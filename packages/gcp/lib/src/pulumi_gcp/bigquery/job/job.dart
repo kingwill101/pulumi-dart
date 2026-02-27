@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_copy/job_copy.dart';
 import '../job_extract/job_extract.dart';
 import '../job_load/job_load.dart';
@@ -88,75 +88,75 @@ import 'job_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/job:Job default {{job_id}}
 /// ```
-class Job extends CustomResource {
+class Job extends pulumi.CustomResource {
   /// Copies a table.
   /// Structure is documented below.
-  late final Output<JobCopy?> copy;
+  late final pulumi.Output<JobCopy?> copy;
 
   /// (Output)
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Configures an extract job.
   /// Structure is documented below.
-  late final Output<JobExtract?> extract;
+  late final pulumi.Output<JobExtract?> extract;
 
   /// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
-  late final Output<String> jobId;
+  late final pulumi.Output<String> jobId;
 
   /// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-  late final Output<String?> jobTimeoutMs;
+  late final pulumi.Output<String?> jobTimeoutMs;
 
   /// (Output)
   /// The type of the job.
-  late final Output<String> jobType;
+  late final pulumi.Output<String> jobType;
 
   /// The labels associated with this job. You can use these to organize and group your jobs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Configures a load job.
   /// Structure is documented below.
-  late final Output<JobLoad?> load;
+  late final pulumi.Output<JobLoad?> load;
 
   /// The geographic location of the job. The default value is US.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// (Output)
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Configures a query job.
   /// Structure is documented below.
-  late final Output<JobQuery?> query;
+  late final pulumi.Output<JobQuery?> query;
 
   /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
   /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
-  late final Output<String?> reservation;
+  late final pulumi.Output<String?> reservation;
 
   /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
   /// Structure is documented below.
-  late final Output<List<JobStatus>> statuses;
+  late final pulumi.Output<List<JobStatus>> statuses;
 
   /// Email address of the user who ran the job.
-  late final Output<String> userEmail;
+  late final pulumi.Output<String> userEmail;
 
   Job(
     String name, {
     JobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/job:Job',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.copy = registerOutput<JobCopy?>('copy');
     this.effectiveLabels =

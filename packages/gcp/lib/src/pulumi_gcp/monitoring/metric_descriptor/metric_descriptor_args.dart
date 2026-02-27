@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../metric_descriptor_label/metric_descriptor_label.dart';
 import '../metric_descriptor_metadata/metric_descriptor_metadata.dart';
 
 /// The set of arguments for MetricDescriptor.
 class MetricDescriptorArgs {
   /// A detailed description of the metric, which can be used in documentation.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
   /// Structure is documented below.
-  final Input<List<MetricDescriptorLabel>>? labels;
+  final pulumi.Input<List<MetricDescriptorLabel>>? labels;
 
   /// The launch stage of the metric definition.
   /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-  final Input<String>? launchStage;
+  final pulumi.Input<String>? launchStage;
 
   /// Metadata which can be used to guide usage of the metric.
   /// Structure is documented below.
-  final Input<MetricDescriptorMetadata>? metadata;
+  final pulumi.Input<MetricDescriptorMetadata>? metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
-  final Input<String> metricKind;
+  final pulumi.Input<String> metricKind;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   /// The units in which the metric value is reported. It is only applicable if the
   /// valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
@@ -52,11 +52,11 @@ class MetricDescriptorArgs {
   /// The supported units are a subset of The Unified Code for Units of Measure standard.
   /// More info can be found in the API documentation
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
-  final Input<String>? unit;
+  final pulumi.Input<String>? unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-  final Input<String> valueType;
+  final pulumi.Input<String> valueType;
 
   MetricDescriptorArgs({
     this.description,
@@ -83,12 +83,11 @@ class MetricDescriptorArgs {
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] = Input.mapOptionalInputValue<List<MetricDescriptorLabel>,
-              List<Map<String, dynamic>>>(
+      map['labels'] = pulumi.Input.mapOptionalInputValue<
+              List<MetricDescriptorLabel>, List<Map<String, dynamic>>>(
           labelsValue,
-          (value) =>
-              Input.encodeList<MetricDescriptorLabel, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<MetricDescriptorLabel,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final launchStageValue = launchStage;
     if (launchStageValue != null) {
@@ -96,7 +95,8 @@ class MetricDescriptorArgs {
     }
     final metadataValue = metadata;
     if (metadataValue != null) {
-      map['metadata'] = Input.mapOptionalInputValue<MetricDescriptorMetadata,
+      map['metadata'] = pulumi.Input.mapOptionalInputValue<
+          MetricDescriptorMetadata,
           Map<String, dynamic>>(metadataValue, (value) => value.toMap());
     }
     map['metricKind'] = metricKind;
@@ -115,17 +115,18 @@ class MetricDescriptorArgs {
 
   factory MetricDescriptorArgs.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<List<MetricDescriptorLabel>>(map['labels']),
-      launchStage: Input.asOptionalInput<String>(map['launchStage']),
-      metadata:
-          Input.asOptionalInput<MetricDescriptorMetadata>(map['metadata']),
-      metricKind: Input.asInput<String>(map['metricKind']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asInput<String>(map['type']),
-      unit: Input.asOptionalInput<String>(map['unit']),
-      valueType: Input.asInput<String>(map['valueType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<List<MetricDescriptorLabel>>(
+          map['labels']),
+      launchStage: pulumi.Input.asOptionalInput<String>(map['launchStage']),
+      metadata: pulumi.Input.asOptionalInput<MetricDescriptorMetadata>(
+          map['metadata']),
+      metricKind: pulumi.Input.asInput<String>(map['metricKind']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asInput<String>(map['type']),
+      unit: pulumi.Input.asOptionalInput<String>(map['unit']),
+      valueType: pulumi.Input.asInput<String>(map['valueType']),
     );
   }
 }

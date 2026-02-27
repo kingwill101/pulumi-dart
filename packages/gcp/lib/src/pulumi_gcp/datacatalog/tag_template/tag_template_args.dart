@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tag_template_field/tag_template_field.dart';
 
 /// The set of arguments for TagTemplate.
 class TagTemplateArgs {
   /// The display name for this template.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
   /// Structure is documented below.
-  final Input<List<TagTemplateField>> fields;
+  final pulumi.Input<List<TagTemplateField>> fields;
 
   /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
-  final Input<bool>? forceDelete;
+  final pulumi.Input<bool>? forceDelete;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Template location region.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The id of the tag template to create.
-  final Input<String> tagTemplateId;
+  final pulumi.Input<String> tagTemplateId;
 
   TagTemplateArgs({
     this.displayName,
@@ -40,10 +40,11 @@ class TagTemplateArgs {
     if (displayNameValue != null) {
       map['displayName'] = displayNameValue;
     }
-    map['fields'] =
-        Input.mapInputValue<List<TagTemplateField>, List<Map<String, dynamic>>>(
-            fields,
-            (value) => Input.encodeList<TagTemplateField, Map<String, dynamic>>(
+    map['fields'] = pulumi.Input.mapInputValue<List<TagTemplateField>,
+            List<Map<String, dynamic>>>(
+        fields,
+        (value) =>
+            pulumi.Input.encodeList<TagTemplateField, Map<String, dynamic>>(
                 value, (value) => value.toMap()));
     final forceDeleteValue = forceDelete;
     if (forceDeleteValue != null) {
@@ -63,12 +64,12 @@ class TagTemplateArgs {
 
   factory TagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return TagTemplateArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      fields: Input.asInput<List<TagTemplateField>>(map['fields']),
-      forceDelete: Input.asOptionalInput<bool>(map['forceDelete']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tagTemplateId: Input.asInput<String>(map['tagTemplateId']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      fields: pulumi.Input.asInput<List<TagTemplateField>>(map['fields']),
+      forceDelete: pulumi.Input.asOptionalInput<bool>(map['forceDelete']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tagTemplateId: pulumi.Input.asInput<String>(map['tagTemplateId']),
     );
   }
 }

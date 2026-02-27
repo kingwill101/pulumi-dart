@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workstation_config_host_gce_instance_boost_config_accelerator/workstation_config_host_gce_instance_boost_config_accelerator.dart';
 
 class WorkstationConfigHostGceInstanceBoostConfig {
@@ -38,7 +38,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] = Input.encodeList<
+      map['accelerators'] = pulumi.Input.encodeList<
           WorkstationConfigHostGceInstanceBoostConfigAccelerator,
           Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
     return WorkstationConfigHostGceInstanceBoostConfig(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WorkstationConfigHostGceInstanceBoostConfigAccelerator>(
               map['accelerators'],
               (value) => WorkstationConfigHostGceInstanceBoostConfigAccelerator

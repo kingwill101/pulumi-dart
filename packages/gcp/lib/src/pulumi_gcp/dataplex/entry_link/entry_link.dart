@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entry_link_entry_reference/entry_link_entry_reference.dart';
 import 'entry_link_args.dart';
 
@@ -45,47 +45,47 @@ import 'entry_link_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataplex/entryLink:EntryLink default {{location}}/{{entry_group_id}}/{{entry_link_id}}
 /// ```
-class EntryLink extends CustomResource {
+class EntryLink extends pulumi.CustomResource {
   /// The time when the Entry Link was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The id of the entry group this entry link is in.
-  late final Output<String> entryGroupId;
+  late final pulumi.Output<String> entryGroupId;
 
   /// The id of the entry link to create.
-  late final Output<String> entryLinkId;
+  late final pulumi.Output<String> entryLinkId;
 
   /// Relative resource name of the Entry Link Type used to create this Entry Link. For example:
   /// projects/dataplex-types/locations/global/entryLinkTypes/definition
-  late final Output<String> entryLinkType;
+  late final pulumi.Output<String> entryLinkType;
 
   /// Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
   /// Structure is documented below.
-  late final Output<List<EntryLinkEntryReference>> entryReferences;
+  late final pulumi.Output<List<EntryLinkEntryReference>> entryReferences;
 
   /// The location for the entry.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The relative resource name of the Entry Link, of the form:
   /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The time when the Entry Link was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   EntryLink(
     String name, {
     EntryLinkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataplex/entryLink:EntryLink',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.entryGroupId = registerOutput<String>('entryGroupId');

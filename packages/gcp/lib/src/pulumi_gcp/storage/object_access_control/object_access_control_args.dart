@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ObjectAccessControl.
 class ObjectAccessControlArgs {
   /// The name of the bucket.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
@@ -16,14 +16,14 @@ class ObjectAccessControlArgs {
   /// * project-team-{{projectId}}
   /// * allUsers
   /// * allAuthenticatedUsers
-  final Input<String> entity;
+  final pulumi.Input<String> entity;
 
   /// The name of the object to apply the access control to.
-  final Input<String> object;
+  final pulumi.Input<String> object;
 
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   ObjectAccessControlArgs({
     required this.bucket,
@@ -43,10 +43,10 @@ class ObjectAccessControlArgs {
 
   factory ObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return ObjectAccessControlArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      entity: Input.asInput<String>(map['entity']),
-      object: Input.asInput<String>(map['object']),
-      role: Input.asInput<String>(map['role']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      entity: pulumi.Input.asInput<String>(map['entity']),
+      object: pulumi.Input.asInput<String>(map['object']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

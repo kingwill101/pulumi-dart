@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties_advanced_machine_features/restore_workload_compute_instance_restore_properties_advanced_machine_features.dart';
 import '../restore_workload_compute_instance_restore_properties_allocation_affinity/restore_workload_compute_instance_restore_properties_allocation_affinity.dart';
 import '../restore_workload_compute_instance_restore_properties_confidential_instance_config/restore_workload_compute_instance_restore_properties_confidential_instance_config.dart';
@@ -183,7 +183,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
     }
     final disksValue = disks;
     if (disksValue != null) {
-      map['disks'] = Input.encodeList<
+      map['disks'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesDisk,
           Map<String, dynamic>>(disksValue, (value) => value.toMap());
     }
@@ -193,7 +193,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
     }
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.encodeList<
+      map['guestAccelerators'] = pulumi.Input.encodeList<
               RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator,
               Map<String, dynamic>>(
           guestAcceleratorsValue, (value) => value.toMap());
@@ -212,7 +212,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] = Input.encodeList<
+      map['labels'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesLabel,
           Map<String, dynamic>>(labelsValue, (value) => value.toMap());
     }
@@ -231,7 +231,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
     map['name'] = name;
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.encodeList<
+      map['networkInterfaces'] = pulumi.Input.encodeList<
               RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface,
               Map<String, dynamic>>(
           networkInterfacesValue, (value) => value.toMap());
@@ -258,7 +258,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
     }
     final serviceAccountsValue = serviceAccounts;
     if (serviceAccountsValue != null) {
-      map['serviceAccounts'] = Input.encodeList<
+      map['serviceAccounts'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount,
           Map<String, dynamic>>(serviceAccountsValue, (value) => value.toMap());
     }
@@ -300,7 +300,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
           map['description'] == null ? null : map['description'] as String,
       disks: map['disks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesDisk>(
               map['disks'],
               (value) =>
@@ -312,7 +312,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
               .fromMap((map['displayDevice'] as Map).cast<String, dynamic>()),
       guestAccelerators: map['guestAccelerators'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator>(
               map['guestAccelerators'],
               (value) =>
@@ -329,7 +329,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
           : map['keyRevocationActionType'] as String,
       labels: map['labels'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesLabel>(
               map['labels'],
               (value) =>
@@ -347,7 +347,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
       name: map['name'] as String,
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface>(
               map['networkInterfaces'],
               (value) =>
@@ -374,7 +374,7 @@ class RestoreWorkloadComputeInstanceRestoreProperties {
               (map['scheduling'] as Map).cast<String, dynamic>()),
       serviceAccounts: map['serviceAccounts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount>(
               map['serviceAccounts'],
               (value) =>

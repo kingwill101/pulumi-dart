@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_container_build_info/get_service_template_container_build_info.dart';
 import '../get_service_template_container_env/get_service_template_container_env.dart';
 import '../get_service_template_container_liveness_probe/get_service_template_container_liveness_probe.dart';
@@ -80,29 +80,30 @@ class GetServiceTemplateContainer {
     final map = <String, dynamic>{};
     map['args'] = args;
     map['baseImageUri'] = baseImageUri;
-    map['buildInfos'] = Input.encodeList<GetServiceTemplateContainerBuildInfo,
+    map['buildInfos'] = pulumi.Input.encodeList<
+        GetServiceTemplateContainerBuildInfo,
         Map<String, dynamic>>(buildInfos, (value) => value.toMap());
     map['commands'] = commands;
     map['dependsOns'] = dependsOns;
-    map['envs'] =
-        Input.encodeList<GetServiceTemplateContainerEnv, Map<String, dynamic>>(
-            envs, (value) => value.toMap());
+    map['envs'] = pulumi.Input.encodeList<GetServiceTemplateContainerEnv,
+        Map<String, dynamic>>(envs, (value) => value.toMap());
     map['image'] = image;
-    map['livenessProbes'] = Input.encodeList<
+    map['livenessProbes'] = pulumi.Input.encodeList<
         GetServiceTemplateContainerLivenessProbe,
         Map<String, dynamic>>(livenessProbes, (value) => value.toMap());
     map['name'] = name;
-    map['ports'] =
-        Input.encodeList<GetServiceTemplateContainerPort, Map<String, dynamic>>(
-            ports, (value) => value.toMap());
-    map['resources'] = Input.encodeList<GetServiceTemplateContainerResource,
+    map['ports'] = pulumi.Input.encodeList<GetServiceTemplateContainerPort,
+        Map<String, dynamic>>(ports, (value) => value.toMap());
+    map['resources'] = pulumi.Input.encodeList<
+        GetServiceTemplateContainerResource,
         Map<String, dynamic>>(resources, (value) => value.toMap());
-    map['sourceCodes'] = Input.encodeList<GetServiceTemplateContainerSourceCode,
+    map['sourceCodes'] = pulumi.Input.encodeList<
+        GetServiceTemplateContainerSourceCode,
         Map<String, dynamic>>(sourceCodes, (value) => value.toMap());
-    map['startupProbes'] = Input.encodeList<
+    map['startupProbes'] = pulumi.Input.encodeList<
         GetServiceTemplateContainerStartupProbe,
         Map<String, dynamic>>(startupProbes, (value) => value.toMap());
-    map['volumeMounts'] = Input.encodeList<
+    map['volumeMounts'] = pulumi.Input.encodeList<
         GetServiceTemplateContainerVolumeMount,
         Map<String, dynamic>>(volumeMounts, (value) => value.toMap());
     map['workingDir'] = workingDir;
@@ -113,43 +114,46 @@ class GetServiceTemplateContainer {
     return GetServiceTemplateContainer(
       args: (map['args'] as List).cast<String>(),
       baseImageUri: map['baseImageUri'] as String,
-      buildInfos: Input.decodeList<GetServiceTemplateContainerBuildInfo>(
+      buildInfos: pulumi.Input.decodeList<GetServiceTemplateContainerBuildInfo>(
           map['buildInfos'],
           (value) => GetServiceTemplateContainerBuildInfo.fromMap(
               (value as Map).cast<String, dynamic>())),
       commands: (map['commands'] as List).cast<String>(),
       dependsOns: (map['dependsOns'] as List).cast<String>(),
-      envs: Input.decodeList<GetServiceTemplateContainerEnv>(
+      envs: pulumi.Input.decodeList<GetServiceTemplateContainerEnv>(
           map['envs'],
           (value) => GetServiceTemplateContainerEnv.fromMap(
               (value as Map).cast<String, dynamic>())),
       image: map['image'] as String,
       livenessProbes:
-          Input.decodeList<GetServiceTemplateContainerLivenessProbe>(
+          pulumi.Input.decodeList<GetServiceTemplateContainerLivenessProbe>(
               map['livenessProbes'],
               (value) => GetServiceTemplateContainerLivenessProbe.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      ports: Input.decodeList<GetServiceTemplateContainerPort>(
+      ports: pulumi.Input.decodeList<GetServiceTemplateContainerPort>(
           map['ports'],
           (value) => GetServiceTemplateContainerPort.fromMap(
               (value as Map).cast<String, dynamic>())),
-      resources: Input.decodeList<GetServiceTemplateContainerResource>(
+      resources: pulumi.Input.decodeList<GetServiceTemplateContainerResource>(
           map['resources'],
           (value) => GetServiceTemplateContainerResource.fromMap(
               (value as Map).cast<String, dynamic>())),
-      sourceCodes: Input.decodeList<GetServiceTemplateContainerSourceCode>(
-          map['sourceCodes'],
-          (value) => GetServiceTemplateContainerSourceCode.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      startupProbes: Input.decodeList<GetServiceTemplateContainerStartupProbe>(
-          map['startupProbes'],
-          (value) => GetServiceTemplateContainerStartupProbe.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      volumeMounts: Input.decodeList<GetServiceTemplateContainerVolumeMount>(
-          map['volumeMounts'],
-          (value) => GetServiceTemplateContainerVolumeMount.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sourceCodes:
+          pulumi.Input.decodeList<GetServiceTemplateContainerSourceCode>(
+              map['sourceCodes'],
+              (value) => GetServiceTemplateContainerSourceCode.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      startupProbes:
+          pulumi.Input.decodeList<GetServiceTemplateContainerStartupProbe>(
+              map['startupProbes'],
+              (value) => GetServiceTemplateContainerStartupProbe.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      volumeMounts:
+          pulumi.Input.decodeList<GetServiceTemplateContainerVolumeMount>(
+              map['volumeMounts'],
+              (value) => GetServiceTemplateContainerVolumeMount.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       workingDir: map['workingDir'] as String,
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../principal_access_boundary_policy_details/principal_access_boundary_policy_details.dart';
 
 /// The set of arguments for PrincipalAccessBoundaryPolicy.
@@ -10,24 +10,24 @@ class PrincipalAccessBoundaryPolicyArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Principal access boundary policy details
   /// Structure is documented below.
-  final Input<PrincipalAccessBoundaryPolicyDetails>? details;
+  final pulumi.Input<PrincipalAccessBoundaryPolicyDetails>? details;
 
   /// The description of the principal access boundary policy. Must be less than or equal to 63 characters.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The location the principal access boundary policy is in.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The parent organization of the principal access boundary policy.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   /// The ID to use to create the principal access boundary policy.
   /// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-  final Input<String> principalAccessBoundaryPolicyId;
+  final pulumi.Input<String> principalAccessBoundaryPolicyId;
 
   PrincipalAccessBoundaryPolicyArgs({
     this.annotations,
@@ -46,7 +46,7 @@ class PrincipalAccessBoundaryPolicyArgs {
     }
     final detailsValue = details;
     if (detailsValue != null) {
-      map['details'] = Input.mapOptionalInputValue<
+      map['details'] = pulumi.Input.mapOptionalInputValue<
           PrincipalAccessBoundaryPolicyDetails,
           Map<String, dynamic>>(detailsValue, (value) => value.toMap());
     }
@@ -63,14 +63,15 @@ class PrincipalAccessBoundaryPolicyArgs {
   factory PrincipalAccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      details: Input.asOptionalInput<PrincipalAccessBoundaryPolicyDetails>(
-          map['details']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      organization: Input.asInput<String>(map['organization']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      details:
+          pulumi.Input.asOptionalInput<PrincipalAccessBoundaryPolicyDetails>(
+              map['details']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
       principalAccessBoundaryPolicyId:
-          Input.asInput<String>(map['principalAccessBoundaryPolicyId']),
+          pulumi.Input.asInput<String>(map['principalAccessBoundaryPolicyId']),
     );
   }
 }

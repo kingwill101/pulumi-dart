@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_plan_restore_config_cluster_resource_restore_scope/restore_plan_restore_config_cluster_resource_restore_scope.dart';
 import '../restore_plan_restore_config_excluded_namespaces/restore_plan_restore_config_excluded_namespaces.dart';
 import '../restore_plan_restore_config_restore_order/restore_plan_restore_config_restore_order.dart';
@@ -141,7 +141,7 @@ class RestorePlanRestoreConfig {
     }
     final transformationRulesValue = transformationRules;
     if (transformationRulesValue != null) {
-      map['transformationRules'] = Input.encodeList<
+      map['transformationRules'] = pulumi.Input.encodeList<
               RestorePlanRestoreConfigTransformationRule, Map<String, dynamic>>(
           transformationRulesValue, (value) => value.toMap());
     }
@@ -152,7 +152,7 @@ class RestorePlanRestoreConfig {
     final volumeDataRestorePolicyBindingsValue =
         volumeDataRestorePolicyBindings;
     if (volumeDataRestorePolicyBindingsValue != null) {
-      map['volumeDataRestorePolicyBindings'] = Input.encodeList<
+      map['volumeDataRestorePolicyBindings'] = pulumi.Input.encodeList<
               RestorePlanRestoreConfigVolumeDataRestorePolicyBinding,
               Map<String, dynamic>>(
           volumeDataRestorePolicyBindingsValue, (value) => value.toMap());
@@ -197,7 +197,7 @@ class RestorePlanRestoreConfig {
               (map['selectedNamespaces'] as Map).cast<String, dynamic>()),
       transformationRules: map['transformationRules'] == null
           ? null
-          : Input.decodeList<RestorePlanRestoreConfigTransformationRule>(
+          : pulumi.Input.decodeList<RestorePlanRestoreConfigTransformationRule>(
               map['transformationRules'],
               (value) => RestorePlanRestoreConfigTransformationRule.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -207,7 +207,7 @@ class RestorePlanRestoreConfig {
       volumeDataRestorePolicyBindings: map['volumeDataRestorePolicyBindings'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>(
               map['volumeDataRestorePolicyBindings'],
               (value) => RestorePlanRestoreConfigVolumeDataRestorePolicyBinding

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_notification_channel_args.dart';
 import 'get_notification_channel_result.dart';
 
@@ -21,13 +21,13 @@ import 'get_notification_channel_result.dart';
 /// ### Notification Channel Basic
 Future<GetNotificationChannelResult> getNotificationChannel(
   GetNotificationChannelArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:monitoring/getNotificationChannel:getNotificationChannel',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNotificationChannelResult.fromMap(result);
 }

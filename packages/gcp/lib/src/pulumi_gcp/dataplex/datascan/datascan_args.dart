@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../datascan_data/datascan_data.dart';
 import '../datascan_data_discovery_spec/datascan_data_discovery_spec.dart';
 import '../datascan_data_profile_spec/datascan_data_profile_spec.dart';
@@ -11,48 +11,48 @@ import '../datascan_execution_spec/datascan_execution_spec.dart';
 class DatascanArgs {
   /// The data source for DataScan.
   /// Structure is documented below.
-  final Input<DatascanData> data;
+  final pulumi.Input<DatascanData> data;
 
   /// DataDiscoveryScan related setting.
   /// Structure is documented below.
-  final Input<DatascanDataDiscoverySpec>? dataDiscoverySpec;
+  final pulumi.Input<DatascanDataDiscoverySpec>? dataDiscoverySpec;
 
   /// DataDocumentationScan related setting.
-  final Input<Map<String, dynamic>>? dataDocumentationSpec;
+  final pulumi.Input<Map<String, dynamic>>? dataDocumentationSpec;
 
   /// DataProfileScan related setting.
   /// Structure is documented below.
-  final Input<DatascanDataProfileSpec>? dataProfileSpec;
+  final pulumi.Input<DatascanDataProfileSpec>? dataProfileSpec;
 
   /// DataQualityScan related setting.
   /// Structure is documented below.
-  final Input<DatascanDataQualitySpec>? dataQualitySpec;
+  final pulumi.Input<DatascanDataQualitySpec>? dataQualitySpec;
 
   /// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-  final Input<String> dataScanId;
+  final pulumi.Input<String> dataScanId;
 
   /// Description of the scan.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User friendly display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// DataScan execution settings.
   /// Structure is documented below.
-  final Input<DatascanExecutionSpec> executionSpec;
+  final pulumi.Input<DatascanExecutionSpec> executionSpec;
 
   /// User-defined labels for the scan. A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location where the data scan should reside.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   DatascanArgs({
     required this.data,
@@ -71,11 +71,12 @@ class DatascanArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['data'] = Input.mapInputValue<DatascanData, Map<String, dynamic>>(
-        data, (value) => value.toMap());
+    map['data'] =
+        pulumi.Input.mapInputValue<DatascanData, Map<String, dynamic>>(
+            data, (value) => value.toMap());
     final dataDiscoverySpecValue = dataDiscoverySpec;
     if (dataDiscoverySpecValue != null) {
-      map['dataDiscoverySpec'] = Input.mapOptionalInputValue<
+      map['dataDiscoverySpec'] = pulumi.Input.mapOptionalInputValue<
               DatascanDataDiscoverySpec, Map<String, dynamic>>(
           dataDiscoverySpecValue, (value) => value.toMap());
     }
@@ -85,13 +86,13 @@ class DatascanArgs {
     }
     final dataProfileSpecValue = dataProfileSpec;
     if (dataProfileSpecValue != null) {
-      map['dataProfileSpec'] = Input.mapOptionalInputValue<
+      map['dataProfileSpec'] = pulumi.Input.mapOptionalInputValue<
           DatascanDataProfileSpec,
           Map<String, dynamic>>(dataProfileSpecValue, (value) => value.toMap());
     }
     final dataQualitySpecValue = dataQualitySpec;
     if (dataQualitySpecValue != null) {
-      map['dataQualitySpec'] = Input.mapOptionalInputValue<
+      map['dataQualitySpec'] = pulumi.Input.mapOptionalInputValue<
           DatascanDataQualitySpec,
           Map<String, dynamic>>(dataQualitySpecValue, (value) => value.toMap());
     }
@@ -105,7 +106,7 @@ class DatascanArgs {
       map['displayName'] = displayNameValue;
     }
     map['executionSpec'] =
-        Input.mapInputValue<DatascanExecutionSpec, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<DatascanExecutionSpec, Map<String, dynamic>>(
             executionSpec, (value) => value.toMap());
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -121,22 +122,24 @@ class DatascanArgs {
 
   factory DatascanArgs.fromMap(Map<String, dynamic> map) {
     return DatascanArgs(
-      data: Input.asInput<DatascanData>(map['data']),
-      dataDiscoverySpec: Input.asOptionalInput<DatascanDataDiscoverySpec>(
-          map['dataDiscoverySpec']),
-      dataDocumentationSpec: Input.asOptionalInput<Map<String, dynamic>>(
+      data: pulumi.Input.asInput<DatascanData>(map['data']),
+      dataDiscoverySpec:
+          pulumi.Input.asOptionalInput<DatascanDataDiscoverySpec>(
+              map['dataDiscoverySpec']),
+      dataDocumentationSpec: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
           map['dataDocumentationSpec']),
-      dataProfileSpec: Input.asOptionalInput<DatascanDataProfileSpec>(
+      dataProfileSpec: pulumi.Input.asOptionalInput<DatascanDataProfileSpec>(
           map['dataProfileSpec']),
-      dataQualitySpec: Input.asOptionalInput<DatascanDataQualitySpec>(
+      dataQualitySpec: pulumi.Input.asOptionalInput<DatascanDataQualitySpec>(
           map['dataQualitySpec']),
-      dataScanId: Input.asInput<String>(map['dataScanId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      executionSpec: Input.asInput<DatascanExecutionSpec>(map['executionSpec']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      dataScanId: pulumi.Input.asInput<String>(map['dataScanId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      executionSpec:
+          pulumi.Input.asInput<DatascanExecutionSpec>(map['executionSpec']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

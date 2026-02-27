@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lite_subscription_delivery_config/lite_subscription_delivery_config.dart';
 import 'lite_subscription_args.dart';
 
@@ -50,36 +50,36 @@ import 'lite_subscription_args.dart';
 /// ```sh
 /// $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
 /// ```
-class LiteSubscription extends CustomResource {
+class LiteSubscription extends pulumi.CustomResource {
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
-  late final Output<LiteSubscriptionDeliveryConfig?> deliveryConfig;
+  late final pulumi.Output<LiteSubscriptionDeliveryConfig?> deliveryConfig;
 
   /// Name of the subscription.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region of the pubsub lite topic.
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// A reference to a Topic resource.
-  late final Output<String> topic;
+  late final pulumi.Output<String> topic;
 
   /// The zone of the pubsub lite topic.
-  late final Output<String?> zone;
+  late final pulumi.Output<String?> zone;
 
   LiteSubscription(
     String name, {
     LiteSubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:pubsub/liteSubscription:LiteSubscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deliveryConfig =
         registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig');

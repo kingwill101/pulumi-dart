@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_path_matcher_default_custom_error_response_policy/urlmap_path_matcher_default_custom_error_response_policy.dart';
 import '../urlmap_path_matcher_default_route_action/urlmap_path_matcher_default_route_action.dart';
 import '../urlmap_path_matcher_default_url_redirect/urlmap_path_matcher_default_url_redirect.dart';
@@ -112,15 +112,13 @@ class URLMapPathMatcher {
     map['name'] = name;
     final pathRulesValue = pathRules;
     if (pathRulesValue != null) {
-      map['pathRules'] =
-          Input.encodeList<URLMapPathMatcherPathRule, Map<String, dynamic>>(
-              pathRulesValue, (value) => value.toMap());
+      map['pathRules'] = pulumi.Input.encodeList<URLMapPathMatcherPathRule,
+          Map<String, dynamic>>(pathRulesValue, (value) => value.toMap());
     }
     final routeRulesValue = routeRules;
     if (routeRulesValue != null) {
-      map['routeRules'] =
-          Input.encodeList<URLMapPathMatcherRouteRule, Map<String, dynamic>>(
-              routeRulesValue, (value) => value.toMap());
+      map['routeRules'] = pulumi.Input.encodeList<URLMapPathMatcherRouteRule,
+          Map<String, dynamic>>(routeRulesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -153,13 +151,13 @@ class URLMapPathMatcher {
       name: map['name'] as String,
       pathRules: map['pathRules'] == null
           ? null
-          : Input.decodeList<URLMapPathMatcherPathRule>(
+          : pulumi.Input.decodeList<URLMapPathMatcherPathRule>(
               map['pathRules'],
               (value) => URLMapPathMatcherPathRule.fromMap(
                   (value as Map).cast<String, dynamic>())),
       routeRules: map['routeRules'] == null
           ? null
-          : Input.decodeList<URLMapPathMatcherRouteRule>(
+          : pulumi.Input.decodeList<URLMapPathMatcherRouteRule>(
               map['routeRules'],
               (value) => URLMapPathMatcherRouteRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

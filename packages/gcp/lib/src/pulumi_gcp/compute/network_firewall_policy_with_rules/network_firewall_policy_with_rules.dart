@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_firewall_policy_with_rules_predefined_rule/network_firewall_policy_with_rules_predefined_rule.dart';
 import '../network_firewall_policy_with_rules_rule/network_firewall_policy_with_rules_rule.dart';
 import 'network_firewall_policy_with_rules_args.dart';
@@ -37,15 +37,15 @@ import 'network_firewall_policy_with_rules_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules default {{name}}
 /// ```
-class NetworkFirewallPolicyWithRules extends CustomResource {
+class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// User-provided name of the Network firewall policy.
   /// The name should be unique in the project in which the firewall policy is created.
@@ -53,48 +53,48 @@ class NetworkFirewallPolicyWithRules extends CustomResource {
   /// the name must be 1-63 characters long and match the regular expression a-z?
   /// which means the first character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The unique identifier for the resource. This identifier is defined by the server.
-  late final Output<String> networkFirewallPolicyId;
+  late final pulumi.Output<String> networkFirewallPolicyId;
 
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
   /// Possible values are: `VPC_POLICY`.
-  late final Output<String> policyType;
+  late final pulumi.Output<String> policyType;
 
   /// A list of firewall policy pre-defined rules.
   /// Structure is documented below.
-  late final Output<List<NetworkFirewallPolicyWithRulesPredefinedRule>>
+  late final pulumi.Output<List<NetworkFirewallPolicyWithRulesPredefinedRule>>
       predefinedRules;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
-  late final Output<int> ruleTupleCount;
+  late final pulumi.Output<int> ruleTupleCount;
 
   /// A list of firewall policy rules.
   /// Structure is documented below.
-  late final Output<List<NetworkFirewallPolicyWithRulesRule>> rules;
+  late final pulumi.Output<List<NetworkFirewallPolicyWithRulesRule>> rules;
 
   /// Server-defined URL for the resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Server-defined URL for this resource with the resource id.
-  late final Output<String> selfLinkWithId;
+  late final pulumi.Output<String> selfLinkWithId;
 
   NetworkFirewallPolicyWithRules(
     String name, {
     NetworkFirewallPolicyWithRulesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBackupPlanAssociation.
 class GetBackupPlanAssociationArgs {
   /// The id of Backupplan association resource.
   ///
   /// - - -
-  final Input<String> backupPlanAssociationId;
+  final pulumi.Input<String> backupPlanAssociationId;
 
   /// The location in which the Backupplan association resource belongs.
-  final Input<String> location;
-  final Input<String>? project;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
 
   GetBackupPlanAssociationArgs({
     required this.backupPlanAssociationId,
@@ -33,9 +33,9 @@ class GetBackupPlanAssociationArgs {
   factory GetBackupPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationArgs(
       backupPlanAssociationId:
-          Input.asInput<String>(map['backupPlanAssociationId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['backupPlanAssociationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

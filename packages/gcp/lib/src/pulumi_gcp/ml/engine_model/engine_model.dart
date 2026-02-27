@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../engine_model_default_version/engine_model_default_version.dart';
 import 'engine_model_args.dart';
 
@@ -36,53 +36,53 @@ import 'engine_model_args.dart';
 /// ```sh
 /// $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
 /// ```
-class EngineModel extends CustomResource {
+class EngineModel extends pulumi.CustomResource {
   /// The default version of the model. This version will be used to handle
   /// prediction requests that do not specify a version.
   /// Structure is documented below.
-  late final Output<EngineModelDefaultVersion?> defaultVersion;
+  late final pulumi.Output<EngineModelDefaultVersion?> defaultVersion;
 
   /// The description specified for the model when it was created.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// One or more labels that you can add, to organize your models.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The name specified for the model.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
-  late final Output<bool?> onlinePredictionConsoleLogging;
+  late final pulumi.Output<bool?> onlinePredictionConsoleLogging;
 
   /// If true, online prediction access logs are sent to StackDriver Logging.
-  late final Output<bool?> onlinePredictionLogging;
+  late final pulumi.Output<bool?> onlinePredictionLogging;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The list of regions where the model is going to be deployed.
   /// Currently only one region per model is supported
-  late final Output<String?> regions;
+  late final pulumi.Output<String?> regions;
 
   EngineModel(
     String name, {
     EngineModelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:ml/engineModel:EngineModel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.defaultVersion =
         registerOutput<EngineModelDefaultVersion?>('defaultVersion');

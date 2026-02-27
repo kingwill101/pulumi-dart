@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_certificate_description_authority_key_id/certificate_certificate_description_authority_key_id.dart';
 import '../certificate_certificate_description_cert_fingerprint/certificate_certificate_description_cert_fingerprint.dart';
 import '../certificate_certificate_description_public_key/certificate_certificate_description_public_key.dart';
@@ -69,13 +69,13 @@ class CertificateCertificateDescription {
     }
     final authorityKeyIdsValue = authorityKeyIds;
     if (authorityKeyIdsValue != null) {
-      map['authorityKeyIds'] = Input.encodeList<
+      map['authorityKeyIds'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionAuthorityKeyId,
           Map<String, dynamic>>(authorityKeyIdsValue, (value) => value.toMap());
     }
     final certFingerprintsValue = certFingerprints;
     if (certFingerprintsValue != null) {
-      map['certFingerprints'] = Input.encodeList<
+      map['certFingerprints'] = pulumi.Input.encodeList<
               CertificateCertificateDescriptionCertFingerprint,
               Map<String, dynamic>>(
           certFingerprintsValue, (value) => value.toMap());
@@ -86,26 +86,26 @@ class CertificateCertificateDescription {
     }
     final publicKeysValue = publicKeys;
     if (publicKeysValue != null) {
-      map['publicKeys'] = Input.encodeList<
+      map['publicKeys'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionPublicKey,
           Map<String, dynamic>>(publicKeysValue, (value) => value.toMap());
     }
     final subjectDescriptionsValue = subjectDescriptions;
     if (subjectDescriptionsValue != null) {
-      map['subjectDescriptions'] = Input.encodeList<
+      map['subjectDescriptions'] = pulumi.Input.encodeList<
               CertificateCertificateDescriptionSubjectDescription,
               Map<String, dynamic>>(
           subjectDescriptionsValue, (value) => value.toMap());
     }
     final subjectKeyIdsValue = subjectKeyIds;
     if (subjectKeyIdsValue != null) {
-      map['subjectKeyIds'] = Input.encodeList<
+      map['subjectKeyIds'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionSubjectKeyId,
           Map<String, dynamic>>(subjectKeyIdsValue, (value) => value.toMap());
     }
     final x509DescriptionsValue = x509Descriptions;
     if (x509DescriptionsValue != null) {
-      map['x509Descriptions'] = Input.encodeList<
+      map['x509Descriptions'] = pulumi.Input.encodeList<
               CertificateCertificateDescriptionX509Description,
               Map<String, dynamic>>(
           x509DescriptionsValue, (value) => value.toMap());
@@ -120,14 +120,16 @@ class CertificateCertificateDescription {
           : (map['aiaIssuingCertificateUrls'] as List).cast<String>(),
       authorityKeyIds: map['authorityKeyIds'] == null
           ? null
-          : Input.decodeList<CertificateCertificateDescriptionAuthorityKeyId>(
+          : pulumi.Input.decodeList<
+                  CertificateCertificateDescriptionAuthorityKeyId>(
               map['authorityKeyIds'],
               (value) =>
                   CertificateCertificateDescriptionAuthorityKeyId.fromMap(
                       (value as Map).cast<String, dynamic>())),
       certFingerprints: map['certFingerprints'] == null
           ? null
-          : Input.decodeList<CertificateCertificateDescriptionCertFingerprint>(
+          : pulumi.Input.decodeList<
+                  CertificateCertificateDescriptionCertFingerprint>(
               map['certFingerprints'],
               (value) =>
                   CertificateCertificateDescriptionCertFingerprint.fromMap(
@@ -137,13 +139,13 @@ class CertificateCertificateDescription {
           : (map['crlDistributionPoints'] as List).cast<String>(),
       publicKeys: map['publicKeys'] == null
           ? null
-          : Input.decodeList<CertificateCertificateDescriptionPublicKey>(
+          : pulumi.Input.decodeList<CertificateCertificateDescriptionPublicKey>(
               map['publicKeys'],
               (value) => CertificateCertificateDescriptionPublicKey.fromMap(
                   (value as Map).cast<String, dynamic>())),
       subjectDescriptions: map['subjectDescriptions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionSubjectDescription>(
               map['subjectDescriptions'],
               (value) =>
@@ -151,13 +153,15 @@ class CertificateCertificateDescription {
                       (value as Map).cast<String, dynamic>())),
       subjectKeyIds: map['subjectKeyIds'] == null
           ? null
-          : Input.decodeList<CertificateCertificateDescriptionSubjectKeyId>(
+          : pulumi.Input.decodeList<
+                  CertificateCertificateDescriptionSubjectKeyId>(
               map['subjectKeyIds'],
               (value) => CertificateCertificateDescriptionSubjectKeyId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       x509Descriptions: map['x509Descriptions'] == null
           ? null
-          : Input.decodeList<CertificateCertificateDescriptionX509Description>(
+          : pulumi.Input.decodeList<
+                  CertificateCertificateDescriptionX509Description>(
               map['x509Descriptions'],
               (value) =>
                   CertificateCertificateDescriptionX509Description.fromMap(

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../datapolicyv2_data_policy_data_masking_policy/datapolicyv2_data_policy_data_masking_policy.dart';
 import 'datapolicyv2_data_policy_args.dart';
 
@@ -53,29 +53,30 @@ import 'datapolicyv2_data_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy default {{location}}/{{data_policy_id}}
 /// ```
-class Datapolicyv2DataPolicy extends CustomResource {
+class Datapolicyv2DataPolicy extends pulumi.CustomResource {
   /// The policy used to specify data masking rule.
   /// Structure is documented below.
-  late final Output<Datapolicyv2DataPolicyDataMaskingPolicy?> dataMaskingPolicy;
+  late final pulumi.Output<Datapolicyv2DataPolicyDataMaskingPolicy?>
+      dataMaskingPolicy;
 
   /// User-assigned (human readable) ID of the data policy that needs to be
   /// unique within a project. Used as {data_policy_id} in part of the resource
   /// name.
-  late final Output<String> dataPolicyId;
+  late final pulumi.Output<String> dataPolicyId;
 
   /// Type of data policy.
   /// Possible values:
   /// DATA_MASKING_POLICY
   /// RAW_DATA_ACCESS_POLICY
   /// COLUMN_LEVEL_SECURITY_POLICY
-  late final Output<String> dataPolicyType;
+  late final pulumi.Output<String> dataPolicyType;
 
   /// The etag for this Data Policy.
   /// This field is used for UpdateDataPolicy calls. If Data Policy exists, this
   /// field is required and must match the server's etag. It will also be
   /// populated in the response of GetDataPolicy, CreateDataPolicy, and
   /// UpdateDataPolicy calls.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The list of IAM principals that have Fine Grained Access to the underlying
   /// data goverened by this data policy.
@@ -84,39 +85,39 @@ class Datapolicyv2DataPolicy extends CustomResource {
   /// supports principal types users, groups, serviceaccounts, cloudidentity.
   /// This field is supported in V2 Data Policy only. In case of V1 data policies
   /// (i.e. verion = 1 and policy_tag is set), this field is not populated.
-  late final Output<List<String>> grantees;
+  late final pulumi.Output<List<String>> grantees;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. Resource name of this data policy, in the format of
   /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Policy tag resource name, in the format of
   /// `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
   /// policy_tag is supported only for V1 data policies.
-  late final Output<String> policyTag;
+  late final pulumi.Output<String> policyTag;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The version of the Data Policy resource.
   /// Possible values:
   /// V1
   /// V2
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   Datapolicyv2DataPolicy(
     String name, {
     Datapolicyv2DataPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataMaskingPolicy =
         registerOutput<Datapolicyv2DataPolicyDataMaskingPolicy?>(

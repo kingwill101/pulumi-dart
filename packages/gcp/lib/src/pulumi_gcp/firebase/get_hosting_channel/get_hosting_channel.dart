@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_hosting_channel_args.dart';
 import 'get_hosting_channel_result.dart';
 
 /// A Google Cloud Firebase Hosting Channel instance
 Future<GetHostingChannelResult> getHostingChannel(
   GetHostingChannelArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:firebase/getHostingChannel:getHostingChannel',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostingChannelResult.fromMap(result);
 }

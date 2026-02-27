@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../record_set_routing_policy_primary_backup_backup_geo/record_set_routing_policy_primary_backup_backup_geo.dart';
 import '../record_set_routing_policy_primary_backup_primary/record_set_routing_policy_primary_backup_primary.dart';
 
@@ -28,7 +28,7 @@ class RecordSetRoutingPolicyPrimaryBackup {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['backupGeos'] = Input.encodeList<
+    map['backupGeos'] = pulumi.Input.encodeList<
         RecordSetRoutingPolicyPrimaryBackupBackupGeo,
         Map<String, dynamic>>(backupGeos, (value) => value.toMap());
     final enableGeoFencingForBackupsValue = enableGeoFencingForBackups;
@@ -47,7 +47,7 @@ class RecordSetRoutingPolicyPrimaryBackup {
       Map<String, dynamic> map) {
     return RecordSetRoutingPolicyPrimaryBackup(
       backupGeos:
-          Input.decodeList<RecordSetRoutingPolicyPrimaryBackupBackupGeo>(
+          pulumi.Input.decodeList<RecordSetRoutingPolicyPrimaryBackupBackupGeo>(
               map['backupGeos'],
               (value) => RecordSetRoutingPolicyPrimaryBackupBackupGeo.fromMap(
                   (value as Map).cast<String, dynamic>())),

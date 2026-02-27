@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_peering_args.dart';
 
 /// Manages a network peering within GCE. For more information see
@@ -26,51 +26,51 @@ import 'network_peering_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkPeering:NetworkPeering default {{project_id}}/{{network_id}}/{{peering_id}}
 /// ```
-class NetworkPeering extends CustomResource {
+class NetworkPeering extends pulumi.CustomResource {
   /// Whether to export the custom routes to the peer network. Defaults to `false`.
-  late final Output<bool?> exportCustomRoutes;
+  late final pulumi.Output<bool?> exportCustomRoutes;
 
   /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
-  late final Output<bool?> exportSubnetRoutesWithPublicIp;
+  late final pulumi.Output<bool?> exportSubnetRoutesWithPublicIp;
 
   /// Whether to import the custom routes from the peer network. Defaults to `false`.
-  late final Output<bool?> importCustomRoutes;
+  late final pulumi.Output<bool?> importCustomRoutes;
 
   /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
-  late final Output<bool?> importSubnetRoutesWithPublicIp;
+  late final pulumi.Output<bool?> importSubnetRoutesWithPublicIp;
 
   /// Name of the peering.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The primary network of the peering.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The peer network in the peering. The peer network
   /// may belong to a different project.
-  late final Output<String> peerNetwork;
+  late final pulumi.Output<String> peerNetwork;
 
   /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
-  late final Output<String?> stackType;
+  late final pulumi.Output<String?> stackType;
 
   /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
   /// `ACTIVE` when there's a matching configuration in the peer network.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Details about the current state of the peering.
-  late final Output<String> stateDetails;
+  late final pulumi.Output<String> stateDetails;
 
   /// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
-  late final Output<String?> updateStrategy;
+  late final pulumi.Output<String?> updateStrategy;
 
   NetworkPeering(
     String name, {
     NetworkPeeringArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkPeering:NetworkPeering',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
     this.exportSubnetRoutesWithPublicIp =

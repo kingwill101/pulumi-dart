@@ -1,6 +1,6 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_search_all_resources_args.dart';
-import 'get_search_all_resources_result2.dart';
+import 'get_search_all_resources_cloudasset_result.dart';
 
 /// Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. See the
 /// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources)
@@ -17,15 +17,15 @@ import 'get_search_all_resources_result2.dart';
 ///
 ///
 /// ### Searching For All Service Accounts In A Project
-Future<GetSearchAllResourcesResult2> getSearchAllResources(
+Future<GetSearchAllResourcesCloudassetResult> getSearchAllResources(
   GetSearchAllResourcesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:cloudasset/getSearchAllResources:getSearchAllResources',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetSearchAllResourcesResult2.fromMap(result);
+  return GetSearchAllResourcesCloudassetResult.fromMap(result);
 }

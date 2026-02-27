@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serving_config_args.dart';
 
 /// Represents a serving config which is a singleton resource under engine. A default
@@ -32,52 +32,52 @@ import 'serving_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/servingConfig:ServingConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{serving_config_id}}
 /// ```
-class ServingConfig extends CustomResource {
+class ServingConfig extends pulumi.CustomResource {
   /// The resource IDs of the boost controls to be applied.
-  late final Output<List<String>?> boostControlIds;
+  late final pulumi.Output<List<String>?> boostControlIds;
 
   /// The collection ID. Currently only accepts "default_collection".
-  late final Output<String?> collectionId;
+  late final pulumi.Output<String?> collectionId;
 
   /// The ID of the engine associated with the serving config.
-  late final Output<String> engineId;
+  late final pulumi.Output<String> engineId;
 
   /// The resource IDs of the filter controls to be applied.
-  late final Output<List<String>?> filterControlIds;
+  late final pulumi.Output<List<String>?> filterControlIds;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique full resource name of the serving config. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The resource IDs of the promote controls to be applied.
-  late final Output<List<String>?> promoteControlIds;
+  late final pulumi.Output<List<String>?> promoteControlIds;
 
   /// The resource IDs of the redirect controls to be applied.
-  late final Output<List<String>?> redirectControlIds;
+  late final pulumi.Output<List<String>?> redirectControlIds;
 
   /// 'The unique ID of the serving config. Currently only accepts "default_search".'
-  late final Output<String?> servingConfigId;
+  late final pulumi.Output<String?> servingConfigId;
 
   /// The resource IDs of the synonyms controls to be applied.
-  late final Output<List<String>?> synonymsControlIds;
+  late final pulumi.Output<List<String>?> synonymsControlIds;
 
   ServingConfig(
     String name, {
     ServingConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/servingConfig:ServingConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.boostControlIds = registerOutput<List<String>?>('boostControlIds');
     this.collectionId = registerOutput<String?>('collectionId');

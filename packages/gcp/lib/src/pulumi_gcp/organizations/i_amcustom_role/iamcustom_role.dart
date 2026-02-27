@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iamcustom_role_args.dart';
 
 /// Allows management of a customized Cloud IAM organization role. For more information see
@@ -26,42 +26,42 @@ import 'iamcustom_role_args.dart';
 /// ```sh
 /// $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
 /// ```
-class IAMCustomRole extends CustomResource {
+class IAMCustomRole extends pulumi.CustomResource {
   /// (Optional) The current deleted state of the role.
-  late final Output<bool> deleted;
+  late final pulumi.Output<bool> deleted;
 
   /// A human-readable description for the role.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The numeric ID of the organization in which you want to create a custom role.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
-  late final Output<List<String>> permissions;
+  late final pulumi.Output<List<String>> permissions;
 
   /// The role id to use for this role.
-  late final Output<String> roleId;
+  late final pulumi.Output<String> roleId;
 
   /// The current launch stage of the role.
   /// Defaults to `GA`.
   /// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
-  late final Output<String?> stage;
+  late final pulumi.Output<String?> stage;
 
   /// A human-readable title for the role.
-  late final Output<String> title;
+  late final pulumi.Output<String> title;
 
   IAMCustomRole(
     String name, {
     IAMCustomRoleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:organizations/iAMCustomRole:IAMCustomRole',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deleted = registerOutput<bool>('deleted');
     this.description = registerOutput<String?>('description');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_node_pool_status_condition/vmware_node_pool_status_condition.dart';
 
 class VMwareNodePoolStatus {
@@ -26,9 +26,8 @@ class VMwareNodePoolStatus {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] =
-          Input.encodeList<VMwareNodePoolStatusCondition, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
+      map['conditions'] = pulumi.Input.encodeList<VMwareNodePoolStatusCondition,
+          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final errorMessageValue = errorMessage;
     if (errorMessageValue != null) {
@@ -41,7 +40,7 @@ class VMwareNodePoolStatus {
     return VMwareNodePoolStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<VMwareNodePoolStatusCondition>(
+          : pulumi.Input.decodeList<VMwareNodePoolStatusCondition>(
               map['conditions'],
               (value) => VMwareNodePoolStatusCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),

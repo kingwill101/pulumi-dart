@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_url_map_header_action_request_headers_to_add/region_url_map_header_action_request_headers_to_add.dart';
 import '../region_url_map_header_action_response_headers_to_add/region_url_map_header_action_response_headers_to_add.dart';
 
@@ -31,7 +31,7 @@ class RegionUrlMapHeaderAction {
     final map = <String, dynamic>{};
     final requestHeadersToAddsValue = requestHeadersToAdds;
     if (requestHeadersToAddsValue != null) {
-      map['requestHeadersToAdds'] = Input.encodeList<
+      map['requestHeadersToAdds'] = pulumi.Input.encodeList<
               RegionUrlMapHeaderActionRequestHeadersToAdd,
               Map<String, dynamic>>(
           requestHeadersToAddsValue, (value) => value.toMap());
@@ -42,7 +42,7 @@ class RegionUrlMapHeaderAction {
     }
     final responseHeadersToAddsValue = responseHeadersToAdds;
     if (responseHeadersToAddsValue != null) {
-      map['responseHeadersToAdds'] = Input.encodeList<
+      map['responseHeadersToAdds'] = pulumi.Input.encodeList<
               RegionUrlMapHeaderActionResponseHeadersToAdd,
               Map<String, dynamic>>(
           responseHeadersToAddsValue, (value) => value.toMap());
@@ -58,7 +58,8 @@ class RegionUrlMapHeaderAction {
     return RegionUrlMapHeaderAction(
       requestHeadersToAdds: map['requestHeadersToAdds'] == null
           ? null
-          : Input.decodeList<RegionUrlMapHeaderActionRequestHeadersToAdd>(
+          : pulumi.Input.decodeList<
+                  RegionUrlMapHeaderActionRequestHeadersToAdd>(
               map['requestHeadersToAdds'],
               (value) => RegionUrlMapHeaderActionRequestHeadersToAdd.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -67,7 +68,8 @@ class RegionUrlMapHeaderAction {
           : (map['requestHeadersToRemoves'] as List).cast<String>(),
       responseHeadersToAdds: map['responseHeadersToAdds'] == null
           ? null
-          : Input.decodeList<RegionUrlMapHeaderActionResponseHeadersToAdd>(
+          : pulumi.Input.decodeList<
+                  RegionUrlMapHeaderActionResponseHeadersToAdd>(
               map['responseHeadersToAdds'],
               (value) => RegionUrlMapHeaderActionResponseHeadersToAdd.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_psc_config_service_attachment/instance_psc_config_service_attachment.dart';
 
 class InstancePscConfig {
@@ -33,7 +33,7 @@ class InstancePscConfig {
     }
     final serviceAttachmentsValue = serviceAttachments;
     if (serviceAttachmentsValue != null) {
-      map['serviceAttachments'] = Input.encodeList<
+      map['serviceAttachments'] = pulumi.Input.encodeList<
               InstancePscConfigServiceAttachment, Map<String, dynamic>>(
           serviceAttachmentsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class InstancePscConfig {
           : map['lookerServiceAttachmentUri'] as String,
       serviceAttachments: map['serviceAttachments'] == null
           ? null
-          : Input.decodeList<InstancePscConfigServiceAttachment>(
+          : pulumi.Input.decodeList<InstancePscConfigServiceAttachment>(
               map['serviceAttachments'],
               (value) => InstancePscConfigServiceAttachment.fromMap(
                   (value as Map).cast<String, dynamic>())),

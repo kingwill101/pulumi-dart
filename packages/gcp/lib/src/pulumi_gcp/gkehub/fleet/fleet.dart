@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../fleet_default_cluster_config/fleet_default_cluster_config.dart';
 import '../fleet_state/fleet_state.dart';
 import 'fleet_args.dart';
@@ -36,46 +36,46 @@ import 'fleet_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/fleet:Fleet default {{project}}
 /// ```
-class Fleet extends CustomResource {
+class Fleet extends pulumi.CustomResource {
   /// The time the fleet was created, in RFC3339 text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The default cluster configurations to apply across the fleet.
   /// Structure is documented below.
-  late final Output<FleetDefaultClusterConfig?> defaultClusterConfig;
+  late final pulumi.Output<FleetDefaultClusterConfig?> defaultClusterConfig;
 
   /// The time the fleet was deleted, in RFC3339 text format.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The state of the fleet resource.
   /// Structure is documented below.
-  late final Output<List<FleetState>> states;
+  late final pulumi.Output<List<FleetState>> states;
 
   /// Google-generated UUID for this resource. This is unique across all
   /// Fleet resources. If a Fleet resource is deleted and another
   /// resource with the same name is created, it gets a different uid.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time the fleet was last updated, in RFC3339 text format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Fleet(
     String name, {
     FleetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/fleet:Fleet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.defaultClusterConfig =

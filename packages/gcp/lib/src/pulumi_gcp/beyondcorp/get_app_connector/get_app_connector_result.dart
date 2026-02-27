@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_app_connector_principal_info/get_app_connector_principal_info.dart';
 
 /// Result data returned by getAppConnector.
@@ -38,9 +38,9 @@ class GetAppConnectorResult {
     map['id'] = id;
     map['labels'] = labels;
     map['name'] = name;
-    map['principalInfos'] =
-        Input.encodeList<GetAppConnectorPrincipalInfo, Map<String, dynamic>>(
-            principalInfos, (value) => value.toMap());
+    map['principalInfos'] = pulumi.Input.encodeList<
+        GetAppConnectorPrincipalInfo,
+        Map<String, dynamic>>(principalInfos, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -61,7 +61,7 @@ class GetAppConnectorResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      principalInfos: Input.decodeList<GetAppConnectorPrincipalInfo>(
+      principalInfos: pulumi.Input.decodeList<GetAppConnectorPrincipalInfo>(
           map['principalInfos'],
           (value) => GetAppConnectorPrincipalInfo.fromMap(
               (value as Map).cast<String, dynamic>())),

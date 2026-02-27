@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../listing_bigquery_dataset/listing_bigquery_dataset.dart';
 import '../listing_commercial_info/listing_commercial_info.dart';
 import '../listing_data_provider/listing_data_provider.dart';
@@ -78,93 +78,94 @@ import 'listing_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{location}}/{{data_exchange_id}}/{{listing_id}}
 /// ```
-class Listing extends CustomResource {
+class Listing extends pulumi.CustomResource {
   /// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
-  late final Output<bool?> allowOnlyMetadataSharing;
+  late final pulumi.Output<bool?> allowOnlyMetadataSharing;
 
   /// Shared dataset i.e. BigQuery dataset source.
   /// Structure is documented below.
-  late final Output<ListingBigqueryDataset?> bigqueryDataset;
+  late final pulumi.Output<ListingBigqueryDataset?> bigqueryDataset;
 
   /// Categories of the listing. Up to two categories are allowed.
-  late final Output<List<String>?> categories;
+  late final pulumi.Output<List<String>?> categories;
 
   /// Commercial info contains the information about the commercial data products associated with the listing.
   /// Structure is documented below.
-  late final Output<List<ListingCommercialInfo>> commercialInfos;
+  late final pulumi.Output<List<ListingCommercialInfo>> commercialInfos;
 
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  late final Output<String> dataExchangeId;
+  late final pulumi.Output<String> dataExchangeId;
 
   /// Details of the data provider who owns the source data.
   /// Structure is documented below.
-  late final Output<ListingDataProvider?> dataProvider;
+  late final pulumi.Output<ListingDataProvider?> dataProvider;
 
   /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
-  late final Output<bool?> deleteCommercial;
+  late final pulumi.Output<bool?> deleteCommercial;
 
   /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
   /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
-  late final Output<String> discoveryType;
+  late final pulumi.Output<String> discoveryType;
 
   /// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Documentation describing the listing.
-  late final Output<String?> documentation;
+  late final pulumi.Output<String?> documentation;
 
   /// Base64 encoded image representing the listing.
-  late final Output<String?> icon;
+  late final pulumi.Output<String?> icon;
 
   /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  late final Output<String> listingId;
+  late final pulumi.Output<String> listingId;
 
   /// The name of the location this data exchange listing.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
-  late final Output<bool?> logLinkedDatasetQueryUserEmail;
+  late final pulumi.Output<bool?> logLinkedDatasetQueryUserEmail;
 
   /// The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Email or URL of the primary point of contact of the listing.
-  late final Output<String?> primaryContact;
+  late final pulumi.Output<String?> primaryContact;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Details of the publisher who owns the listing and who can share the source data.
   /// Structure is documented below.
-  late final Output<ListingPublisher?> publisher;
+  late final pulumi.Output<ListingPublisher?> publisher;
 
   /// Pub/Sub topic source.
   /// Structure is documented below.
-  late final Output<ListingPubsubTopic?> pubsubTopic;
+  late final pulumi.Output<ListingPubsubTopic?> pubsubTopic;
 
   /// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
-  late final Output<String?> requestAccess;
+  late final pulumi.Output<String?> requestAccess;
 
   /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
   /// Structure is documented below.
-  late final Output<ListingRestrictedExportConfig?> restrictedExportConfig;
+  late final pulumi.Output<ListingRestrictedExportConfig?>
+      restrictedExportConfig;
 
   /// Current state of the listing.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   Listing(
     String name, {
     ListingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigqueryanalyticshub/listing:Listing',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowOnlyMetadataSharing =
         registerOutput<bool?>('allowOnlyMetadataSharing');

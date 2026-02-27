@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_api_method/service_api_method.dart';
 
 class ServiceApi {
@@ -27,8 +27,9 @@ class ServiceApi {
     final map = <String, dynamic>{};
     final methodsValue = methods;
     if (methodsValue != null) {
-      map['methods'] = Input.encodeList<ServiceApiMethod, Map<String, dynamic>>(
-          methodsValue, (value) => value.toMap());
+      map['methods'] =
+          pulumi.Input.encodeList<ServiceApiMethod, Map<String, dynamic>>(
+              methodsValue, (value) => value.toMap());
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -49,7 +50,7 @@ class ServiceApi {
     return ServiceApi(
       methods: map['methods'] == null
           ? null
-          : Input.decodeList<ServiceApiMethod>(
+          : pulumi.Input.decodeList<ServiceApiMethod>(
               map['methods'],
               (value) => ServiceApiMethod.fromMap(
                   (value as Map).cast<String, dynamic>())),

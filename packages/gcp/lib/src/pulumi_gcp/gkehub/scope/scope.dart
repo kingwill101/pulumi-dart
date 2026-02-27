@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scope_state/scope_state.dart';
 import 'scope_args.dart';
 
@@ -41,62 +41,62 @@ import 'scope_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/scope:Scope default {{scope_id}}
 /// ```
-class Scope extends CustomResource {
+class Scope extends pulumi.CustomResource {
   /// Time the Scope was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time the Scope was deleted in UTC.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Labels for this Scope.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The unique identifier of the scope
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Scope-level cluster namespace labels. For the member clusters bound
   /// to the Scope, these labels are applied to each namespace under the
   /// Scope. Scope-level labels take precedence over Namespace-level
   /// labels (`namespace_labels` in the Fleet Namespace resource) if they
   /// share a key. Keys and values must be Kubernetes-conformant.
-  late final Output<Map<String, String>?> namespaceLabels;
+  late final pulumi.Output<Map<String, String>?> namespaceLabels;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The client-provided identifier of the scope.
-  late final Output<String> scopeId;
+  late final pulumi.Output<String> scopeId;
 
   /// State of the scope resource.
   /// Structure is documented below.
-  late final Output<List<ScopeState>> states;
+  late final pulumi.Output<List<ScopeState>> states;
 
   /// Google-generated UUID for this resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time the Scope was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Scope(
     String name, {
     ScopeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/scope:Scope',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

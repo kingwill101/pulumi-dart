@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RegionDiskResourcePolicyAttachment.
 class RegionDiskResourcePolicyAttachmentArgs {
   /// The name of the regional disk in which the resource policies are attached to.
-  final Input<String> disk;
+  final pulumi.Input<String> disk;
 
   /// The resource policy to be attached to the disk for scheduling snapshot
   /// creation. Do not specify the self link.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A reference to the region where the disk resides.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   RegionDiskResourcePolicyAttachmentArgs({
     required this.disk,
@@ -46,10 +46,10 @@ class RegionDiskResourcePolicyAttachmentArgs {
   factory RegionDiskResourcePolicyAttachmentArgs.fromMap(
       Map<String, dynamic> map) {
     return RegionDiskResourcePolicyAttachmentArgs(
-      disk: Input.asInput<String>(map['disk']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      disk: pulumi.Input.asInput<String>(map['disk']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

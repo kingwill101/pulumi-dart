@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_gce_setup_network_interface_access_config/instance_gce_setup_network_interface_access_config.dart';
 
 class InstanceGceSetupNetworkInterface {
@@ -33,7 +33,7 @@ class InstanceGceSetupNetworkInterface {
     final map = <String, dynamic>{};
     final accessConfigsValue = accessConfigs;
     if (accessConfigsValue != null) {
-      map['accessConfigs'] = Input.encodeList<
+      map['accessConfigs'] = pulumi.Input.encodeList<
           InstanceGceSetupNetworkInterfaceAccessConfig,
           Map<String, dynamic>>(accessConfigsValue, (value) => value.toMap());
     }
@@ -56,7 +56,8 @@ class InstanceGceSetupNetworkInterface {
     return InstanceGceSetupNetworkInterface(
       accessConfigs: map['accessConfigs'] == null
           ? null
-          : Input.decodeList<InstanceGceSetupNetworkInterfaceAccessConfig>(
+          : pulumi.Input.decodeList<
+                  InstanceGceSetupNetworkInterfaceAccessConfig>(
               map['accessConfigs'],
               (value) => InstanceGceSetupNetworkInterfaceAccessConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

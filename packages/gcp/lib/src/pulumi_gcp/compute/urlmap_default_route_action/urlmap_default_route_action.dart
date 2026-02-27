@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_default_route_action_cors_policy/urlmap_default_route_action_cors_policy.dart';
 import '../urlmap_default_route_action_fault_injection_policy/urlmap_default_route_action_fault_injection_policy.dart';
 import '../urlmap_default_route_action_max_stream_duration/urlmap_default_route_action_max_stream_duration.dart';
@@ -106,7 +106,7 @@ class URLMapDefaultRouteAction {
     }
     final weightedBackendServicesValue = weightedBackendServices;
     if (weightedBackendServicesValue != null) {
-      map['weightedBackendServices'] = Input.encodeList<
+      map['weightedBackendServices'] = pulumi.Input.encodeList<
               URLMapDefaultRouteActionWeightedBackendService,
               Map<String, dynamic>>(
           weightedBackendServicesValue, (value) => value.toMap());
@@ -146,7 +146,8 @@ class URLMapDefaultRouteAction {
               (map['urlRewrite'] as Map).cast<String, dynamic>()),
       weightedBackendServices: map['weightedBackendServices'] == null
           ? null
-          : Input.decodeList<URLMapDefaultRouteActionWeightedBackendService>(
+          : pulumi.Input.decodeList<
+                  URLMapDefaultRouteActionWeightedBackendService>(
               map['weightedBackendServices'],
               (value) => URLMapDefaultRouteActionWeightedBackendService.fromMap(
                   (value as Map).cast<String, dynamic>())),

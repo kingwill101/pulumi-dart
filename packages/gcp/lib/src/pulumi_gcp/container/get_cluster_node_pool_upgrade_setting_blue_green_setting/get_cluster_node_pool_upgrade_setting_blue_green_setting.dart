@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_upgrade_setting_blue_green_setting_autoscaled_rollout_policy/get_cluster_node_pool_upgrade_setting_blue_green_setting_autoscaled_rollout_policy.dart';
 import '../get_cluster_node_pool_upgrade_setting_blue_green_setting_standard_rollout_policy/get_cluster_node_pool_upgrade_setting_blue_green_setting_standard_rollout_policy.dart';
 
@@ -26,12 +26,12 @@ class GetClusterNodePoolUpgradeSettingBlueGreenSetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscaledRolloutPolicies'] = Input.encodeList<
+    map['autoscaledRolloutPolicies'] = pulumi.Input.encodeList<
         GetClusterNodePoolUpgradeSettingBlueGreenSettingAutoscaledRolloutPolicy,
         Map<String,
             dynamic>>(autoscaledRolloutPolicies, (value) => value.toMap());
     map['nodePoolSoakDuration'] = nodePoolSoakDuration;
-    map['standardRolloutPolicies'] = Input.encodeList<
+    map['standardRolloutPolicies'] = pulumi.Input.encodeList<
         GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy,
         Map<String,
             dynamic>>(standardRolloutPolicies, (value) => value.toMap());
@@ -41,14 +41,14 @@ class GetClusterNodePoolUpgradeSettingBlueGreenSetting {
   factory GetClusterNodePoolUpgradeSettingBlueGreenSetting.fromMap(
       Map<String, dynamic> map) {
     return GetClusterNodePoolUpgradeSettingBlueGreenSetting(
-      autoscaledRolloutPolicies: Input.decodeList<
+      autoscaledRolloutPolicies: pulumi.Input.decodeList<
               GetClusterNodePoolUpgradeSettingBlueGreenSettingAutoscaledRolloutPolicy>(
           map['autoscaledRolloutPolicies'],
           (value) =>
               GetClusterNodePoolUpgradeSettingBlueGreenSettingAutoscaledRolloutPolicy
                   .fromMap((value as Map).cast<String, dynamic>())),
       nodePoolSoakDuration: map['nodePoolSoakDuration'] as String,
-      standardRolloutPolicies: Input.decodeList<
+      standardRolloutPolicies: pulumi.Input.decodeList<
               GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy>(
           map['standardRolloutPolicies'],
           (value) =>

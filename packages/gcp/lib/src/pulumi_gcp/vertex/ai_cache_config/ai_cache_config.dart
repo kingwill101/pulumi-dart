@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_cache_config_args.dart';
 
 /// Config of GenAI caching features. This is a singleton resource.
@@ -34,26 +34,26 @@ import 'ai_cache_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default {{project}}
 /// ```
-class AiCacheConfig extends CustomResource {
+class AiCacheConfig extends pulumi.CustomResource {
   /// If set to true, disables GenAI caching. Otherwise caching is enabled.
-  late final Output<bool> disableCache;
+  late final pulumi.Output<bool> disableCache;
 
   /// Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   AiCacheConfig(
     String name, {
     AiCacheConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiCacheConfig:AiCacheConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.disableCache = registerOutput<bool>('disableCache');
     this.name = registerOutput<String>('name');

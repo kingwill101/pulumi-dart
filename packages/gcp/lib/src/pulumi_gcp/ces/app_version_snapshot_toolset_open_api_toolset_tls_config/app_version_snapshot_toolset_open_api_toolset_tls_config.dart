@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_toolset_open_api_toolset_tls_config_ca_cert/app_version_snapshot_toolset_open_api_toolset_tls_config_ca_cert.dart';
 
 class AppVersionSnapshotToolsetOpenApiToolsetTlsConfig {
@@ -18,7 +18,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfig {
     final map = <String, dynamic>{};
     final caCertsValue = caCerts;
     if (caCertsValue != null) {
-      map['caCerts'] = Input.encodeList<
+      map['caCerts'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert,
           Map<String, dynamic>>(caCertsValue, (value) => value.toMap());
     }
@@ -30,7 +30,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfig {
     return AppVersionSnapshotToolsetOpenApiToolsetTlsConfig(
       caCerts: map['caCerts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert>(
               map['caCerts'],
               (value) => AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert

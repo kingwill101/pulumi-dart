@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_environment_config_data_retention_config_airflow_metadata_retention_config/get_environment_config_data_retention_config_airflow_metadata_retention_config.dart';
 import '../get_environment_config_data_retention_config_task_logs_retention_config/get_environment_config_data_retention_config_task_logs_retention_config.dart';
 
@@ -21,11 +21,11 @@ class GetEnvironmentConfigDataRetentionConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['airflowMetadataRetentionConfigs'] = Input.encodeList<
+    map['airflowMetadataRetentionConfigs'] = pulumi.Input.encodeList<
         GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig,
         Map<String,
             dynamic>>(airflowMetadataRetentionConfigs, (value) => value.toMap());
-    map['taskLogsRetentionConfigs'] = Input.encodeList<
+    map['taskLogsRetentionConfigs'] = pulumi.Input.encodeList<
             GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig,
             Map<String, dynamic>>(
         taskLogsRetentionConfigs, (value) => value.toMap());
@@ -35,13 +35,13 @@ class GetEnvironmentConfigDataRetentionConfig {
   factory GetEnvironmentConfigDataRetentionConfig.fromMap(
       Map<String, dynamic> map) {
     return GetEnvironmentConfigDataRetentionConfig(
-      airflowMetadataRetentionConfigs: Input.decodeList<
+      airflowMetadataRetentionConfigs: pulumi.Input.decodeList<
               GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>(
           map['airflowMetadataRetentionConfigs'],
           (value) =>
               GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
-      taskLogsRetentionConfigs: Input.decodeList<
+      taskLogsRetentionConfigs: pulumi.Input.decodeList<
               GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>(
           map['taskLogsRetentionConfigs'],
           (value) =>

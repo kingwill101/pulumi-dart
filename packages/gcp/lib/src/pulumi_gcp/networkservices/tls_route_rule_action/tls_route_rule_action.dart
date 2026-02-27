@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tls_route_rule_action_destination/tls_route_rule_action_destination.dart';
 
 class TlsRouteRuleAction {
@@ -16,9 +16,9 @@ class TlsRouteRuleAction {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] =
-          Input.encodeList<TlsRouteRuleActionDestination, Map<String, dynamic>>(
-              destinationsValue, (value) => value.toMap());
+      map['destinations'] = pulumi.Input.encodeList<
+          TlsRouteRuleActionDestination,
+          Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +27,7 @@ class TlsRouteRuleAction {
     return TlsRouteRuleAction(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<TlsRouteRuleActionDestination>(
+          : pulumi.Input.decodeList<TlsRouteRuleActionDestination>(
               map['destinations'],
               (value) => TlsRouteRuleActionDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),

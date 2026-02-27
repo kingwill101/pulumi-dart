@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../runtime_software_config_kernel/runtime_software_config_kernel.dart';
 
 class RuntimeSoftwareConfig {
@@ -80,9 +80,8 @@ class RuntimeSoftwareConfig {
     }
     final kernelsValue = kernels;
     if (kernelsValue != null) {
-      map['kernels'] =
-          Input.encodeList<RuntimeSoftwareConfigKernel, Map<String, dynamic>>(
-              kernelsValue, (value) => value.toMap());
+      map['kernels'] = pulumi.Input.encodeList<RuntimeSoftwareConfigKernel,
+          Map<String, dynamic>>(kernelsValue, (value) => value.toMap());
     }
     final notebookUpgradeScheduleValue = notebookUpgradeSchedule;
     if (notebookUpgradeScheduleValue != null) {
@@ -121,7 +120,7 @@ class RuntimeSoftwareConfig {
           : map['installGpuDriver'] as bool,
       kernels: map['kernels'] == null
           ? null
-          : Input.decodeList<RuntimeSoftwareConfigKernel>(
+          : pulumi.Input.decodeList<RuntimeSoftwareConfigKernel>(
               map['kernels'],
               (value) => RuntimeSoftwareConfigKernel.fromMap(
                   (value as Map).cast<String, dynamic>())),

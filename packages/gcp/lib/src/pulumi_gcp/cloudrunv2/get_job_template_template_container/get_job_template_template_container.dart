@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_template_template_container_env/get_job_template_template_container_env.dart';
 import '../get_job_template_template_container_port/get_job_template_template_container_port.dart';
 import '../get_job_template_template_container_resource/get_job_template_template_container_resource.dart';
@@ -64,18 +64,19 @@ class GetJobTemplateTemplateContainer {
     map['args'] = args;
     map['commands'] = commands;
     map['dependsOns'] = dependsOns;
-    map['envs'] = Input.encodeList<GetJobTemplateTemplateContainerEnv,
+    map['envs'] = pulumi.Input.encodeList<GetJobTemplateTemplateContainerEnv,
         Map<String, dynamic>>(envs, (value) => value.toMap());
     map['image'] = image;
     map['name'] = name;
-    map['ports'] = Input.encodeList<GetJobTemplateTemplateContainerPort,
+    map['ports'] = pulumi.Input.encodeList<GetJobTemplateTemplateContainerPort,
         Map<String, dynamic>>(ports, (value) => value.toMap());
-    map['resources'] = Input.encodeList<GetJobTemplateTemplateContainerResource,
+    map['resources'] = pulumi.Input.encodeList<
+        GetJobTemplateTemplateContainerResource,
         Map<String, dynamic>>(resources, (value) => value.toMap());
-    map['startupProbes'] = Input.encodeList<
+    map['startupProbes'] = pulumi.Input.encodeList<
         GetJobTemplateTemplateContainerStartupProbe,
         Map<String, dynamic>>(startupProbes, (value) => value.toMap());
-    map['volumeMounts'] = Input.encodeList<
+    map['volumeMounts'] = pulumi.Input.encodeList<
         GetJobTemplateTemplateContainerVolumeMount,
         Map<String, dynamic>>(volumeMounts, (value) => value.toMap());
     map['workingDir'] = workingDir;
@@ -87,27 +88,28 @@ class GetJobTemplateTemplateContainer {
       args: (map['args'] as List).cast<String>(),
       commands: (map['commands'] as List).cast<String>(),
       dependsOns: (map['dependsOns'] as List).cast<String>(),
-      envs: Input.decodeList<GetJobTemplateTemplateContainerEnv>(
+      envs: pulumi.Input.decodeList<GetJobTemplateTemplateContainerEnv>(
           map['envs'],
           (value) => GetJobTemplateTemplateContainerEnv.fromMap(
               (value as Map).cast<String, dynamic>())),
       image: map['image'] as String,
       name: map['name'] as String,
-      ports: Input.decodeList<GetJobTemplateTemplateContainerPort>(
+      ports: pulumi.Input.decodeList<GetJobTemplateTemplateContainerPort>(
           map['ports'],
           (value) => GetJobTemplateTemplateContainerPort.fromMap(
               (value as Map).cast<String, dynamic>())),
-      resources: Input.decodeList<GetJobTemplateTemplateContainerResource>(
-          map['resources'],
-          (value) => GetJobTemplateTemplateContainerResource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      resources:
+          pulumi.Input.decodeList<GetJobTemplateTemplateContainerResource>(
+              map['resources'],
+              (value) => GetJobTemplateTemplateContainerResource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       startupProbes:
-          Input.decodeList<GetJobTemplateTemplateContainerStartupProbe>(
+          pulumi.Input.decodeList<GetJobTemplateTemplateContainerStartupProbe>(
               map['startupProbes'],
               (value) => GetJobTemplateTemplateContainerStartupProbe.fromMap(
                   (value as Map).cast<String, dynamic>())),
       volumeMounts:
-          Input.decodeList<GetJobTemplateTemplateContainerVolumeMount>(
+          pulumi.Input.decodeList<GetJobTemplateTemplateContainerVolumeMount>(
               map['volumeMounts'],
               (value) => GetJobTemplateTemplateContainerVolumeMount.fromMap(
                   (value as Map).cast<String, dynamic>())),

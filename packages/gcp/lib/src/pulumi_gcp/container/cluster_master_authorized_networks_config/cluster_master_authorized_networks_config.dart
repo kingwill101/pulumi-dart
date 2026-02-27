@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_master_authorized_networks_config_cidr_block/cluster_master_authorized_networks_config_cidr_block.dart';
 
 class ClusterMasterAuthorizedNetworksConfig {
@@ -25,7 +25,7 @@ class ClusterMasterAuthorizedNetworksConfig {
     final map = <String, dynamic>{};
     final cidrBlocksValue = cidrBlocks;
     if (cidrBlocksValue != null) {
-      map['cidrBlocks'] = Input.encodeList<
+      map['cidrBlocks'] = pulumi.Input.encodeList<
           ClusterMasterAuthorizedNetworksConfigCidrBlock,
           Map<String, dynamic>>(cidrBlocksValue, (value) => value.toMap());
     }
@@ -47,7 +47,8 @@ class ClusterMasterAuthorizedNetworksConfig {
     return ClusterMasterAuthorizedNetworksConfig(
       cidrBlocks: map['cidrBlocks'] == null
           ? null
-          : Input.decodeList<ClusterMasterAuthorizedNetworksConfigCidrBlock>(
+          : pulumi.Input.decodeList<
+                  ClusterMasterAuthorizedNetworksConfigCidrBlock>(
               map['cidrBlocks'],
               (value) => ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(
                   (value as Map).cast<String, dynamic>())),

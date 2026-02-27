@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_function_args.dart';
 import 'get_function_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_function_result.dart';
 /// and [API](https://cloud.google.com/functions/docs/apis).
 Future<GetFunctionResult> getFunction(
   GetFunctionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:cloudfunctions/getFunction:getFunction',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionResult.fromMap(result);
 }

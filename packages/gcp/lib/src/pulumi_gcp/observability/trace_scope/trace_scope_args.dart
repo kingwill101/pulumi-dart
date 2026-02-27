@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TraceScope.
 class TraceScopeArgs {
   /// Describes this trace scope.
   /// The maximum length of the description is 8000 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// GCP region the TraceScope is stored in. Only `global` is supported.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Names of the projects that are included in this trace scope.
   /// *  `projects/[PROJECT_ID]`
   /// A trace scope can include a maximum of 20 projects.
-  final Input<List<String>> resourceNames;
+  final pulumi.Input<List<String>> resourceNames;
 
   /// A client-assigned identifier for the trace scope.
-  final Input<String> traceScopeId;
+  final pulumi.Input<String> traceScopeId;
 
   TraceScopeArgs({
     this.description,
@@ -49,11 +49,11 @@ class TraceScopeArgs {
 
   factory TraceScopeArgs.fromMap(Map<String, dynamic> map) {
     return TraceScopeArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resourceNames: Input.asInput<List<String>>(map['resourceNames']),
-      traceScopeId: Input.asInput<String>(map['traceScopeId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resourceNames: pulumi.Input.asInput<List<String>>(map['resourceNames']),
+      traceScopeId: pulumi.Input.asInput<String>(map['traceScopeId']),
     );
   }
 }

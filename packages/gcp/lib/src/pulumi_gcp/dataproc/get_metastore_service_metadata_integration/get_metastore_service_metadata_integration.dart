@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_metastore_service_metadata_integration_data_catalog_config/get_metastore_service_metadata_integration_data_catalog_config.dart';
 
 class GetMetastoreServiceMetadataIntegration {
@@ -14,7 +14,7 @@ class GetMetastoreServiceMetadataIntegration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dataCatalogConfigs'] = Input.encodeList<
+    map['dataCatalogConfigs'] = pulumi.Input.encodeList<
         GetMetastoreServiceMetadataIntegrationDataCatalogConfig,
         Map<String, dynamic>>(dataCatalogConfigs, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetMetastoreServiceMetadataIntegration {
   factory GetMetastoreServiceMetadataIntegration.fromMap(
       Map<String, dynamic> map) {
     return GetMetastoreServiceMetadataIntegration(
-      dataCatalogConfigs: Input.decodeList<
+      dataCatalogConfigs: pulumi.Input.decodeList<
               GetMetastoreServiceMetadataIntegrationDataCatalogConfig>(
           map['dataCatalogConfigs'],
           (value) =>

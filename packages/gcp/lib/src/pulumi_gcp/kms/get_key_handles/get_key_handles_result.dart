@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_key_handles_key_handle/get_key_handles_key_handle.dart';
 
 /// Result data returned by getKeyHandles.
@@ -30,7 +30,7 @@ class GetKeyHandlesResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['keyHandles'] =
-        Input.encodeList<GetKeyHandlesKeyHandle, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetKeyHandlesKeyHandle, Map<String, dynamic>>(
             keyHandles, (value) => value.toMap());
     map['location'] = location;
     final projectValue = project;
@@ -44,7 +44,7 @@ class GetKeyHandlesResult {
   factory GetKeyHandlesResult.fromMap(Map<String, dynamic> map) {
     return GetKeyHandlesResult(
       id: map['id'] as String,
-      keyHandles: Input.decodeList<GetKeyHandlesKeyHandle>(
+      keyHandles: pulumi.Input.decodeList<GetKeyHandlesKeyHandle>(
           map['keyHandles'],
           (value) => GetKeyHandlesKeyHandle.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeters_service_perimeter_status_egress_policy/service_perimeters_service_perimeter_status_egress_policy.dart';
 import '../service_perimeters_service_perimeter_status_ingress_policy/service_perimeters_service_perimeter_status_ingress_policy.dart';
 import '../service_perimeters_service_perimeter_status_vpc_accessible_services/service_perimeters_service_perimeter_status_vpc_accessible_services.dart';
@@ -68,13 +68,13 @@ class ServicePerimetersServicePerimeterStatus {
     }
     final egressPoliciesValue = egressPolicies;
     if (egressPoliciesValue != null) {
-      map['egressPolicies'] = Input.encodeList<
+      map['egressPolicies'] = pulumi.Input.encodeList<
           ServicePerimetersServicePerimeterStatusEgressPolicy,
           Map<String, dynamic>>(egressPoliciesValue, (value) => value.toMap());
     }
     final ingressPoliciesValue = ingressPolicies;
     if (ingressPoliciesValue != null) {
-      map['ingressPolicies'] = Input.encodeList<
+      map['ingressPolicies'] = pulumi.Input.encodeList<
           ServicePerimetersServicePerimeterStatusIngressPolicy,
           Map<String, dynamic>>(ingressPoliciesValue, (value) => value.toMap());
     }
@@ -101,7 +101,7 @@ class ServicePerimetersServicePerimeterStatus {
           : (map['accessLevels'] as List).cast<String>(),
       egressPolicies: map['egressPolicies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServicePerimetersServicePerimeterStatusEgressPolicy>(
               map['egressPolicies'],
               (value) =>
@@ -109,7 +109,7 @@ class ServicePerimetersServicePerimeterStatus {
                       (value as Map).cast<String, dynamic>())),
       ingressPolicies: map['ingressPolicies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServicePerimetersServicePerimeterStatusIngressPolicy>(
               map['ingressPolicies'],
               (value) =>

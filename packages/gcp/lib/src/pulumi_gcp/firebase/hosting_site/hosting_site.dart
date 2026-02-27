@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosting_site_args.dart';
 
 /// A `Site` represents a Firebase Hosting site.
@@ -53,13 +53,13 @@ import 'hosting_site_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
 /// ```
-class HostingSite extends CustomResource {
+class HostingSite extends pulumi.CustomResource {
   /// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
   /// associated with the Hosting site.
-  late final Output<String?> appId;
+  late final pulumi.Output<String?> appId;
 
   /// The default URL for the site in the form of https://{name}.web.app
-  late final Output<String> defaultUrl;
+  late final pulumi.Output<String> defaultUrl;
 
   /// Output only. The fully-qualified resource name of the Hosting site, in
   /// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
@@ -68,29 +68,29 @@ class HostingSite extends CustomResource {
   /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
   /// Learn more about using project identifiers in Google's
   /// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
   /// used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
   /// domain name label.
-  late final Output<String?> siteId;
+  late final pulumi.Output<String?> siteId;
 
   /// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   HostingSite(
     String name, {
     HostingSiteArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/hostingSite:HostingSite',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String?>('appId');
     this.defaultUrl = registerOutput<String>('defaultUrl');

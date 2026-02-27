@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multicast_producer_association_state/multicast_producer_association_state.dart';
 import 'multicast_producer_association_args.dart';
 
@@ -41,54 +41,54 @@ import 'multicast_producer_association_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation default {{location}}/{{multicast_producer_association_id}}
 /// ```
-class MulticastProducerAssociation extends CustomResource {
+class MulticastProducerAssociation extends pulumi.CustomResource {
   /// [Output only] The timestamp when the multicast producer association was
   /// created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// An optional text description of the multicast producer association.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the multicast domain activation that is in the
   /// same zone as this multicast producer association.
   /// Use the following format:
   /// // `projects/*/locations/*/multicastDomainActivations/*`.
-  late final Output<String> multicastDomainActivation;
+  late final pulumi.Output<String> multicastDomainActivation;
 
   /// A unique name for the multicast producer association.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
-  late final Output<String> multicastProducerAssociationId;
+  late final pulumi.Output<String> multicastProducerAssociationId;
 
   /// Identifier. The resource name of the multicast producer association.
   /// Use the following format:
   /// `projects/*/locations/*/multicastProducerAssociations/*`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The resource name of the multicast producer VPC network.
   /// Use following format:
   /// `projects/{project}/locations/global/networks/{network}`.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// (Output)
   /// The state of the multicast resource.
@@ -100,27 +100,27 @@ class MulticastProducerAssociation extends CustomResource {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  late final Output<List<MulticastProducerAssociationState>> states;
+  late final pulumi.Output<List<MulticastProducerAssociationState>> states;
 
   /// [Output only] The Google-generated UUID for the resource. This value is
   /// unique across all multicast producer association resources. If a producer
   /// association is deleted and another with the same name is created, the new
   /// producer association is assigned a different unique_id.
-  late final Output<String> uniqueId;
+  late final pulumi.Output<String> uniqueId;
 
   /// [Output only] The timestamp when the Multicast Producer Association was
   /// most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   MulticastProducerAssociation(
     String name, {
     MulticastProducerAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

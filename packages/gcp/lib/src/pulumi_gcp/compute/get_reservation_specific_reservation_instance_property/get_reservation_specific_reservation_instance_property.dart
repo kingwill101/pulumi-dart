@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_reservation_specific_reservation_instance_property_guest_accelerator/get_reservation_specific_reservation_instance_property_guest_accelerator.dart';
 import '../get_reservation_specific_reservation_instance_property_local_ssd/get_reservation_specific_reservation_instance_property_local_ssd.dart';
 
@@ -40,10 +40,10 @@ class GetReservationSpecificReservationInstanceProperty {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['guestAccelerators'] = Input.encodeList<
+    map['guestAccelerators'] = pulumi.Input.encodeList<
         GetReservationSpecificReservationInstancePropertyGuestAccelerator,
         Map<String, dynamic>>(guestAccelerators, (value) => value.toMap());
-    map['localSsds'] = Input.encodeList<
+    map['localSsds'] = pulumi.Input.encodeList<
         GetReservationSpecificReservationInstancePropertyLocalSsd,
         Map<String, dynamic>>(localSsds, (value) => value.toMap());
     map['locationHint'] = locationHint;
@@ -56,13 +56,13 @@ class GetReservationSpecificReservationInstanceProperty {
   factory GetReservationSpecificReservationInstanceProperty.fromMap(
       Map<String, dynamic> map) {
     return GetReservationSpecificReservationInstanceProperty(
-      guestAccelerators: Input.decodeList<
+      guestAccelerators: pulumi.Input.decodeList<
               GetReservationSpecificReservationInstancePropertyGuestAccelerator>(
           map['guestAccelerators'],
           (value) =>
               GetReservationSpecificReservationInstancePropertyGuestAccelerator
                   .fromMap((value as Map).cast<String, dynamic>())),
-      localSsds: Input.decodeList<
+      localSsds: pulumi.Input.decodeList<
               GetReservationSpecificReservationInstancePropertyLocalSsd>(
           map['localSsds'],
           (value) =>

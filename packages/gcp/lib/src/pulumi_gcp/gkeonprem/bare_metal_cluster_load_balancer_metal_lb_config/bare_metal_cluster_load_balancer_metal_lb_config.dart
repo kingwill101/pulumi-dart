@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_cluster_load_balancer_metal_lb_config_address_pool/bare_metal_cluster_load_balancer_metal_lb_config_address_pool.dart';
 import '../bare_metal_cluster_load_balancer_metal_lb_config_load_balancer_node_pool_config/bare_metal_cluster_load_balancer_metal_lb_config_load_balancer_node_pool_config.dart';
 
@@ -23,7 +23,7 @@ class BareMetalClusterLoadBalancerMetalLbConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['addressPools'] = Input.encodeList<
+    map['addressPools'] = pulumi.Input.encodeList<
         BareMetalClusterLoadBalancerMetalLbConfigAddressPool,
         Map<String, dynamic>>(addressPools, (value) => value.toMap());
     final loadBalancerNodePoolConfigValue = loadBalancerNodePoolConfig;
@@ -37,7 +37,7 @@ class BareMetalClusterLoadBalancerMetalLbConfig {
   factory BareMetalClusterLoadBalancerMetalLbConfig.fromMap(
       Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerMetalLbConfig(
-      addressPools: Input.decodeList<
+      addressPools: pulumi.Input.decodeList<
               BareMetalClusterLoadBalancerMetalLbConfigAddressPool>(
           map['addressPools'],
           (value) =>

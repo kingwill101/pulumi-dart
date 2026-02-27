@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_node_pool_node_pool_config/bare_metal_node_pool_node_pool_config.dart';
 
 /// The set of arguments for BareMetalNodePool.
@@ -16,27 +16,27 @@ class BareMetalNodePoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// The cluster this node pool belongs to.
-  final Input<String> bareMetalCluster;
+  final pulumi.Input<String> bareMetalCluster;
 
   /// The display name for the Bare Metal Node Pool.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The bare metal node pool name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Node pool configuration.
   /// Structure is documented below.
-  final Input<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
+  final pulumi.Input<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   BareMetalNodePoolArgs({
     this.annotations,
@@ -64,7 +64,8 @@ class BareMetalNodePoolArgs {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['nodePoolConfig'] = Input.mapInputValue<BareMetalNodePoolNodePoolConfig,
+    map['nodePoolConfig'] = pulumi.Input.mapInputValue<
+        BareMetalNodePoolNodePoolConfig,
         Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
@@ -76,14 +77,14 @@ class BareMetalNodePoolArgs {
   factory BareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      bareMetalCluster: Input.asInput<String>(map['bareMetalCluster']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      nodePoolConfig:
-          Input.asInput<BareMetalNodePoolNodePoolConfig>(map['nodePoolConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      bareMetalCluster: pulumi.Input.asInput<String>(map['bareMetalCluster']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      nodePoolConfig: pulumi.Input.asInput<BareMetalNodePoolNodePoolConfig>(
+          map['nodePoolConfig']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

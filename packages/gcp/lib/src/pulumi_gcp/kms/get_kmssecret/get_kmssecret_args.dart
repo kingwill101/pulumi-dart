@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKMSSecret.
 class GetKMSSecretArgs {
   /// The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
-  final Input<String>? additionalAuthenticatedData;
+  final pulumi.Input<String>? additionalAuthenticatedData;
 
   /// The ciphertext to be decrypted, encoded in base64
-  final Input<String> ciphertext;
+  final pulumi.Input<String> ciphertext;
 
   /// The id of the CryptoKey that will be used to
   /// decrypt the provided ciphertext. This is represented by the format
   /// `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
-  final Input<String> cryptoKey;
+  final pulumi.Input<String> cryptoKey;
 
   GetKMSSecretArgs({
     this.additionalAuthenticatedData,
@@ -34,10 +34,10 @@ class GetKMSSecretArgs {
 
   factory GetKMSSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretArgs(
-      additionalAuthenticatedData:
-          Input.asOptionalInput<String>(map['additionalAuthenticatedData']),
-      ciphertext: Input.asInput<String>(map['ciphertext']),
-      cryptoKey: Input.asInput<String>(map['cryptoKey']),
+      additionalAuthenticatedData: pulumi.Input.asOptionalInput<String>(
+          map['additionalAuthenticatedData']),
+      ciphertext: pulumi.Input.asInput<String>(map['ciphertext']),
+      cryptoKey: pulumi.Input.asInput<String>(map['cryptoKey']),
     );
   }
 }

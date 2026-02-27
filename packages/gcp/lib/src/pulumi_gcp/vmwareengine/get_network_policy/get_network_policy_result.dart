@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_policy_external_ip/get_network_policy_external_ip.dart';
 import '../get_network_policy_internet_access/get_network_policy_internet_access.dart';
 
@@ -43,13 +43,12 @@ class GetNetworkPolicyResult {
     map['createTime'] = createTime;
     map['description'] = description;
     map['edgeServicesCidr'] = edgeServicesCidr;
-    map['externalIps'] =
-        Input.encodeList<GetNetworkPolicyExternalIp, Map<String, dynamic>>(
-            externalIps, (value) => value.toMap());
+    map['externalIps'] = pulumi.Input.encodeList<GetNetworkPolicyExternalIp,
+        Map<String, dynamic>>(externalIps, (value) => value.toMap());
     map['id'] = id;
-    map['internetAccesses'] =
-        Input.encodeList<GetNetworkPolicyInternetAccess, Map<String, dynamic>>(
-            internetAccesses, (value) => value.toMap());
+    map['internetAccesses'] = pulumi.Input.encodeList<
+        GetNetworkPolicyInternetAccess,
+        Map<String, dynamic>>(internetAccesses, (value) => value.toMap());
     map['location'] = location;
     map['name'] = name;
     final projectValue = project;
@@ -68,12 +67,12 @@ class GetNetworkPolicyResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       edgeServicesCidr: map['edgeServicesCidr'] as String,
-      externalIps: Input.decodeList<GetNetworkPolicyExternalIp>(
+      externalIps: pulumi.Input.decodeList<GetNetworkPolicyExternalIp>(
           map['externalIps'],
           (value) => GetNetworkPolicyExternalIp.fromMap(
               (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      internetAccesses: Input.decodeList<GetNetworkPolicyInternetAccess>(
+      internetAccesses: pulumi.Input.decodeList<GetNetworkPolicyInternetAccess>(
           map['internetAccesses'],
           (value) => GetNetworkPolicyInternetAccess.fromMap(
               (value as Map).cast<String, dynamic>())),

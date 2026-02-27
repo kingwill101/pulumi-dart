@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ApiDeployment.
 class ApiDeploymentArgs {
   /// The Apigee Environment associated with the Apigee API deployment.
-  final Input<String> environment;
+  final pulumi.Input<String> environment;
 
   /// The Apigee Organization associated with the Apigee API deployment.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// The Apigee API associated with the Apigee API deployment.
-  final Input<String> proxyId;
+  final pulumi.Input<String> proxyId;
 
   /// The revision of the API proxy to be deployed.
-  final Input<String> revision;
+  final pulumi.Input<String> revision;
 
   ApiDeploymentArgs({
     required this.environment,
@@ -34,10 +34,10 @@ class ApiDeploymentArgs {
 
   factory ApiDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentArgs(
-      environment: Input.asInput<String>(map['environment']),
-      orgId: Input.asInput<String>(map['orgId']),
-      proxyId: Input.asInput<String>(map['proxyId']),
-      revision: Input.asInput<String>(map['revision']),
+      environment: pulumi.Input.asInput<String>(map['environment']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      proxyId: pulumi.Input.asInput<String>(map['proxyId']),
+      revision: pulumi.Input.asInput<String>(map['revision']),
     );
   }
 }

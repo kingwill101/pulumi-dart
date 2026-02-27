@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_pool_node_config_containerd_config_registry_host_host/node_pool_node_config_containerd_config_registry_host_host.dart';
 
 class NodePoolNodeConfigContainerdConfigRegistryHost {
@@ -19,7 +19,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHost {
     final map = <String, dynamic>{};
     final hostsValue = hosts;
     if (hostsValue != null) {
-      map['hosts'] = Input.encodeList<
+      map['hosts'] = pulumi.Input.encodeList<
           NodePoolNodeConfigContainerdConfigRegistryHostHost,
           Map<String, dynamic>>(hostsValue, (value) => value.toMap());
     }
@@ -32,7 +32,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHost {
     return NodePoolNodeConfigContainerdConfigRegistryHost(
       hosts: map['hosts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NodePoolNodeConfigContainerdConfigRegistryHostHost>(
               map['hosts'],
               (value) =>

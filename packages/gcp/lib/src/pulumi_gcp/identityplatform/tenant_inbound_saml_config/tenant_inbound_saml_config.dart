@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tenant_inbound_saml_config_idp_config/tenant_inbound_saml_config_idp_config.dart';
 import '../tenant_inbound_saml_config_sp_config/tenant_inbound_saml_config_sp_config.dart';
 import 'tenant_inbound_saml_config_args.dart';
@@ -41,43 +41,43 @@ import 'tenant_inbound_saml_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
 /// ```
-class TenantInboundSamlConfig extends CustomResource {
+class TenantInboundSamlConfig extends pulumi.CustomResource {
   /// Human friendly display name.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// If this config allows users to sign in with the provider.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// SAML IdP configuration when the project acts as the relying party
   /// Structure is documented below.
-  late final Output<TenantInboundSamlConfigIdpConfig> idpConfig;
+  late final pulumi.Output<TenantInboundSamlConfigIdpConfig> idpConfig;
 
   /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
   /// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
   /// alphanumeric character, and have at least 2 characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
   /// and accept an authentication assertion issued by a SAML identity provider.
   /// Structure is documented below.
-  late final Output<TenantInboundSamlConfigSpConfig> spConfig;
+  late final pulumi.Output<TenantInboundSamlConfigSpConfig> spConfig;
 
   /// The name of the tenant where this inbound SAML config resource exists
-  late final Output<String> tenant;
+  late final pulumi.Output<String> tenant;
 
   TenantInboundSamlConfig(
     String name, {
     TenantInboundSamlConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String>('displayName');
     this.enabled = registerOutput<bool?>('enabled');

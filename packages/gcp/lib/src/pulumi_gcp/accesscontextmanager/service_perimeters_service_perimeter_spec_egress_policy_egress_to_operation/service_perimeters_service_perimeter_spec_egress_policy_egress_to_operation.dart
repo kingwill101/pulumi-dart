@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeters_service_perimeter_spec_egress_policy_egress_to_operation_method_selector/service_perimeters_service_perimeter_spec_egress_policy_egress_to_operation_method_selector.dart';
 
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
@@ -27,7 +27,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
     final map = <String, dynamic>{};
     final methodSelectorsValue = methodSelectors;
     if (methodSelectorsValue != null) {
-      map['methodSelectors'] = Input.encodeList<
+      map['methodSelectors'] = pulumi.Input.encodeList<
           ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector,
           Map<String, dynamic>>(methodSelectorsValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
     return ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation(
       methodSelectors: map['methodSelectors'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector>(
               map['methodSelectors'],
               (value) =>

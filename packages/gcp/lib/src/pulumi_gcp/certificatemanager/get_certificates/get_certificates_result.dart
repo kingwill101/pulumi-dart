@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_certificates_certificate/get_certificates_certificate.dart';
 
 /// Result data returned by getCertificates.
@@ -22,9 +22,8 @@ class GetCertificatesResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['certificates'] =
-        Input.encodeList<GetCertificatesCertificate, Map<String, dynamic>>(
-            certificates, (value) => value.toMap());
+    map['certificates'] = pulumi.Input.encodeList<GetCertificatesCertificate,
+        Map<String, dynamic>>(certificates, (value) => value.toMap());
     final filterValue = filter;
     if (filterValue != null) {
       map['filter'] = filterValue;
@@ -39,7 +38,7 @@ class GetCertificatesResult {
 
   factory GetCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetCertificatesResult(
-      certificates: Input.decodeList<GetCertificatesCertificate>(
+      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(
           map['certificates'],
           (value) => GetCertificatesCertificate.fromMap(
               (value as Map).cast<String, dynamic>())),

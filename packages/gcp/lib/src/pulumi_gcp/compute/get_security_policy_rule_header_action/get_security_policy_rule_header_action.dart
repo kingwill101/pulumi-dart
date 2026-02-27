@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_rule_header_action_request_headers_to_add/get_security_policy_rule_header_action_request_headers_to_add.dart';
 
 class GetSecurityPolicyRuleHeaderAction {
@@ -14,7 +14,7 @@ class GetSecurityPolicyRuleHeaderAction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['requestHeadersToAdds'] = Input.encodeList<
+    map['requestHeadersToAdds'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd,
         Map<String, dynamic>>(requestHeadersToAdds, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetSecurityPolicyRuleHeaderAction {
 
   factory GetSecurityPolicyRuleHeaderAction.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRuleHeaderAction(
-      requestHeadersToAdds: Input.decodeList<
+      requestHeadersToAdds: pulumi.Input.decodeList<
               GetSecurityPolicyRuleHeaderActionRequestHeadersToAdd>(
           map['requestHeadersToAdds'],
           (value) =>

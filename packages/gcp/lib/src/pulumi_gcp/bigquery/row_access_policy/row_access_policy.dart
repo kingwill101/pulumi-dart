@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'row_access_policy_args.dart';
 
 /// Represents access on a subset of rows on the specified table, defined by its filter predicate. Access to the subset of rows is controlled by its IAM policy.
@@ -35,13 +35,13 @@ import 'row_access_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/rowAccessPolicy:RowAccessPolicy default {{dataset_id}}/{{table_id}}/{{policy_id}}
 /// ```
-class RowAccessPolicy extends CustomResource {
+class RowAccessPolicy extends pulumi.CustomResource {
   /// The time when this row access policy was created, in milliseconds since
   /// the epoch.
-  late final Output<String> creationTime;
+  late final pulumi.Output<String> creationTime;
 
   /// The ID of the dataset containing this row access policy.
-  late final Output<String> datasetId;
+  late final pulumi.Output<String> datasetId;
 
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
@@ -52,7 +52,7 @@ class RowAccessPolicy extends CustomResource {
   /// date_field = CAST('2019-9-27' as DATE)
   /// nullable_field is not NULL
   /// numeric_field BETWEEN 1.0 AND 5.0
-  late final Output<String> filterPredicate;
+  late final pulumi.Output<String> filterPredicate;
 
   /// Input only. The optional list of iam_member users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
@@ -75,33 +75,33 @@ class RowAccessPolicy extends CustomResource {
   /// the internet, including authenticated and unauthenticated users. Because
   /// BigQuery requires authentication before a user can access the service,
   /// allUsers includes only authenticated users.
-  late final Output<List<String>?> grantees;
+  late final pulumi.Output<List<String>?> grantees;
 
   /// The time when this row access policy was last modified, in milliseconds
   /// since the epoch.
-  late final Output<String> lastModifiedTime;
+  late final pulumi.Output<String> lastModifiedTime;
 
   /// The ID of the row access policy. The ID must contain only
   /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
   /// length is 256 characters.
-  late final Output<String> policyId;
+  late final pulumi.Output<String> policyId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The ID of the table containing this row access policy.
-  late final Output<String> tableId;
+  late final pulumi.Output<String> tableId;
 
   RowAccessPolicy(
     String name, {
     RowAccessPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/rowAccessPolicy:RowAccessPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTime = registerOutput<String>('creationTime');
     this.datasetId = registerOutput<String>('datasetId');

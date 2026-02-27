@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_cluster_autoscaling_auto_provisioning_default/get_cluster_cluster_autoscaling_auto_provisioning_default.dart';
 import '../get_cluster_cluster_autoscaling_resource_limit/get_cluster_cluster_autoscaling_resource_limit.dart';
 
@@ -35,7 +35,7 @@ class GetClusterClusterAutoscaling {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoProvisioningDefaults'] = Input.encodeList<
+    map['autoProvisioningDefaults'] = pulumi.Input.encodeList<
             GetClusterClusterAutoscalingAutoProvisioningDefault,
             Map<String, dynamic>>(
         autoProvisioningDefaults, (value) => value.toMap());
@@ -43,7 +43,7 @@ class GetClusterClusterAutoscaling {
     map['autoscalingProfile'] = autoscalingProfile;
     map['defaultComputeClassEnabled'] = defaultComputeClassEnabled;
     map['enabled'] = enabled;
-    map['resourceLimits'] = Input.encodeList<
+    map['resourceLimits'] = pulumi.Input.encodeList<
         GetClusterClusterAutoscalingResourceLimit,
         Map<String, dynamic>>(resourceLimits, (value) => value.toMap());
     return map;
@@ -51,19 +51,19 @@ class GetClusterClusterAutoscaling {
 
   factory GetClusterClusterAutoscaling.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterAutoscaling(
-      autoProvisioningDefaults:
-          Input.decodeList<GetClusterClusterAutoscalingAutoProvisioningDefault>(
-              map['autoProvisioningDefaults'],
-              (value) =>
-                  GetClusterClusterAutoscalingAutoProvisioningDefault.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      autoProvisioningDefaults: pulumi.Input.decodeList<
+              GetClusterClusterAutoscalingAutoProvisioningDefault>(
+          map['autoProvisioningDefaults'],
+          (value) =>
+              GetClusterClusterAutoscalingAutoProvisioningDefault.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       autoProvisioningLocations:
           (map['autoProvisioningLocations'] as List).cast<String>(),
       autoscalingProfile: map['autoscalingProfile'] as String,
       defaultComputeClassEnabled: map['defaultComputeClassEnabled'] as bool,
       enabled: map['enabled'] as bool,
       resourceLimits:
-          Input.decodeList<GetClusterClusterAutoscalingResourceLimit>(
+          pulumi.Input.decodeList<GetClusterClusterAutoscalingResourceLimit>(
               map['resourceLimits'],
               (value) => GetClusterClusterAutoscalingResourceLimit.fromMap(
                   (value as Map).cast<String, dynamic>())),

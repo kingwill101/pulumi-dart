@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_client_function/app_version_snapshot_tool_client_function.dart';
 import '../app_version_snapshot_tool_data_store_tool/app_version_snapshot_tool_data_store_tool.dart';
 import '../app_version_snapshot_tool_google_search_tool/app_version_snapshot_tool_google_search_tool.dart';
@@ -101,7 +101,7 @@ class AppVersionSnapshotTool {
     final map = <String, dynamic>{};
     final clientFunctionsValue = clientFunctions;
     if (clientFunctionsValue != null) {
-      map['clientFunctions'] = Input.encodeList<
+      map['clientFunctions'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolClientFunction,
           Map<String, dynamic>>(clientFunctionsValue, (value) => value.toMap());
     }
@@ -111,7 +111,7 @@ class AppVersionSnapshotTool {
     }
     final dataStoreToolsValue = dataStoreTools;
     if (dataStoreToolsValue != null) {
-      map['dataStoreTools'] = Input.encodeList<
+      map['dataStoreTools'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolDataStoreTool,
           Map<String, dynamic>>(dataStoreToolsValue, (value) => value.toMap());
     }
@@ -133,7 +133,7 @@ class AppVersionSnapshotTool {
     }
     final googleSearchToolsValue = googleSearchTools;
     if (googleSearchToolsValue != null) {
-      map['googleSearchTools'] = Input.encodeList<
+      map['googleSearchTools'] = pulumi.Input.encodeList<
               AppVersionSnapshotToolGoogleSearchTool, Map<String, dynamic>>(
           googleSearchToolsValue, (value) => value.toMap());
     }
@@ -143,18 +143,20 @@ class AppVersionSnapshotTool {
     }
     final openApiToolsValue = openApiTools;
     if (openApiToolsValue != null) {
-      map['openApiTools'] = Input.encodeList<AppVersionSnapshotToolOpenApiTool,
+      map['openApiTools'] = pulumi.Input.encodeList<
+          AppVersionSnapshotToolOpenApiTool,
           Map<String, dynamic>>(openApiToolsValue, (value) => value.toMap());
     }
     final pythonFunctionsValue = pythonFunctions;
     if (pythonFunctionsValue != null) {
-      map['pythonFunctions'] = Input.encodeList<
+      map['pythonFunctions'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolPythonFunction,
           Map<String, dynamic>>(pythonFunctionsValue, (value) => value.toMap());
     }
     final systemToolsValue = systemTools;
     if (systemToolsValue != null) {
-      map['systemTools'] = Input.encodeList<AppVersionSnapshotToolSystemTool,
+      map['systemTools'] = pulumi.Input.encodeList<
+          AppVersionSnapshotToolSystemTool,
           Map<String, dynamic>>(systemToolsValue, (value) => value.toMap());
     }
     final updateTimeValue = updateTime;
@@ -168,7 +170,7 @@ class AppVersionSnapshotTool {
     return AppVersionSnapshotTool(
       clientFunctions: map['clientFunctions'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolClientFunction>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolClientFunction>(
               map['clientFunctions'],
               (value) => AppVersionSnapshotToolClientFunction.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -176,7 +178,7 @@ class AppVersionSnapshotTool {
           map['createTime'] == null ? null : map['createTime'] as String,
       dataStoreTools: map['dataStoreTools'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolDataStoreTool>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreTool>(
               map['dataStoreTools'],
               (value) => AppVersionSnapshotToolDataStoreTool.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -190,26 +192,26 @@ class AppVersionSnapshotTool {
           : map['generatedSummary'] as String,
       googleSearchTools: map['googleSearchTools'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolGoogleSearchTool>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolGoogleSearchTool>(
               map['googleSearchTools'],
               (value) => AppVersionSnapshotToolGoogleSearchTool.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
       openApiTools: map['openApiTools'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolOpenApiTool>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiTool>(
               map['openApiTools'],
               (value) => AppVersionSnapshotToolOpenApiTool.fromMap(
                   (value as Map).cast<String, dynamic>())),
       pythonFunctions: map['pythonFunctions'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolPythonFunction>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolPythonFunction>(
               map['pythonFunctions'],
               (value) => AppVersionSnapshotToolPythonFunction.fromMap(
                   (value as Map).cast<String, dynamic>())),
       systemTools: map['systemTools'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolSystemTool>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolSystemTool>(
               map['systemTools'],
               (value) => AppVersionSnapshotToolSystemTool.fromMap(
                   (value as Map).cast<String, dynamic>())),

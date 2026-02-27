@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_client_ip_resolution_config/environment_client_ip_resolution_config.dart';
 import '../environment_node_config/environment_node_config.dart';
 import '../environment_properties/environment_properties.dart';
@@ -37,15 +37,15 @@ import 'environment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/{{name}}
 /// ```
-class Environment extends CustomResource {
+class Environment extends pulumi.CustomResource {
   /// Optional. API Proxy type supported by the environment. The type can be set when creating
   /// the Environment and cannot be changed.
   /// Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
-  late final Output<String> apiProxyType;
+  late final pulumi.Output<String> apiProxyType;
 
   /// The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
   /// Structure is documented below.
-  late final Output<EnvironmentClientIpResolutionConfig?>
+  late final pulumi.Output<EnvironmentClientIpResolutionConfig?>
       clientIpResolutionConfig;
 
   /// Optional. Deployment type supported by the environment. The deployment type can be
@@ -56,48 +56,48 @@ class Environment extends CustomResource {
   /// Creating, updating, or deleting resource files;
   /// Creating, updating, or deleting target servers.
   /// Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
-  late final Output<String> deploymentType;
+  late final pulumi.Output<String> deploymentType;
 
   /// Description of the environment.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Display name of the environment.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
-  late final Output<String?> forwardProxyUri;
+  late final pulumi.Output<String?> forwardProxyUri;
 
   /// The resource ID of the environment.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// NodeConfig for setting the min/max number of nodes associated with the environment.
   /// Structure is documented below.
-  late final Output<EnvironmentNodeConfig> nodeConfig;
+  late final pulumi.Output<EnvironmentNodeConfig> nodeConfig;
 
   /// The Apigee Organization associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// Key-value pairs that may be used for customizing the environment.
   /// Structure is documented below.
-  late final Output<EnvironmentProperties?> properties;
+  late final pulumi.Output<EnvironmentProperties?> properties;
 
   /// Types that can be selected for an Environment. Each of the types are
   /// limited by capability and capacity. Refer to Apigee's public documentation
   /// to understand about each of these types in details.
   /// An Apigee org can support heterogeneous Environments.
   /// Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   Environment(
     String name, {
     EnvironmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/environment:Environment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiProxyType = registerOutput<String>('apiProxyType');
     this.clientIpResolutionConfig =

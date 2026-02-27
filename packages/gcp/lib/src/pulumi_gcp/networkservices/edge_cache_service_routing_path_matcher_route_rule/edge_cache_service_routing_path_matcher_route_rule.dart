@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../edge_cache_service_routing_path_matcher_route_rule_header_action/edge_cache_service_routing_path_matcher_route_rule_header_action.dart';
 import '../edge_cache_service_routing_path_matcher_route_rule_match_rule/edge_cache_service_routing_path_matcher_route_rule_match_rule.dart';
 import '../edge_cache_service_routing_path_matcher_route_rule_route_action/edge_cache_service_routing_path_matcher_route_rule_route_action.dart';
@@ -64,7 +64,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule {
     if (headerActionValue != null) {
       map['headerAction'] = headerActionValue.toMap();
     }
-    map['matchRules'] = Input.encodeList<
+    map['matchRules'] = pulumi.Input.encodeList<
         EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule,
         Map<String, dynamic>>(matchRules, (value) => value.toMap());
     final originValue = origin;
@@ -96,7 +96,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule {
           ? null
           : EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction.fromMap(
               (map['headerAction'] as Map).cast<String, dynamic>()),
-      matchRules: Input.decodeList<
+      matchRules: pulumi.Input.decodeList<
               EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule>(
           map['matchRules'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../datascan_data/datascan_data.dart';
 import '../datascan_data_discovery_spec/datascan_data_discovery_spec.dart';
 import '../datascan_data_profile_spec/datascan_data_profile_spec.dart';
@@ -92,90 +92,90 @@ import 'datascan_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataplex/datascan:Datascan default {{data_scan_id}}
 /// ```
-class Datascan extends CustomResource {
+class Datascan extends pulumi.CustomResource {
   /// The time when the scan was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The data source for DataScan.
   /// Structure is documented below.
-  late final Output<DatascanData> data;
+  late final pulumi.Output<DatascanData> data;
 
   /// DataDiscoveryScan related setting.
   /// Structure is documented below.
-  late final Output<DatascanDataDiscoverySpec?> dataDiscoverySpec;
+  late final pulumi.Output<DatascanDataDiscoverySpec?> dataDiscoverySpec;
 
   /// DataDocumentationScan related setting.
-  late final Output<Map<String, dynamic>?> dataDocumentationSpec;
+  late final pulumi.Output<Map<String, dynamic>?> dataDocumentationSpec;
 
   /// DataProfileScan related setting.
   /// Structure is documented below.
-  late final Output<DatascanDataProfileSpec?> dataProfileSpec;
+  late final pulumi.Output<DatascanDataProfileSpec?> dataProfileSpec;
 
   /// DataQualityScan related setting.
   /// Structure is documented below.
-  late final Output<DatascanDataQualitySpec?> dataQualitySpec;
+  late final pulumi.Output<DatascanDataQualitySpec?> dataQualitySpec;
 
   /// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-  late final Output<String> dataScanId;
+  late final pulumi.Output<String> dataScanId;
 
   /// Description of the scan.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User friendly display name.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// DataScan execution settings.
   /// Structure is documented below.
-  late final Output<DatascanExecutionSpec> executionSpec;
+  late final pulumi.Output<DatascanExecutionSpec> executionSpec;
 
   /// Status of the data scan execution.
   /// Structure is documented below.
-  late final Output<List<DatascanExecutionStatus>> executionStatuses;
+  late final pulumi.Output<List<DatascanExecutionStatus>> executionStatuses;
 
   /// User-defined labels for the scan. A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location where the data scan should reside.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a project_id or project_number and locationId refers to a GCP region.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Current state of the DataScan.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The type of DataScan.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time when the scan was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Datascan(
     String name, {
     DatascanArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataplex/datascan:Datascan',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.data = registerOutput<DatascanData>('data');

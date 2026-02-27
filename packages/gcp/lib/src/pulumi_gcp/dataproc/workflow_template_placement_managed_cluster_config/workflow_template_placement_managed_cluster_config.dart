@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workflow_template_placement_managed_cluster_config_autoscaling_config/workflow_template_placement_managed_cluster_config_autoscaling_config.dart';
 import '../workflow_template_placement_managed_cluster_config_encryption_config/workflow_template_placement_managed_cluster_config_encryption_config.dart';
 import '../workflow_template_placement_managed_cluster_config_endpoint_config/workflow_template_placement_managed_cluster_config_endpoint_config.dart';
@@ -116,7 +116,7 @@ class WorkflowTemplatePlacementManagedClusterConfig {
     }
     final initializationActionsValue = initializationActions;
     if (initializationActionsValue != null) {
-      map['initializationActions'] = Input.encodeList<
+      map['initializationActions'] = pulumi.Input.encodeList<
               WorkflowTemplatePlacementManagedClusterConfigInitializationAction,
               Map<String, dynamic>>(
           initializationActionsValue, (value) => value.toMap());
@@ -189,7 +189,7 @@ class WorkflowTemplatePlacementManagedClusterConfig {
                   (map['gkeClusterConfig'] as Map).cast<String, dynamic>()),
       initializationActions: map['initializationActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WorkflowTemplatePlacementManagedClusterConfigInitializationAction>(
               map['initializationActions'],
               (value) =>

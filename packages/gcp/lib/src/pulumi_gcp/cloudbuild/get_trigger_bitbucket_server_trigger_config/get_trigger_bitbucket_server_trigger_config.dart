@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_bitbucket_server_trigger_config_pull_request/get_trigger_bitbucket_server_trigger_config_pull_request.dart';
 import '../get_trigger_bitbucket_server_trigger_config_push/get_trigger_bitbucket_server_trigger_config_push.dart';
 
@@ -33,10 +33,11 @@ class GetTriggerBitbucketServerTriggerConfig {
     final map = <String, dynamic>{};
     map['bitbucketServerConfigResource'] = bitbucketServerConfigResource;
     map['projectKey'] = projectKey;
-    map['pullRequests'] = Input.encodeList<
+    map['pullRequests'] = pulumi.Input.encodeList<
         GetTriggerBitbucketServerTriggerConfigPullRequest,
         Map<String, dynamic>>(pullRequests, (value) => value.toMap());
-    map['pushes'] = Input.encodeList<GetTriggerBitbucketServerTriggerConfigPush,
+    map['pushes'] = pulumi.Input.encodeList<
+        GetTriggerBitbucketServerTriggerConfigPush,
         Map<String, dynamic>>(pushes, (value) => value.toMap());
     map['repoSlug'] = repoSlug;
     return map;
@@ -48,16 +49,16 @@ class GetTriggerBitbucketServerTriggerConfig {
       bitbucketServerConfigResource:
           map['bitbucketServerConfigResource'] as String,
       projectKey: map['projectKey'] as String,
-      pullRequests:
-          Input.decodeList<GetTriggerBitbucketServerTriggerConfigPullRequest>(
-              map['pullRequests'],
-              (value) =>
-                  GetTriggerBitbucketServerTriggerConfigPullRequest.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      pushes: Input.decodeList<GetTriggerBitbucketServerTriggerConfigPush>(
-          map['pushes'],
-          (value) => GetTriggerBitbucketServerTriggerConfigPush.fromMap(
+      pullRequests: pulumi.Input.decodeList<
+              GetTriggerBitbucketServerTriggerConfigPullRequest>(
+          map['pullRequests'],
+          (value) => GetTriggerBitbucketServerTriggerConfigPullRequest.fromMap(
               (value as Map).cast<String, dynamic>())),
+      pushes:
+          pulumi.Input.decodeList<GetTriggerBitbucketServerTriggerConfigPush>(
+              map['pushes'],
+              (value) => GetTriggerBitbucketServerTriggerConfigPush.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       repoSlug: map['repoSlug'] as String,
     );
   }

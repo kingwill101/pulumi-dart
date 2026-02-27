@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_cross_instance_replication_config_membership/get_instance_cross_instance_replication_config_membership.dart';
 import '../get_instance_cross_instance_replication_config_primary_instance/get_instance_cross_instance_replication_config_primary_instance.dart';
 import '../get_instance_cross_instance_replication_config_secondary_instance/get_instance_cross_instance_replication_config_secondary_instance.dart';
@@ -38,13 +38,13 @@ class GetInstanceCrossInstanceReplicationConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['instanceRole'] = instanceRole;
-    map['memberships'] = Input.encodeList<
+    map['memberships'] = pulumi.Input.encodeList<
         GetInstanceCrossInstanceReplicationConfigMembership,
         Map<String, dynamic>>(memberships, (value) => value.toMap());
-    map['primaryInstances'] = Input.encodeList<
+    map['primaryInstances'] = pulumi.Input.encodeList<
         GetInstanceCrossInstanceReplicationConfigPrimaryInstance,
         Map<String, dynamic>>(primaryInstances, (value) => value.toMap());
-    map['secondaryInstances'] = Input.encodeList<
+    map['secondaryInstances'] = pulumi.Input.encodeList<
         GetInstanceCrossInstanceReplicationConfigSecondaryInstance,
         Map<String, dynamic>>(secondaryInstances, (value) => value.toMap());
     map['updateTime'] = updateTime;
@@ -55,19 +55,19 @@ class GetInstanceCrossInstanceReplicationConfig {
       Map<String, dynamic> map) {
     return GetInstanceCrossInstanceReplicationConfig(
       instanceRole: map['instanceRole'] as String,
-      memberships:
-          Input.decodeList<GetInstanceCrossInstanceReplicationConfigMembership>(
-              map['memberships'],
-              (value) =>
-                  GetInstanceCrossInstanceReplicationConfigMembership.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      primaryInstances: Input.decodeList<
+      memberships: pulumi.Input.decodeList<
+              GetInstanceCrossInstanceReplicationConfigMembership>(
+          map['memberships'],
+          (value) =>
+              GetInstanceCrossInstanceReplicationConfigMembership.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      primaryInstances: pulumi.Input.decodeList<
               GetInstanceCrossInstanceReplicationConfigPrimaryInstance>(
           map['primaryInstances'],
           (value) =>
               GetInstanceCrossInstanceReplicationConfigPrimaryInstance.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      secondaryInstances: Input.decodeList<
+      secondaryInstances: pulumi.Input.decodeList<
               GetInstanceCrossInstanceReplicationConfigSecondaryInstance>(
           map['secondaryInstances'],
           (value) => GetInstanceCrossInstanceReplicationConfigSecondaryInstance

@@ -1,35 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_workflow_config_invocation_config/repository_workflow_config_invocation_config.dart';
 
 /// The set of arguments for RepositoryWorkflowConfig.
 class RepositoryWorkflowConfigArgs {
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-  final Input<String>? cronSchedule;
+  final pulumi.Input<String>? cronSchedule;
 
   /// Optional. If left unset, a default InvocationConfig will be used.
   /// Structure is documented below.
-  final Input<RepositoryWorkflowConfigInvocationConfig>? invocationConfig;
+  final pulumi.Input<RepositoryWorkflowConfigInvocationConfig>?
+      invocationConfig;
 
   /// The workflow's name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A reference to the region
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-  final Input<String> releaseConfig;
+  final pulumi.Input<String> releaseConfig;
 
   /// A reference to the Dataform repository
-  final Input<String>? repository;
+  final pulumi.Input<String>? repository;
 
   /// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  final Input<String>? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   RepositoryWorkflowConfigArgs({
     this.cronSchedule,
@@ -50,7 +51,7 @@ class RepositoryWorkflowConfigArgs {
     }
     final invocationConfigValue = invocationConfig;
     if (invocationConfigValue != null) {
-      map['invocationConfig'] = Input.mapOptionalInputValue<
+      map['invocationConfig'] = pulumi.Input.mapOptionalInputValue<
               RepositoryWorkflowConfigInvocationConfig, Map<String, dynamic>>(
           invocationConfigValue, (value) => value.toMap());
     }
@@ -80,16 +81,15 @@ class RepositoryWorkflowConfigArgs {
 
   factory RepositoryWorkflowConfigArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigArgs(
-      cronSchedule: Input.asOptionalInput<String>(map['cronSchedule']),
-      invocationConfig:
-          Input.asOptionalInput<RepositoryWorkflowConfigInvocationConfig>(
-              map['invocationConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      releaseConfig: Input.asInput<String>(map['releaseConfig']),
-      repository: Input.asOptionalInput<String>(map['repository']),
-      timeZone: Input.asOptionalInput<String>(map['timeZone']),
+      cronSchedule: pulumi.Input.asOptionalInput<String>(map['cronSchedule']),
+      invocationConfig: pulumi.Input.asOptionalInput<
+          RepositoryWorkflowConfigInvocationConfig>(map['invocationConfig']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      releaseConfig: pulumi.Input.asInput<String>(map['releaseConfig']),
+      repository: pulumi.Input.asOptionalInput<String>(map['repository']),
+      timeZone: pulumi.Input.asOptionalInput<String>(map['timeZone']),
     );
   }
 }

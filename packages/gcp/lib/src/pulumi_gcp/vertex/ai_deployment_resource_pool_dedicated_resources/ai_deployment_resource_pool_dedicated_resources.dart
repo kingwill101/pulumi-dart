@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_deployment_resource_pool_dedicated_resources_autoscaling_metric_spec/ai_deployment_resource_pool_dedicated_resources_autoscaling_metric_spec.dart';
 import '../ai_deployment_resource_pool_dedicated_resources_machine_spec/ai_deployment_resource_pool_dedicated_resources_machine_spec.dart';
 
@@ -31,7 +31,7 @@ class AiDeploymentResourcePoolDedicatedResources {
     final map = <String, dynamic>{};
     final autoscalingMetricSpecsValue = autoscalingMetricSpecs;
     if (autoscalingMetricSpecsValue != null) {
-      map['autoscalingMetricSpecs'] = Input.encodeList<
+      map['autoscalingMetricSpecs'] = pulumi.Input.encodeList<
               AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec,
               Map<String, dynamic>>(
           autoscalingMetricSpecsValue, (value) => value.toMap());
@@ -50,7 +50,7 @@ class AiDeploymentResourcePoolDedicatedResources {
     return AiDeploymentResourcePoolDedicatedResources(
       autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>(
               map['autoscalingMetricSpecs'],
               (value) =>

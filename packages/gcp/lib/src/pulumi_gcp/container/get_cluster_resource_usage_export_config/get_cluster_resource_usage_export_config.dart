@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_resource_usage_export_config_bigquery_destination/get_cluster_resource_usage_export_config_bigquery_destination.dart';
 
 class GetClusterResourceUsageExportConfig {
@@ -22,7 +22,7 @@ class GetClusterResourceUsageExportConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bigqueryDestinations'] = Input.encodeList<
+    map['bigqueryDestinations'] = pulumi.Input.encodeList<
         GetClusterResourceUsageExportConfigBigqueryDestination,
         Map<String, dynamic>>(bigqueryDestinations, (value) => value.toMap());
     map['enableNetworkEgressMetering'] = enableNetworkEgressMetering;
@@ -34,7 +34,7 @@ class GetClusterResourceUsageExportConfig {
   factory GetClusterResourceUsageExportConfig.fromMap(
       Map<String, dynamic> map) {
     return GetClusterResourceUsageExportConfig(
-      bigqueryDestinations: Input.decodeList<
+      bigqueryDestinations: pulumi.Input.decodeList<
               GetClusterResourceUsageExportConfigBigqueryDestination>(
           map['bigqueryDestinations'],
           (value) =>

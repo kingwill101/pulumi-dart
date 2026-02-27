@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_approval_settings_enrolled_service/access_approval_settings_enrolled_service.dart';
 import 'access_approval_settings_args.dart';
 
@@ -37,52 +37,52 @@ import 'access_approval_settings_args.dart';
 /// ```sh
 /// $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
 /// ```
-class AccessApprovalSettings extends CustomResource {
+class AccessApprovalSettings extends pulumi.CustomResource {
   /// The asymmetric crypto key version to use for signing approval requests.
   /// Empty active_key_version indicates that a Google-managed key should be used for signing.
   /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
-  late final Output<String?> activeKeyVersion;
+  late final pulumi.Output<String?> activeKeyVersion;
 
   /// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
-  late final Output<bool> ancestorHasActiveKeyVersion;
+  late final pulumi.Output<bool> ancestorHasActiveKeyVersion;
 
   /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
-  late final Output<bool> enrolledAncestor;
+  late final pulumi.Output<bool> enrolledAncestor;
 
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
   /// Access requests for the resource given by name against any of these services contained here will be required
   /// to have explicit approval. Enrollment can only be done on an all or nothing basis.
   /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
   /// Structure is documented below.
-  late final Output<List<AccessApprovalSettingsEnrolledService>>
+  late final pulumi.Output<List<AccessApprovalSettingsEnrolledService>>
       enrolledServices;
 
   /// ID of the folder of the access approval settings.
-  late final Output<String> folderId;
+  late final pulumi.Output<String> folderId;
 
   /// If the field is true, that indicates that there is some configuration issue with the active_key_version
   /// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
   /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
   /// as key versions are inherited top-down.
-  late final Output<bool> invalidKeyVersion;
+  late final pulumi.Output<bool> invalidKeyVersion;
 
   /// The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A list of email addresses to which notifications relating to approval requests should be sent.
   /// Notifications relating to a resource will be sent to all emails in the settings of ancestor
   /// resources of that resource. A maximum of 50 email addresses are allowed.
-  late final Output<List<String>> notificationEmails;
+  late final pulumi.Output<List<String>> notificationEmails;
 
   AccessApprovalSettings(
     String name, {
     AccessApprovalSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:folder/accessApprovalSettings:AccessApprovalSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     this.ancestorHasActiveKeyVersion =

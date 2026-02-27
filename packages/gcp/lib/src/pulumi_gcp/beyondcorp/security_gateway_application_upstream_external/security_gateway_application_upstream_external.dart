@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_gateway_application_upstream_external_endpoint/security_gateway_application_upstream_external_endpoint.dart';
 
 class SecurityGatewayApplicationUpstreamExternal {
@@ -14,7 +14,7 @@ class SecurityGatewayApplicationUpstreamExternal {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['endpoints'] = Input.encodeList<
+    map['endpoints'] = pulumi.Input.encodeList<
         SecurityGatewayApplicationUpstreamExternalEndpoint,
         Map<String, dynamic>>(endpoints, (value) => value.toMap());
     return map;
@@ -23,12 +23,11 @@ class SecurityGatewayApplicationUpstreamExternal {
   factory SecurityGatewayApplicationUpstreamExternal.fromMap(
       Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamExternal(
-      endpoints:
-          Input.decodeList<SecurityGatewayApplicationUpstreamExternalEndpoint>(
-              map['endpoints'],
-              (value) =>
-                  SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<
+              SecurityGatewayApplicationUpstreamExternalEndpoint>(
+          map['endpoints'],
+          (value) => SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

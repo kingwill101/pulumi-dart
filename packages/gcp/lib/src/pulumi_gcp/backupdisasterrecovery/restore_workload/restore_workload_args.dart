@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties/restore_workload_compute_instance_restore_properties.dart';
 import '../restore_workload_compute_instance_target_environment/restore_workload_compute_instance_target_environment.dart';
 import '../restore_workload_disk_restore_properties/restore_workload_disk_restore_properties.dart';
@@ -10,51 +10,53 @@ import '../restore_workload_region_disk_target_environment/restore_workload_regi
 /// The set of arguments for RestoreWorkload.
 class RestoreWorkloadArgs {
   /// Required. The ID of the backup to restore from.
-  final Input<String> backupId;
+  final pulumi.Input<String> backupId;
 
   /// Required. The ID of the backup vault.
-  final Input<String> backupVaultId;
+  final pulumi.Input<String> backupVaultId;
 
   /// Optional. A field mask used to clear server-side default values during restore.
-  final Input<String>? clearOverridesFieldMask;
+  final pulumi.Input<String>? clearOverridesFieldMask;
 
   /// Optional. Compute Engine instance properties to be overridden during restore.
   /// Structure is documented below.
-  final Input<RestoreWorkloadComputeInstanceRestoreProperties>?
+  final pulumi.Input<RestoreWorkloadComputeInstanceRestoreProperties>?
       computeInstanceRestoreProperties;
 
   /// Optional. The destination environment for GCE VM restoration.
   /// Structure is documented below.
-  final Input<RestoreWorkloadComputeInstanceTargetEnvironment>?
+  final pulumi.Input<RestoreWorkloadComputeInstanceTargetEnvironment>?
       computeInstanceTargetEnvironment;
 
   /// Required. The ID of the data source.
-  final Input<String> dataSourceId;
-  final Input<bool>? deleteRestoredInstance;
+  final pulumi.Input<String> dataSourceId;
+  final pulumi.Input<bool>? deleteRestoredInstance;
 
   /// Optional. Disk properties to be overridden during restore.
   /// Structure is documented below.
-  final Input<RestoreWorkloadDiskRestoreProperties>? diskRestoreProperties;
+  final pulumi.Input<RestoreWorkloadDiskRestoreProperties>?
+      diskRestoreProperties;
 
   /// Optional. The destination environment for zonal disk restoration.
   /// Structure is documented below.
-  final Input<RestoreWorkloadDiskTargetEnvironment>? diskTargetEnvironment;
+  final pulumi.Input<RestoreWorkloadDiskTargetEnvironment>?
+      diskTargetEnvironment;
 
   /// Required. The location for the backup vault.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Required. The resource name of the backup instance.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Optional. The destination environment for regional disk restoration.
   /// Structure is documented below.
-  final Input<RestoreWorkloadRegionDiskTargetEnvironment>?
+  final pulumi.Input<RestoreWorkloadRegionDiskTargetEnvironment>?
       regionDiskTargetEnvironment;
 
   /// Optional. An optional request ID to identify requests. Specify a unique request ID
   /// so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed.
-  final Input<String>? requestId;
+  final pulumi.Input<String>? requestId;
 
   RestoreWorkloadArgs({
     required this.backupId,
@@ -83,18 +85,20 @@ class RestoreWorkloadArgs {
     final computeInstanceRestorePropertiesValue =
         computeInstanceRestoreProperties;
     if (computeInstanceRestorePropertiesValue != null) {
-      map['computeInstanceRestoreProperties'] = Input.mapOptionalInputValue<
-              RestoreWorkloadComputeInstanceRestoreProperties,
-              Map<String, dynamic>>(
-          computeInstanceRestorePropertiesValue, (value) => value.toMap());
+      map['computeInstanceRestoreProperties'] =
+          pulumi.Input.mapOptionalInputValue<
+                  RestoreWorkloadComputeInstanceRestoreProperties,
+                  Map<String, dynamic>>(
+              computeInstanceRestorePropertiesValue, (value) => value.toMap());
     }
     final computeInstanceTargetEnvironmentValue =
         computeInstanceTargetEnvironment;
     if (computeInstanceTargetEnvironmentValue != null) {
-      map['computeInstanceTargetEnvironment'] = Input.mapOptionalInputValue<
-              RestoreWorkloadComputeInstanceTargetEnvironment,
-              Map<String, dynamic>>(
-          computeInstanceTargetEnvironmentValue, (value) => value.toMap());
+      map['computeInstanceTargetEnvironment'] =
+          pulumi.Input.mapOptionalInputValue<
+                  RestoreWorkloadComputeInstanceTargetEnvironment,
+                  Map<String, dynamic>>(
+              computeInstanceTargetEnvironmentValue, (value) => value.toMap());
     }
     map['dataSourceId'] = dataSourceId;
     final deleteRestoredInstanceValue = deleteRestoredInstance;
@@ -103,13 +107,13 @@ class RestoreWorkloadArgs {
     }
     final diskRestorePropertiesValue = diskRestoreProperties;
     if (diskRestorePropertiesValue != null) {
-      map['diskRestoreProperties'] = Input.mapOptionalInputValue<
+      map['diskRestoreProperties'] = pulumi.Input.mapOptionalInputValue<
               RestoreWorkloadDiskRestoreProperties, Map<String, dynamic>>(
           diskRestorePropertiesValue, (value) => value.toMap());
     }
     final diskTargetEnvironmentValue = diskTargetEnvironment;
     if (diskTargetEnvironmentValue != null) {
-      map['diskTargetEnvironment'] = Input.mapOptionalInputValue<
+      map['diskTargetEnvironment'] = pulumi.Input.mapOptionalInputValue<
               RestoreWorkloadDiskTargetEnvironment, Map<String, dynamic>>(
           diskTargetEnvironmentValue, (value) => value.toMap());
     }
@@ -120,7 +124,7 @@ class RestoreWorkloadArgs {
     }
     final regionDiskTargetEnvironmentValue = regionDiskTargetEnvironment;
     if (regionDiskTargetEnvironmentValue != null) {
-      map['regionDiskTargetEnvironment'] = Input.mapOptionalInputValue<
+      map['regionDiskTargetEnvironment'] = pulumi.Input.mapOptionalInputValue<
               RestoreWorkloadRegionDiskTargetEnvironment, Map<String, dynamic>>(
           regionDiskTargetEnvironmentValue, (value) => value.toMap());
     }
@@ -133,31 +137,31 @@ class RestoreWorkloadArgs {
 
   factory RestoreWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadArgs(
-      backupId: Input.asInput<String>(map['backupId']),
-      backupVaultId: Input.asInput<String>(map['backupVaultId']),
+      backupId: pulumi.Input.asInput<String>(map['backupId']),
+      backupVaultId: pulumi.Input.asInput<String>(map['backupVaultId']),
       clearOverridesFieldMask:
-          Input.asOptionalInput<String>(map['clearOverridesFieldMask']),
-      computeInstanceRestoreProperties: Input.asOptionalInput<
+          pulumi.Input.asOptionalInput<String>(map['clearOverridesFieldMask']),
+      computeInstanceRestoreProperties: pulumi.Input.asOptionalInput<
               RestoreWorkloadComputeInstanceRestoreProperties>(
           map['computeInstanceRestoreProperties']),
-      computeInstanceTargetEnvironment: Input.asOptionalInput<
+      computeInstanceTargetEnvironment: pulumi.Input.asOptionalInput<
               RestoreWorkloadComputeInstanceTargetEnvironment>(
           map['computeInstanceTargetEnvironment']),
-      dataSourceId: Input.asInput<String>(map['dataSourceId']),
+      dataSourceId: pulumi.Input.asInput<String>(map['dataSourceId']),
       deleteRestoredInstance:
-          Input.asOptionalInput<bool>(map['deleteRestoredInstance']),
+          pulumi.Input.asOptionalInput<bool>(map['deleteRestoredInstance']),
       diskRestoreProperties:
-          Input.asOptionalInput<RestoreWorkloadDiskRestoreProperties>(
+          pulumi.Input.asOptionalInput<RestoreWorkloadDiskRestoreProperties>(
               map['diskRestoreProperties']),
       diskTargetEnvironment:
-          Input.asOptionalInput<RestoreWorkloadDiskTargetEnvironment>(
+          pulumi.Input.asOptionalInput<RestoreWorkloadDiskTargetEnvironment>(
               map['diskTargetEnvironment']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      regionDiskTargetEnvironment:
-          Input.asOptionalInput<RestoreWorkloadRegionDiskTargetEnvironment>(
-              map['regionDiskTargetEnvironment']),
-      requestId: Input.asOptionalInput<String>(map['requestId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      regionDiskTargetEnvironment: pulumi.Input.asOptionalInput<
+              RestoreWorkloadRegionDiskTargetEnvironment>(
+          map['regionDiskTargetEnvironment']),
+      requestId: pulumi.Input.asOptionalInput<String>(map['requestId']),
     );
   }
 }

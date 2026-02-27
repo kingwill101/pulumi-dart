@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../floorsetting_filter_config_rai_settings_rai_filter/floorsetting_filter_config_rai_settings_rai_filter.dart';
 
 class FloorsettingFilterConfigRaiSettings {
@@ -14,7 +14,7 @@ class FloorsettingFilterConfigRaiSettings {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['raiFilters'] = Input.encodeList<
+    map['raiFilters'] = pulumi.Input.encodeList<
         FloorsettingFilterConfigRaiSettingsRaiFilter,
         Map<String, dynamic>>(raiFilters, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class FloorsettingFilterConfigRaiSettings {
       Map<String, dynamic> map) {
     return FloorsettingFilterConfigRaiSettings(
       raiFilters:
-          Input.decodeList<FloorsettingFilterConfigRaiSettingsRaiFilter>(
+          pulumi.Input.decodeList<FloorsettingFilterConfigRaiSettingsRaiFilter>(
               map['raiFilters'],
               (value) => FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

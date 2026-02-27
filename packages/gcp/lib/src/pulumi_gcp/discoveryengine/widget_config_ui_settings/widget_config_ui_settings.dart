@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../widget_config_ui_settings_data_store_ui_config/widget_config_ui_settings_data_store_ui_config.dart';
 import '../widget_config_ui_settings_generative_answer_config/widget_config_ui_settings_generative_answer_config.dart';
 
@@ -71,7 +71,7 @@ class WidgetConfigUiSettings {
     final map = <String, dynamic>{};
     final dataStoreUiConfigsValue = dataStoreUiConfigs;
     if (dataStoreUiConfigsValue != null) {
-      map['dataStoreUiConfigs'] = Input.encodeList<
+      map['dataStoreUiConfigs'] = pulumi.Input.encodeList<
               WidgetConfigUiSettingsDataStoreUiConfig, Map<String, dynamic>>(
           dataStoreUiConfigsValue, (value) => value.toMap());
     }
@@ -130,7 +130,7 @@ class WidgetConfigUiSettings {
     return WidgetConfigUiSettings(
       dataStoreUiConfigs: map['dataStoreUiConfigs'] == null
           ? null
-          : Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfig>(
+          : pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfig>(
               map['dataStoreUiConfigs'],
               (value) => WidgetConfigUiSettingsDataStoreUiConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

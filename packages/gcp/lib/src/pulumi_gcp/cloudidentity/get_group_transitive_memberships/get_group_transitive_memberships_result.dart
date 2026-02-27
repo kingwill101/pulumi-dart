@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_transitive_memberships_membership/get_group_transitive_memberships_membership.dart';
 
 /// Result data returned by getGroupTransitiveMemberships.
@@ -23,7 +23,7 @@ class GetGroupTransitiveMembershipsResult {
     final map = <String, dynamic>{};
     map['group'] = group;
     map['id'] = id;
-    map['memberships'] = Input.encodeList<
+    map['memberships'] = pulumi.Input.encodeList<
         GetGroupTransitiveMembershipsMembership,
         Map<String, dynamic>>(memberships, (value) => value.toMap());
     return map;
@@ -34,10 +34,11 @@ class GetGroupTransitiveMembershipsResult {
     return GetGroupTransitiveMembershipsResult(
       group: map['group'] as String,
       id: map['id'] as String,
-      memberships: Input.decodeList<GetGroupTransitiveMembershipsMembership>(
-          map['memberships'],
-          (value) => GetGroupTransitiveMembershipsMembership.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      memberships:
+          pulumi.Input.decodeList<GetGroupTransitiveMembershipsMembership>(
+              map['memberships'],
+              (value) => GetGroupTransitiveMembershipsMembership.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

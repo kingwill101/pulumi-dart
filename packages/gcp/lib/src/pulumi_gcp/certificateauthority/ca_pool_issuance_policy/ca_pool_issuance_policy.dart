@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ca_pool_issuance_policy_allowed_issuance_modes/ca_pool_issuance_policy_allowed_issuance_modes.dart';
 import '../ca_pool_issuance_policy_allowed_key_type/ca_pool_issuance_policy_allowed_key_type.dart';
 import '../ca_pool_issuance_policy_baseline_values/ca_pool_issuance_policy_baseline_values.dart';
@@ -56,7 +56,7 @@ class CaPoolIssuancePolicy {
     }
     final allowedKeyTypesValue = allowedKeyTypes;
     if (allowedKeyTypesValue != null) {
-      map['allowedKeyTypes'] = Input.encodeList<
+      map['allowedKeyTypes'] = pulumi.Input.encodeList<
           CaPoolIssuancePolicyAllowedKeyType,
           Map<String, dynamic>>(allowedKeyTypesValue, (value) => value.toMap());
     }
@@ -87,7 +87,7 @@ class CaPoolIssuancePolicy {
               (map['allowedIssuanceModes'] as Map).cast<String, dynamic>()),
       allowedKeyTypes: map['allowedKeyTypes'] == null
           ? null
-          : Input.decodeList<CaPoolIssuancePolicyAllowedKeyType>(
+          : pulumi.Input.decodeList<CaPoolIssuancePolicyAllowedKeyType>(
               map['allowedKeyTypes'],
               (value) => CaPoolIssuancePolicyAllowedKeyType.fromMap(
                   (value as Map).cast<String, dynamic>())),

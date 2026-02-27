@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_organization_policy_args.dart';
 import 'get_organization_policy_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_organization_policy_result.dart';
 /// documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
 Future<GetOrganizationPolicyResult> getOrganizationPolicy(
   GetOrganizationPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:folder/getOrganizationPolicy:getOrganizationPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationPolicyResult.fromMap(result);
 }

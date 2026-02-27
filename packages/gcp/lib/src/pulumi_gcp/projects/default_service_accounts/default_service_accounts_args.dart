@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DefaultServiceAccounts.
 class DefaultServiceAccountsArgs {
   /// The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
-  final Input<String> action;
+  final pulumi.Input<String> action;
 
   /// The project ID where service accounts are created.
-  final Input<String> project;
+  final pulumi.Input<String> project;
 
   /// The action to be performed in the default service accounts on the resource destroy.
   /// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
   /// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
   /// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
-  final Input<String>? restorePolicy;
+  final pulumi.Input<String>? restorePolicy;
 
   DefaultServiceAccountsArgs({
     required this.action,
@@ -35,9 +35,9 @@ class DefaultServiceAccountsArgs {
 
   factory DefaultServiceAccountsArgs.fromMap(Map<String, dynamic> map) {
     return DefaultServiceAccountsArgs(
-      action: Input.asInput<String>(map['action']),
-      project: Input.asInput<String>(map['project']),
-      restorePolicy: Input.asOptionalInput<String>(map['restorePolicy']),
+      action: pulumi.Input.asInput<String>(map['action']),
+      project: pulumi.Input.asInput<String>(map['project']),
+      restorePolicy: pulumi.Input.asOptionalInput<String>(map['restorePolicy']),
     );
   }
 }

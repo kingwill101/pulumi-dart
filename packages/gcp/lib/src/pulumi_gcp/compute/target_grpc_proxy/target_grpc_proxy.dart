@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_grpc_proxy_args.dart';
 
 /// Represents a Target gRPC Proxy resource. A target gRPC proxy is a component
@@ -43,12 +43,12 @@ import 'target_grpc_proxy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
 /// ```
-class TargetGrpcProxy extends CustomResource {
+class TargetGrpcProxy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Fingerprint of this resource. A hash of the contents stored in
   /// this object. This field is used in optimistic locking. This field
@@ -57,7 +57,7 @@ class TargetGrpcProxy extends CustomResource {
   /// TargetGrpcProxy; otherwise, the request will fail with error
   /// 412 conditionNotMet. To see the latest fingerprint, make a get()
   /// request to retrieve the TargetGrpcProxy. A base64-encoded string.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// Name of the resource. Provided by the client when the resource
   /// is created. The name must be 1-63 characters long, and comply
@@ -66,22 +66,22 @@ class TargetGrpcProxy extends CustomResource {
   /// means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Server-defined URL with id for the resource.
-  late final Output<String> selfLinkWithId;
+  late final pulumi.Output<String> selfLinkWithId;
 
   /// URL to the UrlMap resource that defines the mapping from URL to
   /// the BackendService. The protocol field in the BackendService
   /// must be set to GRPC.
-  late final Output<String?> urlMap;
+  late final pulumi.Output<String?> urlMap;
 
   /// If true, indicates that the BackendServices referenced by
   /// the urlMap may be accessed by gRPC applications without using
@@ -93,17 +93,17 @@ class TargetGrpcProxy extends CustomResource {
   /// applications via a sidecar proxy. In this case, a gRPC application
   /// must not use "xds:///" scheme in the target URI of the service
   /// it is connecting to
-  late final Output<bool?> validateForProxyless;
+  late final pulumi.Output<bool?> validateForProxyless;
 
   TargetGrpcProxy(
     String name, {
     TargetGrpcProxyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/targetGrpcProxy:TargetGrpcProxy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

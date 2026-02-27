@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_organization_source_iam_binding_condition/v2_organization_source_iam_binding_condition.dart';
 
 /// The set of arguments for V2OrganizationSourceIamBinding.
 class V2OrganizationSourceIamBindingArgs {
-  final Input<V2OrganizationSourceIamBindingCondition>? condition;
+  final pulumi.Input<V2OrganizationSourceIamBindingCondition>? condition;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -19,16 +19,16 @@ class V2OrganizationSourceIamBindingArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final Input<List<String>> members;
-  final Input<String> organization;
+  final pulumi.Input<List<String>> members;
+  final pulumi.Input<String> organization;
 
   /// The role that should be applied. Only one
   /// `gcp.securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> source;
+  final pulumi.Input<String> source;
 
   V2OrganizationSourceIamBindingArgs({
     this.condition,
@@ -42,7 +42,7 @@ class V2OrganizationSourceIamBindingArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           V2OrganizationSourceIamBindingCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -55,12 +55,13 @@ class V2OrganizationSourceIamBindingArgs {
 
   factory V2OrganizationSourceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationSourceIamBindingArgs(
-      condition: Input.asOptionalInput<V2OrganizationSourceIamBindingCondition>(
-          map['condition']),
-      members: Input.asInput<List<String>>(map['members']),
-      organization: Input.asInput<String>(map['organization']),
-      role: Input.asInput<String>(map['role']),
-      source: Input.asInput<String>(map['source']),
+      condition:
+          pulumi.Input.asOptionalInput<V2OrganizationSourceIamBindingCondition>(
+              map['condition']),
+      members: pulumi.Input.asInput<List<String>>(map['members']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
+      role: pulumi.Input.asInput<String>(map['role']),
+      source: pulumi.Input.asInput<String>(map['source']),
     );
   }
 }

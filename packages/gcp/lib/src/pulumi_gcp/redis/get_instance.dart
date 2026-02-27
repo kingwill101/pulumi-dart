@@ -1,5 +1,5 @@
 library module_redis_get_instance;
 
-export 'get_instance/get_instance7.dart';
-export 'get_instance/get_instance_args7.dart';
-export 'get_instance/get_instance_result7.dart';
+export 'get_instance/get_instance_redis.dart';
+export 'get_instance/get_instance_redis_args.dart';
+export 'get_instance/get_instance_redis_result.dart';

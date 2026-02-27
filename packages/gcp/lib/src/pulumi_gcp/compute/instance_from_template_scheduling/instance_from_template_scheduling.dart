@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_from_template_scheduling_graceful_shutdown/instance_from_template_scheduling_graceful_shutdown.dart';
 import '../instance_from_template_scheduling_local_ssd_recovery_timeout/instance_from_template_scheduling_local_ssd_recovery_timeout.dart';
 import '../instance_from_template_scheduling_max_run_duration/instance_from_template_scheduling_max_run_duration.dart';
@@ -120,7 +120,7 @@ class InstanceFromTemplateScheduling {
     }
     final nodeAffinitiesValue = nodeAffinities;
     if (nodeAffinitiesValue != null) {
-      map['nodeAffinities'] = Input.encodeList<
+      map['nodeAffinities'] = pulumi.Input.encodeList<
           InstanceFromTemplateSchedulingNodeAffinity,
           Map<String, dynamic>>(nodeAffinitiesValue, (value) => value.toMap());
     }
@@ -184,7 +184,7 @@ class InstanceFromTemplateScheduling {
           map['minNodeCpus'] == null ? null : map['minNodeCpus'] as int,
       nodeAffinities: map['nodeAffinities'] == null
           ? null
-          : Input.decodeList<InstanceFromTemplateSchedulingNodeAffinity>(
+          : pulumi.Input.decodeList<InstanceFromTemplateSchedulingNodeAffinity>(
               map['nodeAffinities'],
               (value) => InstanceFromTemplateSchedulingNodeAffinity.fromMap(
                   (value as Map).cast<String, dynamic>())),

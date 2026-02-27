@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ServingConfig.
 class ServingConfigArgs {
   /// The resource IDs of the boost controls to be applied.
-  final Input<List<String>>? boostControlIds;
+  final pulumi.Input<List<String>>? boostControlIds;
 
   /// The collection ID. Currently only accepts "default_collection".
-  final Input<String>? collectionId;
+  final pulumi.Input<String>? collectionId;
 
   /// The ID of the engine associated with the serving config.
-  final Input<String> engineId;
+  final pulumi.Input<String> engineId;
 
   /// The resource IDs of the filter controls to be applied.
-  final Input<List<String>>? filterControlIds;
+  final pulumi.Input<List<String>>? filterControlIds;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The resource IDs of the promote controls to be applied.
-  final Input<List<String>>? promoteControlIds;
+  final pulumi.Input<List<String>>? promoteControlIds;
 
   /// The resource IDs of the redirect controls to be applied.
-  final Input<List<String>>? redirectControlIds;
+  final pulumi.Input<List<String>>? redirectControlIds;
 
   /// 'The unique ID of the serving config. Currently only accepts "default_search".'
-  final Input<String>? servingConfigId;
+  final pulumi.Input<String>? servingConfigId;
 
   /// The resource IDs of the synonyms controls to be applied.
-  final Input<List<String>>? synonymsControlIds;
+  final pulumi.Input<List<String>>? synonymsControlIds;
 
   ServingConfigArgs({
     this.boostControlIds,
@@ -91,20 +91,21 @@ class ServingConfigArgs {
   factory ServingConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServingConfigArgs(
       boostControlIds:
-          Input.asOptionalInput<List<String>>(map['boostControlIds']),
-      collectionId: Input.asOptionalInput<String>(map['collectionId']),
-      engineId: Input.asInput<String>(map['engineId']),
+          pulumi.Input.asOptionalInput<List<String>>(map['boostControlIds']),
+      collectionId: pulumi.Input.asOptionalInput<String>(map['collectionId']),
+      engineId: pulumi.Input.asInput<String>(map['engineId']),
       filterControlIds:
-          Input.asOptionalInput<List<String>>(map['filterControlIds']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<List<String>>(map['filterControlIds']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       promoteControlIds:
-          Input.asOptionalInput<List<String>>(map['promoteControlIds']),
+          pulumi.Input.asOptionalInput<List<String>>(map['promoteControlIds']),
       redirectControlIds:
-          Input.asOptionalInput<List<String>>(map['redirectControlIds']),
-      servingConfigId: Input.asOptionalInput<String>(map['servingConfigId']),
+          pulumi.Input.asOptionalInput<List<String>>(map['redirectControlIds']),
+      servingConfigId:
+          pulumi.Input.asOptionalInput<String>(map['servingConfigId']),
       synonymsControlIds:
-          Input.asOptionalInput<List<String>>(map['synonymsControlIds']),
+          pulumi.Input.asOptionalInput<List<String>>(map['synonymsControlIds']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_cross_cluster_replication_config_membership_primary_cluster/get_cluster_cross_cluster_replication_config_membership_primary_cluster.dart';
 import '../get_cluster_cross_cluster_replication_config_membership_secondary_cluster/get_cluster_cross_cluster_replication_config_membership_secondary_cluster.dart';
 
@@ -20,10 +20,10 @@ class GetClusterCrossClusterReplicationConfigMembership {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['primaryClusters'] = Input.encodeList<
+    map['primaryClusters'] = pulumi.Input.encodeList<
         GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster,
         Map<String, dynamic>>(primaryClusters, (value) => value.toMap());
-    map['secondaryClusters'] = Input.encodeList<
+    map['secondaryClusters'] = pulumi.Input.encodeList<
         GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster,
         Map<String, dynamic>>(secondaryClusters, (value) => value.toMap());
     return map;
@@ -32,13 +32,13 @@ class GetClusterCrossClusterReplicationConfigMembership {
   factory GetClusterCrossClusterReplicationConfigMembership.fromMap(
       Map<String, dynamic> map) {
     return GetClusterCrossClusterReplicationConfigMembership(
-      primaryClusters: Input.decodeList<
+      primaryClusters: pulumi.Input.decodeList<
               GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster>(
           map['primaryClusters'],
           (value) =>
               GetClusterCrossClusterReplicationConfigMembershipPrimaryCluster
                   .fromMap((value as Map).cast<String, dynamic>())),
-      secondaryClusters: Input.decodeList<
+      secondaryClusters: pulumi.Input.decodeList<
               GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster>(
           map['secondaryClusters'],
           (value) =>

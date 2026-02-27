@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Boundary.
 class BoundaryArgs {
   /// Optional. The resource name of the CRM node being attached to the
   /// boundary.
   /// Format: `projects/{project-number}`
-  final Input<String>? crmNode;
+  final pulumi.Input<String>? crmNode;
 
   /// The location for the Boundary resource. Must be global.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   BoundaryArgs({
     this.crmNode,
@@ -38,9 +38,9 @@ class BoundaryArgs {
 
   factory BoundaryArgs.fromMap(Map<String, dynamic> map) {
     return BoundaryArgs(
-      crmNode: Input.asOptionalInput<String>(map['crmNode']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      crmNode: pulumi.Input.asOptionalInput<String>(map['crmNode']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

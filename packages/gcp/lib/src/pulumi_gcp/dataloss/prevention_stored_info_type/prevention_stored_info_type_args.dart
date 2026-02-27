@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_stored_info_type_dictionary/prevention_stored_info_type_dictionary.dart';
 import '../prevention_stored_info_type_large_custom_dictionary/prevention_stored_info_type_large_custom_dictionary.dart';
 import '../prevention_stored_info_type_regex/prevention_stored_info_type_regex.dart';
@@ -8,18 +8,18 @@ import '../prevention_stored_info_type_regex/prevention_stored_info_type_regex.d
 /// The set of arguments for PreventionStoredInfoType.
 class PreventionStoredInfoTypeArgs {
   /// A description of the info type.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final Input<PreventionStoredInfoTypeDictionary>? dictionary;
+  final pulumi.Input<PreventionStoredInfoTypeDictionary>? dictionary;
 
   /// User set display name of the info type.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final Input<PreventionStoredInfoTypeLargeCustomDictionary>?
+  final pulumi.Input<PreventionStoredInfoTypeLargeCustomDictionary>?
       largeCustomDictionary;
 
   /// The parent of the info type in any of the following formats:
@@ -27,16 +27,16 @@ class PreventionStoredInfoTypeArgs {
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final Input<PreventionStoredInfoTypeRegex>? regex;
+  final pulumi.Input<PreventionStoredInfoTypeRegex>? regex;
 
   /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
   /// characters. Can be empty to allow the system to generate one.
-  final Input<String>? storedInfoTypeId;
+  final pulumi.Input<String>? storedInfoTypeId;
 
   PreventionStoredInfoTypeArgs({
     this.description,
@@ -56,7 +56,7 @@ class PreventionStoredInfoTypeArgs {
     }
     final dictionaryValue = dictionary;
     if (dictionaryValue != null) {
-      map['dictionary'] = Input.mapOptionalInputValue<
+      map['dictionary'] = pulumi.Input.mapOptionalInputValue<
           PreventionStoredInfoTypeDictionary,
           Map<String, dynamic>>(dictionaryValue, (value) => value.toMap());
     }
@@ -66,7 +66,7 @@ class PreventionStoredInfoTypeArgs {
     }
     final largeCustomDictionaryValue = largeCustomDictionary;
     if (largeCustomDictionaryValue != null) {
-      map['largeCustomDictionary'] = Input.mapOptionalInputValue<
+      map['largeCustomDictionary'] = pulumi.Input.mapOptionalInputValue<
               PreventionStoredInfoTypeLargeCustomDictionary,
               Map<String, dynamic>>(
           largeCustomDictionaryValue, (value) => value.toMap());
@@ -74,7 +74,8 @@ class PreventionStoredInfoTypeArgs {
     map['parent'] = parent;
     final regexValue = regex;
     if (regexValue != null) {
-      map['regex'] = Input.mapOptionalInputValue<PreventionStoredInfoTypeRegex,
+      map['regex'] = pulumi.Input.mapOptionalInputValue<
+          PreventionStoredInfoTypeRegex,
           Map<String, dynamic>>(regexValue, (value) => value.toMap());
     }
     final storedInfoTypeIdValue = storedInfoTypeId;
@@ -86,16 +87,19 @@ class PreventionStoredInfoTypeArgs {
 
   factory PreventionStoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      dictionary: Input.asOptionalInput<PreventionStoredInfoTypeDictionary>(
-          map['dictionary']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      largeCustomDictionary:
-          Input.asOptionalInput<PreventionStoredInfoTypeLargeCustomDictionary>(
-              map['largeCustomDictionary']),
-      parent: Input.asInput<String>(map['parent']),
-      regex: Input.asOptionalInput<PreventionStoredInfoTypeRegex>(map['regex']),
-      storedInfoTypeId: Input.asOptionalInput<String>(map['storedInfoTypeId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      dictionary:
+          pulumi.Input.asOptionalInput<PreventionStoredInfoTypeDictionary>(
+              map['dictionary']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      largeCustomDictionary: pulumi.Input.asOptionalInput<
+              PreventionStoredInfoTypeLargeCustomDictionary>(
+          map['largeCustomDictionary']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      regex: pulumi.Input.asOptionalInput<PreventionStoredInfoTypeRegex>(
+          map['regex']),
+      storedInfoTypeId:
+          pulumi.Input.asOptionalInput<String>(map['storedInfoTypeId']),
     );
   }
 }

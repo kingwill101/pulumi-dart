@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucketObjects.
 class GetBucketObjectsArgs {
   /// The name of the containing bucket.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// A glob pattern used to filter results (for example, `foo*bar`).
-  final Input<String>? matchGlob;
+  final pulumi.Input<String>? matchGlob;
 
   /// Filter results to include only objects whose names begin with this prefix.
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   GetBucketObjectsArgs({
     required this.bucket,
@@ -35,9 +35,9 @@ class GetBucketObjectsArgs {
 
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      matchGlob: Input.asOptionalInput<String>(map['matchGlob']),
-      prefix: Input.asOptionalInput<String>(map['prefix']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      matchGlob: pulumi.Input.asOptionalInput<String>(map['matchGlob']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
     );
   }
 }

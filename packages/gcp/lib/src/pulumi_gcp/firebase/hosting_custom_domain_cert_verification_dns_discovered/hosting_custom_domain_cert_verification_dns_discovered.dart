@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hosting_custom_domain_cert_verification_dns_discovered_record/hosting_custom_domain_cert_verification_dns_discovered_record.dart';
 
 class HostingCustomDomainCertVerificationDnsDiscovered {
@@ -24,7 +24,7 @@ class HostingCustomDomainCertVerificationDnsDiscovered {
     }
     final recordsValue = records;
     if (recordsValue != null) {
-      map['records'] = Input.encodeList<
+      map['records'] = pulumi.Input.encodeList<
           HostingCustomDomainCertVerificationDnsDiscoveredRecord,
           Map<String, dynamic>>(recordsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class HostingCustomDomainCertVerificationDnsDiscovered {
           map['domainName'] == null ? null : map['domainName'] as String,
       records: map['records'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   HostingCustomDomainCertVerificationDnsDiscoveredRecord>(
               map['records'],
               (value) => HostingCustomDomainCertVerificationDnsDiscoveredRecord

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../db_system_properties_db_home_database_properties_db_backup_config_backup_destination_detail/db_system_properties_db_home_database_properties_db_backup_config_backup_destination_detail.dart';
 
 class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
@@ -103,7 +103,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
     }
     final backupDestinationDetailsValue = backupDestinationDetails;
     if (backupDestinationDetailsValue != null) {
-      map['backupDestinationDetails'] = Input.encodeList<
+      map['backupDestinationDetails'] = pulumi.Input.encodeList<
           DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail,
           Map<String,
               dynamic>>(backupDestinationDetailsValue, (value) => value.toMap());
@@ -135,7 +135,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
           : map['backupDeletionPolicy'] as String,
       backupDestinationDetails: map['backupDestinationDetails'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail>(
               map['backupDestinationDetails'],
               (value) =>

@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LoggingSetting.
 class LoggingSettingArgs {
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Whether to log metadata.
-  final Input<bool>? logMetadata;
+  final pulumi.Input<bool>? logMetadata;
 
   /// Whether to log prompts and responses.
-  final Input<bool>? logPromptsAndResponses;
+  final pulumi.Input<bool>? logPromptsAndResponses;
 
   /// Id of the Logging Setting.
-  final Input<String> loggingSettingId;
+  final pulumi.Input<String> loggingSettingId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   LoggingSettingArgs({
     this.labels,
@@ -59,13 +59,13 @@ class LoggingSettingArgs {
 
   factory LoggingSettingArgs.fromMap(Map<String, dynamic> map) {
     return LoggingSettingArgs(
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      logMetadata: Input.asOptionalInput<bool>(map['logMetadata']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      logMetadata: pulumi.Input.asOptionalInput<bool>(map['logMetadata']),
       logPromptsAndResponses:
-          Input.asOptionalInput<bool>(map['logPromptsAndResponses']),
-      loggingSettingId: Input.asInput<String>(map['loggingSettingId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<bool>(map['logPromptsAndResponses']),
+      loggingSettingId: pulumi.Input.asInput<String>(map['loggingSettingId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

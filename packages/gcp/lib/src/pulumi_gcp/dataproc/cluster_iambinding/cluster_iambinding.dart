@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_iambinding_condition/cluster_iambinding_condition.dart';
 import 'cluster_iambinding_args.dart';
 
@@ -61,15 +61,15 @@ import 'cluster_iambinding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding default projects/{project}/regions/{region}/clusters/{cluster}
 /// ```
-class ClusterIAMBinding extends CustomResource {
+class ClusterIAMBinding extends pulumi.CustomResource {
   /// The name or relative resource id of the cluster to manage IAM policies for.
   ///
   /// For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
-  late final Output<String> cluster;
-  late final Output<ClusterIAMBindingCondition?> condition;
+  late final pulumi.Output<String> cluster;
+  late final pulumi.Output<ClusterIAMBindingCondition?> condition;
 
   /// (Computed) The etag of the clusters's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -79,32 +79,32 @@ class ClusterIAMBinding extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<List<String>> members;
+  late final pulumi.Output<List<String>> members;
 
   /// The project in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The role that should be applied. Only one
   /// `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   ///
   /// `gcp.dataproc.ClusterIAMPolicy` only:
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   ClusterIAMBinding(
     String name, {
     ClusterIAMBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataproc/clusterIAMBinding:ClusterIAMBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cluster = registerOutput<String>('cluster');
     this.condition = registerOutput<ClusterIAMBindingCondition?>('condition');

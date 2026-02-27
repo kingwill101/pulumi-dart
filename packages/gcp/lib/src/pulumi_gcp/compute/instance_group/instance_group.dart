@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_group_named_port/instance_group_named_port.dart';
 import 'instance_group_args.dart';
 
@@ -40,55 +40,55 @@ import 'instance_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
 /// ```
-class InstanceGroup extends CustomResource {
+class InstanceGroup extends pulumi.CustomResource {
   /// An optional textual description of the instance
   /// group.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The list of instances in the group, in `self_link` format.
   /// When adding instances they must all be in the same network and zone as the instance group.
-  late final Output<List<String>> instances;
+  late final pulumi.Output<List<String>> instances;
 
   /// The name of the instance group. Must be 1-63
   /// characters long and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
   /// include lowercase letters, numbers, and hyphens.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The named port configuration. See the section below
   /// for details on configuration. Structure is documented below.
-  late final Output<List<InstanceGroupNamedPort>?> namedPorts;
+  late final pulumi.Output<List<InstanceGroupNamedPort>?> namedPorts;
 
   /// The URL of the network the instance group is in. If
   /// this is different from the network where the instances are in, the creation
   /// fails. Defaults to the network where the instances are in (if neither
   /// `network` nor `instances` is specified, this field will be blank).
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The number of instances in the group.
-  late final Output<int> size;
+  late final pulumi.Output<int> size;
 
   /// The zone that this instance group should be created in.
   ///
   /// - - -
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   InstanceGroup(
     String name, {
     InstanceGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/instanceGroup:InstanceGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.instances = registerOutput<List<String>>('instances');

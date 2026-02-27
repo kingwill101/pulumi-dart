@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_mongodb_source_config_exclude_objects_database_collection/stream_source_config_mongodb_source_config_exclude_objects_database_collection.dart';
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase {
@@ -22,7 +22,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase {
     final map = <String, dynamic>{};
     final collectionsValue = collections;
     if (collectionsValue != null) {
-      map['collections'] = Input.encodeList<
+      map['collections'] = pulumi.Input.encodeList<
           StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection,
           Map<String, dynamic>>(collectionsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase {
     return StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase(
       collections: map['collections'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection>(
               map['collections'],
               (value) =>

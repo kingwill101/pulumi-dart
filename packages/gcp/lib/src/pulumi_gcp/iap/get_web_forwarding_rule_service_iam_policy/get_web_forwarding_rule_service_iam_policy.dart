@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_web_forwarding_rule_service_iam_policy_args.dart';
 import 'get_web_forwarding_rule_service_iam_policy_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_web_forwarding_rule_service_iam_policy_result.dart';
 Future<GetWebForwardingRuleServiceIamPolicyResult>
     getWebForwardingRuleServiceIamPolicy(
   GetWebForwardingRuleServiceIamPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:iap/getWebForwardingRuleServiceIamPolicy:getWebForwardingRuleServiceIamPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebForwardingRuleServiceIamPolicyResult.fromMap(result);
 }

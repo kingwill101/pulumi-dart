@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_app_engine_service_args.dart';
 import 'get_app_engine_service_result.dart';
 
@@ -22,13 +22,13 @@ import 'get_app_engine_service_result.dart';
 /// ### Monitoring App Engine Service
 Future<GetAppEngineServiceResult> getAppEngineService(
   GetAppEngineServiceArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:monitoring/getAppEngineService:getAppEngineService',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppEngineServiceResult.fromMap(result);
 }

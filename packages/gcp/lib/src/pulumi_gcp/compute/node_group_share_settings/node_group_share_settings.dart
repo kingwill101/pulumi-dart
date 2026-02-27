@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_group_share_settings_project_map/node_group_share_settings_project_map.dart';
 
 class NodeGroupShareSettings {
@@ -21,7 +21,8 @@ class NodeGroupShareSettings {
     final map = <String, dynamic>{};
     final projectMapsValue = projectMaps;
     if (projectMapsValue != null) {
-      map['projectMaps'] = Input.encodeList<NodeGroupShareSettingsProjectMap,
+      map['projectMaps'] = pulumi.Input.encodeList<
+          NodeGroupShareSettingsProjectMap,
           Map<String, dynamic>>(projectMapsValue, (value) => value.toMap());
     }
     map['shareType'] = shareType;
@@ -32,7 +33,7 @@ class NodeGroupShareSettings {
     return NodeGroupShareSettings(
       projectMaps: map['projectMaps'] == null
           ? null
-          : Input.decodeList<NodeGroupShareSettingsProjectMap>(
+          : pulumi.Input.decodeList<NodeGroupShareSettingsProjectMap>(
               map['projectMaps'],
               (value) => NodeGroupShareSettingsProjectMap.fromMap(
                   (value as Map).cast<String, dynamic>())),

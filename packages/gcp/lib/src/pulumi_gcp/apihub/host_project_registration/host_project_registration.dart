@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'host_project_registration_args.dart';
 
 /// Host project registration refers to the registration of a Google cloud project with API hub as a host project.
@@ -38,42 +38,42 @@ import 'host_project_registration_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apihub/hostProjectRegistration:HostProjectRegistration default {{location}}/{{host_project_registration_id}}
 /// ```
-class HostProjectRegistration extends CustomResource {
+class HostProjectRegistration extends pulumi.CustomResource {
   /// Output only. The time at which the host project registration was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
   /// As input, project name with either project id or number are accepted.
   /// As output, this field will contain project number.
-  late final Output<String> gcpProject;
+  late final pulumi.Output<String> gcpProject;
 
   /// Required. The ID to use for the Host Project Registration, which will become the
   /// final component of the host project registration's resource name. The ID
   /// must be the same as the Google cloud project specified in the
   /// host_project_registration.gcp_project field.
-  late final Output<String> hostProjectRegistrationId;
+  late final pulumi.Output<String> hostProjectRegistrationId;
 
   /// Part of `parent`. See documentation of `projectsId`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The name of the host project registration.
   /// Format:
   /// "projects/{project}/locations/{location}/hostProjectRegistrations/{host_project_registration}".
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   HostProjectRegistration(
     String name, {
     HostProjectRegistrationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apihub/hostProjectRegistration:HostProjectRegistration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.gcpProject = registerOutput<String>('gcpProject');

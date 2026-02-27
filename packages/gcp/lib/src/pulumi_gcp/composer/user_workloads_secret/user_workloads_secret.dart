@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_workloads_secret_args.dart';
 
 /// User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
@@ -31,32 +31,32 @@ import 'user_workloads_secret_args.dart';
 /// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsSecret:UserWorkloadsSecret example {{environment}}/{{name}}
 /// ```
-class UserWorkloadsSecret extends CustomResource {
+class UserWorkloadsSecret extends pulumi.CustomResource {
   /// A map of the secret data.
-  late final Output<Map<String, String>?> data;
+  late final pulumi.Output<Map<String, String>?> data;
 
   /// Environment where the Kubernetes Secret will be stored and used.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// Name of the Kubernetes Secret.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The location or Compute Engine region for the environment.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   UserWorkloadsSecret(
     String name, {
     UserWorkloadsSecretArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.data = registerOutput<Map<String, String>?>('data');
     this.environment = registerOutput<String>('environment');

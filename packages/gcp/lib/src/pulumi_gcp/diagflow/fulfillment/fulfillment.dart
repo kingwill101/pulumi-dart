@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../fulfillment_feature/fulfillment_feature.dart';
 import '../fulfillment_generic_web_service/fulfillment_generic_web_service.dart';
 import 'fulfillment_args.dart';
@@ -30,38 +30,38 @@ import 'fulfillment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}
 /// ```
-class Fulfillment extends CustomResource {
+class Fulfillment extends pulumi.CustomResource {
   /// The human-readable name of the fulfillment, unique within the agent.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Whether fulfillment is enabled.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
-  late final Output<List<FulfillmentFeature>?> features;
+  late final pulumi.Output<List<FulfillmentFeature>?> features;
 
   /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// Structure is documented below.
-  late final Output<FulfillmentGenericWebService?> genericWebService;
+  late final pulumi.Output<FulfillmentGenericWebService?> genericWebService;
 
   /// The unique identifier of the fulfillment.
   /// Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   Fulfillment(
     String name, {
     FulfillmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/fulfillment:Fulfillment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String>('displayName');
     this.enabled = registerOutput<bool?>('enabled');

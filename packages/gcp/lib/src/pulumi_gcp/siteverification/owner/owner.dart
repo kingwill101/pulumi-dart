@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'owner_args.dart';
 
 /// An owner is an additional user that may manage a verified web site in the
@@ -55,25 +55,25 @@ import 'owner_args.dart';
 /// ```
 ///
 /// verified owners is to delete the web resource itself.
-class Owner extends CustomResource {
+class Owner extends pulumi.CustomResource {
   /// The email of the user to be added as an owner.
   ///
   /// - - -
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
   /// such as `webResource/https://www.example.com/`
-  late final Output<String> webResourceId;
+  late final pulumi.Output<String> webResourceId;
 
   Owner(
     String name, {
     OwnerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:siteverification/owner:Owner',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.email = registerOutput<String>('email');
     this.webResourceId = registerOutput<String>('webResourceId');

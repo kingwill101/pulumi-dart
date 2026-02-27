@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_configmanagement_config_sync/get_feature_fleet_default_member_config_configmanagement_config_sync.dart';
 
 class GetFeatureFleetDefaultMemberConfigConfigmanagement {
@@ -22,7 +22,7 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagement {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['configSyncs'] = Input.encodeList<
+    map['configSyncs'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync,
         Map<String, dynamic>>(configSyncs, (value) => value.toMap());
     map['management'] = management;
@@ -33,7 +33,7 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagement {
   factory GetFeatureFleetDefaultMemberConfigConfigmanagement.fromMap(
       Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigConfigmanagement(
-      configSyncs: Input.decodeList<
+      configSyncs: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync>(
           map['configSyncs'],
           (value) =>

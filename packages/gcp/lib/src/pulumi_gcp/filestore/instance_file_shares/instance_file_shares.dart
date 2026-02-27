@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_file_shares_nfs_export_option/instance_file_shares_nfs_export_option.dart';
 
 class InstanceFileShares {
@@ -33,7 +33,7 @@ class InstanceFileShares {
     map['name'] = name;
     final nfsExportOptionsValue = nfsExportOptions;
     if (nfsExportOptionsValue != null) {
-      map['nfsExportOptions'] = Input.encodeList<
+      map['nfsExportOptions'] = pulumi.Input.encodeList<
               InstanceFileSharesNfsExportOption, Map<String, dynamic>>(
           nfsExportOptionsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class InstanceFileShares {
       name: map['name'] as String,
       nfsExportOptions: map['nfsExportOptions'] == null
           ? null
-          : Input.decodeList<InstanceFileSharesNfsExportOption>(
+          : pulumi.Input.decodeList<InstanceFileSharesNfsExportOption>(
               map['nfsExportOptions'],
               (value) => InstanceFileSharesNfsExportOption.fromMap(
                   (value as Map).cast<String, dynamic>())),

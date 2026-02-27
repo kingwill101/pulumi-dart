@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_partition_args.dart';
 
 /// A Cloud Spanner instance partition is a unit of Cloud Spanner database capacity
@@ -41,51 +41,51 @@ import 'instance_partition_args.dart';
 /// ```sh
 /// $ pulumi import gcp:spanner/instancePartition:InstancePartition default {{instance}}/{{name}}
 /// ```
-class InstancePartition extends CustomResource {
+class InstancePartition extends pulumi.CustomResource {
   /// The name of the instance partition's configuration (similar to a region) which
   /// defines the geographic placement and replication of data in this instance partition.
-  late final Output<String> config;
+  late final pulumi.Output<String> config;
 
   /// The descriptive name for this instance partition as it appears in UIs.
   /// Must be unique per project and between 4 and 30 characters in length.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The instance to create the instance partition in.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// A unique identifier for the instance partition, which cannot be changed after
   /// the instance partition is created. The name must be between 2 and 64 characters
   /// and match the regular expression [a-z][a-z0-9\\-]{0,61}[a-z0-9].
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The number of nodes allocated to this instance partition. One node equals
   /// 1000 processing units. Exactly one of either node_count or processing_units
   /// must be present.
-  late final Output<int?> nodeCount;
+  late final pulumi.Output<int?> nodeCount;
 
   /// The number of processing units allocated to this instance partition.
   /// Exactly one of either node_count or processing_units must be present.
-  late final Output<int?> processingUnits;
+  late final pulumi.Output<int?> processingUnits;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The current instance partition state. Possible values are:
   /// CREATING: The instance partition is being created. Resources are being
   /// allocated for the instance partition.
   /// READY: The instance partition has been allocated resources and is ready for use.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   InstancePartition(
     String name, {
     InstancePartitionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:spanner/instancePartition:InstancePartition',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.config = registerOutput<String>('config');
     this.displayName = registerOutput<String>('displayName');

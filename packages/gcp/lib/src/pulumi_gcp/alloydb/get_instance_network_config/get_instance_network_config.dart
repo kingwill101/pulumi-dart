@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_network_config_authorized_external_network/get_instance_network_config_authorized_external_network.dart';
 
 class GetInstanceNetworkConfig {
@@ -33,7 +33,7 @@ class GetInstanceNetworkConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allocatedIpRangeOverride'] = allocatedIpRangeOverride;
-    map['authorizedExternalNetworks'] = Input.encodeList<
+    map['authorizedExternalNetworks'] = pulumi.Input.encodeList<
             GetInstanceNetworkConfigAuthorizedExternalNetwork,
             Map<String, dynamic>>(
         authorizedExternalNetworks, (value) => value.toMap());
@@ -45,12 +45,11 @@ class GetInstanceNetworkConfig {
   factory GetInstanceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkConfig(
       allocatedIpRangeOverride: map['allocatedIpRangeOverride'] as String,
-      authorizedExternalNetworks:
-          Input.decodeList<GetInstanceNetworkConfigAuthorizedExternalNetwork>(
-              map['authorizedExternalNetworks'],
-              (value) =>
-                  GetInstanceNetworkConfigAuthorizedExternalNetwork.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      authorizedExternalNetworks: pulumi.Input.decodeList<
+              GetInstanceNetworkConfigAuthorizedExternalNetwork>(
+          map['authorizedExternalNetworks'],
+          (value) => GetInstanceNetworkConfigAuthorizedExternalNetwork.fromMap(
+              (value as Map).cast<String, dynamic>())),
       enableOutboundPublicIp: map['enableOutboundPublicIp'] as bool,
       enablePublicIp: map['enablePublicIp'] as bool,
     );

@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getV2AcceleratorTypes.
 class GetV2AcceleratorTypesArgs {
   /// The project to list types for. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The zone to list types for. If it
   /// is not provided, the provider zone is used.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetV2AcceleratorTypesArgs({
     this.project,
@@ -32,8 +32,8 @@ class GetV2AcceleratorTypesArgs {
 
   factory GetV2AcceleratorTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetV2AcceleratorTypesArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

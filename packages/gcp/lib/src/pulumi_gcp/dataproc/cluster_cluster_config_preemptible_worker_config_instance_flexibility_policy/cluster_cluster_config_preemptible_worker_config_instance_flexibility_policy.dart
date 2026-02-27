@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_config_preemptible_worker_config_instance_flexibility_policy_instance_selection_list/cluster_cluster_config_preemptible_worker_config_instance_flexibility_policy_instance_selection_list.dart';
 import '../cluster_cluster_config_preemptible_worker_config_instance_flexibility_policy_instance_selection_result/cluster_cluster_config_preemptible_worker_config_instance_flexibility_policy_instance_selection_result.dart';
 import '../cluster_cluster_config_preemptible_worker_config_instance_flexibility_policy_provisioning_model_mix/cluster_cluster_config_preemptible_worker_config_instance_flexibility_policy_provisioning_model_mix.dart';
@@ -30,14 +30,14 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
     final map = <String, dynamic>{};
     final instanceSelectionListsValue = instanceSelectionLists;
     if (instanceSelectionListsValue != null) {
-      map['instanceSelectionLists'] = Input.encodeList<
+      map['instanceSelectionLists'] = pulumi.Input.encodeList<
           ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList,
           Map<String,
               dynamic>>(instanceSelectionListsValue, (value) => value.toMap());
     }
     final instanceSelectionResultsValue = instanceSelectionResults;
     if (instanceSelectionResultsValue != null) {
-      map['instanceSelectionResults'] = Input.encodeList<
+      map['instanceSelectionResults'] = pulumi.Input.encodeList<
           ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult,
           Map<String,
               dynamic>>(instanceSelectionResultsValue, (value) => value.toMap());
@@ -54,7 +54,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(
       instanceSelectionLists: map['instanceSelectionLists'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>(
               map['instanceSelectionLists'],
               (value) =>
@@ -62,7 +62,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
                       .fromMap((value as Map).cast<String, dynamic>())),
       instanceSelectionResults: map['instanceSelectionResults'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>(
               map['instanceSelectionResults'],
               (value) =>

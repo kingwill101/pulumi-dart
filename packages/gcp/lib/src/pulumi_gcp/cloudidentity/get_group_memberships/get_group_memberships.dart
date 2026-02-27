@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_group_memberships_args.dart';
 import 'get_group_memberships_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_group_memberships_result.dart';
 /// * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
 Future<GetGroupMembershipsResult> getGroupMemberships(
   GetGroupMembershipsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:cloudidentity/getGroupMemberships:getGroupMemberships',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupMembershipsResult.fromMap(result);
 }

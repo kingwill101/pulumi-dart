@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../namespace_iam_member_condition/namespace_iam_member_condition.dart';
 
 /// The set of arguments for NamespaceIamMember.
 class NamespaceIamMemberArgs {
-  final Input<NamespaceIamMemberCondition>? condition;
+  final pulumi.Input<NamespaceIamMemberCondition>? condition;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -19,15 +19,15 @@ class NamespaceIamMemberArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final Input<String> member;
+  final pulumi.Input<String> member;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The role that should be applied. Only one
   /// `gcp.servicedirectory.NamespaceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   NamespaceIamMemberArgs({
     this.condition,
@@ -40,7 +40,7 @@ class NamespaceIamMemberArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           NamespaceIamMemberCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -55,11 +55,11 @@ class NamespaceIamMemberArgs {
 
   factory NamespaceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceIamMemberArgs(
-      condition:
-          Input.asOptionalInput<NamespaceIamMemberCondition>(map['condition']),
-      member: Input.asInput<String>(map['member']),
-      name: Input.asOptionalInput<String>(map['name']),
-      role: Input.asInput<String>(map['role']),
+      condition: pulumi.Input.asOptionalInput<NamespaceIamMemberCondition>(
+          map['condition']),
+      member: pulumi.Input.asInput<String>(map['member']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

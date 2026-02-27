@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_topic_ingestion_data_source_setting_aws_kinese/get_topic_ingestion_data_source_setting_aws_kinese.dart';
 import '../get_topic_ingestion_data_source_setting_aws_msk/get_topic_ingestion_data_source_setting_aws_msk.dart';
 import '../get_topic_ingestion_data_source_setting_azure_event_hub/get_topic_ingestion_data_source_setting_azure_event_hub.dart';
@@ -40,21 +40,22 @@ class GetTopicIngestionDataSourceSetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['awsKineses'] = Input.encodeList<
+    map['awsKineses'] = pulumi.Input.encodeList<
         GetTopicIngestionDataSourceSettingAwsKinese,
         Map<String, dynamic>>(awsKineses, (value) => value.toMap());
-    map['awsMsks'] = Input.encodeList<GetTopicIngestionDataSourceSettingAwsMsk,
+    map['awsMsks'] = pulumi.Input.encodeList<
+        GetTopicIngestionDataSourceSettingAwsMsk,
         Map<String, dynamic>>(awsMsks, (value) => value.toMap());
-    map['azureEventHubs'] = Input.encodeList<
+    map['azureEventHubs'] = pulumi.Input.encodeList<
         GetTopicIngestionDataSourceSettingAzureEventHub,
         Map<String, dynamic>>(azureEventHubs, (value) => value.toMap());
-    map['cloudStorages'] = Input.encodeList<
+    map['cloudStorages'] = pulumi.Input.encodeList<
         GetTopicIngestionDataSourceSettingCloudStorage,
         Map<String, dynamic>>(cloudStorages, (value) => value.toMap());
-    map['confluentClouds'] = Input.encodeList<
+    map['confluentClouds'] = pulumi.Input.encodeList<
         GetTopicIngestionDataSourceSettingConfluentCloud,
         Map<String, dynamic>>(confluentClouds, (value) => value.toMap());
-    map['platformLogsSettings'] = Input.encodeList<
+    map['platformLogsSettings'] = pulumi.Input.encodeList<
         GetTopicIngestionDataSourceSettingPlatformLogsSetting,
         Map<String, dynamic>>(platformLogsSettings, (value) => value.toMap());
     return map;
@@ -62,32 +63,32 @@ class GetTopicIngestionDataSourceSetting {
 
   factory GetTopicIngestionDataSourceSetting.fromMap(Map<String, dynamic> map) {
     return GetTopicIngestionDataSourceSetting(
-      awsKineses: Input.decodeList<GetTopicIngestionDataSourceSettingAwsKinese>(
-          map['awsKineses'],
-          (value) => GetTopicIngestionDataSourceSettingAwsKinese.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      awsMsks: Input.decodeList<GetTopicIngestionDataSourceSettingAwsMsk>(
-          map['awsMsks'],
-          (value) => GetTopicIngestionDataSourceSettingAwsMsk.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      azureEventHubs:
-          Input.decodeList<GetTopicIngestionDataSourceSettingAzureEventHub>(
-              map['azureEventHubs'],
-              (value) =>
-                  GetTopicIngestionDataSourceSettingAzureEventHub.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      cloudStorages:
-          Input.decodeList<GetTopicIngestionDataSourceSettingCloudStorage>(
-              map['cloudStorages'],
-              (value) => GetTopicIngestionDataSourceSettingCloudStorage.fromMap(
+      awsKineses:
+          pulumi.Input.decodeList<GetTopicIngestionDataSourceSettingAwsKinese>(
+              map['awsKineses'],
+              (value) => GetTopicIngestionDataSourceSettingAwsKinese.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      confluentClouds:
-          Input.decodeList<GetTopicIngestionDataSourceSettingConfluentCloud>(
-              map['confluentClouds'],
-              (value) =>
-                  GetTopicIngestionDataSourceSettingConfluentCloud.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      platformLogsSettings: Input.decodeList<
+      awsMsks:
+          pulumi.Input.decodeList<GetTopicIngestionDataSourceSettingAwsMsk>(
+              map['awsMsks'],
+              (value) => GetTopicIngestionDataSourceSettingAwsMsk.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      azureEventHubs: pulumi.Input.decodeList<
+              GetTopicIngestionDataSourceSettingAzureEventHub>(
+          map['azureEventHubs'],
+          (value) => GetTopicIngestionDataSourceSettingAzureEventHub.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      cloudStorages: pulumi.Input.decodeList<
+              GetTopicIngestionDataSourceSettingCloudStorage>(
+          map['cloudStorages'],
+          (value) => GetTopicIngestionDataSourceSettingCloudStorage.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      confluentClouds: pulumi.Input.decodeList<
+              GetTopicIngestionDataSourceSettingConfluentCloud>(
+          map['confluentClouds'],
+          (value) => GetTopicIngestionDataSourceSettingConfluentCloud.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      platformLogsSettings: pulumi.Input.decodeList<
               GetTopicIngestionDataSourceSettingPlatformLogsSetting>(
           map['platformLogsSettings'],
           (value) =>

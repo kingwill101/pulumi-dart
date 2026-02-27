@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_sql_server_source_config_exclude_objects_schema/stream_source_config_sql_server_source_config_exclude_objects_schema.dart';
 
 class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
@@ -15,7 +15,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['schemas'] = Input.encodeList<
+    map['schemas'] = pulumi.Input.encodeList<
         StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema,
         Map<String, dynamic>>(schemas, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
   factory StreamSourceConfigSqlServerSourceConfigExcludeObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamSourceConfigSqlServerSourceConfigExcludeObjects(
-      schemas: Input.decodeList<
+      schemas: pulumi.Input.decodeList<
               StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema>(
           map['schemas'],
           (value) => StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema

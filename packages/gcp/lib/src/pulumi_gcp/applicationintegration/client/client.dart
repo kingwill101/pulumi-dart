@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../client_cloud_kms_config/client_cloud_kms_config.dart';
 import 'client_args.dart';
 
@@ -46,36 +46,36 @@ import 'client_args.dart';
 /// ```sh
 /// $ pulumi import gcp:applicationintegration/client:Client default {{location}}
 /// ```
-class Client extends CustomResource {
+class Client extends pulumi.CustomResource {
   /// Cloud KMS config for AuthModule to encrypt/decrypt credentials.
   /// Structure is documented below.
-  late final Output<ClientCloudKmsConfig?> cloudKmsConfig;
+  late final pulumi.Output<ClientCloudKmsConfig?> cloudKmsConfig;
 
   /// Indicates if sample integrations should be created along with provisioning.
-  late final Output<bool?> createSampleIntegrations;
+  late final pulumi.Output<bool?> createSampleIntegrations;
 
   /// Location in which client needs to be provisioned.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// (Optional, Deprecated)
   /// User input run-as service account, if empty, will bring up a new default service account.
   ///
   /// > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
-  late final Output<String?> runAsServiceAccount;
+  late final pulumi.Output<String?> runAsServiceAccount;
 
   Client(
     String name, {
     ClientArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:applicationintegration/client:Client',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloudKmsConfig =
         registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig');

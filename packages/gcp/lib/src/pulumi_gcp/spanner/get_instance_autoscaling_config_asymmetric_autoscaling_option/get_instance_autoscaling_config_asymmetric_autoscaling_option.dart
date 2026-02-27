@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_autoscaling_config_asymmetric_autoscaling_option_override/get_instance_autoscaling_config_asymmetric_autoscaling_option_override.dart';
 import '../get_instance_autoscaling_config_asymmetric_autoscaling_option_replica_selection/get_instance_autoscaling_config_asymmetric_autoscaling_option_replica_selection.dart';
 
@@ -21,10 +21,10 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOption {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['overrides'] = Input.encodeList<
+    map['overrides'] = pulumi.Input.encodeList<
         GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride,
         Map<String, dynamic>>(overrides, (value) => value.toMap());
-    map['replicaSelections'] = Input.encodeList<
+    map['replicaSelections'] = pulumi.Input.encodeList<
         GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection,
         Map<String, dynamic>>(replicaSelections, (value) => value.toMap());
     return map;
@@ -33,13 +33,13 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOption {
   factory GetInstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap(
       Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAsymmetricAutoscalingOption(
-      overrides: Input.decodeList<
+      overrides: pulumi.Input.decodeList<
               GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride>(
           map['overrides'],
           (value) =>
               GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride
                   .fromMap((value as Map).cast<String, dynamic>())),
-      replicaSelections: Input.decodeList<
+      replicaSelections: pulumi.Input.decodeList<
               GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection>(
           map['replicaSelections'],
           (value) =>

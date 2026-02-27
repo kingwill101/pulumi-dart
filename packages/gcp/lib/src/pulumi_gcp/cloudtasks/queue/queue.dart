@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../queue_app_engine_routing_override/queue_app_engine_routing_override.dart';
 import '../queue_http_target/queue_http_target.dart';
 import '../queue_rate_limits/queue_rate_limits.dart';
@@ -52,31 +52,32 @@ import 'queue_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
 /// ```
-class Queue extends CustomResource {
+class Queue extends pulumi.CustomResource {
   /// Overrides for task-level appEngineRouting. These settings apply only
   /// to App Engine tasks in this queue
   /// Structure is documented below.
-  late final Output<QueueAppEngineRoutingOverride?> appEngineRoutingOverride;
+  late final pulumi.Output<QueueAppEngineRoutingOverride?>
+      appEngineRoutingOverride;
 
   /// The desired state of the queue. Use this to pause and resume the queue.
   ///
   /// * RUNNING: The queue is running. Tasks can be dispatched.
   /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
-  late final Output<String?> desiredState;
+  late final pulumi.Output<String?> desiredState;
 
   /// Modifies HTTP target for HTTP tasks.
   /// Structure is documented below.
-  late final Output<QueueHttpTarget?> httpTarget;
+  late final pulumi.Output<QueueHttpTarget?> httpTarget;
 
   /// The location of the queue
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The queue name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Rate limits for task dispatches.
   /// The queue's actual dispatch rate is the result of:
@@ -86,28 +87,29 @@ class Queue extends CustomResource {
   /// Unavailable) responses from the worker, high error rates, or to
   /// smooth sudden large traffic spikes.
   /// Structure is documented below.
-  late final Output<QueueRateLimits> rateLimits;
+  late final pulumi.Output<QueueRateLimits> rateLimits;
 
   /// Settings that determine the retry behavior.
   /// Structure is documented below.
-  late final Output<QueueRetryConfig> retryConfig;
+  late final pulumi.Output<QueueRetryConfig> retryConfig;
 
   /// Configuration options for writing logs to Stackdriver Logging.
   /// Structure is documented below.
-  late final Output<QueueStackdriverLoggingConfig?> stackdriverLoggingConfig;
+  late final pulumi.Output<QueueStackdriverLoggingConfig?>
+      stackdriverLoggingConfig;
 
   /// The current state of the queue.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   Queue(
     String name, {
     QueueArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudtasks/queue:Queue',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appEngineRoutingOverride =
         registerOutput<QueueAppEngineRoutingOverride?>(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeters_service_perimeter_spec_egress_policy/service_perimeters_service_perimeter_spec_egress_policy.dart';
 import '../service_perimeters_service_perimeter_spec_ingress_policy/service_perimeters_service_perimeter_spec_ingress_policy.dart';
 import '../service_perimeters_service_perimeter_spec_vpc_accessible_services/service_perimeters_service_perimeter_spec_vpc_accessible_services.dart';
@@ -67,13 +67,13 @@ class ServicePerimetersServicePerimeterSpec {
     }
     final egressPoliciesValue = egressPolicies;
     if (egressPoliciesValue != null) {
-      map['egressPolicies'] = Input.encodeList<
+      map['egressPolicies'] = pulumi.Input.encodeList<
           ServicePerimetersServicePerimeterSpecEgressPolicy,
           Map<String, dynamic>>(egressPoliciesValue, (value) => value.toMap());
     }
     final ingressPoliciesValue = ingressPolicies;
     if (ingressPoliciesValue != null) {
-      map['ingressPolicies'] = Input.encodeList<
+      map['ingressPolicies'] = pulumi.Input.encodeList<
           ServicePerimetersServicePerimeterSpecIngressPolicy,
           Map<String, dynamic>>(ingressPoliciesValue, (value) => value.toMap());
     }
@@ -100,14 +100,15 @@ class ServicePerimetersServicePerimeterSpec {
           : (map['accessLevels'] as List).cast<String>(),
       egressPolicies: map['egressPolicies'] == null
           ? null
-          : Input.decodeList<ServicePerimetersServicePerimeterSpecEgressPolicy>(
+          : pulumi.Input.decodeList<
+                  ServicePerimetersServicePerimeterSpecEgressPolicy>(
               map['egressPolicies'],
               (value) =>
                   ServicePerimetersServicePerimeterSpecEgressPolicy.fromMap(
                       (value as Map).cast<String, dynamic>())),
       ingressPolicies: map['ingressPolicies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServicePerimetersServicePerimeterSpecIngressPolicy>(
               map['ingressPolicies'],
               (value) =>

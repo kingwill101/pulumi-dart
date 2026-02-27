@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSQuotaInfo.
 class GetSQuotaInfoArgs {
   /// The parent of the quota info. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// The id of the quota, which is unique within the service.
-  final Input<String> quotaId;
+  final pulumi.Input<String> quotaId;
 
   /// The name of the service in which the quota is defined.
-  final Input<String> service;
+  final pulumi.Input<String> service;
 
   GetSQuotaInfoArgs({
     required this.parent,
@@ -29,9 +29,9 @@ class GetSQuotaInfoArgs {
 
   factory GetSQuotaInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfoArgs(
-      parent: Input.asInput<String>(map['parent']),
-      quotaId: Input.asInput<String>(map['quotaId']),
-      service: Input.asInput<String>(map['service']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      quotaId: pulumi.Input.asInput<String>(map['quotaId']),
+      service: pulumi.Input.asInput<String>(map['service']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_feature_online_store_featureview_feature_registry_source_feature_group/ai_feature_online_store_featureview_feature_registry_source_feature_group.dart';
 
 class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
@@ -19,7 +19,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['featureGroups'] = Input.encodeList<
+    map['featureGroups'] = pulumi.Input.encodeList<
         AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup,
         Map<String, dynamic>>(featureGroups, (value) => value.toMap());
     final projectNumberValue = projectNumber;
@@ -32,7 +32,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
   factory AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap(
       Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(
-      featureGroups: Input.decodeList<
+      featureGroups: pulumi.Input.decodeList<
               AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup>(
           map['featureGroups'],
           (value) =>

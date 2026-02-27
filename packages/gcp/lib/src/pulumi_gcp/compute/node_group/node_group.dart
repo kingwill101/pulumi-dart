@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_group_autoscaling_policy/node_group_autoscaling_policy.dart';
 import '../node_group_maintenance_window/node_group_maintenance_window.dart';
 import '../node_group_share_settings/node_group_share_settings.dart';
@@ -66,67 +66,67 @@ import 'node_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
 /// ```
-class NodeGroup extends CustomResource {
+class NodeGroup extends pulumi.CustomResource {
   /// If you use sole-tenant nodes for your workloads, you can use the node
   /// group autoscaler to automatically manage the sizes of your node groups.
   /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
   /// Structure is documented below.
-  late final Output<NodeGroupAutoscalingPolicy> autoscalingPolicy;
+  late final pulumi.Output<NodeGroupAutoscalingPolicy> autoscalingPolicy;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional textual description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
-  late final Output<int?> initialSize;
+  late final pulumi.Output<int?> initialSize;
 
   /// Specifies the frequency of planned maintenance events. Set to one of the following:
   /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
   /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
   /// Possible values are: `AS_NEEDED`, `RECURRENT`.
-  late final Output<String> maintenanceInterval;
+  late final pulumi.Output<String> maintenanceInterval;
 
   /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
-  late final Output<String?> maintenancePolicy;
+  late final pulumi.Output<String?> maintenancePolicy;
 
   /// contains properties for the timeframe of maintenance
   /// Structure is documented below.
-  late final Output<NodeGroupMaintenanceWindow?> maintenanceWindow;
+  late final pulumi.Output<NodeGroupMaintenanceWindow?> maintenanceWindow;
 
   /// Name of the resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The URL of the node template to which this node group belongs.
-  late final Output<String> nodeTemplate;
+  late final pulumi.Output<String> nodeTemplate;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Share settings for the node group.
   /// Structure is documented below.
-  late final Output<NodeGroupShareSettings> shareSettings;
+  late final pulumi.Output<NodeGroupShareSettings> shareSettings;
 
   /// The total number of nodes in the node group.
-  late final Output<int> size;
+  late final pulumi.Output<int> size;
 
   /// Zone where this node group is located
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   NodeGroup(
     String name, {
     NodeGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/nodeGroup:NodeGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autoscalingPolicy =
         registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy');

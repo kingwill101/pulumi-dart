@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../notebook_execution_custom_environment_spec/notebook_execution_custom_environment_spec.dart';
 import '../notebook_execution_dataform_repository_source/notebook_execution_dataform_repository_source.dart';
 import '../notebook_execution_direct_notebook_source/notebook_execution_direct_notebook_source.dart';
@@ -56,63 +56,64 @@ import 'notebook_execution_args.dart';
 /// ```sh
 /// $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{location}}/{{notebook_execution_job_id}}
 /// ```
-class NotebookExecution extends CustomResource {
+class NotebookExecution extends pulumi.CustomResource {
   /// Compute configuration to use for an execution job
   /// Structure is documented below.
-  late final Output<NotebookExecutionCustomEnvironmentSpec?>
+  late final pulumi.Output<NotebookExecutionCustomEnvironmentSpec?>
       customEnvironmentSpec;
 
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  late final Output<NotebookExecutionDataformRepositorySource?>
+  late final pulumi.Output<NotebookExecutionDataformRepositorySource?>
       dataformRepositorySource;
 
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
-  late final Output<NotebookExecutionDirectNotebookSource?>
+  late final pulumi.Output<NotebookExecutionDirectNotebookSource?>
       directNotebookSource;
 
   /// Required. The display name of the Notebook Execution.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs).
-  late final Output<String?> executionTimeout;
+  late final pulumi.Output<String?> executionTimeout;
 
   /// The user email to run the execution as.
-  late final Output<String?> executionUser;
+  late final pulumi.Output<String?> executionUser;
 
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
-  late final Output<NotebookExecutionGcsNotebookSource?> gcsNotebookSource;
+  late final pulumi.Output<NotebookExecutionGcsNotebookSource?>
+      gcsNotebookSource;
 
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
-  late final Output<String> gcsOutputUri;
+  late final pulumi.Output<String> gcsOutputUri;
 
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// User specified ID for the Notebook Execution Job
-  late final Output<String> notebookExecutionJobId;
+  late final pulumi.Output<String> notebookExecutionJobId;
 
   /// The NotebookRuntimeTemplate to source compute configuration from.
-  late final Output<String?> notebookRuntimeTemplateResourceName;
+  late final pulumi.Output<String?> notebookRuntimeTemplateResourceName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The service account to run the execution as.
-  late final Output<String?> serviceAccount;
+  late final pulumi.Output<String?> serviceAccount;
 
   NotebookExecution(
     String name, {
     NotebookExecutionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:colab/notebookExecution:NotebookExecution',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.customEnvironmentSpec =
         registerOutput<NotebookExecutionCustomEnvironmentSpec?>(

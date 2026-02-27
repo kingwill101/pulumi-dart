@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAutonomousDatabase.
 class GetAutonomousDatabaseArgs {
   /// The ID of the AutonomousDatabase.
-  final Input<String> autonomousDatabaseId;
+  final pulumi.Input<String> autonomousDatabaseId;
 
   /// The location of the resource.
   ///
   /// - - -
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The project to which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetAutonomousDatabaseArgs({
     required this.autonomousDatabaseId,
@@ -35,9 +35,10 @@ class GetAutonomousDatabaseArgs {
 
   factory GetAutonomousDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseArgs(
-      autonomousDatabaseId: Input.asInput<String>(map['autonomousDatabaseId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      autonomousDatabaseId:
+          pulumi.Input.asInput<String>(map['autonomousDatabaseId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

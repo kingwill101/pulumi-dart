@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../keystores_aliases_pkcs12_certs_info_cert_info/keystores_aliases_pkcs12_certs_info_cert_info.dart';
 
 class KeystoresAliasesPkcs12CertsInfo {
@@ -17,7 +17,7 @@ class KeystoresAliasesPkcs12CertsInfo {
     final map = <String, dynamic>{};
     final certInfosValue = certInfos;
     if (certInfosValue != null) {
-      map['certInfos'] = Input.encodeList<
+      map['certInfos'] = pulumi.Input.encodeList<
           KeystoresAliasesPkcs12CertsInfoCertInfo,
           Map<String, dynamic>>(certInfosValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class KeystoresAliasesPkcs12CertsInfo {
     return KeystoresAliasesPkcs12CertsInfo(
       certInfos: map['certInfos'] == null
           ? null
-          : Input.decodeList<KeystoresAliasesPkcs12CertsInfoCertInfo>(
+          : pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfoCertInfo>(
               map['certInfos'],
               (value) => KeystoresAliasesPkcs12CertsInfoCertInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),

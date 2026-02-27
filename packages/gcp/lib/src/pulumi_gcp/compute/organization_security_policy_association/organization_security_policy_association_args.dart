@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OrganizationSecurityPolicyAssociation.
 class OrganizationSecurityPolicyAssociationArgs {
   /// The resource that the security policy is attached to.
-  final Input<String> attachmentId;
+  final pulumi.Input<String> attachmentId;
 
   /// The name for an association.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The security policy ID of the association.
-  final Input<String> policyId;
+  final pulumi.Input<String> policyId;
 
   OrganizationSecurityPolicyAssociationArgs({
     required this.attachmentId,
@@ -33,9 +33,9 @@ class OrganizationSecurityPolicyAssociationArgs {
   factory OrganizationSecurityPolicyAssociationArgs.fromMap(
       Map<String, dynamic> map) {
     return OrganizationSecurityPolicyAssociationArgs(
-      attachmentId: Input.asInput<String>(map['attachmentId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policyId: Input.asInput<String>(map['policyId']),
+      attachmentId: pulumi.Input.asInput<String>(map['attachmentId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policyId: pulumi.Input.asInput<String>(map['policyId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_dry_run_spec_rule/policy_dry_run_spec_rule.dart';
 
 class PolicyDryRunSpec {
@@ -47,7 +47,7 @@ class PolicyDryRunSpec {
     final rulesValue = rules;
     if (rulesValue != null) {
       map['rules'] =
-          Input.encodeList<PolicyDryRunSpecRule, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PolicyDryRunSpecRule, Map<String, dynamic>>(
               rulesValue, (value) => value.toMap());
     }
     final updateTimeValue = updateTime;
@@ -66,7 +66,7 @@ class PolicyDryRunSpec {
       reset: map['reset'] == null ? null : map['reset'] as bool,
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<PolicyDryRunSpecRule>(
+          : pulumi.Input.decodeList<PolicyDryRunSpecRule>(
               map['rules'],
               (value) => PolicyDryRunSpecRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tool_open_api_tool_tls_config_ca_cert/tool_open_api_tool_tls_config_ca_cert.dart';
 
 class ToolOpenApiToolTlsConfig {
@@ -18,7 +18,7 @@ class ToolOpenApiToolTlsConfig {
     final map = <String, dynamic>{};
     final caCertsValue = caCerts;
     if (caCertsValue != null) {
-      map['caCerts'] = Input.encodeList<ToolOpenApiToolTlsConfigCaCert,
+      map['caCerts'] = pulumi.Input.encodeList<ToolOpenApiToolTlsConfigCaCert,
           Map<String, dynamic>>(caCertsValue, (value) => value.toMap());
     }
     return map;
@@ -28,7 +28,7 @@ class ToolOpenApiToolTlsConfig {
     return ToolOpenApiToolTlsConfig(
       caCerts: map['caCerts'] == null
           ? null
-          : Input.decodeList<ToolOpenApiToolTlsConfigCaCert>(
+          : pulumi.Input.decodeList<ToolOpenApiToolTlsConfigCaCert>(
               map['caCerts'],
               (value) => ToolOpenApiToolTlsConfigCaCert.fromMap(
                   (value as Map).cast<String, dynamic>())),

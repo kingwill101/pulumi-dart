@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeter_spec/service_perimeter_spec.dart';
 import '../service_perimeter_status/service_perimeter_status.dart';
 
@@ -8,16 +8,16 @@ import '../service_perimeter_status/service_perimeter_status.dart';
 class ServicePerimeterArgs {
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Resource name for the ServicePerimeter. The short_name component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// Specifies the type of the Perimeter. There are two types: regular and
   /// bridge. Regular Service Perimeter contains resources, access levels,
@@ -35,23 +35,23 @@ class ServicePerimeterArgs {
   /// themselves.
   /// Default value is `PERIMETER_TYPE_REGULAR`.
   /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
-  final Input<String>? perimeterType;
+  final pulumi.Input<String>? perimeterType;
 
   /// Proposed (or dry run) ServicePerimeter configuration.
   /// This configuration allows to specify and test ServicePerimeter configuration
   /// without enforcing actual access restrictions. Only allowed to be set when
   /// the `useExplicitDryRunSpec` flag is set.
   /// Structure is documented below.
-  final Input<ServicePerimeterSpec>? spec;
+  final pulumi.Input<ServicePerimeterSpec>? spec;
 
   /// ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine
   /// perimeter content and boundaries.
   /// Structure is documented below.
-  final Input<ServicePerimeterStatus>? status;
+  final pulumi.Input<ServicePerimeterStatus>? status;
 
   /// Human readable title. Must be unique within the Policy.
-  final Input<String> title;
+  final pulumi.Input<String> title;
 
   /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   /// for all Service Perimeters, and that spec is identical to the status for those
@@ -62,7 +62,7 @@ class ServicePerimeterArgs {
   /// actually enforcing them. This testing is done through analyzing the differences
   /// between currently enforced and suggested restrictions. useExplicitDryRunSpec must
   /// bet set to True if any of the fields in the spec are set to non-default values.
-  final Input<bool>? useExplicitDryRunSpec;
+  final pulumi.Input<bool>? useExplicitDryRunSpec;
 
   ServicePerimeterArgs({
     this.description,
@@ -92,12 +92,12 @@ class ServicePerimeterArgs {
     }
     final specValue = spec;
     if (specValue != null) {
-      map['spec'] = Input.mapOptionalInputValue<ServicePerimeterSpec,
+      map['spec'] = pulumi.Input.mapOptionalInputValue<ServicePerimeterSpec,
           Map<String, dynamic>>(specValue, (value) => value.toMap());
     }
     final statusValue = status;
     if (statusValue != null) {
-      map['status'] = Input.mapOptionalInputValue<ServicePerimeterStatus,
+      map['status'] = pulumi.Input.mapOptionalInputValue<ServicePerimeterStatus,
           Map<String, dynamic>>(statusValue, (value) => value.toMap());
     }
     map['title'] = title;
@@ -110,15 +110,16 @@ class ServicePerimeterArgs {
 
   factory ServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parent: Input.asInput<String>(map['parent']),
-      perimeterType: Input.asOptionalInput<String>(map['perimeterType']),
-      spec: Input.asOptionalInput<ServicePerimeterSpec>(map['spec']),
-      status: Input.asOptionalInput<ServicePerimeterStatus>(map['status']),
-      title: Input.asInput<String>(map['title']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      perimeterType: pulumi.Input.asOptionalInput<String>(map['perimeterType']),
+      spec: pulumi.Input.asOptionalInput<ServicePerimeterSpec>(map['spec']),
+      status:
+          pulumi.Input.asOptionalInput<ServicePerimeterStatus>(map['status']),
+      title: pulumi.Input.asInput<String>(map['title']),
       useExplicitDryRunSpec:
-          Input.asOptionalInput<bool>(map['useExplicitDryRunSpec']),
+          pulumi.Input.asOptionalInput<bool>(map['useExplicitDryRunSpec']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_eventing_config_additional_variable/connection_eventing_config_additional_variable.dart';
 import '../connection_eventing_config_auth_config/connection_eventing_config_auth_config.dart';
 import '../connection_eventing_config_registration_destination_config/connection_eventing_config_registration_destination_config.dart';
@@ -33,7 +33,7 @@ class ConnectionEventingConfig {
     final map = <String, dynamic>{};
     final additionalVariablesValue = additionalVariables;
     if (additionalVariablesValue != null) {
-      map['additionalVariables'] = Input.encodeList<
+      map['additionalVariables'] = pulumi.Input.encodeList<
               ConnectionEventingConfigAdditionalVariable, Map<String, dynamic>>(
           additionalVariablesValue, (value) => value.toMap());
     }
@@ -54,7 +54,7 @@ class ConnectionEventingConfig {
     return ConnectionEventingConfig(
       additionalVariables: map['additionalVariables'] == null
           ? null
-          : Input.decodeList<ConnectionEventingConfigAdditionalVariable>(
+          : pulumi.Input.decodeList<ConnectionEventingConfigAdditionalVariable>(
               map['additionalVariables'],
               (value) => ConnectionEventingConfigAdditionalVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),

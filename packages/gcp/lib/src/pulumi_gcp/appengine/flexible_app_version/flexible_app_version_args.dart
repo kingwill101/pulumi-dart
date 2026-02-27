@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../flexible_app_version_api_config/flexible_app_version_api_config.dart';
 import '../flexible_app_version_automatic_scaling/flexible_app_version_automatic_scaling.dart';
 import '../flexible_app_version_deployment/flexible_app_version_deployment.dart';
@@ -19,120 +19,121 @@ import '../flexible_app_version_vpc_access_connector/flexible_app_version_vpc_ac
 class FlexibleAppVersionArgs {
   /// Serving configuration for Google Cloud Endpoints.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionApiConfig>? apiConfig;
+  final pulumi.Input<FlexibleAppVersionApiConfig>? apiConfig;
 
   /// Automatic scaling is based on request rate, response latencies, and other application metrics.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionAutomaticScaling>? automaticScaling;
+  final pulumi.Input<FlexibleAppVersionAutomaticScaling>? automaticScaling;
 
   /// Metadata settings that are supplied to this version to enable beta runtime features.
-  final Input<Map<String, String>>? betaSettings;
+  final pulumi.Input<Map<String, String>>? betaSettings;
 
   /// Duration that static files should be cached by web proxies and browsers.
   /// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
-  final Input<String>? defaultExpiration;
+  final pulumi.Input<String>? defaultExpiration;
 
   /// If set to `true`, the service will be deleted if it is the last version.
-  final Input<bool>? deleteServiceOnDestroy;
+  final pulumi.Input<bool>? deleteServiceOnDestroy;
 
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionDeployment>? deployment;
+  final pulumi.Input<FlexibleAppVersionDeployment>? deployment;
 
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionEndpointsApiService>? endpointsApiService;
+  final pulumi.Input<FlexibleAppVersionEndpointsApiService>?
+      endpointsApiService;
 
   /// The entrypoint for the application.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionEntrypoint>? entrypoint;
+  final pulumi.Input<FlexibleAppVersionEntrypoint>? entrypoint;
 
   /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
-  final Input<Map<String, String>>? envVariables;
+  final pulumi.Input<Map<String, String>>? envVariables;
 
   /// Runtime settings for App Engine flexible environment.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionFlexibleRuntimeSettings>?
+  final pulumi.Input<FlexibleAppVersionFlexibleRuntimeSettings>?
       flexibleRuntimeSettings;
 
   /// An ordered list of URL-matching patterns that should be applied to incoming requests.
   /// The first matching URL handles the request and other request handlers are not attempted.
   /// Structure is documented below.
-  final Input<List<FlexibleAppVersionHandler>>? handlers;
+  final pulumi.Input<List<FlexibleAppVersionHandler>>? handlers;
 
   /// A list of the types of messages that this application is able to receive.
   /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
-  final Input<List<String>>? inboundServices;
+  final pulumi.Input<List<String>>? inboundServices;
 
   /// Instance class that is used to run this version. Valid values are
   /// AutomaticScaling: F1, F2, F4, F4_1G
   /// ManualScaling: B1, B2, B4, B8, B4_1G
   /// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
-  final Input<String>? instanceClass;
+  final pulumi.Input<String>? instanceClass;
 
   /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionLivenessCheck> livenessCheck;
+  final pulumi.Input<FlexibleAppVersionLivenessCheck> livenessCheck;
 
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionManualScaling>? manualScaling;
+  final pulumi.Input<FlexibleAppVersionManualScaling>? manualScaling;
 
   /// Extra network settings
   /// Structure is documented below.
-  final Input<FlexibleAppVersionNetwork>? network;
+  final pulumi.Input<FlexibleAppVersionNetwork>? network;
 
   /// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
-  final Input<String>? nobuildFilesRegex;
+  final pulumi.Input<String>? nobuildFilesRegex;
 
   /// If set to `true`, the application version will not be deleted.
-  final Input<bool>? noopOnDestroy;
+  final pulumi.Input<bool>? noopOnDestroy;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionReadinessCheck> readinessCheck;
+  final pulumi.Input<FlexibleAppVersionReadinessCheck> readinessCheck;
 
   /// Machine resources for a version.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionResources>? resources;
+  final pulumi.Input<FlexibleAppVersionResources>? resources;
 
   /// Desired runtime. Example python27.
-  final Input<String> runtime;
+  final pulumi.Input<String> runtime;
 
   /// The version of the API in the given runtime environment.
   /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
   /// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
-  final Input<String>? runtimeApiVersion;
+  final pulumi.Input<String>? runtimeApiVersion;
 
   /// The channel of the runtime to use. Only available for some runtimes.
-  final Input<String>? runtimeChannel;
+  final pulumi.Input<String>? runtimeChannel;
 
   /// The path or name of the app's main executable.
-  final Input<String>? runtimeMainExecutablePath;
+  final pulumi.Input<String>? runtimeMainExecutablePath;
 
   /// AppEngine service resource. Can contain numbers, letters, and hyphens.
-  final Input<String> service;
+  final pulumi.Input<String> service;
 
   /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
   /// default if this field is neither provided in app.yaml file nor through CLI flag.
-  final Input<String>? serviceAccount;
+  final pulumi.Input<String>? serviceAccount;
 
   /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
   /// Default value is `SERVING`.
   /// Possible values are: `SERVING`, `STOPPED`.
-  final Input<String>? servingStatus;
+  final pulumi.Input<String>? servingStatus;
 
   /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
   /// Reserved names,"default", "latest", and any name with the prefix "ah-".
-  final Input<String>? versionId;
+  final pulumi.Input<String>? versionId;
 
   /// Enables VPC connectivity for standard apps.
   /// Structure is documented below.
-  final Input<FlexibleAppVersionVpcAccessConnector>? vpcAccessConnector;
+  final pulumi.Input<FlexibleAppVersionVpcAccessConnector>? vpcAccessConnector;
 
   FlexibleAppVersionArgs({
     this.apiConfig,
@@ -171,13 +172,13 @@ class FlexibleAppVersionArgs {
     final map = <String, dynamic>{};
     final apiConfigValue = apiConfig;
     if (apiConfigValue != null) {
-      map['apiConfig'] = Input.mapOptionalInputValue<
+      map['apiConfig'] = pulumi.Input.mapOptionalInputValue<
           FlexibleAppVersionApiConfig,
           Map<String, dynamic>>(apiConfigValue, (value) => value.toMap());
     }
     final automaticScalingValue = automaticScaling;
     if (automaticScalingValue != null) {
-      map['automaticScaling'] = Input.mapOptionalInputValue<
+      map['automaticScaling'] = pulumi.Input.mapOptionalInputValue<
               FlexibleAppVersionAutomaticScaling, Map<String, dynamic>>(
           automaticScalingValue, (value) => value.toMap());
     }
@@ -195,19 +196,19 @@ class FlexibleAppVersionArgs {
     }
     final deploymentValue = deployment;
     if (deploymentValue != null) {
-      map['deployment'] = Input.mapOptionalInputValue<
+      map['deployment'] = pulumi.Input.mapOptionalInputValue<
           FlexibleAppVersionDeployment,
           Map<String, dynamic>>(deploymentValue, (value) => value.toMap());
     }
     final endpointsApiServiceValue = endpointsApiService;
     if (endpointsApiServiceValue != null) {
-      map['endpointsApiService'] = Input.mapOptionalInputValue<
+      map['endpointsApiService'] = pulumi.Input.mapOptionalInputValue<
               FlexibleAppVersionEndpointsApiService, Map<String, dynamic>>(
           endpointsApiServiceValue, (value) => value.toMap());
     }
     final entrypointValue = entrypoint;
     if (entrypointValue != null) {
-      map['entrypoint'] = Input.mapOptionalInputValue<
+      map['entrypoint'] = pulumi.Input.mapOptionalInputValue<
           FlexibleAppVersionEntrypoint,
           Map<String, dynamic>>(entrypointValue, (value) => value.toMap());
     }
@@ -217,18 +218,17 @@ class FlexibleAppVersionArgs {
     }
     final flexibleRuntimeSettingsValue = flexibleRuntimeSettings;
     if (flexibleRuntimeSettingsValue != null) {
-      map['flexibleRuntimeSettings'] = Input.mapOptionalInputValue<
+      map['flexibleRuntimeSettings'] = pulumi.Input.mapOptionalInputValue<
               FlexibleAppVersionFlexibleRuntimeSettings, Map<String, dynamic>>(
           flexibleRuntimeSettingsValue, (value) => value.toMap());
     }
     final handlersValue = handlers;
     if (handlersValue != null) {
-      map['handlers'] = Input.mapOptionalInputValue<
+      map['handlers'] = pulumi.Input.mapOptionalInputValue<
               List<FlexibleAppVersionHandler>, List<Map<String, dynamic>>>(
           handlersValue,
-          (value) =>
-              Input.encodeList<FlexibleAppVersionHandler, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<FlexibleAppVersionHandler,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final inboundServicesValue = inboundServices;
     if (inboundServicesValue != null) {
@@ -238,17 +238,19 @@ class FlexibleAppVersionArgs {
     if (instanceClassValue != null) {
       map['instanceClass'] = instanceClassValue;
     }
-    map['livenessCheck'] = Input.mapInputValue<FlexibleAppVersionLivenessCheck,
+    map['livenessCheck'] = pulumi.Input.mapInputValue<
+        FlexibleAppVersionLivenessCheck,
         Map<String, dynamic>>(livenessCheck, (value) => value.toMap());
     final manualScalingValue = manualScaling;
     if (manualScalingValue != null) {
-      map['manualScaling'] = Input.mapOptionalInputValue<
+      map['manualScaling'] = pulumi.Input.mapOptionalInputValue<
           FlexibleAppVersionManualScaling,
           Map<String, dynamic>>(manualScalingValue, (value) => value.toMap());
     }
     final networkValue = network;
     if (networkValue != null) {
-      map['network'] = Input.mapOptionalInputValue<FlexibleAppVersionNetwork,
+      map['network'] = pulumi.Input.mapOptionalInputValue<
+          FlexibleAppVersionNetwork,
           Map<String, dynamic>>(networkValue, (value) => value.toMap());
     }
     final nobuildFilesRegexValue = nobuildFilesRegex;
@@ -263,12 +265,12 @@ class FlexibleAppVersionArgs {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['readinessCheck'] = Input.mapInputValue<
+    map['readinessCheck'] = pulumi.Input.mapInputValue<
         FlexibleAppVersionReadinessCheck,
         Map<String, dynamic>>(readinessCheck, (value) => value.toMap());
     final resourcesValue = resources;
     if (resourcesValue != null) {
-      map['resources'] = Input.mapOptionalInputValue<
+      map['resources'] = pulumi.Input.mapOptionalInputValue<
           FlexibleAppVersionResources,
           Map<String, dynamic>>(resourcesValue, (value) => value.toMap());
     }
@@ -300,7 +302,7 @@ class FlexibleAppVersionArgs {
     }
     final vpcAccessConnectorValue = vpcAccessConnector;
     if (vpcAccessConnectorValue != null) {
-      map['vpcAccessConnector'] = Input.mapOptionalInputValue<
+      map['vpcAccessConnector'] = pulumi.Input.mapOptionalInputValue<
               FlexibleAppVersionVpcAccessConnector, Map<String, dynamic>>(
           vpcAccessConnectorValue, (value) => value.toMap());
     }
@@ -309,59 +311,63 @@ class FlexibleAppVersionArgs {
 
   factory FlexibleAppVersionArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionArgs(
-      apiConfig:
-          Input.asOptionalInput<FlexibleAppVersionApiConfig>(map['apiConfig']),
+      apiConfig: pulumi.Input.asOptionalInput<FlexibleAppVersionApiConfig>(
+          map['apiConfig']),
       automaticScaling:
-          Input.asOptionalInput<FlexibleAppVersionAutomaticScaling>(
+          pulumi.Input.asOptionalInput<FlexibleAppVersionAutomaticScaling>(
               map['automaticScaling']),
-      betaSettings:
-          Input.asOptionalInput<Map<String, String>>(map['betaSettings']),
+      betaSettings: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['betaSettings']),
       defaultExpiration:
-          Input.asOptionalInput<String>(map['defaultExpiration']),
+          pulumi.Input.asOptionalInput<String>(map['defaultExpiration']),
       deleteServiceOnDestroy:
-          Input.asOptionalInput<bool>(map['deleteServiceOnDestroy']),
-      deployment: Input.asOptionalInput<FlexibleAppVersionDeployment>(
+          pulumi.Input.asOptionalInput<bool>(map['deleteServiceOnDestroy']),
+      deployment: pulumi.Input.asOptionalInput<FlexibleAppVersionDeployment>(
           map['deployment']),
       endpointsApiService:
-          Input.asOptionalInput<FlexibleAppVersionEndpointsApiService>(
+          pulumi.Input.asOptionalInput<FlexibleAppVersionEndpointsApiService>(
               map['endpointsApiService']),
-      entrypoint: Input.asOptionalInput<FlexibleAppVersionEntrypoint>(
+      entrypoint: pulumi.Input.asOptionalInput<FlexibleAppVersionEntrypoint>(
           map['entrypoint']),
-      envVariables:
-          Input.asOptionalInput<Map<String, String>>(map['envVariables']),
-      flexibleRuntimeSettings:
-          Input.asOptionalInput<FlexibleAppVersionFlexibleRuntimeSettings>(
-              map['flexibleRuntimeSettings']),
-      handlers: Input.asOptionalInput<List<FlexibleAppVersionHandler>>(
+      envVariables: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['envVariables']),
+      flexibleRuntimeSettings: pulumi.Input.asOptionalInput<
+              FlexibleAppVersionFlexibleRuntimeSettings>(
+          map['flexibleRuntimeSettings']),
+      handlers: pulumi.Input.asOptionalInput<List<FlexibleAppVersionHandler>>(
           map['handlers']),
       inboundServices:
-          Input.asOptionalInput<List<String>>(map['inboundServices']),
-      instanceClass: Input.asOptionalInput<String>(map['instanceClass']),
-      livenessCheck:
-          Input.asInput<FlexibleAppVersionLivenessCheck>(map['livenessCheck']),
-      manualScaling: Input.asOptionalInput<FlexibleAppVersionManualScaling>(
-          map['manualScaling']),
-      network: Input.asOptionalInput<FlexibleAppVersionNetwork>(map['network']),
+          pulumi.Input.asOptionalInput<List<String>>(map['inboundServices']),
+      instanceClass: pulumi.Input.asOptionalInput<String>(map['instanceClass']),
+      livenessCheck: pulumi.Input.asInput<FlexibleAppVersionLivenessCheck>(
+          map['livenessCheck']),
+      manualScaling:
+          pulumi.Input.asOptionalInput<FlexibleAppVersionManualScaling>(
+              map['manualScaling']),
+      network: pulumi.Input.asOptionalInput<FlexibleAppVersionNetwork>(
+          map['network']),
       nobuildFilesRegex:
-          Input.asOptionalInput<String>(map['nobuildFilesRegex']),
-      noopOnDestroy: Input.asOptionalInput<bool>(map['noopOnDestroy']),
-      project: Input.asOptionalInput<String>(map['project']),
-      readinessCheck: Input.asInput<FlexibleAppVersionReadinessCheck>(
+          pulumi.Input.asOptionalInput<String>(map['nobuildFilesRegex']),
+      noopOnDestroy: pulumi.Input.asOptionalInput<bool>(map['noopOnDestroy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      readinessCheck: pulumi.Input.asInput<FlexibleAppVersionReadinessCheck>(
           map['readinessCheck']),
-      resources:
-          Input.asOptionalInput<FlexibleAppVersionResources>(map['resources']),
-      runtime: Input.asInput<String>(map['runtime']),
+      resources: pulumi.Input.asOptionalInput<FlexibleAppVersionResources>(
+          map['resources']),
+      runtime: pulumi.Input.asInput<String>(map['runtime']),
       runtimeApiVersion:
-          Input.asOptionalInput<String>(map['runtimeApiVersion']),
-      runtimeChannel: Input.asOptionalInput<String>(map['runtimeChannel']),
-      runtimeMainExecutablePath:
-          Input.asOptionalInput<String>(map['runtimeMainExecutablePath']),
-      service: Input.asInput<String>(map['service']),
-      serviceAccount: Input.asOptionalInput<String>(map['serviceAccount']),
-      servingStatus: Input.asOptionalInput<String>(map['servingStatus']),
-      versionId: Input.asOptionalInput<String>(map['versionId']),
+          pulumi.Input.asOptionalInput<String>(map['runtimeApiVersion']),
+      runtimeChannel:
+          pulumi.Input.asOptionalInput<String>(map['runtimeChannel']),
+      runtimeMainExecutablePath: pulumi.Input.asOptionalInput<String>(
+          map['runtimeMainExecutablePath']),
+      service: pulumi.Input.asInput<String>(map['service']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<String>(map['serviceAccount']),
+      servingStatus: pulumi.Input.asOptionalInput<String>(map['servingStatus']),
+      versionId: pulumi.Input.asOptionalInput<String>(map['versionId']),
       vpcAccessConnector:
-          Input.asOptionalInput<FlexibleAppVersionVpcAccessConnector>(
+          pulumi.Input.asOptionalInput<FlexibleAppVersionVpcAccessConnector>(
               map['vpcAccessConnector']),
     );
   }

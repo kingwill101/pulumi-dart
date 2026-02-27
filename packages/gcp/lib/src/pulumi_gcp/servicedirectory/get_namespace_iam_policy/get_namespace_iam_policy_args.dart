@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNamespaceIamPolicy.
 class GetNamespaceIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   GetNamespaceIamPolicyArgs({
     required this.name,
@@ -19,7 +19,7 @@ class GetNamespaceIamPolicyArgs {
 
   factory GetNamespaceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceIamPolicyArgs(
-      name: Input.asInput<String>(map['name']),
+      name: pulumi.Input.asInput<String>(map['name']),
     );
   }
 }

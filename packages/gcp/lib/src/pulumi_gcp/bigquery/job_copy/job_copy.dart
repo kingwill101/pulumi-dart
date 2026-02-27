@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_copy_destination_encryption_configuration/job_copy_destination_encryption_configuration.dart';
 import '../job_copy_destination_table/job_copy_destination_table.dart';
 import '../job_copy_source_table/job_copy_source_table.dart';
@@ -62,7 +62,7 @@ class JobCopy {
       map['destinationTable'] = destinationTableValue.toMap();
     }
     map['sourceTables'] =
-        Input.encodeList<JobCopySourceTable, Map<String, dynamic>>(
+        pulumi.Input.encodeList<JobCopySourceTable, Map<String, dynamic>>(
             sourceTables, (value) => value.toMap());
     final writeDispositionValue = writeDisposition;
     if (writeDispositionValue != null) {
@@ -86,7 +86,7 @@ class JobCopy {
           ? null
           : JobCopyDestinationTable.fromMap(
               (map['destinationTable'] as Map).cast<String, dynamic>()),
-      sourceTables: Input.decodeList<JobCopySourceTable>(
+      sourceTables: pulumi.Input.decodeList<JobCopySourceTable>(
           map['sourceTables'],
           (value) => JobCopySourceTable.fromMap(
               (value as Map).cast<String, dynamic>())),

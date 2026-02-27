@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../fleet_default_cluster_config_binary_authorization_config_policy_binding/fleet_default_cluster_config_binary_authorization_config_policy_binding.dart';
 
 class FleetDefaultClusterConfigBinaryAuthorizationConfig {
@@ -26,7 +26,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfig {
     }
     final policyBindingsValue = policyBindings;
     if (policyBindingsValue != null) {
-      map['policyBindings'] = Input.encodeList<
+      map['policyBindings'] = pulumi.Input.encodeList<
           FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding,
           Map<String, dynamic>>(policyBindingsValue, (value) => value.toMap());
     }
@@ -41,7 +41,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfig {
           : map['evaluationMode'] as String,
       policyBindings: map['policyBindings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>(
               map['policyBindings'],
               (value) =>

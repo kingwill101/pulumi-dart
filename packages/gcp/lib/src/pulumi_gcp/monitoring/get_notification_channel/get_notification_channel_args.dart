@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNotificationChannel.
 class GetNotificationChannelArgs {
   /// The display name for this notification channel.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Labels (corresponding to the
   /// NotificationChannelDescriptor schema) to filter the notification channels by.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The type of the notification channel.
   ///
   /// - - -
   ///
   /// Other optional fields include:
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   /// User-provided key-value labels to filter by.
-  final Input<Map<String, String>>? userLabels;
+  final pulumi.Input<Map<String, String>>? userLabels;
 
   GetNotificationChannelArgs({
     this.displayName,
@@ -60,11 +60,12 @@ class GetNotificationChannelArgs {
 
   factory GetNotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      project: Input.asOptionalInput<String>(map['project']),
-      type: Input.asOptionalInput<String>(map['type']),
-      userLabels: Input.asOptionalInput<Map<String, String>>(map['userLabels']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
+      userLabels:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['userLabels']),
     );
   }
 }

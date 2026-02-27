@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_scheduling_graceful_shutdown_max_duration/get_instance_scheduling_graceful_shutdown_max_duration.dart';
 
 class GetInstanceSchedulingGracefulShutdown {
@@ -20,7 +20,7 @@ class GetInstanceSchedulingGracefulShutdown {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabled'] = enabled;
-    map['maxDurations'] = Input.encodeList<
+    map['maxDurations'] = pulumi.Input.encodeList<
         GetInstanceSchedulingGracefulShutdownMaxDuration,
         Map<String, dynamic>>(maxDurations, (value) => value.toMap());
     return map;
@@ -30,12 +30,11 @@ class GetInstanceSchedulingGracefulShutdown {
       Map<String, dynamic> map) {
     return GetInstanceSchedulingGracefulShutdown(
       enabled: map['enabled'] as bool,
-      maxDurations:
-          Input.decodeList<GetInstanceSchedulingGracefulShutdownMaxDuration>(
-              map['maxDurations'],
-              (value) =>
-                  GetInstanceSchedulingGracefulShutdownMaxDuration.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      maxDurations: pulumi.Input.decodeList<
+              GetInstanceSchedulingGracefulShutdownMaxDuration>(
+          map['maxDurations'],
+          (value) => GetInstanceSchedulingGracefulShutdownMaxDuration.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

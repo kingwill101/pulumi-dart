@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../posture_policy_set/posture_policy_set.dart';
 import 'posture_args.dart';
 
@@ -32,55 +32,55 @@ import 'posture_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}
 /// ```
-class Posture extends CustomResource {
+class Posture extends pulumi.CustomResource {
   /// Time the Posture was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Description of the posture.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// For Resource freshness validation (https://google.aip.dev/154)
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Location of the resource, eg: global.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the posture.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// List of policy sets for the posture.
   /// Structure is documented below.
-  late final Output<List<PosturePolicySet>> policySets;
+  late final pulumi.Output<List<PosturePolicySet>> policySets;
 
   /// Id of the posture. It is an immutable field.
-  late final Output<String> postureId;
+  late final pulumi.Output<String> postureId;
 
   /// If set, there are currently changes in flight to the posture.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Revision_id of the posture.
-  late final Output<String> revisionId;
+  late final pulumi.Output<String> revisionId;
 
   /// State of the posture. Update to state field should not be triggered along with
   /// with other field updates.
   /// Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Time the Posture was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Posture(
     String name, {
     PostureArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securityposture/posture:Posture',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

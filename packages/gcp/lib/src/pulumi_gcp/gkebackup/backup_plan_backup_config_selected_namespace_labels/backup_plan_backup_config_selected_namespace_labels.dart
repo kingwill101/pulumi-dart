@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_plan_backup_config_selected_namespace_labels_resource_label/backup_plan_backup_config_selected_namespace_labels_resource_label.dart';
 
 class BackupPlanBackupConfigSelectedNamespaceLabels {
@@ -15,7 +15,7 @@ class BackupPlanBackupConfigSelectedNamespaceLabels {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['resourceLabels'] = Input.encodeList<
+    map['resourceLabels'] = pulumi.Input.encodeList<
         BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel,
         Map<String, dynamic>>(resourceLabels, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class BackupPlanBackupConfigSelectedNamespaceLabels {
   factory BackupPlanBackupConfigSelectedNamespaceLabels.fromMap(
       Map<String, dynamic> map) {
     return BackupPlanBackupConfigSelectedNamespaceLabels(
-      resourceLabels: Input.decodeList<
+      resourceLabels: pulumi.Input.decodeList<
               BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel>(
           map['resourceLabels'],
           (value) => BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel

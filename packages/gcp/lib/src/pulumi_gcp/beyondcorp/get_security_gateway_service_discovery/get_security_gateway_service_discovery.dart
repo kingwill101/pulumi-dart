@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_gateway_service_discovery_api_gateway/get_security_gateway_service_discovery_api_gateway.dart';
 
 class GetSecurityGatewayServiceDiscovery {
@@ -13,7 +13,7 @@ class GetSecurityGatewayServiceDiscovery {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['apiGateways'] = Input.encodeList<
+    map['apiGateways'] = pulumi.Input.encodeList<
         GetSecurityGatewayServiceDiscoveryApiGateway,
         Map<String, dynamic>>(apiGateways, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetSecurityGatewayServiceDiscovery {
   factory GetSecurityGatewayServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayServiceDiscovery(
       apiGateways:
-          Input.decodeList<GetSecurityGatewayServiceDiscoveryApiGateway>(
+          pulumi.Input.decodeList<GetSecurityGatewayServiceDiscoveryApiGateway>(
               map['apiGateways'],
               (value) => GetSecurityGatewayServiceDiscoveryApiGateway.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_zone_forwarding_config_target_name_server/managed_zone_forwarding_config_target_name_server.dart';
 
 class ManagedZoneForwardingConfig {
@@ -16,7 +16,7 @@ class ManagedZoneForwardingConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['targetNameServers'] = Input.encodeList<
+    map['targetNameServers'] = pulumi.Input.encodeList<
         ManagedZoneForwardingConfigTargetNameServer,
         Map<String, dynamic>>(targetNameServers, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class ManagedZoneForwardingConfig {
   factory ManagedZoneForwardingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfig(
       targetNameServers:
-          Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(
+          pulumi.Input.decodeList<ManagedZoneForwardingConfigTargetNameServer>(
               map['targetNameServers'],
               (value) => ManagedZoneForwardingConfigTargetNameServer.fromMap(
                   (value as Map).cast<String, dynamic>())),

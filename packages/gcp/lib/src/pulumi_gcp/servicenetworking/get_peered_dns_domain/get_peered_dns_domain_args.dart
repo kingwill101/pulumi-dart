@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPeeredDnsDomain.
 class GetPeeredDnsDomainArgs {
-  final Input<String> name;
-  final Input<String> network;
-  final Input<String> project;
-  final Input<String> service;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String> network;
+  final pulumi.Input<String> project;
+  final pulumi.Input<String> service;
 
   GetPeeredDnsDomainArgs({
     required this.name,
@@ -27,10 +27,10 @@ class GetPeeredDnsDomainArgs {
 
   factory GetPeeredDnsDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeredDnsDomainArgs(
-      name: Input.asInput<String>(map['name']),
-      network: Input.asInput<String>(map['network']),
-      project: Input.asInput<String>(map['project']),
-      service: Input.asInput<String>(map['service']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      network: pulumi.Input.asInput<String>(map['network']),
+      project: pulumi.Input.asInput<String>(map['project']),
+      service: pulumi.Input.asInput<String>(map['service']),
     );
   }
 }

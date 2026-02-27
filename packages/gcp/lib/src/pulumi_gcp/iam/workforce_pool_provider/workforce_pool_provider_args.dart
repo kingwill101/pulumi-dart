@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workforce_pool_provider_extended_attributes_oauth2_client/workforce_pool_provider_extended_attributes_oauth2_client.dart';
 import '../workforce_pool_provider_extra_attributes_oauth2_client/workforce_pool_provider_extra_attributes_oauth2_client.dart';
 import '../workforce_pool_provider_oidc/workforce_pool_provider_oidc.dart';
@@ -13,7 +13,7 @@ class WorkforcePoolProviderArgs {
   /// provider should not be accepted.
   /// The expression must output a boolean representing whether to allow the federation.
   /// The following keywords may be referenced in the expressions:
-  final Input<String>? attributeCondition;
+  final pulumi.Input<String>? attributeCondition;
 
   /// Maps attributes from the authentication credentials issued by an external identity provider
   /// to Google Cloud attributes, such as `subject` and `segment`.
@@ -57,17 +57,17 @@ class WorkforcePoolProviderArgs {
   /// ```
   /// An object containing a list of `"key": value` pairs.
   /// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-  final Input<Map<String, String>>? attributeMapping;
+  final pulumi.Input<Map<String, String>>? attributeMapping;
 
   /// A user-specified description of the provider. Cannot exceed 256 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// However, existing tokens still grant access.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// A user-specified display name for the provider. Cannot exceed 32 characters.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The configuration for OAuth 2.0 client used to get the extended group
   /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
@@ -80,7 +80,7 @@ class WorkforcePoolProviderArgs {
   /// active session. Each user identity in the workforce identity pool must map
   /// to a unique Microsoft Entra ID user.
   /// Structure is documented below.
-  final Input<WorkforcePoolProviderExtendedAttributesOauth2Client>?
+  final pulumi.Input<WorkforcePoolProviderExtendedAttributesOauth2Client>?
       extendedAttributesOauth2Client;
 
   /// The configuration for OAuth 2.0 client used to get the additional user
@@ -88,24 +88,24 @@ class WorkforcePoolProviderArgs {
   /// in authentication credentials. Currently this configuration is only
   /// supported with SAML and OIDC protocol.
   /// Structure is documented below.
-  final Input<WorkforcePoolProviderExtraAttributesOauth2Client>?
+  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2Client>?
       extraAttributesOauth2Client;
 
   /// The location for the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Represents an OpenId Connect 1.0 identity provider.
   /// Structure is documented below.
-  final Input<WorkforcePoolProviderOidc>? oidc;
+  final pulumi.Input<WorkforcePoolProviderOidc>? oidc;
 
   /// The ID for the provider, which becomes the final component of the resource name.
   /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  final Input<String> providerId;
+  final pulumi.Input<String> providerId;
 
   /// Represents a SAML identity provider.
   /// Structure is documented below.
-  final Input<WorkforcePoolProviderSaml>? saml;
+  final pulumi.Input<WorkforcePoolProviderSaml>? saml;
 
   /// Agentspace only. Specifies whether the workforce identity pool
   /// provider uses SCIM-managed groups instead of the `google.groups`
@@ -117,13 +117,13 @@ class WorkforcePoolProviderArgs {
   /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
   /// attribute mapping for authorization checks
   /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
-  final Input<String>? scimUsage;
+  final pulumi.Input<String>? scimUsage;
 
   /// The ID to use for the pool, which becomes the final component of the resource name.
   /// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
   /// It must start with a letter, and cannot have a trailing hyphen.
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  final Input<String> workforcePoolId;
+  final pulumi.Input<String> workforcePoolId;
 
   WorkforcePoolProviderArgs({
     this.attributeCondition,
@@ -165,14 +165,15 @@ class WorkforcePoolProviderArgs {
     }
     final extendedAttributesOauth2ClientValue = extendedAttributesOauth2Client;
     if (extendedAttributesOauth2ClientValue != null) {
-      map['extendedAttributesOauth2Client'] = Input.mapOptionalInputValue<
-              WorkforcePoolProviderExtendedAttributesOauth2Client,
-              Map<String, dynamic>>(
-          extendedAttributesOauth2ClientValue, (value) => value.toMap());
+      map['extendedAttributesOauth2Client'] =
+          pulumi.Input.mapOptionalInputValue<
+                  WorkforcePoolProviderExtendedAttributesOauth2Client,
+                  Map<String, dynamic>>(
+              extendedAttributesOauth2ClientValue, (value) => value.toMap());
     }
     final extraAttributesOauth2ClientValue = extraAttributesOauth2Client;
     if (extraAttributesOauth2ClientValue != null) {
-      map['extraAttributesOauth2Client'] = Input.mapOptionalInputValue<
+      map['extraAttributesOauth2Client'] = pulumi.Input.mapOptionalInputValue<
               WorkforcePoolProviderExtraAttributesOauth2Client,
               Map<String, dynamic>>(
           extraAttributesOauth2ClientValue, (value) => value.toMap());
@@ -180,13 +181,15 @@ class WorkforcePoolProviderArgs {
     map['location'] = location;
     final oidcValue = oidc;
     if (oidcValue != null) {
-      map['oidc'] = Input.mapOptionalInputValue<WorkforcePoolProviderOidc,
+      map['oidc'] = pulumi.Input.mapOptionalInputValue<
+          WorkforcePoolProviderOidc,
           Map<String, dynamic>>(oidcValue, (value) => value.toMap());
     }
     map['providerId'] = providerId;
     final samlValue = saml;
     if (samlValue != null) {
-      map['saml'] = Input.mapOptionalInputValue<WorkforcePoolProviderSaml,
+      map['saml'] = pulumi.Input.mapOptionalInputValue<
+          WorkforcePoolProviderSaml,
           Map<String, dynamic>>(samlValue, (value) => value.toMap());
     }
     final scimUsageValue = scimUsage;
@@ -200,24 +203,26 @@ class WorkforcePoolProviderArgs {
   factory WorkforcePoolProviderArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderArgs(
       attributeCondition:
-          Input.asOptionalInput<String>(map['attributeCondition']),
-      attributeMapping:
-          Input.asOptionalInput<Map<String, String>>(map['attributeMapping']),
-      description: Input.asOptionalInput<String>(map['description']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      extendedAttributesOauth2Client: Input.asOptionalInput<
+          pulumi.Input.asOptionalInput<String>(map['attributeCondition']),
+      attributeMapping: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['attributeMapping']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      extendedAttributesOauth2Client: pulumi.Input.asOptionalInput<
               WorkforcePoolProviderExtendedAttributesOauth2Client>(
           map['extendedAttributesOauth2Client']),
-      extraAttributesOauth2Client: Input.asOptionalInput<
+      extraAttributesOauth2Client: pulumi.Input.asOptionalInput<
               WorkforcePoolProviderExtraAttributesOauth2Client>(
           map['extraAttributesOauth2Client']),
-      location: Input.asInput<String>(map['location']),
-      oidc: Input.asOptionalInput<WorkforcePoolProviderOidc>(map['oidc']),
-      providerId: Input.asInput<String>(map['providerId']),
-      saml: Input.asOptionalInput<WorkforcePoolProviderSaml>(map['saml']),
-      scimUsage: Input.asOptionalInput<String>(map['scimUsage']),
-      workforcePoolId: Input.asInput<String>(map['workforcePoolId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      oidc:
+          pulumi.Input.asOptionalInput<WorkforcePoolProviderOidc>(map['oidc']),
+      providerId: pulumi.Input.asInput<String>(map['providerId']),
+      saml:
+          pulumi.Input.asOptionalInput<WorkforcePoolProviderSaml>(map['saml']),
+      scimUsage: pulumi.Input.asOptionalInput<String>(map['scimUsage']),
+      workforcePoolId: pulumi.Input.asInput<String>(map['workforcePoolId']),
     );
   }
 }

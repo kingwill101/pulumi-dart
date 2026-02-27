@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecurityGateway.
 class GetSecurityGatewayArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The name of the Security Gateway resource.
   ///
   /// - - -
-  final Input<String> securityGatewayId;
+  final pulumi.Input<String> securityGatewayId;
 
   GetSecurityGatewayArgs({
     this.project,
@@ -30,8 +30,8 @@ class GetSecurityGatewayArgs {
 
   factory GetSecurityGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGatewayArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      securityGatewayId: Input.asInput<String>(map['securityGatewayId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      securityGatewayId: pulumi.Input.asInput<String>(map['securityGatewayId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_management_server_management_uri/get_management_server_management_uri.dart';
 import '../get_management_server_network/get_management_server_network.dart';
 
@@ -31,12 +31,12 @@ class GetManagementServerResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['location'] = location;
-    map['managementUris'] = Input.encodeList<GetManagementServerManagementUri,
+    map['managementUris'] = pulumi.Input.encodeList<
+        GetManagementServerManagementUri,
         Map<String, dynamic>>(managementUris, (value) => value.toMap());
     map['name'] = name;
-    map['networks'] =
-        Input.encodeList<GetManagementServerNetwork, Map<String, dynamic>>(
-            networks, (value) => value.toMap());
+    map['networks'] = pulumi.Input.encodeList<GetManagementServerNetwork,
+        Map<String, dynamic>>(networks, (value) => value.toMap());
     map['oauth2ClientId'] = oauth2ClientId;
     map['project'] = project;
     map['type'] = type;
@@ -47,12 +47,12 @@ class GetManagementServerResult {
     return GetManagementServerResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      managementUris: Input.decodeList<GetManagementServerManagementUri>(
+      managementUris: pulumi.Input.decodeList<GetManagementServerManagementUri>(
           map['managementUris'],
           (value) => GetManagementServerManagementUri.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      networks: Input.decodeList<GetManagementServerNetwork>(
+      networks: pulumi.Input.decodeList<GetManagementServerNetwork>(
           map['networks'],
           (value) => GetManagementServerNetwork.fromMap(
               (value as Map).cast<String, dynamic>())),

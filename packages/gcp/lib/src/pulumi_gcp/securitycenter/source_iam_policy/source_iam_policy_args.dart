@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SourceIamPolicy.
 class SourceIamPolicyArgs {
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
-  final Input<String> organization;
-  final Input<String> policyData;
-  final Input<String> source;
+  final pulumi.Input<String> organization;
+  final pulumi.Input<String> policyData;
+  final pulumi.Input<String> source;
 
   SourceIamPolicyArgs({
     required this.organization,
@@ -26,9 +26,9 @@ class SourceIamPolicyArgs {
 
   factory SourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamPolicyArgs(
-      organization: Input.asInput<String>(map['organization']),
-      policyData: Input.asInput<String>(map['policyData']),
-      source: Input.asInput<String>(map['source']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
+      policyData: pulumi.Input.asInput<String>(map['policyData']),
+      source: pulumi.Input.asInput<String>(map['source']),
     );
   }
 }

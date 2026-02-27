@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RegionTargetHttpsProxy.
 class RegionTargetHttpsProxyArgs {
   /// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
   /// sslCertificates and certificateManagerCertificates can't be defined together.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
-  final Input<List<String>>? certificateManagerCertificates;
+  final pulumi.Input<List<String>>? certificateManagerCertificates;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Specifies how long to keep a connection open, after completing a response,
   /// while there is no matching traffic (in seconds). If an HTTP keepalive is
   /// not specified, a default value (600 seconds) will be used. For Regioanl
   /// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
   /// maximum allowed value is 600 seconds.
-  final Input<int>? httpKeepAliveTimeoutSec;
+  final pulumi.Input<int>? httpKeepAliveTimeoutSec;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -26,15 +26,15 @@ class RegionTargetHttpsProxyArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Region in which the created target https proxy should reside.
   /// If it is not provided, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A URL referring to a networksecurity.ServerTlsPolicy
   /// resource that describes how the proxy should authenticate inbound
@@ -49,21 +49,21 @@ class RegionTargetHttpsProxyArgs {
   /// deleting or recreating a referenced ServerTlsPolicy resource, you will
   /// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
   /// within the ServerTlsPolicy resource to avoid this.
-  final Input<String>? serverTlsPolicy;
+  final pulumi.Input<String>? serverTlsPolicy;
 
   /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
   /// At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
   /// sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-  final Input<List<String>>? sslCertificates;
+  final pulumi.Input<List<String>>? sslCertificates;
 
   /// A reference to the Region SslPolicy resource that will be associated with
   /// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
   /// resource will not have any SSL policy configured.
-  final Input<String>? sslPolicy;
+  final pulumi.Input<String>? sslPolicy;
 
   /// A reference to the RegionUrlMap resource that defines the mapping from URL
   /// to the RegionBackendService.
-  final Input<String> urlMap;
+  final pulumi.Input<String> urlMap;
 
   RegionTargetHttpsProxyArgs({
     this.certificateManagerCertificates,
@@ -123,19 +123,21 @@ class RegionTargetHttpsProxyArgs {
 
   factory RegionTargetHttpsProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpsProxyArgs(
-      certificateManagerCertificates: Input.asOptionalInput<List<String>>(
-          map['certificateManagerCertificates']),
-      description: Input.asOptionalInput<String>(map['description']),
+      certificateManagerCertificates:
+          pulumi.Input.asOptionalInput<List<String>>(
+              map['certificateManagerCertificates']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       httpKeepAliveTimeoutSec:
-          Input.asOptionalInput<int>(map['httpKeepAliveTimeoutSec']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      serverTlsPolicy: Input.asOptionalInput<String>(map['serverTlsPolicy']),
+          pulumi.Input.asOptionalInput<int>(map['httpKeepAliveTimeoutSec']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      serverTlsPolicy:
+          pulumi.Input.asOptionalInput<String>(map['serverTlsPolicy']),
       sslCertificates:
-          Input.asOptionalInput<List<String>>(map['sslCertificates']),
-      sslPolicy: Input.asOptionalInput<String>(map['sslPolicy']),
-      urlMap: Input.asInput<String>(map['urlMap']),
+          pulumi.Input.asOptionalInput<List<String>>(map['sslCertificates']),
+      sslPolicy: pulumi.Input.asOptionalInput<String>(map['sslPolicy']),
+      urlMap: pulumi.Input.asInput<String>(map['urlMap']),
     );
   }
 }

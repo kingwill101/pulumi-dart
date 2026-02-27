@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_resize_request_status_error_error_error_detail_error_info/region_resize_request_status_error_error_error_detail_error_info.dart';
 import '../region_resize_request_status_error_error_error_detail_help/region_resize_request_status_error_error_error_detail_help.dart';
 import '../region_resize_request_status_error_error_error_detail_localized_message/region_resize_request_status_error_error_error_detail_localized_message.dart';
@@ -41,26 +41,26 @@ class RegionResizeRequestStatusErrorErrorErrorDetail {
     final map = <String, dynamic>{};
     final errorInfosValue = errorInfos;
     if (errorInfosValue != null) {
-      map['errorInfos'] = Input.encodeList<
+      map['errorInfos'] = pulumi.Input.encodeList<
           RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo,
           Map<String, dynamic>>(errorInfosValue, (value) => value.toMap());
     }
     final helpsValue = helps;
     if (helpsValue != null) {
-      map['helps'] = Input.encodeList<
+      map['helps'] = pulumi.Input.encodeList<
           RegionResizeRequestStatusErrorErrorErrorDetailHelp,
           Map<String, dynamic>>(helpsValue, (value) => value.toMap());
     }
     final localizedMessagesValue = localizedMessages;
     if (localizedMessagesValue != null) {
-      map['localizedMessages'] = Input.encodeList<
+      map['localizedMessages'] = pulumi.Input.encodeList<
               RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage,
               Map<String, dynamic>>(
           localizedMessagesValue, (value) => value.toMap());
     }
     final quotaInfosValue = quotaInfos;
     if (quotaInfosValue != null) {
-      map['quotaInfos'] = Input.encodeList<
+      map['quotaInfos'] = pulumi.Input.encodeList<
           RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo,
           Map<String, dynamic>>(quotaInfosValue, (value) => value.toMap());
     }
@@ -72,14 +72,14 @@ class RegionResizeRequestStatusErrorErrorErrorDetail {
     return RegionResizeRequestStatusErrorErrorErrorDetail(
       errorInfos: map['errorInfos'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo>(
               map['errorInfos'],
               (value) => RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo
                   .fromMap((value as Map).cast<String, dynamic>())),
       helps: map['helps'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionResizeRequestStatusErrorErrorErrorDetailHelp>(
               map['helps'],
               (value) =>
@@ -87,7 +87,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetail {
                       (value as Map).cast<String, dynamic>())),
       localizedMessages: map['localizedMessages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage>(
               map['localizedMessages'],
               (value) =>
@@ -95,7 +95,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetail {
                       .fromMap((value as Map).cast<String, dynamic>())),
       quotaInfos: map['quotaInfos'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo>(
               map['quotaInfos'],
               (value) => RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo

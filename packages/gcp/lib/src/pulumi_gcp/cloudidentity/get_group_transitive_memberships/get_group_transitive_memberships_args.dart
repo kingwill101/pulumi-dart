@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGroupTransitiveMemberships.
 class GetGroupTransitiveMembershipsArgs {
   /// The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
-  final Input<String> group;
+  final pulumi.Input<String> group;
 
   GetGroupTransitiveMembershipsArgs({
     required this.group,
@@ -19,7 +19,7 @@ class GetGroupTransitiveMembershipsArgs {
 
   factory GetGroupTransitiveMembershipsArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupTransitiveMembershipsArgs(
-      group: Input.asInput<String>(map['group']),
+      group: pulumi.Input.asInput<String>(map['group']),
     );
   }
 }

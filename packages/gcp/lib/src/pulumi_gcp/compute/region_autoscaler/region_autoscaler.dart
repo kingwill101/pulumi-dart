@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_autoscaler_autoscaling_policy/region_autoscaler_autoscaling_policy.dart';
 import 'region_autoscaler_args.dart';
 
@@ -51,50 +51,50 @@ import 'region_autoscaler_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
 /// ```
-class RegionAutoscaler extends CustomResource {
+class RegionAutoscaler extends pulumi.CustomResource {
   /// The configuration parameters for the autoscaling algorithm. You can
   /// define one or more of the policies for an autoscaler: cpuUtilization,
   /// customMetricUtilizations, and loadBalancingUtilization.
   /// If none of these are specified, the default will be to autoscale based
   /// on cpuUtilization to 0.6 or 60%.
   /// Structure is documented below.
-  late final Output<RegionAutoscalerAutoscalingPolicy> autoscalingPolicy;
+  late final pulumi.Output<RegionAutoscalerAutoscalingPolicy> autoscalingPolicy;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the resource. The name must be 1-63 characters long and match
   /// the regular expression `a-z?` which means the
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// URL of the region where the instance group resides.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// URL of the managed instance group that this autoscaler will scale.
-  late final Output<String> target;
+  late final pulumi.Output<String> target;
 
   RegionAutoscaler(
     String name, {
     RegionAutoscalerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionAutoscaler:RegionAutoscaler',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autoscalingPolicy =
         registerOutput<RegionAutoscalerAutoscalingPolicy>('autoscalingPolicy');

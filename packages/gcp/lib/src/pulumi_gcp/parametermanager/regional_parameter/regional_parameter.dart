@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../regional_parameter_policy_member/regional_parameter_policy_member.dart';
 import 'regional_parameter_args.dart';
 
@@ -51,21 +51,21 @@ import 'regional_parameter_args.dart';
 /// ```sh
 /// $ pulumi import gcp:parametermanager/regionalParameter:RegionalParameter default {{location}}/{{parameter_id}}
 /// ```
-class RegionalParameter extends CustomResource {
+class RegionalParameter extends pulumi.CustomResource {
   /// The time at which the regional Parameter was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The format type of the regional parameter.
   /// Default value is `UNFORMATTED`.
   /// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
-  late final Output<String?> format;
+  late final pulumi.Output<String?> format;
 
   /// The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
   /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
-  late final Output<String?> kmsKey;
+  late final pulumi.Output<String?> kmsKey;
 
   /// The labels assigned to this regional Parameter.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -78,42 +78,42 @@ class RegionalParameter extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the regional parameter. eg us-central1
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the regional Parameter. Format:
   /// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// This must be unique within the project.
-  late final Output<String> parameterId;
+  late final pulumi.Output<String> parameterId;
 
   /// An object containing a unique resource identity tied to the regional parameter.
   /// Structure is documented below.
-  late final Output<List<RegionalParameterPolicyMember>> policyMembers;
+  late final pulumi.Output<List<RegionalParameterPolicyMember>> policyMembers;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The time at which the regional Parameter was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   RegionalParameter(
     String name, {
     RegionalParameterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:parametermanager/regionalParameter:RegionalParameter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.effectiveLabels =

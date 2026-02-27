@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_protect_config_workload_config/get_cluster_protect_config_workload_config.dart';
 
 class GetClusterProtectConfig {
@@ -17,7 +17,7 @@ class GetClusterProtectConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['workloadConfigs'] = Input.encodeList<
+    map['workloadConfigs'] = pulumi.Input.encodeList<
         GetClusterProtectConfigWorkloadConfig,
         Map<String, dynamic>>(workloadConfigs, (value) => value.toMap());
     map['workloadVulnerabilityMode'] = workloadVulnerabilityMode;
@@ -26,10 +26,11 @@ class GetClusterProtectConfig {
 
   factory GetClusterProtectConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterProtectConfig(
-      workloadConfigs: Input.decodeList<GetClusterProtectConfigWorkloadConfig>(
-          map['workloadConfigs'],
-          (value) => GetClusterProtectConfigWorkloadConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      workloadConfigs:
+          pulumi.Input.decodeList<GetClusterProtectConfigWorkloadConfig>(
+              map['workloadConfigs'],
+              (value) => GetClusterProtectConfigWorkloadConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       workloadVulnerabilityMode: map['workloadVulnerabilityMode'] as String,
     );
   }

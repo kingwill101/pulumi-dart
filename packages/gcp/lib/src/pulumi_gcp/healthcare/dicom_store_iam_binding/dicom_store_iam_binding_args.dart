@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dicom_store_iam_binding_condition/dicom_store_iam_binding_condition.dart';
 
 /// The set of arguments for DicomStoreIamBinding.
 class DicomStoreIamBindingArgs {
-  final Input<DicomStoreIamBindingCondition>? condition;
+  final pulumi.Input<DicomStoreIamBindingCondition>? condition;
 
   /// The DICOM store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
   /// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
-  final Input<String> dicomStoreId;
+  final pulumi.Input<String> dicomStoreId;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -21,12 +21,12 @@ class DicomStoreIamBindingArgs {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  final Input<List<String>> members;
+  final pulumi.Input<List<String>> members;
 
   /// The role that should be applied. Only one
   /// `gcp.healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   DicomStoreIamBindingArgs({
     this.condition,
@@ -39,7 +39,7 @@ class DicomStoreIamBindingArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           DicomStoreIamBindingCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -51,11 +51,11 @@ class DicomStoreIamBindingArgs {
 
   factory DicomStoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreIamBindingArgs(
-      condition: Input.asOptionalInput<DicomStoreIamBindingCondition>(
+      condition: pulumi.Input.asOptionalInput<DicomStoreIamBindingCondition>(
           map['condition']),
-      dicomStoreId: Input.asInput<String>(map['dicomStoreId']),
-      members: Input.asInput<List<String>>(map['members']),
-      role: Input.asInput<String>(map['role']),
+      dicomStoreId: pulumi.Input.asInput<String>(map['dicomStoreId']),
+      members: pulumi.Input.asInput<List<String>>(map['members']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

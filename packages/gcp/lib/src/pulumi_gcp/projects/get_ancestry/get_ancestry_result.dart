@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ancestry_ancestor/get_ancestry_ancestor.dart';
 
 /// Result data returned by getAncestry.
@@ -33,7 +33,7 @@ class GetAncestryResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['ancestors'] =
-        Input.encodeList<GetAncestryAncestor, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAncestryAncestor, Map<String, dynamic>>(
             ancestors, (value) => value.toMap());
     map['id'] = id;
     map['orgId'] = orgId;
@@ -48,7 +48,7 @@ class GetAncestryResult {
 
   factory GetAncestryResult.fromMap(Map<String, dynamic> map) {
     return GetAncestryResult(
-      ancestors: Input.decodeList<GetAncestryAncestor>(
+      ancestors: pulumi.Input.decodeList<GetAncestryAncestor>(
           map['ancestors'],
           (value) => GetAncestryAncestor.fromMap(
               (value as Map).cast<String, dynamic>())),

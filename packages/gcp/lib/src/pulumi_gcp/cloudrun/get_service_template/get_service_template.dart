@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_metadata/get_service_template_metadata.dart';
 import '../get_service_template_spec/get_service_template_spec.dart';
 
@@ -24,22 +24,21 @@ class GetServiceTemplate {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['metadatas'] =
-        Input.encodeList<GetServiceTemplateMetadata, Map<String, dynamic>>(
-            metadatas, (value) => value.toMap());
+    map['metadatas'] = pulumi.Input.encodeList<GetServiceTemplateMetadata,
+        Map<String, dynamic>>(metadatas, (value) => value.toMap());
     map['specs'] =
-        Input.encodeList<GetServiceTemplateSpec, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetServiceTemplateSpec, Map<String, dynamic>>(
             specs, (value) => value.toMap());
     return map;
   }
 
   factory GetServiceTemplate.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplate(
-      metadatas: Input.decodeList<GetServiceTemplateMetadata>(
+      metadatas: pulumi.Input.decodeList<GetServiceTemplateMetadata>(
           map['metadatas'],
           (value) => GetServiceTemplateMetadata.fromMap(
               (value as Map).cast<String, dynamic>())),
-      specs: Input.decodeList<GetServiceTemplateSpec>(
+      specs: pulumi.Input.decodeList<GetServiceTemplateSpec>(
           map['specs'],
           (value) => GetServiceTemplateSpec.fromMap(
               (value as Map).cast<String, dynamic>())),

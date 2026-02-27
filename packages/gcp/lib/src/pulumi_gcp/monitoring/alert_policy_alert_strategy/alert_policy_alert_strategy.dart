@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../alert_policy_alert_strategy_notification_channel_strategy/alert_policy_alert_strategy_notification_channel_strategy.dart';
 import '../alert_policy_alert_strategy_notification_rate_limit/alert_policy_alert_strategy_notification_rate_limit.dart';
 
@@ -38,7 +38,7 @@ class AlertPolicyAlertStrategy {
     }
     final notificationChannelStrategiesValue = notificationChannelStrategies;
     if (notificationChannelStrategiesValue != null) {
-      map['notificationChannelStrategies'] = Input.encodeList<
+      map['notificationChannelStrategies'] = pulumi.Input.encodeList<
               AlertPolicyAlertStrategyNotificationChannelStrategy,
               Map<String, dynamic>>(
           notificationChannelStrategiesValue, (value) => value.toMap());
@@ -60,7 +60,7 @@ class AlertPolicyAlertStrategy {
       notificationChannelStrategies: map['notificationChannelStrategies'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AlertPolicyAlertStrategyNotificationChannelStrategy>(
               map['notificationChannelStrategies'],
               (value) =>

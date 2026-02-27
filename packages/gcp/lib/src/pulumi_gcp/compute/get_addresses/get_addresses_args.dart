@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAddresses.
 class GetAddressesArgs {
@@ -26,15 +26,15 @@ class GetAddressesArgs {
   /// can include "AND" and "OR" expressions explicitly. For example: """
   /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell")
   /// AND (scheduling.automaticRestart = true)
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The google project in which addresses are listed.
   /// Defaults to provider's configuration if missing.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAddressesArgs({
     this.filter,
@@ -61,9 +61,9 @@ class GetAddressesArgs {
 
   factory GetAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressesArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connectivity_tests_connectivity_test_source_app_engine_version/get_connectivity_tests_connectivity_test_source_app_engine_version.dart';
 import '../get_connectivity_tests_connectivity_test_source_cloud_function/get_connectivity_tests_connectivity_test_source_cloud_function.dart';
 import '../get_connectivity_tests_connectivity_test_source_cloud_run_revision/get_connectivity_tests_connectivity_test_source_cloud_run_revision.dart';
@@ -61,13 +61,13 @@ class GetConnectivityTestsConnectivityTestSource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['appEngineVersions'] = Input.encodeList<
+    map['appEngineVersions'] = pulumi.Input.encodeList<
         GetConnectivityTestsConnectivityTestSourceAppEngineVersion,
         Map<String, dynamic>>(appEngineVersions, (value) => value.toMap());
-    map['cloudFunctions'] = Input.encodeList<
+    map['cloudFunctions'] = pulumi.Input.encodeList<
         GetConnectivityTestsConnectivityTestSourceCloudFunction,
         Map<String, dynamic>>(cloudFunctions, (value) => value.toMap());
-    map['cloudRunRevisions'] = Input.encodeList<
+    map['cloudRunRevisions'] = pulumi.Input.encodeList<
         GetConnectivityTestsConnectivityTestSourceCloudRunRevision,
         Map<String, dynamic>>(cloudRunRevisions, (value) => value.toMap());
     map['cloudSqlInstance'] = cloudSqlInstance;
@@ -84,18 +84,18 @@ class GetConnectivityTestsConnectivityTestSource {
   factory GetConnectivityTestsConnectivityTestSource.fromMap(
       Map<String, dynamic> map) {
     return GetConnectivityTestsConnectivityTestSource(
-      appEngineVersions: Input.decodeList<
+      appEngineVersions: pulumi.Input.decodeList<
               GetConnectivityTestsConnectivityTestSourceAppEngineVersion>(
           map['appEngineVersions'],
           (value) => GetConnectivityTestsConnectivityTestSourceAppEngineVersion
               .fromMap((value as Map).cast<String, dynamic>())),
-      cloudFunctions: Input.decodeList<
+      cloudFunctions: pulumi.Input.decodeList<
               GetConnectivityTestsConnectivityTestSourceCloudFunction>(
           map['cloudFunctions'],
           (value) =>
               GetConnectivityTestsConnectivityTestSourceCloudFunction.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      cloudRunRevisions: Input.decodeList<
+      cloudRunRevisions: pulumi.Input.decodeList<
               GetConnectivityTestsConnectivityTestSourceCloudRunRevision>(
           map['cloudRunRevisions'],
           (value) => GetConnectivityTestsConnectivityTestSourceCloudRunRevision

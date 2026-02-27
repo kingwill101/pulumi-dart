@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_databases_database/get_databases_database.dart';
 
 /// Result data returned by getDatabases.
@@ -22,7 +22,7 @@ class GetDatabasesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['databases'] =
-        Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(
             databases, (value) => value.toMap());
     map['id'] = id;
     map['instance'] = instance;
@@ -35,7 +35,7 @@ class GetDatabasesResult {
 
   factory GetDatabasesResult.fromMap(Map<String, dynamic> map) {
     return GetDatabasesResult(
-      databases: Input.decodeList<GetDatabasesDatabase>(
+      databases: pulumi.Input.decodeList<GetDatabasesDatabase>(
           map['databases'],
           (value) => GetDatabasesDatabase.fromMap(
               (value as Map).cast<String, dynamic>())),

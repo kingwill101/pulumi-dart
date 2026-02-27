@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_certificate_description/certificate_certificate_description.dart';
 import '../certificate_config/certificate_config.dart';
 import '../certificate_revocation_detail/certificate_revocation_detail.dart';
@@ -58,16 +58,16 @@ import 'certificate_args.dart';
 /// ```sh
 /// $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
 /// ```
-class Certificate extends CustomResource {
+class Certificate extends pulumi.CustomResource {
   /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
   /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
   /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
   /// should be set to `my-ca`.
-  late final Output<String?> certificateAuthority;
+  late final pulumi.Output<String?> certificateAuthority;
 
   /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
   /// Structure is documented below.
-  late final Output<List<CertificateCertificateDescription>>
+  late final pulumi.Output<List<CertificateCertificateDescription>>
       certificateDescriptions;
 
   /// The resource name for a CertificateTemplate used to issue this certificate,
@@ -75,78 +75,78 @@ class Certificate extends CustomResource {
   /// the caller must have the necessary permission to use this template. If this is
   /// omitted, no template will be used. This template must be in the same location
   /// as the Certificate.
-  late final Output<String?> certificateTemplate;
+  late final pulumi.Output<String?> certificateTemplate;
 
   /// The config used to create a self-signed X.509 certificate or CSR.
   /// Structure is documented below.
-  late final Output<CertificateConfig?> config;
+  late final pulumi.Output<CertificateConfig?> config;
 
   /// The time that this resource was created on the server.
   /// This is in RFC3339 text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
-  late final Output<String> issuerCertificateAuthority;
+  late final pulumi.Output<String> issuerCertificateAuthority;
 
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
   /// fractional digits, terminated by 's'. Example: "3.5s".
-  late final Output<String?> lifetime;
+  late final pulumi.Output<String?> lifetime;
 
   /// Location of the Certificate. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name for this Certificate.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Output only. The pem-encoded, signed X.509 certificate.
-  late final Output<String> pemCertificate;
+  late final pulumi.Output<String> pemCertificate;
 
   /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
-  late final Output<List<String>> pemCertificateChains;
+  late final pulumi.Output<List<String>> pemCertificateChains;
 
   /// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-  late final Output<String?> pemCsr;
+  late final pulumi.Output<String?> pemCsr;
 
   /// The name of the CaPool this Certificate belongs to.
-  late final Output<String> pool;
+  late final pulumi.Output<String> pool;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. Details regarding the revocation of this Certificate. This Certificate is
   /// considered revoked if and only if this field is present.
   /// Structure is documented below.
-  late final Output<List<CertificateRevocationDetail>> revocationDetails;
+  late final pulumi.Output<List<CertificateRevocationDetail>> revocationDetails;
 
   /// Output only. The time at which this CertificateAuthority was updated.
   /// This is in RFC3339 text format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Certificate(
     String name, {
     CertificateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:certificateauthority/certificate:Certificate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificateAuthority = registerOutput<String?>('certificateAuthority');
     this.certificateDescriptions =

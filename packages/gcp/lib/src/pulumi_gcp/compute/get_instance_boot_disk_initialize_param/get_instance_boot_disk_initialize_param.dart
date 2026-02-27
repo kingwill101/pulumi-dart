@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_boot_disk_initialize_param_source_image_encryption_key/get_instance_boot_disk_initialize_param_source_image_encryption_key.dart';
 import '../get_instance_boot_disk_initialize_param_source_snapshot_encryption_key/get_instance_boot_disk_initialize_param_source_snapshot_encryption_key.dart';
 
@@ -78,11 +78,11 @@ class GetInstanceBootDiskInitializeParam {
     map['resourcePolicies'] = resourcePolicies;
     map['size'] = size;
     map['snapshot'] = snapshot;
-    map['sourceImageEncryptionKeys'] = Input.encodeList<
+    map['sourceImageEncryptionKeys'] = pulumi.Input.encodeList<
             GetInstanceBootDiskInitializeParamSourceImageEncryptionKey,
             Map<String, dynamic>>(
         sourceImageEncryptionKeys, (value) => value.toMap());
-    map['sourceSnapshotEncryptionKeys'] = Input.encodeList<
+    map['sourceSnapshotEncryptionKeys'] = pulumi.Input.encodeList<
             GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey,
             Map<String, dynamic>>(
         sourceSnapshotEncryptionKeys, (value) => value.toMap());
@@ -104,12 +104,12 @@ class GetInstanceBootDiskInitializeParam {
       resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
       size: map['size'] as int,
       snapshot: map['snapshot'] as String,
-      sourceImageEncryptionKeys: Input.decodeList<
+      sourceImageEncryptionKeys: pulumi.Input.decodeList<
               GetInstanceBootDiskInitializeParamSourceImageEncryptionKey>(
           map['sourceImageEncryptionKeys'],
           (value) => GetInstanceBootDiskInitializeParamSourceImageEncryptionKey
               .fromMap((value as Map).cast<String, dynamic>())),
-      sourceSnapshotEncryptionKeys: Input.decodeList<
+      sourceSnapshotEncryptionKeys: pulumi.Input.decodeList<
               GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey>(
           map['sourceSnapshotEncryptionKeys'],
           (value) =>

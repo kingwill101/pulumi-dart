@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../disk_async_primary_disk/disk_async_primary_disk.dart';
 import '../disk_disk_encryption_key/disk_disk_encryption_key.dart';
 import '../disk_guest_os_feature/disk_guest_os_feature.dart';
@@ -16,26 +16,26 @@ class DiskArgs {
   /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
   /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
   /// The AccessMode is only valid for Hyperdisk disk types.
-  final Input<String>? accessMode;
+  final pulumi.Input<String>? accessMode;
 
   /// The architecture of the disk. Values include `X86_64`, `ARM64`.
-  final Input<String>? architecture;
+  final pulumi.Input<String>? architecture;
 
   /// A nested object resource.
   /// Structure is documented below.
-  final Input<DiskAsyncPrimaryDisk>? asyncPrimaryDisk;
+  final pulumi.Input<DiskAsyncPrimaryDisk>? asyncPrimaryDisk;
 
   /// If set to true, a snapshot of the disk will be created before it is destroyed.
   /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
   /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
-  final Input<bool>? createSnapshotBeforeDestroy;
+  final pulumi.Input<bool>? createSnapshotBeforeDestroy;
 
   /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
-  final Input<String>? createSnapshotBeforeDestroyPrefix;
+  final pulumi.Input<String>? createSnapshotBeforeDestroyPrefix;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Encrypts the disk using a customer-supplied encryption key.
   /// After you encrypt a disk with a customer-supplied key, you must
@@ -47,16 +47,16 @@ class DiskArgs {
   /// the disk will be encrypted using an automatically generated key and
   /// you do not need to provide a key to use the disk later.
   /// Structure is documented below.
-  final Input<DiskDiskEncryptionKey>? diskEncryptionKey;
+  final pulumi.Input<DiskDiskEncryptionKey>? diskEncryptionKey;
 
   /// Whether this disk is using confidential compute mode.
   /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
-  final Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool>? enableConfidentialCompute;
 
   /// A list of features to enable on the guest operating system.
   /// Applicable only for bootable disks.
   /// Structure is documented below.
-  final Input<List<DiskGuestOsFeature>>? guestOsFeatures;
+  final pulumi.Input<List<DiskGuestOsFeature>>? guestOsFeatures;
 
   /// The image from which to initialize this disk. This can be
   /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
@@ -67,24 +67,24 @@ class DiskArgs {
   /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
-  final Input<String>? image;
+  final pulumi.Input<String>? image;
 
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
   /// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
-  final Input<String>? interface;
+  final pulumi.Input<String>? interface;
 
   /// Labels to apply to this disk.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Any applicable license URI.
-  final Input<List<String>>? licenses;
+  final pulumi.Input<List<String>>? licenses;
 
   /// Indicates whether or not the disk can be read/write attached to more than one instance.
-  final Input<bool>? multiWriter;
+  final pulumi.Input<bool>? multiWriter;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -93,32 +93,32 @@ class DiskArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final Input<DiskParams>? params;
+  final pulumi.Input<DiskParams>? params;
 
   /// Physical block size of the persistent disk, in bytes. If not present
   /// in a request, a default value is used. Currently supported sizes
   /// are 4096 and 16384, other sizes may be added in the future.
   /// If an unsupported value is requested, the error message will list
   /// the supported values for the caller's project.
-  final Input<int>? physicalBlockSizeBytes;
+  final pulumi.Input<int>? physicalBlockSizeBytes;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Indicates how many IOPS must be provisioned for the disk.
   /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
   /// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
-  final Input<int>? provisionedIops;
+  final pulumi.Input<int>? provisionedIops;
 
   /// Indicates how much Throughput must be provisioned for the disk.
   /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
   /// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
-  final Input<int>? provisionedThroughput;
+  final pulumi.Input<int>? provisionedThroughput;
 
   /// Resource policies applied to this disk for automatic snapshot creations.
   /// ~>**NOTE** This value does not support updating the
@@ -126,7 +126,7 @@ class DiskArgs {
   /// one at a time. Use
   /// `gcp.compute.DiskResourcePolicyAttachment`
   /// to allow for updating the resource policy attached to the disk.
-  final Input<List<String>>? resourcePolicies;
+  final pulumi.Input<List<String>>? resourcePolicies;
 
   /// Size of the persistent disk, specified in GB. You can specify this
   /// field when creating a persistent disk using the `image` or
@@ -139,7 +139,7 @@ class DiskArgs {
   /// if upsizing is detected but recreates the disk if downsizing is requested.
   /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
   /// and recreating.
-  final Input<int>? size;
+  final pulumi.Input<int>? size;
 
   /// The source snapshot used to create this disk. You can provide this as
   /// a partial or full URL to the resource. If the snapshot is in another
@@ -148,7 +148,7 @@ class DiskArgs {
   /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
   /// * `projects/project/global/snapshots/snapshot`
   /// * `global/snapshots/snapshot`
-  final Input<String>? snapshot;
+  final pulumi.Input<String>? snapshot;
 
   /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
   /// For example, the following are valid values:
@@ -158,32 +158,33 @@ class DiskArgs {
   /// * projects/{project}/regions/{region}/disks/{disk}
   /// * zones/{zone}/disks/{disk}
   /// * regions/{region}/disks/{disk}
-  final Input<String>? sourceDisk;
+  final pulumi.Input<String>? sourceDisk;
 
   /// The customer-supplied encryption key of the source image. Required if
   /// the source image is protected by a customer-supplied encryption key.
   /// Structure is documented below.
-  final Input<DiskSourceImageEncryptionKey>? sourceImageEncryptionKey;
+  final pulumi.Input<DiskSourceImageEncryptionKey>? sourceImageEncryptionKey;
 
   /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
   /// For example, the following are valid values:
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
   /// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
   /// * `zones/zone/instantSnapshots/instantSnapshot`
-  final Input<String>? sourceInstantSnapshot;
+  final pulumi.Input<String>? sourceInstantSnapshot;
 
   /// The customer-supplied encryption key of the source snapshot. Required
   /// if the source snapshot is protected by a customer-supplied encryption
   /// key.
   /// Structure is documented below.
-  final Input<DiskSourceSnapshotEncryptionKey>? sourceSnapshotEncryptionKey;
+  final pulumi.Input<DiskSourceSnapshotEncryptionKey>?
+      sourceSnapshotEncryptionKey;
 
   /// The full Google Cloud Storage URI where the disk image is stored.
   /// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
   /// Valid URIs may start with gs:// or https://storage.googleapis.com/.
   /// This flag is not optimized for creating multiple disks from a source storage object.
   /// To create many disks from a source storage object, use gcloud compute images import instead.
-  final Input<String>? sourceStorageObject;
+  final pulumi.Input<String>? sourceStorageObject;
 
   /// The URL or the name of the storage pool in which the new disk is created.
   /// For example:
@@ -191,14 +192,14 @@ class DiskArgs {
   /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
   /// * /zones/{zone}/storagePools/{storagePool}
   /// * /{storagePool}
-  final Input<String>? storagePool;
+  final pulumi.Input<String>? storagePool;
 
   /// URL of the disk type resource describing which disk type to use to
   /// create the disk. Provide this when creating the disk.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   /// A reference to the zone where the disk resides.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   DiskArgs({
     this.accessMode,
@@ -246,7 +247,7 @@ class DiskArgs {
     }
     final asyncPrimaryDiskValue = asyncPrimaryDisk;
     if (asyncPrimaryDiskValue != null) {
-      map['asyncPrimaryDisk'] = Input.mapOptionalInputValue<
+      map['asyncPrimaryDisk'] = pulumi.Input.mapOptionalInputValue<
               DiskAsyncPrimaryDisk, Map<String, dynamic>>(
           asyncPrimaryDiskValue, (value) => value.toMap());
     }
@@ -266,7 +267,7 @@ class DiskArgs {
     }
     final diskEncryptionKeyValue = diskEncryptionKey;
     if (diskEncryptionKeyValue != null) {
-      map['diskEncryptionKey'] = Input.mapOptionalInputValue<
+      map['diskEncryptionKey'] = pulumi.Input.mapOptionalInputValue<
               DiskDiskEncryptionKey, Map<String, dynamic>>(
           diskEncryptionKeyValue, (value) => value.toMap());
     }
@@ -276,11 +277,12 @@ class DiskArgs {
     }
     final guestOsFeaturesValue = guestOsFeatures;
     if (guestOsFeaturesValue != null) {
-      map['guestOsFeatures'] = Input.mapOptionalInputValue<
+      map['guestOsFeatures'] = pulumi.Input.mapOptionalInputValue<
               List<DiskGuestOsFeature>, List<Map<String, dynamic>>>(
           guestOsFeaturesValue,
-          (value) => Input.encodeList<DiskGuestOsFeature, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<DiskGuestOsFeature, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final imageValue = image;
     if (imageValue != null) {
@@ -309,7 +311,7 @@ class DiskArgs {
     final paramsValue = params;
     if (paramsValue != null) {
       map['params'] =
-          Input.mapOptionalInputValue<DiskParams, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<DiskParams, Map<String, dynamic>>(
               paramsValue, (value) => value.toMap());
     }
     final physicalBlockSizeBytesValue = physicalBlockSizeBytes;
@@ -346,7 +348,7 @@ class DiskArgs {
     }
     final sourceImageEncryptionKeyValue = sourceImageEncryptionKey;
     if (sourceImageEncryptionKeyValue != null) {
-      map['sourceImageEncryptionKey'] = Input.mapOptionalInputValue<
+      map['sourceImageEncryptionKey'] = pulumi.Input.mapOptionalInputValue<
               DiskSourceImageEncryptionKey, Map<String, dynamic>>(
           sourceImageEncryptionKeyValue, (value) => value.toMap());
     }
@@ -356,7 +358,7 @@ class DiskArgs {
     }
     final sourceSnapshotEncryptionKeyValue = sourceSnapshotEncryptionKey;
     if (sourceSnapshotEncryptionKeyValue != null) {
-      map['sourceSnapshotEncryptionKey'] = Input.mapOptionalInputValue<
+      map['sourceSnapshotEncryptionKey'] = pulumi.Input.mapOptionalInputValue<
               DiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(
           sourceSnapshotEncryptionKeyValue, (value) => value.toMap());
     }
@@ -381,52 +383,53 @@ class DiskArgs {
 
   factory DiskArgs.fromMap(Map<String, dynamic> map) {
     return DiskArgs(
-      accessMode: Input.asOptionalInput<String>(map['accessMode']),
-      architecture: Input.asOptionalInput<String>(map['architecture']),
-      asyncPrimaryDisk:
-          Input.asOptionalInput<DiskAsyncPrimaryDisk>(map['asyncPrimaryDisk']),
-      createSnapshotBeforeDestroy:
-          Input.asOptionalInput<bool>(map['createSnapshotBeforeDestroy']),
-      createSnapshotBeforeDestroyPrefix: Input.asOptionalInput<String>(
+      accessMode: pulumi.Input.asOptionalInput<String>(map['accessMode']),
+      architecture: pulumi.Input.asOptionalInput<String>(map['architecture']),
+      asyncPrimaryDisk: pulumi.Input.asOptionalInput<DiskAsyncPrimaryDisk>(
+          map['asyncPrimaryDisk']),
+      createSnapshotBeforeDestroy: pulumi.Input.asOptionalInput<bool>(
+          map['createSnapshotBeforeDestroy']),
+      createSnapshotBeforeDestroyPrefix: pulumi.Input.asOptionalInput<String>(
           map['createSnapshotBeforeDestroyPrefix']),
-      description: Input.asOptionalInput<String>(map['description']),
-      diskEncryptionKey: Input.asOptionalInput<DiskDiskEncryptionKey>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      diskEncryptionKey: pulumi.Input.asOptionalInput<DiskDiskEncryptionKey>(
           map['diskEncryptionKey']),
       enableConfidentialCompute:
-          Input.asOptionalInput<bool>(map['enableConfidentialCompute']),
-      guestOsFeatures: Input.asOptionalInput<List<DiskGuestOsFeature>>(
+          pulumi.Input.asOptionalInput<bool>(map['enableConfidentialCompute']),
+      guestOsFeatures: pulumi.Input.asOptionalInput<List<DiskGuestOsFeature>>(
           map['guestOsFeatures']),
-      image: Input.asOptionalInput<String>(map['image']),
-      interface: Input.asOptionalInput<String>(map['interface']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      licenses: Input.asOptionalInput<List<String>>(map['licenses']),
-      multiWriter: Input.asOptionalInput<bool>(map['multiWriter']),
-      name: Input.asOptionalInput<String>(map['name']),
-      params: Input.asOptionalInput<DiskParams>(map['params']),
+      image: pulumi.Input.asOptionalInput<String>(map['image']),
+      interface: pulumi.Input.asOptionalInput<String>(map['interface']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      licenses: pulumi.Input.asOptionalInput<List<String>>(map['licenses']),
+      multiWriter: pulumi.Input.asOptionalInput<bool>(map['multiWriter']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      params: pulumi.Input.asOptionalInput<DiskParams>(map['params']),
       physicalBlockSizeBytes:
-          Input.asOptionalInput<int>(map['physicalBlockSizeBytes']),
-      project: Input.asOptionalInput<String>(map['project']),
-      provisionedIops: Input.asOptionalInput<int>(map['provisionedIops']),
+          pulumi.Input.asOptionalInput<int>(map['physicalBlockSizeBytes']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      provisionedIops:
+          pulumi.Input.asOptionalInput<int>(map['provisionedIops']),
       provisionedThroughput:
-          Input.asOptionalInput<int>(map['provisionedThroughput']),
+          pulumi.Input.asOptionalInput<int>(map['provisionedThroughput']),
       resourcePolicies:
-          Input.asOptionalInput<List<String>>(map['resourcePolicies']),
-      size: Input.asOptionalInput<int>(map['size']),
-      snapshot: Input.asOptionalInput<String>(map['snapshot']),
-      sourceDisk: Input.asOptionalInput<String>(map['sourceDisk']),
+          pulumi.Input.asOptionalInput<List<String>>(map['resourcePolicies']),
+      size: pulumi.Input.asOptionalInput<int>(map['size']),
+      snapshot: pulumi.Input.asOptionalInput<String>(map['snapshot']),
+      sourceDisk: pulumi.Input.asOptionalInput<String>(map['sourceDisk']),
       sourceImageEncryptionKey:
-          Input.asOptionalInput<DiskSourceImageEncryptionKey>(
+          pulumi.Input.asOptionalInput<DiskSourceImageEncryptionKey>(
               map['sourceImageEncryptionKey']),
       sourceInstantSnapshot:
-          Input.asOptionalInput<String>(map['sourceInstantSnapshot']),
+          pulumi.Input.asOptionalInput<String>(map['sourceInstantSnapshot']),
       sourceSnapshotEncryptionKey:
-          Input.asOptionalInput<DiskSourceSnapshotEncryptionKey>(
+          pulumi.Input.asOptionalInput<DiskSourceSnapshotEncryptionKey>(
               map['sourceSnapshotEncryptionKey']),
       sourceStorageObject:
-          Input.asOptionalInput<String>(map['sourceStorageObject']),
-      storagePool: Input.asOptionalInput<String>(map['storagePool']),
-      type: Input.asOptionalInput<String>(map['type']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+          pulumi.Input.asOptionalInput<String>(map['sourceStorageObject']),
+      storagePool: pulumi.Input.asOptionalInput<String>(map['storagePool']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

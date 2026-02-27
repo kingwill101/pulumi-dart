@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_health_aggregation_policy_args.dart';
 
 /// The Health Aggregation Policy specifies how to aggregate the service's constituent source health status to determine an aggregated health status result for the service.  For example, you can specify a criteria such as “Consider the Health Source as `Healthy` if there are at least 5 healthy backend endpoints”. Or, you can specify a criteria like “Consider the Health Source as `Healthy` if minimum 60% of endpoints in the Backend are healthy”. The Health Aggregation Policy is applied to each Health Source (e.g. Backend Service) individually.
@@ -45,13 +45,13 @@ import 'region_health_aggregation_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy default {{name}}
 /// ```
-class RegionHealthAggregationPolicy extends CustomResource {
+class RegionHealthAggregationPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Fingerprint of this resource. A hash of the contents stored in this object.
   /// This field is used in optimistic locking. This field will be ignored when
@@ -60,7 +60,7 @@ class RegionHealthAggregationPolicy extends CustomResource {
   /// the request will fail with error `412 conditionNotMet`. To see
   /// the latest fingerprint, make a `get()` request to retrieve the
   /// RegionHealthAggregationPolicy.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
@@ -73,7 +73,7 @@ class RegionHealthAggregationPolicy extends CustomResource {
   /// for HEALTHY to be the aggregated result. "Endpoints" refers to network
   /// endpoints within a Network Endpoint Group or instances within an Instance
   /// Group.
-  late final Output<int?> healthyPercentThreshold;
+  late final pulumi.Output<int?> healthyPercentThreshold;
 
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
@@ -86,7 +86,7 @@ class RegionHealthAggregationPolicy extends CustomResource {
   /// order for HEALTHY to be the aggregated result. "Endpoints" refers to
   /// network endpoints within a Network Endpoint Group or instances within an
   /// Instance Group.
-  late final Output<int?> minHealthyThreshold;
+  late final pulumi.Output<int?> minHealthyThreshold;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -95,7 +95,7 @@ class RegionHealthAggregationPolicy extends CustomResource {
   /// character must be a lowercase letter, and all following characters must
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Specifies the type of the healthAggregationPolicy. The only allowed value
   /// for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
@@ -104,27 +104,27 @@ class RegionHealthAggregationPolicy extends CustomResource {
   /// mutated.
   /// Default value is `BACKEND_SERVICE_POLICY`.
   /// Possible values are: `DNS_PUBLIC_IP_POLICY`, `BACKEND_SERVICE_POLICY`.
-  late final Output<String?> policyType;
+  late final pulumi.Output<String?> policyType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// URL of the region where the health aggregation policy resides.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Server-defined URL with id for the resource.
-  late final Output<String> selfLinkWithId;
+  late final pulumi.Output<String> selfLinkWithId;
 
   RegionHealthAggregationPolicy(
     String name, {
     RegionHealthAggregationPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

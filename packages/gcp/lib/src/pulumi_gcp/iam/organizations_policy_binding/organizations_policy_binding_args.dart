@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organizations_policy_binding_condition/organizations_policy_binding_condition.dart';
 import '../organizations_policy_binding_target/organizations_policy_binding_target.dart';
 
@@ -10,7 +10,7 @@ class OrganizationsPolicyBindingArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -36,31 +36,31 @@ class OrganizationsPolicyBindingArgs {
   /// determined by the service that evaluates it. See the service documentation for
   /// additional information.
   /// Structure is documented below.
-  final Input<OrganizationsPolicyBindingCondition>? condition;
+  final pulumi.Input<OrganizationsPolicyBindingCondition>? condition;
 
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The location of the Policy Binding
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The parent organization of the Policy Binding.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   /// Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// The Policy Binding ID.
-  final Input<String> policyBindingId;
+  final pulumi.Input<String> policyBindingId;
 
   /// Immutable. The kind of the policy to attach in this binding. This
   /// field must be one of the following:  - Left empty (will be automatically set
   /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
-  final Input<String>? policyKind;
+  final pulumi.Input<String>? policyKind;
 
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
   /// Structure is documented below.
-  final Input<OrganizationsPolicyBindingTarget> target;
+  final pulumi.Input<OrganizationsPolicyBindingTarget> target;
 
   OrganizationsPolicyBindingArgs({
     this.annotations,
@@ -82,7 +82,7 @@ class OrganizationsPolicyBindingArgs {
     }
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           OrganizationsPolicyBindingCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -98,7 +98,7 @@ class OrganizationsPolicyBindingArgs {
     if (policyKindValue != null) {
       map['policyKind'] = policyKindValue;
     }
-    map['target'] = Input.mapInputValue<OrganizationsPolicyBindingTarget,
+    map['target'] = pulumi.Input.mapInputValue<OrganizationsPolicyBindingTarget,
         Map<String, dynamic>>(target, (value) => value.toMap());
     return map;
   }
@@ -106,16 +106,18 @@ class OrganizationsPolicyBindingArgs {
   factory OrganizationsPolicyBindingArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsPolicyBindingArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      condition: Input.asOptionalInput<OrganizationsPolicyBindingCondition>(
-          map['condition']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      organization: Input.asInput<String>(map['organization']),
-      policy: Input.asInput<String>(map['policy']),
-      policyBindingId: Input.asInput<String>(map['policyBindingId']),
-      policyKind: Input.asOptionalInput<String>(map['policyKind']),
-      target: Input.asInput<OrganizationsPolicyBindingTarget>(map['target']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      condition:
+          pulumi.Input.asOptionalInput<OrganizationsPolicyBindingCondition>(
+              map['condition']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      policyBindingId: pulumi.Input.asInput<String>(map['policyBindingId']),
+      policyKind: pulumi.Input.asOptionalInput<String>(map['policyKind']),
+      target:
+          pulumi.Input.asInput<OrganizationsPolicyBindingTarget>(map['target']),
     );
   }
 }

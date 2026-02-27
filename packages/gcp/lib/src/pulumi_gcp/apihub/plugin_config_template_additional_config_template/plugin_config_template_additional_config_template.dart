@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plugin_config_template_additional_config_template_enum_option/plugin_config_template_additional_config_template_enum_option.dart';
 import '../plugin_config_template_additional_config_template_multi_select_option/plugin_config_template_additional_config_template_multi_select_option.dart';
 
@@ -60,14 +60,14 @@ class PluginConfigTemplateAdditionalConfigTemplate {
     }
     final enumOptionsValue = enumOptions;
     if (enumOptionsValue != null) {
-      map['enumOptions'] = Input.encodeList<
+      map['enumOptions'] = pulumi.Input.encodeList<
           PluginConfigTemplateAdditionalConfigTemplateEnumOption,
           Map<String, dynamic>>(enumOptionsValue, (value) => value.toMap());
     }
     map['id'] = id;
     final multiSelectOptionsValue = multiSelectOptions;
     if (multiSelectOptionsValue != null) {
-      map['multiSelectOptions'] = Input.encodeList<
+      map['multiSelectOptions'] = pulumi.Input.encodeList<
               PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption,
               Map<String, dynamic>>(
           multiSelectOptionsValue, (value) => value.toMap());
@@ -91,7 +91,7 @@ class PluginConfigTemplateAdditionalConfigTemplate {
           map['description'] == null ? null : map['description'] as String,
       enumOptions: map['enumOptions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PluginConfigTemplateAdditionalConfigTemplateEnumOption>(
               map['enumOptions'],
               (value) => PluginConfigTemplateAdditionalConfigTemplateEnumOption
@@ -99,7 +99,7 @@ class PluginConfigTemplateAdditionalConfigTemplate {
       id: map['id'] as String,
       multiSelectOptions: map['multiSelectOptions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>(
               map['multiSelectOptions'],
               (value) =>

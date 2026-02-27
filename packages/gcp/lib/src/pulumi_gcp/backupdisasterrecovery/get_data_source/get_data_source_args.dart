@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataSource.
 class GetDataSourceArgs {
   /// The ID of the Backup Vault in which the Data Source belongs.
-  final Input<String> backupVaultId;
+  final pulumi.Input<String> backupVaultId;
 
   /// The ID of the Data Source.
-  final Input<String> dataSourceId;
+  final pulumi.Input<String> dataSourceId;
 
   /// The location in which the Data Source belongs.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The Google Cloud Project in which the Data Source belongs.
-  final Input<String> project;
+  final pulumi.Input<String> project;
 
   GetDataSourceArgs({
     required this.backupVaultId,
@@ -34,10 +34,10 @@ class GetDataSourceArgs {
 
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
-      backupVaultId: Input.asInput<String>(map['backupVaultId']),
-      dataSourceId: Input.asInput<String>(map['dataSourceId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asInput<String>(map['project']),
+      backupVaultId: pulumi.Input.asInput<String>(map['backupVaultId']),
+      dataSourceId: pulumi.Input.asInput<String>(map['dataSourceId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asInput<String>(map['project']),
     );
   }
 }

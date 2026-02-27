@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GlobalNetworkEndpoint.
 class GlobalNetworkEndpointArgs {
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
-  final Input<String>? fqdn;
+  final pulumi.Input<String>? fqdn;
 
   /// The global network endpoint group this endpoint is part of.
-  final Input<String> globalNetworkEndpointGroup;
+  final pulumi.Input<String> globalNetworkEndpointGroup;
 
   /// IPv4 address external endpoint.
-  final Input<String>? ipAddress;
+  final pulumi.Input<String>? ipAddress;
 
   /// Port number of the external endpoint.
-  final Input<int> port;
+  final pulumi.Input<int> port;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GlobalNetworkEndpointArgs({
     this.fqdn,
@@ -50,12 +50,12 @@ class GlobalNetworkEndpointArgs {
 
   factory GlobalNetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointArgs(
-      fqdn: Input.asOptionalInput<String>(map['fqdn']),
+      fqdn: pulumi.Input.asOptionalInput<String>(map['fqdn']),
       globalNetworkEndpointGroup:
-          Input.asInput<String>(map['globalNetworkEndpointGroup']),
-      ipAddress: Input.asOptionalInput<String>(map['ipAddress']),
-      port: Input.asInput<int>(map['port']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['globalNetworkEndpointGroup']),
+      ipAddress: pulumi.Input.asOptionalInput<String>(map['ipAddress']),
+      port: pulumi.Input.asInput<int>(map['port']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

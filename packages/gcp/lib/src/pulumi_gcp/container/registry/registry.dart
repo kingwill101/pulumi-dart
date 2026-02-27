@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_args.dart';
 
 /// > **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
@@ -19,25 +19,25 @@ import 'registry_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class Registry extends CustomResource {
+class Registry extends pulumi.CustomResource {
   /// The URI of the created resource.
-  late final Output<String> bucketSelfLink;
+  late final pulumi.Output<String> bucketSelfLink;
 
   /// The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   Registry(
     String name, {
     RegistryArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:container/registry:Registry',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucketSelfLink = registerOutput<String>('bucketSelfLink');
     this.location = registerOutput<String?>('location');

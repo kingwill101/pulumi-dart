@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_eventing_config_registration_destination_config_destination/connection_eventing_config_registration_destination_config_destination.dart';
 
 class ConnectionEventingConfigRegistrationDestinationConfig {
@@ -21,7 +21,7 @@ class ConnectionEventingConfigRegistrationDestinationConfig {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.encodeList<
+      map['destinations'] = pulumi.Input.encodeList<
           ConnectionEventingConfigRegistrationDestinationConfigDestination,
           Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
@@ -37,7 +37,7 @@ class ConnectionEventingConfigRegistrationDestinationConfig {
     return ConnectionEventingConfigRegistrationDestinationConfig(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ConnectionEventingConfigRegistrationDestinationConfigDestination>(
               map['destinations'],
               (value) =>

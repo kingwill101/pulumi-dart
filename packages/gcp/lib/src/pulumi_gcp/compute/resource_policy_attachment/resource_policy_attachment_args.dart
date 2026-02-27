@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ResourcePolicyAttachment.
 class ResourcePolicyAttachmentArgs {
   /// The name of the instance in which the resource policies are attached to.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The resource policy to be attached to the instance for scheduling start/stop
   /// operations. Do not specify the self link.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A reference to the zone where the instance resides.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   ResourcePolicyAttachmentArgs({
     required this.instance,
@@ -45,10 +45,10 @@ class ResourcePolicyAttachmentArgs {
 
   factory ResourcePolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyAttachmentArgs(
-      instance: Input.asInput<String>(map['instance']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

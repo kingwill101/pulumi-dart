@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionInstanceGroupManager.
 class GetRegionInstanceGroupManagerArgs {
   /// The name of the instance group. Either `name` or `self_link` must be provided.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   ///
   /// * `Region` - (Optional) The region where the managed instance group resides. If not provided, the provider region is used.
-  final Input<String>? project;
-  final Input<String>? region;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? region;
 
   /// The self link of the instance group. Either `name` or `self_link` must be provided.
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   GetRegionInstanceGroupManagerArgs({
     this.name,
@@ -46,10 +46,10 @@ class GetRegionInstanceGroupManagerArgs {
 
   factory GetRegionInstanceGroupManagerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
     );
   }
 }

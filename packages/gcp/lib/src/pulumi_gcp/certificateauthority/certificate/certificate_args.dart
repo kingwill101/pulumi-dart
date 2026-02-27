@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_config/certificate_config.dart';
 
 /// The set of arguments for Certificate.
@@ -9,46 +9,46 @@ class CertificateArgs {
   /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
   /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
   /// should be set to `my-ca`.
-  final Input<String>? certificateAuthority;
+  final pulumi.Input<String>? certificateAuthority;
 
   /// The resource name for a CertificateTemplate used to issue this certificate,
   /// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
   /// the caller must have the necessary permission to use this template. If this is
   /// omitted, no template will be used. This template must be in the same location
   /// as the Certificate.
-  final Input<String>? certificateTemplate;
+  final pulumi.Input<String>? certificateTemplate;
 
   /// The config used to create a self-signed X.509 certificate or CSR.
   /// Structure is documented below.
-  final Input<CertificateConfig>? config;
+  final pulumi.Input<CertificateConfig>? config;
 
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
   /// fractional digits, terminated by 's'. Example: "3.5s".
-  final Input<String>? lifetime;
+  final pulumi.Input<String>? lifetime;
 
   /// Location of the Certificate. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name for this Certificate.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-  final Input<String>? pemCsr;
+  final pulumi.Input<String>? pemCsr;
 
   /// The name of the CaPool this Certificate belongs to.
-  final Input<String> pool;
+  final pulumi.Input<String> pool;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   CertificateArgs({
     this.certificateAuthority,
@@ -75,9 +75,8 @@ class CertificateArgs {
     }
     final configValue = config;
     if (configValue != null) {
-      map['config'] =
-          Input.mapOptionalInputValue<CertificateConfig, Map<String, dynamic>>(
-              configValue, (value) => value.toMap());
+      map['config'] = pulumi.Input.mapOptionalInputValue<CertificateConfig,
+          Map<String, dynamic>>(configValue, (value) => value.toMap());
     }
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -107,17 +106,17 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       certificateAuthority:
-          Input.asOptionalInput<String>(map['certificateAuthority']),
+          pulumi.Input.asOptionalInput<String>(map['certificateAuthority']),
       certificateTemplate:
-          Input.asOptionalInput<String>(map['certificateTemplate']),
-      config: Input.asOptionalInput<CertificateConfig>(map['config']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      lifetime: Input.asOptionalInput<String>(map['lifetime']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      pemCsr: Input.asOptionalInput<String>(map['pemCsr']),
-      pool: Input.asInput<String>(map['pool']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['certificateTemplate']),
+      config: pulumi.Input.asOptionalInput<CertificateConfig>(map['config']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      lifetime: pulumi.Input.asOptionalInput<String>(map['lifetime']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      pemCsr: pulumi.Input.asOptionalInput<String>(map['pemCsr']),
+      pool: pulumi.Input.asInput<String>(map['pool']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

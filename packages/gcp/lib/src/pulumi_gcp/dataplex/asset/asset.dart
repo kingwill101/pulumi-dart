@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../asset_discovery_spec/asset_discovery_spec.dart';
 import '../asset_discovery_status/asset_discovery_status.dart';
 import '../asset_resource_spec/asset_resource_spec.dart';
@@ -36,76 +36,76 @@ import 'asset_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataplex/asset:Asset default {{location}}/{{lake}}/{{dataplex_zone}}/{{name}}
 /// ```
-class Asset extends CustomResource {
+class Asset extends pulumi.CustomResource {
   /// Output only. The time when the asset was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The zone for the resource
-  late final Output<String> dataplexZone;
+  late final pulumi.Output<String> dataplexZone;
 
   /// Optional. Description of the asset.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
-  late final Output<AssetDiscoverySpec> discoverySpec;
+  late final pulumi.Output<AssetDiscoverySpec> discoverySpec;
 
   /// Output only. Status of the discovery feature applied to data referenced by this asset.
-  late final Output<List<AssetDiscoveryStatus>> discoveryStatuses;
+  late final pulumi.Output<List<AssetDiscoveryStatus>> discoveryStatuses;
 
   /// Optional. User friendly display name.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. User defined labels for the asset.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The lake for the resource
-  late final Output<String> lake;
+  late final pulumi.Output<String> lake;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the asset.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Required. Immutable. Specification of the resource that is referenced by this asset.
-  late final Output<AssetResourceSpec> resourceSpec;
+  late final pulumi.Output<AssetResourceSpec> resourceSpec;
 
   /// Output only. Status of the resource referenced by this asset.
-  late final Output<List<AssetResourceStatus>> resourceStatuses;
+  late final pulumi.Output<List<AssetResourceStatus>> resourceStatuses;
 
   /// Output only. Status of the security policy applied to resource referenced by this asset.
-  late final Output<List<AssetSecurityStatus>> securityStatuses;
+  late final pulumi.Output<List<AssetSecurityStatus>> securityStatuses;
 
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The time when the asset was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Asset(
     String name, {
     AssetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataplex/asset:Asset',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.dataplexZone = registerOutput<String>('dataplexZone');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_action_flag_header/security_action_flag_header.dart';
 
 class SecurityActionFlag {
@@ -18,9 +18,8 @@ class SecurityActionFlag {
     final map = <String, dynamic>{};
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] =
-          Input.encodeList<SecurityActionFlagHeader, Map<String, dynamic>>(
-              headersValue, (value) => value.toMap());
+      map['headers'] = pulumi.Input.encodeList<SecurityActionFlagHeader,
+          Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
     return map;
   }
@@ -29,7 +28,7 @@ class SecurityActionFlag {
     return SecurityActionFlag(
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<SecurityActionFlagHeader>(
+          : pulumi.Input.decodeList<SecurityActionFlagHeader>(
               map['headers'],
               (value) => SecurityActionFlagHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),

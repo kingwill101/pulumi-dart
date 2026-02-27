@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_job_trigger_inspect_job/prevention_job_trigger_inspect_job.dart';
 import '../prevention_job_trigger_trigger/prevention_job_trigger_trigger.dart';
 import 'prevention_job_trigger_args.dart';
@@ -80,56 +80,56 @@ import 'prevention_job_trigger_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
 /// ```
-class PreventionJobTrigger extends CustomResource {
+class PreventionJobTrigger extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate. Set by the server.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A description of the job trigger.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User set display name of the job trigger.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Controls what and how to inspect for findings.
   /// Structure is documented below.
-  late final Output<PreventionJobTriggerInspectJob?> inspectJob;
+  late final pulumi.Output<PreventionJobTriggerInspectJob?> inspectJob;
 
   /// The timestamp of the last time this trigger executed.
-  late final Output<String> lastRunTime;
+  late final pulumi.Output<String> lastRunTime;
 
   /// The resource name of the job trigger. Set by the server.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of the trigger, either in the format `projects/{{project}}`
   /// or `projects/{{project}}/locations/{{location}}`
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Whether the trigger is currently active.
   /// Default value is `HEALTHY`.
   /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
   /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  late final Output<String> triggerId;
+  late final pulumi.Output<String> triggerId;
 
   /// What event needs to occur for a new job to be started.
   /// Structure is documented below.
-  late final Output<List<PreventionJobTriggerTrigger>> triggers;
+  late final pulumi.Output<List<PreventionJobTriggerTrigger>> triggers;
 
   /// The last update timestamp of an inspectTemplate. Set by the server.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   PreventionJobTrigger(
     String name, {
     PreventionJobTriggerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataloss/preventionJobTrigger:PreventionJobTrigger',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

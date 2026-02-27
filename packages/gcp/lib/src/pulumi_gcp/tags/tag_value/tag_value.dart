@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_value_args.dart';
 
 /// A TagValue is a child of a particular TagKey. TagValues are used to group cloud resources for the purpose of controlling them using policies.
@@ -34,40 +34,40 @@ import 'tag_value_args.dart';
 /// ```sh
 /// $ pulumi import gcp:tags/tagValue:TagValue default {{name}}
 /// ```
-class TagValue extends CustomResource {
+class TagValue extends pulumi.CustomResource {
   /// Output only. Creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// User-assigned description of the TagValue. Must not exceed 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The generated numeric id for the TagValue.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
-  late final Output<String> namespacedName;
+  late final pulumi.Output<String> namespacedName;
 
   /// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
   /// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-  late final Output<String> shortName;
+  late final pulumi.Output<String> shortName;
 
   /// Output only. Update time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   TagValue(
     String name, {
     TagValueArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:tags/tagValue:TagValue',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

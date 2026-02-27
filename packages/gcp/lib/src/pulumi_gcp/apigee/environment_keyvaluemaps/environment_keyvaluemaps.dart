@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_keyvaluemaps_args.dart';
 
 /// Collection of key/value string pairs.
@@ -34,23 +34,23 @@ import 'environment_keyvaluemaps_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps default {{env_id}}/{{name}}
 /// ```
-class EnvironmentKeyvaluemaps extends CustomResource {
+class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  late final Output<String> envId;
+  late final pulumi.Output<String> envId;
 
   /// Required. ID of the key value map.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   EnvironmentKeyvaluemaps(
     String name, {
     EnvironmentKeyvaluemapsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/environmentKeyvaluemaps:EnvironmentKeyvaluemaps',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');

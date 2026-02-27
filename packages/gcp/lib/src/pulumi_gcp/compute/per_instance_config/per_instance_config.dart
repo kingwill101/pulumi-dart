@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../per_instance_config_preserved_state/per_instance_config_preserved_state.dart';
 import 'per_instance_config_args.dart';
 
@@ -48,9 +48,9 @@ import 'per_instance_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
 /// ```
-class PerInstanceConfig extends CustomResource {
+class PerInstanceConfig extends pulumi.CustomResource {
   /// The instance group manager this instance config is part of.
-  late final Output<String> instanceGroupManager;
+  late final pulumi.Output<String> instanceGroupManager;
 
   /// The minimal action to perform on the instance during an update.
   /// Default is `NONE`. Possible values are:
@@ -58,7 +58,7 @@ class PerInstanceConfig extends CustomResource {
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  late final Output<String?> minimalAction;
+  late final pulumi.Output<String?> minimalAction;
 
   /// The most disruptive action to perform on the instance during an update.
   /// Default is `REPLACE`. Possible values are:
@@ -66,40 +66,40 @@ class PerInstanceConfig extends CustomResource {
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  late final Output<String?> mostDisruptiveAllowedAction;
+  late final pulumi.Output<String?> mostDisruptiveAllowedAction;
 
   /// The name for this per-instance config and its corresponding instance.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The preserved state for this instance.
   /// Structure is documented below.
-  late final Output<PerInstanceConfigPreservedState?> preservedState;
+  late final pulumi.Output<PerInstanceConfigPreservedState?> preservedState;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// When true, deleting this config will immediately remove the underlying instance.
   /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
-  late final Output<bool?> removeInstanceOnDestroy;
+  late final pulumi.Output<bool?> removeInstanceOnDestroy;
 
   /// When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
   /// State will be removed on the next instance recreation or update.
-  late final Output<bool?> removeInstanceStateOnDestroy;
+  late final pulumi.Output<bool?> removeInstanceStateOnDestroy;
 
   /// Zone where the containing instance group manager is located
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   PerInstanceConfig(
     String name, {
     PerInstanceConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/perInstanceConfig:PerInstanceConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instanceGroupManager = registerOutput<String>('instanceGroupManager');
     this.minimalAction = registerOutput<String?>('minimalAction');

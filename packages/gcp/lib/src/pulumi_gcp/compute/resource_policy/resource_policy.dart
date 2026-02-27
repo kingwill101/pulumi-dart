@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_policy_disk_consistency_group_policy/resource_policy_disk_consistency_group_policy.dart';
 import '../resource_policy_group_placement_policy/resource_policy_group_placement_policy.dart';
 import '../resource_policy_instance_schedule_policy/resource_policy_instance_schedule_policy.dart';
@@ -93,22 +93,23 @@ import 'resource_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
 /// ```
-class ResourcePolicy extends CustomResource {
+class ResourcePolicy extends pulumi.CustomResource {
   /// An optional description of this resource. Provide this property when you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Replication consistency group for asynchronous disk replication.
   /// Structure is documented below.
-  late final Output<ResourcePolicyDiskConsistencyGroupPolicy?>
+  late final pulumi.Output<ResourcePolicyDiskConsistencyGroupPolicy?>
       diskConsistencyGroupPolicy;
 
   /// Resource policy for instances used for placement configuration.
   /// Structure is documented below.
-  late final Output<ResourcePolicyGroupPlacementPolicy?> groupPlacementPolicy;
+  late final pulumi.Output<ResourcePolicyGroupPlacementPolicy?>
+      groupPlacementPolicy;
 
   /// Resource policy for scheduling instance operations.
   /// Structure is documented below.
-  late final Output<ResourcePolicyInstanceSchedulePolicy?>
+  late final pulumi.Output<ResourcePolicyInstanceSchedulePolicy?>
       instanceSchedulePolicy;
 
   /// The name of the resource, provided by the client when initially creating
@@ -118,36 +119,36 @@ class ResourcePolicy extends CustomResource {
   /// first character must be a lowercase letter, and all following characters
   /// must be a dash, lowercase letter, or digit, except the last character,
   /// which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where resource policy resides.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Policy for creating snapshots of persistent disks.
   /// Structure is documented below.
-  late final Output<ResourcePolicySnapshotSchedulePolicy?>
+  late final pulumi.Output<ResourcePolicySnapshotSchedulePolicy?>
       snapshotSchedulePolicy;
 
   /// Represents the workload policy.
   /// Structure is documented below.
-  late final Output<ResourcePolicyWorkloadPolicy?> workloadPolicy;
+  late final pulumi.Output<ResourcePolicyWorkloadPolicy?> workloadPolicy;
 
   ResourcePolicy(
     String name, {
     ResourcePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/resourcePolicy:ResourcePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.diskConsistencyGroupPolicy =

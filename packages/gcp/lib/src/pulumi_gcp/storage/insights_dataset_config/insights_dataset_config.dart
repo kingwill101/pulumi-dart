@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../insights_dataset_config_exclude_cloud_storage_buckets/insights_dataset_config_exclude_cloud_storage_buckets.dart';
 import '../insights_dataset_config_exclude_cloud_storage_locations/insights_dataset_config_exclude_cloud_storage_locations.dart';
 import '../insights_dataset_config_identity/insights_dataset_config_identity.dart';
@@ -52,97 +52,97 @@ import 'insights_dataset_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/insightsDatasetConfig:InsightsDatasetConfig default {{location}}/{{dataset_config_id}}
 /// ```
-class InsightsDatasetConfig extends CustomResource {
+class InsightsDatasetConfig extends pulumi.CustomResource {
   /// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-  late final Output<int> activityDataRetentionPeriodDays;
+  late final pulumi.Output<int> activityDataRetentionPeriodDays;
 
   /// The UTC time at which the DatasetConfig was created. This is auto-populated.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The user-defined ID of the DatasetConfig
-  late final Output<String> datasetConfigId;
+  late final pulumi.Output<String> datasetConfigId;
 
   /// State of the DatasetConfig.
-  late final Output<String> datasetConfigState;
+  late final pulumi.Output<String> datasetConfigState;
 
   /// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Defined the options for excluding cloud storage buckets for the DatasetConfig.
   /// Structure is documented below.
-  late final Output<InsightsDatasetConfigExcludeCloudStorageBuckets?>
+  late final pulumi.Output<InsightsDatasetConfigExcludeCloudStorageBuckets?>
       excludeCloudStorageBuckets;
 
   /// Defines the options for excluding cloud storage locations for the DatasetConfig.
   /// Structure is documented below.
-  late final Output<InsightsDatasetConfigExcludeCloudStorageLocations?>
+  late final pulumi.Output<InsightsDatasetConfigExcludeCloudStorageLocations?>
       excludeCloudStorageLocations;
 
   /// Identity used by DatasetConfig.
   /// Structure is documented below.
-  late final Output<InsightsDatasetConfigIdentity> identity;
+  late final pulumi.Output<InsightsDatasetConfigIdentity> identity;
 
   /// Defines the options for including cloud storage buckets for the DatasetConfig.
   /// Structure is documented below.
-  late final Output<InsightsDatasetConfigIncludeCloudStorageBuckets?>
+  late final pulumi.Output<InsightsDatasetConfigIncludeCloudStorageBuckets?>
       includeCloudStorageBuckets;
 
   /// Defines the options for including cloud storage locations for the DatasetConfig.
   /// Structure is documented below.
-  late final Output<InsightsDatasetConfigIncludeCloudStorageLocations?>
+  late final pulumi.Output<InsightsDatasetConfigIncludeCloudStorageLocations?>
       includeCloudStorageLocations;
 
   /// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
-  late final Output<bool?> includeNewlyCreatedBuckets;
-  late final Output<bool?> linkDataset;
+  late final pulumi.Output<bool?> includeNewlyCreatedBuckets;
+  late final pulumi.Output<bool?> linkDataset;
 
   /// Details of the linked DatasetConfig.
   /// Structure is documented below.
-  late final Output<List<InsightsDatasetConfigLink>> links;
+  late final pulumi.Output<List<InsightsDatasetConfigLink>> links;
 
   /// The location of the DatasetConfig.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Organization resource ID that the source projects should belong to.
   /// Projects that do not belong to the provided organization are not considered when creating the dataset.
-  late final Output<String> organizationNumber;
+  late final pulumi.Output<String> organizationNumber;
 
   /// Defines the options for providing a source organization for the DatasetConfig.
-  late final Output<bool?> organizationScope;
+  late final pulumi.Output<bool?> organizationScope;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Number of days of history that must be retained.
-  late final Output<int> retentionPeriodDays;
+  late final pulumi.Output<int> retentionPeriodDays;
 
   /// Defines the options for providing source folders for the DatasetConfig.
   /// Structure is documented below.
-  late final Output<InsightsDatasetConfigSourceFolders?> sourceFolders;
+  late final pulumi.Output<InsightsDatasetConfigSourceFolders?> sourceFolders;
 
   /// Defines the options for providing source projects for the DatasetConfig.
   /// Structure is documented below.
-  late final Output<InsightsDatasetConfigSourceProjects?> sourceProjects;
+  late final pulumi.Output<InsightsDatasetConfigSourceProjects?> sourceProjects;
 
   /// System generated unique identifier for the resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The UTC time at which the DatasetConfig was updated. This is auto-populated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   InsightsDatasetConfig(
     String name, {
     InsightsDatasetConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/insightsDatasetConfig:InsightsDatasetConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activityDataRetentionPeriodDays =
         registerOutput<int>('activityDataRetentionPeriodDays');

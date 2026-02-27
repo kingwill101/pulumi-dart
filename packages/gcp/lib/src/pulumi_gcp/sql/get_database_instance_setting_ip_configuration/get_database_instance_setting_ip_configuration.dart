@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_database_instance_setting_ip_configuration_authorized_network/get_database_instance_setting_ip_configuration_authorized_network.dart';
 import '../get_database_instance_setting_ip_configuration_psc_config/get_database_instance_setting_ip_configuration_psc_config.dart';
 
@@ -50,7 +50,7 @@ class GetDatabaseInstanceSettingIpConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allocatedIpRange'] = allocatedIpRange;
-    map['authorizedNetworks'] = Input.encodeList<
+    map['authorizedNetworks'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork,
         Map<String, dynamic>>(authorizedNetworks, (value) => value.toMap());
     map['customSubjectAlternativeNames'] = customSubjectAlternativeNames;
@@ -58,7 +58,7 @@ class GetDatabaseInstanceSettingIpConfiguration {
         enablePrivatePathForGoogleCloudServices;
     map['ipv4Enabled'] = ipv4Enabled;
     map['privateNetwork'] = privateNetwork;
-    map['pscConfigs'] = Input.encodeList<
+    map['pscConfigs'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingIpConfigurationPscConfig,
         Map<String, dynamic>>(pscConfigs, (value) => value.toMap());
     map['serverCaMode'] = serverCaMode;
@@ -71,7 +71,7 @@ class GetDatabaseInstanceSettingIpConfiguration {
       Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingIpConfiguration(
       allocatedIpRange: map['allocatedIpRange'] as String,
-      authorizedNetworks: Input.decodeList<
+      authorizedNetworks: pulumi.Input.decodeList<
               GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork>(
           map['authorizedNetworks'],
           (value) => GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork
@@ -82,12 +82,11 @@ class GetDatabaseInstanceSettingIpConfiguration {
           map['enablePrivatePathForGoogleCloudServices'] as bool,
       ipv4Enabled: map['ipv4Enabled'] as bool,
       privateNetwork: map['privateNetwork'] as String,
-      pscConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingIpConfigurationPscConfig>(
-              map['pscConfigs'],
-              (value) =>
-                  GetDatabaseInstanceSettingIpConfigurationPscConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      pscConfigs: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingIpConfigurationPscConfig>(
+          map['pscConfigs'],
+          (value) => GetDatabaseInstanceSettingIpConfigurationPscConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serverCaMode: map['serverCaMode'] as String,
       serverCaPool: map['serverCaPool'] as String,
       sslMode: map['sslMode'] as String,

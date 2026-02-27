@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workload_attributes/workload_attributes.dart';
 import '../workload_workload_property/workload_workload_property.dart';
 import '../workload_workload_reference/workload_workload_reference.dart';
@@ -33,65 +33,65 @@ import 'workload_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apphub/workload:Workload default {{location}}/{{application_id}}/{{workload_id}}
 /// ```
-class Workload extends CustomResource {
+class Workload extends pulumi.CustomResource {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// Consumer provided attributes.
   /// Structure is documented below.
-  late final Output<WorkloadAttributes?> attributes;
+  late final pulumi.Output<WorkloadAttributes?> attributes;
 
   /// Output only. Create time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// User-defined description of a Workload.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Immutable. The resource name of the original discovered workload.
-  late final Output<String> discoveredWorkload;
+  late final pulumi.Output<String> discoveredWorkload;
 
   /// User-defined name for the Workload.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the Workload. Format:"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. Workload state. Possible values:  STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. Update time.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The Workload identifier.
-  late final Output<String> workloadId;
+  late final pulumi.Output<String> workloadId;
 
   /// Properties of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  late final Output<List<WorkloadWorkloadProperty>> workloadProperties;
+  late final pulumi.Output<List<WorkloadWorkloadProperty>> workloadProperties;
 
   /// Reference of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  late final Output<List<WorkloadWorkloadReference>> workloadReferences;
+  late final pulumi.Output<List<WorkloadWorkloadReference>> workloadReferences;
 
   Workload(
     String name, {
     WorkloadArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apphub/workload:Workload',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.attributes = registerOutput<WorkloadAttributes?>('attributes');

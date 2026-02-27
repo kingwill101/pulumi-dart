@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_store_args.dart';
 
 /// Represents a user store.
@@ -38,7 +38,7 @@ import 'user_store_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/userStore:UserStore default {{location}}/{{user_store_id}}
 /// ```
-class UserStore extends CustomResource {
+class UserStore extends pulumi.CustomResource {
   /// The resource name of the default license config assigned to users created in
   /// this user store. Format:
   /// `projects/{project}/locations/{location}/licenseConfigs/{license_config}`.
@@ -46,43 +46,43 @@ class UserStore extends CustomResource {
   /// register under the default subscription.
   /// If the default license config doesn't have remaining license seats left,
   /// new users will not be assigned with license.
-  late final Output<String?> defaultLicenseConfig;
+  late final pulumi.Output<String?> defaultLicenseConfig;
 
   /// Whether to enable automatic license update for users with expired licenses
   /// in this user store. If enabled, users with expired licenses will
   /// automatically be updated to the default subscription if there are
   /// remaining license seats.
-  late final Output<bool?> enableExpiredLicenseAutoUpdate;
+  late final pulumi.Output<bool?> enableExpiredLicenseAutoUpdate;
 
   /// Whether to enable automatic license registration for new users created in
   /// this user store. If enabled, new users will automatically register under
   /// the default subscription.
-  late final Output<bool?> enableLicenseAutoRegister;
+  late final pulumi.Output<bool?> enableLicenseAutoRegister;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique full resource name of the user store. Values are of the format
   /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The ID of the user store. Currently only accepts "default_user_store".
-  late final Output<String?> userStoreId;
+  late final pulumi.Output<String?> userStoreId;
 
   UserStore(
     String name, {
     UserStoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/userStore:UserStore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.defaultLicenseConfig = registerOutput<String?>('defaultLicenseConfig');
     this.enableExpiredLicenseAutoUpdate =

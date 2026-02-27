@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_supported_idp_config_args.dart';
 
 /// Configurations options for authenticating with a the standard set of Identity Toolkit-trusted IDPs.
@@ -39,15 +39,15 @@ import 'default_supported_idp_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{idp_id}}
 /// ```
-class DefaultSupportedIdpConfig extends CustomResource {
+class DefaultSupportedIdpConfig extends pulumi.CustomResource {
   /// OAuth client ID
-  late final Output<String> clientId;
+  late final pulumi.Output<String> clientId;
 
   /// OAuth client secret
-  late final Output<String> clientSecret;
+  late final pulumi.Output<String> clientSecret;
 
   /// If this IDP allows the user to sign in
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// ID of the IDP. Possible values include:
   /// * `apple.com`
@@ -60,24 +60,24 @@ class DefaultSupportedIdpConfig extends CustomResource {
   /// * `playgames.google.com`
   /// * `twitter.com`
   /// * `yahoo.com`
-  late final Output<String> idpId;
+  late final pulumi.Output<String> idpId;
 
   /// The name of the DefaultSupportedIdpConfig resource
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   DefaultSupportedIdpConfig(
     String name, {
     DefaultSupportedIdpConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clientId = registerOutput<String>('clientId');
     this.clientSecret = registerOutput<String>('clientSecret');

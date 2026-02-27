@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_cluster_autoscaling_auto_provisioning_default_upgrade_setting_blue_green_setting/get_cluster_cluster_autoscaling_auto_provisioning_default_upgrade_setting_blue_green_setting.dart';
 
 class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
@@ -27,7 +27,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['blueGreenSettings'] = Input.encodeList<
+    map['blueGreenSettings'] = pulumi.Input.encodeList<
         GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting,
         Map<String, dynamic>>(blueGreenSettings, (value) => value.toMap());
     map['maxSurge'] = maxSurge;
@@ -39,7 +39,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
   factory GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting.fromMap(
       Map<String, dynamic> map) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting(
-      blueGreenSettings: Input.decodeList<
+      blueGreenSettings: pulumi.Input.decodeList<
               GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting>(
           map['blueGreenSettings'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_certificate_description_x509_description_additional_extension/certificate_certificate_description_x509_description_additional_extension.dart';
 import '../certificate_certificate_description_x509_description_ca_option/certificate_certificate_description_x509_description_ca_option.dart';
 import '../certificate_certificate_description_x509_description_key_usage/certificate_certificate_description_x509_description_key_usage.dart';
@@ -57,7 +57,7 @@ class CertificateCertificateDescriptionX509Description {
     final map = <String, dynamic>{};
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
-      map['additionalExtensions'] = Input.encodeList<
+      map['additionalExtensions'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionAdditionalExtension,
           Map<String,
               dynamic>>(additionalExtensionsValue, (value) => value.toMap());
@@ -68,25 +68,25 @@ class CertificateCertificateDescriptionX509Description {
     }
     final caOptionsValue = caOptions;
     if (caOptionsValue != null) {
-      map['caOptions'] = Input.encodeList<
+      map['caOptions'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionCaOption,
           Map<String, dynamic>>(caOptionsValue, (value) => value.toMap());
     }
     final keyUsagesValue = keyUsages;
     if (keyUsagesValue != null) {
-      map['keyUsages'] = Input.encodeList<
+      map['keyUsages'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionKeyUsage,
           Map<String, dynamic>>(keyUsagesValue, (value) => value.toMap());
     }
     final nameConstraintsValue = nameConstraints;
     if (nameConstraintsValue != null) {
-      map['nameConstraints'] = Input.encodeList<
+      map['nameConstraints'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionNameConstraint,
           Map<String, dynamic>>(nameConstraintsValue, (value) => value.toMap());
     }
     final policyIdsValue = policyIds;
     if (policyIdsValue != null) {
-      map['policyIds'] = Input.encodeList<
+      map['policyIds'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionX509DescriptionPolicyId,
           Map<String, dynamic>>(policyIdsValue, (value) => value.toMap());
     }
@@ -98,7 +98,7 @@ class CertificateCertificateDescriptionX509Description {
     return CertificateCertificateDescriptionX509Description(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionAdditionalExtension>(
               map['additionalExtensions'],
               (value) =>
@@ -109,7 +109,7 @@ class CertificateCertificateDescriptionX509Description {
           : (map['aiaOcspServers'] as List).cast<String>(),
       caOptions: map['caOptions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionCaOption>(
               map['caOptions'],
               (value) =>
@@ -117,7 +117,7 @@ class CertificateCertificateDescriptionX509Description {
                       .fromMap((value as Map).cast<String, dynamic>())),
       keyUsages: map['keyUsages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionKeyUsage>(
               map['keyUsages'],
               (value) =>
@@ -125,7 +125,7 @@ class CertificateCertificateDescriptionX509Description {
                       .fromMap((value as Map).cast<String, dynamic>())),
       nameConstraints: map['nameConstraints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionNameConstraint>(
               map['nameConstraints'],
               (value) =>
@@ -133,7 +133,7 @@ class CertificateCertificateDescriptionX509Description {
                       .fromMap((value as Map).cast<String, dynamic>())),
       policyIds: map['policyIds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionX509DescriptionPolicyId>(
               map['policyIds'],
               (value) =>

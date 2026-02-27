@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for NetworkFirewallPolicy.
 class NetworkFirewallPolicyArgs {
   /// An optional description of this resource. Provide this property when you create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
   /// Possible values are: `VPC_POLICY`.
-  final Input<String>? policyType;
+  final pulumi.Input<String>? policyType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   NetworkFirewallPolicyArgs({
     this.description,
@@ -50,10 +50,10 @@ class NetworkFirewallPolicyArgs {
 
   factory NetworkFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policyType: Input.asOptionalInput<String>(map['policyType']),
-      project: Input.asOptionalInput<String>(map['project']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policyType: pulumi.Input.asOptionalInput<String>(map['policyType']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

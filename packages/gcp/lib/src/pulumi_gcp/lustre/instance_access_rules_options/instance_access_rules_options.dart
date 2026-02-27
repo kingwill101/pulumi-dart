@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_access_rules_options_access_rule/instance_access_rules_options_access_rule.dart';
 
 class InstanceAccessRulesOptions {
@@ -33,7 +33,7 @@ class InstanceAccessRulesOptions {
     final map = <String, dynamic>{};
     final accessRulesValue = accessRules;
     if (accessRulesValue != null) {
-      map['accessRules'] = Input.encodeList<
+      map['accessRules'] = pulumi.Input.encodeList<
           InstanceAccessRulesOptionsAccessRule,
           Map<String, dynamic>>(accessRulesValue, (value) => value.toMap());
     }
@@ -53,7 +53,7 @@ class InstanceAccessRulesOptions {
     return InstanceAccessRulesOptions(
       accessRules: map['accessRules'] == null
           ? null
-          : Input.decodeList<InstanceAccessRulesOptionsAccessRule>(
+          : pulumi.Input.decodeList<InstanceAccessRulesOptionsAccessRule>(
               map['accessRules'],
               (value) => InstanceAccessRulesOptionsAccessRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

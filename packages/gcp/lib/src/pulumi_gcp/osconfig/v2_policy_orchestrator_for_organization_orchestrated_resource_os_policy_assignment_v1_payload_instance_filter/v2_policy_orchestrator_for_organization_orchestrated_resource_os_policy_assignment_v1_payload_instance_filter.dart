@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter_exclusion_label/v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter_exclusion_label.dart';
 import '../v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter_inclusion_label/v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter_inclusion_label.dart';
 import '../v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter_inventory/v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter_inventory.dart';
@@ -49,19 +49,19 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     }
     final exclusionLabelsValue = exclusionLabels;
     if (exclusionLabelsValue != null) {
-      map['exclusionLabels'] = Input.encodeList<
+      map['exclusionLabels'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel,
           Map<String, dynamic>>(exclusionLabelsValue, (value) => value.toMap());
     }
     final inclusionLabelsValue = inclusionLabels;
     if (inclusionLabelsValue != null) {
-      map['inclusionLabels'] = Input.encodeList<
+      map['inclusionLabels'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel,
           Map<String, dynamic>>(inclusionLabelsValue, (value) => value.toMap());
     }
     final inventoriesValue = inventories;
     if (inventoriesValue != null) {
-      map['inventories'] = Input.encodeList<
+      map['inventories'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory,
           Map<String, dynamic>>(inventoriesValue, (value) => value.toMap());
     }
@@ -74,7 +74,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
       all: map['all'] == null ? null : map['all'] as bool,
       exclusionLabels: map['exclusionLabels'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>(
               map['exclusionLabels'],
               (value) =>
@@ -82,7 +82,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
                       .fromMap((value as Map).cast<String, dynamic>())),
       inclusionLabels: map['inclusionLabels'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>(
               map['inclusionLabels'],
               (value) =>
@@ -90,7 +90,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
                       .fromMap((value as Map).cast<String, dynamic>())),
       inventories: map['inventories'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>(
               map['inventories'],
               (value) =>

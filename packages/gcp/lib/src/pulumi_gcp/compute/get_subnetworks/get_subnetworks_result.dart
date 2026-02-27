@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subnetworks_subnetwork/get_subnetworks_subnetwork.dart';
 
 /// Result data returned by getSubnetworks.
@@ -39,7 +39,7 @@ class GetSubnetworksResult {
       map['region'] = regionValue;
     }
     map['subnetworks'] =
-        Input.encodeList<GetSubnetworksSubnetwork, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetSubnetworksSubnetwork, Map<String, dynamic>>(
             subnetworks, (value) => value.toMap());
     return map;
   }
@@ -50,7 +50,7 @@ class GetSubnetworksResult {
       id: map['id'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      subnetworks: Input.decodeList<GetSubnetworksSubnetwork>(
+      subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(
           map['subnetworks'],
           (value) => GetSubnetworksSubnetwork.fromMap(
               (value as Map).cast<String, dynamic>())),

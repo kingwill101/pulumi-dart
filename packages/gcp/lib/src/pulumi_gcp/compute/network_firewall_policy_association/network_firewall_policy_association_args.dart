@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for NetworkFirewallPolicyAssociation.
 class NetworkFirewallPolicyAssociationArgs {
   /// The target that the firewall policy is attached to.
-  final Input<String> attachmentTarget;
+  final pulumi.Input<String> attachmentTarget;
 
   /// The firewall policy of the resource.
-  final Input<String> firewallPolicy;
+  final pulumi.Input<String> firewallPolicy;
 
   /// The name for an association.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   NetworkFirewallPolicyAssociationArgs({
     required this.attachmentTarget,
@@ -42,10 +42,10 @@ class NetworkFirewallPolicyAssociationArgs {
   factory NetworkFirewallPolicyAssociationArgs.fromMap(
       Map<String, dynamic> map) {
     return NetworkFirewallPolicyAssociationArgs(
-      attachmentTarget: Input.asInput<String>(map['attachmentTarget']),
-      firewallPolicy: Input.asInput<String>(map['firewallPolicy']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      attachmentTarget: pulumi.Input.asInput<String>(map['attachmentTarget']),
+      firewallPolicy: pulumi.Input.asInput<String>(map['firewallPolicy']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_v2_accelerator_types_args.dart';
 import 'get_v2_accelerator_types_result.dart';
 
@@ -12,13 +12,13 @@ import 'get_v2_accelerator_types_result.dart';
 /// ### Configure Basic TPU VM With Available Type
 Future<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(
   GetV2AcceleratorTypesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetV2AcceleratorTypesResult.fromMap(result);
 }

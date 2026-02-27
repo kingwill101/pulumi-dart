@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'restore_channel_args.dart';
 
 /// A RestoreChannel imposes constraints on where backups can be restored.
@@ -43,21 +43,21 @@ import 'restore_channel_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkebackup/restoreChannel:RestoreChannel default {{location}}/{{name}}
 /// ```
-class RestoreChannel extends CustomResource {
+class RestoreChannel extends pulumi.CustomResource {
   /// User specified descriptive string for this RestoreChannel.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The project where Backups will be restored.
   /// The format is `projects/{project}`.
   /// {project} can be project number or project id.
-  late final Output<String> destinationProject;
+  late final pulumi.Output<String> destinationProject;
 
   /// The project_id where Backups will be restored.
   /// Example Project ID: "my-project-id".
-  late final Output<String> destinationProjectId;
+  late final pulumi.Output<String> destinationProjectId;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
   /// updates of a restore channel from overwriting each other. It is strongly suggested that
@@ -65,7 +65,7 @@ class RestoreChannel extends CustomResource {
   /// in order to avoid race conditions: An etag is returned in the response to restoreChannels.get,
   /// and systems are expected to put that etag in the request to restoreChannels.patch or
   /// restoreChannels.delete to ensure that their change will be applied to the same version of the resource.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Description: A set of custom labels supplied by the user.
   /// A list of key->value pairs.
@@ -73,34 +73,34 @@ class RestoreChannel extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The region of the Restore Channel.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The full name of the RestoreChannel Resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Server generated, unique identifier of UUID format.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   RestoreChannel(
     String name, {
     RestoreChannelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkebackup/restoreChannel:RestoreChannel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.destinationProject = registerOutput<String>('destinationProject');

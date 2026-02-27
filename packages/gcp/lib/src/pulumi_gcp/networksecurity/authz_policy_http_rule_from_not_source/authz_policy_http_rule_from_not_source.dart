@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authz_policy_http_rule_from_not_source_ip_block/authz_policy_http_rule_from_not_source_ip_block.dart';
 import '../authz_policy_http_rule_from_not_source_principal/authz_policy_http_rule_from_not_source_principal.dart';
 import '../authz_policy_http_rule_from_not_source_resource/authz_policy_http_rule_from_not_source_resource.dart';
@@ -30,19 +30,19 @@ class AuthzPolicyHttpRuleFromNotSource {
     final map = <String, dynamic>{};
     final ipBlocksValue = ipBlocks;
     if (ipBlocksValue != null) {
-      map['ipBlocks'] = Input.encodeList<
+      map['ipBlocks'] = pulumi.Input.encodeList<
           AuthzPolicyHttpRuleFromNotSourceIpBlock,
           Map<String, dynamic>>(ipBlocksValue, (value) => value.toMap());
     }
     final principalsValue = principals;
     if (principalsValue != null) {
-      map['principals'] = Input.encodeList<
+      map['principals'] = pulumi.Input.encodeList<
           AuthzPolicyHttpRuleFromNotSourcePrincipal,
           Map<String, dynamic>>(principalsValue, (value) => value.toMap());
     }
     final resourcesValue = resources;
     if (resourcesValue != null) {
-      map['resources'] = Input.encodeList<
+      map['resources'] = pulumi.Input.encodeList<
           AuthzPolicyHttpRuleFromNotSourceResource,
           Map<String, dynamic>>(resourcesValue, (value) => value.toMap());
     }
@@ -53,19 +53,19 @@ class AuthzPolicyHttpRuleFromNotSource {
     return AuthzPolicyHttpRuleFromNotSource(
       ipBlocks: map['ipBlocks'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleFromNotSourceIpBlock>(
+          : pulumi.Input.decodeList<AuthzPolicyHttpRuleFromNotSourceIpBlock>(
               map['ipBlocks'],
               (value) => AuthzPolicyHttpRuleFromNotSourceIpBlock.fromMap(
                   (value as Map).cast<String, dynamic>())),
       principals: map['principals'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleFromNotSourcePrincipal>(
+          : pulumi.Input.decodeList<AuthzPolicyHttpRuleFromNotSourcePrincipal>(
               map['principals'],
               (value) => AuthzPolicyHttpRuleFromNotSourcePrincipal.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resources: map['resources'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleFromNotSourceResource>(
+          : pulumi.Input.decodeList<AuthzPolicyHttpRuleFromNotSourceResource>(
               map['resources'],
               (value) => AuthzPolicyHttpRuleFromNotSourceResource.fromMap(
                   (value as Map).cast<String, dynamic>())),

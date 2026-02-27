@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PublicDelegatedPrefix.
 class PublicDelegatedPrefixArgs {
   /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
-  final Input<int>? allocatablePrefixLength;
+  final pulumi.Input<int>? allocatablePrefixLength;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
-  final Input<String> ipCidrRange;
+  final pulumi.Input<String> ipCidrRange;
 
   /// If true, the prefix will be live migrated.
-  final Input<bool>? isLiveMigration;
+  final pulumi.Input<bool>? isLiveMigration;
 
   /// Specifies the mode of this IPv6 PDP. MODE must be one of:
   /// * DELEGATION
@@ -22,7 +22,7 @@ class PublicDelegatedPrefixArgs {
   /// * EXTERNAL_IPV6_SUBNETWORK_CREATION
   /// * INTERNAL_IPV6_SUBNETWORK_CREATION
   /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
-  final Input<String>? mode;
+  final pulumi.Input<String>? mode;
 
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -30,17 +30,17 @@ class PublicDelegatedPrefixArgs {
   /// which means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
-  final Input<String> parentPrefix;
+  final pulumi.Input<String> parentPrefix;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A region where the prefix will reside.
-  final Input<String> region;
+  final pulumi.Input<String> region;
 
   PublicDelegatedPrefixArgs({
     this.allocatablePrefixLength,
@@ -89,15 +89,16 @@ class PublicDelegatedPrefixArgs {
   factory PublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixArgs(
       allocatablePrefixLength:
-          Input.asOptionalInput<int>(map['allocatablePrefixLength']),
-      description: Input.asOptionalInput<String>(map['description']),
-      ipCidrRange: Input.asInput<String>(map['ipCidrRange']),
-      isLiveMigration: Input.asOptionalInput<bool>(map['isLiveMigration']),
-      mode: Input.asOptionalInput<String>(map['mode']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parentPrefix: Input.asInput<String>(map['parentPrefix']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<int>(map['allocatablePrefixLength']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      ipCidrRange: pulumi.Input.asInput<String>(map['ipCidrRange']),
+      isLiveMigration:
+          pulumi.Input.asOptionalInput<bool>(map['isLiveMigration']),
+      mode: pulumi.Input.asOptionalInput<String>(map['mode']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parentPrefix: pulumi.Input.asInput<String>(map['parentPrefix']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

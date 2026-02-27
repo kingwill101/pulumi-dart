@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_uptime_check_ips_uptime_check_ip/get_uptime_check_ips_uptime_check_ip.dart';
 
 /// Result data returned by getUptimeCheckIPs.
@@ -19,16 +19,16 @@ class GetUptimeCheckIPsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['uptimeCheckIps'] =
-        Input.encodeList<GetUptimeCheckIPsUptimeCheckIp, Map<String, dynamic>>(
-            uptimeCheckIps, (value) => value.toMap());
+    map['uptimeCheckIps'] = pulumi.Input.encodeList<
+        GetUptimeCheckIPsUptimeCheckIp,
+        Map<String, dynamic>>(uptimeCheckIps, (value) => value.toMap());
     return map;
   }
 
   factory GetUptimeCheckIPsResult.fromMap(Map<String, dynamic> map) {
     return GetUptimeCheckIPsResult(
       id: map['id'] as String,
-      uptimeCheckIps: Input.decodeList<GetUptimeCheckIPsUptimeCheckIp>(
+      uptimeCheckIps: pulumi.Input.decodeList<GetUptimeCheckIPsUptimeCheckIp>(
           map['uptimeCheckIps'],
           (value) => GetUptimeCheckIPsUptimeCheckIp.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_inspect_template_inspect_config_limits_max_findings_per_info_type/prevention_inspect_template_inspect_config_limits_max_findings_per_info_type.dart';
 
 class PreventionInspectTemplateInspectConfigLimits {
@@ -26,7 +26,7 @@ class PreventionInspectTemplateInspectConfigLimits {
     final map = <String, dynamic>{};
     final maxFindingsPerInfoTypesValue = maxFindingsPerInfoTypes;
     if (maxFindingsPerInfoTypesValue != null) {
-      map['maxFindingsPerInfoTypes'] = Input.encodeList<
+      map['maxFindingsPerInfoTypes'] = pulumi.Input.encodeList<
           PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType,
           Map<String,
               dynamic>>(maxFindingsPerInfoTypesValue, (value) => value.toMap());
@@ -41,7 +41,7 @@ class PreventionInspectTemplateInspectConfigLimits {
     return PreventionInspectTemplateInspectConfigLimits(
       maxFindingsPerInfoTypes: map['maxFindingsPerInfoTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType>(
               map['maxFindingsPerInfoTypes'],
               (value) =>

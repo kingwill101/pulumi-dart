@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeter_dry_run_egress_policy_egress_to_operation_method_selector/service_perimeter_dry_run_egress_policy_egress_to_operation_method_selector.dart';
 
 class ServicePerimeterDryRunEgressPolicyEgressToOperation {
@@ -26,7 +26,7 @@ class ServicePerimeterDryRunEgressPolicyEgressToOperation {
     final map = <String, dynamic>{};
     final methodSelectorsValue = methodSelectors;
     if (methodSelectorsValue != null) {
-      map['methodSelectors'] = Input.encodeList<
+      map['methodSelectors'] = pulumi.Input.encodeList<
           ServicePerimeterDryRunEgressPolicyEgressToOperationMethodSelector,
           Map<String, dynamic>>(methodSelectorsValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class ServicePerimeterDryRunEgressPolicyEgressToOperation {
     return ServicePerimeterDryRunEgressPolicyEgressToOperation(
       methodSelectors: map['methodSelectors'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServicePerimeterDryRunEgressPolicyEgressToOperationMethodSelector>(
               map['methodSelectors'],
               (value) =>

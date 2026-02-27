@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../fhir_store_iam_binding_condition/fhir_store_iam_binding_condition.dart';
 
 /// The set of arguments for FhirStoreIamBinding.
 class FhirStoreIamBindingArgs {
-  final Input<FhirStoreIamBindingCondition>? condition;
+  final pulumi.Input<FhirStoreIamBindingCondition>? condition;
 
   /// The FHIR store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
   /// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
-  final Input<String> fhirStoreId;
+  final pulumi.Input<String> fhirStoreId;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -21,12 +21,12 @@ class FhirStoreIamBindingArgs {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  final Input<List<String>> members;
+  final pulumi.Input<List<String>> members;
 
   /// The role that should be applied. Only one
   /// `gcp.healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   FhirStoreIamBindingArgs({
     this.condition,
@@ -39,7 +39,7 @@ class FhirStoreIamBindingArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           FhirStoreIamBindingCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -51,11 +51,11 @@ class FhirStoreIamBindingArgs {
 
   factory FhirStoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return FhirStoreIamBindingArgs(
-      condition:
-          Input.asOptionalInput<FhirStoreIamBindingCondition>(map['condition']),
-      fhirStoreId: Input.asInput<String>(map['fhirStoreId']),
-      members: Input.asInput<List<String>>(map['members']),
-      role: Input.asInput<String>(map['role']),
+      condition: pulumi.Input.asOptionalInput<FhirStoreIamBindingCondition>(
+          map['condition']),
+      fhirStoreId: pulumi.Input.asInput<String>(map['fhirStoreId']),
+      members: pulumi.Input.asInput<List<String>>(map['members']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

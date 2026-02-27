@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TargetSSLProxy.
 class TargetSSLProxyArgs {
   /// A reference to the BackendService resource.
-  final Input<String> backendService;
+  final pulumi.Input<String> backendService;
 
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field can only be set for global target proxies.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
-  final Input<String>? certificateMap;
+  final pulumi.Input<String>? certificateMap;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -22,27 +22,27 @@ class TargetSSLProxyArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
-  final Input<String>? proxyHeader;
+  final pulumi.Input<String>? proxyHeader;
 
   /// A list of SslCertificate resources that are used to authenticate
   /// connections between users and the load balancer. At least one
   /// SSL certificate must be specified.
-  final Input<List<String>>? sslCertificates;
+  final pulumi.Input<List<String>>? sslCertificates;
 
   /// A reference to the SslPolicy resource that will be associated with
   /// the TargetSslProxy resource. If not set, the TargetSslProxy
   /// resource will not have any SSL policy configured.
-  final Input<String>? sslPolicy;
+  final pulumi.Input<String>? sslPolicy;
 
   TargetSSLProxyArgs({
     required this.backendService,
@@ -91,15 +91,16 @@ class TargetSSLProxyArgs {
 
   factory TargetSSLProxyArgs.fromMap(Map<String, dynamic> map) {
     return TargetSSLProxyArgs(
-      backendService: Input.asInput<String>(map['backendService']),
-      certificateMap: Input.asOptionalInput<String>(map['certificateMap']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      proxyHeader: Input.asOptionalInput<String>(map['proxyHeader']),
+      backendService: pulumi.Input.asInput<String>(map['backendService']),
+      certificateMap:
+          pulumi.Input.asOptionalInput<String>(map['certificateMap']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      proxyHeader: pulumi.Input.asOptionalInput<String>(map['proxyHeader']),
       sslCertificates:
-          Input.asOptionalInput<List<String>>(map['sslCertificates']),
-      sslPolicy: Input.asOptionalInput<String>(map['sslPolicy']),
+          pulumi.Input.asOptionalInput<List<String>>(map['sslCertificates']),
+      sslPolicy: pulumi.Input.asOptionalInput<String>(map['sslPolicy']),
     );
   }
 }

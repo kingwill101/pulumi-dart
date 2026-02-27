@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_network_firewall_policy_rule_match_layer4_config/region_network_firewall_policy_rule_match_layer4_config.dart';
 import '../region_network_firewall_policy_rule_match_src_secure_tag/region_network_firewall_policy_rule_match_src_secure_tag.dart';
 
@@ -101,7 +101,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
     if (destThreatIntelligencesValue != null) {
       map['destThreatIntelligences'] = destThreatIntelligencesValue;
     }
-    map['layer4Configs'] = Input.encodeList<
+    map['layer4Configs'] = pulumi.Input.encodeList<
         RegionNetworkFirewallPolicyRuleMatchLayer4Config,
         Map<String, dynamic>>(layer4Configs, (value) => value.toMap());
     final srcAddressGroupsValue = srcAddressGroups;
@@ -130,7 +130,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
     }
     final srcSecureTagsValue = srcSecureTags;
     if (srcSecureTagsValue != null) {
-      map['srcSecureTags'] = Input.encodeList<
+      map['srcSecureTags'] = pulumi.Input.encodeList<
           RegionNetworkFirewallPolicyRuleMatchSrcSecureTag,
           Map<String, dynamic>>(srcSecureTagsValue, (value) => value.toMap());
     }
@@ -162,12 +162,11 @@ class RegionNetworkFirewallPolicyRuleMatch {
       destThreatIntelligences: map['destThreatIntelligences'] == null
           ? null
           : (map['destThreatIntelligences'] as List).cast<String>(),
-      layer4Configs:
-          Input.decodeList<RegionNetworkFirewallPolicyRuleMatchLayer4Config>(
-              map['layer4Configs'],
-              (value) =>
-                  RegionNetworkFirewallPolicyRuleMatchLayer4Config.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      layer4Configs: pulumi.Input.decodeList<
+              RegionNetworkFirewallPolicyRuleMatchLayer4Config>(
+          map['layer4Configs'],
+          (value) => RegionNetworkFirewallPolicyRuleMatchLayer4Config.fromMap(
+              (value as Map).cast<String, dynamic>())),
       srcAddressGroups: map['srcAddressGroups'] == null
           ? null
           : (map['srcAddressGroups'] as List).cast<String>(),
@@ -188,7 +187,8 @@ class RegionNetworkFirewallPolicyRuleMatch {
           : (map['srcRegionCodes'] as List).cast<String>(),
       srcSecureTags: map['srcSecureTags'] == null
           ? null
-          : Input.decodeList<RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>(
+          : pulumi.Input.decodeList<
+                  RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>(
               map['srcSecureTags'],
               (value) =>
                   RegionNetworkFirewallPolicyRuleMatchSrcSecureTag.fromMap(

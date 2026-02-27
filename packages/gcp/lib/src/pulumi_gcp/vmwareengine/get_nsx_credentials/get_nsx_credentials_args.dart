@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNsxCredentials.
 class GetNsxCredentialsArgs {
   /// The resource name of the private cloud which contains the NSX.
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   GetNsxCredentialsArgs({
     required this.parent,
@@ -19,7 +19,7 @@ class GetNsxCredentialsArgs {
 
   factory GetNsxCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetNsxCredentialsArgs(
-      parent: Input.asInput<String>(map['parent']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
     );
   }
 }

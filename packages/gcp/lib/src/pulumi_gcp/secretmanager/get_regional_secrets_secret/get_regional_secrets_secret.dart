@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_regional_secrets_secret_customer_managed_encryption/get_regional_secrets_secret_customer_managed_encryption.dart';
 import '../get_regional_secrets_secret_rotation/get_regional_secrets_secret_rotation.dart';
 import '../get_regional_secrets_secret_topic/get_regional_secrets_secret_topic.dart';
@@ -91,7 +91,7 @@ class GetRegionalSecretsSecret {
     final map = <String, dynamic>{};
     map['annotations'] = annotations;
     map['createTime'] = createTime;
-    map['customerManagedEncryptions'] = Input.encodeList<
+    map['customerManagedEncryptions'] = pulumi.Input.encodeList<
             GetRegionalSecretsSecretCustomerManagedEncryption,
             Map<String, dynamic>>(
         customerManagedEncryptions, (value) => value.toMap());
@@ -104,13 +104,12 @@ class GetRegionalSecretsSecret {
     map['name'] = name;
     map['project'] = project;
     map['pulumiLabels'] = pulumiLabels;
-    map['rotations'] = Input.encodeList<GetRegionalSecretsSecretRotation,
+    map['rotations'] = pulumi.Input.encodeList<GetRegionalSecretsSecretRotation,
         Map<String, dynamic>>(rotations, (value) => value.toMap());
     map['secretId'] = secretId;
     map['tags'] = tags;
-    map['topics'] =
-        Input.encodeList<GetRegionalSecretsSecretTopic, Map<String, dynamic>>(
-            topics, (value) => value.toMap());
+    map['topics'] = pulumi.Input.encodeList<GetRegionalSecretsSecretTopic,
+        Map<String, dynamic>>(topics, (value) => value.toMap());
     map['ttl'] = ttl;
     map['versionAliases'] = versionAliases;
     map['versionDestroyTtl'] = versionDestroyTtl;
@@ -121,12 +120,11 @@ class GetRegionalSecretsSecret {
     return GetRegionalSecretsSecret(
       annotations: (map['annotations'] as Map).cast<String, String>(),
       createTime: map['createTime'] as String,
-      customerManagedEncryptions:
-          Input.decodeList<GetRegionalSecretsSecretCustomerManagedEncryption>(
-              map['customerManagedEncryptions'],
-              (value) =>
-                  GetRegionalSecretsSecretCustomerManagedEncryption.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      customerManagedEncryptions: pulumi.Input.decodeList<
+              GetRegionalSecretsSecretCustomerManagedEncryption>(
+          map['customerManagedEncryptions'],
+          (value) => GetRegionalSecretsSecretCustomerManagedEncryption.fromMap(
+              (value as Map).cast<String, dynamic>())),
       deletionProtection: map['deletionProtection'] as bool,
       effectiveAnnotations:
           (map['effectiveAnnotations'] as Map).cast<String, String>(),
@@ -137,13 +135,13 @@ class GetRegionalSecretsSecret {
       name: map['name'] as String,
       project: map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      rotations: Input.decodeList<GetRegionalSecretsSecretRotation>(
+      rotations: pulumi.Input.decodeList<GetRegionalSecretsSecretRotation>(
           map['rotations'],
           (value) => GetRegionalSecretsSecretRotation.fromMap(
               (value as Map).cast<String, dynamic>())),
       secretId: map['secretId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      topics: Input.decodeList<GetRegionalSecretsSecretTopic>(
+      topics: pulumi.Input.decodeList<GetRegionalSecretsSecretTopic>(
           map['topics'],
           (value) => GetRegionalSecretsSecretTopic.fromMap(
               (value as Map).cast<String, dynamic>())),

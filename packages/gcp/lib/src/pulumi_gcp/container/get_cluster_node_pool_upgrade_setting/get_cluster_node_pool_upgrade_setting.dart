@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_upgrade_setting_blue_green_setting/get_cluster_node_pool_upgrade_setting_blue_green_setting.dart';
 
 class GetClusterNodePoolUpgradeSetting {
@@ -26,7 +26,7 @@ class GetClusterNodePoolUpgradeSetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['blueGreenSettings'] = Input.encodeList<
+    map['blueGreenSettings'] = pulumi.Input.encodeList<
         GetClusterNodePoolUpgradeSettingBlueGreenSetting,
         Map<String, dynamic>>(blueGreenSettings, (value) => value.toMap());
     map['maxSurge'] = maxSurge;
@@ -37,12 +37,11 @@ class GetClusterNodePoolUpgradeSetting {
 
   factory GetClusterNodePoolUpgradeSetting.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolUpgradeSetting(
-      blueGreenSettings:
-          Input.decodeList<GetClusterNodePoolUpgradeSettingBlueGreenSetting>(
-              map['blueGreenSettings'],
-              (value) =>
-                  GetClusterNodePoolUpgradeSettingBlueGreenSetting.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      blueGreenSettings: pulumi.Input.decodeList<
+              GetClusterNodePoolUpgradeSettingBlueGreenSetting>(
+          map['blueGreenSettings'],
+          (value) => GetClusterNodePoolUpgradeSettingBlueGreenSetting.fromMap(
+              (value as Map).cast<String, dynamic>())),
       maxSurge: map['maxSurge'] as int,
       maxUnavailable: map['maxUnavailable'] as int,
       strategy: map['strategy'] as String,

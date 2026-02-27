@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dicom_store_iam_binding_condition/dicom_store_iam_binding_condition.dart';
 import 'dicom_store_iam_binding_args.dart';
 
@@ -57,17 +57,17 @@ import 'dicom_store_iam_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
 /// ```
-class DicomStoreIamBinding extends CustomResource {
-  late final Output<DicomStoreIamBindingCondition?> condition;
+class DicomStoreIamBinding extends pulumi.CustomResource {
+  late final pulumi.Output<DicomStoreIamBindingCondition?> condition;
 
   /// The DICOM store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
   /// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
-  late final Output<String> dicomStoreId;
+  late final pulumi.Output<String> dicomStoreId;
 
   /// (Computed) The etag of the DICOM store's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -77,22 +77,22 @@ class DicomStoreIamBinding extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<List<String>> members;
+  late final pulumi.Output<List<String>> members;
 
   /// The role that should be applied. Only one
   /// `gcp.healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   DicomStoreIamBinding(
     String name, {
     DicomStoreIamBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition =
         registerOutput<DicomStoreIamBindingCondition?>('condition');

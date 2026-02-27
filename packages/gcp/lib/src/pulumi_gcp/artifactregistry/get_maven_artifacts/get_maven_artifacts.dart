@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_maven_artifacts_args.dart';
 import 'get_maven_artifacts_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_maven_artifacts_result.dart';
 /// and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.mavenArtifacts/list).
 Future<GetMavenArtifactsResult> getMavenArtifacts(
   GetMavenArtifactsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:artifactregistry/getMavenArtifacts:getMavenArtifacts',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMavenArtifactsResult.fromMap(result);
 }

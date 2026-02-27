@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all/stream_backfill_all.dart';
 import '../stream_destination_config/stream_destination_config.dart';
 import '../stream_rule_set/stream_rule_set.dart';
@@ -92,79 +92,79 @@ import 'stream_args.dart';
 /// ```sh
 /// $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
 /// ```
-class Stream extends CustomResource {
+class Stream extends pulumi.CustomResource {
   /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
   /// Structure is documented below.
-  late final Output<StreamBackfillAll?> backfillAll;
+  late final pulumi.Output<StreamBackfillAll?> backfillAll;
 
   /// Backfill strategy to disable automatic backfill for the Stream's objects.
-  late final Output<Map<String, dynamic>?> backfillNone;
+  late final pulumi.Output<Map<String, dynamic>?> backfillNone;
 
   /// Create the stream without validating it.
-  late final Output<bool?> createWithoutValidation;
+  late final pulumi.Output<bool?> createWithoutValidation;
 
   /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
   /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-  late final Output<String?> customerManagedEncryptionKey;
+  late final pulumi.Output<String?> customerManagedEncryptionKey;
 
   /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
   /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
   /// the stream from a `RUNNING` state.
   /// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
-  late final Output<String?> desiredState;
+  late final pulumi.Output<String?> desiredState;
 
   /// Destination connection profile configuration.
   /// Structure is documented below.
-  late final Output<StreamDestinationConfig> destinationConfig;
+  late final pulumi.Output<StreamDestinationConfig> destinationConfig;
 
   /// Display name.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The name of the location this stream is located in.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The stream's name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Rule sets to apply to the stream.
   /// Structure is documented below.
-  late final Output<List<StreamRuleSet>?> ruleSets;
+  late final pulumi.Output<List<StreamRuleSet>?> ruleSets;
 
   /// Source connection profile configuration.
   /// Structure is documented below.
-  late final Output<StreamSourceConfig> sourceConfig;
+  late final pulumi.Output<StreamSourceConfig> sourceConfig;
 
   /// The state of the stream.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The stream identifier.
-  late final Output<String> streamId;
+  late final pulumi.Output<String> streamId;
 
   Stream(
     String name, {
     StreamArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:datastream/stream:Stream',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backfillAll = registerOutput<StreamBackfillAll?>('backfillAll');
     this.backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');

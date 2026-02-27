@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_control_parameter_spec_default_value/cloud_control_parameter_spec_default_value.dart';
 import '../cloud_control_parameter_spec_sub_parameter/cloud_control_parameter_spec_sub_parameter.dart';
 import '../cloud_control_parameter_spec_substitution_rule/cloud_control_parameter_spec_substitution_rule.dart';
@@ -74,13 +74,13 @@ class CloudControlParameterSpec {
     map['name'] = name;
     final subParametersValue = subParameters;
     if (subParametersValue != null) {
-      map['subParameters'] = Input.encodeList<
+      map['subParameters'] = pulumi.Input.encodeList<
           CloudControlParameterSpecSubParameter,
           Map<String, dynamic>>(subParametersValue, (value) => value.toMap());
     }
     final substitutionRulesValue = substitutionRules;
     if (substitutionRulesValue != null) {
-      map['substitutionRules'] = Input.encodeList<
+      map['substitutionRules'] = pulumi.Input.encodeList<
               CloudControlParameterSpecSubstitutionRule, Map<String, dynamic>>(
           substitutionRulesValue, (value) => value.toMap());
     }
@@ -106,13 +106,13 @@ class CloudControlParameterSpec {
       name: map['name'] as String,
       subParameters: map['subParameters'] == null
           ? null
-          : Input.decodeList<CloudControlParameterSpecSubParameter>(
+          : pulumi.Input.decodeList<CloudControlParameterSpecSubParameter>(
               map['subParameters'],
               (value) => CloudControlParameterSpecSubParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       substitutionRules: map['substitutionRules'] == null
           ? null
-          : Input.decodeList<CloudControlParameterSpecSubstitutionRule>(
+          : pulumi.Input.decodeList<CloudControlParameterSpecSubstitutionRule>(
               map['substitutionRules'],
               (value) => CloudControlParameterSpecSubstitutionRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

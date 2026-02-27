@@ -1,4 +1,4 @@
 library module_edgenetwork_interconnect_attachment;
 
-export 'interconnect_attachment/interconnect_attachment2.dart';
-export 'interconnect_attachment/interconnect_attachment_args2.dart';
+export 'interconnect_attachment/interconnect_attachment_edgenetwork.dart';
+export 'interconnect_attachment/interconnect_attachment_edgenetwork_args.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_metastore_service_encryption_config/get_metastore_service_encryption_config.dart';
 import '../get_metastore_service_hive_metastore_config/get_metastore_service_hive_metastore_config.dart';
 import '../get_metastore_service_maintenance_window/get_metastore_service_maintenance_window.dart';
@@ -85,25 +85,26 @@ class GetMetastoreServiceResult {
     map['databaseType'] = databaseType;
     map['deletionProtection'] = deletionProtection;
     map['effectiveLabels'] = effectiveLabels;
-    map['encryptionConfigs'] = Input.encodeList<
+    map['encryptionConfigs'] = pulumi.Input.encodeList<
         GetMetastoreServiceEncryptionConfig,
         Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
     map['endpointUri'] = endpointUri;
-    map['hiveMetastoreConfigs'] = Input.encodeList<
+    map['hiveMetastoreConfigs'] = pulumi.Input.encodeList<
         GetMetastoreServiceHiveMetastoreConfig,
         Map<String, dynamic>>(hiveMetastoreConfigs, (value) => value.toMap());
     map['id'] = id;
     map['labels'] = labels;
     map['location'] = location;
-    map['maintenanceWindows'] = Input.encodeList<
+    map['maintenanceWindows'] = pulumi.Input.encodeList<
         GetMetastoreServiceMaintenanceWindow,
         Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap());
-    map['metadataIntegrations'] = Input.encodeList<
+    map['metadataIntegrations'] = pulumi.Input.encodeList<
         GetMetastoreServiceMetadataIntegration,
         Map<String, dynamic>>(metadataIntegrations, (value) => value.toMap());
     map['name'] = name;
     map['network'] = network;
-    map['networkConfigs'] = Input.encodeList<GetMetastoreServiceNetworkConfig,
+    map['networkConfigs'] = pulumi.Input.encodeList<
+        GetMetastoreServiceNetworkConfig,
         Map<String, dynamic>>(networkConfigs, (value) => value.toMap());
     map['port'] = port;
     final projectValue = project;
@@ -112,16 +113,17 @@ class GetMetastoreServiceResult {
     }
     map['pulumiLabels'] = pulumiLabels;
     map['releaseChannel'] = releaseChannel;
-    map['scalingConfigs'] = Input.encodeList<GetMetastoreServiceScalingConfig,
+    map['scalingConfigs'] = pulumi.Input.encodeList<
+        GetMetastoreServiceScalingConfig,
         Map<String, dynamic>>(scalingConfigs, (value) => value.toMap());
-    map['scheduledBackups'] = Input.encodeList<
+    map['scheduledBackups'] = pulumi.Input.encodeList<
         GetMetastoreServiceScheduledBackup,
         Map<String, dynamic>>(scheduledBackups, (value) => value.toMap());
     map['serviceId'] = serviceId;
     map['state'] = state;
     map['stateMessage'] = stateMessage;
     map['tags'] = tags;
-    map['telemetryConfigs'] = Input.encodeList<
+    map['telemetryConfigs'] = pulumi.Input.encodeList<
         GetMetastoreServiceTelemetryConfig,
         Map<String, dynamic>>(telemetryConfigs, (value) => value.toMap());
     map['tier'] = tier;
@@ -137,13 +139,14 @@ class GetMetastoreServiceResult {
       databaseType: map['databaseType'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      encryptionConfigs: Input.decodeList<GetMetastoreServiceEncryptionConfig>(
-          map['encryptionConfigs'],
-          (value) => GetMetastoreServiceEncryptionConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      encryptionConfigs:
+          pulumi.Input.decodeList<GetMetastoreServiceEncryptionConfig>(
+              map['encryptionConfigs'],
+              (value) => GetMetastoreServiceEncryptionConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       endpointUri: map['endpointUri'] as String,
       hiveMetastoreConfigs:
-          Input.decodeList<GetMetastoreServiceHiveMetastoreConfig>(
+          pulumi.Input.decodeList<GetMetastoreServiceHiveMetastoreConfig>(
               map['hiveMetastoreConfigs'],
               (value) => GetMetastoreServiceHiveMetastoreConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -151,18 +154,18 @@ class GetMetastoreServiceResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       maintenanceWindows:
-          Input.decodeList<GetMetastoreServiceMaintenanceWindow>(
+          pulumi.Input.decodeList<GetMetastoreServiceMaintenanceWindow>(
               map['maintenanceWindows'],
               (value) => GetMetastoreServiceMaintenanceWindow.fromMap(
                   (value as Map).cast<String, dynamic>())),
       metadataIntegrations:
-          Input.decodeList<GetMetastoreServiceMetadataIntegration>(
+          pulumi.Input.decodeList<GetMetastoreServiceMetadataIntegration>(
               map['metadataIntegrations'],
               (value) => GetMetastoreServiceMetadataIntegration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       network: map['network'] as String,
-      networkConfigs: Input.decodeList<GetMetastoreServiceNetworkConfig>(
+      networkConfigs: pulumi.Input.decodeList<GetMetastoreServiceNetworkConfig>(
           map['networkConfigs'],
           (value) => GetMetastoreServiceNetworkConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -170,22 +173,24 @@ class GetMetastoreServiceResult {
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       releaseChannel: map['releaseChannel'] as String,
-      scalingConfigs: Input.decodeList<GetMetastoreServiceScalingConfig>(
+      scalingConfigs: pulumi.Input.decodeList<GetMetastoreServiceScalingConfig>(
           map['scalingConfigs'],
           (value) => GetMetastoreServiceScalingConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      scheduledBackups: Input.decodeList<GetMetastoreServiceScheduledBackup>(
-          map['scheduledBackups'],
-          (value) => GetMetastoreServiceScheduledBackup.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      scheduledBackups:
+          pulumi.Input.decodeList<GetMetastoreServiceScheduledBackup>(
+              map['scheduledBackups'],
+              (value) => GetMetastoreServiceScheduledBackup.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       serviceId: map['serviceId'] as String,
       state: map['state'] as String,
       stateMessage: map['stateMessage'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      telemetryConfigs: Input.decodeList<GetMetastoreServiceTelemetryConfig>(
-          map['telemetryConfigs'],
-          (value) => GetMetastoreServiceTelemetryConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      telemetryConfigs:
+          pulumi.Input.decodeList<GetMetastoreServiceTelemetryConfig>(
+              map['telemetryConfigs'],
+              (value) => GetMetastoreServiceTelemetryConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       tier: map['tier'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,

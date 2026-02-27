@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getClient.
 class GetClientArgs {
   /// The name of the brand.
-  final Input<String> brand;
+  final pulumi.Input<String> brand;
 
   /// The client_id of the brand.
-  final Input<String> clientId;
+  final pulumi.Input<String> clientId;
 
   GetClientArgs({
     required this.brand,
@@ -24,8 +24,8 @@ class GetClientArgs {
 
   factory GetClientArgs.fromMap(Map<String, dynamic> map) {
     return GetClientArgs(
-      brand: Input.asInput<String>(map['brand']),
-      clientId: Input.asInput<String>(map['clientId']),
+      brand: pulumi.Input.asInput<String>(map['brand']),
+      clientId: pulumi.Input.asInput<String>(map['clientId']),
     );
   }
 }

@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getImageVersions.
 class GetImageVersionsArgs {
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The location to list versions in.
   /// If it is not provider, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetImageVersionsArgs({
     this.project,
@@ -32,8 +32,8 @@ class GetImageVersionsArgs {
 
   factory GetImageVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetImageVersionsArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

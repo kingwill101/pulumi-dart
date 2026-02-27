@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_node_pool_status_condition/bare_metal_node_pool_status_condition.dart';
 
 class BareMetalNodePoolStatus {
@@ -26,7 +26,8 @@ class BareMetalNodePoolStatus {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<BareMetalNodePoolStatusCondition,
+      map['conditions'] = pulumi.Input.encodeList<
+          BareMetalNodePoolStatusCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final errorMessageValue = errorMessage;
@@ -40,7 +41,7 @@ class BareMetalNodePoolStatus {
     return BareMetalNodePoolStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<BareMetalNodePoolStatusCondition>(
+          : pulumi.Input.decodeList<BareMetalNodePoolStatusCondition>(
               map['conditions'],
               (value) => BareMetalNodePoolStatusCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),

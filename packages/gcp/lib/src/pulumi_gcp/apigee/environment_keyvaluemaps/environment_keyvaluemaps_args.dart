@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EnvironmentKeyvaluemaps.
 class EnvironmentKeyvaluemapsArgs {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  final Input<String> envId;
+  final pulumi.Input<String> envId;
 
   /// Required. ID of the key value map.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   EnvironmentKeyvaluemapsArgs({
     required this.envId,
@@ -28,8 +28,8 @@ class EnvironmentKeyvaluemapsArgs {
 
   factory EnvironmentKeyvaluemapsArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentKeyvaluemapsArgs(
-      envId: Input.asInput<String>(map['envId']),
-      name: Input.asOptionalInput<String>(map['name']),
+      envId: pulumi.Input.asInput<String>(map['envId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecretVersion.
 class GetSecretVersionArgs {
   /// If set to `false`, the `secret_data`
   /// will not be fetched. Default is `true`.
-  final Input<bool>? fetchSecretData;
+  final pulumi.Input<bool>? fetchSecretData;
 
   /// If set to `true`, the secret data is
   /// expected to be base64-encoded string.
-  final Input<bool>? isSecretDataBase64;
+  final pulumi.Input<bool>? isSecretDataBase64;
 
   /// The project to get the secret version for. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The secret to get the secret version for.
-  final Input<String> secret;
+  final pulumi.Input<String> secret;
 
   /// The version of the secret to get. If it
   /// is not provided, the latest version is retrieved.
-  final Input<String>? version;
+  final pulumi.Input<String>? version;
 
   GetSecretVersionArgs({
     this.fetchSecretData,
@@ -55,12 +55,13 @@ class GetSecretVersionArgs {
 
   factory GetSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionArgs(
-      fetchSecretData: Input.asOptionalInput<bool>(map['fetchSecretData']),
+      fetchSecretData:
+          pulumi.Input.asOptionalInput<bool>(map['fetchSecretData']),
       isSecretDataBase64:
-          Input.asOptionalInput<bool>(map['isSecretDataBase64']),
-      project: Input.asOptionalInput<String>(map['project']),
-      secret: Input.asInput<String>(map['secret']),
-      version: Input.asOptionalInput<String>(map['version']),
+          pulumi.Input.asOptionalInput<bool>(map['isSecretDataBase64']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      secret: pulumi.Input.asInput<String>(map['secret']),
+      version: pulumi.Input.asOptionalInput<String>(map['version']),
     );
   }
 }

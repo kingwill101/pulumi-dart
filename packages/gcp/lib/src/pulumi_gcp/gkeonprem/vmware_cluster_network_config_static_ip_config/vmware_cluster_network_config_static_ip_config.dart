@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_network_config_static_ip_config_ip_block/vmware_cluster_network_config_static_ip_config_ip_block.dart';
 
 class VMwareClusterNetworkConfigStaticIpConfig {
@@ -14,7 +14,7 @@ class VMwareClusterNetworkConfigStaticIpConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ipBlocks'] = Input.encodeList<
+    map['ipBlocks'] = pulumi.Input.encodeList<
         VMwareClusterNetworkConfigStaticIpConfigIpBlock,
         Map<String, dynamic>>(ipBlocks, (value) => value.toMap());
     return map;
@@ -23,12 +23,11 @@ class VMwareClusterNetworkConfigStaticIpConfig {
   factory VMwareClusterNetworkConfigStaticIpConfig.fromMap(
       Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigStaticIpConfig(
-      ipBlocks:
-          Input.decodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock>(
-              map['ipBlocks'],
-              (value) =>
-                  VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      ipBlocks: pulumi.Input.decodeList<
+              VMwareClusterNetworkConfigStaticIpConfigIpBlock>(
+          map['ipBlocks'],
+          (value) => VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

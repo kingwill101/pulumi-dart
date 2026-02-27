@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_table_range_partitioning_range/get_table_range_partitioning_range.dart';
 
 class GetTableRangePartitioning {
@@ -18,16 +18,15 @@ class GetTableRangePartitioning {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['field'] = field;
-    map['ranges'] =
-        Input.encodeList<GetTableRangePartitioningRange, Map<String, dynamic>>(
-            ranges, (value) => value.toMap());
+    map['ranges'] = pulumi.Input.encodeList<GetTableRangePartitioningRange,
+        Map<String, dynamic>>(ranges, (value) => value.toMap());
     return map;
   }
 
   factory GetTableRangePartitioning.fromMap(Map<String, dynamic> map) {
     return GetTableRangePartitioning(
       field: map['field'] as String,
-      ranges: Input.decodeList<GetTableRangePartitioningRange>(
+      ranges: pulumi.Input.decodeList<GetTableRangePartitioningRange>(
           map['ranges'],
           (value) => GetTableRangePartitioningRange.fromMap(
               (value as Map).cast<String, dynamic>())),

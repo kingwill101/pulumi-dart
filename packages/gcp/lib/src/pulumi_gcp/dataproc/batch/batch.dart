@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../batch_environment_config/batch_environment_config.dart';
 import '../batch_pyspark_batch/batch_pyspark_batch.dart';
 import '../batch_runtime_config/batch_runtime_config.dart';
@@ -69,98 +69,98 @@ import 'batch_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataproc/batch:Batch default {{location}}/{{batch_id}}
 /// ```
-class Batch extends CustomResource {
+class Batch extends pulumi.CustomResource {
   /// The ID to use for the batch, which will become the final component of the batch's resource name.
   /// This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
-  late final Output<String?> batchId;
+  late final pulumi.Output<String?> batchId;
 
   /// The time when the batch was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The email address of the user who created the batch.
-  late final Output<String> creator;
+  late final pulumi.Output<String> creator;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Environment configuration for the batch execution.
   /// Structure is documented below.
-  late final Output<BatchEnvironmentConfig?> environmentConfig;
+  late final pulumi.Output<BatchEnvironmentConfig?> environmentConfig;
 
   /// The labels to associate with this batch.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location in which the batch will be created in.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The resource name of the batch.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The resource name of the operation associated with this batch.
-  late final Output<String> operation;
+  late final pulumi.Output<String> operation;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// PySpark batch config.
   /// Structure is documented below.
-  late final Output<BatchPysparkBatch?> pysparkBatch;
+  late final pulumi.Output<BatchPysparkBatch?> pysparkBatch;
 
   /// Runtime configuration for the batch execution.
   /// Structure is documented below.
-  late final Output<BatchRuntimeConfig?> runtimeConfig;
+  late final pulumi.Output<BatchRuntimeConfig?> runtimeConfig;
 
   /// Runtime information about batch execution.
   /// Structure is documented below.
-  late final Output<List<BatchRuntimeInfo>> runtimeInfos;
+  late final pulumi.Output<List<BatchRuntimeInfo>> runtimeInfos;
 
   /// Spark batch config.
   /// Structure is documented below.
-  late final Output<BatchSparkBatch?> sparkBatch;
+  late final pulumi.Output<BatchSparkBatch?> sparkBatch;
 
   /// SparkR batch config.
   /// Structure is documented below.
-  late final Output<BatchSparkRBatch?> sparkRBatch;
+  late final pulumi.Output<BatchSparkRBatch?> sparkRBatch;
 
   /// Spark SQL batch config.
   /// Structure is documented below.
-  late final Output<BatchSparkSqlBatch?> sparkSqlBatch;
+  late final pulumi.Output<BatchSparkSqlBatch?> sparkSqlBatch;
 
   /// (Output)
   /// The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Historical state information for the batch.
   /// Structure is documented below.
-  late final Output<List<BatchStateHistory>> stateHistories;
+  late final pulumi.Output<List<BatchStateHistory>> stateHistories;
 
   /// (Output)
   /// Details about the state at this point in history.
-  late final Output<String> stateMessage;
+  late final pulumi.Output<String> stateMessage;
 
   /// Batch state details, such as a failure description if the state is FAILED.
-  late final Output<String> stateTime;
+  late final pulumi.Output<String> stateTime;
 
   /// A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
-  late final Output<String> uuid;
+  late final pulumi.Output<String> uuid;
 
   Batch(
     String name, {
     BatchArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataproc/batch:Batch',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.batchId = registerOutput<String?>('batchId');
     this.createTime = registerOutput<String>('createTime');

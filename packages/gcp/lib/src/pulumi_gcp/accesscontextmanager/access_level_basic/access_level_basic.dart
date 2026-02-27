@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_level_basic_condition/access_level_basic_condition.dart';
 
 class AccessLevelBasic {
@@ -28,9 +28,8 @@ class AccessLevelBasic {
     if (combiningFunctionValue != null) {
       map['combiningFunction'] = combiningFunctionValue;
     }
-    map['conditions'] =
-        Input.encodeList<AccessLevelBasicCondition, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<AccessLevelBasicCondition,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     return map;
   }
 
@@ -39,7 +38,7 @@ class AccessLevelBasic {
       combiningFunction: map['combiningFunction'] == null
           ? null
           : map['combiningFunction'] as String,
-      conditions: Input.decodeList<AccessLevelBasicCondition>(
+      conditions: pulumi.Input.decodeList<AccessLevelBasicCondition>(
           map['conditions'],
           (value) => AccessLevelBasicCondition.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_bucket_cdn_policy_bypass_cache_on_request_header/get_backend_bucket_cdn_policy_bypass_cache_on_request_header.dart';
 import '../get_backend_bucket_cdn_policy_cache_key_policy/get_backend_bucket_cdn_policy_cache_key_policy.dart';
 import '../get_backend_bucket_cdn_policy_negative_caching_policy/get_backend_bucket_cdn_policy_negative_caching_policy.dart';
@@ -70,11 +70,11 @@ class GetBackendBucketCdnPolicy {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bypassCacheOnRequestHeaders'] = Input.encodeList<
+    map['bypassCacheOnRequestHeaders'] = pulumi.Input.encodeList<
             GetBackendBucketCdnPolicyBypassCacheOnRequestHeader,
             Map<String, dynamic>>(
         bypassCacheOnRequestHeaders, (value) => value.toMap());
-    map['cacheKeyPolicies'] = Input.encodeList<
+    map['cacheKeyPolicies'] = pulumi.Input.encodeList<
         GetBackendBucketCdnPolicyCacheKeyPolicy,
         Map<String, dynamic>>(cacheKeyPolicies, (value) => value.toMap());
     map['cacheMode'] = cacheMode;
@@ -82,7 +82,7 @@ class GetBackendBucketCdnPolicy {
     map['defaultTtl'] = defaultTtl;
     map['maxTtl'] = maxTtl;
     map['negativeCaching'] = negativeCaching;
-    map['negativeCachingPolicies'] = Input.encodeList<
+    map['negativeCachingPolicies'] = pulumi.Input.encodeList<
             GetBackendBucketCdnPolicyNegativeCachingPolicy,
             Map<String, dynamic>>(
         negativeCachingPolicies, (value) => value.toMap());
@@ -94,14 +94,14 @@ class GetBackendBucketCdnPolicy {
 
   factory GetBackendBucketCdnPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketCdnPolicy(
-      bypassCacheOnRequestHeaders:
-          Input.decodeList<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader>(
-              map['bypassCacheOnRequestHeaders'],
-              (value) =>
-                  GetBackendBucketCdnPolicyBypassCacheOnRequestHeader.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      bypassCacheOnRequestHeaders: pulumi.Input.decodeList<
+              GetBackendBucketCdnPolicyBypassCacheOnRequestHeader>(
+          map['bypassCacheOnRequestHeaders'],
+          (value) =>
+              GetBackendBucketCdnPolicyBypassCacheOnRequestHeader.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       cacheKeyPolicies:
-          Input.decodeList<GetBackendBucketCdnPolicyCacheKeyPolicy>(
+          pulumi.Input.decodeList<GetBackendBucketCdnPolicyCacheKeyPolicy>(
               map['cacheKeyPolicies'],
               (value) => GetBackendBucketCdnPolicyCacheKeyPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -110,11 +110,11 @@ class GetBackendBucketCdnPolicy {
       defaultTtl: map['defaultTtl'] as int,
       maxTtl: map['maxTtl'] as int,
       negativeCaching: map['negativeCaching'] as bool,
-      negativeCachingPolicies:
-          Input.decodeList<GetBackendBucketCdnPolicyNegativeCachingPolicy>(
-              map['negativeCachingPolicies'],
-              (value) => GetBackendBucketCdnPolicyNegativeCachingPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      negativeCachingPolicies: pulumi.Input.decodeList<
+              GetBackendBucketCdnPolicyNegativeCachingPolicy>(
+          map['negativeCachingPolicies'],
+          (value) => GetBackendBucketCdnPolicyNegativeCachingPolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       requestCoalescing: map['requestCoalescing'] as bool,
       serveWhileStale: map['serveWhileStale'] as int,
       signedUrlCacheMaxAgeSec: map['signedUrlCacheMaxAgeSec'] as int,

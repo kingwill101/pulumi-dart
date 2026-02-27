@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_managed_zones_managed_zone/get_managed_zones_managed_zone.dart';
 
 /// Result data returned by getManagedZones.
@@ -20,9 +20,8 @@ class GetManagedZonesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['managedZones'] =
-        Input.encodeList<GetManagedZonesManagedZone, Map<String, dynamic>>(
-            managedZones, (value) => value.toMap());
+    map['managedZones'] = pulumi.Input.encodeList<GetManagedZonesManagedZone,
+        Map<String, dynamic>>(managedZones, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -33,7 +32,7 @@ class GetManagedZonesResult {
   factory GetManagedZonesResult.fromMap(Map<String, dynamic> map) {
     return GetManagedZonesResult(
       id: map['id'] as String,
-      managedZones: Input.decodeList<GetManagedZonesManagedZone>(
+      managedZones: pulumi.Input.decodeList<GetManagedZonesManagedZone>(
           map['managedZones'],
           (value) => GetManagedZonesManagedZone.fromMap(
               (value as Map).cast<String, dynamic>())),

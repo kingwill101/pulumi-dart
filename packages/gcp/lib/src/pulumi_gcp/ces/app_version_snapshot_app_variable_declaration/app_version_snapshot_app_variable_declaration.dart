@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_app_variable_declaration_schema/app_version_snapshot_app_variable_declaration_schema.dart';
 
 class AppVersionSnapshotAppVariableDeclaration {
@@ -36,7 +36,7 @@ class AppVersionSnapshotAppVariableDeclaration {
     }
     final schemasValue = schemas;
     if (schemasValue != null) {
-      map['schemas'] = Input.encodeList<
+      map['schemas'] = pulumi.Input.encodeList<
           AppVersionSnapshotAppVariableDeclarationSchema,
           Map<String, dynamic>>(schemasValue, (value) => value.toMap());
     }
@@ -51,7 +51,8 @@ class AppVersionSnapshotAppVariableDeclaration {
       name: map['name'] == null ? null : map['name'] as String,
       schemas: map['schemas'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppVariableDeclarationSchema>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotAppVariableDeclarationSchema>(
               map['schemas'],
               (value) => AppVersionSnapshotAppVariableDeclarationSchema.fromMap(
                   (value as Map).cast<String, dynamic>())),

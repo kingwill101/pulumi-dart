@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_keyvaluemaps_entries_args.dart';
 
 /// Creates key value entries in a key value map scoped to an environment.
@@ -34,26 +34,26 @@ import 'environment_keyvaluemaps_entries_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries default {{env_keyvaluemap_id}}/{{name}}
 /// ```
-class EnvironmentKeyvaluemapsEntries extends CustomResource {
+class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
   /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-  late final Output<String> envKeyvaluemapId;
+  late final pulumi.Output<String> envKeyvaluemapId;
 
   /// Required. Resource URI that can be used to identify the scope of the key value map entries.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Required. Data or payload that is being retrieved and associated with the unique key.
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   EnvironmentKeyvaluemapsEntries(
     String name, {
     EnvironmentKeyvaluemapsEntriesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');
     this.name = registerOutput<String>('name');

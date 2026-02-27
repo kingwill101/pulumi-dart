@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../target_associated_entity_anthos_cluster/target_associated_entity_anthos_cluster.dart';
 import '../target_associated_entity_gke_cluster/target_associated_entity_gke_cluster.dart';
 
@@ -24,14 +24,15 @@ class TargetAssociatedEntity {
     final map = <String, dynamic>{};
     final anthosClustersValue = anthosClusters;
     if (anthosClustersValue != null) {
-      map['anthosClusters'] = Input.encodeList<
+      map['anthosClusters'] = pulumi.Input.encodeList<
           TargetAssociatedEntityAnthosCluster,
           Map<String, dynamic>>(anthosClustersValue, (value) => value.toMap());
     }
     map['entityId'] = entityId;
     final gkeClustersValue = gkeClusters;
     if (gkeClustersValue != null) {
-      map['gkeClusters'] = Input.encodeList<TargetAssociatedEntityGkeCluster,
+      map['gkeClusters'] = pulumi.Input.encodeList<
+          TargetAssociatedEntityGkeCluster,
           Map<String, dynamic>>(gkeClustersValue, (value) => value.toMap());
     }
     return map;
@@ -41,14 +42,14 @@ class TargetAssociatedEntity {
     return TargetAssociatedEntity(
       anthosClusters: map['anthosClusters'] == null
           ? null
-          : Input.decodeList<TargetAssociatedEntityAnthosCluster>(
+          : pulumi.Input.decodeList<TargetAssociatedEntityAnthosCluster>(
               map['anthosClusters'],
               (value) => TargetAssociatedEntityAnthosCluster.fromMap(
                   (value as Map).cast<String, dynamic>())),
       entityId: map['entityId'] as String,
       gkeClusters: map['gkeClusters'] == null
           ? null
-          : Input.decodeList<TargetAssociatedEntityGkeCluster>(
+          : pulumi.Input.decodeList<TargetAssociatedEntityGkeCluster>(
               map['gkeClusters'],
               (value) => TargetAssociatedEntityGkeCluster.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BackupChannel.
 class BackupChannelArgs {
   /// User specified descriptive string for this BackupChannel.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The project where Backups are allowed to be stored.
   /// The format is `projects/{project}`.
   /// {project} can be project number or project id.
-  final Input<String> destinationProject;
+  final pulumi.Input<String> destinationProject;
 
   /// Description: A set of custom labels supplied by the user.
   /// A list of key->value pairs.
@@ -18,17 +18,17 @@ class BackupChannelArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The region of the Backup Channel.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The full name of the BackupChannel Resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   BackupChannelArgs({
     this.description,
@@ -64,12 +64,13 @@ class BackupChannelArgs {
 
   factory BackupChannelArgs.fromMap(Map<String, dynamic> map) {
     return BackupChannelArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      destinationProject: Input.asInput<String>(map['destinationProject']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      destinationProject:
+          pulumi.Input.asInput<String>(map['destinationProject']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

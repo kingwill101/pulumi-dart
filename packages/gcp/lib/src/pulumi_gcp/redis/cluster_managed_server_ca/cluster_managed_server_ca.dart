@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_managed_server_ca_ca_cert/cluster_managed_server_ca_ca_cert.dart';
 
 class ClusterManagedServerCa {
@@ -17,9 +17,8 @@ class ClusterManagedServerCa {
     final map = <String, dynamic>{};
     final caCertsValue = caCerts;
     if (caCertsValue != null) {
-      map['caCerts'] =
-          Input.encodeList<ClusterManagedServerCaCaCert, Map<String, dynamic>>(
-              caCertsValue, (value) => value.toMap());
+      map['caCerts'] = pulumi.Input.encodeList<ClusterManagedServerCaCaCert,
+          Map<String, dynamic>>(caCertsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -28,7 +27,7 @@ class ClusterManagedServerCa {
     return ClusterManagedServerCa(
       caCerts: map['caCerts'] == null
           ? null
-          : Input.decodeList<ClusterManagedServerCaCaCert>(
+          : pulumi.Input.decodeList<ClusterManagedServerCaCaCert>(
               map['caCerts'],
               (value) => ClusterManagedServerCaCaCert.fromMap(
                   (value as Map).cast<String, dynamic>())),

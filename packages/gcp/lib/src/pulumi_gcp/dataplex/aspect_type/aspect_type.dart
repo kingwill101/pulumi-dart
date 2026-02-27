@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aspect_type_args.dart';
 
 /// An Aspect Type is a template for creating Aspects.
@@ -39,71 +39,71 @@ import 'aspect_type_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataplex/aspectType:AspectType default {{location}}/{{aspect_type_id}}
 /// ```
-class AspectType extends CustomResource {
+class AspectType extends pulumi.CustomResource {
   /// The aspect type id of the aspect type.
-  late final Output<String?> aspectTypeId;
+  late final pulumi.Output<String?> aspectTypeId;
 
   /// The time when the AspectType was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Classifies the data stored by the aspect.
   /// `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
   /// while `METADATA_AND_DATA` indicates data derived content.
   /// <br><br>
   /// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
-  late final Output<String?> dataClassification;
+  late final pulumi.Output<String?> dataClassification;
 
   /// Description of the AspectType.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User friendly display name.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// User-defined labels for the AspectType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location where aspect type will be created in.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// MetadataTemplate of the Aspect.
-  late final Output<String?> metadataTemplate;
+  late final pulumi.Output<String?> metadataTemplate;
 
   /// The relative resource name of the AspectType, of the form: projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Denotes the transfer status of the Aspect Type. It is unspecified
   /// for Aspect Type created from Dataplex API.
-  late final Output<String> transferStatus;
+  late final pulumi.Output<String> transferStatus;
 
   /// System generated globally unique ID for the AspectType. This ID will be different if the AspectType is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time when the AspectType was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AspectType(
     String name, {
     AspectTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataplex/aspectType:AspectType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aspectTypeId = registerOutput<String?>('aspectTypeId');
     this.createTime = registerOutput<String>('createTime');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backup_plan_associations_association_rules_config_info/get_backup_plan_associations_association_rules_config_info.dart';
 
 class GetBackupPlanAssociationsAssociation {
@@ -37,7 +37,7 @@ class GetBackupPlanAssociationsAssociation {
     map['dataSource'] = dataSource;
     map['name'] = name;
     map['resource'] = resource;
-    map['rulesConfigInfos'] = Input.encodeList<
+    map['rulesConfigInfos'] = pulumi.Input.encodeList<
         GetBackupPlanAssociationsAssociationRulesConfigInfo,
         Map<String, dynamic>>(rulesConfigInfos, (value) => value.toMap());
     return map;
@@ -51,12 +51,12 @@ class GetBackupPlanAssociationsAssociation {
       dataSource: map['dataSource'] as String,
       name: map['name'] as String,
       resource: map['resource'] as String,
-      rulesConfigInfos:
-          Input.decodeList<GetBackupPlanAssociationsAssociationRulesConfigInfo>(
-              map['rulesConfigInfos'],
-              (value) =>
-                  GetBackupPlanAssociationsAssociationRulesConfigInfo.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      rulesConfigInfos: pulumi.Input.decodeList<
+              GetBackupPlanAssociationsAssociationRulesConfigInfo>(
+          map['rulesConfigInfos'],
+          (value) =>
+              GetBackupPlanAssociationsAssociationRulesConfigInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

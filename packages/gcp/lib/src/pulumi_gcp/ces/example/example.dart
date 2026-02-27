@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../example_message/example_message.dart';
 import 'example_args.dart';
 
@@ -36,62 +36,62 @@ import 'example_args.dart';
 /// ```sh
 /// $ pulumi import gcp:ces/example:Example default {{location}}/{{app}}/{{name}}
 /// ```
-class Example extends CustomResource {
+class Example extends pulumi.CustomResource {
   /// Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> app;
+  late final pulumi.Output<String> app;
 
   /// Timestamp when the example was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Human-readable description of the example.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Display name of the example.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The agent that initially handles the conversation. If not specified, the
   /// example represents a conversation that is handled by the root agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  late final Output<String?> entryAgent;
+  late final pulumi.Output<String?> entryAgent;
 
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  late final Output<String> etag;
-  late final Output<String> exampleId;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> exampleId;
 
   /// The example may become invalid if referencing resources are deleted.
   /// Invalid examples will not be used as few-shot examples.
-  late final Output<bool> invalid;
+  late final pulumi.Output<bool> invalid;
 
   /// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The collection of messages that make up the conversation.
   /// Structure is documented below.
-  late final Output<List<ExampleMessage>?> messages;
+  late final pulumi.Output<List<ExampleMessage>?> messages;
 
   /// Identifier. The unique identifier of the example.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/examples/{example}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Timestamp when the example was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Example(
     String name, {
     ExampleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:ces/example:Example',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.app = registerOutput<String>('app');
     this.createTime = registerOutput<String>('createTime');

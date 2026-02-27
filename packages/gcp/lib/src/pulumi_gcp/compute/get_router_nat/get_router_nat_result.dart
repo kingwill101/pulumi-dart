@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_router_nat_log_config/get_router_nat_log_config.dart';
 import '../get_router_nat_nat64_subnetwork/get_router_nat_nat64_subnetwork.dart';
 import '../get_router_nat_rule/get_router_nat_rule.dart';
@@ -79,14 +79,14 @@ class GetRouterNatResult {
     map['id'] = id;
     map['initialNatIps'] = initialNatIps;
     map['logConfigs'] =
-        Input.encodeList<GetRouterNatLogConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRouterNatLogConfig, Map<String, dynamic>>(
             logConfigs, (value) => value.toMap());
     map['maxPortsPerVm'] = maxPortsPerVm;
     map['minPortsPerVm'] = minPortsPerVm;
     map['name'] = name;
-    map['nat64Subnetworks'] =
-        Input.encodeList<GetRouterNatNat64Subnetwork, Map<String, dynamic>>(
-            nat64Subnetworks, (value) => value.toMap());
+    map['nat64Subnetworks'] = pulumi.Input.encodeList<
+        GetRouterNatNat64Subnetwork,
+        Map<String, dynamic>>(nat64Subnetworks, (value) => value.toMap());
     map['natIpAllocateOption'] = natIpAllocateOption;
     map['natIps'] = natIps;
     final projectValue = project;
@@ -98,12 +98,13 @@ class GetRouterNatResult {
       map['region'] = regionValue;
     }
     map['router'] = router;
-    map['rules'] = Input.encodeList<GetRouterNatRule, Map<String, dynamic>>(
-        rules, (value) => value.toMap());
+    map['rules'] =
+        pulumi.Input.encodeList<GetRouterNatRule, Map<String, dynamic>>(
+            rules, (value) => value.toMap());
     map['sourceSubnetworkIpRangesToNat'] = sourceSubnetworkIpRangesToNat;
     map['sourceSubnetworkIpRangesToNat64'] = sourceSubnetworkIpRangesToNat64;
     map['subnetworks'] =
-        Input.encodeList<GetRouterNatSubnetwork, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRouterNatSubnetwork, Map<String, dynamic>>(
             subnetworks, (value) => value.toMap());
     map['tcpEstablishedIdleTimeoutSec'] = tcpEstablishedIdleTimeoutSec;
     map['tcpTimeWaitTimeoutSec'] = tcpTimeWaitTimeoutSec;
@@ -124,14 +125,14 @@ class GetRouterNatResult {
       icmpIdleTimeoutSec: map['icmpIdleTimeoutSec'] as int,
       id: map['id'] as String,
       initialNatIps: (map['initialNatIps'] as List).cast<String>(),
-      logConfigs: Input.decodeList<GetRouterNatLogConfig>(
+      logConfigs: pulumi.Input.decodeList<GetRouterNatLogConfig>(
           map['logConfigs'],
           (value) => GetRouterNatLogConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       maxPortsPerVm: map['maxPortsPerVm'] as int,
       minPortsPerVm: map['minPortsPerVm'] as int,
       name: map['name'] as String,
-      nat64Subnetworks: Input.decodeList<GetRouterNatNat64Subnetwork>(
+      nat64Subnetworks: pulumi.Input.decodeList<GetRouterNatNat64Subnetwork>(
           map['nat64Subnetworks'],
           (value) => GetRouterNatNat64Subnetwork.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -140,7 +141,7 @@ class GetRouterNatResult {
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       router: map['router'] as String,
-      rules: Input.decodeList<GetRouterNatRule>(
+      rules: pulumi.Input.decodeList<GetRouterNatRule>(
           map['rules'],
           (value) =>
               GetRouterNatRule.fromMap((value as Map).cast<String, dynamic>())),
@@ -148,7 +149,7 @@ class GetRouterNatResult {
           map['sourceSubnetworkIpRangesToNat'] as String,
       sourceSubnetworkIpRangesToNat64:
           map['sourceSubnetworkIpRangesToNat64'] as String,
-      subnetworks: Input.decodeList<GetRouterNatSubnetwork>(
+      subnetworks: pulumi.Input.decodeList<GetRouterNatSubnetwork>(
           map['subnetworks'],
           (value) => GetRouterNatSubnetwork.fromMap(
               (value as Map).cast<String, dynamic>())),

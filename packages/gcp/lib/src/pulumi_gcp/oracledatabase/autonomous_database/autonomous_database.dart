@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../autonomous_database_properties/autonomous_database_properties.dart';
 import '../autonomous_database_source_config/autonomous_database_source_config.dart';
 import 'autonomous_database_args.dart';
@@ -53,98 +53,98 @@ import 'autonomous_database_args.dart';
 /// ```sh
 /// $ pulumi import gcp:oracledatabase/autonomousDatabase:AutonomousDatabase default {{location}}/{{autonomous_database_id}}
 /// ```
-class AutonomousDatabase extends CustomResource {
+class AutonomousDatabase extends pulumi.CustomResource {
   /// The password for the default ADMIN user.
-  late final Output<String?> adminPassword;
+  late final pulumi.Output<String?> adminPassword;
 
   /// The ID of the Autonomous Database to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
-  late final Output<String> autonomousDatabaseId;
+  late final pulumi.Output<String> autonomousDatabaseId;
 
   /// The subnet CIDR range for the Autonmous Database.
-  late final Output<String?> cidr;
+  late final pulumi.Output<String?> cidr;
 
   /// The date and time that the Autonomous Database was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The name of the Autonomous Database. The database name must be unique in
   /// the project. The name must begin with a letter and can
   /// contain a maximum of 30 alphanumeric characters.
-  late final Output<String> database;
-  late final Output<bool?> deletionProtection;
+  late final pulumi.Output<String> database;
+  late final pulumi.Output<bool?> deletionProtection;
 
   /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
-  late final Output<List<String>> disasterRecoverySupportedLocations;
+  late final pulumi.Output<List<String>> disasterRecoverySupportedLocations;
 
   /// The display name for the Autonomous Database. The name does not have to
   /// be unique within your project.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The ID of the subscription entitlement associated with the Autonomous
   /// Database.
-  late final Output<String> entitlementId;
+  late final pulumi.Output<String> entitlementId;
 
   /// The labels or tags associated with the Autonomous Database.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The name of the Autonomous Database resource in the following format:
   /// projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the VPC network used by the Autonomous Database.
   /// Format: projects/{project}/global/networks/{network}
-  late final Output<String?> network;
+  late final pulumi.Output<String?> network;
 
   /// The name of the OdbNetwork associated with the Autonomous Database.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the odb_subnet and backup_odb_subnet.
-  late final Output<String> odbNetwork;
+  late final pulumi.Output<String> odbNetwork;
 
   /// The name of the OdbSubnet associated with the Autonomous Database for
   /// IP allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  late final Output<String> odbSubnet;
+  late final pulumi.Output<String> odbSubnet;
 
   /// The peer Autonomous Database names of the given Autonomous Database.
-  late final Output<List<String>> peerAutonomousDatabases;
+  late final pulumi.Output<List<String>> peerAutonomousDatabases;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The properties of an Autonomous Database.
   /// Structure is documented below.
-  late final Output<AutonomousDatabaseProperties> properties;
+  late final pulumi.Output<AutonomousDatabaseProperties> properties;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The source Autonomous Database configuration for the standby Autonomous Database.
   /// Structure is documented below.
-  late final Output<AutonomousDatabaseSourceConfig?> sourceConfig;
+  late final pulumi.Output<AutonomousDatabaseSourceConfig?> sourceConfig;
 
   AutonomousDatabase(
     String name, {
     AutonomousDatabaseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:oracledatabase/autonomousDatabase:AutonomousDatabase',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.adminPassword = registerOutput<String?>('adminPassword');
     this.autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');

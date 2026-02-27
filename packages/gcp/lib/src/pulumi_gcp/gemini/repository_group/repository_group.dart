@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_group_repository/repository_group_repository.dart';
 import 'repository_group_args.dart';
 
@@ -39,54 +39,54 @@ import 'repository_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gemini/repositoryGroup:RepositoryGroup default {{location}}/{{code_repository_index}}/{{repository_group_id}}
 /// ```
-class RepositoryGroup extends CustomResource {
+class RepositoryGroup extends pulumi.CustomResource {
   /// Required. Id of the Code Repository Index.
-  late final Output<String> codeRepositoryIndex;
+  late final pulumi.Output<String> codeRepositoryIndex;
 
   /// Output only. Create time stamp.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the Code Repository Index, for example `us-central1`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Immutable. Identifier. Name of Repository Group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Required. List of repositories to group.
   /// Structure is documented below.
-  late final Output<List<RepositoryGroupRepository>> repositories;
+  late final pulumi.Output<List<RepositoryGroupRepository>> repositories;
 
   /// Required. Id of the Repository Group.
-  late final Output<String> repositoryGroupId;
+  late final pulumi.Output<String> repositoryGroupId;
 
   /// Output only. Update time stamp.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   RepositoryGroup(
     String name, {
     RepositoryGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gemini/repositoryGroup:RepositoryGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     this.createTime = registerOutput<String>('createTime');

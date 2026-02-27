@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workload_workload_property_extended_metadata/workload_workload_property_extended_metadata.dart';
 import '../workload_workload_property_functional_type/workload_workload_property_functional_type.dart';
 import '../workload_workload_property_identity/workload_workload_property_identity.dart';
@@ -45,13 +45,13 @@ class WorkloadWorkloadProperty {
     final map = <String, dynamic>{};
     final extendedMetadatasValue = extendedMetadatas;
     if (extendedMetadatasValue != null) {
-      map['extendedMetadatas'] = Input.encodeList<
+      map['extendedMetadatas'] = pulumi.Input.encodeList<
               WorkloadWorkloadPropertyExtendedMetadata, Map<String, dynamic>>(
           extendedMetadatasValue, (value) => value.toMap());
     }
     final functionalTypesValue = functionalTypes;
     if (functionalTypesValue != null) {
-      map['functionalTypes'] = Input.encodeList<
+      map['functionalTypes'] = pulumi.Input.encodeList<
           WorkloadWorkloadPropertyFunctionalType,
           Map<String, dynamic>>(functionalTypesValue, (value) => value.toMap());
     }
@@ -61,7 +61,8 @@ class WorkloadWorkloadProperty {
     }
     final identitiesValue = identities;
     if (identitiesValue != null) {
-      map['identities'] = Input.encodeList<WorkloadWorkloadPropertyIdentity,
+      map['identities'] = pulumi.Input.encodeList<
+          WorkloadWorkloadPropertyIdentity,
           Map<String, dynamic>>(identitiesValue, (value) => value.toMap());
     }
     final locationValue = location;
@@ -79,13 +80,13 @@ class WorkloadWorkloadProperty {
     return WorkloadWorkloadProperty(
       extendedMetadatas: map['extendedMetadatas'] == null
           ? null
-          : Input.decodeList<WorkloadWorkloadPropertyExtendedMetadata>(
+          : pulumi.Input.decodeList<WorkloadWorkloadPropertyExtendedMetadata>(
               map['extendedMetadatas'],
               (value) => WorkloadWorkloadPropertyExtendedMetadata.fromMap(
                   (value as Map).cast<String, dynamic>())),
       functionalTypes: map['functionalTypes'] == null
           ? null
-          : Input.decodeList<WorkloadWorkloadPropertyFunctionalType>(
+          : pulumi.Input.decodeList<WorkloadWorkloadPropertyFunctionalType>(
               map['functionalTypes'],
               (value) => WorkloadWorkloadPropertyFunctionalType.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -93,7 +94,7 @@ class WorkloadWorkloadProperty {
           map['gcpProject'] == null ? null : map['gcpProject'] as String,
       identities: map['identities'] == null
           ? null
-          : Input.decodeList<WorkloadWorkloadPropertyIdentity>(
+          : pulumi.Input.decodeList<WorkloadWorkloadPropertyIdentity>(
               map['identities'],
               (value) => WorkloadWorkloadPropertyIdentity.fromMap(
                   (value as Map).cast<String, dynamic>())),

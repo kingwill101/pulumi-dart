@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_service_circuit_breaker_connect_timeout/get_backend_service_circuit_breaker_connect_timeout.dart';
 
 class GetBackendServiceCircuitBreaker {
@@ -40,7 +40,7 @@ class GetBackendServiceCircuitBreaker {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connectTimeouts'] = Input.encodeList<
+    map['connectTimeouts'] = pulumi.Input.encodeList<
         GetBackendServiceCircuitBreakerConnectTimeout,
         Map<String, dynamic>>(connectTimeouts, (value) => value.toMap());
     map['maxConnections'] = maxConnections;
@@ -53,11 +53,11 @@ class GetBackendServiceCircuitBreaker {
 
   factory GetBackendServiceCircuitBreaker.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceCircuitBreaker(
-      connectTimeouts:
-          Input.decodeList<GetBackendServiceCircuitBreakerConnectTimeout>(
-              map['connectTimeouts'],
-              (value) => GetBackendServiceCircuitBreakerConnectTimeout.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      connectTimeouts: pulumi.Input.decodeList<
+              GetBackendServiceCircuitBreakerConnectTimeout>(
+          map['connectTimeouts'],
+          (value) => GetBackendServiceCircuitBreakerConnectTimeout.fromMap(
+              (value as Map).cast<String, dynamic>())),
       maxConnections: map['maxConnections'] as int,
       maxPendingRequests: map['maxPendingRequests'] as int,
       maxRequests: map['maxRequests'] as int,

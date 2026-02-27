@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for User.
 class UserArgs {
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  final Input<String> cluster;
+  final pulumi.Input<String> cluster;
 
   /// List of database roles this database user has.
-  final Input<List<String>>? databaseRoles;
+  final pulumi.Input<List<String>>? databaseRoles;
 
   /// Password for this database user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String>? password;
+  final pulumi.Input<String>? password;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
@@ -21,17 +21,17 @@ class UserArgs {
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// > **Note:** One of `password` or `password_wo` can only be set.
-  final Input<String>? passwordWo;
+  final pulumi.Input<String>? passwordWo;
 
   /// Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final Input<String>? passwordWoVersion;
+  final pulumi.Input<String>? passwordWoVersion;
 
   /// The database role name of the user.
-  final Input<String> userId;
+  final pulumi.Input<String> userId;
 
   /// The type of this user.
   /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-  final Input<String> userType;
+  final pulumi.Input<String> userType;
 
   UserArgs({
     required this.cluster,
@@ -69,14 +69,15 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      cluster: Input.asInput<String>(map['cluster']),
-      databaseRoles: Input.asOptionalInput<List<String>>(map['databaseRoles']),
-      password: Input.asOptionalInput<String>(map['password']),
-      passwordWo: Input.asOptionalInput<String>(map['passwordWo']),
+      cluster: pulumi.Input.asInput<String>(map['cluster']),
+      databaseRoles:
+          pulumi.Input.asOptionalInput<List<String>>(map['databaseRoles']),
+      password: pulumi.Input.asOptionalInput<String>(map['password']),
+      passwordWo: pulumi.Input.asOptionalInput<String>(map['passwordWo']),
       passwordWoVersion:
-          Input.asOptionalInput<String>(map['passwordWoVersion']),
-      userId: Input.asInput<String>(map['userId']),
-      userType: Input.asInput<String>(map['userType']),
+          pulumi.Input.asOptionalInput<String>(map['passwordWoVersion']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
+      userType: pulumi.Input.asInput<String>(map['userType']),
     );
   }
 }

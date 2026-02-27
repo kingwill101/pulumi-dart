@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_plan_backup_schedule_rpo_config_exclusion_window/backup_plan_backup_schedule_rpo_config_exclusion_window.dart';
 
 class BackupPlanBackupScheduleRpoConfig {
@@ -29,7 +29,7 @@ class BackupPlanBackupScheduleRpoConfig {
     final map = <String, dynamic>{};
     final exclusionWindowsValue = exclusionWindows;
     if (exclusionWindowsValue != null) {
-      map['exclusionWindows'] = Input.encodeList<
+      map['exclusionWindows'] = pulumi.Input.encodeList<
               BackupPlanBackupScheduleRpoConfigExclusionWindow,
               Map<String, dynamic>>(
           exclusionWindowsValue, (value) => value.toMap());
@@ -42,7 +42,8 @@ class BackupPlanBackupScheduleRpoConfig {
     return BackupPlanBackupScheduleRpoConfig(
       exclusionWindows: map['exclusionWindows'] == null
           ? null
-          : Input.decodeList<BackupPlanBackupScheduleRpoConfigExclusionWindow>(
+          : pulumi.Input.decodeList<
+                  BackupPlanBackupScheduleRpoConfigExclusionWindow>(
               map['exclusionWindows'],
               (value) =>
                   BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap(

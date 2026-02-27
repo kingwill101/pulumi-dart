@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_args.dart';
 
 /// Catalogs are top-level containers for Databases and Tables.
@@ -40,48 +40,48 @@ import 'catalog_args.dart';
 /// ```sh
 /// $ pulumi import gcp:biglake/catalog:Catalog default {{location}}/{{name}}
 /// ```
-class Catalog extends CustomResource {
+class Catalog extends pulumi.CustomResource {
   /// Output only. The creation time of the catalog. A timestamp in RFC3339 UTC
   /// "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Output only. The deletion time of the catalog. Only set after the catalog
   /// is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Output only. The time when this catalog is considered expired. Only set
   /// after the catalog is deleted. Only set after the catalog is deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// The geographic location where the Catalog should reside.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the Catalog. Format:
   /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. The last modification time of the catalog. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Catalog(
     String name, {
     CatalogArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:biglake/catalog:Catalog',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_node_pool_node_pool_config_node_config/bare_metal_node_pool_node_pool_config_node_config.dart';
 import '../bare_metal_node_pool_node_pool_config_taint/bare_metal_node_pool_node_pool_config_taint.dart';
 
@@ -41,7 +41,7 @@ class BareMetalNodePoolNodePoolConfig {
     if (labelsValue != null) {
       map['labels'] = labelsValue;
     }
-    map['nodeConfigs'] = Input.encodeList<
+    map['nodeConfigs'] = pulumi.Input.encodeList<
         BareMetalNodePoolNodePoolConfigNodeConfig,
         Map<String, dynamic>>(nodeConfigs, (value) => value.toMap());
     final operatingSystemValue = operatingSystem;
@@ -50,7 +50,8 @@ class BareMetalNodePoolNodePoolConfig {
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.encodeList<BareMetalNodePoolNodePoolConfigTaint,
+      map['taints'] = pulumi.Input.encodeList<
+          BareMetalNodePoolNodePoolConfigTaint,
           Map<String, dynamic>>(taintsValue, (value) => value.toMap());
     }
     return map;
@@ -61,16 +62,17 @@ class BareMetalNodePoolNodePoolConfig {
       labels: map['labels'] == null
           ? null
           : (map['labels'] as Map).cast<String, String>(),
-      nodeConfigs: Input.decodeList<BareMetalNodePoolNodePoolConfigNodeConfig>(
-          map['nodeConfigs'],
-          (value) => BareMetalNodePoolNodePoolConfigNodeConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeConfigs:
+          pulumi.Input.decodeList<BareMetalNodePoolNodePoolConfigNodeConfig>(
+              map['nodeConfigs'],
+              (value) => BareMetalNodePoolNodePoolConfigNodeConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       operatingSystem: map['operatingSystem'] == null
           ? null
           : map['operatingSystem'] as String,
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<BareMetalNodePoolNodePoolConfigTaint>(
+          : pulumi.Input.decodeList<BareMetalNodePoolNodePoolConfigTaint>(
               map['taints'],
               (value) => BareMetalNodePoolNodePoolConfigTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),

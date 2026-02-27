@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AuthorizedOrgsDesc.
 class AuthorizedOrgsDescArgs {
@@ -8,7 +8,7 @@ class AuthorizedOrgsDescArgs {
   /// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
   /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
   /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
-  final Input<String>? assetType;
+  final pulumi.Input<String>? assetType;
 
   /// The direction of the authorization relationship between this organization
   /// and the organizations listed in the "orgs" field. The valid values for this
@@ -25,26 +25,26 @@ class AuthorizedOrgsDescArgs {
   /// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
   /// "AuthorizedOrgsDesc" resource.
   /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
-  final Input<String>? authorizationDirection;
+  final pulumi.Input<String>? authorizationDirection;
 
   /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
   /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
-  final Input<String>? authorizationType;
+  final pulumi.Input<String>? authorizationType;
 
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The list of organization ids in this AuthorizedOrgsDesc.
   /// Format: `organizations/<org_number>`
   /// Example: `organizations/123456`
-  final Input<List<String>>? orgs;
+  final pulumi.Input<List<String>>? orgs;
 
   /// Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   AuthorizedOrgsDescArgs({
     this.assetType,
@@ -83,14 +83,14 @@ class AuthorizedOrgsDescArgs {
 
   factory AuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescArgs(
-      assetType: Input.asOptionalInput<String>(map['assetType']),
+      assetType: pulumi.Input.asOptionalInput<String>(map['assetType']),
       authorizationDirection:
-          Input.asOptionalInput<String>(map['authorizationDirection']),
+          pulumi.Input.asOptionalInput<String>(map['authorizationDirection']),
       authorizationType:
-          Input.asOptionalInput<String>(map['authorizationType']),
-      name: Input.asOptionalInput<String>(map['name']),
-      orgs: Input.asOptionalInput<List<String>>(map['orgs']),
-      parent: Input.asInput<String>(map['parent']),
+          pulumi.Input.asOptionalInput<String>(map['authorizationType']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      orgs: pulumi.Input.asOptionalInput<List<String>>(map['orgs']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
     );
   }
 }

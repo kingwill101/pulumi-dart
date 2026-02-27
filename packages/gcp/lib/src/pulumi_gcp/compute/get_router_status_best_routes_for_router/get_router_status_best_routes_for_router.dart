@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_router_status_best_routes_for_router_as_path/get_router_status_best_routes_for_router_as_path.dart';
 import '../get_router_status_best_routes_for_router_param/get_router_status_best_routes_for_router_param.dart';
 import '../get_router_status_best_routes_for_router_warning/get_router_status_best_routes_for_router_warning.dart';
@@ -154,7 +154,8 @@ class GetRouterStatusBestRoutesForRouter {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['asPaths'] = Input.encodeList<GetRouterStatusBestRoutesForRouterAsPath,
+    map['asPaths'] = pulumi.Input.encodeList<
+        GetRouterStatusBestRoutesForRouterAsPath,
         Map<String, dynamic>>(asPaths, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
@@ -173,7 +174,8 @@ class GetRouterStatusBestRoutesForRouter {
     map['nextHopOrigin'] = nextHopOrigin;
     map['nextHopPeering'] = nextHopPeering;
     map['nextHopVpnTunnel'] = nextHopVpnTunnel;
-    map['params'] = Input.encodeList<GetRouterStatusBestRoutesForRouterParam,
+    map['params'] = pulumi.Input.encodeList<
+        GetRouterStatusBestRoutesForRouterParam,
         Map<String, dynamic>>(params, (value) => value.toMap());
     map['priority'] = priority;
     map['project'] = project;
@@ -181,7 +183,7 @@ class GetRouterStatusBestRoutesForRouter {
     map['routeType'] = routeType;
     map['selfLink'] = selfLink;
     map['tags'] = tags;
-    map['warnings'] = Input.encodeList<
+    map['warnings'] = pulumi.Input.encodeList<
         GetRouterStatusBestRoutesForRouterWarning,
         Map<String, dynamic>>(warnings, (value) => value.toMap());
     return map;
@@ -189,10 +191,11 @@ class GetRouterStatusBestRoutesForRouter {
 
   factory GetRouterStatusBestRoutesForRouter.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusBestRoutesForRouter(
-      asPaths: Input.decodeList<GetRouterStatusBestRoutesForRouterAsPath>(
-          map['asPaths'],
-          (value) => GetRouterStatusBestRoutesForRouterAsPath.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      asPaths:
+          pulumi.Input.decodeList<GetRouterStatusBestRoutesForRouterAsPath>(
+              map['asPaths'],
+              (value) => GetRouterStatusBestRoutesForRouterAsPath.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
       destRange: map['destRange'] as String,
@@ -210,7 +213,7 @@ class GetRouterStatusBestRoutesForRouter {
       nextHopOrigin: map['nextHopOrigin'] as String,
       nextHopPeering: map['nextHopPeering'] as String,
       nextHopVpnTunnel: map['nextHopVpnTunnel'] as String,
-      params: Input.decodeList<GetRouterStatusBestRoutesForRouterParam>(
+      params: pulumi.Input.decodeList<GetRouterStatusBestRoutesForRouterParam>(
           map['params'],
           (value) => GetRouterStatusBestRoutesForRouterParam.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -220,10 +223,11 @@ class GetRouterStatusBestRoutesForRouter {
       routeType: map['routeType'] as String,
       selfLink: map['selfLink'] as String,
       tags: (map['tags'] as List).cast<String>(),
-      warnings: Input.decodeList<GetRouterStatusBestRoutesForRouterWarning>(
-          map['warnings'],
-          (value) => GetRouterStatusBestRoutesForRouterWarning.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      warnings:
+          pulumi.Input.decodeList<GetRouterStatusBestRoutesForRouterWarning>(
+              map['warnings'],
+              (value) => GetRouterStatusBestRoutesForRouterWarning.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

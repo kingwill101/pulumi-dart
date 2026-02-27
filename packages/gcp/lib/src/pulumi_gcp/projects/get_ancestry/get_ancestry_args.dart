@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAncestry.
 class GetAncestryArgs {
   /// The ID of the project. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetAncestryArgs({
     this.project,
@@ -22,7 +22,7 @@ class GetAncestryArgs {
 
   factory GetAncestryArgs.fromMap(Map<String, dynamic> map) {
     return GetAncestryArgs(
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

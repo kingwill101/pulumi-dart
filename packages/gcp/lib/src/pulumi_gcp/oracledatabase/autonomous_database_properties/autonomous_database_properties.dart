@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../autonomous_database_properties_apex_detail/autonomous_database_properties_apex_detail.dart';
 import '../autonomous_database_properties_connection_string/autonomous_database_properties_connection_string.dart';
 import '../autonomous_database_properties_connection_url/autonomous_database_properties_connection_url.dart';
@@ -413,7 +413,7 @@ class AutonomousDatabaseProperties {
     }
     final apexDetailsValue = apexDetails;
     if (apexDetailsValue != null) {
-      map['apexDetails'] = Input.encodeList<
+      map['apexDetails'] = pulumi.Input.encodeList<
           AutonomousDatabasePropertiesApexDetail,
           Map<String, dynamic>>(apexDetailsValue, (value) => value.toMap());
     }
@@ -443,14 +443,14 @@ class AutonomousDatabaseProperties {
     }
     final connectionStringsValue = connectionStrings;
     if (connectionStringsValue != null) {
-      map['connectionStrings'] = Input.encodeList<
+      map['connectionStrings'] = pulumi.Input.encodeList<
               AutonomousDatabasePropertiesConnectionString,
               Map<String, dynamic>>(
           connectionStringsValue, (value) => value.toMap());
     }
     final connectionUrlsValue = connectionUrls;
     if (connectionUrlsValue != null) {
-      map['connectionUrls'] = Input.encodeList<
+      map['connectionUrls'] = pulumi.Input.encodeList<
           AutonomousDatabasePropertiesConnectionUrl,
           Map<String, dynamic>>(connectionUrlsValue, (value) => value.toMap());
     }
@@ -460,7 +460,7 @@ class AutonomousDatabaseProperties {
     }
     final customerContactsValue = customerContacts;
     if (customerContactsValue != null) {
-      map['customerContacts'] = Input.encodeList<
+      map['customerContacts'] = pulumi.Input.encodeList<
               AutonomousDatabasePropertiesCustomerContact,
               Map<String, dynamic>>(
           customerContactsValue, (value) => value.toMap());
@@ -523,7 +523,7 @@ class AutonomousDatabaseProperties {
     }
     final localStandbyDbsValue = localStandbyDbs;
     if (localStandbyDbsValue != null) {
-      map['localStandbyDbs'] = Input.encodeList<
+      map['localStandbyDbs'] = pulumi.Input.encodeList<
           AutonomousDatabasePropertiesLocalStandbyDb,
           Map<String, dynamic>>(localStandbyDbsValue, (value) => value.toMap());
     }
@@ -609,7 +609,7 @@ class AutonomousDatabaseProperties {
     }
     final scheduledOperationDetailsValue = scheduledOperationDetails;
     if (scheduledOperationDetailsValue != null) {
-      map['scheduledOperationDetails'] = Input.encodeList<
+      map['scheduledOperationDetails'] = pulumi.Input.encodeList<
               AutonomousDatabasePropertiesScheduledOperationDetail,
               Map<String, dynamic>>(
           scheduledOperationDetailsValue, (value) => value.toMap());
@@ -655,7 +655,7 @@ class AutonomousDatabaseProperties {
           : map['allocatedStorageSizeTb'] as double,
       apexDetails: map['apexDetails'] == null
           ? null
-          : Input.decodeList<AutonomousDatabasePropertiesApexDetail>(
+          : pulumi.Input.decodeList<AutonomousDatabasePropertiesApexDetail>(
               map['apexDetails'],
               (value) => AutonomousDatabasePropertiesApexDetail.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -678,13 +678,14 @@ class AutonomousDatabaseProperties {
           map['computeCount'] == null ? null : map['computeCount'] as double,
       connectionStrings: map['connectionStrings'] == null
           ? null
-          : Input.decodeList<AutonomousDatabasePropertiesConnectionString>(
+          : pulumi.Input.decodeList<
+                  AutonomousDatabasePropertiesConnectionString>(
               map['connectionStrings'],
               (value) => AutonomousDatabasePropertiesConnectionString.fromMap(
                   (value as Map).cast<String, dynamic>())),
       connectionUrls: map['connectionUrls'] == null
           ? null
-          : Input.decodeList<AutonomousDatabasePropertiesConnectionUrl>(
+          : pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionUrl>(
               map['connectionUrls'],
               (value) => AutonomousDatabasePropertiesConnectionUrl.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -692,7 +693,8 @@ class AutonomousDatabaseProperties {
           map['cpuCoreCount'] == null ? null : map['cpuCoreCount'] as int,
       customerContacts: map['customerContacts'] == null
           ? null
-          : Input.decodeList<AutonomousDatabasePropertiesCustomerContact>(
+          : pulumi.Input.decodeList<
+                  AutonomousDatabasePropertiesCustomerContact>(
               map['customerContacts'],
               (value) => AutonomousDatabasePropertiesCustomerContact.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -735,7 +737,7 @@ class AutonomousDatabaseProperties {
           : map['localDisasterRecoveryType'] as String,
       localStandbyDbs: map['localStandbyDbs'] == null
           ? null
-          : Input.decodeList<AutonomousDatabasePropertiesLocalStandbyDb>(
+          : pulumi.Input.decodeList<AutonomousDatabasePropertiesLocalStandbyDb>(
               map['localStandbyDbs'],
               (value) => AutonomousDatabasePropertiesLocalStandbyDb.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -792,7 +794,7 @@ class AutonomousDatabaseProperties {
       role: map['role'] == null ? null : map['role'] as String,
       scheduledOperationDetails: map['scheduledOperationDetails'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AutonomousDatabasePropertiesScheduledOperationDetail>(
               map['scheduledOperationDetails'],
               (value) =>

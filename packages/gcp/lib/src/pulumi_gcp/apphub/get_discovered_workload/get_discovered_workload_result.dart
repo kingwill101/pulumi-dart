@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_discovered_workload_workload_property/get_discovered_workload_workload_property.dart';
 import '../get_discovered_workload_workload_reference/get_discovered_workload_workload_reference.dart';
 
@@ -42,10 +42,10 @@ class GetDiscoveredWorkloadResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['workloadProperties'] = Input.encodeList<
+    map['workloadProperties'] = pulumi.Input.encodeList<
         GetDiscoveredWorkloadWorkloadProperty,
         Map<String, dynamic>>(workloadProperties, (value) => value.toMap());
-    map['workloadReferences'] = Input.encodeList<
+    map['workloadReferences'] = pulumi.Input.encodeList<
         GetDiscoveredWorkloadWorkloadReference,
         Map<String, dynamic>>(workloadReferences, (value) => value.toMap());
     map['workloadUri'] = workloadUri;
@@ -59,12 +59,12 @@ class GetDiscoveredWorkloadResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       workloadProperties:
-          Input.decodeList<GetDiscoveredWorkloadWorkloadProperty>(
+          pulumi.Input.decodeList<GetDiscoveredWorkloadWorkloadProperty>(
               map['workloadProperties'],
               (value) => GetDiscoveredWorkloadWorkloadProperty.fromMap(
                   (value as Map).cast<String, dynamic>())),
       workloadReferences:
-          Input.decodeList<GetDiscoveredWorkloadWorkloadReference>(
+          pulumi.Input.decodeList<GetDiscoveredWorkloadWorkloadReference>(
               map['workloadReferences'],
               (value) => GetDiscoveredWorkloadWorkloadReference.fromMap(
                   (value as Map).cast<String, dynamic>())),

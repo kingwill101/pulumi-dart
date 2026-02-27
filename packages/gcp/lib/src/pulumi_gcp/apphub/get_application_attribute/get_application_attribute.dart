@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_application_attribute_business_owner/get_application_attribute_business_owner.dart';
 import '../get_application_attribute_criticality/get_application_attribute_criticality.dart';
 import '../get_application_attribute_developer_owner/get_application_attribute_developer_owner.dart';
@@ -33,17 +33,19 @@ class GetApplicationAttribute {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['businessOwners'] = Input.encodeList<
+    map['businessOwners'] = pulumi.Input.encodeList<
         GetApplicationAttributeBusinessOwner,
         Map<String, dynamic>>(businessOwners, (value) => value.toMap());
-    map['criticalities'] = Input.encodeList<GetApplicationAttributeCriticality,
+    map['criticalities'] = pulumi.Input.encodeList<
+        GetApplicationAttributeCriticality,
         Map<String, dynamic>>(criticalities, (value) => value.toMap());
-    map['developerOwners'] = Input.encodeList<
+    map['developerOwners'] = pulumi.Input.encodeList<
         GetApplicationAttributeDeveloperOwner,
         Map<String, dynamic>>(developerOwners, (value) => value.toMap());
-    map['environments'] = Input.encodeList<GetApplicationAttributeEnvironment,
+    map['environments'] = pulumi.Input.encodeList<
+        GetApplicationAttributeEnvironment,
         Map<String, dynamic>>(environments, (value) => value.toMap());
-    map['operatorOwners'] = Input.encodeList<
+    map['operatorOwners'] = pulumi.Input.encodeList<
         GetApplicationAttributeOperatorOwner,
         Map<String, dynamic>>(operatorOwners, (value) => value.toMap());
     return map;
@@ -51,26 +53,30 @@ class GetApplicationAttribute {
 
   factory GetApplicationAttribute.fromMap(Map<String, dynamic> map) {
     return GetApplicationAttribute(
-      businessOwners: Input.decodeList<GetApplicationAttributeBusinessOwner>(
-          map['businessOwners'],
-          (value) => GetApplicationAttributeBusinessOwner.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      criticalities: Input.decodeList<GetApplicationAttributeCriticality>(
-          map['criticalities'],
-          (value) => GetApplicationAttributeCriticality.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      developerOwners: Input.decodeList<GetApplicationAttributeDeveloperOwner>(
-          map['developerOwners'],
-          (value) => GetApplicationAttributeDeveloperOwner.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      environments: Input.decodeList<GetApplicationAttributeEnvironment>(
+      businessOwners:
+          pulumi.Input.decodeList<GetApplicationAttributeBusinessOwner>(
+              map['businessOwners'],
+              (value) => GetApplicationAttributeBusinessOwner.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      criticalities:
+          pulumi.Input.decodeList<GetApplicationAttributeCriticality>(
+              map['criticalities'],
+              (value) => GetApplicationAttributeCriticality.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      developerOwners:
+          pulumi.Input.decodeList<GetApplicationAttributeDeveloperOwner>(
+              map['developerOwners'],
+              (value) => GetApplicationAttributeDeveloperOwner.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      environments: pulumi.Input.decodeList<GetApplicationAttributeEnvironment>(
           map['environments'],
           (value) => GetApplicationAttributeEnvironment.fromMap(
               (value as Map).cast<String, dynamic>())),
-      operatorOwners: Input.decodeList<GetApplicationAttributeOperatorOwner>(
-          map['operatorOwners'],
-          (value) => GetApplicationAttributeOperatorOwner.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      operatorOwners:
+          pulumi.Input.decodeList<GetApplicationAttributeOperatorOwner>(
+              map['operatorOwners'],
+              (value) => GetApplicationAttributeOperatorOwner.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

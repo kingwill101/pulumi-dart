@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCertificates.
 class GetCertificatesArgs {
   /// Filter expression to restrict the certificates returned.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetCertificatesArgs({
     this.filter,
@@ -30,8 +30,8 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      region: Input.asOptionalInput<String>(map['region']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

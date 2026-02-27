@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_docker_images_docker_image/get_docker_images_docker_image.dart';
 
 /// Result data returned by getDockerImages.
@@ -24,9 +24,8 @@ class GetDockerImagesResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dockerImages'] =
-        Input.encodeList<GetDockerImagesDockerImage, Map<String, dynamic>>(
-            dockerImages, (value) => value.toMap());
+    map['dockerImages'] = pulumi.Input.encodeList<GetDockerImagesDockerImage,
+        Map<String, dynamic>>(dockerImages, (value) => value.toMap());
     map['id'] = id;
     map['location'] = location;
     final projectValue = project;
@@ -39,7 +38,7 @@ class GetDockerImagesResult {
 
   factory GetDockerImagesResult.fromMap(Map<String, dynamic> map) {
     return GetDockerImagesResult(
-      dockerImages: Input.decodeList<GetDockerImagesDockerImage>(
+      dockerImages: pulumi.Input.decodeList<GetDockerImagesDockerImage>(
           map['dockerImages'],
           (value) => GetDockerImagesDockerImage.fromMap(
               (value as Map).cast<String, dynamic>())),

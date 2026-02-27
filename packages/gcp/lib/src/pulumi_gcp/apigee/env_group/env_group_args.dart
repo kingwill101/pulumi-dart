@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EnvGroup.
 class EnvGroupArgs {
   /// Hostnames of the environment group.
-  final Input<List<String>>? hostnames;
+  final pulumi.Input<List<String>>? hostnames;
 
   /// The resource ID of the environment group.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The Apigee Organization associated with the Apigee environment group,
   /// in the format `organizations/{{org_name}}`.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   EnvGroupArgs({
     this.hostnames,
@@ -36,9 +36,9 @@ class EnvGroupArgs {
 
   factory EnvGroupArgs.fromMap(Map<String, dynamic> map) {
     return EnvGroupArgs(
-      hostnames: Input.asOptionalInput<List<String>>(map['hostnames']),
-      name: Input.asOptionalInput<String>(map['name']),
-      orgId: Input.asInput<String>(map['orgId']),
+      hostnames: pulumi.Input.asOptionalInput<List<String>>(map['hostnames']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
     );
   }
 }

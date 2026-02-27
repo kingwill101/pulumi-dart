@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_folder_service_account_args.dart';
 import 'get_folder_service_account_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_folder_service_account_result.dart';
 /// Cloud KMS key used to sign approvals.
 Future<GetFolderServiceAccountResult> getFolderServiceAccount(
   GetFolderServiceAccountArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFolderServiceAccountResult.fromMap(result);
 }

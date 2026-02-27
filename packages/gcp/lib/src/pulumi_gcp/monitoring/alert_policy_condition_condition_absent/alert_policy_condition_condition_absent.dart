@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../alert_policy_condition_condition_absent_aggregation/alert_policy_condition_condition_absent_aggregation.dart';
 import '../alert_policy_condition_condition_absent_trigger/alert_policy_condition_condition_absent_trigger.dart';
 
@@ -58,7 +58,7 @@ class AlertPolicyConditionConditionAbsent {
     final map = <String, dynamic>{};
     final aggregationsValue = aggregations;
     if (aggregationsValue != null) {
-      map['aggregations'] = Input.encodeList<
+      map['aggregations'] = pulumi.Input.encodeList<
           AlertPolicyConditionConditionAbsentAggregation,
           Map<String, dynamic>>(aggregationsValue, (value) => value.toMap());
     }
@@ -79,7 +79,8 @@ class AlertPolicyConditionConditionAbsent {
     return AlertPolicyConditionConditionAbsent(
       aggregations: map['aggregations'] == null
           ? null
-          : Input.decodeList<AlertPolicyConditionConditionAbsentAggregation>(
+          : pulumi.Input.decodeList<
+                  AlertPolicyConditionConditionAbsentAggregation>(
               map['aggregations'],
               (value) => AlertPolicyConditionConditionAbsentAggregation.fromMap(
                   (value as Map).cast<String, dynamic>())),

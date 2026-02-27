@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_repository_remote_repository_config_maven_repository_custom_repository/get_repository_remote_repository_config_maven_repository_custom_repository.dart';
 
 class GetRepositoryRemoteRepositoryConfigMavenRepository {
@@ -18,7 +18,7 @@ class GetRepositoryRemoteRepositoryConfigMavenRepository {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customRepositories'] = Input.encodeList<
+    map['customRepositories'] = pulumi.Input.encodeList<
         GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository,
         Map<String, dynamic>>(customRepositories, (value) => value.toMap());
     map['publicRepository'] = publicRepository;
@@ -28,7 +28,7 @@ class GetRepositoryRemoteRepositoryConfigMavenRepository {
   factory GetRepositoryRemoteRepositoryConfigMavenRepository.fromMap(
       Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigMavenRepository(
-      customRepositories: Input.decodeList<
+      customRepositories: pulumi.Input.decodeList<
               GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository>(
           map['customRepositories'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_memberships_membership_member_key/get_group_memberships_membership_member_key.dart';
 import '../get_group_memberships_membership_preferred_member_key/get_group_memberships_membership_preferred_member_key.dart';
 import '../get_group_memberships_membership_role/get_group_memberships_membership_role.dart';
@@ -51,13 +51,14 @@ class GetGroupMembershipsMembership {
     map['createIgnoreAlreadyExists'] = createIgnoreAlreadyExists;
     map['createTime'] = createTime;
     map['group'] = group;
-    map['memberKeys'] = Input.encodeList<GetGroupMembershipsMembershipMemberKey,
+    map['memberKeys'] = pulumi.Input.encodeList<
+        GetGroupMembershipsMembershipMemberKey,
         Map<String, dynamic>>(memberKeys, (value) => value.toMap());
     map['name'] = name;
-    map['preferredMemberKeys'] = Input.encodeList<
+    map['preferredMemberKeys'] = pulumi.Input.encodeList<
         GetGroupMembershipsMembershipPreferredMemberKey,
         Map<String, dynamic>>(preferredMemberKeys, (value) => value.toMap());
-    map['roles'] = Input.encodeList<GetGroupMembershipsMembershipRole,
+    map['roles'] = pulumi.Input.encodeList<GetGroupMembershipsMembershipRole,
         Map<String, dynamic>>(roles, (value) => value.toMap());
     map['type'] = type;
     map['updateTime'] = updateTime;
@@ -69,18 +70,18 @@ class GetGroupMembershipsMembership {
       createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] as bool,
       createTime: map['createTime'] as String,
       group: map['group'] as String,
-      memberKeys: Input.decodeList<GetGroupMembershipsMembershipMemberKey>(
-          map['memberKeys'],
-          (value) => GetGroupMembershipsMembershipMemberKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      memberKeys:
+          pulumi.Input.decodeList<GetGroupMembershipsMembershipMemberKey>(
+              map['memberKeys'],
+              (value) => GetGroupMembershipsMembershipMemberKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      preferredMemberKeys:
-          Input.decodeList<GetGroupMembershipsMembershipPreferredMemberKey>(
-              map['preferredMemberKeys'],
-              (value) =>
-                  GetGroupMembershipsMembershipPreferredMemberKey.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      roles: Input.decodeList<GetGroupMembershipsMembershipRole>(
+      preferredMemberKeys: pulumi.Input.decodeList<
+              GetGroupMembershipsMembershipPreferredMemberKey>(
+          map['preferredMemberKeys'],
+          (value) => GetGroupMembershipsMembershipPreferredMemberKey.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      roles: pulumi.Input.decodeList<GetGroupMembershipsMembershipRole>(
           map['roles'],
           (value) => GetGroupMembershipsMembershipRole.fromMap(
               (value as Map).cast<String, dynamic>())),

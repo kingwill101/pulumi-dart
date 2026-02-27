@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UsageExportBucket.
 class UsageExportBucketArgs {
   /// The bucket to store reports in.
   ///
   /// - - -
-  final Input<String> bucketName;
+  final pulumi.Input<String> bucketName;
 
   /// A prefix for the reports, for instance, the project name.
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// The project to set the export bucket on. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   UsageExportBucketArgs({
     required this.bucketName,
@@ -37,9 +37,9 @@ class UsageExportBucketArgs {
 
   factory UsageExportBucketArgs.fromMap(Map<String, dynamic> map) {
     return UsageExportBucketArgs(
-      bucketName: Input.asInput<String>(map['bucketName']),
-      prefix: Input.asOptionalInput<String>(map['prefix']),
-      project: Input.asOptionalInput<String>(map['project']),
+      bucketName: pulumi.Input.asInput<String>(map['bucketName']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

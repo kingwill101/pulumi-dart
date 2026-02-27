@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_settings_metadata/instance_settings_metadata.dart';
 import 'instance_settings_args.dart';
 
@@ -41,31 +41,31 @@ import 'instance_settings_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/instanceSettings:InstanceSettings default {{zone}}
 /// ```
-class InstanceSettings extends CustomResource {
+class InstanceSettings extends pulumi.CustomResource {
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// Structure is documented below.
-  late final Output<InstanceSettingsMetadata?> metadata;
+  late final pulumi.Output<InstanceSettingsMetadata?> metadata;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A reference to the zone where the machine resides.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   InstanceSettings(
     String name, {
     InstanceSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/instanceSettings:InstanceSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.fingerprint = registerOutput<String>('fingerprint');
     this.metadata = registerOutput<InstanceSettingsMetadata?>('metadata');

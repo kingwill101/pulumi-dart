@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tool_data_store_tool_engine_source_data_store_source_data_store_connector_config/tool_data_store_tool_engine_source_data_store_source_data_store_connector_config.dart';
 
 class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
@@ -58,7 +58,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
     final map = <String, dynamic>{};
     final connectorConfigsValue = connectorConfigs;
     if (connectorConfigsValue != null) {
-      map['connectorConfigs'] = Input.encodeList<
+      map['connectorConfigs'] = pulumi.Input.encodeList<
           ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig,
           Map<String,
               dynamic>>(connectorConfigsValue, (value) => value.toMap());
@@ -88,7 +88,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
     return ToolDataStoreToolEngineSourceDataStoreSourceDataStore(
       connectorConfigs: map['connectorConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>(
               map['connectorConfigs'],
               (value) =>

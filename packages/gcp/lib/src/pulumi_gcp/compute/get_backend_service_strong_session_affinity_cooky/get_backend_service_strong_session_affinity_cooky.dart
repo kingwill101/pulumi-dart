@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_service_strong_session_affinity_cooky_ttl/get_backend_service_strong_session_affinity_cooky_ttl.dart';
 
 class GetBackendServiceStrongSessionAffinityCooky {
@@ -25,7 +25,7 @@ class GetBackendServiceStrongSessionAffinityCooky {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['path'] = path;
-    map['ttls'] = Input.encodeList<
+    map['ttls'] = pulumi.Input.encodeList<
         GetBackendServiceStrongSessionAffinityCookyTtl,
         Map<String, dynamic>>(ttls, (value) => value.toMap());
     return map;
@@ -36,7 +36,8 @@ class GetBackendServiceStrongSessionAffinityCooky {
     return GetBackendServiceStrongSessionAffinityCooky(
       name: map['name'] as String,
       path: map['path'] as String,
-      ttls: Input.decodeList<GetBackendServiceStrongSessionAffinityCookyTtl>(
+      ttls: pulumi.Input.decodeList<
+              GetBackendServiceStrongSessionAffinityCookyTtl>(
           map['ttls'],
           (value) => GetBackendServiceStrongSessionAffinityCookyTtl.fromMap(
               (value as Map).cast<String, dynamic>())),

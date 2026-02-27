@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_tool_connector_spec_action/cx_tool_connector_spec_action.dart';
 import '../cx_tool_connector_spec_end_user_auth_config/cx_tool_connector_spec_end_user_auth_config.dart';
 
@@ -30,9 +30,8 @@ class CxToolConnectorSpec {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] =
-        Input.encodeList<CxToolConnectorSpecAction, Map<String, dynamic>>(
-            actions, (value) => value.toMap());
+    map['actions'] = pulumi.Input.encodeList<CxToolConnectorSpecAction,
+        Map<String, dynamic>>(actions, (value) => value.toMap());
     final endUserAuthConfigValue = endUserAuthConfig;
     if (endUserAuthConfigValue != null) {
       map['endUserAuthConfig'] = endUserAuthConfigValue.toMap();
@@ -43,7 +42,7 @@ class CxToolConnectorSpec {
 
   factory CxToolConnectorSpec.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpec(
-      actions: Input.decodeList<CxToolConnectorSpecAction>(
+      actions: pulumi.Input.decodeList<CxToolConnectorSpecAction>(
           map['actions'],
           (value) => CxToolConnectorSpecAction.fromMap(
               (value as Map).cast<String, dynamic>())),

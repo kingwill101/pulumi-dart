@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_action_respond_immediately_response/guardrail_action_respond_immediately_response.dart';
 
 class GuardrailActionRespondImmediately {
@@ -15,7 +15,7 @@ class GuardrailActionRespondImmediately {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['responses'] = Input.encodeList<
+    map['responses'] = pulumi.Input.encodeList<
         GuardrailActionRespondImmediatelyResponse,
         Map<String, dynamic>>(responses, (value) => value.toMap());
     return map;
@@ -23,10 +23,11 @@ class GuardrailActionRespondImmediately {
 
   factory GuardrailActionRespondImmediately.fromMap(Map<String, dynamic> map) {
     return GuardrailActionRespondImmediately(
-      responses: Input.decodeList<GuardrailActionRespondImmediatelyResponse>(
-          map['responses'],
-          (value) => GuardrailActionRespondImmediatelyResponse.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      responses:
+          pulumi.Input.decodeList<GuardrailActionRespondImmediatelyResponse>(
+              map['responses'],
+              (value) => GuardrailActionRespondImmediatelyResponse.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

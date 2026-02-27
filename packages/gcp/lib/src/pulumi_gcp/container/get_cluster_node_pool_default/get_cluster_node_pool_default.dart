@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_default_node_config_default/get_cluster_node_pool_default_node_config_default.dart';
 
 class GetClusterNodePoolDefault {
@@ -13,7 +13,7 @@ class GetClusterNodePoolDefault {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['nodeConfigDefaults'] = Input.encodeList<
+    map['nodeConfigDefaults'] = pulumi.Input.encodeList<
         GetClusterNodePoolDefaultNodeConfigDefault,
         Map<String, dynamic>>(nodeConfigDefaults, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetClusterNodePoolDefault {
   factory GetClusterNodePoolDefault.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolDefault(
       nodeConfigDefaults:
-          Input.decodeList<GetClusterNodePoolDefaultNodeConfigDefault>(
+          pulumi.Input.decodeList<GetClusterNodePoolDefaultNodeConfigDefault>(
               map['nodeConfigDefaults'],
               (value) => GetClusterNodePoolDefaultNodeConfigDefault.fromMap(
                   (value as Map).cast<String, dynamic>())),

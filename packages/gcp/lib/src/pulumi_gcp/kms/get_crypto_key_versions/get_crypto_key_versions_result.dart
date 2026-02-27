@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_crypto_key_versions_public_key/get_crypto_key_versions_public_key.dart';
 import '../get_crypto_key_versions_version/get_crypto_key_versions_version.dart';
 
@@ -32,12 +32,10 @@ class GetCryptoKeyVersionsResult {
       map['filter'] = filterValue;
     }
     map['id'] = id;
-    map['publicKeys'] =
-        Input.encodeList<GetCryptoKeyVersionsPublicKey, Map<String, dynamic>>(
-            publicKeys, (value) => value.toMap());
-    map['versions'] =
-        Input.encodeList<GetCryptoKeyVersionsVersion, Map<String, dynamic>>(
-            versions, (value) => value.toMap());
+    map['publicKeys'] = pulumi.Input.encodeList<GetCryptoKeyVersionsPublicKey,
+        Map<String, dynamic>>(publicKeys, (value) => value.toMap());
+    map['versions'] = pulumi.Input.encodeList<GetCryptoKeyVersionsVersion,
+        Map<String, dynamic>>(versions, (value) => value.toMap());
     return map;
   }
 
@@ -46,11 +44,11 @@ class GetCryptoKeyVersionsResult {
       cryptoKey: map['cryptoKey'] as String,
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
-      publicKeys: Input.decodeList<GetCryptoKeyVersionsPublicKey>(
+      publicKeys: pulumi.Input.decodeList<GetCryptoKeyVersionsPublicKey>(
           map['publicKeys'],
           (value) => GetCryptoKeyVersionsPublicKey.fromMap(
               (value as Map).cast<String, dynamic>())),
-      versions: Input.decodeList<GetCryptoKeyVersionsVersion>(
+      versions: pulumi.Input.decodeList<GetCryptoKeyVersionsVersion>(
           map['versions'],
           (value) => GetCryptoKeyVersionsVersion.fromMap(
               (value as Map).cast<String, dynamic>())),

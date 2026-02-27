@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../message_bus_logging_config/message_bus_logging_config.dart';
 
 /// The set of arguments for MessageBus.
@@ -8,37 +8,37 @@ class MessageBusArgs {
   /// Optional. Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Optional. Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt their event data.
   /// It must match the pattern
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  final Input<String>? cryptoKeyName;
+  final pulumi.Input<String>? cryptoKeyName;
 
   /// Optional. Resource display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The configuration for Platform Telemetry logging for Eventarc Advanced
   /// resources.
   /// Structure is documented below.
-  final Input<MessageBusLoggingConfig>? loggingConfig;
+  final pulumi.Input<MessageBusLoggingConfig>? loggingConfig;
 
   /// Required. The user-provided ID to be assigned to the MessageBus. It should match the
   /// format `^a-z?$`.
-  final Input<String> messageBusId;
+  final pulumi.Input<String> messageBusId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   MessageBusArgs({
     this.annotations,
@@ -72,7 +72,7 @@ class MessageBusArgs {
     map['location'] = location;
     final loggingConfigValue = loggingConfig;
     if (loggingConfigValue != null) {
-      map['loggingConfig'] = Input.mapOptionalInputValue<
+      map['loggingConfig'] = pulumi.Input.mapOptionalInputValue<
           MessageBusLoggingConfig,
           Map<String, dynamic>>(loggingConfigValue, (value) => value.toMap());
     }
@@ -87,15 +87,15 @@ class MessageBusArgs {
   factory MessageBusArgs.fromMap(Map<String, dynamic> map) {
     return MessageBusArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      cryptoKeyName: Input.asOptionalInput<String>(map['cryptoKeyName']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      loggingConfig:
-          Input.asOptionalInput<MessageBusLoggingConfig>(map['loggingConfig']),
-      messageBusId: Input.asInput<String>(map['messageBusId']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      cryptoKeyName: pulumi.Input.asOptionalInput<String>(map['cryptoKeyName']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      loggingConfig: pulumi.Input.asOptionalInput<MessageBusLoggingConfig>(
+          map['loggingConfig']),
+      messageBusId: pulumi.Input.asInput<String>(map['messageBusId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

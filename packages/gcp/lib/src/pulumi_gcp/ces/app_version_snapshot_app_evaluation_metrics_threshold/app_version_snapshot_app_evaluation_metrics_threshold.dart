@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_app_evaluation_metrics_threshold_golden_evaluation_metrics_threshold/app_version_snapshot_app_evaluation_metrics_threshold_golden_evaluation_metrics_threshold.dart';
 
 class AppVersionSnapshotAppEvaluationMetricsThreshold {
@@ -20,7 +20,7 @@ class AppVersionSnapshotAppEvaluationMetricsThreshold {
     final goldenEvaluationMetricsThresholdsValue =
         goldenEvaluationMetricsThresholds;
     if (goldenEvaluationMetricsThresholdsValue != null) {
-      map['goldenEvaluationMetricsThresholds'] = Input.encodeList<
+      map['goldenEvaluationMetricsThresholds'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold,
               Map<String, dynamic>>(
           goldenEvaluationMetricsThresholdsValue, (value) => value.toMap());
@@ -35,7 +35,7 @@ class AppVersionSnapshotAppEvaluationMetricsThreshold {
                   'goldenEvaluationMetricsThresholds'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>(
               map['goldenEvaluationMetricsThresholds'],
               (value) =>

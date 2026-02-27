@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_job_trigger_inspect_job_action/prevention_job_trigger_inspect_job_action.dart';
 import '../prevention_job_trigger_inspect_job_inspect_config/prevention_job_trigger_inspect_job_inspect_config.dart';
 import '../prevention_job_trigger_inspect_job_storage_config/prevention_job_trigger_inspect_job_storage_config.dart';
@@ -32,7 +32,8 @@ class PreventionJobTriggerInspectJob {
     final map = <String, dynamic>{};
     final actionsValue = actions;
     if (actionsValue != null) {
-      map['actions'] = Input.encodeList<PreventionJobTriggerInspectJobAction,
+      map['actions'] = pulumi.Input.encodeList<
+          PreventionJobTriggerInspectJobAction,
           Map<String, dynamic>>(actionsValue, (value) => value.toMap());
     }
     final inspectConfigValue = inspectConfig;
@@ -51,7 +52,7 @@ class PreventionJobTriggerInspectJob {
     return PreventionJobTriggerInspectJob(
       actions: map['actions'] == null
           ? null
-          : Input.decodeList<PreventionJobTriggerInspectJobAction>(
+          : pulumi.Input.decodeList<PreventionJobTriggerInspectJobAction>(
               map['actions'],
               (value) => PreventionJobTriggerInspectJobAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_iam_custom_roles_args.dart';
 import 'get_iam_custom_roles_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_iam_custom_roles_result.dart';
 /// and [API](https://cloud.google.com/iam/docs/reference/rest/v1/organizations.roles/list).
 Future<GetIamCustomRolesResult> getIamCustomRoles(
   GetIamCustomRolesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:organizations/getIamCustomRoles:getIamCustomRoles',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamCustomRolesResult.fromMap(result);
 }

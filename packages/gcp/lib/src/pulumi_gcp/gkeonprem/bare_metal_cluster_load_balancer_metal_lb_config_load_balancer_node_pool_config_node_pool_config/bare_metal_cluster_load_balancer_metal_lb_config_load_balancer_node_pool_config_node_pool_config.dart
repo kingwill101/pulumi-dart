@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_cluster_load_balancer_metal_lb_config_load_balancer_node_pool_config_node_pool_config_node_config/bare_metal_cluster_load_balancer_metal_lb_config_load_balancer_node_pool_config_node_pool_config_node_config.dart';
 import '../bare_metal_cluster_load_balancer_metal_lb_config_load_balancer_node_pool_config_node_pool_config_taint/bare_metal_cluster_load_balancer_metal_lb_config_load_balancer_node_pool_config_node_pool_config_taint.dart';
 
@@ -47,7 +47,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
     }
     final nodeConfigsValue = nodeConfigs;
     if (nodeConfigsValue != null) {
-      map['nodeConfigs'] = Input.encodeList<
+      map['nodeConfigs'] = pulumi.Input.encodeList<
           BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig,
           Map<String, dynamic>>(nodeConfigsValue, (value) => value.toMap());
     }
@@ -57,7 +57,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.encodeList<
+      map['taints'] = pulumi.Input.encodeList<
           BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint,
           Map<String, dynamic>>(taintsValue, (value) => value.toMap());
     }
@@ -72,7 +72,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
           : (map['labels'] as Map).cast<String, String>(),
       nodeConfigs: map['nodeConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(
               map['nodeConfigs'],
               (value) =>
@@ -83,7 +83,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
           : map['operatingSystem'] as String,
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(
               map['taints'],
               (value) =>

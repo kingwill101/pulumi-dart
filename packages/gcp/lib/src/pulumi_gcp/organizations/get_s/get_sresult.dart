@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_sorganization/get_sorganization.dart';
 
 /// Result data returned by getS.
@@ -27,7 +27,7 @@ class GetSResult {
     }
     map['id'] = id;
     map['organizations'] =
-        Input.encodeList<GetSOrganization, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetSOrganization, Map<String, dynamic>>(
             organizations, (value) => value.toMap());
     return map;
   }
@@ -36,7 +36,7 @@ class GetSResult {
     return GetSResult(
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
-      organizations: Input.decodeList<GetSOrganization>(
+      organizations: pulumi.Input.decodeList<GetSOrganization>(
           map['organizations'],
           (value) =>
               GetSOrganization.fromMap((value as Map).cast<String, dynamic>())),

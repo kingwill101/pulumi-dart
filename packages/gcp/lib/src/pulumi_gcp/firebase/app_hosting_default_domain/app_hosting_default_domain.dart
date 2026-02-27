@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_hosting_default_domain_args.dart';
 
 /// A domain name that is associated with a backend.
@@ -43,49 +43,49 @@ import 'app_hosting_default_domain_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain default {{location}}/{{backend}}/{{domain_id}}
 /// ```
-class AppHostingDefaultDomain extends CustomResource {
+class AppHostingDefaultDomain extends pulumi.CustomResource {
   /// The ID of the Backend that this Domain is associated with
-  late final Output<String> backend;
+  late final pulumi.Output<String> backend;
 
   /// Time at which the domain was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Whether the domain is disabled. Defaults to false.
-  late final Output<bool> disabled;
+  late final pulumi.Output<bool> disabled;
 
   /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-  late final Output<String> domainId;
+  late final pulumi.Output<String> domainId;
 
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The location of the Backend that this Domain is associated with
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the domain, e.g.
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// System-assigned, unique identifier.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time at which the domain was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AppHostingDefaultDomain(
     String name, {
     AppHostingDefaultDomainArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appHostingDefaultDomain:AppHostingDefaultDomain',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backend = registerOutput<String>('backend');
     this.createTime = registerOutput<String>('createTime');

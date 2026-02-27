@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_header_action_request_headers_to_add/urlmap_header_action_request_headers_to_add.dart';
 import '../urlmap_header_action_response_headers_to_add/urlmap_header_action_response_headers_to_add.dart';
 
@@ -32,7 +32,7 @@ class URLMapHeaderAction {
     final map = <String, dynamic>{};
     final requestHeadersToAddsValue = requestHeadersToAdds;
     if (requestHeadersToAddsValue != null) {
-      map['requestHeadersToAdds'] = Input.encodeList<
+      map['requestHeadersToAdds'] = pulumi.Input.encodeList<
               URLMapHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(
           requestHeadersToAddsValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class URLMapHeaderAction {
     }
     final responseHeadersToAddsValue = responseHeadersToAdds;
     if (responseHeadersToAddsValue != null) {
-      map['responseHeadersToAdds'] = Input.encodeList<
+      map['responseHeadersToAdds'] = pulumi.Input.encodeList<
               URLMapHeaderActionResponseHeadersToAdd, Map<String, dynamic>>(
           responseHeadersToAddsValue, (value) => value.toMap());
     }
@@ -57,7 +57,7 @@ class URLMapHeaderAction {
     return URLMapHeaderAction(
       requestHeadersToAdds: map['requestHeadersToAdds'] == null
           ? null
-          : Input.decodeList<URLMapHeaderActionRequestHeadersToAdd>(
+          : pulumi.Input.decodeList<URLMapHeaderActionRequestHeadersToAdd>(
               map['requestHeadersToAdds'],
               (value) => URLMapHeaderActionRequestHeadersToAdd.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -66,7 +66,7 @@ class URLMapHeaderAction {
           : (map['requestHeadersToRemoves'] as List).cast<String>(),
       responseHeadersToAdds: map['responseHeadersToAdds'] == null
           ? null
-          : Input.decodeList<URLMapHeaderActionResponseHeadersToAdd>(
+          : pulumi.Input.decodeList<URLMapHeaderActionResponseHeadersToAdd>(
               map['responseHeadersToAdds'],
               (value) => URLMapHeaderActionResponseHeadersToAdd.fromMap(
                   (value as Map).cast<String, dynamic>())),

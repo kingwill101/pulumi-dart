@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_rule_match_config/get_security_policy_rule_match_config.dart';
 import '../get_security_policy_rule_match_expr/get_security_policy_rule_match_expr.dart';
 import '../get_security_policy_rule_match_expr_option/get_security_policy_rule_match_expr_option.dart';
@@ -27,28 +27,29 @@ class GetSecurityPolicyRuleMatch {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['configs'] = Input.encodeList<GetSecurityPolicyRuleMatchConfig,
+    map['configs'] = pulumi.Input.encodeList<GetSecurityPolicyRuleMatchConfig,
         Map<String, dynamic>>(configs, (value) => value.toMap());
-    map['exprOptions'] = Input.encodeList<GetSecurityPolicyRuleMatchExprOption,
+    map['exprOptions'] = pulumi.Input.encodeList<
+        GetSecurityPolicyRuleMatchExprOption,
         Map<String, dynamic>>(exprOptions, (value) => value.toMap());
-    map['exprs'] =
-        Input.encodeList<GetSecurityPolicyRuleMatchExpr, Map<String, dynamic>>(
-            exprs, (value) => value.toMap());
+    map['exprs'] = pulumi.Input.encodeList<GetSecurityPolicyRuleMatchExpr,
+        Map<String, dynamic>>(exprs, (value) => value.toMap());
     map['versionedExpr'] = versionedExpr;
     return map;
   }
 
   factory GetSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRuleMatch(
-      configs: Input.decodeList<GetSecurityPolicyRuleMatchConfig>(
+      configs: pulumi.Input.decodeList<GetSecurityPolicyRuleMatchConfig>(
           map['configs'],
           (value) => GetSecurityPolicyRuleMatchConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      exprOptions: Input.decodeList<GetSecurityPolicyRuleMatchExprOption>(
-          map['exprOptions'],
-          (value) => GetSecurityPolicyRuleMatchExprOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      exprs: Input.decodeList<GetSecurityPolicyRuleMatchExpr>(
+      exprOptions:
+          pulumi.Input.decodeList<GetSecurityPolicyRuleMatchExprOption>(
+              map['exprOptions'],
+              (value) => GetSecurityPolicyRuleMatchExprOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      exprs: pulumi.Input.decodeList<GetSecurityPolicyRuleMatchExpr>(
           map['exprs'],
           (value) => GetSecurityPolicyRuleMatchExpr.fromMap(
               (value as Map).cast<String, dynamic>())),

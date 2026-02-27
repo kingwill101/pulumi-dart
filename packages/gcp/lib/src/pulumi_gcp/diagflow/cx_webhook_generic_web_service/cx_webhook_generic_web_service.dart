@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_webhook_generic_web_service_oauth_config/cx_webhook_generic_web_service_oauth_config.dart';
 import '../cx_webhook_generic_web_service_secret_versions_for_request_header/cx_webhook_generic_web_service_secret_versions_for_request_header.dart';
 import '../cx_webhook_generic_web_service_service_account_auth_config/cx_webhook_generic_web_service_service_account_auth_config.dart';
@@ -123,7 +123,7 @@ class CxWebhookGenericWebService {
     final secretVersionsForRequestHeadersValue =
         secretVersionsForRequestHeaders;
     if (secretVersionsForRequestHeadersValue != null) {
-      map['secretVersionsForRequestHeaders'] = Input.encodeList<
+      map['secretVersionsForRequestHeaders'] = pulumi.Input.encodeList<
               CxWebhookGenericWebServiceSecretVersionsForRequestHeader,
               Map<String, dynamic>>(
           secretVersionsForRequestHeadersValue, (value) => value.toMap());
@@ -170,7 +170,7 @@ class CxWebhookGenericWebService {
       secretVersionsForRequestHeaders:
           map['secretVersionsForRequestHeaders'] == null
               ? null
-              : Input.decodeList<
+              : pulumi.Input.decodeList<
                       CxWebhookGenericWebServiceSecretVersionsForRequestHeader>(
                   map['secretVersionsForRequestHeaders'],
                   (value) =>

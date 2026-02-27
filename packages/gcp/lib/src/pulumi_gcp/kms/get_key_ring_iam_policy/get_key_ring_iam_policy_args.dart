@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKeyRingIamPolicy.
 class GetKeyRingIamPolicyArgs {
@@ -8,7 +8,7 @@ class GetKeyRingIamPolicyArgs {
   /// `{project_id}/{location_name}/{key_ring_name}` or
   /// `{location_name}/{key_ring_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
-  final Input<String> keyRingId;
+  final pulumi.Input<String> keyRingId;
 
   GetKeyRingIamPolicyArgs({
     required this.keyRingId,
@@ -22,7 +22,7 @@ class GetKeyRingIamPolicyArgs {
 
   factory GetKeyRingIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyRingIamPolicyArgs(
-      keyRingId: Input.asInput<String>(map['keyRingId']),
+      keyRingId: pulumi.Input.asInput<String>(map['keyRingId']),
     );
   }
 }

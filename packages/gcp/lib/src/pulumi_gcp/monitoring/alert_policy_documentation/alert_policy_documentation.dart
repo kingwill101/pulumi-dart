@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../alert_policy_documentation_link/alert_policy_documentation_link.dart';
 
 class AlertPolicyDocumentation {
@@ -39,9 +39,8 @@ class AlertPolicyDocumentation {
     }
     final linksValue = links;
     if (linksValue != null) {
-      map['links'] =
-          Input.encodeList<AlertPolicyDocumentationLink, Map<String, dynamic>>(
-              linksValue, (value) => value.toMap());
+      map['links'] = pulumi.Input.encodeList<AlertPolicyDocumentationLink,
+          Map<String, dynamic>>(linksValue, (value) => value.toMap());
     }
     final mimeTypeValue = mimeType;
     if (mimeTypeValue != null) {
@@ -59,7 +58,7 @@ class AlertPolicyDocumentation {
       content: map['content'] == null ? null : map['content'] as String,
       links: map['links'] == null
           ? null
-          : Input.decodeList<AlertPolicyDocumentationLink>(
+          : pulumi.Input.decodeList<AlertPolicyDocumentationLink>(
               map['links'],
               (value) => AlertPolicyDocumentationLink.fromMap(
                   (value as Map).cast<String, dynamic>())),

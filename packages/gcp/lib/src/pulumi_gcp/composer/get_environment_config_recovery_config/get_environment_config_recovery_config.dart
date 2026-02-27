@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_environment_config_recovery_config_scheduled_snapshots_config/get_environment_config_recovery_config_scheduled_snapshots_config.dart';
 
 class GetEnvironmentConfigRecoveryConfig {
@@ -14,7 +14,7 @@ class GetEnvironmentConfigRecoveryConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['scheduledSnapshotsConfigs'] = Input.encodeList<
+    map['scheduledSnapshotsConfigs'] = pulumi.Input.encodeList<
             GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig,
             Map<String, dynamic>>(
         scheduledSnapshotsConfigs, (value) => value.toMap());
@@ -23,7 +23,7 @@ class GetEnvironmentConfigRecoveryConfig {
 
   factory GetEnvironmentConfigRecoveryConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigRecoveryConfig(
-      scheduledSnapshotsConfigs: Input.decodeList<
+      scheduledSnapshotsConfigs: pulumi.Input.decodeList<
               GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig>(
           map['scheduledSnapshotsConfigs'],
           (value) => GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig

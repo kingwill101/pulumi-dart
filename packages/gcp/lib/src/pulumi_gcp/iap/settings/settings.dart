@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../settings_access_settings/settings_access_settings.dart';
 import '../settings_application_settings/settings_application_settings.dart';
 import 'settings_args.dart';
@@ -38,14 +38,14 @@ import 'settings_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iap/settings:Settings default {{name}}
 /// ```
-class Settings extends CustomResource {
+class Settings extends pulumi.CustomResource {
   /// Top level wrapper for all access related setting in IAP.
   /// Structure is documented below.
-  late final Output<SettingsAccessSettings?> accessSettings;
+  late final pulumi.Output<SettingsAccessSettings?> accessSettings;
 
   /// Top level wrapper for all application related settings in IAP.
   /// Structure is documented below.
-  late final Output<SettingsApplicationSettings?> applicationSettings;
+  late final pulumi.Output<SettingsApplicationSettings?> applicationSettings;
 
   /// The resource name of the IAP protected resource. Name can have below resources:
   /// * organizations/{organization_id}
@@ -59,17 +59,17 @@ class Settings extends CustomResource {
   /// * projects/{project_id}/iap_web/appengine-{app_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   Settings(
     String name, {
     SettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iap/settings:Settings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessSettings =
         registerOutput<SettingsAccessSettings?>('accessSettings');

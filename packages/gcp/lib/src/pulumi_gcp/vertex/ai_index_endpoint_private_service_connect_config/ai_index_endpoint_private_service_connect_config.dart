@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_index_endpoint_private_service_connect_config_psc_automation_config/ai_index_endpoint_private_service_connect_config_psc_automation_config.dart';
 
 class AiIndexEndpointPrivateServiceConnectConfig {
@@ -30,7 +30,7 @@ class AiIndexEndpointPrivateServiceConnectConfig {
     }
     final pscAutomationConfigsValue = pscAutomationConfigs;
     if (pscAutomationConfigsValue != null) {
-      map['pscAutomationConfigs'] = Input.encodeList<
+      map['pscAutomationConfigs'] = pulumi.Input.encodeList<
               AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig,
               Map<String, dynamic>>(
           pscAutomationConfigsValue, (value) => value.toMap());
@@ -47,7 +47,7 @@ class AiIndexEndpointPrivateServiceConnectConfig {
           : (map['projectAllowlists'] as List).cast<String>(),
       pscAutomationConfigs: map['pscAutomationConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig>(
               map['pscAutomationConfigs'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cross_cluster_replication_config_membership/cluster_cross_cluster_replication_config_membership.dart';
 import '../cluster_cross_cluster_replication_config_primary_cluster/cluster_cross_cluster_replication_config_primary_cluster.dart';
 import '../cluster_cross_cluster_replication_config_secondary_cluster/cluster_cross_cluster_replication_config_secondary_cluster.dart';
@@ -48,7 +48,7 @@ class ClusterCrossClusterReplicationConfig {
     }
     final membershipsValue = memberships;
     if (membershipsValue != null) {
-      map['memberships'] = Input.encodeList<
+      map['memberships'] = pulumi.Input.encodeList<
           ClusterCrossClusterReplicationConfigMembership,
           Map<String, dynamic>>(membershipsValue, (value) => value.toMap());
     }
@@ -58,7 +58,7 @@ class ClusterCrossClusterReplicationConfig {
     }
     final secondaryClustersValue = secondaryClusters;
     if (secondaryClustersValue != null) {
-      map['secondaryClusters'] = Input.encodeList<
+      map['secondaryClusters'] = pulumi.Input.encodeList<
               ClusterCrossClusterReplicationConfigSecondaryCluster,
               Map<String, dynamic>>(
           secondaryClustersValue, (value) => value.toMap());
@@ -77,7 +77,8 @@ class ClusterCrossClusterReplicationConfig {
           map['clusterRole'] == null ? null : map['clusterRole'] as String,
       memberships: map['memberships'] == null
           ? null
-          : Input.decodeList<ClusterCrossClusterReplicationConfigMembership>(
+          : pulumi.Input.decodeList<
+                  ClusterCrossClusterReplicationConfigMembership>(
               map['memberships'],
               (value) => ClusterCrossClusterReplicationConfigMembership.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -87,7 +88,7 @@ class ClusterCrossClusterReplicationConfig {
               (map['primaryCluster'] as Map).cast<String, dynamic>()),
       secondaryClusters: map['secondaryClusters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterCrossClusterReplicationConfigSecondaryCluster>(
               map['secondaryClusters'],
               (value) =>

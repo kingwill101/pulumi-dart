@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IAMPolicy.
 class IAMPolicyArgs {
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the folder. The policy will be
@@ -15,7 +15,7 @@ class IAMPolicyArgs {
   ///
   /// Deleting this removes all policies from the folder, locking out users without
   /// folder-level access.
-  final Input<String> policyData;
+  final pulumi.Input<String> policyData;
 
   IAMPolicyArgs({
     required this.folder,
@@ -31,8 +31,8 @@ class IAMPolicyArgs {
 
   factory IAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IAMPolicyArgs(
-      folder: Input.asInput<String>(map['folder']),
-      policyData: Input.asInput<String>(map['policyData']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
+      policyData: pulumi.Input.asInput<String>(map['policyData']),
     );
   }
 }

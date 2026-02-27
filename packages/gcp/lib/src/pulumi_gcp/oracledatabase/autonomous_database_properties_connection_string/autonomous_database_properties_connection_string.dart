@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../autonomous_database_properties_connection_string_all_connection_string/autonomous_database_properties_connection_string_all_connection_string.dart';
 import '../autonomous_database_properties_connection_string_profile/autonomous_database_properties_connection_string_profile.dart';
 
@@ -43,7 +43,7 @@ class AutonomousDatabasePropertiesConnectionString {
     final map = <String, dynamic>{};
     final allConnectionStringsValue = allConnectionStrings;
     if (allConnectionStringsValue != null) {
-      map['allConnectionStrings'] = Input.encodeList<
+      map['allConnectionStrings'] = pulumi.Input.encodeList<
               AutonomousDatabasePropertiesConnectionStringAllConnectionString,
               Map<String, dynamic>>(
           allConnectionStringsValue, (value) => value.toMap());
@@ -66,7 +66,7 @@ class AutonomousDatabasePropertiesConnectionString {
     }
     final profilesValue = profiles;
     if (profilesValue != null) {
-      map['profiles'] = Input.encodeList<
+      map['profiles'] = pulumi.Input.encodeList<
           AutonomousDatabasePropertiesConnectionStringProfile,
           Map<String, dynamic>>(profilesValue, (value) => value.toMap());
     }
@@ -78,7 +78,7 @@ class AutonomousDatabasePropertiesConnectionString {
     return AutonomousDatabasePropertiesConnectionString(
       allConnectionStrings: map['allConnectionStrings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AutonomousDatabasePropertiesConnectionStringAllConnectionString>(
               map['allConnectionStrings'],
               (value) =>
@@ -90,7 +90,7 @@ class AutonomousDatabasePropertiesConnectionString {
       medium: map['medium'] == null ? null : map['medium'] as String,
       profiles: map['profiles'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AutonomousDatabasePropertiesConnectionStringProfile>(
               map['profiles'],
               (value) =>

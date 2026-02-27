@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_attachment_args.dart';
 
 /// Apigee Endpoint Attachment.
@@ -27,39 +27,39 @@ import 'endpoint_attachment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/{{endpoint_attachment_id}}
 /// ```
-class EndpointAttachment extends CustomResource {
+class EndpointAttachment extends pulumi.CustomResource {
   /// State of the endpoint attachment connection to the service attachment.
-  late final Output<String> connectionState;
+  late final pulumi.Output<String> connectionState;
 
   /// ID of the endpoint attachment.
-  late final Output<String> endpointAttachmentId;
+  late final pulumi.Output<String> endpointAttachmentId;
 
   /// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
-  late final Output<String> host;
+  late final pulumi.Output<String> host;
 
   /// Location of the endpoint attachment.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the Endpoint Attachment in the following format:
   /// organizations/{organization}/endpointAttachments/{endpointAttachment}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// Format: projects/*/regions/*/serviceAttachments/*
-  late final Output<String> serviceAttachment;
+  late final pulumi.Output<String> serviceAttachment;
 
   EndpointAttachment(
     String name, {
     EndpointAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/endpointAttachment:EndpointAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.connectionState = registerOutput<String>('connectionState');
     this.endpointAttachmentId = registerOutput<String>('endpointAttachmentId');

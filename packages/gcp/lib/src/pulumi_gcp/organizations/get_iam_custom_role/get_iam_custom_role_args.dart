@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIamCustomRole.
 class GetIamCustomRoleArgs {
   /// The numeric ID of the organization in which you want to create a custom role.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// The role id that has been used for this role.
-  final Input<String> roleId;
+  final pulumi.Input<String> roleId;
 
   GetIamCustomRoleArgs({
     required this.orgId,
@@ -24,8 +24,8 @@ class GetIamCustomRoleArgs {
 
   factory GetIamCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRoleArgs(
-      orgId: Input.asInput<String>(map['orgId']),
-      roleId: Input.asInput<String>(map['roleId']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      roleId: pulumi.Input.asInput<String>(map['roleId']),
     );
   }
 }

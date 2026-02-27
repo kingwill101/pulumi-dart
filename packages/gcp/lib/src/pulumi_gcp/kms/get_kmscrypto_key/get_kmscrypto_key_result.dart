@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_kmscrypto_key_key_access_justifications_policy/get_kmscrypto_key_key_access_justifications_policy.dart';
 import '../get_kmscrypto_key_primary/get_kmscrypto_key_primary.dart';
 import '../get_kmscrypto_key_version_template/get_kmscrypto_key_version_template.dart';
@@ -57,22 +57,22 @@ class GetKMSCryptoKeyResult {
     map['effectiveLabels'] = effectiveLabels;
     map['id'] = id;
     map['importOnly'] = importOnly;
-    map['keyAccessJustificationsPolicies'] = Input.encodeList<
+    map['keyAccessJustificationsPolicies'] = pulumi.Input.encodeList<
             GetKMSCryptoKeyKeyAccessJustificationsPolicy, Map<String, dynamic>>(
         keyAccessJustificationsPolicies, (value) => value.toMap());
     map['keyRing'] = keyRing;
     map['labels'] = labels;
     map['name'] = name;
     map['primaries'] =
-        Input.encodeList<GetKMSCryptoKeyPrimary, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetKMSCryptoKeyPrimary, Map<String, dynamic>>(
             primaries, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
     map['purpose'] = purpose;
     map['rotationPeriod'] = rotationPeriod;
     map['skipInitialVersionCreation'] = skipInitialVersionCreation;
-    map['versionTemplates'] =
-        Input.encodeList<GetKMSCryptoKeyVersionTemplate, Map<String, dynamic>>(
-            versionTemplates, (value) => value.toMap());
+    map['versionTemplates'] = pulumi.Input.encodeList<
+        GetKMSCryptoKeyVersionTemplate,
+        Map<String, dynamic>>(versionTemplates, (value) => value.toMap());
     return map;
   }
 
@@ -84,14 +84,14 @@ class GetKMSCryptoKeyResult {
       id: map['id'] as String,
       importOnly: map['importOnly'] as bool,
       keyAccessJustificationsPolicies:
-          Input.decodeList<GetKMSCryptoKeyKeyAccessJustificationsPolicy>(
+          pulumi.Input.decodeList<GetKMSCryptoKeyKeyAccessJustificationsPolicy>(
               map['keyAccessJustificationsPolicies'],
               (value) => GetKMSCryptoKeyKeyAccessJustificationsPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       keyRing: map['keyRing'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      primaries: Input.decodeList<GetKMSCryptoKeyPrimary>(
+      primaries: pulumi.Input.decodeList<GetKMSCryptoKeyPrimary>(
           map['primaries'],
           (value) => GetKMSCryptoKeyPrimary.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -99,7 +99,7 @@ class GetKMSCryptoKeyResult {
       purpose: map['purpose'] as String,
       rotationPeriod: map['rotationPeriod'] as String,
       skipInitialVersionCreation: map['skipInitialVersionCreation'] as bool,
-      versionTemplates: Input.decodeList<GetKMSCryptoKeyVersionTemplate>(
+      versionTemplates: pulumi.Input.decodeList<GetKMSCryptoKeyVersionTemplate>(
           map['versionTemplates'],
           (value) => GetKMSCryptoKeyVersionTemplate.fromMap(
               (value as Map).cast<String, dynamic>())),

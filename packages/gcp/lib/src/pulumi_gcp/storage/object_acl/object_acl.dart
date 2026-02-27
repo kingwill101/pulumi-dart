@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_aclargs.dart';
 
 /// Authoritatively manages the access control list (ACL) for an object in a Google
@@ -22,31 +22,31 @@ import 'object_aclargs.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class ObjectACL extends CustomResource {
+class ObjectACL extends pulumi.CustomResource {
   /// The name of the bucket the object is stored in.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// The name of the object to apply the acl to.
   ///
   /// - - -
-  late final Output<String> object;
+  late final pulumi.Output<String> object;
 
   /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
-  late final Output<String?> predefinedAcl;
+  late final pulumi.Output<String?> predefinedAcl;
 
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Must be set if `predefined_acl` is not.
-  late final Output<List<String>> roleEntities;
+  late final pulumi.Output<List<String>> roleEntities;
 
   ObjectACL(
     String name, {
     ObjectACLArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/objectACL:ObjectACL',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.object = registerOutput<String>('object');

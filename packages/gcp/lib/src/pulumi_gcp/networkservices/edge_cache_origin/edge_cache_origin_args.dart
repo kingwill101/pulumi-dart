@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../edge_cache_origin_aws_v4_authentication/edge_cache_origin_aws_v4_authentication.dart';
 import '../edge_cache_origin_flex_shielding/edge_cache_origin_flex_shielding.dart';
 import '../edge_cache_origin_origin_override_action/edge_cache_origin_origin_override_action.dart';
@@ -11,26 +11,26 @@ import '../edge_cache_origin_timeout/edge_cache_origin_timeout.dart';
 class EdgeCacheOriginArgs {
   /// Enable AWS Signature Version 4 origin authentication.
   /// Structure is documented below.
-  final Input<EdgeCacheOriginAwsV4Authentication>? awsV4Authentication;
+  final pulumi.Input<EdgeCacheOriginAwsV4Authentication>? awsV4Authentication;
 
   /// A human-readable description of the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The Origin resource to try when the current origin cannot be reached.
   /// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
   /// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
   /// A reference to a Topic resource.
-  final Input<String>? failoverOrigin;
+  final pulumi.Input<String>? failoverOrigin;
 
   /// The FlexShieldingOptions to be used for all routes to this origin.
   /// If not set, defaults to a global caching layer in front of the origin.
   /// Structure is documented below.
-  final Input<EdgeCacheOriginFlexShielding>? flexShielding;
+  final pulumi.Input<EdgeCacheOriginFlexShielding>? flexShielding;
 
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
   /// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
@@ -40,40 +40,40 @@ class EdgeCacheOriginArgs {
   /// The last valid, non-retried response from all origins will be returned to the client.
   /// If no origin returns a valid response, an HTTP 502 will be returned to the client.
   /// Defaults to 1. Must be a value greater than 0 and less than 4.
-  final Input<int>? maxAttempts;
+  final pulumi.Input<int>? maxAttempts;
 
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
   /// This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
   /// When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
   /// If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
-  final Input<String> originAddress;
+  final pulumi.Input<String> originAddress;
 
   /// The override actions, including url rewrites and header
   /// additions, for requests that use this origin.
   /// Structure is documented below.
-  final Input<EdgeCacheOriginOriginOverrideAction>? originOverrideAction;
+  final pulumi.Input<EdgeCacheOriginOriginOverrideAction>? originOverrideAction;
 
   /// Follow redirects from this origin.
   /// Structure is documented below.
-  final Input<EdgeCacheOriginOriginRedirect>? originRedirect;
+  final pulumi.Input<EdgeCacheOriginOriginRedirect>? originRedirect;
 
   /// The port to connect to the origin on.
   /// Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
-  final Input<int>? port;
+  final pulumi.Input<int>? port;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
   /// When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
   /// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
-  final Input<String>? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Specifies one or more retry conditions for the configured origin.
   /// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
@@ -89,11 +89,11 @@ class EdgeCacheOriginArgs {
   /// - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
   /// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
   /// Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
-  final Input<List<String>>? retryConditions;
+  final pulumi.Input<List<String>>? retryConditions;
 
   /// The connection and HTTP timeout configuration for this origin.
   /// Structure is documented below.
-  final Input<EdgeCacheOriginTimeout>? timeout;
+  final pulumi.Input<EdgeCacheOriginTimeout>? timeout;
 
   EdgeCacheOriginArgs({
     this.awsV4Authentication,
@@ -117,7 +117,7 @@ class EdgeCacheOriginArgs {
     final map = <String, dynamic>{};
     final awsV4AuthenticationValue = awsV4Authentication;
     if (awsV4AuthenticationValue != null) {
-      map['awsV4Authentication'] = Input.mapOptionalInputValue<
+      map['awsV4Authentication'] = pulumi.Input.mapOptionalInputValue<
               EdgeCacheOriginAwsV4Authentication, Map<String, dynamic>>(
           awsV4AuthenticationValue, (value) => value.toMap());
     }
@@ -131,7 +131,7 @@ class EdgeCacheOriginArgs {
     }
     final flexShieldingValue = flexShielding;
     if (flexShieldingValue != null) {
-      map['flexShielding'] = Input.mapOptionalInputValue<
+      map['flexShielding'] = pulumi.Input.mapOptionalInputValue<
           EdgeCacheOriginFlexShielding,
           Map<String, dynamic>>(flexShieldingValue, (value) => value.toMap());
     }
@@ -150,13 +150,13 @@ class EdgeCacheOriginArgs {
     map['originAddress'] = originAddress;
     final originOverrideActionValue = originOverrideAction;
     if (originOverrideActionValue != null) {
-      map['originOverrideAction'] = Input.mapOptionalInputValue<
+      map['originOverrideAction'] = pulumi.Input.mapOptionalInputValue<
               EdgeCacheOriginOriginOverrideAction, Map<String, dynamic>>(
           originOverrideActionValue, (value) => value.toMap());
     }
     final originRedirectValue = originRedirect;
     if (originRedirectValue != null) {
-      map['originRedirect'] = Input.mapOptionalInputValue<
+      map['originRedirect'] = pulumi.Input.mapOptionalInputValue<
           EdgeCacheOriginOriginRedirect,
           Map<String, dynamic>>(originRedirectValue, (value) => value.toMap());
     }
@@ -178,7 +178,8 @@ class EdgeCacheOriginArgs {
     }
     final timeoutValue = timeout;
     if (timeoutValue != null) {
-      map['timeout'] = Input.mapOptionalInputValue<EdgeCacheOriginTimeout,
+      map['timeout'] = pulumi.Input.mapOptionalInputValue<
+          EdgeCacheOriginTimeout,
           Map<String, dynamic>>(timeoutValue, (value) => value.toMap());
     }
     return map;
@@ -187,27 +188,30 @@ class EdgeCacheOriginArgs {
   factory EdgeCacheOriginArgs.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginArgs(
       awsV4Authentication:
-          Input.asOptionalInput<EdgeCacheOriginAwsV4Authentication>(
+          pulumi.Input.asOptionalInput<EdgeCacheOriginAwsV4Authentication>(
               map['awsV4Authentication']),
-      description: Input.asOptionalInput<String>(map['description']),
-      failoverOrigin: Input.asOptionalInput<String>(map['failoverOrigin']),
-      flexShielding: Input.asOptionalInput<EdgeCacheOriginFlexShielding>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      failoverOrigin:
+          pulumi.Input.asOptionalInput<String>(map['failoverOrigin']),
+      flexShielding: pulumi.Input.asOptionalInput<EdgeCacheOriginFlexShielding>(
           map['flexShielding']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      maxAttempts: Input.asOptionalInput<int>(map['maxAttempts']),
-      name: Input.asOptionalInput<String>(map['name']),
-      originAddress: Input.asInput<String>(map['originAddress']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      maxAttempts: pulumi.Input.asOptionalInput<int>(map['maxAttempts']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      originAddress: pulumi.Input.asInput<String>(map['originAddress']),
       originOverrideAction:
-          Input.asOptionalInput<EdgeCacheOriginOriginOverrideAction>(
+          pulumi.Input.asOptionalInput<EdgeCacheOriginOriginOverrideAction>(
               map['originOverrideAction']),
-      originRedirect: Input.asOptionalInput<EdgeCacheOriginOriginRedirect>(
-          map['originRedirect']),
-      port: Input.asOptionalInput<int>(map['port']),
-      project: Input.asOptionalInput<String>(map['project']),
-      protocol: Input.asOptionalInput<String>(map['protocol']),
+      originRedirect:
+          pulumi.Input.asOptionalInput<EdgeCacheOriginOriginRedirect>(
+              map['originRedirect']),
+      port: pulumi.Input.asOptionalInput<int>(map['port']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      protocol: pulumi.Input.asOptionalInput<String>(map['protocol']),
       retryConditions:
-          Input.asOptionalInput<List<String>>(map['retryConditions']),
-      timeout: Input.asOptionalInput<EdgeCacheOriginTimeout>(map['timeout']),
+          pulumi.Input.asOptionalInput<List<String>>(map['retryConditions']),
+      timeout:
+          pulumi.Input.asOptionalInput<EdgeCacheOriginTimeout>(map['timeout']),
     );
   }
 }

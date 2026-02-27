@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_validation_check_status/vmware_cluster_validation_check_status.dart';
 
 class VMwareClusterValidationCheck {
@@ -35,7 +35,8 @@ class VMwareClusterValidationCheck {
     }
     final statusesValue = statuses;
     if (statusesValue != null) {
-      map['statuses'] = Input.encodeList<VMwareClusterValidationCheckStatus,
+      map['statuses'] = pulumi.Input.encodeList<
+          VMwareClusterValidationCheckStatus,
           Map<String, dynamic>>(statusesValue, (value) => value.toMap());
     }
     return map;
@@ -47,7 +48,7 @@ class VMwareClusterValidationCheck {
       scenario: map['scenario'] == null ? null : map['scenario'] as String,
       statuses: map['statuses'] == null
           ? null
-          : Input.decodeList<VMwareClusterValidationCheckStatus>(
+          : pulumi.Input.decodeList<VMwareClusterValidationCheckStatus>(
               map['statuses'],
               (value) => VMwareClusterValidationCheckStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),

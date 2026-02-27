@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../attestor_attestation_authority_note/attestor_attestation_authority_note.dart';
 import 'attestor_args.dart';
 
@@ -45,31 +45,32 @@ import 'attestor_args.dart';
 /// ```sh
 /// $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
 /// ```
-class Attestor extends CustomResource {
+class Attestor extends pulumi.CustomResource {
   /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
   /// Structure is documented below.
-  late final Output<AttestorAttestationAuthorityNote> attestationAuthorityNote;
+  late final pulumi.Output<AttestorAttestationAuthorityNote>
+      attestationAuthorityNote;
 
   /// A descriptive comment. This field may be updated. The field may be
   /// displayed in chooser dialogs.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The resource name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   Attestor(
     String name, {
     AttestorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:binaryauthorization/attestor:Attestor',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attestationAuthorityNote =
         registerOutput<AttestorAttestationAuthorityNote>(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../worker_pool_template_container_env/worker_pool_template_container_env.dart';
 import '../worker_pool_template_container_liveness_probe/worker_pool_template_container_liveness_probe.dart';
 import '../worker_pool_template_container_resources/worker_pool_template_container_resources.dart';
@@ -76,7 +76,7 @@ class WorkerPoolTemplateContainer {
     }
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] = Input.encodeList<WorkerPoolTemplateContainerEnv,
+      map['envs'] = pulumi.Input.encodeList<WorkerPoolTemplateContainerEnv,
           Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
     map['image'] = image;
@@ -98,7 +98,7 @@ class WorkerPoolTemplateContainer {
     }
     final volumeMountsValue = volumeMounts;
     if (volumeMountsValue != null) {
-      map['volumeMounts'] = Input.encodeList<
+      map['volumeMounts'] = pulumi.Input.encodeList<
           WorkerPoolTemplateContainerVolumeMount,
           Map<String, dynamic>>(volumeMountsValue, (value) => value.toMap());
     }
@@ -120,7 +120,7 @@ class WorkerPoolTemplateContainer {
           : (map['dependsOns'] as List).cast<String>(),
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<WorkerPoolTemplateContainerEnv>(
+          : pulumi.Input.decodeList<WorkerPoolTemplateContainerEnv>(
               map['envs'],
               (value) => WorkerPoolTemplateContainerEnv.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -140,7 +140,7 @@ class WorkerPoolTemplateContainer {
               (map['startupProbe'] as Map).cast<String, dynamic>()),
       volumeMounts: map['volumeMounts'] == null
           ? null
-          : Input.decodeList<WorkerPoolTemplateContainerVolumeMount>(
+          : pulumi.Input.decodeList<WorkerPoolTemplateContainerVolumeMount>(
               map['volumeMounts'],
               (value) => WorkerPoolTemplateContainerVolumeMount.fromMap(
                   (value as Map).cast<String, dynamic>())),

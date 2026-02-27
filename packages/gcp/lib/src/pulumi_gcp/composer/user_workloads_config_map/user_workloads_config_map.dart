@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_workloads_config_map_args.dart';
 
 /// User workloads ConfigMap used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
@@ -45,33 +45,33 @@ import 'user_workloads_config_map_args.dart';
 /// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{environment}}/{{name}}
 /// ```
-class UserWorkloadsConfigMap extends CustomResource {
+class UserWorkloadsConfigMap extends pulumi.CustomResource {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
-  late final Output<Map<String, String>?> data;
+  late final pulumi.Output<Map<String, String>?> data;
 
   /// Environment where the Kubernetes ConfigMap will be stored and used.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// Name of the Kubernetes ConfigMap.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The location or Compute Engine region for the environment.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   UserWorkloadsConfigMap(
     String name, {
     UserWorkloadsConfigMapArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.data = registerOutput<Map<String, String>?>('data');
     this.environment = registerOutput<String>('environment');

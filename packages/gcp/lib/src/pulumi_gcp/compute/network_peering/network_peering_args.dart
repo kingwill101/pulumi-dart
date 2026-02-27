@@ -1,36 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for NetworkPeering.
 class NetworkPeeringArgs {
   /// Whether to export the custom routes to the peer network. Defaults to `false`.
-  final Input<bool>? exportCustomRoutes;
+  final pulumi.Input<bool>? exportCustomRoutes;
 
   /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
-  final Input<bool>? exportSubnetRoutesWithPublicIp;
+  final pulumi.Input<bool>? exportSubnetRoutesWithPublicIp;
 
   /// Whether to import the custom routes from the peer network. Defaults to `false`.
-  final Input<bool>? importCustomRoutes;
+  final pulumi.Input<bool>? importCustomRoutes;
 
   /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
-  final Input<bool>? importSubnetRoutesWithPublicIp;
+  final pulumi.Input<bool>? importSubnetRoutesWithPublicIp;
 
   /// Name of the peering.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The primary network of the peering.
-  final Input<String> network;
+  final pulumi.Input<String> network;
 
   /// The peer network in the peering. The peer network
   /// may belong to a different project.
-  final Input<String> peerNetwork;
+  final pulumi.Input<String> peerNetwork;
 
   /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
-  final Input<String>? stackType;
+  final pulumi.Input<String>? stackType;
 
   /// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
-  final Input<String>? updateStrategy;
+  final pulumi.Input<String>? updateStrategy;
 
   NetworkPeeringArgs({
     this.exportCustomRoutes,
@@ -84,18 +84,19 @@ class NetworkPeeringArgs {
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
       exportCustomRoutes:
-          Input.asOptionalInput<bool>(map['exportCustomRoutes']),
-      exportSubnetRoutesWithPublicIp:
-          Input.asOptionalInput<bool>(map['exportSubnetRoutesWithPublicIp']),
+          pulumi.Input.asOptionalInput<bool>(map['exportCustomRoutes']),
+      exportSubnetRoutesWithPublicIp: pulumi.Input.asOptionalInput<bool>(
+          map['exportSubnetRoutesWithPublicIp']),
       importCustomRoutes:
-          Input.asOptionalInput<bool>(map['importCustomRoutes']),
-      importSubnetRoutesWithPublicIp:
-          Input.asOptionalInput<bool>(map['importSubnetRoutesWithPublicIp']),
-      name: Input.asOptionalInput<String>(map['name']),
-      network: Input.asInput<String>(map['network']),
-      peerNetwork: Input.asInput<String>(map['peerNetwork']),
-      stackType: Input.asOptionalInput<String>(map['stackType']),
-      updateStrategy: Input.asOptionalInput<String>(map['updateStrategy']),
+          pulumi.Input.asOptionalInput<bool>(map['importCustomRoutes']),
+      importSubnetRoutesWithPublicIp: pulumi.Input.asOptionalInput<bool>(
+          map['importSubnetRoutesWithPublicIp']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      network: pulumi.Input.asInput<String>(map['network']),
+      peerNetwork: pulumi.Input.asInput<String>(map['peerNetwork']),
+      stackType: pulumi.Input.asOptionalInput<String>(map['stackType']),
+      updateStrategy:
+          pulumi.Input.asOptionalInput<String>(map['updateStrategy']),
     );
   }
 }

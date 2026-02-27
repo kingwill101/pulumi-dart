@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../worker_pool_network_config/worker_pool_network_config.dart';
 import '../worker_pool_private_service_connect/worker_pool_private_service_connect.dart';
 import '../worker_pool_worker_config/worker_pool_worker_config.dart';
@@ -11,31 +11,31 @@ class WorkerPoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// User-defined name of the `WorkerPool`.
   ///
   ///
   /// - - -
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Network configuration for the `WorkerPool`. Structure is documented below.
-  final Input<WorkerPoolNetworkConfig>? networkConfig;
+  final pulumi.Input<WorkerPoolNetworkConfig>? networkConfig;
 
   /// Private Service Connect configuration for the pool.
-  final Input<WorkerPoolPrivateServiceConnect>? privateServiceConnect;
+  final pulumi.Input<WorkerPoolPrivateServiceConnect>? privateServiceConnect;
 
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
-  final Input<WorkerPoolWorkerConfig>? workerConfig;
+  final pulumi.Input<WorkerPoolWorkerConfig>? workerConfig;
 
   WorkerPoolArgs({
     this.annotations,
@@ -65,13 +65,13 @@ class WorkerPoolArgs {
     }
     final networkConfigValue = networkConfig;
     if (networkConfigValue != null) {
-      map['networkConfig'] = Input.mapOptionalInputValue<
+      map['networkConfig'] = pulumi.Input.mapOptionalInputValue<
           WorkerPoolNetworkConfig,
           Map<String, dynamic>>(networkConfigValue, (value) => value.toMap());
     }
     final privateServiceConnectValue = privateServiceConnect;
     if (privateServiceConnectValue != null) {
-      map['privateServiceConnect'] = Input.mapOptionalInputValue<
+      map['privateServiceConnect'] = pulumi.Input.mapOptionalInputValue<
               WorkerPoolPrivateServiceConnect, Map<String, dynamic>>(
           privateServiceConnectValue, (value) => value.toMap());
     }
@@ -81,7 +81,8 @@ class WorkerPoolArgs {
     }
     final workerConfigValue = workerConfig;
     if (workerConfigValue != null) {
-      map['workerConfig'] = Input.mapOptionalInputValue<WorkerPoolWorkerConfig,
+      map['workerConfig'] = pulumi.Input.mapOptionalInputValue<
+          WorkerPoolWorkerConfig,
           Map<String, dynamic>>(workerConfigValue, (value) => value.toMap());
     }
     return map;
@@ -90,18 +91,18 @@ class WorkerPoolArgs {
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      networkConfig:
-          Input.asOptionalInput<WorkerPoolNetworkConfig>(map['networkConfig']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      networkConfig: pulumi.Input.asOptionalInput<WorkerPoolNetworkConfig>(
+          map['networkConfig']),
       privateServiceConnect:
-          Input.asOptionalInput<WorkerPoolPrivateServiceConnect>(
+          pulumi.Input.asOptionalInput<WorkerPoolPrivateServiceConnect>(
               map['privateServiceConnect']),
-      project: Input.asOptionalInput<String>(map['project']),
-      workerConfig:
-          Input.asOptionalInput<WorkerPoolWorkerConfig>(map['workerConfig']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      workerConfig: pulumi.Input.asOptionalInput<WorkerPoolWorkerConfig>(
+          map['workerConfig']),
     );
   }
 }

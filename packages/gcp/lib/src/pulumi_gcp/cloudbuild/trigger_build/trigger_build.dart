@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trigger_build_artifacts/trigger_build_artifacts.dart';
 import '../trigger_build_available_secrets/trigger_build_available_secrets.dart';
 import '../trigger_build_options/trigger_build_options.dart';
@@ -107,15 +107,16 @@ class TriggerBuild {
     final secretsValue = secrets;
     if (secretsValue != null) {
       map['secrets'] =
-          Input.encodeList<TriggerBuildSecret, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TriggerBuildSecret, Map<String, dynamic>>(
               secretsValue, (value) => value.toMap());
     }
     final sourceValue = source;
     if (sourceValue != null) {
       map['source'] = sourceValue.toMap();
     }
-    map['steps'] = Input.encodeList<TriggerBuildStep, Map<String, dynamic>>(
-        steps, (value) => value.toMap());
+    map['steps'] =
+        pulumi.Input.encodeList<TriggerBuildStep, Map<String, dynamic>>(
+            steps, (value) => value.toMap());
     final substitutionsValue = substitutions;
     if (substitutionsValue != null) {
       map['substitutions'] = substitutionsValue;
@@ -152,7 +153,7 @@ class TriggerBuild {
       queueTtl: map['queueTtl'] == null ? null : map['queueTtl'] as String,
       secrets: map['secrets'] == null
           ? null
-          : Input.decodeList<TriggerBuildSecret>(
+          : pulumi.Input.decodeList<TriggerBuildSecret>(
               map['secrets'],
               (value) => TriggerBuildSecret.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -160,7 +161,7 @@ class TriggerBuild {
           ? null
           : TriggerBuildSource.fromMap(
               (map['source'] as Map).cast<String, dynamic>()),
-      steps: Input.decodeList<TriggerBuildStep>(
+      steps: pulumi.Input.decodeList<TriggerBuildStep>(
           map['steps'],
           (value) =>
               TriggerBuildStep.fromMap((value as Map).cast<String, dynamic>())),

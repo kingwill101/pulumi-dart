@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workflow_template_placement_managed_cluster_config_master_config_accelerator/workflow_template_placement_managed_cluster_config_master_config_accelerator.dart';
 import '../workflow_template_placement_managed_cluster_config_master_config_disk_config/workflow_template_placement_managed_cluster_config_master_config_disk_config.dart';
 import '../workflow_template_placement_managed_cluster_config_master_config_managed_group_config/workflow_template_placement_managed_cluster_config_master_config_managed_group_config.dart';
@@ -58,7 +58,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] = Input.encodeList<
+      map['accelerators'] = pulumi.Input.encodeList<
           WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator,
           Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
     }
@@ -84,7 +84,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
     }
     final managedGroupConfigsValue = managedGroupConfigs;
     if (managedGroupConfigsValue != null) {
-      map['managedGroupConfigs'] = Input.encodeList<
+      map['managedGroupConfigs'] = pulumi.Input.encodeList<
           WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig,
           Map<String,
               dynamic>>(managedGroupConfigsValue, (value) => value.toMap());
@@ -109,7 +109,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
     return WorkflowTemplatePlacementManagedClusterConfigMasterConfig(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator>(
               map['accelerators'],
               (value) =>
@@ -129,7 +129,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
           map['machineType'] == null ? null : map['machineType'] as String,
       managedGroupConfigs: map['managedGroupConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>(
               map['managedGroupConfigs'],
               (value) =>

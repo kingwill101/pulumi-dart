@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_build_artifact/get_trigger_build_artifact.dart';
 import '../get_trigger_build_available_secret/get_trigger_build_available_secret.dart';
 import '../get_trigger_build_option/get_trigger_build_option.dart';
@@ -76,25 +76,26 @@ class GetTriggerBuild {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['artifacts'] =
-        Input.encodeList<GetTriggerBuildArtifact, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerBuildArtifact, Map<String, dynamic>>(
             artifacts, (value) => value.toMap());
-    map['availableSecrets'] =
-        Input.encodeList<GetTriggerBuildAvailableSecret, Map<String, dynamic>>(
-            availableSecrets, (value) => value.toMap());
+    map['availableSecrets'] = pulumi.Input.encodeList<
+        GetTriggerBuildAvailableSecret,
+        Map<String, dynamic>>(availableSecrets, (value) => value.toMap());
     map['images'] = images;
     map['logsBucket'] = logsBucket;
     map['options'] =
-        Input.encodeList<GetTriggerBuildOption, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerBuildOption, Map<String, dynamic>>(
             options, (value) => value.toMap());
     map['queueTtl'] = queueTtl;
     map['secrets'] =
-        Input.encodeList<GetTriggerBuildSecret, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerBuildSecret, Map<String, dynamic>>(
             secrets, (value) => value.toMap());
     map['sources'] =
-        Input.encodeList<GetTriggerBuildSource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTriggerBuildSource, Map<String, dynamic>>(
             sources, (value) => value.toMap());
-    map['steps'] = Input.encodeList<GetTriggerBuildStep, Map<String, dynamic>>(
-        steps, (value) => value.toMap());
+    map['steps'] =
+        pulumi.Input.encodeList<GetTriggerBuildStep, Map<String, dynamic>>(
+            steps, (value) => value.toMap());
     map['substitutions'] = substitutions;
     map['tags'] = tags;
     map['timeout'] = timeout;
@@ -103,30 +104,30 @@ class GetTriggerBuild {
 
   factory GetTriggerBuild.fromMap(Map<String, dynamic> map) {
     return GetTriggerBuild(
-      artifacts: Input.decodeList<GetTriggerBuildArtifact>(
+      artifacts: pulumi.Input.decodeList<GetTriggerBuildArtifact>(
           map['artifacts'],
           (value) => GetTriggerBuildArtifact.fromMap(
               (value as Map).cast<String, dynamic>())),
-      availableSecrets: Input.decodeList<GetTriggerBuildAvailableSecret>(
+      availableSecrets: pulumi.Input.decodeList<GetTriggerBuildAvailableSecret>(
           map['availableSecrets'],
           (value) => GetTriggerBuildAvailableSecret.fromMap(
               (value as Map).cast<String, dynamic>())),
       images: (map['images'] as List).cast<String>(),
       logsBucket: map['logsBucket'] as String,
-      options: Input.decodeList<GetTriggerBuildOption>(
+      options: pulumi.Input.decodeList<GetTriggerBuildOption>(
           map['options'],
           (value) => GetTriggerBuildOption.fromMap(
               (value as Map).cast<String, dynamic>())),
       queueTtl: map['queueTtl'] as String,
-      secrets: Input.decodeList<GetTriggerBuildSecret>(
+      secrets: pulumi.Input.decodeList<GetTriggerBuildSecret>(
           map['secrets'],
           (value) => GetTriggerBuildSecret.fromMap(
               (value as Map).cast<String, dynamic>())),
-      sources: Input.decodeList<GetTriggerBuildSource>(
+      sources: pulumi.Input.decodeList<GetTriggerBuildSource>(
           map['sources'],
           (value) => GetTriggerBuildSource.fromMap(
               (value as Map).cast<String, dynamic>())),
-      steps: Input.decodeList<GetTriggerBuildStep>(
+      steps: pulumi.Input.decodeList<GetTriggerBuildStep>(
           map['steps'],
           (value) => GetTriggerBuildStep.fromMap(
               (value as Map).cast<String, dynamic>())),

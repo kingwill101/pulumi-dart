@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../auth_config_client_certificate/auth_config_client_certificate.dart';
 import '../auth_config_decrypted_credential/auth_config_decrypted_credential.dart';
 import 'auth_config_args.dart';
@@ -43,86 +43,86 @@ import 'auth_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:applicationintegration/authConfig:AuthConfig default {{name}}
 /// ```
-class AuthConfig extends CustomResource {
+class AuthConfig extends pulumi.CustomResource {
   /// Certificate id for client certificate.
-  late final Output<String> certificateId;
+  late final pulumi.Output<String> certificateId;
 
   /// Raw client certificate
   /// Structure is documented below.
-  late final Output<AuthConfigClientCertificate?> clientCertificate;
+  late final pulumi.Output<AuthConfigClientCertificate?> clientCertificate;
 
   /// The timestamp when the auth config is created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  late final Output<String> creatorEmail;
+  late final pulumi.Output<String> creatorEmail;
 
   /// Credential type of the encrypted credential.
-  late final Output<String> credentialType;
+  late final pulumi.Output<String> credentialType;
 
   /// Raw auth credentials.
   /// Structure is documented below.
-  late final Output<AuthConfigDecryptedCredential?> decryptedCredential;
+  late final pulumi.Output<AuthConfigDecryptedCredential?> decryptedCredential;
 
   /// A description of the auth config.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the auth config.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
   /// A base64-encoded string.
-  late final Output<String> encryptedCredential;
+  late final pulumi.Output<String> encryptedCredential;
 
   /// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  late final Output<List<String>?> expiryNotificationDurations;
+  late final pulumi.Output<List<String>?> expiryNotificationDurations;
 
   /// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  late final Output<String> lastModifierEmail;
+  late final pulumi.Output<String> lastModifierEmail;
 
   /// Location in which client needs to be provisioned.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Resource name of the auth config.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String?> overrideValidTime;
+  late final pulumi.Output<String?> overrideValidTime;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The reason / details of the current status.
-  late final Output<String> reason;
+  late final pulumi.Output<String> reason;
 
   /// The status of the auth config.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The timestamp when the auth config is modified.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> validTime;
+  late final pulumi.Output<String> validTime;
 
   /// The visibility of the auth config.
   /// Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
-  late final Output<String?> visibility;
+  late final pulumi.Output<String?> visibility;
 
   AuthConfig(
     String name, {
     AuthConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:applicationintegration/authConfig:AuthConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificateId = registerOutput<String>('certificateId');
     this.clientCertificate =

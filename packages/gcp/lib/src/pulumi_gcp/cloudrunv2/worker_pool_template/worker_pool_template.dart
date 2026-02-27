@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../worker_pool_template_container/worker_pool_template_container.dart';
 import '../worker_pool_template_node_selector/worker_pool_template_node_selector.dart';
 import '../worker_pool_template_volume/worker_pool_template_volume.dart';
@@ -78,9 +78,8 @@ class WorkerPoolTemplate {
     }
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] =
-          Input.encodeList<WorkerPoolTemplateContainer, Map<String, dynamic>>(
-              containersValue, (value) => value.toMap());
+      map['containers'] = pulumi.Input.encodeList<WorkerPoolTemplateContainer,
+          Map<String, dynamic>>(containersValue, (value) => value.toMap());
     }
     final encryptionKeyValue = encryptionKey;
     if (encryptionKeyValue != null) {
@@ -116,9 +115,8 @@ class WorkerPoolTemplate {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] =
-          Input.encodeList<WorkerPoolTemplateVolume, Map<String, dynamic>>(
-              volumesValue, (value) => value.toMap());
+      map['volumes'] = pulumi.Input.encodeList<WorkerPoolTemplateVolume,
+          Map<String, dynamic>>(volumesValue, (value) => value.toMap());
     }
     final vpcAccessValue = vpcAccess;
     if (vpcAccessValue != null) {
@@ -134,7 +132,7 @@ class WorkerPoolTemplate {
           : (map['annotations'] as Map).cast<String, String>(),
       containers: map['containers'] == null
           ? null
-          : Input.decodeList<WorkerPoolTemplateContainer>(
+          : pulumi.Input.decodeList<WorkerPoolTemplateContainer>(
               map['containers'],
               (value) => WorkerPoolTemplateContainer.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -164,7 +162,7 @@ class WorkerPoolTemplate {
           : map['serviceAccount'] as String,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<WorkerPoolTemplateVolume>(
+          : pulumi.Input.decodeList<WorkerPoolTemplateVolume>(
               map['volumes'],
               (value) => WorkerPoolTemplateVolume.fromMap(
                   (value as Map).cast<String, dynamic>())),

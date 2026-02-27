@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeters_service_perimeter/service_perimeters_service_perimeter.dart';
 import 'service_perimeters_args.dart';
 
@@ -38,24 +38,25 @@ import 'service_perimeters_args.dart';
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
 /// ```
-class ServicePerimeters extends CustomResource {
+class ServicePerimeters extends pulumi.CustomResource {
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
   /// Structure is documented below.
-  late final Output<List<ServicePerimetersServicePerimeter>?> servicePerimeters;
+  late final pulumi.Output<List<ServicePerimetersServicePerimeter>?>
+      servicePerimeters;
 
   ServicePerimeters(
     String name, {
     ServicePerimetersArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.parent = registerOutput<String>('parent');
     this.servicePerimeters =

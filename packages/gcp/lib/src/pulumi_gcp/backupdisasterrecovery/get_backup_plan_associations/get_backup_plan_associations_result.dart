@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backup_plan_associations_association/get_backup_plan_associations_association.dart';
 
 /// Result data returned by getBackupPlanAssociations.
@@ -26,7 +26,8 @@ class GetBackupPlanAssociationsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['associations'] = Input.encodeList<GetBackupPlanAssociationsAssociation,
+    map['associations'] = pulumi.Input.encodeList<
+        GetBackupPlanAssociationsAssociation,
         Map<String, dynamic>>(associations, (value) => value.toMap());
     map['id'] = id;
     map['location'] = location;
@@ -40,10 +41,11 @@ class GetBackupPlanAssociationsResult {
 
   factory GetBackupPlanAssociationsResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanAssociationsResult(
-      associations: Input.decodeList<GetBackupPlanAssociationsAssociation>(
-          map['associations'],
-          (value) => GetBackupPlanAssociationsAssociation.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      associations:
+          pulumi.Input.decodeList<GetBackupPlanAssociationsAssociation>(
+              map['associations'],
+              (value) => GetBackupPlanAssociationsAssociation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] as String,

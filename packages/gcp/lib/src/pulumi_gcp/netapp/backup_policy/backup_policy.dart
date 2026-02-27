@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_args.dart';
 
 /// A backup policy is used to schedule backups at regular daily, weekly, or monthly intervals.
@@ -42,64 +42,64 @@ import 'backup_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{location}}/{{name}}
 /// ```
-class BackupPolicy extends CustomResource {
+class BackupPolicy extends pulumi.CustomResource {
   /// The total number of volumes assigned by this backup policy.
-  late final Output<int> assignedVolumeCount;
+  late final pulumi.Output<int> assignedVolumeCount;
 
   /// Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
-  late final Output<int> dailyBackupLimit;
+  late final pulumi.Output<int> dailyBackupLimit;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// If enabled, make backups automatically according to the schedules.
   /// This will be applied to all volumes that have this policy attached and enforced on volume level.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Name of the region for the policy to apply to.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
-  late final Output<int> monthlyBackupLimit;
+  late final pulumi.Output<int> monthlyBackupLimit;
 
   /// The name of the backup policy. Needs to be unique per location.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The state of the backup policy.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
-  late final Output<int> weeklyBackupLimit;
+  late final pulumi.Output<int> weeklyBackupLimit;
 
   BackupPolicy(
     String name, {
     BackupPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:netapp/backupPolicy:BackupPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
     this.createTime = registerOutput<String>('createTime');

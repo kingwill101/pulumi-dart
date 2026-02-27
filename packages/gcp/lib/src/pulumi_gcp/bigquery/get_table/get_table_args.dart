@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTable.
 class GetTableArgs {
   /// The dataset ID.
-  final Input<String> datasetId;
+  final pulumi.Input<String> datasetId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The table ID.
-  final Input<String> tableId;
+  final pulumi.Input<String> tableId;
 
   GetTableArgs({
     required this.datasetId,
@@ -33,9 +33,9 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      datasetId: Input.asInput<String>(map['datasetId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tableId: Input.asInput<String>(map['tableId']),
+      datasetId: pulumi.Input.asInput<String>(map['datasetId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tableId: pulumi.Input.asInput<String>(map['tableId']),
     );
   }
 }

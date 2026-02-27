@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSupportedDatabaseFlags.
 class GetSupportedDatabaseFlagsArgs {
   /// The canonical id of the location. For example: `us-east1`.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetSupportedDatabaseFlagsArgs({
     required this.location,
@@ -27,8 +27,8 @@ class GetSupportedDatabaseFlagsArgs {
 
   factory GetSupportedDatabaseFlagsArgs.fromMap(Map<String, dynamic> map) {
     return GetSupportedDatabaseFlagsArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

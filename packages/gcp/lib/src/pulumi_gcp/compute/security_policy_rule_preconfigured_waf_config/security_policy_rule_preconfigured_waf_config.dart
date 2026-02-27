@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_policy_rule_preconfigured_waf_config_exclusion/security_policy_rule_preconfigured_waf_config_exclusion.dart';
 
 class SecurityPolicyRulePreconfiguredWafConfig {
@@ -16,7 +16,7 @@ class SecurityPolicyRulePreconfiguredWafConfig {
     final map = <String, dynamic>{};
     final exclusionsValue = exclusions;
     if (exclusionsValue != null) {
-      map['exclusions'] = Input.encodeList<
+      map['exclusions'] = pulumi.Input.encodeList<
           SecurityPolicyRulePreconfiguredWafConfigExclusion,
           Map<String, dynamic>>(exclusionsValue, (value) => value.toMap());
     }
@@ -28,7 +28,8 @@ class SecurityPolicyRulePreconfiguredWafConfig {
     return SecurityPolicyRulePreconfiguredWafConfig(
       exclusions: map['exclusions'] == null
           ? null
-          : Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion>(
+          : pulumi.Input.decodeList<
+                  SecurityPolicyRulePreconfiguredWafConfigExclusion>(
               map['exclusions'],
               (value) =>
                   SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap(

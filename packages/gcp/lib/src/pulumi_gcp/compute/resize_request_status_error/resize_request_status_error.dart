@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resize_request_status_error_error/resize_request_status_error_error.dart';
 
 class ResizeRequestStatusError {
@@ -17,9 +17,8 @@ class ResizeRequestStatusError {
     final map = <String, dynamic>{};
     final errorsValue = errors;
     if (errorsValue != null) {
-      map['errors'] =
-          Input.encodeList<ResizeRequestStatusErrorError, Map<String, dynamic>>(
-              errorsValue, (value) => value.toMap());
+      map['errors'] = pulumi.Input.encodeList<ResizeRequestStatusErrorError,
+          Map<String, dynamic>>(errorsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -28,7 +27,7 @@ class ResizeRequestStatusError {
     return ResizeRequestStatusError(
       errors: map['errors'] == null
           ? null
-          : Input.decodeList<ResizeRequestStatusErrorError>(
+          : pulumi.Input.decodeList<ResizeRequestStatusErrorError>(
               map['errors'],
               (value) => ResizeRequestStatusErrorError.fromMap(
                   (value as Map).cast<String, dynamic>())),

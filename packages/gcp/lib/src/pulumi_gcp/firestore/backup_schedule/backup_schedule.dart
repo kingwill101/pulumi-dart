@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_schedule_weekly_recurrence/backup_schedule_weekly_recurrence.dart';
 import 'backup_schedule_args.dart';
 
@@ -52,39 +52,39 @@ import 'backup_schedule_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{database}}/{{name}}
 /// ```
-class BackupSchedule extends CustomResource {
+class BackupSchedule extends pulumi.CustomResource {
   /// For a schedule that runs daily.
-  late final Output<Map<String, dynamic>?> dailyRecurrence;
+  late final pulumi.Output<Map<String, dynamic>?> dailyRecurrence;
 
   /// The Firestore database id. Defaults to `"(default)"`.
-  late final Output<String?> database;
+  late final pulumi.Output<String?> database;
 
   /// The unique backup schedule identifier across all locations and databases for the given project. Format:
   /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   /// You can set this to a value up to 14 weeks.
-  late final Output<String> retention;
+  late final pulumi.Output<String> retention;
 
   /// For a schedule that runs weekly on a specific day.
   /// Structure is documented below.
-  late final Output<BackupScheduleWeeklyRecurrence?> weeklyRecurrence;
+  late final pulumi.Output<BackupScheduleWeeklyRecurrence?> weeklyRecurrence;
 
   BackupSchedule(
     String name, {
     BackupScheduleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firestore/backupSchedule:BackupSchedule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dailyRecurrence =
         registerOutput<Map<String, dynamic>?>('dailyRecurrence');

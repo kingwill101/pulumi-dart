@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_network_endpoint_args.dart';
 
 /// A Region network endpoint represents a IP address/FQDN and port combination that is
@@ -58,47 +58,47 @@ import 'region_network_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default {{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
 /// ```
-class RegionNetworkEndpoint extends CustomResource {
+class RegionNetworkEndpoint extends pulumi.CustomResource {
   /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
-  late final Output<int?> clientDestinationPort;
+  late final pulumi.Output<int?> clientDestinationPort;
 
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
-  late final Output<String?> fqdn;
+  late final pulumi.Output<String?> fqdn;
 
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
-  late final Output<String?> instance;
+  late final pulumi.Output<String?> instance;
 
   /// IPv4 address external endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
-  late final Output<String?> ipAddress;
+  late final pulumi.Output<String?> ipAddress;
 
   /// The unique identifier number for the resource. This identifier is defined by the server.
-  late final Output<int> networkEndpointId;
+  late final pulumi.Output<int> networkEndpointId;
 
   /// Port number of network endpoint.
-  late final Output<int> port;
+  late final pulumi.Output<int> port;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where the containing network endpoint group is located.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The network endpoint group this endpoint is part of.
-  late final Output<String> regionNetworkEndpointGroup;
+  late final pulumi.Output<String> regionNetworkEndpointGroup;
 
   RegionNetworkEndpoint(
     String name, {
     RegionNetworkEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clientDestinationPort = registerOutput<int?>('clientDestinationPort');
     this.fqdn = registerOutput<String?>('fqdn');

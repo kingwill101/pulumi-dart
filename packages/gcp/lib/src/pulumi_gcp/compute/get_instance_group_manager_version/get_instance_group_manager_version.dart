@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_group_manager_version_target_size/get_instance_group_manager_version_target_size.dart';
 
 class GetInstanceGroupManagerVersion {
@@ -23,7 +23,7 @@ class GetInstanceGroupManagerVersion {
     final map = <String, dynamic>{};
     map['instanceTemplate'] = instanceTemplate;
     map['name'] = name;
-    map['targetSizes'] = Input.encodeList<
+    map['targetSizes'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerVersionTargetSize,
         Map<String, dynamic>>(targetSizes, (value) => value.toMap());
     return map;
@@ -33,10 +33,11 @@ class GetInstanceGroupManagerVersion {
     return GetInstanceGroupManagerVersion(
       instanceTemplate: map['instanceTemplate'] as String,
       name: map['name'] as String,
-      targetSizes: Input.decodeList<GetInstanceGroupManagerVersionTargetSize>(
-          map['targetSizes'],
-          (value) => GetInstanceGroupManagerVersionTargetSize.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      targetSizes:
+          pulumi.Input.decodeList<GetInstanceGroupManagerVersionTargetSize>(
+              map['targetSizes'],
+              (value) => GetInstanceGroupManagerVersionTargetSize.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

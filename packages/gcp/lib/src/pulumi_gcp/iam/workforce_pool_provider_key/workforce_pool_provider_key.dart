@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workforce_pool_provider_key_key_data/workforce_pool_provider_key_key_data.dart';
 import 'workforce_pool_provider_key_args.dart';
 
@@ -37,47 +37,47 @@ import 'workforce_pool_provider_key_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{key_id}}
 /// ```
-class WorkforcePoolProviderKey extends CustomResource {
+class WorkforcePoolProviderKey extends pulumi.CustomResource {
   /// The time after which the key will be permanently deleted and cannot be recovered.
   /// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// Immutable. Public half of the asymmetric key.
   /// Structure is documented below.
-  late final Output<WorkforcePoolProviderKeyKeyData> keyData;
+  late final pulumi.Output<WorkforcePoolProviderKeyKeyData> keyData;
 
   /// The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
-  late final Output<String> keyId;
+  late final pulumi.Output<String> keyId;
 
   /// The location for the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the key.
   /// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}/keys/{keyId}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the provider.
-  late final Output<String> providerId;
+  late final pulumi.Output<String> providerId;
 
   /// The state of the key.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The purpose of the key.
   /// Possible values are: `ENCRYPTION`.
-  late final Output<String> use;
+  late final pulumi.Output<String> use;
 
   /// The ID of the workforce pool.
-  late final Output<String> workforcePoolId;
+  late final pulumi.Output<String> workforcePoolId;
 
   WorkforcePoolProviderKey(
     String name, {
     WorkforcePoolProviderKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.expireTime = registerOutput<String>('expireTime');
     this.keyData = registerOutput<WorkforcePoolProviderKeyKeyData>('keyData');

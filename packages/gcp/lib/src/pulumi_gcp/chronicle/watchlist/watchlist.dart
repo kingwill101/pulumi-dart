@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../watchlist_entity_count/watchlist_entity_count.dart';
 import '../watchlist_entity_population_mechanism/watchlist_entity_population_mechanism.dart';
 import '../watchlist_watchlist_user_preferences/watchlist_watchlist_user_preferences.dart';
@@ -47,69 +47,70 @@ import 'watchlist_args.dart';
 /// ```sh
 /// $ pulumi import gcp:chronicle/watchlist:Watchlist default {{location}}/{{instance}}/{{watchlist_id}}
 /// ```
-class Watchlist extends CustomResource {
+class Watchlist extends pulumi.CustomResource {
   /// Output only. Time the watchlist was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Description of the watchlist.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Required. Display name of the watchlist.
   /// Note that it must be at least one character and less than 63 characters
   /// (https://google.aip.dev/148).
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Count of different types of entities in the watchlist.
   /// Structure is documented below.
-  late final Output<List<WatchlistEntityCount>> entityCounts;
+  late final pulumi.Output<List<WatchlistEntityCount>> entityCounts;
 
   /// Mechanism to populate entities in the watchlist.
   /// Structure is documented below.
-  late final Output<WatchlistEntityPopulationMechanism>
+  late final pulumi.Output<WatchlistEntityPopulationMechanism>
       entityPopulationMechanism;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Optional. Weight applied to the risk score for entities
   /// in this watchlist.
   /// The default is 1.0 if it is not specified.
-  late final Output<double?> multiplyingFactor;
+  late final pulumi.Output<double?> multiplyingFactor;
 
   /// Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. Time the watchlist was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Optional. The ID to use for the watchlist,
   /// which will become the final component of the watchlist's resource name.
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z-/.
-  late final Output<String> watchlistId;
+  late final pulumi.Output<String> watchlistId;
 
   /// A collection of user preferences for watchlist UI configuration.
   /// Structure is documented below.
-  late final Output<WatchlistWatchlistUserPreferences> watchlistUserPreferences;
+  late final pulumi.Output<WatchlistWatchlistUserPreferences>
+      watchlistUserPreferences;
 
   Watchlist(
     String name, {
     WatchlistArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:chronicle/watchlist:Watchlist',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

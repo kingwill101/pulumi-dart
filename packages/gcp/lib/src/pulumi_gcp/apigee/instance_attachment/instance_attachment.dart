@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_attachment_args.dart';
 
 /// An `Instance attachment` in Apigee.
@@ -29,26 +29,26 @@ import 'instance_attachment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
 /// ```
-class InstanceAttachment extends CustomResource {
+class InstanceAttachment extends pulumi.CustomResource {
   /// The resource ID of the environment.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// The name of the newly created  attachment (output parameter).
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   InstanceAttachment(
     String name, {
     InstanceAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/instanceAttachment:InstanceAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.environment = registerOutput<String>('environment');
     this.instanceId = registerOutput<String>('instanceId');

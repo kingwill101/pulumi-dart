@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../delivery_pipeline_condition/delivery_pipeline_condition.dart';
 import '../delivery_pipeline_serial_pipeline/delivery_pipeline_serial_pipeline.dart';
 import 'delivery_pipeline_args.dart';
@@ -46,72 +46,72 @@ import 'delivery_pipeline_args.dart';
 /// ```sh
 /// $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
 /// ```
-class DeliveryPipeline extends CustomResource {
+class DeliveryPipeline extends pulumi.CustomResource {
   /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Output only. Information around the state of the Delivery Pipeline.
-  late final Output<List<DeliveryPipelineCondition>> conditions;
+  late final pulumi.Output<List<DeliveryPipelineCondition>> conditions;
 
   /// Output only. Time at which the pipeline was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Description of the `DeliveryPipeline`. Max length is 255 characters.
-  late final Output<String?> description;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> description;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the `DeliveryPipeline`. Format is `a-z?`.
   ///
   ///
   ///
   /// - - -
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
-  late final Output<DeliveryPipelineSerialPipeline?> serialPipeline;
+  late final pulumi.Output<DeliveryPipelineSerialPipeline?> serialPipeline;
 
   /// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
-  late final Output<bool?> suspended;
+  late final pulumi.Output<bool?> suspended;
 
   /// Output only. Unique identifier of the `DeliveryPipeline`.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. Most recent time at which the pipeline was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DeliveryPipeline(
     String name, {
     DeliveryPipelineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:clouddeploy/deliveryPipeline:DeliveryPipeline',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.conditions =

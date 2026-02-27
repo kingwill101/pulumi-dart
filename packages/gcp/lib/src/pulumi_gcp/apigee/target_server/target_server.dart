@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../target_server_ssl_info/target_server_ssl_info.dart';
 import 'target_server_args.dart';
 
@@ -35,43 +35,43 @@ import 'target_server_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/{{name}}
 /// ```
-class TargetServer extends CustomResource {
+class TargetServer extends pulumi.CustomResource {
   /// A human-readable description of this TargetServer.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  late final Output<String> envId;
+  late final pulumi.Output<String> envId;
 
   /// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
-  late final Output<String> host;
+  late final pulumi.Output<String> host;
 
   /// Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
-  late final Output<bool?> isEnabled;
+  late final pulumi.Output<bool?> isEnabled;
 
   /// The resource id of this reference. Values must match the regular expression [\w\s-.]+.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
-  late final Output<int> port;
+  late final pulumi.Output<int> port;
 
   /// Immutable. The protocol used by this TargetServer.
   /// Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
-  late final Output<String> protocol;
+  late final pulumi.Output<String> protocol;
 
   /// Specifies TLS configuration info for this TargetServer. The JSON name is sSLInfo for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
   /// Structure is documented below.
-  late final Output<TargetServerSSlInfo?> sSlInfo;
+  late final pulumi.Output<TargetServerSSlInfo?> sSlInfo;
 
   TargetServer(
     String name, {
     TargetServerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/targetServer:TargetServer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.envId = registerOutput<String>('envId');

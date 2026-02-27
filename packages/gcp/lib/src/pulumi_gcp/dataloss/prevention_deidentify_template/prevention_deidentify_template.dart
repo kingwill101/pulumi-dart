@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config/prevention_deidentify_template_deidentify_config.dart';
 import 'prevention_deidentify_template_args.dart';
 
@@ -41,48 +41,48 @@ import 'prevention_deidentify_template_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
 /// ```
-class PreventionDeidentifyTemplate extends CustomResource {
+class PreventionDeidentifyTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an deidentifyTemplate. Set by the server.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Configuration of the deidentify template
   /// Structure is documented below.
-  late final Output<PreventionDeidentifyTemplateDeidentifyConfig>
+  late final pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig>
       deidentifyConfig;
 
   /// A description of the template.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User set display name of the template.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The resource name of the template. Set by the server.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of the template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
-  late final Output<String> templateId;
+  late final pulumi.Output<String> templateId;
 
   /// The last update timestamp of an deidentifyTemplate. Set by the server.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   PreventionDeidentifyTemplate(
     String name, {
     PreventionDeidentifyTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deidentifyConfig =

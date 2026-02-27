@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_endpoint_deployed_model_dedicated_resource_autoscaling_metric_spec/ai_endpoint_deployed_model_dedicated_resource_autoscaling_metric_spec.dart';
 import '../ai_endpoint_deployed_model_dedicated_resource_machine_spec/ai_endpoint_deployed_model_dedicated_resource_machine_spec.dart';
 
@@ -35,14 +35,14 @@ class AiEndpointDeployedModelDedicatedResource {
     final map = <String, dynamic>{};
     final autoscalingMetricSpecsValue = autoscalingMetricSpecs;
     if (autoscalingMetricSpecsValue != null) {
-      map['autoscalingMetricSpecs'] = Input.encodeList<
+      map['autoscalingMetricSpecs'] = pulumi.Input.encodeList<
               AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec,
               Map<String, dynamic>>(
           autoscalingMetricSpecsValue, (value) => value.toMap());
     }
     final machineSpecsValue = machineSpecs;
     if (machineSpecsValue != null) {
-      map['machineSpecs'] = Input.encodeList<
+      map['machineSpecs'] = pulumi.Input.encodeList<
           AiEndpointDeployedModelDedicatedResourceMachineSpec,
           Map<String, dynamic>>(machineSpecsValue, (value) => value.toMap());
     }
@@ -62,7 +62,7 @@ class AiEndpointDeployedModelDedicatedResource {
     return AiEndpointDeployedModelDedicatedResource(
       autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec>(
               map['autoscalingMetricSpecs'],
               (value) =>
@@ -70,7 +70,7 @@ class AiEndpointDeployedModelDedicatedResource {
                       .fromMap((value as Map).cast<String, dynamic>())),
       machineSpecs: map['machineSpecs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiEndpointDeployedModelDedicatedResourceMachineSpec>(
               map['machineSpecs'],
               (value) =>

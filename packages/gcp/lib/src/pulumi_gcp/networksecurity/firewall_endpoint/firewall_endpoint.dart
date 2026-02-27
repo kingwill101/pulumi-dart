@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_endpoint_endpoint_settings/firewall_endpoint_endpoint_settings.dart';
 import 'firewall_endpoint_args.dart';
 
@@ -38,67 +38,67 @@ import 'firewall_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/firewallEndpoint:FirewallEndpoint default {{parent}}/locations/{{location}}/firewallEndpoints/{{name}}
 /// ```
-class FirewallEndpoint extends CustomResource {
+class FirewallEndpoint extends pulumi.CustomResource {
   /// List of networks that are associated with this endpoint in the local zone.
   /// This is a projection of the FirewallEndpointAssociations pointing at this
   /// endpoint. A network will only appear in this list after traffic routing is
   /// fully configured. Format: projects/{project}/global/networks/{name}.
-  late final Output<List<String>> associatedNetworks;
+  late final pulumi.Output<List<String>> associatedNetworks;
 
   /// Project to bill on endpoint uptime usage.
-  late final Output<String> billingProjectId;
+  late final pulumi.Output<String> billingProjectId;
 
   /// Time the firewall endpoint was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Settings for the endpoint.
   /// Structure is documented below.
-  late final Output<FirewallEndpointEndpointSettings?> endpointSettings;
+  late final pulumi.Output<FirewallEndpointEndpointSettings?> endpointSettings;
 
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location (zone) of the firewall endpoint.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the firewall endpoint resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the parent this firewall endpoint belongs to.
   /// Format: organizations/{organization_id}.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Server-defined URL of this resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The current state of the endpoint.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Time the firewall endpoint was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   FirewallEndpoint(
     String name, {
     FirewallEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/firewallEndpoint:FirewallEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.associatedNetworks =
         registerOutput<List<String>>('associatedNetworks');

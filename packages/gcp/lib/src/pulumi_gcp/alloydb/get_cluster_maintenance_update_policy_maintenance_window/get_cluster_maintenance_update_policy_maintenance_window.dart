@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_maintenance_update_policy_maintenance_window_start_time/get_cluster_maintenance_update_policy_maintenance_window_start_time.dart';
 
 class GetClusterMaintenanceUpdatePolicyMaintenanceWindow {
@@ -19,7 +19,7 @@ class GetClusterMaintenanceUpdatePolicyMaintenanceWindow {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['day'] = day;
-    map['startTimes'] = Input.encodeList<
+    map['startTimes'] = pulumi.Input.encodeList<
         GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime,
         Map<String, dynamic>>(startTimes, (value) => value.toMap());
     return map;
@@ -29,7 +29,7 @@ class GetClusterMaintenanceUpdatePolicyMaintenanceWindow {
       Map<String, dynamic> map) {
     return GetClusterMaintenanceUpdatePolicyMaintenanceWindow(
       day: map['day'] as String,
-      startTimes: Input.decodeList<
+      startTimes: pulumi.Input.decodeList<
               GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime>(
           map['startTimes'],
           (value) => GetClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_snapshot_args.dart';
 
 /// NetApp Volumes helps you manage your data usage with snapshots that can quickly restore lost data.
@@ -45,48 +45,48 @@ import 'volume_snapshot_args.dart';
 /// ```sh
 /// $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{location}}/{{volume_name}}/{{name}}
 /// ```
-class VolumeSnapshot extends CustomResource {
+class VolumeSnapshot extends pulumi.CustomResource {
   /// Description for the snapshot.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the snapshot.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Storage used to store blocks unique to this snapshot.
-  late final Output<int> usedBytes;
+  late final pulumi.Output<int> usedBytes;
 
   /// The name of the volume to create the snapshot in.
-  late final Output<String> volumeName;
+  late final pulumi.Output<String> volumeName;
 
   VolumeSnapshot(
     String name, {
     VolumeSnapshotArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:netapp/volumeSnapshot:VolumeSnapshot',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.effectiveLabels =

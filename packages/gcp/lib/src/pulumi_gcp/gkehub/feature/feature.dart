@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_fleet_default_member_config/feature_fleet_default_member_config.dart';
 import '../feature_resource_state/feature_resource_state.dart';
 import '../feature_spec/feature_spec.dart';
@@ -92,65 +92,66 @@ import 'feature_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/feature:Feature default {{location}}/{{name}}
 /// ```
-class Feature extends CustomResource {
+class Feature extends pulumi.CustomResource {
   /// Output only. When the Feature resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Output only. When the Feature resource was deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. Fleet Default Membership Configuration.
   /// Structure is documented below.
-  late final Output<FeatureFleetDefaultMemberConfig?> fleetDefaultMemberConfig;
+  late final pulumi.Output<FeatureFleetDefaultMemberConfig?>
+      fleetDefaultMemberConfig;
 
   /// GCP labels for this Feature.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The full, unique name of this Feature resource
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// State of the Feature resource itself.
   /// Structure is documented below.
-  late final Output<List<FeatureResourceState>> resourceStates;
+  late final pulumi.Output<List<FeatureResourceState>> resourceStates;
 
   /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   /// Structure is documented below.
-  late final Output<FeatureSpec?> spec;
+  late final pulumi.Output<FeatureSpec?> spec;
 
   /// (Output)
   /// Output only. The "running state" of the Feature in this Hub.
   /// Structure is documented below.
-  late final Output<List<FeatureState>> states;
+  late final pulumi.Output<List<FeatureState>> states;
 
   /// (Output)
   /// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Feature(
     String name, {
     FeatureArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/feature:Feature',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

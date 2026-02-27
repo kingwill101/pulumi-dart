@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_postgresql_source_config_include_objects_postgresql_schema/stream_source_config_postgresql_source_config_include_objects_postgresql_schema.dart';
 
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
@@ -16,7 +16,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['postgresqlSchemas'] = Input.encodeList<
+    map['postgresqlSchemas'] = pulumi.Input.encodeList<
         StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema,
         Map<String, dynamic>>(postgresqlSchemas, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
   factory StreamSourceConfigPostgresqlSourceConfigIncludeObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamSourceConfigPostgresqlSourceConfigIncludeObjects(
-      postgresqlSchemas: Input.decodeList<
+      postgresqlSchemas: pulumi.Input.decodeList<
               StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema>(
           map['postgresqlSchemas'],
           (value) =>

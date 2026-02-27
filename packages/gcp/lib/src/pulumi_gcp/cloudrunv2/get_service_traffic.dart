@@ -1,3 +1,3 @@
 library module_cloudrunv2_get_service_traffic;
 
-export 'get_service_traffic/get_service_traffic2.dart';
+export 'get_service_traffic/get_service_traffic_cloudrunv2.dart';

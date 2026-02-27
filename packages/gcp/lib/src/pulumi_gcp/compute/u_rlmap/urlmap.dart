@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_default_custom_error_response_policy/urlmap_default_custom_error_response_policy.dart';
 import '../urlmap_default_route_action/urlmap_default_route_action.dart';
 import '../urlmap_default_url_redirect/urlmap_default_url_redirect.dart';
@@ -116,9 +116,9 @@ import 'urlmap_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
 /// ```
-class URLMap extends CustomResource {
+class URLMap extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
   /// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
@@ -129,7 +129,7 @@ class URLMap extends CustomResource {
   /// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
   /// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
   /// Structure is documented below.
-  late final Output<URLMapDefaultCustomErrorResponsePolicy?>
+  late final pulumi.Output<URLMapDefaultCustomErrorResponsePolicy?>
       defaultCustomErrorResponsePolicy;
 
   /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
@@ -138,37 +138,37 @@ class URLMap extends CustomResource {
   /// is set, defaultRouteAction cannot contain any weightedBackendServices.
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
   /// Structure is documented below.
-  late final Output<URLMapDefaultRouteAction?> defaultRouteAction;
+  late final pulumi.Output<URLMapDefaultRouteAction?> defaultRouteAction;
 
   /// The backend service or backend bucket to use when none of the given rules match.
-  late final Output<String?> defaultService;
+  late final pulumi.Output<String?> defaultService;
 
   /// When none of the specified hostRules match, the request is redirected to a URL specified
   /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
-  late final Output<URLMapDefaultUrlRedirect?> defaultUrlRedirect;
+  late final pulumi.Output<URLMapDefaultUrlRedirect?> defaultUrlRedirect;
 
   /// An optional description of this resource. Provide this property when you create
   /// the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Fingerprint of this resource. A hash of the contents stored in this object. This
   /// field is used in optimistic locking.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService. The headerAction specified here take effect after
   /// headerAction specified under pathMatcher.
   /// Structure is documented below.
-  late final Output<URLMapHeaderAction?> headerAction;
+  late final pulumi.Output<URLMapHeaderAction?> headerAction;
 
   /// The list of HostRules to use against the URL.
   /// Structure is documented below.
-  late final Output<List<URLMapHostRule>?> hostRules;
+  late final pulumi.Output<List<URLMapHostRule>?> hostRules;
 
   /// The unique identifier for the resource.
-  late final Output<int> mapId;
+  late final pulumi.Output<int> mapId;
 
   /// Name of the resource. Provided by the client when the resource is created. The
   /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -176,34 +176,34 @@ class URLMap extends CustomResource {
   /// `a-z?` which means the first character must be a lowercase
   /// letter, and all following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The list of named PathMatchers to use against the URL.
   /// Structure is documented below.
-  late final Output<List<URLMapPathMatcher>?> pathMatchers;
+  late final pulumi.Output<List<URLMapPathMatcher>?> pathMatchers;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The list of expected URL mapping tests. Request to update this UrlMap will
   /// succeed only if all of the test cases pass. You can specify a maximum of 100
   /// tests per UrlMap.
   /// Structure is documented below.
-  late final Output<List<URLMapTest>?> tests;
+  late final pulumi.Output<List<URLMapTest>?> tests;
 
   URLMap(
     String name, {
     URLMapArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/uRLMap:URLMap',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.defaultCustomErrorResponsePolicy =

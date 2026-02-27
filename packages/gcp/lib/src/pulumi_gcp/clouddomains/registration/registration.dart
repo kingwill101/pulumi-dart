@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../registration_contact_settings/registration_contact_settings.dart';
 import '../registration_dns_settings/registration_dns_settings.dart';
 import '../registration_management_settings/registration_management_settings.dart';
@@ -35,82 +35,82 @@ import 'registration_args.dart';
 /// ```sh
 /// $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
 /// ```
-class Registration extends CustomResource {
+class Registration extends pulumi.CustomResource {
   /// The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
-  late final Output<List<String>?> contactNotices;
+  late final pulumi.Output<List<String>?> contactNotices;
 
   /// Required. Settings for contact information linked to the Registration.
   /// Structure is documented below.
-  late final Output<RegistrationContactSettings> contactSettings;
+  late final pulumi.Output<RegistrationContactSettings> contactSettings;
 
   /// Output only. Time at which the automation was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Settings controlling the DNS configuration of the Registration.
   /// Structure is documented below.
-  late final Output<RegistrationDnsSettings?> dnsSettings;
+  late final pulumi.Output<RegistrationDnsSettings?> dnsSettings;
 
   /// Required. The domain name. Unicode domain names must be expressed in Punycode format.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
-  late final Output<List<String>?> domainNotices;
+  late final pulumi.Output<List<String>?> domainNotices;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Output only. Time at which the automation was updated.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// Output only. The set of issues with the Registration that require attention.
-  late final Output<List<String>> issues;
+  late final pulumi.Output<List<String>> issues;
 
   /// Set of labels associated with the Registration.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Settings for management of the Registration, including renewal, billing, and transfer
   /// Structure is documented below.
-  late final Output<RegistrationManagementSettings> managementSettings;
+  late final pulumi.Output<RegistrationManagementSettings> managementSettings;
 
   /// Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
-  late final Output<String> registerFailureReason;
+  late final pulumi.Output<String> registerFailureReason;
 
   /// Output only. The current state of the Registration.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. Set of options for the contactSettings.privacy field that this Registration supports.
-  late final Output<List<String>> supportedPrivacies;
+  late final pulumi.Output<List<String>> supportedPrivacies;
 
   /// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
   /// registrations.retrieveRegisterParameters or registrations.searchDomains calls.
   /// Structure is documented below.
-  late final Output<RegistrationYearlyPrice> yearlyPrice;
+  late final pulumi.Output<RegistrationYearlyPrice> yearlyPrice;
 
   Registration(
     String name, {
     RegistrationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:clouddomains/registration:Registration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.contactNotices = registerOutput<List<String>?>('contactNotices');
     this.contactSettings =

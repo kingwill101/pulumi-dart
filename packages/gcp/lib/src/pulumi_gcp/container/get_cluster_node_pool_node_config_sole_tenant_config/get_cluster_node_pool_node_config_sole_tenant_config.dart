@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_node_config_sole_tenant_config_node_affinity/get_cluster_node_pool_node_config_sole_tenant_config_node_affinity.dart';
 
 class GetClusterNodePoolNodeConfigSoleTenantConfig {
@@ -19,7 +19,7 @@ class GetClusterNodePoolNodeConfigSoleTenantConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['minNodeCpus'] = minNodeCpus;
-    map['nodeAffinities'] = Input.encodeList<
+    map['nodeAffinities'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity,
         Map<String, dynamic>>(nodeAffinities, (value) => value.toMap());
     return map;
@@ -29,7 +29,7 @@ class GetClusterNodePoolNodeConfigSoleTenantConfig {
       Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigSoleTenantConfig(
       minNodeCpus: map['minNodeCpus'] as int,
-      nodeAffinities: Input.decodeList<
+      nodeAffinities: pulumi.Input.decodeList<
               GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity>(
           map['nodeAffinities'],
           (value) =>

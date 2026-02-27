@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_iampolicy_audit_config_audit_log_config/get_iampolicy_audit_config_audit_log_config.dart';
 
 class GetIAMPolicyAuditConfig {
@@ -17,7 +17,7 @@ class GetIAMPolicyAuditConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['auditLogConfigs'] = Input.encodeList<
+    map['auditLogConfigs'] = pulumi.Input.encodeList<
         GetIAMPolicyAuditConfigAuditLogConfig,
         Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap());
     map['service'] = service;
@@ -26,10 +26,11 @@ class GetIAMPolicyAuditConfig {
 
   factory GetIAMPolicyAuditConfig.fromMap(Map<String, dynamic> map) {
     return GetIAMPolicyAuditConfig(
-      auditLogConfigs: Input.decodeList<GetIAMPolicyAuditConfigAuditLogConfig>(
-          map['auditLogConfigs'],
-          (value) => GetIAMPolicyAuditConfigAuditLogConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      auditLogConfigs:
+          pulumi.Input.decodeList<GetIAMPolicyAuditConfigAuditLogConfig>(
+              map['auditLogConfigs'],
+              (value) => GetIAMPolicyAuditConfigAuditLogConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       service: map['service'] as String,
     );
   }

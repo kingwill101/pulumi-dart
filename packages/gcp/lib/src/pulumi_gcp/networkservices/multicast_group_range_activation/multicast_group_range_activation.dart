@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multicast_group_range_activation_log_config/multicast_group_range_activation_log_config.dart';
 import '../multicast_group_range_activation_state/multicast_group_range_activation_state.dart';
 import 'multicast_group_range_activation_args.dart';
@@ -42,66 +42,66 @@ import 'multicast_group_range_activation_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation default {{location}}/{{multicast_group_range_activation_id}}
 /// ```
-class MulticastGroupRangeActivation extends CustomResource {
+class MulticastGroupRangeActivation extends pulumi.CustomResource {
   /// [Output only] The timestamp when the multicast group range activation was
   /// created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// An optional text description of the multicast group range activation.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// [Output only] The multicast group IP address range.
-  late final Output<String> ipCidrRange;
+  late final pulumi.Output<String> ipCidrRange;
 
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The logging configuration.
   /// Structure is documented below.
-  late final Output<MulticastGroupRangeActivationLogConfig?> logConfig;
+  late final pulumi.Output<MulticastGroupRangeActivationLogConfig?> logConfig;
 
   /// The resource name of a multicast domain activation that is in the
   /// same zone as this multicast group.
   /// Use the following format:
   /// `projects/*/locations/*/multicastDomainActivations/*`
-  late final Output<String> multicastDomainActivation;
+  late final pulumi.Output<String> multicastDomainActivation;
 
   /// The resource names of associated multicast group consumer activations.
   /// Use the following format:
   /// `projects/*/locations/*/multicastGroupConsumerActivations/*`.
-  late final Output<List<String>> multicastGroupConsumerActivations;
+  late final pulumi.Output<List<String>> multicastGroupConsumerActivations;
 
   /// The resource name of the global multicast group range for the
   /// group. Use the following format:
   /// `projects/*/locations/global/multicastGroupRanges/*`
-  late final Output<String> multicastGroupRange;
+  late final pulumi.Output<String> multicastGroupRange;
 
   /// A unique name for the multicast group range activation.
   /// The name is restricted to letters, numbers, and hyphen, with the first
   /// character a letter, and the last a letter or a number. The name must not
   /// exceed 48 characters.
-  late final Output<String> multicastGroupRangeActivationId;
+  late final pulumi.Output<String> multicastGroupRangeActivationId;
 
   /// Identifier. The resource name of the multicast group range activation.
   /// Use the following format:
   /// `projects/*/locations/*/multicastGroupRangeActivations/*`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// (Output)
   /// The state of the multicast resource.
@@ -113,27 +113,27 @@ class MulticastGroupRangeActivation extends CustomResource {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  late final Output<List<MulticastGroupRangeActivationState>> states;
+  late final pulumi.Output<List<MulticastGroupRangeActivationState>> states;
 
   /// [Output only] The Google-generated UUID for the resource. This value is
   /// unique across all multicast group resources. If a group is deleted and
   /// another with the same name is created, the new group is assigned a
   /// different unique_id.
-  late final Output<String> uniqueId;
+  late final pulumi.Output<String> uniqueId;
 
   /// [Output only] The timestamp when the multicast group range activation was
   /// most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   MulticastGroupRangeActivation(
     String name, {
     MulticastGroupRangeActivationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

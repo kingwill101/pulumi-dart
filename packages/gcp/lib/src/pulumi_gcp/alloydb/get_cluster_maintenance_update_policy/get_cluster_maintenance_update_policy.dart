@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_maintenance_update_policy_maintenance_window/get_cluster_maintenance_update_policy_maintenance_window.dart';
 
 class GetClusterMaintenanceUpdatePolicy {
@@ -14,7 +14,7 @@ class GetClusterMaintenanceUpdatePolicy {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['maintenanceWindows'] = Input.encodeList<
+    map['maintenanceWindows'] = pulumi.Input.encodeList<
         GetClusterMaintenanceUpdatePolicyMaintenanceWindow,
         Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap());
     return map;
@@ -22,12 +22,11 @@ class GetClusterMaintenanceUpdatePolicy {
 
   factory GetClusterMaintenanceUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterMaintenanceUpdatePolicy(
-      maintenanceWindows:
-          Input.decodeList<GetClusterMaintenanceUpdatePolicyMaintenanceWindow>(
-              map['maintenanceWindows'],
-              (value) =>
-                  GetClusterMaintenanceUpdatePolicyMaintenanceWindow.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      maintenanceWindows: pulumi.Input.decodeList<
+              GetClusterMaintenanceUpdatePolicyMaintenanceWindow>(
+          map['maintenanceWindows'],
+          (value) => GetClusterMaintenanceUpdatePolicyMaintenanceWindow.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

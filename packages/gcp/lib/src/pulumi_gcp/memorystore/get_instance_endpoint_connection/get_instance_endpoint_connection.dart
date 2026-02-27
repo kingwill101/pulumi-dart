@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_endpoint_connection_psc_auto_connection/get_instance_endpoint_connection_psc_auto_connection.dart';
 
 class GetInstanceEndpointConnection {
@@ -13,7 +13,7 @@ class GetInstanceEndpointConnection {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['pscAutoConnections'] = Input.encodeList<
+    map['pscAutoConnections'] = pulumi.Input.encodeList<
         GetInstanceEndpointConnectionPscAutoConnection,
         Map<String, dynamic>>(pscAutoConnections, (value) => value.toMap());
     return map;
@@ -21,11 +21,11 @@ class GetInstanceEndpointConnection {
 
   factory GetInstanceEndpointConnection.fromMap(Map<String, dynamic> map) {
     return GetInstanceEndpointConnection(
-      pscAutoConnections:
-          Input.decodeList<GetInstanceEndpointConnectionPscAutoConnection>(
-              map['pscAutoConnections'],
-              (value) => GetInstanceEndpointConnectionPscAutoConnection.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      pscAutoConnections: pulumi.Input.decodeList<
+              GetInstanceEndpointConnectionPscAutoConnection>(
+          map['pscAutoConnections'],
+          (value) => GetInstanceEndpointConnectionPscAutoConnection.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cloud_exadata_infrastructures_args.dart';
 import 'get_cloud_exadata_infrastructures_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_cloud_exadata_infrastructures_result.dart';
 /// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.cloudExadataInfrastructures).
 Future<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructures(
   GetCloudExadataInfrastructuresArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:oracledatabase/getCloudExadataInfrastructures:getCloudExadataInfrastructures',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudExadataInfrastructuresResult.fromMap(result);
 }

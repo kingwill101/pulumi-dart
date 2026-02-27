@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'dart:convert';
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batching/batching.dart';
 import 'external_credentials/external_credentials.dart';
 
@@ -41,12 +41,12 @@ class GcpConfig {
   const GcpConfig();
 
   String? _raw(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.getConfig(key);
   }
 
   bool _isSecret(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.isConfigSecret(key);
   }
 

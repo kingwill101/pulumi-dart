@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_ai_processor_default_version_args.dart';
 
 /// The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
@@ -23,23 +23,23 @@ import 'document_ai_processor_default_version_args.dart';
 /// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}
 /// ```
-class DocumentAiProcessorDefaultVersion extends CustomResource {
+class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
   /// The processor to set the version on.
-  late final Output<String> processor;
+  late final pulumi.Output<String> processor;
 
   /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
   /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   DocumentAiProcessorDefaultVersion(
     String name, {
     DocumentAiProcessorDefaultVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.processor = registerOutput<String>('processor');
     this.version = registerOutput<String>('version');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ai_index_metadata_config/get_ai_index_metadata_config.dart';
 
 class GetAiIndexMetadata {
@@ -28,7 +28,7 @@ class GetAiIndexMetadata {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['configs'] =
-        Input.encodeList<GetAiIndexMetadataConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAiIndexMetadataConfig, Map<String, dynamic>>(
             configs, (value) => value.toMap());
     map['contentsDeltaUri'] = contentsDeltaUri;
     map['isCompleteOverwrite'] = isCompleteOverwrite;
@@ -37,7 +37,7 @@ class GetAiIndexMetadata {
 
   factory GetAiIndexMetadata.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadata(
-      configs: Input.decodeList<GetAiIndexMetadataConfig>(
+      configs: pulumi.Input.decodeList<GetAiIndexMetadataConfig>(
           map['configs'],
           (value) => GetAiIndexMetadataConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

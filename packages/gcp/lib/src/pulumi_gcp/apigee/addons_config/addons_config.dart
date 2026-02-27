@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../addons_config_addons_config/addons_config_addons_config.dart';
 import 'addons_config_args.dart';
 
@@ -39,23 +39,23 @@ import 'addons_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default {{name}}
 /// ```
-class AddonsConfig extends CustomResource {
+class AddonsConfig extends pulumi.CustomResource {
   /// Addon configurations of the Apigee organization.
   /// Structure is documented below.
-  late final Output<AddonsConfigAddonsConfig?> addonsConfig;
+  late final pulumi.Output<AddonsConfigAddonsConfig?> addonsConfig;
 
   /// Name of the Apigee organization.
-  late final Output<String> org;
+  late final pulumi.Output<String> org;
 
   AddonsConfig(
     String name, {
     AddonsConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/addonsConfig:AddonsConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.addonsConfig =
         registerOutput<AddonsConfigAddonsConfig?>('addonsConfig');

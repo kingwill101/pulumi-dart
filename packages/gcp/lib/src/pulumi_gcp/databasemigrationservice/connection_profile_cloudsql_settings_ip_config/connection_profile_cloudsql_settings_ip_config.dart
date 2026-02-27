@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_profile_cloudsql_settings_ip_config_authorized_network/connection_profile_cloudsql_settings_ip_config_authorized_network.dart';
 
 class ConnectionProfileCloudsqlSettingsIpConfig {
@@ -30,7 +30,7 @@ class ConnectionProfileCloudsqlSettingsIpConfig {
     final map = <String, dynamic>{};
     final authorizedNetworksValue = authorizedNetworks;
     if (authorizedNetworksValue != null) {
-      map['authorizedNetworks'] = Input.encodeList<
+      map['authorizedNetworks'] = pulumi.Input.encodeList<
               ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork,
               Map<String, dynamic>>(
           authorizedNetworksValue, (value) => value.toMap());
@@ -55,7 +55,7 @@ class ConnectionProfileCloudsqlSettingsIpConfig {
     return ConnectionProfileCloudsqlSettingsIpConfig(
       authorizedNetworks: map['authorizedNetworks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>(
               map['authorizedNetworks'],
               (value) =>

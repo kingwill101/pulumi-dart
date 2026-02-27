@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_desired_user_created_endpoints_desired_user_created_endpoint/instance_desired_user_created_endpoints_desired_user_created_endpoint.dart';
 import 'instance_desired_user_created_endpoints_args.dart';
 
@@ -42,32 +42,32 @@ import 'instance_desired_user_created_endpoints_args.dart';
 /// ```sh
 /// $ pulumi import gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints default {{name}}
 /// ```
-class InstanceDesiredUserCreatedEndpoints extends CustomResource {
+class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
   /// A list of desired user endpoints
   /// Structure is documented below.
-  late final Output<
+  late final pulumi.Output<
           List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>
       desiredUserCreatedEndpoints;
 
   /// The name of the Memorystore instance these endpoints should be added to.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The name of the region of the Memorystore instance these endpoints should be added to.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   InstanceDesiredUserCreatedEndpoints(
     String name, {
     InstanceDesiredUserCreatedEndpointsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.desiredUserCreatedEndpoints = registerOutput<
             List<

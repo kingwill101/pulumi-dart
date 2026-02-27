@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connectivity_tests_connectivity_test_destination/get_connectivity_tests_connectivity_test_destination.dart';
 import '../get_connectivity_tests_connectivity_test_source/get_connectivity_tests_connectivity_test_source.dart';
 
@@ -61,7 +61,7 @@ class GetConnectivityTestsConnectivityTest {
     final map = <String, dynamic>{};
     map['bypassFirewallChecks'] = bypassFirewallChecks;
     map['description'] = description;
-    map['destinations'] = Input.encodeList<
+    map['destinations'] = pulumi.Input.encodeList<
         GetConnectivityTestsConnectivityTestDestination,
         Map<String, dynamic>>(destinations, (value) => value.toMap());
     map['effectiveLabels'] = effectiveLabels;
@@ -72,7 +72,7 @@ class GetConnectivityTestsConnectivityTest {
     map['pulumiLabels'] = pulumiLabels;
     map['relatedProjects'] = relatedProjects;
     map['roundTrip'] = roundTrip;
-    map['sources'] = Input.encodeList<
+    map['sources'] = pulumi.Input.encodeList<
         GetConnectivityTestsConnectivityTestSource,
         Map<String, dynamic>>(sources, (value) => value.toMap());
     return map;
@@ -83,12 +83,11 @@ class GetConnectivityTestsConnectivityTest {
     return GetConnectivityTestsConnectivityTest(
       bypassFirewallChecks: map['bypassFirewallChecks'] as bool,
       description: map['description'] as String,
-      destinations:
-          Input.decodeList<GetConnectivityTestsConnectivityTestDestination>(
-              map['destinations'],
-              (value) =>
-                  GetConnectivityTestsConnectivityTestDestination.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      destinations: pulumi.Input.decodeList<
+              GetConnectivityTestsConnectivityTestDestination>(
+          map['destinations'],
+          (value) => GetConnectivityTestsConnectivityTestDestination.fromMap(
+              (value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
@@ -97,10 +96,11 @@ class GetConnectivityTestsConnectivityTest {
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       relatedProjects: (map['relatedProjects'] as List).cast<String>(),
       roundTrip: map['roundTrip'] as bool,
-      sources: Input.decodeList<GetConnectivityTestsConnectivityTestSource>(
-          map['sources'],
-          (value) => GetConnectivityTestsConnectivityTestSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sources:
+          pulumi.Input.decodeList<GetConnectivityTestsConnectivityTestSource>(
+              map['sources'],
+              (value) => GetConnectivityTestsConnectivityTestSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

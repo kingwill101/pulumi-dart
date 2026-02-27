@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../azure_cluster_control_plane_database_encryption/azure_cluster_control_plane_database_encryption.dart';
 import '../azure_cluster_control_plane_main_volume/azure_cluster_control_plane_main_volume.dart';
 import '../azure_cluster_control_plane_proxy_config/azure_cluster_control_plane_proxy_config.dart';
@@ -68,7 +68,7 @@ class AzureClusterControlPlane {
     }
     final replicaPlacementsValue = replicaPlacements;
     if (replicaPlacementsValue != null) {
-      map['replicaPlacements'] = Input.encodeList<
+      map['replicaPlacements'] = pulumi.Input.encodeList<
               AzureClusterControlPlaneReplicaPlacement, Map<String, dynamic>>(
           replicaPlacementsValue, (value) => value.toMap());
     }
@@ -106,7 +106,7 @@ class AzureClusterControlPlane {
               (map['proxyConfig'] as Map).cast<String, dynamic>()),
       replicaPlacements: map['replicaPlacements'] == null
           ? null
-          : Input.decodeList<AzureClusterControlPlaneReplicaPlacement>(
+          : pulumi.Input.decodeList<AzureClusterControlPlaneReplicaPlacement>(
               map['replicaPlacements'],
               (value) => AzureClusterControlPlaneReplicaPlacement.fromMap(
                   (value as Map).cast<String, dynamic>())),

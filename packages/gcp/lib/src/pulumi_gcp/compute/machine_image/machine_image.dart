@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../machine_image_machine_image_encryption_key/machine_image_machine_image_encryption_key.dart';
 import 'machine_image_args.dart';
 
@@ -46,47 +46,47 @@ import 'machine_image_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
 /// ```
-class MachineImage extends CustomResource {
+class MachineImage extends pulumi.CustomResource {
   /// A text description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
   /// Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
-  late final Output<bool?> guestFlush;
+  late final pulumi.Output<bool?> guestFlush;
 
   /// Encrypts the machine image using a customer-supplied encryption key.
   /// After you encrypt a machine image with a customer-supplied key, you must
   /// provide the same key if you use the machine image later (e.g. to create a
   /// instance from the image)
   /// Structure is documented below.
-  late final Output<MachineImageMachineImageEncryptionKey?>
+  late final pulumi.Output<MachineImageMachineImageEncryptionKey?>
       machineImageEncryptionKey;
 
   /// Name of the resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-  late final Output<String> sourceInstance;
+  late final pulumi.Output<String> sourceInstance;
 
   /// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
-  late final Output<List<String>> storageLocations;
+  late final pulumi.Output<List<String>> storageLocations;
 
   MachineImage(
     String name, {
     MachineImageArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/machineImage:MachineImage',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.guestFlush = registerOutput<bool?>('guestFlush');

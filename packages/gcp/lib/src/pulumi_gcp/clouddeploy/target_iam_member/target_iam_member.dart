@@ -1,25 +1,25 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../target_iam_member_condition/target_iam_member_condition.dart';
 import 'target_iam_member_args.dart';
 
-class TargetIamMember extends CustomResource {
-  late final Output<TargetIamMemberCondition?> condition;
-  late final Output<String> etag;
-  late final Output<String> location;
-  late final Output<String> member;
-  late final Output<String> name;
-  late final Output<String> project;
-  late final Output<String> role;
+class TargetIamMember extends pulumi.CustomResource {
+  late final pulumi.Output<TargetIamMemberCondition?> condition;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> location;
+  late final pulumi.Output<String> member;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+  late final pulumi.Output<String> role;
 
   TargetIamMember(
     String name, {
     TargetIamMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:clouddeploy/targetIamMember:TargetIamMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<TargetIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');

@@ -1,3 +1,3 @@
 library module_workbench_instance_iam_binding_condition;
 
-export 'instance_iam_binding_condition/instance_iam_binding_condition5.dart';
+export 'instance_iam_binding_condition/instance_iam_binding_condition_workbench.dart';

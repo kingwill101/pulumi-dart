@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'boundary_args.dart';
 
 /// Application management boundary.
@@ -40,41 +40,41 @@ import 'boundary_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apphub/boundary:Boundary default {{location}}
 /// ```
-class Boundary extends CustomResource {
+class Boundary extends pulumi.CustomResource {
   /// Create time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. The resource name of the CRM node being attached to the
   /// boundary.
   /// Format: `projects/{project-number}`
-  late final Output<String?> crmNode;
+  late final pulumi.Output<String?> crmNode;
 
   /// The location for the Boundary resource. Must be global.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the boundary.
   /// Format: "projects/{project}/locations/{{location}}/boundary"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Boundary type.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Update time.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Boundary(
     String name, {
     BoundaryArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apphub/boundary:Boundary',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.crmNode = registerOutput<String?>('crmNode');

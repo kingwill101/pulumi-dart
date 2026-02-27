@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_condition/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_condition.dart';
 import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_field/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_field.dart';
 import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations.dart';
@@ -48,7 +48,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     if (conditionValue != null) {
       map['condition'] = conditionValue.toMap();
     }
-    map['fields'] = Input.encodeList<
+    map['fields'] = pulumi.Input.encodeList<
         PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField,
         Map<String, dynamic>>(fields, (value) => value.toMap());
     final infoTypeTransformationsValue = infoTypeTransformations;
@@ -69,7 +69,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
           ? null
           : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition
               .fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      fields: Input.decodeList<
+      fields: pulumi.Input.decodeList<
               PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField>(
           map['fields'],
           (value) =>

@@ -1,30 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_project_notification_config_streaming_config/v2_project_notification_config_streaming_config.dart';
 
 /// The set of arguments for V2ProjectNotificationConfig.
 class V2ProjectNotificationConfigArgs {
   /// This must be unique within the project.
-  final Input<String> configId;
+  final pulumi.Input<String> configId;
 
   /// The description of the notification config (max of 1024 characters).
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Location ID for the parent project. Defaults to `global` if location is not provided.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
-  final Input<String>? pubsubTopic;
+  final pulumi.Input<String>? pubsubTopic;
 
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  final Input<V2ProjectNotificationConfigStreamingConfig> streamingConfig;
+  final pulumi.Input<V2ProjectNotificationConfigStreamingConfig>
+      streamingConfig;
 
   V2ProjectNotificationConfigArgs({
     required this.configId,
@@ -54,7 +55,7 @@ class V2ProjectNotificationConfigArgs {
     if (pubsubTopicValue != null) {
       map['pubsubTopic'] = pubsubTopicValue;
     }
-    map['streamingConfig'] = Input.mapInputValue<
+    map['streamingConfig'] = pulumi.Input.mapInputValue<
         V2ProjectNotificationConfigStreamingConfig,
         Map<String, dynamic>>(streamingConfig, (value) => value.toMap());
     return map;
@@ -62,13 +63,13 @@ class V2ProjectNotificationConfigArgs {
 
   factory V2ProjectNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2ProjectNotificationConfigArgs(
-      configId: Input.asInput<String>(map['configId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      pubsubTopic: Input.asOptionalInput<String>(map['pubsubTopic']),
+      configId: pulumi.Input.asInput<String>(map['configId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      pubsubTopic: pulumi.Input.asOptionalInput<String>(map['pubsubTopic']),
       streamingConfig:
-          Input.asInput<V2ProjectNotificationConfigStreamingConfig>(
+          pulumi.Input.asInput<V2ProjectNotificationConfigStreamingConfig>(
               map['streamingConfig']),
     );
   }

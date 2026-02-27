@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_open_api_tool_api_authentication/app_version_snapshot_tool_open_api_tool_api_authentication.dart';
 import '../app_version_snapshot_tool_open_api_tool_service_directory_config/app_version_snapshot_tool_open_api_tool_service_directory_config.dart';
 import '../app_version_snapshot_tool_open_api_tool_tls_config/app_version_snapshot_tool_open_api_tool_tls_config.dart';
@@ -65,7 +65,7 @@ class AppVersionSnapshotToolOpenApiTool {
     final map = <String, dynamic>{};
     final apiAuthenticationsValue = apiAuthentications;
     if (apiAuthenticationsValue != null) {
-      map['apiAuthentications'] = Input.encodeList<
+      map['apiAuthentications'] = pulumi.Input.encodeList<
               AppVersionSnapshotToolOpenApiToolApiAuthentication,
               Map<String, dynamic>>(
           apiAuthenticationsValue, (value) => value.toMap());
@@ -88,14 +88,14 @@ class AppVersionSnapshotToolOpenApiTool {
     }
     final serviceDirectoryConfigsValue = serviceDirectoryConfigs;
     if (serviceDirectoryConfigsValue != null) {
-      map['serviceDirectoryConfigs'] = Input.encodeList<
+      map['serviceDirectoryConfigs'] = pulumi.Input.encodeList<
               AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig,
               Map<String, dynamic>>(
           serviceDirectoryConfigsValue, (value) => value.toMap());
     }
     final tlsConfigsValue = tlsConfigs;
     if (tlsConfigsValue != null) {
-      map['tlsConfigs'] = Input.encodeList<
+      map['tlsConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolOpenApiToolTlsConfig,
           Map<String, dynamic>>(tlsConfigsValue, (value) => value.toMap());
     }
@@ -110,7 +110,7 @@ class AppVersionSnapshotToolOpenApiTool {
     return AppVersionSnapshotToolOpenApiTool(
       apiAuthentications: map['apiAuthentications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolOpenApiToolApiAuthentication>(
               map['apiAuthentications'],
               (value) =>
@@ -126,14 +126,14 @@ class AppVersionSnapshotToolOpenApiTool {
           map['openApiSchema'] == null ? null : map['openApiSchema'] as String,
       serviceDirectoryConfigs: map['serviceDirectoryConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig>(
               map['serviceDirectoryConfigs'],
               (value) => AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
       tlsConfigs: map['tlsConfigs'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolOpenApiToolTlsConfig>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolTlsConfig>(
               map['tlsConfigs'],
               (value) => AppVersionSnapshotToolOpenApiToolTlsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

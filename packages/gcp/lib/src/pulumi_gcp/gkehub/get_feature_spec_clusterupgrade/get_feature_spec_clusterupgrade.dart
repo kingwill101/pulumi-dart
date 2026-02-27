@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_spec_clusterupgrade_gke_upgrade_override/get_feature_spec_clusterupgrade_gke_upgrade_override.dart';
 import '../get_feature_spec_clusterupgrade_post_condition/get_feature_spec_clusterupgrade_post_condition.dart';
 
@@ -23,10 +23,10 @@ class GetFeatureSpecClusterupgrade {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['gkeUpgradeOverrides'] = Input.encodeList<
+    map['gkeUpgradeOverrides'] = pulumi.Input.encodeList<
         GetFeatureSpecClusterupgradeGkeUpgradeOverride,
         Map<String, dynamic>>(gkeUpgradeOverrides, (value) => value.toMap());
-    map['postConditions'] = Input.encodeList<
+    map['postConditions'] = pulumi.Input.encodeList<
         GetFeatureSpecClusterupgradePostCondition,
         Map<String, dynamic>>(postConditions, (value) => value.toMap());
     map['upstreamFleets'] = upstreamFleets;
@@ -35,13 +35,13 @@ class GetFeatureSpecClusterupgrade {
 
   factory GetFeatureSpecClusterupgrade.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecClusterupgrade(
-      gkeUpgradeOverrides:
-          Input.decodeList<GetFeatureSpecClusterupgradeGkeUpgradeOverride>(
-              map['gkeUpgradeOverrides'],
-              (value) => GetFeatureSpecClusterupgradeGkeUpgradeOverride.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      gkeUpgradeOverrides: pulumi.Input.decodeList<
+              GetFeatureSpecClusterupgradeGkeUpgradeOverride>(
+          map['gkeUpgradeOverrides'],
+          (value) => GetFeatureSpecClusterupgradeGkeUpgradeOverride.fromMap(
+              (value as Map).cast<String, dynamic>())),
       postConditions:
-          Input.decodeList<GetFeatureSpecClusterupgradePostCondition>(
+          pulumi.Input.decodeList<GetFeatureSpecClusterupgradePostCondition>(
               map['postConditions'],
               (value) => GetFeatureSpecClusterupgradePostCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),

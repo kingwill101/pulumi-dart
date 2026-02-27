@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../aws_node_pool_config_autoscaling_metrics_collection/aws_node_pool_config_autoscaling_metrics_collection.dart';
 import '../aws_node_pool_config_config_encryption/aws_node_pool_config_config_encryption.dart';
 import '../aws_node_pool_config_instance_placement/aws_node_pool_config_instance_placement.dart';
@@ -123,7 +123,7 @@ class AwsNodePoolConfig {
     final taintsValue = taints;
     if (taintsValue != null) {
       map['taints'] =
-          Input.encodeList<AwsNodePoolConfigTaint, Map<String, dynamic>>(
+          pulumi.Input.encodeList<AwsNodePoolConfigTaint, Map<String, dynamic>>(
               taintsValue, (value) => value.toMap());
     }
     return map;
@@ -173,7 +173,7 @@ class AwsNodePoolConfig {
           : (map['tags'] as Map).cast<String, String>(),
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<AwsNodePoolConfigTaint>(
+          : pulumi.Input.decodeList<AwsNodePoolConfigTaint>(
               map['taints'],
               (value) => AwsNodePoolConfigTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),

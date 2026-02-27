@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_vpc_access_network_interface/get_service_template_vpc_access_network_interface.dart';
 
 class GetServiceTemplateVpcAccess {
@@ -23,7 +23,7 @@ class GetServiceTemplateVpcAccess {
     final map = <String, dynamic>{};
     map['connector'] = connector;
     map['egress'] = egress;
-    map['networkInterfaces'] = Input.encodeList<
+    map['networkInterfaces'] = pulumi.Input.encodeList<
         GetServiceTemplateVpcAccessNetworkInterface,
         Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
     return map;
@@ -34,7 +34,7 @@ class GetServiceTemplateVpcAccess {
       connector: map['connector'] as String,
       egress: map['egress'] as String,
       networkInterfaces:
-          Input.decodeList<GetServiceTemplateVpcAccessNetworkInterface>(
+          pulumi.Input.decodeList<GetServiceTemplateVpcAccessNetworkInterface>(
               map['networkInterfaces'],
               (value) => GetServiceTemplateVpcAccessNetworkInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),

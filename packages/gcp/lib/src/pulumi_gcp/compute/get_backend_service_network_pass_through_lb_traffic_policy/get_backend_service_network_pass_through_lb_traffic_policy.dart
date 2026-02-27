@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_service_network_pass_through_lb_traffic_policy_zonal_affinity/get_backend_service_network_pass_through_lb_traffic_policy_zonal_affinity.dart';
 
 class GetBackendServiceNetworkPassThroughLbTrafficPolicy {
@@ -14,7 +14,7 @@ class GetBackendServiceNetworkPassThroughLbTrafficPolicy {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['zonalAffinities'] = Input.encodeList<
+    map['zonalAffinities'] = pulumi.Input.encodeList<
         GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity,
         Map<String, dynamic>>(zonalAffinities, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetBackendServiceNetworkPassThroughLbTrafficPolicy {
   factory GetBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap(
       Map<String, dynamic> map) {
     return GetBackendServiceNetworkPassThroughLbTrafficPolicy(
-      zonalAffinities: Input.decodeList<
+      zonalAffinities: pulumi.Input.decodeList<
               GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity>(
           map['zonalAffinities'],
           (value) =>

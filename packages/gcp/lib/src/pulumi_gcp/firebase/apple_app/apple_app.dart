@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apple_app_args.dart';
 
 /// A Google Cloud Firebase Apple application instance
@@ -55,46 +55,46 @@ import 'apple_app_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
 /// ```
-class AppleApp extends CustomResource {
+class AppleApp extends pulumi.CustomResource {
   /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
   /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-  late final Output<String> apiKeyId;
+  late final pulumi.Output<String> apiKeyId;
 
   /// The globally unique, Firebase-assigned identifier of the App.
   /// This identifier should be treated as an opaque token, as the data format is not specified.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
-  late final Output<String?> appStoreId;
+  late final pulumi.Output<String?> appStoreId;
 
   /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-  late final Output<String> bundleId;
-  late final Output<String?> deletionPolicy;
+  late final pulumi.Output<String> bundleId;
+  late final pulumi.Output<String?> deletionPolicy;
 
   /// The user-assigned display name of the App.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The fully qualified resource name of the App, for example:
   /// projects/projectId/iosApps/appId
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Apple Developer Team ID associated with the App in the App Store.
-  late final Output<String?> teamId;
+  late final pulumi.Output<String?> teamId;
 
   AppleApp(
     String name, {
     AppleAppArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appleApp:AppleApp',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiKeyId = registerOutput<String>('apiKeyId');
     this.appId = registerOutput<String>('appId');

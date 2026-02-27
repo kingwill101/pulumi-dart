@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_plan_association_rules_config_info_last_backup_error/backup_plan_association_rules_config_info_last_backup_error.dart';
 
 class BackupPlanAssociationRulesConfigInfo {
@@ -28,7 +28,7 @@ class BackupPlanAssociationRulesConfigInfo {
     final map = <String, dynamic>{};
     final lastBackupErrorsValue = lastBackupErrors;
     if (lastBackupErrorsValue != null) {
-      map['lastBackupErrors'] = Input.encodeList<
+      map['lastBackupErrors'] = pulumi.Input.encodeList<
               BackupPlanAssociationRulesConfigInfoLastBackupError,
               Map<String, dynamic>>(
           lastBackupErrorsValue, (value) => value.toMap());
@@ -49,7 +49,7 @@ class BackupPlanAssociationRulesConfigInfo {
     return BackupPlanAssociationRulesConfigInfo(
       lastBackupErrors: map['lastBackupErrors'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BackupPlanAssociationRulesConfigInfoLastBackupError>(
               map['lastBackupErrors'],
               (value) =>

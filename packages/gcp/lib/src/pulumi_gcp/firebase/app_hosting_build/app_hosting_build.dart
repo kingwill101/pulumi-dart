@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_build_error/app_hosting_build_error.dart';
 import '../app_hosting_build_source/app_hosting_build_source.dart';
 import 'app_hosting_build_args.dart';
@@ -48,43 +48,43 @@ import 'app_hosting_build_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
 /// ```
-class AppHostingBuild extends CustomResource {
+class AppHostingBuild extends pulumi.CustomResource {
   /// Unstructured key value map that may be set by external tools to
   /// store and arbitrary metadata. They are not queryable and should be
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// The ID of the Backend that this Build applies to
-  late final Output<String> backend;
+  late final pulumi.Output<String> backend;
 
   /// The user-specified ID of the build being created.
-  late final Output<String> buildId;
+  late final pulumi.Output<String> buildId;
 
   /// The location of the [Cloud Build
   /// logs](https://cloud.google.com/build/docs/view-build-results) for the build
   /// process.
-  late final Output<String> buildLogsUri;
+  late final pulumi.Output<String> buildLogsUri;
 
   /// Time at which the build was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Human-readable name. 63 character limit.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The environment name of the backend when this build was created.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// The source of the error for the build, if in a `FAILED` state.
   /// Possible values:
   /// CLOUD_BUILD
   /// CLOUD_RUN
-  late final Output<String> errorSource;
+  late final pulumi.Output<String> errorSource;
 
   /// The `Status` type defines a logical error model that is suitable for
   /// different programming environments, including REST APIs and RPC APIs. It is
@@ -93,11 +93,11 @@ class AppHostingBuild extends CustomResource {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  late final Output<List<AppHostingBuildError>> errors;
+  late final pulumi.Output<List<AppHostingBuildError>> errors;
 
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The Artifact Registry
   /// [container
@@ -105,33 +105,33 @@ class AppHostingBuild extends CustomResource {
   /// URI, used by the Cloud Run
   /// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
   /// for this build.
-  late final Output<String> image;
+  late final pulumi.Output<String> image;
 
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the Backend that this Build applies to
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the build.
   /// Format:
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The source for the build.
   /// Structure is documented below.
-  late final Output<AppHostingBuildSource> source;
+  late final pulumi.Output<AppHostingBuildSource> source;
 
   /// The state of the build.
   /// Possible values:
@@ -140,23 +140,23 @@ class AppHostingBuild extends CustomResource {
   /// DEPLOYING
   /// READY
   /// FAILED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// System-assigned, unique identifier.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time at which the build was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AppHostingBuild(
     String name, {
     AppHostingBuildArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appHostingBuild:AppHostingBuild',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.backend = registerOutput<String>('backend');

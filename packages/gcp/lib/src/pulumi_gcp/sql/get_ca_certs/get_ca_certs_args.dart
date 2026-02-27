@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCaCerts.
 class GetCaCertsArgs {
   /// The name or self link of the instance.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetCaCertsArgs({
     required this.instance,
@@ -27,8 +27,8 @@ class GetCaCertsArgs {
 
   factory GetCaCertsArgs.fromMap(Map<String, dynamic> map) {
     return GetCaCertsArgs(
-      instance: Input.asInput<String>(map['instance']),
-      project: Input.asOptionalInput<String>(map['project']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

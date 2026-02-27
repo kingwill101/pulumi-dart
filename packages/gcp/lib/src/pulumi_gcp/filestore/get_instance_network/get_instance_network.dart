@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_network_psc_config/get_instance_network_psc_config.dart';
 
 class GetInstanceNetwork {
@@ -43,9 +43,8 @@ class GetInstanceNetwork {
     map['ipAddresses'] = ipAddresses;
     map['modes'] = modes;
     map['network'] = network;
-    map['pscConfigs'] =
-        Input.encodeList<GetInstanceNetworkPscConfig, Map<String, dynamic>>(
-            pscConfigs, (value) => value.toMap());
+    map['pscConfigs'] = pulumi.Input.encodeList<GetInstanceNetworkPscConfig,
+        Map<String, dynamic>>(pscConfigs, (value) => value.toMap());
     map['reservedIpRange'] = reservedIpRange;
     return map;
   }
@@ -56,7 +55,7 @@ class GetInstanceNetwork {
       ipAddresses: (map['ipAddresses'] as List).cast<String>(),
       modes: (map['modes'] as List).cast<String>(),
       network: map['network'] as String,
-      pscConfigs: Input.decodeList<GetInstanceNetworkPscConfig>(
+      pscConfigs: pulumi.Input.decodeList<GetInstanceNetworkPscConfig>(
           map['pscConfigs'],
           (value) => GetInstanceNetworkPscConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

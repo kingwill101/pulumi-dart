@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_macsec_pre_shared_key/interconnect_macsec_pre_shared_key.dart';
 
 class InterconnectMacsec {
@@ -29,16 +29,16 @@ class InterconnectMacsec {
     if (failOpenValue != null) {
       map['failOpen'] = failOpenValue;
     }
-    map['preSharedKeys'] =
-        Input.encodeList<InterconnectMacsecPreSharedKey, Map<String, dynamic>>(
-            preSharedKeys, (value) => value.toMap());
+    map['preSharedKeys'] = pulumi.Input.encodeList<
+        InterconnectMacsecPreSharedKey,
+        Map<String, dynamic>>(preSharedKeys, (value) => value.toMap());
     return map;
   }
 
   factory InterconnectMacsec.fromMap(Map<String, dynamic> map) {
     return InterconnectMacsec(
       failOpen: map['failOpen'] == null ? null : map['failOpen'] as bool,
-      preSharedKeys: Input.decodeList<InterconnectMacsecPreSharedKey>(
+      preSharedKeys: pulumi.Input.decodeList<InterconnectMacsecPreSharedKey>(
           map['preSharedKeys'],
           (value) => InterconnectMacsecPreSharedKey.fromMap(
               (value as Map).cast<String, dynamic>())),

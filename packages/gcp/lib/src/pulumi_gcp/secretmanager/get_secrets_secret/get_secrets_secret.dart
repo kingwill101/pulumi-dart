@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_secrets_secret_replication/get_secrets_secret_replication.dart';
 import '../get_secrets_secret_rotation/get_secrets_secret_rotation.dart';
 import '../get_secrets_secret_topic/get_secrets_secret_topic.dart';
@@ -95,16 +95,15 @@ class GetSecretsSecret {
     map['name'] = name;
     map['project'] = project;
     map['pulumiLabels'] = pulumiLabels;
-    map['replications'] =
-        Input.encodeList<GetSecretsSecretReplication, Map<String, dynamic>>(
-            replications, (value) => value.toMap());
+    map['replications'] = pulumi.Input.encodeList<GetSecretsSecretReplication,
+        Map<String, dynamic>>(replications, (value) => value.toMap());
     map['rotations'] =
-        Input.encodeList<GetSecretsSecretRotation, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetSecretsSecretRotation, Map<String, dynamic>>(
             rotations, (value) => value.toMap());
     map['secretId'] = secretId;
     map['tags'] = tags;
     map['topics'] =
-        Input.encodeList<GetSecretsSecretTopic, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetSecretsSecretTopic, Map<String, dynamic>>(
             topics, (value) => value.toMap());
     map['ttl'] = ttl;
     map['versionAliases'] = versionAliases;
@@ -125,17 +124,17 @@ class GetSecretsSecret {
       name: map['name'] as String,
       project: map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      replications: Input.decodeList<GetSecretsSecretReplication>(
+      replications: pulumi.Input.decodeList<GetSecretsSecretReplication>(
           map['replications'],
           (value) => GetSecretsSecretReplication.fromMap(
               (value as Map).cast<String, dynamic>())),
-      rotations: Input.decodeList<GetSecretsSecretRotation>(
+      rotations: pulumi.Input.decodeList<GetSecretsSecretRotation>(
           map['rotations'],
           (value) => GetSecretsSecretRotation.fromMap(
               (value as Map).cast<String, dynamic>())),
       secretId: map['secretId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      topics: Input.decodeList<GetSecretsSecretTopic>(
+      topics: pulumi.Input.decodeList<GetSecretsSecretTopic>(
           map['topics'],
           (value) => GetSecretsSecretTopic.fromMap(
               (value as Map).cast<String, dynamic>())),

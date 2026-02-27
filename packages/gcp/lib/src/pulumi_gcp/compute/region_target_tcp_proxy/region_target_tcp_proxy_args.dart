@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RegionTargetTcpProxy.
 class RegionTargetTcpProxyArgs {
   /// A reference to the BackendService resource.
-  final Input<String> backendService;
+  final pulumi.Input<String> backendService;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -17,25 +17,25 @@ class RegionTargetTcpProxyArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// This field only applies when the forwarding rule that references
   /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-  final Input<bool>? proxyBind;
+  final pulumi.Input<bool>? proxyBind;
 
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
-  final Input<String>? proxyHeader;
+  final pulumi.Input<String>? proxyHeader;
 
   /// The Region in which the created target TCP proxy should reside.
   /// If it is not provided, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   RegionTargetTcpProxyArgs({
     required this.backendService,
@@ -79,13 +79,13 @@ class RegionTargetTcpProxyArgs {
 
   factory RegionTargetTcpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetTcpProxyArgs(
-      backendService: Input.asInput<String>(map['backendService']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      proxyBind: Input.asOptionalInput<bool>(map['proxyBind']),
-      proxyHeader: Input.asOptionalInput<String>(map['proxyHeader']),
-      region: Input.asOptionalInput<String>(map['region']),
+      backendService: pulumi.Input.asInput<String>(map['backendService']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      proxyBind: pulumi.Input.asOptionalInput<bool>(map['proxyBind']),
+      proxyHeader: pulumi.Input.asOptionalInput<String>(map['proxyHeader']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

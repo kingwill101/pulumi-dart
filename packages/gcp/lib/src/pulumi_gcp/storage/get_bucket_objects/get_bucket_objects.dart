@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_bucket_objects_args.dart';
 import 'get_bucket_objects_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_bucket_objects_result.dart';
 /// Example files stored within a bucket.
 Future<GetBucketObjectsResult> getBucketObjects(
   GetBucketObjectsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:storage/getBucketObjects:getBucketObjects',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketObjectsResult.fromMap(result);
 }

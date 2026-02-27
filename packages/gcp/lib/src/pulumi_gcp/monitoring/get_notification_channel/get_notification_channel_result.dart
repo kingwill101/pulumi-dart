@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_notification_channel_sensitive_label/get_notification_channel_sensitive_label.dart';
 
 /// Result data returned by getNotificationChannel.
@@ -66,7 +66,7 @@ class GetNotificationChannelResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['sensitiveLabels'] = Input.encodeList<
+    map['sensitiveLabels'] = pulumi.Input.encodeList<
         GetNotificationChannelSensitiveLabel,
         Map<String, dynamic>>(sensitiveLabels, (value) => value.toMap());
     final typeValue = type;
@@ -94,10 +94,11 @@ class GetNotificationChannelResult {
           : (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      sensitiveLabels: Input.decodeList<GetNotificationChannelSensitiveLabel>(
-          map['sensitiveLabels'],
-          (value) => GetNotificationChannelSensitiveLabel.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sensitiveLabels:
+          pulumi.Input.decodeList<GetNotificationChannelSensitiveLabel>(
+              map['sensitiveLabels'],
+              (value) => GetNotificationChannelSensitiveLabel.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       type: map['type'] == null ? null : map['type'] as String,
       userLabels: map['userLabels'] == null
           ? null

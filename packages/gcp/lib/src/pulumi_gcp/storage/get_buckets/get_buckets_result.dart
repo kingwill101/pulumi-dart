@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_buckets_bucket/get_buckets_bucket.dart';
 
 /// Result data returned by getBuckets.
@@ -22,8 +22,9 @@ class GetBucketsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['buckets'] = Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(
-        buckets, (value) => value.toMap());
+    map['buckets'] =
+        pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(
+            buckets, (value) => value.toMap());
     map['id'] = id;
     final prefixValue = prefix;
     if (prefixValue != null) {
@@ -38,7 +39,7 @@ class GetBucketsResult {
 
   factory GetBucketsResult.fromMap(Map<String, dynamic> map) {
     return GetBucketsResult(
-      buckets: Input.decodeList<GetBucketsBucket>(
+      buckets: pulumi.Input.decodeList<GetBucketsBucket>(
           map['buckets'],
           (value) =>
               GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_endpoint_with_model_garden_deployment_deploy_config/ai_endpoint_with_model_garden_deployment_deploy_config.dart';
 import '../ai_endpoint_with_model_garden_deployment_endpoint_config/ai_endpoint_with_model_garden_deployment_endpoint_config.dart';
 import '../ai_endpoint_with_model_garden_deployment_model_config/ai_endpoint_with_model_garden_deployment_model_config.dart';
@@ -49,60 +49,60 @@ import 'ai_endpoint_with_model_garden_deployment_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class AiEndpointWithModelGardenDeployment extends CustomResource {
+class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
-  late final Output<AiEndpointWithModelGardenDeploymentDeployConfig?>
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig?>
       deployConfig;
 
   /// Output only. The display name assigned to the model deployed to the endpoint.
   /// This is not required to delete the resource but is used for debug logging.
-  late final Output<String> deployedModelDisplayName;
+  late final pulumi.Output<String> deployedModelDisplayName;
 
   /// Output only. The unique numeric ID that Vertex AI assigns to the model at the time it is deployed to the endpoint.
   /// It is required to undeploy the model from the endpoint during resource deletion as described in
   /// https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints/undeployModel.
-  late final Output<String> deployedModelId;
+  late final pulumi.Output<String> deployedModelId;
 
   /// Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> endpoint;
+  late final pulumi.Output<String> endpoint;
 
   /// The endpoint config to use for the deployment.
   /// Structure is documented below.
-  late final Output<AiEndpointWithModelGardenDeploymentEndpointConfig?>
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentEndpointConfig?>
       endpointConfig;
 
   /// The Hugging Face model to deploy.
   /// Format: Hugging Face model ID like `google/gemma-2-2b-it`.
-  late final Output<String?> huggingFaceModelId;
+  late final pulumi.Output<String?> huggingFaceModelId;
 
   /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The model config to use for the deployment.
   /// Structure is documented below.
-  late final Output<AiEndpointWithModelGardenDeploymentModelConfig?>
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentModelConfig?>
       modelConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Model Garden model to deploy.
   /// Format:
   /// `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
   /// `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
-  late final Output<String?> publisherModelName;
+  late final pulumi.Output<String?> publisherModelName;
 
   AiEndpointWithModelGardenDeployment(
     String name, {
     AiEndpointWithModelGardenDeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deployConfig =
         registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>(

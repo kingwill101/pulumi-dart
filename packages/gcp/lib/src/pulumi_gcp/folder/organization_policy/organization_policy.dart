@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organization_policy_boolean_policy/organization_policy_boolean_policy.dart';
 import '../organization_policy_list_policy/organization_policy_list_policy.dart';
 import '../organization_policy_restore_policy/organization_policy_restore_policy.dart';
@@ -51,24 +51,24 @@ import 'organization_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `* `google_folder_organization_policy.default {{folder_id}}/``serviceuser.services
 /// ```
-class OrganizationPolicy extends CustomResource {
+class OrganizationPolicy extends pulumi.CustomResource {
   /// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
-  late final Output<OrganizationPolicyBooleanPolicy?> booleanPolicy;
+  late final pulumi.Output<OrganizationPolicyBooleanPolicy?> booleanPolicy;
 
   /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
   ///
   /// - - -
-  late final Output<String> constraint;
+  late final pulumi.Output<String> constraint;
 
   /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// A policy that can define specific values that are allowed or denied for the given constraint. It
   /// can also be used to allow or deny all values. Structure is documented below.
-  late final Output<OrganizationPolicyListPolicy?> listPolicy;
+  late final pulumi.Output<OrganizationPolicyListPolicy?> listPolicy;
 
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
@@ -76,23 +76,23 @@ class OrganizationPolicy extends CustomResource {
   /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
   ///
   /// - - -
-  late final Output<OrganizationPolicyRestorePolicy?> restorePolicy;
+  late final pulumi.Output<OrganizationPolicyRestorePolicy?> restorePolicy;
 
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Version of the Policy. Default version is 0.
-  late final Output<int> version;
+  late final pulumi.Output<int> version;
 
   OrganizationPolicy(
     String name, {
     OrganizationPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:folder/organizationPolicy:OrganizationPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.booleanPolicy =
         registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy');

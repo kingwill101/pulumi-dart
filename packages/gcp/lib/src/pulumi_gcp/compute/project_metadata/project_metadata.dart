@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_metadata_args.dart';
 
 /// Authoritatively manages metadata common to all instances for a project in GCE. For more information see
@@ -30,25 +30,25 @@ import 'project_metadata_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}
 /// ```
-class ProjectMetadata extends CustomResource {
+class ProjectMetadata extends pulumi.CustomResource {
   /// A series of key value pairs.
   ///
   /// - - -
-  late final Output<Map<String, String>> metadata;
+  late final pulumi.Output<Map<String, String>> metadata;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   ProjectMetadata(
     String name, {
     ProjectMetadataArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/projectMetadata:ProjectMetadata',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.metadata = registerOutput<Map<String, String>>('metadata');
     this.project = registerOutput<String>('project');

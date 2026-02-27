@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_default_node_config_default_containerd_config/get_cluster_node_pool_default_node_config_default_containerd_config.dart';
 import '../get_cluster_node_pool_default_node_config_default_gcfs_config/get_cluster_node_pool_default_node_config_default_gcfs_config.dart';
 
@@ -27,10 +27,10 @@ class GetClusterNodePoolDefaultNodeConfigDefault {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['containerdConfigs'] = Input.encodeList<
+    map['containerdConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig,
         Map<String, dynamic>>(containerdConfigs, (value) => value.toMap());
-    map['gcfsConfigs'] = Input.encodeList<
+    map['gcfsConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig,
         Map<String, dynamic>>(gcfsConfigs, (value) => value.toMap());
     map['insecureKubeletReadonlyPortEnabled'] =
@@ -42,12 +42,12 @@ class GetClusterNodePoolDefaultNodeConfigDefault {
   factory GetClusterNodePoolDefaultNodeConfigDefault.fromMap(
       Map<String, dynamic> map) {
     return GetClusterNodePoolDefaultNodeConfigDefault(
-      containerdConfigs: Input.decodeList<
+      containerdConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig>(
           map['containerdConfigs'],
           (value) => GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig
               .fromMap((value as Map).cast<String, dynamic>())),
-      gcfsConfigs: Input.decodeList<
+      gcfsConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig>(
           map['gcfsConfigs'],
           (value) =>

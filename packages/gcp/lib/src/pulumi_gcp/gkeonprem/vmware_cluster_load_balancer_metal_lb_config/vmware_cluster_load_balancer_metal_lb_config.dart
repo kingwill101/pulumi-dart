@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_load_balancer_metal_lb_config_address_pool/vmware_cluster_load_balancer_metal_lb_config_address_pool.dart';
 
 class VMwareClusterLoadBalancerMetalLbConfig {
@@ -16,7 +16,7 @@ class VMwareClusterLoadBalancerMetalLbConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['addressPools'] = Input.encodeList<
+    map['addressPools'] = pulumi.Input.encodeList<
         VMwareClusterLoadBalancerMetalLbConfigAddressPool,
         Map<String, dynamic>>(addressPools, (value) => value.toMap());
     return map;
@@ -25,12 +25,11 @@ class VMwareClusterLoadBalancerMetalLbConfig {
   factory VMwareClusterLoadBalancerMetalLbConfig.fromMap(
       Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerMetalLbConfig(
-      addressPools:
-          Input.decodeList<VMwareClusterLoadBalancerMetalLbConfigAddressPool>(
-              map['addressPools'],
-              (value) =>
-                  VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      addressPools: pulumi.Input.decodeList<
+              VMwareClusterLoadBalancerMetalLbConfigAddressPool>(
+          map['addressPools'],
+          (value) => VMwareClusterLoadBalancerMetalLbConfigAddressPool.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

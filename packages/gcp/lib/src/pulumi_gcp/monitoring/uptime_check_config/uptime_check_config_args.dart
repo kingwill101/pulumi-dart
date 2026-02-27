@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../uptime_check_config_content_matcher/uptime_check_config_content_matcher.dart';
 import '../uptime_check_config_http_check/uptime_check_config_http_check.dart';
 import '../uptime_check_config_monitored_resource/uptime_check_config_monitored_resource.dart';
@@ -12,55 +12,55 @@ import '../uptime_check_config_tcp_check/uptime_check_config_tcp_check.dart';
 class UptimeCheckConfigArgs {
   /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
   /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
-  final Input<String>? checkerType;
+  final pulumi.Input<String>? checkerType;
 
   /// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
   /// Structure is documented below.
-  final Input<List<UptimeCheckConfigContentMatcher>>? contentMatchers;
+  final pulumi.Input<List<UptimeCheckConfigContentMatcher>>? contentMatchers;
 
   /// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Contains information needed to make an HTTP or HTTPS check.
   /// Structure is documented below.
-  final Input<UptimeCheckConfigHttpCheck>? httpCheck;
+  final pulumi.Input<UptimeCheckConfigHttpCheck>? httpCheck;
 
   /// Specifies whether to log the results of failed probes to Cloud Logging.
-  final Input<bool>? logCheckFailures;
+  final pulumi.Input<bool>? logCheckFailures;
 
   /// The [monitored resource]
   /// (https://cloud.google.com/monitoring/api/resources) associated with the
   /// configuration. The following monitored resource types are supported for
   /// uptime checks:
-  final Input<UptimeCheckConfigMonitoredResource>? monitoredResource;
+  final pulumi.Input<UptimeCheckConfigMonitoredResource>? monitoredResource;
 
   /// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
-  final Input<String>? period;
+  final pulumi.Input<String>? period;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The group resource associated with the configuration.
   /// Structure is documented below.
-  final Input<UptimeCheckConfigResourceGroup>? resourceGroup;
+  final pulumi.Input<UptimeCheckConfigResourceGroup>? resourceGroup;
 
   /// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
-  final Input<List<String>>? selectedRegions;
+  final pulumi.Input<List<String>>? selectedRegions;
 
   /// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
   /// Structure is documented below.
-  final Input<UptimeCheckConfigSyntheticMonitor>? syntheticMonitor;
+  final pulumi.Input<UptimeCheckConfigSyntheticMonitor>? syntheticMonitor;
 
   /// Contains information needed to make a TCP check.
   /// Structure is documented below.
-  final Input<UptimeCheckConfigTcpCheck>? tcpCheck;
+  final pulumi.Input<UptimeCheckConfigTcpCheck>? tcpCheck;
 
   /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-  final Input<String> timeout;
+  final pulumi.Input<String> timeout;
 
   /// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-  final Input<Map<String, String>>? userLabels;
+  final pulumi.Input<Map<String, String>>? userLabels;
 
   UptimeCheckConfigArgs({
     this.checkerType,
@@ -87,17 +87,18 @@ class UptimeCheckConfigArgs {
     }
     final contentMatchersValue = contentMatchers;
     if (contentMatchersValue != null) {
-      map['contentMatchers'] = Input.mapOptionalInputValue<
+      map['contentMatchers'] = pulumi.Input.mapOptionalInputValue<
               List<UptimeCheckConfigContentMatcher>,
               List<Map<String, dynamic>>>(
           contentMatchersValue,
-          (value) => Input.encodeList<UptimeCheckConfigContentMatcher,
+          (value) => pulumi.Input.encodeList<UptimeCheckConfigContentMatcher,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['displayName'] = displayName;
     final httpCheckValue = httpCheck;
     if (httpCheckValue != null) {
-      map['httpCheck'] = Input.mapOptionalInputValue<UptimeCheckConfigHttpCheck,
+      map['httpCheck'] = pulumi.Input.mapOptionalInputValue<
+          UptimeCheckConfigHttpCheck,
           Map<String, dynamic>>(httpCheckValue, (value) => value.toMap());
     }
     final logCheckFailuresValue = logCheckFailures;
@@ -106,7 +107,7 @@ class UptimeCheckConfigArgs {
     }
     final monitoredResourceValue = monitoredResource;
     if (monitoredResourceValue != null) {
-      map['monitoredResource'] = Input.mapOptionalInputValue<
+      map['monitoredResource'] = pulumi.Input.mapOptionalInputValue<
               UptimeCheckConfigMonitoredResource, Map<String, dynamic>>(
           monitoredResourceValue, (value) => value.toMap());
     }
@@ -120,7 +121,7 @@ class UptimeCheckConfigArgs {
     }
     final resourceGroupValue = resourceGroup;
     if (resourceGroupValue != null) {
-      map['resourceGroup'] = Input.mapOptionalInputValue<
+      map['resourceGroup'] = pulumi.Input.mapOptionalInputValue<
           UptimeCheckConfigResourceGroup,
           Map<String, dynamic>>(resourceGroupValue, (value) => value.toMap());
     }
@@ -130,13 +131,14 @@ class UptimeCheckConfigArgs {
     }
     final syntheticMonitorValue = syntheticMonitor;
     if (syntheticMonitorValue != null) {
-      map['syntheticMonitor'] = Input.mapOptionalInputValue<
+      map['syntheticMonitor'] = pulumi.Input.mapOptionalInputValue<
               UptimeCheckConfigSyntheticMonitor, Map<String, dynamic>>(
           syntheticMonitorValue, (value) => value.toMap());
     }
     final tcpCheckValue = tcpCheck;
     if (tcpCheckValue != null) {
-      map['tcpCheck'] = Input.mapOptionalInputValue<UptimeCheckConfigTcpCheck,
+      map['tcpCheck'] = pulumi.Input.mapOptionalInputValue<
+          UptimeCheckConfigTcpCheck,
           Map<String, dynamic>>(tcpCheckValue, (value) => value.toMap());
     }
     map['timeout'] = timeout;
@@ -149,30 +151,33 @@ class UptimeCheckConfigArgs {
 
   factory UptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigArgs(
-      checkerType: Input.asOptionalInput<String>(map['checkerType']),
+      checkerType: pulumi.Input.asOptionalInput<String>(map['checkerType']),
       contentMatchers:
-          Input.asOptionalInput<List<UptimeCheckConfigContentMatcher>>(
+          pulumi.Input.asOptionalInput<List<UptimeCheckConfigContentMatcher>>(
               map['contentMatchers']),
-      displayName: Input.asInput<String>(map['displayName']),
-      httpCheck:
-          Input.asOptionalInput<UptimeCheckConfigHttpCheck>(map['httpCheck']),
-      logCheckFailures: Input.asOptionalInput<bool>(map['logCheckFailures']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      httpCheck: pulumi.Input.asOptionalInput<UptimeCheckConfigHttpCheck>(
+          map['httpCheck']),
+      logCheckFailures:
+          pulumi.Input.asOptionalInput<bool>(map['logCheckFailures']),
       monitoredResource:
-          Input.asOptionalInput<UptimeCheckConfigMonitoredResource>(
+          pulumi.Input.asOptionalInput<UptimeCheckConfigMonitoredResource>(
               map['monitoredResource']),
-      period: Input.asOptionalInput<String>(map['period']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resourceGroup: Input.asOptionalInput<UptimeCheckConfigResourceGroup>(
-          map['resourceGroup']),
+      period: pulumi.Input.asOptionalInput<String>(map['period']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resourceGroup:
+          pulumi.Input.asOptionalInput<UptimeCheckConfigResourceGroup>(
+              map['resourceGroup']),
       selectedRegions:
-          Input.asOptionalInput<List<String>>(map['selectedRegions']),
+          pulumi.Input.asOptionalInput<List<String>>(map['selectedRegions']),
       syntheticMonitor:
-          Input.asOptionalInput<UptimeCheckConfigSyntheticMonitor>(
+          pulumi.Input.asOptionalInput<UptimeCheckConfigSyntheticMonitor>(
               map['syntheticMonitor']),
-      tcpCheck:
-          Input.asOptionalInput<UptimeCheckConfigTcpCheck>(map['tcpCheck']),
-      timeout: Input.asInput<String>(map['timeout']),
-      userLabels: Input.asOptionalInput<Map<String, String>>(map['userLabels']),
+      tcpCheck: pulumi.Input.asOptionalInput<UptimeCheckConfigTcpCheck>(
+          map['tcpCheck']),
+      timeout: pulumi.Input.asInput<String>(map['timeout']),
+      userLabels:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['userLabels']),
     );
   }
 }

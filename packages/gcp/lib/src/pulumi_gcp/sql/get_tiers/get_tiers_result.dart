@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_tiers_tier/get_tiers_tier.dart';
 
 /// Result data returned by getTiers.
@@ -22,7 +22,7 @@ class GetTiersResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['project'] = project;
-    map['tiers'] = Input.encodeList<GetTiersTier, Map<String, dynamic>>(
+    map['tiers'] = pulumi.Input.encodeList<GetTiersTier, Map<String, dynamic>>(
         tiers, (value) => value.toMap());
     return map;
   }
@@ -31,7 +31,7 @@ class GetTiersResult {
     return GetTiersResult(
       id: map['id'] as String,
       project: map['project'] as String,
-      tiers: Input.decodeList<GetTiersTier>(
+      tiers: pulumi.Input.decodeList<GetTiersTier>(
           map['tiers'],
           (value) =>
               GetTiersTier.fromMap((value as Map).cast<String, dynamic>())),

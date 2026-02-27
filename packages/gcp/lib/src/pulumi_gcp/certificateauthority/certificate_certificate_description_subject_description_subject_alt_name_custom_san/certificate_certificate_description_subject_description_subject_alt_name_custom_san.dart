@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_certificate_description_subject_description_subject_alt_name_custom_san_obect_id/certificate_certificate_description_subject_description_subject_alt_name_custom_san_obect_id.dart';
 
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
@@ -32,7 +32,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     }
     final obectIdsValue = obectIds;
     if (obectIdsValue != null) {
-      map['obectIds'] = Input.encodeList<
+      map['obectIds'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId,
           Map<String, dynamic>>(obectIdsValue, (value) => value.toMap());
     }
@@ -49,7 +49,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
       critical: map['critical'] == null ? null : map['critical'] as bool,
       obectIds: map['obectIds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>(
               map['obectIds'],
               (value) =>

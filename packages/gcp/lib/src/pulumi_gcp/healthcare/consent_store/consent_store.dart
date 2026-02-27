@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'consent_store_args.dart';
 
 /// The Consent Management API is a tool for tracking user consents and the documentation associated with the consents.
@@ -36,20 +36,20 @@ import 'consent_store_args.dart';
 /// ```sh
 /// $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
 /// ```
-class ConsentStore extends CustomResource {
+class ConsentStore extends pulumi.CustomResource {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-  late final Output<String> dataset;
+  late final pulumi.Output<String> dataset;
 
   /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  late final Output<String?> defaultConsentTtl;
+  late final pulumi.Output<String?> defaultConsentTtl;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
-  late final Output<bool?> enableConsentCreateOnUpdate;
+  late final pulumi.Output<bool?> enableConsentCreateOnUpdate;
 
   /// User-supplied key-value pairs used to organize Consent stores.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -62,25 +62,25 @@ class ConsentStore extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The name of this ConsentStore, for example:
   /// "consent1"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   ConsentStore(
     String name, {
     ConsentStoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:healthcare/consentStore:ConsentStore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataset = registerOutput<String>('dataset');
     this.defaultConsentTtl = registerOutput<String?>('defaultConsentTtl');

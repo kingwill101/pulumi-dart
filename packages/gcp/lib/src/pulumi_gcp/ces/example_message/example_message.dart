@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../example_message_chunk/example_message_chunk.dart';
 
 class ExampleMessage {
@@ -21,7 +21,7 @@ class ExampleMessage {
     final chunksValue = chunks;
     if (chunksValue != null) {
       map['chunks'] =
-          Input.encodeList<ExampleMessageChunk, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ExampleMessageChunk, Map<String, dynamic>>(
               chunksValue, (value) => value.toMap());
     }
     final roleValue = role;
@@ -35,7 +35,7 @@ class ExampleMessage {
     return ExampleMessage(
       chunks: map['chunks'] == null
           ? null
-          : Input.decodeList<ExampleMessageChunk>(
+          : pulumi.Input.decodeList<ExampleMessageChunk>(
               map['chunks'],
               (value) => ExampleMessageChunk.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../metric_metric_descriptor_label/metric_metric_descriptor_label.dart';
 
 class MetricMetricDescriptor {
@@ -49,9 +49,8 @@ class MetricMetricDescriptor {
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] =
-          Input.encodeList<MetricMetricDescriptorLabel, Map<String, dynamic>>(
-              labelsValue, (value) => value.toMap());
+      map['labels'] = pulumi.Input.encodeList<MetricMetricDescriptorLabel,
+          Map<String, dynamic>>(labelsValue, (value) => value.toMap());
     }
     map['metricKind'] = metricKind;
     final unitValue = unit;
@@ -68,7 +67,7 @@ class MetricMetricDescriptor {
           map['displayName'] == null ? null : map['displayName'] as String,
       labels: map['labels'] == null
           ? null
-          : Input.decodeList<MetricMetricDescriptorLabel>(
+          : pulumi.Input.decodeList<MetricMetricDescriptorLabel>(
               map['labels'],
               (value) => MetricMetricDescriptorLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),

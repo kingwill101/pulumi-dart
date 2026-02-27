@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../router_bgp/router_bgp.dart';
 import '../router_md5_authentication_keys/router_md5_authentication_keys.dart';
 import '../router_params/router_params.dart';
@@ -57,24 +57,24 @@ import 'router_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/router:Router default {{name}}
 /// ```
-class Router extends CustomResource {
+class Router extends pulumi.CustomResource {
   /// BGP information specific to this router.
   /// Structure is documented below.
-  late final Output<RouterBgp?> bgp;
+  late final pulumi.Output<RouterBgp?> bgp;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Indicates if a router is dedicated for use with encrypted VLAN
   /// attachments (interconnectAttachments).
-  late final Output<bool?> encryptedInterconnectRouter;
+  late final pulumi.Output<bool?> encryptedInterconnectRouter;
 
   /// Keys used for MD5 authentication.
   /// Structure is documented below.
-  late final Output<RouterMd5AuthenticationKeys?> md5AuthenticationKeys;
+  late final pulumi.Output<RouterMd5AuthenticationKeys?> md5AuthenticationKeys;
 
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -82,37 +82,37 @@ class Router extends CustomResource {
   /// which means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A URI of an NCC Gateway spoke
-  late final Output<String?> nccGateway;
+  late final pulumi.Output<String?> nccGateway;
 
   /// A reference to the network to which this router belongs.
-  late final Output<String?> network;
+  late final pulumi.Output<String?> network;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  late final Output<RouterParams?> params;
+  late final pulumi.Output<RouterParams?> params;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where the router resides.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   Router(
     String name, {
     RouterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/router:Router',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bgp = registerOutput<RouterBgp?>('bgp');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

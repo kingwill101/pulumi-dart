@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_plan_restore_config_cluster_resource_restore_scope_excluded_group_kind/restore_plan_restore_config_cluster_resource_restore_scope_excluded_group_kind.dart';
 import '../restore_plan_restore_config_cluster_resource_restore_scope_selected_group_kind/restore_plan_restore_config_cluster_resource_restore_scope_selected_group_kind.dart';
 
@@ -45,7 +45,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope {
     }
     final excludedGroupKindsValue = excludedGroupKinds;
     if (excludedGroupKindsValue != null) {
-      map['excludedGroupKinds'] = Input.encodeList<
+      map['excludedGroupKinds'] = pulumi.Input.encodeList<
           RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind,
           Map<String,
               dynamic>>(excludedGroupKindsValue, (value) => value.toMap());
@@ -56,7 +56,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope {
     }
     final selectedGroupKindsValue = selectedGroupKinds;
     if (selectedGroupKindsValue != null) {
-      map['selectedGroupKinds'] = Input.encodeList<
+      map['selectedGroupKinds'] = pulumi.Input.encodeList<
           RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind,
           Map<String,
               dynamic>>(selectedGroupKindsValue, (value) => value.toMap());
@@ -71,7 +71,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope {
           map['allGroupKinds'] == null ? null : map['allGroupKinds'] as bool,
       excludedGroupKinds: map['excludedGroupKinds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind>(
               map['excludedGroupKinds'],
               (value) =>
@@ -81,7 +81,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope {
           map['noGroupKinds'] == null ? null : map['noGroupKinds'] as bool,
       selectedGroupKinds: map['selectedGroupKinds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind>(
               map['selectedGroupKinds'],
               (value) =>

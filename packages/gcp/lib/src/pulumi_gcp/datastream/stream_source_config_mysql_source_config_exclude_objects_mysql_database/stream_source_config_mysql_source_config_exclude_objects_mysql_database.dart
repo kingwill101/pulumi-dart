@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_source_config_mysql_source_config_exclude_objects_mysql_database_mysql_table/stream_source_config_mysql_source_config_exclude_objects_mysql_database_mysql_table.dart';
 
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
@@ -23,7 +23,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
     map['database'] = database;
     final mysqlTablesValue = mysqlTables;
     if (mysqlTablesValue != null) {
-      map['mysqlTables'] = Input.encodeList<
+      map['mysqlTables'] = pulumi.Input.encodeList<
           StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable,
           Map<String, dynamic>>(mysqlTablesValue, (value) => value.toMap());
     }
@@ -36,7 +36,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
       database: map['database'] as String,
       mysqlTables: map['mysqlTables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable>(
               map['mysqlTables'],
               (value) =>

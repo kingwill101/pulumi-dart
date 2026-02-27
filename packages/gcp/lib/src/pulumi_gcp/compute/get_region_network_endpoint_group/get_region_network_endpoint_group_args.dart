@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionNetworkEndpointGroup.
 class GetRegionNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name. Provide either this or a `self_link`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project to list versions in. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Network Endpoint Group self_link.
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   GetRegionNetworkEndpointGroupArgs({
     this.name,
@@ -46,10 +46,10 @@ class GetRegionNetworkEndpointGroupArgs {
 
   factory GetRegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionNetworkEndpointGroupArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
     );
   }
 }

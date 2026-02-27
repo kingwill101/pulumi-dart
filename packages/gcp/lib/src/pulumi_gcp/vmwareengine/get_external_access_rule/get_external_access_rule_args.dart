@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getExternalAccessRule.
 class GetExternalAccessRuleArgs {
   /// Name of the resource.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The resource name of the network policy that this cluster belongs.
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   GetExternalAccessRuleArgs({
     required this.name,
@@ -24,8 +24,8 @@ class GetExternalAccessRuleArgs {
 
   factory GetExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalAccessRuleArgs(
-      name: Input.asInput<String>(map['name']),
-      parent: Input.asInput<String>(map['parent']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
     );
   }
 }

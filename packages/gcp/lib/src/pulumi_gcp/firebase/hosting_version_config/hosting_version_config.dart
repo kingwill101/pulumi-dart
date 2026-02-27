@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hosting_version_config_header/hosting_version_config_header.dart';
 import '../hosting_version_config_redirect/hosting_version_config_redirect.dart';
 import '../hosting_version_config_rewrite/hosting_version_config_rewrite.dart';
@@ -31,21 +31,18 @@ class HostingVersionConfig {
     final map = <String, dynamic>{};
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] =
-          Input.encodeList<HostingVersionConfigHeader, Map<String, dynamic>>(
-              headersValue, (value) => value.toMap());
+      map['headers'] = pulumi.Input.encodeList<HostingVersionConfigHeader,
+          Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
     final redirectsValue = redirects;
     if (redirectsValue != null) {
-      map['redirects'] =
-          Input.encodeList<HostingVersionConfigRedirect, Map<String, dynamic>>(
-              redirectsValue, (value) => value.toMap());
+      map['redirects'] = pulumi.Input.encodeList<HostingVersionConfigRedirect,
+          Map<String, dynamic>>(redirectsValue, (value) => value.toMap());
     }
     final rewritesValue = rewrites;
     if (rewritesValue != null) {
-      map['rewrites'] =
-          Input.encodeList<HostingVersionConfigRewrite, Map<String, dynamic>>(
-              rewritesValue, (value) => value.toMap());
+      map['rewrites'] = pulumi.Input.encodeList<HostingVersionConfigRewrite,
+          Map<String, dynamic>>(rewritesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -54,19 +51,19 @@ class HostingVersionConfig {
     return HostingVersionConfig(
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<HostingVersionConfigHeader>(
+          : pulumi.Input.decodeList<HostingVersionConfigHeader>(
               map['headers'],
               (value) => HostingVersionConfigHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),
       redirects: map['redirects'] == null
           ? null
-          : Input.decodeList<HostingVersionConfigRedirect>(
+          : pulumi.Input.decodeList<HostingVersionConfigRedirect>(
               map['redirects'],
               (value) => HostingVersionConfigRedirect.fromMap(
                   (value as Map).cast<String, dynamic>())),
       rewrites: map['rewrites'] == null
           ? null
-          : Input.decodeList<HostingVersionConfigRewrite>(
+          : pulumi.Input.decodeList<HostingVersionConfigRewrite>(
               map['rewrites'],
               (value) => HostingVersionConfigRewrite.fromMap(
                   (value as Map).cast<String, dynamic>())),

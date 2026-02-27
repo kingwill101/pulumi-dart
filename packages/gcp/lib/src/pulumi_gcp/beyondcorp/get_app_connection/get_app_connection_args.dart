@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAppConnection.
 class GetAppConnectionArgs {
   /// The name of the App Connection.
   ///
   /// - - -
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region in which the resource belongs. If it
   /// is not provided, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAppConnectionArgs({
     required this.name,
@@ -39,9 +39,9 @@ class GetAppConnectionArgs {
 
   factory GetAppConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetAppConnectionArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for V2FolderSccBigQueryExport.
 class V2FolderSccBigQueryExportArgs {
   /// This must be unique within the organization.  It must consist of only lowercase letters,
   /// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
   /// and must be 63 characters or less.
-  final Input<String> bigQueryExportId;
+  final pulumi.Input<String> bigQueryExportId;
 
   /// The dataset to write findings' updates to.
   /// Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
   /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
-  final Input<String>? dataset;
+  final pulumi.Input<String>? dataset;
 
   /// The description of the notification config (max of 1024 characters).
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Expression that defines the filter to apply across create/update
   /// events of findings. The
@@ -36,14 +36,14 @@ class V2FolderSccBigQueryExportArgs {
   /// See
   /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
   /// for information on how to write a filter.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The folder where Cloud Security Command Center Big Query Export
   /// Config lives in.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   /// The BigQuery export configuration is stored in this location. If not provided, Use global as default.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   V2FolderSccBigQueryExportArgs({
     required this.bigQueryExportId,
@@ -79,12 +79,12 @@ class V2FolderSccBigQueryExportArgs {
 
   factory V2FolderSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderSccBigQueryExportArgs(
-      bigQueryExportId: Input.asInput<String>(map['bigQueryExportId']),
-      dataset: Input.asOptionalInput<String>(map['dataset']),
-      description: Input.asOptionalInput<String>(map['description']),
-      filter: Input.asOptionalInput<String>(map['filter']),
-      folder: Input.asInput<String>(map['folder']),
-      location: Input.asOptionalInput<String>(map['location']),
+      bigQueryExportId: pulumi.Input.asInput<String>(map['bigQueryExportId']),
+      dataset: pulumi.Input.asOptionalInput<String>(map['dataset']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
     );
   }
 }

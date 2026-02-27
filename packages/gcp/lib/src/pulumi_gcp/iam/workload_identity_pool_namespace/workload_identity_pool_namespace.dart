@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workload_identity_pool_namespace_owner_service/workload_identity_pool_namespace_owner_service.dart';
 import 'workload_identity_pool_namespace_args.dart';
 
@@ -46,28 +46,28 @@ import 'workload_identity_pool_namespace_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}
 /// ```
-class WorkloadIdentityPoolNamespace extends CustomResource {
+class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
   /// A description of the namespace. Cannot exceed 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
   /// identities within this namespace, however existing credentials will still be accepted until
   /// they expire.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The resource name of the namespace as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Defines the owner that is allowed to mutate this resource. If present, this resource can only
   /// be mutated by the owner.
   /// Structure is documented below.
-  late final Output<List<WorkloadIdentityPoolNamespaceOwnerService>>
+  late final pulumi.Output<List<WorkloadIdentityPoolNamespaceOwnerService>>
       ownerServices;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The current state of the namespace.
   /// * `ACTIVE`: The namespace is active.
@@ -75,12 +75,12 @@ class WorkloadIdentityPoolNamespace extends CustomResource {
   /// after approximately 30 days. You can restore a soft-deleted namespace using
   /// UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
   /// until it is permanently deleted.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  late final Output<String> workloadIdentityPoolId;
+  late final pulumi.Output<String> workloadIdentityPoolId;
 
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
@@ -89,17 +89,17 @@ class WorkloadIdentityPoolNamespace extends CustomResource {
   /// * end with an alphanumeric character
   ///
   /// The prefix `gcp-` will be reserved for future uses.
-  late final Output<String> workloadIdentityPoolNamespaceId;
+  late final pulumi.Output<String> workloadIdentityPoolNamespaceId;
 
   WorkloadIdentityPoolNamespace(
     String name, {
     WorkloadIdentityPoolNamespaceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.disabled = registerOutput<bool?>('disabled');

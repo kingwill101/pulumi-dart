@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_from_template_advanced_machine_features/instance_from_template_advanced_machine_features.dart';
 import '../instance_from_template_attached_disk/instance_from_template_attached_disk.dart';
 import '../instance_from_template_boot_disk/instance_from_template_boot_disk.dart';
@@ -19,102 +19,106 @@ import '../instance_from_template_shielded_instance_config/instance_from_templat
 /// The set of arguments for InstanceFromTemplate.
 class InstanceFromTemplateArgs {
   /// Controls for advanced machine-related behavior features.
-  final Input<InstanceFromTemplateAdvancedMachineFeatures>?
+  final pulumi.Input<InstanceFromTemplateAdvancedMachineFeatures>?
       advancedMachineFeatures;
-  final Input<bool>? allowStoppingForUpdate;
+  final pulumi.Input<bool>? allowStoppingForUpdate;
 
   /// List of disks attached to the instance
-  final Input<List<InstanceFromTemplateAttachedDisk>>? attachedDisks;
+  final pulumi.Input<List<InstanceFromTemplateAttachedDisk>>? attachedDisks;
 
   /// The boot disk for the instance.
-  final Input<InstanceFromTemplateBootDisk>? bootDisk;
+  final pulumi.Input<InstanceFromTemplateBootDisk>? bootDisk;
 
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-  final Input<bool>? canIpForward;
+  final pulumi.Input<bool>? canIpForward;
 
   /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
-  final Input<InstanceFromTemplateConfidentialInstanceConfig>?
+  final pulumi.Input<InstanceFromTemplateConfidentialInstanceConfig>?
       confidentialInstanceConfig;
 
   /// Whether deletion protection is enabled on this instance.
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// A brief description of the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
-  final Input<String>? desiredStatus;
+  final pulumi.Input<String>? desiredStatus;
 
   /// Whether the instance has virtual displays enabled.
-  final Input<bool>? enableDisplay;
+  final pulumi.Input<bool>? enableDisplay;
 
   /// List of the type and count of accelerator cards attached to the instance.
-  final Input<List<InstanceFromTemplateGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<InstanceFromTemplateGuestAccelerator>>?
+      guestAccelerators;
 
   /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-  final Input<String>? hostname;
+  final pulumi.Input<String>? hostname;
 
   /// Encryption key used to provide data encryption on the given instance.
-  final Input<InstanceFromTemplateInstanceEncryptionKey>? instanceEncryptionKey;
+  final pulumi.Input<InstanceFromTemplateInstanceEncryptionKey>?
+      instanceEncryptionKey;
 
   /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
-  final Input<String>? keyRevocationActionType;
+  final pulumi.Input<String>? keyRevocationActionType;
 
   /// A set of key/value label pairs assigned to the instance.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The machine type to create.
-  final Input<String>? machineType;
+  final pulumi.Input<String>? machineType;
 
   /// Metadata key/value pairs made available within the instance.
-  final Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>>? metadata;
 
   /// Metadata startup scripts made available within the instance.
-  final Input<String>? metadataStartupScript;
+  final pulumi.Input<String>? metadataStartupScript;
 
   /// The minimum CPU platform specified for the VM instance.
-  final Input<String>? minCpuPlatform;
+  final pulumi.Input<String>? minCpuPlatform;
 
   /// A unique name for the resource, required by GCE.
   /// Changing this forces a new resource to be created.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The networks attached to the instance.
-  final Input<List<InstanceFromTemplateNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<InstanceFromTemplateNetworkInterface>>?
+      networkInterfaces;
 
   /// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
-  final Input<InstanceFromTemplateNetworkPerformanceConfig>?
+  final pulumi.Input<InstanceFromTemplateNetworkPerformanceConfig>?
       networkPerformanceConfig;
 
   /// Stores additional params passed with the request, but not persisted as part of resource payload.
-  final Input<InstanceFromTemplateParams>? params;
+  final pulumi.Input<InstanceFromTemplateParams>? params;
 
   /// Partner Metadata Map made available within the instance.
-  final Input<Map<String, String>>? partnerMetadata;
+  final pulumi.Input<Map<String, String>>? partnerMetadata;
 
   /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Specifies the reservations that this instance can consume from.
-  final Input<InstanceFromTemplateReservationAffinity>? reservationAffinity;
+  final pulumi.Input<InstanceFromTemplateReservationAffinity>?
+      reservationAffinity;
 
   /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
-  final Input<String>? resourcePolicies;
+  final pulumi.Input<String>? resourcePolicies;
 
   /// The scheduling strategy being used by the instance.
-  final Input<InstanceFromTemplateScheduling>? scheduling;
+  final pulumi.Input<InstanceFromTemplateScheduling>? scheduling;
 
   /// The scratch disks attached to the instance.
-  final Input<List<InstanceFromTemplateScratchDisk>>? scratchDisks;
+  final pulumi.Input<List<InstanceFromTemplateScratchDisk>>? scratchDisks;
 
   /// The service account to attach to the instance.
-  final Input<InstanceFromTemplateServiceAccount>? serviceAccount;
+  final pulumi.Input<InstanceFromTemplateServiceAccount>? serviceAccount;
 
   /// The shielded vm config being used by the instance.
-  final Input<InstanceFromTemplateShieldedInstanceConfig>?
+  final pulumi.Input<InstanceFromTemplateShieldedInstanceConfig>?
       shieldedInstanceConfig;
 
   /// Name or self link of an instance
@@ -122,10 +126,10 @@ class InstanceFromTemplateArgs {
   /// instance templates through their unique id (`self_link_unique` attribute).
   ///
   /// - - -
-  final Input<String> sourceInstanceTemplate;
+  final pulumi.Input<String> sourceInstanceTemplate;
 
   /// The list of tags attached to the instance.
-  final Input<List<String>>? tags;
+  final pulumi.Input<List<String>>? tags;
 
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
@@ -133,7 +137,7 @@ class InstanceFromTemplateArgs {
   /// In addition to these, all arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the template. All exported attributes
   /// from `gcp.compute.Instance` are likewise exported here.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   InstanceFromTemplateArgs({
     this.advancedMachineFeatures,
@@ -176,7 +180,7 @@ class InstanceFromTemplateArgs {
     final map = <String, dynamic>{};
     final advancedMachineFeaturesValue = advancedMachineFeatures;
     if (advancedMachineFeaturesValue != null) {
-      map['advancedMachineFeatures'] = Input.mapOptionalInputValue<
+      map['advancedMachineFeatures'] = pulumi.Input.mapOptionalInputValue<
               InstanceFromTemplateAdvancedMachineFeatures,
               Map<String, dynamic>>(
           advancedMachineFeaturesValue, (value) => value.toMap());
@@ -187,16 +191,16 @@ class InstanceFromTemplateArgs {
     }
     final attachedDisksValue = attachedDisks;
     if (attachedDisksValue != null) {
-      map['attachedDisks'] = Input.mapOptionalInputValue<
+      map['attachedDisks'] = pulumi.Input.mapOptionalInputValue<
               List<InstanceFromTemplateAttachedDisk>,
               List<Map<String, dynamic>>>(
           attachedDisksValue,
-          (value) => Input.encodeList<InstanceFromTemplateAttachedDisk,
+          (value) => pulumi.Input.encodeList<InstanceFromTemplateAttachedDisk,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final bootDiskValue = bootDisk;
     if (bootDiskValue != null) {
-      map['bootDisk'] = Input.mapOptionalInputValue<
+      map['bootDisk'] = pulumi.Input.mapOptionalInputValue<
           InstanceFromTemplateBootDisk,
           Map<String, dynamic>>(bootDiskValue, (value) => value.toMap());
     }
@@ -206,7 +210,7 @@ class InstanceFromTemplateArgs {
     }
     final confidentialInstanceConfigValue = confidentialInstanceConfig;
     if (confidentialInstanceConfigValue != null) {
-      map['confidentialInstanceConfig'] = Input.mapOptionalInputValue<
+      map['confidentialInstanceConfig'] = pulumi.Input.mapOptionalInputValue<
               InstanceFromTemplateConfidentialInstanceConfig,
               Map<String, dynamic>>(
           confidentialInstanceConfigValue, (value) => value.toMap());
@@ -229,11 +233,12 @@ class InstanceFromTemplateArgs {
     }
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.mapOptionalInputValue<
+      map['guestAccelerators'] = pulumi.Input.mapOptionalInputValue<
               List<InstanceFromTemplateGuestAccelerator>,
               List<Map<String, dynamic>>>(
           guestAcceleratorsValue,
-          (value) => Input.encodeList<InstanceFromTemplateGuestAccelerator,
+          (value) => pulumi.Input.encodeList<
+              InstanceFromTemplateGuestAccelerator,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final hostnameValue = hostname;
@@ -242,7 +247,7 @@ class InstanceFromTemplateArgs {
     }
     final instanceEncryptionKeyValue = instanceEncryptionKey;
     if (instanceEncryptionKeyValue != null) {
-      map['instanceEncryptionKey'] = Input.mapOptionalInputValue<
+      map['instanceEncryptionKey'] = pulumi.Input.mapOptionalInputValue<
               InstanceFromTemplateInstanceEncryptionKey, Map<String, dynamic>>(
           instanceEncryptionKeyValue, (value) => value.toMap());
     }
@@ -276,23 +281,25 @@ class InstanceFromTemplateArgs {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.mapOptionalInputValue<
+      map['networkInterfaces'] = pulumi.Input.mapOptionalInputValue<
               List<InstanceFromTemplateNetworkInterface>,
               List<Map<String, dynamic>>>(
           networkInterfacesValue,
-          (value) => Input.encodeList<InstanceFromTemplateNetworkInterface,
+          (value) => pulumi.Input.encodeList<
+              InstanceFromTemplateNetworkInterface,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final networkPerformanceConfigValue = networkPerformanceConfig;
     if (networkPerformanceConfigValue != null) {
-      map['networkPerformanceConfig'] = Input.mapOptionalInputValue<
+      map['networkPerformanceConfig'] = pulumi.Input.mapOptionalInputValue<
               InstanceFromTemplateNetworkPerformanceConfig,
               Map<String, dynamic>>(
           networkPerformanceConfigValue, (value) => value.toMap());
     }
     final paramsValue = params;
     if (paramsValue != null) {
-      map['params'] = Input.mapOptionalInputValue<InstanceFromTemplateParams,
+      map['params'] = pulumi.Input.mapOptionalInputValue<
+          InstanceFromTemplateParams,
           Map<String, dynamic>>(paramsValue, (value) => value.toMap());
     }
     final partnerMetadataValue = partnerMetadata;
@@ -305,7 +312,7 @@ class InstanceFromTemplateArgs {
     }
     final reservationAffinityValue = reservationAffinity;
     if (reservationAffinityValue != null) {
-      map['reservationAffinity'] = Input.mapOptionalInputValue<
+      map['reservationAffinity'] = pulumi.Input.mapOptionalInputValue<
               InstanceFromTemplateReservationAffinity, Map<String, dynamic>>(
           reservationAffinityValue, (value) => value.toMap());
     }
@@ -315,28 +322,28 @@ class InstanceFromTemplateArgs {
     }
     final schedulingValue = scheduling;
     if (schedulingValue != null) {
-      map['scheduling'] = Input.mapOptionalInputValue<
+      map['scheduling'] = pulumi.Input.mapOptionalInputValue<
           InstanceFromTemplateScheduling,
           Map<String, dynamic>>(schedulingValue, (value) => value.toMap());
     }
     final scratchDisksValue = scratchDisks;
     if (scratchDisksValue != null) {
-      map['scratchDisks'] = Input.mapOptionalInputValue<
+      map['scratchDisks'] = pulumi.Input.mapOptionalInputValue<
               List<InstanceFromTemplateScratchDisk>,
               List<Map<String, dynamic>>>(
           scratchDisksValue,
-          (value) => Input.encodeList<InstanceFromTemplateScratchDisk,
+          (value) => pulumi.Input.encodeList<InstanceFromTemplateScratchDisk,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final serviceAccountValue = serviceAccount;
     if (serviceAccountValue != null) {
-      map['serviceAccount'] = Input.mapOptionalInputValue<
+      map['serviceAccount'] = pulumi.Input.mapOptionalInputValue<
           InstanceFromTemplateServiceAccount,
           Map<String, dynamic>>(serviceAccountValue, (value) => value.toMap());
     }
     final shieldedInstanceConfigValue = shieldedInstanceConfig;
     if (shieldedInstanceConfigValue != null) {
-      map['shieldedInstanceConfig'] = Input.mapOptionalInputValue<
+      map['shieldedInstanceConfig'] = pulumi.Input.mapOptionalInputValue<
               InstanceFromTemplateShieldedInstanceConfig, Map<String, dynamic>>(
           shieldedInstanceConfigValue, (value) => value.toMap());
     }
@@ -354,69 +361,72 @@ class InstanceFromTemplateArgs {
 
   factory InstanceFromTemplateArgs.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateArgs(
-      advancedMachineFeatures:
-          Input.asOptionalInput<InstanceFromTemplateAdvancedMachineFeatures>(
-              map['advancedMachineFeatures']),
+      advancedMachineFeatures: pulumi.Input.asOptionalInput<
+              InstanceFromTemplateAdvancedMachineFeatures>(
+          map['advancedMachineFeatures']),
       allowStoppingForUpdate:
-          Input.asOptionalInput<bool>(map['allowStoppingForUpdate']),
+          pulumi.Input.asOptionalInput<bool>(map['allowStoppingForUpdate']),
       attachedDisks:
-          Input.asOptionalInput<List<InstanceFromTemplateAttachedDisk>>(
+          pulumi.Input.asOptionalInput<List<InstanceFromTemplateAttachedDisk>>(
               map['attachedDisks']),
-      bootDisk:
-          Input.asOptionalInput<InstanceFromTemplateBootDisk>(map['bootDisk']),
-      canIpForward: Input.asOptionalInput<bool>(map['canIpForward']),
-      confidentialInstanceConfig:
-          Input.asOptionalInput<InstanceFromTemplateConfidentialInstanceConfig>(
-              map['confidentialInstanceConfig']),
+      bootDisk: pulumi.Input.asOptionalInput<InstanceFromTemplateBootDisk>(
+          map['bootDisk']),
+      canIpForward: pulumi.Input.asOptionalInput<bool>(map['canIpForward']),
+      confidentialInstanceConfig: pulumi.Input.asOptionalInput<
+              InstanceFromTemplateConfidentialInstanceConfig>(
+          map['confidentialInstanceConfig']),
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      description: Input.asOptionalInput<String>(map['description']),
-      desiredStatus: Input.asOptionalInput<String>(map['desiredStatus']),
-      enableDisplay: Input.asOptionalInput<bool>(map['enableDisplay']),
-      guestAccelerators:
-          Input.asOptionalInput<List<InstanceFromTemplateGuestAccelerator>>(
-              map['guestAccelerators']),
-      hostname: Input.asOptionalInput<String>(map['hostname']),
-      instanceEncryptionKey:
-          Input.asOptionalInput<InstanceFromTemplateInstanceEncryptionKey>(
-              map['instanceEncryptionKey']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      desiredStatus: pulumi.Input.asOptionalInput<String>(map['desiredStatus']),
+      enableDisplay: pulumi.Input.asOptionalInput<bool>(map['enableDisplay']),
+      guestAccelerators: pulumi.Input.asOptionalInput<
+          List<InstanceFromTemplateGuestAccelerator>>(map['guestAccelerators']),
+      hostname: pulumi.Input.asOptionalInput<String>(map['hostname']),
+      instanceEncryptionKey: pulumi.Input.asOptionalInput<
+              InstanceFromTemplateInstanceEncryptionKey>(
+          map['instanceEncryptionKey']),
       keyRevocationActionType:
-          Input.asOptionalInput<String>(map['keyRevocationActionType']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      machineType: Input.asOptionalInput<String>(map['machineType']),
-      metadata: Input.asOptionalInput<Map<String, String>>(map['metadata']),
+          pulumi.Input.asOptionalInput<String>(map['keyRevocationActionType']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      machineType: pulumi.Input.asOptionalInput<String>(map['machineType']),
+      metadata:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['metadata']),
       metadataStartupScript:
-          Input.asOptionalInput<String>(map['metadataStartupScript']),
-      minCpuPlatform: Input.asOptionalInput<String>(map['minCpuPlatform']),
-      name: Input.asOptionalInput<String>(map['name']),
-      networkInterfaces:
-          Input.asOptionalInput<List<InstanceFromTemplateNetworkInterface>>(
-              map['networkInterfaces']),
-      networkPerformanceConfig:
-          Input.asOptionalInput<InstanceFromTemplateNetworkPerformanceConfig>(
-              map['networkPerformanceConfig']),
-      params: Input.asOptionalInput<InstanceFromTemplateParams>(map['params']),
-      partnerMetadata:
-          Input.asOptionalInput<Map<String, String>>(map['partnerMetadata']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['metadataStartupScript']),
+      minCpuPlatform:
+          pulumi.Input.asOptionalInput<String>(map['minCpuPlatform']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      networkInterfaces: pulumi.Input.asOptionalInput<
+          List<InstanceFromTemplateNetworkInterface>>(map['networkInterfaces']),
+      networkPerformanceConfig: pulumi.Input.asOptionalInput<
+              InstanceFromTemplateNetworkPerformanceConfig>(
+          map['networkPerformanceConfig']),
+      params: pulumi.Input.asOptionalInput<InstanceFromTemplateParams>(
+          map['params']),
+      partnerMetadata: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['partnerMetadata']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       reservationAffinity:
-          Input.asOptionalInput<InstanceFromTemplateReservationAffinity>(
+          pulumi.Input.asOptionalInput<InstanceFromTemplateReservationAffinity>(
               map['reservationAffinity']),
-      resourcePolicies: Input.asOptionalInput<String>(map['resourcePolicies']),
-      scheduling: Input.asOptionalInput<InstanceFromTemplateScheduling>(
+      resourcePolicies:
+          pulumi.Input.asOptionalInput<String>(map['resourcePolicies']),
+      scheduling: pulumi.Input.asOptionalInput<InstanceFromTemplateScheduling>(
           map['scheduling']),
       scratchDisks:
-          Input.asOptionalInput<List<InstanceFromTemplateScratchDisk>>(
+          pulumi.Input.asOptionalInput<List<InstanceFromTemplateScratchDisk>>(
               map['scratchDisks']),
-      serviceAccount: Input.asOptionalInput<InstanceFromTemplateServiceAccount>(
-          map['serviceAccount']),
-      shieldedInstanceConfig:
-          Input.asOptionalInput<InstanceFromTemplateShieldedInstanceConfig>(
-              map['shieldedInstanceConfig']),
+      serviceAccount:
+          pulumi.Input.asOptionalInput<InstanceFromTemplateServiceAccount>(
+              map['serviceAccount']),
+      shieldedInstanceConfig: pulumi.Input.asOptionalInput<
+              InstanceFromTemplateShieldedInstanceConfig>(
+          map['shieldedInstanceConfig']),
       sourceInstanceTemplate:
-          Input.asInput<String>(map['sourceInstanceTemplate']),
-      tags: Input.asOptionalInput<List<String>>(map['tags']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+          pulumi.Input.asInput<String>(map['sourceInstanceTemplate']),
+      tags: pulumi.Input.asOptionalInput<List<String>>(map['tags']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

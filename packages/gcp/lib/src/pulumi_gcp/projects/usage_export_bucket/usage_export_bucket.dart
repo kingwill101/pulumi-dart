@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'usage_export_bucket_args.dart';
 
 /// Sets up a usage export bucket for a particular project.  A usage export bucket
@@ -28,27 +28,27 @@ import 'usage_export_bucket_args.dart';
 /// ```sh
 /// $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
 /// ```
-class UsageExportBucket extends CustomResource {
+class UsageExportBucket extends pulumi.CustomResource {
   /// The bucket to store reports in.
   ///
   /// - - -
-  late final Output<String> bucketName;
+  late final pulumi.Output<String> bucketName;
 
   /// A prefix for the reports, for instance, the project name.
-  late final Output<String?> prefix;
+  late final pulumi.Output<String?> prefix;
 
   /// The project to set the export bucket on. If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   UsageExportBucket(
     String name, {
     UsageExportBucketArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:projects/usageExportBucket:UsageExportBucket',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucketName = registerOutput<String>('bucketName');
     this.prefix = registerOutput<String?>('prefix');

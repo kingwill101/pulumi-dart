@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_backend_service_tls_settings_subject_alt_name/region_backend_service_tls_settings_subject_alt_name.dart';
 
 class RegionBackendServiceTlsSettings {
@@ -41,7 +41,7 @@ class RegionBackendServiceTlsSettings {
     }
     final subjectAltNamesValue = subjectAltNames;
     if (subjectAltNamesValue != null) {
-      map['subjectAltNames'] = Input.encodeList<
+      map['subjectAltNames'] = pulumi.Input.encodeList<
           RegionBackendServiceTlsSettingsSubjectAltName,
           Map<String, dynamic>>(subjectAltNamesValue, (value) => value.toMap());
     }
@@ -56,7 +56,8 @@ class RegionBackendServiceTlsSettings {
       sni: map['sni'] == null ? null : map['sni'] as String,
       subjectAltNames: map['subjectAltNames'] == null
           ? null
-          : Input.decodeList<RegionBackendServiceTlsSettingsSubjectAltName>(
+          : pulumi.Input.decodeList<
+                  RegionBackendServiceTlsSettingsSubjectAltName>(
               map['subjectAltNames'],
               (value) => RegionBackendServiceTlsSettingsSubjectAltName.fromMap(
                   (value as Map).cast<String, dynamic>())),

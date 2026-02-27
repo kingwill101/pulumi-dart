@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_disk_encryption_key/get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_disk_encryption_key.dart';
 import '../get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_label/get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_label.dart';
 import '../get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_resource_manager_tag/get_region_instance_group_manager_instance_flexibility_policy_instance_selection_disk_resource_manager_tag.dart';
@@ -115,7 +115,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
     map['autoDelete'] = autoDelete;
     map['boot'] = boot;
     map['deviceName'] = deviceName;
-    map['diskEncryptionKeys'] = Input.encodeList<
+    map['diskEncryptionKeys'] = pulumi.Input.encodeList<
         GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey,
         Map<String, dynamic>>(diskEncryptionKeys, (value) => value.toMap());
     map['diskName'] = diskName;
@@ -123,24 +123,24 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
     map['diskType'] = diskType;
     map['guestOsFeatures'] = guestOsFeatures;
     map['interface'] = interface;
-    map['labels'] = Input.encodeList<
+    map['labels'] = pulumi.Input.encodeList<
         GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel,
         Map<String, dynamic>>(labels, (value) => value.toMap());
     map['mode'] = mode;
     map['provisionedIops'] = provisionedIops;
     map['provisionedThroughput'] = provisionedThroughput;
-    map['resourceManagerTags'] = Input.encodeList<
+    map['resourceManagerTags'] = pulumi.Input.encodeList<
         GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag,
         Map<String, dynamic>>(resourceManagerTags, (value) => value.toMap());
     map['resourcePolicies'] = resourcePolicies;
     map['source'] = source;
     map['sourceImage'] = sourceImage;
-    map['sourceImageEncryptionKeys'] = Input.encodeList<
+    map['sourceImageEncryptionKeys'] = pulumi.Input.encodeList<
         GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey,
         Map<String,
             dynamic>>(sourceImageEncryptionKeys, (value) => value.toMap());
     map['sourceSnapshot'] = sourceSnapshot;
-    map['sourceSnapshotEncryptionKeys'] = Input.encodeList<
+    map['sourceSnapshotEncryptionKeys'] = pulumi.Input.encodeList<
         GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey,
         Map<String,
             dynamic>>(sourceSnapshotEncryptionKeys, (value) => value.toMap());
@@ -155,7 +155,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
       autoDelete: map['autoDelete'] as bool,
       boot: map['boot'] as bool,
       deviceName: map['deviceName'] as String,
-      diskEncryptionKeys: Input.decodeList<
+      diskEncryptionKeys: pulumi.Input.decodeList<
               GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey>(
           map['diskEncryptionKeys'],
           (value) =>
@@ -166,7 +166,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
       diskType: map['diskType'] as String,
       guestOsFeatures: (map['guestOsFeatures'] as List).cast<String>(),
       interface: map['interface'] as String,
-      labels: Input.decodeList<
+      labels: pulumi.Input.decodeList<
               GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel>(
           map['labels'],
           (value) =>
@@ -175,7 +175,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
       mode: map['mode'] as String,
       provisionedIops: map['provisionedIops'] as int,
       provisionedThroughput: map['provisionedThroughput'] as int,
-      resourceManagerTags: Input.decodeList<
+      resourceManagerTags: pulumi.Input.decodeList<
               GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag>(
           map['resourceManagerTags'],
           (value) =>
@@ -184,14 +184,14 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
       resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
       source: map['source'] as String,
       sourceImage: map['sourceImage'] as String,
-      sourceImageEncryptionKeys: Input.decodeList<
+      sourceImageEncryptionKeys: pulumi.Input.decodeList<
               GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey>(
           map['sourceImageEncryptionKeys'],
           (value) =>
               GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey
                   .fromMap((value as Map).cast<String, dynamic>())),
       sourceSnapshot: map['sourceSnapshot'] as String,
-      sourceSnapshotEncryptionKeys: Input.decodeList<
+      sourceSnapshotEncryptionKeys: pulumi.Input.decodeList<
               GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey>(
           map['sourceSnapshotEncryptionKeys'],
           (value) =>

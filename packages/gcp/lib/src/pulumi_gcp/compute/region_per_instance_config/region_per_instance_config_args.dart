@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_per_instance_config_preserved_state/region_per_instance_config_preserved_state.dart';
 
 /// The set of arguments for RegionPerInstanceConfig.
@@ -11,7 +11,7 @@ class RegionPerInstanceConfigArgs {
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  final Input<String>? minimalAction;
+  final pulumi.Input<String>? minimalAction;
 
   /// The most disruptive action to perform on the instance during an update.
   /// Default is `REPLACE`. Possible values are:
@@ -19,33 +19,33 @@ class RegionPerInstanceConfigArgs {
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  final Input<String>? mostDisruptiveAllowedAction;
+  final pulumi.Input<String>? mostDisruptiveAllowedAction;
 
   /// The name for this per-instance config and its corresponding instance.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The preserved state for this instance.
   /// Structure is documented below.
-  final Input<RegionPerInstanceConfigPreservedState>? preservedState;
+  final pulumi.Input<RegionPerInstanceConfigPreservedState>? preservedState;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Region where the containing instance group manager is located
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The region instance group manager this instance config is part of.
-  final Input<String> regionInstanceGroupManager;
+  final pulumi.Input<String> regionInstanceGroupManager;
 
   /// When true, deleting this config will immediately remove the underlying instance.
   /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
-  final Input<bool>? removeInstanceOnDestroy;
+  final pulumi.Input<bool>? removeInstanceOnDestroy;
 
   /// When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
   /// State will be removed on the next instance recreation or update.
-  final Input<bool>? removeInstanceStateOnDestroy;
+  final pulumi.Input<bool>? removeInstanceStateOnDestroy;
 
   RegionPerInstanceConfigArgs({
     this.minimalAction,
@@ -75,7 +75,7 @@ class RegionPerInstanceConfigArgs {
     }
     final preservedStateValue = preservedState;
     if (preservedStateValue != null) {
-      map['preservedState'] = Input.mapOptionalInputValue<
+      map['preservedState'] = pulumi.Input.mapOptionalInputValue<
           RegionPerInstanceConfigPreservedState,
           Map<String, dynamic>>(preservedStateValue, (value) => value.toMap());
     }
@@ -101,21 +101,21 @@ class RegionPerInstanceConfigArgs {
 
   factory RegionPerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigArgs(
-      minimalAction: Input.asOptionalInput<String>(map['minimalAction']),
-      mostDisruptiveAllowedAction:
-          Input.asOptionalInput<String>(map['mostDisruptiveAllowedAction']),
-      name: Input.asOptionalInput<String>(map['name']),
+      minimalAction: pulumi.Input.asOptionalInput<String>(map['minimalAction']),
+      mostDisruptiveAllowedAction: pulumi.Input.asOptionalInput<String>(
+          map['mostDisruptiveAllowedAction']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       preservedState:
-          Input.asOptionalInput<RegionPerInstanceConfigPreservedState>(
+          pulumi.Input.asOptionalInput<RegionPerInstanceConfigPreservedState>(
               map['preservedState']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       regionInstanceGroupManager:
-          Input.asInput<String>(map['regionInstanceGroupManager']),
+          pulumi.Input.asInput<String>(map['regionInstanceGroupManager']),
       removeInstanceOnDestroy:
-          Input.asOptionalInput<bool>(map['removeInstanceOnDestroy']),
-      removeInstanceStateOnDestroy:
-          Input.asOptionalInput<bool>(map['removeInstanceStateOnDestroy']),
+          pulumi.Input.asOptionalInput<bool>(map['removeInstanceOnDestroy']),
+      removeInstanceStateOnDestroy: pulumi.Input.asOptionalInput<bool>(
+          map['removeInstanceStateOnDestroy']),
     );
   }
 }

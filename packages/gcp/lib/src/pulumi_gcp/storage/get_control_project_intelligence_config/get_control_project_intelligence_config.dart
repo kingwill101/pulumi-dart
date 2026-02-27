@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_control_project_intelligence_config_args.dart';
 import 'get_control_project_intelligence_config_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_control_project_intelligence_config_result.dart';
 Future<GetControlProjectIntelligenceConfigResult>
     getControlProjectIntelligenceConfig(
   GetControlProjectIntelligenceConfigArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:storage/getControlProjectIntelligenceConfig:getControlProjectIntelligenceConfig',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlProjectIntelligenceConfigResult.fromMap(result);
 }

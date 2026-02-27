@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../spoke_linked_router_appliance_instances_instance/spoke_linked_router_appliance_instances_instance.dart';
 
 class SpokeLinkedRouterApplianceInstances {
@@ -27,7 +27,7 @@ class SpokeLinkedRouterApplianceInstances {
     if (includeImportRangesValue != null) {
       map['includeImportRanges'] = includeImportRangesValue;
     }
-    map['instances'] = Input.encodeList<
+    map['instances'] = pulumi.Input.encodeList<
         SpokeLinkedRouterApplianceInstancesInstance,
         Map<String, dynamic>>(instances, (value) => value.toMap());
     map['siteToSiteDataTransfer'] = siteToSiteDataTransfer;
@@ -40,10 +40,11 @@ class SpokeLinkedRouterApplianceInstances {
       includeImportRanges: map['includeImportRanges'] == null
           ? null
           : (map['includeImportRanges'] as List).cast<String>(),
-      instances: Input.decodeList<SpokeLinkedRouterApplianceInstancesInstance>(
-          map['instances'],
-          (value) => SpokeLinkedRouterApplianceInstancesInstance.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      instances:
+          pulumi.Input.decodeList<SpokeLinkedRouterApplianceInstancesInstance>(
+              map['instances'],
+              (value) => SpokeLinkedRouterApplianceInstancesInstance.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       siteToSiteDataTransfer: map['siteToSiteDataTransfer'] as bool,
     );
   }

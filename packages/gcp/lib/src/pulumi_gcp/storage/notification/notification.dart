@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_args.dart';
 
 /// Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
@@ -33,27 +33,27 @@ import 'notification_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/notification:Notification default {{bucket_name}}/notificationConfigs/{{id}}
 /// ```
-class Notification extends CustomResource {
+class Notification extends pulumi.CustomResource {
   /// The name of the bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
-  late final Output<Map<String, String>?> customAttributes;
+  late final pulumi.Output<Map<String, String>?> customAttributes;
 
   /// List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
-  late final Output<List<String>?> eventTypes;
+  late final pulumi.Output<List<String>?> eventTypes;
 
   /// The ID of the created notification.
-  late final Output<String> notificationId;
+  late final pulumi.Output<String> notificationId;
 
   /// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
-  late final Output<String?> objectNamePrefix;
+  late final pulumi.Output<String?> objectNamePrefix;
 
   /// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
-  late final Output<String> payloadFormat;
+  late final pulumi.Output<String> payloadFormat;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The Cloud PubSub topic to which this subscription publishes. Expects either the
   /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
@@ -61,17 +61,17 @@ class Notification extends CustomResource {
   /// you will need to use the project-level name.
   ///
   /// - - -
-  late final Output<String> topic;
+  late final pulumi.Output<String> topic;
 
   Notification(
     String name, {
     NotificationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/notification:Notification',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.customAttributes =

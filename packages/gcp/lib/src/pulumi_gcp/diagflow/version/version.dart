@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'version_args.dart';
 
 /// You can create multiple versions of your agent and publish them to separate environments.
@@ -34,32 +34,32 @@ import 'version_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/version:Version default {{parent}}/{{name}}
 /// ```
-class Version extends CustomResource {
+class Version extends pulumi.CustomResource {
   /// The developer-provided description of this version.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The unique identifier of this agent version.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Flow to create an Version for.
   /// Format: projects/<Project ID>/agent.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// The status of this version.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The sequential number of this version.
-  late final Output<int> versionNumber;
+  late final pulumi.Output<int> versionNumber;
 
   Version(
     String name, {
     VersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/version:Version',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_flow_advanced_settings/cx_flow_advanced_settings.dart';
 import '../cx_flow_event_handler/cx_flow_event_handler.dart';
 import '../cx_flow_knowledge_connector_settings/cx_flow_knowledge_connector_settings.dart';
@@ -43,34 +43,34 @@ import 'cx_flow_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/{{name}}
 /// ```
-class CxFlow extends CustomResource {
+class CxFlow extends pulumi.CustomResource {
   /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
   /// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
   /// Structure is documented below.
-  late final Output<CxFlowAdvancedSettings?> advancedSettings;
+  late final pulumi.Output<CxFlowAdvancedSettings?> advancedSettings;
 
   /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The human-readable name of the flow.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// A flow's event handlers serve two purposes:
   /// They are responsible for handling events (e.g. no match, webhook errors) in the flow.
   /// They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
   /// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
   /// Structure is documented below.
-  late final Output<List<CxFlowEventHandler>> eventHandlers;
+  late final pulumi.Output<List<CxFlowEventHandler>> eventHandlers;
 
   /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
   /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
   ///
   /// > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
-  late final Output<bool?> isDefaultStartFlow;
+  late final pulumi.Output<bool?> isDefaultStartFlow;
 
   /// Knowledge connector configuration.
   /// Structure is documented below.
-  late final Output<CxFlowKnowledgeConnectorSettings?>
+  late final pulumi.Output<CxFlowKnowledgeConnectorSettings?>
       knowledgeConnectorSettings;
 
   /// The language of the following fields in flow:
@@ -79,25 +79,25 @@ class CxFlow extends CustomResource {
   /// Flow.transition_routes.trigger_fulfillment.messages
   /// Flow.transition_routes.trigger_fulfillment.conditional_cases
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-  late final Output<String?> languageCode;
+  late final pulumi.Output<String?> languageCode;
 
   /// The unique identifier of the flow.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// NLU related settings of the flow.
   /// Structure is documented below.
-  late final Output<CxFlowNluSettings?> nluSettings;
+  late final pulumi.Output<CxFlowNluSettings?> nluSettings;
 
   /// The agent to create a flow for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// A flow's transition route group serve two purposes:
   /// They are responsible for matching the user's first utterances in the flow.
   /// They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
   /// Format:projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>.
-  late final Output<List<String>?> transitionRouteGroups;
+  late final pulumi.Output<List<String>?> transitionRouteGroups;
 
   /// A flow's transition routes serve two purposes:
   /// They are responsible for matching the user's first utterances in the flow.
@@ -107,17 +107,17 @@ class CxFlow extends CustomResource {
   /// TransitionRoutes with only condition specified.
   /// TransitionRoutes with intent specified are inherited by pages in the flow.
   /// Structure is documented below.
-  late final Output<List<CxFlowTransitionRoute>?> transitionRoutes;
+  late final pulumi.Output<List<CxFlowTransitionRoute>?> transitionRoutes;
 
   CxFlow(
     String name, {
     CxFlowArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/cxFlow:CxFlow',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.advancedSettings =
         registerOutput<CxFlowAdvancedSettings?>('advancedSettings');

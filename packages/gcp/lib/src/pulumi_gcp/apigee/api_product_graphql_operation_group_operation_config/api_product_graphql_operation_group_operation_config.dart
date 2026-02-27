@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_product_graphql_operation_group_operation_config_attribute/api_product_graphql_operation_group_operation_config_attribute.dart';
 import '../api_product_graphql_operation_group_operation_config_operation/api_product_graphql_operation_group_operation_config_operation.dart';
 import '../api_product_graphql_operation_group_operation_config_quota/api_product_graphql_operation_group_operation_config_quota.dart';
@@ -39,13 +39,13 @@ class ApiProductGraphqlOperationGroupOperationConfig {
     }
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.encodeList<
+      map['attributes'] = pulumi.Input.encodeList<
           ApiProductGraphqlOperationGroupOperationConfigAttribute,
           Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
     final operationsValue = operations;
     if (operationsValue != null) {
-      map['operations'] = Input.encodeList<
+      map['operations'] = pulumi.Input.encodeList<
           ApiProductGraphqlOperationGroupOperationConfigOperation,
           Map<String, dynamic>>(operationsValue, (value) => value.toMap());
     }
@@ -62,14 +62,14 @@ class ApiProductGraphqlOperationGroupOperationConfig {
       apiSource: map['apiSource'] == null ? null : map['apiSource'] as String,
       attributes: map['attributes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ApiProductGraphqlOperationGroupOperationConfigAttribute>(
               map['attributes'],
               (value) => ApiProductGraphqlOperationGroupOperationConfigAttribute
                   .fromMap((value as Map).cast<String, dynamic>())),
       operations: map['operations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ApiProductGraphqlOperationGroupOperationConfigOperation>(
               map['operations'],
               (value) => ApiProductGraphqlOperationGroupOperationConfigOperation

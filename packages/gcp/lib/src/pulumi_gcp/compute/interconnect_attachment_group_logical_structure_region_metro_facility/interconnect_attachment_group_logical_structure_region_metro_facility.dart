@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_attachment_group_logical_structure_region_metro_facility_zone/interconnect_attachment_group_logical_structure_region_metro_facility_zone.dart';
 
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
@@ -29,7 +29,7 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
     }
     final zonesValue = zones;
     if (zonesValue != null) {
-      map['zones'] = Input.encodeList<
+      map['zones'] = pulumi.Input.encodeList<
           InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone,
           Map<String, dynamic>>(zonesValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
       facility: map['facility'] == null ? null : map['facility'] as String,
       zones: map['zones'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>(
               map['zones'],
               (value) =>

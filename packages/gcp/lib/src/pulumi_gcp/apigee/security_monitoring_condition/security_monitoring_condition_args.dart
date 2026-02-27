@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SecurityMonitoringCondition.
 class SecurityMonitoringConditionArgs {
   /// Resource ID of the security monitoring condition.
-  final Input<String> conditionId;
+  final pulumi.Input<String> conditionId;
 
   /// A nested object resource.
-  final Input<Map<String, dynamic>>? includeAllResources;
+  final pulumi.Input<Map<String, dynamic>>? includeAllResources;
 
   /// The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// in the format `organizations/{{org_name}}`.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// ID of security profile of the security monitoring condition.
-  final Input<String> profile;
+  final pulumi.Input<String> profile;
 
   /// ID of security profile of the security monitoring condition.
-  final Input<String> scope;
+  final pulumi.Input<String> scope;
 
   SecurityMonitoringConditionArgs({
     required this.conditionId,
@@ -43,12 +43,12 @@ class SecurityMonitoringConditionArgs {
 
   factory SecurityMonitoringConditionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityMonitoringConditionArgs(
-      conditionId: Input.asInput<String>(map['conditionId']),
-      includeAllResources: Input.asOptionalInput<Map<String, dynamic>>(
+      conditionId: pulumi.Input.asInput<String>(map['conditionId']),
+      includeAllResources: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
           map['includeAllResources']),
-      orgId: Input.asInput<String>(map['orgId']),
-      profile: Input.asInput<String>(map['profile']),
-      scope: Input.asInput<String>(map['scope']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      profile: pulumi.Input.asInput<String>(map['profile']),
+      scope: pulumi.Input.asInput<String>(map['scope']),
     );
   }
 }

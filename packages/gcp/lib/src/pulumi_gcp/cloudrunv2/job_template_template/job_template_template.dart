@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_template_template_container/job_template_template_container.dart';
 import '../job_template_template_node_selector/job_template_template_node_selector.dart';
 import '../job_template_template_volume/job_template_template_volume.dart';
@@ -60,9 +60,8 @@ class JobTemplateTemplate {
     final map = <String, dynamic>{};
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] =
-          Input.encodeList<JobTemplateTemplateContainer, Map<String, dynamic>>(
-              containersValue, (value) => value.toMap());
+      map['containers'] = pulumi.Input.encodeList<JobTemplateTemplateContainer,
+          Map<String, dynamic>>(containersValue, (value) => value.toMap());
     }
     final encryptionKeyValue = encryptionKey;
     if (encryptionKeyValue != null) {
@@ -94,9 +93,8 @@ class JobTemplateTemplate {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] =
-          Input.encodeList<JobTemplateTemplateVolume, Map<String, dynamic>>(
-              volumesValue, (value) => value.toMap());
+      map['volumes'] = pulumi.Input.encodeList<JobTemplateTemplateVolume,
+          Map<String, dynamic>>(volumesValue, (value) => value.toMap());
     }
     final vpcAccessValue = vpcAccess;
     if (vpcAccessValue != null) {
@@ -109,7 +107,7 @@ class JobTemplateTemplate {
     return JobTemplateTemplate(
       containers: map['containers'] == null
           ? null
-          : Input.decodeList<JobTemplateTemplateContainer>(
+          : pulumi.Input.decodeList<JobTemplateTemplateContainer>(
               map['containers'],
               (value) => JobTemplateTemplateContainer.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -132,7 +130,7 @@ class JobTemplateTemplate {
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<JobTemplateTemplateVolume>(
+          : pulumi.Input.decodeList<JobTemplateTemplateVolume>(
               map['volumes'],
               (value) => JobTemplateTemplateVolume.fromMap(
                   (value as Map).cast<String, dynamic>())),

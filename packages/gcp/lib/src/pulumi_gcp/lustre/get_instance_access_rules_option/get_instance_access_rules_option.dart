@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_access_rules_option_access_rule/get_instance_access_rules_option_access_rule.dart';
 
 class GetInstanceAccessRulesOption {
@@ -29,7 +29,7 @@ class GetInstanceAccessRulesOption {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accessRules'] = Input.encodeList<
+    map['accessRules'] = pulumi.Input.encodeList<
         GetInstanceAccessRulesOptionAccessRule,
         Map<String, dynamic>>(accessRules, (value) => value.toMap());
     map['defaultSquashGid'] = defaultSquashGid;
@@ -40,10 +40,11 @@ class GetInstanceAccessRulesOption {
 
   factory GetInstanceAccessRulesOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceAccessRulesOption(
-      accessRules: Input.decodeList<GetInstanceAccessRulesOptionAccessRule>(
-          map['accessRules'],
-          (value) => GetInstanceAccessRulesOptionAccessRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accessRules:
+          pulumi.Input.decodeList<GetInstanceAccessRulesOptionAccessRule>(
+              map['accessRules'],
+              (value) => GetInstanceAccessRulesOptionAccessRule.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       defaultSquashGid: map['defaultSquashGid'] as int,
       defaultSquashMode: map['defaultSquashMode'] as String,
       defaultSquashUid: map['defaultSquashUid'] as int,

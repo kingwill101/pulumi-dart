@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_region_instance_group_manager_args.dart';
 import 'get_region_instance_group_manager_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_region_instance_group_manager_result.dart';
 /// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
 Future<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager(
   GetRegionInstanceGroupManagerArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstanceGroupManagerResult.fromMap(result);
 }

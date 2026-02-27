@@ -1,25 +1,25 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../delivery_pipeline_iam_binding_condition/delivery_pipeline_iam_binding_condition.dart';
 import 'delivery_pipeline_iam_binding_args.dart';
 
-class DeliveryPipelineIamBinding extends CustomResource {
-  late final Output<DeliveryPipelineIamBindingCondition?> condition;
-  late final Output<String> etag;
-  late final Output<String> location;
-  late final Output<List<String>> members;
-  late final Output<String> name;
-  late final Output<String> project;
-  late final Output<String> role;
+class DeliveryPipelineIamBinding extends pulumi.CustomResource {
+  late final pulumi.Output<DeliveryPipelineIamBindingCondition?> condition;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> location;
+  late final pulumi.Output<List<String>> members;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+  late final pulumi.Output<String> role;
 
   DeliveryPipelineIamBinding(
     String name, {
     DeliveryPipelineIamBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition =
         registerOutput<DeliveryPipelineIamBindingCondition?>('condition');

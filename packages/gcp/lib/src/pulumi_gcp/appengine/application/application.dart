@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_feature_settings/application_feature_settings.dart';
 import '../application_iap/application_iap.dart';
 import '../application_url_dispatch_rule/application_url_dispatch_rule.dart';
@@ -28,15 +28,15 @@ import 'application_args.dart';
 /// ```sh
 /// $ pulumi import gcp:appengine/application:Application default {{project-id}}
 /// ```
-class Application extends CustomResource {
+class Application extends pulumi.CustomResource {
   /// Identifier of the app, usually `{PROJECT_ID}`
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// The domain to authenticate users with when using App Engine's User API.
-  late final Output<String> authDomain;
+  late final pulumi.Output<String> authDomain;
 
   /// The GCS bucket code is being stored in for this app.
-  late final Output<String> codeBucket;
+  late final pulumi.Output<String> codeBucket;
 
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
@@ -44,53 +44,53 @@ class Application extends CustomResource {
   /// To create a Cloud Firestore database without creating an App Engine application, use the
   /// `gcp.firestore.Database`
   /// resource instead.
-  late final Output<String> databaseType;
+  late final pulumi.Output<String> databaseType;
 
   /// The GCS bucket content is being stored in for this app.
-  late final Output<String> defaultBucket;
+  late final pulumi.Output<String> defaultBucket;
 
   /// The default hostname for this app.
-  late final Output<String> defaultHostname;
+  late final pulumi.Output<String> defaultHostname;
 
   /// A block of optional settings to configure specific App Engine features:
-  late final Output<ApplicationFeatureSettings> featureSettings;
+  late final pulumi.Output<ApplicationFeatureSettings> featureSettings;
 
   /// The GCR domain used for storing managed Docker images for this app.
-  late final Output<String> gcrDomain;
+  late final pulumi.Output<String> gcrDomain;
 
   /// Settings for enabling Cloud Identity Aware Proxy
-  late final Output<ApplicationIap> iap;
+  late final pulumi.Output<ApplicationIap> iap;
 
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
-  late final Output<String> locationId;
+  late final pulumi.Output<String> locationId;
 
   /// Unique name of the app, usually `apps/{PROJECT_ID}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project ID to create the application under.
   /// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
   /// you may get a "Permission denied" error.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The serving status of the app.
-  late final Output<String> servingStatus;
+  late final pulumi.Output<String> servingStatus;
 
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
-  late final Output<String> sslPolicy;
+  late final pulumi.Output<String> sslPolicy;
 
   /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-  late final Output<List<ApplicationUrlDispatchRule>> urlDispatchRules;
+  late final pulumi.Output<List<ApplicationUrlDispatchRule>> urlDispatchRules;
 
   Application(
     String name, {
     ApplicationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:appengine/application:Application',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.authDomain = registerOutput<String>('authDomain');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_zone_cloud_logging_config/managed_zone_cloud_logging_config.dart';
 import '../managed_zone_dnssec_config/managed_zone_dnssec_config.dart';
 import '../managed_zone_forwarding_config/managed_zone_forwarding_config.dart';
@@ -76,97 +76,98 @@ import 'managed_zone_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
 /// ```
-class ManagedZone extends CustomResource {
+class ManagedZone extends pulumi.CustomResource {
   /// Cloud logging configuration
   /// Structure is documented below.
-  late final Output<ManagedZoneCloudLoggingConfig> cloudLoggingConfig;
+  late final pulumi.Output<ManagedZoneCloudLoggingConfig> cloudLoggingConfig;
 
   /// The time that this resource was created on the server.
   /// This is in RFC3339 text format.
-  late final Output<String> creationTime;
+  late final pulumi.Output<String> creationTime;
 
   /// A textual description field. Defaults to 'Managed by Pulumi'.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// The DNS name of this managed zone, for instance "example.com.".
-  late final Output<String> dnsName;
+  late final pulumi.Output<String> dnsName;
 
   /// DNSSEC configuration
   /// Structure is documented below.
-  late final Output<ManagedZoneDnssecConfig> dnssecConfig;
+  late final pulumi.Output<ManagedZoneDnssecConfig> dnssecConfig;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Set this true to delete all records in the zone.
-  late final Output<bool?> forceDestroy;
+  late final pulumi.Output<bool?> forceDestroy;
 
   /// The presence for this field indicates that outbound forwarding is enabled
   /// for this zone. The value of this field contains the set of destinations
   /// to forward to.
   /// Structure is documented below.
-  late final Output<ManagedZoneForwardingConfig?> forwardingConfig;
+  late final pulumi.Output<ManagedZoneForwardingConfig?> forwardingConfig;
 
   /// A set of key/value label pairs to assign to this ManagedZone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Unique identifier for the resource; defined by the server.
-  late final Output<String> managedZoneId;
+  late final pulumi.Output<String> managedZoneId;
 
   /// User assigned name for this resource.
   /// Must be unique within the project.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Delegate your managed_zone to these virtual name servers;
   /// defined by the server
-  late final Output<List<String>> nameServers;
+  late final pulumi.Output<List<String>> nameServers;
 
   /// The presence of this field indicates that DNS Peering is enabled for this
   /// zone. The value of this field contains the network to peer with.
   /// Structure is documented below.
-  late final Output<ManagedZonePeeringConfig?> peeringConfig;
+  late final pulumi.Output<ManagedZonePeeringConfig?> peeringConfig;
 
   /// For privately visible zones, the set of Virtual Private Cloud
   /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
   /// Structure is documented below.
-  late final Output<ManagedZonePrivateVisibilityConfig?>
+  late final pulumi.Output<ManagedZonePrivateVisibilityConfig?>
       privateVisibilityConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
   /// lookup queries using automatically configured records for VPC resources. This only applies
   /// to networks listed under `private_visibility_config`.
-  late final Output<bool?> reverseLookup;
+  late final pulumi.Output<bool?> reverseLookup;
 
   /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
   /// Structure is documented below.
-  late final Output<ManagedZoneServiceDirectoryConfig?> serviceDirectoryConfig;
+  late final pulumi.Output<ManagedZoneServiceDirectoryConfig?>
+      serviceDirectoryConfig;
 
   /// The zone's visibility: public zones are exposed to the Internet,
   /// while private zones are visible only to Virtual Private Cloud resources.
   /// Default value is `public`.
   /// Possible values are: `private`, `public`.
-  late final Output<String?> visibility;
+  late final pulumi.Output<String?> visibility;
 
   ManagedZone(
     String name, {
     ManagedZoneArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dns/managedZone:ManagedZone',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloudLoggingConfig =
         registerOutput<ManagedZoneCloudLoggingConfig>('cloudLoggingConfig');

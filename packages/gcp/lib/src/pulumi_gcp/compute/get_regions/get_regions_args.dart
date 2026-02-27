@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegions.
 class GetRegionsArgs {
   /// Project from which to list available regions. Defaults to project declared in the provider.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
   /// Defaults to no filtering (all available regions - both `UP` and `DOWN`).
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   GetRegionsArgs({
     this.project,
@@ -31,8 +31,8 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      status: Input.asOptionalInput<String>(map['status']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
     );
   }
 }

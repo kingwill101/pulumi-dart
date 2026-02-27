@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCluster.
 class GetClusterArgs {
   /// The ID of the alloydb cluster that the instance belongs to.
   /// 'alloydb_cluster_id'
-  final Input<String> clusterId;
+  final pulumi.Input<String> clusterId;
 
   /// (optional)
   /// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// (optional)
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetClusterArgs({
     required this.clusterId,
@@ -38,9 +38,9 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      clusterId: Input.asInput<String>(map['clusterId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_secret_replication_auto_customer_managed_encryption/get_secret_replication_auto_customer_managed_encryption.dart';
 
 class GetSecretReplicationAuto {
@@ -16,7 +16,7 @@ class GetSecretReplicationAuto {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customerManagedEncryptions'] = Input.encodeList<
+    map['customerManagedEncryptions'] = pulumi.Input.encodeList<
             GetSecretReplicationAutoCustomerManagedEncryption,
             Map<String, dynamic>>(
         customerManagedEncryptions, (value) => value.toMap());
@@ -25,12 +25,11 @@ class GetSecretReplicationAuto {
 
   factory GetSecretReplicationAuto.fromMap(Map<String, dynamic> map) {
     return GetSecretReplicationAuto(
-      customerManagedEncryptions:
-          Input.decodeList<GetSecretReplicationAutoCustomerManagedEncryption>(
-              map['customerManagedEncryptions'],
-              (value) =>
-                  GetSecretReplicationAutoCustomerManagedEncryption.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      customerManagedEncryptions: pulumi.Input.decodeList<
+              GetSecretReplicationAutoCustomerManagedEncryption>(
+          map['customerManagedEncryptions'],
+          (value) => GetSecretReplicationAutoCustomerManagedEncryption.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

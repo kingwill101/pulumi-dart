@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_firewall_policy_packet_mirroring_rule_match_layer4_config/network_firewall_policy_packet_mirroring_rule_match_layer4_config.dart';
 
 class NetworkFirewallPolicyPacketMirroringRuleMatch {
@@ -30,7 +30,7 @@ class NetworkFirewallPolicyPacketMirroringRuleMatch {
     if (destIpRangesValue != null) {
       map['destIpRanges'] = destIpRangesValue;
     }
-    map['layer4Configs'] = Input.encodeList<
+    map['layer4Configs'] = pulumi.Input.encodeList<
         NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config,
         Map<String, dynamic>>(layer4Configs, (value) => value.toMap());
     final srcIpRangesValue = srcIpRanges;
@@ -46,7 +46,7 @@ class NetworkFirewallPolicyPacketMirroringRuleMatch {
       destIpRanges: map['destIpRanges'] == null
           ? null
           : (map['destIpRanges'] as List).cast<String>(),
-      layer4Configs: Input.decodeList<
+      layer4Configs: pulumi.Input.decodeList<
               NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config>(
           map['layer4Configs'],
           (value) =>

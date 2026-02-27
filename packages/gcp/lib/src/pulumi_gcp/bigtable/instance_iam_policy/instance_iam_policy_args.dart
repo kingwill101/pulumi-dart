@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for InstanceIamPolicy.
 class InstanceIamPolicyArgs {
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-  final Input<String> instance;
-  final Input<String> policyData;
-  final Input<String>? project;
+  final pulumi.Input<String> instance;
+  final pulumi.Input<String> policyData;
+  final pulumi.Input<String>? project;
 
   InstanceIamPolicyArgs({
     required this.instance,
@@ -30,9 +30,9 @@ class InstanceIamPolicyArgs {
 
   factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyArgs(
-      instance: Input.asInput<String>(map['instance']),
-      policyData: Input.asInput<String>(map['policyData']),
-      project: Input.asOptionalInput<String>(map['project']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      policyData: pulumi.Input.asInput<String>(map['policyData']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

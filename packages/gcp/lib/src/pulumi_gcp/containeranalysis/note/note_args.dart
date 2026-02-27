@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../note_attestation_authority/note_attestation_authority.dart';
 import '../note_related_url/note_related_url.dart';
 
@@ -16,30 +16,30 @@ class NoteArgs {
   /// Attestation Occurrences, even if they don't all live in the same
   /// project.
   /// Structure is documented below.
-  final Input<NoteAttestationAuthority> attestationAuthority;
+  final pulumi.Input<NoteAttestationAuthority> attestationAuthority;
 
   /// Time of expiration for this note. Leave empty if note does not expire.
-  final Input<String>? expirationTime;
+  final pulumi.Input<String>? expirationTime;
 
   /// A detailed description of the note
-  final Input<String>? longDescription;
+  final pulumi.Input<String>? longDescription;
 
   /// The name of the note.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Names of other notes related to this note.
-  final Input<List<String>>? relatedNoteNames;
+  final pulumi.Input<List<String>>? relatedNoteNames;
 
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
-  final Input<List<NoteRelatedUrl>>? relatedUrls;
+  final pulumi.Input<List<NoteRelatedUrl>>? relatedUrls;
 
   /// A one sentence description of the note.
-  final Input<String>? shortDescription;
+  final pulumi.Input<String>? shortDescription;
 
   NoteArgs({
     required this.attestationAuthority,
@@ -54,9 +54,9 @@ class NoteArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['attestationAuthority'] =
-        Input.mapInputValue<NoteAttestationAuthority, Map<String, dynamic>>(
-            attestationAuthority, (value) => value.toMap());
+    map['attestationAuthority'] = pulumi.Input.mapInputValue<
+        NoteAttestationAuthority,
+        Map<String, dynamic>>(attestationAuthority, (value) => value.toMap());
     final expirationTimeValue = expirationTime;
     if (expirationTimeValue != null) {
       map['expirationTime'] = expirationTimeValue;
@@ -79,11 +79,12 @@ class NoteArgs {
     }
     final relatedUrlsValue = relatedUrls;
     if (relatedUrlsValue != null) {
-      map['relatedUrls'] = Input.mapOptionalInputValue<List<NoteRelatedUrl>,
-              List<Map<String, dynamic>>>(
+      map['relatedUrls'] = pulumi.Input.mapOptionalInputValue<
+              List<NoteRelatedUrl>, List<Map<String, dynamic>>>(
           relatedUrlsValue,
-          (value) => Input.encodeList<NoteRelatedUrl, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<NoteRelatedUrl, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final shortDescriptionValue = shortDescription;
     if (shortDescriptionValue != null) {
@@ -94,17 +95,20 @@ class NoteArgs {
 
   factory NoteArgs.fromMap(Map<String, dynamic> map) {
     return NoteArgs(
-      attestationAuthority:
-          Input.asInput<NoteAttestationAuthority>(map['attestationAuthority']),
-      expirationTime: Input.asOptionalInput<String>(map['expirationTime']),
-      longDescription: Input.asOptionalInput<String>(map['longDescription']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      attestationAuthority: pulumi.Input.asInput<NoteAttestationAuthority>(
+          map['attestationAuthority']),
+      expirationTime:
+          pulumi.Input.asOptionalInput<String>(map['expirationTime']),
+      longDescription:
+          pulumi.Input.asOptionalInput<String>(map['longDescription']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       relatedNoteNames:
-          Input.asOptionalInput<List<String>>(map['relatedNoteNames']),
-      relatedUrls:
-          Input.asOptionalInput<List<NoteRelatedUrl>>(map['relatedUrls']),
-      shortDescription: Input.asOptionalInput<String>(map['shortDescription']),
+          pulumi.Input.asOptionalInput<List<String>>(map['relatedNoteNames']),
+      relatedUrls: pulumi.Input.asOptionalInput<List<NoteRelatedUrl>>(
+          map['relatedUrls']),
+      shortDescription:
+          pulumi.Input.asOptionalInput<String>(map['shortDescription']),
     );
   }
 }

@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for V2FolderMuteConfig.
 class V2FolderMuteConfigArgs {
   /// A description of the mute config.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// An expression that defines the filter to apply across create/update
   /// events of findings. While creating a filter string, be mindful of
   /// the scope in which the mute configuration is being created. E.g.,
   /// If a filter contains project = X but is created under the
   /// project = Y scope, it might not match any findings.
-  final Input<String> filter;
+  final pulumi.Input<String> filter;
 
   /// The folder whose Cloud Security Command Center the Mute
   /// Config lives in.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   /// location Id is provided by folder. If not provided, Use global as default.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Unique identifier provided by the client within the parent scope.
-  final Input<String> muteConfigId;
+  final pulumi.Input<String> muteConfigId;
 
   /// The type of the mute config.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   V2FolderMuteConfigArgs({
     this.description,
@@ -55,12 +55,12 @@ class V2FolderMuteConfigArgs {
 
   factory V2FolderMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderMuteConfigArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      filter: Input.asInput<String>(map['filter']),
-      folder: Input.asInput<String>(map['folder']),
-      location: Input.asOptionalInput<String>(map['location']),
-      muteConfigId: Input.asInput<String>(map['muteConfigId']),
-      type: Input.asInput<String>(map['type']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      filter: pulumi.Input.asInput<String>(map['filter']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      muteConfigId: pulumi.Input.asInput<String>(map['muteConfigId']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

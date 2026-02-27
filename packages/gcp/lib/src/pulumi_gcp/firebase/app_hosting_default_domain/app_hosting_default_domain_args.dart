@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AppHostingDefaultDomain.
 class AppHostingDefaultDomainArgs {
   /// The ID of the Backend that this Domain is associated with
-  final Input<String> backend;
+  final pulumi.Input<String> backend;
 
   /// Whether the domain is disabled. Defaults to false.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-  final Input<String> domainId;
+  final pulumi.Input<String> domainId;
 
   /// The location of the Backend that this Domain is associated with
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   AppHostingDefaultDomainArgs({
     required this.backend,
@@ -46,11 +46,11 @@ class AppHostingDefaultDomainArgs {
 
   factory AppHostingDefaultDomainArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingDefaultDomainArgs(
-      backend: Input.asInput<String>(map['backend']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      domainId: Input.asInput<String>(map['domainId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      backend: pulumi.Input.asInput<String>(map['backend']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      domainId: pulumi.Input.asInput<String>(map['domainId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

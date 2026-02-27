@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_service_consistent_hash_http_cooky/get_backend_service_consistent_hash_http_cooky.dart';
 
 class GetBackendServiceConsistentHash {
@@ -30,7 +30,7 @@ class GetBackendServiceConsistentHash {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['httpCookies'] = Input.encodeList<
+    map['httpCookies'] = pulumi.Input.encodeList<
         GetBackendServiceConsistentHashHttpCooky,
         Map<String, dynamic>>(httpCookies, (value) => value.toMap());
     map['httpHeaderName'] = httpHeaderName;
@@ -40,10 +40,11 @@ class GetBackendServiceConsistentHash {
 
   factory GetBackendServiceConsistentHash.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceConsistentHash(
-      httpCookies: Input.decodeList<GetBackendServiceConsistentHashHttpCooky>(
-          map['httpCookies'],
-          (value) => GetBackendServiceConsistentHashHttpCooky.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      httpCookies:
+          pulumi.Input.decodeList<GetBackendServiceConsistentHashHttpCooky>(
+              map['httpCookies'],
+              (value) => GetBackendServiceConsistentHashHttpCooky.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       httpHeaderName: map['httpHeaderName'] as String,
       minimumRingSize: map['minimumRingSize'] as int,
     );

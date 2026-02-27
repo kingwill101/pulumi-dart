@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationServiceAccount.
 class GetOrganizationServiceAccountArgs {
   /// The organization ID the service account was created for.
-  final Input<String> organizationId;
+  final pulumi.Input<String> organizationId;
 
   GetOrganizationServiceAccountArgs({
     required this.organizationId,
@@ -19,7 +19,7 @@ class GetOrganizationServiceAccountArgs {
 
   factory GetOrganizationServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationServiceAccountArgs(
-      organizationId: Input.asInput<String>(map['organizationId']),
+      organizationId: pulumi.Input.asInput<String>(map['organizationId']),
     );
   }
 }

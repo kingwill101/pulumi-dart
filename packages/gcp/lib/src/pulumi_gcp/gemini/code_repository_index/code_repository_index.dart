@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'code_repository_index_args.dart';
 
 /// The resource for managing Code Repository Index for Gemini Code Assist.
@@ -40,58 +40,58 @@ import 'code_repository_index_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex default {{location}}/{{code_repository_index_id}}
 /// ```
-class CodeRepositoryIndex extends CustomResource {
+class CodeRepositoryIndex extends pulumi.CustomResource {
   /// Required. Id of the Code Repository Index.
-  late final Output<String> codeRepositoryIndexId;
+  late final pulumi.Output<String> codeRepositoryIndexId;
 
   /// Output only. Create time stamp.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
-  late final Output<bool?> forceDestroy;
+  late final pulumi.Output<bool?> forceDestroy;
 
   /// Optional. Immutable. Customer-managed encryption key name, in the format
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  late final Output<String?> kmsKey;
+  late final pulumi.Output<String?> kmsKey;
 
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the Code Repository Index, for example `us-central1`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Immutable. Identifier. Name of Code Repository Index.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. Code Repository Index instance State.
   /// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. Update time stamp.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   CodeRepositoryIndex(
     String name, {
     CodeRepositoryIndexArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.codeRepositoryIndexId =
         registerOutput<String>('codeRepositoryIndexId');

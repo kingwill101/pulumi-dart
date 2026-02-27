@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../gcpolicy_max_age/gcpolicy_max_age.dart';
 import '../gcpolicy_max_version/gcpolicy_max_version.dart';
 import 'gcpolicy_args.dart';
@@ -34,53 +34,53 @@ import 'gcpolicy_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class GCPolicy extends CustomResource {
+class GCPolicy extends pulumi.CustomResource {
   /// The name of the column family.
-  late final Output<String> columnFamily;
+  late final pulumi.Output<String> columnFamily;
 
   /// The deletion policy for the GC policy.
   /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
   ///
   /// Possible values are: `ABANDON`.
-  late final Output<String?> deletionPolicy;
+  late final pulumi.Output<String?> deletionPolicy;
 
   /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
-  late final Output<String?> gcRules;
+  late final pulumi.Output<String?> gcRules;
 
   /// Boolean for whether to allow ignoring warnings when updating the gc policy.
   /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
   /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
   ///
   /// -----
-  late final Output<bool?> ignoreWarnings;
+  late final pulumi.Output<bool?> ignoreWarnings;
 
   /// The name of the Bigtable instance.
-  late final Output<String> instanceName;
+  late final pulumi.Output<String> instanceName;
 
   /// GC policy that applies to all cells older than the given age.
-  late final Output<GCPolicyMaxAge?> maxAge;
+  late final pulumi.Output<GCPolicyMaxAge?> maxAge;
 
   /// GC policy that applies to all versions of a cell except for the most recent.
-  late final Output<List<GCPolicyMaxVersion>?> maxVersions;
+  late final pulumi.Output<List<GCPolicyMaxVersion>?> maxVersions;
 
   /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
-  late final Output<String?> mode;
+  late final pulumi.Output<String?> mode;
 
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The name of the table.
-  late final Output<String> table;
+  late final pulumi.Output<String> table;
 
   GCPolicy(
     String name, {
     GCPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigtable/gCPolicy:GCPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.columnFamily = registerOutput<String>('columnFamily');
     this.deletionPolicy = registerOutput<String?>('deletionPolicy');

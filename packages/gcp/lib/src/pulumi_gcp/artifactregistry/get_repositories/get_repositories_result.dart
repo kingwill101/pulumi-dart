@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_repositories_repository/get_repositories_repository.dart';
 
 /// Result data returned by getRepositories.
@@ -34,9 +34,8 @@ class GetRepositoriesResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['repositories'] =
-        Input.encodeList<GetRepositoriesRepository, Map<String, dynamic>>(
-            repositories, (value) => value.toMap());
+    map['repositories'] = pulumi.Input.encodeList<GetRepositoriesRepository,
+        Map<String, dynamic>>(repositories, (value) => value.toMap());
     return map;
   }
 
@@ -47,7 +46,7 @@ class GetRepositoriesResult {
       nameFilter:
           map['nameFilter'] == null ? null : map['nameFilter'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      repositories: Input.decodeList<GetRepositoriesRepository>(
+      repositories: pulumi.Input.decodeList<GetRepositoriesRepository>(
           map['repositories'],
           (value) => GetRepositoriesRepository.fromMap(
               (value as Map).cast<String, dynamic>())),

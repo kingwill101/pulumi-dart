@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multicloud_data_transfer_config_service_state/multicloud_data_transfer_config_service_state.dart';
 
 class MulticloudDataTransferConfigService {
@@ -26,7 +26,8 @@ class MulticloudDataTransferConfigService {
     map['serviceName'] = serviceName;
     final statesValue = states;
     if (statesValue != null) {
-      map['states'] = Input.encodeList<MulticloudDataTransferConfigServiceState,
+      map['states'] = pulumi.Input.encodeList<
+          MulticloudDataTransferConfigServiceState,
           Map<String, dynamic>>(statesValue, (value) => value.toMap());
     }
     return map;
@@ -38,7 +39,7 @@ class MulticloudDataTransferConfigService {
       serviceName: map['serviceName'] as String,
       states: map['states'] == null
           ? null
-          : Input.decodeList<MulticloudDataTransferConfigServiceState>(
+          : pulumi.Input.decodeList<MulticloudDataTransferConfigServiceState>(
               map['states'],
               (value) => MulticloudDataTransferConfigServiceState.fromMap(
                   (value as Map).cast<String, dynamic>())),

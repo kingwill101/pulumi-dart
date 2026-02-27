@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../settings_access_settings/settings_access_settings.dart';
 import '../settings_application_settings/settings_application_settings.dart';
 
@@ -8,11 +8,11 @@ import '../settings_application_settings/settings_application_settings.dart';
 class SettingsArgs {
   /// Top level wrapper for all access related setting in IAP.
   /// Structure is documented below.
-  final Input<SettingsAccessSettings>? accessSettings;
+  final pulumi.Input<SettingsAccessSettings>? accessSettings;
 
   /// Top level wrapper for all application related settings in IAP.
   /// Structure is documented below.
-  final Input<SettingsApplicationSettings>? applicationSettings;
+  final pulumi.Input<SettingsApplicationSettings>? applicationSettings;
 
   /// The resource name of the IAP protected resource. Name can have below resources:
   /// * organizations/{organization_id}
@@ -26,7 +26,7 @@ class SettingsArgs {
   /// * projects/{project_id}/iap_web/appengine-{app_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   SettingsArgs({
     this.accessSettings,
@@ -38,13 +38,13 @@ class SettingsArgs {
     final map = <String, dynamic>{};
     final accessSettingsValue = accessSettings;
     if (accessSettingsValue != null) {
-      map['accessSettings'] = Input.mapOptionalInputValue<
+      map['accessSettings'] = pulumi.Input.mapOptionalInputValue<
           SettingsAccessSettings,
           Map<String, dynamic>>(accessSettingsValue, (value) => value.toMap());
     }
     final applicationSettingsValue = applicationSettings;
     if (applicationSettingsValue != null) {
-      map['applicationSettings'] = Input.mapOptionalInputValue<
+      map['applicationSettings'] = pulumi.Input.mapOptionalInputValue<
               SettingsApplicationSettings, Map<String, dynamic>>(
           applicationSettingsValue, (value) => value.toMap());
     }
@@ -57,11 +57,12 @@ class SettingsArgs {
 
   factory SettingsArgs.fromMap(Map<String, dynamic> map) {
     return SettingsArgs(
-      accessSettings:
-          Input.asOptionalInput<SettingsAccessSettings>(map['accessSettings']),
-      applicationSettings: Input.asOptionalInput<SettingsApplicationSettings>(
-          map['applicationSettings']),
-      name: Input.asOptionalInput<String>(map['name']),
+      accessSettings: pulumi.Input.asOptionalInput<SettingsAccessSettings>(
+          map['accessSettings']),
+      applicationSettings:
+          pulumi.Input.asOptionalInput<SettingsApplicationSettings>(
+              map['applicationSettings']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

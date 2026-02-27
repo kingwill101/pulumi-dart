@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_metadata_item_args.dart';
 
 /// Manages a single key/value pair on metadata common to all instances for
@@ -27,28 +27,28 @@ import 'project_metadata_item_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default projects/{{project}}/meta-data/{{key}}
 /// ```
-class ProjectMetadataItem extends CustomResource {
+class ProjectMetadataItem extends pulumi.CustomResource {
   /// The metadata key to set.
-  late final Output<String> key;
+  late final pulumi.Output<String> key;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The value to set for the given metadata key.
   ///
   /// - - -
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   ProjectMetadataItem(
     String name, {
     ProjectMetadataItemArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/projectMetadataItem:ProjectMetadataItem',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.key = registerOutput<String>('key');
     this.project = registerOutput<String>('project');

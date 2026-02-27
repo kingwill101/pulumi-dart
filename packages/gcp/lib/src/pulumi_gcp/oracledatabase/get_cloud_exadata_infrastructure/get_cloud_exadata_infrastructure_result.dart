@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_exadata_infrastructure_property/get_cloud_exadata_infrastructure_property.dart';
 
 /// Result data returned by getCloudExadataInfrastructure.
@@ -56,7 +56,8 @@ class GetCloudExadataInfrastructureResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['properties'] = Input.encodeList<GetCloudExadataInfrastructureProperty,
+    map['properties'] = pulumi.Input.encodeList<
+        GetCloudExadataInfrastructureProperty,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
     return map;
@@ -78,10 +79,11 @@ class GetCloudExadataInfrastructureResult {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      properties: Input.decodeList<GetCloudExadataInfrastructureProperty>(
-          map['properties'],
-          (value) => GetCloudExadataInfrastructureProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      properties:
+          pulumi.Input.decodeList<GetCloudExadataInfrastructureProperty>(
+              map['properties'],
+              (value) => GetCloudExadataInfrastructureProperty.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
     );
   }

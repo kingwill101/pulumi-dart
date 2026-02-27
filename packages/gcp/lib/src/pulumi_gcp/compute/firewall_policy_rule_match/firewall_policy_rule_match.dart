@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_policy_rule_match_layer4_config/firewall_policy_rule_match_layer4_config.dart';
 import '../firewall_policy_rule_match_src_secure_tag/firewall_policy_rule_match_src_secure_tag.dart';
 
@@ -101,7 +101,8 @@ class FirewallPolicyRuleMatch {
     if (destThreatIntelligencesValue != null) {
       map['destThreatIntelligences'] = destThreatIntelligencesValue;
     }
-    map['layer4Configs'] = Input.encodeList<FirewallPolicyRuleMatchLayer4Config,
+    map['layer4Configs'] = pulumi.Input.encodeList<
+        FirewallPolicyRuleMatchLayer4Config,
         Map<String, dynamic>>(layer4Configs, (value) => value.toMap());
     final srcAddressGroupsValue = srcAddressGroups;
     if (srcAddressGroupsValue != null) {
@@ -129,7 +130,7 @@ class FirewallPolicyRuleMatch {
     }
     final srcSecureTagsValue = srcSecureTags;
     if (srcSecureTagsValue != null) {
-      map['srcSecureTags'] = Input.encodeList<
+      map['srcSecureTags'] = pulumi.Input.encodeList<
           FirewallPolicyRuleMatchSrcSecureTag,
           Map<String, dynamic>>(srcSecureTagsValue, (value) => value.toMap());
     }
@@ -160,10 +161,11 @@ class FirewallPolicyRuleMatch {
       destThreatIntelligences: map['destThreatIntelligences'] == null
           ? null
           : (map['destThreatIntelligences'] as List).cast<String>(),
-      layer4Configs: Input.decodeList<FirewallPolicyRuleMatchLayer4Config>(
-          map['layer4Configs'],
-          (value) => FirewallPolicyRuleMatchLayer4Config.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      layer4Configs:
+          pulumi.Input.decodeList<FirewallPolicyRuleMatchLayer4Config>(
+              map['layer4Configs'],
+              (value) => FirewallPolicyRuleMatchLayer4Config.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       srcAddressGroups: map['srcAddressGroups'] == null
           ? null
           : (map['srcAddressGroups'] as List).cast<String>(),
@@ -184,7 +186,7 @@ class FirewallPolicyRuleMatch {
           : (map['srcRegionCodes'] as List).cast<String>(),
       srcSecureTags: map['srcSecureTags'] == null
           ? null
-          : Input.decodeList<FirewallPolicyRuleMatchSrcSecureTag>(
+          : pulumi.Input.decodeList<FirewallPolicyRuleMatchSrcSecureTag>(
               map['srcSecureTags'],
               (value) => FirewallPolicyRuleMatchSrcSecureTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

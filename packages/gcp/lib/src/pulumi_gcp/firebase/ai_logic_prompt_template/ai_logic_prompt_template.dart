@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_logic_prompt_template_args.dart';
 
 /// The PromptTemplate resource for Firebase AI Logic.
@@ -39,57 +39,57 @@ import 'ai_logic_prompt_template_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate default {{location}}/{{template_id}}
 /// ```
-class AiLogicPromptTemplate extends CustomResource {
+class AiLogicPromptTemplate extends pulumi.CustomResource {
   /// Timestamp when the PromptTemplate was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The display name of the PromptTemplate.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Indicates if the PromptTemplate has been locked for mutations.  It is
   /// strongly recommended that PromptTemplates used in production Apps be
   /// locked to avoid accidental distruption to live apps.
   /// To modify a PromptTemplate that has been locked, a call to ModifyLock with
   /// lock=false is required first.
-  late final Output<bool> locked;
+  late final pulumi.Output<bool> locked;
 
   /// The model name parsed from the template_string.
-  late final Output<String> model;
+  late final pulumi.Output<String> model;
 
   /// Identifier. The resource name of the PromptTemplate.
   /// Format:
   /// projects/{project}/locations/{location}/templates/{prompt_template}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Timestamp when the PromptTemplate state was last changed.
-  late final Output<String> stateChangeTime;
+  late final pulumi.Output<String> stateChangeTime;
 
   /// The unique ID of the PromptTemplate, which is the final component of the
   /// PromptTemplate's resource name.
-  late final Output<String> templateId;
+  late final pulumi.Output<String> templateId;
 
   /// The DotPrompt raw template string.
-  late final Output<String> templateString;
+  late final pulumi.Output<String> templateString;
 
   /// Timestamp when the PromptTemplate was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AiLogicPromptTemplate(
     String name, {
     AiLogicPromptTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String?>('displayName');

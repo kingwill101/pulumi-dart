@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_router_nat_rule_action/get_router_nat_rule_action.dart';
 
 class GetRouterNatRule {
@@ -38,7 +38,7 @@ class GetRouterNatRule {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['actions'] =
-        Input.encodeList<GetRouterNatRuleAction, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRouterNatRuleAction, Map<String, dynamic>>(
             actions, (value) => value.toMap());
     map['description'] = description;
     map['match'] = match;
@@ -48,7 +48,7 @@ class GetRouterNatRule {
 
   factory GetRouterNatRule.fromMap(Map<String, dynamic> map) {
     return GetRouterNatRule(
-      actions: Input.decodeList<GetRouterNatRuleAction>(
+      actions: pulumi.Input.decodeList<GetRouterNatRuleAction>(
           map['actions'],
           (value) => GetRouterNatRuleAction.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'control_plane_access_args.dart';
 
 /// Authorize the Runtime components to access directly with Apigee Control Plane.
@@ -34,30 +34,30 @@ import 'control_plane_access_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default {{name}}
 /// ```
-class ControlPlaneAccess extends CustomResource {
+class ControlPlaneAccess extends pulumi.CustomResource {
   /// Array of service accounts authorized to publish analytics data to the control plane, each specified using the following format: `serviceAccount:service-account-name`.
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
-  late final Output<List<String>?> analyticsPublisherIdentities;
+  late final pulumi.Output<List<String>?> analyticsPublisherIdentities;
 
   /// Name of the Apigee organization.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
   /// The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
-  late final Output<List<String>?> synchronizerIdentities;
+  late final pulumi.Output<List<String>?> synchronizerIdentities;
 
   ControlPlaneAccess(
     String name, {
     ControlPlaneAccessArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.analyticsPublisherIdentities =
         registerOutput<List<String>?>('analyticsPublisherIdentities');

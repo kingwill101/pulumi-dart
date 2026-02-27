@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_build_option_volume/get_trigger_build_option_volume.dart';
 
 class GetTriggerBuildOption {
@@ -91,9 +91,8 @@ class GetTriggerBuildOption {
     map['secretEnvs'] = secretEnvs;
     map['sourceProvenanceHashes'] = sourceProvenanceHashes;
     map['substitutionOption'] = substitutionOption;
-    map['volumes'] =
-        Input.encodeList<GetTriggerBuildOptionVolume, Map<String, dynamic>>(
-            volumes, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<GetTriggerBuildOptionVolume,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
     map['workerPool'] = workerPool;
     return map;
   }
@@ -111,7 +110,7 @@ class GetTriggerBuildOption {
       sourceProvenanceHashes:
           (map['sourceProvenanceHashes'] as List).cast<String>(),
       substitutionOption: map['substitutionOption'] as String,
-      volumes: Input.decodeList<GetTriggerBuildOptionVolume>(
+      volumes: pulumi.Input.decodeList<GetTriggerBuildOptionVolume>(
           map['volumes'],
           (value) => GetTriggerBuildOptionVolume.fromMap(
               (value as Map).cast<String, dynamic>())),

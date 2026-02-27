@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authority_config_x509_config_additional_extension/authority_config_x509_config_additional_extension.dart';
 import '../authority_config_x509_config_ca_options/authority_config_x509_config_ca_options.dart';
 import '../authority_config_x509_config_key_usage/authority_config_x509_config_key_usage.dart';
@@ -41,7 +41,7 @@ class AuthorityConfigX509Config {
     final map = <String, dynamic>{};
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
-      map['additionalExtensions'] = Input.encodeList<
+      map['additionalExtensions'] = pulumi.Input.encodeList<
               AuthorityConfigX509ConfigAdditionalExtension,
               Map<String, dynamic>>(
           additionalExtensionsValue, (value) => value.toMap());
@@ -58,7 +58,8 @@ class AuthorityConfigX509Config {
     }
     final policyIdsValue = policyIds;
     if (policyIdsValue != null) {
-      map['policyIds'] = Input.encodeList<AuthorityConfigX509ConfigPolicyId,
+      map['policyIds'] = pulumi.Input.encodeList<
+          AuthorityConfigX509ConfigPolicyId,
           Map<String, dynamic>>(policyIdsValue, (value) => value.toMap());
     }
     return map;
@@ -68,7 +69,8 @@ class AuthorityConfigX509Config {
     return AuthorityConfigX509Config(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<AuthorityConfigX509ConfigAdditionalExtension>(
+          : pulumi.Input.decodeList<
+                  AuthorityConfigX509ConfigAdditionalExtension>(
               map['additionalExtensions'],
               (value) => AuthorityConfigX509ConfigAdditionalExtension.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -85,7 +87,7 @@ class AuthorityConfigX509Config {
               (map['nameConstraints'] as Map).cast<String, dynamic>()),
       policyIds: map['policyIds'] == null
           ? null
-          : Input.decodeList<AuthorityConfigX509ConfigPolicyId>(
+          : pulumi.Input.decodeList<AuthorityConfigX509ConfigPolicyId>(
               map['policyIds'],
               (value) => AuthorityConfigX509ConfigPolicyId.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeter_dry_run_ingress_policy_ingress_from/service_perimeter_dry_run_ingress_policy_ingress_from.dart';
 import '../service_perimeter_dry_run_ingress_policy_ingress_to/service_perimeter_dry_run_ingress_policy_ingress_to.dart';
 import 'service_perimeter_dry_run_ingress_policy_args.dart';
@@ -26,39 +26,40 @@ import 'service_perimeter_dry_run_ingress_policy_args.dart';
 /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
 /// * How-to Guides
 /// * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
-class ServicePerimeterDryRunIngressPolicy extends CustomResource {
+class ServicePerimeterDryRunIngressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
-  late final Output<String> accessPolicyId;
+  late final pulumi.Output<String> accessPolicyId;
 
   /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
   /// to apply.
   /// Structure is documented below.
-  late final Output<ServicePerimeterDryRunIngressPolicyIngressFrom?>
+  late final pulumi.Output<ServicePerimeterDryRunIngressPolicyIngressFrom?>
       ingressFrom;
 
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
-  late final Output<ServicePerimeterDryRunIngressPolicyIngressTo?> ingressTo;
+  late final pulumi.Output<ServicePerimeterDryRunIngressPolicyIngressTo?>
+      ingressTo;
 
   /// The name of the Service Perimeter to add this resource to.
-  late final Output<String> perimeter;
+  late final pulumi.Output<String> perimeter;
 
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  late final Output<String?> title;
+  late final pulumi.Output<String?> title;
 
   ServicePerimeterDryRunIngressPolicy(
     String name, {
     ServicePerimeterDryRunIngressPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/servicePerimeterDryRunIngressPolicy:ServicePerimeterDryRunIngressPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessPolicyId = registerOutput<String>('accessPolicyId');
     this.etag = registerOutput<String>('etag');

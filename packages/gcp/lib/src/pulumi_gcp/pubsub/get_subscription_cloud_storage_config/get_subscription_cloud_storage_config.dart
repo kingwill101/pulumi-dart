@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subscription_cloud_storage_config_avro_config/get_subscription_cloud_storage_config_avro_config.dart';
 
 class GetSubscriptionCloudStorageConfig {
@@ -54,7 +54,7 @@ class GetSubscriptionCloudStorageConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['avroConfigs'] = Input.encodeList<
+    map['avroConfigs'] = pulumi.Input.encodeList<
         GetSubscriptionCloudStorageConfigAvroConfig,
         Map<String, dynamic>>(avroConfigs, (value) => value.toMap());
     map['bucket'] = bucket;
@@ -72,7 +72,7 @@ class GetSubscriptionCloudStorageConfig {
   factory GetSubscriptionCloudStorageConfig.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionCloudStorageConfig(
       avroConfigs:
-          Input.decodeList<GetSubscriptionCloudStorageConfigAvroConfig>(
+          pulumi.Input.decodeList<GetSubscriptionCloudStorageConfigAvroConfig>(
               map['avroConfigs'],
               (value) => GetSubscriptionCloudStorageConfigAvroConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

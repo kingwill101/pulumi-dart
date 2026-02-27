@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workload_identity_pool_inline_trust_config_additional_trust_bundle_trust_anchor/workload_identity_pool_inline_trust_config_additional_trust_bundle_trust_anchor.dart';
 
 class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
@@ -22,7 +22,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['trustAnchors'] = Input.encodeList<
+    map['trustAnchors'] = pulumi.Input.encodeList<
         WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor,
         Map<String, dynamic>>(trustAnchors, (value) => value.toMap());
     map['trustDomain'] = trustDomain;
@@ -32,7 +32,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
   factory WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap(
       Map<String, dynamic> map) {
     return WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle(
-      trustAnchors: Input.decodeList<
+      trustAnchors: pulumi.Input.decodeList<
               WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor>(
           map['trustAnchors'],
           (value) =>

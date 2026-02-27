@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_toolset_open_api_toolset_api_authentication_api_key_config/app_version_snapshot_toolset_open_api_toolset_api_authentication_api_key_config.dart';
 import '../app_version_snapshot_toolset_open_api_toolset_api_authentication_bearer_token_config/app_version_snapshot_toolset_open_api_toolset_api_authentication_bearer_token_config.dart';
 import '../app_version_snapshot_toolset_open_api_toolset_api_authentication_oauth_config/app_version_snapshot_toolset_open_api_toolset_api_authentication_oauth_config.dart';
@@ -53,26 +53,26 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication {
     final map = <String, dynamic>{};
     final apiKeyConfigsValue = apiKeyConfigs;
     if (apiKeyConfigsValue != null) {
-      map['apiKeyConfigs'] = Input.encodeList<
+      map['apiKeyConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig,
           Map<String, dynamic>>(apiKeyConfigsValue, (value) => value.toMap());
     }
     final bearerTokenConfigsValue = bearerTokenConfigs;
     if (bearerTokenConfigsValue != null) {
-      map['bearerTokenConfigs'] = Input.encodeList<
+      map['bearerTokenConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig,
           Map<String,
               dynamic>>(bearerTokenConfigsValue, (value) => value.toMap());
     }
     final oauthConfigsValue = oauthConfigs;
     if (oauthConfigsValue != null) {
-      map['oauthConfigs'] = Input.encodeList<
+      map['oauthConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfig,
           Map<String, dynamic>>(oauthConfigsValue, (value) => value.toMap());
     }
     final serviceAccountAuthConfigsValue = serviceAccountAuthConfigs;
     if (serviceAccountAuthConfigsValue != null) {
-      map['serviceAccountAuthConfigs'] = Input.encodeList<
+      map['serviceAccountAuthConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig,
           Map<String,
               dynamic>>(serviceAccountAuthConfigsValue, (value) => value.toMap());
@@ -90,7 +90,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication {
     return AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication(
       apiKeyConfigs: map['apiKeyConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig>(
               map['apiKeyConfigs'],
               (value) =>
@@ -98,7 +98,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication {
                       .fromMap((value as Map).cast<String, dynamic>())),
       bearerTokenConfigs: map['bearerTokenConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig>(
               map['bearerTokenConfigs'],
               (value) =>
@@ -106,7 +106,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication {
                       .fromMap((value as Map).cast<String, dynamic>())),
       oauthConfigs: map['oauthConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfig>(
               map['oauthConfigs'],
               (value) =>
@@ -114,7 +114,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication {
                       .fromMap((value as Map).cast<String, dynamic>())),
       serviceAccountAuthConfigs: map['serviceAccountAuthConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig>(
               map['serviceAccountAuthConfigs'],
               (value) =>

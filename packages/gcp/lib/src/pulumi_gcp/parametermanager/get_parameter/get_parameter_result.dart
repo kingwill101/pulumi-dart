@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_parameter_policy_member/get_parameter_policy_member.dart';
 
 /// Result data returned by getParameter.
@@ -46,7 +46,7 @@ class GetParameterResult {
     map['name'] = name;
     map['parameterId'] = parameterId;
     map['policyMembers'] =
-        Input.encodeList<GetParameterPolicyMember, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetParameterPolicyMember, Map<String, dynamic>>(
             policyMembers, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
@@ -67,7 +67,7 @@ class GetParameterResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       parameterId: map['parameterId'] as String,
-      policyMembers: Input.decodeList<GetParameterPolicyMember>(
+      policyMembers: pulumi.Input.decodeList<GetParameterPolicyMember>(
           map['policyMembers'],
           (value) => GetParameterPolicyMember.fromMap(
               (value as Map).cast<String, dynamic>())),

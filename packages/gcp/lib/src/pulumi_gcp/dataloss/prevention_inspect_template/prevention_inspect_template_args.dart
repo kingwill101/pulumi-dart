@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_inspect_template_inspect_config/prevention_inspect_template_inspect_config.dart';
 
 /// The set of arguments for PreventionInspectTemplate.
 class PreventionInspectTemplateArgs {
   /// A description of the inspect template.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User set display name of the inspect template.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The core content of the template.
   /// Structure is documented below.
-  final Input<PreventionInspectTemplateInspectConfig>? inspectConfig;
+  final pulumi.Input<PreventionInspectTemplateInspectConfig>? inspectConfig;
 
   /// The parent of the inspect template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
-  final Input<String>? templateId;
+  final pulumi.Input<String>? templateId;
 
   PreventionInspectTemplateArgs({
     this.description,
@@ -47,7 +47,7 @@ class PreventionInspectTemplateArgs {
     }
     final inspectConfigValue = inspectConfig;
     if (inspectConfigValue != null) {
-      map['inspectConfig'] = Input.mapOptionalInputValue<
+      map['inspectConfig'] = pulumi.Input.mapOptionalInputValue<
           PreventionInspectTemplateInspectConfig,
           Map<String, dynamic>>(inspectConfigValue, (value) => value.toMap());
     }
@@ -61,13 +61,13 @@ class PreventionInspectTemplateArgs {
 
   factory PreventionInspectTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
       inspectConfig:
-          Input.asOptionalInput<PreventionInspectTemplateInspectConfig>(
+          pulumi.Input.asOptionalInput<PreventionInspectTemplateInspectConfig>(
               map['inspectConfig']),
-      parent: Input.asInput<String>(map['parent']),
-      templateId: Input.asOptionalInput<String>(map['templateId']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      templateId: pulumi.Input.asOptionalInput<String>(map['templateId']),
     );
   }
 }

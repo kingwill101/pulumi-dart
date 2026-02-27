@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../curation_endpoint/curation_endpoint.dart';
 
 /// The set of arguments for Curation.
@@ -13,13 +13,13 @@ class CurationArgs {
   /// * If not provided, a system generated ID will be used.
   /// This value should be 4-500 characters, and valid characters
   /// are /a-z[0-9]-_/.
-  final Input<String> curationId;
+  final pulumi.Input<String> curationId;
 
   /// The description of the curation.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the curation.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The endpoint to be triggered for curation.
   /// The endpoint will be invoked with a request payload containing
@@ -27,14 +27,14 @@ class CurationArgs {
   /// Response should contain curated data in the form of
   /// ApiMetadata.
   /// Structure is documented below.
-  final Input<CurationEndpoint> endpoint;
+  final pulumi.Input<CurationEndpoint> endpoint;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   CurationArgs({
     required this.curationId,
@@ -54,7 +54,7 @@ class CurationArgs {
     }
     map['displayName'] = displayName;
     map['endpoint'] =
-        Input.mapInputValue<CurationEndpoint, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<CurationEndpoint, Map<String, dynamic>>(
             endpoint, (value) => value.toMap());
     map['location'] = location;
     final projectValue = project;
@@ -66,12 +66,12 @@ class CurationArgs {
 
   factory CurationArgs.fromMap(Map<String, dynamic> map) {
     return CurationArgs(
-      curationId: Input.asInput<String>(map['curationId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      endpoint: Input.asInput<CurationEndpoint>(map['endpoint']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      curationId: pulumi.Input.asInput<String>(map['curationId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      endpoint: pulumi.Input.asInput<CurationEndpoint>(map['endpoint']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

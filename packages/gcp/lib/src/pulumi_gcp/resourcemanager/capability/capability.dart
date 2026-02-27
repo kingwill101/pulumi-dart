@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capability_args.dart';
 
 /// An app-enabled folder is a folder within the Google Cloud resource hierarchy that has been configured for application management. This folder lets you define and manage App Hub applications. These applications are functional groupings of services and workloads that span multiple projects within that folder and its descendant projects.
@@ -34,25 +34,25 @@ import 'capability_args.dart';
 /// ```sh
 /// $ pulumi import gcp:resourcemanager/capability:Capability default {{parent}}/{{capability_name}}
 /// ```
-class Capability extends CustomResource {
+class Capability extends pulumi.CustomResource {
   /// Capability name that should be updated on the folder.
-  late final Output<String> capabilityName;
+  late final pulumi.Output<String> capabilityName;
 
   /// Folder on which Capability needs to be updated in the format folders/folder_id.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Capability Value.
-  late final Output<bool> value;
+  late final pulumi.Output<bool> value;
 
   Capability(
     String name, {
     CapabilityArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:resourcemanager/capability:Capability',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.capabilityName = registerOutput<String>('capabilityName');
     this.parent = registerOutput<String>('parent');

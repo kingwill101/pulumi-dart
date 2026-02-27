@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deny_policy_rule/deny_policy_rule.dart';
 import 'deny_policy_args.dart';
 
@@ -29,32 +29,32 @@ import 'deny_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
 /// ```
-class DenyPolicy extends CustomResource {
+class DenyPolicy extends pulumi.CustomResource {
   /// The display name of the rule.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The hash of the resource. Used internally during updates.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The name of the policy.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The attachment point is identified by its URL-encoded full resource name.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Rules to be applied.
   /// Structure is documented below.
-  late final Output<List<DenyPolicyRule>> rules;
+  late final pulumi.Output<List<DenyPolicyRule>> rules;
 
   DenyPolicy(
     String name, {
     DenyPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/denyPolicy:DenyPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String?>('displayName');
     this.etag = registerOutput<String>('etag');

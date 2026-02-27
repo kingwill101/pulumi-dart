@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_python_packages_python_package/get_python_packages_python_package.dart';
 
 /// Result data returned by getPythonPackages.
@@ -30,9 +30,9 @@ class GetPythonPackagesResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['pythonPackages'] =
-        Input.encodeList<GetPythonPackagesPythonPackage, Map<String, dynamic>>(
-            pythonPackages, (value) => value.toMap());
+    map['pythonPackages'] = pulumi.Input.encodeList<
+        GetPythonPackagesPythonPackage,
+        Map<String, dynamic>>(pythonPackages, (value) => value.toMap());
     map['repositoryId'] = repositoryId;
     return map;
   }
@@ -42,7 +42,7 @@ class GetPythonPackagesResult {
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      pythonPackages: Input.decodeList<GetPythonPackagesPythonPackage>(
+      pythonPackages: pulumi.Input.decodeList<GetPythonPackagesPythonPackage>(
           map['pythonPackages'],
           (value) => GetPythonPackagesPythonPackage.fromMap(
               (value as Map).cast<String, dynamic>())),

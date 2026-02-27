@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_regional_secrets_args.dart';
 import 'get_regional_secrets_result.dart';
 
@@ -10,13 +10,13 @@ import 'get_regional_secrets_result.dart';
 /// Use this data source to list the Secret Manager Regional Secrets.
 Future<GetRegionalSecretsResult> getRegionalSecrets(
   GetRegionalSecretsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:secretmanager/getRegionalSecrets:getRegionalSecrets',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionalSecretsResult.fromMap(result);
 }

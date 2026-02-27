@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plugin_actions_config/plugin_actions_config.dart';
 import '../plugin_config_template/plugin_config_template.dart';
 import '../plugin_documentation/plugin_documentation.dart';
@@ -39,41 +39,41 @@ import 'plugin_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apihub/plugin:Plugin default {{location}}/{{plugin_id}}
 /// ```
-class Plugin extends CustomResource {
+class Plugin extends pulumi.CustomResource {
   /// The configuration of actions supported by the plugin.
   /// Structure is documented below.
-  late final Output<List<PluginActionsConfig>?> actionsConfigs;
+  late final pulumi.Output<List<PluginActionsConfig>?> actionsConfigs;
 
   /// ConfigTemplate represents the configuration template for a plugin.
   /// Structure is documented below.
-  late final Output<PluginConfigTemplate> configTemplate;
+  late final pulumi.Output<PluginConfigTemplate> configTemplate;
 
   /// Timestamp indicating when the plugin was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The plugin description. Max length is 2000 characters (Unicode code
   /// points).
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The display name of the plugin. Max length is 50 characters (Unicode code
   /// points).
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Documentation details.
   /// Structure is documented below.
-  late final Output<PluginDocumentation?> documentation;
+  late final pulumi.Output<PluginDocumentation?> documentation;
 
   /// The information related to the service implemented by the plugin
   /// developer, used to invoke the plugin's functionality.
   /// Structure is documented below.
-  late final Output<PluginHostingService?> hostingService;
+  late final pulumi.Output<PluginHostingService?> hostingService;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The name of the plugin.
   /// Format: `projects/{project}/locations/{location}/plugins/{plugin}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The type of the plugin, indicating whether it is 'SYSTEM_OWNED' or
   /// 'USER_OWNED'.
@@ -81,13 +81,13 @@ class Plugin extends CustomResource {
   /// OWNERSHIP_TYPE_UNSPECIFIED
   /// SYSTEM_OWNED
   /// USER_OWNED
-  late final Output<String> ownershipType;
+  late final pulumi.Output<String> ownershipType;
 
   /// Possible values:
   /// PLUGIN_CATEGORY_UNSPECIFIED
   /// API_GATEWAY
   /// API_PRODUCER
-  late final Output<String?> pluginCategory;
+  late final pulumi.Output<String?> pluginCategory;
 
   /// The ID to use for the Plugin resource, which will become the final
   /// component of the Plugin's resource name. This field is optional.
@@ -100,11 +100,11 @@ class Plugin extends CustomResource {
   /// `projects/{project}/locations/{location}/plugins/{plugin}`,
   /// its length is limited to 1000 characters and valid characters are
   /// /a-z[0-9]-_/.
-  late final Output<String> pluginId;
+  late final pulumi.Output<String> pluginId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Represents the state of the plugin.
   /// Note this field will not be set for plugins developed via plugin
@@ -113,20 +113,20 @@ class Plugin extends CustomResource {
   /// STATE_UNSPECIFIED
   /// ENABLED
   /// DISABLED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Timestamp indicating when the plugin was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Plugin(
     String name, {
     PluginArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apihub/plugin:Plugin',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.actionsConfigs =
         registerOutput<List<PluginActionsConfig>?>('actionsConfigs');

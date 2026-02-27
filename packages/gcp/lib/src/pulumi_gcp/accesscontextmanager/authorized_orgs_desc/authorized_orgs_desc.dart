@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorized_orgs_desc_args.dart';
 
 /// An authorized organizations description describes a list of organizations
@@ -38,12 +38,12 @@ import 'authorized_orgs_desc_args.dart';
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}
 /// ```
-class AuthorizedOrgsDesc extends CustomResource {
+class AuthorizedOrgsDesc extends pulumi.CustomResource {
   /// The type of entities that need to use the authorization relationship during
   /// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
   /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
   /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
-  late final Output<String?> assetType;
+  late final pulumi.Output<String?> assetType;
 
   /// The direction of the authorization relationship between this organization
   /// and the organizations listed in the "orgs" field. The valid values for this
@@ -60,42 +60,42 @@ class AuthorizedOrgsDesc extends CustomResource {
   /// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
   /// "AuthorizedOrgsDesc" resource.
   /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
-  late final Output<String?> authorizationDirection;
+  late final pulumi.Output<String?> authorizationDirection;
 
   /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
   /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
-  late final Output<String?> authorizationType;
+  late final pulumi.Output<String?> authorizationType;
 
   /// Time the AuthorizedOrgsDesc was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The list of organization ids in this AuthorizedOrgsDesc.
   /// Format: `organizations/<org_number>`
   /// Example: `organizations/123456`
-  late final Output<List<String>?> orgs;
+  late final pulumi.Output<List<String>?> orgs;
 
   /// Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Time the AuthorizedOrgsDesc was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AuthorizedOrgsDesc(
     String name, {
     AuthorizedOrgsDescArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assetType = registerOutput<String?>('assetType');
     this.authorizationDirection =

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_sql_server_excluded_objects_schema/stream_backfill_all_sql_server_excluded_objects_schema.dart';
 
 class StreamBackfillAllSqlServerExcludedObjects {
@@ -14,7 +14,7 @@ class StreamBackfillAllSqlServerExcludedObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['schemas'] = Input.encodeList<
+    map['schemas'] = pulumi.Input.encodeList<
         StreamBackfillAllSqlServerExcludedObjectsSchema,
         Map<String, dynamic>>(schemas, (value) => value.toMap());
     return map;
@@ -23,12 +23,11 @@ class StreamBackfillAllSqlServerExcludedObjects {
   factory StreamBackfillAllSqlServerExcludedObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamBackfillAllSqlServerExcludedObjects(
-      schemas:
-          Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchema>(
-              map['schemas'],
-              (value) =>
-                  StreamBackfillAllSqlServerExcludedObjectsSchema.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      schemas: pulumi.Input.decodeList<
+              StreamBackfillAllSqlServerExcludedObjectsSchema>(
+          map['schemas'],
+          (value) => StreamBackfillAllSqlServerExcludedObjectsSchema.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

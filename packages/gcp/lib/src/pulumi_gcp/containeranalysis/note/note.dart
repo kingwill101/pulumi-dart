@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../note_attestation_authority/note_attestation_authority.dart';
 import '../note_related_url/note_related_url.dart';
 import 'note_args.dart';
@@ -48,7 +48,7 @@ import 'note_args.dart';
 /// ```sh
 /// $ pulumi import gcp:containeranalysis/note:Note default {{name}}
 /// ```
-class Note extends CustomResource {
+class Note extends pulumi.CustomResource {
   /// Note kind that represents a logical attestation "role" or "authority".
   /// For example, an organization might have one AttestationAuthority for
   /// "QA" and one for "build". This Note is intended to act strictly as a
@@ -59,49 +59,49 @@ class Note extends CustomResource {
   /// Attestation Occurrences, even if they don't all live in the same
   /// project.
   /// Structure is documented below.
-  late final Output<NoteAttestationAuthority> attestationAuthority;
+  late final pulumi.Output<NoteAttestationAuthority> attestationAuthority;
 
   /// The time this note was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time of expiration for this note. Leave empty if note does not expire.
-  late final Output<String?> expirationTime;
+  late final pulumi.Output<String?> expirationTime;
 
   /// The type of analysis this note describes
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// A detailed description of the note
-  late final Output<String?> longDescription;
+  late final pulumi.Output<String?> longDescription;
 
   /// The name of the note.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Names of other notes related to this note.
-  late final Output<List<String>?> relatedNoteNames;
+  late final pulumi.Output<List<String>?> relatedNoteNames;
 
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
-  late final Output<List<NoteRelatedUrl>?> relatedUrls;
+  late final pulumi.Output<List<NoteRelatedUrl>?> relatedUrls;
 
   /// A one sentence description of the note.
-  late final Output<String?> shortDescription;
+  late final pulumi.Output<String?> shortDescription;
 
   /// The time this note was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Note(
     String name, {
     NoteArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:containeranalysis/note:Note',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attestationAuthority =
         registerOutput<NoteAttestationAuthority>('attestationAuthority');

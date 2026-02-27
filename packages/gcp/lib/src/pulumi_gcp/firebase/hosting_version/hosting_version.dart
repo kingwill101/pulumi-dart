@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hosting_version_config/hosting_version_config.dart';
 import 'hosting_version_args.dart';
 
@@ -54,30 +54,30 @@ import 'hosting_version_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
 /// ```
-class HostingVersion extends CustomResource {
+class HostingVersion extends pulumi.CustomResource {
   /// The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// Structure is documented below.
-  late final Output<HostingVersionConfig?> config;
+  late final pulumi.Output<HostingVersionConfig?> config;
 
   /// The fully-qualified resource name for the version, in the format:
   /// sites/SITE_ID/versions/VERSION_ID
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Required. The ID of the site in which to create this Version.
-  late final Output<String> siteId;
+  late final pulumi.Output<String> siteId;
 
   /// The ID for the version as in sites/SITE_ID/versions/VERSION_ID
-  late final Output<String> versionId;
+  late final pulumi.Output<String> versionId;
 
   HostingVersion(
     String name, {
     HostingVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/hostingVersion:HostingVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.config = registerOutput<HostingVersionConfig?>('config');
     this.name = registerOutput<String>('name');

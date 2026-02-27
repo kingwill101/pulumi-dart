@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_global_forwarding_rule_metadata_filter_filter_label/get_global_forwarding_rule_metadata_filter_filter_label.dart';
 
 class GetGlobalForwardingRuleMetadataFilter {
@@ -26,7 +26,7 @@ class GetGlobalForwardingRuleMetadataFilter {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['filterLabels'] = Input.encodeList<
+    map['filterLabels'] = pulumi.Input.encodeList<
         GetGlobalForwardingRuleMetadataFilterFilterLabel,
         Map<String, dynamic>>(filterLabels, (value) => value.toMap());
     map['filterMatchCriteria'] = filterMatchCriteria;
@@ -36,12 +36,11 @@ class GetGlobalForwardingRuleMetadataFilter {
   factory GetGlobalForwardingRuleMetadataFilter.fromMap(
       Map<String, dynamic> map) {
     return GetGlobalForwardingRuleMetadataFilter(
-      filterLabels:
-          Input.decodeList<GetGlobalForwardingRuleMetadataFilterFilterLabel>(
-              map['filterLabels'],
-              (value) =>
-                  GetGlobalForwardingRuleMetadataFilterFilterLabel.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      filterLabels: pulumi.Input.decodeList<
+              GetGlobalForwardingRuleMetadataFilterFilterLabel>(
+          map['filterLabels'],
+          (value) => GetGlobalForwardingRuleMetadataFilterFilterLabel.fromMap(
+              (value as Map).cast<String, dynamic>())),
       filterMatchCriteria: map['filterMatchCriteria'] as String,
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_default_custom_error_response_policy_error_response_rule/urlmap_default_custom_error_response_policy_error_response_rule.dart';
 
 class URLMapDefaultCustomErrorResponsePolicy {
@@ -29,7 +29,7 @@ class URLMapDefaultCustomErrorResponsePolicy {
     final map = <String, dynamic>{};
     final errorResponseRulesValue = errorResponseRules;
     if (errorResponseRulesValue != null) {
-      map['errorResponseRules'] = Input.encodeList<
+      map['errorResponseRules'] = pulumi.Input.encodeList<
               URLMapDefaultCustomErrorResponsePolicyErrorResponseRule,
               Map<String, dynamic>>(
           errorResponseRulesValue, (value) => value.toMap());
@@ -46,7 +46,7 @@ class URLMapDefaultCustomErrorResponsePolicy {
     return URLMapDefaultCustomErrorResponsePolicy(
       errorResponseRules: map['errorResponseRules'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   URLMapDefaultCustomErrorResponsePolicyErrorResponseRule>(
               map['errorResponseRules'],
               (value) => URLMapDefaultCustomErrorResponsePolicyErrorResponseRule

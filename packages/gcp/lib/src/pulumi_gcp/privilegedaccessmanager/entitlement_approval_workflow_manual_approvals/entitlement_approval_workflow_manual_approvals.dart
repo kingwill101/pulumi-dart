@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entitlement_approval_workflow_manual_approvals_step/entitlement_approval_workflow_manual_approvals_step.dart';
 
 class EntitlementApprovalWorkflowManualApprovals {
@@ -22,7 +22,7 @@ class EntitlementApprovalWorkflowManualApprovals {
     if (requireApproverJustificationValue != null) {
       map['requireApproverJustification'] = requireApproverJustificationValue;
     }
-    map['steps'] = Input.encodeList<
+    map['steps'] = pulumi.Input.encodeList<
         EntitlementApprovalWorkflowManualApprovalsStep,
         Map<String, dynamic>>(steps, (value) => value.toMap());
     return map;
@@ -34,7 +34,8 @@ class EntitlementApprovalWorkflowManualApprovals {
       requireApproverJustification: map['requireApproverJustification'] == null
           ? null
           : map['requireApproverJustification'] as bool,
-      steps: Input.decodeList<EntitlementApprovalWorkflowManualApprovalsStep>(
+      steps: pulumi.Input.decodeList<
+              EntitlementApprovalWorkflowManualApprovalsStep>(
           map['steps'],
           (value) => EntitlementApprovalWorkflowManualApprovalsStep.fromMap(
               (value as Map).cast<String, dynamic>())),

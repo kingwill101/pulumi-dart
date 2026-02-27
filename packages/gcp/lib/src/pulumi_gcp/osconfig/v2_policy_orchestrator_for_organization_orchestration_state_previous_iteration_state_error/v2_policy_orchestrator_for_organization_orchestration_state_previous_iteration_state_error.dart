@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_for_organization_orchestration_state_previous_iteration_state_error_detail/v2_policy_orchestrator_for_organization_orchestration_state_previous_iteration_state_error_detail.dart';
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateError {
@@ -33,7 +33,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
     }
     final detailsValue = details;
     if (detailsValue != null) {
-      map['details'] = Input.encodeList<
+      map['details'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail,
           Map<String, dynamic>>(detailsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
       code: map['code'] == null ? null : map['code'] as int,
       details: map['details'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail>(
               map['details'],
               (value) =>

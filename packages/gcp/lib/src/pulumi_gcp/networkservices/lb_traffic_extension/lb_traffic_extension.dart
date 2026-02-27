@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lb_traffic_extension_extension_chain/lb_traffic_extension_extension_chain.dart';
 import 'lb_traffic_extension_args.dart';
 
@@ -36,12 +36,12 @@ import 'lb_traffic_extension_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{location}}/{{name}}
 /// ```
-class LbTrafficExtension extends CustomResource {
+class LbTrafficExtension extends pulumi.CustomResource {
   /// A human-readable description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// A set of ordered extension chains that contain the match conditions and extensions to execute.
   /// Match conditions for each extension chain are evaluated in sequence for a given request.
@@ -49,46 +49,47 @@ class LbTrafficExtension extends CustomResource {
   /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
   /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
   /// Structure is documented below.
-  late final Output<List<LbTrafficExtensionExtensionChain>> extensionChains;
+  late final pulumi.Output<List<LbTrafficExtensionExtensionChain>>
+      extensionChains;
 
   /// A list of references to the forwarding rules to which this service extension is attached to.
   /// At least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.
-  late final Output<List<String>> forwardingRules;
+  late final pulumi.Output<List<String>> forwardingRules;
 
   /// Set of labels associated with the LbTrafficExtension resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
   /// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
   /// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
   /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-  late final Output<String> loadBalancingScheme;
+  late final pulumi.Output<String> loadBalancingScheme;
 
   /// The location of the traffic extension
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   LbTrafficExtension(
     String name, {
     LbTrafficExtensionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/lbTrafficExtension:LbTrafficExtension',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.effectiveLabels =

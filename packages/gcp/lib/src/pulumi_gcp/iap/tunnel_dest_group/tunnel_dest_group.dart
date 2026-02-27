@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tunnel_dest_group_args.dart';
 
 /// Tunnel destination groups represent resources that have the same tunnel access restrictions.
@@ -58,35 +58,35 @@ import 'tunnel_dest_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iap/tunnelDestGroup:TunnelDestGroup default {{group_name}}
 /// ```
-class TunnelDestGroup extends CustomResource {
+class TunnelDestGroup extends pulumi.CustomResource {
   /// List of CIDRs that this group applies to.
-  late final Output<List<String>?> cidrs;
+  late final pulumi.Output<List<String>?> cidrs;
 
   /// List of FQDNs that this group applies to.
-  late final Output<List<String>?> fqdns;
+  late final pulumi.Output<List<String>?> fqdns;
 
   /// Unique tunnel destination group name.
-  late final Output<String> groupName;
+  late final pulumi.Output<String> groupName;
 
   /// Full resource name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region of the tunnel group. Must be the same as the network resources in the group.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   TunnelDestGroup(
     String name, {
     TunnelDestGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iap/tunnelDestGroup:TunnelDestGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cidrs = registerOutput<List<String>?>('cidrs');
     this.fqdns = registerOutput<List<String>?>('fqdns');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeter_spec_ingress_policy_ingress_from_source/service_perimeter_spec_ingress_policy_ingress_from_source.dart';
 
 class ServicePerimeterSpecIngressPolicyIngressFrom {
@@ -37,7 +37,7 @@ class ServicePerimeterSpecIngressPolicyIngressFrom {
     }
     final sourcesValue = sources;
     if (sourcesValue != null) {
-      map['sources'] = Input.encodeList<
+      map['sources'] = pulumi.Input.encodeList<
           ServicePerimeterSpecIngressPolicyIngressFromSource,
           Map<String, dynamic>>(sourcesValue, (value) => value.toMap());
     }
@@ -54,7 +54,7 @@ class ServicePerimeterSpecIngressPolicyIngressFrom {
           map['identityType'] == null ? null : map['identityType'] as String,
       sources: map['sources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServicePerimeterSpecIngressPolicyIngressFromSource>(
               map['sources'],
               (value) =>

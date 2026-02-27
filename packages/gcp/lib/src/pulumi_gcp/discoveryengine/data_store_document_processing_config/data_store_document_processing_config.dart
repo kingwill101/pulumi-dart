@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_store_document_processing_config_chunking_config/data_store_document_processing_config_chunking_config.dart';
 import '../data_store_document_processing_config_default_parsing_config/data_store_document_processing_config_default_parsing_config.dart';
 import '../data_store_document_processing_config_parsing_config_override/data_store_document_processing_config_parsing_config_override.dart';
@@ -49,7 +49,7 @@ class DataStoreDocumentProcessingConfig {
     }
     final parsingConfigOverridesValue = parsingConfigOverrides;
     if (parsingConfigOverridesValue != null) {
-      map['parsingConfigOverrides'] = Input.encodeList<
+      map['parsingConfigOverrides'] = pulumi.Input.encodeList<
               DataStoreDocumentProcessingConfigParsingConfigOverride,
               Map<String, dynamic>>(
           parsingConfigOverridesValue, (value) => value.toMap());
@@ -70,7 +70,7 @@ class DataStoreDocumentProcessingConfig {
       name: map['name'] == null ? null : map['name'] as String,
       parsingConfigOverrides: map['parsingConfigOverrides'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DataStoreDocumentProcessingConfigParsingConfigOverride>(
               map['parsingConfigOverrides'],
               (value) => DataStoreDocumentProcessingConfigParsingConfigOverride

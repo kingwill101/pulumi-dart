@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_netblock_ipranges_args.dart';
 import 'get_netblock_ipranges_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_netblock_ipranges_result.dart';
 /// ### Allow Health Checks
 Future<GetNetblockIPRangesResult> getNetblockIPRanges(
   GetNetblockIPRangesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getNetblockIPRanges:getNetblockIPRanges',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetblockIPRangesResult.fromMap(result);
 }

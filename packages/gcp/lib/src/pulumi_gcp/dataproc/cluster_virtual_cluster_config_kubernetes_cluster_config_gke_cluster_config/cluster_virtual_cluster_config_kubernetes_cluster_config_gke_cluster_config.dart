@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_config_node_pool_target/cluster_virtual_cluster_config_kubernetes_cluster_config_gke_cluster_config_node_pool_target.dart';
 
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
@@ -28,7 +28,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
     }
     final nodePoolTargetsValue = nodePoolTargets;
     if (nodePoolTargetsValue != null) {
-      map['nodePoolTargets'] = Input.encodeList<
+      map['nodePoolTargets'] = pulumi.Input.encodeList<
           ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget,
           Map<String, dynamic>>(nodePoolTargetsValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
           : map['gkeClusterTarget'] as String,
       nodePoolTargets: map['nodePoolTargets'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget>(
               map['nodePoolTargets'],
               (value) =>

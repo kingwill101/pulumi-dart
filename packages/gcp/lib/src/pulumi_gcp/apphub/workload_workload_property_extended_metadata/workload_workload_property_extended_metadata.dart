@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workload_workload_property_extended_metadata_value/workload_workload_property_extended_metadata_value.dart';
 
 class WorkloadWorkloadPropertyExtendedMetadata {
@@ -26,7 +26,7 @@ class WorkloadWorkloadPropertyExtendedMetadata {
     }
     final valuesValue = values;
     if (valuesValue != null) {
-      map['values'] = Input.encodeList<
+      map['values'] = pulumi.Input.encodeList<
           WorkloadWorkloadPropertyExtendedMetadataValue,
           Map<String, dynamic>>(valuesValue, (value) => value.toMap());
     }
@@ -39,7 +39,8 @@ class WorkloadWorkloadPropertyExtendedMetadata {
       key: map['key'] == null ? null : map['key'] as String,
       values: map['values'] == null
           ? null
-          : Input.decodeList<WorkloadWorkloadPropertyExtendedMetadataValue>(
+          : pulumi.Input.decodeList<
+                  WorkloadWorkloadPropertyExtendedMetadataValue>(
               map['values'],
               (value) => WorkloadWorkloadPropertyExtendedMetadataValue.fromMap(
                   (value as Map).cast<String, dynamic>())),

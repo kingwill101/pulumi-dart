@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../os_policy_assignment_os_policy_resource_group_inventory_filter/os_policy_assignment_os_policy_resource_group_inventory_filter.dart';
 import '../os_policy_assignment_os_policy_resource_group_resource/os_policy_assignment_os_policy_resource_group_resource.dart';
 
@@ -31,12 +31,12 @@ class OsPolicyAssignmentOsPolicyResourceGroup {
     final map = <String, dynamic>{};
     final inventoryFiltersValue = inventoryFilters;
     if (inventoryFiltersValue != null) {
-      map['inventoryFilters'] = Input.encodeList<
+      map['inventoryFilters'] = pulumi.Input.encodeList<
               OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter,
               Map<String, dynamic>>(
           inventoryFiltersValue, (value) => value.toMap());
     }
-    map['resources'] = Input.encodeList<
+    map['resources'] = pulumi.Input.encodeList<
         OsPolicyAssignmentOsPolicyResourceGroupResource,
         Map<String, dynamic>>(resources, (value) => value.toMap());
     return map;
@@ -47,17 +47,16 @@ class OsPolicyAssignmentOsPolicyResourceGroup {
     return OsPolicyAssignmentOsPolicyResourceGroup(
       inventoryFilters: map['inventoryFilters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter>(
               map['inventoryFilters'],
               (value) => OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter
                   .fromMap((value as Map).cast<String, dynamic>())),
-      resources:
-          Input.decodeList<OsPolicyAssignmentOsPolicyResourceGroupResource>(
-              map['resources'],
-              (value) =>
-                  OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      resources: pulumi.Input.decodeList<
+              OsPolicyAssignmentOsPolicyResourceGroupResource>(
+          map['resources'],
+          (value) => OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

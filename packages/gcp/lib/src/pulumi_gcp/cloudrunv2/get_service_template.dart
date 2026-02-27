@@ -1,3 +1,3 @@
 library module_cloudrunv2_get_service_template;
 
-export 'get_service_template/get_service_template2.dart';
+export 'get_service_template/get_service_template_cloudrunv2.dart';

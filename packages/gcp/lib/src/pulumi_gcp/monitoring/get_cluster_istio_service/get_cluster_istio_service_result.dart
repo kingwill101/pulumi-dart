@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_istio_service_telemetry/get_cluster_istio_service_telemetry.dart';
 
 /// Result data returned by getClusterIstioService.
@@ -54,9 +54,9 @@ class GetClusterIstioServiceResult {
     map['serviceId'] = serviceId;
     map['serviceName'] = serviceName;
     map['serviceNamespace'] = serviceNamespace;
-    map['telemetries'] =
-        Input.encodeList<GetClusterIstioServiceTelemetry, Map<String, dynamic>>(
-            telemetries, (value) => value.toMap());
+    map['telemetries'] = pulumi.Input.encodeList<
+        GetClusterIstioServiceTelemetry,
+        Map<String, dynamic>>(telemetries, (value) => value.toMap());
     map['userLabels'] = userLabels;
     return map;
   }
@@ -72,7 +72,7 @@ class GetClusterIstioServiceResult {
       serviceId: map['serviceId'] as String,
       serviceName: map['serviceName'] as String,
       serviceNamespace: map['serviceNamespace'] as String,
-      telemetries: Input.decodeList<GetClusterIstioServiceTelemetry>(
+      telemetries: pulumi.Input.decodeList<GetClusterIstioServiceTelemetry>(
           map['telemetries'],
           (value) => GetClusterIstioServiceTelemetry.fromMap(
               (value as Map).cast<String, dynamic>())),

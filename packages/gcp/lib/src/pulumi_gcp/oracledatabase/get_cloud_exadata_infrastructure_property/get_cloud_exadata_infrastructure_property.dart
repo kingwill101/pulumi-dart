@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_exadata_infrastructure_property_customer_contact/get_cloud_exadata_infrastructure_property_customer_contact.dart';
 import '../get_cloud_exadata_infrastructure_property_maintenance_window/get_cloud_exadata_infrastructure_property_maintenance_window.dart';
 
@@ -145,13 +145,13 @@ class GetCloudExadataInfrastructureProperty {
     map['availableStorageSizeGb'] = availableStorageSizeGb;
     map['computeCount'] = computeCount;
     map['cpuCount'] = cpuCount;
-    map['customerContacts'] = Input.encodeList<
+    map['customerContacts'] = pulumi.Input.encodeList<
         GetCloudExadataInfrastructurePropertyCustomerContact,
         Map<String, dynamic>>(customerContacts, (value) => value.toMap());
     map['dataStorageSizeTb'] = dataStorageSizeTb;
     map['dbNodeStorageSizeGb'] = dbNodeStorageSizeGb;
     map['dbServerVersion'] = dbServerVersion;
-    map['maintenanceWindows'] = Input.encodeList<
+    map['maintenanceWindows'] = pulumi.Input.encodeList<
         GetCloudExadataInfrastructurePropertyMaintenanceWindow,
         Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap());
     map['maxCpuCount'] = maxCpuCount;
@@ -182,7 +182,7 @@ class GetCloudExadataInfrastructureProperty {
       availableStorageSizeGb: map['availableStorageSizeGb'] as int,
       computeCount: map['computeCount'] as int,
       cpuCount: map['cpuCount'] as int,
-      customerContacts: Input.decodeList<
+      customerContacts: pulumi.Input.decodeList<
               GetCloudExadataInfrastructurePropertyCustomerContact>(
           map['customerContacts'],
           (value) =>
@@ -191,7 +191,7 @@ class GetCloudExadataInfrastructureProperty {
       dataStorageSizeTb: map['dataStorageSizeTb'] as double,
       dbNodeStorageSizeGb: map['dbNodeStorageSizeGb'] as int,
       dbServerVersion: map['dbServerVersion'] as String,
-      maintenanceWindows: Input.decodeList<
+      maintenanceWindows: pulumi.Input.decodeList<
               GetCloudExadataInfrastructurePropertyMaintenanceWindow>(
           map['maintenanceWindows'],
           (value) =>

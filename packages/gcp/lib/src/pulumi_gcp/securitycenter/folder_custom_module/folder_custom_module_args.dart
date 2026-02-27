@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_custom_module_custom_config/folder_custom_module_custom_config.dart';
 
 /// The set of arguments for FolderCustomModule.
 class FolderCustomModuleArgs {
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  final Input<FolderCustomModuleCustomConfig> customConfig;
+  final pulumi.Input<FolderCustomModuleCustomConfig> customConfig;
 
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final Input<String> enablementState;
+  final pulumi.Input<String> enablementState;
 
   /// Numerical ID of the parent folder.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   FolderCustomModuleArgs({
     required this.customConfig,
@@ -32,7 +32,8 @@ class FolderCustomModuleArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customConfig'] = Input.mapInputValue<FolderCustomModuleCustomConfig,
+    map['customConfig'] = pulumi.Input.mapInputValue<
+        FolderCustomModuleCustomConfig,
         Map<String, dynamic>>(customConfig, (value) => value.toMap());
     map['displayName'] = displayName;
     map['enablementState'] = enablementState;
@@ -42,11 +43,11 @@ class FolderCustomModuleArgs {
 
   factory FolderCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleArgs(
-      customConfig:
-          Input.asInput<FolderCustomModuleCustomConfig>(map['customConfig']),
-      displayName: Input.asInput<String>(map['displayName']),
-      enablementState: Input.asInput<String>(map['enablementState']),
-      folder: Input.asInput<String>(map['folder']),
+      customConfig: pulumi.Input.asInput<FolderCustomModuleCustomConfig>(
+          map['customConfig']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      enablementState: pulumi.Input.asInput<String>(map['enablementState']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
     );
   }
 }

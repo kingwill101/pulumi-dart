@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_key_rings_key_ring/get_key_rings_key_ring.dart';
 
 /// Result data returned by getKeyRings.
@@ -31,7 +31,7 @@ class GetKeyRingsResult {
     }
     map['id'] = id;
     map['keyRings'] =
-        Input.encodeList<GetKeyRingsKeyRing, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetKeyRingsKeyRing, Map<String, dynamic>>(
             keyRings, (value) => value.toMap());
     map['location'] = location;
     final projectValue = project;
@@ -45,7 +45,7 @@ class GetKeyRingsResult {
     return GetKeyRingsResult(
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
-      keyRings: Input.decodeList<GetKeyRingsKeyRing>(
+      keyRings: pulumi.Input.decodeList<GetKeyRingsKeyRing>(
           map['keyRings'],
           (value) => GetKeyRingsKeyRing.fromMap(
               (value as Map).cast<String, dynamic>())),

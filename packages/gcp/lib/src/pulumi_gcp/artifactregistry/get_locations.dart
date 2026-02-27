@@ -1,5 +1,5 @@
 library module_artifactregistry_get_locations;
 
-export 'get_locations/get_locations2.dart';
-export 'get_locations/get_locations_args2.dart';
-export 'get_locations/get_locations_result2.dart';
+export 'get_locations/get_locations_artifactregistry.dart';
+export 'get_locations/get_locations_artifactregistry_args.dart';
+export 'get_locations/get_locations_artifactregistry_result.dart';

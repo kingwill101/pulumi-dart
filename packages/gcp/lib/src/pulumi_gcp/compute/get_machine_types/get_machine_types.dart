@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_machine_types_args.dart';
 import 'get_machine_types_result.dart';
 
@@ -23,13 +23,13 @@ import 'get_machine_types_result.dart';
 /// Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
 Future<GetMachineTypesResult> getMachineTypes(
   GetMachineTypesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getMachineTypes:getMachineTypes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineTypesResult.fromMap(result);
 }

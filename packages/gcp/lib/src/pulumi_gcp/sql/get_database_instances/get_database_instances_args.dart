@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDatabaseInstances.
 class GetDatabaseInstancesArgs {
   /// To filter out the Cloud SQL instances which are of the specified database version.
-  final Input<String>? databaseVersion;
+  final pulumi.Input<String>? databaseVersion;
 
   /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// To filter out the Cloud SQL instances which are located in the specified region.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// To filter out the Cloud SQL instances based on the current serving state of the database instance. Supported values include `SQL_INSTANCE_STATE_UNSPECIFIED`, `RUNNABLE`, `SUSPENDED`, `PENDING_DELETE`, `PENDING_CREATE`, `MAINTENANCE`, `FAILED`.
-  final Input<String>? state;
+  final pulumi.Input<String>? state;
 
   /// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
-  final Input<String>? tier;
+  final pulumi.Input<String>? tier;
 
   /// To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetDatabaseInstancesArgs({
     this.databaseVersion,
@@ -62,12 +62,13 @@ class GetDatabaseInstancesArgs {
 
   factory GetDatabaseInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesArgs(
-      databaseVersion: Input.asOptionalInput<String>(map['databaseVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      state: Input.asOptionalInput<String>(map['state']),
-      tier: Input.asOptionalInput<String>(map['tier']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      databaseVersion:
+          pulumi.Input.asOptionalInput<String>(map['databaseVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      state: pulumi.Input.asOptionalInput<String>(map['state']),
+      tier: pulumi.Input.asOptionalInput<String>(map['tier']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

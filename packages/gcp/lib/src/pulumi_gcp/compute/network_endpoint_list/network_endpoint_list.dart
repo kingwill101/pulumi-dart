@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_endpoint_list_network_endpoint/network_endpoint_list_network_endpoint.dart';
 import 'network_endpoint_list_args.dart';
 
@@ -58,32 +58,33 @@ import 'network_endpoint_list_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
 /// ```
-class NetworkEndpointList extends CustomResource {
+class NetworkEndpointList extends pulumi.CustomResource {
   /// The network endpoint group these endpoints are part of.
-  late final Output<String> networkEndpointGroup;
+  late final pulumi.Output<String> networkEndpointGroup;
 
   /// The network endpoints to be added to the enclosing network endpoint group
   /// (NEG). Each endpoint specifies an IP address and port, along with
   /// additional information depending on the NEG type.
   /// Structure is documented below.
-  late final Output<List<NetworkEndpointListNetworkEndpoint>?> networkEndpoints;
+  late final pulumi.Output<List<NetworkEndpointListNetworkEndpoint>?>
+      networkEndpoints;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Zone where the containing network endpoint group is located.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   NetworkEndpointList(
     String name, {
     NetworkEndpointListArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkEndpointList:NetworkEndpointList',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
     this.networkEndpoints =

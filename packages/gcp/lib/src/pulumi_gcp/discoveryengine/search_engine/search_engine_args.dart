@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../search_engine_common_config/search_engine_common_config.dart';
 import '../search_engine_search_engine_config/search_engine_search_engine_config.dart';
 
@@ -8,49 +8,49 @@ import '../search_engine_search_engine_config/search_engine_search_engine_config
 class SearchEngineArgs {
   /// This is the application type this engine resource represents.
   /// The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
-  final Input<String>? appType;
+  final pulumi.Input<String>? appType;
 
   /// The collection ID.
-  final Input<String> collectionId;
+  final pulumi.Input<String> collectionId;
 
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
-  final Input<SearchEngineCommonConfig>? commonConfig;
+  final pulumi.Input<SearchEngineCommonConfig>? commonConfig;
 
   /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
-  final Input<List<String>> dataStoreIds;
+  final pulumi.Input<List<String>> dataStoreIds;
 
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Unique ID to use for Search Engine App.
-  final Input<String> engineId;
+  final pulumi.Input<String> engineId;
 
   /// A map of the feature config for the engine to opt in or opt out of features.
-  final Input<Map<String, String>>? features;
+  final pulumi.Input<Map<String, String>>? features;
 
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
-  final Input<String>? industryVertical;
+  final pulumi.Input<String>? industryVertical;
 
   /// The KMS key to be used to protect this Engine at creation time.
   /// Must be set for requests that need to comply with CMEK Org Policy
   /// protections.
   /// If this field is set and processed successfully, the Engine will be
   /// protected by the KMS key, as indicated in the cmek_config field.
-  final Input<String>? kmsKeyName;
+  final pulumi.Input<String>? kmsKeyName;
 
   /// Location.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Configurations for a Search Engine.
   /// Structure is documented below.
-  final Input<SearchEngineSearchEngineConfig> searchEngineConfig;
+  final pulumi.Input<SearchEngineSearchEngineConfig> searchEngineConfig;
 
   SearchEngineArgs({
     this.appType,
@@ -76,7 +76,7 @@ class SearchEngineArgs {
     map['collectionId'] = collectionId;
     final commonConfigValue = commonConfig;
     if (commonConfigValue != null) {
-      map['commonConfig'] = Input.mapOptionalInputValue<
+      map['commonConfig'] = pulumi.Input.mapOptionalInputValue<
           SearchEngineCommonConfig,
           Map<String, dynamic>>(commonConfigValue, (value) => value.toMap());
     }
@@ -100,7 +100,7 @@ class SearchEngineArgs {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['searchEngineConfig'] = Input.mapInputValue<
+    map['searchEngineConfig'] = pulumi.Input.mapInputValue<
         SearchEngineSearchEngineConfig,
         Map<String, dynamic>>(searchEngineConfig, (value) => value.toMap());
     return map;
@@ -108,19 +108,21 @@ class SearchEngineArgs {
 
   factory SearchEngineArgs.fromMap(Map<String, dynamic> map) {
     return SearchEngineArgs(
-      appType: Input.asOptionalInput<String>(map['appType']),
-      collectionId: Input.asInput<String>(map['collectionId']),
-      commonConfig:
-          Input.asOptionalInput<SearchEngineCommonConfig>(map['commonConfig']),
-      dataStoreIds: Input.asInput<List<String>>(map['dataStoreIds']),
-      displayName: Input.asInput<String>(map['displayName']),
-      engineId: Input.asInput<String>(map['engineId']),
-      features: Input.asOptionalInput<Map<String, String>>(map['features']),
-      industryVertical: Input.asOptionalInput<String>(map['industryVertical']),
-      kmsKeyName: Input.asOptionalInput<String>(map['kmsKeyName']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      searchEngineConfig: Input.asInput<SearchEngineSearchEngineConfig>(
+      appType: pulumi.Input.asOptionalInput<String>(map['appType']),
+      collectionId: pulumi.Input.asInput<String>(map['collectionId']),
+      commonConfig: pulumi.Input.asOptionalInput<SearchEngineCommonConfig>(
+          map['commonConfig']),
+      dataStoreIds: pulumi.Input.asInput<List<String>>(map['dataStoreIds']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      engineId: pulumi.Input.asInput<String>(map['engineId']),
+      features:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['features']),
+      industryVertical:
+          pulumi.Input.asOptionalInput<String>(map['industryVertical']),
+      kmsKeyName: pulumi.Input.asOptionalInput<String>(map['kmsKeyName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      searchEngineConfig: pulumi.Input.asInput<SearchEngineSearchEngineConfig>(
           map['searchEngineConfig']),
     );
   }

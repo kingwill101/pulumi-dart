@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../health_check_grpc_health_check/health_check_grpc_health_check.dart';
 import '../health_check_grpc_tls_health_check/health_check_grpc_tls_health_check.dart';
 import '../health_check_http2_health_check/health_check_http2_health_check.dart';
@@ -130,45 +130,45 @@ import 'health_check_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/healthCheck:HealthCheck default {{name}}
 /// ```
-class HealthCheck extends CustomResource {
+class HealthCheck extends pulumi.CustomResource {
   /// How often (in seconds) to send a health check. The default value is 5
   /// seconds.
-  late final Output<int?> checkIntervalSec;
+  late final pulumi.Output<int?> checkIntervalSec;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<HealthCheckGrpcHealthCheck?> grpcHealthCheck;
+  late final pulumi.Output<HealthCheckGrpcHealthCheck?> grpcHealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<HealthCheckGrpcTlsHealthCheck?> grpcTlsHealthCheck;
+  late final pulumi.Output<HealthCheckGrpcTlsHealthCheck?> grpcTlsHealthCheck;
 
   /// A so-far unhealthy instance will be marked healthy after this many
   /// consecutive successes. The default value is 2.
-  late final Output<int?> healthyThreshold;
+  late final pulumi.Output<int?> healthyThreshold;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<HealthCheckHttp2HealthCheck?> http2HealthCheck;
+  late final pulumi.Output<HealthCheckHttp2HealthCheck?> http2HealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<HealthCheckHttpHealthCheck?> httpHealthCheck;
+  late final pulumi.Output<HealthCheckHttpHealthCheck?> httpHealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<HealthCheckHttpsHealthCheck?> httpsHealthCheck;
+  late final pulumi.Output<HealthCheckHttpsHealthCheck?> httpsHealthCheck;
 
   /// Configure logging on this health check.
   /// Structure is documented below.
-  late final Output<HealthCheckLogConfig> logConfig;
+  late final pulumi.Output<HealthCheckLogConfig> logConfig;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -177,14 +177,14 @@ class HealthCheck extends CustomResource {
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The list of cloud regions from which health checks are performed. If
   /// any regions are specified, then exactly 3 regions should be specified.
@@ -198,37 +198,37 @@ class HealthCheck extends CustomResource {
   /// * The checkIntervalSec field must be at least 30.
   /// * The health check cannot be used with BackendService nor with managed
   /// instance group auto-healing.
-  late final Output<List<String>?> sourceRegions;
+  late final pulumi.Output<List<String>?> sourceRegions;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<HealthCheckSslHealthCheck?> sslHealthCheck;
+  late final pulumi.Output<HealthCheckSslHealthCheck?> sslHealthCheck;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<HealthCheckTcpHealthCheck?> tcpHealthCheck;
+  late final pulumi.Output<HealthCheckTcpHealthCheck?> tcpHealthCheck;
 
   /// How long (in seconds) to wait before claiming failure.
   /// The default value is 5 seconds.  It is invalid for timeoutSec to have
   /// greater value than checkIntervalSec.
-  late final Output<int?> timeoutSec;
+  late final pulumi.Output<int?> timeoutSec;
 
   /// The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// A so-far healthy instance will be marked unhealthy after this many
   /// consecutive failures. The default value is 2.
-  late final Output<int?> unhealthyThreshold;
+  late final pulumi.Output<int?> unhealthyThreshold;
 
   HealthCheck(
     String name, {
     HealthCheckArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/healthCheck:HealthCheck',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

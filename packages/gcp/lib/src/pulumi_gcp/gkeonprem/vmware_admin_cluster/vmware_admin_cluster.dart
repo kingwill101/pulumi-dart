@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_admin_cluster_addon_node/vmware_admin_cluster_addon_node.dart';
 import '../vmware_admin_cluster_anti_affinity_groups/vmware_admin_cluster_anti_affinity_groups.dart';
 import '../vmware_admin_cluster_authorization/vmware_admin_cluster_authorization.dart';
@@ -59,10 +59,10 @@ import 'vmware_admin_cluster_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster default {{location}}/{{name}}
 /// ```
-class VmwareAdminCluster extends CustomResource {
+class VmwareAdminCluster extends pulumi.CustomResource {
   /// The VMware admin cluster addon node configuration.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterAddonNode> addonNode;
+  late final pulumi.Output<VmwareAdminClusterAddonNode> addonNode;
 
   /// Annotations on the VMware Admin Cluster.
   /// This field has the same restrictions as Kubernetes annotations.
@@ -75,58 +75,60 @@ class VmwareAdminCluster extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>> annotations;
+  late final pulumi.Output<Map<String, String>> annotations;
 
   /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
   /// least three physical hosts in the datacenter.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterAntiAffinityGroups> antiAffinityGroups;
+  late final pulumi.Output<VmwareAdminClusterAntiAffinityGroups>
+      antiAffinityGroups;
 
   /// The VMware admin cluster authorization configuration.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterAuthorization?> authorization;
+  late final pulumi.Output<VmwareAdminClusterAuthorization?> authorization;
 
   /// Configuration for auto repairing.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterAutoRepairConfig> autoRepairConfig;
+  late final pulumi.Output<VmwareAdminClusterAutoRepairConfig> autoRepairConfig;
 
   /// The bootstrap cluster this VMware admin cluster belongs to.
-  late final Output<String> bootstrapClusterMembership;
+  late final pulumi.Output<String> bootstrapClusterMembership;
 
   /// The VMware admin cluster control plane node configuration.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterControlPlaneNode?> controlPlaneNode;
+  late final pulumi.Output<VmwareAdminClusterControlPlaneNode?>
+      controlPlaneNode;
 
   /// The time the cluster was created, in RFC3339 text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A human readable description of this VMware admin cluster.
-  late final Output<String> description;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String> description;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// If set, the advanced cluster feature is enabled.
-  late final Output<bool> enableAdvancedCluster;
+  late final pulumi.Output<bool> enableAdvancedCluster;
 
   /// The DNS name of VMware admin cluster's API server.
-  late final Output<String> endpoint;
+  late final pulumi.Output<String> endpoint;
 
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Fleet configuration for the cluster.
   /// Structure is documented below.
-  late final Output<List<VmwareAdminClusterFleet>> fleets;
+  late final pulumi.Output<List<VmwareAdminClusterFleet>> fleets;
 
   /// The OS image type for the VMware admin cluster.
-  late final Output<String> imageType;
+  late final pulumi.Output<String> imageType;
 
   /// Specifies the load balancer configuration for VMware admin cluster.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterLoadBalancer?> loadBalancer;
+  late final pulumi.Output<VmwareAdminClusterLoadBalancer?> loadBalancer;
 
   /// The object name of the VMwareAdminCluster custom resource on the
   /// associated admin cluster. This field is used to support conflicting
@@ -138,68 +140,68 @@ class VmwareAdminCluster extends CustomResource {
   /// All users should use this name to access their cluster using gkectl or
   /// kubectl and should expect to see the local name when viewing admin
   /// cluster controller logs.
-  late final Output<String> localName;
+  late final pulumi.Output<String> localName;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The VMware admin cluster resource name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The VMware admin cluster network configuration.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterNetworkConfig> networkConfig;
+  late final pulumi.Output<VmwareAdminClusterNetworkConfig> networkConfig;
 
   /// The Anthos clusters on the VMware version for the admin cluster.
-  late final Output<String?> onPremVersion;
+  late final pulumi.Output<String?> onPremVersion;
 
   /// The VMware platform configuration.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterPlatformConfig?> platformConfig;
+  late final pulumi.Output<VmwareAdminClusterPlatformConfig?> platformConfig;
 
   /// Configuration for private registry.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterPrivateRegistryConfig?>
+  late final pulumi.Output<VmwareAdminClusterPrivateRegistryConfig?>
       privateRegistryConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Configuration for proxy.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterProxy?> proxy;
+  late final pulumi.Output<VmwareAdminClusterProxy?> proxy;
 
   /// If set, there are currently changes in flight to the VMware admin cluster.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// (Output)
   /// The lifecycle state of the condition.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// ResourceStatus representing detailed cluster state.
   /// Structure is documented below.
-  late final Output<List<VmwareAdminClusterStatus>> statuses;
+  late final pulumi.Output<List<VmwareAdminClusterStatus>> statuses;
 
   /// The unique identifier of the VMware Admin Cluster.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time the cluster was last updated, in RFC3339 text format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Specifies vCenter config for the admin cluster.
   /// Structure is documented below.
-  late final Output<VmwareAdminClusterVcenter?> vcenter;
+  late final pulumi.Output<VmwareAdminClusterVcenter?> vcenter;
 
   VmwareAdminCluster(
     String name, {
     VmwareAdminClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.addonNode = registerOutput<VmwareAdminClusterAddonNode>('addonNode');
     this.annotations = registerOutput<Map<String, String>>('annotations');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_traffic_current/app_hosting_traffic_current.dart';
 import '../app_hosting_traffic_rollout_policy/app_hosting_traffic_rollout_policy.dart';
 import '../app_hosting_traffic_target/app_hosting_traffic_target.dart';
@@ -46,62 +46,62 @@ import 'app_hosting_traffic_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingTraffic:AppHostingTraffic default {{location}}/{{backend}}
 /// ```
-class AppHostingTraffic extends CustomResource {
+class AppHostingTraffic extends pulumi.CustomResource {
   /// Id of the backend that this Traffic config applies to
-  late final Output<String> backend;
+  late final pulumi.Output<String> backend;
 
   /// Time at which the backend was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Current state of traffic allocation for the backend.
   /// When setting `target`, this field may differ for some time until the desired state is reached.
   /// Structure is documented below.
-  late final Output<List<AppHostingTrafficCurrent>> currents;
+  late final pulumi.Output<List<AppHostingTrafficCurrent>> currents;
 
   /// Time at which the backend was deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The location the Backend that this Traffic config applies to
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the backend traffic config
   /// Format:
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The policy for how builds and rollouts are triggered and rolled out.
   /// Structure is documented below.
-  late final Output<AppHostingTrafficRolloutPolicy?> rolloutPolicy;
+  late final pulumi.Output<AppHostingTrafficRolloutPolicy?> rolloutPolicy;
 
   /// Set to manually control the desired traffic for the backend. This will
   /// cause current to eventually match this value. The percentages must add
   /// up to 100.
   /// Structure is documented below.
-  late final Output<AppHostingTrafficTarget?> target;
+  late final pulumi.Output<AppHostingTrafficTarget?> target;
 
   /// System-assigned, unique identifier.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time at which the backend was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AppHostingTraffic(
     String name, {
     AppHostingTrafficArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appHostingTraffic:AppHostingTraffic',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backend = registerOutput<String>('backend');
     this.createTime = registerOutput<String>('createTime');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_source_references_data_source_reference/get_data_source_references_data_source_reference.dart';
 
 /// Result data returned by getDataSourceReferences.
@@ -23,7 +23,7 @@ class GetDataSourceReferencesResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dataSourceReferences'] = Input.encodeList<
+    map['dataSourceReferences'] = pulumi.Input.encodeList<
         GetDataSourceReferencesDataSourceReference,
         Map<String, dynamic>>(dataSourceReferences, (value) => value.toMap());
     map['id'] = id;
@@ -39,7 +39,7 @@ class GetDataSourceReferencesResult {
   factory GetDataSourceReferencesResult.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferencesResult(
       dataSourceReferences:
-          Input.decodeList<GetDataSourceReferencesDataSourceReference>(
+          pulumi.Input.decodeList<GetDataSourceReferencesDataSourceReference>(
               map['dataSourceReferences'],
               (value) => GetDataSourceReferencesDataSourceReference.fromMap(
                   (value as Map).cast<String, dynamic>())),

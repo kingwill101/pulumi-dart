@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backend_service_backend_custom_metric/get_backend_service_backend_custom_metric.dart';
 
 class GetBackendServiceBackend {
@@ -149,7 +149,7 @@ class GetBackendServiceBackend {
     final map = <String, dynamic>{};
     map['balancingMode'] = balancingMode;
     map['capacityScaler'] = capacityScaler;
-    map['customMetrics'] = Input.encodeList<
+    map['customMetrics'] = pulumi.Input.encodeList<
         GetBackendServiceBackendCustomMetric,
         Map<String, dynamic>>(customMetrics, (value) => value.toMap());
     map['description'] = description;
@@ -173,10 +173,11 @@ class GetBackendServiceBackend {
     return GetBackendServiceBackend(
       balancingMode: map['balancingMode'] as String,
       capacityScaler: map['capacityScaler'] as double,
-      customMetrics: Input.decodeList<GetBackendServiceBackendCustomMetric>(
-          map['customMetrics'],
-          (value) => GetBackendServiceBackendCustomMetric.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customMetrics:
+          pulumi.Input.decodeList<GetBackendServiceBackendCustomMetric>(
+              map['customMetrics'],
+              (value) => GetBackendServiceBackendCustomMetric.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       group: map['group'] as String,
       maxConnections: map['maxConnections'] as int,

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_cloud_control_detail/framework_cloud_control_detail.dart';
 import 'framework_args.dart';
 
@@ -33,64 +33,65 @@ import 'framework_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudsecuritycompliance/framework:Framework default {{organization}}/{{location}}/{{framework_id}}
 /// ```
-class Framework extends CustomResource {
+class Framework extends pulumi.CustomResource {
   /// The category of the framework.
-  late final Output<List<String>> categories;
+  late final pulumi.Output<List<String>> categories;
 
   /// The details of the cloud controls directly added without any grouping in
   /// the framework.
   /// Structure is documented below.
-  late final Output<List<FrameworkCloudControlDetail>?> cloudControlDetails;
+  late final pulumi.Output<List<FrameworkCloudControlDetail>?>
+      cloudControlDetails;
 
   /// The description of the framework. The maximum length is 2000 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Display name of the framework. The maximum length is 200 characters.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// ID of the framework.
   /// This is not the full name of the framework.
   /// This is the last part of the full name of the framework.
-  late final Output<String> frameworkId;
+  late final pulumi.Output<String> frameworkId;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Major revision of the framework incremented in ascending order.
-  late final Output<String> majorRevisionId;
+  late final pulumi.Output<String> majorRevisionId;
 
   /// Identifier. The name of the framework.
   /// Format:
   /// organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> organization;
+  late final pulumi.Output<String> organization;
 
   /// cloud providers supported
-  late final Output<List<String>> supportedCloudProviders;
+  late final pulumi.Output<List<String>> supportedCloudProviders;
 
   /// The supported enforcement modes of the framework.
-  late final Output<List<String>> supportedEnforcementModes;
+  late final pulumi.Output<List<String>> supportedEnforcementModes;
 
   /// target resource types supported by the Framework.
-  late final Output<List<String>> supportedTargetResourceTypes;
+  late final pulumi.Output<List<String>> supportedTargetResourceTypes;
 
   /// The type of the framework. The default is TYPE_CUSTOM.
   /// Possible values:
   /// BUILT_IN
   /// CUSTOM
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   Framework(
     String name, {
     FrameworkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudsecuritycompliance/framework:Framework',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.categories = registerOutput<List<String>>('categories');
     this.cloudControlDetails =

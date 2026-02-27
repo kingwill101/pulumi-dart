@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_access_scope_allowed_data_access_label/data_access_scope_allowed_data_access_label.dart';
 import '../data_access_scope_denied_data_access_label/data_access_scope_denied_data_access_label.dart';
 import 'data_access_scope_args.dart';
@@ -58,7 +58,7 @@ import 'data_access_scope_args.dart';
 /// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessScope:DataAccessScope default {{location}}/{{instance}}/{{data_access_scope_id}}
 /// ```
-class DataAccessScope extends CustomResource {
+class DataAccessScope extends pulumi.CustomResource {
   /// Optional. Whether or not the scope allows all labels, allow_all and
   /// allowed_data_access_labels are mutually exclusive and one of them must be
   /// present. denied_data_access_labels can still be used along with allow_all.
@@ -67,7 +67,7 @@ class DataAccessScope extends CustomResource {
   /// A customer with scope with denied labels A and B and allow_all will be able
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
-  late final Output<bool?> allowAll;
+  late final pulumi.Output<bool?> allowAll;
 
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
@@ -76,19 +76,19 @@ class DataAccessScope extends CustomResource {
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
-  late final Output<List<DataAccessScopeAllowedDataAccessLabel>?>
+  late final pulumi.Output<List<DataAccessScopeAllowedDataAccessLabel>?>
       allowedDataAccessLabels;
 
   /// Output only. The user who created the data access scope.
-  late final Output<String> author;
+  late final pulumi.Output<String> author;
 
   /// Output only. The time at which the data access scope was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Required. The user provided scope id which will become the last part of the name
   /// of the scope resource.
   /// Needs to be compliant with https://google.aip.dev/122
-  late final Output<String> dataAccessScopeId;
+  late final pulumi.Output<String> dataAccessScopeId;
 
   /// Optional. The denied labels for the scope.
   /// The logical operator for evaluation of the denied labels is AND.
@@ -96,45 +96,45 @@ class DataAccessScope extends CustomResource {
   /// to see data labeled with A and data labeled with B
   /// and data with labels A and B.
   /// Structure is documented below.
-  late final Output<List<DataAccessScopeDeniedDataAccessLabel>?>
+  late final pulumi.Output<List<DataAccessScopeDeniedDataAccessLabel>?>
       deniedDataAccessLabels;
 
   /// Optional. A description of the data access scope for a human reader.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Output only. The name to be used for display to customers of the data access scope.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// Output only. The user who last updated the data access scope.
-  late final Output<String> lastEditor;
+  late final pulumi.Output<String> lastEditor;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique full name of the data access scope. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{data_access_scope_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. The time at which the data access scope was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DataAccessScope(
     String name, {
     DataAccessScopeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:chronicle/dataAccessScope:DataAccessScope',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowAll = registerOutput<bool?>('allowAll');
     this.allowedDataAccessLabels =

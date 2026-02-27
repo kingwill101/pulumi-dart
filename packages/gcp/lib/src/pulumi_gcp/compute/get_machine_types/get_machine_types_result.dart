@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_machine_types_machine_type/get_machine_types_machine_type.dart';
 
 /// Result data returned by getMachineTypes.
@@ -30,9 +30,8 @@ class GetMachineTypesResult {
       map['filter'] = filterValue;
     }
     map['id'] = id;
-    map['machineTypes'] =
-        Input.encodeList<GetMachineTypesMachineType, Map<String, dynamic>>(
-            machineTypes, (value) => value.toMap());
+    map['machineTypes'] = pulumi.Input.encodeList<GetMachineTypesMachineType,
+        Map<String, dynamic>>(machineTypes, (value) => value.toMap());
     map['project'] = project;
     map['zone'] = zone;
     return map;
@@ -42,7 +41,7 @@ class GetMachineTypesResult {
     return GetMachineTypesResult(
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
-      machineTypes: Input.decodeList<GetMachineTypesMachineType>(
+      machineTypes: pulumi.Input.decodeList<GetMachineTypesMachineType>(
           map['machineTypes'],
           (value) => GetMachineTypesMachineType.fromMap(
               (value as Map).cast<String, dynamic>())),

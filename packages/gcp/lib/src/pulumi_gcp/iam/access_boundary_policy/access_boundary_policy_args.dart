@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_boundary_policy_rule/access_boundary_policy_rule.dart';
 
 /// The set of arguments for AccessBoundaryPolicy.
 class AccessBoundaryPolicyArgs {
   /// The display name of the rule.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The name of the policy.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The attachment point is identified by its URL-encoded full resource name.
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// Rules to be applied.
   /// Structure is documented below.
-  final Input<List<AccessBoundaryPolicyRule>> rules;
+  final pulumi.Input<List<AccessBoundaryPolicyRule>> rules;
 
   AccessBoundaryPolicyArgs({
     this.displayName,
@@ -36,21 +36,20 @@ class AccessBoundaryPolicyArgs {
       map['name'] = nameValue;
     }
     map['parent'] = parent;
-    map['rules'] = Input.mapInputValue<List<AccessBoundaryPolicyRule>,
+    map['rules'] = pulumi.Input.mapInputValue<List<AccessBoundaryPolicyRule>,
             List<Map<String, dynamic>>>(
         rules,
-        (value) =>
-            Input.encodeList<AccessBoundaryPolicyRule, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
+        (value) => pulumi.Input.encodeList<AccessBoundaryPolicyRule,
+            Map<String, dynamic>>(value, (value) => value.toMap()));
     return map;
   }
 
   factory AccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyArgs(
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parent: Input.asInput<String>(map['parent']),
-      rules: Input.asInput<List<AccessBoundaryPolicyRule>>(map['rules']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      rules: pulumi.Input.asInput<List<AccessBoundaryPolicyRule>>(map['rules']),
     );
   }
 }

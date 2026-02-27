@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_logic_config_generative_language_config/ai_logic_config_generative_language_config.dart';
 import '../ai_logic_config_telemetry_config/ai_logic_config_telemetry_config.dart';
 import 'ai_logic_config_args.dart';
@@ -50,41 +50,41 @@ import 'ai_logic_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{location}}
 /// ```
-class AiLogicConfig extends CustomResource {
+class AiLogicConfig extends pulumi.CustomResource {
   /// Configuration for using the Gemini Developer API via Firebase AI Logic.
   /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
   /// API key is stored in this configuration *on the server* so that you do
   /// **not** add your Gemini API key directly into your app's codebase.
   /// Structure is documented below.
-  late final Output<AiLogicConfigGenerativeLanguageConfig?>
+  late final pulumi.Output<AiLogicConfigGenerativeLanguageConfig?>
       generativeLanguageConfig;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// Identifier. The resource name of the config.
   /// Format: projects/{project}/locations/{location}/config
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Configuration for telemetry.
   /// Telemetry is the collection of metrics, logs, and traces recorded by the
   /// Firebase AI Logic backend.
   /// Structure is documented below.
-  late final Output<AiLogicConfigTelemetryConfig?> telemetryConfig;
+  late final pulumi.Output<AiLogicConfigTelemetryConfig?> telemetryConfig;
 
   AiLogicConfig(
     String name, {
     AiLogicConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/aiLogicConfig:AiLogicConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.generativeLanguageConfig =
         registerOutput<AiLogicConfigGenerativeLanguageConfig?>(

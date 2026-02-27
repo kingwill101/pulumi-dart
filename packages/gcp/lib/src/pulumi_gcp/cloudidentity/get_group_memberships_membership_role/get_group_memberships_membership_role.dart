@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_memberships_membership_role_expiry_detail/get_group_memberships_membership_role_expiry_detail.dart';
 
 class GetGroupMembershipsMembershipRole {
@@ -18,7 +18,7 @@ class GetGroupMembershipsMembershipRole {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['expiryDetails'] = Input.encodeList<
+    map['expiryDetails'] = pulumi.Input.encodeList<
         GetGroupMembershipsMembershipRoleExpiryDetail,
         Map<String, dynamic>>(expiryDetails, (value) => value.toMap());
     map['name'] = name;
@@ -27,11 +27,11 @@ class GetGroupMembershipsMembershipRole {
 
   factory GetGroupMembershipsMembershipRole.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsMembershipRole(
-      expiryDetails:
-          Input.decodeList<GetGroupMembershipsMembershipRoleExpiryDetail>(
-              map['expiryDetails'],
-              (value) => GetGroupMembershipsMembershipRoleExpiryDetail.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      expiryDetails: pulumi.Input.decodeList<
+              GetGroupMembershipsMembershipRoleExpiryDetail>(
+          map['expiryDetails'],
+          (value) => GetGroupMembershipsMembershipRoleExpiryDetail.fromMap(
+              (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
     );
   }

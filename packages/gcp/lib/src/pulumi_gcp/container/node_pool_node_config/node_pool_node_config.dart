@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_pool_node_config_advanced_machine_features/node_pool_node_config_advanced_machine_features.dart';
 import '../node_pool_node_config_boot_disk/node_pool_node_config_boot_disk.dart';
 import '../node_pool_node_config_confidential_nodes/node_pool_node_config_confidential_nodes.dart';
@@ -246,7 +246,7 @@ class NodePoolNodeConfig {
     }
     final effectiveTaintsValue = effectiveTaints;
     if (effectiveTaintsValue != null) {
-      map['effectiveTaints'] = Input.encodeList<
+      map['effectiveTaints'] = pulumi.Input.encodeList<
           NodePoolNodeConfigEffectiveTaint,
           Map<String, dynamic>>(effectiveTaintsValue, (value) => value.toMap());
     }
@@ -277,7 +277,7 @@ class NodePoolNodeConfig {
     }
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.encodeList<
+      map['guestAccelerators'] = pulumi.Input.encodeList<
               NodePoolNodeConfigGuestAccelerator, Map<String, dynamic>>(
           guestAcceleratorsValue, (value) => value.toMap());
     }
@@ -367,7 +367,7 @@ class NodePoolNodeConfig {
     }
     final secondaryBootDisksValue = secondaryBootDisks;
     if (secondaryBootDisksValue != null) {
-      map['secondaryBootDisks'] = Input.encodeList<
+      map['secondaryBootDisks'] = pulumi.Input.encodeList<
               NodePoolNodeConfigSecondaryBootDisk, Map<String, dynamic>>(
           secondaryBootDisksValue, (value) => value.toMap());
     }
@@ -397,9 +397,8 @@ class NodePoolNodeConfig {
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] =
-          Input.encodeList<NodePoolNodeConfigTaint, Map<String, dynamic>>(
-              taintsValue, (value) => value.toMap());
+      map['taints'] = pulumi.Input.encodeList<NodePoolNodeConfigTaint,
+          Map<String, dynamic>>(taintsValue, (value) => value.toMap());
     }
     final windowsNodeConfigValue = windowsNodeConfig;
     if (windowsNodeConfigValue != null) {
@@ -437,7 +436,7 @@ class NodePoolNodeConfig {
       diskType: map['diskType'] == null ? null : map['diskType'] as String,
       effectiveTaints: map['effectiveTaints'] == null
           ? null
-          : Input.decodeList<NodePoolNodeConfigEffectiveTaint>(
+          : pulumi.Input.decodeList<NodePoolNodeConfigEffectiveTaint>(
               map['effectiveTaints'],
               (value) => NodePoolNodeConfigEffectiveTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -465,7 +464,7 @@ class NodePoolNodeConfig {
               (map['gcfsConfig'] as Map).cast<String, dynamic>()),
       guestAccelerators: map['guestAccelerators'] == null
           ? null
-          : Input.decodeList<NodePoolNodeConfigGuestAccelerator>(
+          : pulumi.Input.decodeList<NodePoolNodeConfigGuestAccelerator>(
               map['guestAccelerators'],
               (value) => NodePoolNodeConfigGuestAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -534,7 +533,7 @@ class NodePoolNodeConfig {
               (map['sandboxConfig'] as Map).cast<String, dynamic>()),
       secondaryBootDisks: map['secondaryBootDisks'] == null
           ? null
-          : Input.decodeList<NodePoolNodeConfigSecondaryBootDisk>(
+          : pulumi.Input.decodeList<NodePoolNodeConfigSecondaryBootDisk>(
               map['secondaryBootDisks'],
               (value) => NodePoolNodeConfigSecondaryBootDisk.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -556,7 +555,7 @@ class NodePoolNodeConfig {
       tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<NodePoolNodeConfigTaint>(
+          : pulumi.Input.decodeList<NodePoolNodeConfigTaint>(
               map['taints'],
               (value) => NodePoolNodeConfigTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),

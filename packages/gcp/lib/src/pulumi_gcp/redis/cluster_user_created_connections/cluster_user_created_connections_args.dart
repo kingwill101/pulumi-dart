@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_user_created_connections_cluster_endpoint/cluster_user_created_connections_cluster_endpoint.dart';
 
 /// The set of arguments for ClusterUserCreatedConnections.
 class ClusterUserCreatedConnectionsArgs {
   /// A list of cluster endpoints
   /// Structure is documented below.
-  final Input<List<ClusterUserCreatedConnectionsClusterEndpoint>>?
+  final pulumi.Input<List<ClusterUserCreatedConnectionsClusterEndpoint>>?
       clusterEndpoints;
 
   /// The name of the Redis cluster these endpoints should be added to.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The name of the region of the Redis cluster these endpoints should be added to.
-  final Input<String> region;
+  final pulumi.Input<String> region;
 
   ClusterUserCreatedConnectionsArgs({
     this.clusterEndpoints,
@@ -31,11 +31,11 @@ class ClusterUserCreatedConnectionsArgs {
     final map = <String, dynamic>{};
     final clusterEndpointsValue = clusterEndpoints;
     if (clusterEndpointsValue != null) {
-      map['clusterEndpoints'] = Input.mapOptionalInputValue<
+      map['clusterEndpoints'] = pulumi.Input.mapOptionalInputValue<
               List<ClusterUserCreatedConnectionsClusterEndpoint>,
               List<Map<String, dynamic>>>(
           clusterEndpointsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               ClusterUserCreatedConnectionsClusterEndpoint,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -53,12 +53,12 @@ class ClusterUserCreatedConnectionsArgs {
 
   factory ClusterUserCreatedConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsArgs(
-      clusterEndpoints: Input.asOptionalInput<
+      clusterEndpoints: pulumi.Input.asOptionalInput<
               List<ClusterUserCreatedConnectionsClusterEndpoint>>(
           map['clusterEndpoints']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

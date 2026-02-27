@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multicloud_data_transfer_config_service/multicloud_data_transfer_config_service.dart';
 import 'multicloud_data_transfer_config_args.dart';
 
@@ -41,72 +41,72 @@ import 'multicloud_data_transfer_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig default {{location}}/{{name}}
 /// ```
-class MulticloudDataTransferConfig extends CustomResource {
+class MulticloudDataTransferConfig extends pulumi.CustomResource {
   /// Time when the MulticloudDataTransferConfig resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The number of Destination resources in use with the
   /// MulticloudDataTransferConfig resource.
-  late final Output<int> destinationsActiveCount;
+  late final pulumi.Output<int> destinationsActiveCount;
 
   /// The number of Destination resources configured for the
   /// MulticloudDataTransferConfig resource.
-  late final Output<int> destinationsCount;
+  late final pulumi.Output<int> destinationsCount;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The etag is computed by the server, and might be sent with update and
   /// delete requests so that the client has an up-to-date value before
   /// proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the multicloud data transfer config.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the MulticloudDataTransferConfig resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Maps services to their current or planned states. Service names are keys,
   /// and the associated values describe the state of the service.
   /// Structure is documented below.
-  late final Output<List<MulticloudDataTransferConfigService>?> services;
+  late final pulumi.Output<List<MulticloudDataTransferConfigService>?> services;
 
   /// The Google-generated unique ID for the MulticloudDataTransferConfig
   /// resource. This value is unique across all MulticloudDataTransferConfig
   /// resources. If a resource is deleted and another with the same name is
   /// created, the new resource is assigned a different and unique ID.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time when the MulticloudDataTransferConfig resource was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   MulticloudDataTransferConfig(
     String name, {
     MulticloudDataTransferConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_regional_parameter_version_render_args.dart';
 import 'get_regional_parameter_version_render_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_regional_parameter_version_render_result.dart';
 Future<GetRegionalParameterVersionRenderResult>
     getRegionalParameterVersionRender(
   GetRegionalParameterVersionRenderArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionalParameterVersionRenderResult.fromMap(result);
 }

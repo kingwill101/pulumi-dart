@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sharedflow_deployment_args.dart';
 
 /// Deploys a revision of a sharedflow.
@@ -27,34 +27,34 @@ import 'sharedflow_deployment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment default {{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}
 /// ```
-class SharedflowDeployment extends CustomResource {
+class SharedflowDeployment extends pulumi.CustomResource {
   /// The resource ID of the environment.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// The Apigee Organization associated with the Sharedflow
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// Revision of the Sharedflow to be deployed.
   ///
   ///
   /// - - -
-  late final Output<String> revision;
+  late final pulumi.Output<String> revision;
 
   /// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
-  late final Output<String?> serviceAccount;
+  late final pulumi.Output<String?> serviceAccount;
 
   /// Id of the Sharedflow to be deployed.
-  late final Output<String> sharedflowId;
+  late final pulumi.Output<String> sharedflowId;
 
   SharedflowDeployment(
     String name, {
     SharedflowDeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/sharedflowDeployment:SharedflowDeployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.environment = registerOutput<String>('environment');
     this.orgId = registerOutput<String>('orgId');

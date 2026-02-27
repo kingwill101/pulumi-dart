@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTag.
 class GetTagArgs {
   /// The location of the artifact registry.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of the package.
-  final Input<String> packageName;
+  final pulumi.Input<String> packageName;
 
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The last part of the repository name to fetch from.
-  final Input<String> repositoryId;
+  final pulumi.Input<String> repositoryId;
 
   /// The name of the tag.
-  final Input<String> tagName;
+  final pulumi.Input<String> tagName;
 
   GetTagArgs({
     required this.location,
@@ -42,11 +42,11 @@ class GetTagArgs {
 
   factory GetTagArgs.fromMap(Map<String, dynamic> map) {
     return GetTagArgs(
-      location: Input.asInput<String>(map['location']),
-      packageName: Input.asInput<String>(map['packageName']),
-      project: Input.asOptionalInput<String>(map['project']),
-      repositoryId: Input.asInput<String>(map['repositoryId']),
-      tagName: Input.asInput<String>(map['tagName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      packageName: pulumi.Input.asInput<String>(map['packageName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      repositoryId: pulumi.Input.asInput<String>(map['repositoryId']),
+      tagName: pulumi.Input.asInput<String>(map['tagName']),
     );
   }
 }

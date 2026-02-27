@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ConsentStore.
 class ConsentStoreArgs {
   /// Identifies the dataset addressed by this request. Must be in the format
   /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-  final Input<String> dataset;
+  final pulumi.Input<String> dataset;
 
   /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final Input<String>? defaultConsentTtl;
+  final pulumi.Input<String>? defaultConsentTtl;
 
   /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
-  final Input<bool>? enableConsentCreateOnUpdate;
+  final pulumi.Input<bool>? enableConsentCreateOnUpdate;
 
   /// User-supplied key-value pairs used to organize Consent stores.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -26,11 +26,11 @@ class ConsentStoreArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The name of this ConsentStore, for example:
   /// "consent1"
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   ConsentStoreArgs({
     required this.dataset,
@@ -64,13 +64,13 @@ class ConsentStoreArgs {
 
   factory ConsentStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConsentStoreArgs(
-      dataset: Input.asInput<String>(map['dataset']),
+      dataset: pulumi.Input.asInput<String>(map['dataset']),
       defaultConsentTtl:
-          Input.asOptionalInput<String>(map['defaultConsentTtl']),
-      enableConsentCreateOnUpdate:
-          Input.asOptionalInput<bool>(map['enableConsentCreateOnUpdate']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      name: Input.asOptionalInput<String>(map['name']),
+          pulumi.Input.asOptionalInput<String>(map['defaultConsentTtl']),
+      enableConsentCreateOnUpdate: pulumi.Input.asOptionalInput<bool>(
+          map['enableConsentCreateOnUpdate']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

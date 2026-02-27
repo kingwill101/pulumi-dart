@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_client_function_parameter/app_version_snapshot_tool_client_function_parameter.dart';
 import '../app_version_snapshot_tool_client_function_response/app_version_snapshot_tool_client_function_response.dart';
 
@@ -43,13 +43,13 @@ class AppVersionSnapshotToolClientFunction {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolClientFunctionParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
     final responsesValue = responses;
     if (responsesValue != null) {
-      map['responses'] = Input.encodeList<
+      map['responses'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolClientFunctionResponse,
           Map<String, dynamic>>(responsesValue, (value) => value.toMap());
     }
@@ -64,13 +64,15 @@ class AppVersionSnapshotToolClientFunction {
       name: map['name'] == null ? null : map['name'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolClientFunctionParameter>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotToolClientFunctionParameter>(
               map['parameters'],
               (value) => AppVersionSnapshotToolClientFunctionParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       responses: map['responses'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolClientFunctionResponse>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotToolClientFunctionResponse>(
               map['responses'],
               (value) => AppVersionSnapshotToolClientFunctionResponse.fromMap(
                   (value as Map).cast<String, dynamic>())),

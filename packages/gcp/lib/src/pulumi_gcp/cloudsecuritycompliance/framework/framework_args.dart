@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_cloud_control_detail/framework_cloud_control_detail.dart';
 
 /// The set of arguments for Framework.
@@ -8,24 +8,24 @@ class FrameworkArgs {
   /// The details of the cloud controls directly added without any grouping in
   /// the framework.
   /// Structure is documented below.
-  final Input<List<FrameworkCloudControlDetail>>? cloudControlDetails;
+  final pulumi.Input<List<FrameworkCloudControlDetail>>? cloudControlDetails;
 
   /// The description of the framework. The maximum length is 2000 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Display name of the framework. The maximum length is 200 characters.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// ID of the framework.
   /// This is not the full name of the framework.
   /// This is the last part of the full name of the framework.
-  final Input<String> frameworkId;
+  final pulumi.Input<String> frameworkId;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   FrameworkArgs({
     this.cloudControlDetails,
@@ -40,10 +40,10 @@ class FrameworkArgs {
     final map = <String, dynamic>{};
     final cloudControlDetailsValue = cloudControlDetails;
     if (cloudControlDetailsValue != null) {
-      map['cloudControlDetails'] = Input.mapOptionalInputValue<
+      map['cloudControlDetails'] = pulumi.Input.mapOptionalInputValue<
               List<FrameworkCloudControlDetail>, List<Map<String, dynamic>>>(
           cloudControlDetailsValue,
-          (value) => Input.encodeList<FrameworkCloudControlDetail,
+          (value) => pulumi.Input.encodeList<FrameworkCloudControlDetail,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final descriptionValue = description;
@@ -63,13 +63,13 @@ class FrameworkArgs {
   factory FrameworkArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkArgs(
       cloudControlDetails:
-          Input.asOptionalInput<List<FrameworkCloudControlDetail>>(
+          pulumi.Input.asOptionalInput<List<FrameworkCloudControlDetail>>(
               map['cloudControlDetails']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      frameworkId: Input.asInput<String>(map['frameworkId']),
-      location: Input.asInput<String>(map['location']),
-      organization: Input.asInput<String>(map['organization']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      frameworkId: pulumi.Input.asInput<String>(map['frameworkId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
     );
   }
 }

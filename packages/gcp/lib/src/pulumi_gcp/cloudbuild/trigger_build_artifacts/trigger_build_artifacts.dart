@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trigger_build_artifacts_maven_artifact/trigger_build_artifacts_maven_artifact.dart';
 import '../trigger_build_artifacts_npm_package/trigger_build_artifacts_npm_package.dart';
 import '../trigger_build_artifacts_objects/trigger_build_artifacts_objects.dart';
@@ -55,13 +55,14 @@ class TriggerBuildArtifacts {
     }
     final mavenArtifactsValue = mavenArtifacts;
     if (mavenArtifactsValue != null) {
-      map['mavenArtifacts'] = Input.encodeList<
+      map['mavenArtifacts'] = pulumi.Input.encodeList<
           TriggerBuildArtifactsMavenArtifact,
           Map<String, dynamic>>(mavenArtifactsValue, (value) => value.toMap());
     }
     final npmPackagesValue = npmPackages;
     if (npmPackagesValue != null) {
-      map['npmPackages'] = Input.encodeList<TriggerBuildArtifactsNpmPackage,
+      map['npmPackages'] = pulumi.Input.encodeList<
+          TriggerBuildArtifactsNpmPackage,
           Map<String, dynamic>>(npmPackagesValue, (value) => value.toMap());
     }
     final objectsValue = objects;
@@ -70,7 +71,7 @@ class TriggerBuildArtifacts {
     }
     final pythonPackagesValue = pythonPackages;
     if (pythonPackagesValue != null) {
-      map['pythonPackages'] = Input.encodeList<
+      map['pythonPackages'] = pulumi.Input.encodeList<
           TriggerBuildArtifactsPythonPackage,
           Map<String, dynamic>>(pythonPackagesValue, (value) => value.toMap());
     }
@@ -83,13 +84,13 @@ class TriggerBuildArtifacts {
           map['images'] == null ? null : (map['images'] as List).cast<String>(),
       mavenArtifacts: map['mavenArtifacts'] == null
           ? null
-          : Input.decodeList<TriggerBuildArtifactsMavenArtifact>(
+          : pulumi.Input.decodeList<TriggerBuildArtifactsMavenArtifact>(
               map['mavenArtifacts'],
               (value) => TriggerBuildArtifactsMavenArtifact.fromMap(
                   (value as Map).cast<String, dynamic>())),
       npmPackages: map['npmPackages'] == null
           ? null
-          : Input.decodeList<TriggerBuildArtifactsNpmPackage>(
+          : pulumi.Input.decodeList<TriggerBuildArtifactsNpmPackage>(
               map['npmPackages'],
               (value) => TriggerBuildArtifactsNpmPackage.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -99,7 +100,7 @@ class TriggerBuildArtifacts {
               (map['objects'] as Map).cast<String, dynamic>()),
       pythonPackages: map['pythonPackages'] == null
           ? null
-          : Input.decodeList<TriggerBuildArtifactsPythonPackage>(
+          : pulumi.Input.decodeList<TriggerBuildArtifactsPythonPackage>(
               map['pythonPackages'],
               (value) => TriggerBuildArtifactsPythonPackage.fromMap(
                   (value as Map).cast<String, dynamic>())),

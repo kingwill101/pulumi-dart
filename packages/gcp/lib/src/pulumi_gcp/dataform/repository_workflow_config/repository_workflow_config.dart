@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_workflow_config_invocation_config/repository_workflow_config_invocation_config.dart';
 import '../repository_workflow_config_recent_scheduled_execution_record/repository_workflow_config_recent_scheduled_execution_record.dart';
 import 'repository_workflow_config_args.dart';
@@ -47,48 +47,49 @@ import 'repository_workflow_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
 /// ```
-class RepositoryWorkflowConfig extends CustomResource {
+class RepositoryWorkflowConfig extends pulumi.CustomResource {
   /// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-  late final Output<String?> cronSchedule;
+  late final pulumi.Output<String?> cronSchedule;
 
   /// Optional. If left unset, a default InvocationConfig will be used.
   /// Structure is documented below.
-  late final Output<RepositoryWorkflowConfigInvocationConfig?> invocationConfig;
+  late final pulumi.Output<RepositoryWorkflowConfigInvocationConfig?>
+      invocationConfig;
 
   /// The workflow's name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
   /// Structure is documented below.
-  late final Output<
-          List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>
+  late final pulumi
+      .Output<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>>
       recentScheduledExecutionRecords;
 
   /// A reference to the region
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-  late final Output<String> releaseConfig;
+  late final pulumi.Output<String> releaseConfig;
 
   /// A reference to the Dataform repository
-  late final Output<String?> repository;
+  late final pulumi.Output<String?> repository;
 
   /// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  late final Output<String?> timeZone;
+  late final pulumi.Output<String?> timeZone;
 
   RepositoryWorkflowConfig(
     String name, {
     RepositoryWorkflowConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cronSchedule = registerOutput<String?>('cronSchedule');
     this.invocationConfig =

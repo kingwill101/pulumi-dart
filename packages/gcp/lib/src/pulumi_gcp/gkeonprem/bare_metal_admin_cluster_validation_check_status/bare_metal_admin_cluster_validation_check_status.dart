@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_admin_cluster_validation_check_status_result/bare_metal_admin_cluster_validation_check_status_result.dart';
 
 class BareMetalAdminClusterValidationCheckStatus {
@@ -17,7 +17,7 @@ class BareMetalAdminClusterValidationCheckStatus {
     final map = <String, dynamic>{};
     final resultsValue = results;
     if (resultsValue != null) {
-      map['results'] = Input.encodeList<
+      map['results'] = pulumi.Input.encodeList<
           BareMetalAdminClusterValidationCheckStatusResult,
           Map<String, dynamic>>(resultsValue, (value) => value.toMap());
     }
@@ -29,7 +29,8 @@ class BareMetalAdminClusterValidationCheckStatus {
     return BareMetalAdminClusterValidationCheckStatus(
       results: map['results'] == null
           ? null
-          : Input.decodeList<BareMetalAdminClusterValidationCheckStatusResult>(
+          : pulumi.Input.decodeList<
+                  BareMetalAdminClusterValidationCheckStatusResult>(
               map['results'],
               (value) =>
                   BareMetalAdminClusterValidationCheckStatusResult.fromMap(

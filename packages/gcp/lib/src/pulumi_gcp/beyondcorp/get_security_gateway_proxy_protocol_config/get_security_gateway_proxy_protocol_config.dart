@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_gateway_proxy_protocol_config_contextual_header/get_security_gateway_proxy_protocol_config_contextual_header.dart';
 
 class GetSecurityGatewayProxyProtocolConfig {
@@ -36,7 +36,7 @@ class GetSecurityGatewayProxyProtocolConfig {
     final map = <String, dynamic>{};
     map['allowedClientHeaders'] = allowedClientHeaders;
     map['clientIp'] = clientIp;
-    map['contextualHeaders'] = Input.encodeList<
+    map['contextualHeaders'] = pulumi.Input.encodeList<
         GetSecurityGatewayProxyProtocolConfigContextualHeader,
         Map<String, dynamic>>(contextualHeaders, (value) => value.toMap());
     map['gatewayIdentity'] = gatewayIdentity;
@@ -50,7 +50,7 @@ class GetSecurityGatewayProxyProtocolConfig {
       allowedClientHeaders:
           (map['allowedClientHeaders'] as List).cast<String>(),
       clientIp: map['clientIp'] as bool,
-      contextualHeaders: Input.decodeList<
+      contextualHeaders: pulumi.Input.decodeList<
               GetSecurityGatewayProxyProtocolConfigContextualHeader>(
           map['contextualHeaders'],
           (value) =>

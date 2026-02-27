@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../automation_rule_repair_rollout_rule_repair_phase/automation_rule_repair_rollout_rule_repair_phase.dart';
 
 class AutomationRuleRepairRolloutRule {
@@ -37,7 +37,7 @@ class AutomationRuleRepairRolloutRule {
     }
     final repairPhasesValue = repairPhases;
     if (repairPhasesValue != null) {
-      map['repairPhases'] = Input.encodeList<
+      map['repairPhases'] = pulumi.Input.encodeList<
           AutomationRuleRepairRolloutRuleRepairPhase,
           Map<String, dynamic>>(repairPhasesValue, (value) => value.toMap());
     }
@@ -52,7 +52,7 @@ class AutomationRuleRepairRolloutRule {
           map['phases'] == null ? null : (map['phases'] as List).cast<String>(),
       repairPhases: map['repairPhases'] == null
           ? null
-          : Input.decodeList<AutomationRuleRepairRolloutRuleRepairPhase>(
+          : pulumi.Input.decodeList<AutomationRuleRepairRolloutRuleRepairPhase>(
               map['repairPhases'],
               (value) => AutomationRuleRepairRolloutRuleRepairPhase.fromMap(
                   (value as Map).cast<String, dynamic>())),

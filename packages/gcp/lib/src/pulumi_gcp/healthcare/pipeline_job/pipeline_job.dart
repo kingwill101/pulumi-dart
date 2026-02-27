@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_job_backfill_pipeline_job/pipeline_job_backfill_pipeline_job.dart';
 import '../pipeline_job_mapping_pipeline_job/pipeline_job_mapping_pipeline_job.dart';
 import '../pipeline_job_reconciliation_pipeline_job/pipeline_job_reconciliation_pipeline_job.dart';
@@ -56,19 +56,19 @@ import 'pipeline_job_args.dart';
 /// ```sh
 /// $ pulumi import gcp:healthcare/pipelineJob:PipelineJob default {{name}}
 /// ```
-class PipelineJob extends CustomResource {
+class PipelineJob extends pulumi.CustomResource {
   /// Specifies the backfill configuration.
   /// Structure is documented below.
-  late final Output<PipelineJobBackfillPipelineJob?> backfillPipelineJob;
+  late final pulumi.Output<PipelineJobBackfillPipelineJob?> backfillPipelineJob;
 
   /// Healthcare Dataset under which the Pipeline Job is to run
-  late final Output<String> dataset;
+  late final pulumi.Output<String> dataset;
 
   /// If true, disables writing lineage for the pipeline.
-  late final Output<bool?> disableLineage;
+  late final pulumi.Output<bool?> disableLineage;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// User-supplied key-value pairs used to organize Pipeline Jobs.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -83,39 +83,39 @@ class PipelineJob extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location where the Pipeline Job is to run
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Specifies mapping configuration.
   /// Structure is documented below.
-  late final Output<PipelineJobMappingPipelineJob?> mappingPipelineJob;
+  late final pulumi.Output<PipelineJobMappingPipelineJob?> mappingPipelineJob;
 
   /// Specifies the name of the pipeline job. This field is user-assigned.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Specifies reconciliation configuration.
   /// Structure is documented below.
-  late final Output<PipelineJobReconciliationPipelineJob?>
+  late final pulumi.Output<PipelineJobReconciliationPipelineJob?>
       reconciliationPipelineJob;
 
   /// The fully qualified name of this dataset
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   PipelineJob(
     String name, {
     PipelineJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:healthcare/pipelineJob:PipelineJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backfillPipelineJob =
         registerOutput<PipelineJobBackfillPipelineJob?>('backfillPipelineJob');

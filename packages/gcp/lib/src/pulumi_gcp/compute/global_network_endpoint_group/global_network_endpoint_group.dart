@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_network_endpoint_group_args.dart';
 
 /// A global network endpoint group contains endpoints that reside outside of Google Cloud.
@@ -49,14 +49,14 @@ import 'global_network_endpoint_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
 /// ```
-class GlobalNetworkEndpointGroup extends CustomResource {
+class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
-  late final Output<int?> defaultPort;
+  late final pulumi.Output<int?> defaultPort;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -65,28 +65,28 @@ class GlobalNetworkEndpointGroup extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Type of network endpoints in this network endpoint group.
   /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-  late final Output<String> networkEndpointType;
+  late final pulumi.Output<String> networkEndpointType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   GlobalNetworkEndpointGroup(
     String name, {
     GlobalNetworkEndpointGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.defaultPort = registerOutput<int?>('defaultPort');
     this.description = registerOutput<String?>('description');

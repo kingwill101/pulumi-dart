@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionSSLPolicy.
 class GetRegionSSLPolicyArgs {
-  final Input<String> name;
-  final Input<String>? project;
-  final Input<String>? region;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? region;
 
   GetRegionSSLPolicyArgs({
     required this.name,
@@ -30,9 +30,9 @@ class GetRegionSSLPolicyArgs {
 
   factory GetRegionSSLPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSSLPolicyArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

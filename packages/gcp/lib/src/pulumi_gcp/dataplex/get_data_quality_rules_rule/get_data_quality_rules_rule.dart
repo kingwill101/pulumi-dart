@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_quality_rules_rule_range_expectation/get_data_quality_rules_rule_range_expectation.dart';
 import '../get_data_quality_rules_rule_regex_expectation/get_data_quality_rules_rule_regex_expectation.dart';
 import '../get_data_quality_rules_rule_row_condition_expectation/get_data_quality_rules_rule_row_condition_expectation.dart';
@@ -93,27 +93,28 @@ class GetDataQualityRulesRule {
     map['ignoreNull'] = ignoreNull;
     map['name'] = name;
     map['nonNullExpectations'] = nonNullExpectations;
-    map['rangeExpectations'] = Input.encodeList<
+    map['rangeExpectations'] = pulumi.Input.encodeList<
         GetDataQualityRulesRuleRangeExpectation,
         Map<String, dynamic>>(rangeExpectations, (value) => value.toMap());
-    map['regexExpectations'] = Input.encodeList<
+    map['regexExpectations'] = pulumi.Input.encodeList<
         GetDataQualityRulesRuleRegexExpectation,
         Map<String, dynamic>>(regexExpectations, (value) => value.toMap());
-    map['rowConditionExpectations'] = Input.encodeList<
+    map['rowConditionExpectations'] = pulumi.Input.encodeList<
             GetDataQualityRulesRuleRowConditionExpectation,
             Map<String, dynamic>>(
         rowConditionExpectations, (value) => value.toMap());
-    map['setExpectations'] = Input.encodeList<
+    map['setExpectations'] = pulumi.Input.encodeList<
         GetDataQualityRulesRuleSetExpectation,
         Map<String, dynamic>>(setExpectations, (value) => value.toMap());
-    map['sqlAssertions'] = Input.encodeList<GetDataQualityRulesRuleSqlAssertion,
+    map['sqlAssertions'] = pulumi.Input.encodeList<
+        GetDataQualityRulesRuleSqlAssertion,
         Map<String, dynamic>>(sqlAssertions, (value) => value.toMap());
-    map['statisticRangeExpectations'] = Input.encodeList<
+    map['statisticRangeExpectations'] = pulumi.Input.encodeList<
             GetDataQualityRulesRuleStatisticRangeExpectation,
             Map<String, dynamic>>(
         statisticRangeExpectations, (value) => value.toMap());
     map['suspended'] = suspended;
-    map['tableConditionExpectations'] = Input.encodeList<
+    map['tableConditionExpectations'] = pulumi.Input.encodeList<
             GetDataQualityRulesRuleTableConditionExpectation,
             Map<String, dynamic>>(
         tableConditionExpectations, (value) => value.toMap());
@@ -132,41 +133,41 @@ class GetDataQualityRulesRule {
       nonNullExpectations:
           (map['nonNullExpectations'] as List).cast<Map<String, dynamic>>(),
       rangeExpectations:
-          Input.decodeList<GetDataQualityRulesRuleRangeExpectation>(
+          pulumi.Input.decodeList<GetDataQualityRulesRuleRangeExpectation>(
               map['rangeExpectations'],
               (value) => GetDataQualityRulesRuleRangeExpectation.fromMap(
                   (value as Map).cast<String, dynamic>())),
       regexExpectations:
-          Input.decodeList<GetDataQualityRulesRuleRegexExpectation>(
+          pulumi.Input.decodeList<GetDataQualityRulesRuleRegexExpectation>(
               map['regexExpectations'],
               (value) => GetDataQualityRulesRuleRegexExpectation.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      rowConditionExpectations:
-          Input.decodeList<GetDataQualityRulesRuleRowConditionExpectation>(
-              map['rowConditionExpectations'],
-              (value) => GetDataQualityRulesRuleRowConditionExpectation.fromMap(
+      rowConditionExpectations: pulumi.Input.decodeList<
+              GetDataQualityRulesRuleRowConditionExpectation>(
+          map['rowConditionExpectations'],
+          (value) => GetDataQualityRulesRuleRowConditionExpectation.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      setExpectations:
+          pulumi.Input.decodeList<GetDataQualityRulesRuleSetExpectation>(
+              map['setExpectations'],
+              (value) => GetDataQualityRulesRuleSetExpectation.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      setExpectations: Input.decodeList<GetDataQualityRulesRuleSetExpectation>(
-          map['setExpectations'],
-          (value) => GetDataQualityRulesRuleSetExpectation.fromMap(
+      sqlAssertions:
+          pulumi.Input.decodeList<GetDataQualityRulesRuleSqlAssertion>(
+              map['sqlAssertions'],
+              (value) => GetDataQualityRulesRuleSqlAssertion.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      statisticRangeExpectations: pulumi.Input.decodeList<
+              GetDataQualityRulesRuleStatisticRangeExpectation>(
+          map['statisticRangeExpectations'],
+          (value) => GetDataQualityRulesRuleStatisticRangeExpectation.fromMap(
               (value as Map).cast<String, dynamic>())),
-      sqlAssertions: Input.decodeList<GetDataQualityRulesRuleSqlAssertion>(
-          map['sqlAssertions'],
-          (value) => GetDataQualityRulesRuleSqlAssertion.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      statisticRangeExpectations:
-          Input.decodeList<GetDataQualityRulesRuleStatisticRangeExpectation>(
-              map['statisticRangeExpectations'],
-              (value) =>
-                  GetDataQualityRulesRuleStatisticRangeExpectation.fromMap(
-                      (value as Map).cast<String, dynamic>())),
       suspended: map['suspended'] as bool,
-      tableConditionExpectations:
-          Input.decodeList<GetDataQualityRulesRuleTableConditionExpectation>(
-              map['tableConditionExpectations'],
-              (value) =>
-                  GetDataQualityRulesRuleTableConditionExpectation.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      tableConditionExpectations: pulumi.Input.decodeList<
+              GetDataQualityRulesRuleTableConditionExpectation>(
+          map['tableConditionExpectations'],
+          (value) => GetDataQualityRulesRuleTableConditionExpectation.fromMap(
+              (value as Map).cast<String, dynamic>())),
       threshold: map['threshold'] as double,
       uniquenessExpectations:
           (map['uniquenessExpectations'] as List).cast<Map<String, dynamic>>(),

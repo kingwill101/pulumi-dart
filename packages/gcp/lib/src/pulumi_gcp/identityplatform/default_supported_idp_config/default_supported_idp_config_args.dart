@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DefaultSupportedIdpConfig.
 class DefaultSupportedIdpConfigArgs {
   /// OAuth client ID
-  final Input<String> clientId;
+  final pulumi.Input<String> clientId;
 
   /// OAuth client secret
-  final Input<String> clientSecret;
+  final pulumi.Input<String> clientSecret;
 
   /// If this IDP allows the user to sign in
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// ID of the IDP. Possible values include:
   /// * `apple.com`
@@ -24,11 +24,11 @@ class DefaultSupportedIdpConfigArgs {
   /// * `playgames.google.com`
   /// * `twitter.com`
   /// * `yahoo.com`
-  final Input<String> idpId;
+  final pulumi.Input<String> idpId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   DefaultSupportedIdpConfigArgs({
     required this.clientId,
@@ -56,11 +56,11 @@ class DefaultSupportedIdpConfigArgs {
 
   factory DefaultSupportedIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return DefaultSupportedIdpConfigArgs(
-      clientId: Input.asInput<String>(map['clientId']),
-      clientSecret: Input.asInput<String>(map['clientSecret']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      idpId: Input.asInput<String>(map['idpId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      clientId: pulumi.Input.asInput<String>(map['clientId']),
+      clientSecret: pulumi.Input.asInput<String>(map['clientSecret']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      idpId: pulumi.Input.asInput<String>(map['idpId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

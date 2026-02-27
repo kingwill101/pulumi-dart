@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_lb_policies_auto_capacity_drain/service_lb_policies_auto_capacity_drain.dart';
 import '../service_lb_policies_failover_config/service_lb_policies_failover_config.dart';
 import '../service_lb_policies_isolation_config/service_lb_policies_isolation_config.dart';
@@ -48,63 +48,64 @@ import 'service_lb_policies_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/serviceLbPolicies:ServiceLbPolicies default {{location}}/{{name}}
 /// ```
-class ServiceLbPolicies extends CustomResource {
+class ServiceLbPolicies extends pulumi.CustomResource {
   /// Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
   /// Structure is documented below.
-  late final Output<ServiceLbPoliciesAutoCapacityDrain?> autoCapacityDrain;
+  late final pulumi.Output<ServiceLbPoliciesAutoCapacityDrain?>
+      autoCapacityDrain;
 
   /// Time the ServiceLbPolicy was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A free-text description of the resource. Max length 1024 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
   /// Structure is documented below.
-  late final Output<ServiceLbPoliciesFailoverConfig?> failoverConfig;
+  late final pulumi.Output<ServiceLbPoliciesFailoverConfig?> failoverConfig;
 
   /// Configuration to provide isolation support for the associated Backend Service.
   /// Structure is documented below.
-  late final Output<ServiceLbPoliciesIsolationConfig?> isolationConfig;
+  late final pulumi.Output<ServiceLbPoliciesIsolationConfig?> isolationConfig;
 
   /// Set of label tags associated with the ServiceLbPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
   /// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
-  late final Output<String?> loadBalancingAlgorithm;
+  late final pulumi.Output<String?> loadBalancingAlgorithm;
 
   /// The location of the service lb policy.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Time the ServiceLbPolicy was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ServiceLbPolicies(
     String name, {
     ServiceLbPoliciesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/serviceLbPolicies:ServiceLbPolicies',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autoCapacityDrain =
         registerOutput<ServiceLbPoliciesAutoCapacityDrain?>(

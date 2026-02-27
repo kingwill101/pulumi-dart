@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../template_filter_config/template_filter_config.dart';
 import '../template_template_metadata/template_template_metadata.dart';
 
@@ -8,28 +8,28 @@ import '../template_template_metadata/template_template_metadata.dart';
 class TemplateArgs {
   /// Filters configuration.
   /// Structure is documented below.
-  final Input<TemplateFilterConfig> filterConfig;
+  final pulumi.Input<TemplateFilterConfig> filterConfig;
 
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Id of the requesting object
   /// If auto-generating Id server-side, remove this field and
   /// template_id from the method_signature of Create RPC
-  final Input<String> templateId;
+  final pulumi.Input<String> templateId;
 
   /// Message describing TemplateMetadata
   /// Structure is documented below.
-  final Input<TemplateTemplateMetadata>? templateMetadata;
+  final pulumi.Input<TemplateTemplateMetadata>? templateMetadata;
 
   TemplateArgs({
     required this.filterConfig,
@@ -43,7 +43,7 @@ class TemplateArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['filterConfig'] =
-        Input.mapInputValue<TemplateFilterConfig, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<TemplateFilterConfig, Map<String, dynamic>>(
             filterConfig, (value) => value.toMap());
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -57,7 +57,7 @@ class TemplateArgs {
     map['templateId'] = templateId;
     final templateMetadataValue = templateMetadata;
     if (templateMetadataValue != null) {
-      map['templateMetadata'] = Input.mapOptionalInputValue<
+      map['templateMetadata'] = pulumi.Input.mapOptionalInputValue<
               TemplateTemplateMetadata, Map<String, dynamic>>(
           templateMetadataValue, (value) => value.toMap());
     }
@@ -66,12 +66,13 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      filterConfig: Input.asInput<TemplateFilterConfig>(map['filterConfig']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      templateId: Input.asInput<String>(map['templateId']),
-      templateMetadata: Input.asOptionalInput<TemplateTemplateMetadata>(
+      filterConfig:
+          pulumi.Input.asInput<TemplateFilterConfig>(map['filterConfig']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      templateId: pulumi.Input.asInput<String>(map['templateId']),
+      templateMetadata: pulumi.Input.asOptionalInput<TemplateTemplateMetadata>(
           map['templateMetadata']),
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_application_aware_interconnect_bandwidth_percentage_policy_bandwidth_percentage/interconnect_application_aware_interconnect_bandwidth_percentage_policy_bandwidth_percentage.dart';
 
 class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
@@ -19,7 +19,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
     final map = <String, dynamic>{};
     final bandwidthPercentagesValue = bandwidthPercentages;
     if (bandwidthPercentagesValue != null) {
-      map['bandwidthPercentages'] = Input.encodeList<
+      map['bandwidthPercentages'] = pulumi.Input.encodeList<
           InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage,
           Map<String,
               dynamic>>(bandwidthPercentagesValue, (value) => value.toMap());
@@ -32,7 +32,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
     return InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(
       bandwidthPercentages: map['bandwidthPercentages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>(
               map['bandwidthPercentages'],
               (value) =>

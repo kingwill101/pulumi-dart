@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../azure_cluster_authorization/azure_cluster_authorization.dart';
 import '../azure_cluster_azure_services_authentication/azure_cluster_azure_services_authentication.dart';
 import '../azure_cluster_control_plane/azure_cluster_control_plane.dart';
@@ -44,88 +44,88 @@ import 'azure_cluster_args.dart';
 /// ```sh
 /// $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
 /// ```
-class AzureCluster extends CustomResource {
+class AzureCluster extends pulumi.CustomResource {
   /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Configuration related to the cluster RBAC settings.
-  late final Output<AzureClusterAuthorization> authorization;
+  late final pulumi.Output<AzureClusterAuthorization> authorization;
 
   /// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-  late final Output<String> azureRegion;
+  late final pulumi.Output<String> azureRegion;
 
   /// Azure authentication configuration for management of Azure resources
-  late final Output<AzureClusterAzureServicesAuthentication?>
+  late final pulumi.Output<AzureClusterAzureServicesAuthentication?>
       azureServicesAuthentication;
 
   /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-  late final Output<String?> client;
+  late final pulumi.Output<String?> client;
 
   /// Configuration related to the cluster control plane.
-  late final Output<AzureClusterControlPlane> controlPlane;
+  late final pulumi.Output<AzureClusterControlPlane> controlPlane;
 
   /// Output only. The time at which this cluster was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-  late final Output<String?> description;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> description;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// Output only. The endpoint of the cluster's API server.
-  late final Output<String> endpoint;
+  late final pulumi.Output<String> endpoint;
 
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Fleet configuration.
-  late final Output<AzureClusterFleet> fleet;
+  late final pulumi.Output<AzureClusterFleet> fleet;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Logging configuration.
-  late final Output<AzureClusterLoggingConfig> loggingConfig;
+  late final pulumi.Output<AzureClusterLoggingConfig> loggingConfig;
 
   /// The name of this resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Cluster-wide networking configuration.
-  late final Output<AzureClusterNetworking> networking;
+  late final pulumi.Output<AzureClusterNetworking> networking;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. If set, there are currently changes in flight to the cluster.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
-  late final Output<String> resourceGroupId;
+  late final pulumi.Output<String> resourceGroupId;
 
   /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. A globally unique identifier for the cluster.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The time at which this cluster was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Output only. Workload Identity settings.
-  late final Output<List<AzureClusterWorkloadIdentityConfig>>
+  late final pulumi.Output<List<AzureClusterWorkloadIdentityConfig>>
       workloadIdentityConfigs;
 
   AzureCluster(
     String name, {
     AzureClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:container/azureCluster:AzureCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.authorization =

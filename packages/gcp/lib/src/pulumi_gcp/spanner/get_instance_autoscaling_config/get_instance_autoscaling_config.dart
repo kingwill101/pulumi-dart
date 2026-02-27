@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_autoscaling_config_asymmetric_autoscaling_option/get_instance_autoscaling_config_asymmetric_autoscaling_option.dart';
 import '../get_instance_autoscaling_config_autoscaling_limit/get_instance_autoscaling_config_autoscaling_limit.dart';
 import '../get_instance_autoscaling_config_autoscaling_target/get_instance_autoscaling_config_autoscaling_target.dart';
@@ -30,14 +30,14 @@ class GetInstanceAutoscalingConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['asymmetricAutoscalingOptions'] = Input.encodeList<
+    map['asymmetricAutoscalingOptions'] = pulumi.Input.encodeList<
             GetInstanceAutoscalingConfigAsymmetricAutoscalingOption,
             Map<String, dynamic>>(
         asymmetricAutoscalingOptions, (value) => value.toMap());
-    map['autoscalingLimits'] = Input.encodeList<
+    map['autoscalingLimits'] = pulumi.Input.encodeList<
         GetInstanceAutoscalingConfigAutoscalingLimit,
         Map<String, dynamic>>(autoscalingLimits, (value) => value.toMap());
-    map['autoscalingTargets'] = Input.encodeList<
+    map['autoscalingTargets'] = pulumi.Input.encodeList<
         GetInstanceAutoscalingConfigAutoscalingTarget,
         Map<String, dynamic>>(autoscalingTargets, (value) => value.toMap());
     return map;
@@ -45,22 +45,22 @@ class GetInstanceAutoscalingConfig {
 
   factory GetInstanceAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfig(
-      asymmetricAutoscalingOptions: Input.decodeList<
+      asymmetricAutoscalingOptions: pulumi.Input.decodeList<
               GetInstanceAutoscalingConfigAsymmetricAutoscalingOption>(
           map['asymmetricAutoscalingOptions'],
           (value) =>
               GetInstanceAutoscalingConfigAsymmetricAutoscalingOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
       autoscalingLimits:
-          Input.decodeList<GetInstanceAutoscalingConfigAutoscalingLimit>(
+          pulumi.Input.decodeList<GetInstanceAutoscalingConfigAutoscalingLimit>(
               map['autoscalingLimits'],
               (value) => GetInstanceAutoscalingConfigAutoscalingLimit.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      autoscalingTargets:
-          Input.decodeList<GetInstanceAutoscalingConfigAutoscalingTarget>(
-              map['autoscalingTargets'],
-              (value) => GetInstanceAutoscalingConfigAutoscalingTarget.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      autoscalingTargets: pulumi.Input.decodeList<
+              GetInstanceAutoscalingConfigAutoscalingTarget>(
+          map['autoscalingTargets'],
+          (value) => GetInstanceAutoscalingConfigAutoscalingTarget.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

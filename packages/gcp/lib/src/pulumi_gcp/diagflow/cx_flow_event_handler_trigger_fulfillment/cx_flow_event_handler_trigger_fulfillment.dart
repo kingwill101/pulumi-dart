@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_flow_event_handler_trigger_fulfillment_conditional_case/cx_flow_event_handler_trigger_fulfillment_conditional_case.dart';
 import '../cx_flow_event_handler_trigger_fulfillment_message/cx_flow_event_handler_trigger_fulfillment_message.dart';
 import '../cx_flow_event_handler_trigger_fulfillment_set_parameter_action/cx_flow_event_handler_trigger_fulfillment_set_parameter_action.dart';
@@ -46,7 +46,7 @@ class CxFlowEventHandlerTriggerFulfillment {
     final map = <String, dynamic>{};
     final conditionalCasesValue = conditionalCases;
     if (conditionalCasesValue != null) {
-      map['conditionalCases'] = Input.encodeList<
+      map['conditionalCases'] = pulumi.Input.encodeList<
               CxFlowEventHandlerTriggerFulfillmentConditionalCase,
               Map<String, dynamic>>(
           conditionalCasesValue, (value) => value.toMap());
@@ -57,7 +57,7 @@ class CxFlowEventHandlerTriggerFulfillment {
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] = Input.encodeList<
+      map['messages'] = pulumi.Input.encodeList<
           CxFlowEventHandlerTriggerFulfillmentMessage,
           Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class CxFlowEventHandlerTriggerFulfillment {
     }
     final setParameterActionsValue = setParameterActions;
     if (setParameterActionsValue != null) {
-      map['setParameterActions'] = Input.encodeList<
+      map['setParameterActions'] = pulumi.Input.encodeList<
               CxFlowEventHandlerTriggerFulfillmentSetParameterAction,
               Map<String, dynamic>>(
           setParameterActionsValue, (value) => value.toMap());
@@ -88,7 +88,7 @@ class CxFlowEventHandlerTriggerFulfillment {
     return CxFlowEventHandlerTriggerFulfillment(
       conditionalCases: map['conditionalCases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowEventHandlerTriggerFulfillmentConditionalCase>(
               map['conditionalCases'],
               (value) =>
@@ -99,7 +99,8 @@ class CxFlowEventHandlerTriggerFulfillment {
           : map['enableGenerativeFallback'] as bool,
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<CxFlowEventHandlerTriggerFulfillmentMessage>(
+          : pulumi.Input.decodeList<
+                  CxFlowEventHandlerTriggerFulfillmentMessage>(
               map['messages'],
               (value) => CxFlowEventHandlerTriggerFulfillmentMessage.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -108,7 +109,7 @@ class CxFlowEventHandlerTriggerFulfillment {
           : map['returnPartialResponses'] as bool,
       setParameterActions: map['setParameterActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowEventHandlerTriggerFulfillmentSetParameterAction>(
               map['setParameterActions'],
               (value) => CxFlowEventHandlerTriggerFulfillmentSetParameterAction

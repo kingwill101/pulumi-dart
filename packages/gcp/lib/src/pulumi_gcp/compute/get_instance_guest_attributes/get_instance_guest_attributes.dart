@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_guest_attributes_args.dart';
 import 'get_instance_guest_attributes_result.dart';
 
@@ -20,13 +20,13 @@ import 'get_instance_guest_attributes_result.dart';
 /// ### Get A Specific Variable
 Future<GetInstanceGuestAttributesResult> getInstanceGuestAttributes(
   GetInstanceGuestAttributesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGuestAttributesResult.fromMap(result);
 }

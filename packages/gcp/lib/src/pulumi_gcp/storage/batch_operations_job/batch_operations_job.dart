@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../batch_operations_job_bucket_list/batch_operations_job_bucket_list.dart';
 import '../batch_operations_job_delete_object/batch_operations_job_delete_object.dart';
 import '../batch_operations_job_put_metadata/batch_operations_job_put_metadata.dart';
@@ -42,61 +42,61 @@ import 'batch_operations_job_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/batchOperationsJob:BatchOperationsJob default {{job_id}}
 /// ```
-class BatchOperationsJob extends CustomResource {
+class BatchOperationsJob extends pulumi.CustomResource {
   /// List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
   /// Structure is documented below.
-  late final Output<BatchOperationsJobBucketList?> bucketList;
+  late final pulumi.Output<BatchOperationsJobBucketList?> bucketList;
 
   /// The time that the job was completed.
-  late final Output<String> completeTime;
+  late final pulumi.Output<String> completeTime;
 
   /// The timestamp at which this storage batch operation was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// allows batch operations to delete objects in bucket
   /// Structure is documented below.
-  late final Output<BatchOperationsJobDeleteObject?> deleteObject;
+  late final pulumi.Output<BatchOperationsJobDeleteObject?> deleteObject;
 
   /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
-  late final Output<bool?> deleteProtection;
+  late final pulumi.Output<bool?> deleteProtection;
 
   /// The ID of the job.
-  late final Output<String?> jobId;
+  late final pulumi.Output<String?> jobId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// allows batch operations to update metadata for objects in bucket
   /// Structure is documented below.
-  late final Output<BatchOperationsJobPutMetadata?> putMetadata;
+  late final pulumi.Output<BatchOperationsJobPutMetadata?> putMetadata;
 
   /// allows to update temporary hold or eventBased hold for objects in bucket.
   /// Structure is documented below.
-  late final Output<BatchOperationsJobPutObjectHold?> putObjectHold;
+  late final pulumi.Output<BatchOperationsJobPutObjectHold?> putObjectHold;
 
   /// allows to update encryption key for objects in bucket.
   /// Structure is documented below.
-  late final Output<BatchOperationsJobRewriteObject?> rewriteObject;
+  late final pulumi.Output<BatchOperationsJobRewriteObject?> rewriteObject;
 
   /// The time that the job was scheduled.
-  late final Output<String> scheduleTime;
+  late final pulumi.Output<String> scheduleTime;
 
   /// State of the job.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The timestamp at which this storage batch operation was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BatchOperationsJob(
     String name, {
     BatchOperationsJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/batchOperationsJob:BatchOperationsJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucketList =
         registerOutput<BatchOperationsJobBucketList?>('bucketList');

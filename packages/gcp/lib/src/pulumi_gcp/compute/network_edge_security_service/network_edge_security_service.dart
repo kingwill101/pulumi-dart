@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_edge_security_service_args.dart';
 
 /// Google Cloud Armor network edge security service resource.
@@ -45,48 +45,48 @@ import 'network_edge_security_service_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{name}}
 /// ```
-class NetworkEdgeSecurityService extends CustomResource {
+class NetworkEdgeSecurityService extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// Free-text description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
   /// An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// Name of the resource. Provided by the client when the resource is created.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region of the gateway security policy.
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// The resource URL for the network edge security service associated with this network edge security service.
-  late final Output<String?> securityPolicy;
+  late final pulumi.Output<String?> securityPolicy;
 
   /// Server-defined URL for the resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Server-defined URL for this resource with the resource id.
-  late final Output<String> selfLinkWithServiceId;
+  late final pulumi.Output<String> selfLinkWithServiceId;
 
   /// The unique identifier for the resource. This identifier is defined by the server.
-  late final Output<String> serviceId;
+  late final pulumi.Output<String> serviceId;
 
   NetworkEdgeSecurityService(
     String name, {
     NetworkEdgeSecurityServiceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

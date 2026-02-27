@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../blockchain_nodes_connection_info_endpoint_info/blockchain_nodes_connection_info_endpoint_info.dart';
 
 class BlockchainNodesConnectionInfo {
@@ -22,7 +22,7 @@ class BlockchainNodesConnectionInfo {
     final map = <String, dynamic>{};
     final endpointInfosValue = endpointInfos;
     if (endpointInfosValue != null) {
-      map['endpointInfos'] = Input.encodeList<
+      map['endpointInfos'] = pulumi.Input.encodeList<
           BlockchainNodesConnectionInfoEndpointInfo,
           Map<String, dynamic>>(endpointInfosValue, (value) => value.toMap());
     }
@@ -37,7 +37,7 @@ class BlockchainNodesConnectionInfo {
     return BlockchainNodesConnectionInfo(
       endpointInfos: map['endpointInfos'] == null
           ? null
-          : Input.decodeList<BlockchainNodesConnectionInfoEndpointInfo>(
+          : pulumi.Input.decodeList<BlockchainNodesConnectionInfoEndpointInfo>(
               map['endpointInfos'],
               (value) => BlockchainNodesConnectionInfoEndpointInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),

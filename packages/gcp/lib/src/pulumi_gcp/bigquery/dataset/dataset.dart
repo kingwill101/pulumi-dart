@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dataset_access/dataset_access.dart';
 import '../dataset_default_encryption_configuration/dataset_default_encryption_configuration.dart';
 import '../dataset_external_catalog_dataset_options/dataset_external_catalog_dataset_options.dart';
@@ -55,19 +55,19 @@ import 'dataset_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
 /// ```
-class Dataset extends CustomResource {
+class Dataset extends pulumi.CustomResource {
   /// An array of objects that define dataset access for one or more entities.
   /// Structure is documented below.
-  late final Output<List<DatasetAccess>> accesses;
+  late final pulumi.Output<List<DatasetAccess>> accesses;
 
   /// The time when this dataset was created, in milliseconds since the
   /// epoch.
-  late final Output<int> creationTime;
+  late final pulumi.Output<int> creationTime;
 
   /// A unique ID for this dataset, without the project name. The ID
   /// must contain only letters (a-z, A-Z), numbers (0-9), or
   /// underscores (_). The maximum length is 1,024 characters.
-  late final Output<String> datasetId;
+  late final pulumi.Output<String> datasetId;
 
   /// Defines the default collation specification of future tables created
   /// in the dataset. If a table is created in this dataset without table-level
@@ -78,13 +78,13 @@ class Dataset extends CustomResource {
   /// The following values are supported:
   /// - 'und:ci': undetermined locale, case insensitive.
   /// - '': empty string. Default to case-sensitive behavior.
-  late final Output<String> defaultCollation;
+  late final pulumi.Output<String> defaultCollation;
 
   /// The default encryption key for all tables in the dataset. Once this property is set,
   /// all newly-created partitioned tables in the dataset will have encryption key set to
   /// this value, unless table creation request (or query) overrides the key.
   /// Structure is documented below.
-  late final Output<DatasetDefaultEncryptionConfiguration?>
+  late final pulumi.Output<DatasetDefaultEncryptionConfiguration?>
       defaultEncryptionConfiguration;
 
   /// The default partition expiration for all partitioned tables in
@@ -100,7 +100,7 @@ class Dataset extends CustomResource {
   /// table. If you provide an explicit `timePartitioning.expirationMs` when
   /// creating or updating a partitioned table, that value takes precedence
   /// over the default partition expiration time indicated by this property.
-  late final Output<int?> defaultPartitionExpirationMs;
+  late final pulumi.Output<int?> defaultPartitionExpirationMs;
 
   /// The default lifetime of all tables in the dataset, in milliseconds.
   /// The minimum value is 3600000 milliseconds (one hour).
@@ -113,50 +113,51 @@ class Dataset extends CustomResource {
   /// table expires, or if you provide an explicit `expirationTime` when
   /// creating a table, that value takes precedence over the default
   /// expiration time indicated by this property.
-  late final Output<int?> defaultTableExpirationMs;
+  late final pulumi.Output<int?> defaultTableExpirationMs;
 
   /// If set to `true`, delete all the tables in the
   /// dataset when destroying the resource; otherwise,
   /// destroying the resource will fail if tables are present.
-  late final Output<bool?> deleteContentsOnDestroy;
+  late final pulumi.Output<bool?> deleteContentsOnDestroy;
 
   /// A user-friendly description of the dataset
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// A hash of the resource.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Options defining open source compatible datasets living in the BigQuery catalog. Contains
   /// metadata of open source database, schema or namespace represented by the current dataset.
   /// Structure is documented below.
-  late final Output<DatasetExternalCatalogDatasetOptions?>
+  late final pulumi.Output<DatasetExternalCatalogDatasetOptions?>
       externalCatalogDatasetOptions;
 
   /// Information about the external metadata storage where the dataset is defined.
   /// Structure is documented below.
-  late final Output<DatasetExternalDatasetReference?> externalDatasetReference;
+  late final pulumi.Output<DatasetExternalDatasetReference?>
+      externalDatasetReference;
 
   /// A descriptive name for the dataset
-  late final Output<String?> friendlyName;
+  late final pulumi.Output<String?> friendlyName;
 
   /// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
   /// By default, this is FALSE, which means the dataset and its table names are
   /// case-sensitive. This field does not affect routine references.
-  late final Output<bool> isCaseInsensitive;
+  late final pulumi.Output<bool> isCaseInsensitive;
 
   /// The labels associated with this dataset. You can use these to
   /// organize and group your datasets.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The date when this dataset or any of its tables was last modified, in
   /// milliseconds since the epoch.
-  late final Output<int> lastModifiedTime;
+  late final pulumi.Output<int> lastModifiedTime;
 
   /// The geographic location where the dataset should reside.
   /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -166,44 +167,44 @@ class Dataset extends CustomResource {
   /// contains at least two geographic places.
   /// The default value is multi-regional location `US`.
   /// Changing this forces a new resource to be created.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
-  late final Output<String> maxTimeTravelHours;
+  late final pulumi.Output<String> maxTimeTravelHours;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
   /// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
   /// ID of the parent organization or project resource for this tag key. Tag value is expected
   /// to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
   /// for more details.
-  late final Output<Map<String, String>?> resourceTags;
+  late final pulumi.Output<Map<String, String>?> resourceTags;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Specifies the storage billing model for the dataset.
   /// Set this flag value to LOGICAL to use logical bytes for storage billing,
   /// or to PHYSICAL to use physical bytes instead.
   /// LOGICAL is the default if this flag isn't specified.
-  late final Output<String> storageBillingModel;
+  late final pulumi.Output<String> storageBillingModel;
 
   Dataset(
     String name, {
     DatasetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/dataset:Dataset',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accesses = registerOutput<List<DatasetAccess>>('accesses');
     this.creationTime = registerOutput<int>('creationTime');

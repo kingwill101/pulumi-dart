@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hosting_custom_domain_cert/hosting_custom_domain_cert.dart';
 import '../hosting_custom_domain_issue/hosting_custom_domain_issue.dart';
 import '../hosting_custom_domain_required_dns_update/hosting_custom_domain_required_dns_update.dart';
@@ -58,38 +58,38 @@ import 'hosting_custom_domain_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
 /// ```
-class HostingCustomDomain extends CustomResource {
+class HostingCustomDomain extends pulumi.CustomResource {
   /// A field that lets you specify which SSL certificate type Hosting creates
   /// for your domain name. Spark plan `CustomDomain`s only have access to the
   /// `GROUPED` cert type, while Blaze plan can select any option.
   /// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
-  late final Output<String> certPreference;
+  late final pulumi.Output<String> certPreference;
 
   /// The SSL certificate Hosting has for this `CustomDomain`'s domain name.
   /// For new `CustomDomain`s, this often represents Hosting's intent to create
   /// a certificate, rather than an actual cert. Check the `state` field for
   /// more.
   /// Structure is documented below.
-  late final Output<List<HostingCustomDomainCert>> certs;
+  late final pulumi.Output<List<HostingCustomDomainCert>> certs;
 
   /// The `CustomDomain`'s create time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-  late final Output<String> customDomain;
+  late final pulumi.Output<String> customDomain;
 
   /// The time the `CustomDomain` was deleted; null for `CustomDomains` that
   /// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
   /// days, after which time Hosting removes them completely.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// A string that represents the current state of the `CustomDomain` and
   /// allows you to confirm its initial state in requests that would modify it.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The minimum time before a soft-deleted `CustomDomain` is completely removed
   /// from Hosting; null for `CustomDomains` that haven't been deleted.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// The host state of your domain name. Host state is determined by checking each
   /// IP address associated with your domain name to see if it's serving
@@ -111,16 +111,16 @@ class HostingCustomDomain extends CustomResource {
   /// All requests against your `CustomDomain`'s domain name are served by
   /// Hosting. If the `CustomDomain`'s `OwnershipState` is also `ACTIVE`, Hosting
   /// serves your Hosting Site's content on the domain name.
-  late final Output<String> hostState;
+  late final pulumi.Output<String> hostState;
 
   /// A set of errors Hosting systems encountered when trying to establish
   /// Hosting's ability to serve secure content for your domain name. Resolve
   /// these issues to ensure your `CustomDomain` behaves properly.
   /// Structure is documented below.
-  late final Output<List<HostingCustomDomainIssue>> issues;
+  late final pulumi.Output<List<HostingCustomDomainIssue>> issues;
 
   /// The fully-qualified name of the `CustomDomain`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ownership state of your domain name. Ownership is determined at a
   /// Firebase project level, and established by adding `TXT` records to your
@@ -154,46 +154,46 @@ class HostingCustomDomain extends CustomResource {
   /// OWNERSHIP_ACTIVE:
   /// Your `CustomDomain`'s domain name has `TXT` records that grant its project
   /// permission to act on its behalf.
-  late final Output<String> ownershipState;
+  late final pulumi.Output<String> ownershipState;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// if true, indicates that Hosting's systems are attempting to
   /// make the `CustomDomain`'s state match your preferred state. This is most
   /// frequently `true` when initially provisioning a `CustomDomain` or when creating
   /// a new SSL certificate to match an updated `cert_preference`
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
   /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
   /// instead.
-  late final Output<String?> redirectTarget;
+  late final pulumi.Output<String?> redirectTarget;
 
   /// A set of updates you should make to the domain name's DNS records to
   /// let Hosting serve secure content on its behalf.
   /// Structure is documented below.
-  late final Output<List<HostingCustomDomainRequiredDnsUpdate>>
+  late final pulumi.Output<List<HostingCustomDomainRequiredDnsUpdate>>
       requiredDnsUpdates;
 
   /// The ID of the site in which to create this custom domain association.
-  late final Output<String> siteId;
+  late final pulumi.Output<String> siteId;
 
   /// The last time the `CustomDomain` was updated.
-  late final Output<String> updateTime;
-  late final Output<bool?> waitDnsVerification;
+  late final pulumi.Output<String> updateTime;
+  late final pulumi.Output<bool?> waitDnsVerification;
 
   HostingCustomDomain(
     String name, {
     HostingCustomDomainArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/hostingCustomDomain:HostingCustomDomain',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certPreference = registerOutput<String>('certPreference');
     this.certs = registerOutput<List<HostingCustomDomainCert>>('certs');

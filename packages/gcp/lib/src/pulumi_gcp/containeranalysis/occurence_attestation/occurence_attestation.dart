@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../occurence_attestation_signature/occurence_attestation_signature.dart';
 
 class OccurenceAttestation {
@@ -24,16 +24,15 @@ class OccurenceAttestation {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['serializedPayload'] = serializedPayload;
-    map['signatures'] =
-        Input.encodeList<OccurenceAttestationSignature, Map<String, dynamic>>(
-            signatures, (value) => value.toMap());
+    map['signatures'] = pulumi.Input.encodeList<OccurenceAttestationSignature,
+        Map<String, dynamic>>(signatures, (value) => value.toMap());
     return map;
   }
 
   factory OccurenceAttestation.fromMap(Map<String, dynamic> map) {
     return OccurenceAttestation(
       serializedPayload: map['serializedPayload'] as String,
-      signatures: Input.decodeList<OccurenceAttestationSignature>(
+      signatures: pulumi.Input.decodeList<OccurenceAttestationSignature>(
           map['signatures'],
           (value) => OccurenceAttestationSignature.fromMap(
               (value as Map).cast<String, dynamic>())),

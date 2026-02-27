@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_groups_group/get_groups_group.dart';
 
 /// Result data returned by getGroups.
@@ -20,8 +20,9 @@ class GetGroupsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['groups'] = Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(
-        groups, (value) => value.toMap());
+    map['groups'] =
+        pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(
+            groups, (value) => value.toMap());
     map['id'] = id;
     map['parent'] = parent;
     return map;
@@ -29,7 +30,7 @@ class GetGroupsResult {
 
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
-      groups: Input.decodeList<GetGroupsGroup>(
+      groups: pulumi.Input.decodeList<GetGroupsGroup>(
           map['groups'],
           (value) =>
               GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),

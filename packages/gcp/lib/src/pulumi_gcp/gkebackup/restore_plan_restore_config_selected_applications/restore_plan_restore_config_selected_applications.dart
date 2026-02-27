@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_plan_restore_config_selected_applications_namespaced_name/restore_plan_restore_config_selected_applications_namespaced_name.dart';
 
 class RestorePlanRestoreConfigSelectedApplications {
@@ -15,7 +15,7 @@ class RestorePlanRestoreConfigSelectedApplications {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['namespacedNames'] = Input.encodeList<
+    map['namespacedNames'] = pulumi.Input.encodeList<
         RestorePlanRestoreConfigSelectedApplicationsNamespacedName,
         Map<String, dynamic>>(namespacedNames, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class RestorePlanRestoreConfigSelectedApplications {
   factory RestorePlanRestoreConfigSelectedApplications.fromMap(
       Map<String, dynamic> map) {
     return RestorePlanRestoreConfigSelectedApplications(
-      namespacedNames: Input.decodeList<
+      namespacedNames: pulumi.Input.decodeList<
               RestorePlanRestoreConfigSelectedApplicationsNamespacedName>(
           map['namespacedNames'],
           (value) => RestorePlanRestoreConfigSelectedApplicationsNamespacedName

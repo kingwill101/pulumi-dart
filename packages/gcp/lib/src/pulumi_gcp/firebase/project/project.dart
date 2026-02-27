@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_args.dart';
 
 /// A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
@@ -40,26 +40,26 @@ import 'project_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/project:Project default {{project}}
 /// ```
-class Project extends CustomResource {
+class Project extends pulumi.CustomResource {
   /// The GCP project display name
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The number of the Google Project that Firebase is enabled on.
-  late final Output<String> projectNumber;
+  late final pulumi.Output<String> projectNumber;
 
   Project(
     String name, {
     ProjectArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/project:Project',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String>('displayName');
     this.project = registerOutput<String>('project');

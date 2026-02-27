@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_deployment_args.dart';
 
 /// Manages a deployment of an API proxy.
@@ -41,28 +41,28 @@ import 'api_deployment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/apiDeployment:ApiDeployment default {{org_id}}/{{environment}}/{{proxy_id}}/{{revision}}
 /// ```
-class ApiDeployment extends CustomResource {
+class ApiDeployment extends pulumi.CustomResource {
   /// The Apigee Environment associated with the Apigee API deployment.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// The Apigee Organization associated with the Apigee API deployment.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// The Apigee API associated with the Apigee API deployment.
-  late final Output<String> proxyId;
+  late final pulumi.Output<String> proxyId;
 
   /// The revision of the API proxy to be deployed.
-  late final Output<String> revision;
+  late final pulumi.Output<String> revision;
 
   ApiDeployment(
     String name, {
     ApiDeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/apiDeployment:ApiDeployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.environment = registerOutput<String>('environment');
     this.orgId = registerOutput<String>('orgId');

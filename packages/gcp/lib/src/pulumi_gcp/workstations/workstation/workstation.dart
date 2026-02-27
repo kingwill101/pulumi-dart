@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workstation_args.dart';
 
 /// A single instance of a developer workstation with its own persistent storage.
@@ -39,77 +39,77 @@ import 'workstation_args.dart';
 /// ```sh
 /// $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
 /// ```
-class Workstation extends CustomResource {
+class Workstation extends pulumi.CustomResource {
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Time when this resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Human-readable name for this resource.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
-  late final Output<Map<String, String>?> env;
+  late final pulumi.Output<Map<String, String>?> env;
 
   /// Host to which clients can send HTTPS traffic that will be received by the workstation.
   /// Authorized traffic will be received to the workstation as HTTP on port 80.
   /// To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
-  late final Output<String> host;
+  late final pulumi.Output<String> host;
 
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location where the workstation parent resources reside.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Full name of this resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Full resource name of the source workstation from which the workstation's persistent
   /// directories will be cloned from during creation.
-  late final Output<String?> sourceWorkstation;
+  late final pulumi.Output<String?> sourceWorkstation;
 
   /// Current state of the workstation.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// A system-assigned unique identified for this resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The ID of the parent workstation cluster.
-  late final Output<String> workstationClusterId;
+  late final pulumi.Output<String> workstationClusterId;
 
   /// The ID of the parent workstation cluster config.
-  late final Output<String> workstationConfigId;
+  late final pulumi.Output<String> workstationConfigId;
 
   /// ID to use for the workstation.
-  late final Output<String> workstationId;
+  late final pulumi.Output<String> workstationId;
 
   Workstation(
     String name, {
     WorkstationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:workstations/workstation:Workstation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');

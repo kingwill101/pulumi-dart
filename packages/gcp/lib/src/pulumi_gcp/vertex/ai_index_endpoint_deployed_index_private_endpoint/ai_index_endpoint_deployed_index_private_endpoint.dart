@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_index_endpoint_deployed_index_private_endpoint_psc_automated_endpoint/ai_index_endpoint_deployed_index_private_endpoint_psc_automated_endpoint.dart';
 
 class AiIndexEndpointDeployedIndexPrivateEndpoint {
@@ -32,7 +32,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpoint {
     }
     final pscAutomatedEndpointsValue = pscAutomatedEndpoints;
     if (pscAutomatedEndpointsValue != null) {
-      map['pscAutomatedEndpoints'] = Input.encodeList<
+      map['pscAutomatedEndpoints'] = pulumi.Input.encodeList<
               AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint,
               Map<String, dynamic>>(
           pscAutomatedEndpointsValue, (value) => value.toMap());
@@ -52,7 +52,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpoint {
           : map['matchGrpcAddress'] as String,
       pscAutomatedEndpoints: map['pscAutomatedEndpoints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>(
               map['pscAutomatedEndpoints'],
               (value) =>

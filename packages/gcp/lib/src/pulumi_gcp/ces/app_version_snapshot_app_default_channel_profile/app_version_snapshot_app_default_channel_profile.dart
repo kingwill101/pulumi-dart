@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_app_default_channel_profile_persona_property/app_version_snapshot_app_default_channel_profile_persona_property.dart';
 import '../app_version_snapshot_app_default_channel_profile_web_widget_config/app_version_snapshot_app_default_channel_profile_web_widget_config.dart';
 
@@ -67,7 +67,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
     }
     final personaPropertiesValue = personaProperties;
     if (personaPropertiesValue != null) {
-      map['personaProperties'] = Input.encodeList<
+      map['personaProperties'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppDefaultChannelProfilePersonaProperty,
               Map<String, dynamic>>(
           personaPropertiesValue, (value) => value.toMap());
@@ -78,7 +78,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
     }
     final webWidgetConfigsValue = webWidgetConfigs;
     if (webWidgetConfigsValue != null) {
-      map['webWidgetConfigs'] = Input.encodeList<
+      map['webWidgetConfigs'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig,
               Map<String, dynamic>>(
           webWidgetConfigsValue, (value) => value.toMap());
@@ -98,7 +98,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
           map['disableDtmf'] == null ? null : map['disableDtmf'] as bool,
       personaProperties: map['personaProperties'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>(
               map['personaProperties'],
               (value) =>
@@ -107,7 +107,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
       profileId: map['profileId'] == null ? null : map['profileId'] as String,
       webWidgetConfigs: map['webWidgetConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>(
               map['webWidgetConfigs'],
               (value) =>

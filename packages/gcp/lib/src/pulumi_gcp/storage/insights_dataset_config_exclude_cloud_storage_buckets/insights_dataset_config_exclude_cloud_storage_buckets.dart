@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../insights_dataset_config_exclude_cloud_storage_buckets_cloud_storage_bucket/insights_dataset_config_exclude_cloud_storage_buckets_cloud_storage_bucket.dart';
 
 class InsightsDatasetConfigExcludeCloudStorageBuckets {
@@ -15,7 +15,7 @@ class InsightsDatasetConfigExcludeCloudStorageBuckets {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudStorageBuckets'] = Input.encodeList<
+    map['cloudStorageBuckets'] = pulumi.Input.encodeList<
         InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket,
         Map<String, dynamic>>(cloudStorageBuckets, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class InsightsDatasetConfigExcludeCloudStorageBuckets {
   factory InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap(
       Map<String, dynamic> map) {
     return InsightsDatasetConfigExcludeCloudStorageBuckets(
-      cloudStorageBuckets: Input.decodeList<
+      cloudStorageBuckets: pulumi.Input.decodeList<
               InsightsDatasetConfigExcludeCloudStorageBucketsCloudStorageBucket>(
           map['cloudStorageBuckets'],
           (value) =>

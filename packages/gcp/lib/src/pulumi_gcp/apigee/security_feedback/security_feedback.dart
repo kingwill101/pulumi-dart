@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_feedback_feedback_context/security_feedback_feedback_context.dart';
 import 'security_feedback_args.dart';
 
@@ -36,51 +36,52 @@ import 'security_feedback_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/securityFeedback:SecurityFeedback default {{org_id}}/{{feedback_id}}
 /// ```
-class SecurityFeedback extends CustomResource {
+class SecurityFeedback extends pulumi.CustomResource {
   /// Optional text the user can provide for additional, unstructured context.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// The time when this specific feedback id was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The display name of the feedback.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// One or more attribute/value pairs for constraining the feedback.
   /// Structure is documented below.
-  late final Output<List<SecurityFeedbackFeedbackContext>> feedbackContexts;
+  late final pulumi.Output<List<SecurityFeedbackFeedbackContext>>
+      feedbackContexts;
 
   /// Resource ID of the security feedback.
-  late final Output<String> feedbackId;
+  late final pulumi.Output<String> feedbackId;
 
   /// The type of feedback being submitted.
   /// Possible values are: `EXCLUDED_DETECTION`.
-  late final Output<String> feedbackType;
+  late final pulumi.Output<String> feedbackType;
 
   /// Name of the security feedback resource,
   /// in the format `organizations/{{org_name}}/securityFeedback/{{feedback_id}}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee Security Feedback,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// The reason for the feedback.
   /// Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
-  late final Output<String?> reason;
+  late final pulumi.Output<String?> reason;
 
   /// The time when this specific feedback id was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   SecurityFeedback(
     String name, {
     SecurityFeedbackArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/securityFeedback:SecurityFeedback',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.comment = registerOutput<String?>('comment');
     this.createTime = registerOutput<String>('createTime');

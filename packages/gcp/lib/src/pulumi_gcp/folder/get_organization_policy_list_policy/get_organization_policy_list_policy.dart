@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_organization_policy_list_policy_allow/get_organization_policy_list_policy_allow.dart';
 import '../get_organization_policy_list_policy_deny/get_organization_policy_list_policy_deny.dart';
 
@@ -26,9 +26,10 @@ class GetOrganizationPolicyListPolicy {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allows'] = Input.encodeList<GetOrganizationPolicyListPolicyAllow,
+    map['allows'] = pulumi.Input.encodeList<
+        GetOrganizationPolicyListPolicyAllow,
         Map<String, dynamic>>(allows, (value) => value.toMap());
-    map['denies'] = Input.encodeList<GetOrganizationPolicyListPolicyDeny,
+    map['denies'] = pulumi.Input.encodeList<GetOrganizationPolicyListPolicyDeny,
         Map<String, dynamic>>(denies, (value) => value.toMap());
     map['inheritFromParent'] = inheritFromParent;
     map['suggestedValue'] = suggestedValue;
@@ -37,11 +38,11 @@ class GetOrganizationPolicyListPolicy {
 
   factory GetOrganizationPolicyListPolicy.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyListPolicy(
-      allows: Input.decodeList<GetOrganizationPolicyListPolicyAllow>(
+      allows: pulumi.Input.decodeList<GetOrganizationPolicyListPolicyAllow>(
           map['allows'],
           (value) => GetOrganizationPolicyListPolicyAllow.fromMap(
               (value as Map).cast<String, dynamic>())),
-      denies: Input.decodeList<GetOrganizationPolicyListPolicyDeny>(
+      denies: pulumi.Input.decodeList<GetOrganizationPolicyListPolicyDeny>(
           map['denies'],
           (value) => GetOrganizationPolicyListPolicyDeny.fromMap(
               (value as Map).cast<String, dynamic>())),

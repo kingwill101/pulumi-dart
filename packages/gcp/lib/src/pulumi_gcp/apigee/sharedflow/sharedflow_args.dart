@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Sharedflow.
 class SharedflowArgs {
   /// Path to the config zip bundle.
   ///
   /// - - -
-  final Input<String> configBundle;
-  final Input<String>? detectMd5hash;
+  final pulumi.Input<String> configBundle;
+  final pulumi.Input<String>? detectMd5hash;
 
   /// The ID of the shared flow.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The Apigee Organization name associated with the Apigee instance.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   SharedflowArgs({
     required this.configBundle,
@@ -40,10 +40,10 @@ class SharedflowArgs {
 
   factory SharedflowArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowArgs(
-      configBundle: Input.asInput<String>(map['configBundle']),
-      detectMd5hash: Input.asOptionalInput<String>(map['detectMd5hash']),
-      name: Input.asOptionalInput<String>(map['name']),
-      orgId: Input.asInput<String>(map['orgId']),
+      configBundle: pulumi.Input.asInput<String>(map['configBundle']),
+      detectMd5hash: pulumi.Input.asOptionalInput<String>(map['detectMd5hash']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
     );
   }
 }

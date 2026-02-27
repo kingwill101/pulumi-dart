@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../queue_http_target_header_override/queue_http_target_header_override.dart';
 import '../queue_http_target_oauth_token/queue_http_target_oauth_token.dart';
 import '../queue_http_target_oidc_token/queue_http_target_oidc_token.dart';
@@ -52,9 +52,9 @@ class QueueHttpTarget {
     final map = <String, dynamic>{};
     final headerOverridesValue = headerOverrides;
     if (headerOverridesValue != null) {
-      map['headerOverrides'] =
-          Input.encodeList<QueueHttpTargetHeaderOverride, Map<String, dynamic>>(
-              headerOverridesValue, (value) => value.toMap());
+      map['headerOverrides'] = pulumi.Input.encodeList<
+          QueueHttpTargetHeaderOverride,
+          Map<String, dynamic>>(headerOverridesValue, (value) => value.toMap());
     }
     final httpMethodValue = httpMethod;
     if (httpMethodValue != null) {
@@ -79,7 +79,7 @@ class QueueHttpTarget {
     return QueueHttpTarget(
       headerOverrides: map['headerOverrides'] == null
           ? null
-          : Input.decodeList<QueueHttpTargetHeaderOverride>(
+          : pulumi.Input.decodeList<QueueHttpTargetHeaderOverride>(
               map['headerOverrides'],
               (value) => QueueHttpTargetHeaderOverride.fromMap(
                   (value as Map).cast<String, dynamic>())),

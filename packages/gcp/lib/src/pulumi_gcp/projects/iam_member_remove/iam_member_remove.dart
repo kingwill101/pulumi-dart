@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iam_member_remove_args.dart';
 
 /// Ensures that a member:role pairing does not exist in a project's IAM policy.
@@ -20,30 +20,30 @@ import 'iam_member_remove_args.dart';
 /// [the official documentation](https://cloud.google.com/iam/docs/granting-changing-revoking-access)
 /// and
 /// [API reference](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
-class IamMemberRemove extends CustomResource {
+class IamMemberRemove extends pulumi.CustomResource {
   /// The IAM principal that should not have the target role.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The project id of the target project.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The target role that should be removed.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   IamMemberRemove(
     String name, {
     IamMemberRemoveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:projects/iamMemberRemove:IamMemberRemove',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.member = registerOutput<String>('member');
     this.project = registerOutput<String>('project');

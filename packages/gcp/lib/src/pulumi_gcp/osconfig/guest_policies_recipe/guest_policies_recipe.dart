@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guest_policies_recipe_artifact/guest_policies_recipe_artifact.dart';
 import '../guest_policies_recipe_install_step/guest_policies_recipe_install_step.dart';
 import '../guest_policies_recipe_update_step/guest_policies_recipe_update_step.dart';
@@ -51,9 +51,8 @@ class GuestPoliciesRecipe {
     final map = <String, dynamic>{};
     final artifactsValue = artifacts;
     if (artifactsValue != null) {
-      map['artifacts'] =
-          Input.encodeList<GuestPoliciesRecipeArtifact, Map<String, dynamic>>(
-              artifactsValue, (value) => value.toMap());
+      map['artifacts'] = pulumi.Input.encodeList<GuestPoliciesRecipeArtifact,
+          Map<String, dynamic>>(artifactsValue, (value) => value.toMap());
     }
     final desiredStateValue = desiredState;
     if (desiredStateValue != null) {
@@ -61,15 +60,16 @@ class GuestPoliciesRecipe {
     }
     final installStepsValue = installSteps;
     if (installStepsValue != null) {
-      map['installSteps'] = Input.encodeList<GuestPoliciesRecipeInstallStep,
+      map['installSteps'] = pulumi.Input.encodeList<
+          GuestPoliciesRecipeInstallStep,
           Map<String, dynamic>>(installStepsValue, (value) => value.toMap());
     }
     map['name'] = name;
     final updateStepsValue = updateSteps;
     if (updateStepsValue != null) {
-      map['updateSteps'] =
-          Input.encodeList<GuestPoliciesRecipeUpdateStep, Map<String, dynamic>>(
-              updateStepsValue, (value) => value.toMap());
+      map['updateSteps'] = pulumi.Input.encodeList<
+          GuestPoliciesRecipeUpdateStep,
+          Map<String, dynamic>>(updateStepsValue, (value) => value.toMap());
     }
     final versionValue = version;
     if (versionValue != null) {
@@ -82,7 +82,7 @@ class GuestPoliciesRecipe {
     return GuestPoliciesRecipe(
       artifacts: map['artifacts'] == null
           ? null
-          : Input.decodeList<GuestPoliciesRecipeArtifact>(
+          : pulumi.Input.decodeList<GuestPoliciesRecipeArtifact>(
               map['artifacts'],
               (value) => GuestPoliciesRecipeArtifact.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -90,14 +90,14 @@ class GuestPoliciesRecipe {
           map['desiredState'] == null ? null : map['desiredState'] as String,
       installSteps: map['installSteps'] == null
           ? null
-          : Input.decodeList<GuestPoliciesRecipeInstallStep>(
+          : pulumi.Input.decodeList<GuestPoliciesRecipeInstallStep>(
               map['installSteps'],
               (value) => GuestPoliciesRecipeInstallStep.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       updateSteps: map['updateSteps'] == null
           ? null
-          : Input.decodeList<GuestPoliciesRecipeUpdateStep>(
+          : pulumi.Input.decodeList<GuestPoliciesRecipeUpdateStep>(
               map['updateSteps'],
               (value) => GuestPoliciesRecipeUpdateStep.fromMap(
                   (value as Map).cast<String, dynamic>())),

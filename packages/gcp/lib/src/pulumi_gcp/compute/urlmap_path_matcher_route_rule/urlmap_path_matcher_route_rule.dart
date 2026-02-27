@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_path_matcher_route_rule_custom_error_response_policy/urlmap_path_matcher_route_rule_custom_error_response_policy.dart';
 import '../urlmap_path_matcher_route_rule_header_action/urlmap_path_matcher_route_rule_header_action.dart';
 import '../urlmap_path_matcher_route_rule_http_filter_config/urlmap_path_matcher_route_rule_http_filter_config.dart';
@@ -103,20 +103,21 @@ class URLMapPathMatcherRouteRule {
     }
     final httpFilterConfigsValue = httpFilterConfigs;
     if (httpFilterConfigsValue != null) {
-      map['httpFilterConfigs'] = Input.encodeList<
+      map['httpFilterConfigs'] = pulumi.Input.encodeList<
               URLMapPathMatcherRouteRuleHttpFilterConfig, Map<String, dynamic>>(
           httpFilterConfigsValue, (value) => value.toMap());
     }
     final httpFilterMetadatasValue = httpFilterMetadatas;
     if (httpFilterMetadatasValue != null) {
-      map['httpFilterMetadatas'] = Input.encodeList<
+      map['httpFilterMetadatas'] = pulumi.Input.encodeList<
               URLMapPathMatcherRouteRuleHttpFilterMetadata,
               Map<String, dynamic>>(
           httpFilterMetadatasValue, (value) => value.toMap());
     }
     final matchRulesValue = matchRules;
     if (matchRulesValue != null) {
-      map['matchRules'] = Input.encodeList<URLMapPathMatcherRouteRuleMatchRule,
+      map['matchRules'] = pulumi.Input.encodeList<
+          URLMapPathMatcherRouteRuleMatchRule,
           Map<String, dynamic>>(matchRulesValue, (value) => value.toMap());
     }
     map['priority'] = priority;
@@ -148,19 +149,20 @@ class URLMapPathMatcherRouteRule {
               (map['headerAction'] as Map).cast<String, dynamic>()),
       httpFilterConfigs: map['httpFilterConfigs'] == null
           ? null
-          : Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterConfig>(
+          : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterConfig>(
               map['httpFilterConfigs'],
               (value) => URLMapPathMatcherRouteRuleHttpFilterConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       httpFilterMetadatas: map['httpFilterMetadatas'] == null
           ? null
-          : Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterMetadata>(
+          : pulumi.Input.decodeList<
+                  URLMapPathMatcherRouteRuleHttpFilterMetadata>(
               map['httpFilterMetadatas'],
               (value) => URLMapPathMatcherRouteRuleHttpFilterMetadata.fromMap(
                   (value as Map).cast<String, dynamic>())),
       matchRules: map['matchRules'] == null
           ? null
-          : Input.decodeList<URLMapPathMatcherRouteRuleMatchRule>(
+          : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleMatchRule>(
               map['matchRules'],
               (value) => URLMapPathMatcherRouteRuleMatchRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_flow_logs_config_args.dart';
 
 /// VPC Flow Logs Config is a resource that lets you configure Flow Logs for Networks, Subnets, Interconnect attachments or VPN Tunnels.
@@ -47,74 +47,74 @@ import 'vpc_flow_logs_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{location}}/{{vpc_flow_logs_config_id}}
 /// ```
-class VpcFlowLogsConfig extends CustomResource {
+class VpcFlowLogsConfig extends pulumi.CustomResource {
   /// Optional. The aggregation interval for the logs. Default value is
   /// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
-  late final Output<String> aggregationInterval;
+  late final pulumi.Output<String> aggregationInterval;
 
   /// Output only. The time the config was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
   /// of 512 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. Export filter used to define which VPC Flow Logs should be logged.
-  late final Output<String?> filterExpr;
+  late final pulumi.Output<String?> filterExpr;
 
   /// Optional. The value of the field must be in (0, 1]. The sampling rate
   /// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
   /// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
   /// the state field instead. Default value is 1.0.
-  late final Output<double> flowSampling;
+  late final pulumi.Output<double> flowSampling;
 
   /// Traffic will be logged from the Interconnect Attachment. Format: projects/{project_id}/regions/{region}/interconnectAttachments/{name}
-  late final Output<String?> interconnectAttachment;
+  late final pulumi.Output<String?> interconnectAttachment;
 
   /// Optional. Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource
   /// within its parent collection as described in https://google.aip.dev/122. See documentation
   /// for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Optional. Configures whether all, none or a subset of metadata fields
   /// should be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
   /// Possible values:  METADATA_UNSPECIFIED INCLUDE_ALL_METADATA EXCLUDE_ALL_METADATA CUSTOM_METADATA
-  late final Output<String> metadata;
+  late final pulumi.Output<String> metadata;
 
   /// Optional. Custom metadata fields to include in the reported VPC flow
   /// logs. Can only be specified if \"metadata\" was set to CUSTOM_METADATA.
-  late final Output<List<String>?> metadataFields;
+  late final pulumi.Output<List<String>?> metadataFields;
 
   /// Identifier. Unique name of the configuration using the form:     `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name}
-  late final Output<String?> network;
+  late final pulumi.Output<String?> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Optional. The state of the VPC Flow Log configuration. Default value
   /// is ENABLED. When creating a new configuration, it must be enabled.
   /// Possible values: STATE_UNSPECIFIED ENABLED DISABLED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
-  late final Output<String?> subnet;
+  late final pulumi.Output<String?> subnet;
 
   /// Describes the state of the configured target resource for diagnostic
   /// purposes.
@@ -122,26 +122,26 @@ class VpcFlowLogsConfig extends CustomResource {
   /// TARGET_RESOURCE_STATE_UNSPECIFIED
   /// TARGET_RESOURCE_EXISTS
   /// TARGET_RESOURCE_DOES_NOT_EXIST
-  late final Output<String> targetResourceState;
+  late final pulumi.Output<String> targetResourceState;
 
   /// Output only. The time the config was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Required. ID of the `VpcFlowLogsConfig`.
-  late final Output<String> vpcFlowLogsConfigId;
+  late final pulumi.Output<String> vpcFlowLogsConfigId;
 
   /// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
-  late final Output<String?> vpnTunnel;
+  late final pulumi.Output<String?> vpnTunnel;
 
   VpcFlowLogsConfig(
     String name, {
     VpcFlowLogsConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aggregationInterval = registerOutput<String>('aggregationInterval');
     this.createTime = registerOutput<String>('createTime');

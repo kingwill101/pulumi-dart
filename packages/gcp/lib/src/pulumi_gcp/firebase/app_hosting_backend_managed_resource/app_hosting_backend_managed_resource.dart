@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_backend_managed_resource_run_service/app_hosting_backend_managed_resource_run_service.dart';
 
 class AppHostingBackendManagedResource {
@@ -18,7 +18,7 @@ class AppHostingBackendManagedResource {
     final map = <String, dynamic>{};
     final runServicesValue = runServices;
     if (runServicesValue != null) {
-      map['runServices'] = Input.encodeList<
+      map['runServices'] = pulumi.Input.encodeList<
           AppHostingBackendManagedResourceRunService,
           Map<String, dynamic>>(runServicesValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class AppHostingBackendManagedResource {
     return AppHostingBackendManagedResource(
       runServices: map['runServices'] == null
           ? null
-          : Input.decodeList<AppHostingBackendManagedResourceRunService>(
+          : pulumi.Input.decodeList<AppHostingBackendManagedResourceRunService>(
               map['runServices'],
               (value) => AppHostingBackendManagedResourceRunService.fromMap(
                   (value as Map).cast<String, dynamic>())),

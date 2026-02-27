@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_backend_service_consistent_hash_http_cooky_ttl/get_region_backend_service_consistent_hash_http_cooky_ttl.dart';
 
 class GetRegionBackendServiceConsistentHashHttpCooky {
@@ -23,7 +23,7 @@ class GetRegionBackendServiceConsistentHashHttpCooky {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['path'] = path;
-    map['ttls'] = Input.encodeList<
+    map['ttls'] = pulumi.Input.encodeList<
         GetRegionBackendServiceConsistentHashHttpCookyTtl,
         Map<String, dynamic>>(ttls, (value) => value.toMap());
     return map;
@@ -34,7 +34,8 @@ class GetRegionBackendServiceConsistentHashHttpCooky {
     return GetRegionBackendServiceConsistentHashHttpCooky(
       name: map['name'] as String,
       path: map['path'] as String,
-      ttls: Input.decodeList<GetRegionBackendServiceConsistentHashHttpCookyTtl>(
+      ttls: pulumi.Input.decodeList<
+              GetRegionBackendServiceConsistentHashHttpCookyTtl>(
           map['ttls'],
           (value) => GetRegionBackendServiceConsistentHashHttpCookyTtl.fromMap(
               (value as Map).cast<String, dynamic>())),

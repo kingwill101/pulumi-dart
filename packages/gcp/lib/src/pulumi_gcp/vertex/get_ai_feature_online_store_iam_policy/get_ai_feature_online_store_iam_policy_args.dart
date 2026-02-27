@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAiFeatureOnlineStoreIamPolicy.
 class GetAiFeatureOnlineStoreIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> featureOnlineStore;
+  final pulumi.Input<String> featureOnlineStore;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region of feature online store. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAiFeatureOnlineStoreIamPolicyArgs({
     required this.featureOnlineStore,
@@ -39,9 +39,10 @@ class GetAiFeatureOnlineStoreIamPolicyArgs {
   factory GetAiFeatureOnlineStoreIamPolicyArgs.fromMap(
       Map<String, dynamic> map) {
     return GetAiFeatureOnlineStoreIamPolicyArgs(
-      featureOnlineStore: Input.asInput<String>(map['featureOnlineStore']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      featureOnlineStore:
+          pulumi.Input.asInput<String>(map['featureOnlineStore']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

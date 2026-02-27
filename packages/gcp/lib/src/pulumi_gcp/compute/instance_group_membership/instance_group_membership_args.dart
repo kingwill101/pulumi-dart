@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for InstanceGroupMembership.
 class InstanceGroupMembershipArgs {
   /// An instance being added to the InstanceGroup
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// Represents an Instance Group resource name that the instance belongs to.
-  final Input<String> instanceGroup;
+  final pulumi.Input<String> instanceGroup;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A reference to the zone where the instance group resides.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   InstanceGroupMembershipArgs({
     required this.instance,
@@ -41,10 +41,10 @@ class InstanceGroupMembershipArgs {
 
   factory InstanceGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupMembershipArgs(
-      instance: Input.asInput<String>(map['instance']),
-      instanceGroup: Input.asInput<String>(map['instanceGroup']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      instanceGroup: pulumi.Input.asInput<String>(map['instanceGroup']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

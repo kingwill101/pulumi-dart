@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OrganizationSettings.
 class OrganizationSettingsArgs {
   /// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
-  final Input<bool>? disableDefaultSink;
+  final pulumi.Input<bool>? disableDefaultSink;
 
   /// The resource name for the configured Cloud KMS key.
-  final Input<String>? kmsKeyName;
+  final pulumi.Input<String>? kmsKeyName;
 
   /// The organization for which to retrieve or configure settings.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   /// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-  final Input<String>? storageLocation;
+  final pulumi.Input<String>? storageLocation;
 
   OrganizationSettingsArgs({
     this.disableDefaultSink,
@@ -44,10 +44,11 @@ class OrganizationSettingsArgs {
   factory OrganizationSettingsArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSettingsArgs(
       disableDefaultSink:
-          Input.asOptionalInput<bool>(map['disableDefaultSink']),
-      kmsKeyName: Input.asOptionalInput<String>(map['kmsKeyName']),
-      organization: Input.asInput<String>(map['organization']),
-      storageLocation: Input.asOptionalInput<String>(map['storageLocation']),
+          pulumi.Input.asOptionalInput<bool>(map['disableDefaultSink']),
+      kmsKeyName: pulumi.Input.asOptionalInput<String>(map['kmsKeyName']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
+      storageLocation:
+          pulumi.Input.asOptionalInput<String>(map['storageLocation']),
     );
   }
 }

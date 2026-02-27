@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_tool_version_tool_data_store_spec_data_store_connection/cx_tool_version_tool_data_store_spec_data_store_connection.dart';
 
 class CxToolVersionToolDataStoreSpec {
@@ -19,7 +19,7 @@ class CxToolVersionToolDataStoreSpec {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dataStoreConnections'] = Input.encodeList<
+    map['dataStoreConnections'] = pulumi.Input.encodeList<
         CxToolVersionToolDataStoreSpecDataStoreConnection,
         Map<String, dynamic>>(dataStoreConnections, (value) => value.toMap());
     map['fallbackPrompt'] = fallbackPrompt;
@@ -28,12 +28,11 @@ class CxToolVersionToolDataStoreSpec {
 
   factory CxToolVersionToolDataStoreSpec.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolDataStoreSpec(
-      dataStoreConnections:
-          Input.decodeList<CxToolVersionToolDataStoreSpecDataStoreConnection>(
-              map['dataStoreConnections'],
-              (value) =>
-                  CxToolVersionToolDataStoreSpecDataStoreConnection.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      dataStoreConnections: pulumi.Input.decodeList<
+              CxToolVersionToolDataStoreSpecDataStoreConnection>(
+          map['dataStoreConnections'],
+          (value) => CxToolVersionToolDataStoreSpecDataStoreConnection.fromMap(
+              (value as Map).cast<String, dynamic>())),
       fallbackPrompt: (map['fallbackPrompt'] as Map).cast<String, dynamic>(),
     );
   }

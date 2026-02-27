@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_rule_args.dart';
 
 /// A single firewall rule that is evaluated against incoming traffic
@@ -41,37 +41,37 @@ import 'firewall_rule_args.dart';
 /// ```sh
 /// $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
 /// ```
-class FirewallRule extends CustomResource {
+class FirewallRule extends pulumi.CustomResource {
   /// The action to take if this rule matches.
   /// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-  late final Output<String> action;
+  late final pulumi.Output<String> action;
 
   /// An optional string description of this rule.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A positive integer that defines the order of rule evaluation.
   /// Rules with the lowest priority are evaluated first.
   /// A default rule at priority Int32.MaxValue matches all IPv4 and
   /// IPv6 traffic when no previous rule matches. Only the action of
   /// this rule can be modified by the user.
-  late final Output<int?> priority;
+  late final pulumi.Output<int?> priority;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// IP address or range, defined using CIDR notation, of requests that this rule applies to.
-  late final Output<String> sourceRange;
+  late final pulumi.Output<String> sourceRange;
 
   FirewallRule(
     String name, {
     FirewallRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:appengine/firewallRule:FirewallRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<String>('action');
     this.description = registerOutput<String?>('description');

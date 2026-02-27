@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../default_object_access_control_project_team/default_object_access_control_project_team.dart';
 import 'default_object_access_control_args.dart';
 
@@ -41,15 +41,15 @@ import 'default_object_access_control_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
 /// ```
-class DefaultObjectAccessControl extends CustomResource {
+class DefaultObjectAccessControl extends pulumi.CustomResource {
   /// The name of the bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// The domain associated with the entity.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// The email address associated with the entity.
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
@@ -60,34 +60,35 @@ class DefaultObjectAccessControl extends CustomResource {
   /// * project-team-{{projectId}}
   /// * allUsers
   /// * allAuthenticatedUsers
-  late final Output<String> entity;
+  late final pulumi.Output<String> entity;
 
   /// The ID for the entity
-  late final Output<String> entityId;
+  late final pulumi.Output<String> entityId;
 
   /// The content generation of the object, if applied to an object.
-  late final Output<int> generation;
+  late final pulumi.Output<int> generation;
 
   /// The name of the object, if applied to an object.
-  late final Output<String?> object;
+  late final pulumi.Output<String?> object;
 
   /// The project team associated with the entity
   /// Structure is documented below.
-  late final Output<List<DefaultObjectAccessControlProjectTeam>> projectTeams;
+  late final pulumi.Output<List<DefaultObjectAccessControlProjectTeam>>
+      projectTeams;
 
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   DefaultObjectAccessControl(
     String name, {
     DefaultObjectAccessControlArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.domain = registerOutput<String>('domain');

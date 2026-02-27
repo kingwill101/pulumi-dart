@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_versions_version/get_versions_version.dart';
 
 /// Result data returned by getVersions.
@@ -44,7 +44,7 @@ class GetVersionsResult {
     }
     map['repositoryId'] = repositoryId;
     map['versions'] =
-        Input.encodeList<GetVersionsVersion, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetVersionsVersion, Map<String, dynamic>>(
             versions, (value) => value.toMap());
     final viewValue = view;
     if (viewValue != null) {
@@ -61,7 +61,7 @@ class GetVersionsResult {
       packageName: map['packageName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       repositoryId: map['repositoryId'] as String,
-      versions: Input.decodeList<GetVersionsVersion>(
+      versions: pulumi.Input.decodeList<GetVersionsVersion>(
           map['versions'],
           (value) => GetVersionsVersion.fromMap(
               (value as Map).cast<String, dynamic>())),

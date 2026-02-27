@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_node_config_advanced_machine_feature/get_cluster_node_pool_node_config_advanced_machine_feature.dart';
 import '../get_cluster_node_pool_node_config_boot_disk/get_cluster_node_pool_node_config_boot_disk.dart';
 import '../get_cluster_node_pool_node_config_confidential_node/get_cluster_node_pool_node_config_confidential_node.dart';
@@ -223,58 +223,59 @@ class GetClusterNodePoolNodeConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['advancedMachineFeatures'] = Input.encodeList<
+    map['advancedMachineFeatures'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigAdvancedMachineFeature,
             Map<String, dynamic>>(
         advancedMachineFeatures, (value) => value.toMap());
     map['bootDiskKmsKey'] = bootDiskKmsKey;
-    map['bootDisks'] = Input.encodeList<GetClusterNodePoolNodeConfigBootDisk,
+    map['bootDisks'] = pulumi.Input.encodeList<
+        GetClusterNodePoolNodeConfigBootDisk,
         Map<String, dynamic>>(bootDisks, (value) => value.toMap());
-    map['confidentialNodes'] = Input.encodeList<
+    map['confidentialNodes'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigConfidentialNode,
         Map<String, dynamic>>(confidentialNodes, (value) => value.toMap());
-    map['containerdConfigs'] = Input.encodeList<
+    map['containerdConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigContainerdConfig,
         Map<String, dynamic>>(containerdConfigs, (value) => value.toMap());
     map['diskSizeGb'] = diskSizeGb;
     map['diskType'] = diskType;
-    map['effectiveTaints'] = Input.encodeList<
+    map['effectiveTaints'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigEffectiveTaint,
         Map<String, dynamic>>(effectiveTaints, (value) => value.toMap());
     map['enableConfidentialStorage'] = enableConfidentialStorage;
-    map['ephemeralStorageConfigs'] = Input.encodeList<
+    map['ephemeralStorageConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigEphemeralStorageConfig,
             Map<String, dynamic>>(
         ephemeralStorageConfigs, (value) => value.toMap());
-    map['ephemeralStorageLocalSsdConfigs'] = Input.encodeList<
+    map['ephemeralStorageLocalSsdConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig,
             Map<String, dynamic>>(
         ephemeralStorageLocalSsdConfigs, (value) => value.toMap());
-    map['fastSockets'] = Input.encodeList<
+    map['fastSockets'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigFastSocket,
         Map<String, dynamic>>(fastSockets, (value) => value.toMap());
     map['flexStart'] = flexStart;
-    map['gcfsConfigs'] = Input.encodeList<
+    map['gcfsConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigGcfsConfig,
         Map<String, dynamic>>(gcfsConfigs, (value) => value.toMap());
-    map['guestAccelerators'] = Input.encodeList<
+    map['guestAccelerators'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigGuestAccelerator,
         Map<String, dynamic>>(guestAccelerators, (value) => value.toMap());
-    map['gvnics'] = Input.encodeList<GetClusterNodePoolNodeConfigGvnic,
+    map['gvnics'] = pulumi.Input.encodeList<GetClusterNodePoolNodeConfigGvnic,
         Map<String, dynamic>>(gvnics, (value) => value.toMap());
-    map['hostMaintenancePolicies'] = Input.encodeList<
+    map['hostMaintenancePolicies'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigHostMaintenancePolicy,
             Map<String, dynamic>>(
         hostMaintenancePolicies, (value) => value.toMap());
     map['imageType'] = imageType;
-    map['kubeletConfigs'] = Input.encodeList<
+    map['kubeletConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigKubeletConfig,
         Map<String, dynamic>>(kubeletConfigs, (value) => value.toMap());
     map['labels'] = labels;
-    map['linuxNodeConfigs'] = Input.encodeList<
+    map['linuxNodeConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigLinuxNodeConfig,
         Map<String, dynamic>>(linuxNodeConfigs, (value) => value.toMap());
-    map['localNvmeSsdBlockConfigs'] = Input.encodeList<
+    map['localNvmeSsdBlockConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig,
             Map<String, dynamic>>(
         localNvmeSsdBlockConfigs, (value) => value.toMap());
@@ -288,34 +289,34 @@ class GetClusterNodePoolNodeConfig {
     map['nodeGroup'] = nodeGroup;
     map['oauthScopes'] = oauthScopes;
     map['preemptible'] = preemptible;
-    map['reservationAffinities'] = Input.encodeList<
+    map['reservationAffinities'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigReservationAffinity,
         Map<String, dynamic>>(reservationAffinities, (value) => value.toMap());
     map['resourceLabels'] = resourceLabels;
     map['resourceManagerTags'] = resourceManagerTags;
-    map['sandboxConfigs'] = Input.encodeList<
+    map['sandboxConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigSandboxConfig,
         Map<String, dynamic>>(sandboxConfigs, (value) => value.toMap());
-    map['secondaryBootDisks'] = Input.encodeList<
+    map['secondaryBootDisks'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigSecondaryBootDisk,
         Map<String, dynamic>>(secondaryBootDisks, (value) => value.toMap());
     map['serviceAccount'] = serviceAccount;
-    map['shieldedInstanceConfigs'] = Input.encodeList<
+    map['shieldedInstanceConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigShieldedInstanceConfig,
             Map<String, dynamic>>(
         shieldedInstanceConfigs, (value) => value.toMap());
-    map['soleTenantConfigs'] = Input.encodeList<
+    map['soleTenantConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigSoleTenantConfig,
         Map<String, dynamic>>(soleTenantConfigs, (value) => value.toMap());
     map['spot'] = spot;
     map['storagePools'] = storagePools;
     map['tags'] = tags;
-    map['taints'] = Input.encodeList<GetClusterNodePoolNodeConfigTaint,
+    map['taints'] = pulumi.Input.encodeList<GetClusterNodePoolNodeConfigTaint,
         Map<String, dynamic>>(taints, (value) => value.toMap());
-    map['windowsNodeConfigs'] = Input.encodeList<
+    map['windowsNodeConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigWindowsNodeConfig,
         Map<String, dynamic>>(windowsNodeConfigs, (value) => value.toMap());
-    map['workloadMetadataConfigs'] = Input.encodeList<
+    map['workloadMetadataConfigs'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigWorkloadMetadataConfig,
             Map<String, dynamic>>(
         workloadMetadataConfigs, (value) => value.toMap());
@@ -324,88 +325,87 @@ class GetClusterNodePoolNodeConfig {
 
   factory GetClusterNodePoolNodeConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfig(
-      advancedMachineFeatures:
-          Input.decodeList<GetClusterNodePoolNodeConfigAdvancedMachineFeature>(
-              map['advancedMachineFeatures'],
-              (value) =>
-                  GetClusterNodePoolNodeConfigAdvancedMachineFeature.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      advancedMachineFeatures: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigAdvancedMachineFeature>(
+          map['advancedMachineFeatures'],
+          (value) => GetClusterNodePoolNodeConfigAdvancedMachineFeature.fromMap(
+              (value as Map).cast<String, dynamic>())),
       bootDiskKmsKey: map['bootDiskKmsKey'] as String,
-      bootDisks: Input.decodeList<GetClusterNodePoolNodeConfigBootDisk>(
+      bootDisks: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigBootDisk>(
           map['bootDisks'],
           (value) => GetClusterNodePoolNodeConfigBootDisk.fromMap(
               (value as Map).cast<String, dynamic>())),
       confidentialNodes:
-          Input.decodeList<GetClusterNodePoolNodeConfigConfidentialNode>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigConfidentialNode>(
               map['confidentialNodes'],
               (value) => GetClusterNodePoolNodeConfigConfidentialNode.fromMap(
                   (value as Map).cast<String, dynamic>())),
       containerdConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfig>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfig>(
               map['containerdConfigs'],
               (value) => GetClusterNodePoolNodeConfigContainerdConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       diskSizeGb: map['diskSizeGb'] as int,
       diskType: map['diskType'] as String,
       effectiveTaints:
-          Input.decodeList<GetClusterNodePoolNodeConfigEffectiveTaint>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigEffectiveTaint>(
               map['effectiveTaints'],
               (value) => GetClusterNodePoolNodeConfigEffectiveTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       enableConfidentialStorage: map['enableConfidentialStorage'] as bool,
-      ephemeralStorageConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigEphemeralStorageConfig>(
-              map['ephemeralStorageConfigs'],
-              (value) =>
-                  GetClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      ephemeralStorageLocalSsdConfigs: Input.decodeList<
+      ephemeralStorageConfigs: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigEphemeralStorageConfig>(
+          map['ephemeralStorageConfigs'],
+          (value) => GetClusterNodePoolNodeConfigEphemeralStorageConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      ephemeralStorageLocalSsdConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig>(
           map['ephemeralStorageLocalSsdConfigs'],
           (value) => GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig
               .fromMap((value as Map).cast<String, dynamic>())),
-      fastSockets: Input.decodeList<GetClusterNodePoolNodeConfigFastSocket>(
-          map['fastSockets'],
-          (value) => GetClusterNodePoolNodeConfigFastSocket.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fastSockets:
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigFastSocket>(
+              map['fastSockets'],
+              (value) => GetClusterNodePoolNodeConfigFastSocket.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       flexStart: map['flexStart'] as bool,
-      gcfsConfigs: Input.decodeList<GetClusterNodePoolNodeConfigGcfsConfig>(
-          map['gcfsConfigs'],
-          (value) => GetClusterNodePoolNodeConfigGcfsConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      gcfsConfigs:
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGcfsConfig>(
+              map['gcfsConfigs'],
+              (value) => GetClusterNodePoolNodeConfigGcfsConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       guestAccelerators:
-          Input.decodeList<GetClusterNodePoolNodeConfigGuestAccelerator>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGuestAccelerator>(
               map['guestAccelerators'],
               (value) => GetClusterNodePoolNodeConfigGuestAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      gvnics: Input.decodeList<GetClusterNodePoolNodeConfigGvnic>(
+      gvnics: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGvnic>(
           map['gvnics'],
           (value) => GetClusterNodePoolNodeConfigGvnic.fromMap(
               (value as Map).cast<String, dynamic>())),
-      hostMaintenancePolicies:
-          Input.decodeList<GetClusterNodePoolNodeConfigHostMaintenancePolicy>(
-              map['hostMaintenancePolicies'],
-              (value) =>
-                  GetClusterNodePoolNodeConfigHostMaintenancePolicy.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      hostMaintenancePolicies: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigHostMaintenancePolicy>(
+          map['hostMaintenancePolicies'],
+          (value) => GetClusterNodePoolNodeConfigHostMaintenancePolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       imageType: map['imageType'] as String,
       kubeletConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigKubeletConfig>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigKubeletConfig>(
               map['kubeletConfigs'],
               (value) => GetClusterNodePoolNodeConfigKubeletConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       linuxNodeConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigLinuxNodeConfig>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigLinuxNodeConfig>(
               map['linuxNodeConfigs'],
               (value) => GetClusterNodePoolNodeConfigLinuxNodeConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      localNvmeSsdBlockConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig>(
-              map['localNvmeSsdBlockConfigs'],
-              (value) =>
-                  GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      localNvmeSsdBlockConfigs: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig>(
+          map['localNvmeSsdBlockConfigs'],
+          (value) =>
+              GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       localSsdCount: map['localSsdCount'] as int,
       localSsdEncryptionMode: map['localSsdEncryptionMode'] as String,
       loggingVariant: map['loggingVariant'] as String,
@@ -416,55 +416,52 @@ class GetClusterNodePoolNodeConfig {
       nodeGroup: map['nodeGroup'] as String,
       oauthScopes: (map['oauthScopes'] as List).cast<String>(),
       preemptible: map['preemptible'] as bool,
-      reservationAffinities:
-          Input.decodeList<GetClusterNodePoolNodeConfigReservationAffinity>(
-              map['reservationAffinities'],
-              (value) =>
-                  GetClusterNodePoolNodeConfigReservationAffinity.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      reservationAffinities: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigReservationAffinity>(
+          map['reservationAffinities'],
+          (value) => GetClusterNodePoolNodeConfigReservationAffinity.fromMap(
+              (value as Map).cast<String, dynamic>())),
       resourceLabels: (map['resourceLabels'] as Map).cast<String, String>(),
       resourceManagerTags:
           (map['resourceManagerTags'] as Map).cast<String, String>(),
       sandboxConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigSandboxConfig>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigSandboxConfig>(
               map['sandboxConfigs'],
               (value) => GetClusterNodePoolNodeConfigSandboxConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      secondaryBootDisks:
-          Input.decodeList<GetClusterNodePoolNodeConfigSecondaryBootDisk>(
-              map['secondaryBootDisks'],
-              (value) => GetClusterNodePoolNodeConfigSecondaryBootDisk.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      secondaryBootDisks: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigSecondaryBootDisk>(
+          map['secondaryBootDisks'],
+          (value) => GetClusterNodePoolNodeConfigSecondaryBootDisk.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serviceAccount: map['serviceAccount'] as String,
-      shieldedInstanceConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigShieldedInstanceConfig>(
-              map['shieldedInstanceConfigs'],
-              (value) =>
-                  GetClusterNodePoolNodeConfigShieldedInstanceConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      shieldedInstanceConfigs: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigShieldedInstanceConfig>(
+          map['shieldedInstanceConfigs'],
+          (value) => GetClusterNodePoolNodeConfigShieldedInstanceConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       soleTenantConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigSoleTenantConfig>(
+          pulumi.Input.decodeList<GetClusterNodePoolNodeConfigSoleTenantConfig>(
               map['soleTenantConfigs'],
               (value) => GetClusterNodePoolNodeConfigSoleTenantConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       spot: map['spot'] as bool,
       storagePools: (map['storagePools'] as List).cast<String>(),
       tags: (map['tags'] as List).cast<String>(),
-      taints: Input.decodeList<GetClusterNodePoolNodeConfigTaint>(
+      taints: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigTaint>(
           map['taints'],
           (value) => GetClusterNodePoolNodeConfigTaint.fromMap(
               (value as Map).cast<String, dynamic>())),
-      windowsNodeConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigWindowsNodeConfig>(
-              map['windowsNodeConfigs'],
-              (value) => GetClusterNodePoolNodeConfigWindowsNodeConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      workloadMetadataConfigs:
-          Input.decodeList<GetClusterNodePoolNodeConfigWorkloadMetadataConfig>(
-              map['workloadMetadataConfigs'],
-              (value) =>
-                  GetClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      windowsNodeConfigs: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigWindowsNodeConfig>(
+          map['windowsNodeConfigs'],
+          (value) => GetClusterNodePoolNodeConfigWindowsNodeConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      workloadMetadataConfigs: pulumi.Input.decodeList<
+              GetClusterNodePoolNodeConfigWorkloadMetadataConfig>(
+          map['workloadMetadataConfigs'],
+          (value) => GetClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

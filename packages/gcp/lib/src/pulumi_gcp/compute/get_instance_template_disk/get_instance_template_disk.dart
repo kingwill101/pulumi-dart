@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_template_disk_disk_encryption_key/get_instance_template_disk_disk_encryption_key.dart';
 import '../get_instance_template_disk_source_image_encryption_key/get_instance_template_disk_source_image_encryption_key.dart';
 import '../get_instance_template_disk_source_snapshot_encryption_key/get_instance_template_disk_source_snapshot_encryption_key.dart';
@@ -139,7 +139,7 @@ class GetInstanceTemplateDisk {
     map['autoDelete'] = autoDelete;
     map['boot'] = boot;
     map['deviceName'] = deviceName;
-    map['diskEncryptionKeys'] = Input.encodeList<
+    map['diskEncryptionKeys'] = pulumi.Input.encodeList<
         GetInstanceTemplateDiskDiskEncryptionKey,
         Map<String, dynamic>>(diskEncryptionKeys, (value) => value.toMap());
     map['diskName'] = diskName;
@@ -155,12 +155,12 @@ class GetInstanceTemplateDisk {
     map['resourcePolicies'] = resourcePolicies;
     map['source'] = source;
     map['sourceImage'] = sourceImage;
-    map['sourceImageEncryptionKeys'] = Input.encodeList<
+    map['sourceImageEncryptionKeys'] = pulumi.Input.encodeList<
             GetInstanceTemplateDiskSourceImageEncryptionKey,
             Map<String, dynamic>>(
         sourceImageEncryptionKeys, (value) => value.toMap());
     map['sourceSnapshot'] = sourceSnapshot;
-    map['sourceSnapshotEncryptionKeys'] = Input.encodeList<
+    map['sourceSnapshotEncryptionKeys'] = pulumi.Input.encodeList<
             GetInstanceTemplateDiskSourceSnapshotEncryptionKey,
             Map<String, dynamic>>(
         sourceSnapshotEncryptionKeys, (value) => value.toMap());
@@ -175,7 +175,7 @@ class GetInstanceTemplateDisk {
       boot: map['boot'] as bool,
       deviceName: map['deviceName'] as String,
       diskEncryptionKeys:
-          Input.decodeList<GetInstanceTemplateDiskDiskEncryptionKey>(
+          pulumi.Input.decodeList<GetInstanceTemplateDiskDiskEncryptionKey>(
               map['diskEncryptionKeys'],
               (value) => GetInstanceTemplateDiskDiskEncryptionKey.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -193,19 +193,17 @@ class GetInstanceTemplateDisk {
       resourcePolicies: (map['resourcePolicies'] as List).cast<String>(),
       source: map['source'] as String,
       sourceImage: map['sourceImage'] as String,
-      sourceImageEncryptionKeys:
-          Input.decodeList<GetInstanceTemplateDiskSourceImageEncryptionKey>(
-              map['sourceImageEncryptionKeys'],
-              (value) =>
-                  GetInstanceTemplateDiskSourceImageEncryptionKey.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      sourceImageEncryptionKeys: pulumi.Input.decodeList<
+              GetInstanceTemplateDiskSourceImageEncryptionKey>(
+          map['sourceImageEncryptionKeys'],
+          (value) => GetInstanceTemplateDiskSourceImageEncryptionKey.fromMap(
+              (value as Map).cast<String, dynamic>())),
       sourceSnapshot: map['sourceSnapshot'] as String,
-      sourceSnapshotEncryptionKeys:
-          Input.decodeList<GetInstanceTemplateDiskSourceSnapshotEncryptionKey>(
-              map['sourceSnapshotEncryptionKeys'],
-              (value) =>
-                  GetInstanceTemplateDiskSourceSnapshotEncryptionKey.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      sourceSnapshotEncryptionKeys: pulumi.Input.decodeList<
+              GetInstanceTemplateDiskSourceSnapshotEncryptionKey>(
+          map['sourceSnapshotEncryptionKeys'],
+          (value) => GetInstanceTemplateDiskSourceSnapshotEncryptionKey.fromMap(
+              (value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

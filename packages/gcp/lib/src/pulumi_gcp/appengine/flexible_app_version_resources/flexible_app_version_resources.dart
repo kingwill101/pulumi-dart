@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../flexible_app_version_resources_volume/flexible_app_version_resources_volume.dart';
 
 class FlexibleAppVersionResources {
@@ -40,7 +40,8 @@ class FlexibleAppVersionResources {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] = Input.encodeList<FlexibleAppVersionResourcesVolume,
+      map['volumes'] = pulumi.Input.encodeList<
+          FlexibleAppVersionResourcesVolume,
           Map<String, dynamic>>(volumesValue, (value) => value.toMap());
     }
     return map;
@@ -53,7 +54,7 @@ class FlexibleAppVersionResources {
       memoryGb: map['memoryGb'] == null ? null : map['memoryGb'] as double,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<FlexibleAppVersionResourcesVolume>(
+          : pulumi.Input.decodeList<FlexibleAppVersionResourcesVolume>(
               map['volumes'],
               (value) => FlexibleAppVersionResourcesVolume.fromMap(
                   (value as Map).cast<String, dynamic>())),

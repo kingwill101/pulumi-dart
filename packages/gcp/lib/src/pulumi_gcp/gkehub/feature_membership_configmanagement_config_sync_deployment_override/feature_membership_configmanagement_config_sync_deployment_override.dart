@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_membership_configmanagement_config_sync_deployment_override_container/feature_membership_configmanagement_config_sync_deployment_override_container.dart';
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
@@ -25,7 +25,7 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
     final map = <String, dynamic>{};
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] = Input.encodeList<
+      map['containers'] = pulumi.Input.encodeList<
           FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer,
           Map<String, dynamic>>(containersValue, (value) => value.toMap());
     }
@@ -45,7 +45,7 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
     return FeatureMembershipConfigmanagementConfigSyncDeploymentOverride(
       containers: map['containers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>(
               map['containers'],
               (value) =>

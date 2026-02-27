@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_quality_rules_rule/get_data_quality_rules_rule.dart';
 
 /// Result data returned by getDataQualityRules.
@@ -36,7 +36,7 @@ class GetDataQualityRulesResult {
       map['project'] = projectValue;
     }
     map['rules'] =
-        Input.encodeList<GetDataQualityRulesRule, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDataQualityRulesRule, Map<String, dynamic>>(
             rules, (value) => value.toMap());
     return map;
   }
@@ -47,7 +47,7 @@ class GetDataQualityRulesResult {
       id: map['id'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      rules: Input.decodeList<GetDataQualityRulesRule>(
+      rules: pulumi.Input.decodeList<GetDataQualityRulesRule>(
           map['rules'],
           (value) => GetDataQualityRulesRule.fromMap(
               (value as Map).cast<String, dynamic>())),

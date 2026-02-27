@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_user_workloads_config_map_args.dart';
 import 'get_user_workloads_config_map_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_user_workloads_config_map_result.dart';
 /// * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
 Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
   GetUserWorkloadsConfigMapArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserWorkloadsConfigMapResult.fromMap(result);
 }

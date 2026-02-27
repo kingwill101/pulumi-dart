@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_authority_subordinate_config_pem_issuer_chain/get_authority_subordinate_config_pem_issuer_chain.dart';
 
 class GetAuthoritySubordinateConfig {
@@ -22,7 +22,7 @@ class GetAuthoritySubordinateConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['certificateAuthority'] = certificateAuthority;
-    map['pemIssuerChains'] = Input.encodeList<
+    map['pemIssuerChains'] = pulumi.Input.encodeList<
         GetAuthoritySubordinateConfigPemIssuerChain,
         Map<String, dynamic>>(pemIssuerChains, (value) => value.toMap());
     return map;
@@ -32,7 +32,7 @@ class GetAuthoritySubordinateConfig {
     return GetAuthoritySubordinateConfig(
       certificateAuthority: map['certificateAuthority'] as String,
       pemIssuerChains:
-          Input.decodeList<GetAuthoritySubordinateConfigPemIssuerChain>(
+          pulumi.Input.decodeList<GetAuthoritySubordinateConfigPemIssuerChain>(
               map['pemIssuerChains'],
               (value) => GetAuthoritySubordinateConfigPemIssuerChain.fromMap(
                   (value as Map).cast<String, dynamic>())),

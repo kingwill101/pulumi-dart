@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_plan_restore_config_transformation_rule_resource_filter_group_kind/restore_plan_restore_config_transformation_rule_resource_filter_group_kind.dart';
 
 class RestorePlanRestoreConfigTransformationRuleResourceFilter {
@@ -38,7 +38,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilter {
     final map = <String, dynamic>{};
     final groupKindsValue = groupKinds;
     if (groupKindsValue != null) {
-      map['groupKinds'] = Input.encodeList<
+      map['groupKinds'] = pulumi.Input.encodeList<
           RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind,
           Map<String, dynamic>>(groupKindsValue, (value) => value.toMap());
     }
@@ -58,7 +58,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilter {
     return RestorePlanRestoreConfigTransformationRuleResourceFilter(
       groupKinds: map['groupKinds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind>(
               map['groupKinds'],
               (value) =>

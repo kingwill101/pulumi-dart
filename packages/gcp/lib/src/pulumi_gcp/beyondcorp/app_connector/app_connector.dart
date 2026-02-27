@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_connector_principal_info/app_connector_principal_info.dart';
 import 'app_connector_args.dart';
 
@@ -54,49 +54,49 @@ import 'app_connector_args.dart';
 /// ```sh
 /// $ pulumi import gcp:beyondcorp/appConnector:AppConnector default {{name}}
 /// ```
-class AppConnector extends CustomResource {
+class AppConnector extends pulumi.CustomResource {
   /// An arbitrary user-provided name for the AppConnector.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// ID of the AppConnector.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Principal information about the Identity of the AppConnector.
   /// Structure is documented below.
-  late final Output<AppConnectorPrincipalInfo> principalInfo;
+  late final pulumi.Output<AppConnectorPrincipalInfo> principalInfo;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The region of the AppConnector.
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// Represents the different states of a AppConnector.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   AppConnector(
     String name, {
     AppConnectorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:beyondcorp/appConnector:AppConnector',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String?>('displayName');
     this.effectiveLabels =

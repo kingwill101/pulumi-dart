@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_continuous_backup_config_encryption_config/get_cluster_continuous_backup_config_encryption_config.dart';
 
 class GetClusterContinuousBackupConfig {
@@ -25,7 +25,7 @@ class GetClusterContinuousBackupConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabled'] = enabled;
-    map['encryptionConfigs'] = Input.encodeList<
+    map['encryptionConfigs'] = pulumi.Input.encodeList<
         GetClusterContinuousBackupConfigEncryptionConfig,
         Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
     map['recoveryWindowDays'] = recoveryWindowDays;
@@ -35,12 +35,11 @@ class GetClusterContinuousBackupConfig {
   factory GetClusterContinuousBackupConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterContinuousBackupConfig(
       enabled: map['enabled'] as bool,
-      encryptionConfigs:
-          Input.decodeList<GetClusterContinuousBackupConfigEncryptionConfig>(
-              map['encryptionConfigs'],
-              (value) =>
-                  GetClusterContinuousBackupConfigEncryptionConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      encryptionConfigs: pulumi.Input.decodeList<
+              GetClusterContinuousBackupConfigEncryptionConfig>(
+          map['encryptionConfigs'],
+          (value) => GetClusterContinuousBackupConfigEncryptionConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       recoveryWindowDays: map['recoveryWindowDays'] as int,
     );
   }

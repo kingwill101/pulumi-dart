@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Account.
 class AccountArgs {
@@ -8,26 +8,26 @@ class AccountArgs {
   /// account email address and a stable unique id. It is unique within a project,
   /// must be 6-30 characters long, and match the regular expression `a-z`
   /// to comply with RFC1035. Changing this forces a new service account to be created.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// If set to true, skip service account creation if a service account with the same email already exists.
-  final Input<bool>? createIgnoreAlreadyExists;
+  final pulumi.Input<bool>? createIgnoreAlreadyExists;
 
   /// A text description of the service account.
   /// Must be less than or equal to 256 UTF-8 bytes.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
   /// Must be set after creation to disable a service account.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// The display name for the service account.
   /// Can be updated without creating a new resource.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The ID of the project that the service account will be created in.
   /// Defaults to the provider project configuration.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   AccountArgs({
     this.accountId,
@@ -69,13 +69,13 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
       createIgnoreAlreadyExists:
-          Input.asOptionalInput<bool>(map['createIgnoreAlreadyExists']),
-      description: Input.asOptionalInput<String>(map['description']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<bool>(map['createIgnoreAlreadyExists']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

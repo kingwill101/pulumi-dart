@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scope_rbac_role_binding_role/scope_rbac_role_binding_role.dart';
 import '../scope_rbac_role_binding_state/scope_rbac_role_binding_state.dart';
 import 'scope_rbac_role_binding_args.dart';
@@ -46,73 +46,73 @@ import 'scope_rbac_role_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default {{scope_id}}/{{scope_rbac_role_binding_id}}
 /// ```
-class ScopeRbacRoleBinding extends CustomResource {
+class ScopeRbacRoleBinding extends pulumi.CustomResource {
   /// Time the RBAC Role Binding was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time the RBAC Role Binding was deleted in UTC.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// group is the group, as seen by the kubernetes cluster.
-  late final Output<String?> group;
+  late final pulumi.Output<String?> group;
 
   /// Labels for this ScopeRBACRoleBinding.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The resource name for the RBAC Role Binding
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Role to bind to the principal.
   /// Structure is documented below.
-  late final Output<ScopeRbacRoleBindingRole> role;
+  late final pulumi.Output<ScopeRbacRoleBindingRole> role;
 
   /// Id of the scope
-  late final Output<String> scopeId;
+  late final pulumi.Output<String> scopeId;
 
   /// The client-provided identifier of the RBAC Role Binding.
-  late final Output<String> scopeRbacRoleBindingId;
+  late final pulumi.Output<String> scopeRbacRoleBindingId;
 
   /// State of the RBAC Role Binding resource.
   /// Structure is documented below.
-  late final Output<List<ScopeRbacRoleBindingState>> states;
+  late final pulumi.Output<List<ScopeRbacRoleBindingState>> states;
 
   /// Google-generated UUID for this resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time the RBAC Role Binding was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Principal that is be authorized in the cluster (at least of one the oneof
   /// is required). Updating one will unset the other automatically.
   /// user is the name of the user as seen by the kubernetes cluster, example
   /// "alice" or "alice@domain.tld"
-  late final Output<String?> user;
+  late final pulumi.Output<String?> user;
 
   ScopeRbacRoleBinding(
     String name, {
     ScopeRbacRoleBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_cross_instance_replication_config_membership/instance_cross_instance_replication_config_membership.dart';
 import '../instance_cross_instance_replication_config_primary_instance/instance_cross_instance_replication_config_primary_instance.dart';
 import '../instance_cross_instance_replication_config_secondary_instance/instance_cross_instance_replication_config_secondary_instance.dart';
@@ -48,7 +48,7 @@ class InstanceCrossInstanceReplicationConfig {
     }
     final membershipsValue = memberships;
     if (membershipsValue != null) {
-      map['memberships'] = Input.encodeList<
+      map['memberships'] = pulumi.Input.encodeList<
           InstanceCrossInstanceReplicationConfigMembership,
           Map<String, dynamic>>(membershipsValue, (value) => value.toMap());
     }
@@ -58,7 +58,7 @@ class InstanceCrossInstanceReplicationConfig {
     }
     final secondaryInstancesValue = secondaryInstances;
     if (secondaryInstancesValue != null) {
-      map['secondaryInstances'] = Input.encodeList<
+      map['secondaryInstances'] = pulumi.Input.encodeList<
               InstanceCrossInstanceReplicationConfigSecondaryInstance,
               Map<String, dynamic>>(
           secondaryInstancesValue, (value) => value.toMap());
@@ -77,7 +77,8 @@ class InstanceCrossInstanceReplicationConfig {
           map['instanceRole'] == null ? null : map['instanceRole'] as String,
       memberships: map['memberships'] == null
           ? null
-          : Input.decodeList<InstanceCrossInstanceReplicationConfigMembership>(
+          : pulumi.Input.decodeList<
+                  InstanceCrossInstanceReplicationConfigMembership>(
               map['memberships'],
               (value) =>
                   InstanceCrossInstanceReplicationConfigMembership.fromMap(
@@ -88,7 +89,7 @@ class InstanceCrossInstanceReplicationConfig {
               (map['primaryInstance'] as Map).cast<String, dynamic>()),
       secondaryInstances: map['secondaryInstances'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InstanceCrossInstanceReplicationConfigSecondaryInstance>(
               map['secondaryInstances'],
               (value) => InstanceCrossInstanceReplicationConfigSecondaryInstance

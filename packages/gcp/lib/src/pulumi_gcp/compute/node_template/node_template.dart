@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_template_accelerator/node_template_accelerator.dart';
 import '../node_template_disk/node_template_disk.dart';
 import '../node_template_node_type_flexibility/node_template_node_type_flexibility.dart';
@@ -64,71 +64,72 @@ import 'node_template_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
 /// ```
-class NodeTemplate extends CustomResource {
+class NodeTemplate extends pulumi.CustomResource {
   /// List of the type and count of accelerator cards attached to the
   /// node template
   /// Structure is documented below.
-  late final Output<List<NodeTemplateAccelerator>?> accelerators;
+  late final pulumi.Output<List<NodeTemplateAccelerator>?> accelerators;
 
   /// CPU overcommit.
   /// Default value is `NONE`.
   /// Possible values are: `ENABLED`, `NONE`.
-  late final Output<String?> cpuOvercommitType;
+  late final pulumi.Output<String?> cpuOvercommitType;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional textual description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// List of the type, size and count of disks attached to the
   /// node template
   /// Structure is documented below.
-  late final Output<List<NodeTemplateDisk>?> disks;
+  late final pulumi.Output<List<NodeTemplateDisk>?> disks;
 
   /// Name of the resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Labels to use for node affinity, which will be used in
   /// instance scheduling.
-  late final Output<Map<String, String>?> nodeAffinityLabels;
+  late final pulumi.Output<Map<String, String>?> nodeAffinityLabels;
 
   /// Node type to use for nodes group that are created from this template.
   /// Only one of nodeTypeFlexibility and nodeType can be specified.
-  late final Output<String?> nodeType;
+  late final pulumi.Output<String?> nodeType;
 
   /// Flexible properties for the desired node type. Node groups that
   /// use this node template will create nodes of a type that matches
   /// these properties. Only one of nodeTypeFlexibility and nodeType can
   /// be specified.
   /// Structure is documented below.
-  late final Output<NodeTemplateNodeTypeFlexibility?> nodeTypeFlexibility;
+  late final pulumi.Output<NodeTemplateNodeTypeFlexibility?>
+      nodeTypeFlexibility;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where nodes using the node template will be created.
   /// If it is not provided, the provider region is used.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The server binding policy for nodes using this template. Determines
   /// where the nodes should restart following a maintenance event.
   /// Structure is documented below.
-  late final Output<NodeTemplateServerBinding> serverBinding;
+  late final pulumi.Output<NodeTemplateServerBinding> serverBinding;
 
   NodeTemplate(
     String name, {
     NodeTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/nodeTemplate:NodeTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accelerators =
         registerOutput<List<NodeTemplateAccelerator>?>('accelerators');

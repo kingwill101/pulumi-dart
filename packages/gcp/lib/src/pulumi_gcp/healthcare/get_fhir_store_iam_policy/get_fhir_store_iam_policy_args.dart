@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFhirStoreIamPolicy.
 class GetFhirStoreIamPolicyArgs {
@@ -8,7 +8,7 @@ class GetFhirStoreIamPolicyArgs {
   /// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
   /// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
-  final Input<String> fhirStoreId;
+  final pulumi.Input<String> fhirStoreId;
 
   GetFhirStoreIamPolicyArgs({
     required this.fhirStoreId,
@@ -22,7 +22,7 @@ class GetFhirStoreIamPolicyArgs {
 
   factory GetFhirStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirStoreIamPolicyArgs(
-      fhirStoreId: Input.asInput<String>(map['fhirStoreId']),
+      fhirStoreId: pulumi.Input.asInput<String>(map['fhirStoreId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_state_info_update_info/instance_state_info_update_info.dart';
 
 class InstanceStateInfo {
@@ -17,9 +17,8 @@ class InstanceStateInfo {
     final map = <String, dynamic>{};
     final updateInfosValue = updateInfos;
     if (updateInfosValue != null) {
-      map['updateInfos'] =
-          Input.encodeList<InstanceStateInfoUpdateInfo, Map<String, dynamic>>(
-              updateInfosValue, (value) => value.toMap());
+      map['updateInfos'] = pulumi.Input.encodeList<InstanceStateInfoUpdateInfo,
+          Map<String, dynamic>>(updateInfosValue, (value) => value.toMap());
     }
     return map;
   }
@@ -28,7 +27,7 @@ class InstanceStateInfo {
     return InstanceStateInfo(
       updateInfos: map['updateInfos'] == null
           ? null
-          : Input.decodeList<InstanceStateInfoUpdateInfo>(
+          : pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(
               map['updateInfos'],
               (value) => InstanceStateInfoUpdateInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),

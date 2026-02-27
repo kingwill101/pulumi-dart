@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ekm_connection_service_resolver_server_certificate/ekm_connection_service_resolver_server_certificate.dart';
 
 class EkmConnectionServiceResolver {
@@ -31,7 +31,7 @@ class EkmConnectionServiceResolver {
       map['endpointFilter'] = endpointFilterValue;
     }
     map['hostname'] = hostname;
-    map['serverCertificates'] = Input.encodeList<
+    map['serverCertificates'] = pulumi.Input.encodeList<
         EkmConnectionServiceResolverServerCertificate,
         Map<String, dynamic>>(serverCertificates, (value) => value.toMap());
     map['serviceDirectoryService'] = serviceDirectoryService;
@@ -44,11 +44,11 @@ class EkmConnectionServiceResolver {
           ? null
           : map['endpointFilter'] as String,
       hostname: map['hostname'] as String,
-      serverCertificates:
-          Input.decodeList<EkmConnectionServiceResolverServerCertificate>(
-              map['serverCertificates'],
-              (value) => EkmConnectionServiceResolverServerCertificate.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      serverCertificates: pulumi.Input.decodeList<
+              EkmConnectionServiceResolverServerCertificate>(
+          map['serverCertificates'],
+          (value) => EkmConnectionServiceResolverServerCertificate.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serviceDirectoryService: map['serviceDirectoryService'] as String,
     );
   }

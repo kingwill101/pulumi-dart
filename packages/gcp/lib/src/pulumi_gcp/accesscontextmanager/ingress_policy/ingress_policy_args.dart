@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IngressPolicy.
 class IngressPolicyArgs {
   /// The name of the Service Perimeter to add this resource to.
-  final Input<String> ingressPolicyName;
+  final pulumi.Input<String> ingressPolicyName;
 
   /// A GCP resource that is inside of the service perimeter.
-  final Input<String> resource;
+  final pulumi.Input<String> resource;
 
   IngressPolicyArgs({
     required this.ingressPolicyName,
@@ -24,8 +24,8 @@ class IngressPolicyArgs {
 
   factory IngressPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IngressPolicyArgs(
-      ingressPolicyName: Input.asInput<String>(map['ingressPolicyName']),
-      resource: Input.asInput<String>(map['resource']),
+      ingressPolicyName: pulumi.Input.asInput<String>(map['ingressPolicyName']),
+      resource: pulumi.Input.asInput<String>(map['resource']),
     );
   }
 }

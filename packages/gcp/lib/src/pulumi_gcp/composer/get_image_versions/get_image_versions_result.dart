@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_versions_image_version/get_image_versions_image_version.dart';
 
 /// Result data returned by getImageVersions.
@@ -23,9 +23,8 @@ class GetImageVersionsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['imageVersions'] =
-        Input.encodeList<GetImageVersionsImageVersion, Map<String, dynamic>>(
-            imageVersions, (value) => value.toMap());
+    map['imageVersions'] = pulumi.Input.encodeList<GetImageVersionsImageVersion,
+        Map<String, dynamic>>(imageVersions, (value) => value.toMap());
     map['project'] = project;
     map['region'] = region;
     return map;
@@ -34,7 +33,7 @@ class GetImageVersionsResult {
   factory GetImageVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetImageVersionsResult(
       id: map['id'] as String,
-      imageVersions: Input.decodeList<GetImageVersionsImageVersion>(
+      imageVersions: pulumi.Input.decodeList<GetImageVersionsImageVersion>(
           map['imageVersions'],
           (value) => GetImageVersionsImageVersion.fromMap(
               (value as Map).cast<String, dynamic>())),

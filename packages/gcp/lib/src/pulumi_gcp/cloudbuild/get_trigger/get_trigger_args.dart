@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTrigger.
 class GetTriggerArgs {
   /// The Cloud Build location for the trigger.
   ///
   /// - - -
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The unique identifier for the trigger..
-  final Input<String> triggerId;
+  final pulumi.Input<String> triggerId;
 
   GetTriggerArgs({
     required this.location,
@@ -34,9 +34,9 @@ class GetTriggerArgs {
 
   factory GetTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      triggerId: Input.asInput<String>(map['triggerId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      triggerId: pulumi.Input.asInput<String>(map['triggerId']),
     );
   }
 }

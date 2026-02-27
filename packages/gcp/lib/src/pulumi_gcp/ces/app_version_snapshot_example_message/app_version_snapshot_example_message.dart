@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_example_message_chunk/app_version_snapshot_example_message_chunk.dart';
 
 class AppVersionSnapshotExampleMessage {
@@ -22,7 +22,8 @@ class AppVersionSnapshotExampleMessage {
     final map = <String, dynamic>{};
     final chunksValue = chunks;
     if (chunksValue != null) {
-      map['chunks'] = Input.encodeList<AppVersionSnapshotExampleMessageChunk,
+      map['chunks'] = pulumi.Input.encodeList<
+          AppVersionSnapshotExampleMessageChunk,
           Map<String, dynamic>>(chunksValue, (value) => value.toMap());
     }
     final roleValue = role;
@@ -36,7 +37,7 @@ class AppVersionSnapshotExampleMessage {
     return AppVersionSnapshotExampleMessage(
       chunks: map['chunks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotExampleMessageChunk>(
+          : pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunk>(
               map['chunks'],
               (value) => AppVersionSnapshotExampleMessageChunk.fromMap(
                   (value as Map).cast<String, dynamic>())),

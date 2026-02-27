@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_network_endpoint_args.dart';
 
 /// A Global Network endpoint represents a IP address and port combination that exists outside of GCP.
@@ -42,33 +42,33 @@ import 'global_network_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
 /// ```
-class GlobalNetworkEndpoint extends CustomResource {
+class GlobalNetworkEndpoint extends pulumi.CustomResource {
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
-  late final Output<String?> fqdn;
+  late final pulumi.Output<String?> fqdn;
 
   /// The global network endpoint group this endpoint is part of.
-  late final Output<String> globalNetworkEndpointGroup;
+  late final pulumi.Output<String> globalNetworkEndpointGroup;
 
   /// IPv4 address external endpoint.
-  late final Output<String?> ipAddress;
+  late final pulumi.Output<String?> ipAddress;
 
   /// Port number of the external endpoint.
-  late final Output<int> port;
+  late final pulumi.Output<int> port;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   GlobalNetworkEndpoint(
     String name, {
     GlobalNetworkEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.fqdn = registerOutput<String?>('fqdn');
     this.globalNetworkEndpointGroup =

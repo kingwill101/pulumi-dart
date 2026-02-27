@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_backend_service_backend_custom_metric/get_region_backend_service_backend_custom_metric.dart';
 
 class GetRegionBackendServiceBackend {
@@ -155,7 +155,7 @@ class GetRegionBackendServiceBackend {
     final map = <String, dynamic>{};
     map['balancingMode'] = balancingMode;
     map['capacityScaler'] = capacityScaler;
-    map['customMetrics'] = Input.encodeList<
+    map['customMetrics'] = pulumi.Input.encodeList<
         GetRegionBackendServiceBackendCustomMetric,
         Map<String, dynamic>>(customMetrics, (value) => value.toMap());
     map['description'] = description;
@@ -180,7 +180,7 @@ class GetRegionBackendServiceBackend {
       balancingMode: map['balancingMode'] as String,
       capacityScaler: map['capacityScaler'] as double,
       customMetrics:
-          Input.decodeList<GetRegionBackendServiceBackendCustomMetric>(
+          pulumi.Input.decodeList<GetRegionBackendServiceBackendCustomMetric>(
               map['customMetrics'],
               (value) => GetRegionBackendServiceBackendCustomMetric.fromMap(
                   (value as Map).cast<String, dynamic>())),

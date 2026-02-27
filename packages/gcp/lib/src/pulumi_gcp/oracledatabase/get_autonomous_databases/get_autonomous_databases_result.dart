@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_autonomous_databases_autonomous_database/get_autonomous_databases_autonomous_database.dart';
 
 /// Result data returned by getAutonomousDatabases.
@@ -21,7 +21,7 @@ class GetAutonomousDatabasesResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autonomousDatabases'] = Input.encodeList<
+    map['autonomousDatabases'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabase,
         Map<String, dynamic>>(autonomousDatabases, (value) => value.toMap());
     map['id'] = id;
@@ -36,7 +36,7 @@ class GetAutonomousDatabasesResult {
   factory GetAutonomousDatabasesResult.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesResult(
       autonomousDatabases:
-          Input.decodeList<GetAutonomousDatabasesAutonomousDatabase>(
+          pulumi.Input.decodeList<GetAutonomousDatabasesAutonomousDatabase>(
               map['autonomousDatabases'],
               (value) => GetAutonomousDatabasesAutonomousDatabase.fromMap(
                   (value as Map).cast<String, dynamic>())),

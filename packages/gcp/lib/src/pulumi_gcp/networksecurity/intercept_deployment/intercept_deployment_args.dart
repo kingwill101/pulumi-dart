@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for InterceptDeployment.
 class InterceptDeploymentArgs {
   /// User-provided description of the deployment.
   /// Used as additional context for the deployment.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The regional forwarding rule that fronts the interceptors, for example:
   /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
   /// See https://google.aip.dev/124.
-  final Input<String> forwardingRule;
+  final pulumi.Input<String> forwardingRule;
 
   /// The deployment group that this deployment is a part of, for example:
   /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
-  final Input<String> interceptDeploymentGroup;
+  final pulumi.Input<String> interceptDeploymentGroup;
 
   /// The ID to use for the new deployment, which will become the final
   /// component of the deployment's resource name.
-  final Input<String> interceptDeploymentId;
+  final pulumi.Input<String> interceptDeploymentId;
 
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   InterceptDeploymentArgs({
     this.description,
@@ -67,15 +67,15 @@ class InterceptDeploymentArgs {
 
   factory InterceptDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      forwardingRule: Input.asInput<String>(map['forwardingRule']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      forwardingRule: pulumi.Input.asInput<String>(map['forwardingRule']),
       interceptDeploymentGroup:
-          Input.asInput<String>(map['interceptDeploymentGroup']),
+          pulumi.Input.asInput<String>(map['interceptDeploymentGroup']),
       interceptDeploymentId:
-          Input.asInput<String>(map['interceptDeploymentId']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['interceptDeploymentId']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

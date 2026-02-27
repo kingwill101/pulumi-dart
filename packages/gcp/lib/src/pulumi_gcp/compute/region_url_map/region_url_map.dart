@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_url_map_default_route_action/region_url_map_default_route_action.dart';
 import '../region_url_map_default_url_redirect/region_url_map_default_url_redirect.dart';
 import '../region_url_map_header_action/region_url_map_header_action.dart';
@@ -92,16 +92,16 @@ import 'region_url_map_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
 /// ```
-class RegionUrlMap extends CustomResource {
+class RegionUrlMap extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
   /// URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
   /// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
   /// Structure is documented below.
-  late final Output<RegionUrlMapDefaultRouteAction?> defaultRouteAction;
+  late final pulumi.Output<RegionUrlMapDefaultRouteAction?> defaultRouteAction;
 
   /// The full or partial URL of the defaultService resource to which traffic is directed if
   /// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
@@ -110,35 +110,35 @@ class RegionUrlMap extends CustomResource {
   /// weightedBackendServices. Conversely, if routeAction specifies any
   /// weightedBackendServices, service must not be specified.  Only one of defaultService,
   /// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
-  late final Output<String?> defaultService;
+  late final pulumi.Output<String?> defaultService;
 
   /// When none of the specified hostRules match, the request is redirected to a URL specified
   /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
-  late final Output<RegionUrlMapDefaultUrlRedirect?> defaultUrlRedirect;
+  late final pulumi.Output<RegionUrlMapDefaultUrlRedirect?> defaultUrlRedirect;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Fingerprint of this resource. This field is used internally during
   /// updates of this resource.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// Specifies changes to request and response headers that need to take effect for the selected backendService.
   /// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
   /// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
-  late final Output<RegionUrlMapHeaderAction?> headerAction;
+  late final pulumi.Output<RegionUrlMapHeaderAction?> headerAction;
 
   /// The list of HostRules to use against the URL.
   /// Structure is documented below.
-  late final Output<List<RegionUrlMapHostRule>?> hostRules;
+  late final pulumi.Output<List<RegionUrlMapHostRule>?> hostRules;
 
   /// The unique identifier for the resource.
-  late final Output<int> mapId;
+  late final pulumi.Output<int> mapId;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -147,37 +147,37 @@ class RegionUrlMap extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The list of named PathMatchers to use against the URL.
   /// Structure is documented below.
-  late final Output<List<RegionUrlMapPathMatcher>?> pathMatchers;
+  late final pulumi.Output<List<RegionUrlMapPathMatcher>?> pathMatchers;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Region in which the url map should reside.
   /// If it is not provided, the provider region is used.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The list of expected URL mappings. Requests to update this UrlMap will
   /// succeed only if all of the test cases pass.
   /// Structure is documented below.
-  late final Output<List<RegionUrlMapTest>?> tests;
+  late final pulumi.Output<List<RegionUrlMapTest>?> tests;
 
   RegionUrlMap(
     String name, {
     RegionUrlMapArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionUrlMap:RegionUrlMap',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.defaultRouteAction =

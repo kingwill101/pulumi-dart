@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkloadIdentityPool.
 class GetWorkloadIdentityPoolArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The id of the pool which is the
   /// final component of the resource name.
   ///
   /// - - -
-  final Input<String> workloadIdentityPoolId;
+  final pulumi.Input<String> workloadIdentityPoolId;
 
   GetWorkloadIdentityPoolArgs({
     this.project,
@@ -31,9 +31,9 @@ class GetWorkloadIdentityPoolArgs {
 
   factory GetWorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolArgs(
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       workloadIdentityPoolId:
-          Input.asInput<String>(map['workloadIdentityPoolId']),
+          pulumi.Input.asInput<String>(map['workloadIdentityPoolId']),
     );
   }
 }

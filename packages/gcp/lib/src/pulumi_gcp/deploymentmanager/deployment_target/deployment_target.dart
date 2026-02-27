@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_target_config/deployment_target_config.dart';
 import '../deployment_target_import/deployment_target_import.dart';
 
@@ -26,7 +26,7 @@ class DeploymentTarget {
     final importsValue = imports;
     if (importsValue != null) {
       map['imports'] =
-          Input.encodeList<DeploymentTargetImport, Map<String, dynamic>>(
+          pulumi.Input.encodeList<DeploymentTargetImport, Map<String, dynamic>>(
               importsValue, (value) => value.toMap());
     }
     return map;
@@ -38,7 +38,7 @@ class DeploymentTarget {
           (map['config'] as Map).cast<String, dynamic>()),
       imports: map['imports'] == null
           ? null
-          : Input.decodeList<DeploymentTargetImport>(
+          : pulumi.Input.decodeList<DeploymentTargetImport>(
               map['imports'],
               (value) => DeploymentTargetImport.fromMap(
                   (value as Map).cast<String, dynamic>())),

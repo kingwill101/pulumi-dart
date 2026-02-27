@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTagKey.
 class GetTagKeyArgs {
   /// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// The tag key's short_name.
-  final Input<String> shortName;
+  final pulumi.Input<String> shortName;
 
   GetTagKeyArgs({
     required this.parent,
@@ -24,8 +24,8 @@ class GetTagKeyArgs {
 
   factory GetTagKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagKeyArgs(
-      parent: Input.asInput<String>(map['parent']),
-      shortName: Input.asInput<String>(map['shortName']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      shortName: pulumi.Input.asInput<String>(map['shortName']),
     );
   }
 }

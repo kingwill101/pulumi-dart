@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_firewall_policy_packet_mirroring_rule_match/network_firewall_policy_packet_mirroring_rule_match.dart';
 import '../network_firewall_policy_packet_mirroring_rule_target_secure_tag/network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 import 'network_firewall_policy_packet_mirroring_rule_args.dart';
@@ -39,76 +39,76 @@ import 'network_firewall_policy_packet_mirroring_rule_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule default {{firewall_policy}}/{{priority}}
 /// ```
-class NetworkFirewallPolicyPacketMirroringRule extends CustomResource {
+class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
   /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
-  late final Output<String> action;
+  late final pulumi.Output<String> action;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description for this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The direction in which this rule applies.
   /// Possible values are: `INGRESS`, `EGRESS`.
-  late final Output<String> direction;
+  late final pulumi.Output<String> direction;
 
   /// Denotes whether the firewall policy rule is disabled.
   /// When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
   /// If this is unspecified, the firewall policy rule will be enabled.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The firewall policy of the resource.
-  late final Output<String> firewallPolicy;
+  late final pulumi.Output<String> firewallPolicy;
 
   /// Type of the resource. Always `compute#packetMirroringRule` for firewall policy packet mirroring rules
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
   /// Structure is documented below.
-  late final Output<NetworkFirewallPolicyPacketMirroringRuleMatch> match;
+  late final pulumi.Output<NetworkFirewallPolicyPacketMirroringRuleMatch> match;
 
   /// An integer indicating the priority of a rule in the list.
   /// The priority must be a positive value between 0 and 2147483647.
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
-  late final Output<int> priority;
+  late final pulumi.Output<int> priority;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// An optional name for the rule. This field is not a unique identifier and can be updated.
-  late final Output<String?> ruleName;
+  late final pulumi.Output<String?> ruleName;
 
   /// Calculation of the complexity of a single firewall policy rule.
-  late final Output<int> ruleTupleCount;
+  late final pulumi.Output<int> ruleTupleCount;
 
   /// A fully-qualified URL of a SecurityProfile resource instance.
   /// Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
   /// Must be specified if action = 'mirror' and cannot be specified for other actions.
-  late final Output<String?> securityProfileGroup;
+  late final pulumi.Output<String?> securityProfileGroup;
 
   /// A list of secure tags that controls which instances the firewall rule applies to.
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
   /// Structure is documented below.
-  late final Output<
-          List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>?>
+  late final pulumi
+      .Output<List<NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag>?>
       targetSecureTags;
 
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// Can be set only if action = 'mirror' and cannot be set for other actions.
-  late final Output<bool?> tlsInspect;
+  late final pulumi.Output<bool?> tlsInspect;
 
   NetworkFirewallPolicyPacketMirroringRule(
     String name, {
     NetworkFirewallPolicyPacketMirroringRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<String>('action');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

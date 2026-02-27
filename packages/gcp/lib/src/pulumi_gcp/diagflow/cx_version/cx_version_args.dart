@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CxVersion.
 class CxVersionArgs {
   /// The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The human-readable name of the version. Limit of 64 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The Flow to create an Version for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   CxVersionArgs({
     this.description,
@@ -36,9 +36,9 @@ class CxVersionArgs {
 
   factory CxVersionArgs.fromMap(Map<String, dynamic> map) {
     return CxVersionArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      parent: Input.asOptionalInput<String>(map['parent']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
     );
   }
 }

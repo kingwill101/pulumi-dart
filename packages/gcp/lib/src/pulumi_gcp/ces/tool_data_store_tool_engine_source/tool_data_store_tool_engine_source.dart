@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tool_data_store_tool_engine_source_data_store_source/tool_data_store_tool_engine_source_data_store_source.dart';
 
 class ToolDataStoreToolEngineSource {
@@ -31,7 +31,7 @@ class ToolDataStoreToolEngineSource {
     final map = <String, dynamic>{};
     final dataStoreSourcesValue = dataStoreSources;
     if (dataStoreSourcesValue != null) {
-      map['dataStoreSources'] = Input.encodeList<
+      map['dataStoreSources'] = pulumi.Input.encodeList<
               ToolDataStoreToolEngineSourceDataStoreSource,
               Map<String, dynamic>>(
           dataStoreSourcesValue, (value) => value.toMap());
@@ -48,7 +48,8 @@ class ToolDataStoreToolEngineSource {
     return ToolDataStoreToolEngineSource(
       dataStoreSources: map['dataStoreSources'] == null
           ? null
-          : Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSource>(
+          : pulumi.Input.decodeList<
+                  ToolDataStoreToolEngineSourceDataStoreSource>(
               map['dataStoreSources'],
               (value) => ToolDataStoreToolEngineSourceDataStoreSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

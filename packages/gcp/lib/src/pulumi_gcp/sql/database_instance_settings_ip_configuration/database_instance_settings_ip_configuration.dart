@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../database_instance_settings_ip_configuration_authorized_network/database_instance_settings_ip_configuration_authorized_network.dart';
 import '../database_instance_settings_ip_configuration_psc_config/database_instance_settings_ip_configuration_psc_config.dart';
 
@@ -61,7 +61,7 @@ class DatabaseInstanceSettingsIpConfiguration {
     }
     final authorizedNetworksValue = authorizedNetworks;
     if (authorizedNetworksValue != null) {
-      map['authorizedNetworks'] = Input.encodeList<
+      map['authorizedNetworks'] = pulumi.Input.encodeList<
               DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork,
               Map<String, dynamic>>(
           authorizedNetworksValue, (value) => value.toMap());
@@ -86,7 +86,7 @@ class DatabaseInstanceSettingsIpConfiguration {
     }
     final pscConfigsValue = pscConfigs;
     if (pscConfigsValue != null) {
-      map['pscConfigs'] = Input.encodeList<
+      map['pscConfigs'] = pulumi.Input.encodeList<
           DatabaseInstanceSettingsIpConfigurationPscConfig,
           Map<String, dynamic>>(pscConfigsValue, (value) => value.toMap());
     }
@@ -113,7 +113,7 @@ class DatabaseInstanceSettingsIpConfiguration {
           : map['allocatedIpRange'] as String,
       authorizedNetworks: map['authorizedNetworks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>(
               map['authorizedNetworks'],
               (value) =>
@@ -134,7 +134,8 @@ class DatabaseInstanceSettingsIpConfiguration {
           : map['privateNetwork'] as String,
       pscConfigs: map['pscConfigs'] == null
           ? null
-          : Input.decodeList<DatabaseInstanceSettingsIpConfigurationPscConfig>(
+          : pulumi.Input.decodeList<
+                  DatabaseInstanceSettingsIpConfigurationPscConfig>(
               map['pscConfigs'],
               (value) =>
                   DatabaseInstanceSettingsIpConfigurationPscConfig.fromMap(

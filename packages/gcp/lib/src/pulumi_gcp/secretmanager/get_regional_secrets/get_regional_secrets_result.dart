@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_regional_secrets_secret/get_regional_secrets_secret.dart';
 
 /// Result data returned by getRegionalSecrets.
@@ -37,7 +37,7 @@ class GetRegionalSecretsResult {
     map['location'] = location;
     map['project'] = project;
     map['secrets'] =
-        Input.encodeList<GetRegionalSecretsSecret, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRegionalSecretsSecret, Map<String, dynamic>>(
             secrets, (value) => value.toMap());
     return map;
   }
@@ -48,7 +48,7 @@ class GetRegionalSecretsResult {
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] as String,
-      secrets: Input.decodeList<GetRegionalSecretsSecret>(
+      secrets: pulumi.Input.decodeList<GetRegionalSecretsSecret>(
           map['secrets'],
           (value) => GetRegionalSecretsSecret.fromMap(
               (value as Map).cast<String, dynamic>())),

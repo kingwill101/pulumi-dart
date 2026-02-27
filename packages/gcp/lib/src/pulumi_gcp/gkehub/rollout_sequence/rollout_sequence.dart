@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rollout_sequence_stage/rollout_sequence_stage.dart';
 import 'rollout_sequence_args.dart';
 
@@ -33,61 +33,61 @@ import 'rollout_sequence_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/rolloutSequence:RolloutSequence default {{rollout_sequence_id}}
 /// ```
-class RolloutSequence extends CustomResource {
+class RolloutSequence extends pulumi.CustomResource {
   /// The timestamp at which the Rollout Sequence was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The timestamp at the Rollout Sequence was deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Human readable display name of the Rollout Sequence.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// etag of the Rollout Sequence.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Labels for this Rollout Sequence.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The full resource name of the RolloutSequence.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The user-provided identifier of the RolloutSequence.
-  late final Output<String> rolloutSequenceId;
+  late final pulumi.Output<String> rolloutSequenceId;
 
   /// Ordered list of stages that constitute this Rollout Sequence.
   /// Structure is documented below.
-  late final Output<List<RolloutSequenceStage>> stages;
+  late final pulumi.Output<List<RolloutSequenceStage>> stages;
 
   /// Google-generated UUID for this resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The timestamp at which the Rollout Sequence was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   RolloutSequence(
     String name, {
     RolloutSequenceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/rolloutSequence:RolloutSequence',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

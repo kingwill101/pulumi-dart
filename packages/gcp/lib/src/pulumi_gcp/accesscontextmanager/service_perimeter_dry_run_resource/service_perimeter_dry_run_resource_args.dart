@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ServicePerimeterDryRunResource.
 class ServicePerimeterDryRunResourceArgs {
   /// The name of the Service Perimeter to add this resource to.
-  final Input<String> perimeterName;
+  final pulumi.Input<String> perimeterName;
 
   /// A GCP resource that is inside of the service perimeter.
   /// Currently only projects are allowed.
   /// Format: projects/{project_number}
-  final Input<String> resource;
+  final pulumi.Input<String> resource;
 
   ServicePerimeterDryRunResourceArgs({
     required this.perimeterName,
@@ -26,8 +26,8 @@ class ServicePerimeterDryRunResourceArgs {
 
   factory ServicePerimeterDryRunResourceArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunResourceArgs(
-      perimeterName: Input.asInput<String>(map['perimeterName']),
-      resource: Input.asInput<String>(map['resource']),
+      perimeterName: pulumi.Input.asInput<String>(map['perimeterName']),
+      resource: pulumi.Input.asInput<String>(map['resource']),
     );
   }
 }

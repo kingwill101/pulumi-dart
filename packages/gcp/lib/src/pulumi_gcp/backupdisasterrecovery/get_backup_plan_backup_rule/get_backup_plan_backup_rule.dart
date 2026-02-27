@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backup_plan_backup_rule_standard_schedule/get_backup_plan_backup_rule_standard_schedule.dart';
 
 class GetBackupPlanBackupRule {
@@ -23,7 +23,7 @@ class GetBackupPlanBackupRule {
     final map = <String, dynamic>{};
     map['backupRetentionDays'] = backupRetentionDays;
     map['ruleId'] = ruleId;
-    map['standardSchedules'] = Input.encodeList<
+    map['standardSchedules'] = pulumi.Input.encodeList<
         GetBackupPlanBackupRuleStandardSchedule,
         Map<String, dynamic>>(standardSchedules, (value) => value.toMap());
     return map;
@@ -34,7 +34,7 @@ class GetBackupPlanBackupRule {
       backupRetentionDays: map['backupRetentionDays'] as int,
       ruleId: map['ruleId'] as String,
       standardSchedules:
-          Input.decodeList<GetBackupPlanBackupRuleStandardSchedule>(
+          pulumi.Input.decodeList<GetBackupPlanBackupRuleStandardSchedule>(
               map['standardSchedules'],
               (value) => GetBackupPlanBackupRuleStandardSchedule.fromMap(
                   (value as Map).cast<String, dynamic>())),

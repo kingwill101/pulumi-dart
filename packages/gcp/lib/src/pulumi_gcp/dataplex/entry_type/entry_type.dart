@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entry_type_required_aspect/entry_type_required_aspect.dart';
 import 'entry_type_args.dart';
 
@@ -40,70 +40,70 @@ import 'entry_type_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
 /// ```
-class EntryType extends CustomResource {
+class EntryType extends pulumi.CustomResource {
   /// The time when the EntryType was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Description of the EntryType.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User friendly display name.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The entry type id of the entry type.
-  late final Output<String?> entryTypeId;
+  late final pulumi.Output<String?> entryTypeId;
 
   /// User-defined labels for the EntryType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location where entry type will be created in.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The relative resource name of the EntryType, of the form: projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The platform that Entries of this type belongs to.
-  late final Output<String?> platform;
+  late final pulumi.Output<String?> platform;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// AspectInfo for the entry type.
   /// Structure is documented below.
-  late final Output<List<EntryTypeRequiredAspect>?> requiredAspects;
+  late final pulumi.Output<List<EntryTypeRequiredAspect>?> requiredAspects;
 
   /// The system that Entries of this type belongs to.
-  late final Output<String?> system;
+  late final pulumi.Output<String?> system;
 
   /// Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
-  late final Output<List<String>?> typeAliases;
+  late final pulumi.Output<List<String>?> typeAliases;
 
   /// System generated globally unique ID for the EntryType. This ID will be different if the EntryType is deleted and re-created with the same name.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time when the EntryType was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   EntryType(
     String name, {
     EntryTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataplex/entryType:EntryType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

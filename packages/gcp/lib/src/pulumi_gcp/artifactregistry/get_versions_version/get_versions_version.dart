@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_versions_version_related_tag/get_versions_version_related_tag.dart';
 
 class GetVersionsVersion {
@@ -37,9 +37,8 @@ class GetVersionsVersion {
     map['createTime'] = createTime;
     map['description'] = description;
     map['name'] = name;
-    map['relatedTags'] =
-        Input.encodeList<GetVersionsVersionRelatedTag, Map<String, dynamic>>(
-            relatedTags, (value) => value.toMap());
+    map['relatedTags'] = pulumi.Input.encodeList<GetVersionsVersionRelatedTag,
+        Map<String, dynamic>>(relatedTags, (value) => value.toMap());
     map['updateTime'] = updateTime;
     return map;
   }
@@ -50,7 +49,7 @@ class GetVersionsVersion {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       name: map['name'] as String,
-      relatedTags: Input.decodeList<GetVersionsVersionRelatedTag>(
+      relatedTags: pulumi.Input.decodeList<GetVersionsVersionRelatedTag>(
           map['relatedTags'],
           (value) => GetVersionsVersionRelatedTag.fromMap(
               (value as Map).cast<String, dynamic>())),

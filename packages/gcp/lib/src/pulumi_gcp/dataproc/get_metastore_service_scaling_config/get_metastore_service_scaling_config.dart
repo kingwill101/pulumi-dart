@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_metastore_service_scaling_config_autoscaling_config/get_metastore_service_scaling_config_autoscaling_config.dart';
 
 class GetMetastoreServiceScalingConfig {
@@ -22,7 +22,7 @@ class GetMetastoreServiceScalingConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscalingConfigs'] = Input.encodeList<
+    map['autoscalingConfigs'] = pulumi.Input.encodeList<
         GetMetastoreServiceScalingConfigAutoscalingConfig,
         Map<String, dynamic>>(autoscalingConfigs, (value) => value.toMap());
     map['instanceSize'] = instanceSize;
@@ -32,12 +32,11 @@ class GetMetastoreServiceScalingConfig {
 
   factory GetMetastoreServiceScalingConfig.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceScalingConfig(
-      autoscalingConfigs:
-          Input.decodeList<GetMetastoreServiceScalingConfigAutoscalingConfig>(
-              map['autoscalingConfigs'],
-              (value) =>
-                  GetMetastoreServiceScalingConfigAutoscalingConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      autoscalingConfigs: pulumi.Input.decodeList<
+              GetMetastoreServiceScalingConfigAutoscalingConfig>(
+          map['autoscalingConfigs'],
+          (value) => GetMetastoreServiceScalingConfigAutoscalingConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       instanceSize: map['instanceSize'] as String,
       scalingFactor: map['scalingFactor'] as double,
     );

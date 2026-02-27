@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_profile_url_filtering_profile_url_filter/security_profile_url_filtering_profile_url_filter.dart';
 
 class SecurityProfileUrlFilteringProfile {
@@ -18,7 +18,7 @@ class SecurityProfileUrlFilteringProfile {
     final map = <String, dynamic>{};
     final urlFiltersValue = urlFilters;
     if (urlFiltersValue != null) {
-      map['urlFilters'] = Input.encodeList<
+      map['urlFilters'] = pulumi.Input.encodeList<
           SecurityProfileUrlFilteringProfileUrlFilter,
           Map<String, dynamic>>(urlFiltersValue, (value) => value.toMap());
     }
@@ -29,7 +29,8 @@ class SecurityProfileUrlFilteringProfile {
     return SecurityProfileUrlFilteringProfile(
       urlFilters: map['urlFilters'] == null
           ? null
-          : Input.decodeList<SecurityProfileUrlFilteringProfileUrlFilter>(
+          : pulumi.Input.decodeList<
+                  SecurityProfileUrlFilteringProfileUrlFilter>(
               map['urlFilters'],
               (value) => SecurityProfileUrlFilteringProfileUrlFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

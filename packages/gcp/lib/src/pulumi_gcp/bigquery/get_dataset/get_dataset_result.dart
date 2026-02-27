@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dataset_access/get_dataset_access.dart';
 import '../get_dataset_default_encryption_configuration/get_dataset_default_encryption_configuration.dart';
 import '../get_dataset_external_catalog_dataset_option/get_dataset_external_catalog_dataset_option.dart';
@@ -68,12 +68,13 @@ class GetDatasetResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accesses'] = Input.encodeList<GetDatasetAccess, Map<String, dynamic>>(
-        accesses, (value) => value.toMap());
+    map['accesses'] =
+        pulumi.Input.encodeList<GetDatasetAccess, Map<String, dynamic>>(
+            accesses, (value) => value.toMap());
     map['creationTime'] = creationTime;
     map['datasetId'] = datasetId;
     map['defaultCollation'] = defaultCollation;
-    map['defaultEncryptionConfigurations'] = Input.encodeList<
+    map['defaultEncryptionConfigurations'] = pulumi.Input.encodeList<
             GetDatasetDefaultEncryptionConfiguration, Map<String, dynamic>>(
         defaultEncryptionConfigurations, (value) => value.toMap());
     map['defaultPartitionExpirationMs'] = defaultPartitionExpirationMs;
@@ -82,10 +83,10 @@ class GetDatasetResult {
     map['description'] = description;
     map['effectiveLabels'] = effectiveLabels;
     map['etag'] = etag;
-    map['externalCatalogDatasetOptions'] = Input.encodeList<
+    map['externalCatalogDatasetOptions'] = pulumi.Input.encodeList<
             GetDatasetExternalCatalogDatasetOption, Map<String, dynamic>>(
         externalCatalogDatasetOptions, (value) => value.toMap());
-    map['externalDatasetReferences'] = Input.encodeList<
+    map['externalDatasetReferences'] = pulumi.Input.encodeList<
             GetDatasetExternalDatasetReference, Map<String, dynamic>>(
         externalDatasetReferences, (value) => value.toMap());
     map['friendlyName'] = friendlyName;
@@ -108,7 +109,7 @@ class GetDatasetResult {
 
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetResult(
-      accesses: Input.decodeList<GetDatasetAccess>(
+      accesses: pulumi.Input.decodeList<GetDatasetAccess>(
           map['accesses'],
           (value) =>
               GetDatasetAccess.fromMap((value as Map).cast<String, dynamic>())),
@@ -116,7 +117,7 @@ class GetDatasetResult {
       datasetId: map['datasetId'] as String,
       defaultCollation: map['defaultCollation'] as String,
       defaultEncryptionConfigurations:
-          Input.decodeList<GetDatasetDefaultEncryptionConfiguration>(
+          pulumi.Input.decodeList<GetDatasetDefaultEncryptionConfiguration>(
               map['defaultEncryptionConfigurations'],
               (value) => GetDatasetDefaultEncryptionConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -127,12 +128,12 @@ class GetDatasetResult {
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       etag: map['etag'] as String,
       externalCatalogDatasetOptions:
-          Input.decodeList<GetDatasetExternalCatalogDatasetOption>(
+          pulumi.Input.decodeList<GetDatasetExternalCatalogDatasetOption>(
               map['externalCatalogDatasetOptions'],
               (value) => GetDatasetExternalCatalogDatasetOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
       externalDatasetReferences:
-          Input.decodeList<GetDatasetExternalDatasetReference>(
+          pulumi.Input.decodeList<GetDatasetExternalDatasetReference>(
               map['externalDatasetReferences'],
               (value) => GetDatasetExternalDatasetReference.fromMap(
                   (value as Map).cast<String, dynamic>())),

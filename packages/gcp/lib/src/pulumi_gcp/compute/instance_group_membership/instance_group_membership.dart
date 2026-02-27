@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_membership_args.dart';
 
 /// Represents the Instance membership to the Instance Group.
@@ -57,29 +57,29 @@ import 'instance_group_membership_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default {{instance_group}}/{{instance}}
 /// ```
-class InstanceGroupMembership extends CustomResource {
+class InstanceGroupMembership extends pulumi.CustomResource {
   /// An instance being added to the InstanceGroup
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// Represents an Instance Group resource name that the instance belongs to.
-  late final Output<String> instanceGroup;
+  late final pulumi.Output<String> instanceGroup;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A reference to the zone where the instance group resides.
-  late final Output<String?> zone;
+  late final pulumi.Output<String?> zone;
 
   InstanceGroupMembership(
     String name, {
     InstanceGroupMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/instanceGroupMembership:InstanceGroupMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instance = registerOutput<String>('instance');
     this.instanceGroup = registerOutput<String>('instanceGroup');

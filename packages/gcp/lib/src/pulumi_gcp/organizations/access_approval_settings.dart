@@ -1,4 +1,4 @@
 library module_organizations_access_approval_settings;
 
-export 'access_approval_settings/access_approval_settings2.dart';
-export 'access_approval_settings/access_approval_settings_args2.dart';
+export 'access_approval_settings/access_approval_settings_organizations.dart';
+export 'access_approval_settings/access_approval_settings_organizations_args.dart';

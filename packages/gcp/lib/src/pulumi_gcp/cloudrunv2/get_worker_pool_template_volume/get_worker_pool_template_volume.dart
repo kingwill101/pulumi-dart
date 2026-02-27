@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_worker_pool_template_volume_cloud_sql_instance/get_worker_pool_template_volume_cloud_sql_instance.dart';
 import '../get_worker_pool_template_volume_empty_dir/get_worker_pool_template_volume_empty_dir.dart';
 import '../get_worker_pool_template_volume_gc/get_worker_pool_template_volume_gc.dart';
@@ -37,19 +37,18 @@ class GetWorkerPoolTemplateVolume {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudSqlInstances'] = Input.encodeList<
+    map['cloudSqlInstances'] = pulumi.Input.encodeList<
         GetWorkerPoolTemplateVolumeCloudSqlInstance,
         Map<String, dynamic>>(cloudSqlInstances, (value) => value.toMap());
-    map['emptyDirs'] = Input.encodeList<GetWorkerPoolTemplateVolumeEmptyDir,
+    map['emptyDirs'] = pulumi.Input.encodeList<
+        GetWorkerPoolTemplateVolumeEmptyDir,
         Map<String, dynamic>>(emptyDirs, (value) => value.toMap());
-    map['gcs'] =
-        Input.encodeList<GetWorkerPoolTemplateVolumeGc, Map<String, dynamic>>(
-            gcs, (value) => value.toMap());
+    map['gcs'] = pulumi.Input.encodeList<GetWorkerPoolTemplateVolumeGc,
+        Map<String, dynamic>>(gcs, (value) => value.toMap());
     map['name'] = name;
-    map['nfs'] =
-        Input.encodeList<GetWorkerPoolTemplateVolumeNf, Map<String, dynamic>>(
-            nfs, (value) => value.toMap());
-    map['secrets'] = Input.encodeList<GetWorkerPoolTemplateVolumeSecret,
+    map['nfs'] = pulumi.Input.encodeList<GetWorkerPoolTemplateVolumeNf,
+        Map<String, dynamic>>(nfs, (value) => value.toMap());
+    map['secrets'] = pulumi.Input.encodeList<GetWorkerPoolTemplateVolumeSecret,
         Map<String, dynamic>>(secrets, (value) => value.toMap());
     return map;
   }
@@ -57,24 +56,24 @@ class GetWorkerPoolTemplateVolume {
   factory GetWorkerPoolTemplateVolume.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateVolume(
       cloudSqlInstances:
-          Input.decodeList<GetWorkerPoolTemplateVolumeCloudSqlInstance>(
+          pulumi.Input.decodeList<GetWorkerPoolTemplateVolumeCloudSqlInstance>(
               map['cloudSqlInstances'],
               (value) => GetWorkerPoolTemplateVolumeCloudSqlInstance.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      emptyDirs: Input.decodeList<GetWorkerPoolTemplateVolumeEmptyDir>(
+      emptyDirs: pulumi.Input.decodeList<GetWorkerPoolTemplateVolumeEmptyDir>(
           map['emptyDirs'],
           (value) => GetWorkerPoolTemplateVolumeEmptyDir.fromMap(
               (value as Map).cast<String, dynamic>())),
-      gcs: Input.decodeList<GetWorkerPoolTemplateVolumeGc>(
+      gcs: pulumi.Input.decodeList<GetWorkerPoolTemplateVolumeGc>(
           map['gcs'],
           (value) => GetWorkerPoolTemplateVolumeGc.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      nfs: Input.decodeList<GetWorkerPoolTemplateVolumeNf>(
+      nfs: pulumi.Input.decodeList<GetWorkerPoolTemplateVolumeNf>(
           map['nfs'],
           (value) => GetWorkerPoolTemplateVolumeNf.fromMap(
               (value as Map).cast<String, dynamic>())),
-      secrets: Input.decodeList<GetWorkerPoolTemplateVolumeSecret>(
+      secrets: pulumi.Input.decodeList<GetWorkerPoolTemplateVolumeSecret>(
           map['secrets'],
           (value) => GetWorkerPoolTemplateVolumeSecret.fromMap(
               (value as Map).cast<String, dynamic>())),

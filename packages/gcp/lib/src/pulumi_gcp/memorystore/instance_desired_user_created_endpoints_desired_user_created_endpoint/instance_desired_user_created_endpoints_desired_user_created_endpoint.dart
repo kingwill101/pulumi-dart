@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_desired_user_created_endpoints_desired_user_created_endpoint_connection/instance_desired_user_created_endpoints_desired_user_created_endpoint_connection.dart';
 
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
@@ -17,7 +17,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
     final map = <String, dynamic>{};
     final connectionsValue = connections;
     if (connectionsValue != null) {
-      map['connections'] = Input.encodeList<
+      map['connections'] = pulumi.Input.encodeList<
           InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection,
           Map<String, dynamic>>(connectionsValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
     return InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint(
       connections: map['connections'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection>(
               map['connections'],
               (value) =>

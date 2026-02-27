@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAuthority.
 class GetAuthorityArgs {
   /// ID of the certificate authority.
   ///
   /// - - -
-  final Input<String>? certificateAuthorityId;
+  final pulumi.Input<String>? certificateAuthorityId;
 
   /// The location the certificate authority exists in.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The name of the pool the certificate authority belongs to.
-  final Input<String>? pool;
+  final pulumi.Input<String>? pool;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetAuthorityArgs({
     this.certificateAuthorityId,
@@ -50,10 +50,10 @@ class GetAuthorityArgs {
   factory GetAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorityArgs(
       certificateAuthorityId:
-          Input.asOptionalInput<String>(map['certificateAuthorityId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      pool: Input.asOptionalInput<String>(map['pool']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['certificateAuthorityId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      pool: pulumi.Input.asOptionalInput<String>(map['pool']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_tag_iam_member_condition/policy_tag_iam_member_condition.dart';
 
 /// The set of arguments for PolicyTagIamMember.
 class PolicyTagIamMemberArgs {
-  final Input<PolicyTagIamMemberCondition>? condition;
+  final pulumi.Input<PolicyTagIamMemberCondition>? condition;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -19,15 +19,15 @@ class PolicyTagIamMemberArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final Input<String> member;
+  final pulumi.Input<String> member;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> policyTag;
+  final pulumi.Input<String> policyTag;
 
   /// The role that should be applied. Only one
   /// `gcp.datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   PolicyTagIamMemberArgs({
     this.condition,
@@ -40,7 +40,7 @@ class PolicyTagIamMemberArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
           PolicyTagIamMemberCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
@@ -52,11 +52,11 @@ class PolicyTagIamMemberArgs {
 
   factory PolicyTagIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTagIamMemberArgs(
-      condition:
-          Input.asOptionalInput<PolicyTagIamMemberCondition>(map['condition']),
-      member: Input.asInput<String>(map['member']),
-      policyTag: Input.asInput<String>(map['policyTag']),
-      role: Input.asInput<String>(map['role']),
+      condition: pulumi.Input.asOptionalInput<PolicyTagIamMemberCondition>(
+          map['condition']),
+      member: pulumi.Input.asInput<String>(map['member']),
+      policyTag: pulumi.Input.asInput<String>(map['policyTag']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

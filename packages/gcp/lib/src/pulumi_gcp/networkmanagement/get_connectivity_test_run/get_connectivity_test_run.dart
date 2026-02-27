@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_connectivity_test_run_args.dart';
 import 'get_connectivity_test_run_result.dart';
 
@@ -20,13 +20,13 @@ import 'get_connectivity_test_run_result.dart';
 /// ### Network Management Connectivity Test Run Instances
 Future<GetConnectivityTestRunResult> getConnectivityTestRun(
   GetConnectivityTestRunArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectivityTestRunResult.fromMap(result);
 }

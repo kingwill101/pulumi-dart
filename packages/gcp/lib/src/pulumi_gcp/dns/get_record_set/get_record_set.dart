@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_record_set_args.dart';
 import 'get_record_set_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_record_set_result.dart';
 /// [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
 Future<GetRecordSetResult> getRecordSet(
   GetRecordSetArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:dns/getRecordSet:getRecordSet',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRecordSetResult.fromMap(result);
 }

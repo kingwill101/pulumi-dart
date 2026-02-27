@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRouterNat.
 class GetRouterNatArgs {
   /// Name of the NAT service. The name must be 1-63 characters long and
   /// comply with RFC1035.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Region where the router and NAT reside.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the Cloud Router in which this NAT will be configured.
   ///
   /// - - -
-  final Input<String> router;
+  final pulumi.Input<String> router;
 
   GetRouterNatArgs({
     required this.name,
@@ -44,10 +44,10 @@ class GetRouterNatArgs {
 
   factory GetRouterNatArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterNatArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      router: Input.asInput<String>(map['router']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      router: pulumi.Input.asInput<String>(map['router']),
     );
   }
 }

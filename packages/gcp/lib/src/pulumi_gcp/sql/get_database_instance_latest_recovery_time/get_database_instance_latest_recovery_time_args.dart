@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDatabaseInstanceLatestRecoveryTime.
 class GetDatabaseInstanceLatestRecoveryTimeArgs {
   /// The name of the instance.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The ID of the project in which the resource belongs.
-  final Input<String>? project;
-  final Input<String>? sourceInstanceDeletionTime;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? sourceInstanceDeletionTime;
 
   GetDatabaseInstanceLatestRecoveryTimeArgs({
     required this.instance,
@@ -34,10 +34,10 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
   factory GetDatabaseInstanceLatestRecoveryTimeArgs.fromMap(
       Map<String, dynamic> map) {
     return GetDatabaseInstanceLatestRecoveryTimeArgs(
-      instance: Input.asInput<String>(map['instance']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sourceInstanceDeletionTime:
-          Input.asOptionalInput<String>(map['sourceInstanceDeletionTime']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sourceInstanceDeletionTime: pulumi.Input.asOptionalInput<String>(
+          map['sourceInstanceDeletionTime']),
     );
   }
 }

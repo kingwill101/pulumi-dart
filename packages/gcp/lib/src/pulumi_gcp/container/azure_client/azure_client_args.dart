@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AzureClient.
 class AzureClientArgs {
   /// The Azure Active Directory Application ID.
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of this resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Azure Active Directory Tenant ID.
   ///
   ///
   ///
   /// - - -
-  final Input<String> tenantId;
+  final pulumi.Input<String> tenantId;
 
   AzureClientArgs({
     required this.applicationId,
@@ -49,11 +49,11 @@ class AzureClientArgs {
 
   factory AzureClientArgs.fromMap(Map<String, dynamic> map) {
     return AzureClientArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tenantId: Input.asInput<String>(map['tenantId']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tenantId: pulumi.Input.asInput<String>(map['tenantId']),
     );
   }
 }

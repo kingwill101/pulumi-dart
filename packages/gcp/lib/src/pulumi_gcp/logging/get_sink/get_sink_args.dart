@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSink.
 class GetSinkArgs {
@@ -11,7 +11,7 @@ class GetSinkArgs {
   /// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
   /// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
   /// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
-  final Input<String> id;
+  final pulumi.Input<String> id;
 
   GetSinkArgs({
     required this.id,
@@ -25,7 +25,7 @@ class GetSinkArgs {
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetSinkArgs(
-      id: Input.asInput<String>(map['id']),
+      id: pulumi.Input.asInput<String>(map['id']),
     );
   }
 }

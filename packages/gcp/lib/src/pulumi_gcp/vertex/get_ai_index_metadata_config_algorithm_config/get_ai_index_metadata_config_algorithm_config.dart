@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ai_index_metadata_config_algorithm_config_tree_ah_config/get_ai_index_metadata_config_algorithm_config_tree_ah_config.dart';
 
 class GetAiIndexMetadataConfigAlgorithmConfig {
@@ -20,7 +20,7 @@ class GetAiIndexMetadataConfigAlgorithmConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['bruteForceConfigs'] = bruteForceConfigs;
-    map['treeAhConfigs'] = Input.encodeList<
+    map['treeAhConfigs'] = pulumi.Input.encodeList<
         GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig,
         Map<String, dynamic>>(treeAhConfigs, (value) => value.toMap());
     return map;
@@ -31,12 +31,12 @@ class GetAiIndexMetadataConfigAlgorithmConfig {
     return GetAiIndexMetadataConfigAlgorithmConfig(
       bruteForceConfigs:
           (map['bruteForceConfigs'] as List).cast<Map<String, dynamic>>(),
-      treeAhConfigs:
-          Input.decodeList<GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig>(
-              map['treeAhConfigs'],
-              (value) =>
-                  GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      treeAhConfigs: pulumi.Input.decodeList<
+              GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig>(
+          map['treeAhConfigs'],
+          (value) =>
+              GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_domain_custom_domain_status_required_dns_update_desired/app_hosting_domain_custom_domain_status_required_dns_update_desired.dart';
 import '../app_hosting_domain_custom_domain_status_required_dns_update_discovered/app_hosting_domain_custom_domain_status_required_dns_update_discovered.dart';
 
@@ -41,13 +41,13 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
     }
     final desiredsValue = desireds;
     if (desiredsValue != null) {
-      map['desireds'] = Input.encodeList<
+      map['desireds'] = pulumi.Input.encodeList<
           AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired,
           Map<String, dynamic>>(desiredsValue, (value) => value.toMap());
     }
     final discoveredsValue = discovereds;
     if (discoveredsValue != null) {
-      map['discovereds'] = Input.encodeList<
+      map['discovereds'] = pulumi.Input.encodeList<
           AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered,
           Map<String, dynamic>>(discoveredsValue, (value) => value.toMap());
     }
@@ -64,7 +64,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
       checkTime: map['checkTime'] == null ? null : map['checkTime'] as String,
       desireds: map['desireds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>(
               map['desireds'],
               (value) =>
@@ -72,7 +72,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
                       .fromMap((value as Map).cast<String, dynamic>())),
       discovereds: map['discovereds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>(
               map['discovereds'],
               (value) =>

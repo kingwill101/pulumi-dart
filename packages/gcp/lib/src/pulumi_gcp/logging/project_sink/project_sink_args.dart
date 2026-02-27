@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_sink_bigquery_options/project_sink_bigquery_options.dart';
 import '../project_sink_exclusion/project_sink_exclusion.dart';
 
 /// The set of arguments for ProjectSink.
 class ProjectSinkArgs {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
-  final Input<ProjectSinkBigqueryOptions>? bigqueryOptions;
+  final pulumi.Input<ProjectSinkBigqueryOptions>? bigqueryOptions;
 
   /// A user managed service account that will be used to write
   /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
   /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
   /// will automatically be generated.
-  final Input<String>? customWriterIdentity;
+  final pulumi.Input<String>? customWriterIdentity;
 
   /// A description of this sink. The maximum length of the description is 8000 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
   ///
@@ -27,30 +27,30 @@ class ProjectSinkArgs {
   /// - `logging.googleapis.com/projects/[PROJECT_ID]`
   ///
   /// The writer associated with the sink must have access to write to the above resource.
-  final Input<String> destination;
+  final pulumi.Input<String> destination;
 
   /// If set to True, then this sink is disabled and it does not export any log entries.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  final Input<List<ProjectSinkExclusion>>? exclusions;
+  final pulumi.Input<List<ProjectSinkExclusion>>? exclusions;
 
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project to create the sink in. If omitted, the project associated with the provider is
   /// used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
   /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
   /// `bigquery_options`, you must set `unique_writer_identity` to true.
-  final Input<bool>? uniqueWriterIdentity;
+  final pulumi.Input<bool>? uniqueWriterIdentity;
 
   ProjectSinkArgs({
     this.bigqueryOptions,
@@ -69,7 +69,7 @@ class ProjectSinkArgs {
     final map = <String, dynamic>{};
     final bigqueryOptionsValue = bigqueryOptions;
     if (bigqueryOptionsValue != null) {
-      map['bigqueryOptions'] = Input.mapOptionalInputValue<
+      map['bigqueryOptions'] = pulumi.Input.mapOptionalInputValue<
           ProjectSinkBigqueryOptions,
           Map<String, dynamic>>(bigqueryOptionsValue, (value) => value.toMap());
     }
@@ -88,12 +88,11 @@ class ProjectSinkArgs {
     }
     final exclusionsValue = exclusions;
     if (exclusionsValue != null) {
-      map['exclusions'] = Input.mapOptionalInputValue<
+      map['exclusions'] = pulumi.Input.mapOptionalInputValue<
               List<ProjectSinkExclusion>, List<Map<String, dynamic>>>(
           exclusionsValue,
-          (value) =>
-              Input.encodeList<ProjectSinkExclusion, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<ProjectSinkExclusion,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final filterValue = filter;
     if (filterValue != null) {
@@ -116,20 +115,20 @@ class ProjectSinkArgs {
 
   factory ProjectSinkArgs.fromMap(Map<String, dynamic> map) {
     return ProjectSinkArgs(
-      bigqueryOptions: Input.asOptionalInput<ProjectSinkBigqueryOptions>(
+      bigqueryOptions: pulumi.Input.asOptionalInput<ProjectSinkBigqueryOptions>(
           map['bigqueryOptions']),
       customWriterIdentity:
-          Input.asOptionalInput<String>(map['customWriterIdentity']),
-      description: Input.asOptionalInput<String>(map['description']),
-      destination: Input.asInput<String>(map['destination']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      exclusions:
-          Input.asOptionalInput<List<ProjectSinkExclusion>>(map['exclusions']),
-      filter: Input.asOptionalInput<String>(map['filter']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['customWriterIdentity']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      destination: pulumi.Input.asInput<String>(map['destination']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      exclusions: pulumi.Input.asOptionalInput<List<ProjectSinkExclusion>>(
+          map['exclusions']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       uniqueWriterIdentity:
-          Input.asOptionalInput<bool>(map['uniqueWriterIdentity']),
+          pulumi.Input.asOptionalInput<bool>(map['uniqueWriterIdentity']),
     );
   }
 }

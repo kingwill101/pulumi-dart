@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_group_args.dart';
 
 /// AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
@@ -40,67 +40,67 @@ import 'address_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}
 /// ```
-class AddressGroup extends CustomResource {
+class AddressGroup extends pulumi.CustomResource {
   /// Capacity of the Address Group.
-  late final Output<int> capacity;
+  late final pulumi.Output<int> capacity;
 
   /// The timestamp when the resource was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Free-text description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// List of items.
-  late final Output<List<String>?> items;
+  late final pulumi.Output<List<String>?> items;
 
   /// Set of label tags associated with the AddressGroup resource.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the gateway security policy.
   /// The default value is `global`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the AddressGroup resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// List of supported purposes of the Address Group.
   /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
-  late final Output<List<String>> purposes;
+  late final pulumi.Output<List<String>> purposes;
 
   /// The type of the Address Group. Possible values are "IPV4" or "IPV6".
   /// Possible values are: `IPV4`, `IPV6`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// The timestamp when the resource was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AddressGroup(
     String name, {
     AddressGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/addressGroup:AddressGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.capacity = registerOutput<int>('capacity');
     this.createTime = registerOutput<String>('createTime');

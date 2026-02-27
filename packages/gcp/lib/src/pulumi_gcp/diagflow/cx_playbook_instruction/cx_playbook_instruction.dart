@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_playbook_instruction_step/cx_playbook_instruction_step.dart';
 
 class CxPlaybookInstruction {
@@ -24,9 +24,8 @@ class CxPlaybookInstruction {
     }
     final stepsValue = steps;
     if (stepsValue != null) {
-      map['steps'] =
-          Input.encodeList<CxPlaybookInstructionStep, Map<String, dynamic>>(
-              stepsValue, (value) => value.toMap());
+      map['steps'] = pulumi.Input.encodeList<CxPlaybookInstructionStep,
+          Map<String, dynamic>>(stepsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -37,7 +36,7 @@ class CxPlaybookInstruction {
           map['guidelines'] == null ? null : map['guidelines'] as String,
       steps: map['steps'] == null
           ? null
-          : Input.decodeList<CxPlaybookInstructionStep>(
+          : pulumi.Input.decodeList<CxPlaybookInstructionStep>(
               map['steps'],
               (value) => CxPlaybookInstructionStep.fromMap(
                   (value as Map).cast<String, dynamic>())),

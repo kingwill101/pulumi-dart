@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../iceberg_catalog_replica/iceberg_catalog_replica.dart';
 import 'iceberg_catalog_args.dart';
 
@@ -45,51 +45,51 @@ import 'iceberg_catalog_args.dart';
 /// ```sh
 /// $ pulumi import gcp:biglake/icebergCatalog:IcebergCatalog default {{name}}
 /// ```
-class IcebergCatalog extends CustomResource {
+class IcebergCatalog extends pulumi.CustomResource {
   /// Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
-  late final Output<String> biglakeServiceAccount;
+  late final pulumi.Output<String> biglakeServiceAccount;
 
   /// The catalog type of the IcebergCatalog. Currently only supports the type for Google Cloud Storage Buckets.
   /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`.
-  late final Output<String> catalogType;
+  late final pulumi.Output<String> catalogType;
 
   /// Output only. The creation time of the IcebergCatalog.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
   /// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
-  late final Output<String> credentialMode;
+  late final pulumi.Output<String> credentialMode;
 
   /// Output only. The default storage location for the catalog, e.g., `gs://my-bucket`.
-  late final Output<String> defaultLocation;
+  late final pulumi.Output<String> defaultLocation;
 
   /// The name of the IcebergCatalog. Format:
   /// projects/{project_id_or_number}/catalogs/{iceberg_catalog_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. The replicas for the catalog metadata.
   /// Structure is documented below.
-  late final Output<List<IcebergCatalogReplica>> replicas;
+  late final pulumi.Output<List<IcebergCatalogReplica>> replicas;
 
   /// Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
-  late final Output<List<String>> storageRegions;
+  late final pulumi.Output<List<String>> storageRegions;
 
   /// Output only. The last modification time of the IcebergCatalog.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   IcebergCatalog(
     String name, {
     IcebergCatalogArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:biglake/icebergCatalog:IcebergCatalog',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.biglakeServiceAccount =
         registerOutput<String>('biglakeServiceAccount');

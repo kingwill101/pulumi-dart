@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../batch_runtime_info_approximate_usage/batch_runtime_info_approximate_usage.dart';
 import '../batch_runtime_info_current_usage/batch_runtime_info_current_usage.dart';
 
@@ -39,15 +39,15 @@ class BatchRuntimeInfo {
     final map = <String, dynamic>{};
     final approximateUsagesValue = approximateUsages;
     if (approximateUsagesValue != null) {
-      map['approximateUsages'] = Input.encodeList<
+      map['approximateUsages'] = pulumi.Input.encodeList<
               BatchRuntimeInfoApproximateUsage, Map<String, dynamic>>(
           approximateUsagesValue, (value) => value.toMap());
     }
     final currentUsagesValue = currentUsages;
     if (currentUsagesValue != null) {
-      map['currentUsages'] =
-          Input.encodeList<BatchRuntimeInfoCurrentUsage, Map<String, dynamic>>(
-              currentUsagesValue, (value) => value.toMap());
+      map['currentUsages'] = pulumi.Input.encodeList<
+          BatchRuntimeInfoCurrentUsage,
+          Map<String, dynamic>>(currentUsagesValue, (value) => value.toMap());
     }
     final diagnosticOutputUriValue = diagnosticOutputUri;
     if (diagnosticOutputUriValue != null) {
@@ -68,13 +68,13 @@ class BatchRuntimeInfo {
     return BatchRuntimeInfo(
       approximateUsages: map['approximateUsages'] == null
           ? null
-          : Input.decodeList<BatchRuntimeInfoApproximateUsage>(
+          : pulumi.Input.decodeList<BatchRuntimeInfoApproximateUsage>(
               map['approximateUsages'],
               (value) => BatchRuntimeInfoApproximateUsage.fromMap(
                   (value as Map).cast<String, dynamic>())),
       currentUsages: map['currentUsages'] == null
           ? null
-          : Input.decodeList<BatchRuntimeInfoCurrentUsage>(
+          : pulumi.Input.decodeList<BatchRuntimeInfoCurrentUsage>(
               map['currentUsages'],
               (value) => BatchRuntimeInfoCurrentUsage.fromMap(
                   (value as Map).cast<String, dynamic>())),

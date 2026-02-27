@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../blockchain_nodes_ethereum_details_additional_endpoint/blockchain_nodes_ethereum_details_additional_endpoint.dart';
 import '../blockchain_nodes_ethereum_details_geth_details/blockchain_nodes_ethereum_details_geth_details.dart';
 import '../blockchain_nodes_ethereum_details_validator_config/blockchain_nodes_ethereum_details_validator_config.dart';
@@ -58,7 +58,7 @@ class BlockchainNodesEthereumDetails {
     final map = <String, dynamic>{};
     final additionalEndpointsValue = additionalEndpoints;
     if (additionalEndpointsValue != null) {
-      map['additionalEndpoints'] = Input.encodeList<
+      map['additionalEndpoints'] = pulumi.Input.encodeList<
               BlockchainNodesEthereumDetailsAdditionalEndpoint,
               Map<String, dynamic>>(
           additionalEndpointsValue, (value) => value.toMap());
@@ -102,7 +102,8 @@ class BlockchainNodesEthereumDetails {
     return BlockchainNodesEthereumDetails(
       additionalEndpoints: map['additionalEndpoints'] == null
           ? null
-          : Input.decodeList<BlockchainNodesEthereumDetailsAdditionalEndpoint>(
+          : pulumi.Input.decodeList<
+                  BlockchainNodesEthereumDetailsAdditionalEndpoint>(
               map['additionalEndpoints'],
               (value) =>
                   BlockchainNodesEthereumDetailsAdditionalEndpoint.fromMap(

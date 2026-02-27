@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../management_organization_security_health_analytics_custom_module_custom_config_custom_output_property/management_organization_security_health_analytics_custom_module_custom_config_custom_output_property.dart';
 
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput {
@@ -18,7 +18,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCusto
     final map = <String, dynamic>{};
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.encodeList<
+      map['properties'] = pulumi.Input.encodeList<
           ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
@@ -30,7 +30,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCusto
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput(
       properties: map['properties'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>(
               map['properties'],
               (value) =>

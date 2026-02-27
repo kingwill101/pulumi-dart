@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_maven_artifacts_maven_artifact/get_maven_artifacts_maven_artifact.dart';
 
 /// Result data returned by getMavenArtifacts.
@@ -26,9 +26,9 @@ class GetMavenArtifactsResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['location'] = location;
-    map['mavenArtifacts'] =
-        Input.encodeList<GetMavenArtifactsMavenArtifact, Map<String, dynamic>>(
-            mavenArtifacts, (value) => value.toMap());
+    map['mavenArtifacts'] = pulumi.Input.encodeList<
+        GetMavenArtifactsMavenArtifact,
+        Map<String, dynamic>>(mavenArtifacts, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -41,7 +41,7 @@ class GetMavenArtifactsResult {
     return GetMavenArtifactsResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      mavenArtifacts: Input.decodeList<GetMavenArtifactsMavenArtifact>(
+      mavenArtifacts: pulumi.Input.decodeList<GetMavenArtifactsMavenArtifact>(
           map['mavenArtifacts'],
           (value) => GetMavenArtifactsMavenArtifact.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AppCheckServiceConfig.
 class AppCheckServiceConfigArgs {
-  final Input<String>? enforcementMode;
+  final pulumi.Input<String>? enforcementMode;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
   /// firebasestorage.googleapis.com (Cloud Storage for Firebase)
   /// firebasedatabase.googleapis.com (Firebase Realtime Database)
   /// firestore.googleapis.com (Cloud Firestore)
   /// identitytoolkit.googleapis.com (Authentication)
-  final Input<String> serviceId;
+  final pulumi.Input<String> serviceId;
 
   AppCheckServiceConfigArgs({
     this.enforcementMode,
@@ -39,9 +39,10 @@ class AppCheckServiceConfigArgs {
 
   factory AppCheckServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckServiceConfigArgs(
-      enforcementMode: Input.asOptionalInput<String>(map['enforcementMode']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceId: Input.asInput<String>(map['serviceId']),
+      enforcementMode:
+          pulumi.Input.asOptionalInput<String>(map['enforcementMode']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceId: pulumi.Input.asInput<String>(map['serviceId']),
     );
   }
 }

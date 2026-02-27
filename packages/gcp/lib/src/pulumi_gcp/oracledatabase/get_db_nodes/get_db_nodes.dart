@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_db_nodes_args.dart';
 import 'get_db_nodes_result.dart';
 
@@ -52,13 +52,13 @@ import 'get_db_nodes_result.dart';
 /// * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
 Future<GetDbNodesResult> getDbNodes(
   GetDbNodesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:oracledatabase/getDbNodes:getDbNodes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbNodesResult.fromMap(result);
 }

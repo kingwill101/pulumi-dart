@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_ssl_policy_args.dart';
 
 /// Represents a Regional SSL policy. SSL policies give you the ability to control the
@@ -40,9 +40,9 @@ import 'region_ssl_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionSslPolicy:RegionSslPolicy default {{name}}
 /// ```
-class RegionSslPolicy extends CustomResource {
+class RegionSslPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// A list of features enabled when the selected profile is CUSTOM. The
   /// method returns the set of features that can be specified in this
@@ -51,24 +51,24 @@ class RegionSslPolicy extends CustomResource {
   /// for which ciphers are available to use. **Note**: this argument
   /// *must* be present when using the `CUSTOM` profile. This argument
   /// *must not* be present when using any other profile.
-  late final Output<List<String>?> customFeatures;
+  late final pulumi.Output<List<String>?> customFeatures;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The list of features enabled in the SSL policy.
-  late final Output<List<String>> enabledFeatures;
+  late final pulumi.Output<List<String>> enabledFeatures;
 
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The minimum version of SSL protocol that can be used by the clients
   /// to establish a connection with the load balancer. When set to
   /// `TLS_1_3`, the profile field must be set to `RESTRICTED`.
   /// Default value is `TLS_1_0`.
   /// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
-  late final Output<String?> minTlsVersion;
+  late final pulumi.Output<String?> minTlsVersion;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -77,7 +77,7 @@ class RegionSslPolicy extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Profile specifies the set of SSL features that can be used by the
   /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -90,27 +90,27 @@ class RegionSslPolicy extends CustomResource {
   /// `TLS_1_2`.
   /// Default value is `COMPATIBLE`.
   /// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
-  late final Output<String?> profile;
+  late final pulumi.Output<String?> profile;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region where the regional SSL policy resides.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   RegionSslPolicy(
     String name, {
     RegionSslPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionSslPolicy:RegionSslPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.customFeatures = registerOutput<List<String>?>('customFeatures');

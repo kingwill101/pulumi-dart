@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bitbucket_server_config_connected_repository/bitbucket_server_config_connected_repository.dart';
 import '../bitbucket_server_config_secrets/bitbucket_server_config_secrets.dart';
 import 'bitbucket_server_config_args.dart';
@@ -50,61 +50,61 @@ import 'bitbucket_server_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{location}}/{{config_id}}
 /// ```
-class BitbucketServerConfig extends CustomResource {
+class BitbucketServerConfig extends pulumi.CustomResource {
   /// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
   /// Changing this field will result in deleting/ recreating the resource.
-  late final Output<String> apiKey;
+  late final pulumi.Output<String> apiKey;
 
   /// The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
-  late final Output<String> configId;
+  late final pulumi.Output<String> configId;
 
   /// Connected Bitbucket Server repositories for this config.
   /// Structure is documented below.
-  late final Output<List<BitbucketServerConfigConnectedRepository>?>
+  late final pulumi.Output<List<BitbucketServerConfigConnectedRepository>?>
       connectedRepositories;
 
   /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// If you need to change it, please create another BitbucketServerConfig.
-  late final Output<String> hostUri;
+  late final pulumi.Output<String> hostUri;
 
   /// The location of this bitbucket server config.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name for the config.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
   /// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
   /// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
   /// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-  late final Output<String?> peeredNetwork;
+  late final pulumi.Output<String?> peeredNetwork;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Secret Manager secrets needed by the config.
   /// Structure is documented below.
-  late final Output<BitbucketServerConfigSecrets> secrets;
+  late final pulumi.Output<BitbucketServerConfigSecrets> secrets;
 
   /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
-  late final Output<String?> sslCa;
+  late final pulumi.Output<String?> sslCa;
 
   /// Username of the account Cloud Build will use on Bitbucket Server.
-  late final Output<String> username;
+  late final pulumi.Output<String> username;
 
   /// Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
-  late final Output<String> webhookKey;
+  late final pulumi.Output<String> webhookKey;
 
   BitbucketServerConfig(
     String name, {
     BitbucketServerConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiKey = registerOutput<String>('apiKey');
     this.configId = registerOutput<String>('configId');

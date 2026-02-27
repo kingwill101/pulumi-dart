@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_policy_snapshot_schedule_policy_schedule_weekly_schedule_day_of_week/resource_policy_snapshot_schedule_policy_schedule_weekly_schedule_day_of_week.dart';
 
 class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
@@ -16,7 +16,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dayOfWeeks'] = Input.encodeList<
+    map['dayOfWeeks'] = pulumi.Input.encodeList<
         ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek,
         Map<String, dynamic>>(dayOfWeeks, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
   factory ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule.fromMap(
       Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(
-      dayOfWeeks: Input.decodeList<
+      dayOfWeeks: pulumi.Input.decodeList<
               ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek>(
           map['dayOfWeeks'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_index_endpoint_encryption_spec/ai_index_endpoint_encryption_spec.dart';
 import '../ai_index_endpoint_private_service_connect_config/ai_index_endpoint_private_service_connect_config.dart';
 import 'ai_index_endpoint_args.dart';
@@ -54,74 +54,74 @@ import 'ai_index_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{name}}
 /// ```
-class AiIndexEndpoint extends CustomResource {
+class AiIndexEndpoint extends pulumi.CustomResource {
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The description of the Index.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
   /// Structure is documented below.
-  late final Output<AiIndexEndpointEncryptionSpec?> encryptionSpec;
+  late final pulumi.Output<AiIndexEndpointEncryptionSpec?> encryptionSpec;
 
   /// Used to perform consistent read-modify-write updates.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The resource name of the Index.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
   /// Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
   /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
   /// Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-  late final Output<String?> network;
+  late final pulumi.Output<String?> network;
 
   /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
   /// Structure is documented below.
-  late final Output<AiIndexEndpointPrivateServiceConnectConfig>
+  late final pulumi.Output<AiIndexEndpointPrivateServiceConnectConfig>
       privateServiceConnectConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
-  late final Output<String> publicEndpointDomainName;
+  late final pulumi.Output<String> publicEndpointDomainName;
 
   /// If true, the deployed index will be accessible through public endpoint.
-  late final Output<bool?> publicEndpointEnabled;
+  late final pulumi.Output<bool?> publicEndpointEnabled;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The region of the index endpoint. eg us-central1
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AiIndexEndpoint(
     String name, {
     AiIndexEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

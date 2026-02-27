@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_version_args.dart';
 
 /// A Parameter Version resource that stores the actual value of the parameter.
@@ -44,43 +44,43 @@ import 'parameter_version_args.dart';
 /// ```sh
 /// $ pulumi import gcp:parametermanager/parameterVersion:ParameterVersion default projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}
 /// ```
-class ParameterVersion extends CustomResource {
+class ParameterVersion extends pulumi.CustomResource {
   /// The time at which the Parameter Version was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
-  late final Output<String> kmsKeyVersion;
+  late final pulumi.Output<String> kmsKeyVersion;
 
   /// The resource name of the Parameter Version. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Parameter Manager Parameter resource.
-  late final Output<String> parameter;
+  late final pulumi.Output<String> parameter;
 
   /// The Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> parameterData;
+  late final pulumi.Output<String> parameterData;
 
   /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-  late final Output<String> parameterVersionId;
+  late final pulumi.Output<String> parameterVersionId;
 
   /// The time at which the Parameter Version was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ParameterVersion(
     String name, {
     ParameterVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:parametermanager/parameterVersion:ParameterVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.disabled = registerOutput<bool?>('disabled');

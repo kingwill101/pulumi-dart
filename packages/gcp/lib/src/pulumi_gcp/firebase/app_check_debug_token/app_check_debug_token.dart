@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_check_debug_token_args.dart';
 
 /// A debug token is a secret used during the development or integration testing of
@@ -45,22 +45,22 @@ import 'app_check_debug_token_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{app_id}}/{{debug_token_id}}
 /// ```
-class AppCheckDebugToken extends CustomResource {
+class AppCheckDebugToken extends pulumi.CustomResource {
   /// The ID of a
   /// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
   /// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
   /// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// The last segment of the resource name of the debug token.
-  late final Output<String> debugTokenId;
+  late final pulumi.Output<String> debugTokenId;
 
   /// A human readable display name used to identify this debug token.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The secret token itself. Must be provided during creation, and must be a UUID4,
   /// case insensitive. You may use a method of your choice such as random/random_uuid
@@ -69,17 +69,17 @@ class AppCheckDebugToken extends CustomResource {
   /// this debug token to revoke it.
   /// For security reasons, this field will never be populated in any response.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> token;
+  late final pulumi.Output<String> token;
 
   AppCheckDebugToken(
     String name, {
     AppCheckDebugTokenArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.debugTokenId = registerOutput<String>('debugTokenId');

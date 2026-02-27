@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_membership_binding_state/get_membership_binding_state.dart';
 
 /// Result data returned by getMembershipBinding.
@@ -58,9 +58,8 @@ class GetMembershipBindingResult {
     }
     map['pulumiLabels'] = pulumiLabels;
     map['scope'] = scope;
-    map['states'] =
-        Input.encodeList<GetMembershipBindingState, Map<String, dynamic>>(
-            states, (value) => value.toMap());
+    map['states'] = pulumi.Input.encodeList<GetMembershipBindingState,
+        Map<String, dynamic>>(states, (value) => value.toMap());
     map['uid'] = uid;
     map['updateTime'] = updateTime;
     return map;
@@ -80,7 +79,7 @@ class GetMembershipBindingResult {
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       scope: map['scope'] as String,
-      states: Input.decodeList<GetMembershipBindingState>(
+      states: pulumi.Input.decodeList<GetMembershipBindingState>(
           map['states'],
           (value) => GetMembershipBindingState.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_group_named_port/get_instance_group_named_port.dart';
 
 /// Result data returned by getInstanceGroup.
@@ -51,9 +51,8 @@ class GetInstanceGroupResult {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['namedPorts'] =
-        Input.encodeList<GetInstanceGroupNamedPort, Map<String, dynamic>>(
-            namedPorts, (value) => value.toMap());
+    map['namedPorts'] = pulumi.Input.encodeList<GetInstanceGroupNamedPort,
+        Map<String, dynamic>>(namedPorts, (value) => value.toMap());
     map['network'] = network;
     map['project'] = project;
     map['selfLink'] = selfLink;
@@ -68,7 +67,7 @@ class GetInstanceGroupResult {
       id: map['id'] as String,
       instances: (map['instances'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
-      namedPorts: Input.decodeList<GetInstanceGroupNamedPort>(
+      namedPorts: pulumi.Input.decodeList<GetInstanceGroupNamedPort>(
           map['namedPorts'],
           (value) => GetInstanceGroupNamedPort.fromMap(
               (value as Map).cast<String, dynamic>())),

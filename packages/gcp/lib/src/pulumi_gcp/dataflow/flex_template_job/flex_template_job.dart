@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flex_template_job_args.dart';
 
 /// Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
@@ -44,34 +44,34 @@ import 'flex_template_job_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class FlexTemplateJob extends CustomResource {
+class FlexTemplateJob extends pulumi.CustomResource {
   /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
-  late final Output<List<String>> additionalExperiments;
+  late final pulumi.Output<List<String>> additionalExperiments;
 
   /// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
-  late final Output<List<String>?> additionalPipelineOptions;
+  late final pulumi.Output<List<String>?> additionalPipelineOptions;
 
   /// The algorithm to use for autoscaling.
-  late final Output<String> autoscalingAlgorithm;
+  late final pulumi.Output<String> autoscalingAlgorithm;
 
   /// The GCS path to the Dataflow job Flex
   /// Template.
   ///
   /// - - -
-  late final Output<String> containerSpecGcsPath;
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<String> containerSpecGcsPath;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Immutable. Indicates if the job should use the streaming engine feature.
-  late final Output<bool?> enableStreamingEngine;
+  late final pulumi.Output<bool?> enableStreamingEngine;
 
   /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
-  late final Output<String?> ipConfiguration;
+  late final pulumi.Output<String?> ipConfiguration;
 
   /// The unique ID of this job.
-  late final Output<String> jobId;
+  late final pulumi.Output<String> jobId;
 
   /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-  late final Output<String> kmsKeyName;
+  late final pulumi.Output<String> kmsKeyName;
 
   /// User labels to be specified for the job. Keys and values
   /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
@@ -80,79 +80,79 @@ class FlexTemplateJob extends CustomResource {
   /// **NOTE**: Google-provided Dataflow templates often provide default labels
   /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
   /// labels will be ignored to prevent diffs on re-apply.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The machine type to use for launching the job. The default is n1-standard-1.
-  late final Output<String> launcherMachineType;
+  late final pulumi.Output<String> launcherMachineType;
 
   /// The machine type to use for the job.
-  late final Output<String> machineType;
+  late final pulumi.Output<String> machineType;
 
   /// Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-  late final Output<int> maxWorkers;
+  late final pulumi.Output<int> maxWorkers;
 
   /// Immutable. A unique name for the resource, required by Dataflow.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network to which VMs will be assigned. If it is not provided, "default" will be used.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// Immutable. The initial number of Google Compute Engine instances for the job.
-  late final Output<int> numWorkers;
+  late final pulumi.Output<int> numWorkers;
 
   /// One of "drain" or "cancel". Specifies behavior of
   /// deletion during `pulumi destroy`.  See above note.
-  late final Output<String?> onDelete;
+  late final pulumi.Output<String?> onDelete;
 
   /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
   /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
   /// **Note**: do not configure Dataflow options here in parameters.
-  late final Output<Map<String, String>?> parameters;
+  late final pulumi.Output<Map<String, String>?> parameters;
 
   /// The project in which the resource belongs. If it is not
   /// provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Immutable. The region in which the created job should run.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
-  late final Output<String> sdkContainerImage;
+  late final pulumi.Output<String> sdkContainerImage;
 
   /// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-  late final Output<String> serviceAccountEmail;
-  late final Output<bool?> skipWaitOnJobTermination;
+  late final pulumi.Output<String> serviceAccountEmail;
+  late final pulumi.Output<bool?> skipWaitOnJobTermination;
 
   /// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
-  late final Output<String> stagingLocation;
+  late final pulumi.Output<String> stagingLocation;
 
   /// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
-  late final Output<String> subnetwork;
+  late final pulumi.Output<String> subnetwork;
 
   /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-  late final Output<String> tempLocation;
+  late final pulumi.Output<String> tempLocation;
 
   /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-  late final Output<Map<String, String>?> transformNameMapping;
+  late final pulumi.Output<Map<String, String>?> transformNameMapping;
 
   /// The type of this job, selected from the JobType enum.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   FlexTemplateJob(
     String name, {
     FlexTemplateJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataflow/flexTemplateJob:FlexTemplateJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.additionalExperiments =
         registerOutput<List<String>>('additionalExperiments');

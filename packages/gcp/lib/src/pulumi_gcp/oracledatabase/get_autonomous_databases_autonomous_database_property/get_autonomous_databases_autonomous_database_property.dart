@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_autonomous_databases_autonomous_database_property_apex_detail/get_autonomous_databases_autonomous_database_property_apex_detail.dart';
 import '../get_autonomous_databases_autonomous_database_property_connection_string/get_autonomous_databases_autonomous_database_property_connection_string.dart';
 import '../get_autonomous_databases_autonomous_database_property_connection_url/get_autonomous_databases_autonomous_database_property_connection_url.dart';
@@ -369,7 +369,7 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
     final map = <String, dynamic>{};
     map['actualUsedDataStorageSizeTb'] = actualUsedDataStorageSizeTb;
     map['allocatedStorageSizeTb'] = allocatedStorageSizeTb;
-    map['apexDetails'] = Input.encodeList<
+    map['apexDetails'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyApexDetail,
         Map<String, dynamic>>(apexDetails, (value) => value.toMap());
     map['arePrimaryAllowlistedIpsUsed'] = arePrimaryAllowlistedIpsUsed;
@@ -378,14 +378,14 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
     map['backupRetentionPeriodDays'] = backupRetentionPeriodDays;
     map['characterSet'] = characterSet;
     map['computeCount'] = computeCount;
-    map['connectionStrings'] = Input.encodeList<
+    map['connectionStrings'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyConnectionString,
         Map<String, dynamic>>(connectionStrings, (value) => value.toMap());
-    map['connectionUrls'] = Input.encodeList<
+    map['connectionUrls'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl,
         Map<String, dynamic>>(connectionUrls, (value) => value.toMap());
     map['cpuCoreCount'] = cpuCoreCount;
-    map['customerContacts'] = Input.encodeList<
+    map['customerContacts'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact,
         Map<String, dynamic>>(customerContacts, (value) => value.toMap());
     map['dataSafeState'] = dataSafeState;
@@ -404,7 +404,7 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
     map['localAdgAutoFailoverMaxDataLossLimit'] =
         localAdgAutoFailoverMaxDataLossLimit;
     map['localDisasterRecoveryType'] = localDisasterRecoveryType;
-    map['localStandbyDbs'] = Input.encodeList<
+    map['localStandbyDbs'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyLocalStandbyDb,
         Map<String, dynamic>>(localStandbyDbs, (value) => value.toMap());
     map['maintenanceBeginTime'] = maintenanceBeginTime;
@@ -427,7 +427,7 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
     map['refreshableMode'] = refreshableMode;
     map['refreshableState'] = refreshableState;
     map['role'] = role;
-    map['scheduledOperationDetails'] = Input.encodeList<
+    map['scheduledOperationDetails'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail,
         Map<String,
             dynamic>>(scheduledOperationDetails, (value) => value.toMap());
@@ -446,7 +446,7 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
     return GetAutonomousDatabasesAutonomousDatabaseProperty(
       actualUsedDataStorageSizeTb: map['actualUsedDataStorageSizeTb'] as double,
       allocatedStorageSizeTb: map['allocatedStorageSizeTb'] as double,
-      apexDetails: Input.decodeList<
+      apexDetails: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyApexDetail>(
           map['apexDetails'],
           (value) => GetAutonomousDatabasesAutonomousDatabasePropertyApexDetail
@@ -459,20 +459,20 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
       backupRetentionPeriodDays: map['backupRetentionPeriodDays'] as int,
       characterSet: map['characterSet'] as String,
       computeCount: map['computeCount'] as double,
-      connectionStrings: Input.decodeList<
+      connectionStrings: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyConnectionString>(
           map['connectionStrings'],
           (value) =>
               GetAutonomousDatabasesAutonomousDatabasePropertyConnectionString
                   .fromMap((value as Map).cast<String, dynamic>())),
-      connectionUrls: Input.decodeList<
+      connectionUrls: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl>(
           map['connectionUrls'],
           (value) =>
               GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl
                   .fromMap((value as Map).cast<String, dynamic>())),
       cpuCoreCount: map['cpuCoreCount'] as int,
-      customerContacts: Input.decodeList<
+      customerContacts: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact>(
           map['customerContacts'],
           (value) =>
@@ -494,7 +494,7 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
       localAdgAutoFailoverMaxDataLossLimit:
           map['localAdgAutoFailoverMaxDataLossLimit'] as int,
       localDisasterRecoveryType: map['localDisasterRecoveryType'] as String,
-      localStandbyDbs: Input.decodeList<
+      localStandbyDbs: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyLocalStandbyDb>(
           map['localStandbyDbs'],
           (value) =>
@@ -521,7 +521,7 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
       refreshableMode: map['refreshableMode'] as String,
       refreshableState: map['refreshableState'] as String,
       role: map['role'] as String,
-      scheduledOperationDetails: Input.decodeList<
+      scheduledOperationDetails: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail>(
           map['scheduledOperationDetails'],
           (value) =>

@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for KeystoresAliasesPkcs12.
 class KeystoresAliasesPkcs12Args {
   /// Alias Name
-  final Input<String> alias;
+  final pulumi.Input<String> alias;
 
   /// Environment associated with the alias
-  final Input<String> environment;
+  final pulumi.Input<String> environment;
 
   /// PKCS12 file content
   ///
   /// - - -
-  final Input<String> file;
+  final pulumi.Input<String> file;
 
   /// Hash of the pkcs file
-  final Input<String> filehash;
+  final pulumi.Input<String> filehash;
 
   /// Keystore Name
-  final Input<String> keystore;
+  final pulumi.Input<String> keystore;
 
   /// Organization ID associated with the alias, without organization/ prefix
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// Password for the PKCS12 file if it's encrypted
-  final Input<String>? password;
+  final pulumi.Input<String>? password;
 
   KeystoresAliasesPkcs12Args({
     required this.alias,
@@ -54,13 +54,13 @@ class KeystoresAliasesPkcs12Args {
 
   factory KeystoresAliasesPkcs12Args.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12Args(
-      alias: Input.asInput<String>(map['alias']),
-      environment: Input.asInput<String>(map['environment']),
-      file: Input.asInput<String>(map['file']),
-      filehash: Input.asInput<String>(map['filehash']),
-      keystore: Input.asInput<String>(map['keystore']),
-      orgId: Input.asInput<String>(map['orgId']),
-      password: Input.asOptionalInput<String>(map['password']),
+      alias: pulumi.Input.asInput<String>(map['alias']),
+      environment: pulumi.Input.asInput<String>(map['environment']),
+      file: pulumi.Input.asInput<String>(map['file']),
+      filehash: pulumi.Input.asInput<String>(map['filehash']),
+      keystore: pulumi.Input.asInput<String>(map['keystore']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      password: pulumi.Input.asOptionalInput<String>(map['password']),
     );
   }
 }

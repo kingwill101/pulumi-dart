@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_worker_pool_template_container/get_worker_pool_template_container.dart';
 import '../get_worker_pool_template_node_selector/get_worker_pool_template_node_selector.dart';
 import '../get_worker_pool_template_volume/get_worker_pool_template_volume.dart';
@@ -72,31 +72,29 @@ class GetWorkerPoolTemplate {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['annotations'] = annotations;
-    map['containers'] =
-        Input.encodeList<GetWorkerPoolTemplateContainer, Map<String, dynamic>>(
-            containers, (value) => value.toMap());
+    map['containers'] = pulumi.Input.encodeList<GetWorkerPoolTemplateContainer,
+        Map<String, dynamic>>(containers, (value) => value.toMap());
     map['encryptionKey'] = encryptionKey;
     map['encryptionKeyRevocationAction'] = encryptionKeyRevocationAction;
     map['encryptionKeyShutdownDuration'] = encryptionKeyShutdownDuration;
     map['gpuZonalRedundancyDisabled'] = gpuZonalRedundancyDisabled;
     map['labels'] = labels;
-    map['nodeSelectors'] = Input.encodeList<GetWorkerPoolTemplateNodeSelector,
+    map['nodeSelectors'] = pulumi.Input.encodeList<
+        GetWorkerPoolTemplateNodeSelector,
         Map<String, dynamic>>(nodeSelectors, (value) => value.toMap());
     map['revision'] = revision;
     map['serviceAccount'] = serviceAccount;
-    map['volumes'] =
-        Input.encodeList<GetWorkerPoolTemplateVolume, Map<String, dynamic>>(
-            volumes, (value) => value.toMap());
-    map['vpcAccesses'] =
-        Input.encodeList<GetWorkerPoolTemplateVpcAccess, Map<String, dynamic>>(
-            vpcAccesses, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<GetWorkerPoolTemplateVolume,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
+    map['vpcAccesses'] = pulumi.Input.encodeList<GetWorkerPoolTemplateVpcAccess,
+        Map<String, dynamic>>(vpcAccesses, (value) => value.toMap());
     return map;
   }
 
   factory GetWorkerPoolTemplate.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplate(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      containers: Input.decodeList<GetWorkerPoolTemplateContainer>(
+      containers: pulumi.Input.decodeList<GetWorkerPoolTemplateContainer>(
           map['containers'],
           (value) => GetWorkerPoolTemplateContainer.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -107,17 +105,17 @@ class GetWorkerPoolTemplate {
           map['encryptionKeyShutdownDuration'] as String,
       gpuZonalRedundancyDisabled: map['gpuZonalRedundancyDisabled'] as bool,
       labels: (map['labels'] as Map).cast<String, String>(),
-      nodeSelectors: Input.decodeList<GetWorkerPoolTemplateNodeSelector>(
+      nodeSelectors: pulumi.Input.decodeList<GetWorkerPoolTemplateNodeSelector>(
           map['nodeSelectors'],
           (value) => GetWorkerPoolTemplateNodeSelector.fromMap(
               (value as Map).cast<String, dynamic>())),
       revision: map['revision'] as String,
       serviceAccount: map['serviceAccount'] as String,
-      volumes: Input.decodeList<GetWorkerPoolTemplateVolume>(
+      volumes: pulumi.Input.decodeList<GetWorkerPoolTemplateVolume>(
           map['volumes'],
           (value) => GetWorkerPoolTemplateVolume.fromMap(
               (value as Map).cast<String, dynamic>())),
-      vpcAccesses: Input.decodeList<GetWorkerPoolTemplateVpcAccess>(
+      vpcAccesses: pulumi.Input.decodeList<GetWorkerPoolTemplateVpcAccess>(
           map['vpcAccesses'],
           (value) => GetWorkerPoolTemplateVpcAccess.fromMap(
               (value as Map).cast<String, dynamic>())),

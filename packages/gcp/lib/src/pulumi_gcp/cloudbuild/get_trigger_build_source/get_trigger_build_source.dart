@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_build_source_repo_source/get_trigger_build_source_repo_source.dart';
 import '../get_trigger_build_source_storage_source/get_trigger_build_source_storage_source.dart';
 
@@ -18,24 +18,26 @@ class GetTriggerBuildSource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['repoSources'] =
-        Input.encodeList<GetTriggerBuildSourceRepoSource, Map<String, dynamic>>(
-            repoSources, (value) => value.toMap());
-    map['storageSources'] = Input.encodeList<GetTriggerBuildSourceStorageSource,
+    map['repoSources'] = pulumi.Input.encodeList<
+        GetTriggerBuildSourceRepoSource,
+        Map<String, dynamic>>(repoSources, (value) => value.toMap());
+    map['storageSources'] = pulumi.Input.encodeList<
+        GetTriggerBuildSourceStorageSource,
         Map<String, dynamic>>(storageSources, (value) => value.toMap());
     return map;
   }
 
   factory GetTriggerBuildSource.fromMap(Map<String, dynamic> map) {
     return GetTriggerBuildSource(
-      repoSources: Input.decodeList<GetTriggerBuildSourceRepoSource>(
+      repoSources: pulumi.Input.decodeList<GetTriggerBuildSourceRepoSource>(
           map['repoSources'],
           (value) => GetTriggerBuildSourceRepoSource.fromMap(
               (value as Map).cast<String, dynamic>())),
-      storageSources: Input.decodeList<GetTriggerBuildSourceStorageSource>(
-          map['storageSources'],
-          (value) => GetTriggerBuildSourceStorageSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      storageSources:
+          pulumi.Input.decodeList<GetTriggerBuildSourceStorageSource>(
+              map['storageSources'],
+              (value) => GetTriggerBuildSourceStorageSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

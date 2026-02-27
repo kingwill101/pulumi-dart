@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_discovered_service_service_property/get_discovered_service_service_property.dart';
 import '../get_discovered_service_service_reference/get_discovered_service_service_reference.dart';
 
@@ -42,10 +42,10 @@ class GetDiscoveredServiceResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['serviceProperties'] = Input.encodeList<
+    map['serviceProperties'] = pulumi.Input.encodeList<
         GetDiscoveredServiceServiceProperty,
         Map<String, dynamic>>(serviceProperties, (value) => value.toMap());
-    map['serviceReferences'] = Input.encodeList<
+    map['serviceReferences'] = pulumi.Input.encodeList<
         GetDiscoveredServiceServiceReference,
         Map<String, dynamic>>(serviceReferences, (value) => value.toMap());
     map['serviceUri'] = serviceUri;
@@ -58,14 +58,16 @@ class GetDiscoveredServiceResult {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      serviceProperties: Input.decodeList<GetDiscoveredServiceServiceProperty>(
-          map['serviceProperties'],
-          (value) => GetDiscoveredServiceServiceProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      serviceReferences: Input.decodeList<GetDiscoveredServiceServiceReference>(
-          map['serviceReferences'],
-          (value) => GetDiscoveredServiceServiceReference.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      serviceProperties:
+          pulumi.Input.decodeList<GetDiscoveredServiceServiceProperty>(
+              map['serviceProperties'],
+              (value) => GetDiscoveredServiceServiceProperty.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      serviceReferences:
+          pulumi.Input.decodeList<GetDiscoveredServiceServiceReference>(
+              map['serviceReferences'],
+              (value) => GetDiscoveredServiceServiceReference.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       serviceUri: map['serviceUri'] as String,
     );
   }

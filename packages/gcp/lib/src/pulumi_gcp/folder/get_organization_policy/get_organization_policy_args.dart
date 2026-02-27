@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationPolicy.
 class GetOrganizationPolicyArgs {
   /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-  final Input<String> constraint;
+  final pulumi.Input<String> constraint;
 
   /// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   GetOrganizationPolicyArgs({
     required this.constraint,
@@ -24,8 +24,8 @@ class GetOrganizationPolicyArgs {
 
   factory GetOrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyArgs(
-      constraint: Input.asInput<String>(map['constraint']),
-      folder: Input.asInput<String>(map['folder']),
+      constraint: pulumi.Input.asInput<String>(map['constraint']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
     );
   }
 }

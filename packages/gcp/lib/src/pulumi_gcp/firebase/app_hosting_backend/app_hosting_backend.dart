@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_backend_codebase/app_hosting_backend_codebase.dart';
 import '../app_hosting_backend_managed_resource/app_hosting_backend_managed_resource.dart';
 import 'app_hosting_backend_args.dart';
@@ -45,104 +45,105 @@ import 'app_hosting_backend_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingBackend:AppHostingBackend default {{location}}/{{backend_id}}
 /// ```
-class AppHostingBackend extends CustomResource {
+class AppHostingBackend extends pulumi.CustomResource {
   /// Unstructured key value map that may be set by external tools to
   /// store and arbitrary metadata. They are not queryable and should be
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// The [ID of a Web
   /// App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
   /// associated with the backend.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// Id of the backend. Also used as the service ID for Cloud Run, and as part
   /// of the default domain name.
-  late final Output<String> backendId;
+  late final pulumi.Output<String> backendId;
 
   /// The connection to an external source repository to watch for event-driven
   /// updates to the backend.
   /// Structure is documented below.
-  late final Output<AppHostingBackendCodebase?> codebase;
+  late final pulumi.Output<AppHostingBackendCodebase?> codebase;
 
   /// Time at which the backend was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time at which the backend was deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Human-readable name. 63 character limit.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The environment name of the backend, used to load environment variables
   /// from environment specific configuration.
-  late final Output<String?> environment;
+  late final pulumi.Output<String?> environment;
 
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The canonical IDs of a Google Cloud location such as "us-east1".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// A list of the resources managed by this backend.
   /// Structure is documented below.
-  late final Output<List<AppHostingBackendManagedResource>> managedResources;
+  late final pulumi.Output<List<AppHostingBackendManagedResource>>
+      managedResources;
 
   /// Identifier. The resource name of the backend.
   /// Format:
   /// `projects/{project}/locations/{locationId}/backends/{backendId}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The name of the service account used for Cloud Build and Cloud Run.
   /// Should have the role roles/firebaseapphosting.computeRunner
   /// or equivalent permissions.
-  late final Output<String> serviceAccount;
+  late final pulumi.Output<String> serviceAccount;
 
   /// Immutable. Specifies how App Hosting will serve the content for this backend. It will
   /// either be contained to a single region (REGIONAL_STRICT) or allowed to use
   /// App Hosting's global-replicated serving infrastructure (GLOBAL_ACCESS).
   /// Possible values are: `REGIONAL_STRICT`, `GLOBAL_ACCESS`.
-  late final Output<String> servingLocality;
+  late final pulumi.Output<String> servingLocality;
 
   /// System-assigned, unique identifier.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time at which the backend was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The primary URI to communicate with the backend.
-  late final Output<String> uri;
+  late final pulumi.Output<String> uri;
 
   AppHostingBackend(
     String name, {
     AppHostingBackendArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appHostingBackend:AppHostingBackend',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.appId = registerOutput<String>('appId');

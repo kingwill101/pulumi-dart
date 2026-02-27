@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserWorkloadsSecret.
 class UserWorkloadsSecretArgs {
   /// A map of the secret data.
-  final Input<Map<String, String>>? data;
+  final pulumi.Input<Map<String, String>>? data;
 
   /// Environment where the Kubernetes Secret will be stored and used.
-  final Input<String> environment;
+  final pulumi.Input<String> environment;
 
   /// Name of the Kubernetes Secret.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The location or Compute Engine region for the environment.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   UserWorkloadsSecretArgs({
     this.data,
@@ -52,11 +52,11 @@ class UserWorkloadsSecretArgs {
 
   factory UserWorkloadsSecretArgs.fromMap(Map<String, dynamic> map) {
     return UserWorkloadsSecretArgs(
-      data: Input.asOptionalInput<Map<String, String>>(map['data']),
-      environment: Input.asInput<String>(map['environment']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      data: pulumi.Input.asOptionalInput<Map<String, String>>(map['data']),
+      environment: pulumi.Input.asInput<String>(map['environment']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

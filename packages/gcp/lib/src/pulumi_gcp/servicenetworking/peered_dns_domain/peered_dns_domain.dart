@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'peered_dns_domain_args.dart';
 
 /// Allows management of a single peered DNS domain for an existing Google Cloud Platform project.
@@ -30,34 +30,34 @@ import 'peered_dns_domain_args.dart';
 /// ```sh
 /// $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
 /// ```
-class PeeredDnsDomain extends CustomResource {
+class PeeredDnsDomain extends pulumi.CustomResource {
   /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
-  late final Output<String> dnsSuffix;
+  late final pulumi.Output<String> dnsSuffix;
 
   /// Internal name used for the peered DNS domain.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network in the consumer project.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// an identifier for the resource with format `services/{{service}}/projects/{{project}}/global/networks/{{network}}`
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The producer project number. If not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
-  late final Output<String?> service;
+  late final pulumi.Output<String?> service;
 
   PeeredDnsDomain(
     String name, {
     PeeredDnsDomainArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dnsSuffix = registerOutput<String>('dnsSuffix');
     this.name = registerOutput<String>('name');

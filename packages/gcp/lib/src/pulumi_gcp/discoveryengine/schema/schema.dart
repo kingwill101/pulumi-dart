@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schema_args.dart';
 
 /// Schema defines the structure and layout of a type of document data.
@@ -40,39 +40,39 @@ import 'schema_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/schema:Schema default {{location}}/{{data_store_id}}/{{schema_id}}
 /// ```
-class Schema extends CustomResource {
+class Schema extends pulumi.CustomResource {
   /// The unique id of the data store.
-  late final Output<String> dataStoreId;
+  late final pulumi.Output<String> dataStoreId;
 
   /// The JSON representation of the schema.
-  late final Output<String?> jsonSchema;
+  late final pulumi.Output<String?> jsonSchema;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique full resource name of the schema. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/schemas/{schema_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The unique id of the schema.
-  late final Output<String> schemaId;
+  late final pulumi.Output<String> schemaId;
 
   Schema(
     String name, {
     SchemaArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/schema:Schema',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataStoreId = registerOutput<String>('dataStoreId');
     this.jsonSchema = registerOutput<String?>('jsonSchema');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config_info_type_transformations_transformation_info_type/prevention_deidentify_template_deidentify_config_info_type_transformations_transformation_info_type.dart';
 import '../prevention_deidentify_template_deidentify_config_info_type_transformations_transformation_primitive_transformation/prevention_deidentify_template_deidentify_config_info_type_transformations_transformation_primitive_transformation.dart';
 
@@ -27,7 +27,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     final map = <String, dynamic>{};
     final infoTypesValue = infoTypes;
     if (infoTypesValue != null) {
-      map['infoTypes'] = Input.encodeList<
+      map['infoTypes'] = pulumi.Input.encodeList<
           PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType,
           Map<String, dynamic>>(infoTypesValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation(
       infoTypes: map['infoTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>(
               map['infoTypes'],
               (value) =>

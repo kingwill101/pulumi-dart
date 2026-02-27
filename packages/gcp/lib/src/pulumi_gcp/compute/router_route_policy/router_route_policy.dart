@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../router_route_policy_term/router_route_policy_term.dart';
 import 'router_route_policy_args.dart';
 
@@ -51,41 +51,41 @@ import 'router_route_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{router}}/{{name}}
 /// ```
-class RouterRoutePolicy extends CustomResource {
+class RouterRoutePolicy extends pulumi.CustomResource {
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where the router and NAT reside.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the Cloud Router in which this route policy will be configured.
-  late final Output<String> router;
+  late final pulumi.Output<String> router;
 
   /// List of terms (the order in the list is not important, they are evaluated in order of priority).
   /// Structure is documented below.
-  late final Output<List<RouterRoutePolicyTerm>> terms;
+  late final pulumi.Output<List<RouterRoutePolicyTerm>> terms;
 
   /// This is policy's type, which is one of IMPORT or EXPORT
   /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   RouterRoutePolicy(
     String name, {
     RouterRoutePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');

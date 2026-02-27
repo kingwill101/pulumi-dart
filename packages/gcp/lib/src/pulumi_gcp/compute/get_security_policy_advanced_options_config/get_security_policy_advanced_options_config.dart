@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_advanced_options_config_json_custom_config/get_security_policy_advanced_options_config_json_custom_config.dart';
 
 class GetSecurityPolicyAdvancedOptionsConfig {
@@ -30,7 +30,7 @@ class GetSecurityPolicyAdvancedOptionsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['jsonCustomConfigs'] = Input.encodeList<
+    map['jsonCustomConfigs'] = pulumi.Input.encodeList<
         GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig,
         Map<String, dynamic>>(jsonCustomConfigs, (value) => value.toMap());
     map['jsonParsing'] = jsonParsing;
@@ -43,7 +43,7 @@ class GetSecurityPolicyAdvancedOptionsConfig {
   factory GetSecurityPolicyAdvancedOptionsConfig.fromMap(
       Map<String, dynamic> map) {
     return GetSecurityPolicyAdvancedOptionsConfig(
-      jsonCustomConfigs: Input.decodeList<
+      jsonCustomConfigs: pulumi.Input.decodeList<
               GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig>(
           map['jsonCustomConfigs'],
           (value) =>

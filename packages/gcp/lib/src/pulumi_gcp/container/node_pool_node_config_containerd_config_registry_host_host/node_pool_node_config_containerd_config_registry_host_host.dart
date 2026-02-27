@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_pool_node_config_containerd_config_registry_host_host_ca/node_pool_node_config_containerd_config_registry_host_host_ca.dart';
 import '../node_pool_node_config_containerd_config_registry_host_host_client/node_pool_node_config_containerd_config_registry_host_host_client.dart';
 import '../node_pool_node_config_containerd_config_registry_host_host_header/node_pool_node_config_containerd_config_registry_host_host_header.dart';
@@ -45,13 +45,13 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHost {
     }
     final casValue = cas;
     if (casValue != null) {
-      map['cas'] = Input.encodeList<
+      map['cas'] = pulumi.Input.encodeList<
           NodePoolNodeConfigContainerdConfigRegistryHostHostCa,
           Map<String, dynamic>>(casValue, (value) => value.toMap());
     }
     final clientsValue = clients;
     if (clientsValue != null) {
-      map['clients'] = Input.encodeList<
+      map['clients'] = pulumi.Input.encodeList<
           NodePoolNodeConfigContainerdConfigRegistryHostHostClient,
           Map<String, dynamic>>(clientsValue, (value) => value.toMap());
     }
@@ -61,7 +61,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHost {
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<
+      map['headers'] = pulumi.Input.encodeList<
           NodePoolNodeConfigContainerdConfigRegistryHostHostHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
@@ -81,7 +81,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHost {
           : (map['capabilities'] as List).cast<String>(),
       cas: map['cas'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NodePoolNodeConfigContainerdConfigRegistryHostHostCa>(
               map['cas'],
               (value) =>
@@ -89,7 +89,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHost {
                       (value as Map).cast<String, dynamic>())),
       clients: map['clients'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NodePoolNodeConfigContainerdConfigRegistryHostHostClient>(
               map['clients'],
               (value) =>
@@ -99,7 +99,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHost {
           map['dialTimeout'] == null ? null : map['dialTimeout'] as String,
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NodePoolNodeConfigContainerdConfigRegistryHostHostHeader>(
               map['headers'],
               (value) =>

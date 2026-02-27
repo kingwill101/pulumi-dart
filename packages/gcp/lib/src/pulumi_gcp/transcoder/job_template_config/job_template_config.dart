@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_template_config_ad_break/job_template_config_ad_break.dart';
 import '../job_template_config_edit_list/job_template_config_edit_list.dart';
 import '../job_template_config_elementary_stream/job_template_config_elementary_stream.dart';
@@ -70,45 +70,40 @@ class JobTemplateConfig {
     final map = <String, dynamic>{};
     final adBreaksValue = adBreaks;
     if (adBreaksValue != null) {
-      map['adBreaks'] =
-          Input.encodeList<JobTemplateConfigAdBreak, Map<String, dynamic>>(
-              adBreaksValue, (value) => value.toMap());
+      map['adBreaks'] = pulumi.Input.encodeList<JobTemplateConfigAdBreak,
+          Map<String, dynamic>>(adBreaksValue, (value) => value.toMap());
     }
     final editListsValue = editLists;
     if (editListsValue != null) {
-      map['editLists'] =
-          Input.encodeList<JobTemplateConfigEditList, Map<String, dynamic>>(
-              editListsValue, (value) => value.toMap());
+      map['editLists'] = pulumi.Input.encodeList<JobTemplateConfigEditList,
+          Map<String, dynamic>>(editListsValue, (value) => value.toMap());
     }
     final elementaryStreamsValue = elementaryStreams;
     if (elementaryStreamsValue != null) {
-      map['elementaryStreams'] = Input.encodeList<
+      map['elementaryStreams'] = pulumi.Input.encodeList<
               JobTemplateConfigElementaryStream, Map<String, dynamic>>(
           elementaryStreamsValue, (value) => value.toMap());
     }
     final encryptionsValue = encryptions;
     if (encryptionsValue != null) {
-      map['encryptions'] =
-          Input.encodeList<JobTemplateConfigEncryption, Map<String, dynamic>>(
-              encryptionsValue, (value) => value.toMap());
+      map['encryptions'] = pulumi.Input.encodeList<JobTemplateConfigEncryption,
+          Map<String, dynamic>>(encryptionsValue, (value) => value.toMap());
     }
     final inputsValue = inputs;
     if (inputsValue != null) {
       map['inputs'] =
-          Input.encodeList<JobTemplateConfigInput, Map<String, dynamic>>(
+          pulumi.Input.encodeList<JobTemplateConfigInput, Map<String, dynamic>>(
               inputsValue, (value) => value.toMap());
     }
     final manifestsValue = manifests;
     if (manifestsValue != null) {
-      map['manifests'] =
-          Input.encodeList<JobTemplateConfigManifest, Map<String, dynamic>>(
-              manifestsValue, (value) => value.toMap());
+      map['manifests'] = pulumi.Input.encodeList<JobTemplateConfigManifest,
+          Map<String, dynamic>>(manifestsValue, (value) => value.toMap());
     }
     final muxStreamsValue = muxStreams;
     if (muxStreamsValue != null) {
-      map['muxStreams'] =
-          Input.encodeList<JobTemplateConfigMuxStream, Map<String, dynamic>>(
-              muxStreamsValue, (value) => value.toMap());
+      map['muxStreams'] = pulumi.Input.encodeList<JobTemplateConfigMuxStream,
+          Map<String, dynamic>>(muxStreamsValue, (value) => value.toMap());
     }
     final outputValue = output;
     if (outputValue != null) {
@@ -116,9 +111,8 @@ class JobTemplateConfig {
     }
     final overlaysValue = overlays;
     if (overlaysValue != null) {
-      map['overlays'] =
-          Input.encodeList<JobTemplateConfigOverlay, Map<String, dynamic>>(
-              overlaysValue, (value) => value.toMap());
+      map['overlays'] = pulumi.Input.encodeList<JobTemplateConfigOverlay,
+          Map<String, dynamic>>(overlaysValue, (value) => value.toMap());
     }
     final pubsubDestinationValue = pubsubDestination;
     if (pubsubDestinationValue != null) {
@@ -131,43 +125,43 @@ class JobTemplateConfig {
     return JobTemplateConfig(
       adBreaks: map['adBreaks'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigAdBreak>(
+          : pulumi.Input.decodeList<JobTemplateConfigAdBreak>(
               map['adBreaks'],
               (value) => JobTemplateConfigAdBreak.fromMap(
                   (value as Map).cast<String, dynamic>())),
       editLists: map['editLists'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigEditList>(
+          : pulumi.Input.decodeList<JobTemplateConfigEditList>(
               map['editLists'],
               (value) => JobTemplateConfigEditList.fromMap(
                   (value as Map).cast<String, dynamic>())),
       elementaryStreams: map['elementaryStreams'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigElementaryStream>(
+          : pulumi.Input.decodeList<JobTemplateConfigElementaryStream>(
               map['elementaryStreams'],
               (value) => JobTemplateConfigElementaryStream.fromMap(
                   (value as Map).cast<String, dynamic>())),
       encryptions: map['encryptions'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigEncryption>(
+          : pulumi.Input.decodeList<JobTemplateConfigEncryption>(
               map['encryptions'],
               (value) => JobTemplateConfigEncryption.fromMap(
                   (value as Map).cast<String, dynamic>())),
       inputs: map['inputs'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigInput>(
+          : pulumi.Input.decodeList<JobTemplateConfigInput>(
               map['inputs'],
               (value) => JobTemplateConfigInput.fromMap(
                   (value as Map).cast<String, dynamic>())),
       manifests: map['manifests'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigManifest>(
+          : pulumi.Input.decodeList<JobTemplateConfigManifest>(
               map['manifests'],
               (value) => JobTemplateConfigManifest.fromMap(
                   (value as Map).cast<String, dynamic>())),
       muxStreams: map['muxStreams'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigMuxStream>(
+          : pulumi.Input.decodeList<JobTemplateConfigMuxStream>(
               map['muxStreams'],
               (value) => JobTemplateConfigMuxStream.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -177,7 +171,7 @@ class JobTemplateConfig {
               (map['output'] as Map).cast<String, dynamic>()),
       overlays: map['overlays'] == null
           ? null
-          : Input.decodeList<JobTemplateConfigOverlay>(
+          : pulumi.Input.decodeList<JobTemplateConfigOverlay>(
               map['overlays'],
               (value) => JobTemplateConfigOverlay.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all/stream_backfill_all.dart';
 import '../stream_destination_config/stream_destination_config.dart';
 import '../stream_rule_set/stream_rule_set.dart';
@@ -10,53 +10,53 @@ import '../stream_source_config/stream_source_config.dart';
 class StreamArgs {
   /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
   /// Structure is documented below.
-  final Input<StreamBackfillAll>? backfillAll;
+  final pulumi.Input<StreamBackfillAll>? backfillAll;
 
   /// Backfill strategy to disable automatic backfill for the Stream's objects.
-  final Input<Map<String, dynamic>>? backfillNone;
+  final pulumi.Input<Map<String, dynamic>>? backfillNone;
 
   /// Create the stream without validating it.
-  final Input<bool>? createWithoutValidation;
+  final pulumi.Input<bool>? createWithoutValidation;
 
   /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
   /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-  final Input<String>? customerManagedEncryptionKey;
+  final pulumi.Input<String>? customerManagedEncryptionKey;
 
   /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
   /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
   /// the stream from a `RUNNING` state.
   /// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
-  final Input<String>? desiredState;
+  final pulumi.Input<String>? desiredState;
 
   /// Destination connection profile configuration.
   /// Structure is documented below.
-  final Input<StreamDestinationConfig> destinationConfig;
+  final pulumi.Input<StreamDestinationConfig> destinationConfig;
 
   /// Display name.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The name of the location this stream is located in.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Rule sets to apply to the stream.
   /// Structure is documented below.
-  final Input<List<StreamRuleSet>>? ruleSets;
+  final pulumi.Input<List<StreamRuleSet>>? ruleSets;
 
   /// Source connection profile configuration.
   /// Structure is documented below.
-  final Input<StreamSourceConfig> sourceConfig;
+  final pulumi.Input<StreamSourceConfig> sourceConfig;
 
   /// The stream identifier.
-  final Input<String> streamId;
+  final pulumi.Input<String> streamId;
 
   StreamArgs({
     this.backfillAll,
@@ -78,9 +78,8 @@ class StreamArgs {
     final map = <String, dynamic>{};
     final backfillAllValue = backfillAll;
     if (backfillAllValue != null) {
-      map['backfillAll'] =
-          Input.mapOptionalInputValue<StreamBackfillAll, Map<String, dynamic>>(
-              backfillAllValue, (value) => value.toMap());
+      map['backfillAll'] = pulumi.Input.mapOptionalInputValue<StreamBackfillAll,
+          Map<String, dynamic>>(backfillAllValue, (value) => value.toMap());
     }
     final backfillNoneValue = backfillNone;
     if (backfillNoneValue != null) {
@@ -98,9 +97,9 @@ class StreamArgs {
     if (desiredStateValue != null) {
       map['desiredState'] = desiredStateValue;
     }
-    map['destinationConfig'] =
-        Input.mapInputValue<StreamDestinationConfig, Map<String, dynamic>>(
-            destinationConfig, (value) => value.toMap());
+    map['destinationConfig'] = pulumi.Input.mapInputValue<
+        StreamDestinationConfig,
+        Map<String, dynamic>>(destinationConfig, (value) => value.toMap());
     map['displayName'] = displayName;
     final labelsValue = labels;
     if (labelsValue != null) {
@@ -113,14 +112,15 @@ class StreamArgs {
     }
     final ruleSetsValue = ruleSets;
     if (ruleSetsValue != null) {
-      map['ruleSets'] = Input.mapOptionalInputValue<List<StreamRuleSet>,
+      map['ruleSets'] = pulumi.Input.mapOptionalInputValue<List<StreamRuleSet>,
               List<Map<String, dynamic>>>(
           ruleSetsValue,
-          (value) => Input.encodeList<StreamRuleSet, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<StreamRuleSet, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     map['sourceConfig'] =
-        Input.mapInputValue<StreamSourceConfig, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<StreamSourceConfig, Map<String, dynamic>>(
             sourceConfig, (value) => value.toMap());
     map['streamId'] = streamId;
     return map;
@@ -128,23 +128,26 @@ class StreamArgs {
 
   factory StreamArgs.fromMap(Map<String, dynamic> map) {
     return StreamArgs(
-      backfillAll: Input.asOptionalInput<StreamBackfillAll>(map['backfillAll']),
-      backfillNone:
-          Input.asOptionalInput<Map<String, dynamic>>(map['backfillNone']),
+      backfillAll:
+          pulumi.Input.asOptionalInput<StreamBackfillAll>(map['backfillAll']),
+      backfillNone: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+          map['backfillNone']),
       createWithoutValidation:
-          Input.asOptionalInput<bool>(map['createWithoutValidation']),
-      customerManagedEncryptionKey:
-          Input.asOptionalInput<String>(map['customerManagedEncryptionKey']),
-      desiredState: Input.asOptionalInput<String>(map['desiredState']),
-      destinationConfig:
-          Input.asInput<StreamDestinationConfig>(map['destinationConfig']),
-      displayName: Input.asInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      ruleSets: Input.asOptionalInput<List<StreamRuleSet>>(map['ruleSets']),
-      sourceConfig: Input.asInput<StreamSourceConfig>(map['sourceConfig']),
-      streamId: Input.asInput<String>(map['streamId']),
+          pulumi.Input.asOptionalInput<bool>(map['createWithoutValidation']),
+      customerManagedEncryptionKey: pulumi.Input.asOptionalInput<String>(
+          map['customerManagedEncryptionKey']),
+      desiredState: pulumi.Input.asOptionalInput<String>(map['desiredState']),
+      destinationConfig: pulumi.Input.asInput<StreamDestinationConfig>(
+          map['destinationConfig']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      ruleSets:
+          pulumi.Input.asOptionalInput<List<StreamRuleSet>>(map['ruleSets']),
+      sourceConfig:
+          pulumi.Input.asInput<StreamSourceConfig>(map['sourceConfig']),
+      streamId: pulumi.Input.asInput<String>(map['streamId']),
     );
   }
 }

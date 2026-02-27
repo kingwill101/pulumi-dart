@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_sink_bigquery_options/folder_sink_bigquery_options.dart';
 import '../folder_sink_exclusion/folder_sink_exclusion.dart';
 import 'folder_sink_args.dart';
@@ -24,12 +24,12 @@ import 'folder_sink_args.dart';
 /// ```sh
 /// $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}
 /// ```
-class FolderSink extends CustomResource {
+class FolderSink extends pulumi.CustomResource {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
-  late final Output<FolderSinkBigqueryOptions> bigqueryOptions;
+  late final pulumi.Output<FolderSinkBigqueryOptions> bigqueryOptions;
 
   /// A description of this sink. The maximum length of the description is 8000 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
   ///
@@ -40,47 +40,47 @@ class FolderSink extends CustomResource {
   /// - `logging.googleapis.com/projects/[PROJECT_ID]`
   ///
   /// The writer associated with the sink must have access to write to the above resource.
-  late final Output<String> destination;
+  late final pulumi.Output<String> destination;
 
   /// If set to True, then this sink is disabled and it does not export any log entries.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  late final Output<List<FolderSinkExclusion>?> exclusions;
+  late final pulumi.Output<List<FolderSinkExclusion>?> exclusions;
 
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
-  late final Output<String?> filter;
+  late final pulumi.Output<String?> filter;
 
   /// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
   /// accepted.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// Whether or not to include children folders in the sink export. If true, logs
   /// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
-  late final Output<bool?> includeChildren;
+  late final pulumi.Output<bool?> includeChildren;
 
   /// Whether or not to intercept logs from child projects. If true, matching logs will not
   /// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
-  late final Output<bool?> interceptChildren;
+  late final pulumi.Output<bool?> interceptChildren;
 
   /// The name of the logging sink.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The identity associated with this sink. This identity must be granted write access to the
   /// configured `destination`.
-  late final Output<String> writerIdentity;
+  late final pulumi.Output<String> writerIdentity;
 
   FolderSink(
     String name, {
     FolderSinkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:logging/folderSink:FolderSink',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bigqueryOptions =
         registerOutput<FolderSinkBigqueryOptions>('bigqueryOptions');

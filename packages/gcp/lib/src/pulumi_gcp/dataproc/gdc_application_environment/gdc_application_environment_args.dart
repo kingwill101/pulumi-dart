@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../gdc_application_environment_spark_application_environment_config/gdc_application_environment_spark_application_environment_config.dart';
 
 /// The set of arguments for GdcApplicationEnvironment.
@@ -8,35 +8,36 @@ class GdcApplicationEnvironmentArgs {
   /// The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// The id of the application environment
-  final Input<String>? applicationEnvironmentId;
+  final pulumi.Input<String>? applicationEnvironmentId;
 
   /// User-provided human-readable name to be used in user interfaces.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location of the application environment
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of the namespace in which to create this ApplicationEnvironment. This namespace must already exist in the cluster
-  final Input<String>? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The id of the service instance to which this application environment belongs.
-  final Input<String> serviceinstance;
+  final pulumi.Input<String> serviceinstance;
 
   /// Represents the SparkApplicationEnvironmentConfig.
   /// Structure is documented below.
-  final Input<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>?
+  final pulumi
+      .Input<GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>?
       sparkApplicationEnvironmentConfig;
 
   GdcApplicationEnvironmentArgs({
@@ -82,10 +83,11 @@ class GdcApplicationEnvironmentArgs {
     final sparkApplicationEnvironmentConfigValue =
         sparkApplicationEnvironmentConfig;
     if (sparkApplicationEnvironmentConfigValue != null) {
-      map['sparkApplicationEnvironmentConfig'] = Input.mapOptionalInputValue<
-              GdcApplicationEnvironmentSparkApplicationEnvironmentConfig,
-              Map<String, dynamic>>(
-          sparkApplicationEnvironmentConfigValue, (value) => value.toMap());
+      map['sparkApplicationEnvironmentConfig'] =
+          pulumi.Input.mapOptionalInputValue<
+                  GdcApplicationEnvironmentSparkApplicationEnvironmentConfig,
+                  Map<String, dynamic>>(
+              sparkApplicationEnvironmentConfigValue, (value) => value.toMap());
     }
     return map;
   }
@@ -93,16 +95,16 @@ class GdcApplicationEnvironmentArgs {
   factory GdcApplicationEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GdcApplicationEnvironmentArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
       applicationEnvironmentId:
-          Input.asOptionalInput<String>(map['applicationEnvironmentId']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      namespace: Input.asOptionalInput<String>(map['namespace']),
-      project: Input.asOptionalInput<String>(map['project']),
-      serviceinstance: Input.asInput<String>(map['serviceinstance']),
-      sparkApplicationEnvironmentConfig: Input.asOptionalInput<
+          pulumi.Input.asOptionalInput<String>(map['applicationEnvironmentId']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      namespace: pulumi.Input.asOptionalInput<String>(map['namespace']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      serviceinstance: pulumi.Input.asInput<String>(map['serviceinstance']),
+      sparkApplicationEnvironmentConfig: pulumi.Input.asOptionalInput<
               GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>(
           map['sparkApplicationEnvironmentConfig']),
     );

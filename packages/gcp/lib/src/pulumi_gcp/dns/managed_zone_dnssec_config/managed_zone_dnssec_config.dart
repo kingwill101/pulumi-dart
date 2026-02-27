@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_zone_dnssec_config_default_key_spec/managed_zone_dnssec_config_default_key_spec.dart';
 
 class ManagedZoneDnssecConfig {
@@ -34,7 +34,7 @@ class ManagedZoneDnssecConfig {
     final map = <String, dynamic>{};
     final defaultKeySpecsValue = defaultKeySpecs;
     if (defaultKeySpecsValue != null) {
-      map['defaultKeySpecs'] = Input.encodeList<
+      map['defaultKeySpecs'] = pulumi.Input.encodeList<
           ManagedZoneDnssecConfigDefaultKeySpec,
           Map<String, dynamic>>(defaultKeySpecsValue, (value) => value.toMap());
     }
@@ -57,7 +57,7 @@ class ManagedZoneDnssecConfig {
     return ManagedZoneDnssecConfig(
       defaultKeySpecs: map['defaultKeySpecs'] == null
           ? null
-          : Input.decodeList<ManagedZoneDnssecConfigDefaultKeySpec>(
+          : pulumi.Input.decodeList<ManagedZoneDnssecConfigDefaultKeySpec>(
               map['defaultKeySpecs'],
               (value) => ManagedZoneDnssecConfigDefaultKeySpec.fromMap(
                   (value as Map).cast<String, dynamic>())),

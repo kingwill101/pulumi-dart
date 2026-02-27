@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_target_type_custom_actions_include_skaffold_module/custom_target_type_custom_actions_include_skaffold_module.dart';
 
 class CustomTargetTypeCustomActions {
@@ -26,7 +26,7 @@ class CustomTargetTypeCustomActions {
     map['deployAction'] = deployAction;
     final includeSkaffoldModulesValue = includeSkaffoldModules;
     if (includeSkaffoldModulesValue != null) {
-      map['includeSkaffoldModules'] = Input.encodeList<
+      map['includeSkaffoldModules'] = pulumi.Input.encodeList<
               CustomTargetTypeCustomActionsIncludeSkaffoldModule,
               Map<String, dynamic>>(
           includeSkaffoldModulesValue, (value) => value.toMap());
@@ -43,7 +43,7 @@ class CustomTargetTypeCustomActions {
       deployAction: map['deployAction'] as String,
       includeSkaffoldModules: map['includeSkaffoldModules'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CustomTargetTypeCustomActionsIncludeSkaffoldModule>(
               map['includeSkaffoldModules'],
               (value) =>

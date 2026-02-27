@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReservation.
 class GetReservationArgs {
   /// The name of the Compute Reservation.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Project from which to list the Compute Reservation. Defaults to project declared in the provider.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Zone where the Compute Reservation resides.
-  final Input<String> zone;
+  final pulumi.Input<String> zone;
 
   GetReservationArgs({
     required this.name,
@@ -32,9 +32,9 @@ class GetReservationArgs {
 
   factory GetReservationArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationArgs(
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asInput<String>(map['zone']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asInput<String>(map['zone']),
     );
   }
 }

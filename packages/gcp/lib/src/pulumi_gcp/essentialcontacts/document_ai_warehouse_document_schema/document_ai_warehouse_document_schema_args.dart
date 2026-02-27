@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../document_ai_warehouse_document_schema_property_definition/document_ai_warehouse_document_schema_property_definition.dart';
 
 /// The set of arguments for DocumentAiWarehouseDocumentSchema.
 class DocumentAiWarehouseDocumentSchemaArgs {
   /// Name of the schema given by the user.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Tells whether the document is a folder or a typical document.
-  final Input<bool>? documentIsFolder;
+  final pulumi.Input<bool>? documentIsFolder;
 
   /// The location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The unique identifier of the project.
-  final Input<String> projectNumber;
+  final pulumi.Input<String> projectNumber;
 
   /// Defines the metadata for a schema property.
   /// Structure is documented below.
-  final Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>
+  final pulumi.Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>
       propertyDefinitions;
 
   DocumentAiWarehouseDocumentSchemaArgs({
@@ -39,11 +39,11 @@ class DocumentAiWarehouseDocumentSchemaArgs {
     }
     map['location'] = location;
     map['projectNumber'] = projectNumber;
-    map['propertyDefinitions'] = Input.mapInputValue<
+    map['propertyDefinitions'] = pulumi.Input.mapInputValue<
             List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>,
             List<Map<String, dynamic>>>(
         propertyDefinitions,
-        (value) => Input.encodeList<
+        (value) => pulumi.Input.encodeList<
             DocumentAiWarehouseDocumentSchemaPropertyDefinition,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     return map;
@@ -52,11 +52,12 @@ class DocumentAiWarehouseDocumentSchemaArgs {
   factory DocumentAiWarehouseDocumentSchemaArgs.fromMap(
       Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaArgs(
-      displayName: Input.asInput<String>(map['displayName']),
-      documentIsFolder: Input.asOptionalInput<bool>(map['documentIsFolder']),
-      location: Input.asInput<String>(map['location']),
-      projectNumber: Input.asInput<String>(map['projectNumber']),
-      propertyDefinitions: Input.asInput<
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      documentIsFolder:
+          pulumi.Input.asOptionalInput<bool>(map['documentIsFolder']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      projectNumber: pulumi.Input.asInput<String>(map['projectNumber']),
+      propertyDefinitions: pulumi.Input.asInput<
               List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>(
           map['propertyDefinitions']),
     );

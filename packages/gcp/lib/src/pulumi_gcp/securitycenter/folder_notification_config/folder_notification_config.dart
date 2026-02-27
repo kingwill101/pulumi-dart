@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_notification_config_streaming_config/folder_notification_config_streaming_config.dart';
 import 'folder_notification_config_args.dart';
 
@@ -41,41 +41,42 @@ import 'folder_notification_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig default {{folder}}/{{config_id}}
 /// ```
-class FolderNotificationConfig extends CustomResource {
+class FolderNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
-  late final Output<String> configId;
+  late final pulumi.Output<String> configId;
 
   /// The description of the notification config (max of 1024 characters).
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Numerical ID of the parent folder.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// The resource name of this notification config, in the format
   /// `folders/{{folder}}/notificationConfigs/{{config_id}}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
-  late final Output<String> pubsubTopic;
+  late final pulumi.Output<String> pubsubTopic;
 
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
-  late final Output<String> serviceAccount;
+  late final pulumi.Output<String> serviceAccount;
 
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  late final Output<FolderNotificationConfigStreamingConfig> streamingConfig;
+  late final pulumi.Output<FolderNotificationConfigStreamingConfig>
+      streamingConfig;
 
   FolderNotificationConfig(
     String name, {
     FolderNotificationConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configId = registerOutput<String>('configId');
     this.description = registerOutput<String?>('description');

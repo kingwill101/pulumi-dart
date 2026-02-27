@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDocument.
 class GetDocumentArgs {
   /// The name of the collection of documents.
-  final Input<String> collection;
+  final pulumi.Input<String> collection;
 
   /// The name of the Firestore database.
-  final Input<String> database;
+  final pulumi.Input<String> database;
 
   /// The id of the document to get.
-  final Input<String> documentId;
+  final pulumi.Input<String> documentId;
 
   /// The project in which the database resides.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetDocumentArgs({
     required this.collection,
@@ -37,10 +37,10 @@ class GetDocumentArgs {
 
   factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentArgs(
-      collection: Input.asInput<String>(map['collection']),
-      database: Input.asInput<String>(map['database']),
-      documentId: Input.asInput<String>(map['documentId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      collection: pulumi.Input.asInput<String>(map['collection']),
+      database: pulumi.Input.asInput<String>(map['database']),
+      documentId: pulumi.Input.asInput<String>(map['documentId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

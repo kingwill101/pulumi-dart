@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../session_template_environment_config/session_template_environment_config.dart';
 import '../session_template_jupyter_session/session_template_jupyter_session.dart';
 import '../session_template_runtime_config/session_template_runtime_config.dart';
@@ -40,67 +40,67 @@ import 'session_template_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataproc/sessionTemplate:SessionTemplate default {{name}}
 /// ```
-class SessionTemplate extends CustomResource {
+class SessionTemplate extends pulumi.CustomResource {
   /// The time when the session template was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The email address of the user who created the session template.
-  late final Output<String> creator;
+  late final pulumi.Output<String> creator;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Environment configuration for the session execution.
   /// Structure is documented below.
-  late final Output<SessionTemplateEnvironmentConfig?> environmentConfig;
+  late final pulumi.Output<SessionTemplateEnvironmentConfig?> environmentConfig;
 
   /// Jupyter configuration for an interactive session.
   /// Structure is documented below.
-  late final Output<SessionTemplateJupyterSession?> jupyterSession;
+  late final pulumi.Output<SessionTemplateJupyterSession?> jupyterSession;
 
   /// The labels to associate with this session template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location in which the session template will be created in.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The resource name of the session template in the following format:
   /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Runtime configuration for the session template.
   /// Structure is documented below.
-  late final Output<SessionTemplateRuntimeConfig?> runtimeConfig;
+  late final pulumi.Output<SessionTemplateRuntimeConfig?> runtimeConfig;
 
   /// Spark connect configuration for an interactive session.
-  late final Output<Map<String, dynamic>?> sparkConnectSession;
+  late final pulumi.Output<Map<String, dynamic>?> sparkConnectSession;
 
   /// The time when the session template was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
-  late final Output<String> uuid;
+  late final pulumi.Output<String> uuid;
 
   SessionTemplate(
     String name, {
     SessionTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataproc/sessionTemplate:SessionTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.creator = registerOutput<String>('creator');

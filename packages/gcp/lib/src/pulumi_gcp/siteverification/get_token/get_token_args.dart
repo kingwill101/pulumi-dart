@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getToken.
 class GetTokenArgs {
   /// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
   /// set to INET_DOMAIN, the identifier is a domain name.
-  final Input<String> identifier;
+  final pulumi.Input<String> identifier;
 
   /// The type of resource to be verified, either a domain or a web site.
   /// Possible values are: `INET_DOMAIN`, `SITE`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   /// The verification method for the Site Verification system to use to verify
   /// this site or domain.
@@ -18,7 +18,7 @@ class GetTokenArgs {
   ///
   ///
   /// - - -
-  final Input<String> verificationMethod;
+  final pulumi.Input<String> verificationMethod;
 
   GetTokenArgs({
     required this.identifier,
@@ -36,9 +36,10 @@ class GetTokenArgs {
 
   factory GetTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetTokenArgs(
-      identifier: Input.asInput<String>(map['identifier']),
-      type: Input.asInput<String>(map['type']),
-      verificationMethod: Input.asInput<String>(map['verificationMethod']),
+      identifier: pulumi.Input.asInput<String>(map['identifier']),
+      type: pulumi.Input.asInput<String>(map['type']),
+      verificationMethod:
+          pulumi.Input.asInput<String>(map['verificationMethod']),
     );
   }
 }

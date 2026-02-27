@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_node_config_linux_node_config_hugepages_config/get_cluster_node_pool_node_config_linux_node_config_hugepages_config.dart';
 import '../get_cluster_node_pool_node_config_linux_node_config_node_kernel_module_loading/get_cluster_node_pool_node_config_linux_node_config_node_kernel_module_loading.dart';
 
@@ -37,10 +37,10 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['cgroupMode'] = cgroupMode;
-    map['hugepagesConfigs'] = Input.encodeList<
+    map['hugepagesConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig,
         Map<String, dynamic>>(hugepagesConfigs, (value) => value.toMap());
-    map['nodeKernelModuleLoadings'] = Input.encodeList<
+    map['nodeKernelModuleLoadings'] = pulumi.Input.encodeList<
             GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading,
             Map<String, dynamic>>(
         nodeKernelModuleLoadings, (value) => value.toMap());
@@ -54,12 +54,12 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfig {
       Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfig(
       cgroupMode: map['cgroupMode'] as String,
-      hugepagesConfigs: Input.decodeList<
+      hugepagesConfigs: pulumi.Input.decodeList<
               GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig>(
           map['hugepagesConfigs'],
           (value) => GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig
               .fromMap((value as Map).cast<String, dynamic>())),
-      nodeKernelModuleLoadings: Input.decodeList<
+      nodeKernelModuleLoadings: pulumi.Input.decodeList<
               GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading>(
           map['nodeKernelModuleLoadings'],
           (value) =>

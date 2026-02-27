@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_config_master_config_accelerator/cluster_cluster_config_master_config_accelerator.dart';
 import '../cluster_cluster_config_master_config_disk_config/cluster_cluster_config_master_config_disk_config.dart';
 
@@ -48,7 +48,7 @@ class ClusterClusterConfigMasterConfig {
     final map = <String, dynamic>{};
     final acceleratorsValue = accelerators;
     if (acceleratorsValue != null) {
-      map['accelerators'] = Input.encodeList<
+      map['accelerators'] = pulumi.Input.encodeList<
           ClusterClusterConfigMasterConfigAccelerator,
           Map<String, dynamic>>(acceleratorsValue, (value) => value.toMap());
     }
@@ -83,7 +83,8 @@ class ClusterClusterConfigMasterConfig {
     return ClusterClusterConfigMasterConfig(
       accelerators: map['accelerators'] == null
           ? null
-          : Input.decodeList<ClusterClusterConfigMasterConfigAccelerator>(
+          : pulumi.Input.decodeList<
+                  ClusterClusterConfigMasterConfigAccelerator>(
               map['accelerators'],
               (value) => ClusterClusterConfigMasterConfigAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_config_containerd_config_registry_host_host_client_cert/get_cluster_node_config_containerd_config_registry_host_host_client_cert.dart';
 import '../get_cluster_node_config_containerd_config_registry_host_host_client_key/get_cluster_node_config_containerd_config_registry_host_host_client_key.dart';
 
@@ -20,10 +20,10 @@ class GetClusterNodeConfigContainerdConfigRegistryHostHostClient {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['certs'] = Input.encodeList<
+    map['certs'] = pulumi.Input.encodeList<
         GetClusterNodeConfigContainerdConfigRegistryHostHostClientCert,
         Map<String, dynamic>>(certs, (value) => value.toMap());
-    map['keys'] = Input.encodeList<
+    map['keys'] = pulumi.Input.encodeList<
         GetClusterNodeConfigContainerdConfigRegistryHostHostClientKey,
         Map<String, dynamic>>(keys, (value) => value.toMap());
     return map;
@@ -32,13 +32,13 @@ class GetClusterNodeConfigContainerdConfigRegistryHostHostClient {
   factory GetClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
       Map<String, dynamic> map) {
     return GetClusterNodeConfigContainerdConfigRegistryHostHostClient(
-      certs: Input.decodeList<
+      certs: pulumi.Input.decodeList<
               GetClusterNodeConfigContainerdConfigRegistryHostHostClientCert>(
           map['certs'],
           (value) =>
               GetClusterNodeConfigContainerdConfigRegistryHostHostClientCert
                   .fromMap((value as Map).cast<String, dynamic>())),
-      keys: Input.decodeList<
+      keys: pulumi.Input.decodeList<
               GetClusterNodeConfigContainerdConfigRegistryHostHostClientKey>(
           map['keys'],
           (value) =>

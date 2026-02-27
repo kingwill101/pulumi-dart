@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Owner.
 class OwnerArgs {
   /// The email of the user to be added as an owner.
   ///
   /// - - -
-  final Input<String> email;
+  final pulumi.Input<String> email;
 
   /// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
   /// such as `webResource/https://www.example.com/`
-  final Input<String> webResourceId;
+  final pulumi.Input<String> webResourceId;
 
   OwnerArgs({
     required this.email,
@@ -27,8 +27,8 @@ class OwnerArgs {
 
   factory OwnerArgs.fromMap(Map<String, dynamic> map) {
     return OwnerArgs(
-      email: Input.asInput<String>(map['email']),
-      webResourceId: Input.asInput<String>(map['webResourceId']),
+      email: pulumi.Input.asInput<String>(map['email']),
+      webResourceId: pulumi.Input.asInput<String>(map['webResourceId']),
     );
   }
 }

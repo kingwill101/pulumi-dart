@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../future_reservation_status_last_known_good_state_future_reservation_specs_specific_sku_properties_instance_properties_guest_accelerator/future_reservation_status_last_known_good_state_future_reservation_specs_specific_sku_properties_instance_properties_guest_accelerator.dart';
 import '../future_reservation_status_last_known_good_state_future_reservation_specs_specific_sku_properties_instance_properties_local_ssd/future_reservation_status_last_known_good_state_future_reservation_specs_specific_sku_properties_instance_properties_local_ssd.dart';
 
@@ -47,14 +47,14 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
     final map = <String, dynamic>{};
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.encodeList<
+      map['guestAccelerators'] = pulumi.Input.encodeList<
           FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator,
           Map<String,
               dynamic>>(guestAcceleratorsValue, (value) => value.toMap());
     }
     final localSsdsValue = localSsds;
     if (localSsdsValue != null) {
-      map['localSsds'] = Input.encodeList<
+      map['localSsds'] = pulumi.Input.encodeList<
           FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd,
           Map<String, dynamic>>(localSsdsValue, (value) => value.toMap());
     }
@@ -87,7 +87,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties(
       guestAccelerators: map['guestAccelerators'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator>(
               map['guestAccelerators'],
               (value) =>
@@ -95,7 +95,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
                       .fromMap((value as Map).cast<String, dynamic>())),
       localSsds: map['localSsds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd>(
               map['localSsds'],
               (value) =>

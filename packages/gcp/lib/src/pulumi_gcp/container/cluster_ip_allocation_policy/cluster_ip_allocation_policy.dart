@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_ip_allocation_policy_additional_ip_ranges_config/cluster_ip_allocation_policy_additional_ip_ranges_config.dart';
 import '../cluster_ip_allocation_policy_additional_pod_ranges_config/cluster_ip_allocation_policy_additional_pod_ranges_config.dart';
 import '../cluster_ip_allocation_policy_auto_ipam_config/cluster_ip_allocation_policy_auto_ipam_config.dart';
@@ -78,7 +78,7 @@ class ClusterIpAllocationPolicy {
     final map = <String, dynamic>{};
     final additionalIpRangesConfigsValue = additionalIpRangesConfigs;
     if (additionalIpRangesConfigsValue != null) {
-      map['additionalIpRangesConfigs'] = Input.encodeList<
+      map['additionalIpRangesConfigs'] = pulumi.Input.encodeList<
               ClusterIpAllocationPolicyAdditionalIpRangesConfig,
               Map<String, dynamic>>(
           additionalIpRangesConfigsValue, (value) => value.toMap());
@@ -127,7 +127,8 @@ class ClusterIpAllocationPolicy {
     return ClusterIpAllocationPolicy(
       additionalIpRangesConfigs: map['additionalIpRangesConfigs'] == null
           ? null
-          : Input.decodeList<ClusterIpAllocationPolicyAdditionalIpRangesConfig>(
+          : pulumi.Input.decodeList<
+                  ClusterIpAllocationPolicyAdditionalIpRangesConfig>(
               map['additionalIpRangesConfigs'],
               (value) =>
                   ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap(

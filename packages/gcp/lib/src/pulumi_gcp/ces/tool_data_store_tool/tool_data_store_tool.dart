@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tool_data_store_tool_boost_spec/tool_data_store_tool_boost_spec.dart';
 import '../tool_data_store_tool_engine_source/tool_data_store_tool_engine_source.dart';
 import '../tool_data_store_tool_modality_config/tool_data_store_tool_modality_config.dart';
@@ -42,9 +42,8 @@ class ToolDataStoreTool {
     final map = <String, dynamic>{};
     final boostSpecsValue = boostSpecs;
     if (boostSpecsValue != null) {
-      map['boostSpecs'] =
-          Input.encodeList<ToolDataStoreToolBoostSpec, Map<String, dynamic>>(
-              boostSpecsValue, (value) => value.toMap());
+      map['boostSpecs'] = pulumi.Input.encodeList<ToolDataStoreToolBoostSpec,
+          Map<String, dynamic>>(boostSpecsValue, (value) => value.toMap());
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -60,7 +59,8 @@ class ToolDataStoreTool {
     }
     final modalityConfigsValue = modalityConfigs;
     if (modalityConfigsValue != null) {
-      map['modalityConfigs'] = Input.encodeList<ToolDataStoreToolModalityConfig,
+      map['modalityConfigs'] = pulumi.Input.encodeList<
+          ToolDataStoreToolModalityConfig,
           Map<String, dynamic>>(modalityConfigsValue, (value) => value.toMap());
     }
     map['name'] = name;
@@ -71,7 +71,7 @@ class ToolDataStoreTool {
     return ToolDataStoreTool(
       boostSpecs: map['boostSpecs'] == null
           ? null
-          : Input.decodeList<ToolDataStoreToolBoostSpec>(
+          : pulumi.Input.decodeList<ToolDataStoreToolBoostSpec>(
               map['boostSpecs'],
               (value) => ToolDataStoreToolBoostSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -84,7 +84,7 @@ class ToolDataStoreTool {
       maxResults: map['maxResults'] == null ? null : map['maxResults'] as int,
       modalityConfigs: map['modalityConfigs'] == null
           ? null
-          : Input.decodeList<ToolDataStoreToolModalityConfig>(
+          : pulumi.Input.decodeList<ToolDataStoreToolModalityConfig>(
               map['modalityConfigs'],
               (value) => ToolDataStoreToolModalityConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

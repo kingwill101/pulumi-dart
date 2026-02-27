@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPolicy.
 class GetPolicyArgs {
   /// The resource name of the policy to retrieve. Format: `policies/{policy_id}`.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   GetPolicyArgs({
     required this.name,
@@ -19,7 +19,7 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      name: Input.asInput<String>(map['name']),
+      name: pulumi.Input.asInput<String>(map['name']),
     );
   }
 }

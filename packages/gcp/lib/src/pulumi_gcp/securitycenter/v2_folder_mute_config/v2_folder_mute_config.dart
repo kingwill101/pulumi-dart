@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_folder_mute_config_args.dart';
 
 /// Mute Findings is a volume management feature in Security Command Center
@@ -35,59 +35,59 @@ import 'v2_folder_mute_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig default {{folder}}/{{location}}/{{mute_config_id}}
 /// ```
-class V2FolderMuteConfig extends CustomResource {
+class V2FolderMuteConfig extends pulumi.CustomResource {
   /// The time at which the mute config was created. This field is set by
   /// the server and will be ignored if provided on config creation.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A description of the mute config.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// An expression that defines the filter to apply across create/update
   /// events of findings. While creating a filter string, be mindful of
   /// the scope in which the mute configuration is being created. E.g.,
   /// If a filter contains project = X but is created under the
   /// project = Y scope, it might not match any findings.
-  late final Output<String> filter;
+  late final pulumi.Output<String> filter;
 
   /// The folder whose Cloud Security Command Center the Mute
   /// Config lives in.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// location Id is provided by folder. If not provided, Use global as default.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// Email address of the user who last edited the mute config. This
   /// field is set by the server and will be ignored if provided on
   /// config creation or update.
-  late final Output<String> mostRecentEditor;
+  late final pulumi.Output<String> mostRecentEditor;
 
   /// Unique identifier provided by the client within the parent scope.
-  late final Output<String> muteConfigId;
+  late final pulumi.Output<String> muteConfigId;
 
   /// Name of the mute config. Its format is
   /// organizations/{organization}/locations/global/muteConfigs/{configId},
   /// folders/{folder}/locations/global/muteConfigs/{configId},
   /// or projects/{project}/locations/global/muteConfigs/{configId}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The type of the mute config.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Output only. The most recent time at which the mute config was
   /// updated. This field is set by the server and will be ignored if
   /// provided on config creation or update.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   V2FolderMuteConfig(
     String name, {
     V2FolderMuteConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

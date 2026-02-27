@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hmac_key_args.dart';
 
 /// The hmacKeys resource represents an HMAC key within Cloud Storage. The resource
@@ -44,41 +44,41 @@ import 'hmac_key_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
 /// ```
-class HmacKey extends CustomResource {
+class HmacKey extends pulumi.CustomResource {
   /// The access ID of the HMAC Key.
-  late final Output<String> accessId;
+  late final pulumi.Output<String> accessId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// HMAC secret key material.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> secret;
+  late final pulumi.Output<String> secret;
 
   /// The email address of the key's associated service account.
-  late final Output<String> serviceAccountEmail;
+  late final pulumi.Output<String> serviceAccountEmail;
 
   /// The state of the key. Can be set to one of ACTIVE, INACTIVE.
   /// Default value is `ACTIVE`.
   /// Possible values are: `ACTIVE`, `INACTIVE`.
-  late final Output<String?> state;
+  late final pulumi.Output<String?> state;
 
   /// 'The creation time of the HMAC key in RFC 3339 format. '
-  late final Output<String> timeCreated;
+  late final pulumi.Output<String> timeCreated;
 
   /// 'The last modification time of the HMAC key metadata in RFC 3339 format.'
-  late final Output<String> updated;
+  late final pulumi.Output<String> updated;
 
   HmacKey(
     String name, {
     HmacKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/hmacKey:HmacKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessId = registerOutput<String>('accessId');
     this.project = registerOutput<String>('project');

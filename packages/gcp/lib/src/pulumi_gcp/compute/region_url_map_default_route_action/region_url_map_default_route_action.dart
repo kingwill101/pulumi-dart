@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_url_map_default_route_action_cors_policy/region_url_map_default_route_action_cors_policy.dart';
 import '../region_url_map_default_route_action_fault_injection_policy/region_url_map_default_route_action_fault_injection_policy.dart';
 import '../region_url_map_default_route_action_request_mirror_policy/region_url_map_default_route_action_request_mirror_policy.dart';
@@ -90,7 +90,7 @@ class RegionUrlMapDefaultRouteAction {
     }
     final weightedBackendServicesValue = weightedBackendServices;
     if (weightedBackendServicesValue != null) {
-      map['weightedBackendServices'] = Input.encodeList<
+      map['weightedBackendServices'] = pulumi.Input.encodeList<
               RegionUrlMapDefaultRouteActionWeightedBackendService,
               Map<String, dynamic>>(
           weightedBackendServicesValue, (value) => value.toMap());
@@ -126,7 +126,7 @@ class RegionUrlMapDefaultRouteAction {
               (map['urlRewrite'] as Map).cast<String, dynamic>()),
       weightedBackendServices: map['weightedBackendServices'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionUrlMapDefaultRouteActionWeightedBackendService>(
               map['weightedBackendServices'],
               (value) =>

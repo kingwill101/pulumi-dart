@@ -1,3 +1,3 @@
 library module_bigtable_app_profile_single_cluster_routing;
 
-export 'app_profile_single_cluster_routing/app_profile_single_cluster_routing2.dart';
+export 'app_profile_single_cluster_routing/app_profile_single_cluster_routing_bigtable.dart';

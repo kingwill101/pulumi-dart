@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_attachment_group_attachment/interconnect_attachment_group_attachment.dart';
 import '../interconnect_attachment_group_configured/interconnect_attachment_group_configured.dart';
 import '../interconnect_attachment_group_intent/interconnect_attachment_group_intent.dart';
@@ -45,41 +45,43 @@ import 'interconnect_attachment_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default {{name}}
 /// ```
-class InterconnectAttachmentGroup extends CustomResource {
+class InterconnectAttachmentGroup extends pulumi.CustomResource {
   /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
   /// strings. Users are encouraged, but not required, to use their preferred
   /// format for resource links as keys.
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Attachments per group" quota.
   /// Structure is documented below.
-  late final Output<List<InterconnectAttachmentGroupAttachment>?> attachments;
+  late final pulumi.Output<List<InterconnectAttachmentGroupAttachment>?>
+      attachments;
 
   /// The redundancy this group is configured to support. The way a
   /// user queries what SLA their Attachment gets is by looking at this field of
   /// the Attachment's AttachmentGroup.
   /// Structure is documented below.
-  late final Output<List<InterconnectAttachmentGroupConfigured>> configureds;
+  late final pulumi.Output<List<InterconnectAttachmentGroupConfigured>>
+      configureds;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The user's intent for this group. This is the only required field besides
   /// the name that must be specified on group creation.
   /// Structure is documented below.
-  late final Output<InterconnectAttachmentGroupIntent> intent;
+  late final pulumi.Output<InterconnectAttachmentGroupIntent> intent;
 
   /// The URL of an InterconnectGroup that groups these Attachments'
   /// Interconnects. Customers do not need to set this unless directed by
   /// Google Support.
-  late final Output<String?> interconnectGroup;
+  late final pulumi.Output<String?> interconnectGroup;
 
   /// An analysis of the logical layout of Attachments in this
   /// group. Every Attachment in the group is shown once in this structure.
   /// Structure is documented below.
-  late final Output<List<InterconnectAttachmentGroupLogicalStructure>>
+  late final pulumi.Output<List<InterconnectAttachmentGroupLogicalStructure>>
       logicalStructures;
 
   /// Name of the resource. Provided by the client when the resource is created. The name must be
@@ -87,21 +89,21 @@ class InterconnectAttachmentGroup extends CustomResource {
   /// long and match the regular expression `a-z?` which means the first
   /// character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   InterconnectAttachmentGroup(
     String name, {
     InterconnectAttachmentGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attachments =
         registerOutput<List<InterconnectAttachmentGroupAttachment>?>(

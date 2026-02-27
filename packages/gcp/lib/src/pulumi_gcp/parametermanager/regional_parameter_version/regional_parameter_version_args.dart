@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RegionalParameterVersion.
 class RegionalParameterVersionArgs {
   /// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// Parameter Manager Regional Parameter resource.
-  final Input<String> parameter;
+  final pulumi.Input<String> parameter;
 
   /// The Regional Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String> parameterData;
+  final pulumi.Input<String> parameterData;
 
   /// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-  final Input<String> parameterVersionId;
+  final pulumi.Input<String> parameterVersionId;
 
   RegionalParameterVersionArgs({
     this.disabled,
@@ -38,10 +38,11 @@ class RegionalParameterVersionArgs {
 
   factory RegionalParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegionalParameterVersionArgs(
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      parameter: Input.asInput<String>(map['parameter']),
-      parameterData: Input.asInput<String>(map['parameterData']),
-      parameterVersionId: Input.asInput<String>(map['parameterVersionId']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      parameter: pulumi.Input.asInput<String>(map['parameter']),
+      parameterData: pulumi.Input.asInput<String>(map['parameterData']),
+      parameterVersionId:
+          pulumi.Input.asInput<String>(map['parameterVersionId']),
     );
   }
 }

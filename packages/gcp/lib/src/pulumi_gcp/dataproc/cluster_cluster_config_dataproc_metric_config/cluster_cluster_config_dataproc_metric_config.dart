@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_config_dataproc_metric_config_metric/cluster_cluster_config_dataproc_metric_config_metric.dart';
 
 class ClusterClusterConfigDataprocMetricConfig {
@@ -13,7 +13,7 @@ class ClusterClusterConfigDataprocMetricConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['metrics'] = Input.encodeList<
+    map['metrics'] = pulumi.Input.encodeList<
         ClusterClusterConfigDataprocMetricConfigMetric,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
     return map;
@@ -22,7 +22,8 @@ class ClusterClusterConfigDataprocMetricConfig {
   factory ClusterClusterConfigDataprocMetricConfig.fromMap(
       Map<String, dynamic> map) {
     return ClusterClusterConfigDataprocMetricConfig(
-      metrics: Input.decodeList<ClusterClusterConfigDataprocMetricConfigMetric>(
+      metrics: pulumi.Input.decodeList<
+              ClusterClusterConfigDataprocMetricConfigMetric>(
           map['metrics'],
           (value) => ClusterClusterConfigDataprocMetricConfigMetric.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionalParameters.
 class GetRegionalParametersArgs {
   /// Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all regional parameters are listed.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The location of regional parameter.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetRegionalParametersArgs({
     this.filter,
@@ -35,9 +35,9 @@ class GetRegionalParametersArgs {
 
   factory GetRegionalParametersArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParametersArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

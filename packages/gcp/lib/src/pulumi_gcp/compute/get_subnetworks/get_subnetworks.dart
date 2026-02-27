@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_subnetworks_args.dart';
 import 'get_subnetworks_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_subnetworks_result.dart';
 /// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
 Future<GetSubnetworksResult> getSubnetworks(
   GetSubnetworksArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getSubnetworks:getSubnetworks',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetworksResult.fromMap(result);
 }

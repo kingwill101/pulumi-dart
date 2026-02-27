@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIstioCanonicalService.
 class GetIstioCanonicalServiceArgs {
@@ -10,19 +10,19 @@ class GetIstioCanonicalServiceArgs {
   /// - - -
   ///
   /// Other optional fields include:
-  final Input<String> canonicalService;
+  final pulumi.Input<String> canonicalService;
 
   /// The namespace of the canonical service underlying this service.
   /// Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
-  final Input<String> canonicalServiceNamespace;
+  final pulumi.Input<String> canonicalServiceNamespace;
 
   /// Identifier for the mesh in which this Istio service is defined.
   /// Corresponds to the meshUid metric label in Istio metrics.
-  final Input<String> meshUid;
+  final pulumi.Input<String> meshUid;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetIstioCanonicalServiceArgs({
     required this.canonicalService,
@@ -45,11 +45,11 @@ class GetIstioCanonicalServiceArgs {
 
   factory GetIstioCanonicalServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetIstioCanonicalServiceArgs(
-      canonicalService: Input.asInput<String>(map['canonicalService']),
+      canonicalService: pulumi.Input.asInput<String>(map['canonicalService']),
       canonicalServiceNamespace:
-          Input.asInput<String>(map['canonicalServiceNamespace']),
-      meshUid: Input.asInput<String>(map['meshUid']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['canonicalServiceNamespace']),
+      meshUid: pulumi.Input.asInput<String>(map['meshUid']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_page_entry_fulfillment_conditional_case/cx_page_entry_fulfillment_conditional_case.dart';
 import '../cx_page_entry_fulfillment_message/cx_page_entry_fulfillment_message.dart';
 import '../cx_page_entry_fulfillment_set_parameter_action/cx_page_entry_fulfillment_set_parameter_action.dart';
@@ -40,15 +40,14 @@ class CxPageEntryFulfillment {
     final map = <String, dynamic>{};
     final conditionalCasesValue = conditionalCases;
     if (conditionalCasesValue != null) {
-      map['conditionalCases'] = Input.encodeList<
+      map['conditionalCases'] = pulumi.Input.encodeList<
               CxPageEntryFulfillmentConditionalCase, Map<String, dynamic>>(
           conditionalCasesValue, (value) => value.toMap());
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] =
-          Input.encodeList<CxPageEntryFulfillmentMessage, Map<String, dynamic>>(
-              messagesValue, (value) => value.toMap());
+      map['messages'] = pulumi.Input.encodeList<CxPageEntryFulfillmentMessage,
+          Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
     final returnPartialResponsesValue = returnPartialResponses;
     if (returnPartialResponsesValue != null) {
@@ -56,7 +55,7 @@ class CxPageEntryFulfillment {
     }
     final setParameterActionsValue = setParameterActions;
     if (setParameterActionsValue != null) {
-      map['setParameterActions'] = Input.encodeList<
+      map['setParameterActions'] = pulumi.Input.encodeList<
               CxPageEntryFulfillmentSetParameterAction, Map<String, dynamic>>(
           setParameterActionsValue, (value) => value.toMap());
     }
@@ -75,13 +74,13 @@ class CxPageEntryFulfillment {
     return CxPageEntryFulfillment(
       conditionalCases: map['conditionalCases'] == null
           ? null
-          : Input.decodeList<CxPageEntryFulfillmentConditionalCase>(
+          : pulumi.Input.decodeList<CxPageEntryFulfillmentConditionalCase>(
               map['conditionalCases'],
               (value) => CxPageEntryFulfillmentConditionalCase.fromMap(
                   (value as Map).cast<String, dynamic>())),
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<CxPageEntryFulfillmentMessage>(
+          : pulumi.Input.decodeList<CxPageEntryFulfillmentMessage>(
               map['messages'],
               (value) => CxPageEntryFulfillmentMessage.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -90,7 +89,7 @@ class CxPageEntryFulfillment {
           : map['returnPartialResponses'] as bool,
       setParameterActions: map['setParameterActions'] == null
           ? null
-          : Input.decodeList<CxPageEntryFulfillmentSetParameterAction>(
+          : pulumi.Input.decodeList<CxPageEntryFulfillmentSetParameterAction>(
               map['setParameterActions'],
               (value) => CxPageEntryFulfillmentSetParameterAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

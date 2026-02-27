@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_table_external_catalog_table_option_storage_descriptor_serde_info/get_table_external_catalog_table_option_storage_descriptor_serde_info.dart';
 
 class GetTableExternalCatalogTableOptionStorageDescriptor {
@@ -29,7 +29,7 @@ class GetTableExternalCatalogTableOptionStorageDescriptor {
     map['inputFormat'] = inputFormat;
     map['locationUri'] = locationUri;
     map['outputFormat'] = outputFormat;
-    map['serdeInfos'] = Input.encodeList<
+    map['serdeInfos'] = pulumi.Input.encodeList<
         GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo,
         Map<String, dynamic>>(serdeInfos, (value) => value.toMap());
     return map;
@@ -41,7 +41,7 @@ class GetTableExternalCatalogTableOptionStorageDescriptor {
       inputFormat: map['inputFormat'] as String,
       locationUri: map['locationUri'] as String,
       outputFormat: map['outputFormat'] as String,
-      serdeInfos: Input.decodeList<
+      serdeInfos: pulumi.Input.decodeList<
               GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo>(
           map['serdeInfos'],
           (value) =>

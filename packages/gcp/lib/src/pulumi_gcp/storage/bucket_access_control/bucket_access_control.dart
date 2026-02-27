@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_access_control_args.dart';
 
 /// Bucket ACLs can be managed authoritatively using the
@@ -43,15 +43,15 @@ import 'bucket_access_control_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}
 /// ```
-class BucketAccessControl extends CustomResource {
+class BucketAccessControl extends pulumi.CustomResource {
   /// The name of the bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// The domain associated with the entity.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// The email address associated with the entity.
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// The entity holding the permission, in one of the following forms:
   /// user-userId
@@ -68,21 +68,21 @@ class BucketAccessControl extends CustomResource {
   /// group-example@googlegroups.com.
   /// To refer to all members of the Google Apps for Business domain
   /// example.com, the entity would be domain-example.com.
-  late final Output<String> entity;
+  late final pulumi.Output<String> entity;
 
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`, `WRITER`.
-  late final Output<String?> role;
+  late final pulumi.Output<String?> role;
 
   BucketAccessControl(
     String name, {
     BucketAccessControlArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/bucketAccessControl:BucketAccessControl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.domain = registerOutput<String>('domain');

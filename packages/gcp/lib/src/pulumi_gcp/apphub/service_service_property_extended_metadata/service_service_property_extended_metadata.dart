@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_service_property_extended_metadata_value/service_service_property_extended_metadata_value.dart';
 
 class ServiceServicePropertyExtendedMetadata {
@@ -26,7 +26,7 @@ class ServiceServicePropertyExtendedMetadata {
     }
     final valuesValue = values;
     if (valuesValue != null) {
-      map['values'] = Input.encodeList<
+      map['values'] = pulumi.Input.encodeList<
           ServiceServicePropertyExtendedMetadataValue,
           Map<String, dynamic>>(valuesValue, (value) => value.toMap());
     }
@@ -39,7 +39,8 @@ class ServiceServicePropertyExtendedMetadata {
       key: map['key'] == null ? null : map['key'] as String,
       values: map['values'] == null
           ? null
-          : Input.decodeList<ServiceServicePropertyExtendedMetadataValue>(
+          : pulumi.Input.decodeList<
+                  ServiceServicePropertyExtendedMetadataValue>(
               map['values'],
               (value) => ServiceServicePropertyExtendedMetadataValue.fromMap(
                   (value as Map).cast<String, dynamic>())),

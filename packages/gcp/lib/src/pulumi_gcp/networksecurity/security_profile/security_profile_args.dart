@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_profile_custom_intercept_profile/security_profile_custom_intercept_profile.dart';
 import '../security_profile_custom_mirroring_profile/security_profile_custom_mirroring_profile.dart';
 import '../security_profile_threat_prevention_profile/security_profile_threat_prevention_profile.dart';
@@ -11,44 +11,47 @@ class SecurityProfileArgs {
   /// The configuration for defining the Intercept Endpoint Group used to
   /// intercept traffic to third-party firewall appliances.
   /// Structure is documented below.
-  final Input<SecurityProfileCustomInterceptProfile>? customInterceptProfile;
+  final pulumi.Input<SecurityProfileCustomInterceptProfile>?
+      customInterceptProfile;
 
   /// The configuration for defining the Mirroring Endpoint Group used to
   /// mirror traffic to third-party collectors.
   /// Structure is documented below.
-  final Input<SecurityProfileCustomMirroringProfile>? customMirroringProfile;
+  final pulumi.Input<SecurityProfileCustomMirroringProfile>?
+      customMirroringProfile;
 
   /// An optional description of the security profile. The Max length is 512 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location of the security profile.
   /// The default value is `global`.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The name of the security profile resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The name of the parent this security profile belongs to.
   /// Format: organizations/{organization_id}.
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   /// The threat prevention configuration for the security profile.
   /// Structure is documented below.
-  final Input<SecurityProfileThreatPreventionProfile>? threatPreventionProfile;
+  final pulumi.Input<SecurityProfileThreatPreventionProfile>?
+      threatPreventionProfile;
 
   /// The type of security profile.
   /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   /// The url filtering configuration for the security profile.
   /// Structure is documented below.
-  final Input<SecurityProfileUrlFilteringProfile>? urlFilteringProfile;
+  final pulumi.Input<SecurityProfileUrlFilteringProfile>? urlFilteringProfile;
 
   SecurityProfileArgs({
     this.customInterceptProfile,
@@ -67,13 +70,13 @@ class SecurityProfileArgs {
     final map = <String, dynamic>{};
     final customInterceptProfileValue = customInterceptProfile;
     if (customInterceptProfileValue != null) {
-      map['customInterceptProfile'] = Input.mapOptionalInputValue<
+      map['customInterceptProfile'] = pulumi.Input.mapOptionalInputValue<
               SecurityProfileCustomInterceptProfile, Map<String, dynamic>>(
           customInterceptProfileValue, (value) => value.toMap());
     }
     final customMirroringProfileValue = customMirroringProfile;
     if (customMirroringProfileValue != null) {
-      map['customMirroringProfile'] = Input.mapOptionalInputValue<
+      map['customMirroringProfile'] = pulumi.Input.mapOptionalInputValue<
               SecurityProfileCustomMirroringProfile, Map<String, dynamic>>(
           customMirroringProfileValue, (value) => value.toMap());
     }
@@ -99,14 +102,14 @@ class SecurityProfileArgs {
     }
     final threatPreventionProfileValue = threatPreventionProfile;
     if (threatPreventionProfileValue != null) {
-      map['threatPreventionProfile'] = Input.mapOptionalInputValue<
+      map['threatPreventionProfile'] = pulumi.Input.mapOptionalInputValue<
               SecurityProfileThreatPreventionProfile, Map<String, dynamic>>(
           threatPreventionProfileValue, (value) => value.toMap());
     }
     map['type'] = type;
     final urlFilteringProfileValue = urlFilteringProfile;
     if (urlFilteringProfileValue != null) {
-      map['urlFilteringProfile'] = Input.mapOptionalInputValue<
+      map['urlFilteringProfile'] = pulumi.Input.mapOptionalInputValue<
               SecurityProfileUrlFilteringProfile, Map<String, dynamic>>(
           urlFilteringProfileValue, (value) => value.toMap());
     }
@@ -116,22 +119,22 @@ class SecurityProfileArgs {
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
       customInterceptProfile:
-          Input.asOptionalInput<SecurityProfileCustomInterceptProfile>(
+          pulumi.Input.asOptionalInput<SecurityProfileCustomInterceptProfile>(
               map['customInterceptProfile']),
       customMirroringProfile:
-          Input.asOptionalInput<SecurityProfileCustomMirroringProfile>(
+          pulumi.Input.asOptionalInput<SecurityProfileCustomMirroringProfile>(
               map['customMirroringProfile']),
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parent: Input.asOptionalInput<String>(map['parent']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
       threatPreventionProfile:
-          Input.asOptionalInput<SecurityProfileThreatPreventionProfile>(
+          pulumi.Input.asOptionalInput<SecurityProfileThreatPreventionProfile>(
               map['threatPreventionProfile']),
-      type: Input.asInput<String>(map['type']),
+      type: pulumi.Input.asInput<String>(map['type']),
       urlFilteringProfile:
-          Input.asOptionalInput<SecurityProfileUrlFilteringProfile>(
+          pulumi.Input.asOptionalInput<SecurityProfileUrlFilteringProfile>(
               map['urlFilteringProfile']),
     );
   }

@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SecretCiphertext.
 class SecretCiphertextArgs {
   /// The additional authenticated data used for integrity checks during encryption and decryption.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String>? additionalAuthenticatedData;
+  final pulumi.Input<String>? additionalAuthenticatedData;
 
   /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-  final Input<String> cryptoKey;
+  final pulumi.Input<String> cryptoKey;
 
   /// The plaintext to be encrypted.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String> plaintext;
+  final pulumi.Input<String> plaintext;
 
   SecretCiphertextArgs({
     this.additionalAuthenticatedData,
@@ -35,10 +35,10 @@ class SecretCiphertextArgs {
 
   factory SecretCiphertextArgs.fromMap(Map<String, dynamic> map) {
     return SecretCiphertextArgs(
-      additionalAuthenticatedData:
-          Input.asOptionalInput<String>(map['additionalAuthenticatedData']),
-      cryptoKey: Input.asInput<String>(map['cryptoKey']),
-      plaintext: Input.asInput<String>(map['plaintext']),
+      additionalAuthenticatedData: pulumi.Input.asOptionalInput<String>(
+          map['additionalAuthenticatedData']),
+      cryptoKey: pulumi.Input.asInput<String>(map['cryptoKey']),
+      plaintext: pulumi.Input.asInput<String>(map['plaintext']),
     );
   }
 }

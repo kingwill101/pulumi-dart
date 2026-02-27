@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dns_zone_peering_config/dns_zone_peering_config.dart';
 import 'dns_zone_args.dart';
 
@@ -35,37 +35,37 @@ import 'dns_zone_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/dnsZone:DnsZone default {{org_id}}/{{dns_zone_id}}
 /// ```
-class DnsZone extends CustomResource {
+class DnsZone extends pulumi.CustomResource {
   /// Description for the zone.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// ID of the dns zone.
-  late final Output<String> dnsZoneId;
+  late final pulumi.Output<String> dnsZoneId;
 
   /// Doamin for the zone.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// Name of the Dns Zone in the following format:
   /// organizations/{organization}/dnsZones/{dnsZone}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// Peering zone config
   /// Structure is documented below.
-  late final Output<DnsZonePeeringConfig> peeringConfig;
+  late final pulumi.Output<DnsZonePeeringConfig> peeringConfig;
 
   DnsZone(
     String name, {
     DnsZoneArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/dnsZone:DnsZone',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String>('description');
     this.dnsZoneId = registerOutput<String>('dnsZoneId');

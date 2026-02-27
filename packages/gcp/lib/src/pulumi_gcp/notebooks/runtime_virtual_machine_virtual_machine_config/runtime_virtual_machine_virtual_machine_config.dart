@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../runtime_virtual_machine_virtual_machine_config_accelerator_config/runtime_virtual_machine_virtual_machine_config_accelerator_config.dart';
 import '../runtime_virtual_machine_virtual_machine_config_container_image/runtime_virtual_machine_virtual_machine_config_container_image.dart';
 import '../runtime_virtual_machine_virtual_machine_config_data_disk/runtime_virtual_machine_virtual_machine_config_data_disk.dart';
@@ -132,7 +132,7 @@ class RuntimeVirtualMachineVirtualMachineConfig {
     }
     final containerImagesValue = containerImages;
     if (containerImagesValue != null) {
-      map['containerImages'] = Input.encodeList<
+      map['containerImages'] = pulumi.Input.encodeList<
           RuntimeVirtualMachineVirtualMachineConfigContainerImage,
           Map<String, dynamic>>(containerImagesValue, (value) => value.toMap());
     }
@@ -198,7 +198,7 @@ class RuntimeVirtualMachineVirtualMachineConfig {
               (map['acceleratorConfig'] as Map).cast<String, dynamic>()),
       containerImages: map['containerImages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RuntimeVirtualMachineVirtualMachineConfigContainerImage>(
               map['containerImages'],
               (value) => RuntimeVirtualMachineVirtualMachineConfigContainerImage

@@ -1,45 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GatewaySecurityPolicyRule.
 class GatewaySecurityPolicyRuleArgs {
   /// CEL expression for matching on L7/application level criteria.
-  final Input<String>? applicationMatcher;
+  final pulumi.Input<String>? applicationMatcher;
 
   /// Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
   /// Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
-  final Input<String> basicProfile;
+  final pulumi.Input<String> basicProfile;
 
   /// Free-text description of the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether the rule is enforced.
-  final Input<bool> enabled;
+  final pulumi.Input<bool> enabled;
 
   /// The name of the gatewat security policy this rule belongs to.
-  final Input<String> gatewaySecurityPolicy;
+  final pulumi.Input<String> gatewaySecurityPolicy;
 
   /// The location of the gateway security policy.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
   /// rule should match the pattern: (^a-z?$).
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Priority of the rule. Lower number corresponds to higher precedence.
-  final Input<int> priority;
+  final pulumi.Input<int> priority;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// CEL expression for matching on session criteria.
-  final Input<String> sessionMatcher;
+  final pulumi.Input<String> sessionMatcher;
 
   /// Flag to enable TLS inspection of traffic matching on. Can only be true if the
   /// parent GatewaySecurityPolicy references a TLSInspectionConfig.
-  final Input<bool>? tlsInspectionEnabled;
+  final pulumi.Input<bool>? tlsInspectionEnabled;
 
   GatewaySecurityPolicyRuleArgs({
     this.applicationMatcher,
@@ -89,19 +89,19 @@ class GatewaySecurityPolicyRuleArgs {
   factory GatewaySecurityPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return GatewaySecurityPolicyRuleArgs(
       applicationMatcher:
-          Input.asOptionalInput<String>(map['applicationMatcher']),
-      basicProfile: Input.asInput<String>(map['basicProfile']),
-      description: Input.asOptionalInput<String>(map['description']),
-      enabled: Input.asInput<bool>(map['enabled']),
+          pulumi.Input.asOptionalInput<String>(map['applicationMatcher']),
+      basicProfile: pulumi.Input.asInput<String>(map['basicProfile']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      enabled: pulumi.Input.asInput<bool>(map['enabled']),
       gatewaySecurityPolicy:
-          Input.asInput<String>(map['gatewaySecurityPolicy']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      priority: Input.asInput<int>(map['priority']),
-      project: Input.asOptionalInput<String>(map['project']),
-      sessionMatcher: Input.asInput<String>(map['sessionMatcher']),
+          pulumi.Input.asInput<String>(map['gatewaySecurityPolicy']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      priority: pulumi.Input.asInput<int>(map['priority']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      sessionMatcher: pulumi.Input.asInput<String>(map['sessionMatcher']),
       tlsInspectionEnabled:
-          Input.asOptionalInput<bool>(map['tlsInspectionEnabled']),
+          pulumi.Input.asOptionalInput<bool>(map['tlsInspectionEnabled']),
     );
   }
 }

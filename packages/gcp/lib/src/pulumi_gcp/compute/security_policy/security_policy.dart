@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_policy_adaptive_protection_config/security_policy_adaptive_protection_config.dart';
 import '../security_policy_advanced_options_config/security_policy_advanced_options_config.dart';
 import '../security_policy_recaptcha_options_config/security_policy_recaptcha_options_config.dart';
@@ -51,55 +51,56 @@ import 'security_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
 /// ```
-class SecurityPolicy extends CustomResource {
+class SecurityPolicy extends pulumi.CustomResource {
   /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-  late final Output<SecurityPolicyAdaptiveProtectionConfig?>
+  late final pulumi.Output<SecurityPolicyAdaptiveProtectionConfig?>
       adaptiveProtectionConfig;
 
   /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
   /// Structure is documented below.
-  late final Output<SecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig;
+  late final pulumi.Output<SecurityPolicyAdvancedOptionsConfig>
+      advancedOptionsConfig;
 
   /// An optional description of this security policy. Max size is 2048.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Fingerprint of this resource.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The unique fingerprint of the labels.
-  late final Output<String> labelFingerprint;
+  late final pulumi.Output<String> labelFingerprint;
 
   /// Labels to apply to this address. A list of key->value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The name of the security policy.
   ///
   /// - - -
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
-  late final Output<SecurityPolicyRecaptchaOptionsConfig?>
+  late final pulumi.Output<SecurityPolicyRecaptchaOptionsConfig?>
       recaptchaOptionsConfig;
 
   /// The set of rules that belong to this policy. There must always be a default
   /// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
   /// security policy, a default rule with action "allow" will be added. Structure is documented below.
-  late final Output<List<SecurityPolicyRule>> rules;
+  late final pulumi.Output<List<SecurityPolicyRule>> rules;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   /// * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
@@ -109,17 +110,17 @@ class SecurityPolicy extends CustomResource {
   /// They filter requests before the request is served from Google's cache.
   /// * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
   /// managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   SecurityPolicy(
     String name, {
     SecurityPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/securityPolicy:SecurityPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.adaptiveProtectionConfig =
         registerOutput<SecurityPolicyAdaptiveProtectionConfig?>(

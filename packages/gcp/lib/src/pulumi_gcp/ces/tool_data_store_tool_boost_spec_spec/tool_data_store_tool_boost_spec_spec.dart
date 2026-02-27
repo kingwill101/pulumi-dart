@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tool_data_store_tool_boost_spec_spec_condition_boost_spec/tool_data_store_tool_boost_spec_spec_condition_boost_spec.dart';
 
 class ToolDataStoreToolBoostSpecSpec {
@@ -15,7 +15,7 @@ class ToolDataStoreToolBoostSpecSpec {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['conditionBoostSpecs'] = Input.encodeList<
+    map['conditionBoostSpecs'] = pulumi.Input.encodeList<
         ToolDataStoreToolBoostSpecSpecConditionBoostSpec,
         Map<String, dynamic>>(conditionBoostSpecs, (value) => value.toMap());
     return map;
@@ -23,12 +23,11 @@ class ToolDataStoreToolBoostSpecSpec {
 
   factory ToolDataStoreToolBoostSpecSpec.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolBoostSpecSpec(
-      conditionBoostSpecs:
-          Input.decodeList<ToolDataStoreToolBoostSpecSpecConditionBoostSpec>(
-              map['conditionBoostSpecs'],
-              (value) =>
-                  ToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      conditionBoostSpecs: pulumi.Input.decodeList<
+              ToolDataStoreToolBoostSpecSpecConditionBoostSpec>(
+          map['conditionBoostSpecs'],
+          (value) => ToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

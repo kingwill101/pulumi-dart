@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_network_endpoint_group_app_engine/region_network_endpoint_group_app_engine.dart';
 import '../region_network_endpoint_group_cloud_function/region_network_endpoint_group_cloud_function.dart';
 import '../region_network_endpoint_group_cloud_run/region_network_endpoint_group_cloud_run.dart';
@@ -84,25 +84,26 @@ import 'region_network_endpoint_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
 /// ```
-class RegionNetworkEndpointGroup extends CustomResource {
+class RegionNetworkEndpointGroup extends pulumi.CustomResource {
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
-  late final Output<RegionNetworkEndpointGroupAppEngine?> appEngine;
+  late final pulumi.Output<RegionNetworkEndpointGroupAppEngine?> appEngine;
 
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
-  late final Output<RegionNetworkEndpointGroupCloudFunction?> cloudFunction;
+  late final pulumi.Output<RegionNetworkEndpointGroupCloudFunction?>
+      cloudFunction;
 
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
-  late final Output<RegionNetworkEndpointGroupCloudRun?> cloudRun;
+  late final pulumi.Output<RegionNetworkEndpointGroupCloudRun?> cloudRun;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -111,56 +112,56 @@ class RegionNetworkEndpointGroup extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// This field is only used for PSC and INTERNET NEGs.
   /// The URL of the network to which all network endpoints in the NEG belong. Uses
   /// "default" project network if unspecified.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
   /// Default value is `SERVERLESS`.
   /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
-  late final Output<String?> networkEndpointType;
+  late final pulumi.Output<String?> networkEndpointType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// This field is only used for PSC NEGs.
   /// Structure is documented below.
-  late final Output<RegionNetworkEndpointGroupPscData> pscData;
+  late final pulumi.Output<RegionNetworkEndpointGroupPscData> pscData;
 
   /// This field is only used for PSC and INTERNET NEGs.
   /// The target service url used to set up private service connection to
   /// a Google API or a PSC Producer Service Attachment.
-  late final Output<String?> pscTargetService;
+  late final pulumi.Output<String?> pscTargetService;
 
   /// A reference to the region where the regional NEGs reside.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
-  late final Output<RegionNetworkEndpointGroupServerlessDeployment?>
+  late final pulumi.Output<RegionNetworkEndpointGroupServerlessDeployment?>
       serverlessDeployment;
 
   /// This field is only used for PSC NEGs.
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
-  late final Output<String?> subnetwork;
+  late final pulumi.Output<String?> subnetwork;
 
   RegionNetworkEndpointGroup(
     String name, {
     RegionNetworkEndpointGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appEngine =
         registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine');

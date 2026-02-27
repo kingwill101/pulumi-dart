@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_health_check_grpc_health_check/get_health_check_grpc_health_check.dart';
 import '../get_health_check_grpc_tls_health_check/get_health_check_grpc_tls_health_check.dart';
 import '../get_health_check_http2_health_check/get_health_check_http2_health_check.dart';
@@ -63,25 +63,25 @@ class GetHealthCheckResult {
     map['checkIntervalSec'] = checkIntervalSec;
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
-    map['grpcHealthChecks'] =
-        Input.encodeList<GetHealthCheckGrpcHealthCheck, Map<String, dynamic>>(
-            grpcHealthChecks, (value) => value.toMap());
-    map['grpcTlsHealthChecks'] = Input.encodeList<
+    map['grpcHealthChecks'] = pulumi.Input.encodeList<
+        GetHealthCheckGrpcHealthCheck,
+        Map<String, dynamic>>(grpcHealthChecks, (value) => value.toMap());
+    map['grpcTlsHealthChecks'] = pulumi.Input.encodeList<
         GetHealthCheckGrpcTlsHealthCheck,
         Map<String, dynamic>>(grpcTlsHealthChecks, (value) => value.toMap());
     map['healthyThreshold'] = healthyThreshold;
-    map['http2HealthChecks'] =
-        Input.encodeList<GetHealthCheckHttp2HealthCheck, Map<String, dynamic>>(
-            http2HealthChecks, (value) => value.toMap());
-    map['httpHealthChecks'] =
-        Input.encodeList<GetHealthCheckHttpHealthCheck, Map<String, dynamic>>(
-            httpHealthChecks, (value) => value.toMap());
-    map['httpsHealthChecks'] =
-        Input.encodeList<GetHealthCheckHttpsHealthCheck, Map<String, dynamic>>(
-            httpsHealthChecks, (value) => value.toMap());
+    map['http2HealthChecks'] = pulumi.Input.encodeList<
+        GetHealthCheckHttp2HealthCheck,
+        Map<String, dynamic>>(http2HealthChecks, (value) => value.toMap());
+    map['httpHealthChecks'] = pulumi.Input.encodeList<
+        GetHealthCheckHttpHealthCheck,
+        Map<String, dynamic>>(httpHealthChecks, (value) => value.toMap());
+    map['httpsHealthChecks'] = pulumi.Input.encodeList<
+        GetHealthCheckHttpsHealthCheck,
+        Map<String, dynamic>>(httpsHealthChecks, (value) => value.toMap());
     map['id'] = id;
     map['logConfigs'] =
-        Input.encodeList<GetHealthCheckLogConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetHealthCheckLogConfig, Map<String, dynamic>>(
             logConfigs, (value) => value.toMap());
     map['name'] = name;
     final projectValue = project;
@@ -90,12 +90,12 @@ class GetHealthCheckResult {
     }
     map['selfLink'] = selfLink;
     map['sourceRegions'] = sourceRegions;
-    map['sslHealthChecks'] =
-        Input.encodeList<GetHealthCheckSslHealthCheck, Map<String, dynamic>>(
-            sslHealthChecks, (value) => value.toMap());
-    map['tcpHealthChecks'] =
-        Input.encodeList<GetHealthCheckTcpHealthCheck, Map<String, dynamic>>(
-            tcpHealthChecks, (value) => value.toMap());
+    map['sslHealthChecks'] = pulumi.Input.encodeList<
+        GetHealthCheckSslHealthCheck,
+        Map<String, dynamic>>(sslHealthChecks, (value) => value.toMap());
+    map['tcpHealthChecks'] = pulumi.Input.encodeList<
+        GetHealthCheckTcpHealthCheck,
+        Map<String, dynamic>>(tcpHealthChecks, (value) => value.toMap());
     map['timeoutSec'] = timeoutSec;
     map['type'] = type;
     map['unhealthyThreshold'] = unhealthyThreshold;
@@ -107,29 +107,32 @@ class GetHealthCheckResult {
       checkIntervalSec: map['checkIntervalSec'] as int,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      grpcHealthChecks: Input.decodeList<GetHealthCheckGrpcHealthCheck>(
+      grpcHealthChecks: pulumi.Input.decodeList<GetHealthCheckGrpcHealthCheck>(
           map['grpcHealthChecks'],
           (value) => GetHealthCheckGrpcHealthCheck.fromMap(
               (value as Map).cast<String, dynamic>())),
-      grpcTlsHealthChecks: Input.decodeList<GetHealthCheckGrpcTlsHealthCheck>(
-          map['grpcTlsHealthChecks'],
-          (value) => GetHealthCheckGrpcTlsHealthCheck.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      grpcTlsHealthChecks:
+          pulumi.Input.decodeList<GetHealthCheckGrpcTlsHealthCheck>(
+              map['grpcTlsHealthChecks'],
+              (value) => GetHealthCheckGrpcTlsHealthCheck.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       healthyThreshold: map['healthyThreshold'] as int,
-      http2HealthChecks: Input.decodeList<GetHealthCheckHttp2HealthCheck>(
-          map['http2HealthChecks'],
-          (value) => GetHealthCheckHttp2HealthCheck.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      httpHealthChecks: Input.decodeList<GetHealthCheckHttpHealthCheck>(
+      http2HealthChecks:
+          pulumi.Input.decodeList<GetHealthCheckHttp2HealthCheck>(
+              map['http2HealthChecks'],
+              (value) => GetHealthCheckHttp2HealthCheck.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      httpHealthChecks: pulumi.Input.decodeList<GetHealthCheckHttpHealthCheck>(
           map['httpHealthChecks'],
           (value) => GetHealthCheckHttpHealthCheck.fromMap(
               (value as Map).cast<String, dynamic>())),
-      httpsHealthChecks: Input.decodeList<GetHealthCheckHttpsHealthCheck>(
-          map['httpsHealthChecks'],
-          (value) => GetHealthCheckHttpsHealthCheck.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      httpsHealthChecks:
+          pulumi.Input.decodeList<GetHealthCheckHttpsHealthCheck>(
+              map['httpsHealthChecks'],
+              (value) => GetHealthCheckHttpsHealthCheck.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      logConfigs: Input.decodeList<GetHealthCheckLogConfig>(
+      logConfigs: pulumi.Input.decodeList<GetHealthCheckLogConfig>(
           map['logConfigs'],
           (value) => GetHealthCheckLogConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -137,11 +140,11 @@ class GetHealthCheckResult {
       project: map['project'] == null ? null : map['project'] as String,
       selfLink: map['selfLink'] as String,
       sourceRegions: (map['sourceRegions'] as List).cast<String>(),
-      sslHealthChecks: Input.decodeList<GetHealthCheckSslHealthCheck>(
+      sslHealthChecks: pulumi.Input.decodeList<GetHealthCheckSslHealthCheck>(
           map['sslHealthChecks'],
           (value) => GetHealthCheckSslHealthCheck.fromMap(
               (value as Map).cast<String, dynamic>())),
-      tcpHealthChecks: Input.decodeList<GetHealthCheckTcpHealthCheck>(
+      tcpHealthChecks: pulumi.Input.decodeList<GetHealthCheckTcpHealthCheck>(
           map['tcpHealthChecks'],
           (value) => GetHealthCheckTcpHealthCheck.fromMap(
               (value as Map).cast<String, dynamic>())),

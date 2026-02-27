@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../metastore_service_hive_metastore_config_auxiliary_version/metastore_service_hive_metastore_config_auxiliary_version.dart';
 import '../metastore_service_hive_metastore_config_kerberos_config/metastore_service_hive_metastore_config_kerberos_config.dart';
 
@@ -42,7 +42,7 @@ class MetastoreServiceHiveMetastoreConfig {
     final map = <String, dynamic>{};
     final auxiliaryVersionsValue = auxiliaryVersions;
     if (auxiliaryVersionsValue != null) {
-      map['auxiliaryVersions'] = Input.encodeList<
+      map['auxiliaryVersions'] = pulumi.Input.encodeList<
               MetastoreServiceHiveMetastoreConfigAuxiliaryVersion,
               Map<String, dynamic>>(
           auxiliaryVersionsValue, (value) => value.toMap());
@@ -68,7 +68,7 @@ class MetastoreServiceHiveMetastoreConfig {
     return MetastoreServiceHiveMetastoreConfig(
       auxiliaryVersions: map['auxiliaryVersions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MetastoreServiceHiveMetastoreConfigAuxiliaryVersion>(
               map['auxiliaryVersions'],
               (value) =>

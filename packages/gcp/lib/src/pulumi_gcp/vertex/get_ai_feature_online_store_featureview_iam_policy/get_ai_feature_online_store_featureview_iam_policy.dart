@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_ai_feature_online_store_featureview_iam_policy_args.dart';
 import 'get_ai_feature_online_store_featureview_iam_policy_result.dart';
 
 Future<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult>
     getAiFeatureOnlineStoreFeatureviewIamPolicy(
   GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.fromMap(result);
 }

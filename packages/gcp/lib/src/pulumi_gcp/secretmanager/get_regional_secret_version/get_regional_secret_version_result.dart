@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_regional_secret_version_customer_managed_encryption/get_regional_secret_version_customer_managed_encryption.dart';
 
 /// Result data returned by getRegionalSecretVersion.
@@ -51,7 +51,7 @@ class GetRegionalSecretVersionResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['createTime'] = createTime;
-    map['customerManagedEncryptions'] = Input.encodeList<
+    map['customerManagedEncryptions'] = pulumi.Input.encodeList<
             GetRegionalSecretVersionCustomerManagedEncryption,
             Map<String, dynamic>>(
         customerManagedEncryptions, (value) => value.toMap());
@@ -74,12 +74,11 @@ class GetRegionalSecretVersionResult {
   factory GetRegionalSecretVersionResult.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretVersionResult(
       createTime: map['createTime'] as String,
-      customerManagedEncryptions:
-          Input.decodeList<GetRegionalSecretVersionCustomerManagedEncryption>(
-              map['customerManagedEncryptions'],
-              (value) =>
-                  GetRegionalSecretVersionCustomerManagedEncryption.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      customerManagedEncryptions: pulumi.Input.decodeList<
+              GetRegionalSecretVersionCustomerManagedEncryption>(
+          map['customerManagedEncryptions'],
+          (value) => GetRegionalSecretVersionCustomerManagedEncryption.fromMap(
+              (value as Map).cast<String, dynamic>())),
       destroyTime: map['destroyTime'] as String,
       enabled: map['enabled'] as bool,
       id: map['id'] as String,

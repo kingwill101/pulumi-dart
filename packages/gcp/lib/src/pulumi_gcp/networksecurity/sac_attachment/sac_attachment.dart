@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sac_attachment_symantec_options/sac_attachment_symantec_options.dart';
 import 'sac_attachment_args.dart';
 
@@ -40,64 +40,64 @@ import 'sac_attachment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/sacAttachment:SacAttachment default {{location}}/{{name}}
 /// ```
-class SacAttachment extends CustomResource {
+class SacAttachment extends pulumi.CustomResource {
   /// Case-insensitive ISO-3166 alpha-2 country code used for localization. Only valid for Symantec attachments.
-  late final Output<String?> country;
+  late final pulumi.Output<String?> country;
 
   /// Timestamp when the realm was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the SACAttachment resource. eg us-central1
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. Resource name
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// NCC Gateway associated with the attachment. This can be input as an ID or a full resource name.
-  late final Output<String> nccGateway;
+  late final pulumi.Output<String> nccGateway;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
-  late final Output<String> sacRealm;
+  late final pulumi.Output<String> sacRealm;
 
   /// State of the attachment.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Configuration required for Symantec attachments.
   /// Structure is documented below.
-  late final Output<SacAttachmentSymantecOptions?> symantecOptions;
+  late final pulumi.Output<SacAttachmentSymantecOptions?> symantecOptions;
 
   /// Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
-  late final Output<String?> timeZone;
+  late final pulumi.Output<String?> timeZone;
 
   /// Timestamp when the realm was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   SacAttachment(
     String name, {
     SacAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/sacAttachment:SacAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.country = registerOutput<String?>('country');
     this.createTime = registerOutput<String>('createTime');

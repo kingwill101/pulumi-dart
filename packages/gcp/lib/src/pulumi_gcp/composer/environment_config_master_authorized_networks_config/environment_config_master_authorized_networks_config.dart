@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_config_master_authorized_networks_config_cidr_block/environment_config_master_authorized_networks_config_cidr_block.dart';
 
 class EnvironmentConfigMasterAuthorizedNetworksConfig {
@@ -20,7 +20,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfig {
     final map = <String, dynamic>{};
     final cidrBlocksValue = cidrBlocks;
     if (cidrBlocksValue != null) {
-      map['cidrBlocks'] = Input.encodeList<
+      map['cidrBlocks'] = pulumi.Input.encodeList<
           EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock,
           Map<String, dynamic>>(cidrBlocksValue, (value) => value.toMap());
     }
@@ -33,7 +33,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfig {
     return EnvironmentConfigMasterAuthorizedNetworksConfig(
       cidrBlocks: map['cidrBlocks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>(
               map['cidrBlocks'],
               (value) =>

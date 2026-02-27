@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../asset_iam_member_condition/asset_iam_member_condition.dart';
 
 /// The set of arguments for AssetIamMember.
 class AssetIamMemberArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> asset;
-  final Input<AssetIamMemberCondition>? condition;
+  final pulumi.Input<String> asset;
+  final pulumi.Input<AssetIamMemberCondition>? condition;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> dataplexZone;
+  final pulumi.Input<String> dataplexZone;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> lake;
+  final pulumi.Input<String> lake;
 
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -32,16 +32,16 @@ class AssetIamMemberArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final Input<String> member;
+  final pulumi.Input<String> member;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The role that should be applied. Only one
   /// `gcp.dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   AssetIamMemberArgs({
     required this.asset,
@@ -59,7 +59,8 @@ class AssetIamMemberArgs {
     map['asset'] = asset;
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<AssetIamMemberCondition,
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
+          AssetIamMemberCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
     map['dataplexZone'] = dataplexZone;
@@ -79,15 +80,15 @@ class AssetIamMemberArgs {
 
   factory AssetIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AssetIamMemberArgs(
-      asset: Input.asInput<String>(map['asset']),
-      condition:
-          Input.asOptionalInput<AssetIamMemberCondition>(map['condition']),
-      dataplexZone: Input.asInput<String>(map['dataplexZone']),
-      lake: Input.asInput<String>(map['lake']),
-      location: Input.asOptionalInput<String>(map['location']),
-      member: Input.asInput<String>(map['member']),
-      project: Input.asOptionalInput<String>(map['project']),
-      role: Input.asInput<String>(map['role']),
+      asset: pulumi.Input.asInput<String>(map['asset']),
+      condition: pulumi.Input.asOptionalInput<AssetIamMemberCondition>(
+          map['condition']),
+      dataplexZone: pulumi.Input.asInput<String>(map['dataplexZone']),
+      lake: pulumi.Input.asInput<String>(map['lake']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      member: pulumi.Input.asInput<String>(map['member']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

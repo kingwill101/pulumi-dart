@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_per_instance_config_preserved_state/region_per_instance_config_preserved_state.dart';
 import 'region_per_instance_config_args.dart';
 
@@ -49,14 +49,14 @@ import 'region_per_instance_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
 /// ```
-class RegionPerInstanceConfig extends CustomResource {
+class RegionPerInstanceConfig extends pulumi.CustomResource {
   /// The minimal action to perform on the instance during an update.
   /// Default is `NONE`. Possible values are:
   /// * REPLACE
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  late final Output<String?> minimalAction;
+  late final pulumi.Output<String?> minimalAction;
 
   /// The most disruptive action to perform on the instance during an update.
   /// Default is `REPLACE`. Possible values are:
@@ -64,43 +64,44 @@ class RegionPerInstanceConfig extends CustomResource {
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  late final Output<String?> mostDisruptiveAllowedAction;
+  late final pulumi.Output<String?> mostDisruptiveAllowedAction;
 
   /// The name for this per-instance config and its corresponding instance.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The preserved state for this instance.
   /// Structure is documented below.
-  late final Output<RegionPerInstanceConfigPreservedState?> preservedState;
+  late final pulumi.Output<RegionPerInstanceConfigPreservedState?>
+      preservedState;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where the containing instance group manager is located
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The region instance group manager this instance config is part of.
-  late final Output<String> regionInstanceGroupManager;
+  late final pulumi.Output<String> regionInstanceGroupManager;
 
   /// When true, deleting this config will immediately remove the underlying instance.
   /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
-  late final Output<bool?> removeInstanceOnDestroy;
+  late final pulumi.Output<bool?> removeInstanceOnDestroy;
 
   /// When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
   /// State will be removed on the next instance recreation or update.
-  late final Output<bool?> removeInstanceStateOnDestroy;
+  late final pulumi.Output<bool?> removeInstanceStateOnDestroy;
 
   RegionPerInstanceConfig(
     String name, {
     RegionPerInstanceConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.minimalAction = registerOutput<String?>('minimalAction');
     this.mostDisruptiveAllowedAction =

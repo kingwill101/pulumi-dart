@@ -1,48 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../developer_app_attribute/developer_app_attribute.dart';
 
 /// The set of arguments for DeveloperApp.
 class DeveloperAppArgs {
   /// List of API products associated with the developer app.
-  final Input<List<String>>? apiProducts;
+  final pulumi.Input<List<String>>? apiProducts;
 
   /// Developer app family.
-  final Input<String>? appFamily;
+  final pulumi.Input<String>? appFamily;
 
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
-  final Input<List<DeveloperAppAttribute>>? attributes;
+  final pulumi.Input<List<DeveloperAppAttribute>>? attributes;
 
   /// Callback URL used by OAuth 2.0 authorization servers to communicate
   /// authorization codes back to developer apps.
-  final Input<String> callbackUrl;
+  final pulumi.Input<String> callbackUrl;
 
   /// Email address of the developer.
   /// This value is used to uniquely identify the developer in Apigee hybrid.
   /// Note that the email address has to be in lowercase only.
-  final Input<String> developerEmail;
+  final pulumi.Input<String> developerEmail;
 
   /// Expiration time, in milliseconds, for the consumer key that is generated
   /// for the developer app. If not set or left to the default value of -1,
   /// the API key never expires. The expiration time can't be updated after it is set.
-  final Input<String>? keyExpiresIn;
+  final pulumi.Input<String>? keyExpiresIn;
 
   /// Name of the developer app.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// Scopes to apply to the developer app.
   /// The specified scopes must already exist for the API product that
   /// you associate with the developer app.
-  final Input<List<String>>? scopes;
+  final pulumi.Input<List<String>>? scopes;
 
   /// Status of the credential. Valid values include approved or revoked.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   DeveloperAppArgs({
     this.apiProducts,
@@ -69,12 +69,11 @@ class DeveloperAppArgs {
     }
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.mapOptionalInputValue<
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
               List<DeveloperAppAttribute>, List<Map<String, dynamic>>>(
           attributesValue,
-          (value) =>
-              Input.encodeList<DeveloperAppAttribute, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<DeveloperAppAttribute,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['callbackUrl'] = callbackUrl;
     map['developerEmail'] = developerEmail;
@@ -100,17 +99,18 @@ class DeveloperAppArgs {
 
   factory DeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperAppArgs(
-      apiProducts: Input.asOptionalInput<List<String>>(map['apiProducts']),
-      appFamily: Input.asOptionalInput<String>(map['appFamily']),
-      attributes:
-          Input.asOptionalInput<List<DeveloperAppAttribute>>(map['attributes']),
-      callbackUrl: Input.asInput<String>(map['callbackUrl']),
-      developerEmail: Input.asInput<String>(map['developerEmail']),
-      keyExpiresIn: Input.asOptionalInput<String>(map['keyExpiresIn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      orgId: Input.asInput<String>(map['orgId']),
-      scopes: Input.asOptionalInput<List<String>>(map['scopes']),
-      status: Input.asOptionalInput<String>(map['status']),
+      apiProducts:
+          pulumi.Input.asOptionalInput<List<String>>(map['apiProducts']),
+      appFamily: pulumi.Input.asOptionalInput<String>(map['appFamily']),
+      attributes: pulumi.Input.asOptionalInput<List<DeveloperAppAttribute>>(
+          map['attributes']),
+      callbackUrl: pulumi.Input.asInput<String>(map['callbackUrl']),
+      developerEmail: pulumi.Input.asInput<String>(map['developerEmail']),
+      keyExpiresIn: pulumi.Input.asOptionalInput<String>(map['keyExpiresIn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      scopes: pulumi.Input.asOptionalInput<List<String>>(map['scopes']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
     );
   }
 }

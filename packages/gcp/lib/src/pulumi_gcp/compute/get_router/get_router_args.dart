@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRouter.
 class GetRouterArgs {
   /// The name of the router.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The VPC network on which this router lives.
-  final Input<String> network;
+  final pulumi.Input<String> network;
 
   /// The ID of the project in which the resource
   /// belongs. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region this router has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetRouterArgs({
     required this.name,
@@ -42,10 +42,10 @@ class GetRouterArgs {
 
   factory GetRouterArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterArgs(
-      name: Input.asInput<String>(map['name']),
-      network: Input.asInput<String>(map['network']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      network: pulumi.Input.asInput<String>(map['network']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

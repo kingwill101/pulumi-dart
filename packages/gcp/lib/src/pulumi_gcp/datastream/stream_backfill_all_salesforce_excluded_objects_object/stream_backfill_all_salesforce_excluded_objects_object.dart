@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_salesforce_excluded_objects_object_field/stream_backfill_all_salesforce_excluded_objects_object_field.dart';
 
 class StreamBackfillAllSalesforceExcludedObjectsObject {
@@ -20,7 +20,7 @@ class StreamBackfillAllSalesforceExcludedObjectsObject {
     final map = <String, dynamic>{};
     final fieldsValue = fields;
     if (fieldsValue != null) {
-      map['fields'] = Input.encodeList<
+      map['fields'] = pulumi.Input.encodeList<
           StreamBackfillAllSalesforceExcludedObjectsObjectField,
           Map<String, dynamic>>(fieldsValue, (value) => value.toMap());
     }
@@ -36,7 +36,7 @@ class StreamBackfillAllSalesforceExcludedObjectsObject {
     return StreamBackfillAllSalesforceExcludedObjectsObject(
       fields: map['fields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   StreamBackfillAllSalesforceExcludedObjectsObjectField>(
               map['fields'],
               (value) =>

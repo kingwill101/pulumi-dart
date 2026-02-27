@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_autonomous_database_property_apex_detail/get_autonomous_database_property_apex_detail.dart';
 import '../get_autonomous_database_property_connection_string/get_autonomous_database_property_connection_string.dart';
 import '../get_autonomous_database_property_connection_url/get_autonomous_database_property_connection_url.dart';
@@ -363,7 +363,7 @@ class GetAutonomousDatabaseProperty {
     final map = <String, dynamic>{};
     map['actualUsedDataStorageSizeTb'] = actualUsedDataStorageSizeTb;
     map['allocatedStorageSizeTb'] = allocatedStorageSizeTb;
-    map['apexDetails'] = Input.encodeList<
+    map['apexDetails'] = pulumi.Input.encodeList<
         GetAutonomousDatabasePropertyApexDetail,
         Map<String, dynamic>>(apexDetails, (value) => value.toMap());
     map['arePrimaryAllowlistedIpsUsed'] = arePrimaryAllowlistedIpsUsed;
@@ -372,14 +372,14 @@ class GetAutonomousDatabaseProperty {
     map['backupRetentionPeriodDays'] = backupRetentionPeriodDays;
     map['characterSet'] = characterSet;
     map['computeCount'] = computeCount;
-    map['connectionStrings'] = Input.encodeList<
+    map['connectionStrings'] = pulumi.Input.encodeList<
         GetAutonomousDatabasePropertyConnectionString,
         Map<String, dynamic>>(connectionStrings, (value) => value.toMap());
-    map['connectionUrls'] = Input.encodeList<
+    map['connectionUrls'] = pulumi.Input.encodeList<
         GetAutonomousDatabasePropertyConnectionUrl,
         Map<String, dynamic>>(connectionUrls, (value) => value.toMap());
     map['cpuCoreCount'] = cpuCoreCount;
-    map['customerContacts'] = Input.encodeList<
+    map['customerContacts'] = pulumi.Input.encodeList<
         GetAutonomousDatabasePropertyCustomerContact,
         Map<String, dynamic>>(customerContacts, (value) => value.toMap());
     map['dataSafeState'] = dataSafeState;
@@ -398,7 +398,7 @@ class GetAutonomousDatabaseProperty {
     map['localAdgAutoFailoverMaxDataLossLimit'] =
         localAdgAutoFailoverMaxDataLossLimit;
     map['localDisasterRecoveryType'] = localDisasterRecoveryType;
-    map['localStandbyDbs'] = Input.encodeList<
+    map['localStandbyDbs'] = pulumi.Input.encodeList<
         GetAutonomousDatabasePropertyLocalStandbyDb,
         Map<String, dynamic>>(localStandbyDbs, (value) => value.toMap());
     map['maintenanceBeginTime'] = maintenanceBeginTime;
@@ -421,7 +421,7 @@ class GetAutonomousDatabaseProperty {
     map['refreshableMode'] = refreshableMode;
     map['refreshableState'] = refreshableState;
     map['role'] = role;
-    map['scheduledOperationDetails'] = Input.encodeList<
+    map['scheduledOperationDetails'] = pulumi.Input.encodeList<
             GetAutonomousDatabasePropertyScheduledOperationDetail,
             Map<String, dynamic>>(
         scheduledOperationDetails, (value) => value.toMap());
@@ -439,10 +439,11 @@ class GetAutonomousDatabaseProperty {
     return GetAutonomousDatabaseProperty(
       actualUsedDataStorageSizeTb: map['actualUsedDataStorageSizeTb'] as double,
       allocatedStorageSizeTb: map['allocatedStorageSizeTb'] as double,
-      apexDetails: Input.decodeList<GetAutonomousDatabasePropertyApexDetail>(
-          map['apexDetails'],
-          (value) => GetAutonomousDatabasePropertyApexDetail.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      apexDetails:
+          pulumi.Input.decodeList<GetAutonomousDatabasePropertyApexDetail>(
+              map['apexDetails'],
+              (value) => GetAutonomousDatabasePropertyApexDetail.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       arePrimaryAllowlistedIpsUsed: map['arePrimaryAllowlistedIpsUsed'] as bool,
       autonomousContainerDatabaseId:
           map['autonomousContainerDatabaseId'] as String,
@@ -451,19 +452,19 @@ class GetAutonomousDatabaseProperty {
       backupRetentionPeriodDays: map['backupRetentionPeriodDays'] as int,
       characterSet: map['characterSet'] as String,
       computeCount: map['computeCount'] as double,
-      connectionStrings:
-          Input.decodeList<GetAutonomousDatabasePropertyConnectionString>(
-              map['connectionStrings'],
-              (value) => GetAutonomousDatabasePropertyConnectionString.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      connectionStrings: pulumi.Input.decodeList<
+              GetAutonomousDatabasePropertyConnectionString>(
+          map['connectionStrings'],
+          (value) => GetAutonomousDatabasePropertyConnectionString.fromMap(
+              (value as Map).cast<String, dynamic>())),
       connectionUrls:
-          Input.decodeList<GetAutonomousDatabasePropertyConnectionUrl>(
+          pulumi.Input.decodeList<GetAutonomousDatabasePropertyConnectionUrl>(
               map['connectionUrls'],
               (value) => GetAutonomousDatabasePropertyConnectionUrl.fromMap(
                   (value as Map).cast<String, dynamic>())),
       cpuCoreCount: map['cpuCoreCount'] as int,
       customerContacts:
-          Input.decodeList<GetAutonomousDatabasePropertyCustomerContact>(
+          pulumi.Input.decodeList<GetAutonomousDatabasePropertyCustomerContact>(
               map['customerContacts'],
               (value) => GetAutonomousDatabasePropertyCustomerContact.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -484,7 +485,7 @@ class GetAutonomousDatabaseProperty {
           map['localAdgAutoFailoverMaxDataLossLimit'] as int,
       localDisasterRecoveryType: map['localDisasterRecoveryType'] as String,
       localStandbyDbs:
-          Input.decodeList<GetAutonomousDatabasePropertyLocalStandbyDb>(
+          pulumi.Input.decodeList<GetAutonomousDatabasePropertyLocalStandbyDb>(
               map['localStandbyDbs'],
               (value) => GetAutonomousDatabasePropertyLocalStandbyDb.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -509,7 +510,7 @@ class GetAutonomousDatabaseProperty {
       refreshableMode: map['refreshableMode'] as String,
       refreshableState: map['refreshableState'] as String,
       role: map['role'] as String,
-      scheduledOperationDetails: Input.decodeList<
+      scheduledOperationDetails: pulumi.Input.decodeList<
               GetAutonomousDatabasePropertyScheduledOperationDetail>(
           map['scheduledOperationDetails'],
           (value) =>

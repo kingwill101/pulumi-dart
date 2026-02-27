@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../wire_group_endpoint/wire_group_endpoint.dart';
 import '../wire_group_topology/wire_group_topology.dart';
 import '../wire_group_wire/wire_group_wire.dart';
@@ -49,59 +49,59 @@ import 'wire_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/wireGroup:WireGroup default {{cross_site_network}}/{{name}}
 /// ```
-class WireGroup extends CustomResource {
+class WireGroup extends pulumi.CustomResource {
   /// Indicates whether the wire group is administratively enabled.
-  late final Output<bool?> adminEnabled;
+  late final pulumi.Output<bool?> adminEnabled;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// Required cross site network to which wire group belongs.
-  late final Output<String> crossSiteNetwork;
+  late final pulumi.Output<String> crossSiteNetwork;
 
   /// An optional description of this resource. Provide this property when you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Endpoints grouped by location, each mapping to interconnect configurations.
   /// Structure is documented below.
-  late final Output<List<WireGroupEndpoint>?> endpoints;
+  late final pulumi.Output<List<WireGroupEndpoint>?> endpoints;
 
   /// Name of the resource. Provided by the client when the resource is created. The name must be
   /// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which means the first
   /// character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Topology details for the wire group configuration.
   /// Structure is documented below.
-  late final Output<List<WireGroupTopology>> topologies;
+  late final pulumi.Output<List<WireGroupTopology>> topologies;
 
   /// Properties specific to the wire group.
   /// Structure is documented below.
-  late final Output<WireGroupWireGroupProperties?> wireGroupProperties;
+  late final pulumi.Output<WireGroupWireGroupProperties?> wireGroupProperties;
 
   /// Default properties for wires within the group.
   /// Structure is documented below.
-  late final Output<WireGroupWireProperties?> wireProperties;
+  late final pulumi.Output<WireGroupWireProperties?> wireProperties;
 
   /// The single/redundant wire(s) managed by the wire group.
   /// Structure is documented below.
-  late final Output<List<WireGroupWire>> wires;
+  late final pulumi.Output<List<WireGroupWire>> wires;
 
   WireGroup(
     String name, {
     WireGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/wireGroup:WireGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.adminEnabled = registerOutput<bool?>('adminEnabled');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

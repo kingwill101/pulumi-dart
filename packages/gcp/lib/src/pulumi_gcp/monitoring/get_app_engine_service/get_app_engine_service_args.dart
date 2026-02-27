@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAppEngineService.
 class GetAppEngineServiceArgs {
@@ -10,11 +10,11 @@ class GetAppEngineServiceArgs {
   /// - - -
   ///
   /// Other optional fields include:
-  final Input<String> moduleId;
+  final pulumi.Input<String> moduleId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetAppEngineServiceArgs({
     required this.moduleId,
@@ -33,8 +33,8 @@ class GetAppEngineServiceArgs {
 
   factory GetAppEngineServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetAppEngineServiceArgs(
-      moduleId: Input.asInput<String>(map['moduleId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      moduleId: pulumi.Input.asInput<String>(map['moduleId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

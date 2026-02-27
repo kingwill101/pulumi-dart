@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_auto_config_linux_node_config_node_kernel_module_loading/get_cluster_node_pool_auto_config_linux_node_config_node_kernel_module_loading.dart';
 
 class GetClusterNodePoolAutoConfigLinuxNodeConfig {
@@ -19,7 +19,7 @@ class GetClusterNodePoolAutoConfigLinuxNodeConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['cgroupMode'] = cgroupMode;
-    map['nodeKernelModuleLoadings'] = Input.encodeList<
+    map['nodeKernelModuleLoadings'] = pulumi.Input.encodeList<
             GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading,
             Map<String, dynamic>>(
         nodeKernelModuleLoadings, (value) => value.toMap());
@@ -30,7 +30,7 @@ class GetClusterNodePoolAutoConfigLinuxNodeConfig {
       Map<String, dynamic> map) {
     return GetClusterNodePoolAutoConfigLinuxNodeConfig(
       cgroupMode: map['cgroupMode'] as String,
-      nodeKernelModuleLoadings: Input.decodeList<
+      nodeKernelModuleLoadings: pulumi.Input.decodeList<
               GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading>(
           map['nodeKernelModuleLoadings'],
           (value) =>

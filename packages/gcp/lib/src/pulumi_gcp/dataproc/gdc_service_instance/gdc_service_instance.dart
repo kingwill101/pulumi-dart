@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../gdc_service_instance_gdce_cluster/gdc_service_instance_gdce_cluster.dart';
 import 'gdc_service_instance_args.dart';
 
@@ -41,44 +41,44 @@ import 'gdc_service_instance_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
 /// ```
-class GdcServiceInstance extends CustomResource {
+class GdcServiceInstance extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// User-provided human-readable name to be used in user interfaces.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
-  late final Output<String> effectiveServiceAccount;
+  late final pulumi.Output<String> effectiveServiceAccount;
 
   /// Gdce cluster information.
   /// Structure is documented below.
-  late final Output<GdcServiceInstanceGdceCluster?> gdceCluster;
+  late final pulumi.Output<GdcServiceInstanceGdceCluster?> gdceCluster;
 
   /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The name of the service instance.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Whether the service instance is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// The intended state to which the service instance is reconciling. Possible values:
   /// * `CREATING`
@@ -90,16 +90,16 @@ class GdcServiceInstance extends CustomResource {
   /// * `STARTING`
   /// * `UPDATING`
   /// * `FAILED`
-  late final Output<String> requestedState;
+  late final pulumi.Output<String> requestedState;
 
   /// Requested service account to associate with ServiceInstance.
-  late final Output<String?> serviceAccount;
+  late final pulumi.Output<String?> serviceAccount;
 
   /// Id of the service instance.
-  late final Output<String> serviceInstanceId;
+  late final pulumi.Output<String> serviceInstanceId;
 
   /// Spark-specific service instance configuration.
-  late final Output<Map<String, dynamic>?> sparkServiceInstanceConfig;
+  late final pulumi.Output<Map<String, dynamic>?> sparkServiceInstanceConfig;
 
   /// The current state. Possible values:
   /// * `CREATING`
@@ -111,26 +111,26 @@ class GdcServiceInstance extends CustomResource {
   /// * `STARTING`
   /// * `UPDATING`
   /// * `FAILED`
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// A message explaining the current state.
-  late final Output<String> stateMessage;
+  late final pulumi.Output<String> stateMessage;
 
   /// System generated unique identifier for this service instance, formatted as UUID4.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The timestamp when the resource was most recently updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   GdcServiceInstance(
     String name, {
     GdcServiceInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataproc/gdcServiceInstance:GdcServiceInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String?>('displayName');

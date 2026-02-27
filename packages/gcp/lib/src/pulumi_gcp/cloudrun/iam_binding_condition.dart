@@ -1,3 +1,3 @@
 library module_cloudrun_iam_binding_condition;
 
-export 'iam_binding_condition/iam_binding_condition2.dart';
+export 'iam_binding_condition/iam_binding_condition_cloudrun.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ca_certs_cert/get_ca_certs_cert.dart';
 
 /// Result data returned by getCaCerts.
@@ -27,8 +27,9 @@ class GetCaCertsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['activeVersion'] = activeVersion;
-    map['certs'] = Input.encodeList<GetCaCertsCert, Map<String, dynamic>>(
-        certs, (value) => value.toMap());
+    map['certs'] =
+        pulumi.Input.encodeList<GetCaCertsCert, Map<String, dynamic>>(
+            certs, (value) => value.toMap());
     map['id'] = id;
     map['instance'] = instance;
     map['project'] = project;
@@ -38,7 +39,7 @@ class GetCaCertsResult {
   factory GetCaCertsResult.fromMap(Map<String, dynamic> map) {
     return GetCaCertsResult(
       activeVersion: map['activeVersion'] as String,
-      certs: Input.decodeList<GetCaCertsCert>(
+      certs: pulumi.Input.decodeList<GetCaCertsCert>(
           map['certs'],
           (value) =>
               GetCaCertsCert.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Capability.
 class CapabilityArgs {
   /// Capability name that should be updated on the folder.
-  final Input<String> capabilityName;
+  final pulumi.Input<String> capabilityName;
 
   /// Folder on which Capability needs to be updated in the format folders/folder_id.
-  final Input<String> parent;
+  final pulumi.Input<String> parent;
 
   /// Capability Value.
-  final Input<bool> value;
+  final pulumi.Input<bool> value;
 
   CapabilityArgs({
     required this.capabilityName,
@@ -29,9 +29,9 @@ class CapabilityArgs {
 
   factory CapabilityArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityArgs(
-      capabilityName: Input.asInput<String>(map['capabilityName']),
-      parent: Input.asInput<String>(map['parent']),
-      value: Input.asInput<bool>(map['value']),
+      capabilityName: pulumi.Input.asInput<String>(map['capabilityName']),
+      parent: pulumi.Input.asInput<String>(map['parent']),
+      value: pulumi.Input.asInput<bool>(map['value']),
     );
   }
 }

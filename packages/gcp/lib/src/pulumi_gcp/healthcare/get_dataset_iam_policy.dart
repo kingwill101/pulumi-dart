@@ -1,5 +1,5 @@
 library module_healthcare_get_dataset_iam_policy;
 
-export 'get_dataset_iam_policy/get_dataset_iam_policy2.dart';
-export 'get_dataset_iam_policy/get_dataset_iam_policy_args2.dart';
-export 'get_dataset_iam_policy/get_dataset_iam_policy_result2.dart';
+export 'get_dataset_iam_policy/get_dataset_iam_policy_healthcare.dart';
+export 'get_dataset_iam_policy/get_dataset_iam_policy_healthcare_args.dart';
+export 'get_dataset_iam_policy/get_dataset_iam_policy_healthcare_result.dart';

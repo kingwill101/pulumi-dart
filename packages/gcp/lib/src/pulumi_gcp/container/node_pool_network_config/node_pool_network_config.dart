@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_pool_network_config_additional_node_network_config/node_pool_network_config_additional_node_network_config.dart';
 import '../node_pool_network_config_additional_pod_network_config/node_pool_network_config_additional_pod_network_config.dart';
 import '../node_pool_network_config_network_performance_config/node_pool_network_config_network_performance_config.dart';
@@ -63,14 +63,14 @@ class NodePoolNetworkConfig {
     }
     final additionalNodeNetworkConfigsValue = additionalNodeNetworkConfigs;
     if (additionalNodeNetworkConfigsValue != null) {
-      map['additionalNodeNetworkConfigs'] = Input.encodeList<
+      map['additionalNodeNetworkConfigs'] = pulumi.Input.encodeList<
               NodePoolNetworkConfigAdditionalNodeNetworkConfig,
               Map<String, dynamic>>(
           additionalNodeNetworkConfigsValue, (value) => value.toMap());
     }
     final additionalPodNetworkConfigsValue = additionalPodNetworkConfigs;
     if (additionalPodNetworkConfigsValue != null) {
-      map['additionalPodNetworkConfigs'] = Input.encodeList<
+      map['additionalPodNetworkConfigs'] = pulumi.Input.encodeList<
               NodePoolNetworkConfigAdditionalPodNetworkConfig,
               Map<String, dynamic>>(
           additionalPodNetworkConfigsValue, (value) => value.toMap());
@@ -114,14 +114,16 @@ class NodePoolNetworkConfig {
           : map['acceleratorNetworkProfile'] as String,
       additionalNodeNetworkConfigs: map['additionalNodeNetworkConfigs'] == null
           ? null
-          : Input.decodeList<NodePoolNetworkConfigAdditionalNodeNetworkConfig>(
+          : pulumi.Input.decodeList<
+                  NodePoolNetworkConfigAdditionalNodeNetworkConfig>(
               map['additionalNodeNetworkConfigs'],
               (value) =>
                   NodePoolNetworkConfigAdditionalNodeNetworkConfig.fromMap(
                       (value as Map).cast<String, dynamic>())),
       additionalPodNetworkConfigs: map['additionalPodNetworkConfigs'] == null
           ? null
-          : Input.decodeList<NodePoolNetworkConfigAdditionalPodNetworkConfig>(
+          : pulumi.Input.decodeList<
+                  NodePoolNetworkConfigAdditionalPodNetworkConfig>(
               map['additionalPodNetworkConfigs'],
               (value) =>
                   NodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(

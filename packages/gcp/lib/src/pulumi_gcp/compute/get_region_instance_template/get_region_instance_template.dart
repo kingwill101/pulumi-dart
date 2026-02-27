@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_region_instance_template_args.dart';
 import 'get_region_instance_template_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_region_instance_template_result.dart';
 /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
 Future<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(
   GetRegionInstanceTemplateArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstanceTemplateResult.fromMap(result);
 }

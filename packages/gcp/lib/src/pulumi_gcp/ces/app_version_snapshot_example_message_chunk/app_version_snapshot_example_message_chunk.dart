@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_example_message_chunk_agent_transfer/app_version_snapshot_example_message_chunk_agent_transfer.dart';
 import '../app_version_snapshot_example_message_chunk_image/app_version_snapshot_example_message_chunk_image.dart';
 import '../app_version_snapshot_example_message_chunk_tool_call/app_version_snapshot_example_message_chunk_tool_call.dart';
@@ -51,13 +51,13 @@ class AppVersionSnapshotExampleMessageChunk {
     final map = <String, dynamic>{};
     final agentTransfersValue = agentTransfers;
     if (agentTransfersValue != null) {
-      map['agentTransfers'] = Input.encodeList<
+      map['agentTransfers'] = pulumi.Input.encodeList<
           AppVersionSnapshotExampleMessageChunkAgentTransfer,
           Map<String, dynamic>>(agentTransfersValue, (value) => value.toMap());
     }
     final imagesValue = images;
     if (imagesValue != null) {
-      map['images'] = Input.encodeList<
+      map['images'] = pulumi.Input.encodeList<
           AppVersionSnapshotExampleMessageChunkImage,
           Map<String, dynamic>>(imagesValue, (value) => value.toMap());
     }
@@ -67,13 +67,13 @@ class AppVersionSnapshotExampleMessageChunk {
     }
     final toolCallsValue = toolCalls;
     if (toolCallsValue != null) {
-      map['toolCalls'] = Input.encodeList<
+      map['toolCalls'] = pulumi.Input.encodeList<
           AppVersionSnapshotExampleMessageChunkToolCall,
           Map<String, dynamic>>(toolCallsValue, (value) => value.toMap());
     }
     final toolResponsesValue = toolResponses;
     if (toolResponsesValue != null) {
-      map['toolResponses'] = Input.encodeList<
+      map['toolResponses'] = pulumi.Input.encodeList<
           AppVersionSnapshotExampleMessageChunkToolResponse,
           Map<String, dynamic>>(toolResponsesValue, (value) => value.toMap());
     }
@@ -89,7 +89,7 @@ class AppVersionSnapshotExampleMessageChunk {
     return AppVersionSnapshotExampleMessageChunk(
       agentTransfers: map['agentTransfers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotExampleMessageChunkAgentTransfer>(
               map['agentTransfers'],
               (value) =>
@@ -97,20 +97,22 @@ class AppVersionSnapshotExampleMessageChunk {
                       (value as Map).cast<String, dynamic>())),
       images: map['images'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotExampleMessageChunkImage>(
+          : pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunkImage>(
               map['images'],
               (value) => AppVersionSnapshotExampleMessageChunkImage.fromMap(
                   (value as Map).cast<String, dynamic>())),
       text: map['text'] == null ? null : map['text'] as String,
       toolCalls: map['toolCalls'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotExampleMessageChunkToolCall>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotExampleMessageChunkToolCall>(
               map['toolCalls'],
               (value) => AppVersionSnapshotExampleMessageChunkToolCall.fromMap(
                   (value as Map).cast<String, dynamic>())),
       toolResponses: map['toolResponses'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotExampleMessageChunkToolResponse>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotExampleMessageChunkToolResponse>(
               map['toolResponses'],
               (value) =>
                   AppVersionSnapshotExampleMessageChunkToolResponse.fromMap(

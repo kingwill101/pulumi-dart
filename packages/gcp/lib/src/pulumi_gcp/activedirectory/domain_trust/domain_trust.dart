@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_trust_args.dart';
 
 /// Adds a trust between Active Directory domains
@@ -42,45 +42,45 @@ import 'domain_trust_args.dart';
 /// ```sh
 /// $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
 /// ```
-class DomainTrust extends CustomResource {
+class DomainTrust extends pulumi.CustomResource {
   /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-  late final Output<bool?> selectiveAuthentication;
+  late final pulumi.Output<bool?> selectiveAuthentication;
 
   /// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
-  late final Output<List<String>> targetDnsIpAddresses;
+  late final pulumi.Output<List<String>> targetDnsIpAddresses;
 
   /// The fully qualified target domain name which will be in trust with the current domain.
-  late final Output<String> targetDomainName;
+  late final pulumi.Output<String> targetDomainName;
 
   /// The trust direction, which decides if the current domain is trusted, trusting, or both.
   /// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
-  late final Output<String> trustDirection;
+  late final pulumi.Output<String> trustDirection;
 
   /// The trust secret used for the handshake with the target domain. This will not be stored.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> trustHandshakeSecret;
+  late final pulumi.Output<String> trustHandshakeSecret;
 
   /// The type of trust represented by the trust resource.
   /// Possible values are: `FOREST`, `EXTERNAL`.
-  late final Output<String> trustType;
+  late final pulumi.Output<String> trustType;
 
   DomainTrust(
     String name, {
     DomainTrustArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:activedirectory/domainTrust:DomainTrust',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.domain = registerOutput<String>('domain');
     this.project = registerOutput<String>('project');

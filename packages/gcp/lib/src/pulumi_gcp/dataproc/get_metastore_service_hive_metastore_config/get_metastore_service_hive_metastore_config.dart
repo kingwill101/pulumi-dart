@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_metastore_service_hive_metastore_config_auxiliary_version/get_metastore_service_hive_metastore_config_auxiliary_version.dart';
 import '../get_metastore_service_hive_metastore_config_kerberos_config/get_metastore_service_hive_metastore_config_kerberos_config.dart';
 
@@ -37,12 +37,12 @@ class GetMetastoreServiceHiveMetastoreConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['auxiliaryVersions'] = Input.encodeList<
+    map['auxiliaryVersions'] = pulumi.Input.encodeList<
         GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion,
         Map<String, dynamic>>(auxiliaryVersions, (value) => value.toMap());
     map['configOverrides'] = configOverrides;
     map['endpointProtocol'] = endpointProtocol;
-    map['kerberosConfigs'] = Input.encodeList<
+    map['kerberosConfigs'] = pulumi.Input.encodeList<
         GetMetastoreServiceHiveMetastoreConfigKerberosConfig,
         Map<String, dynamic>>(kerberosConfigs, (value) => value.toMap());
     map['version'] = version;
@@ -52,7 +52,7 @@ class GetMetastoreServiceHiveMetastoreConfig {
   factory GetMetastoreServiceHiveMetastoreConfig.fromMap(
       Map<String, dynamic> map) {
     return GetMetastoreServiceHiveMetastoreConfig(
-      auxiliaryVersions: Input.decodeList<
+      auxiliaryVersions: pulumi.Input.decodeList<
               GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion>(
           map['auxiliaryVersions'],
           (value) =>
@@ -60,7 +60,7 @@ class GetMetastoreServiceHiveMetastoreConfig {
                   (value as Map).cast<String, dynamic>())),
       configOverrides: (map['configOverrides'] as Map).cast<String, String>(),
       endpointProtocol: map['endpointProtocol'] as String,
-      kerberosConfigs: Input.decodeList<
+      kerberosConfigs: pulumi.Input.decodeList<
               GetMetastoreServiceHiveMetastoreConfigKerberosConfig>(
           map['kerberosConfigs'],
           (value) =>

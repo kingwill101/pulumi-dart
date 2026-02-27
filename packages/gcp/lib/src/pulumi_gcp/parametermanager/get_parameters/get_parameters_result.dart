@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_parameters_parameter/get_parameters_parameter.dart';
 
 /// Result data returned by getParameters.
@@ -31,7 +31,7 @@ class GetParametersResult {
     }
     map['id'] = id;
     map['parameters'] =
-        Input.encodeList<GetParametersParameter, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetParametersParameter, Map<String, dynamic>>(
             parameters, (value) => value.toMap());
     map['project'] = project;
     return map;
@@ -41,7 +41,7 @@ class GetParametersResult {
     return GetParametersResult(
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
-      parameters: Input.decodeList<GetParametersParameter>(
+      parameters: pulumi.Input.decodeList<GetParametersParameter>(
           map['parameters'],
           (value) => GetParametersParameter.fromMap(
               (value as Map).cast<String, dynamic>())),

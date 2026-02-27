@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties/restore_workload_compute_instance_restore_properties.dart';
 import '../restore_workload_compute_instance_target_environment/restore_workload_compute_instance_target_environment.dart';
 import '../restore_workload_disk_restore_properties/restore_workload_disk_restore_properties.dart';
@@ -52,69 +52,69 @@ import 'restore_workload_args.dart';
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
 /// ```
-class RestoreWorkload extends CustomResource {
+class RestoreWorkload extends pulumi.CustomResource {
   /// Required. The ID of the backup to restore from.
-  late final Output<String> backupId;
+  late final pulumi.Output<String> backupId;
 
   /// Required. The ID of the backup vault.
-  late final Output<String> backupVaultId;
+  late final pulumi.Output<String> backupVaultId;
 
   /// Optional. A field mask used to clear server-side default values during restore.
-  late final Output<String?> clearOverridesFieldMask;
+  late final pulumi.Output<String?> clearOverridesFieldMask;
 
   /// Optional. Compute Engine instance properties to be overridden during restore.
   /// Structure is documented below.
-  late final Output<RestoreWorkloadComputeInstanceRestoreProperties?>
+  late final pulumi.Output<RestoreWorkloadComputeInstanceRestoreProperties?>
       computeInstanceRestoreProperties;
 
   /// Optional. The destination environment for GCE VM restoration.
   /// Structure is documented below.
-  late final Output<RestoreWorkloadComputeInstanceTargetEnvironment?>
+  late final pulumi.Output<RestoreWorkloadComputeInstanceTargetEnvironment?>
       computeInstanceTargetEnvironment;
 
   /// Required. The ID of the data source.
-  late final Output<String> dataSourceId;
-  late final Output<bool?> deleteRestoredInstance;
+  late final pulumi.Output<String> dataSourceId;
+  late final pulumi.Output<bool?> deleteRestoredInstance;
 
   /// Optional. Disk properties to be overridden during restore.
   /// Structure is documented below.
-  late final Output<RestoreWorkloadDiskRestoreProperties?>
+  late final pulumi.Output<RestoreWorkloadDiskRestoreProperties?>
       diskRestoreProperties;
 
   /// Optional. The destination environment for zonal disk restoration.
   /// Structure is documented below.
-  late final Output<RestoreWorkloadDiskTargetEnvironment?>
+  late final pulumi.Output<RestoreWorkloadDiskTargetEnvironment?>
       diskTargetEnvironment;
 
   /// Required. The location for the backup vault.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Required. The resource name of the backup instance.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Optional. The destination environment for regional disk restoration.
   /// Structure is documented below.
-  late final Output<RestoreWorkloadRegionDiskTargetEnvironment?>
+  late final pulumi.Output<RestoreWorkloadRegionDiskTargetEnvironment?>
       regionDiskTargetEnvironment;
 
   /// Optional. An optional request ID to identify requests. Specify a unique request ID
   /// so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed.
-  late final Output<String?> requestId;
+  late final pulumi.Output<String?> requestId;
 
   /// Output only. Details of the target resource created/modified as part of restore.
   /// Structure is documented below.
-  late final Output<List<RestoreWorkloadTargetResource>> targetResources;
+  late final pulumi.Output<List<RestoreWorkloadTargetResource>> targetResources;
 
   RestoreWorkload(
     String name, {
     RestoreWorkloadArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backupId = registerOutput<String>('backupId');
     this.backupVaultId = registerOutput<String>('backupVaultId');

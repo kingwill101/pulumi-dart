@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_exchange_subscription_destination_dataset/data_exchange_subscription_destination_dataset.dart';
 
 /// The set of arguments for DataExchangeSubscription.
 class DataExchangeSubscriptionArgs {
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  final Input<String> dataExchangeId;
+  final pulumi.Input<String> dataExchangeId;
 
   /// The name of the location of the Data Exchange.
-  final Input<String> dataExchangeLocation;
+  final pulumi.Input<String> dataExchangeLocation;
 
   /// The ID of the Google Cloud project where the Data Exchange is located.
-  final Input<String> dataExchangeProject;
+  final pulumi.Input<String> dataExchangeProject;
 
   /// BigQuery destination dataset to create for the subscriber.
   /// Structure is documented below.
-  final Input<DataExchangeSubscriptionDestinationDataset>? destinationDataset;
+  final pulumi.Input<DataExchangeSubscriptionDestinationDataset>?
+      destinationDataset;
 
   /// The geographic location where the Subscription (and its linked dataset) should reside.
   /// This is the subscriber's desired location for the created resources.
   /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
-  final Input<String>? refreshPolicy;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? refreshPolicy;
 
   /// Email of the subscriber.
-  final Input<String>? subscriberContact;
+  final pulumi.Input<String>? subscriberContact;
 
   /// Name of the subscription to create.
-  final Input<String> subscriptionId;
+  final pulumi.Input<String> subscriptionId;
 
   DataExchangeSubscriptionArgs({
     required this.dataExchangeId,
@@ -53,7 +54,7 @@ class DataExchangeSubscriptionArgs {
     map['dataExchangeProject'] = dataExchangeProject;
     final destinationDatasetValue = destinationDataset;
     if (destinationDatasetValue != null) {
-      map['destinationDataset'] = Input.mapOptionalInputValue<
+      map['destinationDataset'] = pulumi.Input.mapOptionalInputValue<
               DataExchangeSubscriptionDestinationDataset, Map<String, dynamic>>(
           destinationDatasetValue, (value) => value.toMap());
     }
@@ -76,18 +77,20 @@ class DataExchangeSubscriptionArgs {
 
   factory DataExchangeSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return DataExchangeSubscriptionArgs(
-      dataExchangeId: Input.asInput<String>(map['dataExchangeId']),
-      dataExchangeLocation: Input.asInput<String>(map['dataExchangeLocation']),
-      dataExchangeProject: Input.asInput<String>(map['dataExchangeProject']),
-      destinationDataset:
-          Input.asOptionalInput<DataExchangeSubscriptionDestinationDataset>(
-              map['destinationDataset']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      refreshPolicy: Input.asOptionalInput<String>(map['refreshPolicy']),
+      dataExchangeId: pulumi.Input.asInput<String>(map['dataExchangeId']),
+      dataExchangeLocation:
+          pulumi.Input.asInput<String>(map['dataExchangeLocation']),
+      dataExchangeProject:
+          pulumi.Input.asInput<String>(map['dataExchangeProject']),
+      destinationDataset: pulumi.Input.asOptionalInput<
+              DataExchangeSubscriptionDestinationDataset>(
+          map['destinationDataset']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      refreshPolicy: pulumi.Input.asOptionalInput<String>(map['refreshPolicy']),
       subscriberContact:
-          Input.asOptionalInput<String>(map['subscriberContact']),
-      subscriptionId: Input.asInput<String>(map['subscriptionId']),
+          pulumi.Input.asOptionalInput<String>(map['subscriberContact']),
+      subscriptionId: pulumi.Input.asInput<String>(map['subscriptionId']),
     );
   }
 }

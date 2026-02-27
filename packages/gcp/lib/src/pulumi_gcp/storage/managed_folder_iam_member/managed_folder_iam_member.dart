@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_folder_iam_member_condition/managed_folder_iam_member_condition.dart';
 import 'managed_folder_iam_member_args.dart';
 
@@ -119,19 +119,19 @@ import 'managed_folder_iam_member_args.dart';
 /// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-class ManagedFolderIamMember extends CustomResource {
+class ManagedFolderIamMember extends pulumi.CustomResource {
   /// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<ManagedFolderIamMemberCondition?> condition;
+  late final pulumi.Output<ManagedFolderIamMemberCondition?> condition;
 
   /// (Computed) The etag of the IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Used to find the parent resource to bind the IAM policy to
-  late final Output<String> managedFolder;
+  late final pulumi.Output<String> managedFolder;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -144,22 +144,22 @@ class ManagedFolderIamMember extends CustomResource {
   /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The role that should be applied. Only one
   /// `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   ManagedFolderIamMember(
     String name, {
     ManagedFolderIamMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.condition =

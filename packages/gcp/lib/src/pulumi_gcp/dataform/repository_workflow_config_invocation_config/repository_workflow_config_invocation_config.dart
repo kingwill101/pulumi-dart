@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_workflow_config_invocation_config_included_target/repository_workflow_config_invocation_config_included_target.dart';
 
 class RepositoryWorkflowConfigInvocationConfig {
@@ -47,7 +47,7 @@ class RepositoryWorkflowConfigInvocationConfig {
     }
     final includedTargetsValue = includedTargets;
     if (includedTargetsValue != null) {
-      map['includedTargets'] = Input.encodeList<
+      map['includedTargets'] = pulumi.Input.encodeList<
           RepositoryWorkflowConfigInvocationConfigIncludedTarget,
           Map<String, dynamic>>(includedTargetsValue, (value) => value.toMap());
     }
@@ -79,7 +79,7 @@ class RepositoryWorkflowConfigInvocationConfig {
           : (map['includedTags'] as List).cast<String>(),
       includedTargets: map['includedTargets'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RepositoryWorkflowConfigInvocationConfigIncludedTarget>(
               map['includedTargets'],
               (value) => RepositoryWorkflowConfigInvocationConfigIncludedTarget

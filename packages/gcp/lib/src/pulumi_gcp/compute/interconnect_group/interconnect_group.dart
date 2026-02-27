@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_group_configured/interconnect_group_configured.dart';
 import '../interconnect_group_intent/interconnect_group_intent.dart';
 import '../interconnect_group_interconnect/interconnect_group_interconnect.dart';
@@ -45,24 +45,24 @@ import 'interconnect_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/interconnectGroup:InterconnectGroup default {{name}}
 /// ```
-class InterconnectGroup extends CustomResource {
+class InterconnectGroup extends pulumi.CustomResource {
   /// The status of the group as configured. This has the same
   /// structure as the operational field reported by the OperationalStatus
   /// method, but does not take into account the operational status of each
   /// resource.
   /// Structure is documented below.
-  late final Output<List<InterconnectGroupConfigured>> configureds;
+  late final pulumi.Output<List<InterconnectGroupConfigured>> configureds;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The user's intent for this group. This is the only required field besides
   /// the name that must be specified on group creation.
   /// Structure is documented below.
-  late final Output<InterconnectGroupIntent> intent;
+  late final pulumi.Output<InterconnectGroupIntent> intent;
 
   /// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
   /// strings. Users are encouraged, but not required, to use their preferred
@@ -70,34 +70,34 @@ class InterconnectGroup extends CustomResource {
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Interconnects per group" quota.
   /// Structure is documented below.
-  late final Output<List<InterconnectGroupInterconnect>?> interconnects;
+  late final pulumi.Output<List<InterconnectGroupInterconnect>?> interconnects;
 
   /// Name of the resource. Provided by the client when the resource is created. The name must be
   /// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which means the first
   /// character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// An analysis of the physical layout of Interconnects in this
   /// group. Every Interconnect in the group is shown once in this structure.
   /// Structure is documented below.
-  late final Output<List<InterconnectGroupPhysicalStructure>>
+  late final pulumi.Output<List<InterconnectGroupPhysicalStructure>>
       physicalStructures;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   InterconnectGroup(
     String name, {
     InterconnectGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/interconnectGroup:InterconnectGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configureds =
         registerOutput<List<InterconnectGroupConfigured>>('configureds');

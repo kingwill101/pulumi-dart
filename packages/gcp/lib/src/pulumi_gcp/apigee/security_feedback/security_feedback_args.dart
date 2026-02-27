@@ -1,34 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_feedback_feedback_context/security_feedback_feedback_context.dart';
 
 /// The set of arguments for SecurityFeedback.
 class SecurityFeedbackArgs {
   /// Optional text the user can provide for additional, unstructured context.
-  final Input<String>? comment;
+  final pulumi.Input<String>? comment;
 
   /// The display name of the feedback.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// One or more attribute/value pairs for constraining the feedback.
   /// Structure is documented below.
-  final Input<List<SecurityFeedbackFeedbackContext>> feedbackContexts;
+  final pulumi.Input<List<SecurityFeedbackFeedbackContext>> feedbackContexts;
 
   /// Resource ID of the security feedback.
-  final Input<String> feedbackId;
+  final pulumi.Input<String> feedbackId;
 
   /// The type of feedback being submitted.
   /// Possible values are: `EXCLUDED_DETECTION`.
-  final Input<String> feedbackType;
+  final pulumi.Input<String> feedbackType;
 
   /// The Apigee Organization associated with the Apigee Security Feedback,
   /// in the format `organizations/{{org_name}}`.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// The reason for the feedback.
   /// Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
-  final Input<String>? reason;
+  final pulumi.Input<String>? reason;
 
   SecurityFeedbackArgs({
     this.comment,
@@ -50,10 +50,10 @@ class SecurityFeedbackArgs {
     if (displayNameValue != null) {
       map['displayName'] = displayNameValue;
     }
-    map['feedbackContexts'] = Input.mapInputValue<
+    map['feedbackContexts'] = pulumi.Input.mapInputValue<
             List<SecurityFeedbackFeedbackContext>, List<Map<String, dynamic>>>(
         feedbackContexts,
-        (value) => Input.encodeList<SecurityFeedbackFeedbackContext,
+        (value) => pulumi.Input.encodeList<SecurityFeedbackFeedbackContext,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     map['feedbackId'] = feedbackId;
     map['feedbackType'] = feedbackType;
@@ -67,14 +67,15 @@ class SecurityFeedbackArgs {
 
   factory SecurityFeedbackArgs.fromMap(Map<String, dynamic> map) {
     return SecurityFeedbackArgs(
-      comment: Input.asOptionalInput<String>(map['comment']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      feedbackContexts: Input.asInput<List<SecurityFeedbackFeedbackContext>>(
-          map['feedbackContexts']),
-      feedbackId: Input.asInput<String>(map['feedbackId']),
-      feedbackType: Input.asInput<String>(map['feedbackType']),
-      orgId: Input.asInput<String>(map['orgId']),
-      reason: Input.asOptionalInput<String>(map['reason']),
+      comment: pulumi.Input.asOptionalInput<String>(map['comment']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      feedbackContexts:
+          pulumi.Input.asInput<List<SecurityFeedbackFeedbackContext>>(
+              map['feedbackContexts']),
+      feedbackId: pulumi.Input.asInput<String>(map['feedbackId']),
+      feedbackType: pulumi.Input.asInput<String>(map['feedbackType']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
+      reason: pulumi.Input.asOptionalInput<String>(map['reason']),
     );
   }
 }

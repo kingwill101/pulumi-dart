@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_control_plane_node_auto_resize_config/vmware_cluster_control_plane_node_auto_resize_config.dart';
 import '../vmware_cluster_control_plane_node_vsphere_config/vmware_cluster_control_plane_node_vsphere_config.dart';
 
@@ -54,7 +54,7 @@ class VMwareClusterControlPlaneNode {
     }
     final vsphereConfigsValue = vsphereConfigs;
     if (vsphereConfigsValue != null) {
-      map['vsphereConfigs'] = Input.encodeList<
+      map['vsphereConfigs'] = pulumi.Input.encodeList<
           VMwareClusterControlPlaneNodeVsphereConfig,
           Map<String, dynamic>>(vsphereConfigsValue, (value) => value.toMap());
     }
@@ -72,7 +72,7 @@ class VMwareClusterControlPlaneNode {
       replicas: map['replicas'] == null ? null : map['replicas'] as int,
       vsphereConfigs: map['vsphereConfigs'] == null
           ? null
-          : Input.decodeList<VMwareClusterControlPlaneNodeVsphereConfig>(
+          : pulumi.Input.decodeList<VMwareClusterControlPlaneNodeVsphereConfig>(
               map['vsphereConfigs'],
               (value) => VMwareClusterControlPlaneNodeVsphereConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_args.dart';
 
 /// A consumable API that can be used by multiple Gateways.
@@ -39,49 +39,49 @@ import 'api_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigateway/api:Api default {{api_id}}
 /// ```
-class Api extends CustomResource {
+class Api extends pulumi.CustomResource {
   /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-  late final Output<String> apiId;
+  late final pulumi.Output<String> apiId;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A user-visible name for the API.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
   /// If not specified, a new Service will automatically be created in the same project as this API.
-  late final Output<String> managedService;
+  late final pulumi.Output<String> managedService;
 
   /// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   Api(
     String name, {
     ApiArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigateway/api:Api',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiId = registerOutput<String>('apiId');
     this.createTime = registerOutput<String>('createTime');

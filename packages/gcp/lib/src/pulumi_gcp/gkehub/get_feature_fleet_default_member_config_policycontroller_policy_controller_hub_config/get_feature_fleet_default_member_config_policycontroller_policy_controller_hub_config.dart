@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config.dart';
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_monitoring/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_monitoring.dart';
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content.dart';
@@ -59,17 +59,17 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
     final map = <String, dynamic>{};
     map['auditIntervalSeconds'] = auditIntervalSeconds;
     map['constraintViolationLimit'] = constraintViolationLimit;
-    map['deploymentConfigs'] = Input.encodeList<
+    map['deploymentConfigs'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig,
         Map<String, dynamic>>(deploymentConfigs, (value) => value.toMap());
     map['exemptableNamespaces'] = exemptableNamespaces;
     map['installSpec'] = installSpec;
     map['logDeniesEnabled'] = logDeniesEnabled;
-    map['monitorings'] = Input.encodeList<
+    map['monitorings'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring,
         Map<String, dynamic>>(monitorings, (value) => value.toMap());
     map['mutationEnabled'] = mutationEnabled;
-    map['policyContents'] = Input.encodeList<
+    map['policyContents'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent,
         Map<String, dynamic>>(policyContents, (value) => value.toMap());
     map['referentialRulesEnabled'] = referentialRulesEnabled;
@@ -81,7 +81,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig(
       auditIntervalSeconds: map['auditIntervalSeconds'] as int,
       constraintViolationLimit: map['constraintViolationLimit'] as int,
-      deploymentConfigs: Input.decodeList<
+      deploymentConfigs: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(
           map['deploymentConfigs'],
           (value) =>
@@ -91,14 +91,14 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
           (map['exemptableNamespaces'] as List).cast<String>(),
       installSpec: map['installSpec'] as String,
       logDeniesEnabled: map['logDeniesEnabled'] as bool,
-      monitorings: Input.decodeList<
+      monitorings: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring>(
           map['monitorings'],
           (value) =>
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring
                   .fromMap((value as Map).cast<String, dynamic>())),
       mutationEnabled: map['mutationEnabled'] as bool,
-      policyContents: Input.decodeList<
+      policyContents: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent>(
           map['policyContents'],
           (value) =>

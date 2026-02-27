@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backup_vault_encryption_config/get_backup_vault_encryption_config.dart';
 
 /// Result data returned by getBackupVault.
@@ -87,9 +87,9 @@ class GetBackupVaultResult {
     map['effectiveAnnotations'] = effectiveAnnotations;
     map['effectiveLabels'] = effectiveLabels;
     map['effectiveTime'] = effectiveTime;
-    map['encryptionConfigs'] =
-        Input.encodeList<GetBackupVaultEncryptionConfig, Map<String, dynamic>>(
-            encryptionConfigs, (value) => value.toMap());
+    map['encryptionConfigs'] = pulumi.Input.encodeList<
+        GetBackupVaultEncryptionConfig,
+        Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
     map['etag'] = etag;
     map['forceDelete'] = forceDelete;
     map['forceUpdate'] = forceUpdate;
@@ -129,10 +129,11 @@ class GetBackupVaultResult {
           (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       effectiveTime: map['effectiveTime'] as String,
-      encryptionConfigs: Input.decodeList<GetBackupVaultEncryptionConfig>(
-          map['encryptionConfigs'],
-          (value) => GetBackupVaultEncryptionConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      encryptionConfigs:
+          pulumi.Input.decodeList<GetBackupVaultEncryptionConfig>(
+              map['encryptionConfigs'],
+              (value) => GetBackupVaultEncryptionConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       forceDelete: map['forceDelete'] as bool,
       forceUpdate: map['forceUpdate'] as bool,

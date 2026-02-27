@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getManagementServer.
 class GetManagementServerArgs {
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   GetManagementServerArgs({
     required this.location,
@@ -18,7 +18,7 @@ class GetManagementServerArgs {
 
   factory GetManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementServerArgs(
-      location: Input.asInput<String>(map['location']),
+      location: pulumi.Input.asInput<String>(map['location']),
     );
   }
 }

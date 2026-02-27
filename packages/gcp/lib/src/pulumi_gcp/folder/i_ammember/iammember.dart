@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../iammember_condition/iammember_condition.dart';
 import 'iammember_args.dart';
 
@@ -98,16 +98,16 @@ import 'iammember_args.dart';
 /// ```sh
 /// $ pulumi import gcp:folder/iAMMember:IAMMember default "folder/{{folder_id}} foo.googleapis.com"
 /// ```
-class IAMMember extends CustomResource {
+class IAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<IAMMemberCondition?> condition;
+  late final pulumi.Output<IAMMemberCondition?> condition;
 
   /// (Computed) The etag of the folder's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -115,22 +115,22 @@ class IAMMember extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The role that should be applied. Only one
   /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `organizations/{{org_id}}/roles/{{role_id}}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   IAMMember(
     String name, {
     IAMMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:folder/iAMMember:IAMMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<IAMMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');

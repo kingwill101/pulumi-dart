@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../listing_subscription_commercial_info/listing_subscription_commercial_info.dart';
 import '../listing_subscription_destination_dataset/listing_subscription_destination_dataset.dart';
 import '../listing_subscription_linked_dataset_map/listing_subscription_linked_dataset_map.dart';
@@ -50,77 +50,80 @@ import 'listing_subscription_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription default {{location}}/{{subscription_id}}
 /// ```
-class ListingSubscription extends CustomResource {
+class ListingSubscription extends pulumi.CustomResource {
   /// Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
   /// Structure is documented below.
-  late final Output<List<ListingSubscriptionCommercialInfo>> commercialInfos;
+  late final pulumi.Output<List<ListingSubscriptionCommercialInfo>>
+      commercialInfos;
 
   /// Timestamp when the subscription was created.
-  late final Output<String> creationTime;
+  late final pulumi.Output<String> creationTime;
 
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  late final Output<String> dataExchangeId;
+  late final pulumi.Output<String> dataExchangeId;
 
   /// The destination dataset for this subscription.
   /// Structure is documented below.
-  late final Output<ListingSubscriptionDestinationDataset> destinationDataset;
+  late final pulumi.Output<ListingSubscriptionDestinationDataset>
+      destinationDataset;
 
   /// Timestamp when the subscription was last modified.
-  late final Output<String> lastModifyTime;
+  late final pulumi.Output<String> lastModifyTime;
 
   /// Output only. Map of listing resource names to associated linked resource,
   /// e.g. projects/123/locations/US/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
   /// Structure is documented below.
-  late final Output<List<ListingSubscriptionLinkedDatasetMap>>
+  late final pulumi.Output<List<ListingSubscriptionLinkedDatasetMap>>
       linkedDatasetMaps;
 
   /// Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
   /// Structure is documented below.
-  late final Output<List<ListingSubscriptionLinkedResource>> linkedResources;
+  late final pulumi.Output<List<ListingSubscriptionLinkedResource>>
+      linkedResources;
 
   /// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
-  late final Output<String> listingId;
+  late final pulumi.Output<String> listingId;
 
   /// The name of the location of the data exchange. Distinct from the location of the destination data set.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
-  late final Output<bool> logLinkedDatasetQueryUserEmail;
+  late final pulumi.Output<bool> logLinkedDatasetQueryUserEmail;
 
   /// The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Display name of the project of this subscription.
-  late final Output<String> organizationDisplayName;
+  late final pulumi.Output<String> organizationDisplayName;
 
   /// Organization of the project this subscription belongs to.
-  late final Output<String> organizationId;
+  late final pulumi.Output<String> organizationId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Listing shared asset type.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// Current state of the subscription.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Email of the subscriber.
-  late final Output<String> subscriberContact;
+  late final pulumi.Output<String> subscriberContact;
 
   /// The subscription id used to reference the subscription.
-  late final Output<String> subscriptionId;
+  late final pulumi.Output<String> subscriptionId;
 
   ListingSubscription(
     String name, {
     ListingSubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.commercialInfos =
         registerOutput<List<ListingSubscriptionCommercialInfo>>(

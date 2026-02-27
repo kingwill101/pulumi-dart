@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_endpoint_connection/get_instance_endpoint_connection.dart';
 
 class GetInstanceEndpoint {
@@ -13,15 +13,14 @@ class GetInstanceEndpoint {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connections'] =
-        Input.encodeList<GetInstanceEndpointConnection, Map<String, dynamic>>(
-            connections, (value) => value.toMap());
+    map['connections'] = pulumi.Input.encodeList<GetInstanceEndpointConnection,
+        Map<String, dynamic>>(connections, (value) => value.toMap());
     return map;
   }
 
   factory GetInstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return GetInstanceEndpoint(
-      connections: Input.decodeList<GetInstanceEndpointConnection>(
+      connections: pulumi.Input.decodeList<GetInstanceEndpointConnection>(
           map['connections'],
           (value) => GetInstanceEndpointConnection.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAccount.
 class GetAccountArgs {
@@ -13,11 +13,11 @@ class GetAccountArgs {
   ///
   /// * The email address of the service account (e.g.
   /// `my-service@my-project.iam.gserviceaccount.com`)
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// The ID of the project that the service account is present in.
   /// Defaults to the provider project configuration.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetAccountArgs({
     required this.accountId,
@@ -36,8 +36,8 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_automated_backup_policy_weekly_schedule_start_time/cluster_automated_backup_policy_weekly_schedule_start_time.dart';
 
 class ClusterAutomatedBackupPolicyWeeklySchedule {
@@ -23,7 +23,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule {
     if (daysOfWeeksValue != null) {
       map['daysOfWeeks'] = daysOfWeeksValue;
     }
-    map['startTimes'] = Input.encodeList<
+    map['startTimes'] = pulumi.Input.encodeList<
         ClusterAutomatedBackupPolicyWeeklyScheduleStartTime,
         Map<String, dynamic>>(startTimes, (value) => value.toMap());
     return map;
@@ -35,12 +35,12 @@ class ClusterAutomatedBackupPolicyWeeklySchedule {
       daysOfWeeks: map['daysOfWeeks'] == null
           ? null
           : (map['daysOfWeeks'] as List).cast<String>(),
-      startTimes:
-          Input.decodeList<ClusterAutomatedBackupPolicyWeeklyScheduleStartTime>(
-              map['startTimes'],
-              (value) =>
-                  ClusterAutomatedBackupPolicyWeeklyScheduleStartTime.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      startTimes: pulumi.Input.decodeList<
+              ClusterAutomatedBackupPolicyWeeklyScheduleStartTime>(
+          map['startTimes'],
+          (value) =>
+              ClusterAutomatedBackupPolicyWeeklyScheduleStartTime.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

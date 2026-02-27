@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_folders_args.dart';
 import 'get_folders_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_folders_result.dart';
 /// ### Searching For Folders At The Root Of An Org
 Future<GetFoldersResult> getFolders(
   GetFoldersArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:organizations/getFolders:getFolders',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFoldersResult.fromMap(result);
 }

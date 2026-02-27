@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nat_address_args.dart';
 
 /// Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
@@ -38,32 +38,32 @@ import 'nat_address_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/{{name}}
 /// ```
-class NatAddress extends CustomResource {
+class NatAddress extends pulumi.CustomResource {
   /// Flag that specifies whether the reserved NAT address should be activate.
-  late final Output<bool?> activate;
+  late final pulumi.Output<bool?> activate;
 
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// The allocated NAT IP address.
-  late final Output<String> ipAddress;
+  late final pulumi.Output<String> ipAddress;
 
   /// Resource ID of the NAT address.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// State of the NAT IP address.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   NatAddress(
     String name, {
     NatAddressArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/natAddress:NatAddress',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activate = registerOutput<bool?>('activate');
     this.instanceId = registerOutput<String>('instanceId');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_container_env_value_source/get_service_template_container_env_value_source.dart';
 
 class GetServiceTemplateContainerEnv {
@@ -23,7 +23,7 @@ class GetServiceTemplateContainerEnv {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['value'] = value;
-    map['valueSources'] = Input.encodeList<
+    map['valueSources'] = pulumi.Input.encodeList<
         GetServiceTemplateContainerEnvValueSource,
         Map<String, dynamic>>(valueSources, (value) => value.toMap());
     return map;
@@ -33,10 +33,11 @@ class GetServiceTemplateContainerEnv {
     return GetServiceTemplateContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
-      valueSources: Input.decodeList<GetServiceTemplateContainerEnvValueSource>(
-          map['valueSources'],
-          (value) => GetServiceTemplateContainerEnvValueSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      valueSources:
+          pulumi.Input.decodeList<GetServiceTemplateContainerEnvValueSource>(
+              map['valueSources'],
+              (value) => GetServiceTemplateContainerEnvValueSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

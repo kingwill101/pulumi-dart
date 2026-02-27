@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter/v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_instance_filter.dart';
 import '../v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_os_policy/v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_os_policy.dart';
 import '../v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_rollout/v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_payload_rollout.dart';
@@ -100,7 +100,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['osPolicies'] = Input.encodeList<
+    map['osPolicies'] = pulumi.Input.encodeList<
         V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy,
         Map<String, dynamic>>(osPolicies, (value) => value.toMap());
     final reconcilingValue = reconciling;
@@ -138,7 +138,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload {
           V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter
               .fromMap((map['instanceFilter'] as Map).cast<String, dynamic>()),
       name: map['name'] == null ? null : map['name'] as String,
-      osPolicies: Input.decodeList<
+      osPolicies: pulumi.Input.decodeList<
               V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy>(
           map['osPolicies'],
           (value) =>

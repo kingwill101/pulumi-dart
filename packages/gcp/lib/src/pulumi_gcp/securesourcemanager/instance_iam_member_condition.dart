@@ -1,3 +1,3 @@
 library module_securesourcemanager_instance_iam_member_condition;
 
-export 'instance_iam_member_condition/instance_iam_member_condition3.dart';
+export 'instance_iam_member_condition/instance_iam_member_condition_securesourcemanager.dart';

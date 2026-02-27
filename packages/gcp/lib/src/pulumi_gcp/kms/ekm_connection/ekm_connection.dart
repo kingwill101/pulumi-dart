@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ekm_connection_service_resolver/ekm_connection_service_resolver.dart';
 import 'ekm_connection_args.dart';
 
@@ -45,46 +45,46 @@ import 'ekm_connection_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/ekmConnection:EkmConnection default {{location}}/{{name}}
 /// ```
-class EkmConnection extends CustomResource {
+class EkmConnection extends pulumi.CustomResource {
   /// Output only. The time at which the EkmConnection was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
-  late final Output<String> cryptoSpacePath;
+  late final pulumi.Output<String> cryptoSpacePath;
 
   /// Optional. Etag of the currently stored EkmConnection.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
   /// Default value is `MANUAL`.
   /// Possible values are: `MANUAL`, `CLOUD_KMS`.
-  late final Output<String?> keyManagementMode;
+  late final pulumi.Output<String?> keyManagementMode;
 
   /// The location for the EkmConnection.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name for the EkmConnection.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
   /// Structure is documented below.
-  late final Output<List<EkmConnectionServiceResolver>> serviceResolvers;
+  late final pulumi.Output<List<EkmConnectionServiceResolver>> serviceResolvers;
 
   EkmConnection(
     String name, {
     EkmConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/ekmConnection:EkmConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.cryptoSpacePath = registerOutput<String>('cryptoSpacePath');

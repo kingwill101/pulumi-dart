@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_status_condition/get_service_status_condition.dart';
 import '../get_service_status_traffic/get_service_status_traffic.dart';
 
@@ -45,14 +45,13 @@ class GetServiceStatus {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['conditions'] =
-        Input.encodeList<GetServiceStatusCondition, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<GetServiceStatusCondition,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     map['latestCreatedRevisionName'] = latestCreatedRevisionName;
     map['latestReadyRevisionName'] = latestReadyRevisionName;
     map['observedGeneration'] = observedGeneration;
     map['traffics'] =
-        Input.encodeList<GetServiceStatusTraffic, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetServiceStatusTraffic, Map<String, dynamic>>(
             traffics, (value) => value.toMap());
     map['url'] = url;
     return map;
@@ -60,14 +59,14 @@ class GetServiceStatus {
 
   factory GetServiceStatus.fromMap(Map<String, dynamic> map) {
     return GetServiceStatus(
-      conditions: Input.decodeList<GetServiceStatusCondition>(
+      conditions: pulumi.Input.decodeList<GetServiceStatusCondition>(
           map['conditions'],
           (value) => GetServiceStatusCondition.fromMap(
               (value as Map).cast<String, dynamic>())),
       latestCreatedRevisionName: map['latestCreatedRevisionName'] as String,
       latestReadyRevisionName: map['latestReadyRevisionName'] as String,
       observedGeneration: map['observedGeneration'] as int,
-      traffics: Input.decodeList<GetServiceStatusTraffic>(
+      traffics: pulumi.Input.decodeList<GetServiceStatusTraffic>(
           map['traffics'],
           (value) => GetServiceStatusTraffic.fromMap(
               (value as Map).cast<String, dynamic>())),

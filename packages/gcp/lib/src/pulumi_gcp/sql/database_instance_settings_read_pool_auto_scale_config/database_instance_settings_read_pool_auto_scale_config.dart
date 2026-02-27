@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../database_instance_settings_read_pool_auto_scale_config_target_metric/database_instance_settings_read_pool_auto_scale_config_target_metric.dart';
 
 class DatabaseInstanceSettingsReadPoolAutoScaleConfig {
@@ -64,7 +64,7 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfig {
     }
     final targetMetricsValue = targetMetrics;
     if (targetMetricsValue != null) {
-      map['targetMetrics'] = Input.encodeList<
+      map['targetMetrics'] = pulumi.Input.encodeList<
           DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric,
           Map<String, dynamic>>(targetMetricsValue, (value) => value.toMap());
     }
@@ -89,7 +89,7 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfig {
           : map['scaleOutCooldownSeconds'] as int,
       targetMetrics: map['targetMetrics'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric>(
               map['targetMetrics'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_plan_backup_config_selected_applications_namespaced_name/backup_plan_backup_config_selected_applications_namespaced_name.dart';
 
 class BackupPlanBackupConfigSelectedApplications {
@@ -15,7 +15,7 @@ class BackupPlanBackupConfigSelectedApplications {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['namespacedNames'] = Input.encodeList<
+    map['namespacedNames'] = pulumi.Input.encodeList<
         BackupPlanBackupConfigSelectedApplicationsNamespacedName,
         Map<String, dynamic>>(namespacedNames, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class BackupPlanBackupConfigSelectedApplications {
   factory BackupPlanBackupConfigSelectedApplications.fromMap(
       Map<String, dynamic> map) {
     return BackupPlanBackupConfigSelectedApplications(
-      namespacedNames: Input.decodeList<
+      namespacedNames: pulumi.Input.decodeList<
               BackupPlanBackupConfigSelectedApplicationsNamespacedName>(
           map['namespacedNames'],
           (value) =>

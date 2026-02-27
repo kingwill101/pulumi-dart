@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../server_tls_policy_mtls_policy_client_validation_ca/server_tls_policy_mtls_policy_client_validation_ca.dart';
 
 class ServerTlsPolicyMtlsPolicy {
@@ -29,7 +29,7 @@ class ServerTlsPolicyMtlsPolicy {
     final map = <String, dynamic>{};
     final clientValidationCasValue = clientValidationCas;
     if (clientValidationCasValue != null) {
-      map['clientValidationCas'] = Input.encodeList<
+      map['clientValidationCas'] = pulumi.Input.encodeList<
               ServerTlsPolicyMtlsPolicyClientValidationCa,
               Map<String, dynamic>>(
           clientValidationCasValue, (value) => value.toMap());
@@ -49,7 +49,8 @@ class ServerTlsPolicyMtlsPolicy {
     return ServerTlsPolicyMtlsPolicy(
       clientValidationCas: map['clientValidationCas'] == null
           ? null
-          : Input.decodeList<ServerTlsPolicyMtlsPolicyClientValidationCa>(
+          : pulumi.Input.decodeList<
+                  ServerTlsPolicyMtlsPolicyClientValidationCa>(
               map['clientValidationCas'],
               (value) => ServerTlsPolicyMtlsPolicyClientValidationCa.fromMap(
                   (value as Map).cast<String, dynamic>())),

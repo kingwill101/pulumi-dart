@@ -1,3 +1,3 @@
 library module_developerconnect_connection_installation_state;
 
-export 'connection_installation_state/connection_installation_state2.dart';
+export 'connection_installation_state/connection_installation_state_developerconnect.dart';

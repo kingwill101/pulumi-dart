@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_database_instances_instance_setting_backup_configuration_backup_retention_setting/get_database_instances_instance_setting_backup_configuration_backup_retention_setting.dart';
 
 class GetDatabaseInstancesInstanceSettingBackupConfiguration {
@@ -42,7 +42,7 @@ class GetDatabaseInstancesInstanceSettingBackupConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['backupRetentionSettings'] = Input.encodeList<
+    map['backupRetentionSettings'] = pulumi.Input.encodeList<
         GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting,
         Map<String,
             dynamic>>(backupRetentionSettings, (value) => value.toMap());
@@ -59,7 +59,7 @@ class GetDatabaseInstancesInstanceSettingBackupConfiguration {
   factory GetDatabaseInstancesInstanceSettingBackupConfiguration.fromMap(
       Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingBackupConfiguration(
-      backupRetentionSettings: Input.decodeList<
+      backupRetentionSettings: pulumi.Input.decodeList<
               GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting>(
           map['backupRetentionSettings'],
           (value) =>

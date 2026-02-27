@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../inbound_saml_config_sp_config_sp_certificate/inbound_saml_config_sp_config_sp_certificate.dart';
 
 class InboundSamlConfigSpConfig {
@@ -32,7 +32,7 @@ class InboundSamlConfigSpConfig {
     }
     final spCertificatesValue = spCertificates;
     if (spCertificatesValue != null) {
-      map['spCertificates'] = Input.encodeList<
+      map['spCertificates'] = pulumi.Input.encodeList<
           InboundSamlConfigSpConfigSpCertificate,
           Map<String, dynamic>>(spCertificatesValue, (value) => value.toMap());
     }
@@ -49,7 +49,7 @@ class InboundSamlConfigSpConfig {
           map['callbackUri'] == null ? null : map['callbackUri'] as String,
       spCertificates: map['spCertificates'] == null
           ? null
-          : Input.decodeList<InboundSamlConfigSpConfigSpCertificate>(
+          : pulumi.Input.decodeList<InboundSamlConfigSpConfigSpCertificate>(
               map['spCertificates'],
               (value) => InboundSamlConfigSpConfigSpCertificate.fromMap(
                   (value as Map).cast<String, dynamic>())),

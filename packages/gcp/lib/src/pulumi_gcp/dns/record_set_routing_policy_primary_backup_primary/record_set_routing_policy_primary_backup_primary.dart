@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../record_set_routing_policy_primary_backup_primary_internal_load_balancer/record_set_routing_policy_primary_backup_primary_internal_load_balancer.dart';
 
 class RecordSetRoutingPolicyPrimaryBackupPrimary {
@@ -24,7 +24,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary {
     }
     final internalLoadBalancersValue = internalLoadBalancers;
     if (internalLoadBalancersValue != null) {
-      map['internalLoadBalancers'] = Input.encodeList<
+      map['internalLoadBalancers'] = pulumi.Input.encodeList<
               RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer,
               Map<String, dynamic>>(
           internalLoadBalancersValue, (value) => value.toMap());
@@ -40,7 +40,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary {
           : (map['externalEndpoints'] as List).cast<String>(),
       internalLoadBalancers: map['internalLoadBalancers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>(
               map['internalLoadBalancers'],
               (value) =>

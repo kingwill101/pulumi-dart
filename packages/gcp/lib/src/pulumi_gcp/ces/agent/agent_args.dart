@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_after_agent_callback/agent_after_agent_callback.dart';
 import '../agent_after_model_callback/agent_after_model_callback.dart';
 import '../agent_after_tool_callback/agent_after_tool_callback.dart';
@@ -18,7 +18,7 @@ class AgentArgs {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final Input<List<AgentAfterAgentCallback>>? afterAgentCallbacks;
+  final pulumi.Input<List<AgentAfterAgentCallback>>? afterAgentCallbacks;
 
   /// The callbacks to execute after the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
@@ -26,7 +26,7 @@ class AgentArgs {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final Input<List<AgentAfterModelCallback>>? afterModelCallbacks;
+  final pulumi.Input<List<AgentAfterModelCallback>>? afterModelCallbacks;
 
   /// The callbacks to execute after the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
@@ -34,22 +34,22 @@ class AgentArgs {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final Input<List<AgentAfterToolCallback>>? afterToolCallbacks;
+  final pulumi.Input<List<AgentAfterToolCallback>>? afterToolCallbacks;
 
   /// The ID to use for the agent, which will become the final component of
   /// the agent's resource name. If not provided, a unique ID will be
   /// automatically assigned for the agent.
-  final Input<String>? agentId;
+  final pulumi.Input<String>? agentId;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> app;
+  final pulumi.Input<String> app;
 
   /// The callbacks to execute before the agent is called.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final Input<List<AgentBeforeAgentCallback>>? beforeAgentCallbacks;
+  final pulumi.Input<List<AgentBeforeAgentCallback>>? beforeAgentCallbacks;
 
   /// The callbacks to execute before the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
@@ -57,7 +57,7 @@ class AgentArgs {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final Input<List<AgentBeforeModelCallback>>? beforeModelCallbacks;
+  final pulumi.Input<List<AgentBeforeModelCallback>>? beforeModelCallbacks;
 
   /// The callbacks to execute before the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
@@ -65,40 +65,40 @@ class AgentArgs {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final Input<List<AgentBeforeToolCallback>>? beforeToolCallbacks;
+  final pulumi.Input<List<AgentBeforeToolCallback>>? beforeToolCallbacks;
 
   /// List of child agents in the agent tree.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final Input<List<String>>? childAgents;
+  final pulumi.Input<List<String>>? childAgents;
 
   /// Human-readable description of the agent.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Display name of the agent.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// List of guardrails for the agent.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-  final Input<List<String>>? guardrails;
+  final pulumi.Input<List<String>>? guardrails;
 
   /// Instructions for the LLM model to guide the agent's behavior.
-  final Input<String>? instruction;
+  final pulumi.Input<String>? instruction;
 
   /// Default agent type. The agent uses instructions and callbacks specified in
   /// the agent to perform the task using a large language model.
-  final Input<Map<String, dynamic>>? llmAgent;
+  final pulumi.Input<Map<String, dynamic>>? llmAgent;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final Input<AgentModelSettings>? modelSettings;
+  final pulumi.Input<AgentModelSettings>? modelSettings;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The agent which will transfer execution to an existing remote
   /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
@@ -106,15 +106,15 @@ class AgentArgs {
   /// queries until the session ends or flow ends and the control is transferred
   /// back to the parent CES agent.
   /// Structure is documented below.
-  final Input<AgentRemoteDialogflowAgent>? remoteDialogflowAgent;
+  final pulumi.Input<AgentRemoteDialogflowAgent>? remoteDialogflowAgent;
 
   /// List of available tools for the agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  final Input<List<String>>? tools;
+  final pulumi.Input<List<String>>? tools;
 
   /// List of toolsets for the agent.
   /// Structure is documented below.
-  final Input<List<AgentToolset>>? toolsets;
+  final pulumi.Input<List<AgentToolset>>? toolsets;
 
   AgentArgs({
     this.afterAgentCallbacks,
@@ -143,30 +143,27 @@ class AgentArgs {
     final map = <String, dynamic>{};
     final afterAgentCallbacksValue = afterAgentCallbacks;
     if (afterAgentCallbacksValue != null) {
-      map['afterAgentCallbacks'] = Input.mapOptionalInputValue<
+      map['afterAgentCallbacks'] = pulumi.Input.mapOptionalInputValue<
               List<AgentAfterAgentCallback>, List<Map<String, dynamic>>>(
           afterAgentCallbacksValue,
-          (value) =>
-              Input.encodeList<AgentAfterAgentCallback, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AgentAfterAgentCallback,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final afterModelCallbacksValue = afterModelCallbacks;
     if (afterModelCallbacksValue != null) {
-      map['afterModelCallbacks'] = Input.mapOptionalInputValue<
+      map['afterModelCallbacks'] = pulumi.Input.mapOptionalInputValue<
               List<AgentAfterModelCallback>, List<Map<String, dynamic>>>(
           afterModelCallbacksValue,
-          (value) =>
-              Input.encodeList<AgentAfterModelCallback, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AgentAfterModelCallback,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final afterToolCallbacksValue = afterToolCallbacks;
     if (afterToolCallbacksValue != null) {
-      map['afterToolCallbacks'] = Input.mapOptionalInputValue<
+      map['afterToolCallbacks'] = pulumi.Input.mapOptionalInputValue<
               List<AgentAfterToolCallback>, List<Map<String, dynamic>>>(
           afterToolCallbacksValue,
-          (value) =>
-              Input.encodeList<AgentAfterToolCallback, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AgentAfterToolCallback,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final agentIdValue = agentId;
     if (agentIdValue != null) {
@@ -175,30 +172,27 @@ class AgentArgs {
     map['app'] = app;
     final beforeAgentCallbacksValue = beforeAgentCallbacks;
     if (beforeAgentCallbacksValue != null) {
-      map['beforeAgentCallbacks'] = Input.mapOptionalInputValue<
+      map['beforeAgentCallbacks'] = pulumi.Input.mapOptionalInputValue<
               List<AgentBeforeAgentCallback>, List<Map<String, dynamic>>>(
           beforeAgentCallbacksValue,
-          (value) =>
-              Input.encodeList<AgentBeforeAgentCallback, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AgentBeforeAgentCallback,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final beforeModelCallbacksValue = beforeModelCallbacks;
     if (beforeModelCallbacksValue != null) {
-      map['beforeModelCallbacks'] = Input.mapOptionalInputValue<
+      map['beforeModelCallbacks'] = pulumi.Input.mapOptionalInputValue<
               List<AgentBeforeModelCallback>, List<Map<String, dynamic>>>(
           beforeModelCallbacksValue,
-          (value) =>
-              Input.encodeList<AgentBeforeModelCallback, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AgentBeforeModelCallback,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final beforeToolCallbacksValue = beforeToolCallbacks;
     if (beforeToolCallbacksValue != null) {
-      map['beforeToolCallbacks'] = Input.mapOptionalInputValue<
+      map['beforeToolCallbacks'] = pulumi.Input.mapOptionalInputValue<
               List<AgentBeforeToolCallback>, List<Map<String, dynamic>>>(
           beforeToolCallbacksValue,
-          (value) =>
-              Input.encodeList<AgentBeforeToolCallback, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AgentBeforeToolCallback,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final childAgentsValue = childAgents;
     if (childAgentsValue != null) {
@@ -224,9 +218,9 @@ class AgentArgs {
     map['location'] = location;
     final modelSettingsValue = modelSettings;
     if (modelSettingsValue != null) {
-      map['modelSettings'] =
-          Input.mapOptionalInputValue<AgentModelSettings, Map<String, dynamic>>(
-              modelSettingsValue, (value) => value.toMap());
+      map['modelSettings'] = pulumi.Input.mapOptionalInputValue<
+          AgentModelSettings,
+          Map<String, dynamic>>(modelSettingsValue, (value) => value.toMap());
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -234,7 +228,7 @@ class AgentArgs {
     }
     final remoteDialogflowAgentValue = remoteDialogflowAgent;
     if (remoteDialogflowAgentValue != null) {
-      map['remoteDialogflowAgent'] = Input.mapOptionalInputValue<
+      map['remoteDialogflowAgent'] = pulumi.Input.mapOptionalInputValue<
               AgentRemoteDialogflowAgent, Map<String, dynamic>>(
           remoteDialogflowAgentValue, (value) => value.toMap());
     }
@@ -244,47 +238,56 @@ class AgentArgs {
     }
     final toolsetsValue = toolsets;
     if (toolsetsValue != null) {
-      map['toolsets'] = Input.mapOptionalInputValue<List<AgentToolset>,
+      map['toolsets'] = pulumi.Input.mapOptionalInputValue<List<AgentToolset>,
               List<Map<String, dynamic>>>(
           toolsetsValue,
-          (value) => Input.encodeList<AgentToolset, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<AgentToolset, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     return map;
   }
 
   factory AgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentArgs(
-      afterAgentCallbacks: Input.asOptionalInput<List<AgentAfterAgentCallback>>(
-          map['afterAgentCallbacks']),
-      afterModelCallbacks: Input.asOptionalInput<List<AgentAfterModelCallback>>(
-          map['afterModelCallbacks']),
-      afterToolCallbacks: Input.asOptionalInput<List<AgentAfterToolCallback>>(
-          map['afterToolCallbacks']),
-      agentId: Input.asOptionalInput<String>(map['agentId']),
-      app: Input.asInput<String>(map['app']),
+      afterAgentCallbacks:
+          pulumi.Input.asOptionalInput<List<AgentAfterAgentCallback>>(
+              map['afterAgentCallbacks']),
+      afterModelCallbacks:
+          pulumi.Input.asOptionalInput<List<AgentAfterModelCallback>>(
+              map['afterModelCallbacks']),
+      afterToolCallbacks:
+          pulumi.Input.asOptionalInput<List<AgentAfterToolCallback>>(
+              map['afterToolCallbacks']),
+      agentId: pulumi.Input.asOptionalInput<String>(map['agentId']),
+      app: pulumi.Input.asInput<String>(map['app']),
       beforeAgentCallbacks:
-          Input.asOptionalInput<List<AgentBeforeAgentCallback>>(
+          pulumi.Input.asOptionalInput<List<AgentBeforeAgentCallback>>(
               map['beforeAgentCallbacks']),
       beforeModelCallbacks:
-          Input.asOptionalInput<List<AgentBeforeModelCallback>>(
+          pulumi.Input.asOptionalInput<List<AgentBeforeModelCallback>>(
               map['beforeModelCallbacks']),
-      beforeToolCallbacks: Input.asOptionalInput<List<AgentBeforeToolCallback>>(
-          map['beforeToolCallbacks']),
-      childAgents: Input.asOptionalInput<List<String>>(map['childAgents']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      guardrails: Input.asOptionalInput<List<String>>(map['guardrails']),
-      instruction: Input.asOptionalInput<String>(map['instruction']),
-      llmAgent: Input.asOptionalInput<Map<String, dynamic>>(map['llmAgent']),
-      location: Input.asInput<String>(map['location']),
-      modelSettings:
-          Input.asOptionalInput<AgentModelSettings>(map['modelSettings']),
-      project: Input.asOptionalInput<String>(map['project']),
-      remoteDialogflowAgent: Input.asOptionalInput<AgentRemoteDialogflowAgent>(
-          map['remoteDialogflowAgent']),
-      tools: Input.asOptionalInput<List<String>>(map['tools']),
-      toolsets: Input.asOptionalInput<List<AgentToolset>>(map['toolsets']),
+      beforeToolCallbacks:
+          pulumi.Input.asOptionalInput<List<AgentBeforeToolCallback>>(
+              map['beforeToolCallbacks']),
+      childAgents:
+          pulumi.Input.asOptionalInput<List<String>>(map['childAgents']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      guardrails: pulumi.Input.asOptionalInput<List<String>>(map['guardrails']),
+      instruction: pulumi.Input.asOptionalInput<String>(map['instruction']),
+      llmAgent:
+          pulumi.Input.asOptionalInput<Map<String, dynamic>>(map['llmAgent']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      modelSettings: pulumi.Input.asOptionalInput<AgentModelSettings>(
+          map['modelSettings']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      remoteDialogflowAgent:
+          pulumi.Input.asOptionalInput<AgentRemoteDialogflowAgent>(
+              map['remoteDialogflowAgent']),
+      tools: pulumi.Input.asOptionalInput<List<String>>(map['tools']),
+      toolsets:
+          pulumi.Input.asOptionalInput<List<AgentToolset>>(map['toolsets']),
     );
   }
 }

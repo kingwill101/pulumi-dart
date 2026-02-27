@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_membership_configmanagement/feature_membership_configmanagement.dart';
 import '../feature_membership_mesh/feature_membership_mesh.dart';
 import '../feature_membership_policycontroller/feature_membership_policycontroller.dart';
@@ -8,28 +8,28 @@ import '../feature_membership_policycontroller/feature_membership_policycontroll
 /// The set of arguments for FeatureMembership.
 class FeatureMembershipArgs {
   /// Config Management-specific spec. Structure is documented below.
-  final Input<FeatureMembershipConfigmanagement>? configmanagement;
+  final pulumi.Input<FeatureMembershipConfigmanagement>? configmanagement;
 
   /// The name of the feature
-  final Input<String> feature;
+  final pulumi.Input<String> feature;
 
   /// The location of the feature
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of the membership
-  final Input<String> membership;
+  final pulumi.Input<String> membership;
 
   /// The location of the membership, for example, "us-central1". Default is "global".
-  final Input<String>? membershipLocation;
+  final pulumi.Input<String>? membershipLocation;
 
   /// Service mesh specific spec. Structure is documented below.
-  final Input<FeatureMembershipMesh>? mesh;
+  final pulumi.Input<FeatureMembershipMesh>? mesh;
 
   /// Policy Controller-specific spec. Structure is documented below.
-  final Input<FeatureMembershipPolicycontroller>? policycontroller;
+  final pulumi.Input<FeatureMembershipPolicycontroller>? policycontroller;
 
   /// The project of the feature
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   FeatureMembershipArgs({
     this.configmanagement,
@@ -46,7 +46,7 @@ class FeatureMembershipArgs {
     final map = <String, dynamic>{};
     final configmanagementValue = configmanagement;
     if (configmanagementValue != null) {
-      map['configmanagement'] = Input.mapOptionalInputValue<
+      map['configmanagement'] = pulumi.Input.mapOptionalInputValue<
               FeatureMembershipConfigmanagement, Map<String, dynamic>>(
           configmanagementValue, (value) => value.toMap());
     }
@@ -59,12 +59,12 @@ class FeatureMembershipArgs {
     }
     final meshValue = mesh;
     if (meshValue != null) {
-      map['mesh'] = Input.mapOptionalInputValue<FeatureMembershipMesh,
+      map['mesh'] = pulumi.Input.mapOptionalInputValue<FeatureMembershipMesh,
           Map<String, dynamic>>(meshValue, (value) => value.toMap());
     }
     final policycontrollerValue = policycontroller;
     if (policycontrollerValue != null) {
-      map['policycontroller'] = Input.mapOptionalInputValue<
+      map['policycontroller'] = pulumi.Input.mapOptionalInputValue<
               FeatureMembershipPolicycontroller, Map<String, dynamic>>(
           policycontrollerValue, (value) => value.toMap());
     }
@@ -78,18 +78,18 @@ class FeatureMembershipArgs {
   factory FeatureMembershipArgs.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipArgs(
       configmanagement:
-          Input.asOptionalInput<FeatureMembershipConfigmanagement>(
+          pulumi.Input.asOptionalInput<FeatureMembershipConfigmanagement>(
               map['configmanagement']),
-      feature: Input.asInput<String>(map['feature']),
-      location: Input.asInput<String>(map['location']),
-      membership: Input.asInput<String>(map['membership']),
+      feature: pulumi.Input.asInput<String>(map['feature']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      membership: pulumi.Input.asInput<String>(map['membership']),
       membershipLocation:
-          Input.asOptionalInput<String>(map['membershipLocation']),
-      mesh: Input.asOptionalInput<FeatureMembershipMesh>(map['mesh']),
+          pulumi.Input.asOptionalInput<String>(map['membershipLocation']),
+      mesh: pulumi.Input.asOptionalInput<FeatureMembershipMesh>(map['mesh']),
       policycontroller:
-          Input.asOptionalInput<FeatureMembershipPolicycontroller>(
+          pulumi.Input.asOptionalInput<FeatureMembershipPolicycontroller>(
               map['policycontroller']),
-      project: Input.asOptionalInput<String>(map['project']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_plan_restore_config_transformation_rule_field_action/restore_plan_restore_config_transformation_rule_field_action.dart';
 import '../restore_plan_restore_config_transformation_rule_resource_filter/restore_plan_restore_config_transformation_rule_resource_filter.dart';
 
@@ -37,7 +37,7 @@ class RestorePlanRestoreConfigTransformationRule {
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
     }
-    map['fieldActions'] = Input.encodeList<
+    map['fieldActions'] = pulumi.Input.encodeList<
         RestorePlanRestoreConfigTransformationRuleFieldAction,
         Map<String, dynamic>>(fieldActions, (value) => value.toMap());
     final resourceFilterValue = resourceFilter;
@@ -52,7 +52,7 @@ class RestorePlanRestoreConfigTransformationRule {
     return RestorePlanRestoreConfigTransformationRule(
       description:
           map['description'] == null ? null : map['description'] as String,
-      fieldActions: Input.decodeList<
+      fieldActions: pulumi.Input.decodeList<
               RestorePlanRestoreConfigTransformationRuleFieldAction>(
           map['fieldActions'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connectivity_tests_connectivity_test/get_connectivity_tests_connectivity_test.dart';
 
 /// Result data returned by getConnectivityTests.
@@ -24,7 +24,7 @@ class GetConnectivityTestsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connectivityTests'] = Input.encodeList<
+    map['connectivityTests'] = pulumi.Input.encodeList<
         GetConnectivityTestsConnectivityTest,
         Map<String, dynamic>>(connectivityTests, (value) => value.toMap());
     final filterValue = filter;
@@ -38,10 +38,11 @@ class GetConnectivityTestsResult {
 
   factory GetConnectivityTestsResult.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsResult(
-      connectivityTests: Input.decodeList<GetConnectivityTestsConnectivityTest>(
-          map['connectivityTests'],
-          (value) => GetConnectivityTestsConnectivityTest.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      connectivityTests:
+          pulumi.Input.decodeList<GetConnectivityTestsConnectivityTest>(
+              map['connectivityTests'],
+              (value) => GetConnectivityTestsConnectivityTest.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       filter: map['filter'] == null ? null : map['filter'] as String,
       id: map['id'] as String,
       project: map['project'] as String,

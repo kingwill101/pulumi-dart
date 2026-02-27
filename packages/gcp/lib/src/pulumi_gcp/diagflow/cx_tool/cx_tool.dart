@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_tool_connector_spec/cx_tool_connector_spec.dart';
 import '../cx_tool_data_store_spec/cx_tool_data_store_spec.dart';
 import '../cx_tool_function_spec/cx_tool_function_spec.dart';
@@ -53,53 +53,53 @@ import 'cx_tool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/{{name}}
 /// ```
-class CxTool extends CustomResource {
+class CxTool extends pulumi.CustomResource {
   /// Integration connectors tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
-  late final Output<CxToolConnectorSpec?> connectorSpec;
+  late final pulumi.Output<CxToolConnectorSpec?> connectorSpec;
 
   /// Data store search tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
-  late final Output<CxToolDataStoreSpec?> dataStoreSpec;
+  late final pulumi.Output<CxToolDataStoreSpec?> dataStoreSpec;
 
   /// High level description of the Tool and its usage.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// The human-readable name of the tool, unique within the agent.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Client side executed function specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
-  late final Output<CxToolFunctionSpec?> functionSpec;
+  late final pulumi.Output<CxToolFunctionSpec?> functionSpec;
 
   /// The unique identifier of the Tool.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// OpenAPI specification of the Tool.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
-  late final Output<CxToolOpenApiSpec?> openApiSpec;
+  late final pulumi.Output<CxToolOpenApiSpec?> openApiSpec;
 
   /// The agent to create a Tool for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// The tool type.
-  late final Output<String> toolType;
+  late final pulumi.Output<String> toolType;
 
   CxTool(
     String name, {
     CxToolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/cxTool:CxTool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec');
     this.dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec');

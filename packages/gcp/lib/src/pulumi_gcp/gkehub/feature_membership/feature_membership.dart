@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_membership_configmanagement/feature_membership_configmanagement.dart';
 import '../feature_membership_mesh/feature_membership_mesh.dart';
 import '../feature_membership_policycontroller/feature_membership_policycontroller.dart';
@@ -71,40 +71,40 @@ import 'feature_membership_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
 /// ```
-class FeatureMembership extends CustomResource {
+class FeatureMembership extends pulumi.CustomResource {
   /// Config Management-specific spec. Structure is documented below.
-  late final Output<FeatureMembershipConfigmanagement?> configmanagement;
+  late final pulumi.Output<FeatureMembershipConfigmanagement?> configmanagement;
 
   /// The name of the feature
-  late final Output<String> feature;
+  late final pulumi.Output<String> feature;
 
   /// The location of the feature
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the membership
-  late final Output<String> membership;
+  late final pulumi.Output<String> membership;
 
   /// The location of the membership, for example, "us-central1". Default is "global".
-  late final Output<String?> membershipLocation;
+  late final pulumi.Output<String?> membershipLocation;
 
   /// Service mesh specific spec. Structure is documented below.
-  late final Output<FeatureMembershipMesh?> mesh;
+  late final pulumi.Output<FeatureMembershipMesh?> mesh;
 
   /// Policy Controller-specific spec. Structure is documented below.
-  late final Output<FeatureMembershipPolicycontroller?> policycontroller;
+  late final pulumi.Output<FeatureMembershipPolicycontroller?> policycontroller;
 
   /// The project of the feature
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   FeatureMembership(
     String name, {
     FeatureMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/featureMembership:FeatureMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configmanagement =
         registerOutput<FeatureMembershipConfigmanagement?>('configmanagement');

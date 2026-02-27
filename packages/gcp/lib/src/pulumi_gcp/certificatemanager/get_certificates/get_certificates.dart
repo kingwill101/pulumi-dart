@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_certificates_args.dart';
 import 'get_certificates_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_certificates_result.dart';
 /// ### Regional Certificates With A Filter
 Future<GetCertificatesResult> getCertificates(
   GetCertificatesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:certificatemanager/getCertificates:getCertificates',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificatesResult.fromMap(result);
 }

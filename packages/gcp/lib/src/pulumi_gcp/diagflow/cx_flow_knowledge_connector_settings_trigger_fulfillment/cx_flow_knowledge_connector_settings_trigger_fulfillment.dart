@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_flow_knowledge_connector_settings_trigger_fulfillment_advanced_settings/cx_flow_knowledge_connector_settings_trigger_fulfillment_advanced_settings.dart';
 import '../cx_flow_knowledge_connector_settings_trigger_fulfillment_conditional_case/cx_flow_knowledge_connector_settings_trigger_fulfillment_conditional_case.dart';
 import '../cx_flow_knowledge_connector_settings_trigger_fulfillment_message/cx_flow_knowledge_connector_settings_trigger_fulfillment_message.dart';
@@ -61,7 +61,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
     }
     final conditionalCasesValue = conditionalCases;
     if (conditionalCasesValue != null) {
-      map['conditionalCases'] = Input.encodeList<
+      map['conditionalCases'] = pulumi.Input.encodeList<
               CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase,
               Map<String, dynamic>>(
           conditionalCasesValue, (value) => value.toMap());
@@ -72,7 +72,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] = Input.encodeList<
+      map['messages'] = pulumi.Input.encodeList<
           CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage,
           Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
@@ -82,7 +82,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
     }
     final setParameterActionsValue = setParameterActions;
     if (setParameterActionsValue != null) {
-      map['setParameterActions'] = Input.encodeList<
+      map['setParameterActions'] = pulumi.Input.encodeList<
           CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction,
           Map<String,
               dynamic>>(setParameterActionsValue, (value) => value.toMap());
@@ -108,7 +108,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
                   (map['advancedSettings'] as Map).cast<String, dynamic>()),
       conditionalCases: map['conditionalCases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase>(
               map['conditionalCases'],
               (value) =>
@@ -119,7 +119,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
           : map['enableGenerativeFallback'] as bool,
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage>(
               map['messages'],
               (value) =>
@@ -130,7 +130,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
           : map['returnPartialResponses'] as bool,
       setParameterActions: map['setParameterActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction>(
               map['setParameterActions'],
               (value) =>

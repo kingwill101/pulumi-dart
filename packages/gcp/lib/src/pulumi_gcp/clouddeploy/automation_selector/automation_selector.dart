@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../automation_selector_target/automation_selector_target.dart';
 
 class AutomationSelector {
@@ -15,14 +15,14 @@ class AutomationSelector {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['targets'] =
-        Input.encodeList<AutomationSelectorTarget, Map<String, dynamic>>(
+        pulumi.Input.encodeList<AutomationSelectorTarget, Map<String, dynamic>>(
             targets, (value) => value.toMap());
     return map;
   }
 
   factory AutomationSelector.fromMap(Map<String, dynamic> map) {
     return AutomationSelector(
-      targets: Input.decodeList<AutomationSelectorTarget>(
+      targets: pulumi.Input.decodeList<AutomationSelectorTarget>(
           map['targets'],
           (value) => AutomationSelectorTarget.fromMap(
               (value as Map).cast<String, dynamic>())),

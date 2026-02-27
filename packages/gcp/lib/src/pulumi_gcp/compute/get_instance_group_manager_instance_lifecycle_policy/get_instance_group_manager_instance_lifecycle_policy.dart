@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_group_manager_instance_lifecycle_policy_on_repair/get_instance_group_manager_instance_lifecycle_policy_on_repair.dart';
 
 class GetInstanceGroupManagerInstanceLifecyclePolicy {
@@ -28,7 +28,7 @@ class GetInstanceGroupManagerInstanceLifecyclePolicy {
     map['defaultActionOnFailure'] = defaultActionOnFailure;
     map['forceUpdateOnRepair'] = forceUpdateOnRepair;
     map['onFailedHealthCheck'] = onFailedHealthCheck;
-    map['onRepairs'] = Input.encodeList<
+    map['onRepairs'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair,
         Map<String, dynamic>>(onRepairs, (value) => value.toMap());
     return map;
@@ -40,7 +40,7 @@ class GetInstanceGroupManagerInstanceLifecyclePolicy {
       defaultActionOnFailure: map['defaultActionOnFailure'] as String,
       forceUpdateOnRepair: map['forceUpdateOnRepair'] as String,
       onFailedHealthCheck: map['onFailedHealthCheck'] as String,
-      onRepairs: Input.decodeList<
+      onRepairs: pulumi.Input.decodeList<
               GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair>(
           map['onRepairs'],
           (value) =>

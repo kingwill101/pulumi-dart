@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../assistant_customer_policy_banned_phrase/assistant_customer_policy_banned_phrase.dart';
 import '../assistant_customer_policy_model_armor_config/assistant_customer_policy_model_armor_config.dart';
 
@@ -22,7 +22,7 @@ class AssistantCustomerPolicy {
     final map = <String, dynamic>{};
     final bannedPhrasesValue = bannedPhrases;
     if (bannedPhrasesValue != null) {
-      map['bannedPhrases'] = Input.encodeList<
+      map['bannedPhrases'] = pulumi.Input.encodeList<
           AssistantCustomerPolicyBannedPhrase,
           Map<String, dynamic>>(bannedPhrasesValue, (value) => value.toMap());
     }
@@ -37,7 +37,7 @@ class AssistantCustomerPolicy {
     return AssistantCustomerPolicy(
       bannedPhrases: map['bannedPhrases'] == null
           ? null
-          : Input.decodeList<AssistantCustomerPolicyBannedPhrase>(
+          : pulumi.Input.decodeList<AssistantCustomerPolicyBannedPhrase>(
               map['bannedPhrases'],
               (value) => AssistantCustomerPolicyBannedPhrase.fromMap(
                   (value as Map).cast<String, dynamic>())),

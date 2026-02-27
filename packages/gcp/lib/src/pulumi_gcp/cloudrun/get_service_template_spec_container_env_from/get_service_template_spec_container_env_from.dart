@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_container_env_from_config_map_ref/get_service_template_spec_container_env_from_config_map_ref.dart';
 import '../get_service_template_spec_container_env_from_secret_ref/get_service_template_spec_container_env_from_secret_ref.dart';
 
@@ -22,11 +22,11 @@ class GetServiceTemplateSpecContainerEnvFrom {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['configMapReves'] = Input.encodeList<
+    map['configMapReves'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerEnvFromConfigMapRef,
         Map<String, dynamic>>(configMapReves, (value) => value.toMap());
     map['prefix'] = prefix;
-    map['secretReves'] = Input.encodeList<
+    map['secretReves'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerEnvFromSecretRef,
         Map<String, dynamic>>(secretReves, (value) => value.toMap());
     return map;
@@ -35,19 +35,17 @@ class GetServiceTemplateSpecContainerEnvFrom {
   factory GetServiceTemplateSpecContainerEnvFrom.fromMap(
       Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerEnvFrom(
-      configMapReves:
-          Input.decodeList<GetServiceTemplateSpecContainerEnvFromConfigMapRef>(
-              map['configMapReves'],
-              (value) =>
-                  GetServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      configMapReves: pulumi.Input.decodeList<
+              GetServiceTemplateSpecContainerEnvFromConfigMapRef>(
+          map['configMapReves'],
+          (value) => GetServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(
+              (value as Map).cast<String, dynamic>())),
       prefix: map['prefix'] as String,
-      secretReves:
-          Input.decodeList<GetServiceTemplateSpecContainerEnvFromSecretRef>(
-              map['secretReves'],
-              (value) =>
-                  GetServiceTemplateSpecContainerEnvFromSecretRef.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      secretReves: pulumi.Input.decodeList<
+              GetServiceTemplateSpecContainerEnvFromSecretRef>(
+          map['secretReves'],
+          (value) => GetServiceTemplateSpecContainerEnvFromSecretRef.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

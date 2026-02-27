@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'variable_args.dart';
 
 /// Manages a RuntimeConfig variable in Google Cloud. For more information, see the
@@ -38,18 +38,18 @@ import 'variable_args.dart';
 /// ```
 ///
 /// When importing using only the name, the provider project must be set.
-class Variable extends CustomResource {
+class Variable extends pulumi.CustomResource {
   /// The name of the variable to manage. Note that variable
   /// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the RuntimeConfig resource containing this
   /// variable.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// or `value` - (Required) The content to associate with the variable.
   /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
@@ -57,23 +57,23 @@ class Variable extends CustomResource {
   /// is specified, it must be base64 encoded and less than 4096 bytes in length.
   ///
   /// - - -
-  late final Output<String?> text;
+  late final pulumi.Output<String?> text;
 
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds, representing when the variable was last updated.
   /// Example: "2016-10-09T12:33:37.578138407Z".
-  late final Output<String> updateTime;
-  late final Output<String?> value;
+  late final pulumi.Output<String> updateTime;
+  late final pulumi.Output<String?> value;
 
   Variable(
     String name, {
     VariableArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:runtimeconfig/variable:Variable',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.parent = registerOutput<String>('parent');

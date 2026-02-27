@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'shared_vpchost_project_args.dart';
 
 /// Enables the Google Compute Engine
@@ -24,19 +24,19 @@ import 'shared_vpchost_project_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
 /// ```
-class SharedVPCHostProject extends CustomResource {
+class SharedVPCHostProject extends pulumi.CustomResource {
   /// The ID of the project that will serve as a Shared VPC host project
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   SharedVPCHostProject(
     String name, {
     SharedVPCHostProjectArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.project = registerOutput<String>('project');
   }

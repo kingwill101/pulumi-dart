@@ -1,5 +1,5 @@
 library module_workbench_get_instance_iam_policy;
 
-export 'get_instance_iam_policy/get_instance_iam_policy7.dart';
-export 'get_instance_iam_policy/get_instance_iam_policy_args7.dart';
-export 'get_instance_iam_policy/get_instance_iam_policy_result7.dart';
+export 'get_instance_iam_policy/get_instance_iam_policy_workbench.dart';
+export 'get_instance_iam_policy/get_instance_iam_policy_workbench_args.dart';
+export 'get_instance_iam_policy/get_instance_iam_policy_workbench_result.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IamMemberRemove.
 class IamMemberRemoveArgs {
@@ -10,13 +10,13 @@ class IamMemberRemoveArgs {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  final Input<String> member;
+  final pulumi.Input<String> member;
 
   /// The project id of the target project.
-  final Input<String> project;
+  final pulumi.Input<String> project;
 
   /// The target role that should be removed.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   IamMemberRemoveArgs({
     required this.member,
@@ -34,9 +34,9 @@ class IamMemberRemoveArgs {
 
   factory IamMemberRemoveArgs.fromMap(Map<String, dynamic> map) {
     return IamMemberRemoveArgs(
-      member: Input.asInput<String>(map['member']),
-      project: Input.asInput<String>(map['project']),
-      role: Input.asInput<String>(map['role']),
+      member: pulumi.Input.asInput<String>(map['member']),
+      project: pulumi.Input.asInput<String>(map['project']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

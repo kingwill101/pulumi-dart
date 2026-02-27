@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_endpoint_with_model_garden_deployment_model_config_container_spec_liveness_probe_http_get_http_header/ai_endpoint_with_model_garden_deployment_model_config_container_spec_liveness_probe_http_get_http_header.dart';
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet {
@@ -41,7 +41,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
     }
     final httpHeadersValue = httpHeaders;
     if (httpHeadersValue != null) {
-      map['httpHeaders'] = Input.encodeList<
+      map['httpHeaders'] = pulumi.Input.encodeList<
           AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader,
           Map<String, dynamic>>(httpHeadersValue, (value) => value.toMap());
     }
@@ -66,7 +66,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
       host: map['host'] == null ? null : map['host'] as String,
       httpHeaders: map['httpHeaders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeader>(
               map['httpHeaders'],
               (value) =>

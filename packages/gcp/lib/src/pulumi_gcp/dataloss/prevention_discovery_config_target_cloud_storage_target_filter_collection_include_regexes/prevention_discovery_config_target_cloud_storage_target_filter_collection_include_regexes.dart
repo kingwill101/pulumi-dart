@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_discovery_config_target_cloud_storage_target_filter_collection_include_regexes_pattern/prevention_discovery_config_target_cloud_storage_target_filter_collection_include_regexes_pattern.dart';
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes {
@@ -18,7 +18,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
     final map = <String, dynamic>{};
     final patternsValue = patterns;
     if (patternsValue != null) {
-      map['patterns'] = Input.encodeList<
+      map['patterns'] = pulumi.Input.encodeList<
           PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern,
           Map<String, dynamic>>(patternsValue, (value) => value.toMap());
     }
@@ -30,7 +30,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes(
       patterns: map['patterns'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern>(
               map['patterns'],
               (value) =>

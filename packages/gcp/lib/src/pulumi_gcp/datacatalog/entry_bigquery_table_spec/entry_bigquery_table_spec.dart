@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entry_bigquery_table_spec_table_spec/entry_bigquery_table_spec_table_spec.dart';
 import '../entry_bigquery_table_spec_view_spec/entry_bigquery_table_spec_view_spec.dart';
 
@@ -33,12 +33,13 @@ class EntryBigqueryTableSpec {
     }
     final tableSpecsValue = tableSpecs;
     if (tableSpecsValue != null) {
-      map['tableSpecs'] = Input.encodeList<EntryBigqueryTableSpecTableSpec,
+      map['tableSpecs'] = pulumi.Input.encodeList<
+          EntryBigqueryTableSpecTableSpec,
           Map<String, dynamic>>(tableSpecsValue, (value) => value.toMap());
     }
     final viewSpecsValue = viewSpecs;
     if (viewSpecsValue != null) {
-      map['viewSpecs'] = Input.encodeList<EntryBigqueryTableSpecViewSpec,
+      map['viewSpecs'] = pulumi.Input.encodeList<EntryBigqueryTableSpecViewSpec,
           Map<String, dynamic>>(viewSpecsValue, (value) => value.toMap());
     }
     return map;
@@ -51,13 +52,13 @@ class EntryBigqueryTableSpec {
           : map['tableSourceType'] as String,
       tableSpecs: map['tableSpecs'] == null
           ? null
-          : Input.decodeList<EntryBigqueryTableSpecTableSpec>(
+          : pulumi.Input.decodeList<EntryBigqueryTableSpecTableSpec>(
               map['tableSpecs'],
               (value) => EntryBigqueryTableSpecTableSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),
       viewSpecs: map['viewSpecs'] == null
           ? null
-          : Input.decodeList<EntryBigqueryTableSpecViewSpec>(
+          : pulumi.Input.decodeList<EntryBigqueryTableSpecViewSpec>(
               map['viewSpecs'],
               (value) => EntryBigqueryTableSpecViewSpec.fromMap(
                   (value as Map).cast<String, dynamic>())),

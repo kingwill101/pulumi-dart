@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_forwarding_rules_rule_service_directory_registration/get_forwarding_rules_rule_service_directory_registration.dart';
 
 class GetForwardingRulesRule {
@@ -392,7 +392,7 @@ class GetForwardingRulesRule {
     map['recreateClosedPsc'] = recreateClosedPsc;
     map['region'] = region;
     map['selfLink'] = selfLink;
-    map['serviceDirectoryRegistrations'] = Input.encodeList<
+    map['serviceDirectoryRegistrations'] = pulumi.Input.encodeList<
             GetForwardingRulesRuleServiceDirectoryRegistration,
             Map<String, dynamic>>(
         serviceDirectoryRegistrations, (value) => value.toMap());
@@ -436,12 +436,11 @@ class GetForwardingRulesRule {
       recreateClosedPsc: map['recreateClosedPsc'] as bool,
       region: map['region'] as String,
       selfLink: map['selfLink'] as String,
-      serviceDirectoryRegistrations:
-          Input.decodeList<GetForwardingRulesRuleServiceDirectoryRegistration>(
-              map['serviceDirectoryRegistrations'],
-              (value) =>
-                  GetForwardingRulesRuleServiceDirectoryRegistration.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      serviceDirectoryRegistrations: pulumi.Input.decodeList<
+              GetForwardingRulesRuleServiceDirectoryRegistration>(
+          map['serviceDirectoryRegistrations'],
+          (value) => GetForwardingRulesRuleServiceDirectoryRegistration.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serviceLabel: map['serviceLabel'] as String,
       serviceName: map['serviceName'] as String,
       sourceIpRanges: (map['sourceIpRanges'] as List).cast<String>(),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../blockchain_nodes_connection_info/blockchain_nodes_connection_info.dart';
 import '../blockchain_nodes_ethereum_details/blockchain_nodes_ethereum_details.dart';
 import 'blockchain_nodes_args.dart';
@@ -46,60 +46,60 @@ import 'blockchain_nodes_args.dart';
 /// ```sh
 /// $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default {{location}}/{{blockchain_node_id}}
 /// ```
-class BlockchainNodes extends CustomResource {
+class BlockchainNodes extends pulumi.CustomResource {
   /// ID of the requesting object.
-  late final Output<String> blockchainNodeId;
+  late final pulumi.Output<String> blockchainNodeId;
 
   /// User-provided key-value pairs
   /// Possible values are: `ETHEREUM`.
-  late final Output<String?> blockchainType;
+  late final pulumi.Output<String?> blockchainType;
 
   /// The connection information through which to interact with a blockchain node.
   /// Structure is documented below.
-  late final Output<List<BlockchainNodesConnectionInfo>> connectionInfos;
+  late final pulumi.Output<List<BlockchainNodesConnectionInfo>> connectionInfos;
 
   /// The timestamp at which the blockchain node was first created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// User-provided key-value pairs
   /// Structure is documented below.
-  late final Output<BlockchainNodesEthereumDetails?> ethereumDetails;
+  late final pulumi.Output<BlockchainNodesEthereumDetails?> ethereumDetails;
 
   /// User-provided key-value pairs
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location of Blockchain Node being created.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The fully qualified name of the blockchain node. e.g. projects/my-project/locations/us-central1/blockchainNodes/my-node.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The timestamp at which the blockchain node was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BlockchainNodes(
     String name, {
     BlockchainNodesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.blockchainNodeId = registerOutput<String>('blockchainNodeId');
     this.blockchainType = registerOutput<String?>('blockchainType');

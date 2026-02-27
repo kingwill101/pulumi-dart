@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_mapping_status_condition/domain_mapping_status_condition.dart';
 import '../domain_mapping_status_resource_record/domain_mapping_status_resource_record.dart';
 
@@ -37,9 +37,8 @@ class DomainMappingStatus {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] =
-          Input.encodeList<DomainMappingStatusCondition, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
+      map['conditions'] = pulumi.Input.encodeList<DomainMappingStatusCondition,
+          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final mappedRouteNameValue = mappedRouteName;
     if (mappedRouteNameValue != null) {
@@ -51,7 +50,7 @@ class DomainMappingStatus {
     }
     final resourceRecordsValue = resourceRecords;
     if (resourceRecordsValue != null) {
-      map['resourceRecords'] = Input.encodeList<
+      map['resourceRecords'] = pulumi.Input.encodeList<
           DomainMappingStatusResourceRecord,
           Map<String, dynamic>>(resourceRecordsValue, (value) => value.toMap());
     }
@@ -62,7 +61,7 @@ class DomainMappingStatus {
     return DomainMappingStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<DomainMappingStatusCondition>(
+          : pulumi.Input.decodeList<DomainMappingStatusCondition>(
               map['conditions'],
               (value) => DomainMappingStatusCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -74,7 +73,7 @@ class DomainMappingStatus {
           : map['observedGeneration'] as int,
       resourceRecords: map['resourceRecords'] == null
           ? null
-          : Input.decodeList<DomainMappingStatusResourceRecord>(
+          : pulumi.Input.decodeList<DomainMappingStatusResourceRecord>(
               map['resourceRecords'],
               (value) => DomainMappingStatusResourceRecord.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organization_sink_bigquery_options/organization_sink_bigquery_options.dart';
 import '../organization_sink_exclusion/organization_sink_exclusion.dart';
 import 'organization_sink_args.dart';
@@ -23,12 +23,12 @@ import 'organization_sink_args.dart';
 /// ```sh
 /// $ pulumi import gcp:logging/organizationSink:OrganizationSink default organizations/{{organization_id}}/sinks/{{sink_id}}
 /// ```
-class OrganizationSink extends CustomResource {
+class OrganizationSink extends pulumi.CustomResource {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
-  late final Output<OrganizationSinkBigqueryOptions> bigqueryOptions;
+  late final pulumi.Output<OrganizationSinkBigqueryOptions> bigqueryOptions;
 
   /// A description of this sink. The maximum length of the description is 8000 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
   ///
@@ -39,46 +39,46 @@ class OrganizationSink extends CustomResource {
   /// - `logging.googleapis.com/projects/[PROJECT_ID]`
   ///
   /// The writer associated with the sink must have access to write to the above resource.
-  late final Output<String> destination;
+  late final pulumi.Output<String> destination;
 
   /// If set to True, then this sink is disabled and it does not export any log entries.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  late final Output<List<OrganizationSinkExclusion>?> exclusions;
+  late final pulumi.Output<List<OrganizationSinkExclusion>?> exclusions;
 
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
-  late final Output<String?> filter;
+  late final pulumi.Output<String?> filter;
 
   /// Whether or not to include child folders or projects in the sink export. If true, logs
   /// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
-  late final Output<bool?> includeChildren;
+  late final pulumi.Output<bool?> includeChildren;
 
   /// Whether or not to intercept logs from child projects. If true, matching logs will not
   /// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
-  late final Output<bool?> interceptChildren;
+  late final pulumi.Output<bool?> interceptChildren;
 
   /// The name of the logging sink.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The numeric ID of the organization to be exported to the sink.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// The identity associated with this sink. This identity must be granted write access to the
   /// configured `destination`.
-  late final Output<String> writerIdentity;
+  late final pulumi.Output<String> writerIdentity;
 
   OrganizationSink(
     String name, {
     OrganizationSinkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:logging/organizationSink:OrganizationSink',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bigqueryOptions =
         registerOutput<OrganizationSinkBigqueryOptions>('bigqueryOptions');

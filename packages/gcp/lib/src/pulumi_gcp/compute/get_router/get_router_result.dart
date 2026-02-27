@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_router_bgp/get_router_bgp.dart';
 import '../get_router_md5_authentication_key/get_router_md5_authentication_key.dart';
 import '../get_router_param/get_router_param.dart';
@@ -41,20 +41,21 @@ class GetRouterResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bgps'] = Input.encodeList<GetRouterBgp, Map<String, dynamic>>(
+    map['bgps'] = pulumi.Input.encodeList<GetRouterBgp, Map<String, dynamic>>(
         bgps, (value) => value.toMap());
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
     map['encryptedInterconnectRouter'] = encryptedInterconnectRouter;
     map['id'] = id;
-    map['md5AuthenticationKeys'] =
-        Input.encodeList<GetRouterMd5AuthenticationKey, Map<String, dynamic>>(
-            md5AuthenticationKeys, (value) => value.toMap());
+    map['md5AuthenticationKeys'] = pulumi.Input.encodeList<
+        GetRouterMd5AuthenticationKey,
+        Map<String, dynamic>>(md5AuthenticationKeys, (value) => value.toMap());
     map['name'] = name;
     map['nccGateway'] = nccGateway;
     map['network'] = network;
-    map['params'] = Input.encodeList<GetRouterParam, Map<String, dynamic>>(
-        params, (value) => value.toMap());
+    map['params'] =
+        pulumi.Input.encodeList<GetRouterParam, Map<String, dynamic>>(
+            params, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -69,7 +70,7 @@ class GetRouterResult {
 
   factory GetRouterResult.fromMap(Map<String, dynamic> map) {
     return GetRouterResult(
-      bgps: Input.decodeList<GetRouterBgp>(
+      bgps: pulumi.Input.decodeList<GetRouterBgp>(
           map['bgps'],
           (value) =>
               GetRouterBgp.fromMap((value as Map).cast<String, dynamic>())),
@@ -77,14 +78,15 @@ class GetRouterResult {
       description: map['description'] as String,
       encryptedInterconnectRouter: map['encryptedInterconnectRouter'] as bool,
       id: map['id'] as String,
-      md5AuthenticationKeys: Input.decodeList<GetRouterMd5AuthenticationKey>(
-          map['md5AuthenticationKeys'],
-          (value) => GetRouterMd5AuthenticationKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      md5AuthenticationKeys:
+          pulumi.Input.decodeList<GetRouterMd5AuthenticationKey>(
+              map['md5AuthenticationKeys'],
+              (value) => GetRouterMd5AuthenticationKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       nccGateway: map['nccGateway'] as String,
       network: map['network'] as String,
-      params: Input.decodeList<GetRouterParam>(
+      params: pulumi.Input.decodeList<GetRouterParam>(
           map['params'],
           (value) =>
               GetRouterParam.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_discovery_endpoint_psc_config/get_cluster_discovery_endpoint_psc_config.dart';
 
 class GetClusterDiscoveryEndpoint {
@@ -24,7 +24,8 @@ class GetClusterDiscoveryEndpoint {
     final map = <String, dynamic>{};
     map['address'] = address;
     map['port'] = port;
-    map['pscConfigs'] = Input.encodeList<GetClusterDiscoveryEndpointPscConfig,
+    map['pscConfigs'] = pulumi.Input.encodeList<
+        GetClusterDiscoveryEndpointPscConfig,
         Map<String, dynamic>>(pscConfigs, (value) => value.toMap());
     return map;
   }
@@ -33,7 +34,7 @@ class GetClusterDiscoveryEndpoint {
     return GetClusterDiscoveryEndpoint(
       address: map['address'] as String,
       port: map['port'] as int,
-      pscConfigs: Input.decodeList<GetClusterDiscoveryEndpointPscConfig>(
+      pscConfigs: pulumi.Input.decodeList<GetClusterDiscoveryEndpointPscConfig>(
           map['pscConfigs'],
           (value) => GetClusterDiscoveryEndpointPscConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

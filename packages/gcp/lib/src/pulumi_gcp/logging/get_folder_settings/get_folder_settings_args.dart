@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolderSettings.
 class GetFolderSettingsArgs {
   /// The ID of the folder for which to retrieve settings.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   GetFolderSettingsArgs({
     required this.folder,
@@ -19,7 +19,7 @@ class GetFolderSettingsArgs {
 
   factory GetFolderSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderSettingsArgs(
-      folder: Input.asInput<String>(map['folder']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
     );
   }
 }

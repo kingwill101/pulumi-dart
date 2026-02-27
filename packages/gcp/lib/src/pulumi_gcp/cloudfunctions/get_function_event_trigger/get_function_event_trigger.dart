@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_function_event_trigger_failure_policy/get_function_event_trigger_failure_policy.dart';
 
 class GetFunctionEventTrigger {
@@ -24,7 +24,7 @@ class GetFunctionEventTrigger {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['eventType'] = eventType;
-    map['failurePolicies'] = Input.encodeList<
+    map['failurePolicies'] = pulumi.Input.encodeList<
         GetFunctionEventTriggerFailurePolicy,
         Map<String, dynamic>>(failurePolicies, (value) => value.toMap());
     map['resource'] = resource;
@@ -34,10 +34,11 @@ class GetFunctionEventTrigger {
   factory GetFunctionEventTrigger.fromMap(Map<String, dynamic> map) {
     return GetFunctionEventTrigger(
       eventType: map['eventType'] as String,
-      failurePolicies: Input.decodeList<GetFunctionEventTriggerFailurePolicy>(
-          map['failurePolicies'],
-          (value) => GetFunctionEventTriggerFailurePolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      failurePolicies:
+          pulumi.Input.decodeList<GetFunctionEventTriggerFailurePolicy>(
+              map['failurePolicies'],
+              (value) => GetFunctionEventTriggerFailurePolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       resource: map['resource'] as String,
     );
   }

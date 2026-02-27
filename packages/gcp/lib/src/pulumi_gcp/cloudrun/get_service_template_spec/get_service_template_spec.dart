@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_container/get_service_template_spec_container.dart';
 import '../get_service_template_spec_volume/get_service_template_spec_volume.dart';
 
@@ -49,23 +49,21 @@ class GetServiceTemplateSpec {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['containerConcurrency'] = containerConcurrency;
-    map['containers'] =
-        Input.encodeList<GetServiceTemplateSpecContainer, Map<String, dynamic>>(
-            containers, (value) => value.toMap());
+    map['containers'] = pulumi.Input.encodeList<GetServiceTemplateSpecContainer,
+        Map<String, dynamic>>(containers, (value) => value.toMap());
     map['nodeSelector'] = nodeSelector;
     map['serviceAccountName'] = serviceAccountName;
     map['servingState'] = servingState;
     map['timeoutSeconds'] = timeoutSeconds;
-    map['volumes'] =
-        Input.encodeList<GetServiceTemplateSpecVolume, Map<String, dynamic>>(
-            volumes, (value) => value.toMap());
+    map['volumes'] = pulumi.Input.encodeList<GetServiceTemplateSpecVolume,
+        Map<String, dynamic>>(volumes, (value) => value.toMap());
     return map;
   }
 
   factory GetServiceTemplateSpec.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpec(
       containerConcurrency: map['containerConcurrency'] as int,
-      containers: Input.decodeList<GetServiceTemplateSpecContainer>(
+      containers: pulumi.Input.decodeList<GetServiceTemplateSpecContainer>(
           map['containers'],
           (value) => GetServiceTemplateSpecContainer.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -73,7 +71,7 @@ class GetServiceTemplateSpec {
       serviceAccountName: map['serviceAccountName'] as String,
       servingState: map['servingState'] as String,
       timeoutSeconds: map['timeoutSeconds'] as int,
-      volumes: Input.decodeList<GetServiceTemplateSpecVolume>(
+      volumes: pulumi.Input.decodeList<GetServiceTemplateSpecVolume>(
           map['volumes'],
           (value) => GetServiceTemplateSpecVolume.fromMap(
               (value as Map).cast<String, dynamic>())),

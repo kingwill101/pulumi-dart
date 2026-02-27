@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DefaultObjectACL.
 class DefaultObjectACLArgs {
   /// The name of the bucket it applies to.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// List of role/entity pairs in the form `ROLE:entity`.
   /// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Omitting the field is the same as providing an empty list.
-  final Input<List<String>>? roleEntities;
+  final pulumi.Input<List<String>>? roleEntities;
 
   DefaultObjectACLArgs({
     required this.bucket,
@@ -29,8 +29,9 @@ class DefaultObjectACLArgs {
 
   factory DefaultObjectACLArgs.fromMap(Map<String, dynamic> map) {
     return DefaultObjectACLArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      roleEntities: Input.asOptionalInput<List<String>>(map['roleEntities']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      roleEntities:
+          pulumi.Input.asOptionalInput<List<String>>(map['roleEntities']),
     );
   }
 }

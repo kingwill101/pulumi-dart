@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_iam_policy_args.dart';
 
 /// Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
@@ -60,26 +60,26 @@ import 'instance_iam_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
 /// ```
-class InstanceIamPolicy extends CustomResource {
+class InstanceIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the instances's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-  late final Output<String> instance;
-  late final Output<String> policyData;
-  late final Output<String> project;
+  late final pulumi.Output<String> instance;
+  late final pulumi.Output<String> policyData;
+  late final pulumi.Output<String> project;
 
   InstanceIamPolicy(
     String name, {
     InstanceIamPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigtable/instanceIamPolicy:InstanceIamPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.etag = registerOutput<String>('etag');
     this.instance = registerOutput<String>('instance');

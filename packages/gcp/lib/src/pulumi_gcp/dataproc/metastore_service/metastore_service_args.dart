@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../metastore_service_encryption_config/metastore_service_encryption_config.dart';
 import '../metastore_service_hive_metastore_config/metastore_service_hive_metastore_config.dart';
 import '../metastore_service_maintenance_window/metastore_service_maintenance_window.dart';
@@ -15,84 +15,84 @@ class MetastoreServiceArgs {
   /// The database type that the Metastore service stores its data.
   /// Default value is `MYSQL`.
   /// Possible values are: `MYSQL`, `SPANNER`.
-  final Input<String>? databaseType;
+  final pulumi.Input<String>? databaseType;
 
   /// Indicates if the dataproc metastore should be protected against accidental deletions.
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// Information used to configure the Dataproc Metastore service to encrypt
   /// customer data at rest.
   /// Structure is documented below.
-  final Input<MetastoreServiceEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<MetastoreServiceEncryptionConfig>? encryptionConfig;
 
   /// Configuration information specific to running Hive metastore software as the metastore service.
   /// Structure is documented below.
-  final Input<MetastoreServiceHiveMetastoreConfig>? hiveMetastoreConfig;
+  final pulumi.Input<MetastoreServiceHiveMetastoreConfig>? hiveMetastoreConfig;
 
   /// User-defined labels for the metastore service.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location where the metastore service should reside.
   /// The default value is `global`.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The one hour maintenance window of the metastore service.
   /// This specifies when the service can be restarted for maintenance purposes in UTC time.
   /// Maintenance window is not needed for services with the `SPANNER` database type.
   /// Structure is documented below.
-  final Input<MetastoreServiceMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<MetastoreServiceMaintenanceWindow>? maintenanceWindow;
 
   /// The setting that defines how metastore metadata should be integrated with external services and systems.
   /// Structure is documented below.
-  final Input<MetastoreServiceMetadataIntegration>? metadataIntegration;
+  final pulumi.Input<MetastoreServiceMetadataIntegration>? metadataIntegration;
 
   /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
   /// "projects/{projectNumber}/global/networks/{network_id}".
-  final Input<String>? network;
+  final pulumi.Input<String>? network;
 
   /// The configuration specifying the network settings for the Dataproc Metastore service.
   /// Structure is documented below.
-  final Input<MetastoreServiceNetworkConfig>? networkConfig;
+  final pulumi.Input<MetastoreServiceNetworkConfig>? networkConfig;
 
   /// The TCP port at which the metastore service is reached. Default: 9083.
-  final Input<int>? port;
+  final pulumi.Input<int>? port;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The release channel of the service. If unspecified, defaults to `STABLE`.
   /// Default value is `STABLE`.
   /// Possible values are: `CANARY`, `STABLE`.
-  final Input<String>? releaseChannel;
+  final pulumi.Input<String>? releaseChannel;
 
   /// Represents the scaling configuration of a metastore service.
   /// Structure is documented below.
-  final Input<MetastoreServiceScalingConfig>? scalingConfig;
+  final pulumi.Input<MetastoreServiceScalingConfig>? scalingConfig;
 
   /// The configuration of scheduled backup for the metastore service.
   /// Structure is documented below.
-  final Input<MetastoreServiceScheduledBackup>? scheduledBackup;
+  final pulumi.Input<MetastoreServiceScheduledBackup>? scheduledBackup;
 
   /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
   /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
   /// 3 and 63 characters.
-  final Input<String>? serviceId;
+  final pulumi.Input<String>? serviceId;
 
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
   /// Structure is documented below.
-  final Input<MetastoreServiceTelemetryConfig>? telemetryConfig;
+  final pulumi.Input<MetastoreServiceTelemetryConfig>? telemetryConfig;
 
   /// The tier of the service.
   /// Possible values are: `DEVELOPER`, `ENTERPRISE`.
-  final Input<String>? tier;
+  final pulumi.Input<String>? tier;
 
   MetastoreServiceArgs({
     this.databaseType,
@@ -128,13 +128,13 @@ class MetastoreServiceArgs {
     }
     final encryptionConfigValue = encryptionConfig;
     if (encryptionConfigValue != null) {
-      map['encryptionConfig'] = Input.mapOptionalInputValue<
+      map['encryptionConfig'] = pulumi.Input.mapOptionalInputValue<
               MetastoreServiceEncryptionConfig, Map<String, dynamic>>(
           encryptionConfigValue, (value) => value.toMap());
     }
     final hiveMetastoreConfigValue = hiveMetastoreConfig;
     if (hiveMetastoreConfigValue != null) {
-      map['hiveMetastoreConfig'] = Input.mapOptionalInputValue<
+      map['hiveMetastoreConfig'] = pulumi.Input.mapOptionalInputValue<
               MetastoreServiceHiveMetastoreConfig, Map<String, dynamic>>(
           hiveMetastoreConfigValue, (value) => value.toMap());
     }
@@ -148,13 +148,13 @@ class MetastoreServiceArgs {
     }
     final maintenanceWindowValue = maintenanceWindow;
     if (maintenanceWindowValue != null) {
-      map['maintenanceWindow'] = Input.mapOptionalInputValue<
+      map['maintenanceWindow'] = pulumi.Input.mapOptionalInputValue<
               MetastoreServiceMaintenanceWindow, Map<String, dynamic>>(
           maintenanceWindowValue, (value) => value.toMap());
     }
     final metadataIntegrationValue = metadataIntegration;
     if (metadataIntegrationValue != null) {
-      map['metadataIntegration'] = Input.mapOptionalInputValue<
+      map['metadataIntegration'] = pulumi.Input.mapOptionalInputValue<
               MetastoreServiceMetadataIntegration, Map<String, dynamic>>(
           metadataIntegrationValue, (value) => value.toMap());
     }
@@ -164,7 +164,7 @@ class MetastoreServiceArgs {
     }
     final networkConfigValue = networkConfig;
     if (networkConfigValue != null) {
-      map['networkConfig'] = Input.mapOptionalInputValue<
+      map['networkConfig'] = pulumi.Input.mapOptionalInputValue<
           MetastoreServiceNetworkConfig,
           Map<String, dynamic>>(networkConfigValue, (value) => value.toMap());
     }
@@ -182,13 +182,13 @@ class MetastoreServiceArgs {
     }
     final scalingConfigValue = scalingConfig;
     if (scalingConfigValue != null) {
-      map['scalingConfig'] = Input.mapOptionalInputValue<
+      map['scalingConfig'] = pulumi.Input.mapOptionalInputValue<
           MetastoreServiceScalingConfig,
           Map<String, dynamic>>(scalingConfigValue, (value) => value.toMap());
     }
     final scheduledBackupValue = scheduledBackup;
     if (scheduledBackupValue != null) {
-      map['scheduledBackup'] = Input.mapOptionalInputValue<
+      map['scheduledBackup'] = pulumi.Input.mapOptionalInputValue<
           MetastoreServiceScheduledBackup,
           Map<String, dynamic>>(scheduledBackupValue, (value) => value.toMap());
     }
@@ -202,7 +202,7 @@ class MetastoreServiceArgs {
     }
     final telemetryConfigValue = telemetryConfig;
     if (telemetryConfigValue != null) {
-      map['telemetryConfig'] = Input.mapOptionalInputValue<
+      map['telemetryConfig'] = pulumi.Input.mapOptionalInputValue<
           MetastoreServiceTelemetryConfig,
           Map<String, dynamic>>(telemetryConfigValue, (value) => value.toMap());
     }
@@ -215,37 +215,43 @@ class MetastoreServiceArgs {
 
   factory MetastoreServiceArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceArgs(
-      databaseType: Input.asOptionalInput<String>(map['databaseType']),
+      databaseType: pulumi.Input.asOptionalInput<String>(map['databaseType']),
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      encryptionConfig: Input.asOptionalInput<MetastoreServiceEncryptionConfig>(
-          map['encryptionConfig']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      encryptionConfig:
+          pulumi.Input.asOptionalInput<MetastoreServiceEncryptionConfig>(
+              map['encryptionConfig']),
       hiveMetastoreConfig:
-          Input.asOptionalInput<MetastoreServiceHiveMetastoreConfig>(
+          pulumi.Input.asOptionalInput<MetastoreServiceHiveMetastoreConfig>(
               map['hiveMetastoreConfig']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
       maintenanceWindow:
-          Input.asOptionalInput<MetastoreServiceMaintenanceWindow>(
+          pulumi.Input.asOptionalInput<MetastoreServiceMaintenanceWindow>(
               map['maintenanceWindow']),
       metadataIntegration:
-          Input.asOptionalInput<MetastoreServiceMetadataIntegration>(
+          pulumi.Input.asOptionalInput<MetastoreServiceMetadataIntegration>(
               map['metadataIntegration']),
-      network: Input.asOptionalInput<String>(map['network']),
-      networkConfig: Input.asOptionalInput<MetastoreServiceNetworkConfig>(
-          map['networkConfig']),
-      port: Input.asOptionalInput<int>(map['port']),
-      project: Input.asOptionalInput<String>(map['project']),
-      releaseChannel: Input.asOptionalInput<String>(map['releaseChannel']),
-      scalingConfig: Input.asOptionalInput<MetastoreServiceScalingConfig>(
-          map['scalingConfig']),
-      scheduledBackup: Input.asOptionalInput<MetastoreServiceScheduledBackup>(
-          map['scheduledBackup']),
-      serviceId: Input.asOptionalInput<String>(map['serviceId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      telemetryConfig: Input.asOptionalInput<MetastoreServiceTelemetryConfig>(
-          map['telemetryConfig']),
-      tier: Input.asOptionalInput<String>(map['tier']),
+      network: pulumi.Input.asOptionalInput<String>(map['network']),
+      networkConfig:
+          pulumi.Input.asOptionalInput<MetastoreServiceNetworkConfig>(
+              map['networkConfig']),
+      port: pulumi.Input.asOptionalInput<int>(map['port']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      releaseChannel:
+          pulumi.Input.asOptionalInput<String>(map['releaseChannel']),
+      scalingConfig:
+          pulumi.Input.asOptionalInput<MetastoreServiceScalingConfig>(
+              map['scalingConfig']),
+      scheduledBackup:
+          pulumi.Input.asOptionalInput<MetastoreServiceScheduledBackup>(
+              map['scheduledBackup']),
+      serviceId: pulumi.Input.asOptionalInput<String>(map['serviceId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      telemetryConfig:
+          pulumi.Input.asOptionalInput<MetastoreServiceTelemetryConfig>(
+              map['telemetryConfig']),
+      tier: pulumi.Input.asOptionalInput<String>(map['tier']),
     );
   }
 }

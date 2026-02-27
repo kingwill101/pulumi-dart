@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../grpc_route_rule/grpc_route_rule.dart';
 import 'grpc_route_args.dart';
 
@@ -51,63 +51,63 @@ import 'grpc_route_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{location}}/{{name}}
 /// ```
-class GrpcRoute extends CustomResource {
+class GrpcRoute extends pulumi.CustomResource {
   /// Time the GrpcRoute was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A free-text description of the resource. Max length 1024 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-  late final Output<List<String>?> gateways;
+  late final pulumi.Output<List<String>?> gateways;
 
   /// Required. Service hostnames with an optional port for which this route describes traffic.
-  late final Output<List<String>> hostnames;
+  late final pulumi.Output<List<String>> hostnames;
 
   /// Set of label tags associated with the GrpcRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-  late final Output<List<String>?> meshes;
+  late final pulumi.Output<List<String>?> meshes;
 
   /// Name of the GrpcRoute resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
-  late final Output<List<GrpcRouteRule>> rules;
+  late final pulumi.Output<List<GrpcRouteRule>> rules;
 
   /// Server-defined URL of this resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Time the GrpcRoute was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   GrpcRoute(
     String name, {
     GrpcRouteArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/grpcRoute:GrpcRoute',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

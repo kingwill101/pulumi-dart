@@ -1,3 +1,3 @@
 library module_servicedirectory_service_iam_member_condition;
 
-export 'service_iam_member_condition/service_iam_member_condition3.dart';
+export 'service_iam_member_condition/service_iam_member_condition_servicedirectory.dart';

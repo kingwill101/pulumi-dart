@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_deployment_cloud_control_metadata_cloud_control_details_parameter/framework_deployment_cloud_control_metadata_cloud_control_details_parameter.dart';
 
 class FrameworkDeploymentCloudControlMetadataCloudControlDetails {
@@ -32,7 +32,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetails {
     map['name'] = name;
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetails {
       name: map['name'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>(
               map['parameters'],
               (value) =>

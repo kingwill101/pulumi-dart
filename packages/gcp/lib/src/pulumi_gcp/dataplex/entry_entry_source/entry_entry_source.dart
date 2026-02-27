@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entry_entry_source_ancestor/entry_entry_source_ancestor.dart';
 
 class EntryEntrySource {
@@ -57,9 +57,8 @@ class EntryEntrySource {
     final map = <String, dynamic>{};
     final ancestorsValue = ancestors;
     if (ancestorsValue != null) {
-      map['ancestors'] =
-          Input.encodeList<EntryEntrySourceAncestor, Map<String, dynamic>>(
-              ancestorsValue, (value) => value.toMap());
+      map['ancestors'] = pulumi.Input.encodeList<EntryEntrySourceAncestor,
+          Map<String, dynamic>>(ancestorsValue, (value) => value.toMap());
     }
     final createTimeValue = createTime;
     if (createTimeValue != null) {
@@ -104,7 +103,7 @@ class EntryEntrySource {
     return EntryEntrySource(
       ancestors: map['ancestors'] == null
           ? null
-          : Input.decodeList<EntryEntrySourceAncestor>(
+          : pulumi.Input.decodeList<EntryEntrySourceAncestor>(
               map['ancestors'],
               (value) => EntryEntrySourceAncestor.fromMap(
                   (value as Map).cast<String, dynamic>())),

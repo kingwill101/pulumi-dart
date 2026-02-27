@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_keys_key_signing_key_digest/get_keys_key_signing_key_digest.dart';
 
 class GetKeysKeySigningKey {
@@ -52,9 +52,8 @@ class GetKeysKeySigningKey {
     map['algorithm'] = algorithm;
     map['creationTime'] = creationTime;
     map['description'] = description;
-    map['digests'] =
-        Input.encodeList<GetKeysKeySigningKeyDigest, Map<String, dynamic>>(
-            digests, (value) => value.toMap());
+    map['digests'] = pulumi.Input.encodeList<GetKeysKeySigningKeyDigest,
+        Map<String, dynamic>>(digests, (value) => value.toMap());
     map['dsRecord'] = dsRecord;
     map['id'] = id;
     map['isActive'] = isActive;
@@ -69,7 +68,7 @@ class GetKeysKeySigningKey {
       algorithm: map['algorithm'] as String,
       creationTime: map['creationTime'] as String,
       description: map['description'] as String,
-      digests: Input.decodeList<GetKeysKeySigningKeyDigest>(
+      digests: pulumi.Input.decodeList<GetKeysKeySigningKeyDigest>(
           map['digests'],
           (value) => GetKeysKeySigningKeyDigest.fromMap(
               (value as Map).cast<String, dynamic>())),

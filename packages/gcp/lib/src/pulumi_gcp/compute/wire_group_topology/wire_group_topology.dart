@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../wire_group_topology_endpoint/wire_group_topology_endpoint.dart';
 
 class WireGroupTopology {
@@ -16,9 +16,8 @@ class WireGroupTopology {
     final map = <String, dynamic>{};
     final endpointsValue = endpoints;
     if (endpointsValue != null) {
-      map['endpoints'] =
-          Input.encodeList<WireGroupTopologyEndpoint, Map<String, dynamic>>(
-              endpointsValue, (value) => value.toMap());
+      map['endpoints'] = pulumi.Input.encodeList<WireGroupTopologyEndpoint,
+          Map<String, dynamic>>(endpointsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +26,7 @@ class WireGroupTopology {
     return WireGroupTopology(
       endpoints: map['endpoints'] == null
           ? null
-          : Input.decodeList<WireGroupTopologyEndpoint>(
+          : pulumi.Input.decodeList<WireGroupTopologyEndpoint>(
               map['endpoints'],
               (value) => WireGroupTopologyEndpoint.fromMap(
                   (value as Map).cast<String, dynamic>())),

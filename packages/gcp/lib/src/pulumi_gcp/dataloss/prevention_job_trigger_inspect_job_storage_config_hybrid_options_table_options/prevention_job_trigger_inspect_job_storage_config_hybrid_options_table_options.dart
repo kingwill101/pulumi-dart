@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_job_trigger_inspect_job_storage_config_hybrid_options_table_options_identifying_field/prevention_job_trigger_inspect_job_storage_config_hybrid_options_table_options_identifying_field.dart';
 
 class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
@@ -20,7 +20,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
     final map = <String, dynamic>{};
     final identifyingFieldsValue = identifyingFields;
     if (identifyingFieldsValue != null) {
-      map['identifyingFields'] = Input.encodeList<
+      map['identifyingFields'] = pulumi.Input.encodeList<
           PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField,
           Map<String,
               dynamic>>(identifyingFieldsValue, (value) => value.toMap());
@@ -33,7 +33,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
     return PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(
       identifyingFields: map['identifyingFields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField>(
               map['identifyingFields'],
               (value) =>

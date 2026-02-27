@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_ring_iambinding_condition/key_ring_iambinding_condition.dart';
 
 /// The set of arguments for KeyRingIAMBinding.
 class KeyRingIAMBindingArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final Input<KeyRingIAMBindingCondition>? condition;
+  final pulumi.Input<KeyRingIAMBindingCondition>? condition;
 
   /// The key ring ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}` or
   /// `{location_name}/{key_ring_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
-  final Input<String> keyRingId;
+  final pulumi.Input<String> keyRingId;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -23,12 +23,12 @@ class KeyRingIAMBindingArgs {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  final Input<List<String>> members;
+  final pulumi.Input<List<String>> members;
 
   /// The role that should be applied. Only one
   /// `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   KeyRingIAMBindingArgs({
     this.condition,
@@ -41,7 +41,8 @@ class KeyRingIAMBindingArgs {
     final map = <String, dynamic>{};
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<KeyRingIAMBindingCondition,
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
+          KeyRingIAMBindingCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
     map['keyRingId'] = keyRingId;
@@ -52,11 +53,11 @@ class KeyRingIAMBindingArgs {
 
   factory KeyRingIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return KeyRingIAMBindingArgs(
-      condition:
-          Input.asOptionalInput<KeyRingIAMBindingCondition>(map['condition']),
-      keyRingId: Input.asInput<String>(map['keyRingId']),
-      members: Input.asInput<List<String>>(map['members']),
-      role: Input.asInput<String>(map['role']),
+      condition: pulumi.Input.asOptionalInput<KeyRingIAMBindingCondition>(
+          map['condition']),
+      keyRingId: pulumi.Input.asInput<String>(map['keyRingId']),
+      members: pulumi.Input.asInput<List<String>>(map['members']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

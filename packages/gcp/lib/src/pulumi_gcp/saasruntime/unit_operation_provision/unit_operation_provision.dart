@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../unit_operation_provision_input_variable/unit_operation_provision_input_variable.dart';
 
 class UnitOperationProvision {
@@ -20,7 +20,7 @@ class UnitOperationProvision {
     final map = <String, dynamic>{};
     final inputVariablesValue = inputVariables;
     if (inputVariablesValue != null) {
-      map['inputVariables'] = Input.encodeList<
+      map['inputVariables'] = pulumi.Input.encodeList<
           UnitOperationProvisionInputVariable,
           Map<String, dynamic>>(inputVariablesValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class UnitOperationProvision {
     return UnitOperationProvision(
       inputVariables: map['inputVariables'] == null
           ? null
-          : Input.decodeList<UnitOperationProvisionInputVariable>(
+          : pulumi.Input.decodeList<UnitOperationProvisionInputVariable>(
               map['inputVariables'],
               (value) => UnitOperationProvisionInputVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),

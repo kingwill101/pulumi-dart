@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_disk_restore_properties_disk_encryption_key/restore_workload_disk_restore_properties_disk_encryption_key.dart';
 import '../restore_workload_disk_restore_properties_guest_os_feature/restore_workload_disk_restore_properties_guest_os_feature.dart';
 import '../restore_workload_disk_restore_properties_label/restore_workload_disk_restore_properties_label.dart';
@@ -111,13 +111,13 @@ class RestoreWorkloadDiskRestoreProperties {
     }
     final guestOsFeaturesValue = guestOsFeatures;
     if (guestOsFeaturesValue != null) {
-      map['guestOsFeatures'] = Input.encodeList<
+      map['guestOsFeatures'] = pulumi.Input.encodeList<
           RestoreWorkloadDiskRestorePropertiesGuestOsFeature,
           Map<String, dynamic>>(guestOsFeaturesValue, (value) => value.toMap());
     }
     final labelsValue = labels;
     if (labelsValue != null) {
-      map['labels'] = Input.encodeList<
+      map['labels'] = pulumi.Input.encodeList<
           RestoreWorkloadDiskRestorePropertiesLabel,
           Map<String, dynamic>>(labelsValue, (value) => value.toMap());
     }
@@ -140,7 +140,7 @@ class RestoreWorkloadDiskRestoreProperties {
     }
     final resourceManagerTagsValue = resourceManagerTags;
     if (resourceManagerTagsValue != null) {
-      map['resourceManagerTags'] = Input.encodeList<
+      map['resourceManagerTags'] = pulumi.Input.encodeList<
               RestoreWorkloadDiskRestorePropertiesResourceManagerTag,
               Map<String, dynamic>>(
           resourceManagerTagsValue, (value) => value.toMap());
@@ -176,7 +176,7 @@ class RestoreWorkloadDiskRestoreProperties {
           : map['enableConfidentialCompute'] as bool,
       guestOsFeatures: map['guestOsFeatures'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadDiskRestorePropertiesGuestOsFeature>(
               map['guestOsFeatures'],
               (value) =>
@@ -184,7 +184,7 @@ class RestoreWorkloadDiskRestoreProperties {
                       (value as Map).cast<String, dynamic>())),
       labels: map['labels'] == null
           ? null
-          : Input.decodeList<RestoreWorkloadDiskRestorePropertiesLabel>(
+          : pulumi.Input.decodeList<RestoreWorkloadDiskRestorePropertiesLabel>(
               map['labels'],
               (value) => RestoreWorkloadDiskRestorePropertiesLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -202,7 +202,7 @@ class RestoreWorkloadDiskRestoreProperties {
           : map['provisionedThroughput'] as int,
       resourceManagerTags: map['resourceManagerTags'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadDiskRestorePropertiesResourceManagerTag>(
               map['resourceManagerTags'],
               (value) => RestoreWorkloadDiskRestorePropertiesResourceManagerTag

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../azure_cluster_authorization_admin_group/azure_cluster_authorization_admin_group.dart';
 import '../azure_cluster_authorization_admin_user/azure_cluster_authorization_admin_user.dart';
 
@@ -20,10 +20,12 @@ class AzureClusterAuthorization {
     final map = <String, dynamic>{};
     final adminGroupsValue = adminGroups;
     if (adminGroupsValue != null) {
-      map['adminGroups'] = Input.encodeList<AzureClusterAuthorizationAdminGroup,
+      map['adminGroups'] = pulumi.Input.encodeList<
+          AzureClusterAuthorizationAdminGroup,
           Map<String, dynamic>>(adminGroupsValue, (value) => value.toMap());
     }
-    map['adminUsers'] = Input.encodeList<AzureClusterAuthorizationAdminUser,
+    map['adminUsers'] = pulumi.Input.encodeList<
+        AzureClusterAuthorizationAdminUser,
         Map<String, dynamic>>(adminUsers, (value) => value.toMap());
     return map;
   }
@@ -32,11 +34,11 @@ class AzureClusterAuthorization {
     return AzureClusterAuthorization(
       adminGroups: map['adminGroups'] == null
           ? null
-          : Input.decodeList<AzureClusterAuthorizationAdminGroup>(
+          : pulumi.Input.decodeList<AzureClusterAuthorizationAdminGroup>(
               map['adminGroups'],
               (value) => AzureClusterAuthorizationAdminGroup.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      adminUsers: Input.decodeList<AzureClusterAuthorizationAdminUser>(
+      adminUsers: pulumi.Input.decodeList<AzureClusterAuthorizationAdminUser>(
           map['adminUsers'],
           (value) => AzureClusterAuthorizationAdminUser.fromMap(
               (value as Map).cast<String, dynamic>())),

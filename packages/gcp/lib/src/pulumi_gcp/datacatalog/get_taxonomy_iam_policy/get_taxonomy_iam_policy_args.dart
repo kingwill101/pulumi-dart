@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTaxonomyIamPolicy.
 class GetTaxonomyIamPolicyArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Taxonomy location region.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> taxonomy;
+  final pulumi.Input<String> taxonomy;
 
   GetTaxonomyIamPolicyArgs({
     this.project,
@@ -39,9 +39,9 @@ class GetTaxonomyIamPolicyArgs {
 
   factory GetTaxonomyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyIamPolicyArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      taxonomy: Input.asInput<String>(map['taxonomy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      taxonomy: pulumi.Input.asInput<String>(map['taxonomy']),
     );
   }
 }

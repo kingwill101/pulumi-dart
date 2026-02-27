@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../developer_app_attribute/developer_app_attribute.dart';
 import '../developer_app_credential/developer_app_credential.dart';
 import 'developer_app_args.dart';
@@ -45,73 +45,73 @@ import 'developer_app_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/developerApp:DeveloperApp default {{org_id}}/{{developer_email}}/{{name}}
 /// ```
-class DeveloperApp extends CustomResource {
+class DeveloperApp extends pulumi.CustomResource {
   /// List of API products associated with the developer app.
-  late final Output<List<String>?> apiProducts;
+  late final pulumi.Output<List<String>?> apiProducts;
 
   /// Developer app family.
-  late final Output<String> appFamily;
+  late final pulumi.Output<String> appFamily;
 
   /// ID of the developer app. This ID is not user specified but is
   /// automatically generated on app creation. appId is a UUID.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
-  late final Output<List<DeveloperAppAttribute>?> attributes;
+  late final pulumi.Output<List<DeveloperAppAttribute>?> attributes;
 
   /// Callback URL used by OAuth 2.0 authorization servers to communicate
   /// authorization codes back to developer apps.
-  late final Output<String> callbackUrl;
+  late final pulumi.Output<String> callbackUrl;
 
   /// Time at which the developer was created in milliseconds since epoch.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Output only. Set of credentials for the developer app consisting of
   /// the consumer key/secret pairs associated with the API products.
   /// Structure is documented below.
-  late final Output<List<DeveloperAppCredential>> credentials;
+  late final pulumi.Output<List<DeveloperAppCredential>> credentials;
 
   /// Email address of the developer.
   /// This value is used to uniquely identify the developer in Apigee hybrid.
   /// Note that the email address has to be in lowercase only.
-  late final Output<String> developerEmail;
+  late final pulumi.Output<String> developerEmail;
 
   /// ID of the developer.
-  late final Output<String> developerId;
+  late final pulumi.Output<String> developerId;
 
   /// Expiration time, in milliseconds, for the consumer key that is generated
   /// for the developer app. If not set or left to the default value of -1,
   /// the API key never expires. The expiration time can't be updated after it is set.
-  late final Output<String?> keyExpiresIn;
+  late final pulumi.Output<String?> keyExpiresIn;
 
   /// Time at which the developer was last modified in milliseconds since epoch.
-  late final Output<String> lastModifiedAt;
+  late final pulumi.Output<String> lastModifiedAt;
 
   /// Name of the developer app.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
-  late final Output<String> orgId;
+  late final pulumi.Output<String> orgId;
 
   /// Scopes to apply to the developer app.
   /// The specified scopes must already exist for the API product that
   /// you associate with the developer app.
-  late final Output<List<String>?> scopes;
+  late final pulumi.Output<List<String>?> scopes;
 
   /// Status of the credential. Valid values include approved or revoked.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   DeveloperApp(
     String name, {
     DeveloperAppArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/developerApp:DeveloperApp',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiProducts = registerOutput<List<String>?>('apiProducts');
     this.appFamily = registerOutput<String>('appFamily');

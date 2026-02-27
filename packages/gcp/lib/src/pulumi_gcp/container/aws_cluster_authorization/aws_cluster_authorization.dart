@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../aws_cluster_authorization_admin_group/aws_cluster_authorization_admin_group.dart';
 import '../aws_cluster_authorization_admin_user/aws_cluster_authorization_admin_user.dart';
 
@@ -20,10 +20,12 @@ class AwsClusterAuthorization {
     final map = <String, dynamic>{};
     final adminGroupsValue = adminGroups;
     if (adminGroupsValue != null) {
-      map['adminGroups'] = Input.encodeList<AwsClusterAuthorizationAdminGroup,
+      map['adminGroups'] = pulumi.Input.encodeList<
+          AwsClusterAuthorizationAdminGroup,
           Map<String, dynamic>>(adminGroupsValue, (value) => value.toMap());
     }
-    map['adminUsers'] = Input.encodeList<AwsClusterAuthorizationAdminUser,
+    map['adminUsers'] = pulumi.Input.encodeList<
+        AwsClusterAuthorizationAdminUser,
         Map<String, dynamic>>(adminUsers, (value) => value.toMap());
     return map;
   }
@@ -32,11 +34,11 @@ class AwsClusterAuthorization {
     return AwsClusterAuthorization(
       adminGroups: map['adminGroups'] == null
           ? null
-          : Input.decodeList<AwsClusterAuthorizationAdminGroup>(
+          : pulumi.Input.decodeList<AwsClusterAuthorizationAdminGroup>(
               map['adminGroups'],
               (value) => AwsClusterAuthorizationAdminGroup.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      adminUsers: Input.decodeList<AwsClusterAuthorizationAdminUser>(
+      adminUsers: pulumi.Input.decodeList<AwsClusterAuthorizationAdminUser>(
           map['adminUsers'],
           (value) => AwsClusterAuthorizationAdminUser.fromMap(
               (value as Map).cast<String, dynamic>())),

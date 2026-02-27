@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../alert_policy_alert_strategy/alert_policy_alert_strategy.dart';
 import '../alert_policy_condition/alert_policy_condition.dart';
 import '../alert_policy_creation_record/alert_policy_creation_record.dart';
@@ -62,34 +62,34 @@ import 'alert_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
 /// ```
-class AlertPolicy extends CustomResource {
+class AlertPolicy extends pulumi.CustomResource {
   /// Control over how this alert policy's notification channels are notified.
   /// Structure is documented below.
-  late final Output<AlertPolicyAlertStrategy?> alertStrategy;
+  late final pulumi.Output<AlertPolicyAlertStrategy?> alertStrategy;
 
   /// How to combine the results of multiple conditions to
   /// determine if an incident should be opened.
   /// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
-  late final Output<String> combiner;
+  late final pulumi.Output<String> combiner;
 
   /// A list of conditions for the policy. The conditions are combined by
   /// AND or OR according to the combiner field. If the combined conditions
   /// evaluate to true, then an incident is created. A policy can have from
   /// one to six conditions.
   /// Structure is documented below.
-  late final Output<List<AlertPolicyCondition>> conditions;
+  late final pulumi.Output<List<AlertPolicyCondition>> conditions;
 
   /// A read-only record of the creation of the alerting policy.
   /// If provided in a call to create or update, this field will
   /// be ignored.
   /// Structure is documented below.
-  late final Output<List<AlertPolicyCreationRecord>> creationRecords;
+  late final pulumi.Output<List<AlertPolicyCreationRecord>> creationRecords;
 
   /// A short name or phrase used to identify the policy in
   /// dashboards, notifications, and incidents. To avoid confusion, don't use
   /// the same display name for multiple policies in the same project. The
   /// name is limited to 512 Unicode characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Documentation that is included with notifications and incidents related
   /// to this policy. Best practice is for the documentation to include information
@@ -97,14 +97,14 @@ class AlertPolicy extends CustomResource {
   /// problems detected by the alerting policy. Notification channels that have
   /// limited capacity might not show this documentation.
   /// Structure is documented below.
-  late final Output<AlertPolicyDocumentation?> documentation;
+  late final pulumi.Output<AlertPolicyDocumentation?> documentation;
 
   /// Whether or not the policy is enabled. The default is true.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// The unique resource name for this policy.
   /// Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Identifies the notification channels to which notifications should be
   /// sent when incidents are opened or closed or when new violations occur
@@ -113,34 +113,34 @@ class AlertPolicy extends CustomResource {
   /// returned from the notificationChannels.list method. The syntax of the
   /// entries in this field is
   /// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
-  late final Output<List<String>?> notificationChannels;
+  late final pulumi.Output<List<String>?> notificationChannels;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The severity of an alert policy indicates how important incidents generated
   /// by that policy are. The severity level will be displayed on the Incident
   /// detail page and in notifications.
   /// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
-  late final Output<String?> severity;
+  late final pulumi.Output<String?> severity;
 
   /// This field is intended to be used for organizing and identifying the AlertPolicy
   /// objects.The field can contain up to 64 entries. Each key and value is limited
   /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
   /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
   /// must begin with a letter.
-  late final Output<Map<String, String>?> userLabels;
+  late final pulumi.Output<Map<String, String>?> userLabels;
 
   AlertPolicy(
     String name, {
     AlertPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:monitoring/alertPolicy:AlertPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.alertStrategy =
         registerOutput<AlertPolicyAlertStrategy?>('alertStrategy');

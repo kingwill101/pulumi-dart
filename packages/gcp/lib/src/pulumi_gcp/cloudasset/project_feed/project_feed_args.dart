@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_feed_condition/project_feed_condition.dart';
 import '../project_feed_feed_output_config/project_feed_feed_output_config.dart';
 
@@ -10,20 +10,20 @@ class ProjectFeedArgs {
   /// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
   /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
   /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
-  final Input<List<String>>? assetNames;
+  final pulumi.Input<List<String>>? assetNames;
 
   /// A list of types of the assets to receive updates. You must specify either or both of assetNames
   /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
   /// the feed. For example: "compute.googleapis.com/Disk"
   /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
   /// supported asset types.
-  final Input<List<String>>? assetTypes;
+  final pulumi.Input<List<String>>? assetTypes;
 
   /// The project whose identity will be used when sending messages to the
   /// destination pubsub topic. It also specifies the project for API
   /// enablement check, quota, and billing. If not specified, the resource's
   /// project will be used.
-  final Input<String>? billingProject;
+  final pulumi.Input<String>? billingProject;
 
   /// A condition which determines whether an asset update should be published. If specified, an asset
   /// will be returned only when the expression evaluates to true. When set, expression field
@@ -31,22 +31,22 @@ class ProjectFeedArgs {
   /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
   /// condition are optional.
   /// Structure is documented below.
-  final Input<ProjectFeedCondition>? condition;
+  final pulumi.Input<ProjectFeedCondition>? condition;
 
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
-  final Input<String>? contentType;
+  final pulumi.Input<String>? contentType;
 
   /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-  final Input<String> feedId;
+  final pulumi.Input<String> feedId;
 
   /// Output configuration for asset feed destination.
   /// Structure is documented below.
-  final Input<ProjectFeedFeedOutputConfig> feedOutputConfig;
+  final pulumi.Input<ProjectFeedFeedOutputConfig> feedOutputConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   ProjectFeedArgs({
     this.assetNames,
@@ -75,7 +75,8 @@ class ProjectFeedArgs {
     }
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<ProjectFeedCondition,
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
+          ProjectFeedCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
     final contentTypeValue = contentType;
@@ -83,9 +84,9 @@ class ProjectFeedArgs {
       map['contentType'] = contentTypeValue;
     }
     map['feedId'] = feedId;
-    map['feedOutputConfig'] =
-        Input.mapInputValue<ProjectFeedFeedOutputConfig, Map<String, dynamic>>(
-            feedOutputConfig, (value) => value.toMap());
+    map['feedOutputConfig'] = pulumi.Input.mapInputValue<
+        ProjectFeedFeedOutputConfig,
+        Map<String, dynamic>>(feedOutputConfig, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -95,15 +96,17 @@ class ProjectFeedArgs {
 
   factory ProjectFeedArgs.fromMap(Map<String, dynamic> map) {
     return ProjectFeedArgs(
-      assetNames: Input.asOptionalInput<List<String>>(map['assetNames']),
-      assetTypes: Input.asOptionalInput<List<String>>(map['assetTypes']),
-      billingProject: Input.asOptionalInput<String>(map['billingProject']),
-      condition: Input.asOptionalInput<ProjectFeedCondition>(map['condition']),
-      contentType: Input.asOptionalInput<String>(map['contentType']),
-      feedId: Input.asInput<String>(map['feedId']),
-      feedOutputConfig:
-          Input.asInput<ProjectFeedFeedOutputConfig>(map['feedOutputConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
+      assetNames: pulumi.Input.asOptionalInput<List<String>>(map['assetNames']),
+      assetTypes: pulumi.Input.asOptionalInput<List<String>>(map['assetTypes']),
+      billingProject:
+          pulumi.Input.asOptionalInput<String>(map['billingProject']),
+      condition:
+          pulumi.Input.asOptionalInput<ProjectFeedCondition>(map['condition']),
+      contentType: pulumi.Input.asOptionalInput<String>(map['contentType']),
+      feedId: pulumi.Input.asInput<String>(map['feedId']),
+      feedOutputConfig: pulumi.Input.asInput<ProjectFeedFeedOutputConfig>(
+          map['feedOutputConfig']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

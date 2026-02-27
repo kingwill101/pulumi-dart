@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_client_open_id_user_info_result.dart';
 
 /// Get OpenID userinfo about the credentials used with the Google provider,
@@ -21,13 +21,13 @@ import 'get_client_open_id_user_info_result.dart';
 ///
 /// ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
 Future<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo({
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo',
     const <String, dynamic>{},
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientOpenIdUserInfoResult.fromMap(result);
 }

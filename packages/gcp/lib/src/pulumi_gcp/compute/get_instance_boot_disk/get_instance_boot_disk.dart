@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_boot_disk_initialize_param/get_instance_boot_disk_initialize_param.dart';
 
 class GetInstanceBootDisk {
@@ -73,7 +73,7 @@ class GetInstanceBootDisk {
     map['diskEncryptionServiceAccount'] = diskEncryptionServiceAccount;
     map['forceAttach'] = forceAttach;
     map['guestOsFeatures'] = guestOsFeatures;
-    map['initializeParams'] = Input.encodeList<
+    map['initializeParams'] = pulumi.Input.encodeList<
         GetInstanceBootDiskInitializeParam,
         Map<String, dynamic>>(initializeParams, (value) => value.toMap());
     map['interface'] = interface;
@@ -94,10 +94,11 @@ class GetInstanceBootDisk {
           map['diskEncryptionServiceAccount'] as String,
       forceAttach: map['forceAttach'] as bool,
       guestOsFeatures: (map['guestOsFeatures'] as List).cast<String>(),
-      initializeParams: Input.decodeList<GetInstanceBootDiskInitializeParam>(
-          map['initializeParams'],
-          (value) => GetInstanceBootDiskInitializeParam.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      initializeParams:
+          pulumi.Input.decodeList<GetInstanceBootDiskInitializeParam>(
+              map['initializeParams'],
+              (value) => GetInstanceBootDiskInitializeParam.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       interface: map['interface'] as String,
       kmsKeySelfLink: map['kmsKeySelfLink'] as String,
       mode: map['mode'] as String,

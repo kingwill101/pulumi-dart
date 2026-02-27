@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../mirroring_endpoint_group_connected_deployment_group_location/mirroring_endpoint_group_connected_deployment_group_location.dart';
 
 class MirroringEndpointGroupConnectedDeploymentGroup {
@@ -24,7 +24,7 @@ class MirroringEndpointGroupConnectedDeploymentGroup {
     final map = <String, dynamic>{};
     final locationsValue = locations;
     if (locationsValue != null) {
-      map['locations'] = Input.encodeList<
+      map['locations'] = pulumi.Input.encodeList<
           MirroringEndpointGroupConnectedDeploymentGroupLocation,
           Map<String, dynamic>>(locationsValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class MirroringEndpointGroupConnectedDeploymentGroup {
     return MirroringEndpointGroupConnectedDeploymentGroup(
       locations: map['locations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MirroringEndpointGroupConnectedDeploymentGroupLocation>(
               map['locations'],
               (value) => MirroringEndpointGroupConnectedDeploymentGroupLocation

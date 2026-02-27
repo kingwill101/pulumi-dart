@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_spec_fleetobservability_logging_config_default_config/get_feature_spec_fleetobservability_logging_config_default_config.dart';
 import '../get_feature_spec_fleetobservability_logging_config_fleet_scope_logs_config/get_feature_spec_fleetobservability_logging_config_fleet_scope_logs_config.dart';
 
@@ -20,10 +20,10 @@ class GetFeatureSpecFleetobservabilityLoggingConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['defaultConfigs'] = Input.encodeList<
+    map['defaultConfigs'] = pulumi.Input.encodeList<
         GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig,
         Map<String, dynamic>>(defaultConfigs, (value) => value.toMap());
-    map['fleetScopeLogsConfigs'] = Input.encodeList<
+    map['fleetScopeLogsConfigs'] = pulumi.Input.encodeList<
         GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig,
         Map<String, dynamic>>(fleetScopeLogsConfigs, (value) => value.toMap());
     return map;
@@ -32,12 +32,12 @@ class GetFeatureSpecFleetobservabilityLoggingConfig {
   factory GetFeatureSpecFleetobservabilityLoggingConfig.fromMap(
       Map<String, dynamic> map) {
     return GetFeatureSpecFleetobservabilityLoggingConfig(
-      defaultConfigs: Input.decodeList<
+      defaultConfigs: pulumi.Input.decodeList<
               GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig>(
           map['defaultConfigs'],
           (value) => GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig
               .fromMap((value as Map).cast<String, dynamic>())),
-      fleetScopeLogsConfigs: Input.decodeList<
+      fleetScopeLogsConfigs: pulumi.Input.decodeList<
               GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig>(
           map['fleetScopeLogsConfigs'],
           (value) =>

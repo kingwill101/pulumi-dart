@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sac_realm_symantec_options/sac_realm_symantec_options.dart';
 
 /// The set of arguments for SacRealm.
@@ -9,22 +9,22 @@ class SacRealmArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Identifier. Resource name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// SSE service provider associated with the realm.
   /// Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
-  final Input<String> securityService;
+  final pulumi.Input<String> securityService;
 
   /// Configuration required for Symantec realms.
   /// Structure is documented below.
-  final Input<SacRealmSymantecOptions>? symantecOptions;
+  final pulumi.Input<SacRealmSymantecOptions>? symantecOptions;
 
   SacRealmArgs({
     this.labels,
@@ -51,7 +51,7 @@ class SacRealmArgs {
     map['securityService'] = securityService;
     final symantecOptionsValue = symantecOptions;
     if (symantecOptionsValue != null) {
-      map['symantecOptions'] = Input.mapOptionalInputValue<
+      map['symantecOptions'] = pulumi.Input.mapOptionalInputValue<
           SacRealmSymantecOptions,
           Map<String, dynamic>>(symantecOptionsValue, (value) => value.toMap());
     }
@@ -60,11 +60,11 @@ class SacRealmArgs {
 
   factory SacRealmArgs.fromMap(Map<String, dynamic> map) {
     return SacRealmArgs(
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      securityService: Input.asInput<String>(map['securityService']),
-      symantecOptions: Input.asOptionalInput<SacRealmSymantecOptions>(
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      securityService: pulumi.Input.asInput<String>(map['securityService']),
+      symantecOptions: pulumi.Input.asOptionalInput<SacRealmSymantecOptions>(
           map['symantecOptions']),
     );
   }

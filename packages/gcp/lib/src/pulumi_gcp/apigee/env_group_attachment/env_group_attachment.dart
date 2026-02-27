@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'env_group_attachment_args.dart';
 
 /// An `Environment Group attachment` in Apigee.
@@ -29,26 +29,26 @@ import 'env_group_attachment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/{{name}}
 /// ```
-class EnvGroupAttachment extends CustomResource {
+class EnvGroupAttachment extends pulumi.CustomResource {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-  late final Output<String> envgroupId;
+  late final pulumi.Output<String> envgroupId;
 
   /// The resource ID of the environment.
-  late final Output<String> environment;
+  late final pulumi.Output<String> environment;
 
   /// The name of the newly created  attachment (output parameter).
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   EnvGroupAttachment(
     String name, {
     EnvGroupAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.envgroupId = registerOutput<String>('envgroupId');
     this.environment = registerOutput<String>('environment');

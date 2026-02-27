@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSubscriptionIamPolicy.
 class GetSubscriptionIamPolicyArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The subscription name or id to bind to attach IAM policy to.
-  final Input<String> subscription;
+  final pulumi.Input<String> subscription;
 
   GetSubscriptionIamPolicyArgs({
     this.project,
@@ -28,8 +28,8 @@ class GetSubscriptionIamPolicyArgs {
 
   factory GetSubscriptionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionIamPolicyArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      subscription: Input.asInput<String>(map['subscription']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      subscription: pulumi.Input.asInput<String>(map['subscription']),
     );
   }
 }

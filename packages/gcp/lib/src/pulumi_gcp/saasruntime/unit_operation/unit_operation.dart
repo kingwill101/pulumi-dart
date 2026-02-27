@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../unit_operation_condition/unit_operation_condition.dart';
 import '../unit_operation_provision/unit_operation_provision.dart';
 import '../unit_operation_upgrade/unit_operation_upgrade.dart';
@@ -38,36 +38,36 @@ import 'unit_operation_args.dart';
 /// ```sh
 /// $ pulumi import gcp:saasruntime/unitOperation:UnitOperation default {{location}}/{{unit_operation_id}}
 /// ```
-class UnitOperation extends CustomResource {
+class UnitOperation extends pulumi.CustomResource {
   /// Annotations is an unstructured key-value map stored with a resource that
   /// may be set by external tools to store and retrieve arbitrary metadata.
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
   /// Structure is documented below.
-  late final Output<List<UnitOperationCondition>> conditions;
+  late final pulumi.Output<List<UnitOperationCondition>> conditions;
 
   /// The timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Deprovision is the unit operation that deprovision the underlying
   /// resources represented by a Unit. Can only execute if the Unit is currently
   /// provisioned.
-  late final Output<Map<String, dynamic>?> deprovision;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<Map<String, dynamic>?> deprovision;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The engine state for on-going
   /// deployment engine operation(s).
   /// This field is opaque for external usage.
-  late final Output<String> engineState;
+  late final pulumi.Output<String> engineState;
 
   /// Possible values:
   /// NOT_APPLICABLE
@@ -75,40 +75,40 @@ class UnitOperation extends CustomResource {
   /// RETRIABLE
   /// IGNORABLE
   /// STANDARD
-  late final Output<String> errorCategory;
+  late final pulumi.Output<String> errorCategory;
 
   /// An opaque value that uniquely identifies a version or
   /// generation of a resource. It can be used to confirm that the client
   /// and server agree on the ordering of a resource being written.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name (full URI of the resource) following the standard naming
   /// scheme:
   /// "projects/{project}/locations/{location}/unitOperations/{unitOperation}"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Provision is the unit operation that provision the underlying resources
   /// represented by a Unit. Can only execute if the Unit is not currently
   /// provisioned.
   /// Structure is documented below.
-  late final Output<UnitOperationProvision?> provision;
+  late final pulumi.Output<UnitOperationProvision?> provision;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// UnitOperationState describes the current state of the unit operation.
   /// Possible values:
@@ -119,45 +119,45 @@ class UnitOperation extends CustomResource {
   /// UNIT_OPERATION_STATE_SUCCEEDED
   /// UNIT_OPERATION_STATE_FAILED
   /// UNIT_OPERATION_STATE_CANCELLED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The unique identifier of the resource. UID is unique in the time
   /// and space for this resource within the scope of the service. It is
   /// typically generated by the server on successful creation of a resource
   /// and must not be changed. UID is used to uniquely identify resources
   /// with resource name reuses. This should be a UUID4.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The Unit a given UnitOperation will act upon.
-  late final Output<String> unit;
+  late final pulumi.Output<String> unit;
 
   /// The ID value for the new unit operation.
-  late final Output<String> unitOperationId;
+  late final pulumi.Output<String> unitOperationId;
 
   /// The timestamp when the resource was last updated. Any
   /// change to the resource made by users must refresh this value.
   /// Changes to a resource made by the service should refresh this value.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Upgrade is the unit operation that upgrades a provisioned unit, which may
   /// also include the underlying resources represented by a Unit. Can only execute
   /// if the Unit is currently provisioned.
   /// Structure is documented below.
-  late final Output<UnitOperationUpgrade?> upgrade;
+  late final pulumi.Output<UnitOperationUpgrade?> upgrade;
 
   /// If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
   /// before completing the apply.
-  late final Output<bool?> waitForCompletion;
+  late final pulumi.Output<bool?> waitForCompletion;
 
   UnitOperation(
     String name, {
     UnitOperationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:saasruntime/unitOperation:UnitOperation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.conditions =

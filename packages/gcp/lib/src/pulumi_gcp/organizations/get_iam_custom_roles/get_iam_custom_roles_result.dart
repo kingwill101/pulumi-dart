@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_iam_custom_roles_role/get_iam_custom_roles_role.dart';
 
 /// Result data returned by getIamCustomRoles.
@@ -30,7 +30,7 @@ class GetIamCustomRolesResult {
       map['orgId'] = orgIdValue;
     }
     map['roles'] =
-        Input.encodeList<GetIamCustomRolesRole, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetIamCustomRolesRole, Map<String, dynamic>>(
             roles, (value) => value.toMap());
     final showDeletedValue = showDeleted;
     if (showDeletedValue != null) {
@@ -47,7 +47,7 @@ class GetIamCustomRolesResult {
     return GetIamCustomRolesResult(
       id: map['id'] as String,
       orgId: map['orgId'] == null ? null : map['orgId'] as String,
-      roles: Input.decodeList<GetIamCustomRolesRole>(
+      roles: pulumi.Input.decodeList<GetIamCustomRolesRole>(
           map['roles'],
           (value) => GetIamCustomRolesRole.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_router_status_best_route/get_router_status_best_route.dart';
 import '../get_router_status_best_routes_for_router/get_router_status_best_routes_for_router.dart';
 
@@ -35,9 +35,9 @@ class GetRouterStatusResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['bestRoutes'] =
-        Input.encodeList<GetRouterStatusBestRoute, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRouterStatusBestRoute, Map<String, dynamic>>(
             bestRoutes, (value) => value.toMap());
-    map['bestRoutesForRouters'] = Input.encodeList<
+    map['bestRoutesForRouters'] = pulumi.Input.encodeList<
         GetRouterStatusBestRoutesForRouter,
         Map<String, dynamic>>(bestRoutesForRouters, (value) => value.toMap());
     map['id'] = id;
@@ -53,12 +53,12 @@ class GetRouterStatusResult {
 
   factory GetRouterStatusResult.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusResult(
-      bestRoutes: Input.decodeList<GetRouterStatusBestRoute>(
+      bestRoutes: pulumi.Input.decodeList<GetRouterStatusBestRoute>(
           map['bestRoutes'],
           (value) => GetRouterStatusBestRoute.fromMap(
               (value as Map).cast<String, dynamic>())),
       bestRoutesForRouters:
-          Input.decodeList<GetRouterStatusBestRoutesForRouter>(
+          pulumi.Input.decodeList<GetRouterStatusBestRoutesForRouter>(
               map['bestRoutesForRouters'],
               (value) => GetRouterStatusBestRoutesForRouter.fromMap(
                   (value as Map).cast<String, dynamic>())),

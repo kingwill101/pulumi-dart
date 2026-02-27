@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_network_endpoint_group_app_engine/region_network_endpoint_group_app_engine.dart';
 import '../region_network_endpoint_group_cloud_function/region_network_endpoint_group_cloud_function.dart';
 import '../region_network_endpoint_group_cloud_run/region_network_endpoint_group_cloud_run.dart';
@@ -12,21 +12,21 @@ class RegionNetworkEndpointGroupArgs {
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
-  final Input<RegionNetworkEndpointGroupAppEngine>? appEngine;
+  final pulumi.Input<RegionNetworkEndpointGroupAppEngine>? appEngine;
 
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
-  final Input<RegionNetworkEndpointGroupCloudFunction>? cloudFunction;
+  final pulumi.Input<RegionNetworkEndpointGroupCloudFunction>? cloudFunction;
 
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
-  final Input<RegionNetworkEndpointGroupCloudRun>? cloudRun;
+  final pulumi.Input<RegionNetworkEndpointGroupCloudRun>? cloudRun;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -35,43 +35,43 @@ class RegionNetworkEndpointGroupArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// This field is only used for PSC and INTERNET NEGs.
   /// The URL of the network to which all network endpoints in the NEG belong. Uses
   /// "default" project network if unspecified.
-  final Input<String>? network;
+  final pulumi.Input<String>? network;
 
   /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
   /// Default value is `SERVERLESS`.
   /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
-  final Input<String>? networkEndpointType;
+  final pulumi.Input<String>? networkEndpointType;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// This field is only used for PSC NEGs.
   /// Structure is documented below.
-  final Input<RegionNetworkEndpointGroupPscData>? pscData;
+  final pulumi.Input<RegionNetworkEndpointGroupPscData>? pscData;
 
   /// This field is only used for PSC and INTERNET NEGs.
   /// The target service url used to set up private service connection to
   /// a Google API or a PSC Producer Service Attachment.
-  final Input<String>? pscTargetService;
+  final pulumi.Input<String>? pscTargetService;
 
   /// A reference to the region where the regional NEGs reside.
-  final Input<String> region;
+  final pulumi.Input<String> region;
 
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
-  final Input<RegionNetworkEndpointGroupServerlessDeployment>?
+  final pulumi.Input<RegionNetworkEndpointGroupServerlessDeployment>?
       serverlessDeployment;
 
   /// This field is only used for PSC NEGs.
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
-  final Input<String>? subnetwork;
+  final pulumi.Input<String>? subnetwork;
 
   RegionNetworkEndpointGroupArgs({
     this.appEngine,
@@ -93,19 +93,19 @@ class RegionNetworkEndpointGroupArgs {
     final map = <String, dynamic>{};
     final appEngineValue = appEngine;
     if (appEngineValue != null) {
-      map['appEngine'] = Input.mapOptionalInputValue<
+      map['appEngine'] = pulumi.Input.mapOptionalInputValue<
           RegionNetworkEndpointGroupAppEngine,
           Map<String, dynamic>>(appEngineValue, (value) => value.toMap());
     }
     final cloudFunctionValue = cloudFunction;
     if (cloudFunctionValue != null) {
-      map['cloudFunction'] = Input.mapOptionalInputValue<
+      map['cloudFunction'] = pulumi.Input.mapOptionalInputValue<
           RegionNetworkEndpointGroupCloudFunction,
           Map<String, dynamic>>(cloudFunctionValue, (value) => value.toMap());
     }
     final cloudRunValue = cloudRun;
     if (cloudRunValue != null) {
-      map['cloudRun'] = Input.mapOptionalInputValue<
+      map['cloudRun'] = pulumi.Input.mapOptionalInputValue<
           RegionNetworkEndpointGroupCloudRun,
           Map<String, dynamic>>(cloudRunValue, (value) => value.toMap());
     }
@@ -131,7 +131,7 @@ class RegionNetworkEndpointGroupArgs {
     }
     final pscDataValue = pscData;
     if (pscDataValue != null) {
-      map['pscData'] = Input.mapOptionalInputValue<
+      map['pscData'] = pulumi.Input.mapOptionalInputValue<
           RegionNetworkEndpointGroupPscData,
           Map<String, dynamic>>(pscDataValue, (value) => value.toMap());
     }
@@ -142,7 +142,7 @@ class RegionNetworkEndpointGroupArgs {
     map['region'] = region;
     final serverlessDeploymentValue = serverlessDeployment;
     if (serverlessDeploymentValue != null) {
-      map['serverlessDeployment'] = Input.mapOptionalInputValue<
+      map['serverlessDeployment'] = pulumi.Input.mapOptionalInputValue<
               RegionNetworkEndpointGroupServerlessDeployment,
               Map<String, dynamic>>(
           serverlessDeploymentValue, (value) => value.toMap());
@@ -156,27 +156,30 @@ class RegionNetworkEndpointGroupArgs {
 
   factory RegionNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupArgs(
-      appEngine: Input.asOptionalInput<RegionNetworkEndpointGroupAppEngine>(
-          map['appEngine']),
+      appEngine:
+          pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupAppEngine>(
+              map['appEngine']),
       cloudFunction:
-          Input.asOptionalInput<RegionNetworkEndpointGroupCloudFunction>(
+          pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupCloudFunction>(
               map['cloudFunction']),
-      cloudRun: Input.asOptionalInput<RegionNetworkEndpointGroupCloudRun>(
-          map['cloudRun']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      network: Input.asOptionalInput<String>(map['network']),
+      cloudRun:
+          pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupCloudRun>(
+              map['cloudRun']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      network: pulumi.Input.asOptionalInput<String>(map['network']),
       networkEndpointType:
-          Input.asOptionalInput<String>(map['networkEndpointType']),
-      project: Input.asOptionalInput<String>(map['project']),
-      pscData: Input.asOptionalInput<RegionNetworkEndpointGroupPscData>(
+          pulumi.Input.asOptionalInput<String>(map['networkEndpointType']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      pscData: pulumi.Input.asOptionalInput<RegionNetworkEndpointGroupPscData>(
           map['pscData']),
-      pscTargetService: Input.asOptionalInput<String>(map['pscTargetService']),
-      region: Input.asInput<String>(map['region']),
-      serverlessDeployment:
-          Input.asOptionalInput<RegionNetworkEndpointGroupServerlessDeployment>(
-              map['serverlessDeployment']),
-      subnetwork: Input.asOptionalInput<String>(map['subnetwork']),
+      pscTargetService:
+          pulumi.Input.asOptionalInput<String>(map['pscTargetService']),
+      region: pulumi.Input.asInput<String>(map['region']),
+      serverlessDeployment: pulumi.Input.asOptionalInput<
+              RegionNetworkEndpointGroupServerlessDeployment>(
+          map['serverlessDeployment']),
+      subnetwork: pulumi.Input.asOptionalInput<String>(map['subnetwork']),
     );
   }
 }

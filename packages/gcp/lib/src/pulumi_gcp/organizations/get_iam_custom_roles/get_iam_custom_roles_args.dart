@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIamCustomRoles.
 class GetIamCustomRolesArgs {
   /// The numeric ID of the organization.
-  final Input<String>? orgId;
+  final pulumi.Input<String>? orgId;
 
   /// Include Roles that have been deleted. Defaults to `false`.
-  final Input<bool>? showDeleted;
+  final pulumi.Input<bool>? showDeleted;
 
   /// When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
-  final Input<String>? view;
+  final pulumi.Input<String>? view;
 
   GetIamCustomRolesArgs({
     this.orgId,
@@ -38,9 +38,9 @@ class GetIamCustomRolesArgs {
 
   factory GetIamCustomRolesArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRolesArgs(
-      orgId: Input.asOptionalInput<String>(map['orgId']),
-      showDeleted: Input.asOptionalInput<bool>(map['showDeleted']),
-      view: Input.asOptionalInput<String>(map['view']),
+      orgId: pulumi.Input.asOptionalInput<String>(map['orgId']),
+      showDeleted: pulumi.Input.asOptionalInput<bool>(map['showDeleted']),
+      view: pulumi.Input.asOptionalInput<String>(map['view']),
     );
   }
 }

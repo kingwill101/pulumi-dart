@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_hc_vpn_gateway_vpn_interface/get_hc_vpn_gateway_vpn_interface.dart';
 
 /// Result data returned by getHcVpnGateway.
@@ -60,9 +60,8 @@ class GetHcVpnGatewayResult {
     }
     map['selfLink'] = selfLink;
     map['stackType'] = stackType;
-    map['vpnInterfaces'] =
-        Input.encodeList<GetHcVpnGatewayVpnInterface, Map<String, dynamic>>(
-            vpnInterfaces, (value) => value.toMap());
+    map['vpnInterfaces'] = pulumi.Input.encodeList<GetHcVpnGatewayVpnInterface,
+        Map<String, dynamic>>(vpnInterfaces, (value) => value.toMap());
     return map;
   }
 
@@ -81,7 +80,7 @@ class GetHcVpnGatewayResult {
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] as String,
       stackType: map['stackType'] as String,
-      vpnInterfaces: Input.decodeList<GetHcVpnGatewayVpnInterface>(
+      vpnInterfaces: pulumi.Input.decodeList<GetHcVpnGatewayVpnInterface>(
           map['vpnInterfaces'],
           (value) => GetHcVpnGatewayVpnInterface.fromMap(
               (value as Map).cast<String, dynamic>())),

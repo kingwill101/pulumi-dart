@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resource_policy_disk_consistency_group_policy/get_resource_policy_disk_consistency_group_policy.dart';
 import '../get_resource_policy_group_placement_policy/get_resource_policy_group_placement_policy.dart';
 import '../get_resource_policy_instance_schedule_policy/get_resource_policy_instance_schedule_policy.dart';
@@ -44,14 +44,14 @@ class GetResourcePolicyResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['description'] = description;
-    map['diskConsistencyGroupPolicies'] = Input.encodeList<
+    map['diskConsistencyGroupPolicies'] = pulumi.Input.encodeList<
             GetResourcePolicyDiskConsistencyGroupPolicy, Map<String, dynamic>>(
         diskConsistencyGroupPolicies, (value) => value.toMap());
-    map['groupPlacementPolicies'] = Input.encodeList<
+    map['groupPlacementPolicies'] = pulumi.Input.encodeList<
         GetResourcePolicyGroupPlacementPolicy,
         Map<String, dynamic>>(groupPlacementPolicies, (value) => value.toMap());
     map['id'] = id;
-    map['instanceSchedulePolicies'] = Input.encodeList<
+    map['instanceSchedulePolicies'] = pulumi.Input.encodeList<
             GetResourcePolicyInstanceSchedulePolicy, Map<String, dynamic>>(
         instanceSchedulePolicies, (value) => value.toMap());
     map['name'] = name;
@@ -64,12 +64,12 @@ class GetResourcePolicyResult {
       map['region'] = regionValue;
     }
     map['selfLink'] = selfLink;
-    map['snapshotSchedulePolicies'] = Input.encodeList<
+    map['snapshotSchedulePolicies'] = pulumi.Input.encodeList<
             GetResourcePolicySnapshotSchedulePolicy, Map<String, dynamic>>(
         snapshotSchedulePolicies, (value) => value.toMap());
-    map['workloadPolicies'] =
-        Input.encodeList<GetResourcePolicyWorkloadPolicy, Map<String, dynamic>>(
-            workloadPolicies, (value) => value.toMap());
+    map['workloadPolicies'] = pulumi.Input.encodeList<
+        GetResourcePolicyWorkloadPolicy,
+        Map<String, dynamic>>(workloadPolicies, (value) => value.toMap());
     return map;
   }
 
@@ -77,18 +77,18 @@ class GetResourcePolicyResult {
     return GetResourcePolicyResult(
       description: map['description'] as String,
       diskConsistencyGroupPolicies:
-          Input.decodeList<GetResourcePolicyDiskConsistencyGroupPolicy>(
+          pulumi.Input.decodeList<GetResourcePolicyDiskConsistencyGroupPolicy>(
               map['diskConsistencyGroupPolicies'],
               (value) => GetResourcePolicyDiskConsistencyGroupPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       groupPlacementPolicies:
-          Input.decodeList<GetResourcePolicyGroupPlacementPolicy>(
+          pulumi.Input.decodeList<GetResourcePolicyGroupPlacementPolicy>(
               map['groupPlacementPolicies'],
               (value) => GetResourcePolicyGroupPlacementPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceSchedulePolicies:
-          Input.decodeList<GetResourcePolicyInstanceSchedulePolicy>(
+          pulumi.Input.decodeList<GetResourcePolicyInstanceSchedulePolicy>(
               map['instanceSchedulePolicies'],
               (value) => GetResourcePolicyInstanceSchedulePolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -97,14 +97,15 @@ class GetResourcePolicyResult {
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] as String,
       snapshotSchedulePolicies:
-          Input.decodeList<GetResourcePolicySnapshotSchedulePolicy>(
+          pulumi.Input.decodeList<GetResourcePolicySnapshotSchedulePolicy>(
               map['snapshotSchedulePolicies'],
               (value) => GetResourcePolicySnapshotSchedulePolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      workloadPolicies: Input.decodeList<GetResourcePolicyWorkloadPolicy>(
-          map['workloadPolicies'],
-          (value) => GetResourcePolicyWorkloadPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      workloadPolicies:
+          pulumi.Input.decodeList<GetResourcePolicyWorkloadPolicy>(
+              map['workloadPolicies'],
+              (value) => GetResourcePolicyWorkloadPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cloud_vm_clusters_args.dart';
 import 'get_cloud_vm_clusters_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_cloud_vm_clusters_result.dart';
 /// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.cloudVmClusters).
 Future<GetCloudVmClustersResult> getCloudVmClusters(
   GetCloudVmClustersArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudVmClustersResult.fromMap(result);
 }

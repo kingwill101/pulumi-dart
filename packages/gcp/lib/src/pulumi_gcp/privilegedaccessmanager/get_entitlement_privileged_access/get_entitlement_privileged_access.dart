@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_entitlement_privileged_access_gcp_iam_access/get_entitlement_privileged_access_gcp_iam_access.dart';
 
 class GetEntitlementPrivilegedAccess {
@@ -13,7 +13,7 @@ class GetEntitlementPrivilegedAccess {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['gcpIamAccesses'] = Input.encodeList<
+    map['gcpIamAccesses'] = pulumi.Input.encodeList<
         GetEntitlementPrivilegedAccessGcpIamAccess,
         Map<String, dynamic>>(gcpIamAccesses, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetEntitlementPrivilegedAccess {
   factory GetEntitlementPrivilegedAccess.fromMap(Map<String, dynamic> map) {
     return GetEntitlementPrivilegedAccess(
       gcpIamAccesses:
-          Input.decodeList<GetEntitlementPrivilegedAccessGcpIamAccess>(
+          pulumi.Input.decodeList<GetEntitlementPrivilegedAccessGcpIamAccess>(
               map['gcpIamAccesses'],
               (value) => GetEntitlementPrivilegedAccessGcpIamAccess.fromMap(
                   (value as Map).cast<String, dynamic>())),

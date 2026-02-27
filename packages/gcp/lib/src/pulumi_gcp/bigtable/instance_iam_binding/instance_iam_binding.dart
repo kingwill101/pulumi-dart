@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_iam_binding_condition/instance_iam_binding_condition.dart';
 import 'instance_iam_binding_args.dart';
 
@@ -61,17 +61,17 @@ import 'instance_iam_binding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigtable/instanceIamBinding:InstanceIamBinding default projects/{project}/instances/{instance}
 /// ```
-class InstanceIamBinding extends CustomResource {
+class InstanceIamBinding extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
-  late final Output<InstanceIamBindingCondition?> condition;
+  late final pulumi.Output<InstanceIamBindingCondition?> condition;
 
   /// (Computed) The etag of the instances's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -81,23 +81,23 @@ class InstanceIamBinding extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<List<String>> members;
-  late final Output<String> project;
+  late final pulumi.Output<List<String>> members;
+  late final pulumi.Output<String> project;
 
   /// The role that should be applied. Only one
   /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   InstanceIamBinding(
     String name, {
     InstanceIamBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigtable/instanceIamBinding:InstanceIamBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<InstanceIamBindingCondition?>('condition');
     this.etag = registerOutput<String>('etag');

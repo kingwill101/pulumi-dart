@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_attachment_group_configured_availability_sla_intended_sla_blocker/interconnect_attachment_group_configured_availability_sla_intended_sla_blocker.dart';
 
 class InterconnectAttachmentGroupConfiguredAvailabilitySla {
@@ -31,7 +31,7 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySla {
     }
     final intendedSlaBlockersValue = intendedSlaBlockers;
     if (intendedSlaBlockersValue != null) {
-      map['intendedSlaBlockers'] = Input.encodeList<
+      map['intendedSlaBlockers'] = pulumi.Input.encodeList<
           InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker,
           Map<String,
               dynamic>>(intendedSlaBlockersValue, (value) => value.toMap());
@@ -46,7 +46,7 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySla {
           map['effectiveSla'] == null ? null : map['effectiveSla'] as String,
       intendedSlaBlockers: map['intendedSlaBlockers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker>(
               map['intendedSlaBlockers'],
               (value) =>

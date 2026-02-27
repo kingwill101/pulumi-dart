@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_crypto_key_latest_version_args.dart';
 import 'get_crypto_key_latest_version_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_crypto_key_latest_version_result.dart';
 /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
 Future<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersion(
   GetCryptoKeyLatestVersionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCryptoKeyLatestVersionResult.fromMap(result);
 }

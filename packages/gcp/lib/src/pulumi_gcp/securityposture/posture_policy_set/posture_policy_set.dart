@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../posture_policy_set_policy/posture_policy_set_policy.dart';
 
 class PosturePolicySet {
@@ -27,7 +27,7 @@ class PosturePolicySet {
       map['description'] = descriptionValue;
     }
     map['policies'] =
-        Input.encodeList<PosturePolicySetPolicy, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PosturePolicySetPolicy, Map<String, dynamic>>(
             policies, (value) => value.toMap());
     map['policySetId'] = policySetId;
     return map;
@@ -37,7 +37,7 @@ class PosturePolicySet {
     return PosturePolicySet(
       description:
           map['description'] == null ? null : map['description'] as String,
-      policies: Input.decodeList<PosturePolicySetPolicy>(
+      policies: pulumi.Input.decodeList<PosturePolicySetPolicy>(
           map['policies'],
           (value) => PosturePolicySetPolicy.fromMap(
               (value as Map).cast<String, dynamic>())),

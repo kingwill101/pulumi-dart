@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_environment_version_config/cx_environment_version_config.dart';
 import 'cx_environment_args.dart';
 
@@ -37,36 +37,36 @@ import 'cx_environment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment default {{parent}}/{{name}}
 /// ```
-class CxEnvironment extends CustomResource {
+class CxEnvironment extends pulumi.CustomResource {
   /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The name of the environment.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Agent to create an Environment for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-  late final Output<String?> parent;
+  late final pulumi.Output<String?> parent;
 
   /// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
   /// Structure is documented below.
-  late final Output<List<CxEnvironmentVersionConfig>> versionConfigs;
+  late final pulumi.Output<List<CxEnvironmentVersionConfig>> versionConfigs;
 
   CxEnvironment(
     String name, {
     CxEnvironmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/cxEnvironment:CxEnvironment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String>('displayName');

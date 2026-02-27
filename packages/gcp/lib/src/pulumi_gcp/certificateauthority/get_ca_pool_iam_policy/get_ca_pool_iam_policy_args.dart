@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCaPoolIamPolicy.
 class GetCaPoolIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> caPool;
+  final pulumi.Input<String> caPool;
 
   /// Location of the CaPool. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetCaPoolIamPolicyArgs({
     required this.caPool,
@@ -40,9 +40,9 @@ class GetCaPoolIamPolicyArgs {
 
   factory GetCaPoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCaPoolIamPolicyArgs(
-      caPool: Input.asInput<String>(map['caPool']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      caPool: pulumi.Input.asInput<String>(map['caPool']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

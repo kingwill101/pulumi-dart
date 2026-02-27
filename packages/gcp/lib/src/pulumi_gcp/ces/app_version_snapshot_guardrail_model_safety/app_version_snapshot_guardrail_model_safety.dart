@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_guardrail_model_safety_safety_setting/app_version_snapshot_guardrail_model_safety_safety_setting.dart';
 
 class AppVersionSnapshotGuardrailModelSafety {
@@ -18,7 +18,7 @@ class AppVersionSnapshotGuardrailModelSafety {
     final map = <String, dynamic>{};
     final safetySettingsValue = safetySettings;
     if (safetySettingsValue != null) {
-      map['safetySettings'] = Input.encodeList<
+      map['safetySettings'] = pulumi.Input.encodeList<
           AppVersionSnapshotGuardrailModelSafetySafetySetting,
           Map<String, dynamic>>(safetySettingsValue, (value) => value.toMap());
     }
@@ -30,7 +30,7 @@ class AppVersionSnapshotGuardrailModelSafety {
     return AppVersionSnapshotGuardrailModelSafety(
       safetySettings: map['safetySettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotGuardrailModelSafetySafetySetting>(
               map['safetySettings'],
               (value) =>

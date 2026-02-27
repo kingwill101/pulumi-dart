@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plugin_instance_action_curation_config/plugin_instance_action_curation_config.dart';
 import '../plugin_instance_action_hub_instance_action/plugin_instance_action_hub_instance_action.dart';
 
@@ -58,7 +58,7 @@ class PluginInstanceAction {
     }
     final hubInstanceActionsValue = hubInstanceActions;
     if (hubInstanceActionsValue != null) {
-      map['hubInstanceActions'] = Input.encodeList<
+      map['hubInstanceActions'] = pulumi.Input.encodeList<
               PluginInstanceActionHubInstanceAction, Map<String, dynamic>>(
           hubInstanceActionsValue, (value) => value.toMap());
     }
@@ -86,7 +86,7 @@ class PluginInstanceAction {
               (map['curationConfig'] as Map).cast<String, dynamic>()),
       hubInstanceActions: map['hubInstanceActions'] == null
           ? null
-          : Input.decodeList<PluginInstanceActionHubInstanceAction>(
+          : pulumi.Input.decodeList<PluginInstanceActionHubInstanceAction>(
               map['hubInstanceActions'],
               (value) => PluginInstanceActionHubInstanceAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

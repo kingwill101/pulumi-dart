@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_kmskey_ring_args.dart';
 import 'get_kmskey_ring_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_kmskey_ring_result.dart';
 /// and resides in a specific location.
 Future<GetKMSKeyRingResult> getKMSKeyRing(
   GetKMSKeyRingArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:kms/getKMSKeyRing:getKMSKeyRing',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKMSKeyRingResult.fromMap(result);
 }

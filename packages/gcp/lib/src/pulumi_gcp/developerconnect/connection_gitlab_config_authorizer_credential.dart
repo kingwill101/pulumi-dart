@@ -1,3 +1,3 @@
 library module_developerconnect_connection_gitlab_config_authorizer_credential;
 
-export 'connection_gitlab_config_authorizer_credential/connection_gitlab_config_authorizer_credential2.dart';
+export 'connection_gitlab_config_authorizer_credential/connection_gitlab_config_authorizer_credential_developerconnect.dart';

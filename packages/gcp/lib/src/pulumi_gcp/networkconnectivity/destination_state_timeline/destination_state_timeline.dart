@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../destination_state_timeline_state/destination_state_timeline_state.dart';
 
 class DestinationStateTimeline {
@@ -17,9 +17,8 @@ class DestinationStateTimeline {
     final map = <String, dynamic>{};
     final statesValue = states;
     if (statesValue != null) {
-      map['states'] =
-          Input.encodeList<DestinationStateTimelineState, Map<String, dynamic>>(
-              statesValue, (value) => value.toMap());
+      map['states'] = pulumi.Input.encodeList<DestinationStateTimelineState,
+          Map<String, dynamic>>(statesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -28,7 +27,7 @@ class DestinationStateTimeline {
     return DestinationStateTimeline(
       states: map['states'] == null
           ? null
-          : Input.decodeList<DestinationStateTimelineState>(
+          : pulumi.Input.decodeList<DestinationStateTimelineState>(
               map['states'],
               (value) => DestinationStateTimelineState.fromMap(
                   (value as Map).cast<String, dynamic>())),

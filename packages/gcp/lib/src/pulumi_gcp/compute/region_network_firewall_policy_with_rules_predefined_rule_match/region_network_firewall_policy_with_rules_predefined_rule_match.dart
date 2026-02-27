@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_network_firewall_policy_with_rules_predefined_rule_match_layer4_config/region_network_firewall_policy_with_rules_predefined_rule_match_layer4_config.dart';
 import '../region_network_firewall_policy_with_rules_predefined_rule_match_src_secure_tag/region_network_firewall_policy_with_rules_predefined_rule_match_src_secure_tag.dart';
 
@@ -107,7 +107,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
     }
     final layer4ConfigsValue = layer4Configs;
     if (layer4ConfigsValue != null) {
-      map['layer4Configs'] = Input.encodeList<
+      map['layer4Configs'] = pulumi.Input.encodeList<
           RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config,
           Map<String, dynamic>>(layer4ConfigsValue, (value) => value.toMap());
     }
@@ -129,7 +129,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
     }
     final srcSecureTagsValue = srcSecureTags;
     if (srcSecureTagsValue != null) {
-      map['srcSecureTags'] = Input.encodeList<
+      map['srcSecureTags'] = pulumi.Input.encodeList<
           RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag,
           Map<String, dynamic>>(srcSecureTagsValue, (value) => value.toMap());
     }
@@ -160,7 +160,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
           : (map['destThreatIntelligences'] as List).cast<String>(),
       layer4Configs: map['layer4Configs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config>(
               map['layer4Configs'],
               (value) =>
@@ -180,7 +180,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
           : (map['srcRegionCodes'] as List).cast<String>(),
       srcSecureTags: map['srcSecureTags'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>(
               map['srcSecureTags'],
               (value) =>

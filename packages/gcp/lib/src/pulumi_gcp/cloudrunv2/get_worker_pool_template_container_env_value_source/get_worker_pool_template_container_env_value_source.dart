@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_worker_pool_template_container_env_value_source_secret_key_ref/get_worker_pool_template_container_env_value_source_secret_key_ref.dart';
 
 class GetWorkerPoolTemplateContainerEnvValueSource {
@@ -14,7 +14,7 @@ class GetWorkerPoolTemplateContainerEnvValueSource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['secretKeyReves'] = Input.encodeList<
+    map['secretKeyReves'] = pulumi.Input.encodeList<
         GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef,
         Map<String, dynamic>>(secretKeyReves, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetWorkerPoolTemplateContainerEnvValueSource {
   factory GetWorkerPoolTemplateContainerEnvValueSource.fromMap(
       Map<String, dynamic> map) {
     return GetWorkerPoolTemplateContainerEnvValueSource(
-      secretKeyReves: Input.decodeList<
+      secretKeyReves: pulumi.Input.decodeList<
               GetWorkerPoolTemplateContainerEnvValueSourceSecretKeyRef>(
           map['secretKeyReves'],
           (value) =>

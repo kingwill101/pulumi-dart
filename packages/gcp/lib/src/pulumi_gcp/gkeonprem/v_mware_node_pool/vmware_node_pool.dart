@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_node_pool_config/vmware_node_pool_config.dart';
 import '../vmware_node_pool_node_pool_autoscaling/vmware_node_pool_node_pool_autoscaling.dart';
 import '../vmware_node_pool_status/vmware_node_pool_status.dart';
@@ -45,7 +45,7 @@ import 'vmware_node_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
 /// ```
-class VMwareNodePool extends CustomResource {
+class VMwareNodePool extends pulumi.CustomResource {
   /// Annotations on the node Pool.
   /// This field has the same restrictions as Kubernetes annotations.
   /// The total size of all keys and values combined is limited to 256k.
@@ -57,75 +57,76 @@ class VMwareNodePool extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// The node configuration of the node pool.
   /// Structure is documented below.
-  late final Output<VMwareNodePoolConfig> config;
+  late final pulumi.Output<VMwareNodePoolConfig> config;
 
   /// The time the cluster was created, in RFC3339 text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The time the cluster was deleted, in RFC3339 text format.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// The display name for the node pool.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The vmware node pool name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Node Pool autoscaling config for the node pool.
   /// Structure is documented below.
-  late final Output<VMwareNodePoolNodePoolAutoscaling?> nodePoolAutoscaling;
+  late final pulumi.Output<VMwareNodePoolNodePoolAutoscaling?>
+      nodePoolAutoscaling;
 
   /// Anthos version for the node pool. Defaults to the user cluster version.
-  late final Output<String?> onPremVersion;
+  late final pulumi.Output<String?> onPremVersion;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// If set, there are currently changes in flight to the node pool.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// (Output)
   /// The lifecycle state of the condition.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// ResourceStatus representing detailed cluster state.
   /// Structure is documented below.
-  late final Output<List<VMwareNodePoolStatus>> statuses;
+  late final pulumi.Output<List<VMwareNodePoolStatus>> statuses;
 
   /// The unique identifier of the node pool.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time the cluster was last updated, in RFC3339 text format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The cluster this node pool belongs to.
-  late final Output<String> vmwareCluster;
+  late final pulumi.Output<String> vmwareCluster;
 
   VMwareNodePool(
     String name, {
     VMwareNodePoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkeonprem/vMwareNodePool:VMwareNodePool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.config = registerOutput<VMwareNodePoolConfig>('config');

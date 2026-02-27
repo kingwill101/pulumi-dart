@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mesh_args.dart';
 
 /// Mesh represents a logical configuration grouping for workload to workload communication within a
@@ -48,57 +48,57 @@ import 'mesh_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/mesh:Mesh default {{location}}/{{name}}
 /// ```
-class Mesh extends CustomResource {
+class Mesh extends pulumi.CustomResource {
   /// Time the Mesh was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A free-text description of the resource. Max length 1024 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the
   /// specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to
   /// be redirected to this port regardless of its actual ip:port destination. If unset, a port
   /// '15001' is used as the interception port. This will is applicable only for sidecar proxy
   /// deployments.
-  late final Output<int?> interceptionPort;
+  late final pulumi.Output<int?> interceptionPort;
 
   /// Set of label tags associated with the Mesh resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// Short name of the Mesh resource to be created.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Server-defined URL of this resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Time the Mesh was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Mesh(
     String name, {
     MeshArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/mesh:Mesh',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

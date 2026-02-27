@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../generator_summarization_context_few_shot_example/generator_summarization_context_few_shot_example.dart';
 import '../generator_summarization_context_summarization_section/generator_summarization_context_summarization_section.dart';
 
@@ -31,7 +31,7 @@ class GeneratorSummarizationContext {
     final map = <String, dynamic>{};
     final fewShotExamplesValue = fewShotExamples;
     if (fewShotExamplesValue != null) {
-      map['fewShotExamples'] = Input.encodeList<
+      map['fewShotExamples'] = pulumi.Input.encodeList<
           GeneratorSummarizationContextFewShotExample,
           Map<String, dynamic>>(fewShotExamplesValue, (value) => value.toMap());
     }
@@ -41,7 +41,7 @@ class GeneratorSummarizationContext {
     }
     final summarizationSectionsValue = summarizationSections;
     if (summarizationSectionsValue != null) {
-      map['summarizationSections'] = Input.encodeList<
+      map['summarizationSections'] = pulumi.Input.encodeList<
               GeneratorSummarizationContextSummarizationSection,
               Map<String, dynamic>>(
           summarizationSectionsValue, (value) => value.toMap());
@@ -57,7 +57,8 @@ class GeneratorSummarizationContext {
     return GeneratorSummarizationContext(
       fewShotExamples: map['fewShotExamples'] == null
           ? null
-          : Input.decodeList<GeneratorSummarizationContextFewShotExample>(
+          : pulumi.Input.decodeList<
+                  GeneratorSummarizationContextFewShotExample>(
               map['fewShotExamples'],
               (value) => GeneratorSummarizationContextFewShotExample.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -66,7 +67,8 @@ class GeneratorSummarizationContext {
           : map['outputLanguageCode'] as String,
       summarizationSections: map['summarizationSections'] == null
           ? null
-          : Input.decodeList<GeneratorSummarizationContextSummarizationSection>(
+          : pulumi.Input.decodeList<
+                  GeneratorSummarizationContextSummarizationSection>(
               map['summarizationSections'],
               (value) =>
                   GeneratorSummarizationContextSummarizationSection.fromMap(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../database_instance_settings_ip_configuration_psc_config_psc_auto_connection/database_instance_settings_ip_configuration_psc_config_psc_auto_connection.dart';
 
 class DatabaseInstanceSettingsIpConfigurationPscConfig {
@@ -36,7 +36,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig {
     }
     final pscAutoConnectionsValue = pscAutoConnections;
     if (pscAutoConnectionsValue != null) {
-      map['pscAutoConnections'] = Input.encodeList<
+      map['pscAutoConnections'] = pulumi.Input.encodeList<
               DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection,
               Map<String, dynamic>>(
           pscAutoConnectionsValue, (value) => value.toMap());
@@ -59,7 +59,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig {
           : map['networkAttachmentUri'] as String,
       pscAutoConnections: map['pscAutoConnections'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection>(
               map['pscAutoConnections'],
               (value) =>

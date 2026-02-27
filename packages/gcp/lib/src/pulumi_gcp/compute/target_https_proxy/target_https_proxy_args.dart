@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TargetHttpsProxy.
 class TargetHttpsProxyArgs {
@@ -9,16 +9,16 @@ class TargetHttpsProxyArgs {
   /// For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
   /// sslCertificates and certificateManagerCertificates fields can not be defined together.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
-  final Input<List<String>>? certificateManagerCertificates;
+  final pulumi.Input<List<String>>? certificateManagerCertificates;
 
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
   /// For INTERNAL_MANAGED, use certificate_manager_certificates instead.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
-  final Input<String>? certificateMap;
+  final pulumi.Input<String>? certificateMap;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Specifies how long to keep a connection open, after completing a response,
   /// while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -29,7 +29,7 @@ class TargetHttpsProxyArgs {
   /// value is 600 seconds, the minimum allowed value is 5 seconds, and the
   /// maximum allowed value is 600 seconds. For Global external HTTP(S) load
   /// balancer (classic), this option is not available publicly.
-  final Input<int>? httpKeepAliveTimeoutSec;
+  final pulumi.Input<int>? httpKeepAliveTimeoutSec;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -38,15 +38,15 @@ class TargetHttpsProxyArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// This field only applies when the forwarding rule that references
   /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-  final Input<bool>? proxyBind;
+  final pulumi.Input<bool>? proxyBind;
 
   /// Specifies the QUIC override policy for this resource. This determines
   /// whether the load balancer will attempt to negotiate QUIC with clients
@@ -54,7 +54,7 @@ class TargetHttpsProxyArgs {
   /// specified, Google manages whether QUIC is used.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
-  final Input<String>? quicOverride;
+  final pulumi.Input<String>? quicOverride;
 
   /// A URL referring to a networksecurity.ServerTlsPolicy
   /// resource that describes how the proxy should authenticate inbound
@@ -69,28 +69,28 @@ class TargetHttpsProxyArgs {
   /// deleting or recreating a referenced ServerTlsPolicy resource, you will
   /// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
   /// within the ServerTlsPolicy resource to avoid this.
-  final Input<String>? serverTlsPolicy;
+  final pulumi.Input<String>? serverTlsPolicy;
 
   /// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
   /// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
   /// sslCertificates and certificateManagerCertificates can not be defined together.
-  final Input<List<String>>? sslCertificates;
+  final pulumi.Input<List<String>>? sslCertificates;
 
   /// A reference to the SslPolicy resource that will be associated with
   /// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
   /// resource will not have any SSL policy configured.
-  final Input<String>? sslPolicy;
+  final pulumi.Input<String>? sslPolicy;
 
   /// Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.
   /// Early Data allows a TLS resumption handshake to include the initial application payload
   /// (a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.
   /// This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3).
   /// Possible values are: `STRICT`, `PERMISSIVE`, `UNRESTRICTED`, `DISABLED`.
-  final Input<String>? tlsEarlyData;
+  final pulumi.Input<String>? tlsEarlyData;
 
   /// A reference to the UrlMap resource that defines the mapping from URL
   /// to the BackendService.
-  final Input<String> urlMap;
+  final pulumi.Input<String> urlMap;
 
   TargetHttpsProxyArgs({
     this.certificateManagerCertificates,
@@ -165,22 +165,25 @@ class TargetHttpsProxyArgs {
 
   factory TargetHttpsProxyArgs.fromMap(Map<String, dynamic> map) {
     return TargetHttpsProxyArgs(
-      certificateManagerCertificates: Input.asOptionalInput<List<String>>(
-          map['certificateManagerCertificates']),
-      certificateMap: Input.asOptionalInput<String>(map['certificateMap']),
-      description: Input.asOptionalInput<String>(map['description']),
+      certificateManagerCertificates:
+          pulumi.Input.asOptionalInput<List<String>>(
+              map['certificateManagerCertificates']),
+      certificateMap:
+          pulumi.Input.asOptionalInput<String>(map['certificateMap']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       httpKeepAliveTimeoutSec:
-          Input.asOptionalInput<int>(map['httpKeepAliveTimeoutSec']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      proxyBind: Input.asOptionalInput<bool>(map['proxyBind']),
-      quicOverride: Input.asOptionalInput<String>(map['quicOverride']),
-      serverTlsPolicy: Input.asOptionalInput<String>(map['serverTlsPolicy']),
+          pulumi.Input.asOptionalInput<int>(map['httpKeepAliveTimeoutSec']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      proxyBind: pulumi.Input.asOptionalInput<bool>(map['proxyBind']),
+      quicOverride: pulumi.Input.asOptionalInput<String>(map['quicOverride']),
+      serverTlsPolicy:
+          pulumi.Input.asOptionalInput<String>(map['serverTlsPolicy']),
       sslCertificates:
-          Input.asOptionalInput<List<String>>(map['sslCertificates']),
-      sslPolicy: Input.asOptionalInput<String>(map['sslPolicy']),
-      tlsEarlyData: Input.asOptionalInput<String>(map['tlsEarlyData']),
-      urlMap: Input.asInput<String>(map['urlMap']),
+          pulumi.Input.asOptionalInput<List<String>>(map['sslCertificates']),
+      sslPolicy: pulumi.Input.asOptionalInput<String>(map['sslPolicy']),
+      tlsEarlyData: pulumi.Input.asOptionalInput<String>(map['tlsEarlyData']),
+      urlMap: pulumi.Input.asInput<String>(map['urlMap']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../grpc_route_rule_match_header/grpc_route_rule_match_header.dart';
 import '../grpc_route_rule_match_method/grpc_route_rule_match_method.dart';
 
@@ -22,9 +22,8 @@ class GrpcRouteRuleMatch {
     final map = <String, dynamic>{};
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] =
-          Input.encodeList<GrpcRouteRuleMatchHeader, Map<String, dynamic>>(
-              headersValue, (value) => value.toMap());
+      map['headers'] = pulumi.Input.encodeList<GrpcRouteRuleMatchHeader,
+          Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
     final methodValue = method;
     if (methodValue != null) {
@@ -37,7 +36,7 @@ class GrpcRouteRuleMatch {
     return GrpcRouteRuleMatch(
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<GrpcRouteRuleMatchHeader>(
+          : pulumi.Input.decodeList<GrpcRouteRuleMatchHeader>(
               map['headers'],
               (value) => GrpcRouteRuleMatchHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),

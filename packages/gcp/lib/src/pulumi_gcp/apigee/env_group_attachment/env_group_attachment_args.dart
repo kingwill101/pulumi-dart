@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EnvGroupAttachment.
 class EnvGroupAttachmentArgs {
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-  final Input<String> envgroupId;
+  final pulumi.Input<String> envgroupId;
 
   /// The resource ID of the environment.
-  final Input<String> environment;
+  final pulumi.Input<String> environment;
 
   EnvGroupAttachmentArgs({
     required this.envgroupId,
@@ -25,8 +25,8 @@ class EnvGroupAttachmentArgs {
 
   factory EnvGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvGroupAttachmentArgs(
-      envgroupId: Input.asInput<String>(map['envgroupId']),
-      environment: Input.asInput<String>(map['environment']),
+      envgroupId: pulumi.Input.asInput<String>(map['envgroupId']),
+      environment: pulumi.Input.asInput<String>(map['environment']),
     );
   }
 }

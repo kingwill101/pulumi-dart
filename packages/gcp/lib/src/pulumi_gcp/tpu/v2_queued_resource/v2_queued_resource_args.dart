@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_queued_resource_tpu/v2_queued_resource_tpu.dart';
 
 /// The set of arguments for V2QueuedResource.
 class V2QueuedResourceArgs {
   /// The immutable name of the Queued Resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Defines a TPU resource.
   /// Structure is documented below.
-  final Input<V2QueuedResourceTpu>? tpu;
+  final pulumi.Input<V2QueuedResourceTpu>? tpu;
 
   /// The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   V2QueuedResourceArgs({
     this.name,
@@ -38,7 +38,7 @@ class V2QueuedResourceArgs {
     }
     final tpuValue = tpu;
     if (tpuValue != null) {
-      map['tpu'] = Input.mapOptionalInputValue<V2QueuedResourceTpu,
+      map['tpu'] = pulumi.Input.mapOptionalInputValue<V2QueuedResourceTpu,
           Map<String, dynamic>>(tpuValue, (value) => value.toMap());
     }
     final zoneValue = zone;
@@ -50,10 +50,10 @@ class V2QueuedResourceArgs {
 
   factory V2QueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      tpu: Input.asOptionalInput<V2QueuedResourceTpu>(map['tpu']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      tpu: pulumi.Input.asOptionalInput<V2QueuedResourceTpu>(map['tpu']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

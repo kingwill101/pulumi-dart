@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_autoscaling_setting_autoscaling_policy/get_cluster_autoscaling_setting_autoscaling_policy.dart';
 
 class GetClusterAutoscalingSetting {
@@ -41,7 +41,7 @@ class GetClusterAutoscalingSetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscalingPolicies'] = Input.encodeList<
+    map['autoscalingPolicies'] = pulumi.Input.encodeList<
         GetClusterAutoscalingSettingAutoscalingPolicy,
         Map<String, dynamic>>(autoscalingPolicies, (value) => value.toMap());
     map['coolDownPeriod'] = coolDownPeriod;
@@ -52,11 +52,11 @@ class GetClusterAutoscalingSetting {
 
   factory GetClusterAutoscalingSetting.fromMap(Map<String, dynamic> map) {
     return GetClusterAutoscalingSetting(
-      autoscalingPolicies:
-          Input.decodeList<GetClusterAutoscalingSettingAutoscalingPolicy>(
-              map['autoscalingPolicies'],
-              (value) => GetClusterAutoscalingSettingAutoscalingPolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      autoscalingPolicies: pulumi.Input.decodeList<
+              GetClusterAutoscalingSettingAutoscalingPolicy>(
+          map['autoscalingPolicies'],
+          (value) => GetClusterAutoscalingSettingAutoscalingPolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       coolDownPeriod: map['coolDownPeriod'] as String,
       maxClusterNodeCount: map['maxClusterNodeCount'] as int,
       minClusterNodeCount: map['minClusterNodeCount'] as int,

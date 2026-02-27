@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_keys_args.dart';
 import 'get_keys_result.dart';
 
@@ -14,13 +14,13 @@ import 'get_keys_result.dart';
 /// not exist in the DNS API.
 Future<GetKeysResult> getKeys(
   GetKeysArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:dns/getKeys:getKeys',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeysResult.fromMap(result);
 }

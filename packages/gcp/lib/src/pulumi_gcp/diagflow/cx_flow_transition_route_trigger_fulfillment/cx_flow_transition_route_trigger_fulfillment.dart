@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_flow_transition_route_trigger_fulfillment_conditional_case/cx_flow_transition_route_trigger_fulfillment_conditional_case.dart';
 import '../cx_flow_transition_route_trigger_fulfillment_message/cx_flow_transition_route_trigger_fulfillment_message.dart';
 import '../cx_flow_transition_route_trigger_fulfillment_set_parameter_action/cx_flow_transition_route_trigger_fulfillment_set_parameter_action.dart';
@@ -42,14 +42,14 @@ class CxFlowTransitionRouteTriggerFulfillment {
     final map = <String, dynamic>{};
     final conditionalCasesValue = conditionalCases;
     if (conditionalCasesValue != null) {
-      map['conditionalCases'] = Input.encodeList<
+      map['conditionalCases'] = pulumi.Input.encodeList<
               CxFlowTransitionRouteTriggerFulfillmentConditionalCase,
               Map<String, dynamic>>(
           conditionalCasesValue, (value) => value.toMap());
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] = Input.encodeList<
+      map['messages'] = pulumi.Input.encodeList<
           CxFlowTransitionRouteTriggerFulfillmentMessage,
           Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
@@ -59,7 +59,7 @@ class CxFlowTransitionRouteTriggerFulfillment {
     }
     final setParameterActionsValue = setParameterActions;
     if (setParameterActionsValue != null) {
-      map['setParameterActions'] = Input.encodeList<
+      map['setParameterActions'] = pulumi.Input.encodeList<
               CxFlowTransitionRouteTriggerFulfillmentSetParameterAction,
               Map<String, dynamic>>(
           setParameterActionsValue, (value) => value.toMap());
@@ -80,14 +80,15 @@ class CxFlowTransitionRouteTriggerFulfillment {
     return CxFlowTransitionRouteTriggerFulfillment(
       conditionalCases: map['conditionalCases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowTransitionRouteTriggerFulfillmentConditionalCase>(
               map['conditionalCases'],
               (value) => CxFlowTransitionRouteTriggerFulfillmentConditionalCase
                   .fromMap((value as Map).cast<String, dynamic>())),
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<CxFlowTransitionRouteTriggerFulfillmentMessage>(
+          : pulumi.Input.decodeList<
+                  CxFlowTransitionRouteTriggerFulfillmentMessage>(
               map['messages'],
               (value) => CxFlowTransitionRouteTriggerFulfillmentMessage.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -96,7 +97,7 @@ class CxFlowTransitionRouteTriggerFulfillment {
           : map['returnPartialResponses'] as bool,
       setParameterActions: map['setParameterActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowTransitionRouteTriggerFulfillmentSetParameterAction>(
               map['setParameterActions'],
               (value) =>

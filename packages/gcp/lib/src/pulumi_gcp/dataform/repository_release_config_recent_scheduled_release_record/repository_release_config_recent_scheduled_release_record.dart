@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_release_config_recent_scheduled_release_record_error_status/repository_release_config_recent_scheduled_release_record_error_status.dart';
 
 class RepositoryReleaseConfigRecentScheduledReleaseRecord {
@@ -32,7 +32,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord {
     }
     final errorStatusesValue = errorStatuses;
     if (errorStatusesValue != null) {
-      map['errorStatuses'] = Input.encodeList<
+      map['errorStatuses'] = pulumi.Input.encodeList<
           RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus,
           Map<String, dynamic>>(errorStatusesValue, (value) => value.toMap());
     }
@@ -51,7 +51,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord {
           : map['compilationResult'] as String,
       errorStatuses: map['errorStatuses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus>(
               map['errorStatuses'],
               (value) =>

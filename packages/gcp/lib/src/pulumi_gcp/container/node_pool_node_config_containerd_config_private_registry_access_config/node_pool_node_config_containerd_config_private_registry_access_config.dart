@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_pool_node_config_containerd_config_private_registry_access_config_certificate_authority_domain_config/node_pool_node_config_containerd_config_private_registry_access_config_certificate_authority_domain_config.dart';
 
 class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
@@ -22,7 +22,7 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
     final certificateAuthorityDomainConfigsValue =
         certificateAuthorityDomainConfigs;
     if (certificateAuthorityDomainConfigsValue != null) {
-      map['certificateAuthorityDomainConfigs'] = Input.encodeList<
+      map['certificateAuthorityDomainConfigs'] = pulumi.Input.encodeList<
               NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig,
               Map<String, dynamic>>(
           certificateAuthorityDomainConfigsValue, (value) => value.toMap());
@@ -38,7 +38,7 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
                   'certificateAuthorityDomainConfigs'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>(
               map['certificateAuthorityDomainConfigs'],
               (value) =>

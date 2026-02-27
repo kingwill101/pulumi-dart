@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_kmscrypto_key_args.dart';
 import 'get_kmscrypto_key_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_kmscrypto_key_result.dart';
 /// Google Cloud KMS KeyRing.
 Future<GetKMSCryptoKeyResult> getKMSCryptoKey(
   GetKMSCryptoKeyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:kms/getKMSCryptoKey:getKMSCryptoKey',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKMSCryptoKeyResult.fromMap(result);
 }

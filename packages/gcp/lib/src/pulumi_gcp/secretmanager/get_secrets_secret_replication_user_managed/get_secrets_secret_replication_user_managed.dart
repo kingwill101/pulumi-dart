@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_secrets_secret_replication_user_managed_replica/get_secrets_secret_replication_user_managed_replica.dart';
 
 class GetSecretsSecretReplicationUserManaged {
@@ -14,7 +14,7 @@ class GetSecretsSecretReplicationUserManaged {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['replicas'] = Input.encodeList<
+    map['replicas'] = pulumi.Input.encodeList<
         GetSecretsSecretReplicationUserManagedReplica,
         Map<String, dynamic>>(replicas, (value) => value.toMap());
     return map;
@@ -23,7 +23,8 @@ class GetSecretsSecretReplicationUserManaged {
   factory GetSecretsSecretReplicationUserManaged.fromMap(
       Map<String, dynamic> map) {
     return GetSecretsSecretReplicationUserManaged(
-      replicas: Input.decodeList<GetSecretsSecretReplicationUserManagedReplica>(
+      replicas: pulumi.Input.decodeList<
+              GetSecretsSecretReplicationUserManagedReplica>(
           map['replicas'],
           (value) => GetSecretsSecretReplicationUserManagedReplica.fromMap(
               (value as Map).cast<String, dynamic>())),

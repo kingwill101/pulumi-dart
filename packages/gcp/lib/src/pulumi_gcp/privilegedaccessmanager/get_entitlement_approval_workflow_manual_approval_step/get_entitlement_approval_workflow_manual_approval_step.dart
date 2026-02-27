@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_entitlement_approval_workflow_manual_approval_step_approver/get_entitlement_approval_workflow_manual_approval_step_approver.dart';
 
 class GetEntitlementApprovalWorkflowManualApprovalStep {
@@ -31,7 +31,7 @@ class GetEntitlementApprovalWorkflowManualApprovalStep {
     final map = <String, dynamic>{};
     map['approvalsNeeded'] = approvalsNeeded;
     map['approverEmailRecipients'] = approverEmailRecipients;
-    map['approvers'] = Input.encodeList<
+    map['approvers'] = pulumi.Input.encodeList<
         GetEntitlementApprovalWorkflowManualApprovalStepApprover,
         Map<String, dynamic>>(approvers, (value) => value.toMap());
     map['id'] = id;
@@ -44,7 +44,7 @@ class GetEntitlementApprovalWorkflowManualApprovalStep {
       approvalsNeeded: map['approvalsNeeded'] as int,
       approverEmailRecipients:
           (map['approverEmailRecipients'] as List).cast<String>(),
-      approvers: Input.decodeList<
+      approvers: pulumi.Input.decodeList<
               GetEntitlementApprovalWorkflowManualApprovalStepApprover>(
           map['approvers'],
           (value) =>

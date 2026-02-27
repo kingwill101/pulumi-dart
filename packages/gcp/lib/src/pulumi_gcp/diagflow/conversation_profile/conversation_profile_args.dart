@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../conversation_profile_automated_agent_config/conversation_profile_automated_agent_config.dart';
 import '../conversation_profile_human_agent_assistant_config/conversation_profile_human_agent_assistant_config.dart';
 import '../conversation_profile_human_agent_handoff_config/conversation_profile_human_agent_handoff_config.dart';
@@ -15,64 +15,65 @@ import '../conversation_profile_tts_config/conversation_profile_tts_config.dart'
 class ConversationProfileArgs {
   /// Configuration for an automated agent to use with this profile
   /// Structure is documented below.
-  final Input<ConversationProfileAutomatedAgentConfig>? automatedAgentConfig;
+  final pulumi.Input<ConversationProfileAutomatedAgentConfig>?
+      automatedAgentConfig;
 
   /// Required. Human readable name for this profile. Max length 1024 bytes.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Configuration for connecting to a live agent
   /// Structure is documented below.
-  final Input<ConversationProfileHumanAgentAssistantConfig>?
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfig>?
       humanAgentAssistantConfig;
 
   /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
   /// Structure is documented below.
-  final Input<ConversationProfileHumanAgentHandoffConfig>?
+  final pulumi.Input<ConversationProfileHumanAgentHandoffConfig>?
       humanAgentHandoffConfig;
 
   /// Language code for the conversation profile. This should be a BCP-47 language tag.
-  final Input<String>? languageCode;
+  final pulumi.Input<String>? languageCode;
 
   /// desc
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Defines logging behavior for conversation lifecycle events.
   /// Structure is documented below.
-  final Input<ConversationProfileLoggingConfig>? loggingConfig;
+  final pulumi.Input<ConversationProfileLoggingConfig>? loggingConfig;
 
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
   /// Structure is documented below.
-  final Input<ConversationProfileNewMessageEventNotificationConfig>?
+  final pulumi.Input<ConversationProfileNewMessageEventNotificationConfig>?
       newMessageEventNotificationConfig;
 
   /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
   /// Structure is documented below.
-  final Input<ConversationProfileNewRecognitionResultNotificationConfig>?
+  final pulumi.Input<ConversationProfileNewRecognitionResultNotificationConfig>?
       newRecognitionResultNotificationConfig;
 
   /// Pub/Sub topic on which to publish new agent assistant events.
   /// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
   /// Structure is documented below.
-  final Input<ConversationProfileNotificationConfig>? notificationConfig;
+  final pulumi.Input<ConversationProfileNotificationConfig>? notificationConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Name of the CX SecuritySettings reference for the agent.
-  final Input<String>? securitySettings;
+  final pulumi.Input<String>? securitySettings;
 
   /// Settings for speech transcription.
   /// Structure is documented below.
-  final Input<ConversationProfileSttConfig>? sttConfig;
+  final pulumi.Input<ConversationProfileSttConfig>? sttConfig;
 
   /// The time zone of this conversational profile.
-  final Input<String>? timeZone;
+  final pulumi.Input<String>? timeZone;
 
   /// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
   /// Structure is documented below.
-  final Input<ConversationProfileTtsConfig>? ttsConfig;
+  final pulumi.Input<ConversationProfileTtsConfig>? ttsConfig;
 
   ConversationProfileArgs({
     this.automatedAgentConfig,
@@ -96,21 +97,21 @@ class ConversationProfileArgs {
     final map = <String, dynamic>{};
     final automatedAgentConfigValue = automatedAgentConfig;
     if (automatedAgentConfigValue != null) {
-      map['automatedAgentConfig'] = Input.mapOptionalInputValue<
+      map['automatedAgentConfig'] = pulumi.Input.mapOptionalInputValue<
               ConversationProfileAutomatedAgentConfig, Map<String, dynamic>>(
           automatedAgentConfigValue, (value) => value.toMap());
     }
     map['displayName'] = displayName;
     final humanAgentAssistantConfigValue = humanAgentAssistantConfig;
     if (humanAgentAssistantConfigValue != null) {
-      map['humanAgentAssistantConfig'] = Input.mapOptionalInputValue<
+      map['humanAgentAssistantConfig'] = pulumi.Input.mapOptionalInputValue<
               ConversationProfileHumanAgentAssistantConfig,
               Map<String, dynamic>>(
           humanAgentAssistantConfigValue, (value) => value.toMap());
     }
     final humanAgentHandoffConfigValue = humanAgentHandoffConfig;
     if (humanAgentHandoffConfigValue != null) {
-      map['humanAgentHandoffConfig'] = Input.mapOptionalInputValue<
+      map['humanAgentHandoffConfig'] = pulumi.Input.mapOptionalInputValue<
               ConversationProfileHumanAgentHandoffConfig, Map<String, dynamic>>(
           humanAgentHandoffConfigValue, (value) => value.toMap());
     }
@@ -121,23 +122,24 @@ class ConversationProfileArgs {
     map['location'] = location;
     final loggingConfigValue = loggingConfig;
     if (loggingConfigValue != null) {
-      map['loggingConfig'] = Input.mapOptionalInputValue<
+      map['loggingConfig'] = pulumi.Input.mapOptionalInputValue<
           ConversationProfileLoggingConfig,
           Map<String, dynamic>>(loggingConfigValue, (value) => value.toMap());
     }
     final newMessageEventNotificationConfigValue =
         newMessageEventNotificationConfig;
     if (newMessageEventNotificationConfigValue != null) {
-      map['newMessageEventNotificationConfig'] = Input.mapOptionalInputValue<
-              ConversationProfileNewMessageEventNotificationConfig,
-              Map<String, dynamic>>(
-          newMessageEventNotificationConfigValue, (value) => value.toMap());
+      map['newMessageEventNotificationConfig'] =
+          pulumi.Input.mapOptionalInputValue<
+                  ConversationProfileNewMessageEventNotificationConfig,
+                  Map<String, dynamic>>(
+              newMessageEventNotificationConfigValue, (value) => value.toMap());
     }
     final newRecognitionResultNotificationConfigValue =
         newRecognitionResultNotificationConfig;
     if (newRecognitionResultNotificationConfigValue != null) {
       map['newRecognitionResultNotificationConfig'] =
-          Input.mapOptionalInputValue<
+          pulumi.Input.mapOptionalInputValue<
                   ConversationProfileNewRecognitionResultNotificationConfig,
                   Map<String, dynamic>>(
               newRecognitionResultNotificationConfigValue,
@@ -145,7 +147,7 @@ class ConversationProfileArgs {
     }
     final notificationConfigValue = notificationConfig;
     if (notificationConfigValue != null) {
-      map['notificationConfig'] = Input.mapOptionalInputValue<
+      map['notificationConfig'] = pulumi.Input.mapOptionalInputValue<
               ConversationProfileNotificationConfig, Map<String, dynamic>>(
           notificationConfigValue, (value) => value.toMap());
     }
@@ -159,7 +161,7 @@ class ConversationProfileArgs {
     }
     final sttConfigValue = sttConfig;
     if (sttConfigValue != null) {
-      map['sttConfig'] = Input.mapOptionalInputValue<
+      map['sttConfig'] = pulumi.Input.mapOptionalInputValue<
           ConversationProfileSttConfig,
           Map<String, dynamic>>(sttConfigValue, (value) => value.toMap());
     }
@@ -169,7 +171,7 @@ class ConversationProfileArgs {
     }
     final ttsConfigValue = ttsConfig;
     if (ttsConfigValue != null) {
-      map['ttsConfig'] = Input.mapOptionalInputValue<
+      map['ttsConfig'] = pulumi.Input.mapOptionalInputValue<
           ConversationProfileTtsConfig,
           Map<String, dynamic>>(ttsConfigValue, (value) => value.toMap());
     }
@@ -179,35 +181,37 @@ class ConversationProfileArgs {
   factory ConversationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConversationProfileArgs(
       automatedAgentConfig:
-          Input.asOptionalInput<ConversationProfileAutomatedAgentConfig>(
+          pulumi.Input.asOptionalInput<ConversationProfileAutomatedAgentConfig>(
               map['automatedAgentConfig']),
-      displayName: Input.asInput<String>(map['displayName']),
-      humanAgentAssistantConfig:
-          Input.asOptionalInput<ConversationProfileHumanAgentAssistantConfig>(
-              map['humanAgentAssistantConfig']),
-      humanAgentHandoffConfig:
-          Input.asOptionalInput<ConversationProfileHumanAgentHandoffConfig>(
-              map['humanAgentHandoffConfig']),
-      languageCode: Input.asOptionalInput<String>(map['languageCode']),
-      location: Input.asInput<String>(map['location']),
-      loggingConfig: Input.asOptionalInput<ConversationProfileLoggingConfig>(
-          map['loggingConfig']),
-      newMessageEventNotificationConfig: Input.asOptionalInput<
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      humanAgentAssistantConfig: pulumi.Input.asOptionalInput<
+              ConversationProfileHumanAgentAssistantConfig>(
+          map['humanAgentAssistantConfig']),
+      humanAgentHandoffConfig: pulumi.Input.asOptionalInput<
+              ConversationProfileHumanAgentHandoffConfig>(
+          map['humanAgentHandoffConfig']),
+      languageCode: pulumi.Input.asOptionalInput<String>(map['languageCode']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      loggingConfig:
+          pulumi.Input.asOptionalInput<ConversationProfileLoggingConfig>(
+              map['loggingConfig']),
+      newMessageEventNotificationConfig: pulumi.Input.asOptionalInput<
               ConversationProfileNewMessageEventNotificationConfig>(
           map['newMessageEventNotificationConfig']),
-      newRecognitionResultNotificationConfig: Input.asOptionalInput<
+      newRecognitionResultNotificationConfig: pulumi.Input.asOptionalInput<
               ConversationProfileNewRecognitionResultNotificationConfig>(
           map['newRecognitionResultNotificationConfig']),
       notificationConfig:
-          Input.asOptionalInput<ConversationProfileNotificationConfig>(
+          pulumi.Input.asOptionalInput<ConversationProfileNotificationConfig>(
               map['notificationConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
-      securitySettings: Input.asOptionalInput<String>(map['securitySettings']),
-      sttConfig:
-          Input.asOptionalInput<ConversationProfileSttConfig>(map['sttConfig']),
-      timeZone: Input.asOptionalInput<String>(map['timeZone']),
-      ttsConfig:
-          Input.asOptionalInput<ConversationProfileTtsConfig>(map['ttsConfig']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      securitySettings:
+          pulumi.Input.asOptionalInput<String>(map['securitySettings']),
+      sttConfig: pulumi.Input.asOptionalInput<ConversationProfileSttConfig>(
+          map['sttConfig']),
+      timeZone: pulumi.Input.asOptionalInput<String>(map['timeZone']),
+      ttsConfig: pulumi.Input.asOptionalInput<ConversationProfileTtsConfig>(
+          map['ttsConfig']),
     );
   }
 }

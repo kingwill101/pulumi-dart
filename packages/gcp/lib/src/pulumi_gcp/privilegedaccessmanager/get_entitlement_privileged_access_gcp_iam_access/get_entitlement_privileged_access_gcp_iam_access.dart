@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_entitlement_privileged_access_gcp_iam_access_role_binding/get_entitlement_privileged_access_gcp_iam_access_role_binding.dart';
 
 class GetEntitlementPrivilegedAccessGcpIamAccess {
@@ -24,7 +24,7 @@ class GetEntitlementPrivilegedAccessGcpIamAccess {
     final map = <String, dynamic>{};
     map['resource'] = resource;
     map['resourceType'] = resourceType;
-    map['roleBindings'] = Input.encodeList<
+    map['roleBindings'] = pulumi.Input.encodeList<
         GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding,
         Map<String, dynamic>>(roleBindings, (value) => value.toMap());
     return map;
@@ -35,7 +35,7 @@ class GetEntitlementPrivilegedAccessGcpIamAccess {
     return GetEntitlementPrivilegedAccessGcpIamAccess(
       resource: map['resource'] as String,
       resourceType: map['resourceType'] as String,
-      roleBindings: Input.decodeList<
+      roleBindings: pulumi.Input.decodeList<
               GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding>(
           map['roleBindings'],
           (value) =>

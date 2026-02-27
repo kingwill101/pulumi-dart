@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../os_policy_assignment_instance_filter/os_policy_assignment_instance_filter.dart';
 import '../os_policy_assignment_os_policy/os_policy_assignment_os_policy.dart';
 import '../os_policy_assignment_rollout/os_policy_assignment_rollout.dart';
@@ -47,79 +47,79 @@ import 'os_policy_assignment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default {{location}}/{{name}}
 /// ```
-class OsPolicyAssignment extends CustomResource {
+class OsPolicyAssignment extends pulumi.CustomResource {
   /// Output only. Indicates that this revision has been successfully
   /// rolled out in this zone and new VMs will be assigned OS policies from this
   /// revision. For a given OS policy assignment, there is only one revision with
   /// a value of `true` for this field.
-  late final Output<bool> baseline;
+  late final pulumi.Output<bool> baseline;
 
   /// Output only. Indicates that this revision deletes the OS policy
   /// assignment.
-  late final Output<bool> deleted;
+  late final pulumi.Output<bool> deleted;
 
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The etag for this OS policy assignment. If this is provided on
   /// update, it must match the server's etag.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Filter to select VMs. Structure is
   /// documented below.
-  late final Output<OsPolicyAssignmentInstanceFilter> instanceFilter;
+  late final pulumi.Output<OsPolicyAssignmentInstanceFilter> instanceFilter;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Resource name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// List of OS policies to be applied to the VMs.
   /// Structure is documented below.
-  late final Output<List<OsPolicyAssignmentOsPolicy>> osPolicies;
+  late final pulumi.Output<List<OsPolicyAssignmentOsPolicy>> osPolicies;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. Indicates that reconciliation is in progress
   /// for the revision. This value is `true` when the `rollout_state` is one of:
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Output only. The timestamp that the revision was
   /// created.
-  late final Output<String> revisionCreateTime;
+  late final pulumi.Output<String> revisionCreateTime;
 
   /// Output only. The assignment revision ID A new revision is
   /// committed whenever a rollout is triggered for a OS policy assignment
-  late final Output<String> revisionId;
+  late final pulumi.Output<String> revisionId;
 
   /// Rollout to deploy the OS policy assignment. A rollout
   /// is triggered in the following situations: 1) OSPolicyAssignment is created.
   /// 2) OSPolicyAssignment is updated and the update contains changes to one of
   /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
   /// is deleted. Structure is documented below.
-  late final Output<OsPolicyAssignmentRollout> rollout;
+  late final pulumi.Output<OsPolicyAssignmentRollout> rollout;
 
   /// Output only. OS policy assignment rollout state
-  late final Output<String> rolloutState;
+  late final pulumi.Output<String> rolloutState;
 
   /// Set to true to skip awaiting rollout during resource creation and update.
-  late final Output<bool?> skipAwaitRollout;
+  late final pulumi.Output<bool?> skipAwaitRollout;
 
   /// Output only. Server generated unique id for the OS policy assignment
   /// resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   OsPolicyAssignment(
     String name, {
     OsPolicyAssignmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:osconfig/osPolicyAssignment:OsPolicyAssignment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.baseline = registerOutput<bool>('baseline');
     this.deleted = registerOutput<bool>('deleted');

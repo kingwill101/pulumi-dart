@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_database_instance_setting_connection_pool_config_flag/get_database_instance_setting_connection_pool_config_flag.dart';
 
 class GetDatabaseInstanceSettingConnectionPoolConfig {
@@ -18,7 +18,7 @@ class GetDatabaseInstanceSettingConnectionPoolConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['connectionPoolingEnabled'] = connectionPoolingEnabled;
-    map['flags'] = Input.encodeList<
+    map['flags'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingConnectionPoolConfigFlag,
         Map<String, dynamic>>(flags, (value) => value.toMap());
     return map;
@@ -28,12 +28,11 @@ class GetDatabaseInstanceSettingConnectionPoolConfig {
       Map<String, dynamic> map) {
     return GetDatabaseInstanceSettingConnectionPoolConfig(
       connectionPoolingEnabled: map['connectionPoolingEnabled'] as bool,
-      flags:
-          Input.decodeList<GetDatabaseInstanceSettingConnectionPoolConfigFlag>(
-              map['flags'],
-              (value) =>
-                  GetDatabaseInstanceSettingConnectionPoolConfigFlag.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      flags: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingConnectionPoolConfigFlag>(
+          map['flags'],
+          (value) => GetDatabaseInstanceSettingConnectionPoolConfigFlag.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_policy_orchestrator_for_folder_orchestration_state_current_iteration_state/v2_policy_orchestrator_for_folder_orchestration_state_current_iteration_state.dart';
 import '../v2_policy_orchestrator_for_folder_orchestration_state_previous_iteration_state/v2_policy_orchestrator_for_folder_orchestration_state_previous_iteration_state.dart';
 
@@ -28,14 +28,14 @@ class V2PolicyOrchestratorForFolderOrchestrationState {
     final map = <String, dynamic>{};
     final currentIterationStatesValue = currentIterationStates;
     if (currentIterationStatesValue != null) {
-      map['currentIterationStates'] = Input.encodeList<
+      map['currentIterationStates'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState,
           Map<String,
               dynamic>>(currentIterationStatesValue, (value) => value.toMap());
     }
     final previousIterationStatesValue = previousIterationStates;
     if (previousIterationStatesValue != null) {
-      map['previousIterationStates'] = Input.encodeList<
+      map['previousIterationStates'] = pulumi.Input.encodeList<
           V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState,
           Map<String,
               dynamic>>(previousIterationStatesValue, (value) => value.toMap());
@@ -48,7 +48,7 @@ class V2PolicyOrchestratorForFolderOrchestrationState {
     return V2PolicyOrchestratorForFolderOrchestrationState(
       currentIterationStates: map['currentIterationStates'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState>(
               map['currentIterationStates'],
               (value) =>
@@ -56,7 +56,7 @@ class V2PolicyOrchestratorForFolderOrchestrationState {
                       .fromMap((value as Map).cast<String, dynamic>())),
       previousIterationStates: map['previousIterationStates'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState>(
               map['previousIterationStates'],
               (value) =>

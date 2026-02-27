@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_access_label_args.dart';
 
 /// A DataAccessLabel is a label on events to define user access to data.
@@ -40,58 +40,58 @@ import 'data_access_label_args.dart';
 /// ```sh
 /// $ pulumi import gcp:chronicle/dataAccessLabel:DataAccessLabel default {{location}}/{{instance}}/{{data_access_label_id}}
 /// ```
-class DataAccessLabel extends CustomResource {
+class DataAccessLabel extends pulumi.CustomResource {
   /// Output only. The user who created the data access label.
-  late final Output<String> author;
+  late final pulumi.Output<String> author;
 
   /// Output only. The time at which the data access label was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Required. The ID to use for the data access label, which will become the label's
   /// display name and the final component of the label's resource name. The
   /// maximum number of characters should be 63. Regex pattern is as per AIP:
   /// https://google.aip.dev/122#resource-id-segments
-  late final Output<String> dataAccessLabelId;
+  late final pulumi.Output<String> dataAccessLabelId;
 
   /// Optional. A description of the data access label for a human reader.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// Output only. The user who last updated the data access label.
-  late final Output<String> lastEditor;
+  late final pulumi.Output<String> lastEditor;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique resource name of the data access label. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/dataAccessLabels/{data_access_label_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A UDM query over event data.
-  late final Output<String> udmQuery;
+  late final pulumi.Output<String> udmQuery;
 
   /// Output only. The time at which the data access label was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DataAccessLabel(
     String name, {
     DataAccessLabelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:chronicle/dataAccessLabel:DataAccessLabel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.author = registerOutput<String>('author');
     this.createTime = registerOutput<String>('createTime');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_config_autoscaling_config/cluster_cluster_config_autoscaling_config.dart';
 import '../cluster_cluster_config_auxiliary_node_group/cluster_cluster_config_auxiliary_node_group.dart';
 import '../cluster_cluster_config_dataproc_metric_config/cluster_cluster_config_dataproc_metric_config.dart';
@@ -129,7 +129,7 @@ class ClusterClusterConfig {
     }
     final auxiliaryNodeGroupsValue = auxiliaryNodeGroups;
     if (auxiliaryNodeGroupsValue != null) {
-      map['auxiliaryNodeGroups'] = Input.encodeList<
+      map['auxiliaryNodeGroups'] = pulumi.Input.encodeList<
               ClusterClusterConfigAuxiliaryNodeGroup, Map<String, dynamic>>(
           auxiliaryNodeGroupsValue, (value) => value.toMap());
     }
@@ -159,7 +159,7 @@ class ClusterClusterConfig {
     }
     final initializationActionsValue = initializationActions;
     if (initializationActionsValue != null) {
-      map['initializationActions'] = Input.encodeList<
+      map['initializationActions'] = pulumi.Input.encodeList<
               ClusterClusterConfigInitializationAction, Map<String, dynamic>>(
           initializationActionsValue, (value) => value.toMap());
     }
@@ -210,7 +210,7 @@ class ClusterClusterConfig {
               (map['autoscalingConfig'] as Map).cast<String, dynamic>()),
       auxiliaryNodeGroups: map['auxiliaryNodeGroups'] == null
           ? null
-          : Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroup>(
+          : pulumi.Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroup>(
               map['auxiliaryNodeGroups'],
               (value) => ClusterClusterConfigAuxiliaryNodeGroup.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -235,7 +235,7 @@ class ClusterClusterConfig {
               (map['gceClusterConfig'] as Map).cast<String, dynamic>()),
       initializationActions: map['initializationActions'] == null
           ? null
-          : Input.decodeList<ClusterClusterConfigInitializationAction>(
+          : pulumi.Input.decodeList<ClusterClusterConfigInitializationAction>(
               map['initializationActions'],
               (value) => ClusterClusterConfigInitializationAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

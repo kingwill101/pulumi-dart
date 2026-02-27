@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_buckets_args.dart';
 import 'get_buckets_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_buckets_result.dart';
 /// Example GCS buckets.
 Future<GetBucketsResult> getBuckets(
   GetBucketsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:storage/getBuckets:getBuckets',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketsResult.fromMap(result);
 }

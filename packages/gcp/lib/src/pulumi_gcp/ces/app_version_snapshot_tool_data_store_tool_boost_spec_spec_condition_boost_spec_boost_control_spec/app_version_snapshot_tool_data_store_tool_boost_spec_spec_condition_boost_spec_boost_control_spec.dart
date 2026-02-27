@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_data_store_tool_boost_spec_spec_condition_boost_spec_boost_control_spec_control_point/app_version_snapshot_tool_data_store_tool_boost_spec_spec_condition_boost_spec_boost_control_spec_control_point.dart';
 
 class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec {
@@ -51,7 +51,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
     }
     final controlPointsValue = controlPoints;
     if (controlPointsValue != null) {
-      map['controlPoints'] = Input.encodeList<
+      map['controlPoints'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint,
           Map<String, dynamic>>(controlPointsValue, (value) => value.toMap());
     }
@@ -73,7 +73,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
           map['attributeType'] == null ? null : map['attributeType'] as String,
       controlPoints: map['controlPoints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>(
               map['controlPoints'],
               (value) =>

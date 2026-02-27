@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../conversation_profile_human_agent_assistant_config_human_agent_suggestion_config_feature_config/conversation_profile_human_agent_assistant_config_human_agent_suggestion_config_feature_config.dart';
 
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig {
@@ -37,7 +37,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig {
     }
     final featureConfigsValue = featureConfigs;
     if (featureConfigsValue != null) {
-      map['featureConfigs'] = Input.encodeList<
+      map['featureConfigs'] = pulumi.Input.encodeList<
           ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig,
           Map<String, dynamic>>(featureConfigsValue, (value) => value.toMap());
     }
@@ -61,7 +61,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig {
               : map['disableHighLatencyFeaturesSyncDelivery'] as bool,
       featureConfigs: map['featureConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig>(
               map['featureConfigs'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lite_topic_partition_config/lite_topic_partition_config.dart';
 import '../lite_topic_reservation_config/lite_topic_reservation_config.dart';
 import '../lite_topic_retention_config/lite_topic_retention_config.dart';
@@ -8,29 +8,29 @@ import '../lite_topic_retention_config/lite_topic_retention_config.dart';
 /// The set of arguments for LiteTopic.
 class LiteTopicArgs {
   /// Name of the topic.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The settings for this topic's partitions.
   /// Structure is documented below.
-  final Input<LiteTopicPartitionConfig>? partitionConfig;
+  final pulumi.Input<LiteTopicPartitionConfig>? partitionConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region of the pubsub lite topic.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The settings for this topic's Reservation usage.
   /// Structure is documented below.
-  final Input<LiteTopicReservationConfig>? reservationConfig;
+  final pulumi.Input<LiteTopicReservationConfig>? reservationConfig;
 
   /// The settings for a topic's message retention.
   /// Structure is documented below.
-  final Input<LiteTopicRetentionConfig>? retentionConfig;
+  final pulumi.Input<LiteTopicRetentionConfig>? retentionConfig;
 
   /// The zone of the pubsub lite topic.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   LiteTopicArgs({
     this.name,
@@ -50,7 +50,7 @@ class LiteTopicArgs {
     }
     final partitionConfigValue = partitionConfig;
     if (partitionConfigValue != null) {
-      map['partitionConfig'] = Input.mapOptionalInputValue<
+      map['partitionConfig'] = pulumi.Input.mapOptionalInputValue<
           LiteTopicPartitionConfig,
           Map<String, dynamic>>(partitionConfigValue, (value) => value.toMap());
     }
@@ -64,13 +64,13 @@ class LiteTopicArgs {
     }
     final reservationConfigValue = reservationConfig;
     if (reservationConfigValue != null) {
-      map['reservationConfig'] = Input.mapOptionalInputValue<
+      map['reservationConfig'] = pulumi.Input.mapOptionalInputValue<
               LiteTopicReservationConfig, Map<String, dynamic>>(
           reservationConfigValue, (value) => value.toMap());
     }
     final retentionConfigValue = retentionConfig;
     if (retentionConfigValue != null) {
-      map['retentionConfig'] = Input.mapOptionalInputValue<
+      map['retentionConfig'] = pulumi.Input.mapOptionalInputValue<
           LiteTopicRetentionConfig,
           Map<String, dynamic>>(retentionConfigValue, (value) => value.toMap());
     }
@@ -83,16 +83,17 @@ class LiteTopicArgs {
 
   factory LiteTopicArgs.fromMap(Map<String, dynamic> map) {
     return LiteTopicArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      partitionConfig: Input.asOptionalInput<LiteTopicPartitionConfig>(
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      partitionConfig: pulumi.Input.asOptionalInput<LiteTopicPartitionConfig>(
           map['partitionConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      reservationConfig: Input.asOptionalInput<LiteTopicReservationConfig>(
-          map['reservationConfig']),
-      retentionConfig: Input.asOptionalInput<LiteTopicRetentionConfig>(
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      reservationConfig:
+          pulumi.Input.asOptionalInput<LiteTopicReservationConfig>(
+              map['reservationConfig']),
+      retentionConfig: pulumi.Input.asOptionalInput<LiteTopicRetentionConfig>(
           map['retentionConfig']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

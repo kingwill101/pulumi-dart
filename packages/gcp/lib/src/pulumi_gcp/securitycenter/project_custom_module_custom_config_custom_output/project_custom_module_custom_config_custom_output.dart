@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_custom_module_custom_config_custom_output_property/project_custom_module_custom_config_custom_output_property.dart';
 
 class ProjectCustomModuleCustomConfigCustomOutput {
@@ -16,7 +16,7 @@ class ProjectCustomModuleCustomConfigCustomOutput {
     final map = <String, dynamic>{};
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.encodeList<
+      map['properties'] = pulumi.Input.encodeList<
           ProjectCustomModuleCustomConfigCustomOutputProperty,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class ProjectCustomModuleCustomConfigCustomOutput {
     return ProjectCustomModuleCustomConfigCustomOutput(
       properties: map['properties'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ProjectCustomModuleCustomConfigCustomOutputProperty>(
               map['properties'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_gce_setup_accelerator_config/instance_gce_setup_accelerator_config.dart';
 import '../instance_gce_setup_boot_disk/instance_gce_setup_boot_disk.dart';
 import '../instance_gce_setup_confidential_instance_config/instance_gce_setup_confidential_instance_config.dart';
@@ -97,7 +97,7 @@ class InstanceGceSetup {
     final map = <String, dynamic>{};
     final acceleratorConfigsValue = acceleratorConfigs;
     if (acceleratorConfigsValue != null) {
-      map['acceleratorConfigs'] = Input.encodeList<
+      map['acceleratorConfigs'] = pulumi.Input.encodeList<
               InstanceGceSetupAcceleratorConfig, Map<String, dynamic>>(
           acceleratorConfigsValue, (value) => value.toMap());
     }
@@ -136,7 +136,7 @@ class InstanceGceSetup {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.encodeList<
+      map['networkInterfaces'] = pulumi.Input.encodeList<
               InstanceGceSetupNetworkInterface, Map<String, dynamic>>(
           networkInterfacesValue, (value) => value.toMap());
     }
@@ -146,7 +146,8 @@ class InstanceGceSetup {
     }
     final serviceAccountsValue = serviceAccounts;
     if (serviceAccountsValue != null) {
-      map['serviceAccounts'] = Input.encodeList<InstanceGceSetupServiceAccount,
+      map['serviceAccounts'] = pulumi.Input.encodeList<
+          InstanceGceSetupServiceAccount,
           Map<String, dynamic>>(serviceAccountsValue, (value) => value.toMap());
     }
     final shieldedInstanceConfigValue = shieldedInstanceConfig;
@@ -168,7 +169,7 @@ class InstanceGceSetup {
     return InstanceGceSetup(
       acceleratorConfigs: map['acceleratorConfigs'] == null
           ? null
-          : Input.decodeList<InstanceGceSetupAcceleratorConfig>(
+          : pulumi.Input.decodeList<InstanceGceSetupAcceleratorConfig>(
               map['acceleratorConfigs'],
               (value) => InstanceGceSetupAcceleratorConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -202,7 +203,7 @@ class InstanceGceSetup {
           : (map['metadata'] as Map).cast<String, String>(),
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<InstanceGceSetupNetworkInterface>(
+          : pulumi.Input.decodeList<InstanceGceSetupNetworkInterface>(
               map['networkInterfaces'],
               (value) => InstanceGceSetupNetworkInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -212,7 +213,7 @@ class InstanceGceSetup {
               (map['reservationAffinity'] as Map).cast<String, dynamic>()),
       serviceAccounts: map['serviceAccounts'] == null
           ? null
-          : Input.decodeList<InstanceGceSetupServiceAccount>(
+          : pulumi.Input.decodeList<InstanceGceSetupServiceAccount>(
               map['serviceAccounts'],
               (value) => InstanceGceSetupServiceAccount.fromMap(
                   (value as Map).cast<String, dynamic>())),

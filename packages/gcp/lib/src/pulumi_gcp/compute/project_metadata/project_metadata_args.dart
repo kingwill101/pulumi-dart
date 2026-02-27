@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ProjectMetadata.
 class ProjectMetadataArgs {
   /// A series of key value pairs.
   ///
   /// - - -
-  final Input<Map<String, String>> metadata;
+  final pulumi.Input<Map<String, String>> metadata;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   ProjectMetadataArgs({
     required this.metadata,
@@ -30,8 +30,8 @@ class ProjectMetadataArgs {
 
   factory ProjectMetadataArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMetadataArgs(
-      metadata: Input.asInput<Map<String, String>>(map['metadata']),
-      project: Input.asOptionalInput<String>(map['project']),
+      metadata: pulumi.Input.asInput<Map<String, String>>(map['metadata']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

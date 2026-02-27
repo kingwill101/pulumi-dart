@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CodeRepositoryIndex.
 class CodeRepositoryIndexArgs {
   /// Required. Id of the Code Repository Index.
-  final Input<String> codeRepositoryIndexId;
+  final pulumi.Input<String> codeRepositoryIndexId;
 
   /// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
-  final Input<bool>? forceDestroy;
+  final pulumi.Input<bool>? forceDestroy;
 
   /// Optional. Immutable. Customer-managed encryption key name, in the format
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  final Input<String>? kmsKey;
+  final pulumi.Input<String>? kmsKey;
 
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location of the Code Repository Index, for example `us-central1`.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   CodeRepositoryIndexArgs({
     required this.codeRepositoryIndexId,
@@ -61,12 +61,12 @@ class CodeRepositoryIndexArgs {
   factory CodeRepositoryIndexArgs.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryIndexArgs(
       codeRepositoryIndexId:
-          Input.asInput<String>(map['codeRepositoryIndexId']),
-      forceDestroy: Input.asOptionalInput<bool>(map['forceDestroy']),
-      kmsKey: Input.asOptionalInput<String>(map['kmsKey']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asInput<String>(map['codeRepositoryIndexId']),
+      forceDestroy: pulumi.Input.asOptionalInput<bool>(map['forceDestroy']),
+      kmsKey: pulumi.Input.asOptionalInput<String>(map['kmsKey']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

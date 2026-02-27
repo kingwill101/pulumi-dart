@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../flexible_app_version_deployment_cloud_build_options/flexible_app_version_deployment_cloud_build_options.dart';
 import '../flexible_app_version_deployment_container/flexible_app_version_deployment_container.dart';
 import '../flexible_app_version_deployment_file/flexible_app_version_deployment_file.dart';
@@ -43,7 +43,7 @@ class FlexibleAppVersionDeployment {
     }
     final filesValue = files;
     if (filesValue != null) {
-      map['files'] = Input.encodeList<FlexibleAppVersionDeploymentFile,
+      map['files'] = pulumi.Input.encodeList<FlexibleAppVersionDeploymentFile,
           Map<String, dynamic>>(filesValue, (value) => value.toMap());
     }
     final zipValue = zip;
@@ -65,7 +65,7 @@ class FlexibleAppVersionDeployment {
               (map['container'] as Map).cast<String, dynamic>()),
       files: map['files'] == null
           ? null
-          : Input.decodeList<FlexibleAppVersionDeploymentFile>(
+          : pulumi.Input.decodeList<FlexibleAppVersionDeploymentFile>(
               map['files'],
               (value) => FlexibleAppVersionDeploymentFile.fromMap(
                   (value as Map).cast<String, dynamic>())),

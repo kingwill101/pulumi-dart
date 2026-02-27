@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_service_controls_args.dart';
 
 /// Manages the VPC Service Controls configuration for a service
@@ -70,31 +70,31 @@ import 'vpc_service_controls_args.dart';
 /// ```sh
 /// $ pulumi import gcp:servicenetworking/vpcServiceControls:VpcServiceControls default {{service}}/{{network}}
 /// ```
-class VpcServiceControls extends CustomResource {
+class VpcServiceControls extends pulumi.CustomResource {
   /// Desired VPC Service Controls state service producer VPC network, as
   /// described at the top of this page.
-  late final Output<bool> enabled;
+  late final pulumi.Output<bool> enabled;
 
   /// The network that the consumer is using to connect with services.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The id of the Google Cloud project containing the consumer network.
-  late final Output<String?> project;
+  late final pulumi.Output<String?> project;
 
   /// The service that is managing peering connectivity for a service
   /// producer's organization. For Google services that support this
   /// functionality, this value is `servicenetworking.googleapis.com`.
-  late final Output<String> service;
+  late final pulumi.Output<String> service;
 
   VpcServiceControls(
     String name, {
     VpcServiceControlsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.enabled = registerOutput<bool>('enabled');
     this.network = registerOutput<String>('network');

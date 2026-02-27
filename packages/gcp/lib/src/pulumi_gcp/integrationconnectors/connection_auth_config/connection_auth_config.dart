@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_auth_config_additional_variable/connection_auth_config_additional_variable.dart';
 import '../connection_auth_config_oauth2_auth_code_flow/connection_auth_config_oauth2_auth_code_flow.dart';
 import '../connection_auth_config_oauth2_client_credentials/connection_auth_config_oauth2_client_credentials.dart';
@@ -55,7 +55,7 @@ class ConnectionAuthConfig {
     final map = <String, dynamic>{};
     final additionalVariablesValue = additionalVariables;
     if (additionalVariablesValue != null) {
-      map['additionalVariables'] = Input.encodeList<
+      map['additionalVariables'] = pulumi.Input.encodeList<
               ConnectionAuthConfigAdditionalVariable, Map<String, dynamic>>(
           additionalVariablesValue, (value) => value.toMap());
     }
@@ -91,7 +91,7 @@ class ConnectionAuthConfig {
     return ConnectionAuthConfig(
       additionalVariables: map['additionalVariables'] == null
           ? null
-          : Input.decodeList<ConnectionAuthConfigAdditionalVariable>(
+          : pulumi.Input.decodeList<ConnectionAuthConfigAdditionalVariable>(
               map['additionalVariables'],
               (value) => ConnectionAuthConfigAdditionalVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),

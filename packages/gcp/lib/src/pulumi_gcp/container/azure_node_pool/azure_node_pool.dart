@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../azure_node_pool_autoscaling/azure_node_pool_autoscaling.dart';
 import '../azure_node_pool_config/azure_node_pool_config.dart';
 import '../azure_node_pool_management/azure_node_pool_management.dart';
@@ -38,74 +38,74 @@ import 'azure_node_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
 /// ```
-class AzureNodePool extends CustomResource {
+class AzureNodePool extends pulumi.CustomResource {
   /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Autoscaler configuration for this node pool.
-  late final Output<AzureNodePoolAutoscaling> autoscaling;
+  late final pulumi.Output<AzureNodePoolAutoscaling> autoscaling;
 
   /// Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
-  late final Output<String> azureAvailabilityZone;
+  late final pulumi.Output<String> azureAvailabilityZone;
 
   /// The azureCluster for the resource
-  late final Output<String> cluster;
+  late final pulumi.Output<String> cluster;
 
   /// The node configuration of the node pool.
-  late final Output<AzureNodePoolConfig> config;
+  late final pulumi.Output<AzureNodePoolConfig> config;
 
   /// Output only. The time at which this node pool was created.
-  late final Output<String> createTime;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The Management configuration for this node pool.
-  late final Output<AzureNodePoolManagement> management;
+  late final pulumi.Output<AzureNodePoolManagement> management;
 
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  late final Output<AzureNodePoolMaxPodsConstraint> maxPodsConstraint;
+  late final pulumi.Output<AzureNodePoolMaxPodsConstraint> maxPodsConstraint;
 
   /// The name of this resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. If set, there are currently pending changes to the node pool.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
-  late final Output<String> subnetId;
+  late final pulumi.Output<String> subnetId;
 
   /// Output only. A globally unique identifier for the node pool.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The time at which this node pool was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   AzureNodePool(
     String name, {
     AzureNodePoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:container/azureNodePool:AzureNodePool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.autoscaling = registerOutput<AzureNodePoolAutoscaling>('autoscaling');

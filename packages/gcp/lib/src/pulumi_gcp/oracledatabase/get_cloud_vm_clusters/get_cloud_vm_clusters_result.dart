@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_vm_clusters_cloud_vm_cluster/get_cloud_vm_clusters_cloud_vm_cluster.dart';
 
 /// Result data returned by getCloudVmClusters.
@@ -21,7 +21,8 @@ class GetCloudVmClustersResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudVmClusters'] = Input.encodeList<GetCloudVmClustersCloudVmCluster,
+    map['cloudVmClusters'] = pulumi.Input.encodeList<
+        GetCloudVmClustersCloudVmCluster,
         Map<String, dynamic>>(cloudVmClusters, (value) => value.toMap());
     map['id'] = id;
     map['location'] = location;
@@ -34,10 +35,11 @@ class GetCloudVmClustersResult {
 
   factory GetCloudVmClustersResult.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClustersResult(
-      cloudVmClusters: Input.decodeList<GetCloudVmClustersCloudVmCluster>(
-          map['cloudVmClusters'],
-          (value) => GetCloudVmClustersCloudVmCluster.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cloudVmClusters:
+          pulumi.Input.decodeList<GetCloudVmClustersCloudVmCluster>(
+              map['cloudVmClusters'],
+              (value) => GetCloudVmClustersCloudVmCluster.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,

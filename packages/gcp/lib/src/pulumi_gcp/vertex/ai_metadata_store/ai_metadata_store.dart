@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_metadata_store_encryption_spec/ai_metadata_store_encryption_spec.dart';
 import '../ai_metadata_store_state/ai_metadata_store_state.dart';
 import 'ai_metadata_store_args.dart';
@@ -47,43 +47,43 @@ import 'ai_metadata_store_args.dart';
 /// ```sh
 /// $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
 /// ```
-class AiMetadataStore extends CustomResource {
+class AiMetadataStore extends pulumi.CustomResource {
   /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Description of the MetadataStore.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
   /// Structure is documented below.
-  late final Output<AiMetadataStoreEncryptionSpec?> encryptionSpec;
+  late final pulumi.Output<AiMetadataStoreEncryptionSpec?> encryptionSpec;
 
   /// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region of the Metadata Store. eg us-central1
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// State information of the MetadataStore.
   /// Structure is documented below.
-  late final Output<List<AiMetadataStoreState>> states;
+  late final pulumi.Output<List<AiMetadataStoreState>> states;
 
   /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AiMetadataStore(
     String name, {
     AiMetadataStoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiMetadataStore:AiMetadataStore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

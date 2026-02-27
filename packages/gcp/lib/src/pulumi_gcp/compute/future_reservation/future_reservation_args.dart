@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../future_reservation_aggregate_reservation/future_reservation_aggregate_reservation.dart';
 import '../future_reservation_auto_created_reservations_duration/future_reservation_auto_created_reservations_duration.dart';
 import '../future_reservation_commitment_info/future_reservation_commitment_info.dart';
@@ -12,29 +12,30 @@ import '../future_reservation_time_window/future_reservation_time_window.dart';
 class FutureReservationArgs {
   /// Aggregate reservation details for the future reservation.
   /// Structure is documented below.
-  final Input<FutureReservationAggregateReservation>? aggregateReservation;
+  final pulumi.Input<FutureReservationAggregateReservation>?
+      aggregateReservation;
 
   /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
-  final Input<String>? autoCreatedReservationsDeleteTime;
+  final pulumi.Input<String>? autoCreatedReservationsDeleteTime;
 
   /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
   /// Structure is documented below.
-  final Input<FutureReservationAutoCreatedReservationsDuration>?
+  final pulumi.Input<FutureReservationAutoCreatedReservationsDuration>?
       autoCreatedReservationsDuration;
 
   /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
-  final Input<bool>? autoDeleteAutoCreatedReservations;
+  final pulumi.Input<bool>? autoDeleteAutoCreatedReservations;
 
   /// If not present, then FR will not deliver a new commitment or update an existing commitment.
   /// Structure is documented below.
-  final Input<FutureReservationCommitmentInfo>? commitmentInfo;
+  final pulumi.Input<FutureReservationCommitmentInfo>? commitmentInfo;
 
   /// Type of the deployment requested as part of future reservation.
   /// Possible values are: `DENSE`, `FLEXIBLE`.
-  final Input<String>? deploymentType;
+  final pulumi.Input<String>? deploymentType;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -43,44 +44,45 @@ class FutureReservationArgs {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the las
   /// character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Planning state before being submitted for evaluation
   /// Possible values are: `DRAFT`, `SUBMITTED`.
-  final Input<String>? planningStatus;
+  final pulumi.Input<String>? planningStatus;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The reservation mode which determines reservation-termination behavior and expected pricing.
   /// Possible values are: `CALENDAR`, `DEFAULT`.
-  final Input<String>? reservationMode;
+  final pulumi.Input<String>? reservationMode;
 
   /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
-  final Input<String>? reservationName;
+  final pulumi.Input<String>? reservationName;
 
   /// Maintenance information for this reservation
   /// Possible values are: `GROUPED`, `INDEPENDENT`.
-  final Input<String>? schedulingType;
+  final pulumi.Input<String>? schedulingType;
 
   /// Settings for sharing the future reservation
   /// Structure is documented below.
-  final Input<FutureReservationShareSettings>? shareSettings;
+  final pulumi.Input<FutureReservationShareSettings>? shareSettings;
 
   /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
-  final Input<bool>? specificReservationRequired;
+  final pulumi.Input<bool>? specificReservationRequired;
 
   /// Future Reservation configuration to indicate instance properties and total count.
   /// Structure is documented below.
-  final Input<FutureReservationSpecificSkuProperties>? specificSkuProperties;
+  final pulumi.Input<FutureReservationSpecificSkuProperties>?
+      specificSkuProperties;
 
   /// Time window for this Future Reservation.
   /// Structure is documented below.
-  final Input<FutureReservationTimeWindow> timeWindow;
+  final pulumi.Input<FutureReservationTimeWindow> timeWindow;
 
   FutureReservationArgs({
     this.aggregateReservation,
@@ -107,7 +109,7 @@ class FutureReservationArgs {
     final map = <String, dynamic>{};
     final aggregateReservationValue = aggregateReservation;
     if (aggregateReservationValue != null) {
-      map['aggregateReservation'] = Input.mapOptionalInputValue<
+      map['aggregateReservation'] = pulumi.Input.mapOptionalInputValue<
               FutureReservationAggregateReservation, Map<String, dynamic>>(
           aggregateReservationValue, (value) => value.toMap());
     }
@@ -120,10 +122,11 @@ class FutureReservationArgs {
     final autoCreatedReservationsDurationValue =
         autoCreatedReservationsDuration;
     if (autoCreatedReservationsDurationValue != null) {
-      map['autoCreatedReservationsDuration'] = Input.mapOptionalInputValue<
-              FutureReservationAutoCreatedReservationsDuration,
-              Map<String, dynamic>>(
-          autoCreatedReservationsDurationValue, (value) => value.toMap());
+      map['autoCreatedReservationsDuration'] =
+          pulumi.Input.mapOptionalInputValue<
+                  FutureReservationAutoCreatedReservationsDuration,
+                  Map<String, dynamic>>(
+              autoCreatedReservationsDurationValue, (value) => value.toMap());
     }
     final autoDeleteAutoCreatedReservationsValue =
         autoDeleteAutoCreatedReservations;
@@ -133,7 +136,7 @@ class FutureReservationArgs {
     }
     final commitmentInfoValue = commitmentInfo;
     if (commitmentInfoValue != null) {
-      map['commitmentInfo'] = Input.mapOptionalInputValue<
+      map['commitmentInfo'] = pulumi.Input.mapOptionalInputValue<
           FutureReservationCommitmentInfo,
           Map<String, dynamic>>(commitmentInfoValue, (value) => value.toMap());
     }
@@ -175,7 +178,7 @@ class FutureReservationArgs {
     }
     final shareSettingsValue = shareSettings;
     if (shareSettingsValue != null) {
-      map['shareSettings'] = Input.mapOptionalInputValue<
+      map['shareSettings'] = pulumi.Input.mapOptionalInputValue<
           FutureReservationShareSettings,
           Map<String, dynamic>>(shareSettingsValue, (value) => value.toMap());
     }
@@ -185,47 +188,54 @@ class FutureReservationArgs {
     }
     final specificSkuPropertiesValue = specificSkuProperties;
     if (specificSkuPropertiesValue != null) {
-      map['specificSkuProperties'] = Input.mapOptionalInputValue<
+      map['specificSkuProperties'] = pulumi.Input.mapOptionalInputValue<
               FutureReservationSpecificSkuProperties, Map<String, dynamic>>(
           specificSkuPropertiesValue, (value) => value.toMap());
     }
-    map['timeWindow'] =
-        Input.mapInputValue<FutureReservationTimeWindow, Map<String, dynamic>>(
-            timeWindow, (value) => value.toMap());
+    map['timeWindow'] = pulumi.Input.mapInputValue<FutureReservationTimeWindow,
+        Map<String, dynamic>>(timeWindow, (value) => value.toMap());
     return map;
   }
 
   factory FutureReservationArgs.fromMap(Map<String, dynamic> map) {
     return FutureReservationArgs(
       aggregateReservation:
-          Input.asOptionalInput<FutureReservationAggregateReservation>(
+          pulumi.Input.asOptionalInput<FutureReservationAggregateReservation>(
               map['aggregateReservation']),
-      autoCreatedReservationsDeleteTime: Input.asOptionalInput<String>(
+      autoCreatedReservationsDeleteTime: pulumi.Input.asOptionalInput<String>(
           map['autoCreatedReservationsDeleteTime']),
-      autoCreatedReservationsDuration: Input.asOptionalInput<
+      autoCreatedReservationsDuration: pulumi.Input.asOptionalInput<
               FutureReservationAutoCreatedReservationsDuration>(
           map['autoCreatedReservationsDuration']),
-      autoDeleteAutoCreatedReservations:
-          Input.asOptionalInput<bool>(map['autoDeleteAutoCreatedReservations']),
-      commitmentInfo: Input.asOptionalInput<FutureReservationCommitmentInfo>(
-          map['commitmentInfo']),
-      deploymentType: Input.asOptionalInput<String>(map['deploymentType']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      planningStatus: Input.asOptionalInput<String>(map['planningStatus']),
-      project: Input.asOptionalInput<String>(map['project']),
-      reservationMode: Input.asOptionalInput<String>(map['reservationMode']),
-      reservationName: Input.asOptionalInput<String>(map['reservationName']),
-      schedulingType: Input.asOptionalInput<String>(map['schedulingType']),
-      shareSettings: Input.asOptionalInput<FutureReservationShareSettings>(
-          map['shareSettings']),
-      specificReservationRequired:
-          Input.asOptionalInput<bool>(map['specificReservationRequired']),
+      autoDeleteAutoCreatedReservations: pulumi.Input.asOptionalInput<bool>(
+          map['autoDeleteAutoCreatedReservations']),
+      commitmentInfo:
+          pulumi.Input.asOptionalInput<FutureReservationCommitmentInfo>(
+              map['commitmentInfo']),
+      deploymentType:
+          pulumi.Input.asOptionalInput<String>(map['deploymentType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      planningStatus:
+          pulumi.Input.asOptionalInput<String>(map['planningStatus']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      reservationMode:
+          pulumi.Input.asOptionalInput<String>(map['reservationMode']),
+      reservationName:
+          pulumi.Input.asOptionalInput<String>(map['reservationName']),
+      schedulingType:
+          pulumi.Input.asOptionalInput<String>(map['schedulingType']),
+      shareSettings:
+          pulumi.Input.asOptionalInput<FutureReservationShareSettings>(
+              map['shareSettings']),
+      specificReservationRequired: pulumi.Input.asOptionalInput<bool>(
+          map['specificReservationRequired']),
       specificSkuProperties:
-          Input.asOptionalInput<FutureReservationSpecificSkuProperties>(
+          pulumi.Input.asOptionalInput<FutureReservationSpecificSkuProperties>(
               map['specificSkuProperties']),
-      timeWindow: Input.asInput<FutureReservationTimeWindow>(map['timeWindow']),
+      timeWindow:
+          pulumi.Input.asInput<FutureReservationTimeWindow>(map['timeWindow']),
     );
   }
 }

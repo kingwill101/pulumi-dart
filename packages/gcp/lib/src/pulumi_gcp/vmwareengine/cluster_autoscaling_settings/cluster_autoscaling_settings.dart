@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_autoscaling_settings_autoscaling_policy/cluster_autoscaling_settings_autoscaling_policy.dart';
 
 class ClusterAutoscalingSettings {
@@ -41,7 +41,7 @@ class ClusterAutoscalingSettings {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscalingPolicies'] = Input.encodeList<
+    map['autoscalingPolicies'] = pulumi.Input.encodeList<
         ClusterAutoscalingSettingsAutoscalingPolicy,
         Map<String, dynamic>>(autoscalingPolicies, (value) => value.toMap());
     final coolDownPeriodValue = coolDownPeriod;
@@ -62,7 +62,7 @@ class ClusterAutoscalingSettings {
   factory ClusterAutoscalingSettings.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingSettings(
       autoscalingPolicies:
-          Input.decodeList<ClusterAutoscalingSettingsAutoscalingPolicy>(
+          pulumi.Input.decodeList<ClusterAutoscalingSettingsAutoscalingPolicy>(
               map['autoscalingPolicies'],
               (value) => ClusterAutoscalingSettingsAutoscalingPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),

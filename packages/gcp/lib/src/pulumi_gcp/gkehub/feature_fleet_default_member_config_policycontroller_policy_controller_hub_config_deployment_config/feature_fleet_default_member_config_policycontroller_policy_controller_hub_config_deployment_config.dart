@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resources/feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_container_resources.dart';
 import '../feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_pod_toleration/feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_deployment_config_pod_toleration.dart';
 
@@ -47,7 +47,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
     }
     final podTolerationsValue = podTolerations;
     if (podTolerationsValue != null) {
-      map['podTolerations'] = Input.encodeList<
+      map['podTolerations'] = pulumi.Input.encodeList<
           FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration,
           Map<String, dynamic>>(podTolerationsValue, (value) => value.toMap());
     }
@@ -71,7 +71,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
           map['podAffinity'] == null ? null : map['podAffinity'] as String,
       podTolerations: map['podTolerations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(
               map['podTolerations'],
               (value) =>

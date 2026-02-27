@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_container_env_from_secret_ref_local_object_reference/get_service_template_spec_container_env_from_secret_ref_local_object_reference.dart';
 
 class GetServiceTemplateSpecContainerEnvFromSecretRef {
@@ -19,7 +19,7 @@ class GetServiceTemplateSpecContainerEnvFromSecretRef {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['localObjectReferences'] = Input.encodeList<
+    map['localObjectReferences'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference,
         Map<String, dynamic>>(localObjectReferences, (value) => value.toMap());
     map['optional'] = optional;
@@ -29,7 +29,7 @@ class GetServiceTemplateSpecContainerEnvFromSecretRef {
   factory GetServiceTemplateSpecContainerEnvFromSecretRef.fromMap(
       Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerEnvFromSecretRef(
-      localObjectReferences: Input.decodeList<
+      localObjectReferences: pulumi.Input.decodeList<
               GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference>(
           map['localObjectReferences'],
           (value) =>

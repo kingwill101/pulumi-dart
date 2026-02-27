@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RegionCompositeHealthCheck.
 class RegionCompositeHealthCheckArgs {
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// URL to the destination resource. Must be set. Must be a
   /// ForwardingRule. The ForwardingRule must have
@@ -14,14 +14,14 @@ class RegionCompositeHealthCheckArgs {
   /// INTERNAL_MANAGED and must be regional and in the same region
   /// as the CompositeHealthCheck (cross-region deployment for
   /// INTERNAL_MANAGED is not supported). Can be mutated.
-  final Input<String> healthDestination;
+  final pulumi.Input<String> healthDestination;
 
   /// URLs to the HealthSource resources whose results are AND'ed.
   /// I.e. he aggregated result is is HEALTHY only if all sources
   /// are HEALTHY. Must have at least 1. Must not have more than 10.
   /// Must be regional and in the same region as the
   /// CompositeHealthCheck. Can be mutated.
-  final Input<List<String>>? healthSources;
+  final pulumi.Input<List<String>>? healthSources;
 
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -30,14 +30,14 @@ class RegionCompositeHealthCheckArgs {
   /// character must be a lowercase letter, and all following characters must
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// URL of the region where the composite health check resides.
-  final Input<String> region;
+  final pulumi.Input<String> region;
 
   RegionCompositeHealthCheckArgs({
     this.description,
@@ -73,12 +73,13 @@ class RegionCompositeHealthCheckArgs {
 
   factory RegionCompositeHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return RegionCompositeHealthCheckArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      healthDestination: Input.asInput<String>(map['healthDestination']),
-      healthSources: Input.asOptionalInput<List<String>>(map['healthSources']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asInput<String>(map['region']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      healthDestination: pulumi.Input.asInput<String>(map['healthDestination']),
+      healthSources:
+          pulumi.Input.asOptionalInput<List<String>>(map['healthSources']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asInput<String>(map['region']),
     );
   }
 }

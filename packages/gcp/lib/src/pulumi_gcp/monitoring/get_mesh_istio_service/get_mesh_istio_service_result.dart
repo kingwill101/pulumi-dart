@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_mesh_istio_service_telemetry/get_mesh_istio_service_telemetry.dart';
 
 /// Result data returned by getMeshIstioService.
@@ -50,9 +50,8 @@ class GetMeshIstioServiceResult {
     map['serviceId'] = serviceId;
     map['serviceName'] = serviceName;
     map['serviceNamespace'] = serviceNamespace;
-    map['telemetries'] =
-        Input.encodeList<GetMeshIstioServiceTelemetry, Map<String, dynamic>>(
-            telemetries, (value) => value.toMap());
+    map['telemetries'] = pulumi.Input.encodeList<GetMeshIstioServiceTelemetry,
+        Map<String, dynamic>>(telemetries, (value) => value.toMap());
     map['userLabels'] = userLabels;
     return map;
   }
@@ -67,7 +66,7 @@ class GetMeshIstioServiceResult {
       serviceId: map['serviceId'] as String,
       serviceName: map['serviceName'] as String,
       serviceNamespace: map['serviceNamespace'] as String,
-      telemetries: Input.decodeList<GetMeshIstioServiceTelemetry>(
+      telemetries: pulumi.Input.decodeList<GetMeshIstioServiceTelemetry>(
           map['telemetries'],
           (value) => GetMeshIstioServiceTelemetry.fromMap(
               (value as Map).cast<String, dynamic>())),

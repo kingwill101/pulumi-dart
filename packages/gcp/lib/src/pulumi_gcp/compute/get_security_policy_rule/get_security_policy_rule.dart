@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_rule_header_action/get_security_policy_rule_header_action.dart';
 import '../get_security_policy_rule_match/get_security_policy_rule_match.dart';
 import '../get_security_policy_rule_preconfigured_waf_config/get_security_policy_rule_preconfigured_waf_config.dart';
@@ -52,20 +52,20 @@ class GetSecurityPolicyRule {
     final map = <String, dynamic>{};
     map['action'] = action;
     map['description'] = description;
-    map['headerActions'] = Input.encodeList<GetSecurityPolicyRuleHeaderAction,
+    map['headerActions'] = pulumi.Input.encodeList<
+        GetSecurityPolicyRuleHeaderAction,
         Map<String, dynamic>>(headerActions, (value) => value.toMap());
-    map['matches'] =
-        Input.encodeList<GetSecurityPolicyRuleMatch, Map<String, dynamic>>(
-            matches, (value) => value.toMap());
-    map['preconfiguredWafConfigs'] = Input.encodeList<
+    map['matches'] = pulumi.Input.encodeList<GetSecurityPolicyRuleMatch,
+        Map<String, dynamic>>(matches, (value) => value.toMap());
+    map['preconfiguredWafConfigs'] = pulumi.Input.encodeList<
             GetSecurityPolicyRulePreconfiguredWafConfig, Map<String, dynamic>>(
         preconfiguredWafConfigs, (value) => value.toMap());
     map['preview'] = preview;
     map['priority'] = priority;
-    map['rateLimitOptions'] = Input.encodeList<
+    map['rateLimitOptions'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleRateLimitOption,
         Map<String, dynamic>>(rateLimitOptions, (value) => value.toMap());
-    map['redirectOptions'] = Input.encodeList<
+    map['redirectOptions'] = pulumi.Input.encodeList<
         GetSecurityPolicyRuleRedirectOption,
         Map<String, dynamic>>(redirectOptions, (value) => value.toMap());
     return map;
@@ -75,29 +75,31 @@ class GetSecurityPolicyRule {
     return GetSecurityPolicyRule(
       action: map['action'] as String,
       description: map['description'] as String,
-      headerActions: Input.decodeList<GetSecurityPolicyRuleHeaderAction>(
+      headerActions: pulumi.Input.decodeList<GetSecurityPolicyRuleHeaderAction>(
           map['headerActions'],
           (value) => GetSecurityPolicyRuleHeaderAction.fromMap(
               (value as Map).cast<String, dynamic>())),
-      matches: Input.decodeList<GetSecurityPolicyRuleMatch>(
+      matches: pulumi.Input.decodeList<GetSecurityPolicyRuleMatch>(
           map['matches'],
           (value) => GetSecurityPolicyRuleMatch.fromMap(
               (value as Map).cast<String, dynamic>())),
       preconfiguredWafConfigs:
-          Input.decodeList<GetSecurityPolicyRulePreconfiguredWafConfig>(
+          pulumi.Input.decodeList<GetSecurityPolicyRulePreconfiguredWafConfig>(
               map['preconfiguredWafConfigs'],
               (value) => GetSecurityPolicyRulePreconfiguredWafConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       preview: map['preview'] as bool,
       priority: map['priority'] as int,
-      rateLimitOptions: Input.decodeList<GetSecurityPolicyRuleRateLimitOption>(
-          map['rateLimitOptions'],
-          (value) => GetSecurityPolicyRuleRateLimitOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      redirectOptions: Input.decodeList<GetSecurityPolicyRuleRedirectOption>(
-          map['redirectOptions'],
-          (value) => GetSecurityPolicyRuleRedirectOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rateLimitOptions:
+          pulumi.Input.decodeList<GetSecurityPolicyRuleRateLimitOption>(
+              map['rateLimitOptions'],
+              (value) => GetSecurityPolicyRuleRateLimitOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      redirectOptions:
+          pulumi.Input.decodeList<GetSecurityPolicyRuleRedirectOption>(
+              map['redirectOptions'],
+              (value) => GetSecurityPolicyRuleRedirectOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

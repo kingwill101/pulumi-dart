@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserStore.
 class UserStoreArgs {
@@ -11,29 +11,29 @@ class UserStoreArgs {
   /// register under the default subscription.
   /// If the default license config doesn't have remaining license seats left,
   /// new users will not be assigned with license.
-  final Input<String>? defaultLicenseConfig;
+  final pulumi.Input<String>? defaultLicenseConfig;
 
   /// Whether to enable automatic license update for users with expired licenses
   /// in this user store. If enabled, users with expired licenses will
   /// automatically be updated to the default subscription if there are
   /// remaining license seats.
-  final Input<bool>? enableExpiredLicenseAutoUpdate;
+  final pulumi.Input<bool>? enableExpiredLicenseAutoUpdate;
 
   /// Whether to enable automatic license registration for new users created in
   /// this user store. If enabled, new users will automatically register under
   /// the default subscription.
-  final Input<bool>? enableLicenseAutoRegister;
+  final pulumi.Input<bool>? enableLicenseAutoRegister;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The ID of the user store. Currently only accepts "default_user_store".
-  final Input<String>? userStoreId;
+  final pulumi.Input<String>? userStoreId;
 
   UserStoreArgs({
     this.defaultLicenseConfig,
@@ -74,14 +74,14 @@ class UserStoreArgs {
   factory UserStoreArgs.fromMap(Map<String, dynamic> map) {
     return UserStoreArgs(
       defaultLicenseConfig:
-          Input.asOptionalInput<String>(map['defaultLicenseConfig']),
-      enableExpiredLicenseAutoUpdate:
-          Input.asOptionalInput<bool>(map['enableExpiredLicenseAutoUpdate']),
+          pulumi.Input.asOptionalInput<String>(map['defaultLicenseConfig']),
+      enableExpiredLicenseAutoUpdate: pulumi.Input.asOptionalInput<bool>(
+          map['enableExpiredLicenseAutoUpdate']),
       enableLicenseAutoRegister:
-          Input.asOptionalInput<bool>(map['enableLicenseAutoRegister']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      userStoreId: Input.asOptionalInput<String>(map['userStoreId']),
+          pulumi.Input.asOptionalInput<bool>(map['enableLicenseAutoRegister']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      userStoreId: pulumi.Input.asOptionalInput<String>(map['userStoreId']),
     );
   }
 }

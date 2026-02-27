@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_vm_cluster_property/get_cloud_vm_cluster_property.dart';
 
 /// Result data returned by getCloudVmCluster.
@@ -74,9 +74,8 @@ class GetCloudVmClusterResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['properties'] =
-        Input.encodeList<GetCloudVmClusterProperty, Map<String, dynamic>>(
-            properties, (value) => value.toMap());
+    map['properties'] = pulumi.Input.encodeList<GetCloudVmClusterProperty,
+        Map<String, dynamic>>(properties, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
     return map;
   }
@@ -101,7 +100,7 @@ class GetCloudVmClusterResult {
       odbNetwork: map['odbNetwork'] as String,
       odbSubnet: map['odbSubnet'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      properties: Input.decodeList<GetCloudVmClusterProperty>(
+      properties: pulumi.Input.decodeList<GetCloudVmClusterProperty>(
           map['properties'],
           (value) => GetCloudVmClusterProperty.fromMap(
               (value as Map).cast<String, dynamic>())),

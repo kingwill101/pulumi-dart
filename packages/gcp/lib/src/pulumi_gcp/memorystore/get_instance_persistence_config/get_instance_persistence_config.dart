@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_persistence_config_aof_config/get_instance_persistence_config_aof_config.dart';
 import '../get_instance_persistence_config_rdb_config/get_instance_persistence_config_rdb_config.dart';
 
@@ -26,25 +26,29 @@ class GetInstancePersistenceConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['aofConfigs'] = Input.encodeList<GetInstancePersistenceConfigAofConfig,
+    map['aofConfigs'] = pulumi.Input.encodeList<
+        GetInstancePersistenceConfigAofConfig,
         Map<String, dynamic>>(aofConfigs, (value) => value.toMap());
     map['mode'] = mode;
-    map['rdbConfigs'] = Input.encodeList<GetInstancePersistenceConfigRdbConfig,
+    map['rdbConfigs'] = pulumi.Input.encodeList<
+        GetInstancePersistenceConfigRdbConfig,
         Map<String, dynamic>>(rdbConfigs, (value) => value.toMap());
     return map;
   }
 
   factory GetInstancePersistenceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePersistenceConfig(
-      aofConfigs: Input.decodeList<GetInstancePersistenceConfigAofConfig>(
-          map['aofConfigs'],
-          (value) => GetInstancePersistenceConfigAofConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      aofConfigs:
+          pulumi.Input.decodeList<GetInstancePersistenceConfigAofConfig>(
+              map['aofConfigs'],
+              (value) => GetInstancePersistenceConfigAofConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
-      rdbConfigs: Input.decodeList<GetInstancePersistenceConfigRdbConfig>(
-          map['rdbConfigs'],
-          (value) => GetInstancePersistenceConfigRdbConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rdbConfigs:
+          pulumi.Input.decodeList<GetInstancePersistenceConfigRdbConfig>(
+              map['rdbConfigs'],
+              (value) => GetInstancePersistenceConfigRdbConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

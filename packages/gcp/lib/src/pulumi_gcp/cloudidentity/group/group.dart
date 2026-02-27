@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../group_additional_group_key/group_additional_group_key.dart';
 import '../group_group_key/group_group_key.dart';
 import 'group_args.dart';
@@ -36,24 +36,24 @@ import 'group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudidentity/group:Group default {{name}}
 /// ```
-class Group extends CustomResource {
+class Group extends pulumi.CustomResource {
   /// Additional group keys associated with the Group
   /// Structure is documented below.
-  late final Output<List<GroupAdditionalGroupKey>> additionalGroupKeys;
+  late final pulumi.Output<List<GroupAdditionalGroupKey>> additionalGroupKeys;
 
   /// The time when the Group was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// An extended description to help users determine the purpose of a Group.
   /// Must not be longer than 4,096 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The display name of the Group.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// EntityKey of the Group.
   /// Structure is documented below.
-  late final Output<GroupGroupKey> groupKey;
+  late final pulumi.Output<GroupGroupKey> groupKey;
 
   /// The initial configuration options for creating a Group.
   /// See the
@@ -61,37 +61,37 @@ class Group extends CustomResource {
   /// for possible values.
   /// Default value is `EMPTY`.
   /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
-  late final Output<String?> initialGroupConfig;
+  late final pulumi.Output<String?> initialGroupConfig;
 
   /// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
   /// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
   /// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
   /// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
   /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
-  late final Output<Map<String, String>> labels;
+  late final pulumi.Output<Map<String, String>> labels;
 
   /// Resource name of the Group in the format: groups/{group_id}, where group_id
   /// is the unique ID assigned to the Group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The resource name of the entity under which this Group resides in the
   /// Cloud Identity resource hierarchy.
   /// Must be of the form identitysources/{identity_source_id} for external-identity-mapped
   /// groups or customers/{customer_id} for Google Groups.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The time when the Group was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Group(
     String name, {
     GroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudidentity/group:Group',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.additionalGroupKeys =
         registerOutput<List<GroupAdditionalGroupKey>>('additionalGroupKeys');

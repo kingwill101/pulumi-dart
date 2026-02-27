@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../acl_config_idp_config/acl_config_idp_config.dart';
 import 'acl_config_args.dart';
 
@@ -39,32 +39,32 @@ import 'acl_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/aclConfig:AclConfig default {{location}}
 /// ```
-class AclConfig extends CustomResource {
+class AclConfig extends pulumi.CustomResource {
   /// Identity provider config.
   /// Structure is documented below.
-  late final Output<AclConfigIdpConfig?> idpConfig;
+  late final pulumi.Output<AclConfigIdpConfig?> idpConfig;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The unique full resource name of the aclConfig. Values are of the format
   /// `projects/{project}/locations/{location}/aclConfig`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   AclConfig(
     String name, {
     AclConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/aclConfig:AclConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.idpConfig = registerOutput<AclConfigIdpConfig?>('idpConfig');
     this.location = registerOutput<String>('location');

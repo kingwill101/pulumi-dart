@@ -1,3 +1,3 @@
 library module_cloudfunctionsv2_get_function_event_trigger;
 
-export 'get_function_event_trigger/get_function_event_trigger2.dart';
+export 'get_function_event_trigger/get_function_event_trigger_cloudfunctionsv2.dart';

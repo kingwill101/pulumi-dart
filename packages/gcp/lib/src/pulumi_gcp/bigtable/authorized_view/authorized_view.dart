@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authorized_view_subset_view/authorized_view_subset_view.dart';
 import 'authorized_view_args.dart';
 
@@ -29,36 +29,36 @@ import 'authorized_view_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
 /// ```
-class AuthorizedView extends CustomResource {
-  late final Output<String> deletionProtection;
+class AuthorizedView extends pulumi.CustomResource {
+  late final pulumi.Output<String> deletionProtection;
 
   /// The name of the Bigtable instance in which the authorized view belongs.
-  late final Output<String> instanceName;
+  late final pulumi.Output<String> instanceName;
 
   /// The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
   ///
   /// -----
-  late final Output<AuthorizedViewSubsetView?> subsetView;
+  late final pulumi.Output<AuthorizedViewSubsetView?> subsetView;
 
   /// The name of the Bigtable table in which the authorized view belongs.
-  late final Output<String> tableName;
+  late final pulumi.Output<String> tableName;
 
   AuthorizedView(
     String name, {
     AuthorizedViewArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigtable/authorizedView:AuthorizedView',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deletionProtection = registerOutput<String>('deletionProtection');
     this.instanceName = registerOutput<String>('instanceName');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_admin_cluster_platform_config_bundle_status_condition/vmware_admin_cluster_platform_config_bundle_status_condition.dart';
 
 class VmwareAdminClusterPlatformConfigBundleStatus {
@@ -26,7 +26,7 @@ class VmwareAdminClusterPlatformConfigBundleStatus {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<
+      map['conditions'] = pulumi.Input.encodeList<
           VmwareAdminClusterPlatformConfigBundleStatusCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class VmwareAdminClusterPlatformConfigBundleStatus {
     return VmwareAdminClusterPlatformConfigBundleStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   VmwareAdminClusterPlatformConfigBundleStatusCondition>(
               map['conditions'],
               (value) =>

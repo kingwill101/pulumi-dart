@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../packet_mirroring_collector_ilb/packet_mirroring_collector_ilb.dart';
 import '../packet_mirroring_filter/packet_mirroring_filter.dart';
 import '../packet_mirroring_mirrored_resources/packet_mirroring_mirrored_resources.dart';
@@ -52,56 +52,56 @@ import 'packet_mirroring_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
 /// ```
-class PacketMirroring extends CustomResource {
+class PacketMirroring extends pulumi.CustomResource {
   /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
   /// that will be used as collector for mirrored traffic. The
   /// specified forwarding rule must have is_mirroring_collector
   /// set to true.
   /// Structure is documented below.
-  late final Output<PacketMirroringCollectorIlb> collectorIlb;
+  late final pulumi.Output<PacketMirroringCollectorIlb> collectorIlb;
 
   /// A human-readable description of the rule.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
   /// Structure is documented below.
-  late final Output<PacketMirroringFilter?> filter;
+  late final pulumi.Output<PacketMirroringFilter?> filter;
 
   /// A means of specifying which resources to mirror.
   /// Structure is documented below.
-  late final Output<PacketMirroringMirroredResources> mirroredResources;
+  late final pulumi.Output<PacketMirroringMirroredResources> mirroredResources;
 
   /// The name of the packet mirroring rule
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Specifies the mirrored VPC network. Only packets in this network
   /// will be mirrored. All mirrored VMs should have a NIC in the given
   /// network. All mirrored subnetworks should belong to the given network.
   /// Structure is documented below.
-  late final Output<PacketMirroringNetwork> network;
+  late final pulumi.Output<PacketMirroringNetwork> network;
 
   /// Since only one rule can be active at a time, priority is
   /// used to break ties in the case of two rules that apply to
   /// the same instances.
-  late final Output<int> priority;
+  late final pulumi.Output<int> priority;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Region in which the created address should reside.
   /// If it is not provided, the provider region is used.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   PacketMirroring(
     String name, {
     PacketMirroringArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/packetMirroring:PacketMirroring',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.collectorIlb =
         registerOutput<PacketMirroringCollectorIlb>('collectorIlb');

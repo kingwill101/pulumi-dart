@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_container_liveness_probe_grpc/get_service_template_spec_container_liveness_probe_grpc.dart';
 import '../get_service_template_spec_container_liveness_probe_http_get/get_service_template_spec_container_liveness_probe_http_get.dart';
 
@@ -41,10 +41,10 @@ class GetServiceTemplateSpecContainerLivenessProbe {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['failureThreshold'] = failureThreshold;
-    map['grpcs'] = Input.encodeList<
+    map['grpcs'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerLivenessProbeGrpc,
         Map<String, dynamic>>(grpcs, (value) => value.toMap());
-    map['httpGets'] = Input.encodeList<
+    map['httpGets'] = pulumi.Input.encodeList<
         GetServiceTemplateSpecContainerLivenessProbeHttpGet,
         Map<String, dynamic>>(httpGets, (value) => value.toMap());
     map['initialDelaySeconds'] = initialDelaySeconds;
@@ -57,16 +57,17 @@ class GetServiceTemplateSpecContainerLivenessProbe {
       Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerLivenessProbe(
       failureThreshold: map['failureThreshold'] as int,
-      grpcs: Input.decodeList<GetServiceTemplateSpecContainerLivenessProbeGrpc>(
+      grpcs: pulumi.Input.decodeList<
+              GetServiceTemplateSpecContainerLivenessProbeGrpc>(
           map['grpcs'],
           (value) => GetServiceTemplateSpecContainerLivenessProbeGrpc.fromMap(
               (value as Map).cast<String, dynamic>())),
-      httpGets:
-          Input.decodeList<GetServiceTemplateSpecContainerLivenessProbeHttpGet>(
-              map['httpGets'],
-              (value) =>
-                  GetServiceTemplateSpecContainerLivenessProbeHttpGet.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      httpGets: pulumi.Input.decodeList<
+              GetServiceTemplateSpecContainerLivenessProbeHttpGet>(
+          map['httpGets'],
+          (value) =>
+              GetServiceTemplateSpecContainerLivenessProbeHttpGet.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       initialDelaySeconds: map['initialDelaySeconds'] as int,
       periodSeconds: map['periodSeconds'] as int,
       timeoutSeconds: map['timeoutSeconds'] as int,

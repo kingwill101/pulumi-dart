@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_app_connection_application_endpoint/get_app_connection_application_endpoint.dart';
 import '../get_app_connection_gateway/get_app_connection_gateway.dart';
 
@@ -38,14 +38,14 @@ class GetAppConnectionResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['applicationEndpoints'] = Input.encodeList<
+    map['applicationEndpoints'] = pulumi.Input.encodeList<
         GetAppConnectionApplicationEndpoint,
         Map<String, dynamic>>(applicationEndpoints, (value) => value.toMap());
     map['connectors'] = connectors;
     map['displayName'] = displayName;
     map['effectiveLabels'] = effectiveLabels;
     map['gateways'] =
-        Input.encodeList<GetAppConnectionGateway, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAppConnectionGateway, Map<String, dynamic>>(
             gateways, (value) => value.toMap());
     map['id'] = id;
     map['labels'] = labels;
@@ -66,14 +66,14 @@ class GetAppConnectionResult {
   factory GetAppConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetAppConnectionResult(
       applicationEndpoints:
-          Input.decodeList<GetAppConnectionApplicationEndpoint>(
+          pulumi.Input.decodeList<GetAppConnectionApplicationEndpoint>(
               map['applicationEndpoints'],
               (value) => GetAppConnectionApplicationEndpoint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       connectors: (map['connectors'] as List).cast<String>(),
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      gateways: Input.decodeList<GetAppConnectionGateway>(
+      gateways: pulumi.Input.decodeList<GetAppConnectionGateway>(
           map['gateways'],
           (value) => GetAppConnectionGateway.fromMap(
               (value as Map).cast<String, dynamic>())),

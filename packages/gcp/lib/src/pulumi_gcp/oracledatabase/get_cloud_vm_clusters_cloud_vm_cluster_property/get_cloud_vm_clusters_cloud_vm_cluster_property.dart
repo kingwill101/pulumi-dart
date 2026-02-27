@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_vm_clusters_cloud_vm_cluster_property_diagnostics_data_collection_option/get_cloud_vm_clusters_cloud_vm_cluster_property_diagnostics_data_collection_option.dart';
 import '../get_cloud_vm_clusters_cloud_vm_cluster_property_time_zone/get_cloud_vm_clusters_cloud_vm_cluster_property_time_zone.dart';
 
@@ -168,7 +168,7 @@ class GetCloudVmClustersCloudVmClusterProperty {
     map['dataStorageSizeTb'] = dataStorageSizeTb;
     map['dbNodeStorageSizeGb'] = dbNodeStorageSizeGb;
     map['dbServerOcids'] = dbServerOcids;
-    map['diagnosticsDataCollectionOptions'] = Input.encodeList<
+    map['diagnosticsDataCollectionOptions'] = pulumi.Input.encodeList<
         GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption,
         Map<String,
             dynamic>>(diagnosticsDataCollectionOptions, (value) => value.toMap());
@@ -196,7 +196,7 @@ class GetCloudVmClustersCloudVmClusterProperty {
     map['state'] = state;
     map['storageSizeGb'] = storageSizeGb;
     map['systemVersion'] = systemVersion;
-    map['timeZones'] = Input.encodeList<
+    map['timeZones'] = pulumi.Input.encodeList<
         GetCloudVmClustersCloudVmClusterPropertyTimeZone,
         Map<String, dynamic>>(timeZones, (value) => value.toMap());
     return map;
@@ -211,7 +211,7 @@ class GetCloudVmClustersCloudVmClusterProperty {
       dataStorageSizeTb: map['dataStorageSizeTb'] as double,
       dbNodeStorageSizeGb: map['dbNodeStorageSizeGb'] as int,
       dbServerOcids: (map['dbServerOcids'] as List).cast<String>(),
-      diagnosticsDataCollectionOptions: Input.decodeList<
+      diagnosticsDataCollectionOptions: pulumi.Input.decodeList<
               GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption>(
           map['diagnosticsDataCollectionOptions'],
           (value) =>
@@ -241,12 +241,11 @@ class GetCloudVmClustersCloudVmClusterProperty {
       state: map['state'] as String,
       storageSizeGb: map['storageSizeGb'] as int,
       systemVersion: map['systemVersion'] as String,
-      timeZones:
-          Input.decodeList<GetCloudVmClustersCloudVmClusterPropertyTimeZone>(
-              map['timeZones'],
-              (value) =>
-                  GetCloudVmClustersCloudVmClusterPropertyTimeZone.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      timeZones: pulumi.Input.decodeList<
+              GetCloudVmClustersCloudVmClusterPropertyTimeZone>(
+          map['timeZones'],
+          (value) => GetCloudVmClustersCloudVmClusterPropertyTimeZone.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

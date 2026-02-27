@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DataAccessLabel.
 class DataAccessLabelArgs {
@@ -8,23 +8,23 @@ class DataAccessLabelArgs {
   /// display name and the final component of the label's resource name. The
   /// maximum number of characters should be 63. Regex pattern is as per AIP:
   /// https://google.aip.dev/122#resource-id-segments
-  final Input<String> dataAccessLabelId;
+  final pulumi.Input<String> dataAccessLabelId;
 
   /// Optional. A description of the data access label for a human reader.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A UDM query over event data.
-  final Input<String> udmQuery;
+  final pulumi.Input<String> udmQuery;
 
   DataAccessLabelArgs({
     required this.dataAccessLabelId,
@@ -54,12 +54,12 @@ class DataAccessLabelArgs {
 
   factory DataAccessLabelArgs.fromMap(Map<String, dynamic> map) {
     return DataAccessLabelArgs(
-      dataAccessLabelId: Input.asInput<String>(map['dataAccessLabelId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      instance: Input.asInput<String>(map['instance']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      udmQuery: Input.asInput<String>(map['udmQuery']),
+      dataAccessLabelId: pulumi.Input.asInput<String>(map['dataAccessLabelId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      udmQuery: pulumi.Input.asInput<String>(map['udmQuery']),
     );
   }
 }

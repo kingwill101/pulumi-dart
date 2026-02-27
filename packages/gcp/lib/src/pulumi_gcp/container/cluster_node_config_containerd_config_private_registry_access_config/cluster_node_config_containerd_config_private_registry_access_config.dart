@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_node_config_containerd_config_private_registry_access_config_certificate_authority_domain_config/cluster_node_config_containerd_config_private_registry_access_config_certificate_authority_domain_config.dart';
 
 class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
@@ -22,7 +22,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
     final certificateAuthorityDomainConfigsValue =
         certificateAuthorityDomainConfigs;
     if (certificateAuthorityDomainConfigsValue != null) {
-      map['certificateAuthorityDomainConfigs'] = Input.encodeList<
+      map['certificateAuthorityDomainConfigs'] = pulumi.Input.encodeList<
               ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig,
               Map<String, dynamic>>(
           certificateAuthorityDomainConfigsValue, (value) => value.toMap());
@@ -38,7 +38,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
                   'certificateAuthorityDomainConfigs'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>(
               map['certificateAuthorityDomainConfigs'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_node_pool_node_config_advanced_machine_features/cluster_node_pool_node_config_advanced_machine_features.dart';
 import '../cluster_node_pool_node_config_boot_disk/cluster_node_pool_node_config_boot_disk.dart';
 import '../cluster_node_pool_node_config_confidential_nodes/cluster_node_pool_node_config_confidential_nodes.dart';
@@ -310,7 +310,7 @@ class ClusterNodePoolNodeConfig {
     }
     final effectiveTaintsValue = effectiveTaints;
     if (effectiveTaintsValue != null) {
-      map['effectiveTaints'] = Input.encodeList<
+      map['effectiveTaints'] = pulumi.Input.encodeList<
           ClusterNodePoolNodeConfigEffectiveTaint,
           Map<String, dynamic>>(effectiveTaintsValue, (value) => value.toMap());
     }
@@ -341,7 +341,7 @@ class ClusterNodePoolNodeConfig {
     }
     final guestAcceleratorsValue = guestAccelerators;
     if (guestAcceleratorsValue != null) {
-      map['guestAccelerators'] = Input.encodeList<
+      map['guestAccelerators'] = pulumi.Input.encodeList<
               ClusterNodePoolNodeConfigGuestAccelerator, Map<String, dynamic>>(
           guestAcceleratorsValue, (value) => value.toMap());
     }
@@ -431,7 +431,7 @@ class ClusterNodePoolNodeConfig {
     }
     final secondaryBootDisksValue = secondaryBootDisks;
     if (secondaryBootDisksValue != null) {
-      map['secondaryBootDisks'] = Input.encodeList<
+      map['secondaryBootDisks'] = pulumi.Input.encodeList<
               ClusterNodePoolNodeConfigSecondaryBootDisk, Map<String, dynamic>>(
           secondaryBootDisksValue, (value) => value.toMap());
     }
@@ -461,7 +461,7 @@ class ClusterNodePoolNodeConfig {
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.encodeList<ClusterNodePoolNodeConfigTaint,
+      map['taints'] = pulumi.Input.encodeList<ClusterNodePoolNodeConfigTaint,
           Map<String, dynamic>>(taintsValue, (value) => value.toMap());
     }
     final windowsNodeConfigValue = windowsNodeConfig;
@@ -500,7 +500,7 @@ class ClusterNodePoolNodeConfig {
       diskType: map['diskType'] == null ? null : map['diskType'] as String,
       effectiveTaints: map['effectiveTaints'] == null
           ? null
-          : Input.decodeList<ClusterNodePoolNodeConfigEffectiveTaint>(
+          : pulumi.Input.decodeList<ClusterNodePoolNodeConfigEffectiveTaint>(
               map['effectiveTaints'],
               (value) => ClusterNodePoolNodeConfigEffectiveTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -528,7 +528,7 @@ class ClusterNodePoolNodeConfig {
               (map['gcfsConfig'] as Map).cast<String, dynamic>()),
       guestAccelerators: map['guestAccelerators'] == null
           ? null
-          : Input.decodeList<ClusterNodePoolNodeConfigGuestAccelerator>(
+          : pulumi.Input.decodeList<ClusterNodePoolNodeConfigGuestAccelerator>(
               map['guestAccelerators'],
               (value) => ClusterNodePoolNodeConfigGuestAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -597,7 +597,7 @@ class ClusterNodePoolNodeConfig {
               (map['sandboxConfig'] as Map).cast<String, dynamic>()),
       secondaryBootDisks: map['secondaryBootDisks'] == null
           ? null
-          : Input.decodeList<ClusterNodePoolNodeConfigSecondaryBootDisk>(
+          : pulumi.Input.decodeList<ClusterNodePoolNodeConfigSecondaryBootDisk>(
               map['secondaryBootDisks'],
               (value) => ClusterNodePoolNodeConfigSecondaryBootDisk.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -619,7 +619,7 @@ class ClusterNodePoolNodeConfig {
       tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<ClusterNodePoolNodeConfigTaint>(
+          : pulumi.Input.decodeList<ClusterNodePoolNodeConfigTaint>(
               map['taints'],
               (value) => ClusterNodePoolNodeConfigTaint.fromMap(
                   (value as Map).cast<String, dynamic>())),

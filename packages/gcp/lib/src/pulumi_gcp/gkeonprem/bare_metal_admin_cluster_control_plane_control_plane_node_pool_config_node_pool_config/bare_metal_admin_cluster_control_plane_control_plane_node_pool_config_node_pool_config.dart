@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_admin_cluster_control_plane_control_plane_node_pool_config_node_pool_config_node_config/bare_metal_admin_cluster_control_plane_control_plane_node_pool_config_node_pool_config_node_config.dart';
 import '../bare_metal_admin_cluster_control_plane_control_plane_node_pool_config_node_pool_config_taint/bare_metal_admin_cluster_control_plane_control_plane_node_pool_config_node_pool_config_taint.dart';
 
@@ -39,7 +39,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig 
     }
     final nodeConfigsValue = nodeConfigs;
     if (nodeConfigsValue != null) {
-      map['nodeConfigs'] = Input.encodeList<
+      map['nodeConfigs'] = pulumi.Input.encodeList<
           BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig,
           Map<String, dynamic>>(nodeConfigsValue, (value) => value.toMap());
     }
@@ -49,7 +49,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig 
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.encodeList<
+      map['taints'] = pulumi.Input.encodeList<
           BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint,
           Map<String, dynamic>>(taintsValue, (value) => value.toMap());
     }
@@ -64,7 +64,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig 
           : (map['labels'] as Map).cast<String, String>(),
       nodeConfigs: map['nodeConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>(
               map['nodeConfigs'],
               (value) =>
@@ -75,7 +75,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig 
           : map['operatingSystem'] as String,
       taints: map['taints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>(
               map['taints'],
               (value) =>

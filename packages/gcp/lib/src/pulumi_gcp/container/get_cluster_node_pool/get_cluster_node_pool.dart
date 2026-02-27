@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_pool_autoscaling/get_cluster_node_pool_autoscaling.dart';
 import '../get_cluster_node_pool_management/get_cluster_node_pool_management.dart';
 import '../get_cluster_node_pool_network_config/get_cluster_node_pool_network_config.dart';
@@ -82,36 +82,34 @@ class GetClusterNodePool {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscalings'] =
-        Input.encodeList<GetClusterNodePoolAutoscaling, Map<String, dynamic>>(
-            autoscalings, (value) => value.toMap());
+    map['autoscalings'] = pulumi.Input.encodeList<GetClusterNodePoolAutoscaling,
+        Map<String, dynamic>>(autoscalings, (value) => value.toMap());
     map['initialNodeCount'] = initialNodeCount;
     map['instanceGroupUrls'] = instanceGroupUrls;
     map['managedInstanceGroupUrls'] = managedInstanceGroupUrls;
-    map['managements'] =
-        Input.encodeList<GetClusterNodePoolManagement, Map<String, dynamic>>(
-            managements, (value) => value.toMap());
+    map['managements'] = pulumi.Input.encodeList<GetClusterNodePoolManagement,
+        Map<String, dynamic>>(managements, (value) => value.toMap());
     map['maxPodsPerNode'] = maxPodsPerNode;
     map['name'] = name;
     map['namePrefix'] = namePrefix;
-    map['networkConfigs'] =
-        Input.encodeList<GetClusterNodePoolNetworkConfig, Map<String, dynamic>>(
-            networkConfigs, (value) => value.toMap());
-    map['nodeConfigs'] =
-        Input.encodeList<GetClusterNodePoolNodeConfig, Map<String, dynamic>>(
-            nodeConfigs, (value) => value.toMap());
+    map['networkConfigs'] = pulumi.Input.encodeList<
+        GetClusterNodePoolNetworkConfig,
+        Map<String, dynamic>>(networkConfigs, (value) => value.toMap());
+    map['nodeConfigs'] = pulumi.Input.encodeList<GetClusterNodePoolNodeConfig,
+        Map<String, dynamic>>(nodeConfigs, (value) => value.toMap());
     map['nodeCount'] = nodeCount;
-    map['nodeDrainConfigs'] = Input.encodeList<
+    map['nodeDrainConfigs'] = pulumi.Input.encodeList<
         GetClusterNodePoolNodeDrainConfig,
         Map<String, dynamic>>(nodeDrainConfigs, (value) => value.toMap());
     map['nodeLocations'] = nodeLocations;
-    map['placementPolicies'] = Input.encodeList<
+    map['placementPolicies'] = pulumi.Input.encodeList<
         GetClusterNodePoolPlacementPolicy,
         Map<String, dynamic>>(placementPolicies, (value) => value.toMap());
-    map['queuedProvisionings'] = Input.encodeList<
+    map['queuedProvisionings'] = pulumi.Input.encodeList<
         GetClusterNodePoolQueuedProvisioning,
         Map<String, dynamic>>(queuedProvisionings, (value) => value.toMap());
-    map['upgradeSettings'] = Input.encodeList<GetClusterNodePoolUpgradeSetting,
+    map['upgradeSettings'] = pulumi.Input.encodeList<
+        GetClusterNodePoolUpgradeSetting,
         Map<String, dynamic>>(upgradeSettings, (value) => value.toMap());
     map['version'] = version;
     return map;
@@ -119,7 +117,7 @@ class GetClusterNodePool {
 
   factory GetClusterNodePool.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePool(
-      autoscalings: Input.decodeList<GetClusterNodePoolAutoscaling>(
+      autoscalings: pulumi.Input.decodeList<GetClusterNodePoolAutoscaling>(
           map['autoscalings'],
           (value) => GetClusterNodePoolAutoscaling.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -127,40 +125,43 @@ class GetClusterNodePool {
       instanceGroupUrls: (map['instanceGroupUrls'] as List).cast<String>(),
       managedInstanceGroupUrls:
           (map['managedInstanceGroupUrls'] as List).cast<String>(),
-      managements: Input.decodeList<GetClusterNodePoolManagement>(
+      managements: pulumi.Input.decodeList<GetClusterNodePoolManagement>(
           map['managements'],
           (value) => GetClusterNodePoolManagement.fromMap(
               (value as Map).cast<String, dynamic>())),
       maxPodsPerNode: map['maxPodsPerNode'] as int,
       name: map['name'] as String,
       namePrefix: map['namePrefix'] as String,
-      networkConfigs: Input.decodeList<GetClusterNodePoolNetworkConfig>(
+      networkConfigs: pulumi.Input.decodeList<GetClusterNodePoolNetworkConfig>(
           map['networkConfigs'],
           (value) => GetClusterNodePoolNetworkConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      nodeConfigs: Input.decodeList<GetClusterNodePoolNodeConfig>(
+      nodeConfigs: pulumi.Input.decodeList<GetClusterNodePoolNodeConfig>(
           map['nodeConfigs'],
           (value) => GetClusterNodePoolNodeConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       nodeCount: map['nodeCount'] as int,
-      nodeDrainConfigs: Input.decodeList<GetClusterNodePoolNodeDrainConfig>(
-          map['nodeDrainConfigs'],
-          (value) => GetClusterNodePoolNodeDrainConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      nodeDrainConfigs:
+          pulumi.Input.decodeList<GetClusterNodePoolNodeDrainConfig>(
+              map['nodeDrainConfigs'],
+              (value) => GetClusterNodePoolNodeDrainConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       nodeLocations: (map['nodeLocations'] as List).cast<String>(),
-      placementPolicies: Input.decodeList<GetClusterNodePoolPlacementPolicy>(
-          map['placementPolicies'],
-          (value) => GetClusterNodePoolPlacementPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      placementPolicies:
+          pulumi.Input.decodeList<GetClusterNodePoolPlacementPolicy>(
+              map['placementPolicies'],
+              (value) => GetClusterNodePoolPlacementPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       queuedProvisionings:
-          Input.decodeList<GetClusterNodePoolQueuedProvisioning>(
+          pulumi.Input.decodeList<GetClusterNodePoolQueuedProvisioning>(
               map['queuedProvisionings'],
               (value) => GetClusterNodePoolQueuedProvisioning.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      upgradeSettings: Input.decodeList<GetClusterNodePoolUpgradeSetting>(
-          map['upgradeSettings'],
-          (value) => GetClusterNodePoolUpgradeSetting.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      upgradeSettings:
+          pulumi.Input.decodeList<GetClusterNodePoolUpgradeSetting>(
+              map['upgradeSettings'],
+              (value) => GetClusterNodePoolUpgradeSetting.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       version: map['version'] as String,
     );
   }

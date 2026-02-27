@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_instance_group_instance_named_port/get_region_instance_group_instance_named_port.dart';
 
 class GetRegionInstanceGroupInstance {
@@ -22,7 +22,7 @@ class GetRegionInstanceGroupInstance {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['instance'] = instance;
-    map['namedPorts'] = Input.encodeList<
+    map['namedPorts'] = pulumi.Input.encodeList<
         GetRegionInstanceGroupInstanceNamedPort,
         Map<String, dynamic>>(namedPorts, (value) => value.toMap());
     map['status'] = status;
@@ -32,10 +32,11 @@ class GetRegionInstanceGroupInstance {
   factory GetRegionInstanceGroupInstance.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupInstance(
       instance: map['instance'] as String,
-      namedPorts: Input.decodeList<GetRegionInstanceGroupInstanceNamedPort>(
-          map['namedPorts'],
-          (value) => GetRegionInstanceGroupInstanceNamedPort.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      namedPorts:
+          pulumi.Input.decodeList<GetRegionInstanceGroupInstanceNamedPort>(
+              map['namedPorts'],
+              (value) => GetRegionInstanceGroupInstanceNamedPort.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
     );
   }

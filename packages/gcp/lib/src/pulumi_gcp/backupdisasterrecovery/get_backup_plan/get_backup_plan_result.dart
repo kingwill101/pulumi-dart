@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backup_plan_backup_rule/get_backup_plan_backup_rule.dart';
 
 /// Result data returned by getBackupPlan.
@@ -45,7 +45,7 @@ class GetBackupPlanResult {
     final map = <String, dynamic>{};
     map['backupPlanId'] = backupPlanId;
     map['backupRules'] =
-        Input.encodeList<GetBackupPlanBackupRule, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBackupPlanBackupRule, Map<String, dynamic>>(
             backupRules, (value) => value.toMap());
     map['backupVault'] = backupVault;
     map['backupVaultServiceAccount'] = backupVaultServiceAccount;
@@ -69,7 +69,7 @@ class GetBackupPlanResult {
   factory GetBackupPlanResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanResult(
       backupPlanId: map['backupPlanId'] as String,
-      backupRules: Input.decodeList<GetBackupPlanBackupRule>(
+      backupRules: pulumi.Input.decodeList<GetBackupPlanBackupRule>(
           map['backupRules'],
           (value) => GetBackupPlanBackupRule.fromMap(
               (value as Map).cast<String, dynamic>())),

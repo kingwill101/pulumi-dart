@@ -1,32 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_feature_store_entity_type_monitoring_config/ai_feature_store_entity_type_monitoring_config.dart';
 
 /// The set of arguments for AiFeatureStoreEntityType.
 class AiFeatureStoreEntityTypeArgs {
   /// Optional. Description of the EntityType.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-  final Input<String> featurestore;
+  final pulumi.Input<String> featurestore;
 
   /// A set of key/value label pairs to assign to this EntityType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The default monitoring configuration for all Features under this EntityType.
   /// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
   /// Structure is documented below.
-  final Input<AiFeatureStoreEntityTypeMonitoringConfig>? monitoringConfig;
+  final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfig>?
+      monitoringConfig;
 
   /// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
-  final Input<int>? offlineStorageTtlDays;
+  final pulumi.Input<int>? offlineStorageTtlDays;
 
   AiFeatureStoreEntityTypeArgs({
     this.description,
@@ -50,7 +51,7 @@ class AiFeatureStoreEntityTypeArgs {
     }
     final monitoringConfigValue = monitoringConfig;
     if (monitoringConfigValue != null) {
-      map['monitoringConfig'] = Input.mapOptionalInputValue<
+      map['monitoringConfig'] = pulumi.Input.mapOptionalInputValue<
               AiFeatureStoreEntityTypeMonitoringConfig, Map<String, dynamic>>(
           monitoringConfigValue, (value) => value.toMap());
     }
@@ -67,15 +68,14 @@ class AiFeatureStoreEntityTypeArgs {
 
   factory AiFeatureStoreEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      featurestore: Input.asInput<String>(map['featurestore']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      monitoringConfig:
-          Input.asOptionalInput<AiFeatureStoreEntityTypeMonitoringConfig>(
-              map['monitoringConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      featurestore: pulumi.Input.asInput<String>(map['featurestore']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      monitoringConfig: pulumi.Input.asOptionalInput<
+          AiFeatureStoreEntityTypeMonitoringConfig>(map['monitoringConfig']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       offlineStorageTtlDays:
-          Input.asOptionalInput<int>(map['offlineStorageTtlDays']),
+          pulumi.Input.asOptionalInput<int>(map['offlineStorageTtlDays']),
     );
   }
 }

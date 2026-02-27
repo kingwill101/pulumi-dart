@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_service_accounts_args.dart';
 
 /// Allows management of Google Cloud Platform project default service accounts.
@@ -27,31 +27,31 @@ import 'default_service_accounts_args.dart';
 /// ## Import
 ///
 /// This resource does not support import
-class DefaultServiceAccounts extends CustomResource {
+class DefaultServiceAccounts extends pulumi.CustomResource {
   /// The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
-  late final Output<String> action;
+  late final pulumi.Output<String> action;
 
   /// The project ID where service accounts are created.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The action to be performed in the default service accounts on the resource destroy.
   /// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
   /// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
   /// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
-  late final Output<String?> restorePolicy;
+  late final pulumi.Output<String?> restorePolicy;
 
   /// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
-  late final Output<Map<String, String>> serviceAccounts;
+  late final pulumi.Output<Map<String, String>> serviceAccounts;
 
   DefaultServiceAccounts(
     String name, {
     DefaultServiceAccountsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<String>('action');
     this.project = registerOutput<String>('project');

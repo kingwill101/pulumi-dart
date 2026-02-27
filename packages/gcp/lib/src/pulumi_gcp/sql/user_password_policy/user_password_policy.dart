@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_password_policy_status/user_password_policy_status.dart';
 
 class UserPasswordPolicy {
@@ -45,9 +45,8 @@ class UserPasswordPolicy {
     }
     final statusesValue = statuses;
     if (statusesValue != null) {
-      map['statuses'] =
-          Input.encodeList<UserPasswordPolicyStatus, Map<String, dynamic>>(
-              statusesValue, (value) => value.toMap());
+      map['statuses'] = pulumi.Input.encodeList<UserPasswordPolicyStatus,
+          Map<String, dynamic>>(statusesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -68,7 +67,7 @@ class UserPasswordPolicy {
           : map['passwordExpirationDuration'] as String,
       statuses: map['statuses'] == null
           ? null
-          : Input.decodeList<UserPasswordPolicyStatus>(
+          : pulumi.Input.decodeList<UserPasswordPolicyStatus>(
               map['statuses'],
               (value) => UserPasswordPolicyStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),

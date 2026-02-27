@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_generative_settings_fallback_settings_prompt_template/cx_generative_settings_fallback_settings_prompt_template.dart';
 
 class CxGenerativeSettingsFallbackSettings {
@@ -21,7 +21,7 @@ class CxGenerativeSettingsFallbackSettings {
     final map = <String, dynamic>{};
     final promptTemplatesValue = promptTemplates;
     if (promptTemplatesValue != null) {
-      map['promptTemplates'] = Input.encodeList<
+      map['promptTemplates'] = pulumi.Input.encodeList<
           CxGenerativeSettingsFallbackSettingsPromptTemplate,
           Map<String, dynamic>>(promptTemplatesValue, (value) => value.toMap());
     }
@@ -37,7 +37,7 @@ class CxGenerativeSettingsFallbackSettings {
     return CxGenerativeSettingsFallbackSettings(
       promptTemplates: map['promptTemplates'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxGenerativeSettingsFallbackSettingsPromptTemplate>(
               map['promptTemplates'],
               (value) =>

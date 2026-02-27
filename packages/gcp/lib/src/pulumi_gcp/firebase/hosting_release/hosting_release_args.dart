@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for HostingRelease.
 class HostingReleaseArgs {
   /// The ID of the channel to which the release belongs. If not provided, the release will
   /// belong to the default "live" channel
-  final Input<String>? channelId;
+  final pulumi.Input<String>? channelId;
 
   /// The deploy description when the release was created. The value can be up to 512 characters.
-  final Input<String>? message;
+  final pulumi.Input<String>? message;
 
   /// Required. The ID of the site to which the release belongs.
-  final Input<String> siteId;
+  final pulumi.Input<String> siteId;
 
   /// The type of the release; indicates what happened to the content of the site. There is no need to specify
   /// `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
@@ -20,13 +20,13 @@ class HostingReleaseArgs {
   /// ROLLBACK: The release points back to a previously deployed version. Output only.
   /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
   /// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   /// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
   /// The content of the version specified will be actively displayed on the appropriate URL.
   /// The Version must belong to the same site as in the `site_id`.
   /// This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
-  final Input<String>? versionName;
+  final pulumi.Input<String>? versionName;
 
   HostingReleaseArgs({
     this.channelId,
@@ -60,11 +60,11 @@ class HostingReleaseArgs {
 
   factory HostingReleaseArgs.fromMap(Map<String, dynamic> map) {
     return HostingReleaseArgs(
-      channelId: Input.asOptionalInput<String>(map['channelId']),
-      message: Input.asOptionalInput<String>(map['message']),
-      siteId: Input.asInput<String>(map['siteId']),
-      type: Input.asOptionalInput<String>(map['type']),
-      versionName: Input.asOptionalInput<String>(map['versionName']),
+      channelId: pulumi.Input.asOptionalInput<String>(map['channelId']),
+      message: pulumi.Input.asOptionalInput<String>(map['message']),
+      siteId: pulumi.Input.asInput<String>(map['siteId']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
+      versionName: pulumi.Input.asOptionalInput<String>(map['versionName']),
     );
   }
 }

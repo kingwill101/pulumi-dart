@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resource_policy_snapshot_schedule_policy_schedule_daily_schedule/get_resource_policy_snapshot_schedule_policy_schedule_daily_schedule.dart';
 import '../get_resource_policy_snapshot_schedule_policy_schedule_hourly_schedule/get_resource_policy_snapshot_schedule_policy_schedule_hourly_schedule.dart';
 import '../get_resource_policy_snapshot_schedule_policy_schedule_weekly_schedule/get_resource_policy_snapshot_schedule_policy_schedule_weekly_schedule.dart';
@@ -26,13 +26,13 @@ class GetResourcePolicySnapshotSchedulePolicySchedule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dailySchedules'] = Input.encodeList<
+    map['dailySchedules'] = pulumi.Input.encodeList<
         GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule,
         Map<String, dynamic>>(dailySchedules, (value) => value.toMap());
-    map['hourlySchedules'] = Input.encodeList<
+    map['hourlySchedules'] = pulumi.Input.encodeList<
         GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule,
         Map<String, dynamic>>(hourlySchedules, (value) => value.toMap());
-    map['weeklySchedules'] = Input.encodeList<
+    map['weeklySchedules'] = pulumi.Input.encodeList<
         GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule,
         Map<String, dynamic>>(weeklySchedules, (value) => value.toMap());
     return map;
@@ -41,19 +41,19 @@ class GetResourcePolicySnapshotSchedulePolicySchedule {
   factory GetResourcePolicySnapshotSchedulePolicySchedule.fromMap(
       Map<String, dynamic> map) {
     return GetResourcePolicySnapshotSchedulePolicySchedule(
-      dailySchedules: Input.decodeList<
+      dailySchedules: pulumi.Input.decodeList<
               GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>(
           map['dailySchedules'],
           (value) =>
               GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule
                   .fromMap((value as Map).cast<String, dynamic>())),
-      hourlySchedules: Input.decodeList<
+      hourlySchedules: pulumi.Input.decodeList<
               GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>(
           map['hourlySchedules'],
           (value) =>
               GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule
                   .fromMap((value as Map).cast<String, dynamic>())),
-      weeklySchedules: Input.decodeList<
+      weeklySchedules: pulumi.Input.decodeList<
               GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>(
           map['weeklySchedules'],
           (value) =>

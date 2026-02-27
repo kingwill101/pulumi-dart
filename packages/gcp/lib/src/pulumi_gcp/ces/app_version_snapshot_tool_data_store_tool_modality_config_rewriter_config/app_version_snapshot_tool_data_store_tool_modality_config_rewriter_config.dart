@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_data_store_tool_modality_config_rewriter_config_model_setting/app_version_snapshot_tool_data_store_tool_modality_config_rewriter_config_model_setting.dart';
 
 class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
@@ -33,7 +33,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
     }
     final modelSettingsValue = modelSettings;
     if (modelSettingsValue != null) {
-      map['modelSettings'] = Input.encodeList<
+      map['modelSettings'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting,
           Map<String, dynamic>>(modelSettingsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       modelSettings: map['modelSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting>(
               map['modelSettings'],
               (value) =>

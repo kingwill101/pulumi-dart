@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_handle_args.dart';
 
 /// ## Example Usage
@@ -31,36 +31,36 @@ import 'key_handle_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/keyHandle:KeyHandle default {{location}}/{{name}}
 /// ```
-class KeyHandle extends CustomResource {
+class KeyHandle extends pulumi.CustomResource {
   /// A reference to a Cloud KMS CryptoKey that can be used for CMEK in the requested
   /// product/project/location, for example
   /// `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
-  late final Output<String> kmsKey;
+  late final pulumi.Output<String> kmsKey;
 
   /// The location for the KeyHandle.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name for the KeyHandle.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Selector of the resource type where we want to protect resources.
   /// For example, `storage.googleapis.com/Bucket`.
-  late final Output<String> resourceTypeSelector;
+  late final pulumi.Output<String> resourceTypeSelector;
 
   KeyHandle(
     String name, {
     KeyHandleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/keyHandle:KeyHandle',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.kmsKey = registerOutput<String>('kmsKey');
     this.location = registerOutput<String>('location');

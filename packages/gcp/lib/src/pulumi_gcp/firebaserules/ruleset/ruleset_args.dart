@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ruleset_source/ruleset_source.dart';
 
 /// The set of arguments for Ruleset.
 class RulesetArgs {
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// `Source` for the `Ruleset`.
-  final Input<RulesetSource> source;
+  final pulumi.Input<RulesetSource> source;
 
   RulesetArgs({
     this.project,
@@ -22,15 +22,16 @@ class RulesetArgs {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['source'] = Input.mapInputValue<RulesetSource, Map<String, dynamic>>(
-        source, (value) => value.toMap());
+    map['source'] =
+        pulumi.Input.mapInputValue<RulesetSource, Map<String, dynamic>>(
+            source, (value) => value.toMap());
     return map;
   }
 
   factory RulesetArgs.fromMap(Map<String, dynamic> map) {
     return RulesetArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      source: Input.asInput<RulesetSource>(map['source']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      source: pulumi.Input.asInput<RulesetSource>(map['source']),
     );
   }
 }

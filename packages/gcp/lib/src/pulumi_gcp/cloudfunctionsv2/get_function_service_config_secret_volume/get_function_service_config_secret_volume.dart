@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_function_service_config_secret_volume_version/get_function_service_config_secret_volume_version.dart';
 
 class GetFunctionServiceConfigSecretVolume {
@@ -28,7 +28,7 @@ class GetFunctionServiceConfigSecretVolume {
     map['mountPath'] = mountPath;
     map['projectId'] = projectId;
     map['secret'] = secret;
-    map['versions'] = Input.encodeList<
+    map['versions'] = pulumi.Input.encodeList<
         GetFunctionServiceConfigSecretVolumeVersion,
         Map<String, dynamic>>(versions, (value) => value.toMap());
     return map;
@@ -40,10 +40,11 @@ class GetFunctionServiceConfigSecretVolume {
       mountPath: map['mountPath'] as String,
       projectId: map['projectId'] as String,
       secret: map['secret'] as String,
-      versions: Input.decodeList<GetFunctionServiceConfigSecretVolumeVersion>(
-          map['versions'],
-          (value) => GetFunctionServiceConfigSecretVolumeVersion.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      versions:
+          pulumi.Input.decodeList<GetFunctionServiceConfigSecretVolumeVersion>(
+              map['versions'],
+              (value) => GetFunctionServiceConfigSecretVolumeVersion.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

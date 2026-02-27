@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_plan_restore_config_restore_order_group_kind_dependency/restore_plan_restore_config_restore_order_group_kind_dependency.dart';
 
 class RestorePlanRestoreConfigRestoreOrder {
@@ -17,7 +17,7 @@ class RestorePlanRestoreConfigRestoreOrder {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['groupKindDependencies'] = Input.encodeList<
+    map['groupKindDependencies'] = pulumi.Input.encodeList<
         RestorePlanRestoreConfigRestoreOrderGroupKindDependency,
         Map<String, dynamic>>(groupKindDependencies, (value) => value.toMap());
     return map;
@@ -26,7 +26,7 @@ class RestorePlanRestoreConfigRestoreOrder {
   factory RestorePlanRestoreConfigRestoreOrder.fromMap(
       Map<String, dynamic> map) {
     return RestorePlanRestoreConfigRestoreOrder(
-      groupKindDependencies: Input.decodeList<
+      groupKindDependencies: pulumi.Input.decodeList<
               RestorePlanRestoreConfigRestoreOrderGroupKindDependency>(
           map['groupKindDependencies'],
           (value) =>

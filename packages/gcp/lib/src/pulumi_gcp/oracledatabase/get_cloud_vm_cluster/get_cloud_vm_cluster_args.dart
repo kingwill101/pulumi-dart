@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCloudVmCluster.
 class GetCloudVmClusterArgs {
   /// The ID of the VM Cluster.
-  final Input<String> cloudVmClusterId;
+  final pulumi.Input<String> cloudVmClusterId;
 
   /// The location of the resource.
   ///
   /// - - -
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetCloudVmClusterArgs({
     required this.cloudVmClusterId,
@@ -35,9 +35,9 @@ class GetCloudVmClusterArgs {
 
   factory GetCloudVmClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterArgs(
-      cloudVmClusterId: Input.asInput<String>(map['cloudVmClusterId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      cloudVmClusterId: pulumi.Input.asInput<String>(map['cloudVmClusterId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

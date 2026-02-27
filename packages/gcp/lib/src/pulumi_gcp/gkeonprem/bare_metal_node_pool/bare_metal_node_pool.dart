@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_node_pool_node_pool_config/bare_metal_node_pool_node_pool_config.dart';
 import '../bare_metal_node_pool_status/bare_metal_node_pool_status.dart';
 import 'bare_metal_node_pool_args.dart';
@@ -44,7 +44,7 @@ import 'bare_metal_node_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{location}}/{{bare_metal_cluster}}/{{name}}
 /// ```
-class BareMetalNodePool extends CustomResource {
+class BareMetalNodePool extends pulumi.CustomResource {
   /// Annotations on the Bare Metal Node Pool.
   /// This field has the same restrictions as Kubernetes annotations.
   /// The total size of all keys and values combined is limited to 256k.
@@ -56,68 +56,68 @@ class BareMetalNodePool extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// The cluster this node pool belongs to.
-  late final Output<String> bareMetalCluster;
+  late final pulumi.Output<String> bareMetalCluster;
 
   /// The time the cluster was created, in RFC3339 text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The time the cluster was deleted, in RFC3339 text format.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// The display name for the Bare Metal Node Pool.
-  late final Output<String?> displayName;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> displayName;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The bare metal node pool name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Node pool configuration.
   /// Structure is documented below.
-  late final Output<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
+  late final pulumi.Output<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// If set, there are currently changes in flight to the Bare Metal User Cluster.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// (Output)
   /// The lifecycle state of the condition.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Specifies detailed node pool status.
   /// Structure is documented below.
-  late final Output<List<BareMetalNodePoolStatus>> statuses;
+  late final pulumi.Output<List<BareMetalNodePoolStatus>> statuses;
 
   /// The unique identifier of the Bare Metal Node Pool.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The time the cluster was last updated, in RFC3339 text format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BareMetalNodePool(
     String name, {
     BareMetalNodePoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.bareMetalCluster = registerOutput<String>('bareMetalCluster');

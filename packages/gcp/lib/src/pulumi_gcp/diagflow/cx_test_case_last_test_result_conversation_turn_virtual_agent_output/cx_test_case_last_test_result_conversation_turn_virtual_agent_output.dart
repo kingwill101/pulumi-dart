@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_test_case_last_test_result_conversation_turn_virtual_agent_output_current_page/cx_test_case_last_test_result_conversation_turn_virtual_agent_output_current_page.dart';
 import '../cx_test_case_last_test_result_conversation_turn_virtual_agent_output_difference/cx_test_case_last_test_result_conversation_turn_virtual_agent_output_difference.dart';
 import '../cx_test_case_last_test_result_conversation_turn_virtual_agent_output_status/cx_test_case_last_test_result_conversation_turn_virtual_agent_output_status.dart';
@@ -55,7 +55,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
     }
     final differencesValue = differences;
     if (differencesValue != null) {
-      map['differences'] = Input.encodeList<
+      map['differences'] = pulumi.Input.encodeList<
           CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference,
           Map<String, dynamic>>(differencesValue, (value) => value.toMap());
     }
@@ -69,7 +69,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
     }
     final textResponsesValue = textResponses;
     if (textResponsesValue != null) {
-      map['textResponses'] = Input.encodeList<
+      map['textResponses'] = pulumi.Input.encodeList<
           CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse,
           Map<String, dynamic>>(textResponsesValue, (value) => value.toMap());
     }
@@ -89,7 +89,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
               .fromMap((map['currentPage'] as Map).cast<String, dynamic>()),
       differences: map['differences'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference>(
               map['differences'],
               (value) =>
@@ -104,7 +104,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
               .fromMap((map['status'] as Map).cast<String, dynamic>()),
       textResponses: map['textResponses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse>(
               map['textResponses'],
               (value) =>

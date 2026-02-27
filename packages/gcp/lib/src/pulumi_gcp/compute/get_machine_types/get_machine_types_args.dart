@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMachineTypes.
 class GetMachineTypesArgs {
   /// A filter expression that filters machine types listed in the response.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// Project from which to list available zones. Defaults to project declared in the provider.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Zone from which to list machine types.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetMachineTypesArgs({
     this.filter,
@@ -38,9 +38,9 @@ class GetMachineTypesArgs {
 
   factory GetMachineTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

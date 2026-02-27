@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRouters.
 class GetRoutersArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// If provided, only resources from the given regions are queried.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetRoutersArgs({
     this.project,
@@ -31,8 +31,8 @@ class GetRoutersArgs {
 
   factory GetRoutersArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutersArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

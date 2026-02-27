@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_group_manager_all_instances_config/instance_group_manager_all_instances_config.dart';
 import '../instance_group_manager_auto_healing_policies/instance_group_manager_auto_healing_policies.dart';
 import '../instance_group_manager_instance_lifecycle_policy/instance_group_manager_instance_lifecycle_policy.dart';
@@ -68,15 +68,16 @@ import 'instance_group_manager_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
 /// ```
-class InstanceGroupManager extends CustomResource {
+class InstanceGroupManager extends pulumi.CustomResource {
   /// Properties to set on all instances in the group. After setting
   /// allInstancesConfig on the group, you must update the group's instances to
   /// apply the configuration.
-  late final Output<InstanceGroupManagerAllInstancesConfig?> allInstancesConfig;
+  late final pulumi.Output<InstanceGroupManagerAllInstancesConfig?>
+      allInstancesConfig;
 
   /// The autohealing policies for this managed instance
   /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
-  late final Output<InstanceGroupManagerAutoHealingPolicies?>
+  late final pulumi.Output<InstanceGroupManagerAutoHealingPolicies?>
       autoHealingPolicies;
 
   /// The base instance name to use for
@@ -85,26 +86,26 @@ class InstanceGroupManager extends CustomResource {
   /// are lowercase letters, numbers, and hyphens (-). Instances are named by
   /// appending a hyphen and a random four-character string to the base instance
   /// name.
-  late final Output<String> baseInstanceName;
+  late final pulumi.Output<String> baseInstanceName;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional textual description of the instance
   /// group manager.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The fingerprint of the instance group manager.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The full URL of the instance group created by the manager.
-  late final Output<String> instanceGroup;
+  late final pulumi.Output<String> instanceGroup;
 
   /// The unique identifier number for the resource. This identifier is defined by the server.
-  late final Output<int> instanceGroupManagerId;
+  late final pulumi.Output<int> instanceGroupManagerId;
 
   /// The instance lifecycle policy for this managed instance group.
-  late final Output<InstanceGroupManagerInstanceLifecyclePolicy>
+  late final pulumi.Output<InstanceGroupManagerInstanceLifecyclePolicy>
       instanceLifecyclePolicy;
 
   /// Pagination behavior of the `listManagedInstances` API
@@ -113,99 +114,101 @@ class InstanceGroupManager extends CustomResource {
   /// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
   /// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
   /// respected.
-  late final Output<String?> listManagedInstancesResults;
+  late final pulumi.Output<String?> listManagedInstancesResults;
 
   /// The name of the instance group manager. Must be 1-63
   /// characters long and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
   /// include lowercase letters, numbers, and hyphens.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The named port configuration. See the section below
   /// for details on configuration.
-  late final Output<List<InstanceGroupManagerNamedPort>?> namedPorts;
-  late final Output<String> operation;
+  late final pulumi.Output<List<InstanceGroupManagerNamedPort>?> namedPorts;
+  late final pulumi.Output<String> operation;
 
   /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-  late final Output<InstanceGroupManagerParams?> params;
+  late final pulumi.Output<InstanceGroupManagerParams?> params;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Resource policies for this managed instance group. Structure is documented below.
   ///
   /// - - -
-  late final Output<InstanceGroupManagerResourcePolicies?> resourcePolicies;
+  late final pulumi.Output<InstanceGroupManagerResourcePolicies?>
+      resourcePolicies;
 
   /// The URL of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
-  late final Output<InstanceGroupManagerStandbyPolicy> standbyPolicy;
+  late final pulumi.Output<InstanceGroupManagerStandbyPolicy> standbyPolicy;
 
   /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
-  late final Output<List<InstanceGroupManagerStatefulDisk>?> statefulDisks;
+  late final pulumi.Output<List<InstanceGroupManagerStatefulDisk>?>
+      statefulDisks;
 
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-  late final Output<List<InstanceGroupManagerStatefulExternalIp>?>
+  late final pulumi.Output<List<InstanceGroupManagerStatefulExternalIp>?>
       statefulExternalIps;
 
   /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-  late final Output<List<InstanceGroupManagerStatefulInternalIp>?>
+  late final pulumi.Output<List<InstanceGroupManagerStatefulInternalIp>?>
       statefulInternalIps;
 
   /// The status of this managed instance group.
-  late final Output<List<InstanceGroupManagerStatus>> statuses;
+  late final pulumi.Output<List<InstanceGroupManagerStatus>> statuses;
 
   /// The full URL of all target pools to which new
   /// instances in the group are added. Updating the target pools attribute does
   /// not affect existing instances.
-  late final Output<List<String>?> targetPools;
+  late final pulumi.Output<List<String>?> targetPools;
 
   /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
-  late final Output<int> targetSize;
+  late final pulumi.Output<int> targetSize;
 
   /// The target number of stopped instances for this managed instance group.
-  late final Output<int> targetStoppedSize;
+  late final pulumi.Output<int> targetStoppedSize;
 
   /// The target number of suspended instances for this managed instance group.
-  late final Output<int> targetSuspendedSize;
+  late final pulumi.Output<int> targetSuspendedSize;
 
   /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
-  late final Output<InstanceGroupManagerUpdatePolicy> updatePolicy;
+  late final pulumi.Output<InstanceGroupManagerUpdatePolicy> updatePolicy;
 
   /// Application versions managed by this instance group. Each
   /// version deals with a specific instance template, allowing canary release scenarios.
   /// Structure is documented below.
-  late final Output<List<InstanceGroupManagerVersion>> versions;
+  late final pulumi.Output<List<InstanceGroupManagerVersion>> versions;
 
   /// Whether to wait for all instances to be created/updated before
   /// returning. Note that if this is set to true and the operation does not succeed, this provider will
   /// continue trying until it times out.
-  late final Output<bool?> waitForInstances;
+  late final pulumi.Output<bool?> waitForInstances;
 
   /// When used with `wait_for_instances` it specifies the status to wait for.
   /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
   /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
   /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
-  late final Output<String?> waitForInstancesStatus;
+  late final pulumi.Output<String?> waitForInstancesStatus;
 
   /// The zone that instances in this group should be created
   /// in.
   ///
   /// - - -
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   InstanceGroupManager(
     String name, {
     InstanceGroupManagerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/instanceGroupManager:InstanceGroupManager',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allInstancesConfig =
         registerOutput<InstanceGroupManagerAllInstancesConfig?>(

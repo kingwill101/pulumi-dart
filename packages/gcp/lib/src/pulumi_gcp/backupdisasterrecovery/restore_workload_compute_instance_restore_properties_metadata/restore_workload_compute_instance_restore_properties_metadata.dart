@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties_metadata_item/restore_workload_compute_instance_restore_properties_metadata_item.dart';
 
 class RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
@@ -16,7 +16,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
     final map = <String, dynamic>{};
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<
+      map['items'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
     return RestoreWorkloadComputeInstanceRestorePropertiesMetadata(
       items: map['items'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem>(
               map['items'],
               (value) =>

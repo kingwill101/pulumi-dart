@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_cluster_autoscaling_auto_provisioning_default_upgrade_setting_blue_green_setting_standard_rollout_policy/get_cluster_cluster_autoscaling_auto_provisioning_default_upgrade_setting_blue_green_setting_standard_rollout_policy.dart';
 
 class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting {
@@ -22,7 +22,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['nodePoolSoakDuration'] = nodePoolSoakDuration;
-    map['standardRolloutPolicies'] = Input.encodeList<
+    map['standardRolloutPolicies'] = pulumi.Input.encodeList<
         GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy,
         Map<String,
             dynamic>>(standardRolloutPolicies, (value) => value.toMap());
@@ -33,7 +33,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
       Map<String, dynamic> map) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting(
       nodePoolSoakDuration: map['nodePoolSoakDuration'] as String,
-      standardRolloutPolicies: Input.decodeList<
+      standardRolloutPolicies: pulumi.Input.decodeList<
               GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy>(
           map['standardRolloutPolicies'],
           (value) =>

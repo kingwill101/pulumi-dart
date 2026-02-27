@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../management_organization_security_health_analytics_custom_module_custom_config/management_organization_security_health_analytics_custom_module_custom_config.dart';
 
 /// The set of arguments for ManagementOrganizationSecurityHealthAnalyticsCustomModule.
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  final Input<
+  final pulumi.Input<
           ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig>?
       customConfig;
 
@@ -16,17 +16,17 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final Input<String>? enablementState;
+  final pulumi.Input<String>? enablementState;
 
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Numerical ID of the parent organization.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs({
     this.customConfig,
@@ -40,7 +40,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
     final map = <String, dynamic>{};
     final customConfigValue = customConfig;
     if (customConfigValue != null) {
-      map['customConfig'] = Input.mapOptionalInputValue<
+      map['customConfig'] = pulumi.Input.mapOptionalInputValue<
           ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig,
           Map<String, dynamic>>(customConfigValue, (value) => value.toMap());
     }
@@ -63,13 +63,14 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
   factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs.fromMap(
       Map<String, dynamic> map) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: Input.asOptionalInput<
+      customConfig: pulumi.Input.asOptionalInput<
               ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig>(
           map['customConfig']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      enablementState: Input.asOptionalInput<String>(map['enablementState']),
-      location: Input.asOptionalInput<String>(map['location']),
-      organization: Input.asInput<String>(map['organization']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      enablementState:
+          pulumi.Input.asOptionalInput<String>(map['enablementState']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
     );
   }
 }

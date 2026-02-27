@@ -1,3 +1,3 @@
 library module_servicedirectory_service_iam_binding_condition;
 
-export 'service_iam_binding_condition/service_iam_binding_condition3.dart';
+export 'service_iam_binding_condition/service_iam_binding_condition_servicedirectory.dart';

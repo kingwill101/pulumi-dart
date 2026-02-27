@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_app_audio_processing_config/app_version_snapshot_app_audio_processing_config.dart';
 import '../app_version_snapshot_app_client_certificate_setting/app_version_snapshot_app_client_certificate_setting.dart';
 import '../app_version_snapshot_app_data_store_setting/app_version_snapshot_app_data_store_setting.dart';
@@ -149,13 +149,13 @@ class AppVersionSnapshotApp {
     final map = <String, dynamic>{};
     final audioProcessingConfigsValue = audioProcessingConfigs;
     if (audioProcessingConfigsValue != null) {
-      map['audioProcessingConfigs'] = Input.encodeList<
+      map['audioProcessingConfigs'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppAudioProcessingConfig, Map<String, dynamic>>(
           audioProcessingConfigsValue, (value) => value.toMap());
     }
     final clientCertificateSettingsValue = clientCertificateSettings;
     if (clientCertificateSettingsValue != null) {
-      map['clientCertificateSettings'] = Input.encodeList<
+      map['clientCertificateSettings'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppClientCertificateSetting,
               Map<String, dynamic>>(
           clientCertificateSettingsValue, (value) => value.toMap());
@@ -166,13 +166,13 @@ class AppVersionSnapshotApp {
     }
     final dataStoreSettingsValue = dataStoreSettings;
     if (dataStoreSettingsValue != null) {
-      map['dataStoreSettings'] = Input.encodeList<
+      map['dataStoreSettings'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppDataStoreSetting, Map<String, dynamic>>(
           dataStoreSettingsValue, (value) => value.toMap());
     }
     final defaultChannelProfilesValue = defaultChannelProfiles;
     if (defaultChannelProfilesValue != null) {
-      map['defaultChannelProfiles'] = Input.encodeList<
+      map['defaultChannelProfiles'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppDefaultChannelProfile, Map<String, dynamic>>(
           defaultChannelProfilesValue, (value) => value.toMap());
     }
@@ -194,7 +194,7 @@ class AppVersionSnapshotApp {
     }
     final evaluationMetricsThresholdsValue = evaluationMetricsThresholds;
     if (evaluationMetricsThresholdsValue != null) {
-      map['evaluationMetricsThresholds'] = Input.encodeList<
+      map['evaluationMetricsThresholds'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppEvaluationMetricsThreshold,
               Map<String, dynamic>>(
           evaluationMetricsThresholdsValue, (value) => value.toMap());
@@ -209,13 +209,13 @@ class AppVersionSnapshotApp {
     }
     final languageSettingsValue = languageSettings;
     if (languageSettingsValue != null) {
-      map['languageSettings'] = Input.encodeList<
+      map['languageSettings'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppLanguageSetting, Map<String, dynamic>>(
           languageSettingsValue, (value) => value.toMap());
     }
     final loggingSettingsValue = loggingSettings;
     if (loggingSettingsValue != null) {
-      map['loggingSettings'] = Input.encodeList<
+      map['loggingSettings'] = pulumi.Input.encodeList<
           AppVersionSnapshotAppLoggingSetting,
           Map<String, dynamic>>(loggingSettingsValue, (value) => value.toMap());
     }
@@ -225,7 +225,8 @@ class AppVersionSnapshotApp {
     }
     final modelSettingsValue = modelSettings;
     if (modelSettingsValue != null) {
-      map['modelSettings'] = Input.encodeList<AppVersionSnapshotAppModelSetting,
+      map['modelSettings'] = pulumi.Input.encodeList<
+          AppVersionSnapshotAppModelSetting,
           Map<String, dynamic>>(modelSettingsValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -238,7 +239,7 @@ class AppVersionSnapshotApp {
     }
     final timeZoneSettingsValue = timeZoneSettings;
     if (timeZoneSettingsValue != null) {
-      map['timeZoneSettings'] = Input.encodeList<
+      map['timeZoneSettings'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppTimeZoneSetting, Map<String, dynamic>>(
           timeZoneSettingsValue, (value) => value.toMap());
     }
@@ -248,7 +249,7 @@ class AppVersionSnapshotApp {
     }
     final variableDeclarationsValue = variableDeclarations;
     if (variableDeclarationsValue != null) {
-      map['variableDeclarations'] = Input.encodeList<
+      map['variableDeclarations'] = pulumi.Input.encodeList<
               AppVersionSnapshotAppVariableDeclaration, Map<String, dynamic>>(
           variableDeclarationsValue, (value) => value.toMap());
     }
@@ -259,13 +260,14 @@ class AppVersionSnapshotApp {
     return AppVersionSnapshotApp(
       audioProcessingConfigs: map['audioProcessingConfigs'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppAudioProcessingConfig>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppAudioProcessingConfig>(
               map['audioProcessingConfigs'],
               (value) => AppVersionSnapshotAppAudioProcessingConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       clientCertificateSettings: map['clientCertificateSettings'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppClientCertificateSetting>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotAppClientCertificateSetting>(
               map['clientCertificateSettings'],
               (value) => AppVersionSnapshotAppClientCertificateSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -273,13 +275,13 @@ class AppVersionSnapshotApp {
           map['createTime'] == null ? null : map['createTime'] as String,
       dataStoreSettings: map['dataStoreSettings'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppDataStoreSetting>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSetting>(
               map['dataStoreSettings'],
               (value) => AppVersionSnapshotAppDataStoreSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
       defaultChannelProfiles: map['defaultChannelProfiles'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppDefaultChannelProfile>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppDefaultChannelProfile>(
               map['defaultChannelProfiles'],
               (value) => AppVersionSnapshotAppDefaultChannelProfile.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -292,7 +294,8 @@ class AppVersionSnapshotApp {
       etag: map['etag'] == null ? null : map['etag'] as String,
       evaluationMetricsThresholds: map['evaluationMetricsThresholds'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThreshold>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotAppEvaluationMetricsThreshold>(
               map['evaluationMetricsThresholds'],
               (value) =>
                   AppVersionSnapshotAppEvaluationMetricsThreshold.fromMap(
@@ -305,13 +308,13 @@ class AppVersionSnapshotApp {
           : (map['guardrails'] as List).cast<String>(),
       languageSettings: map['languageSettings'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppLanguageSetting>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppLanguageSetting>(
               map['languageSettings'],
               (value) => AppVersionSnapshotAppLanguageSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
       loggingSettings: map['loggingSettings'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppLoggingSetting>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSetting>(
               map['loggingSettings'],
               (value) => AppVersionSnapshotAppLoggingSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -320,7 +323,7 @@ class AppVersionSnapshotApp {
           : (map['metadata'] as Map).cast<String, String>(),
       modelSettings: map['modelSettings'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppModelSetting>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppModelSetting>(
               map['modelSettings'],
               (value) => AppVersionSnapshotAppModelSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -328,7 +331,7 @@ class AppVersionSnapshotApp {
       rootAgent: map['rootAgent'] == null ? null : map['rootAgent'] as String,
       timeZoneSettings: map['timeZoneSettings'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppTimeZoneSetting>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppTimeZoneSetting>(
               map['timeZoneSettings'],
               (value) => AppVersionSnapshotAppTimeZoneSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -336,7 +339,7 @@ class AppVersionSnapshotApp {
           map['updateTime'] == null ? null : map['updateTime'] as String,
       variableDeclarations: map['variableDeclarations'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAppVariableDeclaration>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAppVariableDeclaration>(
               map['variableDeclarations'],
               (value) => AppVersionSnapshotAppVariableDeclaration.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKeys.
 class GetKeysArgs {
   /// The name or id of the Cloud DNS managed zone.
-  final Input<String> managedZone;
+  final pulumi.Input<String> managedZone;
 
   /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetKeysArgs({
     required this.managedZone,
@@ -27,8 +27,8 @@ class GetKeysArgs {
 
   factory GetKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetKeysArgs(
-      managedZone: Input.asInput<String>(map['managedZone']),
-      project: Input.asOptionalInput<String>(map['project']),
+      managedZone: pulumi.Input.asInput<String>(map['managedZone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

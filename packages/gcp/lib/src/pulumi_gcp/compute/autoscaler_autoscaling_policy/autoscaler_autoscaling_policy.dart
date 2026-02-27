@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../autoscaler_autoscaling_policy_cpu_utilization/autoscaler_autoscaling_policy_cpu_utilization.dart';
 import '../autoscaler_autoscaling_policy_load_balancing_utilization/autoscaler_autoscaling_policy_load_balancing_utilization.dart';
 import '../autoscaler_autoscaling_policy_metric/autoscaler_autoscaling_policy_metric.dart';
@@ -94,7 +94,8 @@ class AutoscalerAutoscalingPolicy {
     map['maxReplicas'] = maxReplicas;
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.encodeList<AutoscalerAutoscalingPolicyMetric,
+      map['metrics'] = pulumi.Input.encodeList<
+          AutoscalerAutoscalingPolicyMetric,
           Map<String, dynamic>>(metricsValue, (value) => value.toMap());
     }
     map['minReplicas'] = minReplicas;
@@ -112,7 +113,7 @@ class AutoscalerAutoscalingPolicy {
     }
     final scalingSchedulesValue = scalingSchedules;
     if (scalingSchedulesValue != null) {
-      map['scalingSchedules'] = Input.encodeList<
+      map['scalingSchedules'] = pulumi.Input.encodeList<
               AutoscalerAutoscalingPolicyScalingSchedule, Map<String, dynamic>>(
           scalingSchedulesValue, (value) => value.toMap());
     }
@@ -134,7 +135,7 @@ class AutoscalerAutoscalingPolicy {
       maxReplicas: map['maxReplicas'] as int,
       metrics: map['metrics'] == null
           ? null
-          : Input.decodeList<AutoscalerAutoscalingPolicyMetric>(
+          : pulumi.Input.decodeList<AutoscalerAutoscalingPolicyMetric>(
               map['metrics'],
               (value) => AutoscalerAutoscalingPolicyMetric.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -150,7 +151,7 @@ class AutoscalerAutoscalingPolicy {
               (map['scaleInControl'] as Map).cast<String, dynamic>()),
       scalingSchedules: map['scalingSchedules'] == null
           ? null
-          : Input.decodeList<AutoscalerAutoscalingPolicyScalingSchedule>(
+          : pulumi.Input.decodeList<AutoscalerAutoscalingPolicyScalingSchedule>(
               map['scalingSchedules'],
               (value) => AutoscalerAutoscalingPolicyScalingSchedule.fromMap(
                   (value as Map).cast<String, dynamic>())),

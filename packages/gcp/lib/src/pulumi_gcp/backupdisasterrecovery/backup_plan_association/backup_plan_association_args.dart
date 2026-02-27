@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BackupPlanAssociation.
 class BackupPlanAssociationArgs {
@@ -8,24 +8,24 @@ class BackupPlanAssociationArgs {
   /// Note:
   /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
-  final Input<String> backupPlan;
+  final pulumi.Input<String> backupPlan;
 
   /// The id of backupplan association
-  final Input<String> backupPlanAssociationId;
+  final pulumi.Input<String> backupPlanAssociationId;
 
   /// The location for the backupplan association
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The resource for which BPA needs to be created
-  final Input<String> resource;
+  final pulumi.Input<String> resource;
 
   /// The resource type of workload on which backupplan is applied.
   /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
-  final Input<String> resourceType;
+  final pulumi.Input<String> resourceType;
 
   BackupPlanAssociationArgs({
     required this.backupPlan,
@@ -52,13 +52,13 @@ class BackupPlanAssociationArgs {
 
   factory BackupPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationArgs(
-      backupPlan: Input.asInput<String>(map['backupPlan']),
+      backupPlan: pulumi.Input.asInput<String>(map['backupPlan']),
       backupPlanAssociationId:
-          Input.asInput<String>(map['backupPlanAssociationId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resource: Input.asInput<String>(map['resource']),
-      resourceType: Input.asInput<String>(map['resourceType']),
+          pulumi.Input.asInput<String>(map['backupPlanAssociationId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resource: pulumi.Input.asInput<String>(map['resource']),
+      resourceType: pulumi.Input.asInput<String>(map['resourceType']),
     );
   }
 }

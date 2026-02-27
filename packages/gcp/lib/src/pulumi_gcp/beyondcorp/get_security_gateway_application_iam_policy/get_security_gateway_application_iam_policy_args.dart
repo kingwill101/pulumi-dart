@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSecurityGatewayApplicationIamPolicy.
 class GetSecurityGatewayApplicationIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
-  final Input<String> securityGatewayId;
+  final pulumi.Input<String> securityGatewayId;
 
   GetSecurityGatewayApplicationIamPolicyArgs({
     required this.applicationId,
@@ -34,9 +34,9 @@ class GetSecurityGatewayApplicationIamPolicyArgs {
   factory GetSecurityGatewayApplicationIamPolicyArgs.fromMap(
       Map<String, dynamic> map) {
     return GetSecurityGatewayApplicationIamPolicyArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      securityGatewayId: Input.asInput<String>(map['securityGatewayId']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      securityGatewayId: pulumi.Input.asInput<String>(map['securityGatewayId']),
     );
   }
 }

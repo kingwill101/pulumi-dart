@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_transitive_memberships_membership_preferred_member_key/get_group_transitive_memberships_membership_preferred_member_key.dart';
 import '../get_group_transitive_memberships_membership_role/get_group_transitive_memberships_membership_role.dart';
 
@@ -28,11 +28,12 @@ class GetGroupTransitiveMembershipsMembership {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['member'] = member;
-    map['preferredMemberKeys'] = Input.encodeList<
+    map['preferredMemberKeys'] = pulumi.Input.encodeList<
         GetGroupTransitiveMembershipsMembershipPreferredMemberKey,
         Map<String, dynamic>>(preferredMemberKeys, (value) => value.toMap());
     map['relationType'] = relationType;
-    map['roles'] = Input.encodeList<GetGroupTransitiveMembershipsMembershipRole,
+    map['roles'] = pulumi.Input.encodeList<
+        GetGroupTransitiveMembershipsMembershipRole,
         Map<String, dynamic>>(roles, (value) => value.toMap());
     return map;
   }
@@ -41,17 +42,18 @@ class GetGroupTransitiveMembershipsMembership {
       Map<String, dynamic> map) {
     return GetGroupTransitiveMembershipsMembership(
       member: map['member'] as String,
-      preferredMemberKeys: Input.decodeList<
+      preferredMemberKeys: pulumi.Input.decodeList<
               GetGroupTransitiveMembershipsMembershipPreferredMemberKey>(
           map['preferredMemberKeys'],
           (value) =>
               GetGroupTransitiveMembershipsMembershipPreferredMemberKey.fromMap(
                   (value as Map).cast<String, dynamic>())),
       relationType: map['relationType'] as String,
-      roles: Input.decodeList<GetGroupTransitiveMembershipsMembershipRole>(
-          map['roles'],
-          (value) => GetGroupTransitiveMembershipsMembershipRole.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      roles:
+          pulumi.Input.decodeList<GetGroupTransitiveMembershipsMembershipRole>(
+              map['roles'],
+              (value) => GetGroupTransitiveMembershipsMembershipRole.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

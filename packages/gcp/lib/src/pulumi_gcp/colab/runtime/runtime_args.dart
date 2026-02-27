@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../runtime_notebook_runtime_template_ref/runtime_notebook_runtime_template_ref.dart';
 
 /// The set of arguments for Runtime.
 class RuntimeArgs {
   /// Triggers an upgrade anytime the runtime is started if it is upgradable.
-  final Input<bool>? autoUpgrade;
+  final pulumi.Input<bool>? autoUpgrade;
 
   /// The description of the Runtime.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
-  final Input<String>? desiredState;
+  final pulumi.Input<String>? desiredState;
 
   /// Required. The display name of the Runtime.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The resource name of the Runtime
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// 'Runtime specific information used for NotebookRuntime creation.'
   /// Structure is documented below.
-  final Input<RuntimeNotebookRuntimeTemplateRef>? notebookRuntimeTemplateRef;
+  final pulumi.Input<RuntimeNotebookRuntimeTemplateRef>?
+      notebookRuntimeTemplateRef;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The user email of the NotebookRuntime.
-  final Input<String> runtimeUser;
+  final pulumi.Input<String> runtimeUser;
 
   RuntimeArgs({
     this.autoUpgrade,
@@ -68,7 +69,7 @@ class RuntimeArgs {
     }
     final notebookRuntimeTemplateRefValue = notebookRuntimeTemplateRef;
     if (notebookRuntimeTemplateRefValue != null) {
-      map['notebookRuntimeTemplateRef'] = Input.mapOptionalInputValue<
+      map['notebookRuntimeTemplateRef'] = pulumi.Input.mapOptionalInputValue<
               RuntimeNotebookRuntimeTemplateRef, Map<String, dynamic>>(
           notebookRuntimeTemplateRefValue, (value) => value.toMap());
     }
@@ -82,17 +83,17 @@ class RuntimeArgs {
 
   factory RuntimeArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeArgs(
-      autoUpgrade: Input.asOptionalInput<bool>(map['autoUpgrade']),
-      description: Input.asOptionalInput<String>(map['description']),
-      desiredState: Input.asOptionalInput<String>(map['desiredState']),
-      displayName: Input.asInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
+      autoUpgrade: pulumi.Input.asOptionalInput<bool>(map['autoUpgrade']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      desiredState: pulumi.Input.asOptionalInput<String>(map['desiredState']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       notebookRuntimeTemplateRef:
-          Input.asOptionalInput<RuntimeNotebookRuntimeTemplateRef>(
+          pulumi.Input.asOptionalInput<RuntimeNotebookRuntimeTemplateRef>(
               map['notebookRuntimeTemplateRef']),
-      project: Input.asOptionalInput<String>(map['project']),
-      runtimeUser: Input.asInput<String>(map['runtimeUser']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      runtimeUser: pulumi.Input.asInput<String>(map['runtimeUser']),
     );
   }
 }

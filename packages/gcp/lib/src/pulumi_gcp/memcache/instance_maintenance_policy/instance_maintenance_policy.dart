@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_maintenance_policy_weekly_maintenance_window/instance_maintenance_policy_weekly_maintenance_window.dart';
 
 class InstanceMaintenancePolicy {
@@ -49,7 +49,7 @@ class InstanceMaintenancePolicy {
     if (updateTimeValue != null) {
       map['updateTime'] = updateTimeValue;
     }
-    map['weeklyMaintenanceWindows'] = Input.encodeList<
+    map['weeklyMaintenanceWindows'] = pulumi.Input.encodeList<
             InstanceMaintenancePolicyWeeklyMaintenanceWindow,
             Map<String, dynamic>>(
         weeklyMaintenanceWindows, (value) => value.toMap());
@@ -64,12 +64,11 @@ class InstanceMaintenancePolicy {
           map['description'] == null ? null : map['description'] as String,
       updateTime:
           map['updateTime'] == null ? null : map['updateTime'] as String,
-      weeklyMaintenanceWindows:
-          Input.decodeList<InstanceMaintenancePolicyWeeklyMaintenanceWindow>(
-              map['weeklyMaintenanceWindows'],
-              (value) =>
-                  InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      weeklyMaintenanceWindows: pulumi.Input.decodeList<
+              InstanceMaintenancePolicyWeeklyMaintenanceWindow>(
+          map['weeklyMaintenanceWindows'],
+          (value) => InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

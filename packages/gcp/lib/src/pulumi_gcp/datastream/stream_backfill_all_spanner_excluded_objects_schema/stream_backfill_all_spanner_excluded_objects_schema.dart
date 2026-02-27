@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_spanner_excluded_objects_schema_table/stream_backfill_all_spanner_excluded_objects_schema_table.dart';
 
 class StreamBackfillAllSpannerExcludedObjectsSchema {
@@ -21,7 +21,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchema {
     map['schema'] = schema;
     final tablesValue = tables;
     if (tablesValue != null) {
-      map['tables'] = Input.encodeList<
+      map['tables'] = pulumi.Input.encodeList<
           StreamBackfillAllSpannerExcludedObjectsSchemaTable,
           Map<String, dynamic>>(tablesValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchema {
       schema: map['schema'] as String,
       tables: map['tables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   StreamBackfillAllSpannerExcludedObjectsSchemaTable>(
               map['tables'],
               (value) =>

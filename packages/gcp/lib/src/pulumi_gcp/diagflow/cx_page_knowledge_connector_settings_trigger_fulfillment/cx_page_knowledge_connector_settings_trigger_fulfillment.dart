@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_page_knowledge_connector_settings_trigger_fulfillment_advanced_settings/cx_page_knowledge_connector_settings_trigger_fulfillment_advanced_settings.dart';
 import '../cx_page_knowledge_connector_settings_trigger_fulfillment_conditional_case/cx_page_knowledge_connector_settings_trigger_fulfillment_conditional_case.dart';
 import '../cx_page_knowledge_connector_settings_trigger_fulfillment_message/cx_page_knowledge_connector_settings_trigger_fulfillment_message.dart';
@@ -61,7 +61,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
     }
     final conditionalCasesValue = conditionalCases;
     if (conditionalCasesValue != null) {
-      map['conditionalCases'] = Input.encodeList<
+      map['conditionalCases'] = pulumi.Input.encodeList<
               CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase,
               Map<String, dynamic>>(
           conditionalCasesValue, (value) => value.toMap());
@@ -72,7 +72,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
     }
     final messagesValue = messages;
     if (messagesValue != null) {
-      map['messages'] = Input.encodeList<
+      map['messages'] = pulumi.Input.encodeList<
           CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage,
           Map<String, dynamic>>(messagesValue, (value) => value.toMap());
     }
@@ -82,7 +82,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
     }
     final setParameterActionsValue = setParameterActions;
     if (setParameterActionsValue != null) {
-      map['setParameterActions'] = Input.encodeList<
+      map['setParameterActions'] = pulumi.Input.encodeList<
           CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction,
           Map<String,
               dynamic>>(setParameterActionsValue, (value) => value.toMap());
@@ -108,7 +108,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
                   (map['advancedSettings'] as Map).cast<String, dynamic>()),
       conditionalCases: map['conditionalCases'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase>(
               map['conditionalCases'],
               (value) =>
@@ -119,7 +119,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
           : map['enableGenerativeFallback'] as bool,
       messages: map['messages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage>(
               map['messages'],
               (value) =>
@@ -130,7 +130,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
           : map['returnPartialResponses'] as bool,
       setParameterActions: map['setParameterActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction>(
               map['setParameterActions'],
               (value) =>

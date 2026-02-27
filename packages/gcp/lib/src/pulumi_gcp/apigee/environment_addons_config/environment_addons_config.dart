@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_addons_config_args.dart';
 
 /// Enable/Disable add-ons for an Apigee environment.
@@ -23,23 +23,23 @@ import 'environment_addons_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig default {{env_id}}
 /// ```
-class EnvironmentAddonsConfig extends CustomResource {
+class EnvironmentAddonsConfig extends pulumi.CustomResource {
   /// Flag to enable/disable Analytics.
-  late final Output<bool?> analyticsEnabled;
+  late final pulumi.Output<bool?> analyticsEnabled;
 
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  late final Output<String> envId;
+  late final pulumi.Output<String> envId;
 
   EnvironmentAddonsConfig(
     String name, {
     EnvironmentAddonsConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
     this.envId = registerOutput<String>('envId');

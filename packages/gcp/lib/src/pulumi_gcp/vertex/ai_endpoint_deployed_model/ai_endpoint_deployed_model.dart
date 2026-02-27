@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_endpoint_deployed_model_automatic_resource/ai_endpoint_deployed_model_automatic_resource.dart';
 import '../ai_endpoint_deployed_model_dedicated_resource/ai_endpoint_deployed_model_dedicated_resource.dart';
 import '../ai_endpoint_deployed_model_private_endpoint/ai_endpoint_deployed_model_private_endpoint.dart';
@@ -75,7 +75,7 @@ class AiEndpointDeployedModel {
     final map = <String, dynamic>{};
     final automaticResourcesValue = automaticResources;
     if (automaticResourcesValue != null) {
-      map['automaticResources'] = Input.encodeList<
+      map['automaticResources'] = pulumi.Input.encodeList<
               AiEndpointDeployedModelAutomaticResource, Map<String, dynamic>>(
           automaticResourcesValue, (value) => value.toMap());
     }
@@ -85,7 +85,7 @@ class AiEndpointDeployedModel {
     }
     final dedicatedResourcesValue = dedicatedResources;
     if (dedicatedResourcesValue != null) {
-      map['dedicatedResources'] = Input.encodeList<
+      map['dedicatedResources'] = pulumi.Input.encodeList<
               AiEndpointDeployedModelDedicatedResource, Map<String, dynamic>>(
           dedicatedResourcesValue, (value) => value.toMap());
     }
@@ -115,7 +115,7 @@ class AiEndpointDeployedModel {
     }
     final privateEndpointsValue = privateEndpoints;
     if (privateEndpointsValue != null) {
-      map['privateEndpoints'] = Input.encodeList<
+      map['privateEndpoints'] = pulumi.Input.encodeList<
               AiEndpointDeployedModelPrivateEndpoint, Map<String, dynamic>>(
           privateEndpointsValue, (value) => value.toMap());
     }
@@ -134,7 +134,7 @@ class AiEndpointDeployedModel {
     return AiEndpointDeployedModel(
       automaticResources: map['automaticResources'] == null
           ? null
-          : Input.decodeList<AiEndpointDeployedModelAutomaticResource>(
+          : pulumi.Input.decodeList<AiEndpointDeployedModelAutomaticResource>(
               map['automaticResources'],
               (value) => AiEndpointDeployedModelAutomaticResource.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -142,7 +142,7 @@ class AiEndpointDeployedModel {
           map['createTime'] == null ? null : map['createTime'] as String,
       dedicatedResources: map['dedicatedResources'] == null
           ? null
-          : Input.decodeList<AiEndpointDeployedModelDedicatedResource>(
+          : pulumi.Input.decodeList<AiEndpointDeployedModelDedicatedResource>(
               map['dedicatedResources'],
               (value) => AiEndpointDeployedModelDedicatedResource.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -161,7 +161,7 @@ class AiEndpointDeployedModel {
           : map['modelVersionId'] as String,
       privateEndpoints: map['privateEndpoints'] == null
           ? null
-          : Input.decodeList<AiEndpointDeployedModelPrivateEndpoint>(
+          : pulumi.Input.decodeList<AiEndpointDeployedModelPrivateEndpoint>(
               map['privateEndpoints'],
               (value) => AiEndpointDeployedModelPrivateEndpoint.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCryptoKeyIamPolicy.
 class GetCryptoKeyIamPolicyArgs {
   /// The crypto key ID, in the form
-  final Input<String> cryptoKeyId;
+  final pulumi.Input<String> cryptoKeyId;
 
   GetCryptoKeyIamPolicyArgs({
     required this.cryptoKeyId,
@@ -19,7 +19,7 @@ class GetCryptoKeyIamPolicyArgs {
 
   factory GetCryptoKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyIamPolicyArgs(
-      cryptoKeyId: Input.asInput<String>(map['cryptoKeyId']),
+      cryptoKeyId: pulumi.Input.asInput<String>(map['cryptoKeyId']),
     );
   }
 }

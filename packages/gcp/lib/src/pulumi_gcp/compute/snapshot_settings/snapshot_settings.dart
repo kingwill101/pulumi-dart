@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../snapshot_settings_storage_location/snapshot_settings_storage_location.dart';
 import 'snapshot_settings_args.dart';
 
@@ -35,25 +35,25 @@ import 'snapshot_settings_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default {{project}}
 /// ```
-class SnapshotSettings extends CustomResource {
+class SnapshotSettings extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Policy of which storage location is going to be resolved, and additional data
   /// that particularizes how the policy is going to be carried out
   /// Structure is documented below.
-  late final Output<SnapshotSettingsStorageLocation> storageLocation;
+  late final pulumi.Output<SnapshotSettingsStorageLocation> storageLocation;
 
   SnapshotSettings(
     String name, {
     SnapshotSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/snapshotSettings:SnapshotSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.project = registerOutput<String>('project');
     this.storageLocation =

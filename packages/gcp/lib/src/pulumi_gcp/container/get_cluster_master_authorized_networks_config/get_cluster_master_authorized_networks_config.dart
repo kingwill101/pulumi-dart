@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_master_authorized_networks_config_cidr_block/get_cluster_master_authorized_networks_config_cidr_block.dart';
 
 class GetClusterMasterAuthorizedNetworksConfig {
@@ -21,7 +21,7 @@ class GetClusterMasterAuthorizedNetworksConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cidrBlocks'] = Input.encodeList<
+    map['cidrBlocks'] = pulumi.Input.encodeList<
         GetClusterMasterAuthorizedNetworksConfigCidrBlock,
         Map<String, dynamic>>(cidrBlocks, (value) => value.toMap());
     map['gcpPublicCidrsAccessEnabled'] = gcpPublicCidrsAccessEnabled;
@@ -33,12 +33,11 @@ class GetClusterMasterAuthorizedNetworksConfig {
   factory GetClusterMasterAuthorizedNetworksConfig.fromMap(
       Map<String, dynamic> map) {
     return GetClusterMasterAuthorizedNetworksConfig(
-      cidrBlocks:
-          Input.decodeList<GetClusterMasterAuthorizedNetworksConfigCidrBlock>(
-              map['cidrBlocks'],
-              (value) =>
-                  GetClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      cidrBlocks: pulumi.Input.decodeList<
+              GetClusterMasterAuthorizedNetworksConfigCidrBlock>(
+          map['cidrBlocks'],
+          (value) => GetClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(
+              (value as Map).cast<String, dynamic>())),
       gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] as bool,
       privateEndpointEnforcementEnabled:
           map['privateEndpointEnforcementEnabled'] as bool,

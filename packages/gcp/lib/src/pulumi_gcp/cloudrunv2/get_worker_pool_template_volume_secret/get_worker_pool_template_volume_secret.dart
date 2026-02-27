@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_worker_pool_template_volume_secret_item/get_worker_pool_template_volume_secret_item.dart';
 
 class GetWorkerPoolTemplateVolumeSecret {
@@ -22,7 +22,8 @@ class GetWorkerPoolTemplateVolumeSecret {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['defaultMode'] = defaultMode;
-    map['items'] = Input.encodeList<GetWorkerPoolTemplateVolumeSecretItem,
+    map['items'] = pulumi.Input.encodeList<
+        GetWorkerPoolTemplateVolumeSecretItem,
         Map<String, dynamic>>(items, (value) => value.toMap());
     map['secret'] = secret;
     return map;
@@ -31,7 +32,7 @@ class GetWorkerPoolTemplateVolumeSecret {
   factory GetWorkerPoolTemplateVolumeSecret.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateVolumeSecret(
       defaultMode: map['defaultMode'] as int,
-      items: Input.decodeList<GetWorkerPoolTemplateVolumeSecretItem>(
+      items: pulumi.Input.decodeList<GetWorkerPoolTemplateVolumeSecretItem>(
           map['items'],
           (value) => GetWorkerPoolTemplateVolumeSecretItem.fromMap(
               (value as Map).cast<String, dynamic>())),

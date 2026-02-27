@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PublicAdvertisedPrefix.
 class PublicAdvertisedPrefixArgs {
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The IPv4 address to be used for reverse DNS verification.
-  final Input<String>? dnsVerificationIp;
+  final pulumi.Input<String>? dnsVerificationIp;
 
   /// The address range, in CIDR format, represented by this public advertised prefix.
-  final Input<String> ipCidrRange;
+  final pulumi.Input<String> ipCidrRange;
 
   /// The internet access type for IPv6 Public Advertised Prefixes. It can be
   /// set to one of following:
@@ -21,7 +21,7 @@ class PublicAdvertisedPrefixArgs {
   /// be used privately within Google Cloud. All children PDPs will have
   /// access type as INTERNAL.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
-  final Input<String>? ipv6AccessType;
+  final pulumi.Input<String>? ipv6AccessType;
 
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -29,7 +29,7 @@ class PublicAdvertisedPrefixArgs {
   /// which means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Specifies how child public delegated prefix will be scoped. pdpScope
   /// must be one of: GLOBAL, REGIONAL
@@ -38,11 +38,11 @@ class PublicAdvertisedPrefixArgs {
   /// * GLOBAL: The public delegated prefix is global only. The provisioning
   /// will take ~4 weeks.
   /// Possible values are: `GLOBAL`, `REGIONAL`.
-  final Input<String>? pdpScope;
+  final pulumi.Input<String>? pdpScope;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   PublicAdvertisedPrefixArgs({
     this.description,
@@ -86,14 +86,15 @@ class PublicAdvertisedPrefixArgs {
 
   factory PublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicAdvertisedPrefixArgs(
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       dnsVerificationIp:
-          Input.asOptionalInput<String>(map['dnsVerificationIp']),
-      ipCidrRange: Input.asInput<String>(map['ipCidrRange']),
-      ipv6AccessType: Input.asOptionalInput<String>(map['ipv6AccessType']),
-      name: Input.asOptionalInput<String>(map['name']),
-      pdpScope: Input.asOptionalInput<String>(map['pdpScope']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['dnsVerificationIp']),
+      ipCidrRange: pulumi.Input.asInput<String>(map['ipCidrRange']),
+      ipv6AccessType:
+          pulumi.Input.asOptionalInput<String>(map['ipv6AccessType']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      pdpScope: pulumi.Input.asOptionalInput<String>(map['pdpScope']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

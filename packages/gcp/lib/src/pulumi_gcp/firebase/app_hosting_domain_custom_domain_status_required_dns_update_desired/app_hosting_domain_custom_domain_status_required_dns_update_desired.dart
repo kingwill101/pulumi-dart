@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_domain_custom_domain_status_required_dns_update_desired_check_error/app_hosting_domain_custom_domain_status_required_dns_update_desired_check_error.dart';
 import '../app_hosting_domain_custom_domain_status_required_dns_update_desired_record/app_hosting_domain_custom_domain_status_required_dns_update_desired_record.dart';
 
@@ -37,7 +37,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
     final map = <String, dynamic>{};
     final checkErrorsValue = checkErrors;
     if (checkErrorsValue != null) {
-      map['checkErrors'] = Input.encodeList<
+      map['checkErrors'] = pulumi.Input.encodeList<
           AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError,
           Map<String, dynamic>>(checkErrorsValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
     }
     final recordsValue = records;
     if (recordsValue != null) {
-      map['records'] = Input.encodeList<
+      map['records'] = pulumi.Input.encodeList<
           AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord,
           Map<String, dynamic>>(recordsValue, (value) => value.toMap());
     }
@@ -59,7 +59,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired(
       checkErrors: map['checkErrors'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError>(
               map['checkErrors'],
               (value) =>
@@ -69,7 +69,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
           map['domainName'] == null ? null : map['domainName'] as String,
       records: map['records'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord>(
               map['records'],
               (value) =>

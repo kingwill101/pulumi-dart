@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_iammember_condition/cluster_iammember_condition.dart';
 
 /// The set of arguments for ClusterIAMMember.
@@ -8,8 +8,8 @@ class ClusterIAMMemberArgs {
   /// The name or relative resource id of the cluster to manage IAM policies for.
   ///
   /// For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
-  final Input<String> cluster;
-  final Input<ClusterIAMMemberCondition>? condition;
+  final pulumi.Input<String> cluster;
+  final pulumi.Input<ClusterIAMMemberCondition>? condition;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -19,22 +19,22 @@ class ClusterIAMMemberArgs {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  final Input<String> member;
+  final pulumi.Input<String> member;
 
   /// The project in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The role that should be applied. Only one
   /// `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   ///
   /// `gcp.dataproc.ClusterIAMPolicy` only:
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   ClusterIAMMemberArgs({
     required this.cluster,
@@ -50,7 +50,8 @@ class ClusterIAMMemberArgs {
     map['cluster'] = cluster;
     final conditionValue = condition;
     if (conditionValue != null) {
-      map['condition'] = Input.mapOptionalInputValue<ClusterIAMMemberCondition,
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
+          ClusterIAMMemberCondition,
           Map<String, dynamic>>(conditionValue, (value) => value.toMap());
     }
     map['member'] = member;
@@ -68,13 +69,13 @@ class ClusterIAMMemberArgs {
 
   factory ClusterIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return ClusterIAMMemberArgs(
-      cluster: Input.asInput<String>(map['cluster']),
-      condition:
-          Input.asOptionalInput<ClusterIAMMemberCondition>(map['condition']),
-      member: Input.asInput<String>(map['member']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      role: Input.asInput<String>(map['role']),
+      cluster: pulumi.Input.asInput<String>(map['cluster']),
+      condition: pulumi.Input.asOptionalInput<ClusterIAMMemberCondition>(
+          map['condition']),
+      member: pulumi.Input.asInput<String>(map['member']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

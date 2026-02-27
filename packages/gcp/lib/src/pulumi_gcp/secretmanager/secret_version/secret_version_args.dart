@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SecretVersion.
 class SecretVersionArgs {
@@ -10,24 +10,24 @@ class SecretVersionArgs {
   /// * DELETE
   /// * DISABLE
   /// * ABANDON
-  final Input<String>? deletionPolicy;
+  final pulumi.Input<String>? deletionPolicy;
 
   /// The current state of the SecretVersion.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
-  final Input<bool>? isSecretDataBase64;
+  final pulumi.Input<bool>? isSecretDataBase64;
 
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Secret Manager secret resource
-  final Input<String> secret;
+  final pulumi.Input<String> secret;
 
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String>? secretData;
+  final pulumi.Input<String>? secretData;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
@@ -35,10 +35,10 @@ class SecretVersionArgs {
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
-  final Input<String>? secretDataWo;
+  final pulumi.Input<String>? secretDataWo;
 
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final Input<int>? secretDataWoVersion;
+  final pulumi.Input<int>? secretDataWoVersion;
 
   SecretVersionArgs({
     this.deletionPolicy,
@@ -87,16 +87,17 @@ class SecretVersionArgs {
 
   factory SecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return SecretVersionArgs(
-      deletionPolicy: Input.asOptionalInput<String>(map['deletionPolicy']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
+      deletionPolicy:
+          pulumi.Input.asOptionalInput<String>(map['deletionPolicy']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
       isSecretDataBase64:
-          Input.asOptionalInput<bool>(map['isSecretDataBase64']),
-      project: Input.asOptionalInput<String>(map['project']),
-      secret: Input.asInput<String>(map['secret']),
-      secretData: Input.asOptionalInput<String>(map['secretData']),
-      secretDataWo: Input.asOptionalInput<String>(map['secretDataWo']),
+          pulumi.Input.asOptionalInput<bool>(map['isSecretDataBase64']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      secret: pulumi.Input.asInput<String>(map['secret']),
+      secretData: pulumi.Input.asOptionalInput<String>(map['secretData']),
+      secretDataWo: pulumi.Input.asOptionalInput<String>(map['secretDataWo']),
       secretDataWoVersion:
-          Input.asOptionalInput<int>(map['secretDataWoVersion']),
+          pulumi.Input.asOptionalInput<int>(map['secretDataWoVersion']),
     );
   }
 }

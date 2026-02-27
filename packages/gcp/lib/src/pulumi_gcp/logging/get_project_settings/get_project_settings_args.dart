@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProjectSettings.
 class GetProjectSettingsArgs {
   /// The ID of the project for which to retrieve settings.
-  final Input<String> project;
+  final pulumi.Input<String> project;
 
   GetProjectSettingsArgs({
     required this.project,
@@ -19,7 +19,7 @@ class GetProjectSettingsArgs {
 
   factory GetProjectSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectSettingsArgs(
-      project: Input.asInput<String>(map['project']),
+      project: pulumi.Input.asInput<String>(map['project']),
     );
   }
 }

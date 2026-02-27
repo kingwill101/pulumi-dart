@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_build_artifact_maven_artifact/get_trigger_build_artifact_maven_artifact.dart';
 import '../get_trigger_build_artifact_npm_package/get_trigger_build_artifact_npm_package.dart';
 import '../get_trigger_build_artifact_object/get_trigger_build_artifact_object.dart';
@@ -58,15 +58,15 @@ class GetTriggerBuildArtifact {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['images'] = images;
-    map['mavenArtifacts'] = Input.encodeList<
+    map['mavenArtifacts'] = pulumi.Input.encodeList<
         GetTriggerBuildArtifactMavenArtifact,
         Map<String, dynamic>>(mavenArtifacts, (value) => value.toMap());
-    map['npmPackages'] = Input.encodeList<GetTriggerBuildArtifactNpmPackage,
+    map['npmPackages'] = pulumi.Input.encodeList<
+        GetTriggerBuildArtifactNpmPackage,
         Map<String, dynamic>>(npmPackages, (value) => value.toMap());
-    map['objects'] =
-        Input.encodeList<GetTriggerBuildArtifactObject, Map<String, dynamic>>(
-            objects, (value) => value.toMap());
-    map['pythonPackages'] = Input.encodeList<
+    map['objects'] = pulumi.Input.encodeList<GetTriggerBuildArtifactObject,
+        Map<String, dynamic>>(objects, (value) => value.toMap());
+    map['pythonPackages'] = pulumi.Input.encodeList<
         GetTriggerBuildArtifactPythonPackage,
         Map<String, dynamic>>(pythonPackages, (value) => value.toMap());
     return map;
@@ -75,22 +75,24 @@ class GetTriggerBuildArtifact {
   factory GetTriggerBuildArtifact.fromMap(Map<String, dynamic> map) {
     return GetTriggerBuildArtifact(
       images: (map['images'] as List).cast<String>(),
-      mavenArtifacts: Input.decodeList<GetTriggerBuildArtifactMavenArtifact>(
-          map['mavenArtifacts'],
-          (value) => GetTriggerBuildArtifactMavenArtifact.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      npmPackages: Input.decodeList<GetTriggerBuildArtifactNpmPackage>(
+      mavenArtifacts:
+          pulumi.Input.decodeList<GetTriggerBuildArtifactMavenArtifact>(
+              map['mavenArtifacts'],
+              (value) => GetTriggerBuildArtifactMavenArtifact.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      npmPackages: pulumi.Input.decodeList<GetTriggerBuildArtifactNpmPackage>(
           map['npmPackages'],
           (value) => GetTriggerBuildArtifactNpmPackage.fromMap(
               (value as Map).cast<String, dynamic>())),
-      objects: Input.decodeList<GetTriggerBuildArtifactObject>(
+      objects: pulumi.Input.decodeList<GetTriggerBuildArtifactObject>(
           map['objects'],
           (value) => GetTriggerBuildArtifactObject.fromMap(
               (value as Map).cast<String, dynamic>())),
-      pythonPackages: Input.decodeList<GetTriggerBuildArtifactPythonPackage>(
-          map['pythonPackages'],
-          (value) => GetTriggerBuildArtifactPythonPackage.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      pythonPackages:
+          pulumi.Input.decodeList<GetTriggerBuildArtifactPythonPackage>(
+              map['pythonPackages'],
+              (value) => GetTriggerBuildArtifactPythonPackage.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

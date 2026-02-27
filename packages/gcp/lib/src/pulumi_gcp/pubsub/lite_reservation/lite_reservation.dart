@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lite_reservation_args.dart';
 
 /// > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `google_pubsub_reservation` instead.
@@ -48,31 +48,31 @@ import 'lite_reservation_args.dart';
 /// ```sh
 /// $ pulumi import gcp:pubsub/liteReservation:LiteReservation default {{name}}
 /// ```
-class LiteReservation extends CustomResource {
+class LiteReservation extends pulumi.CustomResource {
   /// Name of the reservation.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region of the pubsub lite reservation.
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// The reserved throughput capacity. Every unit of throughput capacity is
   /// equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
   /// messages.
-  late final Output<int> throughputCapacity;
+  late final pulumi.Output<int> throughputCapacity;
 
   LiteReservation(
     String name, {
     LiteReservationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:pubsub/liteReservation:LiteReservation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

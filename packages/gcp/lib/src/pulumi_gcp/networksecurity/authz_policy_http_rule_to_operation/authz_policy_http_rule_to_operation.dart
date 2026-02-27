@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authz_policy_http_rule_to_operation_header_set/authz_policy_http_rule_to_operation_header_set.dart';
 import '../authz_policy_http_rule_to_operation_host/authz_policy_http_rule_to_operation_host.dart';
 import '../authz_policy_http_rule_to_operation_path/authz_policy_http_rule_to_operation_path.dart';
@@ -39,7 +39,7 @@ class AuthzPolicyHttpRuleToOperation {
     }
     final hostsValue = hosts;
     if (hostsValue != null) {
-      map['hosts'] = Input.encodeList<AuthzPolicyHttpRuleToOperationHost,
+      map['hosts'] = pulumi.Input.encodeList<AuthzPolicyHttpRuleToOperationHost,
           Map<String, dynamic>>(hostsValue, (value) => value.toMap());
     }
     final methodsValue = methods;
@@ -48,7 +48,7 @@ class AuthzPolicyHttpRuleToOperation {
     }
     final pathsValue = paths;
     if (pathsValue != null) {
-      map['paths'] = Input.encodeList<AuthzPolicyHttpRuleToOperationPath,
+      map['paths'] = pulumi.Input.encodeList<AuthzPolicyHttpRuleToOperationPath,
           Map<String, dynamic>>(pathsValue, (value) => value.toMap());
     }
     return map;
@@ -62,7 +62,7 @@ class AuthzPolicyHttpRuleToOperation {
               (map['headerSet'] as Map).cast<String, dynamic>()),
       hosts: map['hosts'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleToOperationHost>(
+          : pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHost>(
               map['hosts'],
               (value) => AuthzPolicyHttpRuleToOperationHost.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -71,7 +71,7 @@ class AuthzPolicyHttpRuleToOperation {
           : (map['methods'] as List).cast<String>(),
       paths: map['paths'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleToOperationPath>(
+          : pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationPath>(
               map['paths'],
               (value) => AuthzPolicyHttpRuleToOperationPath.fromMap(
                   (value as Map).cast<String, dynamic>())),

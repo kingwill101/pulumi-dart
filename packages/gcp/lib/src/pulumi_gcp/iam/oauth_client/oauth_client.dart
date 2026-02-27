@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oauth_client_args.dart';
 
 /// Represents an OAuth Client. Used to access Google Cloud resources on behalf of a
@@ -42,13 +42,13 @@ import 'oauth_client_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/oauthClient:OauthClient default {{location}}/{{oauth_client_id}}
 /// ```
-class OauthClient extends CustomResource {
+class OauthClient extends pulumi.CustomResource {
   /// Required. The list of OAuth grant types is allowed for the OauthClient.
-  late final Output<List<String>> allowedGrantTypes;
+  late final pulumi.Output<List<String>> allowedGrantTypes;
 
   /// Required. The list of redirect uris that is allowed to redirect back
   /// when authorization process is completed.
-  late final Output<List<String>> allowedRedirectUris;
+  late final pulumi.Output<List<String>> allowedRedirectUris;
 
   /// Required. The list of scopes that the OauthClient is allowed to request during
   /// OAuth flows.
@@ -56,10 +56,10 @@ class OauthClient extends CustomResource {
   /// * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure,
   /// and delete your Google Cloud data and see the email address for your Google
   /// Account.
-  late final Output<List<String>> allowedScopes;
+  late final pulumi.Output<List<String>> allowedScopes;
 
   /// Output only. The system-generated OauthClient id.
-  late final Output<String> clientId;
+  late final pulumi.Output<String> clientId;
 
   /// Immutable. The type of OauthClient. Either public or private.
   /// For private clients, the client secret can be managed using the dedicated
@@ -68,58 +68,58 @@ class OauthClient extends CustomResource {
   /// CLIENT_TYPE_UNSPECIFIED
   /// PUBLIC_CLIENT
   /// CONFIDENTIAL_CLIENT
-  late final Output<String?> clientType;
+  late final pulumi.Output<String?> clientType;
 
   /// A user-specified description of the OauthClient.
   /// Cannot exceed 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Whether the OauthClient is disabled. You cannot use a disabled OAuth
   /// client.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// A user-specified display name of the OauthClient.
   /// Cannot exceed 32 characters.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Time after which the OauthClient will be permanently purged and cannot
   /// be recovered.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Immutable. Identifier. The resource name of the OauthClient.
   /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Required. The ID to use for the OauthClient, which becomes the final component of
   /// the resource name. This value should be a string of 6 to 63 lowercase
   /// letters, digits, or hyphens. It must start with a letter, and cannot have a
   /// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
   /// not be specified.
-  late final Output<String> oauthClientId;
+  late final pulumi.Output<String> oauthClientId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The state of the OauthClient.
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// ACTIVE
   /// DELETED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   OauthClient(
     String name, {
     OauthClientArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/oauthClient:OauthClient',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes');
     this.allowedRedirectUris =

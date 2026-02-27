@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_bundle/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_bundle.dart';
 import '../get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_template_library/get_feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_template_library.dart';
 
@@ -22,10 +22,10 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['bundles'] = Input.encodeList<
+    map['bundles'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle,
         Map<String, dynamic>>(bundles, (value) => value.toMap());
-    map['templateLibraries'] = Input.encodeList<
+    map['templateLibraries'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary,
         Map<String, dynamic>>(templateLibraries, (value) => value.toMap());
     return map;
@@ -34,13 +34,13 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   factory GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent.fromMap(
       Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent(
-      bundles: Input.decodeList<
+      bundles: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>(
           map['bundles'],
           (value) =>
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle
                   .fromMap((value as Map).cast<String, dynamic>())),
-      templateLibraries: Input.decodeList<
+      templateLibraries: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary>(
           map['templateLibraries'],
           (value) =>

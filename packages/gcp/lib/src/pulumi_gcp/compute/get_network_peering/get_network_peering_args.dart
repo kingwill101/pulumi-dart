@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNetworkPeering.
 class GetNetworkPeeringArgs {
   /// Name of the peering.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The primary network of the peering.
-  final Input<String> network;
+  final pulumi.Input<String> network;
 
   GetNetworkPeeringArgs({
     required this.name,
@@ -24,8 +24,8 @@ class GetNetworkPeeringArgs {
 
   factory GetNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringArgs(
-      name: Input.asInput<String>(map['name']),
-      network: Input.asInput<String>(map['network']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      network: pulumi.Input.asInput<String>(map['network']),
     );
   }
 }

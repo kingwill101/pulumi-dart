@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_profile_v2_profile_assessment_config/security_profile_v2_profile_assessment_config.dart';
 
 /// The set of arguments for SecurityProfileV2.
 class SecurityProfileV2Args {
   /// Description of the security profile.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The Apigee Organization associated with the Apigee Security Profile V2,
   /// in the format `organizations/{{org_name}}`.
-  final Input<String> orgId;
+  final pulumi.Input<String> orgId;
 
   /// A map of the assessment name and the assessment config.
   /// Structure is documented below.
-  final Input<List<SecurityProfileV2ProfileAssessmentConfig>>
+  final pulumi.Input<List<SecurityProfileV2ProfileAssessmentConfig>>
       profileAssessmentConfigs;
 
   /// Resource ID of the security profile.
-  final Input<String> profileId;
+  final pulumi.Input<String> profileId;
 
   SecurityProfileV2Args({
     this.description,
@@ -34,11 +34,12 @@ class SecurityProfileV2Args {
       map['description'] = descriptionValue;
     }
     map['orgId'] = orgId;
-    map['profileAssessmentConfigs'] = Input.mapInputValue<
+    map['profileAssessmentConfigs'] = pulumi.Input.mapInputValue<
             List<SecurityProfileV2ProfileAssessmentConfig>,
             List<Map<String, dynamic>>>(
         profileAssessmentConfigs,
-        (value) => Input.encodeList<SecurityProfileV2ProfileAssessmentConfig,
+        (value) => pulumi.Input.encodeList<
+            SecurityProfileV2ProfileAssessmentConfig,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     map['profileId'] = profileId;
     return map;
@@ -46,12 +47,12 @@ class SecurityProfileV2Args {
 
   factory SecurityProfileV2Args.fromMap(Map<String, dynamic> map) {
     return SecurityProfileV2Args(
-      description: Input.asOptionalInput<String>(map['description']),
-      orgId: Input.asInput<String>(map['orgId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      orgId: pulumi.Input.asInput<String>(map['orgId']),
       profileAssessmentConfigs:
-          Input.asInput<List<SecurityProfileV2ProfileAssessmentConfig>>(
+          pulumi.Input.asInput<List<SecurityProfileV2ProfileAssessmentConfig>>(
               map['profileAssessmentConfigs']),
-      profileId: Input.asInput<String>(map['profileId']),
+      profileId: pulumi.Input.asInput<String>(map['profileId']),
     );
   }
 }

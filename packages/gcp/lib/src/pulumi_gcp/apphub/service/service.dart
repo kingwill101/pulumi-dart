@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_attributes/service_attributes.dart';
 import '../service_service_property/service_service_property.dart';
 import '../service_service_reference/service_service_reference.dart';
@@ -42,67 +42,67 @@ import 'service_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apphub/service:Service default {{location}}/{{application_id}}/{{service_id}}
 /// ```
-class Service extends CustomResource {
+class Service extends pulumi.CustomResource {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// Consumer provided attributes.
   /// Structure is documented below.
-  late final Output<ServiceAttributes?> attributes;
+  late final pulumi.Output<ServiceAttributes?> attributes;
 
   /// Output only. Create time.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// User-defined description of a Service.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Immutable. The resource name of the original discovered service.
-  late final Output<String> discoveredService;
+  late final pulumi.Output<String> discoveredService;
 
   /// User-defined name for the Service.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of a Service. Format:
   /// "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Service identifier.
-  late final Output<String> serviceId;
+  late final pulumi.Output<String> serviceId;
 
   /// Properties of an underlying cloud resource that can comprise a Service.
   /// Structure is documented below.
-  late final Output<List<ServiceServiceProperty>> serviceProperties;
+  late final pulumi.Output<List<ServiceServiceProperty>> serviceProperties;
 
   /// Reference to an underlying networking resource that can comprise a Service.
   /// Structure is documented below.
-  late final Output<List<ServiceServiceReference>> serviceReferences;
+  late final pulumi.Output<List<ServiceServiceReference>> serviceReferences;
 
   /// Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. A universally unique identifier (UUID) for the `Service` in the UUID4
   /// format.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. Update time.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Service(
     String name, {
     ServiceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apphub/service:Service',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.attributes = registerOutput<ServiceAttributes?>('attributes');

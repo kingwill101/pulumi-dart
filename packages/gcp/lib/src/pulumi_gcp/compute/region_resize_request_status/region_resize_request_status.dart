@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_resize_request_status_error/region_resize_request_status_error.dart';
 import '../region_resize_request_status_last_attempt/region_resize_request_status_last_attempt.dart';
 
@@ -24,12 +24,12 @@ class RegionResizeRequestStatus {
     final map = <String, dynamic>{};
     final errorsValue = errors;
     if (errorsValue != null) {
-      map['errors'] = Input.encodeList<RegionResizeRequestStatusError,
+      map['errors'] = pulumi.Input.encodeList<RegionResizeRequestStatusError,
           Map<String, dynamic>>(errorsValue, (value) => value.toMap());
     }
     final lastAttemptsValue = lastAttempts;
     if (lastAttemptsValue != null) {
-      map['lastAttempts'] = Input.encodeList<
+      map['lastAttempts'] = pulumi.Input.encodeList<
           RegionResizeRequestStatusLastAttempt,
           Map<String, dynamic>>(lastAttemptsValue, (value) => value.toMap());
     }
@@ -40,13 +40,13 @@ class RegionResizeRequestStatus {
     return RegionResizeRequestStatus(
       errors: map['errors'] == null
           ? null
-          : Input.decodeList<RegionResizeRequestStatusError>(
+          : pulumi.Input.decodeList<RegionResizeRequestStatusError>(
               map['errors'],
               (value) => RegionResizeRequestStatusError.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lastAttempts: map['lastAttempts'] == null
           ? null
-          : Input.decodeList<RegionResizeRequestStatusLastAttempt>(
+          : pulumi.Input.decodeList<RegionResizeRequestStatusLastAttempt>(
               map['lastAttempts'],
               (value) => RegionResizeRequestStatusLastAttempt.fromMap(
                   (value as Map).cast<String, dynamic>())),

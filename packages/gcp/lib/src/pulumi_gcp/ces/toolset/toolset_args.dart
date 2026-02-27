@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../toolset_open_api_toolset/toolset_open_api_toolset.dart';
 
 /// The set of arguments for Toolset.
 class ToolsetArgs {
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> app;
+  final pulumi.Input<String> app;
 
   /// The description of the toolset.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the toolset. Must be unique within the same app.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Possible values:
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
-  final Input<String>? executionType;
+  final pulumi.Input<String>? executionType;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// A toolset that contains a list of tools that are defined by an OpenAPI
   /// schema.
   /// Structure is documented below.
-  final Input<ToolsetOpenApiToolset>? openApiToolset;
+  final pulumi.Input<ToolsetOpenApiToolset>? openApiToolset;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The ID to use for the toolset, which will become the final component of
   /// the toolset's resource name. If not provided, a unique ID will be
   /// automatically assigned for the toolset.
-  final Input<String> toolsetId;
+  final pulumi.Input<String> toolsetId;
 
   ToolsetArgs({
     required this.app,
@@ -65,7 +65,8 @@ class ToolsetArgs {
     map['location'] = location;
     final openApiToolsetValue = openApiToolset;
     if (openApiToolsetValue != null) {
-      map['openApiToolset'] = Input.mapOptionalInputValue<ToolsetOpenApiToolset,
+      map['openApiToolset'] = pulumi.Input.mapOptionalInputValue<
+          ToolsetOpenApiToolset,
           Map<String, dynamic>>(openApiToolsetValue, (value) => value.toMap());
     }
     final projectValue = project;
@@ -78,15 +79,15 @@ class ToolsetArgs {
 
   factory ToolsetArgs.fromMap(Map<String, dynamic> map) {
     return ToolsetArgs(
-      app: Input.asInput<String>(map['app']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      executionType: Input.asOptionalInput<String>(map['executionType']),
-      location: Input.asInput<String>(map['location']),
-      openApiToolset:
-          Input.asOptionalInput<ToolsetOpenApiToolset>(map['openApiToolset']),
-      project: Input.asOptionalInput<String>(map['project']),
-      toolsetId: Input.asInput<String>(map['toolsetId']),
+      app: pulumi.Input.asInput<String>(map['app']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      executionType: pulumi.Input.asOptionalInput<String>(map['executionType']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      openApiToolset: pulumi.Input.asOptionalInput<ToolsetOpenApiToolset>(
+          map['openApiToolset']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      toolsetId: pulumi.Input.asInput<String>(map['toolsetId']),
     );
   }
 }

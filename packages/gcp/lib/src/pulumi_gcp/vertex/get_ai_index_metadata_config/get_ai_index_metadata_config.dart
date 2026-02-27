@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ai_index_metadata_config_algorithm_config/get_ai_index_metadata_config_algorithm_config.dart';
 
 class GetAiIndexMetadataConfig {
@@ -46,7 +46,7 @@ class GetAiIndexMetadataConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['algorithmConfigs'] = Input.encodeList<
+    map['algorithmConfigs'] = pulumi.Input.encodeList<
         GetAiIndexMetadataConfigAlgorithmConfig,
         Map<String, dynamic>>(algorithmConfigs, (value) => value.toMap());
     map['approximateNeighborsCount'] = approximateNeighborsCount;
@@ -60,7 +60,7 @@ class GetAiIndexMetadataConfig {
   factory GetAiIndexMetadataConfig.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadataConfig(
       algorithmConfigs:
-          Input.decodeList<GetAiIndexMetadataConfigAlgorithmConfig>(
+          pulumi.Input.decodeList<GetAiIndexMetadataConfigAlgorithmConfig>(
               map['algorithmConfigs'],
               (value) => GetAiIndexMetadataConfigAlgorithmConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

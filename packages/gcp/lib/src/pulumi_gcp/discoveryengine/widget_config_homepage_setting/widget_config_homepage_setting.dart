@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../widget_config_homepage_setting_shortcut/widget_config_homepage_setting_shortcut.dart';
 
 class WidgetConfigHomepageSetting {
@@ -16,7 +16,8 @@ class WidgetConfigHomepageSetting {
     final map = <String, dynamic>{};
     final shortcutsValue = shortcuts;
     if (shortcutsValue != null) {
-      map['shortcuts'] = Input.encodeList<WidgetConfigHomepageSettingShortcut,
+      map['shortcuts'] = pulumi.Input.encodeList<
+          WidgetConfigHomepageSettingShortcut,
           Map<String, dynamic>>(shortcutsValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +27,7 @@ class WidgetConfigHomepageSetting {
     return WidgetConfigHomepageSetting(
       shortcuts: map['shortcuts'] == null
           ? null
-          : Input.decodeList<WidgetConfigHomepageSettingShortcut>(
+          : pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(
               map['shortcuts'],
               (value) => WidgetConfigHomepageSettingShortcut.fromMap(
                   (value as Map).cast<String, dynamic>())),

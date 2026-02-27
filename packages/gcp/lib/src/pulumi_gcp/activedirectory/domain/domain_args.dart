@@ -1,38 +1,38 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Domain.
 class DomainArgs {
   /// The name of delegated administrator account used to perform Active Directory operations.
   /// If not specified, setupadmin will be used.
-  final Input<String>? admin;
+  final pulumi.Input<String>? admin;
 
   /// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
   /// If CIDR subnets overlap between networks, domain creation will fail.
-  final Input<List<String>>? authorizedNetworks;
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<List<String>>? authorizedNetworks;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// Resource labels that can contain user-provided metadata
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
   /// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-  final Input<List<String>> locations;
+  final pulumi.Input<List<String>> locations;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
   /// Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
-  final Input<String> reservedIpRange;
+  final pulumi.Input<String> reservedIpRange;
 
   DomainArgs({
     this.admin,
@@ -75,16 +75,16 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      admin: Input.asOptionalInput<String>(map['admin']),
+      admin: pulumi.Input.asOptionalInput<String>(map['admin']),
       authorizedNetworks:
-          Input.asOptionalInput<List<String>>(map['authorizedNetworks']),
+          pulumi.Input.asOptionalInput<List<String>>(map['authorizedNetworks']),
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      domainName: Input.asInput<String>(map['domainName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      locations: Input.asInput<List<String>>(map['locations']),
-      project: Input.asOptionalInput<String>(map['project']),
-      reservedIpRange: Input.asInput<String>(map['reservedIpRange']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      locations: pulumi.Input.asInput<List<String>>(map['locations']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      reservedIpRange: pulumi.Input.asInput<String>(map['reservedIpRange']),
     );
   }
 }

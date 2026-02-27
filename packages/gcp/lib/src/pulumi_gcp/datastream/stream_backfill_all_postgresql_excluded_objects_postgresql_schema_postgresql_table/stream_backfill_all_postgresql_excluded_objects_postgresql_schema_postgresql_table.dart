@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgresql_table_postgresql_column/stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgresql_table_postgresql_column.dart';
 
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
@@ -22,7 +22,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable 
     final map = <String, dynamic>{};
     final postgresqlColumnsValue = postgresqlColumns;
     if (postgresqlColumnsValue != null) {
-      map['postgresqlColumns'] = Input.encodeList<
+      map['postgresqlColumns'] = pulumi.Input.encodeList<
           StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn,
           Map<String,
               dynamic>>(postgresqlColumnsValue, (value) => value.toMap());
@@ -36,7 +36,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable 
     return StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(
       postgresqlColumns: map['postgresqlColumns'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>(
               map['postgresqlColumns'],
               (value) =>

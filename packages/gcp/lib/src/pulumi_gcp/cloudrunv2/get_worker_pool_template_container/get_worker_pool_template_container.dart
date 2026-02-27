@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_worker_pool_template_container_env/get_worker_pool_template_container_env.dart';
 import '../get_worker_pool_template_container_liveness_probe/get_worker_pool_template_container_liveness_probe.dart';
 import '../get_worker_pool_template_container_resource/get_worker_pool_template_container_resource.dart';
@@ -60,19 +60,20 @@ class GetWorkerPoolTemplateContainer {
     map['args'] = args;
     map['commands'] = commands;
     map['dependsOns'] = dependsOns;
-    map['envs'] = Input.encodeList<GetWorkerPoolTemplateContainerEnv,
+    map['envs'] = pulumi.Input.encodeList<GetWorkerPoolTemplateContainerEnv,
         Map<String, dynamic>>(envs, (value) => value.toMap());
     map['image'] = image;
-    map['livenessProbes'] = Input.encodeList<
+    map['livenessProbes'] = pulumi.Input.encodeList<
         GetWorkerPoolTemplateContainerLivenessProbe,
         Map<String, dynamic>>(livenessProbes, (value) => value.toMap());
     map['name'] = name;
-    map['resources'] = Input.encodeList<GetWorkerPoolTemplateContainerResource,
+    map['resources'] = pulumi.Input.encodeList<
+        GetWorkerPoolTemplateContainerResource,
         Map<String, dynamic>>(resources, (value) => value.toMap());
-    map['startupProbes'] = Input.encodeList<
+    map['startupProbes'] = pulumi.Input.encodeList<
         GetWorkerPoolTemplateContainerStartupProbe,
         Map<String, dynamic>>(startupProbes, (value) => value.toMap());
-    map['volumeMounts'] = Input.encodeList<
+    map['volumeMounts'] = pulumi.Input.encodeList<
         GetWorkerPoolTemplateContainerVolumeMount,
         Map<String, dynamic>>(volumeMounts, (value) => value.toMap());
     map['workingDir'] = workingDir;
@@ -84,30 +85,32 @@ class GetWorkerPoolTemplateContainer {
       args: (map['args'] as List).cast<String>(),
       commands: (map['commands'] as List).cast<String>(),
       dependsOns: (map['dependsOns'] as List).cast<String>(),
-      envs: Input.decodeList<GetWorkerPoolTemplateContainerEnv>(
+      envs: pulumi.Input.decodeList<GetWorkerPoolTemplateContainerEnv>(
           map['envs'],
           (value) => GetWorkerPoolTemplateContainerEnv.fromMap(
               (value as Map).cast<String, dynamic>())),
       image: map['image'] as String,
       livenessProbes:
-          Input.decodeList<GetWorkerPoolTemplateContainerLivenessProbe>(
+          pulumi.Input.decodeList<GetWorkerPoolTemplateContainerLivenessProbe>(
               map['livenessProbes'],
               (value) => GetWorkerPoolTemplateContainerLivenessProbe.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      resources: Input.decodeList<GetWorkerPoolTemplateContainerResource>(
-          map['resources'],
-          (value) => GetWorkerPoolTemplateContainerResource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      resources:
+          pulumi.Input.decodeList<GetWorkerPoolTemplateContainerResource>(
+              map['resources'],
+              (value) => GetWorkerPoolTemplateContainerResource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       startupProbes:
-          Input.decodeList<GetWorkerPoolTemplateContainerStartupProbe>(
+          pulumi.Input.decodeList<GetWorkerPoolTemplateContainerStartupProbe>(
               map['startupProbes'],
               (value) => GetWorkerPoolTemplateContainerStartupProbe.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      volumeMounts: Input.decodeList<GetWorkerPoolTemplateContainerVolumeMount>(
-          map['volumeMounts'],
-          (value) => GetWorkerPoolTemplateContainerVolumeMount.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      volumeMounts:
+          pulumi.Input.decodeList<GetWorkerPoolTemplateContainerVolumeMount>(
+              map['volumeMounts'],
+              (value) => GetWorkerPoolTemplateContainerVolumeMount.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       workingDir: map['workingDir'] as String,
     );
   }

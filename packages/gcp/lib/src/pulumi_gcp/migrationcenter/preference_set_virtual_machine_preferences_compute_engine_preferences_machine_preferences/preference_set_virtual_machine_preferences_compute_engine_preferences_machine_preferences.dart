@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../preference_set_virtual_machine_preferences_compute_engine_preferences_machine_preferences_allowed_machine_series/preference_set_virtual_machine_preferences_compute_engine_preferences_machine_preferences_allowed_machine_series.dart';
 
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences {
@@ -18,7 +18,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
     final map = <String, dynamic>{};
     final allowedMachineSeriesValue = allowedMachineSeries;
     if (allowedMachineSeriesValue != null) {
-      map['allowedMachineSeries'] = Input.encodeList<
+      map['allowedMachineSeries'] = pulumi.Input.encodeList<
           PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries,
           Map<String,
               dynamic>>(allowedMachineSeriesValue, (value) => value.toMap());
@@ -31,7 +31,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
     return PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences(
       allowedMachineSeries: map['allowedMachineSeries'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries>(
               map['allowedMachineSeries'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config_traffic_granularity_config/get_security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config_traffic_granularity_config.dart';
 
 class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
@@ -41,7 +41,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
     map['detectionLoadThreshold'] = detectionLoadThreshold;
     map['detectionRelativeToBaselineQps'] = detectionRelativeToBaselineQps;
     map['name'] = name;
-    map['trafficGranularityConfigs'] = Input.encodeList<
+    map['trafficGranularityConfigs'] = pulumi.Input.encodeList<
         GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig,
         Map<String,
             dynamic>>(trafficGranularityConfigs, (value) => value.toMap());
@@ -62,7 +62,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
       detectionRelativeToBaselineQps:
           map['detectionRelativeToBaselineQps'] as double,
       name: map['name'] as String,
-      trafficGranularityConfigs: Input.decodeList<
+      trafficGranularityConfigs: pulumi.Input.decodeList<
               GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>(
           map['trafficGranularityConfigs'],
           (value) =>

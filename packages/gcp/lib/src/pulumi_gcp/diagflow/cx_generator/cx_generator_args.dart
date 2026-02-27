@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_generator_llm_model_settings/cx_generator_llm_model_settings.dart';
 import '../cx_generator_model_parameter/cx_generator_model_parameter.dart';
 import '../cx_generator_placeholder/cx_generator_placeholder.dart';
@@ -9,32 +9,32 @@ import '../cx_generator_prompt_text/cx_generator_prompt_text.dart';
 /// The set of arguments for CxGenerator.
 class CxGeneratorArgs {
   /// The human-readable name of the generator, unique within the agent.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The language to create generators for the following fields:
   /// * Generator.prompt_text.text
   /// If not specified, the agent's default language is used.
-  final Input<String>? languageCode;
+  final pulumi.Input<String>? languageCode;
 
   /// The LLM model settings.
   /// Structure is documented below.
-  final Input<CxGeneratorLlmModelSettings>? llmModelSettings;
+  final pulumi.Input<CxGeneratorLlmModelSettings>? llmModelSettings;
 
   /// Parameters passed to the LLM to configure its behavior.
   /// Structure is documented below.
-  final Input<CxGeneratorModelParameter>? modelParameter;
+  final pulumi.Input<CxGeneratorModelParameter>? modelParameter;
 
   /// The agent to create a Generator for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   /// List of custom placeholders in the prompt text.
   /// Structure is documented below.
-  final Input<List<CxGeneratorPlaceholder>>? placeholders;
+  final pulumi.Input<List<CxGeneratorPlaceholder>>? placeholders;
 
   /// Prompt for the LLM model.
   /// Structure is documented below.
-  final Input<CxGeneratorPromptText> promptText;
+  final pulumi.Input<CxGeneratorPromptText> promptText;
 
   CxGeneratorArgs({
     required this.displayName,
@@ -55,13 +55,13 @@ class CxGeneratorArgs {
     }
     final llmModelSettingsValue = llmModelSettings;
     if (llmModelSettingsValue != null) {
-      map['llmModelSettings'] = Input.mapOptionalInputValue<
+      map['llmModelSettings'] = pulumi.Input.mapOptionalInputValue<
               CxGeneratorLlmModelSettings, Map<String, dynamic>>(
           llmModelSettingsValue, (value) => value.toMap());
     }
     final modelParameterValue = modelParameter;
     if (modelParameterValue != null) {
-      map['modelParameter'] = Input.mapOptionalInputValue<
+      map['modelParameter'] = pulumi.Input.mapOptionalInputValue<
           CxGeneratorModelParameter,
           Map<String, dynamic>>(modelParameterValue, (value) => value.toMap());
     }
@@ -71,31 +71,32 @@ class CxGeneratorArgs {
     }
     final placeholdersValue = placeholders;
     if (placeholdersValue != null) {
-      map['placeholders'] = Input.mapOptionalInputValue<
+      map['placeholders'] = pulumi.Input.mapOptionalInputValue<
               List<CxGeneratorPlaceholder>, List<Map<String, dynamic>>>(
           placeholdersValue,
-          (value) =>
-              Input.encodeList<CxGeneratorPlaceholder, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<CxGeneratorPlaceholder,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['promptText'] =
-        Input.mapInputValue<CxGeneratorPromptText, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<CxGeneratorPromptText, Map<String, dynamic>>(
             promptText, (value) => value.toMap());
     return map;
   }
 
   factory CxGeneratorArgs.fromMap(Map<String, dynamic> map) {
     return CxGeneratorArgs(
-      displayName: Input.asInput<String>(map['displayName']),
-      languageCode: Input.asOptionalInput<String>(map['languageCode']),
-      llmModelSettings: Input.asOptionalInput<CxGeneratorLlmModelSettings>(
-          map['llmModelSettings']),
-      modelParameter: Input.asOptionalInput<CxGeneratorModelParameter>(
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      languageCode: pulumi.Input.asOptionalInput<String>(map['languageCode']),
+      llmModelSettings:
+          pulumi.Input.asOptionalInput<CxGeneratorLlmModelSettings>(
+              map['llmModelSettings']),
+      modelParameter: pulumi.Input.asOptionalInput<CxGeneratorModelParameter>(
           map['modelParameter']),
-      parent: Input.asOptionalInput<String>(map['parent']),
-      placeholders: Input.asOptionalInput<List<CxGeneratorPlaceholder>>(
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
+      placeholders: pulumi.Input.asOptionalInput<List<CxGeneratorPlaceholder>>(
           map['placeholders']),
-      promptText: Input.asInput<CxGeneratorPromptText>(map['promptText']),
+      promptText:
+          pulumi.Input.asInput<CxGeneratorPromptText>(map['promptText']),
     );
   }
 }

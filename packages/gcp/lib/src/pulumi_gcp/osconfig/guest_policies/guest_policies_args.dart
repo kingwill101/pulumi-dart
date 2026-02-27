@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guest_policies_assignment/guest_policies_assignment.dart';
 import '../guest_policies_package/guest_policies_package.dart';
 import '../guest_policies_package_repository/guest_policies_package_repository.dart';
@@ -16,13 +16,13 @@ class GuestPoliciesArgs {
   /// For more information, see how the service
   /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
   /// Structure is documented below.
-  final Input<GuestPoliciesAssignment> assignment;
+  final pulumi.Input<GuestPoliciesAssignment> assignment;
 
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-  final Input<String>? etag;
+  final pulumi.Input<String>? etag;
 
   /// The logical name of the guest policy in the project with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -30,25 +30,25 @@ class GuestPoliciesArgs {
   /// * Must be between 1-63 characters.
   /// * Must end with a number or a letter.
   /// * Must be unique within the project.
-  final Input<String> guestPolicyId;
+  final pulumi.Input<String> guestPolicyId;
 
   /// A list of package repositories to configure on the VM instance.
   /// This is done before any other configs are applied so they can use these repos.
   /// Package repositories are only configured if the corresponding package manager(s) are available.
   /// Structure is documented below.
-  final Input<List<GuestPoliciesPackageRepository>>? packageRepositories;
+  final pulumi.Input<List<GuestPoliciesPackageRepository>>? packageRepositories;
 
   /// The software packages to be managed by this policy.
   /// Structure is documented below.
-  final Input<List<GuestPoliciesPackage>>? packages;
+  final pulumi.Input<List<GuestPoliciesPackage>>? packages;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// A list of Recipes to install on the VM instance.
   /// Structure is documented below.
-  final Input<List<GuestPoliciesRecipe>>? recipes;
+  final pulumi.Input<List<GuestPoliciesRecipe>>? recipes;
 
   GuestPoliciesArgs({
     required this.assignment,
@@ -63,9 +63,8 @@ class GuestPoliciesArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['assignment'] =
-        Input.mapInputValue<GuestPoliciesAssignment, Map<String, dynamic>>(
-            assignment, (value) => value.toMap());
+    map['assignment'] = pulumi.Input.mapInputValue<GuestPoliciesAssignment,
+        Map<String, dynamic>>(assignment, (value) => value.toMap());
     final descriptionValue = description;
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
@@ -77,20 +76,19 @@ class GuestPoliciesArgs {
     map['guestPolicyId'] = guestPolicyId;
     final packageRepositoriesValue = packageRepositories;
     if (packageRepositoriesValue != null) {
-      map['packageRepositories'] = Input.mapOptionalInputValue<
+      map['packageRepositories'] = pulumi.Input.mapOptionalInputValue<
               List<GuestPoliciesPackageRepository>, List<Map<String, dynamic>>>(
           packageRepositoriesValue,
-          (value) => Input.encodeList<GuestPoliciesPackageRepository,
+          (value) => pulumi.Input.encodeList<GuestPoliciesPackageRepository,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final packagesValue = packages;
     if (packagesValue != null) {
-      map['packages'] = Input.mapOptionalInputValue<List<GuestPoliciesPackage>,
-              List<Map<String, dynamic>>>(
+      map['packages'] = pulumi.Input.mapOptionalInputValue<
+              List<GuestPoliciesPackage>, List<Map<String, dynamic>>>(
           packagesValue,
-          (value) =>
-              Input.encodeList<GuestPoliciesPackage, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GuestPoliciesPackage,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final projectValue = project;
     if (projectValue != null) {
@@ -98,29 +96,30 @@ class GuestPoliciesArgs {
     }
     final recipesValue = recipes;
     if (recipesValue != null) {
-      map['recipes'] = Input.mapOptionalInputValue<List<GuestPoliciesRecipe>,
-              List<Map<String, dynamic>>>(
+      map['recipes'] = pulumi.Input.mapOptionalInputValue<
+              List<GuestPoliciesRecipe>, List<Map<String, dynamic>>>(
           recipesValue,
-          (value) =>
-              Input.encodeList<GuestPoliciesRecipe, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GuestPoliciesRecipe,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
   }
 
   factory GuestPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesArgs(
-      assignment: Input.asInput<GuestPoliciesAssignment>(map['assignment']),
-      description: Input.asOptionalInput<String>(map['description']),
-      etag: Input.asOptionalInput<String>(map['etag']),
-      guestPolicyId: Input.asInput<String>(map['guestPolicyId']),
+      assignment:
+          pulumi.Input.asInput<GuestPoliciesAssignment>(map['assignment']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      etag: pulumi.Input.asOptionalInput<String>(map['etag']),
+      guestPolicyId: pulumi.Input.asInput<String>(map['guestPolicyId']),
       packageRepositories:
-          Input.asOptionalInput<List<GuestPoliciesPackageRepository>>(
+          pulumi.Input.asOptionalInput<List<GuestPoliciesPackageRepository>>(
               map['packageRepositories']),
-      packages:
-          Input.asOptionalInput<List<GuestPoliciesPackage>>(map['packages']),
-      project: Input.asOptionalInput<String>(map['project']),
-      recipes: Input.asOptionalInput<List<GuestPoliciesRecipe>>(map['recipes']),
+      packages: pulumi.Input.asOptionalInput<List<GuestPoliciesPackage>>(
+          map['packages']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      recipes: pulumi.Input.asOptionalInput<List<GuestPoliciesRecipe>>(
+          map['recipes']),
     );
   }
 }

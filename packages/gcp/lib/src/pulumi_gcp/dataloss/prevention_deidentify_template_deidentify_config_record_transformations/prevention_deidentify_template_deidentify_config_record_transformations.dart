@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation.dart';
 import '../prevention_deidentify_template_deidentify_config_record_transformations_record_suppression/prevention_deidentify_template_deidentify_config_record_transformations_record_suppression.dart';
 
@@ -26,14 +26,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
     final map = <String, dynamic>{};
     final fieldTransformationsValue = fieldTransformations;
     if (fieldTransformationsValue != null) {
-      map['fieldTransformations'] = Input.encodeList<
+      map['fieldTransformations'] = pulumi.Input.encodeList<
           PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation,
           Map<String,
               dynamic>>(fieldTransformationsValue, (value) => value.toMap());
     }
     final recordSuppressionsValue = recordSuppressions;
     if (recordSuppressionsValue != null) {
-      map['recordSuppressions'] = Input.encodeList<
+      map['recordSuppressions'] = pulumi.Input.encodeList<
           PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression,
           Map<String,
               dynamic>>(recordSuppressionsValue, (value) => value.toMap());
@@ -46,7 +46,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(
       fieldTransformations: map['fieldTransformations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>(
               map['fieldTransformations'],
               (value) =>
@@ -54,7 +54,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
                       .fromMap((value as Map).cast<String, dynamic>())),
       recordSuppressions: map['recordSuppressions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>(
               map['recordSuppressions'],
               (value) =>

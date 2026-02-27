@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_feed_condition/folder_feed_condition.dart';
 import '../folder_feed_feed_output_config/folder_feed_feed_output_config.dart';
 import 'folder_feed_args.dart';
@@ -36,24 +36,24 @@ import 'folder_feed_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
 /// ```
-class FolderFeed extends CustomResource {
+class FolderFeed extends pulumi.CustomResource {
   /// A list of the full names of the assets to receive updates. You must specify either or both of
   /// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
   /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
   /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
-  late final Output<List<String>?> assetNames;
+  late final pulumi.Output<List<String>?> assetNames;
 
   /// A list of types of the assets to receive updates. You must specify either or both of assetNames
   /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
   /// the feed. For example: "compute.googleapis.com/Disk"
   /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
   /// supported asset types.
-  late final Output<List<String>?> assetTypes;
+  late final pulumi.Output<List<String>?> assetTypes;
 
   /// The project whose identity will be used when sending messages to the
   /// destination pubsub topic. It also specifies the project for API
   /// enablement check, quota, and billing.
-  late final Output<String> billingProject;
+  late final pulumi.Output<String> billingProject;
 
   /// A condition which determines whether an asset update should be published. If specified, an asset
   /// will be returned only when the expression evaluates to true. When set, expression field
@@ -61,38 +61,38 @@ class FolderFeed extends CustomResource {
   /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
   /// condition are optional.
   /// Structure is documented below.
-  late final Output<FolderFeedCondition?> condition;
+  late final pulumi.Output<FolderFeedCondition?> condition;
 
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
-  late final Output<String?> contentType;
+  late final pulumi.Output<String?> contentType;
 
   /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-  late final Output<String> feedId;
+  late final pulumi.Output<String> feedId;
 
   /// Output configuration for asset feed destination.
   /// Structure is documented below.
-  late final Output<FolderFeedFeedOutputConfig> feedOutputConfig;
+  late final pulumi.Output<FolderFeedFeedOutputConfig> feedOutputConfig;
 
   /// The folder this feed should be created in.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
   /// and folders/[FOLDER_NUMBER] are accepted.
-  late final Output<String> folderId;
+  late final pulumi.Output<String> folderId;
 
   /// The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   FolderFeed(
     String name, {
     FolderFeedArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudasset/folderFeed:FolderFeed',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assetNames = registerOutput<List<String>?>('assetNames');
     this.assetTypes = registerOutput<List<String>?>('assetTypes');

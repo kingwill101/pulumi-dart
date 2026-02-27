@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../table_table_constraints_foreign_key/table_table_constraints_foreign_key.dart';
 import '../table_table_constraints_primary_key/table_table_constraints_primary_key.dart';
 
@@ -25,7 +25,8 @@ class TableTableConstraints {
     final map = <String, dynamic>{};
     final foreignKeysValue = foreignKeys;
     if (foreignKeysValue != null) {
-      map['foreignKeys'] = Input.encodeList<TableTableConstraintsForeignKey,
+      map['foreignKeys'] = pulumi.Input.encodeList<
+          TableTableConstraintsForeignKey,
           Map<String, dynamic>>(foreignKeysValue, (value) => value.toMap());
     }
     final primaryKeyValue = primaryKey;
@@ -39,7 +40,7 @@ class TableTableConstraints {
     return TableTableConstraints(
       foreignKeys: map['foreignKeys'] == null
           ? null
-          : Input.decodeList<TableTableConstraintsForeignKey>(
+          : pulumi.Input.decodeList<TableTableConstraintsForeignKey>(
               map['foreignKeys'],
               (value) => TableTableConstraintsForeignKey.fromMap(
                   (value as Map).cast<String, dynamic>())),

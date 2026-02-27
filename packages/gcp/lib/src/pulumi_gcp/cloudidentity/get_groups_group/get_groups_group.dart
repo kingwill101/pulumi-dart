@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_groups_group_additional_group_key/get_groups_group_additional_group_key.dart';
 import '../get_groups_group_group_key/get_groups_group_group_key.dart';
 
@@ -56,14 +56,14 @@ class GetGroupsGroup {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additionalGroupKeys'] = Input.encodeList<
+    map['additionalGroupKeys'] = pulumi.Input.encodeList<
         GetGroupsGroupAdditionalGroupKey,
         Map<String, dynamic>>(additionalGroupKeys, (value) => value.toMap());
     map['createTime'] = createTime;
     map['description'] = description;
     map['displayName'] = displayName;
     map['groupKeys'] =
-        Input.encodeList<GetGroupsGroupGroupKey, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetGroupsGroupGroupKey, Map<String, dynamic>>(
             groupKeys, (value) => value.toMap());
     map['initialGroupConfig'] = initialGroupConfig;
     map['labels'] = labels;
@@ -75,14 +75,15 @@ class GetGroupsGroup {
 
   factory GetGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetGroupsGroup(
-      additionalGroupKeys: Input.decodeList<GetGroupsGroupAdditionalGroupKey>(
-          map['additionalGroupKeys'],
-          (value) => GetGroupsGroupAdditionalGroupKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      additionalGroupKeys:
+          pulumi.Input.decodeList<GetGroupsGroupAdditionalGroupKey>(
+              map['additionalGroupKeys'],
+              (value) => GetGroupsGroupAdditionalGroupKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      groupKeys: Input.decodeList<GetGroupsGroupGroupKey>(
+      groupKeys: pulumi.Input.decodeList<GetGroupsGroupGroupKey>(
           map['groupKeys'],
           (value) => GetGroupsGroupGroupKey.fromMap(
               (value as Map).cast<String, dynamic>())),

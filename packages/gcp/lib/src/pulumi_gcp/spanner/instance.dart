@@ -1,4 +1,4 @@
 library module_spanner_instance;
 
-export 'instance/instance15.dart';
-export 'instance/instance_args15.dart';
+export 'instance/instance_spanner.dart';
+export 'instance/instance_spanner_args.dart';

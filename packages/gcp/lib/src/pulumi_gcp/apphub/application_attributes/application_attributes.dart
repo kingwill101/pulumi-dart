@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_attributes_business_owner/application_attributes_business_owner.dart';
 import '../application_attributes_criticality/application_attributes_criticality.dart';
 import '../application_attributes_developer_owner/application_attributes_developer_owner.dart';
@@ -40,7 +40,7 @@ class ApplicationAttributes {
     final map = <String, dynamic>{};
     final businessOwnersValue = businessOwners;
     if (businessOwnersValue != null) {
-      map['businessOwners'] = Input.encodeList<
+      map['businessOwners'] = pulumi.Input.encodeList<
           ApplicationAttributesBusinessOwner,
           Map<String, dynamic>>(businessOwnersValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class ApplicationAttributes {
     }
     final developerOwnersValue = developerOwners;
     if (developerOwnersValue != null) {
-      map['developerOwners'] = Input.encodeList<
+      map['developerOwners'] = pulumi.Input.encodeList<
           ApplicationAttributesDeveloperOwner,
           Map<String, dynamic>>(developerOwnersValue, (value) => value.toMap());
     }
@@ -60,7 +60,7 @@ class ApplicationAttributes {
     }
     final operatorOwnersValue = operatorOwners;
     if (operatorOwnersValue != null) {
-      map['operatorOwners'] = Input.encodeList<
+      map['operatorOwners'] = pulumi.Input.encodeList<
           ApplicationAttributesOperatorOwner,
           Map<String, dynamic>>(operatorOwnersValue, (value) => value.toMap());
     }
@@ -71,7 +71,7 @@ class ApplicationAttributes {
     return ApplicationAttributes(
       businessOwners: map['businessOwners'] == null
           ? null
-          : Input.decodeList<ApplicationAttributesBusinessOwner>(
+          : pulumi.Input.decodeList<ApplicationAttributesBusinessOwner>(
               map['businessOwners'],
               (value) => ApplicationAttributesBusinessOwner.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -81,7 +81,7 @@ class ApplicationAttributes {
               (map['criticality'] as Map).cast<String, dynamic>()),
       developerOwners: map['developerOwners'] == null
           ? null
-          : Input.decodeList<ApplicationAttributesDeveloperOwner>(
+          : pulumi.Input.decodeList<ApplicationAttributesDeveloperOwner>(
               map['developerOwners'],
               (value) => ApplicationAttributesDeveloperOwner.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -91,7 +91,7 @@ class ApplicationAttributes {
               (map['environment'] as Map).cast<String, dynamic>()),
       operatorOwners: map['operatorOwners'] == null
           ? null
-          : Input.decodeList<ApplicationAttributesOperatorOwner>(
+          : pulumi.Input.decodeList<ApplicationAttributesOperatorOwner>(
               map['operatorOwners'],
               (value) => ApplicationAttributesOperatorOwner.fromMap(
                   (value as Map).cast<String, dynamic>())),

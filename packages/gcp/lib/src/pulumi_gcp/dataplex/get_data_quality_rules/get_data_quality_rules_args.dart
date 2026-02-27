@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataQualityRules.
 class GetDataQualityRulesArgs {
   /// The ID of the data profile scan which the generation of quality rules will be basing on.
-  final Input<String> dataScanId;
+  final pulumi.Input<String> dataScanId;
 
   /// The location where the referenced data profile scan resides.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The ID of the project in which the datascan belongs.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetDataQualityRulesArgs({
     required this.dataScanId,
@@ -35,9 +35,9 @@ class GetDataQualityRulesArgs {
 
   factory GetDataQualityRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesArgs(
-      dataScanId: Input.asInput<String>(map['dataScanId']),
-      location: Input.asOptionalInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      dataScanId: pulumi.Input.asInput<String>(map['dataScanId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

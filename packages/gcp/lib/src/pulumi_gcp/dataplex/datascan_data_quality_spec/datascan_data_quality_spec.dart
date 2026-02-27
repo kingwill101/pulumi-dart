@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../datascan_data_quality_spec_post_scan_actions/datascan_data_quality_spec_post_scan_actions.dart';
 import '../datascan_data_quality_spec_rule/datascan_data_quality_spec_rule.dart';
 
@@ -48,9 +48,8 @@ class DatascanDataQualitySpec {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] =
-          Input.encodeList<DatascanDataQualitySpecRule, Map<String, dynamic>>(
-              rulesValue, (value) => value.toMap());
+      map['rules'] = pulumi.Input.encodeList<DatascanDataQualitySpecRule,
+          Map<String, dynamic>>(rulesValue, (value) => value.toMap());
     }
     final samplingPercentValue = samplingPercent;
     if (samplingPercentValue != null) {
@@ -71,7 +70,7 @@ class DatascanDataQualitySpec {
       rowFilter: map['rowFilter'] == null ? null : map['rowFilter'] as String,
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<DatascanDataQualitySpecRule>(
+          : pulumi.Input.decodeList<DatascanDataQualitySpecRule>(
               map['rules'],
               (value) => DatascanDataQualitySpecRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

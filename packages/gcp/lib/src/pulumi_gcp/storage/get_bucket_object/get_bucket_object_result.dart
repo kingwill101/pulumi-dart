@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_object_context/get_bucket_object_context.dart';
 import '../get_bucket_object_customer_encryption/get_bucket_object_customer_encryption.dart';
 import '../get_bucket_object_retention/get_bucket_object_retention.dart';
@@ -113,10 +113,10 @@ class GetBucketObjectResult {
     map['contentLanguage'] = contentLanguage;
     map['contentType'] = contentType;
     map['contexts'] =
-        Input.encodeList<GetBucketObjectContext, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketObjectContext, Map<String, dynamic>>(
             contexts, (value) => value.toMap());
     map['crc32c'] = crc32c;
-    map['customerEncryptions'] = Input.encodeList<
+    map['customerEncryptions'] = pulumi.Input.encodeList<
         GetBucketObjectCustomerEncryption,
         Map<String, dynamic>>(customerEncryptions, (value) => value.toMap());
     map['deletionPolicy'] = deletionPolicy;
@@ -136,7 +136,7 @@ class GetBucketObjectResult {
     }
     map['outputName'] = outputName;
     map['retentions'] =
-        Input.encodeList<GetBucketObjectRetention, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketObjectRetention, Map<String, dynamic>>(
             retentions, (value) => value.toMap());
     map['selfLink'] = selfLink;
     map['source'] = source;
@@ -155,15 +155,16 @@ class GetBucketObjectResult {
       contentEncoding: map['contentEncoding'] as String,
       contentLanguage: map['contentLanguage'] as String,
       contentType: map['contentType'] as String,
-      contexts: Input.decodeList<GetBucketObjectContext>(
+      contexts: pulumi.Input.decodeList<GetBucketObjectContext>(
           map['contexts'],
           (value) => GetBucketObjectContext.fromMap(
               (value as Map).cast<String, dynamic>())),
       crc32c: map['crc32c'] as String,
-      customerEncryptions: Input.decodeList<GetBucketObjectCustomerEncryption>(
-          map['customerEncryptions'],
-          (value) => GetBucketObjectCustomerEncryption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customerEncryptions:
+          pulumi.Input.decodeList<GetBucketObjectCustomerEncryption>(
+              map['customerEncryptions'],
+              (value) => GetBucketObjectCustomerEncryption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       deletionPolicy: map['deletionPolicy'] as String,
       detectMd5hash: map['detectMd5hash'] as String,
       eventBasedHold: map['eventBasedHold'] as bool,
@@ -177,7 +178,7 @@ class GetBucketObjectResult {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] == null ? null : map['name'] as String,
       outputName: map['outputName'] as String,
-      retentions: Input.decodeList<GetBucketObjectRetention>(
+      retentions: pulumi.Input.decodeList<GetBucketObjectRetention>(
           map['retentions'],
           (value) => GetBucketObjectRetention.fromMap(
               (value as Map).cast<String, dynamic>())),

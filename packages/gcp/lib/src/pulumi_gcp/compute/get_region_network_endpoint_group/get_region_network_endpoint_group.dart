@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_region_network_endpoint_group_args.dart';
 import 'get_region_network_endpoint_group_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_region_network_endpoint_group_result.dart';
 /// The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
 Future<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup(
   GetRegionNetworkEndpointGroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNetworkEndpointGroupResult.fromMap(result);
 }

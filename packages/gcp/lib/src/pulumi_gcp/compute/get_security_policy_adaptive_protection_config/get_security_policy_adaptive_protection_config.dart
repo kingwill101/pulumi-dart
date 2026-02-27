@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_policy_adaptive_protection_config_auto_deploy_config/get_security_policy_adaptive_protection_config_auto_deploy_config.dart';
 import '../get_security_policy_adaptive_protection_config_layer7_ddos_defense_config/get_security_policy_adaptive_protection_config_layer7_ddos_defense_config.dart';
 
@@ -20,10 +20,10 @@ class GetSecurityPolicyAdaptiveProtectionConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoDeployConfigs'] = Input.encodeList<
+    map['autoDeployConfigs'] = pulumi.Input.encodeList<
         GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig,
         Map<String, dynamic>>(autoDeployConfigs, (value) => value.toMap());
-    map['layer7DdosDefenseConfigs'] = Input.encodeList<
+    map['layer7DdosDefenseConfigs'] = pulumi.Input.encodeList<
             GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig,
             Map<String, dynamic>>(
         layer7DdosDefenseConfigs, (value) => value.toMap());
@@ -33,13 +33,13 @@ class GetSecurityPolicyAdaptiveProtectionConfig {
   factory GetSecurityPolicyAdaptiveProtectionConfig.fromMap(
       Map<String, dynamic> map) {
     return GetSecurityPolicyAdaptiveProtectionConfig(
-      autoDeployConfigs: Input.decodeList<
+      autoDeployConfigs: pulumi.Input.decodeList<
               GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig>(
           map['autoDeployConfigs'],
           (value) =>
               GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      layer7DdosDefenseConfigs: Input.decodeList<
+      layer7DdosDefenseConfigs: pulumi.Input.decodeList<
               GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig>(
           map['layer7DdosDefenseConfigs'],
           (value) =>

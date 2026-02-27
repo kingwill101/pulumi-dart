@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../azure_cluster_authorization/azure_cluster_authorization.dart';
 import '../azure_cluster_azure_services_authentication/azure_cluster_azure_services_authentication.dart';
 import '../azure_cluster_control_plane/azure_cluster_control_plane.dart';
@@ -14,47 +14,47 @@ class AzureClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Configuration related to the cluster RBAC settings.
-  final Input<AzureClusterAuthorization> authorization;
+  final pulumi.Input<AzureClusterAuthorization> authorization;
 
   /// The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
-  final Input<String> azureRegion;
+  final pulumi.Input<String> azureRegion;
 
   /// Azure authentication configuration for management of Azure resources
-  final Input<AzureClusterAzureServicesAuthentication>?
+  final pulumi.Input<AzureClusterAzureServicesAuthentication>?
       azureServicesAuthentication;
 
   /// Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
-  final Input<String>? client;
+  final pulumi.Input<String>? client;
 
   /// Configuration related to the cluster control plane.
-  final Input<AzureClusterControlPlane> controlPlane;
+  final pulumi.Input<AzureClusterControlPlane> controlPlane;
 
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Fleet configuration.
-  final Input<AzureClusterFleet> fleet;
+  final pulumi.Input<AzureClusterFleet> fleet;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Logging configuration.
-  final Input<AzureClusterLoggingConfig>? loggingConfig;
+  final pulumi.Input<AzureClusterLoggingConfig>? loggingConfig;
 
   /// The name of this resource.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Cluster-wide networking configuration.
-  final Input<AzureClusterNetworking> networking;
+  final pulumi.Input<AzureClusterNetworking> networking;
 
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
-  final Input<String> resourceGroupId;
+  final pulumi.Input<String> resourceGroupId;
 
   AzureClusterArgs({
     this.annotations,
@@ -79,13 +79,12 @@ class AzureClusterArgs {
     if (annotationsValue != null) {
       map['annotations'] = annotationsValue;
     }
-    map['authorization'] =
-        Input.mapInputValue<AzureClusterAuthorization, Map<String, dynamic>>(
-            authorization, (value) => value.toMap());
+    map['authorization'] = pulumi.Input.mapInputValue<AzureClusterAuthorization,
+        Map<String, dynamic>>(authorization, (value) => value.toMap());
     map['azureRegion'] = azureRegion;
     final azureServicesAuthenticationValue = azureServicesAuthentication;
     if (azureServicesAuthenticationValue != null) {
-      map['azureServicesAuthentication'] = Input.mapOptionalInputValue<
+      map['azureServicesAuthentication'] = pulumi.Input.mapOptionalInputValue<
               AzureClusterAzureServicesAuthentication, Map<String, dynamic>>(
           azureServicesAuthenticationValue, (value) => value.toMap());
     }
@@ -93,19 +92,19 @@ class AzureClusterArgs {
     if (clientValue != null) {
       map['client'] = clientValue;
     }
-    map['controlPlane'] =
-        Input.mapInputValue<AzureClusterControlPlane, Map<String, dynamic>>(
-            controlPlane, (value) => value.toMap());
+    map['controlPlane'] = pulumi.Input.mapInputValue<AzureClusterControlPlane,
+        Map<String, dynamic>>(controlPlane, (value) => value.toMap());
     final descriptionValue = description;
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
     }
-    map['fleet'] = Input.mapInputValue<AzureClusterFleet, Map<String, dynamic>>(
-        fleet, (value) => value.toMap());
+    map['fleet'] =
+        pulumi.Input.mapInputValue<AzureClusterFleet, Map<String, dynamic>>(
+            fleet, (value) => value.toMap());
     map['location'] = location;
     final loggingConfigValue = loggingConfig;
     if (loggingConfigValue != null) {
-      map['loggingConfig'] = Input.mapOptionalInputValue<
+      map['loggingConfig'] = pulumi.Input.mapOptionalInputValue<
           AzureClusterLoggingConfig,
           Map<String, dynamic>>(loggingConfigValue, (value) => value.toMap());
     }
@@ -113,9 +112,8 @@ class AzureClusterArgs {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['networking'] =
-        Input.mapInputValue<AzureClusterNetworking, Map<String, dynamic>>(
-            networking, (value) => value.toMap());
+    map['networking'] = pulumi.Input.mapInputValue<AzureClusterNetworking,
+        Map<String, dynamic>>(networking, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -127,25 +125,26 @@ class AzureClusterArgs {
   factory AzureClusterArgs.fromMap(Map<String, dynamic> map) {
     return AzureClusterArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
       authorization:
-          Input.asInput<AzureClusterAuthorization>(map['authorization']),
-      azureRegion: Input.asInput<String>(map['azureRegion']),
+          pulumi.Input.asInput<AzureClusterAuthorization>(map['authorization']),
+      azureRegion: pulumi.Input.asInput<String>(map['azureRegion']),
       azureServicesAuthentication:
-          Input.asOptionalInput<AzureClusterAzureServicesAuthentication>(
+          pulumi.Input.asOptionalInput<AzureClusterAzureServicesAuthentication>(
               map['azureServicesAuthentication']),
-      client: Input.asOptionalInput<String>(map['client']),
+      client: pulumi.Input.asOptionalInput<String>(map['client']),
       controlPlane:
-          Input.asInput<AzureClusterControlPlane>(map['controlPlane']),
-      description: Input.asOptionalInput<String>(map['description']),
-      fleet: Input.asInput<AzureClusterFleet>(map['fleet']),
-      location: Input.asInput<String>(map['location']),
-      loggingConfig: Input.asOptionalInput<AzureClusterLoggingConfig>(
+          pulumi.Input.asInput<AzureClusterControlPlane>(map['controlPlane']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      fleet: pulumi.Input.asInput<AzureClusterFleet>(map['fleet']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      loggingConfig: pulumi.Input.asOptionalInput<AzureClusterLoggingConfig>(
           map['loggingConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
-      networking: Input.asInput<AzureClusterNetworking>(map['networking']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resourceGroupId: Input.asInput<String>(map['resourceGroupId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      networking:
+          pulumi.Input.asInput<AzureClusterNetworking>(map['networking']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resourceGroupId: pulumi.Input.asInput<String>(map['resourceGroupId']),
     );
   }
 }

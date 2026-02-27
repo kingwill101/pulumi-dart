@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Peering.
 class PeeringArgs {
   /// The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
-  final Input<String> authorizedNetwork;
+  final pulumi.Input<String> authorizedNetwork;
 
   /// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
-  final Input<String> domainResource;
+  final pulumi.Input<String> domainResource;
 
   /// Resource labels that can contain user-provided metadata
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// (Required)
-  final Input<String> peeringId;
+  final pulumi.Input<String> peeringId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The current state of this Peering.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   /// Additional information about the current status of this peering, if available.
-  final Input<String>? statusMessage;
+  final pulumi.Input<String>? statusMessage;
 
   PeeringArgs({
     required this.authorizedNetwork,
@@ -64,13 +64,13 @@ class PeeringArgs {
 
   factory PeeringArgs.fromMap(Map<String, dynamic> map) {
     return PeeringArgs(
-      authorizedNetwork: Input.asInput<String>(map['authorizedNetwork']),
-      domainResource: Input.asInput<String>(map['domainResource']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      peeringId: Input.asInput<String>(map['peeringId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      status: Input.asOptionalInput<String>(map['status']),
-      statusMessage: Input.asOptionalInput<String>(map['statusMessage']),
+      authorizedNetwork: pulumi.Input.asInput<String>(map['authorizedNetwork']),
+      domainResource: pulumi.Input.asInput<String>(map['domainResource']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      peeringId: pulumi.Input.asInput<String>(map['peeringId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      statusMessage: pulumi.Input.asOptionalInput<String>(map['statusMessage']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tenant_default_supported_idp_config_args.dart';
 
 /// Configurations options for the tenant for authenticating with a the standard set of Identity Toolkit-trusted IDPs.
@@ -39,15 +39,15 @@ import 'tenant_default_supported_idp_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
 /// ```
-class TenantDefaultSupportedIdpConfig extends CustomResource {
+class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
   /// OAuth client ID
-  late final Output<String> clientId;
+  late final pulumi.Output<String> clientId;
 
   /// OAuth client secret
-  late final Output<String> clientSecret;
+  late final pulumi.Output<String> clientSecret;
 
   /// If this IDP allows the user to sign in
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// ID of the IDP. Possible values include:
   /// * `apple.com`
@@ -60,27 +60,27 @@ class TenantDefaultSupportedIdpConfig extends CustomResource {
   /// * `playgames.google.com`
   /// * `twitter.com`
   /// * `yahoo.com`
-  late final Output<String> idpId;
+  late final pulumi.Output<String> idpId;
 
   /// The name of the default supported IDP config resource
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The name of the tenant where this DefaultSupportedIdpConfig resource exists
-  late final Output<String> tenant;
+  late final pulumi.Output<String> tenant;
 
   TenantDefaultSupportedIdpConfig(
     String name, {
     TenantDefaultSupportedIdpConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clientId = registerOutput<String>('clientId');
     this.clientSecret = registerOutput<String>('clientSecret');

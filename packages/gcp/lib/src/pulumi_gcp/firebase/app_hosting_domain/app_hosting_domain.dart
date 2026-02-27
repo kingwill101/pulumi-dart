@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_domain_custom_domain_status/app_hosting_domain_custom_domain_status.dart';
 import '../app_hosting_domain_serve/app_hosting_domain_serve.dart';
 import 'app_hosting_domain_args.dart';
@@ -41,64 +41,64 @@ import 'app_hosting_domain_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingDomain:AppHostingDomain default {{location}}/{{backend}}/{{domain_id}}
 /// ```
-class AppHostingDomain extends CustomResource {
+class AppHostingDomain extends pulumi.CustomResource {
   /// The ID of the Backend that this Domain is associated with
-  late final Output<String> backend;
+  late final pulumi.Output<String> backend;
 
   /// Time at which the domain was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The status of a custom domain's linkage to the Backend.
   /// Structure is documented below.
-  late final Output<List<AppHostingDomainCustomDomainStatus>>
+  late final pulumi.Output<List<AppHostingDomainCustomDomainStatus>>
       customDomainStatuses;
 
   /// Time at which the domain was deleted.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
-  late final Output<String> domainId;
+  late final pulumi.Output<String> domainId;
 
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The location of the Backend that this Domain is associated with
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the domain, e.g.
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Time at which a soft-deleted domain will be purged, rendering in
   /// permanently deleted.
-  late final Output<String> purgeTime;
+  late final pulumi.Output<String> purgeTime;
 
   /// The serving behavior of the domain. If specified, the domain will
   /// serve content other than its Backend's live content.
   /// Structure is documented below.
-  late final Output<AppHostingDomainServe?> serve;
+  late final pulumi.Output<AppHostingDomainServe?> serve;
 
   /// System-assigned, unique identifier.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time at which the domain was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AppHostingDomain(
     String name, {
     AppHostingDomainArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appHostingDomain:AppHostingDomain',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backend = registerOutput<String>('backend');
     this.createTime = registerOutput<String>('createTime');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lite_topic_partition_config/lite_topic_partition_config.dart';
 import '../lite_topic_reservation_config/lite_topic_reservation_config.dart';
 import '../lite_topic_retention_config/lite_topic_retention_config.dart';
@@ -51,41 +51,41 @@ import 'lite_topic_args.dart';
 /// ```sh
 /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
 /// ```
-class LiteTopic extends CustomResource {
+class LiteTopic extends pulumi.CustomResource {
   /// Name of the topic.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The settings for this topic's partitions.
   /// Structure is documented below.
-  late final Output<LiteTopicPartitionConfig?> partitionConfig;
+  late final pulumi.Output<LiteTopicPartitionConfig?> partitionConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region of the pubsub lite topic.
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// The settings for this topic's Reservation usage.
   /// Structure is documented below.
-  late final Output<LiteTopicReservationConfig?> reservationConfig;
+  late final pulumi.Output<LiteTopicReservationConfig?> reservationConfig;
 
   /// The settings for a topic's message retention.
   /// Structure is documented below.
-  late final Output<LiteTopicRetentionConfig?> retentionConfig;
+  late final pulumi.Output<LiteTopicRetentionConfig?> retentionConfig;
 
   /// The zone of the pubsub lite topic.
-  late final Output<String?> zone;
+  late final pulumi.Output<String?> zone;
 
   LiteTopic(
     String name, {
     LiteTopicArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:pubsub/liteTopic:LiteTopic',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.partitionConfig =

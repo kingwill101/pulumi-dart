@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../reservation_replication_status_error/reservation_replication_status_error.dart';
 
 class ReservationReplicationStatus {
@@ -31,7 +31,7 @@ class ReservationReplicationStatus {
     final map = <String, dynamic>{};
     final errorsValue = errors;
     if (errorsValue != null) {
-      map['errors'] = Input.encodeList<ReservationReplicationStatusError,
+      map['errors'] = pulumi.Input.encodeList<ReservationReplicationStatusError,
           Map<String, dynamic>>(errorsValue, (value) => value.toMap());
     }
     final lastErrorTimeValue = lastErrorTime;
@@ -49,7 +49,7 @@ class ReservationReplicationStatus {
     return ReservationReplicationStatus(
       errors: map['errors'] == null
           ? null
-          : Input.decodeList<ReservationReplicationStatusError>(
+          : pulumi.Input.decodeList<ReservationReplicationStatusError>(
               map['errors'],
               (value) => ReservationReplicationStatusError.fromMap(
                   (value as Map).cast<String, dynamic>())),

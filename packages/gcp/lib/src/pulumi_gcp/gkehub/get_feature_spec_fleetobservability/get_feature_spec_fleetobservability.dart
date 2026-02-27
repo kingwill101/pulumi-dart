@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_spec_fleetobservability_logging_config/get_feature_spec_fleetobservability_logging_config.dart';
 
 class GetFeatureSpecFleetobservability {
@@ -13,7 +13,7 @@ class GetFeatureSpecFleetobservability {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['loggingConfigs'] = Input.encodeList<
+    map['loggingConfigs'] = pulumi.Input.encodeList<
         GetFeatureSpecFleetobservabilityLoggingConfig,
         Map<String, dynamic>>(loggingConfigs, (value) => value.toMap());
     return map;
@@ -21,11 +21,11 @@ class GetFeatureSpecFleetobservability {
 
   factory GetFeatureSpecFleetobservability.fromMap(Map<String, dynamic> map) {
     return GetFeatureSpecFleetobservability(
-      loggingConfigs:
-          Input.decodeList<GetFeatureSpecFleetobservabilityLoggingConfig>(
-              map['loggingConfigs'],
-              (value) => GetFeatureSpecFleetobservabilityLoggingConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      loggingConfigs: pulumi.Input.decodeList<
+              GetFeatureSpecFleetobservabilityLoggingConfig>(
+          map['loggingConfigs'],
+          (value) => GetFeatureSpecFleetobservabilityLoggingConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

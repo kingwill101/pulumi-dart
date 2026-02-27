@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../log_view_iam_member_condition/log_view_iam_member_condition.dart';
 import 'log_view_iam_member_args.dart';
 
@@ -120,21 +120,21 @@ import 'log_view_iam_member_args.dart';
 /// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-class LogViewIamMember extends CustomResource {
+class LogViewIamMember extends pulumi.CustomResource {
   /// The bucket of the resource Used to find the parent resource to bind the IAM policy to
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<LogViewIamMemberCondition?> condition;
+  late final pulumi.Output<LogViewIamMemberCondition?> condition;
 
   /// (Computed) The etag of the IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -148,28 +148,28 @@ class LogViewIamMember extends CustomResource {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// Used to find the parent resource to bind the IAM policy to
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of the resource. Used to find the parent resource to bind the IAM policy to
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The role that should be applied. Only one
   /// `gcp.logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   LogViewIamMember(
     String name, {
     LogViewIamMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:logging/logViewIamMember:LogViewIamMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.condition = registerOutput<LogViewIamMemberCondition?>('condition');

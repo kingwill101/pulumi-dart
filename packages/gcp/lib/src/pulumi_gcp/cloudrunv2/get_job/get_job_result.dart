@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_binary_authorization/get_job_binary_authorization.dart';
 import '../get_job_condition/get_job_condition.dart';
 import '../get_job_latest_created_execution/get_job_latest_created_execution.dart';
@@ -82,13 +82,14 @@ class GetJobResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['annotations'] = annotations;
-    map['binaryAuthorizations'] =
-        Input.encodeList<GetJobBinaryAuthorization, Map<String, dynamic>>(
-            binaryAuthorizations, (value) => value.toMap());
+    map['binaryAuthorizations'] = pulumi.Input.encodeList<
+        GetJobBinaryAuthorization,
+        Map<String, dynamic>>(binaryAuthorizations, (value) => value.toMap());
     map['client'] = client;
     map['clientVersion'] = clientVersion;
-    map['conditions'] = Input.encodeList<GetJobCondition, Map<String, dynamic>>(
-        conditions, (value) => value.toMap());
+    map['conditions'] =
+        pulumi.Input.encodeList<GetJobCondition, Map<String, dynamic>>(
+            conditions, (value) => value.toMap());
     map['createTime'] = createTime;
     map['creator'] = creator;
     map['deleteTime'] = deleteTime;
@@ -102,9 +103,9 @@ class GetJobResult {
     map['id'] = id;
     map['labels'] = labels;
     map['lastModifier'] = lastModifier;
-    map['latestCreatedExecutions'] =
-        Input.encodeList<GetJobLatestCreatedExecution, Map<String, dynamic>>(
-            latestCreatedExecutions, (value) => value.toMap());
+    map['latestCreatedExecutions'] = pulumi.Input.encodeList<
+            GetJobLatestCreatedExecution, Map<String, dynamic>>(
+        latestCreatedExecutions, (value) => value.toMap());
     map['launchStage'] = launchStage;
     final locationValue = location;
     if (locationValue != null) {
@@ -120,10 +121,11 @@ class GetJobResult {
     map['reconciling'] = reconciling;
     map['runExecutionToken'] = runExecutionToken;
     map['startExecutionToken'] = startExecutionToken;
-    map['templates'] = Input.encodeList<GetJobTemplate, Map<String, dynamic>>(
-        templates, (value) => value.toMap());
+    map['templates'] =
+        pulumi.Input.encodeList<GetJobTemplate, Map<String, dynamic>>(
+            templates, (value) => value.toMap());
     map['terminalConditions'] =
-        Input.encodeList<GetJobTerminalCondition, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetJobTerminalCondition, Map<String, dynamic>>(
             terminalConditions, (value) => value.toMap());
     map['uid'] = uid;
     map['updateTime'] = updateTime;
@@ -133,13 +135,13 @@ class GetJobResult {
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      binaryAuthorizations: Input.decodeList<GetJobBinaryAuthorization>(
+      binaryAuthorizations: pulumi.Input.decodeList<GetJobBinaryAuthorization>(
           map['binaryAuthorizations'],
           (value) => GetJobBinaryAuthorization.fromMap(
               (value as Map).cast<String, dynamic>())),
       client: map['client'] as String,
       clientVersion: map['clientVersion'] as String,
-      conditions: Input.decodeList<GetJobCondition>(
+      conditions: pulumi.Input.decodeList<GetJobCondition>(
           map['conditions'],
           (value) =>
               GetJobCondition.fromMap((value as Map).cast<String, dynamic>())),
@@ -157,10 +159,11 @@ class GetJobResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       lastModifier: map['lastModifier'] as String,
-      latestCreatedExecutions: Input.decodeList<GetJobLatestCreatedExecution>(
-          map['latestCreatedExecutions'],
-          (value) => GetJobLatestCreatedExecution.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      latestCreatedExecutions:
+          pulumi.Input.decodeList<GetJobLatestCreatedExecution>(
+              map['latestCreatedExecutions'],
+              (value) => GetJobLatestCreatedExecution.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       launchStage: map['launchStage'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] as String,
@@ -170,11 +173,11 @@ class GetJobResult {
       reconciling: map['reconciling'] as bool,
       runExecutionToken: map['runExecutionToken'] as String,
       startExecutionToken: map['startExecutionToken'] as String,
-      templates: Input.decodeList<GetJobTemplate>(
+      templates: pulumi.Input.decodeList<GetJobTemplate>(
           map['templates'],
           (value) =>
               GetJobTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      terminalConditions: Input.decodeList<GetJobTerminalCondition>(
+      terminalConditions: pulumi.Input.decodeList<GetJobTerminalCondition>(
           map['terminalConditions'],
           (value) => GetJobTerminalCondition.fromMap(
               (value as Map).cast<String, dynamic>())),

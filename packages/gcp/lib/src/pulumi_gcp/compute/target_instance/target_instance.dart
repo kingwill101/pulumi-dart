@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_instance_args.dart';
 
 /// Represents a TargetInstance resource which defines an endpoint instance
@@ -59,12 +59,12 @@ import 'target_instance_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
 /// ```
-class TargetInstance extends CustomResource {
+class TargetInstance extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The Compute instance VM handling traffic for this target instance.
   /// Accepts the instance self-link, relative path
@@ -72,7 +72,7 @@ class TargetInstance extends CustomResource {
   /// name is given, the zone will default to the given zone or
   /// the provider-default zone and the project will default to the
   /// provider-level project.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -81,39 +81,39 @@ class TargetInstance extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// NAT option controlling how IPs are NAT'ed to the instance.
   /// Currently only NO_NAT (default value) is supported.
   /// Default value is `NO_NAT`.
   /// Possible values are: `NO_NAT`.
-  late final Output<String?> natPolicy;
+  late final pulumi.Output<String?> natPolicy;
 
   /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
-  late final Output<String?> network;
+  late final pulumi.Output<String?> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The resource URL for the security policy associated with this target instance.
-  late final Output<String?> securityPolicy;
+  late final pulumi.Output<String?> securityPolicy;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// URL of the zone where the target instance resides.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   TargetInstance(
     String name, {
     TargetInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/targetInstance:TargetInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

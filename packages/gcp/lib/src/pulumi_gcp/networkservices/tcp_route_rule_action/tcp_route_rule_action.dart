@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tcp_route_rule_action_destination/tcp_route_rule_action_destination.dart';
 
 class TcpRouteRuleAction {
@@ -25,9 +25,9 @@ class TcpRouteRuleAction {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] =
-          Input.encodeList<TcpRouteRuleActionDestination, Map<String, dynamic>>(
-              destinationsValue, (value) => value.toMap());
+      map['destinations'] = pulumi.Input.encodeList<
+          TcpRouteRuleActionDestination,
+          Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
     final idleTimeoutValue = idleTimeout;
     if (idleTimeoutValue != null) {
@@ -44,7 +44,7 @@ class TcpRouteRuleAction {
     return TcpRouteRuleAction(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<TcpRouteRuleActionDestination>(
+          : pulumi.Input.decodeList<TcpRouteRuleActionDestination>(
               map['destinations'],
               (value) => TcpRouteRuleActionDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),

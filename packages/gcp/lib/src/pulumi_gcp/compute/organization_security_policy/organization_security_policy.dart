@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_security_policy_args.dart';
 
 /// Organization security policies are used to control incoming/outgoing traffic.
@@ -34,41 +34,41 @@ import 'organization_security_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
 /// ```
-class OrganizationSecurityPolicy extends CustomResource {
+class OrganizationSecurityPolicy extends pulumi.CustomResource {
   /// A textual description for the organization security policy.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Fingerprint of this resource. This field is used internally during
   /// updates of this resource.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
   /// Format: organizations/{organization_id} or folders/{folder_id}
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// The unique identifier for the resource. This identifier is defined by the server.
-  late final Output<String> policyId;
+  late final pulumi.Output<String> policyId;
 
   /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
-  late final Output<String?> shortName;
+  late final pulumi.Output<String?> shortName;
 
   /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   /// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
   /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   OrganizationSecurityPolicy(
     String name, {
     OrganizationSecurityPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');

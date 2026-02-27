@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_project_cmek_settings_args.dart';
 import 'get_project_cmek_settings_result.dart';
 
@@ -14,13 +14,13 @@ import 'get_project_cmek_settings_result.dart';
 /// ### Logging Project Cmek Settings Basic
 Future<GetProjectCmekSettingsResult> getProjectCmekSettings(
   GetProjectCmekSettingsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:logging/getProjectCmekSettings:getProjectCmekSettings',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectCmekSettingsResult.fromMap(result);
 }

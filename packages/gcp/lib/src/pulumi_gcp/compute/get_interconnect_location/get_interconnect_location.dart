@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_interconnect_location_args.dart';
 import 'get_interconnect_location_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_interconnect_location_result.dart';
 /// the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/interconnectLocations/get) documentation.
 Future<GetInterconnectLocationResult> getInterconnectLocation(
   GetInterconnectLocationArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getInterconnectLocation:getInterconnectLocation',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInterconnectLocationResult.fromMap(result);
 }

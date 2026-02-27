@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_args.dart';
 
 /// Cloud IDS is an intrusion detection service that provides threat detection for intrusions, malware, spyware, and command-and-control attacks on your network.
@@ -38,51 +38,51 @@ import 'endpoint_args.dart';
 /// ```sh
 /// $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
 /// ```
-class Endpoint extends CustomResource {
+class Endpoint extends pulumi.CustomResource {
   /// Creation timestamp in RFC 3339 text format.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// An optional description of the endpoint.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
-  late final Output<String> endpointForwardingRule;
+  late final pulumi.Output<String> endpointForwardingRule;
 
   /// Internal IP address of the endpoint's network entry point.
-  late final Output<String> endpointIp;
+  late final pulumi.Output<String> endpointIp;
 
   /// The location for the endpoint.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The minimum alert severity level that is reported by the endpoint.
   /// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
-  late final Output<String> severity;
+  late final pulumi.Output<String> severity;
 
   /// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
-  late final Output<List<String>?> threatExceptions;
+  late final pulumi.Output<List<String>?> threatExceptions;
 
   /// Last update timestamp in RFC 3339 text format.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Endpoint(
     String name, {
     EndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:cloudids/endpoint:Endpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

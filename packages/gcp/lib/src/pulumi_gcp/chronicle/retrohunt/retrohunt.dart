@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../retrohunt_execution_interval/retrohunt_execution_interval.dart';
 import '../retrohunt_process_interval/retrohunt_process_interval.dart';
 import 'retrohunt_args.dart';
@@ -42,9 +42,9 @@ import 'retrohunt_args.dart';
 /// ```sh
 /// $ pulumi import gcp:chronicle/retrohunt:Retrohunt default {{location}}/{{instance}}/{{rule}}/{{retrohunt}}
 /// ```
-class Retrohunt extends CustomResource {
+class Retrohunt extends pulumi.CustomResource {
   /// The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
-  late final Output<String> retrohuntId;
+  late final pulumi.Output<String> retrohuntId;
 
   /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
   /// Timestamp end (exclusive).
@@ -52,20 +52,20 @@ class Retrohunt extends CustomResource {
   /// When the start equals the end, the interval is empty (matches no time).
   /// When both start and end are unspecified, the interval matches any time.
   /// Structure is documented below.
-  late final Output<List<RetrohuntExecutionInterval>> executionIntervals;
+  late final pulumi.Output<List<RetrohuntExecutionInterval>> executionIntervals;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the retrohunt.
   /// Retrohunt is the child of a rule revision. {rule} in the format below is
   /// structured as {rule_id@revision_id}.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/retrohunts/{retrohunt}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
   /// Timestamp end (exclusive).
@@ -73,17 +73,17 @@ class Retrohunt extends CustomResource {
   /// When the start equals the end, the interval is empty (matches no time).
   /// When both start and end are unspecified, the interval matches any time.
   /// Structure is documented below.
-  late final Output<RetrohuntProcessInterval> processInterval;
+  late final pulumi.Output<RetrohuntProcessInterval> processInterval;
 
   /// Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
-  late final Output<double> progressPercentage;
+  late final pulumi.Output<double> progressPercentage;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The Rule ID of the rule.
-  late final Output<String> rule;
+  late final pulumi.Output<String> rule;
 
   /// Output only. The state of the retrohunt.
   /// Possible values:
@@ -91,17 +91,17 @@ class Retrohunt extends CustomResource {
   /// DONE
   /// CANCELLED
   /// FAILED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   Retrohunt(
     String name, {
     RetrohuntArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:chronicle/retrohunt:Retrohunt',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.retrohuntId = registerOutput<String>('RetrohuntId');
     this.executionIntervals =

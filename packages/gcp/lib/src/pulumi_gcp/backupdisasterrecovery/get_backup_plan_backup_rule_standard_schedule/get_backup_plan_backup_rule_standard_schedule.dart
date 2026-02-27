@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_backup_plan_backup_rule_standard_schedule_backup_window/get_backup_plan_backup_rule_standard_schedule_backup_window.dart';
 import '../get_backup_plan_backup_rule_standard_schedule_week_day_of_month/get_backup_plan_backup_rule_standard_schedule_week_day_of_month.dart';
 
@@ -45,7 +45,7 @@ class GetBackupPlanBackupRuleStandardSchedule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['backupWindows'] = Input.encodeList<
+    map['backupWindows'] = pulumi.Input.encodeList<
         GetBackupPlanBackupRuleStandardScheduleBackupWindow,
         Map<String, dynamic>>(backupWindows, (value) => value.toMap());
     map['daysOfMonths'] = daysOfMonths;
@@ -54,7 +54,7 @@ class GetBackupPlanBackupRuleStandardSchedule {
     map['months'] = months;
     map['recurrenceType'] = recurrenceType;
     map['timeZone'] = timeZone;
-    map['weekDayOfMonths'] = Input.encodeList<
+    map['weekDayOfMonths'] = pulumi.Input.encodeList<
         GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth,
         Map<String, dynamic>>(weekDayOfMonths, (value) => value.toMap());
     return map;
@@ -63,19 +63,19 @@ class GetBackupPlanBackupRuleStandardSchedule {
   factory GetBackupPlanBackupRuleStandardSchedule.fromMap(
       Map<String, dynamic> map) {
     return GetBackupPlanBackupRuleStandardSchedule(
-      backupWindows:
-          Input.decodeList<GetBackupPlanBackupRuleStandardScheduleBackupWindow>(
-              map['backupWindows'],
-              (value) =>
-                  GetBackupPlanBackupRuleStandardScheduleBackupWindow.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      backupWindows: pulumi.Input.decodeList<
+              GetBackupPlanBackupRuleStandardScheduleBackupWindow>(
+          map['backupWindows'],
+          (value) =>
+              GetBackupPlanBackupRuleStandardScheduleBackupWindow.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       daysOfMonths: (map['daysOfMonths'] as List).cast<int>(),
       daysOfWeeks: (map['daysOfWeeks'] as List).cast<String>(),
       hourlyFrequency: map['hourlyFrequency'] as int,
       months: (map['months'] as List).cast<String>(),
       recurrenceType: map['recurrenceType'] as String,
       timeZone: map['timeZone'] as String,
-      weekDayOfMonths: Input.decodeList<
+      weekDayOfMonths: pulumi.Input.decodeList<
               GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth>(
           map['weekDayOfMonths'],
           (value) =>

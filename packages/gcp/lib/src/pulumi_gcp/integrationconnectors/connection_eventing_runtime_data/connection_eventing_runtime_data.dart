@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_eventing_runtime_data_status/connection_eventing_runtime_data_status.dart';
 
 class ConnectionEventingRuntimeData {
@@ -25,7 +25,8 @@ class ConnectionEventingRuntimeData {
     }
     final statusesValue = statuses;
     if (statusesValue != null) {
-      map['statuses'] = Input.encodeList<ConnectionEventingRuntimeDataStatus,
+      map['statuses'] = pulumi.Input.encodeList<
+          ConnectionEventingRuntimeDataStatus,
           Map<String, dynamic>>(statusesValue, (value) => value.toMap());
     }
     return map;
@@ -38,7 +39,7 @@ class ConnectionEventingRuntimeData {
           : map['eventsListenerEndpoint'] as String,
       statuses: map['statuses'] == null
           ? null
-          : Input.decodeList<ConnectionEventingRuntimeDataStatus>(
+          : pulumi.Input.decodeList<ConnectionEventingRuntimeDataStatus>(
               map['statuses'],
               (value) => ConnectionEventingRuntimeDataStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),

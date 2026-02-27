@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organization_security_policy_rule_match_config_layer4_config/organization_security_policy_rule_match_config_layer4_config.dart';
 
 class OrganizationSecurityPolicyRuleMatchConfig {
@@ -32,7 +32,7 @@ class OrganizationSecurityPolicyRuleMatchConfig {
     if (destIpRangesValue != null) {
       map['destIpRanges'] = destIpRangesValue;
     }
-    map['layer4Configs'] = Input.encodeList<
+    map['layer4Configs'] = pulumi.Input.encodeList<
         OrganizationSecurityPolicyRuleMatchConfigLayer4Config,
         Map<String, dynamic>>(layer4Configs, (value) => value.toMap());
     final srcIpRangesValue = srcIpRanges;
@@ -48,7 +48,7 @@ class OrganizationSecurityPolicyRuleMatchConfig {
       destIpRanges: map['destIpRanges'] == null
           ? null
           : (map['destIpRanges'] as List).cast<String>(),
-      layer4Configs: Input.decodeList<
+      layer4Configs: pulumi.Input.decodeList<
               OrganizationSecurityPolicyRuleMatchConfigLayer4Config>(
           map['layer4Configs'],
           (value) =>

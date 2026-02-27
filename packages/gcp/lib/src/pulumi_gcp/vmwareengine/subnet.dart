@@ -1,4 +1,4 @@
 library module_vmwareengine_subnet;
 
-export 'subnet/subnet2.dart';
-export 'subnet/subnet_args2.dart';
+export 'subnet/subnet_vmwareengine.dart';
+export 'subnet/subnet_vmwareengine_args.dart';

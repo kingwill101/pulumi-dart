@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_constraint_args.dart';
 
 /// Custom constraints are created by administrators to provide more granular and customizable control over the specific fields that are restricted by your organization policies.
@@ -33,44 +33,44 @@ import 'custom_constraint_args.dart';
 /// ```sh
 /// $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}
 /// ```
-class CustomConstraint extends CustomResource {
+class CustomConstraint extends pulumi.CustomResource {
   /// The action to take if the condition is met.
   /// Possible values are: `ALLOW`, `DENY`.
-  late final Output<String> actionType;
+  late final pulumi.Output<String> actionType;
 
   /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
-  late final Output<String> condition;
+  late final pulumi.Output<String> condition;
 
   /// A human-friendly description of the constraint to display as an error message when the policy is violated.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A human-friendly name for the constraint.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
-  late final Output<List<String>> methodTypes;
+  late final pulumi.Output<List<String>> methodTypes;
 
   /// Immutable. The name of the custom constraint. This is unique within the organization.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
-  late final Output<List<String>> resourceTypes;
+  late final pulumi.Output<List<String>> resourceTypes;
 
   /// Output only. The timestamp representing when the constraint was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   CustomConstraint(
     String name, {
     CustomConstraintArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:orgpolicy/customConstraint:CustomConstraint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.actionType = registerOutput<String>('actionType');
     this.condition = registerOutput<String>('condition');

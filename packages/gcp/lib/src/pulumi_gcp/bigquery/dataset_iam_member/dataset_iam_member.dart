@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dataset_iam_member_condition/dataset_iam_member_condition.dart';
 import 'dataset_iam_member_args.dart';
 
@@ -93,16 +93,16 @@ import 'dataset_iam_member_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember default projects/{{project_id}}/datasets/{{dataset_id}}
 /// ```
-class DatasetIamMember extends CustomResource {
+class DatasetIamMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<DatasetIamMemberCondition?> condition;
+  late final pulumi.Output<DatasetIamMemberCondition?> condition;
 
   /// The dataset ID.
-  late final Output<String> datasetId;
+  late final pulumi.Output<String> datasetId;
 
   /// (Computed) The etag of the dataset's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -116,26 +116,26 @@ class DatasetIamMember extends CustomResource {
   /// * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The role that should be applied. Only one
   /// `gcp.bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   DatasetIamMember(
     String name, {
     DatasetIamMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/datasetIamMember:DatasetIamMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<DatasetIamMemberCondition?>('condition');
     this.datasetId = registerOutput<String>('datasetId');

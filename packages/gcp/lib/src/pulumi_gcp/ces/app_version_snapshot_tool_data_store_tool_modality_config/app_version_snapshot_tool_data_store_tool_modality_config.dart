@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_tool_data_store_tool_modality_config_grounding_config/app_version_snapshot_tool_data_store_tool_modality_config_grounding_config.dart';
 import '../app_version_snapshot_tool_data_store_tool_modality_config_rewriter_config/app_version_snapshot_tool_data_store_tool_modality_config_rewriter_config.dart';
 import '../app_version_snapshot_tool_data_store_tool_modality_config_summarization_config/app_version_snapshot_tool_data_store_tool_modality_config_summarization_config.dart';
@@ -43,7 +43,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
     final map = <String, dynamic>{};
     final groundingConfigsValue = groundingConfigs;
     if (groundingConfigsValue != null) {
-      map['groundingConfigs'] = Input.encodeList<
+      map['groundingConfigs'] = pulumi.Input.encodeList<
               AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig,
               Map<String, dynamic>>(
           groundingConfigsValue, (value) => value.toMap());
@@ -54,13 +54,13 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
     }
     final rewriterConfigsValue = rewriterConfigs;
     if (rewriterConfigsValue != null) {
-      map['rewriterConfigs'] = Input.encodeList<
+      map['rewriterConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig,
           Map<String, dynamic>>(rewriterConfigsValue, (value) => value.toMap());
     }
     final summarizationConfigsValue = summarizationConfigs;
     if (summarizationConfigsValue != null) {
-      map['summarizationConfigs'] = Input.encodeList<
+      map['summarizationConfigs'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig,
           Map<String,
               dynamic>>(summarizationConfigsValue, (value) => value.toMap());
@@ -73,7 +73,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
     return AppVersionSnapshotToolDataStoreToolModalityConfig(
       groundingConfigs: map['groundingConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig>(
               map['groundingConfigs'],
               (value) =>
@@ -83,7 +83,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
           map['modalityType'] == null ? null : map['modalityType'] as String,
       rewriterConfigs: map['rewriterConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig>(
               map['rewriterConfigs'],
               (value) =>
@@ -91,7 +91,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
                       .fromMap((value as Map).cast<String, dynamic>())),
       summarizationConfigs: map['summarizationConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig>(
               map['summarizationConfigs'],
               (value) =>

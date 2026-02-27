@@ -1,43 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../asset_discovery_spec/asset_discovery_spec.dart';
 import '../asset_resource_spec/asset_resource_spec.dart';
 
 /// The set of arguments for Asset.
 class AssetArgs {
   /// The zone for the resource
-  final Input<String> dataplexZone;
+  final pulumi.Input<String> dataplexZone;
 
   /// Optional. Description of the asset.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
-  final Input<AssetDiscoverySpec> discoverySpec;
+  final pulumi.Input<AssetDiscoverySpec> discoverySpec;
 
   /// Optional. User friendly display name.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Optional. User defined labels for the asset.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The lake for the resource
-  final Input<String> lake;
+  final pulumi.Input<String> lake;
 
   /// The location for the resource
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of the asset.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The project for the resource
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Required. Immutable. Specification of the resource that is referenced by this asset.
-  final Input<AssetResourceSpec> resourceSpec;
+  final pulumi.Input<AssetResourceSpec> resourceSpec;
 
   AssetArgs({
     required this.dataplexZone,
@@ -60,7 +60,7 @@ class AssetArgs {
       map['description'] = descriptionValue;
     }
     map['discoverySpec'] =
-        Input.mapInputValue<AssetDiscoverySpec, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<AssetDiscoverySpec, Map<String, dynamic>>(
             discoverySpec, (value) => value.toMap());
     final displayNameValue = displayName;
     if (displayNameValue != null) {
@@ -81,23 +81,25 @@ class AssetArgs {
       map['project'] = projectValue;
     }
     map['resourceSpec'] =
-        Input.mapInputValue<AssetResourceSpec, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<AssetResourceSpec, Map<String, dynamic>>(
             resourceSpec, (value) => value.toMap());
     return map;
   }
 
   factory AssetArgs.fromMap(Map<String, dynamic> map) {
     return AssetArgs(
-      dataplexZone: Input.asInput<String>(map['dataplexZone']),
-      description: Input.asOptionalInput<String>(map['description']),
-      discoverySpec: Input.asInput<AssetDiscoverySpec>(map['discoverySpec']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      lake: Input.asInput<String>(map['lake']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resourceSpec: Input.asInput<AssetResourceSpec>(map['resourceSpec']),
+      dataplexZone: pulumi.Input.asInput<String>(map['dataplexZone']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      discoverySpec:
+          pulumi.Input.asInput<AssetDiscoverySpec>(map['discoverySpec']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      lake: pulumi.Input.asInput<String>(map['lake']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resourceSpec:
+          pulumi.Input.asInput<AssetResourceSpec>(map['resourceSpec']),
     );
   }
 }

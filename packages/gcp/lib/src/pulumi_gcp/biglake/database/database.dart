@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../database_hive_options/database_hive_options.dart';
 import 'database_args.dart';
 
@@ -29,53 +29,53 @@ import 'database_args.dart';
 /// ```sh
 /// $ pulumi import gcp:biglake/database:Database default {{catalog}}/databases/{{name}}
 /// ```
-class Database extends CustomResource {
+class Database extends pulumi.CustomResource {
   /// The parent catalog.
-  late final Output<String> catalog;
+  late final pulumi.Output<String> catalog;
 
   /// Output only. The creation time of the database. A timestamp in RFC3339
   /// UTC "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Output only. The deletion time of the database. Only set after the
   /// database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// Output only. The time when this database is considered expired. Only set
   /// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// Options of a Hive database.
   /// Structure is documented below.
-  late final Output<DatabaseHiveOptions> hiveOptions;
+  late final pulumi.Output<DatabaseHiveOptions> hiveOptions;
 
   /// The name of the database.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The database type.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Output only. The last modification time of the database. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Database(
     String name, {
     DatabaseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:biglake/database:Database',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.catalog = registerOutput<String>('catalog');
     this.createTime = registerOutput<String>('createTime');

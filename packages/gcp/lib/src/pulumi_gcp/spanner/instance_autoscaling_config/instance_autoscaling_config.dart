@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_autoscaling_config_asymmetric_autoscaling_option/instance_autoscaling_config_asymmetric_autoscaling_option.dart';
 import '../instance_autoscaling_config_autoscaling_limits/instance_autoscaling_config_autoscaling_limits.dart';
 import '../instance_autoscaling_config_autoscaling_targets/instance_autoscaling_config_autoscaling_targets.dart';
@@ -35,7 +35,7 @@ class InstanceAutoscalingConfig {
     final map = <String, dynamic>{};
     final asymmetricAutoscalingOptionsValue = asymmetricAutoscalingOptions;
     if (asymmetricAutoscalingOptionsValue != null) {
-      map['asymmetricAutoscalingOptions'] = Input.encodeList<
+      map['asymmetricAutoscalingOptions'] = pulumi.Input.encodeList<
               InstanceAutoscalingConfigAsymmetricAutoscalingOption,
               Map<String, dynamic>>(
           asymmetricAutoscalingOptionsValue, (value) => value.toMap());
@@ -55,7 +55,7 @@ class InstanceAutoscalingConfig {
     return InstanceAutoscalingConfig(
       asymmetricAutoscalingOptions: map['asymmetricAutoscalingOptions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InstanceAutoscalingConfigAsymmetricAutoscalingOption>(
               map['asymmetricAutoscalingOptions'],
               (value) =>

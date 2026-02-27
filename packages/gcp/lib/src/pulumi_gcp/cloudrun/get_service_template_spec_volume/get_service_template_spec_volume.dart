@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_volume_csi/get_service_template_spec_volume_csi.dart';
 import '../get_service_template_spec_volume_empty_dir/get_service_template_spec_volume_empty_dir.dart';
 import '../get_service_template_spec_volume_nf/get_service_template_spec_volume_nf.dart';
@@ -35,36 +35,35 @@ class GetServiceTemplateSpecVolume {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['csis'] =
-        Input.encodeList<GetServiceTemplateSpecVolumeCsi, Map<String, dynamic>>(
-            csis, (value) => value.toMap());
-    map['emptyDirs'] = Input.encodeList<GetServiceTemplateSpecVolumeEmptyDir,
+    map['csis'] = pulumi.Input.encodeList<GetServiceTemplateSpecVolumeCsi,
+        Map<String, dynamic>>(csis, (value) => value.toMap());
+    map['emptyDirs'] = pulumi.Input.encodeList<
+        GetServiceTemplateSpecVolumeEmptyDir,
         Map<String, dynamic>>(emptyDirs, (value) => value.toMap());
     map['name'] = name;
-    map['nfs'] =
-        Input.encodeList<GetServiceTemplateSpecVolumeNf, Map<String, dynamic>>(
-            nfs, (value) => value.toMap());
-    map['secrets'] = Input.encodeList<GetServiceTemplateSpecVolumeSecret,
+    map['nfs'] = pulumi.Input.encodeList<GetServiceTemplateSpecVolumeNf,
+        Map<String, dynamic>>(nfs, (value) => value.toMap());
+    map['secrets'] = pulumi.Input.encodeList<GetServiceTemplateSpecVolumeSecret,
         Map<String, dynamic>>(secrets, (value) => value.toMap());
     return map;
   }
 
   factory GetServiceTemplateSpecVolume.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecVolume(
-      csis: Input.decodeList<GetServiceTemplateSpecVolumeCsi>(
+      csis: pulumi.Input.decodeList<GetServiceTemplateSpecVolumeCsi>(
           map['csis'],
           (value) => GetServiceTemplateSpecVolumeCsi.fromMap(
               (value as Map).cast<String, dynamic>())),
-      emptyDirs: Input.decodeList<GetServiceTemplateSpecVolumeEmptyDir>(
+      emptyDirs: pulumi.Input.decodeList<GetServiceTemplateSpecVolumeEmptyDir>(
           map['emptyDirs'],
           (value) => GetServiceTemplateSpecVolumeEmptyDir.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      nfs: Input.decodeList<GetServiceTemplateSpecVolumeNf>(
+      nfs: pulumi.Input.decodeList<GetServiceTemplateSpecVolumeNf>(
           map['nfs'],
           (value) => GetServiceTemplateSpecVolumeNf.fromMap(
               (value as Map).cast<String, dynamic>())),
-      secrets: Input.decodeList<GetServiceTemplateSpecVolumeSecret>(
+      secrets: pulumi.Input.decodeList<GetServiceTemplateSpecVolumeSecret>(
           map['secrets'],
           (value) => GetServiceTemplateSpecVolumeSecret.fromMap(
               (value as Map).cast<String, dynamic>())),

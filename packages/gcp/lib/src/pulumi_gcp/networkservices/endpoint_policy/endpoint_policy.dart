@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_policy_endpoint_matcher/endpoint_policy_endpoint_matcher.dart';
 import '../endpoint_policy_traffic_port_selector/endpoint_policy_traffic_port_selector.dart';
 import 'endpoint_policy_args.dart';
@@ -44,65 +44,66 @@ import 'endpoint_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{name}}
 /// ```
-class EndpointPolicy extends CustomResource {
+class EndpointPolicy extends pulumi.CustomResource {
   /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
-  late final Output<String?> authorizationPolicy;
+  late final pulumi.Output<String?> authorizationPolicy;
 
   /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
-  late final Output<String?> clientTlsPolicy;
+  late final pulumi.Output<String?> clientTlsPolicy;
 
   /// Time the TcpRoute was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A free-text description of the resource. Max length 1024 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Required. A matcher that selects endpoints to which the policies should be applied.
   /// Structure is documented below.
-  late final Output<EndpointPolicyEndpointMatcher> endpointMatcher;
+  late final pulumi.Output<EndpointPolicyEndpointMatcher> endpointMatcher;
 
   /// Set of label tags associated with the TcpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Name of the EndpointPolicy resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
-  late final Output<String?> serverTlsPolicy;
+  late final pulumi.Output<String?> serverTlsPolicy;
 
   /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// Structure is documented below.
-  late final Output<EndpointPolicyTrafficPortSelector?> trafficPortSelector;
+  late final pulumi.Output<EndpointPolicyTrafficPortSelector?>
+      trafficPortSelector;
 
   /// The type of endpoint policy. This is primarily used to validate the configuration.
   /// Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Time the TcpRoute was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   EndpointPolicy(
     String name, {
     EndpointPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/endpointPolicy:EndpointPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authorizationPolicy = registerOutput<String?>('authorizationPolicy');
     this.clientTlsPolicy = registerOutput<String?>('clientTlsPolicy');

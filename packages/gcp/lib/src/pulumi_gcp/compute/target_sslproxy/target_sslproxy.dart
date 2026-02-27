@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_sslproxy_args.dart';
 
 /// Represents a TargetSslProxy resource, which is used by one or more
@@ -42,20 +42,20 @@ import 'target_sslproxy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
 /// ```
-class TargetSSLProxy extends CustomResource {
+class TargetSSLProxy extends pulumi.CustomResource {
   /// A reference to the BackendService resource.
-  late final Output<String> backendService;
+  late final pulumi.Output<String> backendService;
 
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field can only be set for global target proxies.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
-  late final Output<String?> certificateMap;
+  late final pulumi.Output<String?> certificateMap;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -64,43 +64,43 @@ class TargetSSLProxy extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
-  late final Output<String?> proxyHeader;
+  late final pulumi.Output<String?> proxyHeader;
 
   /// The unique identifier for the resource.
-  late final Output<int> proxyId;
+  late final pulumi.Output<int> proxyId;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// A list of SslCertificate resources that are used to authenticate
   /// connections between users and the load balancer. At least one
   /// SSL certificate must be specified.
-  late final Output<List<String>?> sslCertificates;
+  late final pulumi.Output<List<String>?> sslCertificates;
 
   /// A reference to the SslPolicy resource that will be associated with
   /// the TargetSslProxy resource. If not set, the TargetSslProxy
   /// resource will not have any SSL policy configured.
-  late final Output<String?> sslPolicy;
+  late final pulumi.Output<String?> sslPolicy;
 
   TargetSSLProxy(
     String name, {
     TargetSSLProxyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/targetSSLProxy:TargetSSLProxy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backendService = registerOutput<String>('backendService');
     this.certificateMap = registerOutput<String?>('certificateMap');

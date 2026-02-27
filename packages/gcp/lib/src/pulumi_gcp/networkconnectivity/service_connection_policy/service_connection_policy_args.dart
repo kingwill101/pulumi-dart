@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_connection_policy_psc_config/service_connection_policy_psc_config.dart';
 
 /// The set of arguments for ServiceConnectionPolicy.
 class ServiceConnectionPolicyArgs {
   /// Free-text description of the resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location of the ServiceConnectionPolicy.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
-  final Input<String> network;
+  final pulumi.Input<String> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   /// Structure is documented below.
-  final Input<ServiceConnectionPolicyPscConfig>? pscConfig;
+  final pulumi.Input<ServiceConnectionPolicyPscConfig>? pscConfig;
 
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
   /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
-  final Input<String> serviceClass;
+  final pulumi.Input<String> serviceClass;
 
   ServiceConnectionPolicyArgs({
     this.description,
@@ -68,7 +68,7 @@ class ServiceConnectionPolicyArgs {
     }
     final pscConfigValue = pscConfig;
     if (pscConfigValue != null) {
-      map['pscConfig'] = Input.mapOptionalInputValue<
+      map['pscConfig'] = pulumi.Input.mapOptionalInputValue<
           ServiceConnectionPolicyPscConfig,
           Map<String, dynamic>>(pscConfigValue, (value) => value.toMap());
     }
@@ -78,15 +78,15 @@ class ServiceConnectionPolicyArgs {
 
   factory ServiceConnectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      network: Input.asInput<String>(map['network']),
-      project: Input.asOptionalInput<String>(map['project']),
-      pscConfig: Input.asOptionalInput<ServiceConnectionPolicyPscConfig>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      network: pulumi.Input.asInput<String>(map['network']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      pscConfig: pulumi.Input.asOptionalInput<ServiceConnectionPolicyPscConfig>(
           map['pscConfig']),
-      serviceClass: Input.asInput<String>(map['serviceClass']),
+      serviceClass: pulumi.Input.asInput<String>(map['serviceClass']),
     );
   }
 }

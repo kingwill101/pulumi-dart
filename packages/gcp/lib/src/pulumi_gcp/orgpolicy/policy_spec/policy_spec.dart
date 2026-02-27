@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_spec_rule/policy_spec_rule.dart';
 
 class PolicySpec {
@@ -46,8 +46,9 @@ class PolicySpec {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<PolicySpecRule, Map<String, dynamic>>(
-          rulesValue, (value) => value.toMap());
+      map['rules'] =
+          pulumi.Input.encodeList<PolicySpecRule, Map<String, dynamic>>(
+              rulesValue, (value) => value.toMap());
     }
     final updateTimeValue = updateTime;
     if (updateTimeValue != null) {
@@ -65,7 +66,7 @@ class PolicySpec {
       reset: map['reset'] == null ? null : map['reset'] as bool,
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<PolicySpecRule>(
+          : pulumi.Input.decodeList<PolicySpecRule>(
               map['rules'],
               (value) => PolicySpecRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

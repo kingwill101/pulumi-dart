@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_source_data_source_gcp_resource_compute_instance_data_source_property/get_data_source_data_source_gcp_resource_compute_instance_data_source_property.dart';
 
 class GetDataSourceDataSourceGcpResource {
@@ -28,7 +28,7 @@ class GetDataSourceDataSourceGcpResource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['computeInstanceDataSourceProperties'] = Input.encodeList<
+    map['computeInstanceDataSourceProperties'] = pulumi.Input.encodeList<
             GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty,
             Map<String, dynamic>>(
         computeInstanceDataSourceProperties, (value) => value.toMap());
@@ -40,7 +40,7 @@ class GetDataSourceDataSourceGcpResource {
 
   factory GetDataSourceDataSourceGcpResource.fromMap(Map<String, dynamic> map) {
     return GetDataSourceDataSourceGcpResource(
-      computeInstanceDataSourceProperties: Input.decodeList<
+      computeInstanceDataSourceProperties: pulumi.Input.decodeList<
               GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty>(
           map['computeInstanceDataSourceProperties'],
           (value) =>

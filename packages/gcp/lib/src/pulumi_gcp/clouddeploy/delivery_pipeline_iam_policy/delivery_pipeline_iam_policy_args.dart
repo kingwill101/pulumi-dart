@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DeliveryPipelineIamPolicy.
 class DeliveryPipelineIamPolicyArgs {
-  final Input<String>? location;
-  final Input<String>? name;
-  final Input<String> policyData;
-  final Input<String>? project;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String> policyData;
+  final pulumi.Input<String>? project;
 
   DeliveryPipelineIamPolicyArgs({
     this.location,
@@ -36,10 +36,10 @@ class DeliveryPipelineIamPolicyArgs {
 
   factory DeliveryPipelineIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineIamPolicyArgs(
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policyData: Input.asInput<String>(map['policyData']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policyData: pulumi.Input.asInput<String>(map['policyData']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entry_group_args.dart';
 
 /// > **Warning:** `gcp.datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `gcp.dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
@@ -34,36 +34,36 @@ import 'entry_group_args.dart';
 /// ```sh
 /// $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
 /// ```
-class EntryGroup extends CustomResource {
+class EntryGroup extends pulumi.CustomResource {
   /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A short name to identify the entry group, for example, "analytics data - jan 2011".
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The id of the entry group to create. The id must begin with a letter or underscore,
   /// contain only English letters, numbers and underscores, and be at most 64 characters.
-  late final Output<String> entryGroupId;
+  late final pulumi.Output<String> entryGroupId;
 
   /// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// EntryGroup location region.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   EntryGroup(
     String name, {
     EntryGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:datacatalog/entryGroup:EntryGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_client_connection_config_ssl_config/get_instance_client_connection_config_ssl_config.dart';
 
 class GetInstanceClientConnectionConfig {
@@ -18,7 +18,7 @@ class GetInstanceClientConnectionConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['requireConnectors'] = requireConnectors;
-    map['sslConfigs'] = Input.encodeList<
+    map['sslConfigs'] = pulumi.Input.encodeList<
         GetInstanceClientConnectionConfigSslConfig,
         Map<String, dynamic>>(sslConfigs, (value) => value.toMap());
     return map;
@@ -27,10 +27,11 @@ class GetInstanceClientConnectionConfig {
   factory GetInstanceClientConnectionConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceClientConnectionConfig(
       requireConnectors: map['requireConnectors'] as bool,
-      sslConfigs: Input.decodeList<GetInstanceClientConnectionConfigSslConfig>(
-          map['sslConfigs'],
-          (value) => GetInstanceClientConnectionConfigSslConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sslConfigs:
+          pulumi.Input.decodeList<GetInstanceClientConnectionConfigSslConfig>(
+              map['sslConfigs'],
+              (value) => GetInstanceClientConnectionConfigSslConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

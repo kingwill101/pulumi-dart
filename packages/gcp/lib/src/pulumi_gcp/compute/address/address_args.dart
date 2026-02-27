@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Address.
 class AddressArgs {
   /// The static external IP address represented by this resource.
   /// The IP address must be inside the specified subnetwork,
   /// if any. Set by the API if undefined.
-  final Input<String>? address;
+  final pulumi.Input<String>? address;
 
   /// The type of address to reserve.
   /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
   /// Default value is `EXTERNAL`.
   /// Possible values are: `INTERNAL`, `EXTERNAL`.
-  final Input<String>? addressType;
+  final pulumi.Input<String>? addressType;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
   /// The PDP must support enhanced IPv4 allocations.
@@ -26,23 +26,23 @@ class AddressArgs {
   /// Partial URL, as in:
   /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
   /// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-  final Input<String>? ipCollection;
+  final pulumi.Input<String>? ipCollection;
 
   /// The IP Version that will be used by this address. The default value is `IPV4`.
   /// Possible values are: `IPV4`, `IPV6`.
-  final Input<String>? ipVersion;
+  final pulumi.Input<String>? ipVersion;
 
   /// The endpoint type of this address, which should be VM or NETLB. This is
   /// used for deciding which type of endpoint this address can be used after
   /// the external IPv6 address reservation.
   /// Possible values are: `VM`, `NETLB`.
-  final Input<String>? ipv6EndpointType;
+  final pulumi.Input<String>? ipv6EndpointType;
 
   /// Labels to apply to this address.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -50,25 +50,25 @@ class AddressArgs {
   /// which means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The URL of the network in which to reserve the address. This field
   /// can only be used with INTERNAL type with the VPC_PEERING and
   /// IPSEC_INTERCONNECT purposes.
-  final Input<String>? network;
+  final pulumi.Input<String>? network;
 
   /// The networking tier used for configuring this address. If this field is not
   /// specified, it is assumed to be PREMIUM.
   /// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
   /// Possible values are: `PREMIUM`, `STANDARD`.
-  final Input<String>? networkTier;
+  final pulumi.Input<String>? networkTier;
 
   /// The prefix length if the resource represents an IP range.
-  final Input<int>? prefixLength;
+  final pulumi.Input<int>? prefixLength;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The purpose of this resource, which can be one of the following values.
   /// * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -83,17 +83,17 @@ class AddressArgs {
   /// configure Private Service Connect. Only global internal addresses can use
   /// this purpose.
   /// This should only be set when using an Internal address.
-  final Input<String>? purpose;
+  final pulumi.Input<String>? purpose;
 
   /// The Region in which the created address should reside.
   /// If it is not provided, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The URL of the subnetwork in which to reserve the address. If an IP
   /// address is specified, it must be within the subnetwork's IP range.
   /// This field can only be used with INTERNAL type with
   /// GCE_ENDPOINT/DNS_RESOLVER purposes.
-  final Input<String>? subnetwork;
+  final pulumi.Input<String>? subnetwork;
 
   AddressArgs({
     this.address,
@@ -180,21 +180,22 @@ class AddressArgs {
 
   factory AddressArgs.fromMap(Map<String, dynamic> map) {
     return AddressArgs(
-      address: Input.asOptionalInput<String>(map['address']),
-      addressType: Input.asOptionalInput<String>(map['addressType']),
-      description: Input.asOptionalInput<String>(map['description']),
-      ipCollection: Input.asOptionalInput<String>(map['ipCollection']),
-      ipVersion: Input.asOptionalInput<String>(map['ipVersion']),
-      ipv6EndpointType: Input.asOptionalInput<String>(map['ipv6EndpointType']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      name: Input.asOptionalInput<String>(map['name']),
-      network: Input.asOptionalInput<String>(map['network']),
-      networkTier: Input.asOptionalInput<String>(map['networkTier']),
-      prefixLength: Input.asOptionalInput<int>(map['prefixLength']),
-      project: Input.asOptionalInput<String>(map['project']),
-      purpose: Input.asOptionalInput<String>(map['purpose']),
-      region: Input.asOptionalInput<String>(map['region']),
-      subnetwork: Input.asOptionalInput<String>(map['subnetwork']),
+      address: pulumi.Input.asOptionalInput<String>(map['address']),
+      addressType: pulumi.Input.asOptionalInput<String>(map['addressType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      ipCollection: pulumi.Input.asOptionalInput<String>(map['ipCollection']),
+      ipVersion: pulumi.Input.asOptionalInput<String>(map['ipVersion']),
+      ipv6EndpointType:
+          pulumi.Input.asOptionalInput<String>(map['ipv6EndpointType']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      network: pulumi.Input.asOptionalInput<String>(map['network']),
+      networkTier: pulumi.Input.asOptionalInput<String>(map['networkTier']),
+      prefixLength: pulumi.Input.asOptionalInput<int>(map['prefixLength']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      purpose: pulumi.Input.asOptionalInput<String>(map['purpose']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subnetwork: pulumi.Input.asOptionalInput<String>(map['subnetwork']),
     );
   }
 }

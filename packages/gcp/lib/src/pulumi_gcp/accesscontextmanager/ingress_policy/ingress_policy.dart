@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingress_policy_args.dart';
 
 /// This resource has been deprecated, please refer to ServicePerimeterIngressPolicy.
@@ -19,25 +19,25 @@ import 'ingress_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/ingressPolicy:IngressPolicy default {{ingress_policy_name}}/{{resource}}
 /// ```
-class IngressPolicy extends CustomResource {
+class IngressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
-  late final Output<String> accessPolicyId;
+  late final pulumi.Output<String> accessPolicyId;
 
   /// The name of the Service Perimeter to add this resource to.
-  late final Output<String> ingressPolicyName;
+  late final pulumi.Output<String> ingressPolicyName;
 
   /// A GCP resource that is inside of the service perimeter.
-  late final Output<String> resource;
+  late final pulumi.Output<String> resource;
 
   IngressPolicy(
     String name, {
     IngressPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/ingressPolicy:IngressPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessPolicyId = registerOutput<String>('accessPolicyId');
     this.ingressPolicyName = registerOutput<String>('ingressPolicyName');

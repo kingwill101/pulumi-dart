@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_control_parameter_spec_sub_parameter_default_value/cloud_control_parameter_spec_sub_parameter_default_value.dart';
 import '../cloud_control_parameter_spec_sub_parameter_substitution_rule/cloud_control_parameter_spec_sub_parameter_substitution_rule.dart';
 import '../cloud_control_parameter_spec_sub_parameter_validation/cloud_control_parameter_spec_sub_parameter_validation.dart';
@@ -69,7 +69,7 @@ class CloudControlParameterSpecSubParameter {
     map['name'] = name;
     final substitutionRulesValue = substitutionRules;
     if (substitutionRulesValue != null) {
-      map['substitutionRules'] = Input.encodeList<
+      map['substitutionRules'] = pulumi.Input.encodeList<
               CloudControlParameterSpecSubParameterSubstitutionRule,
               Map<String, dynamic>>(
           substitutionRulesValue, (value) => value.toMap());
@@ -97,7 +97,7 @@ class CloudControlParameterSpecSubParameter {
       name: map['name'] as String,
       substitutionRules: map['substitutionRules'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CloudControlParameterSpecSubParameterSubstitutionRule>(
               map['substitutionRules'],
               (value) =>

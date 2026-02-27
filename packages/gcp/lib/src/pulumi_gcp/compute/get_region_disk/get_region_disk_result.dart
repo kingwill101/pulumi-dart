@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_disk_async_primary_disk/get_region_disk_async_primary_disk.dart';
 import '../get_region_disk_disk_encryption_key/get_region_disk_disk_encryption_key.dart';
 import '../get_region_disk_guest_os_feature/get_region_disk_guest_os_feature.dart';
@@ -86,22 +86,22 @@ class GetRegionDiskResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['accessMode'] = accessMode;
-    map['asyncPrimaryDisks'] =
-        Input.encodeList<GetRegionDiskAsyncPrimaryDisk, Map<String, dynamic>>(
-            asyncPrimaryDisks, (value) => value.toMap());
+    map['asyncPrimaryDisks'] = pulumi.Input.encodeList<
+        GetRegionDiskAsyncPrimaryDisk,
+        Map<String, dynamic>>(asyncPrimaryDisks, (value) => value.toMap());
     map['createSnapshotBeforeDestroy'] = createSnapshotBeforeDestroy;
     map['createSnapshotBeforeDestroyPrefix'] =
         createSnapshotBeforeDestroyPrefix;
     map['creationTimestamp'] = creationTimestamp;
     map['description'] = description;
-    map['diskEncryptionKeys'] =
-        Input.encodeList<GetRegionDiskDiskEncryptionKey, Map<String, dynamic>>(
-            diskEncryptionKeys, (value) => value.toMap());
+    map['diskEncryptionKeys'] = pulumi.Input.encodeList<
+        GetRegionDiskDiskEncryptionKey,
+        Map<String, dynamic>>(diskEncryptionKeys, (value) => value.toMap());
     map['diskId'] = diskId;
     map['effectiveLabels'] = effectiveLabels;
-    map['guestOsFeatures'] =
-        Input.encodeList<GetRegionDiskGuestOsFeature, Map<String, dynamic>>(
-            guestOsFeatures, (value) => value.toMap());
+    map['guestOsFeatures'] = pulumi.Input.encodeList<
+        GetRegionDiskGuestOsFeature,
+        Map<String, dynamic>>(guestOsFeatures, (value) => value.toMap());
     map['id'] = id;
     map['interface'] = interface;
     map['labelFingerprint'] = labelFingerprint;
@@ -128,7 +128,7 @@ class GetRegionDiskResult {
     map['snapshot'] = snapshot;
     map['sourceDisk'] = sourceDisk;
     map['sourceDiskId'] = sourceDiskId;
-    map['sourceSnapshotEncryptionKeys'] = Input.encodeList<
+    map['sourceSnapshotEncryptionKeys'] = pulumi.Input.encodeList<
             GetRegionDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(
         sourceSnapshotEncryptionKeys, (value) => value.toMap());
     map['sourceSnapshotId'] = sourceSnapshotId;
@@ -140,7 +140,7 @@ class GetRegionDiskResult {
   factory GetRegionDiskResult.fromMap(Map<String, dynamic> map) {
     return GetRegionDiskResult(
       accessMode: map['accessMode'] as String,
-      asyncPrimaryDisks: Input.decodeList<GetRegionDiskAsyncPrimaryDisk>(
+      asyncPrimaryDisks: pulumi.Input.decodeList<GetRegionDiskAsyncPrimaryDisk>(
           map['asyncPrimaryDisks'],
           (value) => GetRegionDiskAsyncPrimaryDisk.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -149,13 +149,14 @@ class GetRegionDiskResult {
           map['createSnapshotBeforeDestroyPrefix'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
-      diskEncryptionKeys: Input.decodeList<GetRegionDiskDiskEncryptionKey>(
-          map['diskEncryptionKeys'],
-          (value) => GetRegionDiskDiskEncryptionKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      diskEncryptionKeys:
+          pulumi.Input.decodeList<GetRegionDiskDiskEncryptionKey>(
+              map['diskEncryptionKeys'],
+              (value) => GetRegionDiskDiskEncryptionKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       diskId: map['diskId'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      guestOsFeatures: Input.decodeList<GetRegionDiskGuestOsFeature>(
+      guestOsFeatures: pulumi.Input.decodeList<GetRegionDiskGuestOsFeature>(
           map['guestOsFeatures'],
           (value) => GetRegionDiskGuestOsFeature.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -180,7 +181,7 @@ class GetRegionDiskResult {
       sourceDisk: map['sourceDisk'] as String,
       sourceDiskId: map['sourceDiskId'] as String,
       sourceSnapshotEncryptionKeys:
-          Input.decodeList<GetRegionDiskSourceSnapshotEncryptionKey>(
+          pulumi.Input.decodeList<GetRegionDiskSourceSnapshotEncryptionKey>(
               map['sourceSnapshotEncryptionKeys'],
               (value) => GetRegionDiskSourceSnapshotEncryptionKey.fromMap(
                   (value as Map).cast<String, dynamic>())),

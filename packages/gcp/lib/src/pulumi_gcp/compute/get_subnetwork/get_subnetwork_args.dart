@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSubnetwork.
 class GetSubnetworkArgs {
   /// The name of the subnetwork. One of `name` or `self_link`
   /// must be specified.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region this subnetwork has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The self link of the subnetwork. If `self_link` is
   /// specified, `name`, `project`, and `region` are ignored.
-  final Input<String>? selfLink;
+  final pulumi.Input<String>? selfLink;
 
   GetSubnetworkArgs({
     this.name,
@@ -50,10 +50,10 @@ class GetSubnetworkArgs {
 
   factory GetSubnetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetworkArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      selfLink: Input.asOptionalInput<String>(map['selfLink']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      selfLink: pulumi.Input.asOptionalInput<String>(map['selfLink']),
     );
   }
 }

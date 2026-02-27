@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_private_cluster_config_master_global_access_config/get_cluster_private_cluster_config_master_global_access_config.dart';
 
 class GetClusterPrivateClusterConfig {
@@ -44,7 +44,7 @@ class GetClusterPrivateClusterConfig {
     final map = <String, dynamic>{};
     map['enablePrivateEndpoint'] = enablePrivateEndpoint;
     map['enablePrivateNodes'] = enablePrivateNodes;
-    map['masterGlobalAccessConfigs'] = Input.encodeList<
+    map['masterGlobalAccessConfigs'] = pulumi.Input.encodeList<
             GetClusterPrivateClusterConfigMasterGlobalAccessConfig,
             Map<String, dynamic>>(
         masterGlobalAccessConfigs, (value) => value.toMap());
@@ -60,7 +60,7 @@ class GetClusterPrivateClusterConfig {
     return GetClusterPrivateClusterConfig(
       enablePrivateEndpoint: map['enablePrivateEndpoint'] as bool,
       enablePrivateNodes: map['enablePrivateNodes'] as bool,
-      masterGlobalAccessConfigs: Input.decodeList<
+      masterGlobalAccessConfigs: pulumi.Input.decodeList<
               GetClusterPrivateClusterConfigMasterGlobalAccessConfig>(
           map['masterGlobalAccessConfigs'],
           (value) =>

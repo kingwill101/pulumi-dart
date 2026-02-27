@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_autoscaling_config_asymmetric_autoscaling_option_override_autoscaling_limit/get_instance_autoscaling_config_asymmetric_autoscaling_option_override_autoscaling_limit.dart';
 
 class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
@@ -15,7 +15,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscalingLimits'] = Input.encodeList<
+    map['autoscalingLimits'] = pulumi.Input.encodeList<
         GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit,
         Map<String, dynamic>>(autoscalingLimits, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
   factory GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride.fromMap(
       Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride(
-      autoscalingLimits: Input.decodeList<
+      autoscalingLimits: pulumi.Input.decodeList<
               GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit>(
           map['autoscalingLimits'],
           (value) =>

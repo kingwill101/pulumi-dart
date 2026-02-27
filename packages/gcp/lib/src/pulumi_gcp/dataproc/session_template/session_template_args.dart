@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../session_template_environment_config/session_template_environment_config.dart';
 import '../session_template_jupyter_session/session_template_jupyter_session.dart';
 import '../session_template_runtime_config/session_template_runtime_config.dart';
@@ -9,35 +9,35 @@ import '../session_template_runtime_config/session_template_runtime_config.dart'
 class SessionTemplateArgs {
   /// Environment configuration for the session execution.
   /// Structure is documented below.
-  final Input<SessionTemplateEnvironmentConfig>? environmentConfig;
+  final pulumi.Input<SessionTemplateEnvironmentConfig>? environmentConfig;
 
   /// Jupyter configuration for an interactive session.
   /// Structure is documented below.
-  final Input<SessionTemplateJupyterSession>? jupyterSession;
+  final pulumi.Input<SessionTemplateJupyterSession>? jupyterSession;
 
   /// The labels to associate with this session template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location in which the session template will be created in.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the session template in the following format:
   /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Runtime configuration for the session template.
   /// Structure is documented below.
-  final Input<SessionTemplateRuntimeConfig>? runtimeConfig;
+  final pulumi.Input<SessionTemplateRuntimeConfig>? runtimeConfig;
 
   /// Spark connect configuration for an interactive session.
-  final Input<Map<String, dynamic>>? sparkConnectSession;
+  final pulumi.Input<Map<String, dynamic>>? sparkConnectSession;
 
   SessionTemplateArgs({
     this.environmentConfig,
@@ -54,13 +54,13 @@ class SessionTemplateArgs {
     final map = <String, dynamic>{};
     final environmentConfigValue = environmentConfig;
     if (environmentConfigValue != null) {
-      map['environmentConfig'] = Input.mapOptionalInputValue<
+      map['environmentConfig'] = pulumi.Input.mapOptionalInputValue<
               SessionTemplateEnvironmentConfig, Map<String, dynamic>>(
           environmentConfigValue, (value) => value.toMap());
     }
     final jupyterSessionValue = jupyterSession;
     if (jupyterSessionValue != null) {
-      map['jupyterSession'] = Input.mapOptionalInputValue<
+      map['jupyterSession'] = pulumi.Input.mapOptionalInputValue<
           SessionTemplateJupyterSession,
           Map<String, dynamic>>(jupyterSessionValue, (value) => value.toMap());
     }
@@ -82,7 +82,7 @@ class SessionTemplateArgs {
     }
     final runtimeConfigValue = runtimeConfig;
     if (runtimeConfigValue != null) {
-      map['runtimeConfig'] = Input.mapOptionalInputValue<
+      map['runtimeConfig'] = pulumi.Input.mapOptionalInputValue<
           SessionTemplateRuntimeConfig,
           Map<String, dynamic>>(runtimeConfigValue, (value) => value.toMap());
     }
@@ -96,17 +96,18 @@ class SessionTemplateArgs {
   factory SessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return SessionTemplateArgs(
       environmentConfig:
-          Input.asOptionalInput<SessionTemplateEnvironmentConfig>(
+          pulumi.Input.asOptionalInput<SessionTemplateEnvironmentConfig>(
               map['environmentConfig']),
-      jupyterSession: Input.asOptionalInput<SessionTemplateJupyterSession>(
-          map['jupyterSession']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      runtimeConfig: Input.asOptionalInput<SessionTemplateRuntimeConfig>(
+      jupyterSession:
+          pulumi.Input.asOptionalInput<SessionTemplateJupyterSession>(
+              map['jupyterSession']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      runtimeConfig: pulumi.Input.asOptionalInput<SessionTemplateRuntimeConfig>(
           map['runtimeConfig']),
-      sparkConnectSession: Input.asOptionalInput<Map<String, dynamic>>(
+      sparkConnectSession: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
           map['sparkConnectSession']),
     );
   }

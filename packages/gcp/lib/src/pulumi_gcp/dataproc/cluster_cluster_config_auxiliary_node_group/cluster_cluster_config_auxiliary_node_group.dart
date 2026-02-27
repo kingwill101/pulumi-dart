@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_config_auxiliary_node_group_node_group/cluster_cluster_config_auxiliary_node_group_node_group.dart';
 
 class ClusterClusterConfigAuxiliaryNodeGroup {
@@ -21,7 +21,7 @@ class ClusterClusterConfigAuxiliaryNodeGroup {
     if (nodeGroupIdValue != null) {
       map['nodeGroupId'] = nodeGroupIdValue;
     }
-    map['nodeGroups'] = Input.encodeList<
+    map['nodeGroups'] = pulumi.Input.encodeList<
         ClusterClusterConfigAuxiliaryNodeGroupNodeGroup,
         Map<String, dynamic>>(nodeGroups, (value) => value.toMap());
     return map;
@@ -32,12 +32,11 @@ class ClusterClusterConfigAuxiliaryNodeGroup {
     return ClusterClusterConfigAuxiliaryNodeGroup(
       nodeGroupId:
           map['nodeGroupId'] == null ? null : map['nodeGroupId'] as String,
-      nodeGroups:
-          Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroupNodeGroup>(
-              map['nodeGroups'],
-              (value) =>
-                  ClusterClusterConfigAuxiliaryNodeGroupNodeGroup.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      nodeGroups: pulumi.Input.decodeList<
+              ClusterClusterConfigAuxiliaryNodeGroupNodeGroup>(
+          map['nodeGroups'],
+          (value) => ClusterClusterConfigAuxiliaryNodeGroupNodeGroup.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

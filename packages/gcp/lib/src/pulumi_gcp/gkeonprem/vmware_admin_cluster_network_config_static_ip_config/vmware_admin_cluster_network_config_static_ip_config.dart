@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_admin_cluster_network_config_static_ip_config_ip_block/vmware_admin_cluster_network_config_static_ip_config_ip_block.dart';
 
 class VmwareAdminClusterNetworkConfigStaticIpConfig {
@@ -16,7 +16,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfig {
     final map = <String, dynamic>{};
     final ipBlocksValue = ipBlocks;
     if (ipBlocksValue != null) {
-      map['ipBlocks'] = Input.encodeList<
+      map['ipBlocks'] = pulumi.Input.encodeList<
           VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock,
           Map<String, dynamic>>(ipBlocksValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfig {
     return VmwareAdminClusterNetworkConfigStaticIpConfig(
       ipBlocks: map['ipBlocks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock>(
               map['ipBlocks'],
               (value) =>

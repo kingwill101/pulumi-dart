@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'env_references_args.dart';
 
 /// An `Environment Reference` in Apigee.
@@ -27,32 +27,32 @@ import 'env_references_args.dart';
 /// ```sh
 /// $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/{{name}}
 /// ```
-class EnvReferences extends CustomResource {
+class EnvReferences extends pulumi.CustomResource {
   /// Optional. A human-readable description of this reference.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  late final Output<String> envId;
+  late final pulumi.Output<String> envId;
 
   /// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
-  late final Output<String> refers;
+  late final pulumi.Output<String> refers;
 
   /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   EnvReferences(
     String name, {
     EnvReferencesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:apigee/envReferences:EnvReferences',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.envId = registerOutput<String>('envId');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_backend_service_ha_policy_leader/get_region_backend_service_ha_policy_leader.dart';
 
 class GetRegionBackendServiceHaPolicy {
@@ -32,7 +32,8 @@ class GetRegionBackendServiceHaPolicy {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['fastIpMove'] = fastIpMove;
-    map['leaders'] = Input.encodeList<GetRegionBackendServiceHaPolicyLeader,
+    map['leaders'] = pulumi.Input.encodeList<
+        GetRegionBackendServiceHaPolicyLeader,
         Map<String, dynamic>>(leaders, (value) => value.toMap());
     return map;
   }
@@ -40,7 +41,7 @@ class GetRegionBackendServiceHaPolicy {
   factory GetRegionBackendServiceHaPolicy.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceHaPolicy(
       fastIpMove: map['fastIpMove'] as String,
-      leaders: Input.decodeList<GetRegionBackendServiceHaPolicyLeader>(
+      leaders: pulumi.Input.decodeList<GetRegionBackendServiceHaPolicyLeader>(
           map['leaders'],
           (value) => GetRegionBackendServiceHaPolicyLeader.fromMap(
               (value as Map).cast<String, dynamic>())),

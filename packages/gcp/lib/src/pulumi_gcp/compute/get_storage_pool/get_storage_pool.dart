@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_storage_pool_args.dart';
 import 'get_storage_pool_result.dart';
 
@@ -14,13 +14,13 @@ import 'get_storage_pool_result.dart';
 /// * `deletion_protection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
 Future<GetStoragePoolResult> getStoragePool(
   GetStoragePoolArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getStoragePool:getStoragePool',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStoragePoolResult.fromMap(result);
 }

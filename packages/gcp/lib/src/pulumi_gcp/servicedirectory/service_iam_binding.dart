@@ -1,4 +1,4 @@
 library module_servicedirectory_service_iam_binding;
 
-export 'service_iam_binding/service_iam_binding3.dart';
-export 'service_iam_binding/service_iam_binding_args3.dart';
+export 'service_iam_binding/service_iam_binding_servicedirectory.dart';
+export 'service_iam_binding/service_iam_binding_servicedirectory_args.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../listing_bigquery_dataset_effective_replica/listing_bigquery_dataset_effective_replica.dart';
 import '../listing_bigquery_dataset_selected_resource/listing_bigquery_dataset_selected_resource.dart';
 
@@ -33,7 +33,7 @@ class ListingBigqueryDataset {
     map['dataset'] = dataset;
     final effectiveReplicasValue = effectiveReplicas;
     if (effectiveReplicasValue != null) {
-      map['effectiveReplicas'] = Input.encodeList<
+      map['effectiveReplicas'] = pulumi.Input.encodeList<
               ListingBigqueryDatasetEffectiveReplica, Map<String, dynamic>>(
           effectiveReplicasValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class ListingBigqueryDataset {
     }
     final selectedResourcesValue = selectedResources;
     if (selectedResourcesValue != null) {
-      map['selectedResources'] = Input.encodeList<
+      map['selectedResources'] = pulumi.Input.encodeList<
               ListingBigqueryDatasetSelectedResource, Map<String, dynamic>>(
           selectedResourcesValue, (value) => value.toMap());
     }
@@ -55,7 +55,7 @@ class ListingBigqueryDataset {
       dataset: map['dataset'] as String,
       effectiveReplicas: map['effectiveReplicas'] == null
           ? null
-          : Input.decodeList<ListingBigqueryDatasetEffectiveReplica>(
+          : pulumi.Input.decodeList<ListingBigqueryDatasetEffectiveReplica>(
               map['effectiveReplicas'],
               (value) => ListingBigqueryDatasetEffectiveReplica.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -64,7 +64,7 @@ class ListingBigqueryDataset {
           : (map['replicaLocations'] as List).cast<String>(),
       selectedResources: map['selectedResources'] == null
           ? null
-          : Input.decodeList<ListingBigqueryDatasetSelectedResource>(
+          : pulumi.Input.decodeList<ListingBigqueryDatasetSelectedResource>(
               map['selectedResources'],
               (value) => ListingBigqueryDatasetSelectedResource.fromMap(
                   (value as Map).cast<String, dynamic>())),

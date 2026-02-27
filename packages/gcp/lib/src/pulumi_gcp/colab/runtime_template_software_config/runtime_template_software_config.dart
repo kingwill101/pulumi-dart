@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../runtime_template_software_config_env/runtime_template_software_config_env.dart';
 import '../runtime_template_software_config_post_startup_script_config/runtime_template_software_config_post_startup_script_config.dart';
 
@@ -23,7 +23,7 @@ class RuntimeTemplateSoftwareConfig {
     final map = <String, dynamic>{};
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] = Input.encodeList<RuntimeTemplateSoftwareConfigEnv,
+      map['envs'] = pulumi.Input.encodeList<RuntimeTemplateSoftwareConfigEnv,
           Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
     final postStartupScriptConfigValue = postStartupScriptConfig;
@@ -37,7 +37,7 @@ class RuntimeTemplateSoftwareConfig {
     return RuntimeTemplateSoftwareConfig(
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<RuntimeTemplateSoftwareConfigEnv>(
+          : pulumi.Input.decodeList<RuntimeTemplateSoftwareConfigEnv>(
               map['envs'],
               (value) => RuntimeTemplateSoftwareConfigEnv.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../http_route_rule_action_cors_policy/http_route_rule_action_cors_policy.dart';
 import '../http_route_rule_action_destination/http_route_rule_action_destination.dart';
 import '../http_route_rule_action_fault_injection_policy/http_route_rule_action_fault_injection_policy.dart';
@@ -72,7 +72,8 @@ class HttpRouteRuleAction {
     }
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.encodeList<HttpRouteRuleActionDestination,
+      map['destinations'] = pulumi.Input.encodeList<
+          HttpRouteRuleActionDestination,
           Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
     final faultInjectionPolicyValue = faultInjectionPolicy;
@@ -118,7 +119,7 @@ class HttpRouteRuleAction {
               (map['corsPolicy'] as Map).cast<String, dynamic>()),
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<HttpRouteRuleActionDestination>(
+          : pulumi.Input.decodeList<HttpRouteRuleActionDestination>(
               map['destinations'],
               (value) => HttpRouteRuleActionDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),

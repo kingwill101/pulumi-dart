@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_repository_remote_repository_config_yum_repository_public_repository/get_repository_remote_repository_config_yum_repository_public_repository.dart';
 
 class GetRepositoryRemoteRepositoryConfigYumRepository {
@@ -14,7 +14,7 @@ class GetRepositoryRemoteRepositoryConfigYumRepository {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['publicRepositories'] = Input.encodeList<
+    map['publicRepositories'] = pulumi.Input.encodeList<
         GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository,
         Map<String, dynamic>>(publicRepositories, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetRepositoryRemoteRepositoryConfigYumRepository {
   factory GetRepositoryRemoteRepositoryConfigYumRepository.fromMap(
       Map<String, dynamic> map) {
     return GetRepositoryRemoteRepositoryConfigYumRepository(
-      publicRepositories: Input.decodeList<
+      publicRepositories: pulumi.Input.decodeList<
               GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository>(
           map['publicRepositories'],
           (value) =>

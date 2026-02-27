@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../gdc_spark_application_pyspark_application_config/gdc_spark_application_pyspark_application_config.dart';
 import '../gdc_spark_application_spark_application_config/gdc_spark_application_spark_application_config.dart';
 import '../gdc_spark_application_spark_rapplication_config/gdc_spark_application_spark_rapplication_config.dart';
@@ -11,63 +11,63 @@ class GdcSparkApplicationArgs {
   /// The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// An ApplicationEnvironment from which to inherit configuration properties.
-  final Input<String>? applicationEnvironment;
+  final pulumi.Input<String>? applicationEnvironment;
 
   /// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
-  final Input<List<String>>? dependencyImages;
+  final pulumi.Input<List<String>>? dependencyImages;
 
   /// User-provided human-readable name to be used in user interfaces.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location of the spark application.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
-  final Input<String>? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// application-specific properties.
-  final Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
 
   /// Represents the PySparkApplicationConfig.
   /// Structure is documented below.
-  final Input<GdcSparkApplicationPysparkApplicationConfig>?
+  final pulumi.Input<GdcSparkApplicationPysparkApplicationConfig>?
       pysparkApplicationConfig;
 
   /// The id of the service instance to which this spark application belongs.
-  final Input<String> serviceinstance;
+  final pulumi.Input<String> serviceinstance;
 
   /// Represents the SparkApplicationConfig.
   /// Structure is documented below.
-  final Input<GdcSparkApplicationSparkApplicationConfig>?
+  final pulumi.Input<GdcSparkApplicationSparkApplicationConfig>?
       sparkApplicationConfig;
 
   /// The id of the application
-  final Input<String> sparkApplicationId;
+  final pulumi.Input<String> sparkApplicationId;
 
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  final Input<GdcSparkApplicationSparkRApplicationConfig>?
+  final pulumi.Input<GdcSparkApplicationSparkRApplicationConfig>?
       sparkRApplicationConfig;
 
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  final Input<GdcSparkApplicationSparkSqlApplicationConfig>?
+  final pulumi.Input<GdcSparkApplicationSparkSqlApplicationConfig>?
       sparkSqlApplicationConfig;
 
   /// The Dataproc version of this application.
-  final Input<String>? version;
+  final pulumi.Input<String>? version;
 
   GdcSparkApplicationArgs({
     this.annotations,
@@ -125,7 +125,7 @@ class GdcSparkApplicationArgs {
     }
     final pysparkApplicationConfigValue = pysparkApplicationConfig;
     if (pysparkApplicationConfigValue != null) {
-      map['pysparkApplicationConfig'] = Input.mapOptionalInputValue<
+      map['pysparkApplicationConfig'] = pulumi.Input.mapOptionalInputValue<
               GdcSparkApplicationPysparkApplicationConfig,
               Map<String, dynamic>>(
           pysparkApplicationConfigValue, (value) => value.toMap());
@@ -133,20 +133,20 @@ class GdcSparkApplicationArgs {
     map['serviceinstance'] = serviceinstance;
     final sparkApplicationConfigValue = sparkApplicationConfig;
     if (sparkApplicationConfigValue != null) {
-      map['sparkApplicationConfig'] = Input.mapOptionalInputValue<
+      map['sparkApplicationConfig'] = pulumi.Input.mapOptionalInputValue<
               GdcSparkApplicationSparkApplicationConfig, Map<String, dynamic>>(
           sparkApplicationConfigValue, (value) => value.toMap());
     }
     map['sparkApplicationId'] = sparkApplicationId;
     final sparkRApplicationConfigValue = sparkRApplicationConfig;
     if (sparkRApplicationConfigValue != null) {
-      map['sparkRApplicationConfig'] = Input.mapOptionalInputValue<
+      map['sparkRApplicationConfig'] = pulumi.Input.mapOptionalInputValue<
               GdcSparkApplicationSparkRApplicationConfig, Map<String, dynamic>>(
           sparkRApplicationConfigValue, (value) => value.toMap());
     }
     final sparkSqlApplicationConfigValue = sparkSqlApplicationConfig;
     if (sparkSqlApplicationConfigValue != null) {
-      map['sparkSqlApplicationConfig'] = Input.mapOptionalInputValue<
+      map['sparkSqlApplicationConfig'] = pulumi.Input.mapOptionalInputValue<
               GdcSparkApplicationSparkSqlApplicationConfig,
               Map<String, dynamic>>(
           sparkSqlApplicationConfigValue, (value) => value.toMap());
@@ -161,32 +161,34 @@ class GdcSparkApplicationArgs {
   factory GdcSparkApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GdcSparkApplicationArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
       applicationEnvironment:
-          Input.asOptionalInput<String>(map['applicationEnvironment']),
+          pulumi.Input.asOptionalInput<String>(map['applicationEnvironment']),
       dependencyImages:
-          Input.asOptionalInput<List<String>>(map['dependencyImages']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      namespace: Input.asOptionalInput<String>(map['namespace']),
-      project: Input.asOptionalInput<String>(map['project']),
-      properties: Input.asOptionalInput<Map<String, String>>(map['properties']),
-      pysparkApplicationConfig:
-          Input.asOptionalInput<GdcSparkApplicationPysparkApplicationConfig>(
-              map['pysparkApplicationConfig']),
-      serviceinstance: Input.asInput<String>(map['serviceinstance']),
-      sparkApplicationConfig:
-          Input.asOptionalInput<GdcSparkApplicationSparkApplicationConfig>(
-              map['sparkApplicationConfig']),
-      sparkApplicationId: Input.asInput<String>(map['sparkApplicationId']),
-      sparkRApplicationConfig:
-          Input.asOptionalInput<GdcSparkApplicationSparkRApplicationConfig>(
-              map['sparkRApplicationConfig']),
-      sparkSqlApplicationConfig:
-          Input.asOptionalInput<GdcSparkApplicationSparkSqlApplicationConfig>(
-              map['sparkSqlApplicationConfig']),
-      version: Input.asOptionalInput<String>(map['version']),
+          pulumi.Input.asOptionalInput<List<String>>(map['dependencyImages']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      namespace: pulumi.Input.asOptionalInput<String>(map['namespace']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      properties:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['properties']),
+      pysparkApplicationConfig: pulumi.Input.asOptionalInput<
+              GdcSparkApplicationPysparkApplicationConfig>(
+          map['pysparkApplicationConfig']),
+      serviceinstance: pulumi.Input.asInput<String>(map['serviceinstance']),
+      sparkApplicationConfig: pulumi.Input.asOptionalInput<
+              GdcSparkApplicationSparkApplicationConfig>(
+          map['sparkApplicationConfig']),
+      sparkApplicationId:
+          pulumi.Input.asInput<String>(map['sparkApplicationId']),
+      sparkRApplicationConfig: pulumi.Input.asOptionalInput<
+              GdcSparkApplicationSparkRApplicationConfig>(
+          map['sparkRApplicationConfig']),
+      sparkSqlApplicationConfig: pulumi.Input.asOptionalInput<
+              GdcSparkApplicationSparkSqlApplicationConfig>(
+          map['sparkSqlApplicationConfig']),
+      version: pulumi.Input.asOptionalInput<String>(map['version']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_managed_authorization_attempt_info/certificate_managed_authorization_attempt_info.dart';
 import '../certificate_managed_provisioning_issue/certificate_managed_provisioning_issue.dart';
 
@@ -49,7 +49,7 @@ class CertificateManaged {
     final map = <String, dynamic>{};
     final authorizationAttemptInfosValue = authorizationAttemptInfos;
     if (authorizationAttemptInfosValue != null) {
-      map['authorizationAttemptInfos'] = Input.encodeList<
+      map['authorizationAttemptInfos'] = pulumi.Input.encodeList<
               CertificateManagedAuthorizationAttemptInfo, Map<String, dynamic>>(
           authorizationAttemptInfosValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class CertificateManaged {
     }
     final provisioningIssuesValue = provisioningIssues;
     if (provisioningIssuesValue != null) {
-      map['provisioningIssues'] = Input.encodeList<
+      map['provisioningIssues'] = pulumi.Input.encodeList<
               CertificateManagedProvisioningIssue, Map<String, dynamic>>(
           provisioningIssuesValue, (value) => value.toMap());
     }
@@ -82,7 +82,7 @@ class CertificateManaged {
     return CertificateManaged(
       authorizationAttemptInfos: map['authorizationAttemptInfos'] == null
           ? null
-          : Input.decodeList<CertificateManagedAuthorizationAttemptInfo>(
+          : pulumi.Input.decodeList<CertificateManagedAuthorizationAttemptInfo>(
               map['authorizationAttemptInfos'],
               (value) => CertificateManagedAuthorizationAttemptInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -97,7 +97,7 @@ class CertificateManaged {
           : map['issuanceConfig'] as String,
       provisioningIssues: map['provisioningIssues'] == null
           ? null
-          : Input.decodeList<CertificateManagedProvisioningIssue>(
+          : pulumi.Input.decodeList<CertificateManagedProvisioningIssue>(
               map['provisioningIssues'],
               (value) => CertificateManagedProvisioningIssue.fromMap(
                   (value as Map).cast<String, dynamic>())),

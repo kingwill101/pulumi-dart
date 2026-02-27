@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_exclusion_args.dart';
 
 /// Manages a project-level logging exclusion. For more information see:
@@ -24,35 +24,35 @@ import 'project_exclusion_args.dart';
 /// ```sh
 /// $ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}
 /// ```
-class ProjectExclusion extends CustomResource {
+class ProjectExclusion extends pulumi.CustomResource {
   /// A human-readable description.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
-  late final Output<String> filter;
+  late final pulumi.Output<String> filter;
 
   /// The name of the logging exclusion.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project to create the exclusion in. If omitted, the project associated with the provider is
   /// used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   ProjectExclusion(
     String name, {
     ProjectExclusionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:logging/projectExclusion:ProjectExclusion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.disabled = registerOutput<bool?>('disabled');

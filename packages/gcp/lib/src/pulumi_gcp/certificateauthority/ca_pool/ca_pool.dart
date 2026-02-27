@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ca_pool_encryption_spec/ca_pool_encryption_spec.dart';
 import '../ca_pool_issuance_policy/ca_pool_issuance_policy.dart';
 import '../ca_pool_publishing_options/ca_pool_publishing_options.dart';
@@ -49,19 +49,19 @@ import 'ca_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:certificateauthority/caPool:CaPool default {{location}}/{{name}}
 /// ```
-class CaPool extends CustomResource {
+class CaPool extends pulumi.CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
   /// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
   /// customer data will remain unencrypted.
   /// Structure is documented below.
-  late final Output<CaPoolEncryptionSpec?> encryptionSpec;
+  late final pulumi.Output<CaPoolEncryptionSpec?> encryptionSpec;
 
   /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
   /// Structure is documented below.
-  late final Output<CaPoolIssuancePolicy?> issuancePolicy;
+  late final pulumi.Output<CaPoolIssuancePolicy?> issuancePolicy;
 
   /// Labels with user-defined metadata.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -69,40 +69,40 @@ class CaPool extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Location of the CaPool. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name for this CaPool.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// Structure is documented below.
-  late final Output<CaPoolPublishingOptions?> publishingOptions;
+  late final pulumi.Output<CaPoolPublishingOptions?> publishingOptions;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The Tier of this CaPool.
   /// Possible values are: `ENTERPRISE`, `DEVOPS`.
-  late final Output<String> tier;
+  late final pulumi.Output<String> tier;
 
   CaPool(
     String name, {
     CaPoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:certificateauthority/caPool:CaPool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.effectiveLabels =
         registerOutput<Map<String, String>>('effectiveLabels');

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LiteReservation.
 class LiteReservationArgs {
   /// Name of the reservation.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The region of the pubsub lite reservation.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The reserved throughput capacity. Every unit of throughput capacity is
   /// equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
   /// messages.
-  final Input<int> throughputCapacity;
+  final pulumi.Input<int> throughputCapacity;
 
   LiteReservationArgs({
     this.name,
@@ -46,10 +46,10 @@ class LiteReservationArgs {
 
   factory LiteReservationArgs.fromMap(Map<String, dynamic> map) {
     return LiteReservationArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
-      throughputCapacity: Input.asInput<int>(map['throughputCapacity']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      throughputCapacity: pulumi.Input.asInput<int>(map['throughputCapacity']),
     );
   }
 }

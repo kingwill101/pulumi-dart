@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_key_handles_args.dart';
 import 'get_key_handles_result.dart';
 
@@ -10,13 +10,13 @@ import 'get_key_handles_result.dart';
 /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
 Future<GetKeyHandlesResult> getKeyHandles(
   GetKeyHandlesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:kms/getKeyHandles:getKeyHandles',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyHandlesResult.fromMap(result);
 }

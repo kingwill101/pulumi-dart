@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_agent_after_agent_callback/app_version_snapshot_agent_after_agent_callback.dart';
 import '../app_version_snapshot_agent_after_model_callback/app_version_snapshot_agent_after_model_callback.dart';
 import '../app_version_snapshot_agent_after_tool_callback/app_version_snapshot_agent_after_tool_callback.dart';
@@ -168,37 +168,37 @@ class AppVersionSnapshotAgent {
     final map = <String, dynamic>{};
     final afterAgentCallbacksValue = afterAgentCallbacks;
     if (afterAgentCallbacksValue != null) {
-      map['afterAgentCallbacks'] = Input.encodeList<
+      map['afterAgentCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotAgentAfterAgentCallback, Map<String, dynamic>>(
           afterAgentCallbacksValue, (value) => value.toMap());
     }
     final afterModelCallbacksValue = afterModelCallbacks;
     if (afterModelCallbacksValue != null) {
-      map['afterModelCallbacks'] = Input.encodeList<
+      map['afterModelCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotAgentAfterModelCallback, Map<String, dynamic>>(
           afterModelCallbacksValue, (value) => value.toMap());
     }
     final afterToolCallbacksValue = afterToolCallbacks;
     if (afterToolCallbacksValue != null) {
-      map['afterToolCallbacks'] = Input.encodeList<
+      map['afterToolCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotAgentAfterToolCallback, Map<String, dynamic>>(
           afterToolCallbacksValue, (value) => value.toMap());
     }
     final beforeAgentCallbacksValue = beforeAgentCallbacks;
     if (beforeAgentCallbacksValue != null) {
-      map['beforeAgentCallbacks'] = Input.encodeList<
+      map['beforeAgentCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotAgentBeforeAgentCallback, Map<String, dynamic>>(
           beforeAgentCallbacksValue, (value) => value.toMap());
     }
     final beforeModelCallbacksValue = beforeModelCallbacks;
     if (beforeModelCallbacksValue != null) {
-      map['beforeModelCallbacks'] = Input.encodeList<
+      map['beforeModelCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotAgentBeforeModelCallback, Map<String, dynamic>>(
           beforeModelCallbacksValue, (value) => value.toMap());
     }
     final beforeToolCallbacksValue = beforeToolCallbacks;
     if (beforeToolCallbacksValue != null) {
-      map['beforeToolCallbacks'] = Input.encodeList<
+      map['beforeToolCallbacks'] = pulumi.Input.encodeList<
               AppVersionSnapshotAgentBeforeToolCallback, Map<String, dynamic>>(
           beforeToolCallbacksValue, (value) => value.toMap());
     }
@@ -240,7 +240,7 @@ class AppVersionSnapshotAgent {
     }
     final modelSettingsValue = modelSettings;
     if (modelSettingsValue != null) {
-      map['modelSettings'] = Input.encodeList<
+      map['modelSettings'] = pulumi.Input.encodeList<
           AppVersionSnapshotAgentModelSetting,
           Map<String, dynamic>>(modelSettingsValue, (value) => value.toMap());
     }
@@ -250,7 +250,7 @@ class AppVersionSnapshotAgent {
     }
     final remoteDialogflowAgentsValue = remoteDialogflowAgents;
     if (remoteDialogflowAgentsValue != null) {
-      map['remoteDialogflowAgents'] = Input.encodeList<
+      map['remoteDialogflowAgents'] = pulumi.Input.encodeList<
               AppVersionSnapshotAgentRemoteDialogflowAgent,
               Map<String, dynamic>>(
           remoteDialogflowAgentsValue, (value) => value.toMap());
@@ -261,7 +261,7 @@ class AppVersionSnapshotAgent {
     }
     final toolsetsValue = toolsets;
     if (toolsetsValue != null) {
-      map['toolsets'] = Input.encodeList<AppVersionSnapshotAgentToolset,
+      map['toolsets'] = pulumi.Input.encodeList<AppVersionSnapshotAgentToolset,
           Map<String, dynamic>>(toolsetsValue, (value) => value.toMap());
     }
     final updateTimeValue = updateTime;
@@ -275,37 +275,37 @@ class AppVersionSnapshotAgent {
     return AppVersionSnapshotAgent(
       afterAgentCallbacks: map['afterAgentCallbacks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentAfterAgentCallback>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentAfterAgentCallback>(
               map['afterAgentCallbacks'],
               (value) => AppVersionSnapshotAgentAfterAgentCallback.fromMap(
                   (value as Map).cast<String, dynamic>())),
       afterModelCallbacks: map['afterModelCallbacks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentAfterModelCallback>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentAfterModelCallback>(
               map['afterModelCallbacks'],
               (value) => AppVersionSnapshotAgentAfterModelCallback.fromMap(
                   (value as Map).cast<String, dynamic>())),
       afterToolCallbacks: map['afterToolCallbacks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentAfterToolCallback>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentAfterToolCallback>(
               map['afterToolCallbacks'],
               (value) => AppVersionSnapshotAgentAfterToolCallback.fromMap(
                   (value as Map).cast<String, dynamic>())),
       beforeAgentCallbacks: map['beforeAgentCallbacks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentBeforeAgentCallback>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentBeforeAgentCallback>(
               map['beforeAgentCallbacks'],
               (value) => AppVersionSnapshotAgentBeforeAgentCallback.fromMap(
                   (value as Map).cast<String, dynamic>())),
       beforeModelCallbacks: map['beforeModelCallbacks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentBeforeModelCallback>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentBeforeModelCallback>(
               map['beforeModelCallbacks'],
               (value) => AppVersionSnapshotAgentBeforeModelCallback.fromMap(
                   (value as Map).cast<String, dynamic>())),
       beforeToolCallbacks: map['beforeToolCallbacks'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentBeforeToolCallback>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentBeforeToolCallback>(
               map['beforeToolCallbacks'],
               (value) => AppVersionSnapshotAgentBeforeToolCallback.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -332,14 +332,15 @@ class AppVersionSnapshotAgent {
           : (map['llmAgents'] as List).cast<Map<String, dynamic>>(),
       modelSettings: map['modelSettings'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentModelSetting>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentModelSetting>(
               map['modelSettings'],
               (value) => AppVersionSnapshotAgentModelSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
       remoteDialogflowAgents: map['remoteDialogflowAgents'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentRemoteDialogflowAgent>(
+          : pulumi.Input.decodeList<
+                  AppVersionSnapshotAgentRemoteDialogflowAgent>(
               map['remoteDialogflowAgents'],
               (value) => AppVersionSnapshotAgentRemoteDialogflowAgent.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -347,7 +348,7 @@ class AppVersionSnapshotAgent {
           map['tools'] == null ? null : (map['tools'] as List).cast<String>(),
       toolsets: map['toolsets'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotAgentToolset>(
+          : pulumi.Input.decodeList<AppVersionSnapshotAgentToolset>(
               map['toolsets'],
               (value) => AppVersionSnapshotAgentToolset.fromMap(
                   (value as Map).cast<String, dynamic>())),

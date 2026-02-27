@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_gateway_hub/get_security_gateway_hub.dart';
 import '../get_security_gateway_proxy_protocol_config/get_security_gateway_proxy_protocol_config.dart';
 import '../get_security_gateway_service_discovery/get_security_gateway_service_discovery.dart';
@@ -47,8 +47,9 @@ class GetSecurityGatewayResult {
     map['delegatingServiceAccount'] = delegatingServiceAccount;
     map['displayName'] = displayName;
     map['externalIps'] = externalIps;
-    map['hubs'] = Input.encodeList<GetSecurityGatewayHub, Map<String, dynamic>>(
-        hubs, (value) => value.toMap());
+    map['hubs'] =
+        pulumi.Input.encodeList<GetSecurityGatewayHub, Map<String, dynamic>>(
+            hubs, (value) => value.toMap());
     map['id'] = id;
     map['location'] = location;
     map['name'] = name;
@@ -56,11 +57,11 @@ class GetSecurityGatewayResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['proxyProtocolConfigs'] = Input.encodeList<
+    map['proxyProtocolConfigs'] = pulumi.Input.encodeList<
         GetSecurityGatewayProxyProtocolConfig,
         Map<String, dynamic>>(proxyProtocolConfigs, (value) => value.toMap());
     map['securityGatewayId'] = securityGatewayId;
-    map['serviceDiscoveries'] = Input.encodeList<
+    map['serviceDiscoveries'] = pulumi.Input.encodeList<
         GetSecurityGatewayServiceDiscovery,
         Map<String, dynamic>>(serviceDiscoveries, (value) => value.toMap());
     map['state'] = state;
@@ -74,7 +75,7 @@ class GetSecurityGatewayResult {
       delegatingServiceAccount: map['delegatingServiceAccount'] as String,
       displayName: map['displayName'] as String,
       externalIps: (map['externalIps'] as List).cast<String>(),
-      hubs: Input.decodeList<GetSecurityGatewayHub>(
+      hubs: pulumi.Input.decodeList<GetSecurityGatewayHub>(
           map['hubs'],
           (value) => GetSecurityGatewayHub.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -83,15 +84,16 @@ class GetSecurityGatewayResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       proxyProtocolConfigs:
-          Input.decodeList<GetSecurityGatewayProxyProtocolConfig>(
+          pulumi.Input.decodeList<GetSecurityGatewayProxyProtocolConfig>(
               map['proxyProtocolConfigs'],
               (value) => GetSecurityGatewayProxyProtocolConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       securityGatewayId: map['securityGatewayId'] as String,
-      serviceDiscoveries: Input.decodeList<GetSecurityGatewayServiceDiscovery>(
-          map['serviceDiscoveries'],
-          (value) => GetSecurityGatewayServiceDiscovery.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      serviceDiscoveries:
+          pulumi.Input.decodeList<GetSecurityGatewayServiceDiscovery>(
+              map['serviceDiscoveries'],
+              (value) => GetSecurityGatewayServiceDiscovery.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
     );

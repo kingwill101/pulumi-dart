@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../auth_config_decrypted_credential_oauth2_client_credentials_token_params_entry/auth_config_decrypted_credential_oauth2_client_credentials_token_params_entry.dart';
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
@@ -18,7 +18,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
     final map = <String, dynamic>{};
     final entriesValue = entries;
     if (entriesValue != null) {
-      map['entries'] = Input.encodeList<
+      map['entries'] = pulumi.Input.encodeList<
           AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry,
           Map<String, dynamic>>(entriesValue, (value) => value.toMap());
     }
@@ -30,7 +30,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams(
       entries: map['entries'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry>(
               map['entries'],
               (value) =>

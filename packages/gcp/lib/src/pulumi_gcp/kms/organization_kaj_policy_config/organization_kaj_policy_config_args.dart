@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organization_kaj_policy_config_default_key_access_justification_policy/organization_kaj_policy_config_default_key_access_justification_policy.dart';
 
 /// The set of arguments for OrganizationKajPolicyConfig.
@@ -9,11 +9,12 @@ class OrganizationKajPolicyConfigArgs {
   /// created in this organization. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final Input<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
+  final pulumi
+      .Input<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
       defaultKeyAccessJustificationPolicy;
 
   /// The organization number for which to retrieve config.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   OrganizationKajPolicyConfigArgs({
     this.defaultKeyAccessJustificationPolicy,
@@ -25,7 +26,8 @@ class OrganizationKajPolicyConfigArgs {
     final defaultKeyAccessJustificationPolicyValue =
         defaultKeyAccessJustificationPolicy;
     if (defaultKeyAccessJustificationPolicyValue != null) {
-      map['defaultKeyAccessJustificationPolicy'] = Input.mapOptionalInputValue<
+      map['defaultKeyAccessJustificationPolicy'] = pulumi
+          .Input.mapOptionalInputValue<
               OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy,
               Map<String, dynamic>>(
           defaultKeyAccessJustificationPolicyValue, (value) => value.toMap());
@@ -36,10 +38,10 @@ class OrganizationKajPolicyConfigArgs {
 
   factory OrganizationKajPolicyConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationKajPolicyConfigArgs(
-      defaultKeyAccessJustificationPolicy: Input.asOptionalInput<
+      defaultKeyAccessJustificationPolicy: pulumi.Input.asOptionalInput<
               OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>(
           map['defaultKeyAccessJustificationPolicy']),
-      organization: Input.asInput<String>(map['organization']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workforce_pool_provider_scim_tenant_args.dart';
 
 /// Represents a SCIM tenant configuration for a Workforce Pool Provider.
@@ -35,64 +35,64 @@ import 'workforce_pool_provider_scim_tenant_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}
 /// ```
-class WorkforcePoolProviderScimTenant extends CustomResource {
+class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
   /// Represents the base URI as defined in [RFC 7644, Section
   /// 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients
   /// must use this as the root address for managing resources under the tenant.
   /// Format:
   /// https://iamscim.googleapis.com/{version}/{tenant_id}/
-  late final Output<String> baseUri;
+  late final pulumi.Output<String> baseUri;
 
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
-  late final Output<Map<String, String>?> claimMapping;
+  late final pulumi.Output<Map<String, String>?> claimMapping;
 
   /// A user-specified description of the provider. Cannot exceed 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Deletes the SCIM tenant immediately. This operation cannot be undone.
-  late final Output<bool?> hardDelete;
+  late final pulumi.Output<bool?> hardDelete;
 
   /// The location for the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the scim tenant.
   /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the provider.
-  late final Output<String> providerId;
+  late final pulumi.Output<String> providerId;
 
   /// The timestamp that represents the time when the SCIM tenant is purged.
-  late final Output<String> purgeTime;
+  late final pulumi.Output<String> purgeTime;
 
   /// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
-  late final Output<String> scimTenantId;
+  late final pulumi.Output<String> scimTenantId;
 
   /// Service Agent created by SCIM Tenant API. SCIM tokens created under
   /// this tenant will be attached to this service agent.
-  late final Output<String> serviceAgent;
+  late final pulumi.Output<String> serviceAgent;
 
   /// The current state of the scim tenant.
   /// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
   /// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
   /// deleted after approximately 30 days.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The ID of the workforce pool.
-  late final Output<String> workforcePoolId;
+  late final pulumi.Output<String> workforcePoolId;
 
   WorkforcePoolProviderScimTenant(
     String name, {
     WorkforcePoolProviderScimTenantArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.baseUri = registerOutput<String>('baseUri');
     this.claimMapping = registerOutput<Map<String, String>?>('claimMapping');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../widget_config_access_settings/widget_config_access_settings.dart';
 import '../widget_config_homepage_setting/widget_config_homepage_setting.dart';
 import '../widget_config_ui_branding/widget_config_ui_branding.dart';
@@ -42,55 +42,55 @@ import 'widget_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/widgetConfig:WidgetConfig default {{location}}/{{collection_id}}/{{engine_id}}/{{widget_config_id}}
 /// ```
-class WidgetConfig extends CustomResource {
+class WidgetConfig extends pulumi.CustomResource {
   /// Describes widget access settings.
   /// Structure is documented below.
-  late final Output<WidgetConfigAccessSettings> accessSettings;
+  late final pulumi.Output<WidgetConfigAccessSettings> accessSettings;
 
   /// The collection ID.
-  late final Output<String?> collectionId;
+  late final pulumi.Output<String?> collectionId;
 
   /// The engine ID.
-  late final Output<String> engineId;
+  late final pulumi.Output<String> engineId;
 
   /// Describes the homepage setting of the widget. It includes all homepage related settings
   /// and configurations, such as shortcuts.
   /// Structure is documented below.
-  late final Output<WidgetConfigHomepageSetting?> homepageSetting;
+  late final pulumi.Output<WidgetConfigHomepageSetting?> homepageSetting;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The full resource name of the widget config. Format:
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/widgetConfigs/{widget_config_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Describes search widget UI branding settings, such as the widget title, logo,
   /// favicons, and colors.
   /// Structure is documented below.
-  late final Output<WidgetConfigUiBranding?> uiBranding;
+  late final pulumi.Output<WidgetConfigUiBranding?> uiBranding;
 
   /// Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// Structure is documented below.
-  late final Output<WidgetConfigUiSettings> uiSettings;
+  late final pulumi.Output<WidgetConfigUiSettings> uiSettings;
 
   /// The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
-  late final Output<String?> widgetConfigId;
+  late final pulumi.Output<String?> widgetConfigId;
 
   WidgetConfig(
     String name, {
     WidgetConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:discoveryengine/widgetConfig:WidgetConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessSettings =
         registerOutput<WidgetConfigAccessSettings>('accessSettings');

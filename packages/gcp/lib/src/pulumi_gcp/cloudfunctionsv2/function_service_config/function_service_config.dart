@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../function_service_config_direct_vpc_network_interface/function_service_config_direct_vpc_network_interface.dart';
 import '../function_service_config_secret_environment_variable/function_service_config_secret_environment_variable.dart';
 import '../function_service_config_secret_volume/function_service_config_secret_volume.dart';
@@ -131,7 +131,7 @@ class FunctionServiceConfig {
     }
     final directVpcNetworkInterfacesValue = directVpcNetworkInterfaces;
     if (directVpcNetworkInterfacesValue != null) {
-      map['directVpcNetworkInterfaces'] = Input.encodeList<
+      map['directVpcNetworkInterfaces'] = pulumi.Input.encodeList<
               FunctionServiceConfigDirectVpcNetworkInterface,
               Map<String, dynamic>>(
           directVpcNetworkInterfacesValue, (value) => value.toMap());
@@ -162,14 +162,15 @@ class FunctionServiceConfig {
     }
     final secretEnvironmentVariablesValue = secretEnvironmentVariables;
     if (secretEnvironmentVariablesValue != null) {
-      map['secretEnvironmentVariables'] = Input.encodeList<
+      map['secretEnvironmentVariables'] = pulumi.Input.encodeList<
               FunctionServiceConfigSecretEnvironmentVariable,
               Map<String, dynamic>>(
           secretEnvironmentVariablesValue, (value) => value.toMap());
     }
     final secretVolumesValue = secretVolumes;
     if (secretVolumesValue != null) {
-      map['secretVolumes'] = Input.encodeList<FunctionServiceConfigSecretVolume,
+      map['secretVolumes'] = pulumi.Input.encodeList<
+          FunctionServiceConfigSecretVolume,
           Map<String, dynamic>>(secretVolumesValue, (value) => value.toMap());
     }
     final serviceValue = service;
@@ -217,7 +218,8 @@ class FunctionServiceConfig {
           : map['directVpcEgress'] as String,
       directVpcNetworkInterfaces: map['directVpcNetworkInterfaces'] == null
           ? null
-          : Input.decodeList<FunctionServiceConfigDirectVpcNetworkInterface>(
+          : pulumi.Input.decodeList<
+                  FunctionServiceConfigDirectVpcNetworkInterface>(
               map['directVpcNetworkInterfaces'],
               (value) => FunctionServiceConfigDirectVpcNetworkInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -240,13 +242,14 @@ class FunctionServiceConfig {
           : map['minInstanceCount'] as int,
       secretEnvironmentVariables: map['secretEnvironmentVariables'] == null
           ? null
-          : Input.decodeList<FunctionServiceConfigSecretEnvironmentVariable>(
+          : pulumi.Input.decodeList<
+                  FunctionServiceConfigSecretEnvironmentVariable>(
               map['secretEnvironmentVariables'],
               (value) => FunctionServiceConfigSecretEnvironmentVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),
       secretVolumes: map['secretVolumes'] == null
           ? null
-          : Input.decodeList<FunctionServiceConfigSecretVolume>(
+          : pulumi.Input.decodeList<FunctionServiceConfigSecretVolume>(
               map['secretVolumes'],
               (value) => FunctionServiceConfigSecretVolume.fromMap(
                   (value as Map).cast<String, dynamic>())),

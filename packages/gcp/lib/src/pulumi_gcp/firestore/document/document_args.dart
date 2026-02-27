@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Document.
 class DocumentArgs {
   /// The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
-  final Input<String> collection;
+  final pulumi.Input<String> collection;
 
   /// The Firestore database id. Defaults to `"(default)"`.
-  final Input<String>? database;
+  final pulumi.Input<String>? database;
 
   /// The client-assigned document ID to use for this document during creation.
-  final Input<String> documentId;
+  final pulumi.Input<String> documentId;
 
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
-  final Input<String> fields;
+  final pulumi.Input<String> fields;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   DocumentArgs({
     required this.collection,
@@ -46,11 +46,11 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      collection: Input.asInput<String>(map['collection']),
-      database: Input.asOptionalInput<String>(map['database']),
-      documentId: Input.asInput<String>(map['documentId']),
-      fields: Input.asInput<String>(map['fields']),
-      project: Input.asOptionalInput<String>(map['project']),
+      collection: pulumi.Input.asInput<String>(map['collection']),
+      database: pulumi.Input.asOptionalInput<String>(map['database']),
+      documentId: pulumi.Input.asInput<String>(map['documentId']),
+      fields: pulumi.Input.asInput<String>(map['fields']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

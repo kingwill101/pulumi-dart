@@ -1,3 +1,3 @@
 library module_organizations_access_approval_settings_enrolled_service;
 
-export 'access_approval_settings_enrolled_service/access_approval_settings_enrolled_service2.dart';
+export 'access_approval_settings_enrolled_service/access_approval_settings_enrolled_service_organizations.dart';

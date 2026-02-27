@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_instance_group_manager_status_stateful_per_instance_config/region_instance_group_manager_status_stateful_per_instance_config.dart';
 
 class RegionInstanceGroupManagerStatusStateful {
@@ -24,7 +24,7 @@ class RegionInstanceGroupManagerStatusStateful {
     }
     final perInstanceConfigsValue = perInstanceConfigs;
     if (perInstanceConfigsValue != null) {
-      map['perInstanceConfigs'] = Input.encodeList<
+      map['perInstanceConfigs'] = pulumi.Input.encodeList<
               RegionInstanceGroupManagerStatusStatefulPerInstanceConfig,
               Map<String, dynamic>>(
           perInstanceConfigsValue, (value) => value.toMap());
@@ -40,7 +40,7 @@ class RegionInstanceGroupManagerStatusStateful {
           : map['hasStatefulConfig'] as bool,
       perInstanceConfigs: map['perInstanceConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionInstanceGroupManagerStatusStatefulPerInstanceConfig>(
               map['perInstanceConfigs'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_node_pool_autoscaling/cluster_node_pool_autoscaling.dart';
 import '../cluster_node_pool_management/cluster_node_pool_management.dart';
 import '../cluster_node_pool_network_config/cluster_node_pool_network_config.dart';
@@ -151,8 +151,8 @@ class ClusterNodePool {
     }
     final nodeDrainConfigsValue = nodeDrainConfigs;
     if (nodeDrainConfigsValue != null) {
-      map['nodeDrainConfigs'] = Input.encodeList<ClusterNodePoolNodeDrainConfig,
-              Map<String, dynamic>>(
+      map['nodeDrainConfigs'] = pulumi.Input.encodeList<
+              ClusterNodePoolNodeDrainConfig, Map<String, dynamic>>(
           nodeDrainConfigsValue, (value) => value.toMap());
     }
     final nodeLocationsValue = nodeLocations;
@@ -213,7 +213,7 @@ class ClusterNodePool {
       nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
       nodeDrainConfigs: map['nodeDrainConfigs'] == null
           ? null
-          : Input.decodeList<ClusterNodePoolNodeDrainConfig>(
+          : pulumi.Input.decodeList<ClusterNodePoolNodeDrainConfig>(
               map['nodeDrainConfigs'],
               (value) => ClusterNodePoolNodeDrainConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

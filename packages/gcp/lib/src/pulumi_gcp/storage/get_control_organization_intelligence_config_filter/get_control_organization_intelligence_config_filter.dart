@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_control_organization_intelligence_config_filter_excluded_cloud_storage_bucket/get_control_organization_intelligence_config_filter_excluded_cloud_storage_bucket.dart';
 import '../get_control_organization_intelligence_config_filter_excluded_cloud_storage_location/get_control_organization_intelligence_config_filter_excluded_cloud_storage_location.dart';
 import '../get_control_organization_intelligence_config_filter_included_cloud_storage_bucket/get_control_organization_intelligence_config_filter_included_cloud_storage_bucket.dart';
@@ -36,19 +36,19 @@ class GetControlOrganizationIntelligenceConfigFilter {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['excludedCloudStorageBuckets'] = Input.encodeList<
+    map['excludedCloudStorageBuckets'] = pulumi.Input.encodeList<
         GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket,
         Map<String,
             dynamic>>(excludedCloudStorageBuckets, (value) => value.toMap());
-    map['excludedCloudStorageLocations'] = Input.encodeList<
+    map['excludedCloudStorageLocations'] = pulumi.Input.encodeList<
         GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation,
         Map<String,
             dynamic>>(excludedCloudStorageLocations, (value) => value.toMap());
-    map['includedCloudStorageBuckets'] = Input.encodeList<
+    map['includedCloudStorageBuckets'] = pulumi.Input.encodeList<
         GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket,
         Map<String,
             dynamic>>(includedCloudStorageBuckets, (value) => value.toMap());
-    map['includedCloudStorageLocations'] = Input.encodeList<
+    map['includedCloudStorageLocations'] = pulumi.Input.encodeList<
         GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation,
         Map<String,
             dynamic>>(includedCloudStorageLocations, (value) => value.toMap());
@@ -58,25 +58,25 @@ class GetControlOrganizationIntelligenceConfigFilter {
   factory GetControlOrganizationIntelligenceConfigFilter.fromMap(
       Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigFilter(
-      excludedCloudStorageBuckets: Input.decodeList<
+      excludedCloudStorageBuckets: pulumi.Input.decodeList<
               GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket>(
           map['excludedCloudStorageBuckets'],
           (value) =>
               GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket
                   .fromMap((value as Map).cast<String, dynamic>())),
-      excludedCloudStorageLocations: Input.decodeList<
+      excludedCloudStorageLocations: pulumi.Input.decodeList<
               GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation>(
           map['excludedCloudStorageLocations'],
           (value) =>
               GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation
                   .fromMap((value as Map).cast<String, dynamic>())),
-      includedCloudStorageBuckets: Input.decodeList<
+      includedCloudStorageBuckets: pulumi.Input.decodeList<
               GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket>(
           map['includedCloudStorageBuckets'],
           (value) =>
               GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket
                   .fromMap((value as Map).cast<String, dynamic>())),
-      includedCloudStorageLocations: Input.decodeList<
+      includedCloudStorageLocations: pulumi.Input.decodeList<
               GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation>(
           map['includedCloudStorageLocations'],
           (value) =>

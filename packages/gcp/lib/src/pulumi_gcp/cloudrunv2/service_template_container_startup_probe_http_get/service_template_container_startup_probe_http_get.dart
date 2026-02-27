@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_template_container_startup_probe_http_get_http_header/service_template_container_startup_probe_http_get_http_header.dart';
 
 class ServiceTemplateContainerStartupProbeHttpGet {
@@ -26,7 +26,7 @@ class ServiceTemplateContainerStartupProbeHttpGet {
     final map = <String, dynamic>{};
     final httpHeadersValue = httpHeaders;
     if (httpHeadersValue != null) {
-      map['httpHeaders'] = Input.encodeList<
+      map['httpHeaders'] = pulumi.Input.encodeList<
           ServiceTemplateContainerStartupProbeHttpGetHttpHeader,
           Map<String, dynamic>>(httpHeadersValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class ServiceTemplateContainerStartupProbeHttpGet {
     return ServiceTemplateContainerStartupProbeHttpGet(
       httpHeaders: map['httpHeaders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServiceTemplateContainerStartupProbeHttpGetHttpHeader>(
               map['httpHeaders'],
               (value) =>

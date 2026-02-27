@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../unit_kind_dependency/unit_kind_dependency.dart';
 import '../unit_kind_input_variable_mapping/unit_kind_input_variable_mapping.dart';
 import '../unit_kind_output_variable_mapping/unit_kind_output_variable_mapping.dart';
@@ -37,101 +37,102 @@ import 'unit_kind_args.dart';
 /// ```sh
 /// $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{location}}/{{unit_kind_id}}
 /// ```
-class UnitKind extends CustomResource {
+class UnitKind extends pulumi.CustomResource {
   /// Annotations is an unstructured key-value map stored with a resource that
   /// may be set by external tools to store and retrieve arbitrary metadata.
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// The timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A reference to the Release object to use as default for creating new units
   /// of this UnitKind.
   /// If not specified, a new unit must explicitly reference which release to use
   /// for its creation.
-  late final Output<String?> defaultRelease;
+  late final pulumi.Output<String?> defaultRelease;
 
   /// List of other unit kinds that this release will depend on. Dependencies
   /// will be automatically provisioned if not found. Maximum 10.
   /// Structure is documented below.
-  late final Output<List<UnitKindDependency>?> dependencies;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<List<UnitKindDependency>?> dependencies;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// An opaque value that uniquely identifies a version or
   /// generation of a resource. It can be used to confirm that the client
   /// and server agree on the ordering of a resource being written.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// List of inputVariables for this release that will either be retrieved from
   /// a dependency’s outputVariables, or will be passed on to a dependency’s
   /// inputVariables. Maximum 100.
   /// Structure is documented below.
-  late final Output<List<UnitKindInputVariableMapping>?> inputVariableMappings;
+  late final pulumi.Output<List<UnitKindInputVariableMapping>?>
+      inputVariableMappings;
 
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name (full URI of the resource) following the standard naming
   /// scheme:
   /// "projects/{project}/locations/{location}/unitKinds/{unitKind}"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// List of outputVariables for this unit kind will be passed to this unit's
   /// outputVariables. Maximum 100.
   /// Structure is documented below.
-  late final Output<List<UnitKindOutputVariableMapping>?>
+  late final pulumi.Output<List<UnitKindOutputVariableMapping>?>
       outputVariableMappings;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// A reference to the Saas that defines the product (managed service) that
   /// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
   /// common data model. Immutable once set.
-  late final Output<String> saas;
+  late final pulumi.Output<String> saas;
 
   /// The unique identifier of the resource. UID is unique in the time
   /// and space for this resource within the scope of the service. It is
   /// typically generated by the server on successful creation of a resource
   /// and must not be changed. UID is used to uniquely identify resources
   /// with resource name reuses. This should be a UUID4.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// The ID value for the new unit kind.
-  late final Output<String> unitKindId;
+  late final pulumi.Output<String> unitKindId;
 
   /// The timestamp when the resource was last updated. Any
   /// change to the resource made by users must refresh this value.
   /// Changes to a resource made by the service should refresh this value.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   UnitKind(
     String name, {
     UnitKindArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:saasruntime/unitKind:UnitKind',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.createTime = registerOutput<String>('createTime');

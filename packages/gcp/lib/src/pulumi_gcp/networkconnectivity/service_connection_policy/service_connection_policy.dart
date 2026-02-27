@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_connection_policy_psc_config/service_connection_policy_psc_config.dart';
 import '../service_connection_policy_psc_connection/service_connection_policy_psc_connection.dart';
 import 'service_connection_policy_args.dart';
@@ -43,69 +43,70 @@ import 'service_connection_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default {{location}}/{{name}}
 /// ```
-class ServiceConnectionPolicy extends CustomResource {
+class ServiceConnectionPolicy extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Free-text description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The type of underlying resources used to create the connection.
-  late final Output<String> infrastructure;
+  late final pulumi.Output<String> infrastructure;
 
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the ServiceConnectionPolicy.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   /// Structure is documented below.
-  late final Output<ServiceConnectionPolicyPscConfig?> pscConfig;
+  late final pulumi.Output<ServiceConnectionPolicyPscConfig?> pscConfig;
 
   /// Information about each Private Service Connect connection.
   /// Structure is documented below.
-  late final Output<List<ServiceConnectionPolicyPscConnection>> pscConnections;
+  late final pulumi.Output<List<ServiceConnectionPolicyPscConnection>>
+      pscConnections;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
   /// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
-  late final Output<String> serviceClass;
+  late final pulumi.Output<String> serviceClass;
 
   /// The timestamp when the resource was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ServiceConnectionPolicy(
     String name, {
     ServiceConnectionPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

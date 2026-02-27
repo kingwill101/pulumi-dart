@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guest_policies_assignment_group_label/guest_policies_assignment_group_label.dart';
 import '../guest_policies_assignment_os_type/guest_policies_assignment_os_type.dart';
 
@@ -44,7 +44,8 @@ class GuestPoliciesAssignment {
     final map = <String, dynamic>{};
     final groupLabelsValue = groupLabels;
     if (groupLabelsValue != null) {
-      map['groupLabels'] = Input.encodeList<GuestPoliciesAssignmentGroupLabel,
+      map['groupLabels'] = pulumi.Input.encodeList<
+          GuestPoliciesAssignmentGroupLabel,
           Map<String, dynamic>>(groupLabelsValue, (value) => value.toMap());
     }
     final instanceNamePrefixesValue = instanceNamePrefixes;
@@ -57,9 +58,8 @@ class GuestPoliciesAssignment {
     }
     final osTypesValue = osTypes;
     if (osTypesValue != null) {
-      map['osTypes'] =
-          Input.encodeList<GuestPoliciesAssignmentOsType, Map<String, dynamic>>(
-              osTypesValue, (value) => value.toMap());
+      map['osTypes'] = pulumi.Input.encodeList<GuestPoliciesAssignmentOsType,
+          Map<String, dynamic>>(osTypesValue, (value) => value.toMap());
     }
     final zonesValue = zones;
     if (zonesValue != null) {
@@ -72,7 +72,7 @@ class GuestPoliciesAssignment {
     return GuestPoliciesAssignment(
       groupLabels: map['groupLabels'] == null
           ? null
-          : Input.decodeList<GuestPoliciesAssignmentGroupLabel>(
+          : pulumi.Input.decodeList<GuestPoliciesAssignmentGroupLabel>(
               map['groupLabels'],
               (value) => GuestPoliciesAssignmentGroupLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -84,7 +84,7 @@ class GuestPoliciesAssignment {
           : (map['instances'] as List).cast<String>(),
       osTypes: map['osTypes'] == null
           ? null
-          : Input.decodeList<GuestPoliciesAssignmentOsType>(
+          : pulumi.Input.decodeList<GuestPoliciesAssignmentOsType>(
               map['osTypes'],
               (value) => GuestPoliciesAssignmentOsType.fromMap(
                   (value as Map).cast<String, dynamic>())),

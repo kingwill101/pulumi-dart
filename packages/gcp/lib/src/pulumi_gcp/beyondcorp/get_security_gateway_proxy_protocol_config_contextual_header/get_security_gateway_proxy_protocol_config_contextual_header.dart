@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_gateway_proxy_protocol_config_contextual_header_device_info/get_security_gateway_proxy_protocol_config_contextual_header_device_info.dart';
 import '../get_security_gateway_proxy_protocol_config_contextual_header_group_info/get_security_gateway_proxy_protocol_config_contextual_header_group_info.dart';
 import '../get_security_gateway_proxy_protocol_config_contextual_header_user_info/get_security_gateway_proxy_protocol_config_contextual_header_user_info.dart';
@@ -30,14 +30,14 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeader {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['deviceInfos'] = Input.encodeList<
+    map['deviceInfos'] = pulumi.Input.encodeList<
         GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo,
         Map<String, dynamic>>(deviceInfos, (value) => value.toMap());
-    map['groupInfos'] = Input.encodeList<
+    map['groupInfos'] = pulumi.Input.encodeList<
         GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo,
         Map<String, dynamic>>(groupInfos, (value) => value.toMap());
     map['outputType'] = outputType;
-    map['userInfos'] = Input.encodeList<
+    map['userInfos'] = pulumi.Input.encodeList<
         GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo,
         Map<String, dynamic>>(userInfos, (value) => value.toMap());
     return map;
@@ -46,20 +46,20 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeader {
   factory GetSecurityGatewayProxyProtocolConfigContextualHeader.fromMap(
       Map<String, dynamic> map) {
     return GetSecurityGatewayProxyProtocolConfigContextualHeader(
-      deviceInfos: Input.decodeList<
+      deviceInfos: pulumi.Input.decodeList<
               GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo>(
           map['deviceInfos'],
           (value) =>
               GetSecurityGatewayProxyProtocolConfigContextualHeaderDeviceInfo
                   .fromMap((value as Map).cast<String, dynamic>())),
-      groupInfos: Input.decodeList<
+      groupInfos: pulumi.Input.decodeList<
               GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo>(
           map['groupInfos'],
           (value) =>
               GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo
                   .fromMap((value as Map).cast<String, dynamic>())),
       outputType: map['outputType'] as String,
-      userInfos: Input.decodeList<
+      userInfos: pulumi.Input.decodeList<
               GetSecurityGatewayProxyProtocolConfigContextualHeaderUserInfo>(
           map['userInfos'],
           (value) =>

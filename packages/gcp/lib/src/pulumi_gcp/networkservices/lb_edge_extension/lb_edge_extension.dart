@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lb_edge_extension_extension_chain/lb_edge_extension_extension_chain.dart';
 import 'lb_edge_extension_args.dart';
 
@@ -41,56 +41,56 @@ import 'lb_edge_extension_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkservices/lbEdgeExtension:LbEdgeExtension default {{location}}/{{name}}
 /// ```
-class LbEdgeExtension extends CustomResource {
+class LbEdgeExtension extends pulumi.CustomResource {
   /// A human-readable description of the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// A set of ordered extension chains that contain the match conditions and extensions to execute.
   /// Match conditions for each extension chain are evaluated in sequence for a given request.
   /// The first extension chain that has a condition that matches the request is executed.
   /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
   /// Structure is documented below.
-  late final Output<List<LbEdgeExtensionExtensionChain>> extensionChains;
+  late final pulumi.Output<List<LbEdgeExtensionExtensionChain>> extensionChains;
 
   /// A list of references to the forwarding rules to which this service extension is attached.
   /// At least one forwarding rule is required. Only one LbEdgeExtension resource can be associated with a forwarding rule.
-  late final Output<List<String>> forwardingRules;
+  late final pulumi.Output<List<String>> forwardingRules;
 
   /// Set of labels associated with the LbEdgeExtension resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// All forwarding rules referenced by this extension must share the same load balancing scheme.
   /// Possible values are: `EXTERNAL_MANAGED`.
-  late final Output<String> loadBalancingScheme;
+  late final pulumi.Output<String> loadBalancingScheme;
 
   /// The location of the edge extension
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Name of the LbEdgeExtension resource in the following format: projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   LbEdgeExtension(
     String name, {
     LbEdgeExtensionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkservices/lbEdgeExtension:LbEdgeExtension',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.effectiveLabels =

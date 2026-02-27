@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../aws_cluster_authorization/aws_cluster_authorization.dart';
 import '../aws_cluster_binary_authorization/aws_cluster_binary_authorization.dart';
 import '../aws_cluster_control_plane/aws_cluster_control_plane.dart';
@@ -47,81 +47,81 @@ import 'aws_cluster_args.dart';
 /// ```sh
 /// $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
 /// ```
-class AwsCluster extends CustomResource {
+class AwsCluster extends pulumi.CustomResource {
   /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Configuration related to the cluster RBAC settings.
-  late final Output<AwsClusterAuthorization> authorization;
+  late final pulumi.Output<AwsClusterAuthorization> authorization;
 
   /// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
-  late final Output<String> awsRegion;
+  late final pulumi.Output<String> awsRegion;
 
   /// Configuration options for the Binary Authorization feature.
-  late final Output<AwsClusterBinaryAuthorization> binaryAuthorization;
+  late final pulumi.Output<AwsClusterBinaryAuthorization> binaryAuthorization;
 
   /// Configuration related to the cluster control plane.
-  late final Output<AwsClusterControlPlane> controlPlane;
+  late final pulumi.Output<AwsClusterControlPlane> controlPlane;
 
   /// Output only. The time at which this cluster was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-  late final Output<String?> description;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String?> description;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// Output only. The endpoint of the cluster's API server.
-  late final Output<String> endpoint;
+  late final pulumi.Output<String> endpoint;
 
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Fleet configuration.
-  late final Output<AwsClusterFleet> fleet;
+  late final pulumi.Output<AwsClusterFleet> fleet;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Logging configuration.
-  late final Output<AwsClusterLoggingConfig> loggingConfig;
+  late final pulumi.Output<AwsClusterLoggingConfig> loggingConfig;
 
   /// The name of this resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Cluster-wide networking configuration.
-  late final Output<AwsClusterNetworking> networking;
+  late final pulumi.Output<AwsClusterNetworking> networking;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. If set, there are currently changes in flight to the cluster.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. A globally unique identifier for the cluster.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Output only. The time at which this cluster was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// Output only. Workload Identity settings.
-  late final Output<List<AwsClusterWorkloadIdentityConfig>>
+  late final pulumi.Output<List<AwsClusterWorkloadIdentityConfig>>
       workloadIdentityConfigs;
 
   AwsCluster(
     String name, {
     AwsClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:container/awsCluster:AwsCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.authorization =

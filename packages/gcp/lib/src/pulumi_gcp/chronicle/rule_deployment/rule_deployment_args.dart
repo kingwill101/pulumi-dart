@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RuleDeployment.
 class RuleDeploymentArgs {
   /// Whether detections resulting from this deployment should be considered
   /// alerts.
-  final Input<bool>? alerting;
+  final pulumi.Input<bool>? alerting;
 
   /// The archive state of the rule deployment.
   /// Cannot be set to true unless enabled is set to false i.e.
@@ -15,30 +15,30 @@ class RuleDeploymentArgs {
   /// If set to true, alerting will automatically be set to false.
   /// If currently set to true, enabled, alerting, and run_frequency cannot be
   /// updated.
-  final Input<bool>? archived;
+  final pulumi.Input<bool>? archived;
 
   /// Whether the rule is currently deployed continuously against incoming data.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Rule ID of the rule.
-  final Input<String> rule;
+  final pulumi.Input<String> rule;
 
   /// The run frequency of the rule deployment.
   /// Possible values:
   /// LIVE
   /// HOURLY
   /// DAILY
-  final Input<String>? runFrequency;
+  final pulumi.Input<String>? runFrequency;
 
   RuleDeploymentArgs({
     this.alerting,
@@ -81,14 +81,14 @@ class RuleDeploymentArgs {
 
   factory RuleDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return RuleDeploymentArgs(
-      alerting: Input.asOptionalInput<bool>(map['alerting']),
-      archived: Input.asOptionalInput<bool>(map['archived']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      instance: Input.asInput<String>(map['instance']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      rule: Input.asInput<String>(map['rule']),
-      runFrequency: Input.asOptionalInput<String>(map['runFrequency']),
+      alerting: pulumi.Input.asOptionalInput<bool>(map['alerting']),
+      archived: pulumi.Input.asOptionalInput<bool>(map['archived']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      rule: pulumi.Input.asInput<String>(map['rule']),
+      runFrequency: pulumi.Input.asOptionalInput<String>(map['runFrequency']),
     );
   }
 }

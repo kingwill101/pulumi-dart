@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_tool_open_api_spec_tls_config_ca_cert/cx_tool_open_api_spec_tls_config_ca_cert.dart';
 
 class CxToolOpenApiSpecTlsConfig {
@@ -14,14 +14,14 @@ class CxToolOpenApiSpecTlsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['caCerts'] = Input.encodeList<CxToolOpenApiSpecTlsConfigCaCert,
+    map['caCerts'] = pulumi.Input.encodeList<CxToolOpenApiSpecTlsConfigCaCert,
         Map<String, dynamic>>(caCerts, (value) => value.toMap());
     return map;
   }
 
   factory CxToolOpenApiSpecTlsConfig.fromMap(Map<String, dynamic> map) {
     return CxToolOpenApiSpecTlsConfig(
-      caCerts: Input.decodeList<CxToolOpenApiSpecTlsConfigCaCert>(
+      caCerts: pulumi.Input.decodeList<CxToolOpenApiSpecTlsConfigCaCert>(
           map['caCerts'],
           (value) => CxToolOpenApiSpecTlsConfigCaCert.fromMap(
               (value as Map).cast<String, dynamic>())),

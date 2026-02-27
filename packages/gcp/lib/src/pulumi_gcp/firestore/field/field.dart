@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../field_index_config/field_index_config.dart';
 import '../field_ttl_config/field_ttl_config.dart';
 import 'field_args.dart';
@@ -49,44 +49,44 @@ import 'field_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firestore/field:Field default {{name}}
 /// ```
-class Field extends CustomResource {
+class Field extends pulumi.CustomResource {
   /// The id of the collection group to configure.
-  late final Output<String> collection;
+  late final pulumi.Output<String> collection;
 
   /// The Firestore database id. Defaults to `"(default)"`.
-  late final Output<String?> database;
+  late final pulumi.Output<String?> database;
 
   /// The id of the field to configure.
-  late final Output<String> field;
+  late final pulumi.Output<String> field;
 
   /// The single field index configuration for this field.
   /// Creating an index configuration for this field will override any inherited configuration with the
   /// indexes specified. Configuring the index configuration with an empty block disables all indexes on
   /// the field.
   /// Structure is documented below.
-  late final Output<FieldIndexConfig?> indexConfig;
+  late final pulumi.Output<FieldIndexConfig?> indexConfig;
 
   /// The name of this field. Format:
   /// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
   /// Structure is documented below.
-  late final Output<FieldTtlConfig?> ttlConfig;
+  late final pulumi.Output<FieldTtlConfig?> ttlConfig;
 
   Field(
     String name, {
     FieldArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firestore/field:Field',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.collection = registerOutput<String>('collection');
     this.database = registerOutput<String?>('database');

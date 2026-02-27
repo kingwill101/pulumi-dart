@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNetworkPolicy.
 class GetNetworkPolicyArgs {
   /// Location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Name of the resource.
-  final Input<String> name;
-  final Input<String>? project;
+  final pulumi.Input<String> name;
+  final pulumi.Input<String>? project;
 
   GetNetworkPolicyArgs({
     required this.location,
@@ -30,9 +30,9 @@ class GetNetworkPolicyArgs {
 
   factory GetNetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPolicyArgs(
-      location: Input.asInput<String>(map['location']),
-      name: Input.asInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

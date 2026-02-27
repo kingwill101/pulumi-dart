@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../asset_discovery_status_stat/asset_discovery_status_stat.dart';
 
 class AssetDiscoveryStatus {
@@ -51,9 +51,8 @@ class AssetDiscoveryStatus {
     }
     final statsValue = stats;
     if (statsValue != null) {
-      map['stats'] =
-          Input.encodeList<AssetDiscoveryStatusStat, Map<String, dynamic>>(
-              statsValue, (value) => value.toMap());
+      map['stats'] = pulumi.Input.encodeList<AssetDiscoveryStatusStat,
+          Map<String, dynamic>>(statsValue, (value) => value.toMap());
     }
     final updateTimeValue = updateTime;
     if (updateTimeValue != null) {
@@ -73,7 +72,7 @@ class AssetDiscoveryStatus {
       state: map['state'] == null ? null : map['state'] as String,
       stats: map['stats'] == null
           ? null
-          : Input.decodeList<AssetDiscoveryStatusStat>(
+          : pulumi.Input.decodeList<AssetDiscoveryStatusStat>(
               map['stats'],
               (value) => AssetDiscoveryStatusStat.fromMap(
                   (value as Map).cast<String, dynamic>())),

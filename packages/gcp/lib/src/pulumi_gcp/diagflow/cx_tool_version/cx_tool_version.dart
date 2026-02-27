@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_tool_version_tool/cx_tool_version_tool.dart';
 import 'cx_tool_version_args.dart';
 
@@ -49,43 +49,43 @@ import 'cx_tool_version_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxToolVersion:CxToolVersion default {{parent}}/{{name}}
 /// ```
-class CxToolVersion extends CustomResource {
+class CxToolVersion extends pulumi.CustomResource {
   /// Last time the tool version was created or modified.
   /// Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
   /// Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The display name of the tool version.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The unique identifier of the tool version.
   /// Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/tools/<ToolID>/versions/<VersionID>.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The tool to create a Version for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Snapshot of the tool to be associated with this version.
   /// Structure is documented below.
-  late final Output<CxToolVersionTool> tool;
+  late final pulumi.Output<CxToolVersionTool> tool;
 
   /// Last time the tool version was created or modified.
   /// Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
   /// Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   CxToolVersion(
     String name, {
     CxToolVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/cxToolVersion:CxToolVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');

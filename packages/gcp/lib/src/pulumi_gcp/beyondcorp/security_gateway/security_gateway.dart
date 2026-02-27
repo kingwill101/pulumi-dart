@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_gateway_hub/security_gateway_hub.dart';
 import '../security_gateway_proxy_protocol_config/security_gateway_proxy_protocol_config.dart';
 import '../security_gateway_service_discovery/security_gateway_service_discovery.dart';
@@ -42,52 +42,53 @@ import 'security_gateway_args.dart';
 /// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{location}}/{{security_gateway_id}}
 /// ```
-class SecurityGateway extends CustomResource {
+class SecurityGateway extends pulumi.CustomResource {
   /// Output only. Timestamp when the resource was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Service account used for operations that involve resources in consumer projects.
-  late final Output<String> delegatingServiceAccount;
+  late final pulumi.Output<String> delegatingServiceAccount;
 
   /// Optional. An arbitrary user-provided name for the SecurityGateway.
   /// Cannot exceed 64 characters.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// Output only. IP addresses that will be used for establishing
   /// connection to the endpoints.
-  late final Output<List<String>> externalIps;
+  late final pulumi.Output<List<String>> externalIps;
 
   /// Optional. Map of Hubs that represents regional data path deployment with GCP region
   /// as a key.
   /// Structure is documented below.
-  late final Output<List<SecurityGatewayHub>?> hubs;
+  late final pulumi.Output<List<SecurityGatewayHub>?> hubs;
 
   /// (Optional, Deprecated)
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
   ///
   /// > **Warning:** `location` is deprecated and will be removed in a future major release.
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// Identifier. Name of the resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Shared proxy configuration for all apps.
   /// Structure is documented below.
-  late final Output<SecurityGatewayProxyProtocolConfig?> proxyProtocolConfig;
+  late final pulumi.Output<SecurityGatewayProxyProtocolConfig?>
+      proxyProtocolConfig;
 
   /// Optional. User-settable SecurityGateway resource ID.
   /// * Must start with a letter.
   /// * Must contain between 4-63 characters from `/a-z-/`.
   /// * Must end with a number or letter.
-  late final Output<String> securityGatewayId;
+  late final pulumi.Output<String> securityGatewayId;
 
   /// Settings related to the Service Discovery.
   /// Structure is documented below.
-  late final Output<SecurityGatewayServiceDiscovery?> serviceDiscovery;
+  late final pulumi.Output<SecurityGatewayServiceDiscovery?> serviceDiscovery;
 
   /// Output only. The operational state of the SecurityGateway.
   /// Possible values:
@@ -98,20 +99,20 @@ class SecurityGateway extends CustomResource {
   /// RUNNING
   /// DOWN
   /// ERROR
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Output only. Timestamp when the resource was last modified.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   SecurityGateway(
     String name, {
     SecurityGatewayArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:beyondcorp/securityGateway:SecurityGateway',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.delegatingServiceAccount =

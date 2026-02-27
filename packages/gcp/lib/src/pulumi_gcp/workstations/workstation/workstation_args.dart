@@ -1,44 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Workstation.
 class WorkstationArgs {
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Human-readable name for this resource.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
-  final Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>>? env;
 
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location where the workstation parent resources reside.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Full resource name of the source workstation from which the workstation's persistent
   /// directories will be cloned from during creation.
-  final Input<String>? sourceWorkstation;
+  final pulumi.Input<String>? sourceWorkstation;
 
   /// The ID of the parent workstation cluster.
-  final Input<String> workstationClusterId;
+  final pulumi.Input<String> workstationClusterId;
 
   /// The ID of the parent workstation cluster config.
-  final Input<String> workstationConfigId;
+  final pulumi.Input<String> workstationConfigId;
 
   /// ID to use for the workstation.
-  final Input<String> workstationId;
+  final pulumi.Input<String> workstationId;
 
   WorkstationArgs({
     this.annotations,
@@ -89,17 +89,19 @@ class WorkstationArgs {
   factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      env: Input.asOptionalInput<Map<String, String>>(map['env']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      env: pulumi.Input.asOptionalInput<Map<String, String>>(map['env']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       sourceWorkstation:
-          Input.asOptionalInput<String>(map['sourceWorkstation']),
-      workstationClusterId: Input.asInput<String>(map['workstationClusterId']),
-      workstationConfigId: Input.asInput<String>(map['workstationConfigId']),
-      workstationId: Input.asInput<String>(map['workstationId']),
+          pulumi.Input.asOptionalInput<String>(map['sourceWorkstation']),
+      workstationClusterId:
+          pulumi.Input.asInput<String>(map['workstationClusterId']),
+      workstationConfigId:
+          pulumi.Input.asInput<String>(map['workstationConfigId']),
+      workstationId: pulumi.Input.asInput<String>(map['workstationId']),
     );
   }
 }

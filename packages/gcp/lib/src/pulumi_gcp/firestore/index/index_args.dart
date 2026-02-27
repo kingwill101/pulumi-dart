@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../index_field/index_field.dart';
 
 /// The set of arguments for Index.
@@ -8,17 +8,17 @@ class IndexArgs {
   /// The API scope at which a query is run.
   /// Default value is `ANY_API`.
   /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
-  final Input<String>? apiScope;
+  final pulumi.Input<String>? apiScope;
 
   /// The collection being indexed.
-  final Input<String> collection;
+  final pulumi.Input<String> collection;
 
   /// The Firestore database id. Defaults to `"(default)"`.
-  final Input<String>? database;
+  final pulumi.Input<String>? database;
 
   /// The density configuration for this index.
   /// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
-  final Input<String>? density;
+  final pulumi.Input<String>? density;
 
   /// The fields supported by this index. The last non-stored field entry is
   /// always for the field path `__name__`. If, on creation, `__name__` was not
@@ -27,22 +27,22 @@ class IndexArgs {
   /// composite index is not directional, the `__name__` will be ordered
   /// `"ASCENDING"` (unless explicitly specified otherwise).
   /// Structure is documented below.
-  final Input<List<IndexField>> fields;
+  final pulumi.Input<List<IndexField>> fields;
 
   /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
-  final Input<bool>? multikey;
+  final pulumi.Input<bool>? multikey;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The scope at which a query is run.
   /// Default value is `COLLECTION`.
   /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
-  final Input<String>? queryScope;
+  final pulumi.Input<String>? queryScope;
 
   /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
-  final Input<bool>? unique;
+  final pulumi.Input<bool>? unique;
 
   IndexArgs({
     this.apiScope,
@@ -71,11 +71,11 @@ class IndexArgs {
     if (densityValue != null) {
       map['density'] = densityValue;
     }
-    map['fields'] =
-        Input.mapInputValue<List<IndexField>, List<Map<String, dynamic>>>(
-            fields,
-            (value) => Input.encodeList<IndexField, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
+    map['fields'] = pulumi.Input.mapInputValue<List<IndexField>,
+            List<Map<String, dynamic>>>(
+        fields,
+        (value) => pulumi.Input.encodeList<IndexField, Map<String, dynamic>>(
+            value, (value) => value.toMap()));
     final multikeyValue = multikey;
     if (multikeyValue != null) {
       map['multikey'] = multikeyValue;
@@ -97,15 +97,15 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      apiScope: Input.asOptionalInput<String>(map['apiScope']),
-      collection: Input.asInput<String>(map['collection']),
-      database: Input.asOptionalInput<String>(map['database']),
-      density: Input.asOptionalInput<String>(map['density']),
-      fields: Input.asInput<List<IndexField>>(map['fields']),
-      multikey: Input.asOptionalInput<bool>(map['multikey']),
-      project: Input.asOptionalInput<String>(map['project']),
-      queryScope: Input.asOptionalInput<String>(map['queryScope']),
-      unique: Input.asOptionalInput<bool>(map['unique']),
+      apiScope: pulumi.Input.asOptionalInput<String>(map['apiScope']),
+      collection: pulumi.Input.asInput<String>(map['collection']),
+      database: pulumi.Input.asOptionalInput<String>(map['database']),
+      density: pulumi.Input.asOptionalInput<String>(map['density']),
+      fields: pulumi.Input.asInput<List<IndexField>>(map['fields']),
+      multikey: pulumi.Input.asOptionalInput<bool>(map['multikey']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      queryScope: pulumi.Input.asOptionalInput<String>(map['queryScope']),
+      unique: pulumi.Input.asOptionalInput<bool>(map['unique']),
     );
   }
 }

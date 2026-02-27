@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../subscription_iambinding_condition/subscription_iambinding_condition.dart';
 import 'subscription_iambinding_args.dart';
 
@@ -57,11 +57,11 @@ import 'subscription_iambinding_args.dart';
 /// ```sh
 /// $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}
 /// ```
-class SubscriptionIAMBinding extends CustomResource {
-  late final Output<SubscriptionIAMBindingCondition?> condition;
+class SubscriptionIAMBinding extends pulumi.CustomResource {
+  late final pulumi.Output<SubscriptionIAMBindingCondition?> condition;
 
   /// (Computed) The etag of the subscription's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -71,29 +71,29 @@ class SubscriptionIAMBinding extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<List<String>> members;
+  late final pulumi.Output<List<String>> members;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The role that should be applied. Only one
   /// `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   /// The subscription name or id to bind to attach IAM policy to.
-  late final Output<String> subscription;
+  late final pulumi.Output<String> subscription;
 
   SubscriptionIAMBinding(
     String name, {
     SubscriptionIAMBindingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition =
         registerOutput<SubscriptionIAMBindingCondition?>('condition');

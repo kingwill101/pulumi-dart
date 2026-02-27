@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_policy_with_rules_rule_match_layer4_config/firewall_policy_with_rules_rule_match_layer4_config.dart';
 import '../firewall_policy_with_rules_rule_match_src_secure_tag/firewall_policy_with_rules_rule_match_src_secure_tag.dart';
 
@@ -116,7 +116,7 @@ class FirewallPolicyWithRulesRuleMatch {
     if (destThreatIntelligencesValue != null) {
       map['destThreatIntelligences'] = destThreatIntelligencesValue;
     }
-    map['layer4Configs'] = Input.encodeList<
+    map['layer4Configs'] = pulumi.Input.encodeList<
         FirewallPolicyWithRulesRuleMatchLayer4Config,
         Map<String, dynamic>>(layer4Configs, (value) => value.toMap());
     final srcAddressGroupsValue = srcAddressGroups;
@@ -145,7 +145,7 @@ class FirewallPolicyWithRulesRuleMatch {
     }
     final srcSecureTagsValue = srcSecureTags;
     if (srcSecureTagsValue != null) {
-      map['srcSecureTags'] = Input.encodeList<
+      map['srcSecureTags'] = pulumi.Input.encodeList<
           FirewallPolicyWithRulesRuleMatchSrcSecureTag,
           Map<String, dynamic>>(srcSecureTagsValue, (value) => value.toMap());
     }
@@ -177,7 +177,7 @@ class FirewallPolicyWithRulesRuleMatch {
           ? null
           : (map['destThreatIntelligences'] as List).cast<String>(),
       layer4Configs:
-          Input.decodeList<FirewallPolicyWithRulesRuleMatchLayer4Config>(
+          pulumi.Input.decodeList<FirewallPolicyWithRulesRuleMatchLayer4Config>(
               map['layer4Configs'],
               (value) => FirewallPolicyWithRulesRuleMatchLayer4Config.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -201,7 +201,8 @@ class FirewallPolicyWithRulesRuleMatch {
           : (map['srcRegionCodes'] as List).cast<String>(),
       srcSecureTags: map['srcSecureTags'] == null
           ? null
-          : Input.decodeList<FirewallPolicyWithRulesRuleMatchSrcSecureTag>(
+          : pulumi.Input.decodeList<
+                  FirewallPolicyWithRulesRuleMatchSrcSecureTag>(
               map['srcSecureTags'],
               (value) => FirewallPolicyWithRulesRuleMatchSrcSecureTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

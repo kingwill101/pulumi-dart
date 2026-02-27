@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workload_identity_pool_managed_identity_attestation_rule/workload_identity_pool_managed_identity_attestation_rule.dart';
 import 'workload_identity_pool_managed_identity_args.dart';
 
@@ -45,28 +45,29 @@ import 'workload_identity_pool_managed_identity_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}
 /// ```
-class WorkloadIdentityPoolManagedIdentity extends CustomResource {
+class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
   /// Defines which workloads can receive an identity within a pool. When an AttestationRule is
   /// defined under a managed identity, matching workloads may receive that identity. A maximum of
   /// 50 AttestationRules can be set.
   /// Structure is documented below.
-  late final Output<List<WorkloadIdentityPoolManagedIdentityAttestationRule>?>
+  late final pulumi
+      .Output<List<WorkloadIdentityPoolManagedIdentityAttestationRule>?>
       attestationRules;
 
   /// A description of the managed identity. Cannot exceed 256 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
   /// the identity, however existing credentials will still be accepted until they expire.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The resource name of the managed identity as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}/managedIdentities/{workload_identity_pool_managed_identity_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The current state of the managed identity.
   /// * `ACTIVE`: The managed identity is active.
@@ -74,12 +75,12 @@ class WorkloadIdentityPoolManagedIdentity extends CustomResource {
   /// permanently deleted after approximately 30 days. You can restore a soft-deleted managed
   /// identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
   /// soft-deleted managed identity until it is permanently deleted.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  late final Output<String> workloadIdentityPoolId;
+  late final pulumi.Output<String> workloadIdentityPoolId;
 
   /// The ID to use for the managed identity. This value must:
   /// * contain at most 63 characters
@@ -88,7 +89,7 @@ class WorkloadIdentityPoolManagedIdentity extends CustomResource {
   /// * end with an alphanumeric character
   ///
   /// The prefix `gcp-` will be reserved for future uses.
-  late final Output<String> workloadIdentityPoolManagedIdentityId;
+  late final pulumi.Output<String> workloadIdentityPoolManagedIdentityId;
 
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
@@ -97,17 +98,17 @@ class WorkloadIdentityPoolManagedIdentity extends CustomResource {
   /// * end with an alphanumeric character
   ///
   /// The prefix `gcp-` will be reserved for future uses.
-  late final Output<String> workloadIdentityPoolNamespaceId;
+  late final pulumi.Output<String> workloadIdentityPoolNamespaceId;
 
   WorkloadIdentityPoolManagedIdentity(
     String name, {
     WorkloadIdentityPoolManagedIdentityArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attestationRules = registerOutput<
             List<WorkloadIdentityPoolManagedIdentityAttestationRule>?>(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_bundle/feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_bundle.dart';
 import '../feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_template_library/feature_fleet_default_member_config_policycontroller_policy_controller_hub_config_policy_content_template_library.dart';
 
@@ -25,7 +25,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
     final map = <String, dynamic>{};
     final bundlesValue = bundles;
     if (bundlesValue != null) {
-      map['bundles'] = Input.encodeList<
+      map['bundles'] = pulumi.Input.encodeList<
           FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle,
           Map<String, dynamic>>(bundlesValue, (value) => value.toMap());
     }
@@ -41,7 +41,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent(
       bundles: map['bundles'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>(
               map['bundles'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_service_property_extended_metadata/service_service_property_extended_metadata.dart';
 import '../service_service_property_functional_type/service_service_property_functional_type.dart';
 import '../service_service_property_identity/service_service_property_identity.dart';
@@ -52,13 +52,13 @@ class ServiceServiceProperty {
     final map = <String, dynamic>{};
     final extendedMetadatasValue = extendedMetadatas;
     if (extendedMetadatasValue != null) {
-      map['extendedMetadatas'] = Input.encodeList<
+      map['extendedMetadatas'] = pulumi.Input.encodeList<
               ServiceServicePropertyExtendedMetadata, Map<String, dynamic>>(
           extendedMetadatasValue, (value) => value.toMap());
     }
     final functionalTypesValue = functionalTypes;
     if (functionalTypesValue != null) {
-      map['functionalTypes'] = Input.encodeList<
+      map['functionalTypes'] = pulumi.Input.encodeList<
           ServiceServicePropertyFunctionalType,
           Map<String, dynamic>>(functionalTypesValue, (value) => value.toMap());
     }
@@ -68,7 +68,8 @@ class ServiceServiceProperty {
     }
     final identitiesValue = identities;
     if (identitiesValue != null) {
-      map['identities'] = Input.encodeList<ServiceServicePropertyIdentity,
+      map['identities'] = pulumi.Input.encodeList<
+          ServiceServicePropertyIdentity,
           Map<String, dynamic>>(identitiesValue, (value) => value.toMap());
     }
     final locationValue = location;
@@ -77,7 +78,7 @@ class ServiceServiceProperty {
     }
     final registrationTypesValue = registrationTypes;
     if (registrationTypesValue != null) {
-      map['registrationTypes'] = Input.encodeList<
+      map['registrationTypes'] = pulumi.Input.encodeList<
               ServiceServicePropertyRegistrationType, Map<String, dynamic>>(
           registrationTypesValue, (value) => value.toMap());
     }
@@ -92,13 +93,13 @@ class ServiceServiceProperty {
     return ServiceServiceProperty(
       extendedMetadatas: map['extendedMetadatas'] == null
           ? null
-          : Input.decodeList<ServiceServicePropertyExtendedMetadata>(
+          : pulumi.Input.decodeList<ServiceServicePropertyExtendedMetadata>(
               map['extendedMetadatas'],
               (value) => ServiceServicePropertyExtendedMetadata.fromMap(
                   (value as Map).cast<String, dynamic>())),
       functionalTypes: map['functionalTypes'] == null
           ? null
-          : Input.decodeList<ServiceServicePropertyFunctionalType>(
+          : pulumi.Input.decodeList<ServiceServicePropertyFunctionalType>(
               map['functionalTypes'],
               (value) => ServiceServicePropertyFunctionalType.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -106,14 +107,14 @@ class ServiceServiceProperty {
           map['gcpProject'] == null ? null : map['gcpProject'] as String,
       identities: map['identities'] == null
           ? null
-          : Input.decodeList<ServiceServicePropertyIdentity>(
+          : pulumi.Input.decodeList<ServiceServicePropertyIdentity>(
               map['identities'],
               (value) => ServiceServicePropertyIdentity.fromMap(
                   (value as Map).cast<String, dynamic>())),
       location: map['location'] == null ? null : map['location'] as String,
       registrationTypes: map['registrationTypes'] == null
           ? null
-          : Input.decodeList<ServiceServicePropertyRegistrationType>(
+          : pulumi.Input.decodeList<ServiceServicePropertyRegistrationType>(
               map['registrationTypes'],
               (value) => ServiceServicePropertyRegistrationType.fromMap(
                   (value as Map).cast<String, dynamic>())),

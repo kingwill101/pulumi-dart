@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosting_release_args.dart';
 
 /// A Release is a particular collection of configurations that is set to be public at a particular time.
@@ -53,24 +53,24 @@ import 'hosting_release_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
 /// ```
-class HostingRelease extends CustomResource {
+class HostingRelease extends pulumi.CustomResource {
   /// The ID of the channel to which the release belongs. If not provided, the release will
   /// belong to the default "live" channel
-  late final Output<String?> channelId;
+  late final pulumi.Output<String?> channelId;
 
   /// The deploy description when the release was created. The value can be up to 512 characters.
-  late final Output<String?> message;
+  late final pulumi.Output<String?> message;
 
   /// The unique identifier for the release, in either of the following formats:
   /// sites/SITE_ID/releases/RELEASE_ID
   /// sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The unique identifier for the Release.
-  late final Output<String> releaseId;
+  late final pulumi.Output<String> releaseId;
 
   /// Required. The ID of the site to which the release belongs.
-  late final Output<String> siteId;
+  late final pulumi.Output<String> siteId;
 
   /// The type of the release; indicates what happened to the content of the site. There is no need to specify
   /// `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
@@ -78,23 +78,23 @@ class HostingRelease extends CustomResource {
   /// ROLLBACK: The release points back to a previously deployed version. Output only.
   /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
   /// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
   /// The content of the version specified will be actively displayed on the appropriate URL.
   /// The Version must belong to the same site as in the `site_id`.
   /// This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
-  late final Output<String?> versionName;
+  late final pulumi.Output<String?> versionName;
 
   HostingRelease(
     String name, {
     HostingReleaseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/hostingRelease:HostingRelease',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.channelId = registerOutput<String?>('channelId');
     this.message = registerOutput<String?>('message');

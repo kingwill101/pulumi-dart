@@ -1,4 +1,4 @@
 library module_memcache_instance;
 
-export 'instance/instance9.dart';
-export 'instance/instance_args9.dart';
+export 'instance/instance_memcache.dart';
+export 'instance/instance_memcache_args.dart';

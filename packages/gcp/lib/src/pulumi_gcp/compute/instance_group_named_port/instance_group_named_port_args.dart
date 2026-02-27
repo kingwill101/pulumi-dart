@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for InstanceGroupNamedPort.
 class InstanceGroupNamedPortArgs {
   /// The name of the instance group.
-  final Input<String> group;
+  final pulumi.Input<String> group;
 
   /// The name for this named port. The name must be 1-63 characters
   /// long, and comply with RFC1035.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The port number, which can be a value between 1 and 65535.
-  final Input<int> port;
+  final pulumi.Input<int> port;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The zone of the instance group.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   InstanceGroupNamedPortArgs({
     required this.group,
@@ -50,11 +50,11 @@ class InstanceGroupNamedPortArgs {
 
   factory InstanceGroupNamedPortArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupNamedPortArgs(
-      group: Input.asInput<String>(map['group']),
-      name: Input.asOptionalInput<String>(map['name']),
-      port: Input.asInput<int>(map['port']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      group: pulumi.Input.asInput<String>(map['group']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      port: pulumi.Input.asInput<int>(map['port']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

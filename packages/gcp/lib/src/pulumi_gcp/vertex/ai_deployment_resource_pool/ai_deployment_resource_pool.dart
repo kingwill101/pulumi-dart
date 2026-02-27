@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_deployment_resource_pool_dedicated_resources/ai_deployment_resource_pool_dedicated_resources.dart';
 import 'ai_deployment_resource_pool_args.dart';
 
@@ -46,34 +46,34 @@ import 'ai_deployment_resource_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default {{name}}
 /// ```
-class AiDeploymentResourcePool extends CustomResource {
+class AiDeploymentResourcePool extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The underlying dedicated resources that the deployment resource pool uses.
   /// Structure is documented below.
-  late final Output<AiDeploymentResourcePoolDedicatedResources?>
+  late final pulumi.Output<AiDeploymentResourcePoolDedicatedResources?>
       dedicatedResources;
 
   /// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The region of deployment resource pool. eg us-central1
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   AiDeploymentResourcePool(
     String name, {
     AiDeploymentResourcePoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.dedicatedResources =

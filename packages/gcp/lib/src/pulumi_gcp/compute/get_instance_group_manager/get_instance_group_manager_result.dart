@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_group_manager_all_instances_config/get_instance_group_manager_all_instances_config.dart';
 import '../get_instance_group_manager_auto_healing_policy/get_instance_group_manager_auto_healing_policy.dart';
 import '../get_instance_group_manager_instance_lifecycle_policy/get_instance_group_manager_instance_lifecycle_policy.dart';
@@ -90,10 +90,10 @@ class GetInstanceGroupManagerResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allInstancesConfigs'] = Input.encodeList<
+    map['allInstancesConfigs'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerAllInstancesConfig,
         Map<String, dynamic>>(allInstancesConfigs, (value) => value.toMap());
-    map['autoHealingPolicies'] = Input.encodeList<
+    map['autoHealingPolicies'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerAutoHealingPolicy,
         Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap());
     map['baseInstanceName'] = baseInstanceName;
@@ -103,7 +103,7 @@ class GetInstanceGroupManagerResult {
     map['id'] = id;
     map['instanceGroup'] = instanceGroup;
     map['instanceGroupManagerId'] = instanceGroupManagerId;
-    map['instanceLifecyclePolicies'] = Input.encodeList<
+    map['instanceLifecyclePolicies'] = pulumi.Input.encodeList<
             GetInstanceGroupManagerInstanceLifecyclePolicy,
             Map<String, dynamic>>(
         instanceLifecyclePolicies, (value) => value.toMap());
@@ -112,47 +112,46 @@ class GetInstanceGroupManagerResult {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['namedPorts'] = Input.encodeList<GetInstanceGroupManagerNamedPort,
+    map['namedPorts'] = pulumi.Input.encodeList<
+        GetInstanceGroupManagerNamedPort,
         Map<String, dynamic>>(namedPorts, (value) => value.toMap());
     map['operation'] = operation;
-    map['params'] =
-        Input.encodeList<GetInstanceGroupManagerParam, Map<String, dynamic>>(
-            params, (value) => value.toMap());
+    map['params'] = pulumi.Input.encodeList<GetInstanceGroupManagerParam,
+        Map<String, dynamic>>(params, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['resourcePolicies'] = Input.encodeList<
+    map['resourcePolicies'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerResourcePolicy,
         Map<String, dynamic>>(resourcePolicies, (value) => value.toMap());
     final selfLinkValue = selfLink;
     if (selfLinkValue != null) {
       map['selfLink'] = selfLinkValue;
     }
-    map['standbyPolicies'] = Input.encodeList<
+    map['standbyPolicies'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerStandbyPolicy,
         Map<String, dynamic>>(standbyPolicies, (value) => value.toMap());
-    map['statefulDisks'] = Input.encodeList<GetInstanceGroupManagerStatefulDisk,
+    map['statefulDisks'] = pulumi.Input.encodeList<
+        GetInstanceGroupManagerStatefulDisk,
         Map<String, dynamic>>(statefulDisks, (value) => value.toMap());
-    map['statefulExternalIps'] = Input.encodeList<
+    map['statefulExternalIps'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerStatefulExternalIp,
         Map<String, dynamic>>(statefulExternalIps, (value) => value.toMap());
-    map['statefulInternalIps'] = Input.encodeList<
+    map['statefulInternalIps'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerStatefulInternalIp,
         Map<String, dynamic>>(statefulInternalIps, (value) => value.toMap());
-    map['statuses'] =
-        Input.encodeList<GetInstanceGroupManagerStatus, Map<String, dynamic>>(
-            statuses, (value) => value.toMap());
+    map['statuses'] = pulumi.Input.encodeList<GetInstanceGroupManagerStatus,
+        Map<String, dynamic>>(statuses, (value) => value.toMap());
     map['targetPools'] = targetPools;
     map['targetSize'] = targetSize;
     map['targetStoppedSize'] = targetStoppedSize;
     map['targetSuspendedSize'] = targetSuspendedSize;
-    map['updatePolicies'] = Input.encodeList<
+    map['updatePolicies'] = pulumi.Input.encodeList<
         GetInstanceGroupManagerUpdatePolicy,
         Map<String, dynamic>>(updatePolicies, (value) => value.toMap());
-    map['versions'] =
-        Input.encodeList<GetInstanceGroupManagerVersion, Map<String, dynamic>>(
-            versions, (value) => value.toMap());
+    map['versions'] = pulumi.Input.encodeList<GetInstanceGroupManagerVersion,
+        Map<String, dynamic>>(versions, (value) => value.toMap());
     map['waitForInstances'] = waitForInstances;
     map['waitForInstancesStatus'] = waitForInstancesStatus;
     final zoneValue = zone;
@@ -165,12 +164,12 @@ class GetInstanceGroupManagerResult {
   factory GetInstanceGroupManagerResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerResult(
       allInstancesConfigs:
-          Input.decodeList<GetInstanceGroupManagerAllInstancesConfig>(
+          pulumi.Input.decodeList<GetInstanceGroupManagerAllInstancesConfig>(
               map['allInstancesConfigs'],
               (value) => GetInstanceGroupManagerAllInstancesConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       autoHealingPolicies:
-          Input.decodeList<GetInstanceGroupManagerAutoHealingPolicy>(
+          pulumi.Input.decodeList<GetInstanceGroupManagerAutoHealingPolicy>(
               map['autoHealingPolicies'],
               (value) => GetInstanceGroupManagerAutoHealingPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -181,47 +180,50 @@ class GetInstanceGroupManagerResult {
       id: map['id'] as String,
       instanceGroup: map['instanceGroup'] as String,
       instanceGroupManagerId: map['instanceGroupManagerId'] as int,
-      instanceLifecyclePolicies:
-          Input.decodeList<GetInstanceGroupManagerInstanceLifecyclePolicy>(
-              map['instanceLifecyclePolicies'],
-              (value) => GetInstanceGroupManagerInstanceLifecyclePolicy.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      instanceLifecyclePolicies: pulumi.Input.decodeList<
+              GetInstanceGroupManagerInstanceLifecyclePolicy>(
+          map['instanceLifecyclePolicies'],
+          (value) => GetInstanceGroupManagerInstanceLifecyclePolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       listManagedInstancesResults: map['listManagedInstancesResults'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      namedPorts: Input.decodeList<GetInstanceGroupManagerNamedPort>(
+      namedPorts: pulumi.Input.decodeList<GetInstanceGroupManagerNamedPort>(
           map['namedPorts'],
           (value) => GetInstanceGroupManagerNamedPort.fromMap(
               (value as Map).cast<String, dynamic>())),
       operation: map['operation'] as String,
-      params: Input.decodeList<GetInstanceGroupManagerParam>(
+      params: pulumi.Input.decodeList<GetInstanceGroupManagerParam>(
           map['params'],
           (value) => GetInstanceGroupManagerParam.fromMap(
               (value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
-      resourcePolicies: Input.decodeList<GetInstanceGroupManagerResourcePolicy>(
-          map['resourcePolicies'],
-          (value) => GetInstanceGroupManagerResourcePolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      resourcePolicies:
+          pulumi.Input.decodeList<GetInstanceGroupManagerResourcePolicy>(
+              map['resourcePolicies'],
+              (value) => GetInstanceGroupManagerResourcePolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
-      standbyPolicies: Input.decodeList<GetInstanceGroupManagerStandbyPolicy>(
-          map['standbyPolicies'],
-          (value) => GetInstanceGroupManagerStandbyPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      statefulDisks: Input.decodeList<GetInstanceGroupManagerStatefulDisk>(
-          map['statefulDisks'],
-          (value) => GetInstanceGroupManagerStatefulDisk.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      standbyPolicies:
+          pulumi.Input.decodeList<GetInstanceGroupManagerStandbyPolicy>(
+              map['standbyPolicies'],
+              (value) => GetInstanceGroupManagerStandbyPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      statefulDisks:
+          pulumi.Input.decodeList<GetInstanceGroupManagerStatefulDisk>(
+              map['statefulDisks'],
+              (value) => GetInstanceGroupManagerStatefulDisk.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       statefulExternalIps:
-          Input.decodeList<GetInstanceGroupManagerStatefulExternalIp>(
+          pulumi.Input.decodeList<GetInstanceGroupManagerStatefulExternalIp>(
               map['statefulExternalIps'],
               (value) => GetInstanceGroupManagerStatefulExternalIp.fromMap(
                   (value as Map).cast<String, dynamic>())),
       statefulInternalIps:
-          Input.decodeList<GetInstanceGroupManagerStatefulInternalIp>(
+          pulumi.Input.decodeList<GetInstanceGroupManagerStatefulInternalIp>(
               map['statefulInternalIps'],
               (value) => GetInstanceGroupManagerStatefulInternalIp.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      statuses: Input.decodeList<GetInstanceGroupManagerStatus>(
+      statuses: pulumi.Input.decodeList<GetInstanceGroupManagerStatus>(
           map['statuses'],
           (value) => GetInstanceGroupManagerStatus.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -229,11 +231,12 @@ class GetInstanceGroupManagerResult {
       targetSize: map['targetSize'] as int,
       targetStoppedSize: map['targetStoppedSize'] as int,
       targetSuspendedSize: map['targetSuspendedSize'] as int,
-      updatePolicies: Input.decodeList<GetInstanceGroupManagerUpdatePolicy>(
-          map['updatePolicies'],
-          (value) => GetInstanceGroupManagerUpdatePolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      versions: Input.decodeList<GetInstanceGroupManagerVersion>(
+      updatePolicies:
+          pulumi.Input.decodeList<GetInstanceGroupManagerUpdatePolicy>(
+              map['updatePolicies'],
+              (value) => GetInstanceGroupManagerUpdatePolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      versions: pulumi.Input.decodeList<GetInstanceGroupManagerVersion>(
           map['versions'],
           (value) => GetInstanceGroupManagerVersion.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_cluster_network_config_control_plane_v2_config_control_plane_ip_block_ip/vmware_cluster_network_config_control_plane_v2_config_control_plane_ip_block_ip.dart';
 
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
@@ -29,7 +29,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
     }
     final ipsValue = ips;
     if (ipsValue != null) {
-      map['ips'] = Input.encodeList<
+      map['ips'] = pulumi.Input.encodeList<
           VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp,
           Map<String, dynamic>>(ipsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
       gateway: map['gateway'] == null ? null : map['gateway'] as String,
       ips: map['ips'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp>(
               map['ips'],
               (value) =>

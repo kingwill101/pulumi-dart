@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_region_security_policy_rule_match/get_region_security_policy_rule_match.dart';
 import '../get_region_security_policy_rule_network_match/get_region_security_policy_rule_network_match.dart';
 import '../get_region_security_policy_rule_preconfigured_waf_config/get_region_security_policy_rule_preconfigured_waf_config.dart';
@@ -68,18 +68,18 @@ class GetRegionSecurityPolicyRule {
     final map = <String, dynamic>{};
     map['action'] = action;
     map['description'] = description;
-    map['matches'] = Input.encodeList<GetRegionSecurityPolicyRuleMatch,
+    map['matches'] = pulumi.Input.encodeList<GetRegionSecurityPolicyRuleMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
-    map['networkMatches'] = Input.encodeList<
+    map['networkMatches'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyRuleNetworkMatch,
         Map<String, dynamic>>(networkMatches, (value) => value.toMap());
-    map['preconfiguredWafConfigs'] = Input.encodeList<
+    map['preconfiguredWafConfigs'] = pulumi.Input.encodeList<
             GetRegionSecurityPolicyRulePreconfiguredWafConfig,
             Map<String, dynamic>>(
         preconfiguredWafConfigs, (value) => value.toMap());
     map['preview'] = preview;
     map['priority'] = priority;
-    map['rateLimitOptions'] = Input.encodeList<
+    map['rateLimitOptions'] = pulumi.Input.encodeList<
         GetRegionSecurityPolicyRuleRateLimitOption,
         Map<String, dynamic>>(rateLimitOptions, (value) => value.toMap());
     return map;
@@ -89,24 +89,24 @@ class GetRegionSecurityPolicyRule {
     return GetRegionSecurityPolicyRule(
       action: map['action'] as String,
       description: map['description'] as String,
-      matches: Input.decodeList<GetRegionSecurityPolicyRuleMatch>(
+      matches: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleMatch>(
           map['matches'],
           (value) => GetRegionSecurityPolicyRuleMatch.fromMap(
               (value as Map).cast<String, dynamic>())),
-      networkMatches: Input.decodeList<GetRegionSecurityPolicyRuleNetworkMatch>(
-          map['networkMatches'],
-          (value) => GetRegionSecurityPolicyRuleNetworkMatch.fromMap(
+      networkMatches:
+          pulumi.Input.decodeList<GetRegionSecurityPolicyRuleNetworkMatch>(
+              map['networkMatches'],
+              (value) => GetRegionSecurityPolicyRuleNetworkMatch.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      preconfiguredWafConfigs: pulumi.Input.decodeList<
+              GetRegionSecurityPolicyRulePreconfiguredWafConfig>(
+          map['preconfiguredWafConfigs'],
+          (value) => GetRegionSecurityPolicyRulePreconfiguredWafConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      preconfiguredWafConfigs:
-          Input.decodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfig>(
-              map['preconfiguredWafConfigs'],
-              (value) =>
-                  GetRegionSecurityPolicyRulePreconfiguredWafConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
       preview: map['preview'] as bool,
       priority: map['priority'] as int,
       rateLimitOptions:
-          Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOption>(
+          pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOption>(
               map['rateLimitOptions'],
               (value) => GetRegionSecurityPolicyRuleRateLimitOption.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../principal_access_boundary_policy_details_rule/principal_access_boundary_policy_details_rule.dart';
 
 class PrincipalAccessBoundaryPolicyDetails {
@@ -25,7 +25,8 @@ class PrincipalAccessBoundaryPolicyDetails {
     if (enforcementVersionValue != null) {
       map['enforcementVersion'] = enforcementVersionValue;
     }
-    map['rules'] = Input.encodeList<PrincipalAccessBoundaryPolicyDetailsRule,
+    map['rules'] = pulumi.Input.encodeList<
+        PrincipalAccessBoundaryPolicyDetailsRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
@@ -36,7 +37,7 @@ class PrincipalAccessBoundaryPolicyDetails {
       enforcementVersion: map['enforcementVersion'] == null
           ? null
           : map['enforcementVersion'] as String,
-      rules: Input.decodeList<PrincipalAccessBoundaryPolicyDetailsRule>(
+      rules: pulumi.Input.decodeList<PrincipalAccessBoundaryPolicyDetailsRule>(
           map['rules'],
           (value) => PrincipalAccessBoundaryPolicyDetailsRule.fromMap(
               (value as Map).cast<String, dynamic>())),

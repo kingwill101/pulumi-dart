@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_topic_ingestion_data_source_setting_cloud_storage_text_format/get_topic_ingestion_data_source_setting_cloud_storage_text_format.dart';
 
 class GetTopicIngestionDataSourceSettingCloudStorage {
@@ -51,7 +51,7 @@ class GetTopicIngestionDataSourceSettingCloudStorage {
     map['matchGlob'] = matchGlob;
     map['minimumObjectCreateTime'] = minimumObjectCreateTime;
     map['pubsubAvroFormats'] = pubsubAvroFormats;
-    map['textFormats'] = Input.encodeList<
+    map['textFormats'] = pulumi.Input.encodeList<
         GetTopicIngestionDataSourceSettingCloudStorageTextFormat,
         Map<String, dynamic>>(textFormats, (value) => value.toMap());
     return map;
@@ -66,7 +66,7 @@ class GetTopicIngestionDataSourceSettingCloudStorage {
       minimumObjectCreateTime: map['minimumObjectCreateTime'] as String,
       pubsubAvroFormats:
           (map['pubsubAvroFormats'] as List).cast<Map<String, dynamic>>(),
-      textFormats: Input.decodeList<
+      textFormats: pulumi.Input.decodeList<
               GetTopicIngestionDataSourceSettingCloudStorageTextFormat>(
           map['textFormats'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../occurence_attestation/occurence_attestation.dart';
 import 'occurence_args.dart';
 
@@ -42,7 +42,7 @@ import 'occurence_args.dart';
 /// ```sh
 /// $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
 /// ```
-class Occurence extends CustomResource {
+class Occurence extends pulumi.CustomResource {
   /// Occurrence that represents a single "attestation". The authenticity
   /// of an attestation can be verified using the attached signature.
   /// If the verifier trusts the public key of the signer, then verifying
@@ -52,48 +52,48 @@ class Occurence extends CustomResource {
   /// know the authority and artifact to be verified) and intent (for
   /// which authority this attestation was intended to sign.
   /// Structure is documented below.
-  late final Output<OccurenceAttestation> attestation;
+  late final pulumi.Output<OccurenceAttestation> attestation;
 
   /// The time when the repository was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The note kind which explicitly denotes which of the occurrence
   /// details are specified. This field can be used as a filter in list
   /// requests.
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// The name of the occurrence.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The analysis note associated with this occurrence, in the form of
   /// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
   /// filter in list requests.
-  late final Output<String> noteName;
+  late final pulumi.Output<String> noteName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// A description of actions that can be taken to remedy the note.
-  late final Output<String?> remediation;
+  late final pulumi.Output<String?> remediation;
 
   /// Required. Immutable. A URI that represents the resource for which
   /// the occurrence applies. For example,
   /// https://gcr.io/project/image@sha256:123abc for a Docker image.
-  late final Output<String> resourceUri;
+  late final pulumi.Output<String> resourceUri;
 
   /// The time when the repository was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Occurence(
     String name, {
     OccurenceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:containeranalysis/occurence:Occurence',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attestation = registerOutput<OccurenceAttestation>('attestation');
     this.createTime = registerOutput<String>('createTime');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_config_data_retention_config_airflow_metadata_retention_config/environment_config_data_retention_config_airflow_metadata_retention_config.dart';
 import '../environment_config_data_retention_config_task_logs_retention_config/environment_config_data_retention_config_task_logs_retention_config.dart';
 
@@ -24,14 +24,14 @@ class EnvironmentConfigDataRetentionConfig {
     final airflowMetadataRetentionConfigsValue =
         airflowMetadataRetentionConfigs;
     if (airflowMetadataRetentionConfigsValue != null) {
-      map['airflowMetadataRetentionConfigs'] = Input.encodeList<
+      map['airflowMetadataRetentionConfigs'] = pulumi.Input.encodeList<
               EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig,
               Map<String, dynamic>>(
           airflowMetadataRetentionConfigsValue, (value) => value.toMap());
     }
     final taskLogsRetentionConfigsValue = taskLogsRetentionConfigs;
     if (taskLogsRetentionConfigsValue != null) {
-      map['taskLogsRetentionConfigs'] = Input.encodeList<
+      map['taskLogsRetentionConfigs'] = pulumi.Input.encodeList<
               EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig,
               Map<String, dynamic>>(
           taskLogsRetentionConfigsValue, (value) => value.toMap());
@@ -45,7 +45,7 @@ class EnvironmentConfigDataRetentionConfig {
       airflowMetadataRetentionConfigs: map['airflowMetadataRetentionConfigs'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>(
               map['airflowMetadataRetentionConfigs'],
               (value) =>
@@ -53,7 +53,7 @@ class EnvironmentConfigDataRetentionConfig {
                       .fromMap((value as Map).cast<String, dynamic>())),
       taskLogsRetentionConfigs: map['taskLogsRetentionConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>(
               map['taskLogsRetentionConfigs'],
               (value) =>

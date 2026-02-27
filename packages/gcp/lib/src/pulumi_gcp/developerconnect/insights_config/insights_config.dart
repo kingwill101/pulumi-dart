@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../insights_config_artifact_config/insights_config_artifact_config.dart';
 import '../insights_config_error/insights_config_error.dart';
 import '../insights_config_runtime_config/insights_config_runtime_config.dart';
@@ -38,70 +38,70 @@ import 'insights_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:developerconnect/insightsConfig:InsightsConfig default {{location}}/{{insights_config_id}}
 /// ```
-class InsightsConfig extends CustomResource {
+class InsightsConfig extends pulumi.CustomResource {
   /// User specified annotations. See https://google.aip.dev/148#annotations
   /// for more details such as format and size limitations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// The name of the App Hub Application.
   /// Format:
   /// projects/{project}/locations/{location}/applications/{application}
-  late final Output<String> appHubApplication;
+  late final pulumi.Output<String> appHubApplication;
 
   /// The artifact configurations of the artifacts that are deployed.
   /// Structure is documented below.
-  late final Output<List<InsightsConfigArtifactConfig>?> artifactConfigs;
+  late final pulumi.Output<List<InsightsConfigArtifactConfig>?> artifactConfigs;
 
   /// [Output only] Create timestamp
-  late final Output<String> createTime;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Any errors that occurred while setting up the InsightsConfig.
   /// Each error will be in the format: `field_name: error_message`, e.g.
   /// GetAppHubApplication: Permission denied while getting App Hub
   /// application. Please grant permissions to the P4SA.
   /// Structure is documented below.
-  late final Output<List<InsightsConfigError>> errors;
+  late final pulumi.Output<List<InsightsConfigError>> errors;
 
   /// ID of the requesting InsightsConfig.
-  late final Output<String> insightsConfigId;
+  late final pulumi.Output<String> insightsConfigId;
 
   /// Set of labels associated with an InsightsConfig.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The name of the InsightsConfig.
   /// Format:
   /// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Reconciling (https://google.aip.dev/128#reconciliation).
   /// Set to true if the current state of InsightsConfig does not match the
   /// user's intended state, and the service is actively updating the resource to
   /// reconcile them. This can happen due to user-triggered updates or
   /// system actions like failover or maintenance.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// The runtime configurations where the application is deployed.
   /// Structure is documented below.
-  late final Output<List<InsightsConfigRuntimeConfig>> runtimeConfigs;
+  late final pulumi.Output<List<InsightsConfigRuntimeConfig>> runtimeConfigs;
 
   /// (Output)
   /// The state of the Runtime.
@@ -109,20 +109,20 @@ class InsightsConfig extends CustomResource {
   /// STATE_UNSPECIFIED
   /// LINKED
   /// UNLINKED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// [Output only] Update timestamp
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   InsightsConfig(
     String name, {
     InsightsConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:developerconnect/insightsConfig:InsightsConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.appHubApplication = registerOutput<String>('appHubApplication');

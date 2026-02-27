@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../transfer_agent_pool_bandwidth_limit/transfer_agent_pool_bandwidth_limit.dart';
 
 /// The set of arguments for TransferAgentPool.
 class TransferAgentPoolArgs {
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   /// Structure is documented below.
-  final Input<TransferAgentPoolBandwidthLimit>? bandwidthLimit;
+  final pulumi.Input<TransferAgentPoolBandwidthLimit>? bandwidthLimit;
 
   /// Specifies the client-specified AgentPool description.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The ID of the agent pool to create.
   /// The agentPoolId must meet the following requirements:
@@ -20,11 +20,11 @@ class TransferAgentPoolArgs {
   /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
   /// * One or more numerals or lowercase ASCII characters.
   /// As expressed by the regular expression: ^(?!goog)a-z?$.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   TransferAgentPoolArgs({
     this.bandwidthLimit,
@@ -37,7 +37,7 @@ class TransferAgentPoolArgs {
     final map = <String, dynamic>{};
     final bandwidthLimitValue = bandwidthLimit;
     if (bandwidthLimitValue != null) {
-      map['bandwidthLimit'] = Input.mapOptionalInputValue<
+      map['bandwidthLimit'] = pulumi.Input.mapOptionalInputValue<
           TransferAgentPoolBandwidthLimit,
           Map<String, dynamic>>(bandwidthLimitValue, (value) => value.toMap());
     }
@@ -58,11 +58,12 @@ class TransferAgentPoolArgs {
 
   factory TransferAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return TransferAgentPoolArgs(
-      bandwidthLimit: Input.asOptionalInput<TransferAgentPoolBandwidthLimit>(
-          map['bandwidthLimit']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
+      bandwidthLimit:
+          pulumi.Input.asOptionalInput<TransferAgentPoolBandwidthLimit>(
+              map['bandwidthLimit']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

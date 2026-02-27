@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_organization_source_args.dart';
 
 /// A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -37,34 +37,34 @@ import 'v2_organization_source_args.dart';
 /// ```sh
 /// $ pulumi import gcp:securitycenter/v2OrganizationSource:V2OrganizationSource default {{organization}}/{{name}}
 /// ```
-class V2OrganizationSource extends CustomResource {
+class V2OrganizationSource extends pulumi.CustomResource {
   /// The description of the source (max of 1024 characters).
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The source’s display name. A source’s display name must be unique
   /// amongst its siblings, for example, two sources with the same parent
   /// can't share the same display name. The display name must start and end
   /// with a letter or digit, may contain letters, digits, spaces, hyphens,
   /// and underscores, and can be no longer than 32 characters.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The resource name of this source, in the format
   /// `organizations/{{organization}}/sources/{{source}}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
-  late final Output<String> organization;
+  late final pulumi.Output<String> organization;
 
   V2OrganizationSource(
     String name, {
     V2OrganizationSourceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:securitycenter/v2OrganizationSource:V2OrganizationSource',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String>('displayName');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_client_config_result.dart';
 
 /// ## Example Usage
@@ -8,13 +8,13 @@ import 'get_client_config_result.dart';
 ///
 /// ### Configure Kubernetes Provider With OAuth2 Access Token
 Future<GetClientConfigResult> getClientConfig({
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:organizations/getClientConfig:getClientConfig',
     const <String, dynamic>{},
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientConfigResult.fromMap(result);
 }

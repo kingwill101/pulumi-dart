@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_supported_database_flags_supported_database_flag/get_supported_database_flags_supported_database_flag.dart';
 
 /// Result data returned by getSupportedDatabaseFlags.
@@ -29,7 +29,7 @@ class GetSupportedDatabaseFlagsResult {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['supportedDatabaseFlags'] = Input.encodeList<
+    map['supportedDatabaseFlags'] = pulumi.Input.encodeList<
         GetSupportedDatabaseFlagsSupportedDatabaseFlag,
         Map<String, dynamic>>(supportedDatabaseFlags, (value) => value.toMap());
     return map;
@@ -40,11 +40,11 @@ class GetSupportedDatabaseFlagsResult {
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      supportedDatabaseFlags:
-          Input.decodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag>(
-              map['supportedDatabaseFlags'],
-              (value) => GetSupportedDatabaseFlagsSupportedDatabaseFlag.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      supportedDatabaseFlags: pulumi.Input.decodeList<
+              GetSupportedDatabaseFlagsSupportedDatabaseFlag>(
+          map['supportedDatabaseFlags'],
+          (value) => GetSupportedDatabaseFlagsSupportedDatabaseFlag.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

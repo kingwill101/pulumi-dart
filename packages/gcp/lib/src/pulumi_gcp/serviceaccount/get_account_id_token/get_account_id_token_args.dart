@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAccountIdToken.
 class GetAccountIdTokenArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
-  final Input<List<String>>? delegates;
+  final pulumi.Input<List<String>>? delegates;
 
   /// Include the verified email in the claim. Used only when using impersonation mode.
-  final Input<bool>? includeEmail;
+  final pulumi.Input<bool>? includeEmail;
 
   /// The audience claim for the `id_token`.
-  final Input<String> targetAudience;
+  final pulumi.Input<String> targetAudience;
 
   /// The email of the service account being impersonated.  Used only when using impersonation mode.
-  final Input<String>? targetServiceAccount;
+  final pulumi.Input<String>? targetServiceAccount;
 
   GetAccountIdTokenArgs({
     this.delegates,
@@ -43,11 +43,11 @@ class GetAccountIdTokenArgs {
 
   factory GetAccountIdTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountIdTokenArgs(
-      delegates: Input.asOptionalInput<List<String>>(map['delegates']),
-      includeEmail: Input.asOptionalInput<bool>(map['includeEmail']),
-      targetAudience: Input.asInput<String>(map['targetAudience']),
+      delegates: pulumi.Input.asOptionalInput<List<String>>(map['delegates']),
+      includeEmail: pulumi.Input.asOptionalInput<bool>(map['includeEmail']),
+      targetAudience: pulumi.Input.asInput<String>(map['targetAudience']),
       targetServiceAccount:
-          Input.asOptionalInput<String>(map['targetServiceAccount']),
+          pulumi.Input.asOptionalInput<String>(map['targetServiceAccount']),
     );
   }
 }

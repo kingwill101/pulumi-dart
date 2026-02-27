@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_status_condition/service_status_condition.dart';
 import '../service_status_traffic/service_status_traffic.dart';
 
@@ -54,7 +54,7 @@ class ServiceStatus {
     final conditionsValue = conditions;
     if (conditionsValue != null) {
       map['conditions'] =
-          Input.encodeList<ServiceStatusCondition, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ServiceStatusCondition, Map<String, dynamic>>(
               conditionsValue, (value) => value.toMap());
     }
     final latestCreatedRevisionNameValue = latestCreatedRevisionName;
@@ -72,7 +72,7 @@ class ServiceStatus {
     final trafficsValue = traffics;
     if (trafficsValue != null) {
       map['traffics'] =
-          Input.encodeList<ServiceStatusTraffic, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ServiceStatusTraffic, Map<String, dynamic>>(
               trafficsValue, (value) => value.toMap());
     }
     final urlValue = url;
@@ -86,7 +86,7 @@ class ServiceStatus {
     return ServiceStatus(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<ServiceStatusCondition>(
+          : pulumi.Input.decodeList<ServiceStatusCondition>(
               map['conditions'],
               (value) => ServiceStatusCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -101,7 +101,7 @@ class ServiceStatus {
           : map['observedGeneration'] as int,
       traffics: map['traffics'] == null
           ? null
-          : Input.decodeList<ServiceStatusTraffic>(
+          : pulumi.Input.decodeList<ServiceStatusTraffic>(
               map['traffics'],
               (value) => ServiceStatusTraffic.fromMap(
                   (value as Map).cast<String, dynamic>())),

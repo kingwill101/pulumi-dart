@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../edge_cache_service_routing_path_matcher_route_rule_header_action_request_header_to_add/edge_cache_service_routing_path_matcher_route_rule_header_action_request_header_to_add.dart';
 import '../edge_cache_service_routing_path_matcher_route_rule_header_action_request_header_to_remove/edge_cache_service_routing_path_matcher_route_rule_header_action_request_header_to_remove.dart';
 import '../edge_cache_service_routing_path_matcher_route_rule_header_action_response_header_to_add/edge_cache_service_routing_path_matcher_route_rule_header_action_response_header_to_add.dart';
@@ -43,28 +43,28 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
     final map = <String, dynamic>{};
     final requestHeaderToAddsValue = requestHeaderToAdds;
     if (requestHeaderToAddsValue != null) {
-      map['requestHeaderToAdds'] = Input.encodeList<
+      map['requestHeaderToAdds'] = pulumi.Input.encodeList<
           EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd,
           Map<String,
               dynamic>>(requestHeaderToAddsValue, (value) => value.toMap());
     }
     final requestHeaderToRemovesValue = requestHeaderToRemoves;
     if (requestHeaderToRemovesValue != null) {
-      map['requestHeaderToRemoves'] = Input.encodeList<
+      map['requestHeaderToRemoves'] = pulumi.Input.encodeList<
           EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove,
           Map<String,
               dynamic>>(requestHeaderToRemovesValue, (value) => value.toMap());
     }
     final responseHeaderToAddsValue = responseHeaderToAdds;
     if (responseHeaderToAddsValue != null) {
-      map['responseHeaderToAdds'] = Input.encodeList<
+      map['responseHeaderToAdds'] = pulumi.Input.encodeList<
           EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd,
           Map<String,
               dynamic>>(responseHeaderToAddsValue, (value) => value.toMap());
     }
     final responseHeaderToRemovesValue = responseHeaderToRemoves;
     if (responseHeaderToRemovesValue != null) {
-      map['responseHeaderToRemoves'] = Input.encodeList<
+      map['responseHeaderToRemoves'] = pulumi.Input.encodeList<
           EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove,
           Map<String,
               dynamic>>(responseHeaderToRemovesValue, (value) => value.toMap());
@@ -77,7 +77,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(
       requestHeaderToAdds: map['requestHeaderToAdds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd>(
               map['requestHeaderToAdds'],
               (value) =>
@@ -85,7 +85,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
                       .fromMap((value as Map).cast<String, dynamic>())),
       requestHeaderToRemoves: map['requestHeaderToRemoves'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove>(
               map['requestHeaderToRemoves'],
               (value) =>
@@ -93,7 +93,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
                       .fromMap((value as Map).cast<String, dynamic>())),
       responseHeaderToAdds: map['responseHeaderToAdds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd>(
               map['responseHeaderToAdds'],
               (value) =>
@@ -101,7 +101,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
                       .fromMap((value as Map).cast<String, dynamic>())),
       responseHeaderToRemoves: map['responseHeaderToRemoves'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove>(
               map['responseHeaderToRemoves'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_aws/connection_aws.dart';
 import '../connection_azure/connection_azure.dart';
 import '../connection_cloud_resource/connection_cloud_resource.dart';
@@ -80,42 +80,42 @@ import 'connection_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
 /// ```
-class Connection extends CustomResource {
+class Connection extends pulumi.CustomResource {
   /// Connection properties specific to Amazon Web Services.
   /// Structure is documented below.
-  late final Output<ConnectionAws?> aws;
+  late final pulumi.Output<ConnectionAws?> aws;
 
   /// Container for connection properties specific to Azure.
   /// Structure is documented below.
-  late final Output<ConnectionAzure?> azure;
+  late final pulumi.Output<ConnectionAzure?> azure;
 
   /// Container for connection properties for delegation of access to GCP resources.
   /// Structure is documented below.
-  late final Output<ConnectionCloudResource?> cloudResource;
+  late final pulumi.Output<ConnectionCloudResource?> cloudResource;
 
   /// Connection properties specific to Cloud Spanner
   /// Structure is documented below.
-  late final Output<ConnectionCloudSpanner?> cloudSpanner;
+  late final pulumi.Output<ConnectionCloudSpanner?> cloudSpanner;
 
   /// Connection properties specific to the Cloud SQL.
   /// Structure is documented below.
-  late final Output<ConnectionCloudSql?> cloudSql;
+  late final pulumi.Output<ConnectionCloudSql?> cloudSql;
 
   /// Optional connection id that should be assigned to the created connection.
-  late final Output<String> connectionId;
+  late final pulumi.Output<String> connectionId;
 
   /// A descriptive description for the connection
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A descriptive name for the connection
-  late final Output<String?> friendlyName;
+  late final pulumi.Output<String?> friendlyName;
 
   /// True if the connection has credential assigned.
-  late final Output<bool> hasCredential;
+  late final pulumi.Output<bool> hasCredential;
 
   /// Optional. The Cloud KMS key that is used for encryption.
   /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
-  late final Output<String?> kmsKeyName;
+  late final pulumi.Output<String?> kmsKeyName;
 
   /// The geographic location where the connection should reside.
   /// Cloud SQL instance must be in the same location as the connection
@@ -124,29 +124,29 @@ class Connection extends CustomResource {
   /// Spanner Connections same as spanner region
   /// AWS allowed regions are aws-us-east-1
   /// Azure allowed regions are azure-eastus2
-  late final Output<String?> location;
+  late final pulumi.Output<String?> location;
 
   /// The resource name of the connection in the form of:
   /// "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Container for connection properties to execute stored procedures for Apache Spark. resources.
   /// Structure is documented below.
-  late final Output<ConnectionSpark?> spark;
+  late final pulumi.Output<ConnectionSpark?> spark;
 
   Connection(
     String name, {
     ConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/connection:Connection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aws = registerOutput<ConnectionAws?>('aws');
     this.azure = registerOutput<ConnectionAzure?>('azure');

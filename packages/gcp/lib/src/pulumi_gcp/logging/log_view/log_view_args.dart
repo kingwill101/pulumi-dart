@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LogView.
 class LogViewArgs {
   /// The bucket of the resource
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Describes this view.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The parent of the resource.
-  final Input<String>? parent;
+  final pulumi.Input<String>? parent;
 
   LogViewArgs({
     required this.bucket,
@@ -59,12 +59,12 @@ class LogViewArgs {
 
   factory LogViewArgs.fromMap(Map<String, dynamic> map) {
     return LogViewArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      description: Input.asOptionalInput<String>(map['description']),
-      filter: Input.asOptionalInput<String>(map['filter']),
-      location: Input.asOptionalInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parent: Input.asOptionalInput<String>(map['parent']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parent: pulumi.Input.asOptionalInput<String>(map['parent']),
     );
   }
 }

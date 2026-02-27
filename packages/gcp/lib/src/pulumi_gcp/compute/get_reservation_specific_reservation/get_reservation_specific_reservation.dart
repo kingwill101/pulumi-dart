@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_reservation_specific_reservation_instance_property/get_reservation_specific_reservation_instance_property.dart';
 
 class GetReservationSpecificReservation {
@@ -34,7 +34,7 @@ class GetReservationSpecificReservation {
     map['assuredCount'] = assuredCount;
     map['count'] = count;
     map['inUseCount'] = inUseCount;
-    map['instanceProperties'] = Input.encodeList<
+    map['instanceProperties'] = pulumi.Input.encodeList<
         GetReservationSpecificReservationInstanceProperty,
         Map<String, dynamic>>(instanceProperties, (value) => value.toMap());
     map['sourceInstanceTemplate'] = sourceInstanceTemplate;
@@ -46,12 +46,11 @@ class GetReservationSpecificReservation {
       assuredCount: map['assuredCount'] as int,
       count: map['count'] as int,
       inUseCount: map['inUseCount'] as int,
-      instanceProperties:
-          Input.decodeList<GetReservationSpecificReservationInstanceProperty>(
-              map['instanceProperties'],
-              (value) =>
-                  GetReservationSpecificReservationInstanceProperty.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      instanceProperties: pulumi.Input.decodeList<
+              GetReservationSpecificReservationInstanceProperty>(
+          map['instanceProperties'],
+          (value) => GetReservationSpecificReservationInstanceProperty.fromMap(
+              (value as Map).cast<String, dynamic>())),
       sourceInstanceTemplate: map['sourceInstanceTemplate'] as String,
     );
   }

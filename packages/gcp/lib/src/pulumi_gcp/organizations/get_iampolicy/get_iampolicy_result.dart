@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_iampolicy_audit_config/get_iampolicy_audit_config.dart';
 import '../get_iampolicy_binding/get_iampolicy_binding.dart';
 
@@ -27,14 +27,13 @@ class GetIAMPolicyResult {
     final map = <String, dynamic>{};
     final auditConfigsValue = auditConfigs;
     if (auditConfigsValue != null) {
-      map['auditConfigs'] =
-          Input.encodeList<GetIAMPolicyAuditConfig, Map<String, dynamic>>(
-              auditConfigsValue, (value) => value.toMap());
+      map['auditConfigs'] = pulumi.Input.encodeList<GetIAMPolicyAuditConfig,
+          Map<String, dynamic>>(auditConfigsValue, (value) => value.toMap());
     }
     final bindingsValue = bindings;
     if (bindingsValue != null) {
       map['bindings'] =
-          Input.encodeList<GetIAMPolicyBinding, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetIAMPolicyBinding, Map<String, dynamic>>(
               bindingsValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -46,13 +45,13 @@ class GetIAMPolicyResult {
     return GetIAMPolicyResult(
       auditConfigs: map['auditConfigs'] == null
           ? null
-          : Input.decodeList<GetIAMPolicyAuditConfig>(
+          : pulumi.Input.decodeList<GetIAMPolicyAuditConfig>(
               map['auditConfigs'],
               (value) => GetIAMPolicyAuditConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       bindings: map['bindings'] == null
           ? null
-          : Input.decodeList<GetIAMPolicyBinding>(
+          : pulumi.Input.decodeList<GetIAMPolicyBinding>(
               map['bindings'],
               (value) => GetIAMPolicyBinding.fromMap(
                   (value as Map).cast<String, dynamic>())),

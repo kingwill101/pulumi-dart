@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_kaj_policy_config_default_key_access_justification_policy/folder_kaj_policy_config_default_key_access_justification_policy.dart';
 import 'folder_kaj_policy_config_args.dart';
 
@@ -26,26 +26,27 @@ import 'folder_kaj_policy_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig default {{folder}}
 /// ```
-class FolderKajPolicyConfig extends CustomResource {
+class FolderKajPolicyConfig extends pulumi.CustomResource {
   /// The default key access justification policy used when a CryptoKey is
   /// created in this folder. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  late final Output<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>
+  late final pulumi
+      .Output<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>
       defaultKeyAccessJustificationPolicy;
 
   /// The numeric folder number for which to retrieve config.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   FolderKajPolicyConfig(
     String name, {
     FolderKajPolicyConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/folderKajPolicyConfig:FolderKajPolicyConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.defaultKeyAccessJustificationPolicy = registerOutput<
             FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?>(

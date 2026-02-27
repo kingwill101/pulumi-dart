@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_workload_compute_instance_restore_properties_scheduling_local_ssd_recovery_timeout/restore_workload_compute_instance_restore_properties_scheduling_local_ssd_recovery_timeout.dart';
 import '../restore_workload_compute_instance_restore_properties_scheduling_max_run_duration/restore_workload_compute_instance_restore_properties_scheduling_max_run_duration.dart';
 import '../restore_workload_compute_instance_restore_properties_scheduling_node_affinity/restore_workload_compute_instance_restore_properties_scheduling_node_affinity.dart';
@@ -79,7 +79,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
     }
     final nodeAffinitiesValue = nodeAffinities;
     if (nodeAffinitiesValue != null) {
-      map['nodeAffinities'] = Input.encodeList<
+      map['nodeAffinities'] = pulumi.Input.encodeList<
           RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity,
           Map<String, dynamic>>(nodeAffinitiesValue, (value) => value.toMap());
     }
@@ -124,7 +124,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
           map['minNodeCpus'] == null ? null : map['minNodeCpus'] as int,
       nodeAffinities: map['nodeAffinities'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>(
               map['nodeAffinities'],
               (value) =>

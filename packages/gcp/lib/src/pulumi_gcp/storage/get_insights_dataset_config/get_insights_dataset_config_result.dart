@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_insights_dataset_config_exclude_cloud_storage_bucket/get_insights_dataset_config_exclude_cloud_storage_bucket.dart';
 import '../get_insights_dataset_config_exclude_cloud_storage_location/get_insights_dataset_config_exclude_cloud_storage_location.dart';
 import '../get_insights_dataset_config_identity/get_insights_dataset_config_identity.dart';
@@ -77,30 +77,30 @@ class GetInsightsDatasetConfigResult {
     map['datasetConfigId'] = datasetConfigId;
     map['datasetConfigState'] = datasetConfigState;
     map['description'] = description;
-    map['excludeCloudStorageBuckets'] = Input.encodeList<
+    map['excludeCloudStorageBuckets'] = pulumi.Input.encodeList<
             GetInsightsDatasetConfigExcludeCloudStorageBucket,
             Map<String, dynamic>>(
         excludeCloudStorageBuckets, (value) => value.toMap());
-    map['excludeCloudStorageLocations'] = Input.encodeList<
+    map['excludeCloudStorageLocations'] = pulumi.Input.encodeList<
             GetInsightsDatasetConfigExcludeCloudStorageLocation,
             Map<String, dynamic>>(
         excludeCloudStorageLocations, (value) => value.toMap());
     map['id'] = id;
-    map['identities'] = Input.encodeList<GetInsightsDatasetConfigIdentity,
+    map['identities'] = pulumi.Input.encodeList<
+        GetInsightsDatasetConfigIdentity,
         Map<String, dynamic>>(identities, (value) => value.toMap());
-    map['includeCloudStorageBuckets'] = Input.encodeList<
+    map['includeCloudStorageBuckets'] = pulumi.Input.encodeList<
             GetInsightsDatasetConfigIncludeCloudStorageBucket,
             Map<String, dynamic>>(
         includeCloudStorageBuckets, (value) => value.toMap());
-    map['includeCloudStorageLocations'] = Input.encodeList<
+    map['includeCloudStorageLocations'] = pulumi.Input.encodeList<
             GetInsightsDatasetConfigIncludeCloudStorageLocation,
             Map<String, dynamic>>(
         includeCloudStorageLocations, (value) => value.toMap());
     map['includeNewlyCreatedBuckets'] = includeNewlyCreatedBuckets;
     map['linkDataset'] = linkDataset;
-    map['links'] =
-        Input.encodeList<GetInsightsDatasetConfigLink, Map<String, dynamic>>(
-            links, (value) => value.toMap());
+    map['links'] = pulumi.Input.encodeList<GetInsightsDatasetConfigLink,
+        Map<String, dynamic>>(links, (value) => value.toMap());
     map['location'] = location;
     map['name'] = name;
     map['organizationNumber'] = organizationNumber;
@@ -110,10 +110,10 @@ class GetInsightsDatasetConfigResult {
       map['project'] = projectValue;
     }
     map['retentionPeriodDays'] = retentionPeriodDays;
-    map['sourceFolders'] = Input.encodeList<
+    map['sourceFolders'] = pulumi.Input.encodeList<
         GetInsightsDatasetConfigSourceFolder,
         Map<String, dynamic>>(sourceFolders, (value) => value.toMap());
-    map['sourceProjects'] = Input.encodeList<
+    map['sourceProjects'] = pulumi.Input.encodeList<
         GetInsightsDatasetConfigSourceProject,
         Map<String, dynamic>>(sourceProjects, (value) => value.toMap());
     map['uid'] = uid;
@@ -129,38 +129,36 @@ class GetInsightsDatasetConfigResult {
       datasetConfigId: map['datasetConfigId'] as String,
       datasetConfigState: map['datasetConfigState'] as String,
       description: map['description'] as String,
-      excludeCloudStorageBuckets:
-          Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageBucket>(
-              map['excludeCloudStorageBuckets'],
-              (value) =>
-                  GetInsightsDatasetConfigExcludeCloudStorageBucket.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      excludeCloudStorageLocations:
-          Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageLocation>(
-              map['excludeCloudStorageLocations'],
-              (value) =>
-                  GetInsightsDatasetConfigExcludeCloudStorageLocation.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      excludeCloudStorageBuckets: pulumi.Input.decodeList<
+              GetInsightsDatasetConfigExcludeCloudStorageBucket>(
+          map['excludeCloudStorageBuckets'],
+          (value) => GetInsightsDatasetConfigExcludeCloudStorageBucket.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      excludeCloudStorageLocations: pulumi.Input.decodeList<
+              GetInsightsDatasetConfigExcludeCloudStorageLocation>(
+          map['excludeCloudStorageLocations'],
+          (value) =>
+              GetInsightsDatasetConfigExcludeCloudStorageLocation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      identities: Input.decodeList<GetInsightsDatasetConfigIdentity>(
+      identities: pulumi.Input.decodeList<GetInsightsDatasetConfigIdentity>(
           map['identities'],
           (value) => GetInsightsDatasetConfigIdentity.fromMap(
               (value as Map).cast<String, dynamic>())),
-      includeCloudStorageBuckets:
-          Input.decodeList<GetInsightsDatasetConfigIncludeCloudStorageBucket>(
-              map['includeCloudStorageBuckets'],
-              (value) =>
-                  GetInsightsDatasetConfigIncludeCloudStorageBucket.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      includeCloudStorageLocations:
-          Input.decodeList<GetInsightsDatasetConfigIncludeCloudStorageLocation>(
-              map['includeCloudStorageLocations'],
-              (value) =>
-                  GetInsightsDatasetConfigIncludeCloudStorageLocation.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      includeCloudStorageBuckets: pulumi.Input.decodeList<
+              GetInsightsDatasetConfigIncludeCloudStorageBucket>(
+          map['includeCloudStorageBuckets'],
+          (value) => GetInsightsDatasetConfigIncludeCloudStorageBucket.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      includeCloudStorageLocations: pulumi.Input.decodeList<
+              GetInsightsDatasetConfigIncludeCloudStorageLocation>(
+          map['includeCloudStorageLocations'],
+          (value) =>
+              GetInsightsDatasetConfigIncludeCloudStorageLocation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       includeNewlyCreatedBuckets: map['includeNewlyCreatedBuckets'] as bool,
       linkDataset: map['linkDataset'] as bool,
-      links: Input.decodeList<GetInsightsDatasetConfigLink>(
+      links: pulumi.Input.decodeList<GetInsightsDatasetConfigLink>(
           map['links'],
           (value) => GetInsightsDatasetConfigLink.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -170,14 +168,16 @@ class GetInsightsDatasetConfigResult {
       organizationScope: map['organizationScope'] as bool,
       project: map['project'] == null ? null : map['project'] as String,
       retentionPeriodDays: map['retentionPeriodDays'] as int,
-      sourceFolders: Input.decodeList<GetInsightsDatasetConfigSourceFolder>(
-          map['sourceFolders'],
-          (value) => GetInsightsDatasetConfigSourceFolder.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      sourceProjects: Input.decodeList<GetInsightsDatasetConfigSourceProject>(
-          map['sourceProjects'],
-          (value) => GetInsightsDatasetConfigSourceProject.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sourceFolders:
+          pulumi.Input.decodeList<GetInsightsDatasetConfigSourceFolder>(
+              map['sourceFolders'],
+              (value) => GetInsightsDatasetConfigSourceFolder.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      sourceProjects:
+          pulumi.Input.decodeList<GetInsightsDatasetConfigSourceProject>(
+              map['sourceProjects'],
+              (value) => GetInsightsDatasetConfigSourceProject.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );

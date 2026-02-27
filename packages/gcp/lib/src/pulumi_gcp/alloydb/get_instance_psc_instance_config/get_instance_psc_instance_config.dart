@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_psc_instance_config_psc_auto_connection/get_instance_psc_instance_config_psc_auto_connection.dart';
 import '../get_instance_psc_instance_config_psc_interface_config/get_instance_psc_instance_config_psc_interface_config.dart';
 
@@ -37,11 +37,11 @@ class GetInstancePscInstanceConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allowedConsumerProjects'] = allowedConsumerProjects;
-    map['pscAutoConnections'] = Input.encodeList<
+    map['pscAutoConnections'] = pulumi.Input.encodeList<
         GetInstancePscInstanceConfigPscAutoConnection,
         Map<String, dynamic>>(pscAutoConnections, (value) => value.toMap());
     map['pscDnsName'] = pscDnsName;
-    map['pscInterfaceConfigs'] = Input.encodeList<
+    map['pscInterfaceConfigs'] = pulumi.Input.encodeList<
         GetInstancePscInstanceConfigPscInterfaceConfig,
         Map<String, dynamic>>(pscInterfaceConfigs, (value) => value.toMap());
     map['serviceAttachmentLink'] = serviceAttachmentLink;
@@ -52,17 +52,17 @@ class GetInstancePscInstanceConfig {
     return GetInstancePscInstanceConfig(
       allowedConsumerProjects:
           (map['allowedConsumerProjects'] as List).cast<String>(),
-      pscAutoConnections:
-          Input.decodeList<GetInstancePscInstanceConfigPscAutoConnection>(
-              map['pscAutoConnections'],
-              (value) => GetInstancePscInstanceConfigPscAutoConnection.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      pscAutoConnections: pulumi.Input.decodeList<
+              GetInstancePscInstanceConfigPscAutoConnection>(
+          map['pscAutoConnections'],
+          (value) => GetInstancePscInstanceConfigPscAutoConnection.fromMap(
+              (value as Map).cast<String, dynamic>())),
       pscDnsName: map['pscDnsName'] as String,
-      pscInterfaceConfigs:
-          Input.decodeList<GetInstancePscInstanceConfigPscInterfaceConfig>(
-              map['pscInterfaceConfigs'],
-              (value) => GetInstancePscInstanceConfigPscInterfaceConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      pscInterfaceConfigs: pulumi.Input.decodeList<
+              GetInstancePscInstanceConfigPscInterfaceConfig>(
+          map['pscInterfaceConfigs'],
+          (value) => GetInstancePscInstanceConfigPscInterfaceConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serviceAttachmentLink: map['serviceAttachmentLink'] as String,
     );
   }

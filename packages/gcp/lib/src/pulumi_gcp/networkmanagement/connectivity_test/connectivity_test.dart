@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connectivity_test_destination/connectivity_test_destination.dart';
 import '../connectivity_test_source/connectivity_test_source.dart';
 import 'connectivity_test_args.dart';
@@ -52,13 +52,13 @@ import 'connectivity_test_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
 /// ```
-class ConnectivityTest extends CustomResource {
+class ConnectivityTest extends pulumi.CustomResource {
   /// Whether the analysis should skip firewall checking. Default value is false.
-  late final Output<bool?> bypassFirewallChecks;
+  late final pulumi.Output<bool?> bypassFirewallChecks;
 
   /// The user-supplied description of the Connectivity Test.
   /// Maximum of 512 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Required. Destination specification of the Connectivity Test.
   /// You can use a combination of destination IP address, URI of a supported
@@ -67,39 +67,39 @@ class ConnectivityTest extends CustomResource {
   /// ambiguous. However, the test result might include endpoints or use a
   /// destination that you don't intend to test.
   /// Structure is documented below.
-  late final Output<ConnectivityTestDestination> destination;
+  late final pulumi.Output<ConnectivityTestDestination> destination;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Unique name for the connectivity test.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// IP Protocol of the test. When not provided, "TCP" is assumed.
-  late final Output<String?> protocol;
+  late final pulumi.Output<String?> protocol;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Other projects that may be relevant for reachability analysis.
   /// This is applicable to scenarios where a test can cross project
   /// boundaries.
-  late final Output<List<String>?> relatedProjects;
+  late final pulumi.Output<List<String>?> relatedProjects;
 
   /// Whether run analysis for the return path from destination to source.
   /// Default value is false.
-  late final Output<bool?> roundTrip;
+  late final pulumi.Output<bool?> roundTrip;
 
   /// Required. Source specification of the Connectivity Test.
   /// You can use a combination of source IP address, URI of a supported
@@ -108,17 +108,17 @@ class ConnectivityTest extends CustomResource {
   /// ambiguous. However, the test result might include endpoints or use a source
   /// that you don't intend to test.
   /// Structure is documented below.
-  late final Output<ConnectivityTestSource> source;
+  late final pulumi.Output<ConnectivityTestSource> source;
 
   ConnectivityTest(
     String name, {
     ConnectivityTestArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networkmanagement/connectivityTest:ConnectivityTest',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');
     this.description = registerOutput<String?>('description');

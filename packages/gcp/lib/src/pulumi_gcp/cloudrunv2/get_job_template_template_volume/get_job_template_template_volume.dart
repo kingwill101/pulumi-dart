@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_template_template_volume_cloud_sql_instance/get_job_template_template_volume_cloud_sql_instance.dart';
 import '../get_job_template_template_volume_empty_dir/get_job_template_template_volume_empty_dir.dart';
 import '../get_job_template_template_volume_gc/get_job_template_template_volume_gc.dart';
@@ -37,19 +37,18 @@ class GetJobTemplateTemplateVolume {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudSqlInstances'] = Input.encodeList<
+    map['cloudSqlInstances'] = pulumi.Input.encodeList<
         GetJobTemplateTemplateVolumeCloudSqlInstance,
         Map<String, dynamic>>(cloudSqlInstances, (value) => value.toMap());
-    map['emptyDirs'] = Input.encodeList<GetJobTemplateTemplateVolumeEmptyDir,
+    map['emptyDirs'] = pulumi.Input.encodeList<
+        GetJobTemplateTemplateVolumeEmptyDir,
         Map<String, dynamic>>(emptyDirs, (value) => value.toMap());
-    map['gcs'] =
-        Input.encodeList<GetJobTemplateTemplateVolumeGc, Map<String, dynamic>>(
-            gcs, (value) => value.toMap());
+    map['gcs'] = pulumi.Input.encodeList<GetJobTemplateTemplateVolumeGc,
+        Map<String, dynamic>>(gcs, (value) => value.toMap());
     map['name'] = name;
-    map['nfs'] =
-        Input.encodeList<GetJobTemplateTemplateVolumeNf, Map<String, dynamic>>(
-            nfs, (value) => value.toMap());
-    map['secrets'] = Input.encodeList<GetJobTemplateTemplateVolumeSecret,
+    map['nfs'] = pulumi.Input.encodeList<GetJobTemplateTemplateVolumeNf,
+        Map<String, dynamic>>(nfs, (value) => value.toMap());
+    map['secrets'] = pulumi.Input.encodeList<GetJobTemplateTemplateVolumeSecret,
         Map<String, dynamic>>(secrets, (value) => value.toMap());
     return map;
   }
@@ -57,24 +56,24 @@ class GetJobTemplateTemplateVolume {
   factory GetJobTemplateTemplateVolume.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateVolume(
       cloudSqlInstances:
-          Input.decodeList<GetJobTemplateTemplateVolumeCloudSqlInstance>(
+          pulumi.Input.decodeList<GetJobTemplateTemplateVolumeCloudSqlInstance>(
               map['cloudSqlInstances'],
               (value) => GetJobTemplateTemplateVolumeCloudSqlInstance.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      emptyDirs: Input.decodeList<GetJobTemplateTemplateVolumeEmptyDir>(
+      emptyDirs: pulumi.Input.decodeList<GetJobTemplateTemplateVolumeEmptyDir>(
           map['emptyDirs'],
           (value) => GetJobTemplateTemplateVolumeEmptyDir.fromMap(
               (value as Map).cast<String, dynamic>())),
-      gcs: Input.decodeList<GetJobTemplateTemplateVolumeGc>(
+      gcs: pulumi.Input.decodeList<GetJobTemplateTemplateVolumeGc>(
           map['gcs'],
           (value) => GetJobTemplateTemplateVolumeGc.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      nfs: Input.decodeList<GetJobTemplateTemplateVolumeNf>(
+      nfs: pulumi.Input.decodeList<GetJobTemplateTemplateVolumeNf>(
           map['nfs'],
           (value) => GetJobTemplateTemplateVolumeNf.fromMap(
               (value as Map).cast<String, dynamic>())),
-      secrets: Input.decodeList<GetJobTemplateTemplateVolumeSecret>(
+      secrets: pulumi.Input.decodeList<GetJobTemplateTemplateVolumeSecret>(
           map['secrets'],
           (value) => GetJobTemplateTemplateVolumeSecret.fromMap(
               (value as Map).cast<String, dynamic>())),

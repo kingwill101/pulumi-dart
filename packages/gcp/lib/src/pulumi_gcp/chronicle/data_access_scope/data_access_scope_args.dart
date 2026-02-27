@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_access_scope_allowed_data_access_label/data_access_scope_allowed_data_access_label.dart';
 import '../data_access_scope_denied_data_access_label/data_access_scope_denied_data_access_label.dart';
 
@@ -14,7 +14,7 @@ class DataAccessScopeArgs {
   /// A customer with scope with denied labels A and B and allow_all will be able
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
-  final Input<bool>? allowAll;
+  final pulumi.Input<bool>? allowAll;
 
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
@@ -23,13 +23,13 @@ class DataAccessScopeArgs {
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
-  final Input<List<DataAccessScopeAllowedDataAccessLabel>>?
+  final pulumi.Input<List<DataAccessScopeAllowedDataAccessLabel>>?
       allowedDataAccessLabels;
 
   /// Required. The user provided scope id which will become the last part of the name
   /// of the scope resource.
   /// Needs to be compliant with https://google.aip.dev/122
-  final Input<String> dataAccessScopeId;
+  final pulumi.Input<String> dataAccessScopeId;
 
   /// Optional. The denied labels for the scope.
   /// The logical operator for evaluation of the denied labels is AND.
@@ -37,21 +37,21 @@ class DataAccessScopeArgs {
   /// to see data labeled with A and data labeled with B
   /// and data with labels A and B.
   /// Structure is documented below.
-  final Input<List<DataAccessScopeDeniedDataAccessLabel>>?
+  final pulumi.Input<List<DataAccessScopeDeniedDataAccessLabel>>?
       deniedDataAccessLabels;
 
   /// Optional. A description of the data access scope for a human reader.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   DataAccessScopeArgs({
     this.allowAll,
@@ -72,21 +72,23 @@ class DataAccessScopeArgs {
     }
     final allowedDataAccessLabelsValue = allowedDataAccessLabels;
     if (allowedDataAccessLabelsValue != null) {
-      map['allowedDataAccessLabels'] = Input.mapOptionalInputValue<
+      map['allowedDataAccessLabels'] = pulumi.Input.mapOptionalInputValue<
               List<DataAccessScopeAllowedDataAccessLabel>,
               List<Map<String, dynamic>>>(
           allowedDataAccessLabelsValue,
-          (value) => Input.encodeList<DataAccessScopeAllowedDataAccessLabel,
+          (value) => pulumi.Input.encodeList<
+              DataAccessScopeAllowedDataAccessLabel,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['dataAccessScopeId'] = dataAccessScopeId;
     final deniedDataAccessLabelsValue = deniedDataAccessLabels;
     if (deniedDataAccessLabelsValue != null) {
-      map['deniedDataAccessLabels'] = Input.mapOptionalInputValue<
+      map['deniedDataAccessLabels'] = pulumi.Input.mapOptionalInputValue<
               List<DataAccessScopeDeniedDataAccessLabel>,
               List<Map<String, dynamic>>>(
           deniedDataAccessLabelsValue,
-          (value) => Input.encodeList<DataAccessScopeDeniedDataAccessLabel,
+          (value) => pulumi.Input.encodeList<
+              DataAccessScopeDeniedDataAccessLabel,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final descriptionValue = description;
@@ -104,18 +106,18 @@ class DataAccessScopeArgs {
 
   factory DataAccessScopeArgs.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeArgs(
-      allowAll: Input.asOptionalInput<bool>(map['allowAll']),
-      allowedDataAccessLabels:
-          Input.asOptionalInput<List<DataAccessScopeAllowedDataAccessLabel>>(
-              map['allowedDataAccessLabels']),
-      dataAccessScopeId: Input.asInput<String>(map['dataAccessScopeId']),
-      deniedDataAccessLabels:
-          Input.asOptionalInput<List<DataAccessScopeDeniedDataAccessLabel>>(
-              map['deniedDataAccessLabels']),
-      description: Input.asOptionalInput<String>(map['description']),
-      instance: Input.asInput<String>(map['instance']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+      allowAll: pulumi.Input.asOptionalInput<bool>(map['allowAll']),
+      allowedDataAccessLabels: pulumi.Input.asOptionalInput<
+              List<DataAccessScopeAllowedDataAccessLabel>>(
+          map['allowedDataAccessLabels']),
+      dataAccessScopeId: pulumi.Input.asInput<String>(map['dataAccessScopeId']),
+      deniedDataAccessLabels: pulumi.Input.asOptionalInput<
+              List<DataAccessScopeDeniedDataAccessLabel>>(
+          map['deniedDataAccessLabels']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

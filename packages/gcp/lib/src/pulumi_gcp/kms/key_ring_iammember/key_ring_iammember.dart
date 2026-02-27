@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_ring_iammember_condition/key_ring_iammember_condition.dart';
 import 'key_ring_iammember_args.dart';
 
@@ -77,19 +77,19 @@ import 'key_ring_iammember_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}
 /// ```
-class KeyRingIAMMember extends CustomResource {
+class KeyRingIAMMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  late final Output<KeyRingIAMMemberCondition?> condition;
+  late final pulumi.Output<KeyRingIAMMemberCondition?> condition;
 
   /// (Computed) The etag of the key ring's IAM policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The key ring ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}` or
   /// `{location_name}/{key_ring_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
-  late final Output<String> keyRingId;
+  late final pulumi.Output<String> keyRingId;
 
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -99,22 +99,22 @@ class KeyRingIAMMember extends CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-  late final Output<String> member;
+  late final pulumi.Output<String> member;
 
   /// The role that should be applied. Only one
   /// `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   KeyRingIAMMember(
     String name, {
     KeyRingIAMMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/keyRingIAMMember:KeyRingIAMMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<KeyRingIAMMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../urlmap_path_matcher_route_rule_match_rule_metadata_filter_filter_label/urlmap_path_matcher_route_rule_match_rule_metadata_filter_filter_label.dart';
 
 class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
@@ -27,7 +27,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['filterLabels'] = Input.encodeList<
+    map['filterLabels'] = pulumi.Input.encodeList<
         URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel,
         Map<String, dynamic>>(filterLabels, (value) => value.toMap());
     map['filterMatchCriteria'] = filterMatchCriteria;
@@ -37,7 +37,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
   factory URLMapPathMatcherRouteRuleMatchRuleMetadataFilter.fromMap(
       Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(
-      filterLabels: Input.decodeList<
+      filterLabels: pulumi.Input.decodeList<
               URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>(
           map['filterLabels'],
           (value) =>

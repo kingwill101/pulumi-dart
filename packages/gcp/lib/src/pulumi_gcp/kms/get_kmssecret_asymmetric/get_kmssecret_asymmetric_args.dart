@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKMSSecretAsymmetric.
 class GetKMSSecretAsymmetricArgs {
   /// The ciphertext to be decrypted, encoded in base64
-  final Input<String> ciphertext;
+  final pulumi.Input<String> ciphertext;
 
   /// The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
-  final Input<String>? crc32;
+  final pulumi.Input<String>? crc32;
 
   /// The id of the CryptoKey version that will be used to
   /// decrypt the provided ciphertext. This is represented by the format
   /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
-  final Input<String> cryptoKeyVersion;
+  final pulumi.Input<String> cryptoKeyVersion;
 
   GetKMSSecretAsymmetricArgs({
     required this.ciphertext,
@@ -34,9 +34,9 @@ class GetKMSSecretAsymmetricArgs {
 
   factory GetKMSSecretAsymmetricArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretAsymmetricArgs(
-      ciphertext: Input.asInput<String>(map['ciphertext']),
-      crc32: Input.asOptionalInput<String>(map['crc32']),
-      cryptoKeyVersion: Input.asInput<String>(map['cryptoKeyVersion']),
+      ciphertext: pulumi.Input.asInput<String>(map['ciphertext']),
+      crc32: pulumi.Input.asOptionalInput<String>(map['crc32']),
+      cryptoKeyVersion: pulumi.Input.asInput<String>(map['cryptoKeyVersion']),
     );
   }
 }

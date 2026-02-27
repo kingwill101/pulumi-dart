@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AiEndpointIamPolicy.
 class AiEndpointIamPolicyArgs {
-  final Input<String> endpoint;
-  final Input<String>? location;
-  final Input<String> policyData;
-  final Input<String>? project;
+  final pulumi.Input<String> endpoint;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String> policyData;
+  final pulumi.Input<String>? project;
 
   AiEndpointIamPolicyArgs({
     required this.endpoint,
@@ -33,10 +33,10 @@ class AiEndpointIamPolicyArgs {
 
   factory AiEndpointIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointIamPolicyArgs(
-      endpoint: Input.asInput<String>(map['endpoint']),
-      location: Input.asOptionalInput<String>(map['location']),
-      policyData: Input.asInput<String>(map['policyData']),
-      project: Input.asOptionalInput<String>(map['project']),
+      endpoint: pulumi.Input.asInput<String>(map['endpoint']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      policyData: pulumi.Input.asInput<String>(map['policyData']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

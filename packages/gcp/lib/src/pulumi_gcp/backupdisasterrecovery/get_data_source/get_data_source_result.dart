@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_source_backup_config_info/get_data_source_backup_config_info.dart';
 import '../get_data_source_data_source_backup_appliance_application/get_data_source_data_source_backup_appliance_application.dart';
 import '../get_data_source_data_source_gcp_resource/get_data_source_data_source_gcp_resource.dart';
@@ -50,18 +50,18 @@ class GetDataSourceResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['backupConfigInfos'] =
-        Input.encodeList<GetDataSourceBackupConfigInfo, Map<String, dynamic>>(
-            backupConfigInfos, (value) => value.toMap());
+    map['backupConfigInfos'] = pulumi.Input.encodeList<
+        GetDataSourceBackupConfigInfo,
+        Map<String, dynamic>>(backupConfigInfos, (value) => value.toMap());
     map['backupCount'] = backupCount;
     map['backupVaultId'] = backupVaultId;
     map['configState'] = configState;
     map['createTime'] = createTime;
-    map['dataSourceBackupApplianceApplications'] = Input.encodeList<
+    map['dataSourceBackupApplianceApplications'] = pulumi.Input.encodeList<
             GetDataSourceDataSourceBackupApplianceApplication,
             Map<String, dynamic>>(
         dataSourceBackupApplianceApplications, (value) => value.toMap());
-    map['dataSourceGcpResources'] = Input.encodeList<
+    map['dataSourceGcpResources'] = pulumi.Input.encodeList<
         GetDataSourceDataSourceGcpResource,
         Map<String, dynamic>>(dataSourceGcpResources, (value) => value.toMap());
     map['dataSourceId'] = dataSourceId;
@@ -79,7 +79,7 @@ class GetDataSourceResult {
 
   factory GetDataSourceResult.fromMap(Map<String, dynamic> map) {
     return GetDataSourceResult(
-      backupConfigInfos: Input.decodeList<GetDataSourceBackupConfigInfo>(
+      backupConfigInfos: pulumi.Input.decodeList<GetDataSourceBackupConfigInfo>(
           map['backupConfigInfos'],
           (value) => GetDataSourceBackupConfigInfo.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -87,14 +87,13 @@ class GetDataSourceResult {
       backupVaultId: map['backupVaultId'] as String,
       configState: map['configState'] as String,
       createTime: map['createTime'] as String,
-      dataSourceBackupApplianceApplications:
-          Input.decodeList<GetDataSourceDataSourceBackupApplianceApplication>(
-              map['dataSourceBackupApplianceApplications'],
-              (value) =>
-                  GetDataSourceDataSourceBackupApplianceApplication.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      dataSourceBackupApplianceApplications: pulumi.Input.decodeList<
+              GetDataSourceDataSourceBackupApplianceApplication>(
+          map['dataSourceBackupApplianceApplications'],
+          (value) => GetDataSourceDataSourceBackupApplianceApplication.fromMap(
+              (value as Map).cast<String, dynamic>())),
       dataSourceGcpResources:
-          Input.decodeList<GetDataSourceDataSourceGcpResource>(
+          pulumi.Input.decodeList<GetDataSourceDataSourceGcpResource>(
               map['dataSourceGcpResources'],
               (value) => GetDataSourceDataSourceGcpResource.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_info_args.dart';
 
 /// Billing information for a project.
@@ -34,25 +34,25 @@ import 'project_info_args.dart';
 /// ```sh
 /// $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
 /// ```
-class ProjectInfo extends CustomResource {
+class ProjectInfo extends pulumi.CustomResource {
   /// The ID of the billing account associated with the project, if
   /// any. Set to empty string to disable billing for the project.
   /// For example, `"012345-567890-ABCDEF"` or `""`.
-  late final Output<String> billingAccount;
+  late final pulumi.Output<String> billingAccount;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   ProjectInfo(
     String name, {
     ProjectInfoArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:billing/projectInfo:ProjectInfo',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.billingAccount = registerOutput<String>('billingAccount');
     this.project = registerOutput<String>('project');

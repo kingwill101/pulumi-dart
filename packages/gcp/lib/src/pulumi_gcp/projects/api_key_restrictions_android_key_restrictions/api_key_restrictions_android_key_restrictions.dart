@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../api_key_restrictions_android_key_restrictions_allowed_application/api_key_restrictions_android_key_restrictions_allowed_application.dart';
 
 class ApiKeyRestrictionsAndroidKeyRestrictions {
@@ -14,7 +14,7 @@ class ApiKeyRestrictionsAndroidKeyRestrictions {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allowedApplications'] = Input.encodeList<
+    map['allowedApplications'] = pulumi.Input.encodeList<
         ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication,
         Map<String, dynamic>>(allowedApplications, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class ApiKeyRestrictionsAndroidKeyRestrictions {
   factory ApiKeyRestrictionsAndroidKeyRestrictions.fromMap(
       Map<String, dynamic> map) {
     return ApiKeyRestrictionsAndroidKeyRestrictions(
-      allowedApplications: Input.decodeList<
+      allowedApplications: pulumi.Input.decodeList<
               ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication>(
           map['allowedApplications'],
           (value) => ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication

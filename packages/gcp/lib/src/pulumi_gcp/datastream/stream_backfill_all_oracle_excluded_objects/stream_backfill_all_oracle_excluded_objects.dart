@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_oracle_excluded_objects_oracle_schema/stream_backfill_all_oracle_excluded_objects_oracle_schema.dart';
 
 class StreamBackfillAllOracleExcludedObjects {
@@ -14,7 +14,7 @@ class StreamBackfillAllOracleExcludedObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['oracleSchemas'] = Input.encodeList<
+    map['oracleSchemas'] = pulumi.Input.encodeList<
         StreamBackfillAllOracleExcludedObjectsOracleSchema,
         Map<String, dynamic>>(oracleSchemas, (value) => value.toMap());
     return map;
@@ -23,12 +23,11 @@ class StreamBackfillAllOracleExcludedObjects {
   factory StreamBackfillAllOracleExcludedObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamBackfillAllOracleExcludedObjects(
-      oracleSchemas:
-          Input.decodeList<StreamBackfillAllOracleExcludedObjectsOracleSchema>(
-              map['oracleSchemas'],
-              (value) =>
-                  StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      oracleSchemas: pulumi.Input.decodeList<
+              StreamBackfillAllOracleExcludedObjectsOracleSchema>(
+          map['oracleSchemas'],
+          (value) => StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../account_connector_provider_oauth_config/account_connector_provider_oauth_config.dart';
 import 'account_connector_args.dart';
 
@@ -60,64 +60,65 @@ import 'account_connector_args.dart';
 /// ```sh
 /// $ pulumi import gcp:developerconnect/accountConnector:AccountConnector default {{location}}/{{account_connector_id}}
 /// ```
-class AccountConnector extends CustomResource {
+class AccountConnector extends pulumi.CustomResource {
   /// Required. The ID to use for the AccountConnector, which will become the final
   /// component of the AccountConnector's resource name. Its format should adhere
   /// to https://google.aip.dev/122#resource-id-segments Names must be unique
   /// per-project per-location.
-  late final Output<String> accountConnectorId;
+  late final pulumi.Output<String> accountConnectorId;
 
   /// Optional. Allows users to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Output only. The timestamp when the userConnection was created.
-  late final Output<String> createTime;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the userConnection, in the format
   /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Output only. Start OAuth flow by clicking on this URL.
-  late final Output<String> oauthStartUri;
+  late final pulumi.Output<String> oauthStartUri;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// ProviderOAuthConfig is the OAuth config for a provider.
   /// Structure is documented below.
-  late final Output<AccountConnectorProviderOauthConfig?> providerOauthConfig;
+  late final pulumi.Output<AccountConnectorProviderOauthConfig?>
+      providerOauthConfig;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Output only. The timestamp when the userConnection was updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AccountConnector(
     String name, {
     AccountConnectorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:developerconnect/accountConnector:AccountConnector',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountConnectorId = registerOutput<String>('accountConnectorId');
     this.annotations = registerOutput<Map<String, String>?>('annotations');

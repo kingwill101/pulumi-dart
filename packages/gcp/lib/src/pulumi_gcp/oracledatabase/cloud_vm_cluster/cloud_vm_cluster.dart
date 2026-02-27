@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_vm_cluster_properties/cloud_vm_cluster_properties.dart';
 import 'cloud_vm_cluster_args.dart';
 
@@ -49,92 +49,92 @@ import 'cloud_vm_cluster_args.dart';
 /// ```sh
 /// $ pulumi import gcp:oracledatabase/cloudVmCluster:CloudVmCluster default {{location}}/{{cloud_vm_cluster_id}}
 /// ```
-class CloudVmCluster extends CustomResource {
+class CloudVmCluster extends pulumi.CustomResource {
   /// The name of the backup OdbSubnet associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  late final Output<String> backupOdbSubnet;
+  late final pulumi.Output<String> backupOdbSubnet;
 
   /// CIDR range of the backup subnet.
-  late final Output<String?> backupSubnetCidr;
+  late final pulumi.Output<String?> backupSubnetCidr;
 
   /// Network settings. CIDR to use for cluster IP allocation.
-  late final Output<String?> cidr;
+  late final pulumi.Output<String?> cidr;
 
   /// The ID of the VM Cluster to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
-  late final Output<String> cloudVmClusterId;
+  late final pulumi.Output<String> cloudVmClusterId;
 
   /// The date and time that the VM cluster was created.
-  late final Output<String> createTime;
-  late final Output<bool?> deletionProtection;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<bool?> deletionProtection;
 
   /// User friendly name for this resource.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The name of the Exadata Infrastructure resource on which VM cluster
   /// resource is created, in the following format:
   /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
-  late final Output<String> exadataInfrastructure;
+  late final pulumi.Output<String> exadataInfrastructure;
 
   /// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
   /// of Exadata infrastructure.
-  late final Output<String> gcpOracleZone;
+  late final pulumi.Output<String> gcpOracleZone;
 
   /// Labels or tags associated with the VM Cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The name of the VM Cluster resource with the format:
   /// projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the VPC network.
   /// Format: projects/{project}/global/networks/{network}
-  late final Output<String?> network;
+  late final pulumi.Output<String?> network;
 
   /// The name of the OdbNetwork associated with the VM Cluster.
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the odb_subnet and backup_odb_subnet.
-  late final Output<String> odbNetwork;
+  late final pulumi.Output<String> odbNetwork;
 
   /// The name of the OdbSubnet associated with the VM Cluster for
   /// IP allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
-  late final Output<String> odbSubnet;
+  late final pulumi.Output<String> odbSubnet;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Various properties and settings associated with Exadata VM cluster.
   /// Structure is documented below.
-  late final Output<CloudVmClusterProperties?> properties;
+  late final pulumi.Output<CloudVmClusterProperties?> properties;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   CloudVmCluster(
     String name, {
     CloudVmClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:oracledatabase/cloudVmCluster:CloudVmCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backupOdbSubnet = registerOutput<String>('backupOdbSubnet');
     this.backupSubnetCidr = registerOutput<String?>('backupSubnetCidr');

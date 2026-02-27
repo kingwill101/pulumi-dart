@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EventThreatDetectionCustomModule.
 class EventThreatDetectionCustomModuleArgs {
   /// Config for the module. For the resident module, its config value is defined at this level.
   /// For the inherited module, its config value is inherited from the ancestor module.
-  final Input<String> config;
+  final pulumi.Input<String> config;
 
   /// The human readable name to be displayed for the module.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The state of enablement for the module at the given level of the hierarchy.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final Input<String> enablementState;
+  final pulumi.Input<String> enablementState;
 
   /// Numerical ID of the parent organization.
-  final Input<String> organization;
+  final pulumi.Input<String> organization;
 
   /// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   EventThreatDetectionCustomModuleArgs({
     required this.config,
@@ -45,11 +45,11 @@ class EventThreatDetectionCustomModuleArgs {
   factory EventThreatDetectionCustomModuleArgs.fromMap(
       Map<String, dynamic> map) {
     return EventThreatDetectionCustomModuleArgs(
-      config: Input.asInput<String>(map['config']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      enablementState: Input.asInput<String>(map['enablementState']),
-      organization: Input.asInput<String>(map['organization']),
-      type: Input.asInput<String>(map['type']),
+      config: pulumi.Input.asInput<String>(map['config']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      enablementState: pulumi.Input.asInput<String>(map['enablementState']),
+      organization: pulumi.Input.asInput<String>(map['organization']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

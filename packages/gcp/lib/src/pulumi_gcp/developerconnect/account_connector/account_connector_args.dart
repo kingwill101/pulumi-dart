@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../account_connector_provider_oauth_config/account_connector_provider_oauth_config.dart';
 
 /// The set of arguments for AccountConnector.
@@ -9,28 +9,28 @@ class AccountConnectorArgs {
   /// component of the AccountConnector's resource name. Its format should adhere
   /// to https://google.aip.dev/122#resource-id-segments Names must be unique
   /// per-project per-location.
-  final Input<String> accountConnectorId;
+  final pulumi.Input<String> accountConnectorId;
 
   /// Optional. Allows users to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// The location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// ProviderOAuthConfig is the OAuth config for a provider.
   /// Structure is documented below.
-  final Input<AccountConnectorProviderOauthConfig>? providerOauthConfig;
+  final pulumi.Input<AccountConnectorProviderOauthConfig>? providerOauthConfig;
 
   AccountConnectorArgs({
     required this.accountConnectorId,
@@ -59,7 +59,7 @@ class AccountConnectorArgs {
     }
     final providerOauthConfigValue = providerOauthConfig;
     if (providerOauthConfigValue != null) {
-      map['providerOauthConfig'] = Input.mapOptionalInputValue<
+      map['providerOauthConfig'] = pulumi.Input.mapOptionalInputValue<
               AccountConnectorProviderOauthConfig, Map<String, dynamic>>(
           providerOauthConfigValue, (value) => value.toMap());
     }
@@ -68,14 +68,15 @@ class AccountConnectorArgs {
 
   factory AccountConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AccountConnectorArgs(
-      accountConnectorId: Input.asInput<String>(map['accountConnectorId']),
+      accountConnectorId:
+          pulumi.Input.asInput<String>(map['accountConnectorId']),
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       providerOauthConfig:
-          Input.asOptionalInput<AccountConnectorProviderOauthConfig>(
+          pulumi.Input.asOptionalInput<AccountConnectorProviderOauthConfig>(
               map['providerOauthConfig']),
     );
   }

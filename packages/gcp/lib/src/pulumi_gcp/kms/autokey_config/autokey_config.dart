@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autokey_config_args.dart';
 
 /// ## Example Usage
@@ -25,27 +25,27 @@ import 'autokey_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/autokeyConfig:AutokeyConfig default {{folder}}
 /// ```
-class AutokeyConfig extends CustomResource {
+class AutokeyConfig extends pulumi.CustomResource {
   /// The etag of the AutokeyConfig for optimistic concurrency control.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The folder for which to retrieve config.
-  late final Output<String> folder;
+  late final pulumi.Output<String> folder;
 
   /// The target key project for a given folder where KMS Autokey will provision a
   /// CryptoKey for any new KeyHandle the Developer creates. Should have the form
   /// `projects/<project_id_or_number>`.
-  late final Output<String?> keyProject;
+  late final pulumi.Output<String?> keyProject;
 
   AutokeyConfig(
     String name, {
     AutokeyConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/autokeyConfig:AutokeyConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.etag = registerOutput<String>('etag');
     this.folder = registerOutput<String>('folder');

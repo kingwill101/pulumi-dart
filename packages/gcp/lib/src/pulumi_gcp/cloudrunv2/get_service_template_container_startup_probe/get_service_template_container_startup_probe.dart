@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_container_startup_probe_grpc/get_service_template_container_startup_probe_grpc.dart';
 import '../get_service_template_container_startup_probe_http_get/get_service_template_container_startup_probe_http_get.dart';
 import '../get_service_template_container_startup_probe_tcp_socket/get_service_template_container_startup_probe_tcp_socket.dart';
@@ -40,14 +40,15 @@ class GetServiceTemplateContainerStartupProbe {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['failureThreshold'] = failureThreshold;
-    map['grpcs'] = Input.encodeList<GetServiceTemplateContainerStartupProbeGrpc,
+    map['grpcs'] = pulumi.Input.encodeList<
+        GetServiceTemplateContainerStartupProbeGrpc,
         Map<String, dynamic>>(grpcs, (value) => value.toMap());
-    map['httpGets'] = Input.encodeList<
+    map['httpGets'] = pulumi.Input.encodeList<
         GetServiceTemplateContainerStartupProbeHttpGet,
         Map<String, dynamic>>(httpGets, (value) => value.toMap());
     map['initialDelaySeconds'] = initialDelaySeconds;
     map['periodSeconds'] = periodSeconds;
-    map['tcpSockets'] = Input.encodeList<
+    map['tcpSockets'] = pulumi.Input.encodeList<
         GetServiceTemplateContainerStartupProbeTcpSocket,
         Map<String, dynamic>>(tcpSockets, (value) => value.toMap());
     map['timeoutSeconds'] = timeoutSeconds;
@@ -58,23 +59,23 @@ class GetServiceTemplateContainerStartupProbe {
       Map<String, dynamic> map) {
     return GetServiceTemplateContainerStartupProbe(
       failureThreshold: map['failureThreshold'] as int,
-      grpcs: Input.decodeList<GetServiceTemplateContainerStartupProbeGrpc>(
-          map['grpcs'],
-          (value) => GetServiceTemplateContainerStartupProbeGrpc.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      httpGets:
-          Input.decodeList<GetServiceTemplateContainerStartupProbeHttpGet>(
-              map['httpGets'],
-              (value) => GetServiceTemplateContainerStartupProbeHttpGet.fromMap(
+      grpcs:
+          pulumi.Input.decodeList<GetServiceTemplateContainerStartupProbeGrpc>(
+              map['grpcs'],
+              (value) => GetServiceTemplateContainerStartupProbeGrpc.fromMap(
                   (value as Map).cast<String, dynamic>())),
+      httpGets: pulumi.Input.decodeList<
+              GetServiceTemplateContainerStartupProbeHttpGet>(
+          map['httpGets'],
+          (value) => GetServiceTemplateContainerStartupProbeHttpGet.fromMap(
+              (value as Map).cast<String, dynamic>())),
       initialDelaySeconds: map['initialDelaySeconds'] as int,
       periodSeconds: map['periodSeconds'] as int,
-      tcpSockets:
-          Input.decodeList<GetServiceTemplateContainerStartupProbeTcpSocket>(
-              map['tcpSockets'],
-              (value) =>
-                  GetServiceTemplateContainerStartupProbeTcpSocket.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      tcpSockets: pulumi.Input.decodeList<
+              GetServiceTemplateContainerStartupProbeTcpSocket>(
+          map['tcpSockets'],
+          (value) => GetServiceTemplateContainerStartupProbeTcpSocket.fromMap(
+              (value as Map).cast<String, dynamic>())),
       timeoutSeconds: map['timeoutSeconds'] as int,
     );
   }

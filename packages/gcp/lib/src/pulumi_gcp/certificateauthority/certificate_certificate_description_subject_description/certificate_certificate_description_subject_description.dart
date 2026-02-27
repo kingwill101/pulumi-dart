@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_certificate_description_subject_description_subject/certificate_certificate_description_subject_description_subject.dart';
 import '../certificate_certificate_description_subject_description_subject_alt_name/certificate_certificate_description_subject_description_subject_alt_name.dart';
 
@@ -63,13 +63,13 @@ class CertificateCertificateDescriptionSubjectDescription {
     }
     final subjectAltNamesValue = subjectAltNames;
     if (subjectAltNamesValue != null) {
-      map['subjectAltNames'] = Input.encodeList<
+      map['subjectAltNames'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionSubjectDescriptionSubjectAltName,
           Map<String, dynamic>>(subjectAltNamesValue, (value) => value.toMap());
     }
     final subjectsValue = subjects;
     if (subjectsValue != null) {
-      map['subjects'] = Input.encodeList<
+      map['subjects'] = pulumi.Input.encodeList<
           CertificateCertificateDescriptionSubjectDescriptionSubject,
           Map<String, dynamic>>(subjectsValue, (value) => value.toMap());
     }
@@ -89,7 +89,7 @@ class CertificateCertificateDescriptionSubjectDescription {
           map['notBeforeTime'] == null ? null : map['notBeforeTime'] as String,
       subjectAltNames: map['subjectAltNames'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>(
               map['subjectAltNames'],
               (value) =>
@@ -97,7 +97,7 @@ class CertificateCertificateDescriptionSubjectDescription {
                       .fromMap((value as Map).cast<String, dynamic>())),
       subjects: map['subjects'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateCertificateDescriptionSubjectDescriptionSubject>(
               map['subjects'],
               (value) =>

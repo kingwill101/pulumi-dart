@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegionInstanceTemplate.
 class GetRegionInstanceTemplateArgs {
   /// A filter to retrieve the instance templates.
   /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
   /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
-  final Input<String>? filter;
+  final pulumi.Input<String>? filter;
 
   /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
-  final Input<bool>? mostRecent;
+  final pulumi.Input<bool>? mostRecent;
 
   /// The name of the instance template. One of `name` or `filter` must be provided.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If `project` is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Region in which the resource belongs.
   /// If `region` is not provided, the provider region is used.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetRegionInstanceTemplateArgs({
     this.filter,
@@ -58,11 +58,11 @@ class GetRegionInstanceTemplateArgs {
 
   factory GetRegionInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateArgs(
-      filter: Input.asOptionalInput<String>(map['filter']),
-      mostRecent: Input.asOptionalInput<bool>(map['mostRecent']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      filter: pulumi.Input.asOptionalInput<String>(map['filter']),
+      mostRecent: pulumi.Input.asOptionalInput<bool>(map['mostRecent']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

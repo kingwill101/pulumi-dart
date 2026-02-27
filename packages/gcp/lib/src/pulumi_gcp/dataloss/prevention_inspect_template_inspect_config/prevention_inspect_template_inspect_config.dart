@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_inspect_template_inspect_config_custom_info_type/prevention_inspect_template_inspect_config_custom_info_type.dart';
 import '../prevention_inspect_template_inspect_config_info_type/prevention_inspect_template_inspect_config_info_type.dart';
 import '../prevention_inspect_template_inspect_config_limits/prevention_inspect_template_inspect_config_limits.dart';
@@ -62,7 +62,7 @@ class PreventionInspectTemplateInspectConfig {
     }
     final customInfoTypesValue = customInfoTypes;
     if (customInfoTypesValue != null) {
-      map['customInfoTypes'] = Input.encodeList<
+      map['customInfoTypes'] = pulumi.Input.encodeList<
           PreventionInspectTemplateInspectConfigCustomInfoType,
           Map<String, dynamic>>(customInfoTypesValue, (value) => value.toMap());
     }
@@ -76,7 +76,7 @@ class PreventionInspectTemplateInspectConfig {
     }
     final infoTypesValue = infoTypes;
     if (infoTypesValue != null) {
-      map['infoTypes'] = Input.encodeList<
+      map['infoTypes'] = pulumi.Input.encodeList<
           PreventionInspectTemplateInspectConfigInfoType,
           Map<String, dynamic>>(infoTypesValue, (value) => value.toMap());
     }
@@ -90,7 +90,7 @@ class PreventionInspectTemplateInspectConfig {
     }
     final ruleSetsValue = ruleSets;
     if (ruleSetsValue != null) {
-      map['ruleSets'] = Input.encodeList<
+      map['ruleSets'] = pulumi.Input.encodeList<
           PreventionInspectTemplateInspectConfigRuleSet,
           Map<String, dynamic>>(ruleSetsValue, (value) => value.toMap());
     }
@@ -105,7 +105,7 @@ class PreventionInspectTemplateInspectConfig {
           : (map['contentOptions'] as List).cast<String>(),
       customInfoTypes: map['customInfoTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionInspectTemplateInspectConfigCustomInfoType>(
               map['customInfoTypes'],
               (value) =>
@@ -118,7 +118,8 @@ class PreventionInspectTemplateInspectConfig {
           map['includeQuote'] == null ? null : map['includeQuote'] as bool,
       infoTypes: map['infoTypes'] == null
           ? null
-          : Input.decodeList<PreventionInspectTemplateInspectConfigInfoType>(
+          : pulumi.Input.decodeList<
+                  PreventionInspectTemplateInspectConfigInfoType>(
               map['infoTypes'],
               (value) => PreventionInspectTemplateInspectConfigInfoType.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -130,7 +131,8 @@ class PreventionInspectTemplateInspectConfig {
           map['minLikelihood'] == null ? null : map['minLikelihood'] as String,
       ruleSets: map['ruleSets'] == null
           ? null
-          : Input.decodeList<PreventionInspectTemplateInspectConfigRuleSet>(
+          : pulumi.Input.decodeList<
+                  PreventionInspectTemplateInspectConfigRuleSet>(
               map['ruleSets'],
               (value) => PreventionInspectTemplateInspectConfigRuleSet.fromMap(
                   (value as Map).cast<String, dynamic>())),

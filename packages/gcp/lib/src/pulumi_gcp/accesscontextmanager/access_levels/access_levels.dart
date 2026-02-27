@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_levels_access_level/access_levels_access_level.dart';
 import 'access_levels_args.dart';
 
@@ -26,24 +26,24 @@ import 'access_levels_args.dart';
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
 /// ```
-class AccessLevels extends CustomResource {
+class AccessLevels extends pulumi.CustomResource {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
-  late final Output<List<AccessLevelsAccessLevel>?> accessLevels;
+  late final pulumi.Output<List<AccessLevelsAccessLevel>?> accessLevels;
 
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   AccessLevels(
     String name, {
     AccessLevelsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/accessLevels:AccessLevels',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessLevels =
         registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels');

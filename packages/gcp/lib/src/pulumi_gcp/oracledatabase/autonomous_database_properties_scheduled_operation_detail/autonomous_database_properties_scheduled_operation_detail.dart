@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../autonomous_database_properties_scheduled_operation_detail_start_time/autonomous_database_properties_scheduled_operation_detail_start_time.dart';
 import '../autonomous_database_properties_scheduled_operation_detail_stop_time/autonomous_database_properties_scheduled_operation_detail_stop_time.dart';
 
@@ -42,13 +42,13 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
     }
     final startTimesValue = startTimes;
     if (startTimesValue != null) {
-      map['startTimes'] = Input.encodeList<
+      map['startTimes'] = pulumi.Input.encodeList<
           AutonomousDatabasePropertiesScheduledOperationDetailStartTime,
           Map<String, dynamic>>(startTimesValue, (value) => value.toMap());
     }
     final stopTimesValue = stopTimes;
     if (stopTimesValue != null) {
-      map['stopTimes'] = Input.encodeList<
+      map['stopTimes'] = pulumi.Input.encodeList<
           AutonomousDatabasePropertiesScheduledOperationDetailStopTime,
           Map<String, dynamic>>(stopTimesValue, (value) => value.toMap());
     }
@@ -61,7 +61,7 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
       dayOfWeek: map['dayOfWeek'] == null ? null : map['dayOfWeek'] as String,
       startTimes: map['startTimes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AutonomousDatabasePropertiesScheduledOperationDetailStartTime>(
               map['startTimes'],
               (value) =>
@@ -69,7 +69,7 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
                       .fromMap((value as Map).cast<String, dynamic>())),
       stopTimes: map['stopTimes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AutonomousDatabasePropertiesScheduledOperationDetailStopTime>(
               map['stopTimes'],
               (value) =>

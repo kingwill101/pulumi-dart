@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_database_instance_latest_recovery_time_args.dart';
 import 'get_database_instance_latest_recovery_time_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_database_instance_latest_recovery_time_result.dart';
 Future<GetDatabaseInstanceLatestRecoveryTimeResult>
     getDatabaseInstanceLatestRecoveryTime(
   GetDatabaseInstanceLatestRecoveryTimeArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseInstanceLatestRecoveryTimeResult.fromMap(result);
 }

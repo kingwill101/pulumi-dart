@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_addons_config_cloudrun_config/get_cluster_addons_config_cloudrun_config.dart';
 import '../get_cluster_addons_config_config_connector_config/get_cluster_addons_config_config_connector_config.dart';
 import '../get_cluster_addons_config_dns_cache_config/get_cluster_addons_config_dns_cache_config.dart';
@@ -100,57 +100,59 @@ class GetClusterAddonsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudrunConfigs'] = Input.encodeList<
+    map['cloudrunConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigCloudrunConfig,
         Map<String, dynamic>>(cloudrunConfigs, (value) => value.toMap());
-    map['configConnectorConfigs'] = Input.encodeList<
+    map['configConnectorConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigConfigConnectorConfig,
         Map<String, dynamic>>(configConnectorConfigs, (value) => value.toMap());
-    map['dnsCacheConfigs'] = Input.encodeList<
+    map['dnsCacheConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigDnsCacheConfig,
         Map<String, dynamic>>(dnsCacheConfigs, (value) => value.toMap());
-    map['gcePersistentDiskCsiDriverConfigs'] = Input.encodeList<
+    map['gcePersistentDiskCsiDriverConfigs'] = pulumi.Input.encodeList<
             GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig,
             Map<String, dynamic>>(
         gcePersistentDiskCsiDriverConfigs, (value) => value.toMap());
-    map['gcpFilestoreCsiDriverConfigs'] = Input.encodeList<
+    map['gcpFilestoreCsiDriverConfigs'] = pulumi.Input.encodeList<
             GetClusterAddonsConfigGcpFilestoreCsiDriverConfig,
             Map<String, dynamic>>(
         gcpFilestoreCsiDriverConfigs, (value) => value.toMap());
-    map['gcsFuseCsiDriverConfigs'] = Input.encodeList<
+    map['gcsFuseCsiDriverConfigs'] = pulumi.Input.encodeList<
             GetClusterAddonsConfigGcsFuseCsiDriverConfig, Map<String, dynamic>>(
         gcsFuseCsiDriverConfigs, (value) => value.toMap());
-    map['gkeBackupAgentConfigs'] = Input.encodeList<
+    map['gkeBackupAgentConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigGkeBackupAgentConfig,
         Map<String, dynamic>>(gkeBackupAgentConfigs, (value) => value.toMap());
-    map['horizontalPodAutoscalings'] = Input.encodeList<
+    map['horizontalPodAutoscalings'] = pulumi.Input.encodeList<
             GetClusterAddonsConfigHorizontalPodAutoscaling,
             Map<String, dynamic>>(
         horizontalPodAutoscalings, (value) => value.toMap());
-    map['httpLoadBalancings'] = Input.encodeList<
+    map['httpLoadBalancings'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigHttpLoadBalancing,
         Map<String, dynamic>>(httpLoadBalancings, (value) => value.toMap());
-    map['istioConfigs'] = Input.encodeList<GetClusterAddonsConfigIstioConfig,
+    map['istioConfigs'] = pulumi.Input.encodeList<
+        GetClusterAddonsConfigIstioConfig,
         Map<String, dynamic>>(istioConfigs, (value) => value.toMap());
-    map['kalmConfigs'] = Input.encodeList<GetClusterAddonsConfigKalmConfig,
+    map['kalmConfigs'] = pulumi.Input.encodeList<
+        GetClusterAddonsConfigKalmConfig,
         Map<String, dynamic>>(kalmConfigs, (value) => value.toMap());
-    map['lustreCsiDriverConfigs'] = Input.encodeList<
+    map['lustreCsiDriverConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigLustreCsiDriverConfig,
         Map<String, dynamic>>(lustreCsiDriverConfigs, (value) => value.toMap());
-    map['networkPolicyConfigs'] = Input.encodeList<
+    map['networkPolicyConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigNetworkPolicyConfig,
         Map<String, dynamic>>(networkPolicyConfigs, (value) => value.toMap());
-    map['parallelstoreCsiDriverConfigs'] = Input.encodeList<
+    map['parallelstoreCsiDriverConfigs'] = pulumi.Input.encodeList<
             GetClusterAddonsConfigParallelstoreCsiDriverConfig,
             Map<String, dynamic>>(
         parallelstoreCsiDriverConfigs, (value) => value.toMap());
-    map['podSnapshotConfigs'] = Input.encodeList<
+    map['podSnapshotConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigPodSnapshotConfig,
         Map<String, dynamic>>(podSnapshotConfigs, (value) => value.toMap());
-    map['rayOperatorConfigs'] = Input.encodeList<
+    map['rayOperatorConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigRayOperatorConfig,
         Map<String, dynamic>>(rayOperatorConfigs, (value) => value.toMap());
-    map['statefulHaConfigs'] = Input.encodeList<
+    map['statefulHaConfigs'] = pulumi.Input.encodeList<
         GetClusterAddonsConfigStatefulHaConfig,
         Map<String, dynamic>>(statefulHaConfigs, (value) => value.toMap());
     return map;
@@ -158,87 +160,87 @@ class GetClusterAddonsConfig {
 
   factory GetClusterAddonsConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterAddonsConfig(
-      cloudrunConfigs: Input.decodeList<GetClusterAddonsConfigCloudrunConfig>(
-          map['cloudrunConfigs'],
-          (value) => GetClusterAddonsConfigCloudrunConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cloudrunConfigs:
+          pulumi.Input.decodeList<GetClusterAddonsConfigCloudrunConfig>(
+              map['cloudrunConfigs'],
+              (value) => GetClusterAddonsConfigCloudrunConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       configConnectorConfigs:
-          Input.decodeList<GetClusterAddonsConfigConfigConnectorConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigConfigConnectorConfig>(
               map['configConnectorConfigs'],
               (value) => GetClusterAddonsConfigConfigConnectorConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      dnsCacheConfigs: Input.decodeList<GetClusterAddonsConfigDnsCacheConfig>(
-          map['dnsCacheConfigs'],
-          (value) => GetClusterAddonsConfigDnsCacheConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      gcePersistentDiskCsiDriverConfigs: Input.decodeList<
+      dnsCacheConfigs:
+          pulumi.Input.decodeList<GetClusterAddonsConfigDnsCacheConfig>(
+              map['dnsCacheConfigs'],
+              (value) => GetClusterAddonsConfigDnsCacheConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      gcePersistentDiskCsiDriverConfigs: pulumi.Input.decodeList<
               GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig>(
           map['gcePersistentDiskCsiDriverConfigs'],
           (value) =>
               GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      gcpFilestoreCsiDriverConfigs:
-          Input.decodeList<GetClusterAddonsConfigGcpFilestoreCsiDriverConfig>(
-              map['gcpFilestoreCsiDriverConfigs'],
-              (value) =>
-                  GetClusterAddonsConfigGcpFilestoreCsiDriverConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      gcpFilestoreCsiDriverConfigs: pulumi.Input.decodeList<
+              GetClusterAddonsConfigGcpFilestoreCsiDriverConfig>(
+          map['gcpFilestoreCsiDriverConfigs'],
+          (value) => GetClusterAddonsConfigGcpFilestoreCsiDriverConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       gcsFuseCsiDriverConfigs:
-          Input.decodeList<GetClusterAddonsConfigGcsFuseCsiDriverConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigGcsFuseCsiDriverConfig>(
               map['gcsFuseCsiDriverConfigs'],
               (value) => GetClusterAddonsConfigGcsFuseCsiDriverConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       gkeBackupAgentConfigs:
-          Input.decodeList<GetClusterAddonsConfigGkeBackupAgentConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigGkeBackupAgentConfig>(
               map['gkeBackupAgentConfigs'],
               (value) => GetClusterAddonsConfigGkeBackupAgentConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      horizontalPodAutoscalings:
-          Input.decodeList<GetClusterAddonsConfigHorizontalPodAutoscaling>(
-              map['horizontalPodAutoscalings'],
-              (value) => GetClusterAddonsConfigHorizontalPodAutoscaling.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      horizontalPodAutoscalings: pulumi.Input.decodeList<
+              GetClusterAddonsConfigHorizontalPodAutoscaling>(
+          map['horizontalPodAutoscalings'],
+          (value) => GetClusterAddonsConfigHorizontalPodAutoscaling.fromMap(
+              (value as Map).cast<String, dynamic>())),
       httpLoadBalancings:
-          Input.decodeList<GetClusterAddonsConfigHttpLoadBalancing>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigHttpLoadBalancing>(
               map['httpLoadBalancings'],
               (value) => GetClusterAddonsConfigHttpLoadBalancing.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      istioConfigs: Input.decodeList<GetClusterAddonsConfigIstioConfig>(
+      istioConfigs: pulumi.Input.decodeList<GetClusterAddonsConfigIstioConfig>(
           map['istioConfigs'],
           (value) => GetClusterAddonsConfigIstioConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      kalmConfigs: Input.decodeList<GetClusterAddonsConfigKalmConfig>(
+      kalmConfigs: pulumi.Input.decodeList<GetClusterAddonsConfigKalmConfig>(
           map['kalmConfigs'],
           (value) => GetClusterAddonsConfigKalmConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       lustreCsiDriverConfigs:
-          Input.decodeList<GetClusterAddonsConfigLustreCsiDriverConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigLustreCsiDriverConfig>(
               map['lustreCsiDriverConfigs'],
               (value) => GetClusterAddonsConfigLustreCsiDriverConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       networkPolicyConfigs:
-          Input.decodeList<GetClusterAddonsConfigNetworkPolicyConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigNetworkPolicyConfig>(
               map['networkPolicyConfigs'],
               (value) => GetClusterAddonsConfigNetworkPolicyConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      parallelstoreCsiDriverConfigs:
-          Input.decodeList<GetClusterAddonsConfigParallelstoreCsiDriverConfig>(
-              map['parallelstoreCsiDriverConfigs'],
-              (value) =>
-                  GetClusterAddonsConfigParallelstoreCsiDriverConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      parallelstoreCsiDriverConfigs: pulumi.Input.decodeList<
+              GetClusterAddonsConfigParallelstoreCsiDriverConfig>(
+          map['parallelstoreCsiDriverConfigs'],
+          (value) => GetClusterAddonsConfigParallelstoreCsiDriverConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       podSnapshotConfigs:
-          Input.decodeList<GetClusterAddonsConfigPodSnapshotConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigPodSnapshotConfig>(
               map['podSnapshotConfigs'],
               (value) => GetClusterAddonsConfigPodSnapshotConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       rayOperatorConfigs:
-          Input.decodeList<GetClusterAddonsConfigRayOperatorConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigRayOperatorConfig>(
               map['rayOperatorConfigs'],
               (value) => GetClusterAddonsConfigRayOperatorConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       statefulHaConfigs:
-          Input.decodeList<GetClusterAddonsConfigStatefulHaConfig>(
+          pulumi.Input.decodeList<GetClusterAddonsConfigStatefulHaConfig>(
               map['statefulHaConfigs'],
               (value) => GetClusterAddonsConfigStatefulHaConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

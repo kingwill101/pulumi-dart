@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../alert_policy_condition_condition_threshold_aggregation/alert_policy_condition_condition_threshold_aggregation.dart';
 import '../alert_policy_condition_condition_threshold_denominator_aggregation/alert_policy_condition_condition_threshold_denominator_aggregation.dart';
 import '../alert_policy_condition_condition_threshold_forecast_options/alert_policy_condition_condition_threshold_forecast_options.dart';
@@ -149,14 +149,14 @@ class AlertPolicyConditionConditionThreshold {
     final map = <String, dynamic>{};
     final aggregationsValue = aggregations;
     if (aggregationsValue != null) {
-      map['aggregations'] = Input.encodeList<
+      map['aggregations'] = pulumi.Input.encodeList<
           AlertPolicyConditionConditionThresholdAggregation,
           Map<String, dynamic>>(aggregationsValue, (value) => value.toMap());
     }
     map['comparison'] = comparison;
     final denominatorAggregationsValue = denominatorAggregations;
     if (denominatorAggregationsValue != null) {
-      map['denominatorAggregations'] = Input.encodeList<
+      map['denominatorAggregations'] = pulumi.Input.encodeList<
               AlertPolicyConditionConditionThresholdDenominatorAggregation,
               Map<String, dynamic>>(
           denominatorAggregationsValue, (value) => value.toMap());
@@ -194,7 +194,8 @@ class AlertPolicyConditionConditionThreshold {
     return AlertPolicyConditionConditionThreshold(
       aggregations: map['aggregations'] == null
           ? null
-          : Input.decodeList<AlertPolicyConditionConditionThresholdAggregation>(
+          : pulumi.Input.decodeList<
+                  AlertPolicyConditionConditionThresholdAggregation>(
               map['aggregations'],
               (value) =>
                   AlertPolicyConditionConditionThresholdAggregation.fromMap(
@@ -202,7 +203,7 @@ class AlertPolicyConditionConditionThreshold {
       comparison: map['comparison'] as String,
       denominatorAggregations: map['denominatorAggregations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AlertPolicyConditionConditionThresholdDenominatorAggregation>(
               map['denominatorAggregations'],
               (value) =>

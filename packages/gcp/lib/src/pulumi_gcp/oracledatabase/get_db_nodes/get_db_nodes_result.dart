@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_db_nodes_db_node/get_db_nodes_db_node.dart';
 
 /// Result data returned by getDbNodes.
@@ -24,8 +24,9 @@ class GetDbNodesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['cloudVmCluster'] = cloudVmCluster;
-    map['dbNodes'] = Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(
-        dbNodes, (value) => value.toMap());
+    map['dbNodes'] =
+        pulumi.Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(
+            dbNodes, (value) => value.toMap());
     map['id'] = id;
     map['location'] = location;
     final projectValue = project;
@@ -38,7 +39,7 @@ class GetDbNodesResult {
   factory GetDbNodesResult.fromMap(Map<String, dynamic> map) {
     return GetDbNodesResult(
       cloudVmCluster: map['cloudVmCluster'] as String,
-      dbNodes: Input.decodeList<GetDbNodesDbNode>(
+      dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(
           map['dbNodes'],
           (value) =>
               GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())),

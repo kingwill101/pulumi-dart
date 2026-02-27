@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_state_state/feature_state_state.dart';
 
 class FeatureState {
@@ -17,8 +17,9 @@ class FeatureState {
     final map = <String, dynamic>{};
     final statesValue = states;
     if (statesValue != null) {
-      map['states'] = Input.encodeList<FeatureStateState, Map<String, dynamic>>(
-          statesValue, (value) => value.toMap());
+      map['states'] =
+          pulumi.Input.encodeList<FeatureStateState, Map<String, dynamic>>(
+              statesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +28,7 @@ class FeatureState {
     return FeatureState(
       states: map['states'] == null
           ? null
-          : Input.decodeList<FeatureStateState>(
+          : pulumi.Input.decodeList<FeatureStateState>(
               map['states'],
               (value) => FeatureStateState.fromMap(
                   (value as Map).cast<String, dynamic>())),

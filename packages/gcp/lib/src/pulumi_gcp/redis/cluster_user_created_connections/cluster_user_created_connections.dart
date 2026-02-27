@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_user_created_connections_cluster_endpoint/cluster_user_created_connections_cluster_endpoint.dart';
 import 'cluster_user_created_connections_args.dart';
 
@@ -42,31 +42,31 @@ import 'cluster_user_created_connections_args.dart';
 /// ```sh
 /// $ pulumi import gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections default {{name}}
 /// ```
-class ClusterUserCreatedConnections extends CustomResource {
+class ClusterUserCreatedConnections extends pulumi.CustomResource {
   /// A list of cluster endpoints
   /// Structure is documented below.
-  late final Output<List<ClusterUserCreatedConnectionsClusterEndpoint>?>
+  late final pulumi.Output<List<ClusterUserCreatedConnectionsClusterEndpoint>?>
       clusterEndpoints;
 
   /// The name of the Redis cluster these endpoints should be added to.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The name of the region of the Redis cluster these endpoints should be added to.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ClusterUserCreatedConnections(
     String name, {
     ClusterUserCreatedConnectionsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterEndpoints =
         registerOutput<List<ClusterUserCreatedConnectionsClusterEndpoint>?>(

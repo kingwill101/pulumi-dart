@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_security_policy_rule_rate_limit_options_ban_threshold/region_security_policy_rule_rate_limit_options_ban_threshold.dart';
 import '../region_security_policy_rule_rate_limit_options_enforce_on_key_config/region_security_policy_rule_rate_limit_options_enforce_on_key_config.dart';
 import '../region_security_policy_rule_rate_limit_options_rate_limit_threshold/region_security_policy_rule_rate_limit_options_rate_limit_threshold.dart';
@@ -86,7 +86,7 @@ class RegionSecurityPolicyRuleRateLimitOptions {
     }
     final enforceOnKeyConfigsValue = enforceOnKeyConfigs;
     if (enforceOnKeyConfigsValue != null) {
-      map['enforceOnKeyConfigs'] = Input.encodeList<
+      map['enforceOnKeyConfigs'] = pulumi.Input.encodeList<
               RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig,
               Map<String, dynamic>>(
           enforceOnKeyConfigsValue, (value) => value.toMap());
@@ -121,7 +121,7 @@ class RegionSecurityPolicyRuleRateLimitOptions {
           map['enforceOnKey'] == null ? null : map['enforceOnKey'] as String,
       enforceOnKeyConfigs: map['enforceOnKeyConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>(
               map['enforceOnKeyConfigs'],
               (value) =>

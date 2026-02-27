@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_after_agent_callback/agent_after_agent_callback.dart';
 import '../agent_after_model_callback/agent_after_model_callback.dart';
 import '../agent_after_tool_callback/agent_after_tool_callback.dart';
@@ -48,13 +48,13 @@ import 'agent_args.dart';
 /// ```sh
 /// $ pulumi import gcp:ces/agent:Agent default {{location}}/{{app}}/{{name}}
 /// ```
-class Agent extends CustomResource {
+class Agent extends pulumi.CustomResource {
   /// The callbacks to execute after the agent is called.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final Output<List<AgentAfterAgentCallback>?> afterAgentCallbacks;
+  late final pulumi.Output<List<AgentAfterAgentCallback>?> afterAgentCallbacks;
 
   /// The callbacks to execute after the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
@@ -62,7 +62,7 @@ class Agent extends CustomResource {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final Output<List<AgentAfterModelCallback>?> afterModelCallbacks;
+  late final pulumi.Output<List<AgentAfterModelCallback>?> afterModelCallbacks;
 
   /// The callbacks to execute after the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
@@ -70,22 +70,23 @@ class Agent extends CustomResource {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final Output<List<AgentAfterToolCallback>?> afterToolCallbacks;
+  late final pulumi.Output<List<AgentAfterToolCallback>?> afterToolCallbacks;
 
   /// The ID to use for the agent, which will become the final component of
   /// the agent's resource name. If not provided, a unique ID will be
   /// automatically assigned for the agent.
-  late final Output<String?> agentId;
+  late final pulumi.Output<String?> agentId;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> app;
+  late final pulumi.Output<String> app;
 
   /// The callbacks to execute before the agent is called.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final Output<List<AgentBeforeAgentCallback>?> beforeAgentCallbacks;
+  late final pulumi.Output<List<AgentBeforeAgentCallback>?>
+      beforeAgentCallbacks;
 
   /// The callbacks to execute before the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
@@ -93,7 +94,8 @@ class Agent extends CustomResource {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final Output<List<AgentBeforeModelCallback>?> beforeModelCallbacks;
+  late final pulumi.Output<List<AgentBeforeModelCallback>?>
+      beforeModelCallbacks;
 
   /// The callbacks to execute before the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
@@ -101,56 +103,56 @@ class Agent extends CustomResource {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final Output<List<AgentBeforeToolCallback>?> beforeToolCallbacks;
+  late final pulumi.Output<List<AgentBeforeToolCallback>?> beforeToolCallbacks;
 
   /// List of child agents in the agent tree.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  late final Output<List<String>?> childAgents;
+  late final pulumi.Output<List<String>?> childAgents;
 
   /// Timestamp when the agent was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Human-readable description of the agent.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Display name of the agent.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// If the agent is generated by the LLM assistant, this field contains a
   /// descriptive summary of the generation.
-  late final Output<String> generatedSummary;
+  late final pulumi.Output<String> generatedSummary;
 
   /// List of guardrails for the agent.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-  late final Output<List<String>?> guardrails;
+  late final pulumi.Output<List<String>?> guardrails;
 
   /// Instructions for the LLM model to guide the agent's behavior.
-  late final Output<String?> instruction;
+  late final pulumi.Output<String?> instruction;
 
   /// Default agent type. The agent uses instructions and callbacks specified in
   /// the agent to perform the task using a large language model.
-  late final Output<Map<String, dynamic>?> llmAgent;
+  late final pulumi.Output<Map<String, dynamic>?> llmAgent;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  late final Output<AgentModelSettings?> modelSettings;
+  late final pulumi.Output<AgentModelSettings?> modelSettings;
 
   /// Identifier. The unique identifier of the agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The agent which will transfer execution to an existing remote
   /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
@@ -158,28 +160,28 @@ class Agent extends CustomResource {
   /// queries until the session ends or flow ends and the control is transferred
   /// back to the parent CES agent.
   /// Structure is documented below.
-  late final Output<AgentRemoteDialogflowAgent?> remoteDialogflowAgent;
+  late final pulumi.Output<AgentRemoteDialogflowAgent?> remoteDialogflowAgent;
 
   /// List of available tools for the agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  late final Output<List<String>?> tools;
+  late final pulumi.Output<List<String>?> tools;
 
   /// List of toolsets for the agent.
   /// Structure is documented below.
-  late final Output<List<AgentToolset>?> toolsets;
+  late final pulumi.Output<List<AgentToolset>?> toolsets;
 
   /// Timestamp when the agent was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Agent(
     String name, {
     AgentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:ces/agent:Agent',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.afterAgentCallbacks =
         registerOutput<List<AgentAfterAgentCallback>?>('afterAgentCallbacks');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_ciphertext_args.dart';
 
 /// Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
@@ -28,31 +28,31 @@ import 'secret_ciphertext_args.dart';
 /// ## Import
 ///
 /// This resource does not support import.
-class SecretCiphertext extends CustomResource {
+class SecretCiphertext extends pulumi.CustomResource {
   /// The additional authenticated data used for integrity checks during encryption and decryption.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String?> additionalAuthenticatedData;
+  late final pulumi.Output<String?> additionalAuthenticatedData;
 
   /// Contains the result of encrypting the provided plaintext, encoded in base64.
-  late final Output<String> ciphertext;
+  late final pulumi.Output<String> ciphertext;
 
   /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-  late final Output<String> cryptoKey;
+  late final pulumi.Output<String> cryptoKey;
 
   /// The plaintext to be encrypted.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  late final Output<String> plaintext;
+  late final pulumi.Output<String> plaintext;
 
   SecretCiphertext(
     String name, {
     SecretCiphertextArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/secretCiphertext:SecretCiphertext',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.additionalAuthenticatedData =
         registerOutput<String?>('additionalAuthenticatedData');

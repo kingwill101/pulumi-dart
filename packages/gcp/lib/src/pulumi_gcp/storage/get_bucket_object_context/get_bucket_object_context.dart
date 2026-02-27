@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_object_context_custom/get_bucket_object_context_custom.dart';
 
 class GetBucketObjectContext {
@@ -13,15 +13,14 @@ class GetBucketObjectContext {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customs'] =
-        Input.encodeList<GetBucketObjectContextCustom, Map<String, dynamic>>(
-            customs, (value) => value.toMap());
+    map['customs'] = pulumi.Input.encodeList<GetBucketObjectContextCustom,
+        Map<String, dynamic>>(customs, (value) => value.toMap());
     return map;
   }
 
   factory GetBucketObjectContext.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectContext(
-      customs: Input.decodeList<GetBucketObjectContextCustom>(
+      customs: pulumi.Input.decodeList<GetBucketObjectContextCustom>(
           map['customs'],
           (value) => GetBucketObjectContextCustom.fromMap(
               (value as Map).cast<String, dynamic>())),

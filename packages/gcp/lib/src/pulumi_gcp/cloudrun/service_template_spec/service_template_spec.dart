@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_template_spec_container/service_template_spec_container.dart';
 import '../service_template_spec_volume/service_template_spec_volume.dart';
 
@@ -59,9 +59,8 @@ class ServiceTemplateSpec {
     }
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] =
-          Input.encodeList<ServiceTemplateSpecContainer, Map<String, dynamic>>(
-              containersValue, (value) => value.toMap());
+      map['containers'] = pulumi.Input.encodeList<ServiceTemplateSpecContainer,
+          Map<String, dynamic>>(containersValue, (value) => value.toMap());
     }
     final nodeSelectorValue = nodeSelector;
     if (nodeSelectorValue != null) {
@@ -81,9 +80,8 @@ class ServiceTemplateSpec {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] =
-          Input.encodeList<ServiceTemplateSpecVolume, Map<String, dynamic>>(
-              volumesValue, (value) => value.toMap());
+      map['volumes'] = pulumi.Input.encodeList<ServiceTemplateSpecVolume,
+          Map<String, dynamic>>(volumesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -95,7 +93,7 @@ class ServiceTemplateSpec {
           : map['containerConcurrency'] as int,
       containers: map['containers'] == null
           ? null
-          : Input.decodeList<ServiceTemplateSpecContainer>(
+          : pulumi.Input.decodeList<ServiceTemplateSpecContainer>(
               map['containers'],
               (value) => ServiceTemplateSpecContainer.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -111,7 +109,7 @@ class ServiceTemplateSpec {
           map['timeoutSeconds'] == null ? null : map['timeoutSeconds'] as int,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<ServiceTemplateSpecVolume>(
+          : pulumi.Input.decodeList<ServiceTemplateSpecVolume>(
               map['volumes'],
               (value) => ServiceTemplateSpecVolume.fromMap(
                   (value as Map).cast<String, dynamic>())),

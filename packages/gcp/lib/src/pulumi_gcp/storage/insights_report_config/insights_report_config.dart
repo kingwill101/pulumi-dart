@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../insights_report_config_csv_options/insights_report_config_csv_options.dart';
 import '../insights_report_config_frequency_options/insights_report_config_frequency_options.dart';
 import '../insights_report_config_object_metadata_report_options/insights_report_config_object_metadata_report_options.dart';
@@ -43,49 +43,50 @@ import 'insights_report_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{location}}/{{name}}
 /// ```
-class InsightsReportConfig extends CustomResource {
+class InsightsReportConfig extends pulumi.CustomResource {
   /// Options for configuring the format of the inventory report CSV file.
   /// Structure is documented below.
-  late final Output<InsightsReportConfigCsvOptions?> csvOptions;
+  late final pulumi.Output<InsightsReportConfigCsvOptions?> csvOptions;
 
   /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// If set, all the inventory report details associated with this report configuration are deleted.
-  late final Output<bool?> forceDestroy;
+  late final pulumi.Output<bool?> forceDestroy;
 
   /// Options for configuring how inventory reports are generated.
   /// Structure is documented below.
-  late final Output<InsightsReportConfigFrequencyOptions?> frequencyOptions;
+  late final pulumi.Output<InsightsReportConfigFrequencyOptions?>
+      frequencyOptions;
 
   /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
   /// must be in the same location.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The UUID of the inventory report configuration.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Options for including metadata in an inventory report.
   /// Structure is documented below.
-  late final Output<InsightsReportConfigObjectMetadataReportOptions?>
+  late final pulumi.Output<InsightsReportConfigObjectMetadataReportOptions?>
       objectMetadataReportOptions;
 
   /// An option for outputting inventory reports as parquet files.
-  late final Output<Map<String, dynamic>?> parquetOptions;
+  late final pulumi.Output<Map<String, dynamic>?> parquetOptions;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   InsightsReportConfig(
     String name, {
     InsightsReportConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:storage/insightsReportConfig:InsightsReportConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.csvOptions =
         registerOutput<InsightsReportConfigCsvOptions?>('csvOptions');

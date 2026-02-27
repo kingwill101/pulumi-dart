@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../generator_summarization_context_few_shot_example_output_summary_suggestion_summary_section/generator_summarization_context_few_shot_example_output_summary_suggestion_summary_section.dart';
 
 class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
@@ -16,7 +16,7 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['summarySections'] = Input.encodeList<
+    map['summarySections'] = pulumi.Input.encodeList<
         GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection,
         Map<String, dynamic>>(summarySections, (value) => value.toMap());
     return map;
@@ -25,7 +25,7 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
   factory GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion.fromMap(
       Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion(
-      summarySections: Input.decodeList<
+      summarySections: pulumi.Input.decodeList<
               GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection>(
           map['summarySections'],
           (value) =>

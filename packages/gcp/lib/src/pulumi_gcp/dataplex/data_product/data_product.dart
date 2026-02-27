@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_product_access_group/data_product_access_group.dart';
 import 'data_product_args.dart';
 
@@ -51,66 +51,66 @@ import 'data_product_args.dart';
 /// ```sh
 /// $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{data_product_id}}
 /// ```
-class DataProduct extends CustomResource {
+class DataProduct extends pulumi.CustomResource {
   /// Custom user defined access groups at the data product level.
   /// Structure is documented below.
-  late final Output<List<DataProductAccessGroup>?> accessGroups;
+  late final pulumi.Output<List<DataProductAccessGroup>?> accessGroups;
 
   /// Number of associated data assets.
-  late final Output<int> assetCount;
+  late final pulumi.Output<int> assetCount;
 
   /// Creation timestamp.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The ID of the data product.
-  late final Output<String> dataProductId;
+  late final pulumi.Output<String> dataProductId;
 
   /// Description of the data product.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// User-friendly display name.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Checksum for concurrency control.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The location for the data product.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Emails of the owners.
-  late final Output<List<String>> ownerEmails;
+  late final pulumi.Output<List<String>> ownerEmails;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// System generated unique ID.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Last update timestamp.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   DataProduct(
     String name, {
     DataProductArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:dataplex/dataProduct:DataProduct',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessGroups =
         registerOutput<List<DataProductAccessGroup>?>('accessGroups');

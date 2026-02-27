@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBuckets.
 class GetBucketsArgs {
   /// Filter results to buckets whose names begin with this prefix.
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// The ID of the project. If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   GetBucketsArgs({
     this.prefix,
@@ -30,8 +30,8 @@ class GetBucketsArgs {
 
   factory GetBucketsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketsArgs(
-      prefix: Input.asOptionalInput<String>(map['prefix']),
-      project: Input.asOptionalInput<String>(map['project']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

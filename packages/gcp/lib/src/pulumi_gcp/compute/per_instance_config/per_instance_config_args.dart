@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../per_instance_config_preserved_state/per_instance_config_preserved_state.dart';
 
 /// The set of arguments for PerInstanceConfig.
 class PerInstanceConfigArgs {
   /// The instance group manager this instance config is part of.
-  final Input<String> instanceGroupManager;
+  final pulumi.Input<String> instanceGroupManager;
 
   /// The minimal action to perform on the instance during an update.
   /// Default is `NONE`. Possible values are:
@@ -14,7 +14,7 @@ class PerInstanceConfigArgs {
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  final Input<String>? minimalAction;
+  final pulumi.Input<String>? minimalAction;
 
   /// The most disruptive action to perform on the instance during an update.
   /// Default is `REPLACE`. Possible values are:
@@ -22,30 +22,30 @@ class PerInstanceConfigArgs {
   /// * RESTART
   /// * REFRESH
   /// * NONE
-  final Input<String>? mostDisruptiveAllowedAction;
+  final pulumi.Input<String>? mostDisruptiveAllowedAction;
 
   /// The name for this per-instance config and its corresponding instance.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The preserved state for this instance.
   /// Structure is documented below.
-  final Input<PerInstanceConfigPreservedState>? preservedState;
+  final pulumi.Input<PerInstanceConfigPreservedState>? preservedState;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// When true, deleting this config will immediately remove the underlying instance.
   /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
-  final Input<bool>? removeInstanceOnDestroy;
+  final pulumi.Input<bool>? removeInstanceOnDestroy;
 
   /// When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
   /// State will be removed on the next instance recreation or update.
-  final Input<bool>? removeInstanceStateOnDestroy;
+  final pulumi.Input<bool>? removeInstanceStateOnDestroy;
 
   /// Zone where the containing instance group manager is located
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   PerInstanceConfigArgs({
     required this.instanceGroupManager,
@@ -76,7 +76,7 @@ class PerInstanceConfigArgs {
     }
     final preservedStateValue = preservedState;
     if (preservedStateValue != null) {
-      map['preservedState'] = Input.mapOptionalInputValue<
+      map['preservedState'] = pulumi.Input.mapOptionalInputValue<
           PerInstanceConfigPreservedState,
           Map<String, dynamic>>(preservedStateValue, (value) => value.toMap());
     }
@@ -101,19 +101,21 @@ class PerInstanceConfigArgs {
 
   factory PerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return PerInstanceConfigArgs(
-      instanceGroupManager: Input.asInput<String>(map['instanceGroupManager']),
-      minimalAction: Input.asOptionalInput<String>(map['minimalAction']),
-      mostDisruptiveAllowedAction:
-          Input.asOptionalInput<String>(map['mostDisruptiveAllowedAction']),
-      name: Input.asOptionalInput<String>(map['name']),
-      preservedState: Input.asOptionalInput<PerInstanceConfigPreservedState>(
-          map['preservedState']),
-      project: Input.asOptionalInput<String>(map['project']),
+      instanceGroupManager:
+          pulumi.Input.asInput<String>(map['instanceGroupManager']),
+      minimalAction: pulumi.Input.asOptionalInput<String>(map['minimalAction']),
+      mostDisruptiveAllowedAction: pulumi.Input.asOptionalInput<String>(
+          map['mostDisruptiveAllowedAction']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      preservedState:
+          pulumi.Input.asOptionalInput<PerInstanceConfigPreservedState>(
+              map['preservedState']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       removeInstanceOnDestroy:
-          Input.asOptionalInput<bool>(map['removeInstanceOnDestroy']),
-      removeInstanceStateOnDestroy:
-          Input.asOptionalInput<bool>(map['removeInstanceStateOnDestroy']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+          pulumi.Input.asOptionalInput<bool>(map['removeInstanceOnDestroy']),
+      removeInstanceStateOnDestroy: pulumi.Input.asOptionalInput<bool>(
+          map['removeInstanceStateOnDestroy']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

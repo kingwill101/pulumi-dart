@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_warning_data/route_warning_data.dart';
 
 class RouteWarning {
@@ -33,8 +33,9 @@ class RouteWarning {
     }
     final datasValue = datas;
     if (datasValue != null) {
-      map['datas'] = Input.encodeList<RouteWarningData, Map<String, dynamic>>(
-          datasValue, (value) => value.toMap());
+      map['datas'] =
+          pulumi.Input.encodeList<RouteWarningData, Map<String, dynamic>>(
+              datasValue, (value) => value.toMap());
     }
     final messageValue = message;
     if (messageValue != null) {
@@ -48,7 +49,7 @@ class RouteWarning {
       code: map['code'] == null ? null : map['code'] as String,
       datas: map['datas'] == null
           ? null
-          : Input.decodeList<RouteWarningData>(
+          : pulumi.Input.decodeList<RouteWarningData>(
               map['datas'],
               (value) => RouteWarningData.fromMap(
                   (value as Map).cast<String, dynamic>())),

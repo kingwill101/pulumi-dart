@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_node_pool_config/vmware_node_pool_config.dart';
 import '../vmware_node_pool_node_pool_autoscaling/vmware_node_pool_node_pool_autoscaling.dart';
 
@@ -17,34 +17,34 @@ class VMwareNodePoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// The node configuration of the node pool.
   /// Structure is documented below.
-  final Input<VMwareNodePoolConfig> config;
+  final pulumi.Input<VMwareNodePoolConfig> config;
 
   /// The display name for the node pool.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The vmware node pool name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Node Pool autoscaling config for the node pool.
   /// Structure is documented below.
-  final Input<VMwareNodePoolNodePoolAutoscaling>? nodePoolAutoscaling;
+  final pulumi.Input<VMwareNodePoolNodePoolAutoscaling>? nodePoolAutoscaling;
 
   /// Anthos version for the node pool. Defaults to the user cluster version.
-  final Input<String>? onPremVersion;
+  final pulumi.Input<String>? onPremVersion;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The cluster this node pool belongs to.
-  final Input<String> vmwareCluster;
+  final pulumi.Input<String> vmwareCluster;
 
   VMwareNodePoolArgs({
     this.annotations,
@@ -65,7 +65,7 @@ class VMwareNodePoolArgs {
       map['annotations'] = annotationsValue;
     }
     map['config'] =
-        Input.mapInputValue<VMwareNodePoolConfig, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<VMwareNodePoolConfig, Map<String, dynamic>>(
             config, (value) => value.toMap());
     final displayNameValue = displayName;
     if (displayNameValue != null) {
@@ -78,7 +78,7 @@ class VMwareNodePoolArgs {
     }
     final nodePoolAutoscalingValue = nodePoolAutoscaling;
     if (nodePoolAutoscalingValue != null) {
-      map['nodePoolAutoscaling'] = Input.mapOptionalInputValue<
+      map['nodePoolAutoscaling'] = pulumi.Input.mapOptionalInputValue<
               VMwareNodePoolNodePoolAutoscaling, Map<String, dynamic>>(
           nodePoolAutoscalingValue, (value) => value.toMap());
     }
@@ -97,17 +97,17 @@ class VMwareNodePoolArgs {
   factory VMwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      config: Input.asInput<VMwareNodePoolConfig>(map['config']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      config: pulumi.Input.asInput<VMwareNodePoolConfig>(map['config']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       nodePoolAutoscaling:
-          Input.asOptionalInput<VMwareNodePoolNodePoolAutoscaling>(
+          pulumi.Input.asOptionalInput<VMwareNodePoolNodePoolAutoscaling>(
               map['nodePoolAutoscaling']),
-      onPremVersion: Input.asOptionalInput<String>(map['onPremVersion']),
-      project: Input.asOptionalInput<String>(map['project']),
-      vmwareCluster: Input.asInput<String>(map['vmwareCluster']),
+      onPremVersion: pulumi.Input.asOptionalInput<String>(map['onPremVersion']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      vmwareCluster: pulumi.Input.asInput<String>(map['vmwareCluster']),
     );
   }
 }

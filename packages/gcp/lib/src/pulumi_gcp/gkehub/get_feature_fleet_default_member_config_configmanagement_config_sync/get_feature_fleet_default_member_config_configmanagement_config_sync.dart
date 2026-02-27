@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_feature_fleet_default_member_config_configmanagement_config_sync_git/get_feature_fleet_default_member_config_configmanagement_config_sync_git.dart';
 import '../get_feature_fleet_default_member_config_configmanagement_config_sync_oci/get_feature_fleet_default_member_config_configmanagement_config_sync_oci.dart';
 
@@ -37,11 +37,11 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabled'] = enabled;
-    map['gits'] = Input.encodeList<
+    map['gits'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit,
         Map<String, dynamic>>(gits, (value) => value.toMap());
     map['metricsGcpServiceAccountEmail'] = metricsGcpServiceAccountEmail;
-    map['ocis'] = Input.encodeList<
+    map['ocis'] = pulumi.Input.encodeList<
         GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci,
         Map<String, dynamic>>(ocis, (value) => value.toMap());
     map['preventDrift'] = preventDrift;
@@ -53,7 +53,7 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
       Map<String, dynamic> map) {
     return GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync(
       enabled: map['enabled'] as bool,
-      gits: Input.decodeList<
+      gits: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit>(
           map['gits'],
           (value) =>
@@ -61,7 +61,7 @@ class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
                   .fromMap((value as Map).cast<String, dynamic>())),
       metricsGcpServiceAccountEmail:
           map['metricsGcpServiceAccountEmail'] as String,
-      ocis: Input.decodeList<
+      ocis: pulumi.Input.decodeList<
               GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci>(
           map['ocis'],
           (value) =>

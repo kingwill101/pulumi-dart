@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_database_encryption_config/get_database_encryption_config.dart';
 
 /// Result data returned by getDatabase.
@@ -42,9 +42,9 @@ class GetDatabaseResult {
     map['defaultTimeZone'] = defaultTimeZone;
     map['deletionProtection'] = deletionProtection;
     map['enableDropProtection'] = enableDropProtection;
-    map['encryptionConfigs'] =
-        Input.encodeList<GetDatabaseEncryptionConfig, Map<String, dynamic>>(
-            encryptionConfigs, (value) => value.toMap());
+    map['encryptionConfigs'] = pulumi.Input.encodeList<
+        GetDatabaseEncryptionConfig,
+        Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
     map['id'] = id;
     map['instance'] = instance;
     map['name'] = name;
@@ -64,7 +64,7 @@ class GetDatabaseResult {
       defaultTimeZone: map['defaultTimeZone'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       enableDropProtection: map['enableDropProtection'] as bool,
-      encryptionConfigs: Input.decodeList<GetDatabaseEncryptionConfig>(
+      encryptionConfigs: pulumi.Input.decodeList<GetDatabaseEncryptionConfig>(
           map['encryptionConfigs'],
           (value) => GetDatabaseEncryptionConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

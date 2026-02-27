@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../field_index_config_index/field_index_config_index.dart';
 
 class FieldIndexConfig {
@@ -17,7 +17,7 @@ class FieldIndexConfig {
     final indexesValue = indexes;
     if (indexesValue != null) {
       map['indexes'] =
-          Input.encodeList<FieldIndexConfigIndex, Map<String, dynamic>>(
+          pulumi.Input.encodeList<FieldIndexConfigIndex, Map<String, dynamic>>(
               indexesValue, (value) => value.toMap());
     }
     return map;
@@ -27,7 +27,7 @@ class FieldIndexConfig {
     return FieldIndexConfig(
       indexes: map['indexes'] == null
           ? null
-          : Input.decodeList<FieldIndexConfigIndex>(
+          : pulumi.Input.decodeList<FieldIndexConfigIndex>(
               map['indexes'],
               (value) => FieldIndexConfigIndex.fromMap(
                   (value as Map).cast<String, dynamic>())),

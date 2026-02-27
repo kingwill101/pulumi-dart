@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpngateway_args.dart';
 import 'get_vpngateway_result.dart';
 
 /// Get a VPN gateway within GCE from its name.
 Future<GetVPNGatewayResult> getVPNGateway(
   GetVPNGatewayArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:compute/getVPNGateway:getVPNGateway',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVPNGatewayResult.fromMap(result);
 }

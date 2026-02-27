@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_attributes_business_owner/service_attributes_business_owner.dart';
 import '../service_attributes_criticality/service_attributes_criticality.dart';
 import '../service_attributes_developer_owner/service_attributes_developer_owner.dart';
@@ -40,7 +40,8 @@ class ServiceAttributes {
     final map = <String, dynamic>{};
     final businessOwnersValue = businessOwners;
     if (businessOwnersValue != null) {
-      map['businessOwners'] = Input.encodeList<ServiceAttributesBusinessOwner,
+      map['businessOwners'] = pulumi.Input.encodeList<
+          ServiceAttributesBusinessOwner,
           Map<String, dynamic>>(businessOwnersValue, (value) => value.toMap());
     }
     final criticalityValue = criticality;
@@ -49,7 +50,8 @@ class ServiceAttributes {
     }
     final developerOwnersValue = developerOwners;
     if (developerOwnersValue != null) {
-      map['developerOwners'] = Input.encodeList<ServiceAttributesDeveloperOwner,
+      map['developerOwners'] = pulumi.Input.encodeList<
+          ServiceAttributesDeveloperOwner,
           Map<String, dynamic>>(developerOwnersValue, (value) => value.toMap());
     }
     final environmentValue = environment;
@@ -58,7 +60,8 @@ class ServiceAttributes {
     }
     final operatorOwnersValue = operatorOwners;
     if (operatorOwnersValue != null) {
-      map['operatorOwners'] = Input.encodeList<ServiceAttributesOperatorOwner,
+      map['operatorOwners'] = pulumi.Input.encodeList<
+          ServiceAttributesOperatorOwner,
           Map<String, dynamic>>(operatorOwnersValue, (value) => value.toMap());
     }
     return map;
@@ -68,7 +71,7 @@ class ServiceAttributes {
     return ServiceAttributes(
       businessOwners: map['businessOwners'] == null
           ? null
-          : Input.decodeList<ServiceAttributesBusinessOwner>(
+          : pulumi.Input.decodeList<ServiceAttributesBusinessOwner>(
               map['businessOwners'],
               (value) => ServiceAttributesBusinessOwner.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -78,7 +81,7 @@ class ServiceAttributes {
               (map['criticality'] as Map).cast<String, dynamic>()),
       developerOwners: map['developerOwners'] == null
           ? null
-          : Input.decodeList<ServiceAttributesDeveloperOwner>(
+          : pulumi.Input.decodeList<ServiceAttributesDeveloperOwner>(
               map['developerOwners'],
               (value) => ServiceAttributesDeveloperOwner.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -88,7 +91,7 @@ class ServiceAttributes {
               (map['environment'] as Map).cast<String, dynamic>()),
       operatorOwners: map['operatorOwners'] == null
           ? null
-          : Input.decodeList<ServiceAttributesOperatorOwner>(
+          : pulumi.Input.decodeList<ServiceAttributesOperatorOwner>(
               map['operatorOwners'],
               (value) => ServiceAttributesOperatorOwner.fromMap(
                   (value as Map).cast<String, dynamic>())),

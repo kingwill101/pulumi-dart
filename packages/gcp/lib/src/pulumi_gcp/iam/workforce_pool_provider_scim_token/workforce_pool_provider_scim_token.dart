@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workforce_pool_provider_scim_token_args.dart';
 
 /// Represents a SCIM Token for a Workforce Pool Provider Scim Tenant.
@@ -35,46 +35,46 @@ import 'workforce_pool_provider_scim_token_args.dart';
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}/{{scim_token_id}}
 /// ```
-class WorkforcePoolProviderScimToken extends CustomResource {
+class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
   /// A user-specified display name for the scim token. Cannot exceed 32 characters.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The location for the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name of the scim token.
   /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}/tokens/{scim_token_id}`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the Provider.
-  late final Output<String> providerId;
+  late final pulumi.Output<String> providerId;
 
   /// The ID of the SCIM Tenant.
-  late final Output<String> scimTenantId;
+  late final pulumi.Output<String> scimTenantId;
 
   /// The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
-  late final Output<String> scimTokenId;
+  late final pulumi.Output<String> scimTokenId;
 
   /// The token string provided to the IdP for authentication and will be set only during creation.
-  late final Output<String> securityToken;
+  late final pulumi.Output<String> securityToken;
 
   /// The current state of the scim token.
   /// * ACTIVE: The token is active and may be used to provision users and groups.
   /// * DELETED: The token is soft-deleted. Soft-deleted tokens are permanently deleted after approximately 30 days.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The ID of the Workforce Pool.
-  late final Output<String> workforcePoolId;
+  late final pulumi.Output<String> workforcePoolId;
 
   WorkforcePoolProviderScimToken(
     String name, {
     WorkforcePoolProviderScimTokenArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String?>('displayName');
     this.location = registerOutput<String>('location');

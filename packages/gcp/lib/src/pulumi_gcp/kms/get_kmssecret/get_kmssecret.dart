@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_kmssecret_args.dart';
 import 'get_kmssecret_result.dart';
 
@@ -41,13 +41,13 @@ import 'get_kmssecret_result.dart';
 /// This will result in a Cloud SQL user being created with password `my-secret-password`.
 Future<GetKMSSecretResult> getKMSSecret(
   GetKMSSecretArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'gcp:kms/getKMSSecret:getKMSSecret',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKMSSecretResult.fromMap(result);
 }

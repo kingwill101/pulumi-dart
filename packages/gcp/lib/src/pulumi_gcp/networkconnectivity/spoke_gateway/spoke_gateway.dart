@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../spoke_gateway_ip_range_reservation/spoke_gateway_ip_range_reservation.dart';
 
 class SpokeGateway {
@@ -25,9 +25,9 @@ class SpokeGateway {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['capacity'] = capacity;
-    map['ipRangeReservations'] =
-        Input.encodeList<SpokeGatewayIpRangeReservation, Map<String, dynamic>>(
-            ipRangeReservations, (value) => value.toMap());
+    map['ipRangeReservations'] = pulumi.Input.encodeList<
+        SpokeGatewayIpRangeReservation,
+        Map<String, dynamic>>(ipRangeReservations, (value) => value.toMap());
     final routersValue = routers;
     if (routersValue != null) {
       map['routers'] = routersValue;
@@ -38,10 +38,11 @@ class SpokeGateway {
   factory SpokeGateway.fromMap(Map<String, dynamic> map) {
     return SpokeGateway(
       capacity: map['capacity'] as String,
-      ipRangeReservations: Input.decodeList<SpokeGatewayIpRangeReservation>(
-          map['ipRangeReservations'],
-          (value) => SpokeGatewayIpRangeReservation.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ipRangeReservations:
+          pulumi.Input.decodeList<SpokeGatewayIpRangeReservation>(
+              map['ipRangeReservations'],
+              (value) => SpokeGatewayIpRangeReservation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       routers: map['routers'] == null
           ? null
           : (map['routers'] as List).cast<String>(),

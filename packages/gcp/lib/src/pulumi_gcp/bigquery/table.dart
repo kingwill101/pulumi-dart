@@ -1,4 +1,4 @@
 library module_bigquery_table;
 
-export 'table/table2.dart';
-export 'table/table_args2.dart';
+export 'table/table_bigquery.dart';
+export 'table/table_bigquery_args.dart';

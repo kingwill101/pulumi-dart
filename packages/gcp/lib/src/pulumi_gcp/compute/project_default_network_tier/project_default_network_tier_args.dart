@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ProjectDefaultNetworkTier.
 class ProjectDefaultNetworkTierArgs {
@@ -8,11 +8,11 @@ class ProjectDefaultNetworkTierArgs {
   /// This field can take the following values: `PREMIUM` or `STANDARD`.
   ///
   /// - - -
-  final Input<String> networkTier;
+  final pulumi.Input<String> networkTier;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   ProjectDefaultNetworkTierArgs({
     required this.networkTier,
@@ -31,8 +31,8 @@ class ProjectDefaultNetworkTierArgs {
 
   factory ProjectDefaultNetworkTierArgs.fromMap(Map<String, dynamic> map) {
     return ProjectDefaultNetworkTierArgs(
-      networkTier: Input.asInput<String>(map['networkTier']),
-      project: Input.asOptionalInput<String>(map['project']),
+      networkTier: pulumi.Input.asInput<String>(map['networkTier']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_config_web_server_network_access_control_allowed_ip_range/environment_config_web_server_network_access_control_allowed_ip_range.dart';
 
 class EnvironmentConfigWebServerNetworkAccessControl {
@@ -16,7 +16,7 @@ class EnvironmentConfigWebServerNetworkAccessControl {
     final map = <String, dynamic>{};
     final allowedIpRangesValue = allowedIpRanges;
     if (allowedIpRangesValue != null) {
-      map['allowedIpRanges'] = Input.encodeList<
+      map['allowedIpRanges'] = pulumi.Input.encodeList<
           EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange,
           Map<String, dynamic>>(allowedIpRangesValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class EnvironmentConfigWebServerNetworkAccessControl {
     return EnvironmentConfigWebServerNetworkAccessControl(
       allowedIpRanges: map['allowedIpRanges'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>(
               map['allowedIpRanges'],
               (value) =>

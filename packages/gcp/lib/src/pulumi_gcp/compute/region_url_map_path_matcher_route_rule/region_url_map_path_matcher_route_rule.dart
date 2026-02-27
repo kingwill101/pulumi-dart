@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_url_map_path_matcher_route_rule_header_action/region_url_map_path_matcher_route_rule_header_action.dart';
 import '../region_url_map_path_matcher_route_rule_match_rule/region_url_map_path_matcher_route_rule_match_rule.dart';
 import '../region_url_map_path_matcher_route_rule_route_action/region_url_map_path_matcher_route_rule_route_action.dart';
@@ -74,7 +74,7 @@ class RegionUrlMapPathMatcherRouteRule {
     }
     final matchRulesValue = matchRules;
     if (matchRulesValue != null) {
-      map['matchRules'] = Input.encodeList<
+      map['matchRules'] = pulumi.Input.encodeList<
           RegionUrlMapPathMatcherRouteRuleMatchRule,
           Map<String, dynamic>>(matchRulesValue, (value) => value.toMap());
     }
@@ -102,7 +102,7 @@ class RegionUrlMapPathMatcherRouteRule {
               (map['headerAction'] as Map).cast<String, dynamic>()),
       matchRules: map['matchRules'] == null
           ? null
-          : Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(
+          : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(
               map['matchRules'],
               (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

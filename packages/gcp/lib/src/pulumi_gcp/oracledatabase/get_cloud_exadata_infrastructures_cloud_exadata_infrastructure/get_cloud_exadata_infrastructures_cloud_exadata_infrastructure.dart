@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_exadata_infrastructures_cloud_exadata_infrastructure_property/get_cloud_exadata_infrastructures_cloud_exadata_infrastructure_property.dart';
 
 class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
@@ -81,7 +81,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     map['location'] = location;
     map['name'] = name;
     map['project'] = project;
-    map['properties'] = Input.encodeList<
+    map['properties'] = pulumi.Input.encodeList<
         GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
@@ -103,7 +103,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] as String,
-      properties: Input.decodeList<
+      properties: pulumi.Input.decodeList<
               GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty>(
           map['properties'],
           (value) =>

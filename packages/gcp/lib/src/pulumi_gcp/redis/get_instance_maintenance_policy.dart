@@ -1,3 +1,3 @@
 library module_redis_get_instance_maintenance_policy;
 
-export 'get_instance_maintenance_policy/get_instance_maintenance_policy3.dart';
+export 'get_instance_maintenance_policy/get_instance_maintenance_policy_redis.dart';

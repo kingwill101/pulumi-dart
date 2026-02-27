@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_template_spec_volume_secret_item/get_service_template_spec_volume_secret_item.dart';
 
 class GetServiceTemplateSpecVolumeSecret {
@@ -37,7 +37,8 @@ class GetServiceTemplateSpecVolumeSecret {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['defaultMode'] = defaultMode;
-    map['items'] = Input.encodeList<GetServiceTemplateSpecVolumeSecretItem,
+    map['items'] = pulumi.Input.encodeList<
+        GetServiceTemplateSpecVolumeSecretItem,
         Map<String, dynamic>>(items, (value) => value.toMap());
     map['secretName'] = secretName;
     return map;
@@ -46,7 +47,7 @@ class GetServiceTemplateSpecVolumeSecret {
   factory GetServiceTemplateSpecVolumeSecret.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecVolumeSecret(
       defaultMode: map['defaultMode'] as int,
-      items: Input.decodeList<GetServiceTemplateSpecVolumeSecretItem>(
+      items: pulumi.Input.decodeList<GetServiceTemplateSpecVolumeSecretItem>(
           map['items'],
           (value) => GetServiceTemplateSpecVolumeSecretItem.fromMap(
               (value as Map).cast<String, dynamic>())),

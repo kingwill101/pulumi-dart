@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_map_gclb_target_ip_config/certificate_map_gclb_target_ip_config.dart';
 
 class CertificateMapGclbTarget {
@@ -28,7 +28,8 @@ class CertificateMapGclbTarget {
     final map = <String, dynamic>{};
     final ipConfigsValue = ipConfigs;
     if (ipConfigsValue != null) {
-      map['ipConfigs'] = Input.encodeList<CertificateMapGclbTargetIpConfig,
+      map['ipConfigs'] = pulumi.Input.encodeList<
+          CertificateMapGclbTargetIpConfig,
           Map<String, dynamic>>(ipConfigsValue, (value) => value.toMap());
     }
     final targetHttpsProxyValue = targetHttpsProxy;
@@ -46,7 +47,7 @@ class CertificateMapGclbTarget {
     return CertificateMapGclbTarget(
       ipConfigs: map['ipConfigs'] == null
           ? null
-          : Input.decodeList<CertificateMapGclbTargetIpConfig>(
+          : pulumi.Input.decodeList<CertificateMapGclbTargetIpConfig>(
               map['ipConfigs'],
               (value) => CertificateMapGclbTargetIpConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

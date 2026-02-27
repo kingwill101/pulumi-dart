@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_backend_service_backend_custom_metric/region_backend_service_backend_custom_metric.dart';
 
 class RegionBackendServiceBackend {
@@ -156,7 +156,7 @@ class RegionBackendServiceBackend {
     }
     final customMetricsValue = customMetrics;
     if (customMetricsValue != null) {
-      map['customMetrics'] = Input.encodeList<
+      map['customMetrics'] = pulumi.Input.encodeList<
           RegionBackendServiceBackendCustomMetric,
           Map<String, dynamic>>(customMetricsValue, (value) => value.toMap());
     }
@@ -227,7 +227,7 @@ class RegionBackendServiceBackend {
           : map['capacityScaler'] as double,
       customMetrics: map['customMetrics'] == null
           ? null
-          : Input.decodeList<RegionBackendServiceBackendCustomMetric>(
+          : pulumi.Input.decodeList<RegionBackendServiceBackendCustomMetric>(
               map['customMetrics'],
               (value) => RegionBackendServiceBackendCustomMetric.fromMap(
                   (value as Map).cast<String, dynamic>())),

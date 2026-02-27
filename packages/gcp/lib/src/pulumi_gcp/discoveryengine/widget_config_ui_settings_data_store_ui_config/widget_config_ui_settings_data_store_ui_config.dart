@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../widget_config_ui_settings_data_store_ui_config_facet_field/widget_config_ui_settings_data_store_ui_config_facet_field.dart';
 import '../widget_config_ui_settings_data_store_ui_config_fields_ui_components_map/widget_config_ui_settings_data_store_ui_config_fields_ui_components_map.dart';
 
@@ -33,13 +33,13 @@ class WidgetConfigUiSettingsDataStoreUiConfig {
     final map = <String, dynamic>{};
     final facetFieldsValue = facetFields;
     if (facetFieldsValue != null) {
-      map['facetFields'] = Input.encodeList<
+      map['facetFields'] = pulumi.Input.encodeList<
           WidgetConfigUiSettingsDataStoreUiConfigFacetField,
           Map<String, dynamic>>(facetFieldsValue, (value) => value.toMap());
     }
     final fieldsUiComponentsMapsValue = fieldsUiComponentsMaps;
     if (fieldsUiComponentsMapsValue != null) {
-      map['fieldsUiComponentsMaps'] = Input.encodeList<
+      map['fieldsUiComponentsMaps'] = pulumi.Input.encodeList<
               WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap,
               Map<String, dynamic>>(
           fieldsUiComponentsMapsValue, (value) => value.toMap());
@@ -56,14 +56,15 @@ class WidgetConfigUiSettingsDataStoreUiConfig {
     return WidgetConfigUiSettingsDataStoreUiConfig(
       facetFields: map['facetFields'] == null
           ? null
-          : Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfigFacetField>(
+          : pulumi.Input.decodeList<
+                  WidgetConfigUiSettingsDataStoreUiConfigFacetField>(
               map['facetFields'],
               (value) =>
                   WidgetConfigUiSettingsDataStoreUiConfigFacetField.fromMap(
                       (value as Map).cast<String, dynamic>())),
       fieldsUiComponentsMaps: map['fieldsUiComponentsMaps'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap>(
               map['fieldsUiComponentsMaps'],
               (value) =>

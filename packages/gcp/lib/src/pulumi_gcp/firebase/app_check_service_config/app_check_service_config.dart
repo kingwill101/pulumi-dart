@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_check_service_config_args.dart';
 
 /// The enforcement configuration for a service supported by App Check.
@@ -48,32 +48,32 @@ import 'app_check_service_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig default {{service_id}}
 /// ```
-class AppCheckServiceConfig extends CustomResource {
-  late final Output<String?> enforcementMode;
+class AppCheckServiceConfig extends pulumi.CustomResource {
+  late final pulumi.Output<String?> enforcementMode;
 
   /// The fully-qualified resource name of the service enforcement configuration.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
   /// firebasestorage.googleapis.com (Cloud Storage for Firebase)
   /// firebasedatabase.googleapis.com (Firebase Realtime Database)
   /// firestore.googleapis.com (Cloud Firestore)
   /// identitytoolkit.googleapis.com (Authentication)
-  late final Output<String> serviceId;
+  late final pulumi.Output<String> serviceId;
 
   AppCheckServiceConfig(
     String name, {
     AppCheckServiceConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.enforcementMode = registerOutput<String?>('enforcementMode');
     this.name = registerOutput<String>('name');

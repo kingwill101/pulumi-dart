@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../record_set_routing_policy_geo/record_set_routing_policy_geo.dart';
 import '../record_set_routing_policy_primary_backup/record_set_routing_policy_primary_backup.dart';
 import '../record_set_routing_policy_wrr/record_set_routing_policy_wrr.dart';
@@ -40,9 +40,8 @@ class RecordSetRoutingPolicy {
     }
     final geosValue = geos;
     if (geosValue != null) {
-      map['geos'] =
-          Input.encodeList<RecordSetRoutingPolicyGeo, Map<String, dynamic>>(
-              geosValue, (value) => value.toMap());
+      map['geos'] = pulumi.Input.encodeList<RecordSetRoutingPolicyGeo,
+          Map<String, dynamic>>(geosValue, (value) => value.toMap());
     }
     final healthCheckValue = healthCheck;
     if (healthCheckValue != null) {
@@ -54,9 +53,8 @@ class RecordSetRoutingPolicy {
     }
     final wrrsValue = wrrs;
     if (wrrsValue != null) {
-      map['wrrs'] =
-          Input.encodeList<RecordSetRoutingPolicyWrr, Map<String, dynamic>>(
-              wrrsValue, (value) => value.toMap());
+      map['wrrs'] = pulumi.Input.encodeList<RecordSetRoutingPolicyWrr,
+          Map<String, dynamic>>(wrrsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -68,7 +66,7 @@ class RecordSetRoutingPolicy {
           : map['enableGeoFencing'] as bool,
       geos: map['geos'] == null
           ? null
-          : Input.decodeList<RecordSetRoutingPolicyGeo>(
+          : pulumi.Input.decodeList<RecordSetRoutingPolicyGeo>(
               map['geos'],
               (value) => RecordSetRoutingPolicyGeo.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -80,7 +78,7 @@ class RecordSetRoutingPolicy {
               (map['primaryBackup'] as Map).cast<String, dynamic>()),
       wrrs: map['wrrs'] == null
           ? null
-          : Input.decodeList<RecordSetRoutingPolicyWrr>(
+          : pulumi.Input.decodeList<RecordSetRoutingPolicyWrr>(
               map['wrrs'],
               (value) => RecordSetRoutingPolicyWrr.fromMap(
                   (value as Map).cast<String, dynamic>())),

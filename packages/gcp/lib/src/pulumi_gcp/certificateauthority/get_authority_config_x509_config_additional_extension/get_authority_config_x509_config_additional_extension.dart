@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_authority_config_x509_config_additional_extension_object_id/get_authority_config_x509_config_additional_extension_object_id.dart';
 
 class GetAuthorityConfigX509ConfigAdditionalExtension {
@@ -23,7 +23,7 @@ class GetAuthorityConfigX509ConfigAdditionalExtension {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['critical'] = critical;
-    map['objectIds'] = Input.encodeList<
+    map['objectIds'] = pulumi.Input.encodeList<
         GetAuthorityConfigX509ConfigAdditionalExtensionObjectId,
         Map<String, dynamic>>(objectIds, (value) => value.toMap());
     map['value'] = value;
@@ -34,7 +34,7 @@ class GetAuthorityConfigX509ConfigAdditionalExtension {
       Map<String, dynamic> map) {
     return GetAuthorityConfigX509ConfigAdditionalExtension(
       critical: map['critical'] as bool,
-      objectIds: Input.decodeList<
+      objectIds: pulumi.Input.decodeList<
               GetAuthorityConfigX509ConfigAdditionalExtensionObjectId>(
           map['objectIds'],
           (value) =>

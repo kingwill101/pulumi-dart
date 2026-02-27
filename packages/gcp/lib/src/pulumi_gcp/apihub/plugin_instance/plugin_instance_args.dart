@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plugin_instance_action/plugin_instance_action.dart';
 import '../plugin_instance_auth_config/plugin_instance_auth_config.dart';
 
@@ -8,23 +8,23 @@ import '../plugin_instance_auth_config/plugin_instance_auth_config.dart';
 class PluginInstanceArgs {
   /// The action status for the plugin instance.
   /// Structure is documented below.
-  final Input<List<PluginInstanceAction>>? actions;
+  final pulumi.Input<List<PluginInstanceAction>>? actions;
 
   /// AuthConfig represents the authentication information.
   /// Structure is documented below.
-  final Input<PluginInstanceAuthConfig>? authConfig;
+  final pulumi.Input<PluginInstanceAuthConfig>? authConfig;
 
   /// The display name for this plugin instance. Max length is 255 characters.
-  final Input<bool>? disable;
+  final pulumi.Input<bool>? disable;
 
   /// The display name for this plugin instance. Max length is 255 characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> plugin;
+  final pulumi.Input<String> plugin;
 
   /// The ID to use for the plugin instance, which will become the final
   /// component of the plugin instance's resource name. This field is optional.
@@ -34,11 +34,11 @@ class PluginInstanceArgs {
   /// * If not provided, a system generated id will be used.
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z[0-9]-_/.
-  final Input<String> pluginInstanceId;
+  final pulumi.Input<String> pluginInstanceId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   PluginInstanceArgs({
     this.actions,
@@ -55,16 +55,16 @@ class PluginInstanceArgs {
     final map = <String, dynamic>{};
     final actionsValue = actions;
     if (actionsValue != null) {
-      map['actions'] = Input.mapOptionalInputValue<List<PluginInstanceAction>,
-              List<Map<String, dynamic>>>(
+      map['actions'] = pulumi.Input.mapOptionalInputValue<
+              List<PluginInstanceAction>, List<Map<String, dynamic>>>(
           actionsValue,
-          (value) =>
-              Input.encodeList<PluginInstanceAction, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<PluginInstanceAction,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final authConfigValue = authConfig;
     if (authConfigValue != null) {
-      map['authConfig'] = Input.mapOptionalInputValue<PluginInstanceAuthConfig,
+      map['authConfig'] = pulumi.Input.mapOptionalInputValue<
+          PluginInstanceAuthConfig,
           Map<String, dynamic>>(authConfigValue, (value) => value.toMap());
     }
     final disableValue = disable;
@@ -84,16 +84,16 @@ class PluginInstanceArgs {
 
   factory PluginInstanceArgs.fromMap(Map<String, dynamic> map) {
     return PluginInstanceArgs(
-      actions:
-          Input.asOptionalInput<List<PluginInstanceAction>>(map['actions']),
-      authConfig:
-          Input.asOptionalInput<PluginInstanceAuthConfig>(map['authConfig']),
-      disable: Input.asOptionalInput<bool>(map['disable']),
-      displayName: Input.asInput<String>(map['displayName']),
-      location: Input.asInput<String>(map['location']),
-      plugin: Input.asInput<String>(map['plugin']),
-      pluginInstanceId: Input.asInput<String>(map['pluginInstanceId']),
-      project: Input.asOptionalInput<String>(map['project']),
+      actions: pulumi.Input.asOptionalInput<List<PluginInstanceAction>>(
+          map['actions']),
+      authConfig: pulumi.Input.asOptionalInput<PluginInstanceAuthConfig>(
+          map['authConfig']),
+      disable: pulumi.Input.asOptionalInput<bool>(map['disable']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      plugin: pulumi.Input.asInput<String>(map['plugin']),
+      pluginInstanceId: pulumi.Input.asInput<String>(map['pluginInstanceId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_network_firewall_policy_with_rules_rule_match/region_network_firewall_policy_with_rules_rule_match.dart';
 import '../region_network_firewall_policy_with_rules_rule_target_secure_tag/region_network_firewall_policy_with_rules_rule_target_secure_tag.dart';
 
@@ -115,7 +115,7 @@ class RegionNetworkFirewallPolicyWithRulesRule {
     }
     final targetSecureTagsValue = targetSecureTags;
     if (targetSecureTagsValue != null) {
-      map['targetSecureTags'] = Input.encodeList<
+      map['targetSecureTags'] = pulumi.Input.encodeList<
               RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag,
               Map<String, dynamic>>(
           targetSecureTagsValue, (value) => value.toMap());
@@ -150,7 +150,7 @@ class RegionNetworkFirewallPolicyWithRulesRule {
           : map['securityProfileGroup'] as String,
       targetSecureTags: map['targetSecureTags'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag>(
               map['targetSecureTags'],
               (value) => RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag

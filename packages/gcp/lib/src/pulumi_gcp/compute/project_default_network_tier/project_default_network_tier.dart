@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_default_network_tier_args.dart';
 
 /// Configures the Google Compute Engine
@@ -23,26 +23,26 @@ import 'project_default_network_tier_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}
 /// ```
-class ProjectDefaultNetworkTier extends CustomResource {
+class ProjectDefaultNetworkTier extends pulumi.CustomResource {
   /// The default network tier to be configured for the project.
   /// This field can take the following values: `PREMIUM` or `STANDARD`.
   ///
   /// - - -
-  late final Output<String> networkTier;
+  late final pulumi.Output<String> networkTier;
 
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   ProjectDefaultNetworkTier(
     String name, {
     ProjectDefaultNetworkTierArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.networkTier = registerOutput<String>('networkTier');
     this.project = registerOutput<String>('project');

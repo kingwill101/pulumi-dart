@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_workflow_config_recent_scheduled_execution_record_error_status/repository_workflow_config_recent_scheduled_execution_record_error_status.dart';
 
 class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
@@ -28,7 +28,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
     final map = <String, dynamic>{};
     final errorStatusesValue = errorStatuses;
     if (errorStatusesValue != null) {
-      map['errorStatuses'] = Input.encodeList<
+      map['errorStatuses'] = pulumi.Input.encodeList<
           RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus,
           Map<String, dynamic>>(errorStatusesValue, (value) => value.toMap());
     }
@@ -48,7 +48,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
     return RepositoryWorkflowConfigRecentScheduledExecutionRecord(
       errorStatuses: map['errorStatuses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>(
               map['errorStatuses'],
               (value) =>

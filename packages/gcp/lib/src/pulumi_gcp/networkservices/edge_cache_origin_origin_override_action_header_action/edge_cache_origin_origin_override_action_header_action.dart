@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../edge_cache_origin_origin_override_action_header_action_request_headers_to_add/edge_cache_origin_origin_override_action_header_action_request_headers_to_add.dart';
 
 class EdgeCacheOriginOriginOverrideActionHeaderAction {
@@ -19,7 +19,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
     final map = <String, dynamic>{};
     final requestHeadersToAddsValue = requestHeadersToAdds;
     if (requestHeadersToAddsValue != null) {
-      map['requestHeadersToAdds'] = Input.encodeList<
+      map['requestHeadersToAdds'] = pulumi.Input.encodeList<
           EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd,
           Map<String,
               dynamic>>(requestHeadersToAddsValue, (value) => value.toMap());
@@ -32,7 +32,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
     return EdgeCacheOriginOriginOverrideActionHeaderAction(
       requestHeadersToAdds: map['requestHeadersToAdds'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>(
               map['requestHeadersToAdds'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../disk_async_primary_disk/disk_async_primary_disk.dart';
 import '../disk_disk_encryption_key/disk_disk_encryption_key.dart';
 import '../disk_guest_os_feature/disk_guest_os_feature.dart';
@@ -75,36 +75,36 @@ import 'disk_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/disk:Disk default {{name}}
 /// ```
-class Disk extends CustomResource {
+class Disk extends pulumi.CustomResource {
   /// The access mode of the disk.
   /// For example:
   /// * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
   /// * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
   /// * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
   /// The AccessMode is only valid for Hyperdisk disk types.
-  late final Output<String> accessMode;
+  late final pulumi.Output<String> accessMode;
 
   /// The architecture of the disk. Values include `X86_64`, `ARM64`.
-  late final Output<String?> architecture;
+  late final pulumi.Output<String?> architecture;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<DiskAsyncPrimaryDisk?> asyncPrimaryDisk;
+  late final pulumi.Output<DiskAsyncPrimaryDisk?> asyncPrimaryDisk;
 
   /// If set to true, a snapshot of the disk will be created before it is destroyed.
   /// If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
   /// The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
-  late final Output<bool?> createSnapshotBeforeDestroy;
+  late final pulumi.Output<bool?> createSnapshotBeforeDestroy;
 
   /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
-  late final Output<String?> createSnapshotBeforeDestroyPrefix;
+  late final pulumi.Output<String?> createSnapshotBeforeDestroyPrefix;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Encrypts the disk using a customer-supplied encryption key.
   /// After you encrypt a disk with a customer-supplied key, you must
@@ -116,22 +116,22 @@ class Disk extends CustomResource {
   /// the disk will be encrypted using an automatically generated key and
   /// you do not need to provide a key to use the disk later.
   /// Structure is documented below.
-  late final Output<DiskDiskEncryptionKey?> diskEncryptionKey;
+  late final pulumi.Output<DiskDiskEncryptionKey?> diskEncryptionKey;
 
   /// The unique identifier for the resource. This identifier is defined by the server.
-  late final Output<String> diskId;
+  late final pulumi.Output<String> diskId;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Whether this disk is using confidential compute mode.
   /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
-  late final Output<bool> enableConfidentialCompute;
+  late final pulumi.Output<bool> enableConfidentialCompute;
 
   /// A list of features to enable on the guest operating system.
   /// Applicable only for bootable disks.
   /// Structure is documented below.
-  late final Output<List<DiskGuestOsFeature>> guestOsFeatures;
+  late final pulumi.Output<List<DiskGuestOsFeature>> guestOsFeatures;
 
   /// The image from which to initialize this disk. This can be
   /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
@@ -142,34 +142,34 @@ class Disk extends CustomResource {
   /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
-  late final Output<String?> image;
+  late final pulumi.Output<String?> image;
 
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
   /// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
-  late final Output<String?> interface;
+  late final pulumi.Output<String?> interface;
 
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
-  late final Output<String> labelFingerprint;
+  late final pulumi.Output<String> labelFingerprint;
 
   /// Labels to apply to this disk.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Last attach timestamp in RFC3339 text format.
-  late final Output<String> lastAttachTimestamp;
+  late final pulumi.Output<String> lastAttachTimestamp;
 
   /// Last detach timestamp in RFC3339 text format.
-  late final Output<String> lastDetachTimestamp;
+  late final pulumi.Output<String> lastDetachTimestamp;
 
   /// Any applicable license URI.
-  late final Output<List<String>> licenses;
+  late final pulumi.Output<List<String>> licenses;
 
   /// Indicates whether or not the disk can be read/write attached to more than one instance.
-  late final Output<bool?> multiWriter;
+  late final pulumi.Output<bool?> multiWriter;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -178,36 +178,36 @@ class Disk extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  late final Output<DiskParams?> params;
+  late final pulumi.Output<DiskParams?> params;
 
   /// Physical block size of the persistent disk, in bytes. If not present
   /// in a request, a default value is used. Currently supported sizes
   /// are 4096 and 16384, other sizes may be added in the future.
   /// If an unsupported value is requested, the error message will list
   /// the supported values for the caller's project.
-  late final Output<int> physicalBlockSizeBytes;
+  late final pulumi.Output<int> physicalBlockSizeBytes;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Indicates how many IOPS must be provisioned for the disk.
   /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
   /// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
-  late final Output<int> provisionedIops;
+  late final pulumi.Output<int> provisionedIops;
 
   /// Indicates how much Throughput must be provisioned for the disk.
   /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
   /// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
-  late final Output<int> provisionedThroughput;
+  late final pulumi.Output<int> provisionedThroughput;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Resource policies applied to this disk for automatic snapshot creations.
   /// ~>**NOTE** This value does not support updating the
@@ -215,10 +215,10 @@ class Disk extends CustomResource {
   /// one at a time. Use
   /// `gcp.compute.DiskResourcePolicyAttachment`
   /// to allow for updating the resource policy attached to the disk.
-  late final Output<List<String>> resourcePolicies;
+  late final pulumi.Output<List<String>> resourcePolicies;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Size of the persistent disk, specified in GB. You can specify this
   /// field when creating a persistent disk using the `image` or
@@ -231,7 +231,7 @@ class Disk extends CustomResource {
   /// if upsizing is detected but recreates the disk if downsizing is requested.
   /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
   /// and recreating.
-  late final Output<int> size;
+  late final pulumi.Output<int> size;
 
   /// The source snapshot used to create this disk. You can provide this as
   /// a partial or full URL to the resource. If the snapshot is in another
@@ -240,7 +240,7 @@ class Disk extends CustomResource {
   /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
   /// * `projects/project/global/snapshots/snapshot`
   /// * `global/snapshots/snapshot`
-  late final Output<String?> snapshot;
+  late final pulumi.Output<String?> snapshot;
 
   /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
   /// For example, the following are valid values:
@@ -250,44 +250,45 @@ class Disk extends CustomResource {
   /// * projects/{project}/regions/{region}/disks/{disk}
   /// * zones/{zone}/disks/{disk}
   /// * regions/{region}/disks/{disk}
-  late final Output<String?> sourceDisk;
+  late final pulumi.Output<String?> sourceDisk;
 
   /// The ID value of the disk used to create this image. This value may
   /// be used to determine whether the image was taken from the current
   /// or a previous instance of a given disk name.
-  late final Output<String> sourceDiskId;
+  late final pulumi.Output<String> sourceDiskId;
 
   /// The customer-supplied encryption key of the source image. Required if
   /// the source image is protected by a customer-supplied encryption key.
   /// Structure is documented below.
-  late final Output<DiskSourceImageEncryptionKey?> sourceImageEncryptionKey;
+  late final pulumi.Output<DiskSourceImageEncryptionKey?>
+      sourceImageEncryptionKey;
 
   /// The ID value of the image used to create this disk. This value
   /// identifies the exact image that was used to create this persistent
   /// disk. For example, if you created the persistent disk from an image
   /// that was later deleted and recreated under the same name, the source
   /// image ID would identify the exact version of the image that was used.
-  late final Output<String> sourceImageId;
+  late final pulumi.Output<String> sourceImageId;
 
   /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
   /// For example, the following are valid values:
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot`
   /// * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
   /// * `zones/zone/instantSnapshots/instantSnapshot`
-  late final Output<String?> sourceInstantSnapshot;
+  late final pulumi.Output<String?> sourceInstantSnapshot;
 
   /// The unique ID of the instant snapshot used to create this disk. This value identifies
   /// the exact instant snapshot that was used to create this persistent disk.
   /// For example, if you created the persistent disk from an instant snapshot that was later
   /// deleted and recreated under the same name, the source instant snapshot ID would identify
   /// the exact version of the instant snapshot that was used.
-  late final Output<String> sourceInstantSnapshotId;
+  late final pulumi.Output<String> sourceInstantSnapshotId;
 
   /// The customer-supplied encryption key of the source snapshot. Required
   /// if the source snapshot is protected by a customer-supplied encryption
   /// key.
   /// Structure is documented below.
-  late final Output<DiskSourceSnapshotEncryptionKey?>
+  late final pulumi.Output<DiskSourceSnapshotEncryptionKey?>
       sourceSnapshotEncryptionKey;
 
   /// The unique ID of the snapshot used to create this disk. This value
@@ -296,14 +297,14 @@ class Disk extends CustomResource {
   /// that was later deleted and recreated under the same name, the source
   /// snapshot ID would identify the exact version of the snapshot that was
   /// used.
-  late final Output<String> sourceSnapshotId;
+  late final pulumi.Output<String> sourceSnapshotId;
 
   /// The full Google Cloud Storage URI where the disk image is stored.
   /// This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
   /// Valid URIs may start with gs:// or https://storage.googleapis.com/.
   /// This flag is not optimized for creating multiple disks from a source storage object.
   /// To create many disks from a source storage object, use gcloud compute images import instead.
-  late final Output<String?> sourceStorageObject;
+  late final pulumi.Output<String?> sourceStorageObject;
 
   /// The URL or the name of the storage pool in which the new disk is created.
   /// For example:
@@ -311,28 +312,28 @@ class Disk extends CustomResource {
   /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
   /// * /zones/{zone}/storagePools/{storagePool}
   /// * /{storagePool}
-  late final Output<String?> storagePool;
+  late final pulumi.Output<String?> storagePool;
 
   /// URL of the disk type resource describing which disk type to use to
   /// create the disk. Provide this when creating the disk.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   /// Links to the users of the disk (attached instances) in form:
   /// project/zones/zone/instances/instance
-  late final Output<List<String>> users;
+  late final pulumi.Output<List<String>> users;
 
   /// A reference to the zone where the disk resides.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   Disk(
     String name, {
     DiskArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/disk:Disk',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessMode = registerOutput<String>('accessMode');
     this.architecture = registerOutput<String?>('architecture');

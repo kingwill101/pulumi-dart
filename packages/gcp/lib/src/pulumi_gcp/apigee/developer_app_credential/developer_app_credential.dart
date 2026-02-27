@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../developer_app_credential_api_product/developer_app_credential_api_product.dart';
 import '../developer_app_credential_attribute/developer_app_credential_attribute.dart';
 
@@ -52,12 +52,14 @@ class DeveloperAppCredential {
     final map = <String, dynamic>{};
     final apiProductsValue = apiProducts;
     if (apiProductsValue != null) {
-      map['apiProducts'] = Input.encodeList<DeveloperAppCredentialApiProduct,
+      map['apiProducts'] = pulumi.Input.encodeList<
+          DeveloperAppCredentialApiProduct,
           Map<String, dynamic>>(apiProductsValue, (value) => value.toMap());
     }
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.encodeList<DeveloperAppCredentialAttribute,
+      map['attributes'] = pulumi.Input.encodeList<
+          DeveloperAppCredentialAttribute,
           Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
     final consumerKeyValue = consumerKey;
@@ -91,13 +93,13 @@ class DeveloperAppCredential {
     return DeveloperAppCredential(
       apiProducts: map['apiProducts'] == null
           ? null
-          : Input.decodeList<DeveloperAppCredentialApiProduct>(
+          : pulumi.Input.decodeList<DeveloperAppCredentialApiProduct>(
               map['apiProducts'],
               (value) => DeveloperAppCredentialApiProduct.fromMap(
                   (value as Map).cast<String, dynamic>())),
       attributes: map['attributes'] == null
           ? null
-          : Input.decodeList<DeveloperAppCredentialAttribute>(
+          : pulumi.Input.decodeList<DeveloperAppCredentialAttribute>(
               map['attributes'],
               (value) => DeveloperAppCredentialAttribute.fromMap(
                   (value as Map).cast<String, dynamic>())),

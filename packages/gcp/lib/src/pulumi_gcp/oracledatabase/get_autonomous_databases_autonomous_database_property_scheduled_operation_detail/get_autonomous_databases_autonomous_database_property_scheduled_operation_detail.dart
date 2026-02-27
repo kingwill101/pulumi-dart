@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_autonomous_databases_autonomous_database_property_scheduled_operation_detail_start_time/get_autonomous_databases_autonomous_database_property_scheduled_operation_detail_start_time.dart';
 import '../get_autonomous_databases_autonomous_database_property_scheduled_operation_detail_stop_time/get_autonomous_databases_autonomous_database_property_scheduled_operation_detail_stop_time.dart';
 
@@ -39,10 +39,10 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['dayOfWeek'] = dayOfWeek;
-    map['startTimes'] = Input.encodeList<
+    map['startTimes'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStartTime,
         Map<String, dynamic>>(startTimes, (value) => value.toMap());
-    map['stopTimes'] = Input.encodeList<
+    map['stopTimes'] = pulumi.Input.encodeList<
         GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTime,
         Map<String, dynamic>>(stopTimes, (value) => value.toMap());
     return map;
@@ -52,13 +52,13 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail {
       Map<String, dynamic> map) {
     return GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail(
       dayOfWeek: map['dayOfWeek'] as String,
-      startTimes: Input.decodeList<
+      startTimes: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStartTime>(
           map['startTimes'],
           (value) =>
               GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStartTime
                   .fromMap((value as Map).cast<String, dynamic>())),
-      stopTimes: Input.decodeList<
+      stopTimes: pulumi.Input.decodeList<
               GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTime>(
           map['stopTimes'],
           (value) =>

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFolder.
 class GetFolderArgs {
   /// The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   /// `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
-  final Input<bool>? lookupOrganization;
+  final pulumi.Input<bool>? lookupOrganization;
 
   GetFolderArgs({
     required this.folder,
@@ -27,9 +27,9 @@ class GetFolderArgs {
 
   factory GetFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderArgs(
-      folder: Input.asInput<String>(map['folder']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
       lookupOrganization:
-          Input.asOptionalInput<bool>(map['lookupOrganization']),
+          pulumi.Input.asOptionalInput<bool>(map['lookupOrganization']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../insights_config_error_detail/insights_config_error_detail.dart';
 
 class InsightsConfigError {
@@ -34,9 +34,8 @@ class InsightsConfigError {
     }
     final detailsValue = details;
     if (detailsValue != null) {
-      map['details'] =
-          Input.encodeList<InsightsConfigErrorDetail, Map<String, dynamic>>(
-              detailsValue, (value) => value.toMap());
+      map['details'] = pulumi.Input.encodeList<InsightsConfigErrorDetail,
+          Map<String, dynamic>>(detailsValue, (value) => value.toMap());
     }
     final messageValue = message;
     if (messageValue != null) {
@@ -50,7 +49,7 @@ class InsightsConfigError {
       code: map['code'] == null ? null : map['code'] as int,
       details: map['details'] == null
           ? null
-          : Input.decodeList<InsightsConfigErrorDetail>(
+          : pulumi.Input.decodeList<InsightsConfigErrorDetail>(
               map['details'],
               (value) => InsightsConfigErrorDetail.fromMap(
                   (value as Map).cast<String, dynamic>())),

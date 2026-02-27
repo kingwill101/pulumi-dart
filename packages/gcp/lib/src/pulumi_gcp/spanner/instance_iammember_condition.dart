@@ -1,3 +1,3 @@
 library module_spanner_instance_iammember_condition;
 
-export 'instance_iammember_condition/instance_iammember_condition2.dart';
+export 'instance_iammember_condition/instance_iammember_condition_spanner.dart';

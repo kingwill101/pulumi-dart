@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_repository_event_config_pull_request/get_trigger_repository_event_config_pull_request.dart';
 import '../get_trigger_repository_event_config_push/get_trigger_repository_event_config_push.dart';
 
@@ -22,10 +22,10 @@ class GetTriggerRepositoryEventConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['pullRequests'] = Input.encodeList<
+    map['pullRequests'] = pulumi.Input.encodeList<
         GetTriggerRepositoryEventConfigPullRequest,
         Map<String, dynamic>>(pullRequests, (value) => value.toMap());
-    map['pushes'] = Input.encodeList<GetTriggerRepositoryEventConfigPush,
+    map['pushes'] = pulumi.Input.encodeList<GetTriggerRepositoryEventConfigPush,
         Map<String, dynamic>>(pushes, (value) => value.toMap());
     map['repository'] = repository;
     return map;
@@ -34,11 +34,11 @@ class GetTriggerRepositoryEventConfig {
   factory GetTriggerRepositoryEventConfig.fromMap(Map<String, dynamic> map) {
     return GetTriggerRepositoryEventConfig(
       pullRequests:
-          Input.decodeList<GetTriggerRepositoryEventConfigPullRequest>(
+          pulumi.Input.decodeList<GetTriggerRepositoryEventConfigPullRequest>(
               map['pullRequests'],
               (value) => GetTriggerRepositoryEventConfigPullRequest.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      pushes: Input.decodeList<GetTriggerRepositoryEventConfigPush>(
+      pushes: pulumi.Input.decodeList<GetTriggerRepositoryEventConfigPush>(
           map['pushes'],
           (value) => GetTriggerRepositoryEventConfigPush.fromMap(
               (value as Map).cast<String, dynamic>())),

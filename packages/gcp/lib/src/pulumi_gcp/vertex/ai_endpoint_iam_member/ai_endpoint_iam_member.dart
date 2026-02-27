@@ -1,25 +1,25 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_endpoint_iam_member_condition/ai_endpoint_iam_member_condition.dart';
 import 'ai_endpoint_iam_member_args.dart';
 
-class AiEndpointIamMember extends CustomResource {
-  late final Output<AiEndpointIamMemberCondition?> condition;
-  late final Output<String> endpoint;
-  late final Output<String> etag;
-  late final Output<String> location;
-  late final Output<String> member;
-  late final Output<String> project;
-  late final Output<String> role;
+class AiEndpointIamMember extends pulumi.CustomResource {
+  late final pulumi.Output<AiEndpointIamMemberCondition?> condition;
+  late final pulumi.Output<String> endpoint;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> location;
+  late final pulumi.Output<String> member;
+  late final pulumi.Output<String> project;
+  late final pulumi.Output<String> role;
 
   AiEndpointIamMember(
     String name, {
     AiEndpointIamMemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:vertex/aiEndpointIamMember:AiEndpointIamMember',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.condition = registerOutput<AiEndpointIamMemberCondition?>('condition');
     this.endpoint = registerOutput<String>('endpoint');

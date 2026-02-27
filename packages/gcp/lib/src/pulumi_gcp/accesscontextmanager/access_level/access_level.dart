@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_level_basic/access_level_basic.dart';
 import '../access_level_custom/access_level_custom.dart';
 import 'access_level_args.dart';
@@ -37,40 +37,40 @@ import 'access_level_args.dart';
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
 /// ```
-class AccessLevel extends CustomResource {
+class AccessLevel extends pulumi.CustomResource {
   /// A set of predefined conditions for the access level and a combining function.
   /// Structure is documented below.
-  late final Output<AccessLevelBasic?> basic;
+  late final pulumi.Output<AccessLevelBasic?> basic;
 
   /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
   /// See CEL spec at: https://github.com/google/cel-spec.
   /// Structure is documented below.
-  late final Output<AccessLevelCustom?> custom;
+  late final pulumi.Output<AccessLevelCustom?> custom;
 
   /// Description of the AccessLevel and its use. Does not affect behavior.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Resource name for the Access Level. The short_name component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Human readable title. Must be unique within the Policy.
-  late final Output<String> title;
+  late final pulumi.Output<String> title;
 
   AccessLevel(
     String name, {
     AccessLevelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/accessLevel:AccessLevel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.basic = registerOutput<AccessLevelBasic?>('basic');
     this.custom = registerOutput<AccessLevelCustom?>('custom');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_performance_config_fixed_iop/get_instance_performance_config_fixed_iop.dart';
 import '../get_instance_performance_config_iops_per_tb/get_instance_performance_config_iops_per_tb.dart';
 
@@ -21,23 +21,26 @@ class GetInstancePerformanceConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fixedIops'] = Input.encodeList<GetInstancePerformanceConfigFixedIop,
+    map['fixedIops'] = pulumi.Input.encodeList<
+        GetInstancePerformanceConfigFixedIop,
         Map<String, dynamic>>(fixedIops, (value) => value.toMap());
-    map['iopsPerTbs'] = Input.encodeList<GetInstancePerformanceConfigIopsPerTb,
+    map['iopsPerTbs'] = pulumi.Input.encodeList<
+        GetInstancePerformanceConfigIopsPerTb,
         Map<String, dynamic>>(iopsPerTbs, (value) => value.toMap());
     return map;
   }
 
   factory GetInstancePerformanceConfig.fromMap(Map<String, dynamic> map) {
     return GetInstancePerformanceConfig(
-      fixedIops: Input.decodeList<GetInstancePerformanceConfigFixedIop>(
+      fixedIops: pulumi.Input.decodeList<GetInstancePerformanceConfigFixedIop>(
           map['fixedIops'],
           (value) => GetInstancePerformanceConfigFixedIop.fromMap(
               (value as Map).cast<String, dynamic>())),
-      iopsPerTbs: Input.decodeList<GetInstancePerformanceConfigIopsPerTb>(
-          map['iopsPerTbs'],
-          (value) => GetInstancePerformanceConfigIopsPerTb.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      iopsPerTbs:
+          pulumi.Input.decodeList<GetInstancePerformanceConfigIopsPerTb>(
+              map['iopsPerTbs'],
+              (value) => GetInstancePerformanceConfigIopsPerTb.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

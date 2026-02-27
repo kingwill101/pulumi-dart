@@ -1,44 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../exascale_db_storage_vault_properties/exascale_db_storage_vault_properties.dart';
 
 /// The set of arguments for ExascaleDbStorageVault.
 class ExascaleDbStorageVaultArgs {
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// The display name for the ExascaleDbStorageVault. The name does not have to
   /// be unique within your project. The name must be 1-255 characters long and
   /// can only contain alphanumeric characters.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The ID of the ExascaleDbStorageVault to create. This value is
   /// restricted to (^a-z?$) and must be a maximum of
   /// 63 characters in length. The value must start with a letter and end with a
   /// letter or a number.
-  final Input<String> exascaleDbStorageVaultId;
+  final pulumi.Input<String> exascaleDbStorageVaultId;
 
   /// The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
   /// Example: us-east4-b-r2.
   /// If not specified, the system will pick a zone based on availability.
-  final Input<String>? gcpOracleZone;
+  final pulumi.Input<String>? gcpOracleZone;
 
   /// The labels or tags associated with the ExascaleDbStorageVault.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The properties of the ExascaleDbStorageVault.
   /// next ID: 12
   /// Structure is documented below.
-  final Input<ExascaleDbStorageVaultProperties> properties;
+  final pulumi.Input<ExascaleDbStorageVaultProperties> properties;
 
   ExascaleDbStorageVaultArgs({
     this.deletionProtection,
@@ -72,7 +72,8 @@ class ExascaleDbStorageVaultArgs {
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['properties'] = Input.mapInputValue<ExascaleDbStorageVaultProperties,
+    map['properties'] = pulumi.Input.mapInputValue<
+        ExascaleDbStorageVaultProperties,
         Map<String, dynamic>>(properties, (value) => value.toMap());
     return map;
   }
@@ -80,16 +81,16 @@ class ExascaleDbStorageVaultArgs {
   factory ExascaleDbStorageVaultArgs.fromMap(Map<String, dynamic> map) {
     return ExascaleDbStorageVaultArgs(
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      displayName: Input.asInput<String>(map['displayName']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
       exascaleDbStorageVaultId:
-          Input.asInput<String>(map['exascaleDbStorageVaultId']),
-      gcpOracleZone: Input.asOptionalInput<String>(map['gcpOracleZone']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      properties:
-          Input.asInput<ExascaleDbStorageVaultProperties>(map['properties']),
+          pulumi.Input.asInput<String>(map['exascaleDbStorageVaultId']),
+      gcpOracleZone: pulumi.Input.asOptionalInput<String>(map['gcpOracleZone']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      properties: pulumi.Input.asInput<ExascaleDbStorageVaultProperties>(
+          map['properties']),
     );
   }
 }

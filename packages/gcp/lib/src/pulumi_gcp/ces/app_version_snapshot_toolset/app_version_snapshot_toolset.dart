@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_toolset_open_api_toolset/app_version_snapshot_toolset_open_api_toolset.dart';
 
 class AppVersionSnapshotToolset {
@@ -81,7 +81,7 @@ class AppVersionSnapshotToolset {
     }
     final openApiToolsetsValue = openApiToolsets;
     if (openApiToolsetsValue != null) {
-      map['openApiToolsets'] = Input.encodeList<
+      map['openApiToolsets'] = pulumi.Input.encodeList<
           AppVersionSnapshotToolsetOpenApiToolset,
           Map<String, dynamic>>(openApiToolsetsValue, (value) => value.toMap());
     }
@@ -106,7 +106,7 @@ class AppVersionSnapshotToolset {
       name: map['name'] == null ? null : map['name'] as String,
       openApiToolsets: map['openApiToolsets'] == null
           ? null
-          : Input.decodeList<AppVersionSnapshotToolsetOpenApiToolset>(
+          : pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolset>(
               map['openApiToolsets'],
               (value) => AppVersionSnapshotToolsetOpenApiToolset.fromMap(
                   (value as Map).cast<String, dynamic>())),

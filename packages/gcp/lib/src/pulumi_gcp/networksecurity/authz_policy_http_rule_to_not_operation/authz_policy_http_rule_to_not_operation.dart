@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authz_policy_http_rule_to_not_operation_header_set/authz_policy_http_rule_to_not_operation_header_set.dart';
 import '../authz_policy_http_rule_to_not_operation_host/authz_policy_http_rule_to_not_operation_host.dart';
 import '../authz_policy_http_rule_to_not_operation_path/authz_policy_http_rule_to_not_operation_path.dart';
@@ -39,7 +39,8 @@ class AuthzPolicyHttpRuleToNotOperation {
     }
     final hostsValue = hosts;
     if (hostsValue != null) {
-      map['hosts'] = Input.encodeList<AuthzPolicyHttpRuleToNotOperationHost,
+      map['hosts'] = pulumi.Input.encodeList<
+          AuthzPolicyHttpRuleToNotOperationHost,
           Map<String, dynamic>>(hostsValue, (value) => value.toMap());
     }
     final methodsValue = methods;
@@ -48,7 +49,8 @@ class AuthzPolicyHttpRuleToNotOperation {
     }
     final pathsValue = paths;
     if (pathsValue != null) {
-      map['paths'] = Input.encodeList<AuthzPolicyHttpRuleToNotOperationPath,
+      map['paths'] = pulumi.Input.encodeList<
+          AuthzPolicyHttpRuleToNotOperationPath,
           Map<String, dynamic>>(pathsValue, (value) => value.toMap());
     }
     return map;
@@ -62,7 +64,7 @@ class AuthzPolicyHttpRuleToNotOperation {
               (map['headerSet'] as Map).cast<String, dynamic>()),
       hosts: map['hosts'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleToNotOperationHost>(
+          : pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperationHost>(
               map['hosts'],
               (value) => AuthzPolicyHttpRuleToNotOperationHost.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -71,7 +73,7 @@ class AuthzPolicyHttpRuleToNotOperation {
           : (map['methods'] as List).cast<String>(),
       paths: map['paths'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleToNotOperationPath>(
+          : pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperationPath>(
               map['paths'],
               (value) => AuthzPolicyHttpRuleToNotOperationPath.fromMap(
                   (value as Map).cast<String, dynamic>())),

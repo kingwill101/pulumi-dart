@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entity_type_entity/entity_type_entity.dart';
 import 'entity_type_args.dart';
 
@@ -29,16 +29,16 @@ import 'entity_type_args.dart';
 /// ```sh
 /// $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
 /// ```
-class EntityType extends CustomResource {
+class EntityType extends pulumi.CustomResource {
   /// The name of this entity type to be displayed on the console.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Enables fuzzy entity extraction during classification.
-  late final Output<bool?> enableFuzzyExtraction;
+  late final pulumi.Output<bool?> enableFuzzyExtraction;
 
   /// The collection of entity entries associated with the entity type.
   /// Structure is documented below.
-  late final Output<List<EntityTypeEntity>?> entities;
+  late final pulumi.Output<List<EntityTypeEntity>?> entities;
 
   /// Indicates the kind of entity type.
   /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -46,25 +46,25 @@ class EntityType extends CustomResource {
   /// types can contain references to other entity types (with or without aliases).
   /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
   /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-  late final Output<String> kind;
+  late final pulumi.Output<String> kind;
 
   /// The unique identifier of the entity type.
   /// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   EntityType(
     String name, {
     EntityTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:diagflow/entityType:EntityType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String>('displayName');
     this.enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_addresses_address/get_addresses_address.dart';
 
 /// Result data returned by getAddresses.
@@ -27,7 +27,7 @@ class GetAddressesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['addresses'] =
-        Input.encodeList<GetAddressesAddress, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAddressesAddress, Map<String, dynamic>>(
             addresses, (value) => value.toMap());
     final filterValue = filter;
     if (filterValue != null) {
@@ -44,7 +44,7 @@ class GetAddressesResult {
 
   factory GetAddressesResult.fromMap(Map<String, dynamic> map) {
     return GetAddressesResult(
-      addresses: Input.decodeList<GetAddressesAddress>(
+      addresses: pulumi.Input.decodeList<GetAddressesAddress>(
           map['addresses'],
           (value) => GetAddressesAddress.fromMap(
               (value as Map).cast<String, dynamic>())),

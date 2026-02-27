@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceSerialPort.
 class GetInstanceSerialPortArgs {
   /// The name of the Compute Instance to read output from.
-  final Input<String> instance;
+  final pulumi.Input<String> instance;
 
   /// The number of the serial port to read output from. Possible values are 1-4.
   ///
   /// - - -
-  final Input<int> port;
+  final pulumi.Input<int> port;
 
   /// The project in which the Compute Instance exists. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The zone in which the Compute Instance exists.
   /// If it is not provided, the provider zone is used.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetInstanceSerialPortArgs({
     required this.instance,
@@ -44,10 +44,10 @@ class GetInstanceSerialPortArgs {
 
   factory GetInstanceSerialPortArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceSerialPortArgs(
-      instance: Input.asInput<String>(map['instance']),
-      port: Input.asInput<int>(map['port']),
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      instance: pulumi.Input.asInput<String>(map['instance']),
+      port: pulumi.Input.asInput<int>(map['port']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

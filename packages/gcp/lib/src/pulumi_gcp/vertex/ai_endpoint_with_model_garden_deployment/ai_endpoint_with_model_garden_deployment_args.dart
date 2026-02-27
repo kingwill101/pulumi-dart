@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_endpoint_with_model_garden_deployment_deploy_config/ai_endpoint_with_model_garden_deployment_deploy_config.dart';
 import '../ai_endpoint_with_model_garden_deployment_endpoint_config/ai_endpoint_with_model_garden_deployment_endpoint_config.dart';
 import '../ai_endpoint_with_model_garden_deployment_model_config/ai_endpoint_with_model_garden_deployment_model_config.dart';
@@ -9,33 +9,35 @@ import '../ai_endpoint_with_model_garden_deployment_model_config/ai_endpoint_wit
 class AiEndpointWithModelGardenDeploymentArgs {
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
-  final Input<AiEndpointWithModelGardenDeploymentDeployConfig>? deployConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfig>?
+      deployConfig;
 
   /// The endpoint config to use for the deployment.
   /// Structure is documented below.
-  final Input<AiEndpointWithModelGardenDeploymentEndpointConfig>?
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfig>?
       endpointConfig;
 
   /// The Hugging Face model to deploy.
   /// Format: Hugging Face model ID like `google/gemma-2-2b-it`.
-  final Input<String>? huggingFaceModelId;
+  final pulumi.Input<String>? huggingFaceModelId;
 
   /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The model config to use for the deployment.
   /// Structure is documented below.
-  final Input<AiEndpointWithModelGardenDeploymentModelConfig>? modelConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfig>?
+      modelConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The Model Garden model to deploy.
   /// Format:
   /// `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
   /// `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
-  final Input<String>? publisherModelName;
+  final pulumi.Input<String>? publisherModelName;
 
   AiEndpointWithModelGardenDeploymentArgs({
     this.deployConfig,
@@ -51,13 +53,13 @@ class AiEndpointWithModelGardenDeploymentArgs {
     final map = <String, dynamic>{};
     final deployConfigValue = deployConfig;
     if (deployConfigValue != null) {
-      map['deployConfig'] = Input.mapOptionalInputValue<
+      map['deployConfig'] = pulumi.Input.mapOptionalInputValue<
           AiEndpointWithModelGardenDeploymentDeployConfig,
           Map<String, dynamic>>(deployConfigValue, (value) => value.toMap());
     }
     final endpointConfigValue = endpointConfig;
     if (endpointConfigValue != null) {
-      map['endpointConfig'] = Input.mapOptionalInputValue<
+      map['endpointConfig'] = pulumi.Input.mapOptionalInputValue<
           AiEndpointWithModelGardenDeploymentEndpointConfig,
           Map<String, dynamic>>(endpointConfigValue, (value) => value.toMap());
     }
@@ -68,7 +70,7 @@ class AiEndpointWithModelGardenDeploymentArgs {
     map['location'] = location;
     final modelConfigValue = modelConfig;
     if (modelConfigValue != null) {
-      map['modelConfig'] = Input.mapOptionalInputValue<
+      map['modelConfig'] = pulumi.Input.mapOptionalInputValue<
           AiEndpointWithModelGardenDeploymentModelConfig,
           Map<String, dynamic>>(modelConfigValue, (value) => value.toMap());
     }
@@ -86,20 +88,19 @@ class AiEndpointWithModelGardenDeploymentArgs {
   factory AiEndpointWithModelGardenDeploymentArgs.fromMap(
       Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentArgs(
-      deployConfig: Input.asOptionalInput<
+      deployConfig: pulumi.Input.asOptionalInput<
           AiEndpointWithModelGardenDeploymentDeployConfig>(map['deployConfig']),
-      endpointConfig: Input.asOptionalInput<
+      endpointConfig: pulumi.Input.asOptionalInput<
               AiEndpointWithModelGardenDeploymentEndpointConfig>(
           map['endpointConfig']),
       huggingFaceModelId:
-          Input.asOptionalInput<String>(map['huggingFaceModelId']),
-      location: Input.asInput<String>(map['location']),
-      modelConfig:
-          Input.asOptionalInput<AiEndpointWithModelGardenDeploymentModelConfig>(
-              map['modelConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
+          pulumi.Input.asOptionalInput<String>(map['huggingFaceModelId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      modelConfig: pulumi.Input.asOptionalInput<
+          AiEndpointWithModelGardenDeploymentModelConfig>(map['modelConfig']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
       publisherModelName:
-          Input.asOptionalInput<String>(map['publisherModelName']),
+          pulumi.Input.asOptionalInput<String>(map['publisherModelName']),
     );
   }
 }

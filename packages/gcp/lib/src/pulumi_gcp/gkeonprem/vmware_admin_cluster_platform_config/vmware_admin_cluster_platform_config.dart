@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vmware_admin_cluster_platform_config_bundle/vmware_admin_cluster_platform_config_bundle.dart';
 import '../vmware_admin_cluster_platform_config_status/vmware_admin_cluster_platform_config_status.dart';
 
@@ -40,7 +40,8 @@ class VmwareAdminClusterPlatformConfig {
     final map = <String, dynamic>{};
     final bundlesValue = bundles;
     if (bundlesValue != null) {
-      map['bundles'] = Input.encodeList<VmwareAdminClusterPlatformConfigBundle,
+      map['bundles'] = pulumi.Input.encodeList<
+          VmwareAdminClusterPlatformConfigBundle,
           Map<String, dynamic>>(bundlesValue, (value) => value.toMap());
     }
     final platformVersionValue = platformVersion;
@@ -53,7 +54,8 @@ class VmwareAdminClusterPlatformConfig {
     }
     final statusesValue = statuses;
     if (statusesValue != null) {
-      map['statuses'] = Input.encodeList<VmwareAdminClusterPlatformConfigStatus,
+      map['statuses'] = pulumi.Input.encodeList<
+          VmwareAdminClusterPlatformConfigStatus,
           Map<String, dynamic>>(statusesValue, (value) => value.toMap());
     }
     return map;
@@ -63,7 +65,7 @@ class VmwareAdminClusterPlatformConfig {
     return VmwareAdminClusterPlatformConfig(
       bundles: map['bundles'] == null
           ? null
-          : Input.decodeList<VmwareAdminClusterPlatformConfigBundle>(
+          : pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigBundle>(
               map['bundles'],
               (value) => VmwareAdminClusterPlatformConfigBundle.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -75,7 +77,7 @@ class VmwareAdminClusterPlatformConfig {
           : map['requiredPlatformVersion'] as String,
       statuses: map['statuses'] == null
           ? null
-          : Input.decodeList<VmwareAdminClusterPlatformConfigStatus>(
+          : pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigStatus>(
               map['statuses'],
               (value) => VmwareAdminClusterPlatformConfigStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),

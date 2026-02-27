@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../aws_node_pool_autoscaling/aws_node_pool_autoscaling.dart';
 import '../aws_node_pool_config/aws_node_pool_config.dart';
 import '../aws_node_pool_kubelet_config/aws_node_pool_kubelet_config.dart';
@@ -46,77 +46,77 @@ import 'aws_node_pool_args.dart';
 /// ```sh
 /// $ pulumi import gcp:container/awsNodePool:AwsNodePool default {{location}}/{{cluster}}/{{name}}
 /// ```
-class AwsNodePool extends CustomResource {
+class AwsNodePool extends pulumi.CustomResource {
   /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  late final Output<Map<String, String>?> annotations;
+  late final pulumi.Output<Map<String, String>?> annotations;
 
   /// Autoscaler configuration for this node pool.
-  late final Output<AwsNodePoolAutoscaling> autoscaling;
+  late final pulumi.Output<AwsNodePoolAutoscaling> autoscaling;
 
   /// The awsCluster for the resource
-  late final Output<String> cluster;
+  late final pulumi.Output<String> cluster;
 
   /// The configuration of the node pool.
-  late final Output<AwsNodePoolConfig> config;
+  late final pulumi.Output<AwsNodePoolConfig> config;
 
   /// Output only. The time at which this node pool was created.
-  late final Output<String> createTime;
-  late final Output<Map<String, String>> effectiveAnnotations;
+  late final pulumi.Output<String> createTime;
+  late final pulumi.Output<Map<String, String>> effectiveAnnotations;
 
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The kubelet configuration for the node pool.
-  late final Output<AwsNodePoolKubeletConfig> kubeletConfig;
+  late final pulumi.Output<AwsNodePoolKubeletConfig> kubeletConfig;
 
   /// The location for the resource
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The Management configuration for this node pool.
-  late final Output<AwsNodePoolManagement> management;
+  late final pulumi.Output<AwsNodePoolManagement> management;
 
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  late final Output<AwsNodePoolMaxPodsConstraint> maxPodsConstraint;
+  late final pulumi.Output<AwsNodePoolMaxPodsConstraint> maxPodsConstraint;
 
   /// The name of this resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The project for the resource
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. If set, there are currently changes in flight to the node pool.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The subnet where the node pool node run.
-  late final Output<String> subnetId;
+  late final pulumi.Output<String> subnetId;
 
   /// Output only. A globally unique identifier for the node pool.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Optional. Update settings control the speed and disruption of the node pool update.
-  late final Output<AwsNodePoolUpdateSettings> updateSettings;
+  late final pulumi.Output<AwsNodePoolUpdateSettings> updateSettings;
 
   /// Output only. The time at which this node pool was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   AwsNodePool(
     String name, {
     AwsNodePoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:container/awsNodePool:AwsNodePool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling');

@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Sitemap.
 class SitemapArgs {
   /// The unique id of the data store.
-  final Input<String> dataStoreId;
+  final pulumi.Input<String> dataStoreId;
 
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
-  final Input<String>? uri;
+  final pulumi.Input<String>? uri;
 
   SitemapArgs({
     required this.dataStoreId,
@@ -42,10 +42,10 @@ class SitemapArgs {
 
   factory SitemapArgs.fromMap(Map<String, dynamic> map) {
     return SitemapArgs(
-      dataStoreId: Input.asInput<String>(map['dataStoreId']),
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      uri: Input.asOptionalInput<String>(map['uri']),
+      dataStoreId: pulumi.Input.asInput<String>(map['dataStoreId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      uri: pulumi.Input.asOptionalInput<String>(map['uri']),
     );
   }
 }

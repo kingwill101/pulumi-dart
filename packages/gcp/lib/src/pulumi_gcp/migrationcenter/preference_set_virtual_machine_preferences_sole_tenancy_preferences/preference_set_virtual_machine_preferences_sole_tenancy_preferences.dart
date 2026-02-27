@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../preference_set_virtual_machine_preferences_sole_tenancy_preferences_node_type/preference_set_virtual_machine_preferences_sole_tenancy_preferences_node_type.dart';
 
 class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
@@ -42,7 +42,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
     }
     final nodeTypesValue = nodeTypes;
     if (nodeTypesValue != null) {
-      map['nodeTypes'] = Input.encodeList<
+      map['nodeTypes'] = pulumi.Input.encodeList<
           PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType,
           Map<String, dynamic>>(nodeTypesValue, (value) => value.toMap());
     }
@@ -63,7 +63,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences {
           : map['hostMaintenancePolicy'] as String,
       nodeTypes: map['nodeTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType>(
               map['nodeTypes'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'intercept_deployment_args.dart';
 
 /// A deployment represents a zonal intercept backend ready to accept
@@ -38,58 +38,58 @@ import 'intercept_deployment_args.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{location}}/{{intercept_deployment_id}}
 /// ```
-class InterceptDeployment extends CustomResource {
+class InterceptDeployment extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// User-provided description of the deployment.
   /// Used as additional context for the deployment.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// The regional forwarding rule that fronts the interceptors, for example:
   /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
   /// See https://google.aip.dev/124.
-  late final Output<String> forwardingRule;
+  late final pulumi.Output<String> forwardingRule;
 
   /// The deployment group that this deployment is a part of, for example:
   /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
-  late final Output<String> interceptDeploymentGroup;
+  late final pulumi.Output<String> interceptDeploymentGroup;
 
   /// The ID to use for the new deployment, which will become the final
   /// component of the deployment's resource name.
-  late final Output<String> interceptDeploymentId;
+  late final pulumi.Output<String> interceptDeploymentId;
 
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of this deployment, for example:
   /// `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`.
   /// See https://google.aip.dev/122 for more details.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The current state of the resource does not match the user's intended state,
   /// and the system is working to reconcile them. This part of the normal
   /// operation (e.g. linking a new association to the parent group).
   /// See https://google.aip.dev/128.
-  late final Output<bool> reconciling;
+  late final pulumi.Output<bool> reconciling;
 
   /// The current state of the deployment.
   /// See https://google.aip.dev/216.
@@ -100,21 +100,21 @@ class InterceptDeployment extends CustomResource {
   /// DELETING
   /// OUT_OF_SYNC
   /// DELETE_FAILED
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The timestamp when the resource was most recently updated.
   /// See https://google.aip.dev/148#timestamps.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   InterceptDeployment(
     String name, {
     InterceptDeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:networksecurity/interceptDeployment:InterceptDeployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');

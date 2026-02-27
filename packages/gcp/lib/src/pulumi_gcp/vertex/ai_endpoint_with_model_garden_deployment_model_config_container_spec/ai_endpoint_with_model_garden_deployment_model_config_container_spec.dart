@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ai_endpoint_with_model_garden_deployment_model_config_container_spec_env/ai_endpoint_with_model_garden_deployment_model_config_container_spec_env.dart';
 import '../ai_endpoint_with_model_garden_deployment_model_config_container_spec_grpc_port/ai_endpoint_with_model_garden_deployment_model_config_container_spec_grpc_port.dart';
 import '../ai_endpoint_with_model_garden_deployment_model_config_container_spec_health_probe/ai_endpoint_with_model_garden_deployment_model_config_container_spec_health_probe.dart';
@@ -257,13 +257,13 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
     }
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] = Input.encodeList<
+      map['envs'] = pulumi.Input.encodeList<
           AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv,
           Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
     final grpcPortsValue = grpcPorts;
     if (grpcPortsValue != null) {
-      map['grpcPorts'] = Input.encodeList<
+      map['grpcPorts'] = pulumi.Input.encodeList<
           AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort,
           Map<String, dynamic>>(grpcPortsValue, (value) => value.toMap());
     }
@@ -282,7 +282,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
     }
     final portsValue = ports;
     if (portsValue != null) {
-      map['ports'] = Input.encodeList<
+      map['ports'] = pulumi.Input.encodeList<
           AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort,
           Map<String, dynamic>>(portsValue, (value) => value.toMap());
     }
@@ -313,7 +313,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
           : map['deploymentTimeout'] as String,
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>(
               map['envs'],
               (value) =>
@@ -321,7 +321,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
                       .fromMap((value as Map).cast<String, dynamic>())),
       grpcPorts: map['grpcPorts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>(
               map['grpcPorts'],
               (value) =>
@@ -340,7 +340,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
               .fromMap((map['livenessProbe'] as Map).cast<String, dynamic>()),
       ports: map['ports'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>(
               map['ports'],
               (value) =>

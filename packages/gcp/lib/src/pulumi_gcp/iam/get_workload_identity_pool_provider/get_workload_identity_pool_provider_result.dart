@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_workload_identity_pool_provider_aw/get_workload_identity_pool_provider_aw.dart';
 import '../get_workload_identity_pool_provider_oidc/get_workload_identity_pool_provider_oidc.dart';
 import '../get_workload_identity_pool_provider_saml/get_workload_identity_pool_provider_saml.dart';
@@ -48,25 +48,25 @@ class GetWorkloadIdentityPoolProviderResult {
     final map = <String, dynamic>{};
     map['attributeCondition'] = attributeCondition;
     map['attributeMapping'] = attributeMapping;
-    map['aws'] = Input.encodeList<GetWorkloadIdentityPoolProviderAw,
+    map['aws'] = pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderAw,
         Map<String, dynamic>>(aws, (value) => value.toMap());
     map['description'] = description;
     map['disabled'] = disabled;
     map['displayName'] = displayName;
     map['id'] = id;
     map['name'] = name;
-    map['oidcs'] = Input.encodeList<GetWorkloadIdentityPoolProviderOidc,
+    map['oidcs'] = pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderOidc,
         Map<String, dynamic>>(oidcs, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
     }
-    map['samls'] = Input.encodeList<GetWorkloadIdentityPoolProviderSaml,
+    map['samls'] = pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderSaml,
         Map<String, dynamic>>(samls, (value) => value.toMap());
     map['state'] = state;
     map['workloadIdentityPoolId'] = workloadIdentityPoolId;
     map['workloadIdentityPoolProviderId'] = workloadIdentityPoolProviderId;
-    map['x509s'] = Input.encodeList<GetWorkloadIdentityPoolProviderX509,
+    map['x509s'] = pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderX509,
         Map<String, dynamic>>(x509s, (value) => value.toMap());
     return map;
   }
@@ -76,7 +76,7 @@ class GetWorkloadIdentityPoolProviderResult {
     return GetWorkloadIdentityPoolProviderResult(
       attributeCondition: map['attributeCondition'] as String,
       attributeMapping: (map['attributeMapping'] as Map).cast<String, String>(),
-      aws: Input.decodeList<GetWorkloadIdentityPoolProviderAw>(
+      aws: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderAw>(
           map['aws'],
           (value) => GetWorkloadIdentityPoolProviderAw.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -85,12 +85,12 @@ class GetWorkloadIdentityPoolProviderResult {
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      oidcs: Input.decodeList<GetWorkloadIdentityPoolProviderOidc>(
+      oidcs: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderOidc>(
           map['oidcs'],
           (value) => GetWorkloadIdentityPoolProviderOidc.fromMap(
               (value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
-      samls: Input.decodeList<GetWorkloadIdentityPoolProviderSaml>(
+      samls: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderSaml>(
           map['samls'],
           (value) => GetWorkloadIdentityPoolProviderSaml.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -98,7 +98,7 @@ class GetWorkloadIdentityPoolProviderResult {
       workloadIdentityPoolId: map['workloadIdentityPoolId'] as String,
       workloadIdentityPoolProviderId:
           map['workloadIdentityPoolProviderId'] as String,
-      x509s: Input.decodeList<GetWorkloadIdentityPoolProviderX509>(
+      x509s: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderX509>(
           map['x509s'],
           (value) => GetWorkloadIdentityPoolProviderX509.fromMap(
               (value as Map).cast<String, dynamic>())),

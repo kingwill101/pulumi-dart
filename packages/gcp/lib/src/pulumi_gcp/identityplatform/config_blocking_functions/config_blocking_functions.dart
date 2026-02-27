@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../config_blocking_functions_forward_inbound_credentials/config_blocking_functions_forward_inbound_credentials.dart';
 import '../config_blocking_functions_trigger/config_blocking_functions_trigger.dart';
 
@@ -25,9 +25,8 @@ class ConfigBlockingFunctions {
     if (forwardInboundCredentialsValue != null) {
       map['forwardInboundCredentials'] = forwardInboundCredentialsValue.toMap();
     }
-    map['triggers'] =
-        Input.encodeList<ConfigBlockingFunctionsTrigger, Map<String, dynamic>>(
-            triggers, (value) => value.toMap());
+    map['triggers'] = pulumi.Input.encodeList<ConfigBlockingFunctionsTrigger,
+        Map<String, dynamic>>(triggers, (value) => value.toMap());
     return map;
   }
 
@@ -38,7 +37,7 @@ class ConfigBlockingFunctions {
           : ConfigBlockingFunctionsForwardInboundCredentials.fromMap(
               (map['forwardInboundCredentials'] as Map)
                   .cast<String, dynamic>()),
-      triggers: Input.decodeList<ConfigBlockingFunctionsTrigger>(
+      triggers: pulumi.Input.decodeList<ConfigBlockingFunctionsTrigger>(
           map['triggers'],
           (value) => ConfigBlockingFunctionsTrigger.fromMap(
               (value as Map).cast<String, dynamic>())),

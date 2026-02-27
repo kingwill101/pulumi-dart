@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_connection_application_endpoint/app_connection_application_endpoint.dart';
 import '../app_connection_gateway/app_connection_gateway.dart';
 import 'app_connection_args.dart';
@@ -54,58 +54,59 @@ import 'app_connection_args.dart';
 /// ```sh
 /// $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
 /// ```
-class AppConnection extends CustomResource {
+class AppConnection extends pulumi.CustomResource {
   /// Address of the remote application endpoint for the BeyondCorp AppConnection.
   /// Structure is documented below.
-  late final Output<AppConnectionApplicationEndpoint> applicationEndpoint;
+  late final pulumi.Output<AppConnectionApplicationEndpoint>
+      applicationEndpoint;
 
   /// List of AppConnectors that are authorised to be associated with this AppConnection
-  late final Output<List<String>?> connectors;
+  late final pulumi.Output<List<String>?> connectors;
 
   /// An arbitrary user-provided name for the AppConnection.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Gateway used by the AppConnection.
   /// Structure is documented below.
-  late final Output<AppConnectionGateway> gateway;
+  late final pulumi.Output<AppConnectionGateway> gateway;
 
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// ID of the AppConnection.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The region of the AppConnection.
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// The type of network connectivity used by the AppConnection. Refer
   /// to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
   /// for a list of possible values.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   AppConnection(
     String name, {
     AppConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:beyondcorp/appConnection:AppConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationEndpoint =
         registerOutput<AppConnectionApplicationEndpoint>('applicationEndpoint');

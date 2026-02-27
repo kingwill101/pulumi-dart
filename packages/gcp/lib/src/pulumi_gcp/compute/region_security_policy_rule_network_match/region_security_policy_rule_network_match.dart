@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_security_policy_rule_network_match_user_defined_field/region_security_policy_rule_network_match_user_defined_field.dart';
 
 class RegionSecurityPolicyRuleNetworkMatch {
@@ -73,7 +73,7 @@ class RegionSecurityPolicyRuleNetworkMatch {
     }
     final userDefinedFieldsValue = userDefinedFields;
     if (userDefinedFieldsValue != null) {
-      map['userDefinedFields'] = Input.encodeList<
+      map['userDefinedFields'] = pulumi.Input.encodeList<
               RegionSecurityPolicyRuleNetworkMatchUserDefinedField,
               Map<String, dynamic>>(
           userDefinedFieldsValue, (value) => value.toMap());
@@ -106,7 +106,7 @@ class RegionSecurityPolicyRuleNetworkMatch {
           : (map['srcRegionCodes'] as List).cast<String>(),
       userDefinedFields: map['userDefinedFields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RegionSecurityPolicyRuleNetworkMatchUserDefinedField>(
               map['userDefinedFields'],
               (value) =>

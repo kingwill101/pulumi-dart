@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tool_open_api_tool_api_authentication/tool_open_api_tool_api_authentication.dart';
 import '../tool_open_api_tool_service_directory_config/tool_open_api_tool_service_directory_config.dart';
 import '../tool_open_api_tool_tls_config/tool_open_api_tool_tls_config.dart';
@@ -60,7 +60,7 @@ class ToolOpenApiTool {
     final map = <String, dynamic>{};
     final apiAuthenticationsValue = apiAuthentications;
     if (apiAuthenticationsValue != null) {
-      map['apiAuthentications'] = Input.encodeList<
+      map['apiAuthentications'] = pulumi.Input.encodeList<
               ToolOpenApiToolApiAuthentication, Map<String, dynamic>>(
           apiAuthenticationsValue, (value) => value.toMap());
     }
@@ -82,15 +82,14 @@ class ToolOpenApiTool {
     }
     final serviceDirectoryConfigsValue = serviceDirectoryConfigs;
     if (serviceDirectoryConfigsValue != null) {
-      map['serviceDirectoryConfigs'] = Input.encodeList<
+      map['serviceDirectoryConfigs'] = pulumi.Input.encodeList<
               ToolOpenApiToolServiceDirectoryConfig, Map<String, dynamic>>(
           serviceDirectoryConfigsValue, (value) => value.toMap());
     }
     final tlsConfigsValue = tlsConfigs;
     if (tlsConfigsValue != null) {
-      map['tlsConfigs'] =
-          Input.encodeList<ToolOpenApiToolTlsConfig, Map<String, dynamic>>(
-              tlsConfigsValue, (value) => value.toMap());
+      map['tlsConfigs'] = pulumi.Input.encodeList<ToolOpenApiToolTlsConfig,
+          Map<String, dynamic>>(tlsConfigsValue, (value) => value.toMap());
     }
     final urlValue = url;
     if (urlValue != null) {
@@ -103,7 +102,7 @@ class ToolOpenApiTool {
     return ToolOpenApiTool(
       apiAuthentications: map['apiAuthentications'] == null
           ? null
-          : Input.decodeList<ToolOpenApiToolApiAuthentication>(
+          : pulumi.Input.decodeList<ToolOpenApiToolApiAuthentication>(
               map['apiAuthentications'],
               (value) => ToolOpenApiToolApiAuthentication.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -117,13 +116,13 @@ class ToolOpenApiTool {
           map['openApiSchema'] == null ? null : map['openApiSchema'] as String,
       serviceDirectoryConfigs: map['serviceDirectoryConfigs'] == null
           ? null
-          : Input.decodeList<ToolOpenApiToolServiceDirectoryConfig>(
+          : pulumi.Input.decodeList<ToolOpenApiToolServiceDirectoryConfig>(
               map['serviceDirectoryConfigs'],
               (value) => ToolOpenApiToolServiceDirectoryConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       tlsConfigs: map['tlsConfigs'] == null
           ? null
-          : Input.decodeList<ToolOpenApiToolTlsConfig>(
+          : pulumi.Input.decodeList<ToolOpenApiToolTlsConfig>(
               map['tlsConfigs'],
               (value) => ToolOpenApiToolTlsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

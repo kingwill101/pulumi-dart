@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../region_autoscaler_autoscaling_policy_cpu_utilization/region_autoscaler_autoscaling_policy_cpu_utilization.dart';
 import '../region_autoscaler_autoscaling_policy_load_balancing_utilization/region_autoscaler_autoscaling_policy_load_balancing_utilization.dart';
 import '../region_autoscaler_autoscaling_policy_metric/region_autoscaler_autoscaling_policy_metric.dart';
@@ -95,7 +95,8 @@ class RegionAutoscalerAutoscalingPolicy {
     map['maxReplicas'] = maxReplicas;
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.encodeList<RegionAutoscalerAutoscalingPolicyMetric,
+      map['metrics'] = pulumi.Input.encodeList<
+          RegionAutoscalerAutoscalingPolicyMetric,
           Map<String, dynamic>>(metricsValue, (value) => value.toMap());
     }
     map['minReplicas'] = minReplicas;
@@ -113,7 +114,7 @@ class RegionAutoscalerAutoscalingPolicy {
     }
     final scalingSchedulesValue = scalingSchedules;
     if (scalingSchedulesValue != null) {
-      map['scalingSchedules'] = Input.encodeList<
+      map['scalingSchedules'] = pulumi.Input.encodeList<
               RegionAutoscalerAutoscalingPolicyScalingSchedule,
               Map<String, dynamic>>(
           scalingSchedulesValue, (value) => value.toMap());
@@ -136,7 +137,7 @@ class RegionAutoscalerAutoscalingPolicy {
       maxReplicas: map['maxReplicas'] as int,
       metrics: map['metrics'] == null
           ? null
-          : Input.decodeList<RegionAutoscalerAutoscalingPolicyMetric>(
+          : pulumi.Input.decodeList<RegionAutoscalerAutoscalingPolicyMetric>(
               map['metrics'],
               (value) => RegionAutoscalerAutoscalingPolicyMetric.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -152,7 +153,8 @@ class RegionAutoscalerAutoscalingPolicy {
               (map['scaleInControl'] as Map).cast<String, dynamic>()),
       scalingSchedules: map['scalingSchedules'] == null
           ? null
-          : Input.decodeList<RegionAutoscalerAutoscalingPolicyScalingSchedule>(
+          : pulumi.Input.decodeList<
+                  RegionAutoscalerAutoscalingPolicyScalingSchedule>(
               map['scalingSchedules'],
               (value) =>
                   RegionAutoscalerAutoscalingPolicyScalingSchedule.fromMap(

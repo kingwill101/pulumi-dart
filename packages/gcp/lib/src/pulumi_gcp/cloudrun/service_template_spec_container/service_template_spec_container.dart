@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_template_spec_container_env/service_template_spec_container_env.dart';
 import '../service_template_spec_container_env_from/service_template_spec_container_env_from.dart';
 import '../service_template_spec_container_liveness_probe/service_template_spec_container_liveness_probe.dart';
@@ -105,12 +105,13 @@ class ServiceTemplateSpecContainer {
     }
     final envFromsValue = envFroms;
     if (envFromsValue != null) {
-      map['envFroms'] = Input.encodeList<ServiceTemplateSpecContainerEnvFrom,
+      map['envFroms'] = pulumi.Input.encodeList<
+          ServiceTemplateSpecContainerEnvFrom,
           Map<String, dynamic>>(envFromsValue, (value) => value.toMap());
     }
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] = Input.encodeList<ServiceTemplateSpecContainerEnv,
+      map['envs'] = pulumi.Input.encodeList<ServiceTemplateSpecContainerEnv,
           Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
     map['image'] = image;
@@ -124,7 +125,7 @@ class ServiceTemplateSpecContainer {
     }
     final portsValue = ports;
     if (portsValue != null) {
-      map['ports'] = Input.encodeList<ServiceTemplateSpecContainerPort,
+      map['ports'] = pulumi.Input.encodeList<ServiceTemplateSpecContainerPort,
           Map<String, dynamic>>(portsValue, (value) => value.toMap());
     }
     final readinessProbeValue = readinessProbe;
@@ -141,7 +142,7 @@ class ServiceTemplateSpecContainer {
     }
     final volumeMountsValue = volumeMounts;
     if (volumeMountsValue != null) {
-      map['volumeMounts'] = Input.encodeList<
+      map['volumeMounts'] = pulumi.Input.encodeList<
           ServiceTemplateSpecContainerVolumeMount,
           Map<String, dynamic>>(volumeMountsValue, (value) => value.toMap());
     }
@@ -160,13 +161,13 @@ class ServiceTemplateSpecContainer {
           : (map['commands'] as List).cast<String>(),
       envFroms: map['envFroms'] == null
           ? null
-          : Input.decodeList<ServiceTemplateSpecContainerEnvFrom>(
+          : pulumi.Input.decodeList<ServiceTemplateSpecContainerEnvFrom>(
               map['envFroms'],
               (value) => ServiceTemplateSpecContainerEnvFrom.fromMap(
                   (value as Map).cast<String, dynamic>())),
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<ServiceTemplateSpecContainerEnv>(
+          : pulumi.Input.decodeList<ServiceTemplateSpecContainerEnv>(
               map['envs'],
               (value) => ServiceTemplateSpecContainerEnv.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -178,7 +179,7 @@ class ServiceTemplateSpecContainer {
       name: map['name'] == null ? null : map['name'] as String,
       ports: map['ports'] == null
           ? null
-          : Input.decodeList<ServiceTemplateSpecContainerPort>(
+          : pulumi.Input.decodeList<ServiceTemplateSpecContainerPort>(
               map['ports'],
               (value) => ServiceTemplateSpecContainerPort.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -196,7 +197,7 @@ class ServiceTemplateSpecContainer {
               (map['startupProbe'] as Map).cast<String, dynamic>()),
       volumeMounts: map['volumeMounts'] == null
           ? null
-          : Input.decodeList<ServiceTemplateSpecContainerVolumeMount>(
+          : pulumi.Input.decodeList<ServiceTemplateSpecContainerVolumeMount>(
               map['volumeMounts'],
               (value) => ServiceTemplateSpecContainerVolumeMount.fromMap(
                   (value as Map).cast<String, dynamic>())),

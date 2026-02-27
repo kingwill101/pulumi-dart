@@ -1,22 +1,22 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_target_type_iam_policy_args.dart';
 
-class CustomTargetTypeIamPolicy extends CustomResource {
-  late final Output<String> etag;
-  late final Output<String> location;
-  late final Output<String> name;
-  late final Output<String> policyData;
-  late final Output<String> project;
+class CustomTargetTypeIamPolicy extends pulumi.CustomResource {
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> location;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> policyData;
+  late final pulumi.Output<String> project;
 
   CustomTargetTypeIamPolicy(
     String name, {
     CustomTargetTypeIamPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:clouddeploy/customTargetTypeIamPolicy:CustomTargetTypeIamPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');

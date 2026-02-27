@@ -1,3 +1,3 @@
 library module_organizations_iambinding_condition;
 
-export 'iambinding_condition/iambinding_condition2.dart';
+export 'iambinding_condition/iambinding_condition_organizations.dart';

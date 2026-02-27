@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_automated_backup_policy/get_cluster_automated_backup_policy.dart';
 import '../get_cluster_backup_source/get_cluster_backup_source.dart';
 import '../get_cluster_continuous_backup_config/get_cluster_continuous_backup_config.dart';
@@ -101,75 +101,73 @@ class GetClusterResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['annotations'] = annotations;
-    map['automatedBackupPolicies'] =
-        Input.encodeList<GetClusterAutomatedBackupPolicy, Map<String, dynamic>>(
-            automatedBackupPolicies, (value) => value.toMap());
+    map['automatedBackupPolicies'] = pulumi.Input.encodeList<
+            GetClusterAutomatedBackupPolicy, Map<String, dynamic>>(
+        automatedBackupPolicies, (value) => value.toMap());
     map['backupSources'] =
-        Input.encodeList<GetClusterBackupSource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetClusterBackupSource, Map<String, dynamic>>(
             backupSources, (value) => value.toMap());
     map['clusterId'] = clusterId;
     map['clusterType'] = clusterType;
-    map['continuousBackupConfigs'] = Input.encodeList<
+    map['continuousBackupConfigs'] = pulumi.Input.encodeList<
             GetClusterContinuousBackupConfig, Map<String, dynamic>>(
         continuousBackupConfigs, (value) => value.toMap());
-    map['continuousBackupInfos'] =
-        Input.encodeList<GetClusterContinuousBackupInfo, Map<String, dynamic>>(
-            continuousBackupInfos, (value) => value.toMap());
+    map['continuousBackupInfos'] = pulumi.Input.encodeList<
+        GetClusterContinuousBackupInfo,
+        Map<String, dynamic>>(continuousBackupInfos, (value) => value.toMap());
     map['databaseVersion'] = databaseVersion;
     map['deletionPolicy'] = deletionPolicy;
     map['deletionProtection'] = deletionProtection;
     map['displayName'] = displayName;
     map['effectiveAnnotations'] = effectiveAnnotations;
     map['effectiveLabels'] = effectiveLabels;
-    map['encryptionConfigs'] =
-        Input.encodeList<GetClusterEncryptionConfig, Map<String, dynamic>>(
-            encryptionConfigs, (value) => value.toMap());
+    map['encryptionConfigs'] = pulumi.Input.encodeList<
+        GetClusterEncryptionConfig,
+        Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
     map['encryptionInfos'] =
-        Input.encodeList<GetClusterEncryptionInfo, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetClusterEncryptionInfo, Map<String, dynamic>>(
             encryptionInfos, (value) => value.toMap());
     map['etag'] = etag;
     map['id'] = id;
     map['initialUsers'] =
-        Input.encodeList<GetClusterInitialUser, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetClusterInitialUser, Map<String, dynamic>>(
             initialUsers, (value) => value.toMap());
     map['labels'] = labels;
     final locationValue = location;
     if (locationValue != null) {
       map['location'] = locationValue;
     }
-    map['maintenanceUpdatePolicies'] = Input.encodeList<
+    map['maintenanceUpdatePolicies'] = pulumi.Input.encodeList<
             GetClusterMaintenanceUpdatePolicy, Map<String, dynamic>>(
         maintenanceUpdatePolicies, (value) => value.toMap());
-    map['migrationSources'] =
-        Input.encodeList<GetClusterMigrationSource, Map<String, dynamic>>(
-            migrationSources, (value) => value.toMap());
+    map['migrationSources'] = pulumi.Input.encodeList<GetClusterMigrationSource,
+        Map<String, dynamic>>(migrationSources, (value) => value.toMap());
     map['name'] = name;
     map['networkConfigs'] =
-        Input.encodeList<GetClusterNetworkConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetClusterNetworkConfig, Map<String, dynamic>>(
             networkConfigs, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
     }
     map['pscConfigs'] =
-        Input.encodeList<GetClusterPscConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetClusterPscConfig, Map<String, dynamic>>(
             pscConfigs, (value) => value.toMap());
     map['pulumiLabels'] = pulumiLabels;
     map['reconciling'] = reconciling;
-    map['restoreBackupSources'] =
-        Input.encodeList<GetClusterRestoreBackupSource, Map<String, dynamic>>(
-            restoreBackupSources, (value) => value.toMap());
-    map['restoreContinuousBackupSources'] = Input.encodeList<
+    map['restoreBackupSources'] = pulumi.Input.encodeList<
+        GetClusterRestoreBackupSource,
+        Map<String, dynamic>>(restoreBackupSources, (value) => value.toMap());
+    map['restoreContinuousBackupSources'] = pulumi.Input.encodeList<
             GetClusterRestoreContinuousBackupSource, Map<String, dynamic>>(
         restoreContinuousBackupSources, (value) => value.toMap());
-    map['secondaryConfigs'] =
-        Input.encodeList<GetClusterSecondaryConfig, Map<String, dynamic>>(
-            secondaryConfigs, (value) => value.toMap());
+    map['secondaryConfigs'] = pulumi.Input.encodeList<GetClusterSecondaryConfig,
+        Map<String, dynamic>>(secondaryConfigs, (value) => value.toMap());
     map['skipAwaitMajorVersionUpgrade'] = skipAwaitMajorVersionUpgrade;
     map['state'] = state;
     map['subscriptionType'] = subscriptionType;
     map['trialMetadatas'] =
-        Input.encodeList<GetClusterTrialMetadata, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetClusterTrialMetadata, Map<String, dynamic>>(
             trialMetadatas, (value) => value.toMap());
     map['uid'] = uid;
     return map;
@@ -179,25 +177,26 @@ class GetClusterResult {
     return GetClusterResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
       automatedBackupPolicies:
-          Input.decodeList<GetClusterAutomatedBackupPolicy>(
+          pulumi.Input.decodeList<GetClusterAutomatedBackupPolicy>(
               map['automatedBackupPolicies'],
               (value) => GetClusterAutomatedBackupPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      backupSources: Input.decodeList<GetClusterBackupSource>(
+      backupSources: pulumi.Input.decodeList<GetClusterBackupSource>(
           map['backupSources'],
           (value) => GetClusterBackupSource.fromMap(
               (value as Map).cast<String, dynamic>())),
       clusterId: map['clusterId'] as String,
       clusterType: map['clusterType'] as String,
       continuousBackupConfigs:
-          Input.decodeList<GetClusterContinuousBackupConfig>(
+          pulumi.Input.decodeList<GetClusterContinuousBackupConfig>(
               map['continuousBackupConfigs'],
               (value) => GetClusterContinuousBackupConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      continuousBackupInfos: Input.decodeList<GetClusterContinuousBackupInfo>(
-          map['continuousBackupInfos'],
-          (value) => GetClusterContinuousBackupInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      continuousBackupInfos:
+          pulumi.Input.decodeList<GetClusterContinuousBackupInfo>(
+              map['continuousBackupInfos'],
+              (value) => GetClusterContinuousBackupInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       databaseVersion: map['databaseVersion'] as String,
       deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
@@ -205,60 +204,61 @@ class GetClusterResult {
       effectiveAnnotations:
           (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      encryptionConfigs: Input.decodeList<GetClusterEncryptionConfig>(
+      encryptionConfigs: pulumi.Input.decodeList<GetClusterEncryptionConfig>(
           map['encryptionConfigs'],
           (value) => GetClusterEncryptionConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
-      encryptionInfos: Input.decodeList<GetClusterEncryptionInfo>(
+      encryptionInfos: pulumi.Input.decodeList<GetClusterEncryptionInfo>(
           map['encryptionInfos'],
           (value) => GetClusterEncryptionInfo.fromMap(
               (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       id: map['id'] as String,
-      initialUsers: Input.decodeList<GetClusterInitialUser>(
+      initialUsers: pulumi.Input.decodeList<GetClusterInitialUser>(
           map['initialUsers'],
           (value) => GetClusterInitialUser.fromMap(
               (value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       maintenanceUpdatePolicies:
-          Input.decodeList<GetClusterMaintenanceUpdatePolicy>(
+          pulumi.Input.decodeList<GetClusterMaintenanceUpdatePolicy>(
               map['maintenanceUpdatePolicies'],
               (value) => GetClusterMaintenanceUpdatePolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      migrationSources: Input.decodeList<GetClusterMigrationSource>(
+      migrationSources: pulumi.Input.decodeList<GetClusterMigrationSource>(
           map['migrationSources'],
           (value) => GetClusterMigrationSource.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      networkConfigs: Input.decodeList<GetClusterNetworkConfig>(
+      networkConfigs: pulumi.Input.decodeList<GetClusterNetworkConfig>(
           map['networkConfigs'],
           (value) => GetClusterNetworkConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       project: map['project'] == null ? null : map['project'] as String,
-      pscConfigs: Input.decodeList<GetClusterPscConfig>(
+      pscConfigs: pulumi.Input.decodeList<GetClusterPscConfig>(
           map['pscConfigs'],
           (value) => GetClusterPscConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       reconciling: map['reconciling'] as bool,
-      restoreBackupSources: Input.decodeList<GetClusterRestoreBackupSource>(
-          map['restoreBackupSources'],
-          (value) => GetClusterRestoreBackupSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      restoreBackupSources:
+          pulumi.Input.decodeList<GetClusterRestoreBackupSource>(
+              map['restoreBackupSources'],
+              (value) => GetClusterRestoreBackupSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       restoreContinuousBackupSources:
-          Input.decodeList<GetClusterRestoreContinuousBackupSource>(
+          pulumi.Input.decodeList<GetClusterRestoreContinuousBackupSource>(
               map['restoreContinuousBackupSources'],
               (value) => GetClusterRestoreContinuousBackupSource.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      secondaryConfigs: Input.decodeList<GetClusterSecondaryConfig>(
+      secondaryConfigs: pulumi.Input.decodeList<GetClusterSecondaryConfig>(
           map['secondaryConfigs'],
           (value) => GetClusterSecondaryConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       skipAwaitMajorVersionUpgrade: map['skipAwaitMajorVersionUpgrade'] as bool,
       state: map['state'] as String,
       subscriptionType: map['subscriptionType'] as String,
-      trialMetadatas: Input.decodeList<GetClusterTrialMetadata>(
+      trialMetadatas: pulumi.Input.decodeList<GetClusterTrialMetadata>(
           map['trialMetadatas'],
           (value) => GetClusterTrialMetadata.fromMap(
               (value as Map).cast<String, dynamic>())),

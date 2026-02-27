@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../document_ai_warehouse_document_schema_property_definition/document_ai_warehouse_document_schema_property_definition.dart';
 import 'document_ai_warehouse_document_schema_args.dart';
 
@@ -35,36 +35,37 @@ import 'document_ai_warehouse_document_schema_args.dart';
 /// ```sh
 /// $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default {{project_number}}/{{location}}/{{name}}
 /// ```
-class DocumentAiWarehouseDocumentSchema extends CustomResource {
+class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
   /// Name of the schema given by the user.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Tells whether the document is a folder or a typical document.
-  late final Output<bool?> documentIsFolder;
+  late final pulumi.Output<bool?> documentIsFolder;
 
   /// The location of the resource.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the document schema.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The unique identifier of the project.
-  late final Output<String> projectNumber;
+  late final pulumi.Output<String> projectNumber;
 
   /// Defines the metadata for a schema property.
   /// Structure is documented below.
-  late final Output<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>
+  late final pulumi
+      .Output<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>
       propertyDefinitions;
 
   DocumentAiWarehouseDocumentSchema(
     String name, {
     DocumentAiWarehouseDocumentSchemaArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.displayName = registerOutput<String>('displayName');
     this.documentIsFolder = registerOutput<bool?>('documentIsFolder');

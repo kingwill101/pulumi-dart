@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bi_reservation_preferred_table/bi_reservation_preferred_table.dart';
 import 'bi_reservation_args.dart';
 
@@ -41,37 +41,37 @@ import 'bi_reservation_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigquery/biReservation:BiReservation default {{location}}
 /// ```
-class BiReservation extends CustomResource {
+class BiReservation extends pulumi.CustomResource {
   /// LOCATION_DESCRIPTION
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Preferred tables to use BI capacity for.
   /// Structure is documented below.
-  late final Output<List<BiReservationPreferredTable>?> preferredTables;
+  late final pulumi.Output<List<BiReservationPreferredTable>?> preferredTables;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Size of a reservation, in bytes.
-  late final Output<int?> size;
+  late final pulumi.Output<int?> size;
 
   /// The last update timestamp of a reservation.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   BiReservation(
     String name, {
     BiReservationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigquery/biReservation:BiReservation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

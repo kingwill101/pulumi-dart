@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_template_passthrough_extensions_additional_extension/certificate_template_passthrough_extensions_additional_extension.dart';
 
 class CertificateTemplatePassthroughExtensions {
@@ -21,7 +21,7 @@ class CertificateTemplatePassthroughExtensions {
     final map = <String, dynamic>{};
     final additionalExtensionsValue = additionalExtensions;
     if (additionalExtensionsValue != null) {
-      map['additionalExtensions'] = Input.encodeList<
+      map['additionalExtensions'] = pulumi.Input.encodeList<
               CertificateTemplatePassthroughExtensionsAdditionalExtension,
               Map<String, dynamic>>(
           additionalExtensionsValue, (value) => value.toMap());
@@ -38,7 +38,7 @@ class CertificateTemplatePassthroughExtensions {
     return CertificateTemplatePassthroughExtensions(
       additionalExtensions: map['additionalExtensions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CertificateTemplatePassthroughExtensionsAdditionalExtension>(
               map['additionalExtensions'],
               (value) =>

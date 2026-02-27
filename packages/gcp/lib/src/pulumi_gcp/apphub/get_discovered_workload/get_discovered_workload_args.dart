@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDiscoveredWorkload.
 class GetDiscoveredWorkloadArgs {
   /// The location of the discovered workload.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The host project of the discovered workload.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The uri of the workload (instance group managed by the Instance Group Manager). Example: "//compute.googleapis.com/projects/1/regions/us-east1/instanceGroups/id1"
-  final Input<String> workloadUri;
+  final pulumi.Input<String> workloadUri;
 
   GetDiscoveredWorkloadArgs({
     required this.location,
@@ -32,9 +32,9 @@ class GetDiscoveredWorkloadArgs {
 
   factory GetDiscoveredWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredWorkloadArgs(
-      location: Input.asInput<String>(map['location']),
-      project: Input.asOptionalInput<String>(map['project']),
-      workloadUri: Input.asInput<String>(map['workloadUri']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      workloadUri: pulumi.Input.asInput<String>(map['workloadUri']),
     );
   }
 }

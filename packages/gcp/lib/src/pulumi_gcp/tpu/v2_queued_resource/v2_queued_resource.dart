@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2_queued_resource_tpu/v2_queued_resource_tpu.dart';
 import 'v2_queued_resource_args.dart';
 
@@ -50,30 +50,30 @@ import 'v2_queued_resource_args.dart';
 /// ```sh
 /// $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{name}}
 /// ```
-class V2QueuedResource extends CustomResource {
+class V2QueuedResource extends pulumi.CustomResource {
   /// The immutable name of the Queued Resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Defines a TPU resource.
   /// Structure is documented below.
-  late final Output<V2QueuedResourceTpu?> tpu;
+  late final pulumi.Output<V2QueuedResourceTpu?> tpu;
 
   /// The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
-  late final Output<String> zone;
+  late final pulumi.Output<String> zone;
 
   V2QueuedResource(
     String name, {
     V2QueuedResourceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:tpu/v2QueuedResource:V2QueuedResource',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');

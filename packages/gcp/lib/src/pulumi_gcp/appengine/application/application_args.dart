@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_feature_settings/application_feature_settings.dart';
 import '../application_iap/application_iap.dart';
 
 /// The set of arguments for Application.
 class ApplicationArgs {
   /// The domain to authenticate users with when using App Engine's User API.
-  final Input<String>? authDomain;
+  final pulumi.Input<String>? authDomain;
 
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
@@ -15,28 +15,28 @@ class ApplicationArgs {
   /// To create a Cloud Firestore database without creating an App Engine application, use the
   /// `gcp.firestore.Database`
   /// resource instead.
-  final Input<String>? databaseType;
+  final pulumi.Input<String>? databaseType;
 
   /// A block of optional settings to configure specific App Engine features:
-  final Input<ApplicationFeatureSettings>? featureSettings;
+  final pulumi.Input<ApplicationFeatureSettings>? featureSettings;
 
   /// Settings for enabling Cloud Identity Aware Proxy
-  final Input<ApplicationIap>? iap;
+  final pulumi.Input<ApplicationIap>? iap;
 
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
-  final Input<String> locationId;
+  final pulumi.Input<String> locationId;
 
   /// The project ID to create the application under.
   /// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
   /// you may get a "Permission denied" error.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The serving status of the app.
-  final Input<String>? servingStatus;
+  final pulumi.Input<String>? servingStatus;
 
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
-  final Input<String>? sslPolicy;
+  final pulumi.Input<String>? sslPolicy;
 
   ApplicationArgs({
     this.authDomain,
@@ -61,15 +61,14 @@ class ApplicationArgs {
     }
     final featureSettingsValue = featureSettings;
     if (featureSettingsValue != null) {
-      map['featureSettings'] = Input.mapOptionalInputValue<
+      map['featureSettings'] = pulumi.Input.mapOptionalInputValue<
           ApplicationFeatureSettings,
           Map<String, dynamic>>(featureSettingsValue, (value) => value.toMap());
     }
     final iapValue = iap;
     if (iapValue != null) {
-      map['iap'] =
-          Input.mapOptionalInputValue<ApplicationIap, Map<String, dynamic>>(
-              iapValue, (value) => value.toMap());
+      map['iap'] = pulumi.Input.mapOptionalInputValue<ApplicationIap,
+          Map<String, dynamic>>(iapValue, (value) => value.toMap());
     }
     map['locationId'] = locationId;
     final projectValue = project;
@@ -89,15 +88,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      authDomain: Input.asOptionalInput<String>(map['authDomain']),
-      databaseType: Input.asOptionalInput<String>(map['databaseType']),
-      featureSettings: Input.asOptionalInput<ApplicationFeatureSettings>(
+      authDomain: pulumi.Input.asOptionalInput<String>(map['authDomain']),
+      databaseType: pulumi.Input.asOptionalInput<String>(map['databaseType']),
+      featureSettings: pulumi.Input.asOptionalInput<ApplicationFeatureSettings>(
           map['featureSettings']),
-      iap: Input.asOptionalInput<ApplicationIap>(map['iap']),
-      locationId: Input.asInput<String>(map['locationId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      servingStatus: Input.asOptionalInput<String>(map['servingStatus']),
-      sslPolicy: Input.asOptionalInput<String>(map['sslPolicy']),
+      iap: pulumi.Input.asOptionalInput<ApplicationIap>(map['iap']),
+      locationId: pulumi.Input.asInput<String>(map['locationId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      servingStatus: pulumi.Input.asOptionalInput<String>(map['servingStatus']),
+      sslPolicy: pulumi.Input.asOptionalInput<String>(map['sslPolicy']),
     );
   }
 }

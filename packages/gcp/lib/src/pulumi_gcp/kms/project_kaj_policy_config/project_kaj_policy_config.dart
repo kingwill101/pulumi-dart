@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_kaj_policy_config_default_key_access_justification_policy/project_kaj_policy_config_default_key_access_justification_policy.dart';
 import 'project_kaj_policy_config_args.dart';
 
@@ -26,27 +26,28 @@ import 'project_kaj_policy_config_args.dart';
 /// ```sh
 /// $ pulumi import gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig default {{project}}
 /// ```
-class ProjectKajPolicyConfig extends CustomResource {
+class ProjectKajPolicyConfig extends pulumi.CustomResource {
   /// The default key access justification policy used when a CryptoKey is
   /// created in this project. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  late final Output<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>
+  late final pulumi
+      .Output<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>
       defaultKeyAccessJustificationPolicy;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   ProjectKajPolicyConfig(
     String name, {
     ProjectKajPolicyConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.defaultKeyAccessJustificationPolicy = registerOutput<
             ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>(

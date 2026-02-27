@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_logic_prompt_template_lock_args.dart';
 
 /// A resource that manages the lock state of a PromptTemplate.
@@ -36,33 +36,33 @@ import 'ai_logic_prompt_template_lock_args.dart';
 /// ```sh
 /// $ pulumi import gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock default {{location}}/{{template_id}}
 /// ```
-class AiLogicPromptTemplateLock extends CustomResource {
+class AiLogicPromptTemplateLock extends pulumi.CustomResource {
   /// The location of the prompt template.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Indicates if the prompt template is currently locked.
   /// This is verified against the server-side PromptTemplate resource.
-  late final Output<bool> locked;
+  late final pulumi.Output<bool> locked;
 
   /// The resource name of the prompt template.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The ID of the prompt template.
-  late final Output<String> templateId;
+  late final pulumi.Output<String> templateId;
 
   AiLogicPromptTemplateLock(
     String name, {
     AiLogicPromptTemplateLockArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.location = registerOutput<String>('location');
     this.locked = registerOutput<bool>('locked');

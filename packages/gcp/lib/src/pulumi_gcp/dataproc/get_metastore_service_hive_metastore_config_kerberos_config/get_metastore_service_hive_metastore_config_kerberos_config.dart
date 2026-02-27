@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_metastore_service_hive_metastore_config_kerberos_config_keytab/get_metastore_service_hive_metastore_config_kerberos_config_keytab.dart';
 
 class GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
@@ -22,7 +22,7 @@ class GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['keytabs'] = Input.encodeList<
+    map['keytabs'] = pulumi.Input.encodeList<
         GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab,
         Map<String, dynamic>>(keytabs, (value) => value.toMap());
     map['krb5ConfigGcsUri'] = krb5ConfigGcsUri;
@@ -33,7 +33,7 @@ class GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
   factory GetMetastoreServiceHiveMetastoreConfigKerberosConfig.fromMap(
       Map<String, dynamic> map) {
     return GetMetastoreServiceHiveMetastoreConfigKerberosConfig(
-      keytabs: Input.decodeList<
+      keytabs: pulumi.Input.decodeList<
               GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab>(
           map['keytabs'],
           (value) => GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab

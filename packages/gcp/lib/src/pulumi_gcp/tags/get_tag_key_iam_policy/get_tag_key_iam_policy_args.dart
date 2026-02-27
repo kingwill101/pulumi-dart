@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTagKeyIamPolicy.
 class GetTagKeyIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> tagKey;
+  final pulumi.Input<String> tagKey;
 
   GetTagKeyIamPolicyArgs({
     required this.tagKey,
@@ -19,7 +19,7 @@ class GetTagKeyIamPolicyArgs {
 
   factory GetTagKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagKeyIamPolicyArgs(
-      tagKey: Input.asInput<String>(map['tagKey']),
+      tagKey: pulumi.Input.asInput<String>(map['tagKey']),
     );
   }
 }

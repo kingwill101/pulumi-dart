@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_snapshot_snapshot_encryption_key/get_snapshot_snapshot_encryption_key.dart';
 import '../get_snapshot_source_disk_encryption_key/get_snapshot_source_disk_encryption_key.dart';
 
@@ -92,13 +92,13 @@ class GetSnapshotResult {
     }
     map['pulumiLabels'] = pulumiLabels;
     map['selfLink'] = selfLink;
-    map['snapshotEncryptionKeys'] = Input.encodeList<
+    map['snapshotEncryptionKeys'] = pulumi.Input.encodeList<
         GetSnapshotSnapshotEncryptionKey,
         Map<String, dynamic>>(snapshotEncryptionKeys, (value) => value.toMap());
     map['snapshotId'] = snapshotId;
     map['snapshotType'] = snapshotType;
     map['sourceDisk'] = sourceDisk;
-    map['sourceDiskEncryptionKeys'] = Input.encodeList<
+    map['sourceDiskEncryptionKeys'] = pulumi.Input.encodeList<
             GetSnapshotSourceDiskEncryptionKey, Map<String, dynamic>>(
         sourceDiskEncryptionKeys, (value) => value.toMap());
     map['sourceInstantSnapshot'] = sourceInstantSnapshot;
@@ -127,7 +127,7 @@ class GetSnapshotResult {
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       selfLink: map['selfLink'] as String,
       snapshotEncryptionKeys:
-          Input.decodeList<GetSnapshotSnapshotEncryptionKey>(
+          pulumi.Input.decodeList<GetSnapshotSnapshotEncryptionKey>(
               map['snapshotEncryptionKeys'],
               (value) => GetSnapshotSnapshotEncryptionKey.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -135,7 +135,7 @@ class GetSnapshotResult {
       snapshotType: map['snapshotType'] as String,
       sourceDisk: map['sourceDisk'] as String,
       sourceDiskEncryptionKeys:
-          Input.decodeList<GetSnapshotSourceDiskEncryptionKey>(
+          pulumi.Input.decodeList<GetSnapshotSourceDiskEncryptionKey>(
               map['sourceDiskEncryptionKeys'],
               (value) => GetSnapshotSourceDiskEncryptionKey.fromMap(
                   (value as Map).cast<String, dynamic>())),

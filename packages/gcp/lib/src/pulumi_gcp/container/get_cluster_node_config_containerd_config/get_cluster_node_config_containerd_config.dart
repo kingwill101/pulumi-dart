@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_node_config_containerd_config_private_registry_access_config/get_cluster_node_config_containerd_config_private_registry_access_config.dart';
 import '../get_cluster_node_config_containerd_config_registry_host/get_cluster_node_config_containerd_config_registry_host.dart';
 import '../get_cluster_node_config_containerd_config_writable_cgroup/get_cluster_node_config_containerd_config_writable_cgroup.dart';
@@ -25,14 +25,14 @@ class GetClusterNodeConfigContainerdConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['privateRegistryAccessConfigs'] = Input.encodeList<
+    map['privateRegistryAccessConfigs'] = pulumi.Input.encodeList<
             GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig,
             Map<String, dynamic>>(
         privateRegistryAccessConfigs, (value) => value.toMap());
-    map['registryHosts'] = Input.encodeList<
+    map['registryHosts'] = pulumi.Input.encodeList<
         GetClusterNodeConfigContainerdConfigRegistryHost,
         Map<String, dynamic>>(registryHosts, (value) => value.toMap());
-    map['writableCgroups'] = Input.encodeList<
+    map['writableCgroups'] = pulumi.Input.encodeList<
         GetClusterNodeConfigContainerdConfigWritableCgroup,
         Map<String, dynamic>>(writableCgroups, (value) => value.toMap());
     return map;
@@ -41,24 +41,22 @@ class GetClusterNodeConfigContainerdConfig {
   factory GetClusterNodeConfigContainerdConfig.fromMap(
       Map<String, dynamic> map) {
     return GetClusterNodeConfigContainerdConfig(
-      privateRegistryAccessConfigs: Input.decodeList<
+      privateRegistryAccessConfigs: pulumi.Input.decodeList<
               GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig>(
           map['privateRegistryAccessConfigs'],
           (value) =>
               GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
-      registryHosts:
-          Input.decodeList<GetClusterNodeConfigContainerdConfigRegistryHost>(
-              map['registryHosts'],
-              (value) =>
-                  GetClusterNodeConfigContainerdConfigRegistryHost.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      writableCgroups:
-          Input.decodeList<GetClusterNodeConfigContainerdConfigWritableCgroup>(
-              map['writableCgroups'],
-              (value) =>
-                  GetClusterNodeConfigContainerdConfigWritableCgroup.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      registryHosts: pulumi.Input.decodeList<
+              GetClusterNodeConfigContainerdConfigRegistryHost>(
+          map['registryHosts'],
+          (value) => GetClusterNodeConfigContainerdConfigRegistryHost.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      writableCgroups: pulumi.Input.decodeList<
+              GetClusterNodeConfigContainerdConfigWritableCgroup>(
+          map['writableCgroups'],
+          (value) => GetClusterNodeConfigContainerdConfigWritableCgroup.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

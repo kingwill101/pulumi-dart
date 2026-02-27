@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_plan_restore_config/restore_plan_restore_config.dart';
 import 'restore_plan_args.dart';
 
@@ -73,19 +73,19 @@ import 'restore_plan_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{location}}/{{name}}
 /// ```
-class RestorePlan extends CustomResource {
+class RestorePlan extends pulumi.CustomResource {
   /// A reference to the BackupPlan from which Backups may be used
   /// as the source for Restores created via this RestorePlan.
-  late final Output<String> backupPlan;
+  late final pulumi.Output<String> backupPlan;
 
   /// The source cluster from which Restores will be created via this RestorePlan.
-  late final Output<String> cluster;
+  late final pulumi.Output<String> cluster;
 
   /// User specified descriptive string for this RestorePlan.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Description: A set of custom labels supplied by the user.
   /// A list of key->value pairs.
@@ -93,44 +93,44 @@ class RestorePlan extends CustomResource {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The region of the Restore Plan.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The full name of the BackupPlan Resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// Defines the configuration of Restores created via this RestorePlan.
   /// Structure is documented below.
-  late final Output<RestorePlanRestoreConfig> restoreConfig;
+  late final pulumi.Output<RestorePlanRestoreConfig> restoreConfig;
 
   /// The State of the RestorePlan.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Detailed description of why RestorePlan is in its current state.
-  late final Output<String> stateReason;
+  late final pulumi.Output<String> stateReason;
 
   /// Server generated, unique identifier of UUID format.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   RestorePlan(
     String name, {
     RestorePlanArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkebackup/restorePlan:RestorePlan',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backupPlan = registerOutput<String>('backupPlan');
     this.cluster = registerOutput<String>('cluster');

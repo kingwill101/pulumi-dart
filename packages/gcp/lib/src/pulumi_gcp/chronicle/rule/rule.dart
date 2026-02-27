@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_compilation_diagnostic/rule_compilation_diagnostic.dart';
 import '../rule_severity/rule_severity.dart';
 import 'rule_args.dart';
@@ -50,20 +50,21 @@ import 'rule_args.dart';
 /// ```sh
 /// $ pulumi import gcp:chronicle/rule:Rule default {{location}}/{{instance}}/{{rule_id}}
 /// ```
-class Rule extends CustomResource {
+class Rule extends pulumi.CustomResource {
   /// Output only. The run frequencies that are allowed for the rule.
   /// Populated in BASIC view and FULL view.
-  late final Output<List<String>> allowedRunFrequencies;
+  late final pulumi.Output<List<String>> allowedRunFrequencies;
 
   /// Output only. The author of the rule. Extracted from the meta section of text.
   /// Populated in BASIC view and FULL view.
-  late final Output<String> author;
+  late final pulumi.Output<String> author;
 
   /// Output only. A list of a rule's corresponding compilation diagnostic messages
   /// such as compilation errors and compilation warnings.
   /// Populated in FULL view.
   /// Structure is documented below.
-  late final Output<List<RuleCompilationDiagnostic>> compilationDiagnostics;
+  late final pulumi.Output<List<RuleCompilationDiagnostic>>
+      compilationDiagnostics;
 
   /// Output only. The current compilation state of the rule.
   /// Populated in FULL view.
@@ -71,14 +72,14 @@ class Rule extends CustomResource {
   /// COMPILATION_STATE_UNSPECIFIED
   /// SUCCEEDED
   /// FAILED
-  late final Output<String> compilationState;
+  late final pulumi.Output<String> compilationState;
 
   /// Output only. The timestamp of when the rule was created.
   /// Populated in FULL view.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Output only. Resource names of the data tables used in this rule.
-  late final Output<List<String>> dataTables;
+  late final pulumi.Output<List<String>> dataTables;
 
   /// Policy to determine if the rule should be deleted forcefully.
   /// If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
@@ -87,59 +88,59 @@ class Rule extends CustomResource {
   /// associated detections. Regardless of this field's value, the rule
   /// deployment associated with this rule will also be deleted.
   /// Possible values: DEFAULT, FORCE
-  late final Output<String?> deletionPolicy;
+  late final pulumi.Output<String?> deletionPolicy;
 
   /// The display name of the severity level. Extracted from the meta section of
   /// the rule text.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The etag for this rule.
   /// If this is provided on update, the request will succeed if and only if it
   /// matches the server-computed value, and will fail with an ABORTED error
   /// otherwise.
   /// Populated in BASIC view and FULL view.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Output only. Additional metadata specified in the meta section of text.
   /// Populated in FULL view.
-  late final Output<Map<String, String>> metadata;
+  late final pulumi.Output<Map<String, String>> metadata;
 
   /// Full resource name for the rule. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Output only. Indicate the rule can run in near real time live rule.
   /// If this is true, the rule uses the near real time live rule when the run
   /// frequency is set to LIVE.
-  late final Output<bool> nearRealTimeLiveRuleEligible;
+  late final pulumi.Output<bool> nearRealTimeLiveRuleEligible;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Output only. Resource names of the reference lists used in this rule.
   /// Populated in FULL view.
-  late final Output<List<String>> referenceLists;
+  late final pulumi.Output<List<String>> referenceLists;
 
   /// Output only. The timestamp of when the rule revision was created.
   /// Populated in FULL, REVISION_METADATA_ONLY views.
-  late final Output<String> revisionCreateTime;
+  late final pulumi.Output<String> revisionCreateTime;
 
   /// Output only. The revision ID of the rule.
   /// A new revision is created whenever the rule text is changed in any way.
   /// Format: v_{10 digits}_{9 digits}
   /// Populated in REVISION_METADATA_ONLY view and FULL view.
-  late final Output<String> revisionId;
+  late final pulumi.Output<String> revisionId;
 
   /// Rule Id is the ID of the Rule.
-  late final Output<String> ruleId;
+  late final pulumi.Output<String> ruleId;
 
   /// Resource name of the DataAccessScope bound to this rule.
   /// Populated in BASIC view and FULL view.
@@ -148,7 +149,7 @@ class Rule extends CustomResource {
   /// both the user's and the rule's scopes.
   /// The scope should be in the format:
   /// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
-  late final Output<String?> scope;
+  late final pulumi.Output<String?> scope;
 
   /// (Output)
   /// Output only. The severity of a rule's compilation diagnostic.
@@ -156,27 +157,27 @@ class Rule extends CustomResource {
   /// SEVERITY_UNSPECIFIED
   /// WARNING
   /// ERROR
-  late final Output<List<RuleSeverity>> severities;
+  late final pulumi.Output<List<RuleSeverity>> severities;
 
   /// The YARA-L content of the rule.
   /// Populated in FULL view.
-  late final Output<String?> text;
+  late final pulumi.Output<String?> text;
 
   /// Possible values:
   /// RULE_TYPE_UNSPECIFIED
   /// SINGLE_EVENT
   /// MULTI_EVENT
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   Rule(
     String name, {
     RuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:chronicle/rule:Rule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowedRunFrequencies =
         registerOutput<List<String>>('allowedRunFrequencies');

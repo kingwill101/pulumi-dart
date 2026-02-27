@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_hosting_build_source_codebase_author/app_hosting_build_source_codebase_author.dart';
 
 class AppHostingBuildSourceCodebase {
@@ -56,7 +56,8 @@ class AppHostingBuildSourceCodebase {
     final map = <String, dynamic>{};
     final authorsValue = authors;
     if (authorsValue != null) {
-      map['authors'] = Input.encodeList<AppHostingBuildSourceCodebaseAuthor,
+      map['authors'] = pulumi.Input.encodeList<
+          AppHostingBuildSourceCodebaseAuthor,
           Map<String, dynamic>>(authorsValue, (value) => value.toMap());
     }
     final branchValue = branch;
@@ -94,7 +95,7 @@ class AppHostingBuildSourceCodebase {
     return AppHostingBuildSourceCodebase(
       authors: map['authors'] == null
           ? null
-          : Input.decodeList<AppHostingBuildSourceCodebaseAuthor>(
+          : pulumi.Input.decodeList<AppHostingBuildSourceCodebaseAuthor>(
               map['authors'],
               (value) => AppHostingBuildSourceCodebaseAuthor.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_gcp_config_access_config_network_config/cluster_gcp_config_access_config_network_config.dart';
 
 class ClusterGcpConfigAccessConfig {
@@ -14,7 +14,7 @@ class ClusterGcpConfigAccessConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['networkConfigs'] = Input.encodeList<
+    map['networkConfigs'] = pulumi.Input.encodeList<
         ClusterGcpConfigAccessConfigNetworkConfig,
         Map<String, dynamic>>(networkConfigs, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class ClusterGcpConfigAccessConfig {
   factory ClusterGcpConfigAccessConfig.fromMap(Map<String, dynamic> map) {
     return ClusterGcpConfigAccessConfig(
       networkConfigs:
-          Input.decodeList<ClusterGcpConfigAccessConfigNetworkConfig>(
+          pulumi.Input.decodeList<ClusterGcpConfigAccessConfigNetworkConfig>(
               map['networkConfigs'],
               (value) => ClusterGcpConfigAccessConfigNetworkConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

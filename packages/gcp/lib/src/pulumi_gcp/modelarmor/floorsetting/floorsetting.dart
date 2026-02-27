@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../floorsetting_ai_platform_floor_setting/floorsetting_ai_platform_floor_setting.dart';
 import '../floorsetting_filter_config/floorsetting_filter_config.dart';
 import '../floorsetting_floor_setting_metadata/floorsetting_floor_setting_metadata.dart';
@@ -43,57 +43,59 @@ import 'floorsetting_args.dart';
 /// ```sh
 /// $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/{{location}}
 /// ```
-class Floorsetting extends CustomResource {
+class Floorsetting extends pulumi.CustomResource {
   /// AI Platform floor setting.
   /// Structure is documented below.
-  late final Output<FloorsettingAiPlatformFloorSetting?> aiPlatformFloorSetting;
+  late final pulumi.Output<FloorsettingAiPlatformFloorSetting?>
+      aiPlatformFloorSetting;
 
   /// [Output only] Create timestamp
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Floor Settings enforcement status.
-  late final Output<bool?> enableFloorSettingEnforcement;
+  late final pulumi.Output<bool?> enableFloorSettingEnforcement;
 
   /// Filters configuration.
   /// Structure is documented below.
-  late final Output<FloorsettingFilterConfig> filterConfig;
+  late final pulumi.Output<FloorsettingFilterConfig> filterConfig;
 
   /// Metadata to enable multi language detection via floor setting.
   /// Structure is documented below.
-  late final Output<FloorsettingFloorSettingMetadata?> floorSettingMetadata;
+  late final pulumi.Output<FloorsettingFloorSettingMetadata?>
+      floorSettingMetadata;
 
   /// Google MCP Server floor setting.
   /// Structure is documented below.
-  late final Output<FloorsettingGoogleMcpServerFloorSetting?>
+  late final pulumi.Output<FloorsettingGoogleMcpServerFloorSetting?>
       googleMcpServerFloorSetting;
 
   /// List of integrated services for which the floor setting is applicable.
-  late final Output<List<String>?> integratedServices;
+  late final pulumi.Output<List<String>?> integratedServices;
 
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// Identifier. The resource name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Will be any one of these:
   /// * `projects/{project}`
   /// * `folders/{folder}`
   /// * `organizations/{organizationId}`
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// [Output only] Update timestamp
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Floorsetting(
     String name, {
     FloorsettingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:modelarmor/floorsetting:Floorsetting',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aiPlatformFloorSetting =
         registerOutput<FloorsettingAiPlatformFloorSetting?>(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_status_error/job_status_error.dart';
 import '../job_status_error_result/job_status_error_result.dart';
 
@@ -32,13 +32,14 @@ class JobStatus {
     final errorResultsValue = errorResults;
     if (errorResultsValue != null) {
       map['errorResults'] =
-          Input.encodeList<JobStatusErrorResult, Map<String, dynamic>>(
+          pulumi.Input.encodeList<JobStatusErrorResult, Map<String, dynamic>>(
               errorResultsValue, (value) => value.toMap());
     }
     final errorsValue = errors;
     if (errorsValue != null) {
-      map['errors'] = Input.encodeList<JobStatusError, Map<String, dynamic>>(
-          errorsValue, (value) => value.toMap());
+      map['errors'] =
+          pulumi.Input.encodeList<JobStatusError, Map<String, dynamic>>(
+              errorsValue, (value) => value.toMap());
     }
     final stateValue = state;
     if (stateValue != null) {
@@ -51,13 +52,13 @@ class JobStatus {
     return JobStatus(
       errorResults: map['errorResults'] == null
           ? null
-          : Input.decodeList<JobStatusErrorResult>(
+          : pulumi.Input.decodeList<JobStatusErrorResult>(
               map['errorResults'],
               (value) => JobStatusErrorResult.fromMap(
                   (value as Map).cast<String, dynamic>())),
       errors: map['errors'] == null
           ? null
-          : Input.decodeList<JobStatusError>(
+          : pulumi.Input.decodeList<JobStatusError>(
               map['errors'],
               (value) => JobStatusError.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EnvironmentAddonsConfig.
 class EnvironmentAddonsConfigArgs {
   /// Flag to enable/disable Analytics.
-  final Input<bool>? analyticsEnabled;
+  final pulumi.Input<bool>? analyticsEnabled;
 
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-  final Input<String> envId;
+  final pulumi.Input<String> envId;
 
   EnvironmentAddonsConfigArgs({
     this.analyticsEnabled,
@@ -28,8 +28,9 @@ class EnvironmentAddonsConfigArgs {
 
   factory EnvironmentAddonsConfigArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentAddonsConfigArgs(
-      analyticsEnabled: Input.asOptionalInput<bool>(map['analyticsEnabled']),
-      envId: Input.asInput<String>(map['envId']),
+      analyticsEnabled:
+          pulumi.Input.asOptionalInput<bool>(map['analyticsEnabled']),
+      envId: pulumi.Input.asInput<String>(map['envId']),
     );
   }
 }

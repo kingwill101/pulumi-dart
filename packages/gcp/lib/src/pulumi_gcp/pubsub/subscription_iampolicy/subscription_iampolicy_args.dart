@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SubscriptionIAMPolicy.
 class SubscriptionIAMPolicyArgs {
@@ -8,14 +8,14 @@ class SubscriptionIAMPolicyArgs {
   /// a `gcp.organizations.getIAMPolicy` data source.
   ///
   /// - - -
-  final Input<String> policyData;
+  final pulumi.Input<String> policyData;
 
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The subscription name or id to bind to attach IAM policy to.
-  final Input<String> subscription;
+  final pulumi.Input<String> subscription;
 
   SubscriptionIAMPolicyArgs({
     required this.policyData,
@@ -36,9 +36,9 @@ class SubscriptionIAMPolicyArgs {
 
   factory SubscriptionIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMPolicyArgs(
-      policyData: Input.asInput<String>(map['policyData']),
-      project: Input.asOptionalInput<String>(map['project']),
-      subscription: Input.asInput<String>(map['subscription']),
+      policyData: pulumi.Input.asInput<String>(map['policyData']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      subscription: pulumi.Input.asInput<String>(map['subscription']),
     );
   }
 }

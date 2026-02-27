@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resource_policy_instance_schedule_policy_vm_start_schedule/get_resource_policy_instance_schedule_policy_vm_start_schedule.dart';
 import '../get_resource_policy_instance_schedule_policy_vm_stop_schedule/get_resource_policy_instance_schedule_policy_vm_stop_schedule.dart';
 
@@ -36,10 +36,10 @@ class GetResourcePolicyInstanceSchedulePolicy {
     map['expirationTime'] = expirationTime;
     map['startTime'] = startTime;
     map['timeZone'] = timeZone;
-    map['vmStartSchedules'] = Input.encodeList<
+    map['vmStartSchedules'] = pulumi.Input.encodeList<
         GetResourcePolicyInstanceSchedulePolicyVmStartSchedule,
         Map<String, dynamic>>(vmStartSchedules, (value) => value.toMap());
-    map['vmStopSchedules'] = Input.encodeList<
+    map['vmStopSchedules'] = pulumi.Input.encodeList<
         GetResourcePolicyInstanceSchedulePolicyVmStopSchedule,
         Map<String, dynamic>>(vmStopSchedules, (value) => value.toMap());
     return map;
@@ -51,13 +51,13 @@ class GetResourcePolicyInstanceSchedulePolicy {
       expirationTime: map['expirationTime'] as String,
       startTime: map['startTime'] as String,
       timeZone: map['timeZone'] as String,
-      vmStartSchedules: Input.decodeList<
+      vmStartSchedules: pulumi.Input.decodeList<
               GetResourcePolicyInstanceSchedulePolicyVmStartSchedule>(
           map['vmStartSchedules'],
           (value) =>
               GetResourcePolicyInstanceSchedulePolicyVmStartSchedule.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      vmStopSchedules: Input.decodeList<
+      vmStopSchedules: pulumi.Input.decodeList<
               GetResourcePolicyInstanceSchedulePolicyVmStopSchedule>(
           map['vmStopSchedules'],
           (value) =>

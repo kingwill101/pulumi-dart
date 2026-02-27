@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_policy_endpoint_matcher_metadata_label_matcher_metadata_label/endpoint_policy_endpoint_matcher_metadata_label_matcher_metadata_label.dart';
 
 class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
@@ -23,7 +23,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
     map['metadataLabelMatchCriteria'] = metadataLabelMatchCriteria;
     final metadataLabelsValue = metadataLabels;
     if (metadataLabelsValue != null) {
-      map['metadataLabels'] = Input.encodeList<
+      map['metadataLabels'] = pulumi.Input.encodeList<
           EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel,
           Map<String, dynamic>>(metadataLabelsValue, (value) => value.toMap());
     }
@@ -36,7 +36,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
       metadataLabelMatchCriteria: map['metadataLabelMatchCriteria'] as String,
       metadataLabels: map['metadataLabels'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>(
               map['metadataLabels'],
               (value) =>

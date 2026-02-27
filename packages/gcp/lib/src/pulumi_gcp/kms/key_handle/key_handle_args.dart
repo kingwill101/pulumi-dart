@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for KeyHandle.
 class KeyHandleArgs {
   /// The location for the KeyHandle.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The resource name for the KeyHandle.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Selector of the resource type where we want to protect resources.
   /// For example, `storage.googleapis.com/Bucket`.
-  final Input<String> resourceTypeSelector;
+  final pulumi.Input<String> resourceTypeSelector;
 
   KeyHandleArgs({
     required this.location,
@@ -43,10 +43,11 @@ class KeyHandleArgs {
 
   factory KeyHandleArgs.fromMap(Map<String, dynamic> map) {
     return KeyHandleArgs(
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      project: Input.asOptionalInput<String>(map['project']),
-      resourceTypeSelector: Input.asInput<String>(map['resourceTypeSelector']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      resourceTypeSelector:
+          pulumi.Input.asInput<String>(map['resourceTypeSelector']),
     );
   }
 }

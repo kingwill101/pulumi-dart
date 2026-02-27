@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EntryGroup.
 class EntryGroupArgs {
   /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A short name to identify the entry group, for example, "analytics data - jan 2011".
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// The id of the entry group to create. The id must begin with a letter or underscore,
   /// contain only English letters, numbers and underscores, and be at most 64 characters.
-  final Input<String> entryGroupId;
+  final pulumi.Input<String> entryGroupId;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// EntryGroup location region.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   EntryGroupArgs({
     this.description,
@@ -53,11 +53,11 @@ class EntryGroupArgs {
 
   factory EntryGroupArgs.fromMap(Map<String, dynamic> map) {
     return EntryGroupArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      entryGroupId: Input.asInput<String>(map['entryGroupId']),
-      project: Input.asOptionalInput<String>(map['project']),
-      region: Input.asOptionalInput<String>(map['region']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      entryGroupId: pulumi.Input.asInput<String>(map['entryGroupId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bare_metal_admin_cluster_cluster_operations/bare_metal_admin_cluster_cluster_operations.dart';
 import '../bare_metal_admin_cluster_control_plane/bare_metal_admin_cluster_control_plane.dart';
 import '../bare_metal_admin_cluster_load_balancer/bare_metal_admin_cluster_load_balancer.dart';
@@ -25,63 +25,63 @@ class BareMetalAdminClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-  final Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>>? annotations;
 
   /// A human readable description of this Bare Metal Admin Cluster.
-  final Input<String>? bareMetalVersion;
+  final pulumi.Input<String>? bareMetalVersion;
 
   /// Specifies the Admin Cluster's observability infrastructure.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterClusterOperations>? clusterOperations;
+  final pulumi.Input<BareMetalAdminClusterClusterOperations>? clusterOperations;
 
   /// Specifies the control plane configuration.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterControlPlane>? controlPlane;
+  final pulumi.Input<BareMetalAdminClusterControlPlane>? controlPlane;
 
   /// A human readable description of this Bare Metal Admin Cluster.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Specifies the load balancer configuration.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterLoadBalancer>? loadBalancer;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancer>? loadBalancer;
 
   /// The location of the resource.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterMaintenanceConfig>? maintenanceConfig;
+  final pulumi.Input<BareMetalAdminClusterMaintenanceConfig>? maintenanceConfig;
 
   /// The bare metal admin cluster name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Network configuration.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterNetworkConfig>? networkConfig;
+  final pulumi.Input<BareMetalAdminClusterNetworkConfig>? networkConfig;
 
   /// Specifies the node access related settings for the bare metal user cluster.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterNodeAccessConfig>? nodeAccessConfig;
+  final pulumi.Input<BareMetalAdminClusterNodeAccessConfig>? nodeAccessConfig;
 
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterNodeConfig>? nodeConfig;
+  final pulumi.Input<BareMetalAdminClusterNodeConfig>? nodeConfig;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// Specifies the cluster proxy configuration.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterProxy>? proxy;
+  final pulumi.Input<BareMetalAdminClusterProxy>? proxy;
 
   /// Specifies the security related settings for the Bare Metal User Cluster.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterSecurityConfig>? securityConfig;
+  final pulumi.Input<BareMetalAdminClusterSecurityConfig>? securityConfig;
 
   /// Specifies the cluster storage configuration.
   /// Structure is documented below.
-  final Input<BareMetalAdminClusterStorage>? storage;
+  final pulumi.Input<BareMetalAdminClusterStorage>? storage;
 
   BareMetalAdminClusterArgs({
     this.annotations,
@@ -114,13 +114,13 @@ class BareMetalAdminClusterArgs {
     }
     final clusterOperationsValue = clusterOperations;
     if (clusterOperationsValue != null) {
-      map['clusterOperations'] = Input.mapOptionalInputValue<
+      map['clusterOperations'] = pulumi.Input.mapOptionalInputValue<
               BareMetalAdminClusterClusterOperations, Map<String, dynamic>>(
           clusterOperationsValue, (value) => value.toMap());
     }
     final controlPlaneValue = controlPlane;
     if (controlPlaneValue != null) {
-      map['controlPlane'] = Input.mapOptionalInputValue<
+      map['controlPlane'] = pulumi.Input.mapOptionalInputValue<
           BareMetalAdminClusterControlPlane,
           Map<String, dynamic>>(controlPlaneValue, (value) => value.toMap());
     }
@@ -130,14 +130,14 @@ class BareMetalAdminClusterArgs {
     }
     final loadBalancerValue = loadBalancer;
     if (loadBalancerValue != null) {
-      map['loadBalancer'] = Input.mapOptionalInputValue<
+      map['loadBalancer'] = pulumi.Input.mapOptionalInputValue<
           BareMetalAdminClusterLoadBalancer,
           Map<String, dynamic>>(loadBalancerValue, (value) => value.toMap());
     }
     map['location'] = location;
     final maintenanceConfigValue = maintenanceConfig;
     if (maintenanceConfigValue != null) {
-      map['maintenanceConfig'] = Input.mapOptionalInputValue<
+      map['maintenanceConfig'] = pulumi.Input.mapOptionalInputValue<
               BareMetalAdminClusterMaintenanceConfig, Map<String, dynamic>>(
           maintenanceConfigValue, (value) => value.toMap());
     }
@@ -147,19 +147,19 @@ class BareMetalAdminClusterArgs {
     }
     final networkConfigValue = networkConfig;
     if (networkConfigValue != null) {
-      map['networkConfig'] = Input.mapOptionalInputValue<
+      map['networkConfig'] = pulumi.Input.mapOptionalInputValue<
           BareMetalAdminClusterNetworkConfig,
           Map<String, dynamic>>(networkConfigValue, (value) => value.toMap());
     }
     final nodeAccessConfigValue = nodeAccessConfig;
     if (nodeAccessConfigValue != null) {
-      map['nodeAccessConfig'] = Input.mapOptionalInputValue<
+      map['nodeAccessConfig'] = pulumi.Input.mapOptionalInputValue<
               BareMetalAdminClusterNodeAccessConfig, Map<String, dynamic>>(
           nodeAccessConfigValue, (value) => value.toMap());
     }
     final nodeConfigValue = nodeConfig;
     if (nodeConfigValue != null) {
-      map['nodeConfig'] = Input.mapOptionalInputValue<
+      map['nodeConfig'] = pulumi.Input.mapOptionalInputValue<
           BareMetalAdminClusterNodeConfig,
           Map<String, dynamic>>(nodeConfigValue, (value) => value.toMap());
     }
@@ -169,18 +169,20 @@ class BareMetalAdminClusterArgs {
     }
     final proxyValue = proxy;
     if (proxyValue != null) {
-      map['proxy'] = Input.mapOptionalInputValue<BareMetalAdminClusterProxy,
+      map['proxy'] = pulumi.Input.mapOptionalInputValue<
+          BareMetalAdminClusterProxy,
           Map<String, dynamic>>(proxyValue, (value) => value.toMap());
     }
     final securityConfigValue = securityConfig;
     if (securityConfigValue != null) {
-      map['securityConfig'] = Input.mapOptionalInputValue<
+      map['securityConfig'] = pulumi.Input.mapOptionalInputValue<
           BareMetalAdminClusterSecurityConfig,
           Map<String, dynamic>>(securityConfigValue, (value) => value.toMap());
     }
     final storageValue = storage;
     if (storageValue != null) {
-      map['storage'] = Input.mapOptionalInputValue<BareMetalAdminClusterStorage,
+      map['storage'] = pulumi.Input.mapOptionalInputValue<
+          BareMetalAdminClusterStorage,
           Map<String, dynamic>>(storageValue, (value) => value.toMap());
     }
     return map;
@@ -189,35 +191,40 @@ class BareMetalAdminClusterArgs {
   factory BareMetalAdminClusterArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterArgs(
       annotations:
-          Input.asOptionalInput<Map<String, String>>(map['annotations']),
-      bareMetalVersion: Input.asOptionalInput<String>(map['bareMetalVersion']),
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['annotations']),
+      bareMetalVersion:
+          pulumi.Input.asOptionalInput<String>(map['bareMetalVersion']),
       clusterOperations:
-          Input.asOptionalInput<BareMetalAdminClusterClusterOperations>(
+          pulumi.Input.asOptionalInput<BareMetalAdminClusterClusterOperations>(
               map['clusterOperations']),
-      controlPlane: Input.asOptionalInput<BareMetalAdminClusterControlPlane>(
-          map['controlPlane']),
-      description: Input.asOptionalInput<String>(map['description']),
-      loadBalancer: Input.asOptionalInput<BareMetalAdminClusterLoadBalancer>(
-          map['loadBalancer']),
-      location: Input.asInput<String>(map['location']),
+      controlPlane:
+          pulumi.Input.asOptionalInput<BareMetalAdminClusterControlPlane>(
+              map['controlPlane']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      loadBalancer:
+          pulumi.Input.asOptionalInput<BareMetalAdminClusterLoadBalancer>(
+              map['loadBalancer']),
+      location: pulumi.Input.asInput<String>(map['location']),
       maintenanceConfig:
-          Input.asOptionalInput<BareMetalAdminClusterMaintenanceConfig>(
+          pulumi.Input.asOptionalInput<BareMetalAdminClusterMaintenanceConfig>(
               map['maintenanceConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
-      networkConfig: Input.asOptionalInput<BareMetalAdminClusterNetworkConfig>(
-          map['networkConfig']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      networkConfig:
+          pulumi.Input.asOptionalInput<BareMetalAdminClusterNetworkConfig>(
+              map['networkConfig']),
       nodeAccessConfig:
-          Input.asOptionalInput<BareMetalAdminClusterNodeAccessConfig>(
+          pulumi.Input.asOptionalInput<BareMetalAdminClusterNodeAccessConfig>(
               map['nodeAccessConfig']),
-      nodeConfig: Input.asOptionalInput<BareMetalAdminClusterNodeConfig>(
+      nodeConfig: pulumi.Input.asOptionalInput<BareMetalAdminClusterNodeConfig>(
           map['nodeConfig']),
-      project: Input.asOptionalInput<String>(map['project']),
-      proxy: Input.asOptionalInput<BareMetalAdminClusterProxy>(map['proxy']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      proxy: pulumi.Input.asOptionalInput<BareMetalAdminClusterProxy>(
+          map['proxy']),
       securityConfig:
-          Input.asOptionalInput<BareMetalAdminClusterSecurityConfig>(
+          pulumi.Input.asOptionalInput<BareMetalAdminClusterSecurityConfig>(
               map['securityConfig']),
-      storage:
-          Input.asOptionalInput<BareMetalAdminClusterStorage>(map['storage']),
+      storage: pulumi.Input.asOptionalInput<BareMetalAdminClusterStorage>(
+          map['storage']),
     );
   }
 }

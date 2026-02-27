@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subscription_message_transform_javascript_udf/get_subscription_message_transform_javascript_udf.dart';
 
 class GetSubscriptionMessageTransform {
@@ -20,7 +20,7 @@ class GetSubscriptionMessageTransform {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['disabled'] = disabled;
-    map['javascriptUdfs'] = Input.encodeList<
+    map['javascriptUdfs'] = pulumi.Input.encodeList<
         GetSubscriptionMessageTransformJavascriptUdf,
         Map<String, dynamic>>(javascriptUdfs, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GetSubscriptionMessageTransform {
     return GetSubscriptionMessageTransform(
       disabled: map['disabled'] as bool,
       javascriptUdfs:
-          Input.decodeList<GetSubscriptionMessageTransformJavascriptUdf>(
+          pulumi.Input.decodeList<GetSubscriptionMessageTransformJavascriptUdf>(
               map['javascriptUdfs'],
               (value) => GetSubscriptionMessageTransformJavascriptUdf.fromMap(
                   (value as Map).cast<String, dynamic>())),

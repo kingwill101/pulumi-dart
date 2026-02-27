@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../subnetwork_log_config/subnetwork_log_config.dart';
 import '../subnetwork_params/subnetwork_params.dart';
 import '../subnetwork_secondary_ip_range/subnetwork_secondary_ip_range.dart';
@@ -107,40 +107,40 @@ import 'subnetwork_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
 /// ```
-class Subnetwork extends CustomResource {
+class Subnetwork extends pulumi.CustomResource {
   /// Typically packets destined to IPs within the subnetwork range that do not match
   /// existing resources are dropped and prevented from leaving the VPC.
   /// Setting this field to true will allow these packets to match dynamic routes injected
   /// via BGP even if their destinations match existing subnet ranges.
-  late final Output<bool> allowSubnetCidrRoutesOverlap;
+  late final pulumi.Output<bool> allowSubnetCidrRoutesOverlap;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource. Provide this property when
   /// you create the resource. This field can be set only at resource
   /// creation time.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The range of external IPv6 addresses that are owned by this subnetwork.
-  late final Output<String> externalIpv6Prefix;
+  late final pulumi.Output<String> externalIpv6Prefix;
 
   /// Fingerprint of this resource. This field is used internally during updates of this resource.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The gateway address for default routes to reach destination addresses
   /// outside this subnetwork.
-  late final Output<String> gatewayAddress;
+  late final pulumi.Output<String> gatewayAddress;
 
   /// The internal IPv6 address range that is assigned to this subnetwork.
-  late final Output<String> internalIpv6Prefix;
+  late final pulumi.Output<String> internalIpv6Prefix;
 
   /// The range of internal addresses that are owned by this subnetwork.
   /// Provide this property when you create the subnetwork. For example,
   /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
   /// non-overlapping within a network. Only IPv4 is supported.
   /// Field is optional when `reserved_internal_range` is defined, otherwise required.
-  late final Output<String> ipCidrRange;
+  late final pulumi.Output<String> ipCidrRange;
 
   /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
   /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
@@ -151,30 +151,30 @@ class Subnetwork extends CustomResource {
   /// Partial URL, as in:
   /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
   /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-  late final Output<String?> ipCollection;
+  late final pulumi.Output<String?> ipCollection;
 
   /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
   /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
   /// cannot enable direct path.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
-  late final Output<String?> ipv6AccessType;
+  late final pulumi.Output<String?> ipv6AccessType;
 
   /// The range of internal IPv6 addresses that are owned by this subnetwork.
-  late final Output<String> ipv6CidrRange;
+  late final pulumi.Output<String> ipv6CidrRange;
 
   /// Possible endpoints of this subnetwork. It can be one of the following:
   /// * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
   /// gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
   /// * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
   /// IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
-  late final Output<String> ipv6GceEndpoint;
+  late final pulumi.Output<String> ipv6GceEndpoint;
 
   /// This field denotes the VPC flow logging options for this subnetwork. If
   /// logging is enabled, logs are exported to Cloud Logging. Flow logging
   /// isn't supported if the subnet `purpose` field is set to subnetwork is
   /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
   /// Structure is documented below.
-  late final Output<SubnetworkLogConfig?> logConfig;
+  late final pulumi.Output<SubnetworkLogConfig?> logConfig;
 
   /// The name of the resource, provided by the client when initially
   /// creating the resource. The name must be 1-63 characters long, and
@@ -183,26 +183,26 @@ class Subnetwork extends CustomResource {
   /// means the first character must be a lowercase letter, and all
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The network this subnet belongs to.
   /// Only networks that are in the distributed mode can have subnetworks.
-  late final Output<String> network;
+  late final pulumi.Output<String> network;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  late final Output<SubnetworkParams?> params;
+  late final pulumi.Output<SubnetworkParams?> params;
 
   /// When enabled, VMs in this subnetwork without external IP addresses can
   /// access Google APIs and services by using Private Google Access.
-  late final Output<bool> privateIpGoogleAccess;
+  late final pulumi.Output<bool> privateIpGoogleAccess;
 
   /// The private IPv6 google access type for the VMs in this subnet.
-  late final Output<String> privateIpv6GoogleAccess;
+  late final pulumi.Output<String> privateIpv6GoogleAccess;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
   /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
@@ -212,18 +212,18 @@ class Subnetwork extends CustomResource {
   /// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
   /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
   /// If unspecified, the purpose defaults to `PRIVATE`.
-  late final Output<String> purpose;
+  late final pulumi.Output<String> purpose;
 
   /// The GCP region for this subnetwork.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
   /// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-  late final Output<String?> reservedInternalRange;
+  late final pulumi.Output<String?> reservedInternalRange;
 
   /// 'Configures subnet mask resolution for this subnetwork.'
   /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
-  late final Output<String?> resolveSubnetMask;
+  late final pulumi.Output<String?> resolveSubnetMask;
 
   /// The role of subnetwork.
   /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -231,17 +231,17 @@ class Subnetwork extends CustomResource {
   /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
   /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
   /// Possible values are: `ACTIVE`, `BACKUP`.
-  late final Output<String?> role;
+  late final pulumi.Output<String?> role;
 
   /// An array of configurations for secondary IP ranges for VM instances
   /// contained in this subnetwork. The primary IP of such VM must belong
   /// to the primary ipCidrRange of the subnetwork. The alias IPs may belong
   /// to either primary or secondary ranges.
   /// Structure is documented below.
-  late final Output<List<SubnetworkSecondaryIpRange>> secondaryIpRanges;
+  late final pulumi.Output<List<SubnetworkSecondaryIpRange>> secondaryIpRanges;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Controls the removal behavior of secondary_ip_range.
   /// When false, removing secondary_ip_range from config will not produce a diff as
@@ -249,31 +249,31 @@ class Subnetwork extends CustomResource {
   /// When true, the provider will treat removing secondary_ip_range as sending an
   /// empty list of secondary IP ranges to the API.
   /// Defaults to false.
-  late final Output<bool?> sendSecondaryIpRangeIfEmpty;
+  late final pulumi.Output<bool?> sendSecondaryIpRangeIfEmpty;
 
   /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
   /// If not specified IPV4_ONLY will be used.
   /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
-  late final Output<String> stackType;
+  late final pulumi.Output<String> stackType;
 
   /// 'The state of the subnetwork, which can be one of the following values:
   /// READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
   /// set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
   /// A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The unique identifier number for the resource. This identifier is defined by the server.
-  late final Output<int> subnetworkId;
+  late final pulumi.Output<int> subnetworkId;
 
   Subnetwork(
     String name, {
     SubnetworkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/subnetwork:Subnetwork',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowSubnetCidrRoutesOverlap =
         registerOutput<bool>('allowSubnetCidrRoutesOverlap');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_kaj_policy_config_default_key_access_justification_policy/folder_kaj_policy_config_default_key_access_justification_policy.dart';
 
 /// The set of arguments for FolderKajPolicyConfig.
@@ -9,11 +9,11 @@ class FolderKajPolicyConfigArgs {
   /// created in this folder. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
+  final pulumi.Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
       defaultKeyAccessJustificationPolicy;
 
   /// The numeric folder number for which to retrieve config.
-  final Input<String> folder;
+  final pulumi.Input<String> folder;
 
   FolderKajPolicyConfigArgs({
     this.defaultKeyAccessJustificationPolicy,
@@ -25,10 +25,12 @@ class FolderKajPolicyConfigArgs {
     final defaultKeyAccessJustificationPolicyValue =
         defaultKeyAccessJustificationPolicy;
     if (defaultKeyAccessJustificationPolicyValue != null) {
-      map['defaultKeyAccessJustificationPolicy'] = Input.mapOptionalInputValue<
-              FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy,
-              Map<String, dynamic>>(
-          defaultKeyAccessJustificationPolicyValue, (value) => value.toMap());
+      map['defaultKeyAccessJustificationPolicy'] =
+          pulumi.Input.mapOptionalInputValue<
+                  FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy,
+                  Map<String, dynamic>>(
+              defaultKeyAccessJustificationPolicyValue,
+              (value) => value.toMap());
     }
     map['folder'] = folder;
     return map;
@@ -36,10 +38,10 @@ class FolderKajPolicyConfigArgs {
 
   factory FolderKajPolicyConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderKajPolicyConfigArgs(
-      defaultKeyAccessJustificationPolicy: Input.asOptionalInput<
+      defaultKeyAccessJustificationPolicy: pulumi.Input.asOptionalInput<
               FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>(
           map['defaultKeyAccessJustificationPolicy']),
-      folder: Input.asInput<String>(map['folder']),
+      folder: pulumi.Input.asInput<String>(map['folder']),
     );
   }
 }

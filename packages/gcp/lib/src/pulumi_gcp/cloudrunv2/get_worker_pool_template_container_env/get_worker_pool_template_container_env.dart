@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_worker_pool_template_container_env_value_source/get_worker_pool_template_container_env_value_source.dart';
 
 class GetWorkerPoolTemplateContainerEnv {
@@ -23,7 +23,7 @@ class GetWorkerPoolTemplateContainerEnv {
     final map = <String, dynamic>{};
     map['name'] = name;
     map['value'] = value;
-    map['valueSources'] = Input.encodeList<
+    map['valueSources'] = pulumi.Input.encodeList<
         GetWorkerPoolTemplateContainerEnvValueSource,
         Map<String, dynamic>>(valueSources, (value) => value.toMap());
     return map;
@@ -34,7 +34,7 @@ class GetWorkerPoolTemplateContainerEnv {
       name: map['name'] as String,
       value: map['value'] as String,
       valueSources:
-          Input.decodeList<GetWorkerPoolTemplateContainerEnvValueSource>(
+          pulumi.Input.decodeList<GetWorkerPoolTemplateContainerEnvValueSource>(
               map['valueSources'],
               (value) => GetWorkerPoolTemplateContainerEnvValueSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

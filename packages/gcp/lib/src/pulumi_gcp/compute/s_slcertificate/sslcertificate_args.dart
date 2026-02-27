@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SSLCertificate.
 class SSLCertificateArgs {
@@ -8,10 +8,10 @@ class SSLCertificateArgs {
   /// The certificate chain must be no greater than 5 certs long.
   /// The chain must include at least one intermediate cert.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String> certificate;
+  final pulumi.Input<String> certificate;
 
   /// An optional description of this resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -21,7 +21,7 @@ class SSLCertificateArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the
   /// specified prefix. Conflicts with `name`. Max length is 54 characters.
@@ -31,15 +31,15 @@ class SSLCertificateArgs {
   /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `name_prefix` 38 - 54 characters:
   /// `name_prefix` + YYmmdd + 3 digit incremental counter
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final Input<String> privateKey;
+  final pulumi.Input<String> privateKey;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   SSLCertificateArgs({
     required this.certificate,
@@ -75,12 +75,12 @@ class SSLCertificateArgs {
 
   factory SSLCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SSLCertificateArgs(
-      certificate: Input.asInput<String>(map['certificate']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      privateKey: Input.asInput<String>(map['privateKey']),
-      project: Input.asOptionalInput<String>(map['project']),
+      certificate: pulumi.Input.asInput<String>(map['certificate']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      privateKey: pulumi.Input.asInput<String>(map['privateKey']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
     );
   }
 }

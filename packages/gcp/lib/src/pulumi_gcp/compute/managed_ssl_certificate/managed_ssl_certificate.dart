@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_ssl_certificate_managed/managed_ssl_certificate_managed.dart';
 import 'managed_ssl_certificate_args.dart';
 
@@ -58,23 +58,23 @@ import 'managed_ssl_certificate_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{name}}
 /// ```
-class ManagedSslCertificate extends CustomResource {
+class ManagedSslCertificate extends pulumi.CustomResource {
   /// The unique identifier for the resource.
-  late final Output<int> certificateId;
+  late final pulumi.Output<int> certificateId;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Expire time of the certificate in RFC3339 text format.
-  late final Output<String> expireTime;
+  late final pulumi.Output<String> expireTime;
 
   /// Properties relevant to a managed certificate.  These will be used if the
   /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
   /// Structure is documented below.
-  late final Output<ManagedSslCertificateManaged?> managed;
+  late final pulumi.Output<ManagedSslCertificateManaged?> managed;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -84,33 +84,33 @@ class ManagedSslCertificate extends CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// Domains associated with the certificate via Subject Alternative Name.
-  late final Output<List<String>> subjectAlternativeNames;
+  late final pulumi.Output<List<String>> subjectAlternativeNames;
 
   /// Enum field whose value is always `MANAGED` - used to signal to the API
   /// which type this is.
   /// Default value is `MANAGED`.
   /// Possible values are: `MANAGED`.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   ManagedSslCertificate(
     String name, {
     ManagedSslCertificateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/managedSslCertificate:ManagedSslCertificate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificateId = registerOutput<int>('certificateId');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

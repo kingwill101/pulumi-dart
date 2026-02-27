@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_app_engine_service_telemetry/get_app_engine_service_telemetry.dart';
 
 /// Result data returned by getAppEngineService.
@@ -44,9 +44,8 @@ class GetAppEngineServiceResult {
       map['project'] = projectValue;
     }
     map['serviceId'] = serviceId;
-    map['telemetries'] =
-        Input.encodeList<GetAppEngineServiceTelemetry, Map<String, dynamic>>(
-            telemetries, (value) => value.toMap());
+    map['telemetries'] = pulumi.Input.encodeList<GetAppEngineServiceTelemetry,
+        Map<String, dynamic>>(telemetries, (value) => value.toMap());
     map['userLabels'] = userLabels;
     return map;
   }
@@ -59,7 +58,7 @@ class GetAppEngineServiceResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       serviceId: map['serviceId'] as String,
-      telemetries: Input.decodeList<GetAppEngineServiceTelemetry>(
+      telemetries: pulumi.Input.decodeList<GetAppEngineServiceTelemetry>(
           map['telemetries'],
           (value) => GetAppEngineServiceTelemetry.fromMap(
               (value as Map).cast<String, dynamic>())),

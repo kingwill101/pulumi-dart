@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_topic_message_transform_javascript_udf/get_topic_message_transform_javascript_udf.dart';
 
 class GetTopicMessageTransform {
@@ -20,7 +20,7 @@ class GetTopicMessageTransform {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['disabled'] = disabled;
-    map['javascriptUdfs'] = Input.encodeList<
+    map['javascriptUdfs'] = pulumi.Input.encodeList<
         GetTopicMessageTransformJavascriptUdf,
         Map<String, dynamic>>(javascriptUdfs, (value) => value.toMap());
     return map;
@@ -29,10 +29,11 @@ class GetTopicMessageTransform {
   factory GetTopicMessageTransform.fromMap(Map<String, dynamic> map) {
     return GetTopicMessageTransform(
       disabled: map['disabled'] as bool,
-      javascriptUdfs: Input.decodeList<GetTopicMessageTransformJavascriptUdf>(
-          map['javascriptUdfs'],
-          (value) => GetTopicMessageTransformJavascriptUdf.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      javascriptUdfs:
+          pulumi.Input.decodeList<GetTopicMessageTransformJavascriptUdf>(
+              map['javascriptUdfs'],
+              (value) => GetTopicMessageTransformJavascriptUdf.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

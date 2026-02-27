@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_authority_config_x509_config_additional_extension/get_authority_config_x509_config_additional_extension.dart';
 import '../get_authority_config_x509_config_ca_option/get_authority_config_x509_config_ca_option.dart';
 import '../get_authority_config_x509_config_key_usage/get_authority_config_x509_config_key_usage.dart';
@@ -39,45 +39,47 @@ class GetAuthorityConfigX509Config {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additionalExtensions'] = Input.encodeList<
+    map['additionalExtensions'] = pulumi.Input.encodeList<
         GetAuthorityConfigX509ConfigAdditionalExtension,
         Map<String, dynamic>>(additionalExtensions, (value) => value.toMap());
     map['aiaOcspServers'] = aiaOcspServers;
-    map['caOptions'] = Input.encodeList<GetAuthorityConfigX509ConfigCaOption,
+    map['caOptions'] = pulumi.Input.encodeList<
+        GetAuthorityConfigX509ConfigCaOption,
         Map<String, dynamic>>(caOptions, (value) => value.toMap());
-    map['keyUsages'] = Input.encodeList<GetAuthorityConfigX509ConfigKeyUsage,
+    map['keyUsages'] = pulumi.Input.encodeList<
+        GetAuthorityConfigX509ConfigKeyUsage,
         Map<String, dynamic>>(keyUsages, (value) => value.toMap());
-    map['nameConstraints'] = Input.encodeList<
+    map['nameConstraints'] = pulumi.Input.encodeList<
         GetAuthorityConfigX509ConfigNameConstraint,
         Map<String, dynamic>>(nameConstraints, (value) => value.toMap());
-    map['policyIds'] = Input.encodeList<GetAuthorityConfigX509ConfigPolicyId,
+    map['policyIds'] = pulumi.Input.encodeList<
+        GetAuthorityConfigX509ConfigPolicyId,
         Map<String, dynamic>>(policyIds, (value) => value.toMap());
     return map;
   }
 
   factory GetAuthorityConfigX509Config.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfigX509Config(
-      additionalExtensions:
-          Input.decodeList<GetAuthorityConfigX509ConfigAdditionalExtension>(
-              map['additionalExtensions'],
-              (value) =>
-                  GetAuthorityConfigX509ConfigAdditionalExtension.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      additionalExtensions: pulumi.Input.decodeList<
+              GetAuthorityConfigX509ConfigAdditionalExtension>(
+          map['additionalExtensions'],
+          (value) => GetAuthorityConfigX509ConfigAdditionalExtension.fromMap(
+              (value as Map).cast<String, dynamic>())),
       aiaOcspServers: (map['aiaOcspServers'] as List).cast<String>(),
-      caOptions: Input.decodeList<GetAuthorityConfigX509ConfigCaOption>(
+      caOptions: pulumi.Input.decodeList<GetAuthorityConfigX509ConfigCaOption>(
           map['caOptions'],
           (value) => GetAuthorityConfigX509ConfigCaOption.fromMap(
               (value as Map).cast<String, dynamic>())),
-      keyUsages: Input.decodeList<GetAuthorityConfigX509ConfigKeyUsage>(
+      keyUsages: pulumi.Input.decodeList<GetAuthorityConfigX509ConfigKeyUsage>(
           map['keyUsages'],
           (value) => GetAuthorityConfigX509ConfigKeyUsage.fromMap(
               (value as Map).cast<String, dynamic>())),
       nameConstraints:
-          Input.decodeList<GetAuthorityConfigX509ConfigNameConstraint>(
+          pulumi.Input.decodeList<GetAuthorityConfigX509ConfigNameConstraint>(
               map['nameConstraints'],
               (value) => GetAuthorityConfigX509ConfigNameConstraint.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      policyIds: Input.decodeList<GetAuthorityConfigX509ConfigPolicyId>(
+      policyIds: pulumi.Input.decodeList<GetAuthorityConfigX509ConfigPolicyId>(
           map['policyIds'],
           (value) => GetAuthorityConfigX509ConfigPolicyId.fromMap(
               (value as Map).cast<String, dynamic>())),

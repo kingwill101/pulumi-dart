@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SharedVPCServiceProject.
 class SharedVPCServiceProjectArgs {
   /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
-  final Input<String>? deletionPolicy;
+  final pulumi.Input<String>? deletionPolicy;
 
   /// The ID of a host project to associate.
-  final Input<String> hostProject;
+  final pulumi.Input<String> hostProject;
 
   /// The ID of the project that will serve as a Shared VPC service project.
-  final Input<String> serviceProject;
+  final pulumi.Input<String> serviceProject;
 
   SharedVPCServiceProjectArgs({
     this.deletionPolicy,
@@ -32,9 +32,10 @@ class SharedVPCServiceProjectArgs {
 
   factory SharedVPCServiceProjectArgs.fromMap(Map<String, dynamic> map) {
     return SharedVPCServiceProjectArgs(
-      deletionPolicy: Input.asOptionalInput<String>(map['deletionPolicy']),
-      hostProject: Input.asInput<String>(map['hostProject']),
-      serviceProject: Input.asInput<String>(map['serviceProject']),
+      deletionPolicy:
+          pulumi.Input.asOptionalInput<String>(map['deletionPolicy']),
+      hostProject: pulumi.Input.asInput<String>(map['hostProject']),
+      serviceProject: pulumi.Input.asInput<String>(map['serviceProject']),
     );
   }
 }

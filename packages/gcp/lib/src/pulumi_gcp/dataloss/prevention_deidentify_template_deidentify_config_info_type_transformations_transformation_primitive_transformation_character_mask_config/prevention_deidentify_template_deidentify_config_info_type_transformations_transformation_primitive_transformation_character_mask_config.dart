@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../prevention_deidentify_template_deidentify_config_info_type_transformations_transformation_primitive_transformation_character_mask_config_characters_to_ignore/prevention_deidentify_template_deidentify_config_info_type_transformations_transformation_primitive_transformation_character_mask_config_characters_to_ignore.dart';
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
@@ -34,7 +34,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     final map = <String, dynamic>{};
     final charactersToIgnoresValue = charactersToIgnores;
     if (charactersToIgnoresValue != null) {
-      map['charactersToIgnores'] = Input.encodeList<
+      map['charactersToIgnores'] = pulumi.Input.encodeList<
           PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore,
           Map<String,
               dynamic>>(charactersToIgnoresValue, (value) => value.toMap());
@@ -59,7 +59,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(
       charactersToIgnores: map['charactersToIgnores'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>(
               map['charactersToIgnores'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpn_connection_detail/vpn_connection_detail.dart';
 import '../vpn_connection_vpc_project/vpn_connection_vpc_project.dart';
 import 'vpn_connection_args.dart';
@@ -42,68 +42,68 @@ import 'vpn_connection_args.dart';
 /// ```sh
 /// $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}/{{name}}
 /// ```
-class VpnConnection extends CustomResource {
+class VpnConnection extends pulumi.CustomResource {
   /// The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
-  late final Output<String> cluster;
+  late final pulumi.Output<String> cluster;
 
   /// The time when the VPN connection was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A nested object resource.
   /// Structure is documented below.
-  late final Output<List<VpnConnectionDetail>> details;
+  late final pulumi.Output<List<VpnConnectionDetail>> details;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
-  late final Output<bool> enableHighAvailability;
+  late final pulumi.Output<bool> enableHighAvailability;
 
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// Google Cloud Platform location.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The resource name of VPN connection
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
   /// This is empty if NAT is not used.
-  late final Output<String?> natGatewayIp;
+  late final pulumi.Output<String?> natGatewayIp;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The VPN connection Cloud Router name.
-  late final Output<String?> router;
+  late final pulumi.Output<String?> router;
 
   /// The time when the VPN connection was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   /// The network ID of VPC to connect to.
-  late final Output<String?> vpc;
+  late final pulumi.Output<String?> vpc;
 
   /// Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
   /// Structure is documented below.
-  late final Output<VpnConnectionVpcProject?> vpcProject;
+  late final pulumi.Output<VpnConnectionVpcProject?> vpcProject;
 
   VpnConnection(
     String name, {
     VpnConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:edgecontainer/vpnConnection:VpnConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cluster = registerOutput<String>('cluster');
     this.createTime = registerOutput<String>('createTime');

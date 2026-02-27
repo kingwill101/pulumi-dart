@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_database_instance_setting_active_directory_config/get_database_instance_setting_active_directory_config.dart';
 import '../get_database_instance_setting_advanced_machine_feature/get_database_instance_setting_advanced_machine_feature.dart';
 import '../get_database_instance_setting_backup_configuration/get_database_instance_setting_backup_configuration.dart';
@@ -167,32 +167,32 @@ class GetDatabaseInstanceSetting {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['activationPolicy'] = activationPolicy;
-    map['activeDirectoryConfigs'] = Input.encodeList<
+    map['activeDirectoryConfigs'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingActiveDirectoryConfig,
         Map<String, dynamic>>(activeDirectoryConfigs, (value) => value.toMap());
-    map['advancedMachineFeatures'] = Input.encodeList<
+    map['advancedMachineFeatures'] = pulumi.Input.encodeList<
             GetDatabaseInstanceSettingAdvancedMachineFeature,
             Map<String, dynamic>>(
         advancedMachineFeatures, (value) => value.toMap());
     map['availabilityType'] = availabilityType;
-    map['backupConfigurations'] = Input.encodeList<
+    map['backupConfigurations'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingBackupConfiguration,
         Map<String, dynamic>>(backupConfigurations, (value) => value.toMap());
     map['collation'] = collation;
-    map['connectionPoolConfigs'] = Input.encodeList<
+    map['connectionPoolConfigs'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingConnectionPoolConfig,
         Map<String, dynamic>>(connectionPoolConfigs, (value) => value.toMap());
     map['connectorEnforcement'] = connectorEnforcement;
-    map['dataCacheConfigs'] = Input.encodeList<
+    map['dataCacheConfigs'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingDataCacheConfig,
         Map<String, dynamic>>(dataCacheConfigs, (value) => value.toMap());
     map['dataDiskProvisionedIops'] = dataDiskProvisionedIops;
     map['dataDiskProvisionedThroughput'] = dataDiskProvisionedThroughput;
-    map['databaseFlags'] = Input.encodeList<
+    map['databaseFlags'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingDatabaseFlag,
         Map<String, dynamic>>(databaseFlags, (value) => value.toMap());
     map['deletionProtectionEnabled'] = deletionProtectionEnabled;
-    map['denyMaintenancePeriods'] = Input.encodeList<
+    map['denyMaintenancePeriods'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingDenyMaintenancePeriod,
         Map<String, dynamic>>(denyMaintenancePeriods, (value) => value.toMap());
     map['diskAutoresize'] = diskAutoresize;
@@ -203,32 +203,32 @@ class GetDatabaseInstanceSetting {
     map['effectiveAvailabilityType'] = effectiveAvailabilityType;
     map['enableDataplexIntegration'] = enableDataplexIntegration;
     map['enableGoogleMlIntegration'] = enableGoogleMlIntegration;
-    map['finalBackupConfigs'] = Input.encodeList<
+    map['finalBackupConfigs'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingFinalBackupConfig,
         Map<String, dynamic>>(finalBackupConfigs, (value) => value.toMap());
-    map['insightsConfigs'] = Input.encodeList<
+    map['insightsConfigs'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingInsightsConfig,
         Map<String, dynamic>>(insightsConfigs, (value) => value.toMap());
-    map['ipConfigurations'] = Input.encodeList<
+    map['ipConfigurations'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingIpConfiguration,
         Map<String, dynamic>>(ipConfigurations, (value) => value.toMap());
-    map['locationPreferences'] = Input.encodeList<
+    map['locationPreferences'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingLocationPreference,
         Map<String, dynamic>>(locationPreferences, (value) => value.toMap());
-    map['maintenanceWindows'] = Input.encodeList<
+    map['maintenanceWindows'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingMaintenanceWindow,
         Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap());
-    map['passwordValidationPolicies'] = Input.encodeList<
+    map['passwordValidationPolicies'] = pulumi.Input.encodeList<
             GetDatabaseInstanceSettingPasswordValidationPolicy,
             Map<String, dynamic>>(
         passwordValidationPolicies, (value) => value.toMap());
     map['pricingPlan'] = pricingPlan;
-    map['readPoolAutoScaleConfigs'] = Input.encodeList<
+    map['readPoolAutoScaleConfigs'] = pulumi.Input.encodeList<
             GetDatabaseInstanceSettingReadPoolAutoScaleConfig,
             Map<String, dynamic>>(
         readPoolAutoScaleConfigs, (value) => value.toMap());
     map['retainBackupsOnDelete'] = retainBackupsOnDelete;
-    map['sqlServerAuditConfigs'] = Input.encodeList<
+    map['sqlServerAuditConfigs'] = pulumi.Input.encodeList<
         GetDatabaseInstanceSettingSqlServerAuditConfig,
         Map<String, dynamic>>(sqlServerAuditConfigs, (value) => value.toMap());
     map['tier'] = tier;
@@ -241,50 +241,48 @@ class GetDatabaseInstanceSetting {
   factory GetDatabaseInstanceSetting.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceSetting(
       activationPolicy: map['activationPolicy'] as String,
-      activeDirectoryConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingActiveDirectoryConfig>(
-              map['activeDirectoryConfigs'],
-              (value) =>
-                  GetDatabaseInstanceSettingActiveDirectoryConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      advancedMachineFeatures:
-          Input.decodeList<GetDatabaseInstanceSettingAdvancedMachineFeature>(
-              map['advancedMachineFeatures'],
-              (value) =>
-                  GetDatabaseInstanceSettingAdvancedMachineFeature.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      activeDirectoryConfigs: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingActiveDirectoryConfig>(
+          map['activeDirectoryConfigs'],
+          (value) => GetDatabaseInstanceSettingActiveDirectoryConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      advancedMachineFeatures: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingAdvancedMachineFeature>(
+          map['advancedMachineFeatures'],
+          (value) => GetDatabaseInstanceSettingAdvancedMachineFeature.fromMap(
+              (value as Map).cast<String, dynamic>())),
       availabilityType: map['availabilityType'] as String,
-      backupConfigurations:
-          Input.decodeList<GetDatabaseInstanceSettingBackupConfiguration>(
-              map['backupConfigurations'],
-              (value) => GetDatabaseInstanceSettingBackupConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      backupConfigurations: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingBackupConfiguration>(
+          map['backupConfigurations'],
+          (value) => GetDatabaseInstanceSettingBackupConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>())),
       collation: map['collation'] as String,
-      connectionPoolConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingConnectionPoolConfig>(
-              map['connectionPoolConfigs'],
-              (value) => GetDatabaseInstanceSettingConnectionPoolConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      connectionPoolConfigs: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingConnectionPoolConfig>(
+          map['connectionPoolConfigs'],
+          (value) => GetDatabaseInstanceSettingConnectionPoolConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       connectorEnforcement: map['connectorEnforcement'] as String,
       dataCacheConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingDataCacheConfig>(
+          pulumi.Input.decodeList<GetDatabaseInstanceSettingDataCacheConfig>(
               map['dataCacheConfigs'],
               (value) => GetDatabaseInstanceSettingDataCacheConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       dataDiskProvisionedIops: map['dataDiskProvisionedIops'] as int,
       dataDiskProvisionedThroughput:
           map['dataDiskProvisionedThroughput'] as int,
-      databaseFlags: Input.decodeList<GetDatabaseInstanceSettingDatabaseFlag>(
-          map['databaseFlags'],
-          (value) => GetDatabaseInstanceSettingDatabaseFlag.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      databaseFlags:
+          pulumi.Input.decodeList<GetDatabaseInstanceSettingDatabaseFlag>(
+              map['databaseFlags'],
+              (value) => GetDatabaseInstanceSettingDatabaseFlag.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
-      denyMaintenancePeriods:
-          Input.decodeList<GetDatabaseInstanceSettingDenyMaintenancePeriod>(
-              map['denyMaintenancePeriods'],
-              (value) =>
-                  GetDatabaseInstanceSettingDenyMaintenancePeriod.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      denyMaintenancePeriods: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingDenyMaintenancePeriod>(
+          map['denyMaintenancePeriods'],
+          (value) => GetDatabaseInstanceSettingDenyMaintenancePeriod.fromMap(
+              (value as Map).cast<String, dynamic>())),
       diskAutoresize: map['diskAutoresize'] as bool,
       diskAutoresizeLimit: map['diskAutoresizeLimit'] as int,
       diskSize: map['diskSize'] as int,
@@ -294,49 +292,47 @@ class GetDatabaseInstanceSetting {
       enableDataplexIntegration: map['enableDataplexIntegration'] as bool,
       enableGoogleMlIntegration: map['enableGoogleMlIntegration'] as bool,
       finalBackupConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingFinalBackupConfig>(
+          pulumi.Input.decodeList<GetDatabaseInstanceSettingFinalBackupConfig>(
               map['finalBackupConfigs'],
               (value) => GetDatabaseInstanceSettingFinalBackupConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       insightsConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingInsightsConfig>(
+          pulumi.Input.decodeList<GetDatabaseInstanceSettingInsightsConfig>(
               map['insightsConfigs'],
               (value) => GetDatabaseInstanceSettingInsightsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ipConfigurations:
-          Input.decodeList<GetDatabaseInstanceSettingIpConfiguration>(
+          pulumi.Input.decodeList<GetDatabaseInstanceSettingIpConfiguration>(
               map['ipConfigurations'],
               (value) => GetDatabaseInstanceSettingIpConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       locationPreferences:
-          Input.decodeList<GetDatabaseInstanceSettingLocationPreference>(
+          pulumi.Input.decodeList<GetDatabaseInstanceSettingLocationPreference>(
               map['locationPreferences'],
               (value) => GetDatabaseInstanceSettingLocationPreference.fromMap(
                   (value as Map).cast<String, dynamic>())),
       maintenanceWindows:
-          Input.decodeList<GetDatabaseInstanceSettingMaintenanceWindow>(
+          pulumi.Input.decodeList<GetDatabaseInstanceSettingMaintenanceWindow>(
               map['maintenanceWindows'],
               (value) => GetDatabaseInstanceSettingMaintenanceWindow.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      passwordValidationPolicies:
-          Input.decodeList<GetDatabaseInstanceSettingPasswordValidationPolicy>(
-              map['passwordValidationPolicies'],
-              (value) =>
-                  GetDatabaseInstanceSettingPasswordValidationPolicy.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      passwordValidationPolicies: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingPasswordValidationPolicy>(
+          map['passwordValidationPolicies'],
+          (value) => GetDatabaseInstanceSettingPasswordValidationPolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       pricingPlan: map['pricingPlan'] as String,
-      readPoolAutoScaleConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingReadPoolAutoScaleConfig>(
-              map['readPoolAutoScaleConfigs'],
-              (value) =>
-                  GetDatabaseInstanceSettingReadPoolAutoScaleConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      readPoolAutoScaleConfigs: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingReadPoolAutoScaleConfig>(
+          map['readPoolAutoScaleConfigs'],
+          (value) => GetDatabaseInstanceSettingReadPoolAutoScaleConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       retainBackupsOnDelete: map['retainBackupsOnDelete'] as bool,
-      sqlServerAuditConfigs:
-          Input.decodeList<GetDatabaseInstanceSettingSqlServerAuditConfig>(
-              map['sqlServerAuditConfigs'],
-              (value) => GetDatabaseInstanceSettingSqlServerAuditConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      sqlServerAuditConfigs: pulumi.Input.decodeList<
+              GetDatabaseInstanceSettingSqlServerAuditConfig>(
+          map['sqlServerAuditConfigs'],
+          (value) => GetDatabaseInstanceSettingSqlServerAuditConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       tier: map['tier'] as String,
       timeZone: map['timeZone'] as String,
       userLabels: (map['userLabels'] as Map).cast<String, String>(),

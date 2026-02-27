@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_version_snapshot_example_message_chunk_tool_call_toolset_tool/app_version_snapshot_example_message_chunk_tool_call_toolset_tool.dart';
 
 class AppVersionSnapshotExampleMessageChunkToolCall {
@@ -54,7 +54,7 @@ class AppVersionSnapshotExampleMessageChunkToolCall {
     }
     final toolsetToolsValue = toolsetTools;
     if (toolsetToolsValue != null) {
-      map['toolsetTools'] = Input.encodeList<
+      map['toolsetTools'] = pulumi.Input.encodeList<
           AppVersionSnapshotExampleMessageChunkToolCallToolsetTool,
           Map<String, dynamic>>(toolsetToolsValue, (value) => value.toMap());
     }
@@ -71,7 +71,7 @@ class AppVersionSnapshotExampleMessageChunkToolCall {
       tool: map['tool'] == null ? null : map['tool'] as String,
       toolsetTools: map['toolsetTools'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AppVersionSnapshotExampleMessageChunkToolCallToolsetTool>(
               map['toolsetTools'],
               (value) =>

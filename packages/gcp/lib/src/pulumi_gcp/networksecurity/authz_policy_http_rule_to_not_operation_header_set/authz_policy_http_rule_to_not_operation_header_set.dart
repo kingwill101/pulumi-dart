@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authz_policy_http_rule_to_not_operation_header_set_header/authz_policy_http_rule_to_not_operation_header_set_header.dart';
 
 class AuthzPolicyHttpRuleToNotOperationHeaderSet {
@@ -16,7 +16,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSet {
     final map = <String, dynamic>{};
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<
+      map['headers'] = pulumi.Input.encodeList<
           AuthzPolicyHttpRuleToNotOperationHeaderSetHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
@@ -28,7 +28,8 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSet {
     return AuthzPolicyHttpRuleToNotOperationHeaderSet(
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<AuthzPolicyHttpRuleToNotOperationHeaderSetHeader>(
+          : pulumi.Input.decodeList<
+                  AuthzPolicyHttpRuleToNotOperationHeaderSetHeader>(
               map['headers'],
               (value) =>
                   AuthzPolicyHttpRuleToNotOperationHeaderSetHeader.fromMap(

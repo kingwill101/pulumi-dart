@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../volume_export_policy_rule/volume_export_policy_rule.dart';
 
 class VolumeExportPolicy {
@@ -15,14 +15,14 @@ class VolumeExportPolicy {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['rules'] =
-        Input.encodeList<VolumeExportPolicyRule, Map<String, dynamic>>(
+        pulumi.Input.encodeList<VolumeExportPolicyRule, Map<String, dynamic>>(
             rules, (value) => value.toMap());
     return map;
   }
 
   factory VolumeExportPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeExportPolicy(
-      rules: Input.decodeList<VolumeExportPolicyRule>(
+      rules: pulumi.Input.decodeList<VolumeExportPolicyRule>(
           map['rules'],
           (value) => VolumeExportPolicyRule.fromMap(
               (value as Map).cast<String, dynamic>())),

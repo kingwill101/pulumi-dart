@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_perimeter_dry_run_ingress_policy_ingress_from/service_perimeter_dry_run_ingress_policy_ingress_from.dart';
 import '../service_perimeter_dry_run_ingress_policy_ingress_to/service_perimeter_dry_run_ingress_policy_ingress_to.dart';
 
@@ -9,18 +9,19 @@ class ServicePerimeterDryRunIngressPolicyArgs {
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
   /// to apply.
   /// Structure is documented below.
-  final Input<ServicePerimeterDryRunIngressPolicyIngressFrom>? ingressFrom;
+  final pulumi.Input<ServicePerimeterDryRunIngressPolicyIngressFrom>?
+      ingressFrom;
 
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
-  final Input<ServicePerimeterDryRunIngressPolicyIngressTo>? ingressTo;
+  final pulumi.Input<ServicePerimeterDryRunIngressPolicyIngressTo>? ingressTo;
 
   /// The name of the Service Perimeter to add this resource to.
-  final Input<String> perimeter;
+  final pulumi.Input<String> perimeter;
 
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  final Input<String>? title;
+  final pulumi.Input<String>? title;
 
   ServicePerimeterDryRunIngressPolicyArgs({
     this.ingressFrom,
@@ -33,13 +34,13 @@ class ServicePerimeterDryRunIngressPolicyArgs {
     final map = <String, dynamic>{};
     final ingressFromValue = ingressFrom;
     if (ingressFromValue != null) {
-      map['ingressFrom'] = Input.mapOptionalInputValue<
+      map['ingressFrom'] = pulumi.Input.mapOptionalInputValue<
           ServicePerimeterDryRunIngressPolicyIngressFrom,
           Map<String, dynamic>>(ingressFromValue, (value) => value.toMap());
     }
     final ingressToValue = ingressTo;
     if (ingressToValue != null) {
-      map['ingressTo'] = Input.mapOptionalInputValue<
+      map['ingressTo'] = pulumi.Input.mapOptionalInputValue<
           ServicePerimeterDryRunIngressPolicyIngressTo,
           Map<String, dynamic>>(ingressToValue, (value) => value.toMap());
     }
@@ -54,14 +55,12 @@ class ServicePerimeterDryRunIngressPolicyArgs {
   factory ServicePerimeterDryRunIngressPolicyArgs.fromMap(
       Map<String, dynamic> map) {
     return ServicePerimeterDryRunIngressPolicyArgs(
-      ingressFrom:
-          Input.asOptionalInput<ServicePerimeterDryRunIngressPolicyIngressFrom>(
-              map['ingressFrom']),
-      ingressTo:
-          Input.asOptionalInput<ServicePerimeterDryRunIngressPolicyIngressTo>(
-              map['ingressTo']),
-      perimeter: Input.asInput<String>(map['perimeter']),
-      title: Input.asOptionalInput<String>(map['title']),
+      ingressFrom: pulumi.Input.asOptionalInput<
+          ServicePerimeterDryRunIngressPolicyIngressFrom>(map['ingressFrom']),
+      ingressTo: pulumi.Input.asOptionalInput<
+          ServicePerimeterDryRunIngressPolicyIngressTo>(map['ingressTo']),
+      perimeter: pulumi.Input.asInput<String>(map['perimeter']),
+      title: pulumi.Input.asOptionalInput<String>(map['title']),
     );
   }
 }

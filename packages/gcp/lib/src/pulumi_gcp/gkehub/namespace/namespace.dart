@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../namespace_state/namespace_state.dart';
 import 'namespace_args.dart';
 
@@ -41,68 +41,68 @@ import 'namespace_args.dart';
 /// ```sh
 /// $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
 /// ```
-class Namespace extends CustomResource {
+class Namespace extends pulumi.CustomResource {
   /// Time the Namespace was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Time the Namespace was deleted in UTC.
-  late final Output<String> deleteTime;
+  late final pulumi.Output<String> deleteTime;
 
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  late final Output<Map<String, String>> effectiveLabels;
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
 
   /// Labels for this Namespace.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
-  late final Output<Map<String, String>?> labels;
+  late final pulumi.Output<Map<String, String>?> labels;
 
   /// The resource name for the namespace
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Namespace-level cluster namespace labels. These labels are applied
   /// to the related namespace of the member clusters bound to the parent
   /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
   /// resource) take precedence over Namespace-level labels if they share
   /// a key. Keys and values must be Kubernetes-conformant.
-  late final Output<Map<String, String>?> namespaceLabels;
+  late final pulumi.Output<Map<String, String>?> namespaceLabels;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  late final Output<Map<String, String>> pulumiLabels;
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
 
   /// The name of the Scope instance.
-  late final Output<String> scope;
+  late final pulumi.Output<String> scope;
 
   /// Id of the scope
-  late final Output<String> scopeId;
+  late final pulumi.Output<String> scopeId;
 
   /// The client-provided identifier of the namespace.
-  late final Output<String> scopeNamespaceId;
+  late final pulumi.Output<String> scopeNamespaceId;
 
   /// State of the namespace resource.
   /// Structure is documented below.
-  late final Output<List<NamespaceState>> states;
+  late final pulumi.Output<List<NamespaceState>> states;
 
   /// Google-generated UUID for this resource.
-  late final Output<String> uid;
+  late final pulumi.Output<String> uid;
 
   /// Time the Namespace was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Namespace(
     String name, {
     NamespaceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:gkehub/namespace:Namespace',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getNodeTypes.
 class GetNodeTypesArgs {
   /// ID of the project to list available node types for.
   /// Should match the project the nodes of this type will be deployed to.
   /// Defaults to the project that the provider is authenticated with.
-  final Input<String>? project;
+  final pulumi.Input<String>? project;
 
   /// The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
   /// instead.
-  final Input<String>? zone;
+  final pulumi.Input<String>? zone;
 
   GetNodeTypesArgs({
     this.project,
@@ -33,8 +33,8 @@ class GetNodeTypesArgs {
 
   factory GetNodeTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeTypesArgs(
-      project: Input.asOptionalInput<String>(map['project']),
-      zone: Input.asOptionalInput<String>(map['zone']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      zone: pulumi.Input.asOptionalInput<String>(map['zone']),
     );
   }
 }

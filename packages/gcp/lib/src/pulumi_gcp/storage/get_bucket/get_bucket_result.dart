@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_autoclass/get_bucket_autoclass.dart';
 import '../get_bucket_cor/get_bucket_cor.dart';
 import '../get_bucket_custom_placement_config/get_bucket_custom_placement_config.dart';
@@ -89,34 +89,35 @@ class GetBucketResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['autoclasses'] =
-        Input.encodeList<GetBucketAutoclass, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketAutoclass, Map<String, dynamic>>(
             autoclasses, (value) => value.toMap());
-    map['cors'] = Input.encodeList<GetBucketCor, Map<String, dynamic>>(
+    map['cors'] = pulumi.Input.encodeList<GetBucketCor, Map<String, dynamic>>(
         cors, (value) => value.toMap());
-    map['customPlacementConfigs'] =
-        Input.encodeList<GetBucketCustomPlacementConfig, Map<String, dynamic>>(
-            customPlacementConfigs, (value) => value.toMap());
+    map['customPlacementConfigs'] = pulumi.Input.encodeList<
+        GetBucketCustomPlacementConfig,
+        Map<String, dynamic>>(customPlacementConfigs, (value) => value.toMap());
     map['defaultEventBasedHold'] = defaultEventBasedHold;
     map['effectiveLabels'] = effectiveLabels;
     map['enableObjectRetention'] = enableObjectRetention;
     map['encryptions'] =
-        Input.encodeList<GetBucketEncryption, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketEncryption, Map<String, dynamic>>(
             encryptions, (value) => value.toMap());
     map['forceDestroy'] = forceDestroy;
-    map['hierarchicalNamespaces'] =
-        Input.encodeList<GetBucketHierarchicalNamespace, Map<String, dynamic>>(
-            hierarchicalNamespaces, (value) => value.toMap());
+    map['hierarchicalNamespaces'] = pulumi.Input.encodeList<
+        GetBucketHierarchicalNamespace,
+        Map<String, dynamic>>(hierarchicalNamespaces, (value) => value.toMap());
     map['id'] = id;
     map['ipFilters'] =
-        Input.encodeList<GetBucketIpFilter, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketIpFilter, Map<String, dynamic>>(
             ipFilters, (value) => value.toMap());
     map['labels'] = labels;
     map['lifecycleRules'] =
-        Input.encodeList<GetBucketLifecycleRule, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketLifecycleRule, Map<String, dynamic>>(
             lifecycleRules, (value) => value.toMap());
     map['location'] = location;
-    map['loggings'] = Input.encodeList<GetBucketLogging, Map<String, dynamic>>(
-        loggings, (value) => value.toMap());
+    map['loggings'] =
+        pulumi.Input.encodeList<GetBucketLogging, Map<String, dynamic>>(
+            loggings, (value) => value.toMap());
     map['name'] = name;
     final projectValue = project;
     if (projectValue != null) {
@@ -127,64 +128,67 @@ class GetBucketResult {
     map['pulumiLabels'] = pulumiLabels;
     map['requesterPays'] = requesterPays;
     map['retentionPolicies'] =
-        Input.encodeList<GetBucketRetentionPolicy, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketRetentionPolicy, Map<String, dynamic>>(
             retentionPolicies, (value) => value.toMap());
     map['rpo'] = rpo;
     map['selfLink'] = selfLink;
-    map['softDeletePolicies'] =
-        Input.encodeList<GetBucketSoftDeletePolicy, Map<String, dynamic>>(
-            softDeletePolicies, (value) => value.toMap());
+    map['softDeletePolicies'] = pulumi.Input.encodeList<
+        GetBucketSoftDeletePolicy,
+        Map<String, dynamic>>(softDeletePolicies, (value) => value.toMap());
     map['storageClass'] = storageClass;
     map['timeCreated'] = timeCreated;
     map['uniformBucketLevelAccess'] = uniformBucketLevelAccess;
     map['updated'] = updated;
     map['url'] = url;
     map['versionings'] =
-        Input.encodeList<GetBucketVersioning, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBucketVersioning, Map<String, dynamic>>(
             versionings, (value) => value.toMap());
-    map['websites'] = Input.encodeList<GetBucketWebsite, Map<String, dynamic>>(
-        websites, (value) => value.toMap());
+    map['websites'] =
+        pulumi.Input.encodeList<GetBucketWebsite, Map<String, dynamic>>(
+            websites, (value) => value.toMap());
     return map;
   }
 
   factory GetBucketResult.fromMap(Map<String, dynamic> map) {
     return GetBucketResult(
-      autoclasses: Input.decodeList<GetBucketAutoclass>(
+      autoclasses: pulumi.Input.decodeList<GetBucketAutoclass>(
           map['autoclasses'],
           (value) => GetBucketAutoclass.fromMap(
               (value as Map).cast<String, dynamic>())),
-      cors: Input.decodeList<GetBucketCor>(
+      cors: pulumi.Input.decodeList<GetBucketCor>(
           map['cors'],
           (value) =>
               GetBucketCor.fromMap((value as Map).cast<String, dynamic>())),
-      customPlacementConfigs: Input.decodeList<GetBucketCustomPlacementConfig>(
-          map['customPlacementConfigs'],
-          (value) => GetBucketCustomPlacementConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customPlacementConfigs:
+          pulumi.Input.decodeList<GetBucketCustomPlacementConfig>(
+              map['customPlacementConfigs'],
+              (value) => GetBucketCustomPlacementConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       defaultEventBasedHold: map['defaultEventBasedHold'] as bool,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       enableObjectRetention: map['enableObjectRetention'] as bool,
-      encryptions: Input.decodeList<GetBucketEncryption>(
+      encryptions: pulumi.Input.decodeList<GetBucketEncryption>(
           map['encryptions'],
           (value) => GetBucketEncryption.fromMap(
               (value as Map).cast<String, dynamic>())),
       forceDestroy: map['forceDestroy'] as bool,
-      hierarchicalNamespaces: Input.decodeList<GetBucketHierarchicalNamespace>(
-          map['hierarchicalNamespaces'],
-          (value) => GetBucketHierarchicalNamespace.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      hierarchicalNamespaces:
+          pulumi.Input.decodeList<GetBucketHierarchicalNamespace>(
+              map['hierarchicalNamespaces'],
+              (value) => GetBucketHierarchicalNamespace.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      ipFilters: Input.decodeList<GetBucketIpFilter>(
+      ipFilters: pulumi.Input.decodeList<GetBucketIpFilter>(
           map['ipFilters'],
           (value) => GetBucketIpFilter.fromMap(
               (value as Map).cast<String, dynamic>())),
       labels: (map['labels'] as Map).cast<String, String>(),
-      lifecycleRules: Input.decodeList<GetBucketLifecycleRule>(
+      lifecycleRules: pulumi.Input.decodeList<GetBucketLifecycleRule>(
           map['lifecycleRules'],
           (value) => GetBucketLifecycleRule.fromMap(
               (value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      loggings: Input.decodeList<GetBucketLogging>(
+      loggings: pulumi.Input.decodeList<GetBucketLogging>(
           map['loggings'],
           (value) =>
               GetBucketLogging.fromMap((value as Map).cast<String, dynamic>())),
@@ -194,13 +198,13 @@ class GetBucketResult {
       publicAccessPrevention: map['publicAccessPrevention'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       requesterPays: map['requesterPays'] as bool,
-      retentionPolicies: Input.decodeList<GetBucketRetentionPolicy>(
+      retentionPolicies: pulumi.Input.decodeList<GetBucketRetentionPolicy>(
           map['retentionPolicies'],
           (value) => GetBucketRetentionPolicy.fromMap(
               (value as Map).cast<String, dynamic>())),
       rpo: map['rpo'] as String,
       selfLink: map['selfLink'] as String,
-      softDeletePolicies: Input.decodeList<GetBucketSoftDeletePolicy>(
+      softDeletePolicies: pulumi.Input.decodeList<GetBucketSoftDeletePolicy>(
           map['softDeletePolicies'],
           (value) => GetBucketSoftDeletePolicy.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -209,11 +213,11 @@ class GetBucketResult {
       uniformBucketLevelAccess: map['uniformBucketLevelAccess'] as bool,
       updated: map['updated'] as String,
       url: map['url'] as String,
-      versionings: Input.decodeList<GetBucketVersioning>(
+      versionings: pulumi.Input.decodeList<GetBucketVersioning>(
           map['versionings'],
           (value) => GetBucketVersioning.fromMap(
               (value as Map).cast<String, dynamic>())),
-      websites: Input.decodeList<GetBucketWebsite>(
+      websites: pulumi.Input.decodeList<GetBucketWebsite>(
           map['websites'],
           (value) =>
               GetBucketWebsite.fromMap((value as Map).cast<String, dynamic>())),

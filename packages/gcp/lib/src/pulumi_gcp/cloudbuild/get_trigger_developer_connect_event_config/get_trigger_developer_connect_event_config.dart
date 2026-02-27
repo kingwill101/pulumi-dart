@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_trigger_developer_connect_event_config_pull_request/get_trigger_developer_connect_event_config_pull_request.dart';
 import '../get_trigger_developer_connect_event_config_push/get_trigger_developer_connect_event_config_push.dart';
 
@@ -28,10 +28,11 @@ class GetTriggerDeveloperConnectEventConfig {
     final map = <String, dynamic>{};
     map['gitRepositoryLink'] = gitRepositoryLink;
     map['gitRepositoryLinkType'] = gitRepositoryLinkType;
-    map['pullRequests'] = Input.encodeList<
+    map['pullRequests'] = pulumi.Input.encodeList<
         GetTriggerDeveloperConnectEventConfigPullRequest,
         Map<String, dynamic>>(pullRequests, (value) => value.toMap());
-    map['pushes'] = Input.encodeList<GetTriggerDeveloperConnectEventConfigPush,
+    map['pushes'] = pulumi.Input.encodeList<
+        GetTriggerDeveloperConnectEventConfigPush,
         Map<String, dynamic>>(pushes, (value) => value.toMap());
     return map;
   }
@@ -41,16 +42,16 @@ class GetTriggerDeveloperConnectEventConfig {
     return GetTriggerDeveloperConnectEventConfig(
       gitRepositoryLink: map['gitRepositoryLink'] as String,
       gitRepositoryLinkType: map['gitRepositoryLinkType'] as String,
-      pullRequests:
-          Input.decodeList<GetTriggerDeveloperConnectEventConfigPullRequest>(
-              map['pullRequests'],
-              (value) =>
-                  GetTriggerDeveloperConnectEventConfigPullRequest.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      pushes: Input.decodeList<GetTriggerDeveloperConnectEventConfigPush>(
-          map['pushes'],
-          (value) => GetTriggerDeveloperConnectEventConfigPush.fromMap(
+      pullRequests: pulumi.Input.decodeList<
+              GetTriggerDeveloperConnectEventConfigPullRequest>(
+          map['pullRequests'],
+          (value) => GetTriggerDeveloperConnectEventConfigPullRequest.fromMap(
               (value as Map).cast<String, dynamic>())),
+      pushes:
+          pulumi.Input.decodeList<GetTriggerDeveloperConnectEventConfigPush>(
+              map['pushes'],
+              (value) => GetTriggerDeveloperConnectEventConfigPush.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

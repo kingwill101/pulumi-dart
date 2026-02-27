@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cx_flow_knowledge_connector_settings_data_store_connection/cx_flow_knowledge_connector_settings_data_store_connection.dart';
 import '../cx_flow_knowledge_connector_settings_trigger_fulfillment/cx_flow_knowledge_connector_settings_trigger_fulfillment.dart';
 
@@ -39,7 +39,7 @@ class CxFlowKnowledgeConnectorSettings {
     final map = <String, dynamic>{};
     final dataStoreConnectionsValue = dataStoreConnections;
     if (dataStoreConnectionsValue != null) {
-      map['dataStoreConnections'] = Input.encodeList<
+      map['dataStoreConnections'] = pulumi.Input.encodeList<
               CxFlowKnowledgeConnectorSettingsDataStoreConnection,
               Map<String, dynamic>>(
           dataStoreConnectionsValue, (value) => value.toMap());
@@ -67,7 +67,7 @@ class CxFlowKnowledgeConnectorSettings {
     return CxFlowKnowledgeConnectorSettings(
       dataStoreConnections: map['dataStoreConnections'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CxFlowKnowledgeConnectorSettingsDataStoreConnection>(
               map['dataStoreConnections'],
               (value) =>

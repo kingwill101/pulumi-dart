@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_autoscaling_auto_provisioning_defaults_management_upgrade_option/cluster_cluster_autoscaling_auto_provisioning_defaults_management_upgrade_option.dart';
 
 class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
@@ -35,7 +35,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
     }
     final upgradeOptionsValue = upgradeOptions;
     if (upgradeOptionsValue != null) {
-      map['upgradeOptions'] = Input.encodeList<
+      map['upgradeOptions'] = pulumi.Input.encodeList<
           ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption,
           Map<String, dynamic>>(upgradeOptionsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
           map['autoUpgrade'] == null ? null : map['autoUpgrade'] as bool,
       upgradeOptions: map['upgradeOptions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption>(
               map['upgradeOptions'],
               (value) =>

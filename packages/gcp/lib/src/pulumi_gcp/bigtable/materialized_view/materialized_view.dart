@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'materialized_view_args.dart';
 
 /// A materialized view object that can be referenced in SQL queries.
@@ -38,35 +38,35 @@ import 'materialized_view_args.dart';
 /// ```sh
 /// $ pulumi import gcp:bigtable/materializedView:MaterializedView default {{instance}}/{{materialized_view_id}}
 /// ```
-class MaterializedView extends CustomResource {
+class MaterializedView extends pulumi.CustomResource {
   /// Set to true to make the MaterializedView protected against deletion.
-  late final Output<bool?> deletionProtection;
+  late final pulumi.Output<bool?> deletionProtection;
 
   /// The name of the instance to create the materialized view within.
-  late final Output<String?> instance;
+  late final pulumi.Output<String?> instance;
 
   /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-  late final Output<String> materializedViewId;
+  late final pulumi.Output<String> materializedViewId;
 
   /// The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The materialized view's select query.
-  late final Output<String> query;
+  late final pulumi.Output<String> query;
 
   MaterializedView(
     String name, {
     MaterializedViewArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:bigtable/materializedView:MaterializedView',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deletionProtection = registerOutput<bool?>('deletionProtection');
     this.instance = registerOutput<String?>('instance');

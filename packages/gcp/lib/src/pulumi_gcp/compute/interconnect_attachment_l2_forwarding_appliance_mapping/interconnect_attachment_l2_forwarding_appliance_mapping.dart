@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_attachment_l2_forwarding_appliance_mapping_inner_vlan_to_appliance_mapping/interconnect_attachment_l2_forwarding_appliance_mapping_inner_vlan_to_appliance_mapping.dart';
 
 class InterconnectAttachmentL2ForwardingApplianceMapping {
@@ -33,7 +33,7 @@ class InterconnectAttachmentL2ForwardingApplianceMapping {
     }
     final innerVlanToApplianceMappingsValue = innerVlanToApplianceMappings;
     if (innerVlanToApplianceMappingsValue != null) {
-      map['innerVlanToApplianceMappings'] = Input.encodeList<
+      map['innerVlanToApplianceMappings'] = pulumi.Input.encodeList<
               InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping,
               Map<String, dynamic>>(
           innerVlanToApplianceMappingsValue, (value) => value.toMap());
@@ -57,7 +57,7 @@ class InterconnectAttachmentL2ForwardingApplianceMapping {
           : map['applianceIpAddress'] as String,
       innerVlanToApplianceMappings: map['innerVlanToApplianceMappings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>(
               map['innerVlanToApplianceMappings'],
               (value) =>

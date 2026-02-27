@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_parameters_parameter_policy_member/get_parameters_parameter_policy_member.dart';
 
 class GetParametersParameter {
@@ -59,7 +59,8 @@ class GetParametersParameter {
     map['labels'] = labels;
     map['name'] = name;
     map['parameterId'] = parameterId;
-    map['policyMembers'] = Input.encodeList<GetParametersParameterPolicyMember,
+    map['policyMembers'] = pulumi.Input.encodeList<
+        GetParametersParameterPolicyMember,
         Map<String, dynamic>>(policyMembers, (value) => value.toMap());
     map['project'] = project;
     map['pulumiLabels'] = pulumiLabels;
@@ -76,10 +77,11 @@ class GetParametersParameter {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       parameterId: map['parameterId'] as String,
-      policyMembers: Input.decodeList<GetParametersParameterPolicyMember>(
-          map['policyMembers'],
-          (value) => GetParametersParameterPolicyMember.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      policyMembers:
+          pulumi.Input.decodeList<GetParametersParameterPolicyMember>(
+              map['policyMembers'],
+              (value) => GetParametersParameterPolicyMember.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       project: map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       updateTime: map['updateTime'] as String,

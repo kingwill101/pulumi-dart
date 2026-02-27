@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_cross_instance_replication_config_membership_primary_instance/get_instance_cross_instance_replication_config_membership_primary_instance.dart';
 import '../get_instance_cross_instance_replication_config_membership_secondary_instance/get_instance_cross_instance_replication_config_membership_secondary_instance.dart';
 
@@ -21,10 +21,10 @@ class GetInstanceCrossInstanceReplicationConfigMembership {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['primaryInstances'] = Input.encodeList<
+    map['primaryInstances'] = pulumi.Input.encodeList<
         GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance,
         Map<String, dynamic>>(primaryInstances, (value) => value.toMap());
-    map['secondaryInstances'] = Input.encodeList<
+    map['secondaryInstances'] = pulumi.Input.encodeList<
         GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance,
         Map<String, dynamic>>(secondaryInstances, (value) => value.toMap());
     return map;
@@ -33,13 +33,13 @@ class GetInstanceCrossInstanceReplicationConfigMembership {
   factory GetInstanceCrossInstanceReplicationConfigMembership.fromMap(
       Map<String, dynamic> map) {
     return GetInstanceCrossInstanceReplicationConfigMembership(
-      primaryInstances: Input.decodeList<
+      primaryInstances: pulumi.Input.decodeList<
               GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>(
           map['primaryInstances'],
           (value) =>
               GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance
                   .fromMap((value as Map).cast<String, dynamic>())),
-      secondaryInstances: Input.decodeList<
+      secondaryInstances: pulumi.Input.decodeList<
               GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>(
           map['secondaryInstances'],
           (value) =>

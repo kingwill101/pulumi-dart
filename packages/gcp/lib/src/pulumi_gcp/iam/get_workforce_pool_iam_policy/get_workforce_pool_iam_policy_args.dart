@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkforcePoolIamPolicy.
 class GetWorkforcePoolIamPolicyArgs {
   /// The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final Input<String>? location;
+  final pulumi.Input<String>? location;
 
   /// Used to find the parent resource to bind the IAM policy to
-  final Input<String> workforcePoolId;
+  final pulumi.Input<String> workforcePoolId;
 
   GetWorkforcePoolIamPolicyArgs({
     this.location,
@@ -29,8 +29,8 @@ class GetWorkforcePoolIamPolicyArgs {
 
   factory GetWorkforcePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkforcePoolIamPolicyArgs(
-      location: Input.asOptionalInput<String>(map['location']),
-      workforcePoolId: Input.asInput<String>(map['workforcePoolId']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      workforcePoolId: pulumi.Input.asInput<String>(map['workforcePoolId']),
     );
   }
 }

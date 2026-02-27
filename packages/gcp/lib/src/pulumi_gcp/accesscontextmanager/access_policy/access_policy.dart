@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_policy_args.dart';
 
 /// AccessPolicy is a container for AccessLevels (which define the necessary
@@ -42,36 +42,36 @@ import 'access_policy_args.dart';
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
 /// ```
-class AccessPolicy extends CustomResource {
+class AccessPolicy extends pulumi.CustomResource {
   /// Time the AccessPolicy was created in UTC.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Resource name of the AccessPolicy. Format: '{{policy_id}}'
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// Format: 'organizations/{{organization_id}}'
-  late final Output<String> parent;
+  late final pulumi.Output<String> parent;
 
   /// Folder or project on which this policy is applicable.
   /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
-  late final Output<String?> scopes;
+  late final pulumi.Output<String?> scopes;
 
   /// Human readable title. Does not affect behavior.
-  late final Output<String> title;
+  late final pulumi.Output<String> title;
 
   /// Time the AccessPolicy was updated in UTC.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   AccessPolicy(
     String name, {
     AccessPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');

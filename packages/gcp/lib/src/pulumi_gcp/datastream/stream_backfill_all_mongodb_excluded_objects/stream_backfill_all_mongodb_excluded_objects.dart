@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_backfill_all_mongodb_excluded_objects_database/stream_backfill_all_mongodb_excluded_objects_database.dart';
 
 class StreamBackfillAllMongodbExcludedObjects {
@@ -14,7 +14,7 @@ class StreamBackfillAllMongodbExcludedObjects {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['databases'] = Input.encodeList<
+    map['databases'] = pulumi.Input.encodeList<
         StreamBackfillAllMongodbExcludedObjectsDatabase,
         Map<String, dynamic>>(databases, (value) => value.toMap());
     return map;
@@ -23,12 +23,11 @@ class StreamBackfillAllMongodbExcludedObjects {
   factory StreamBackfillAllMongodbExcludedObjects.fromMap(
       Map<String, dynamic> map) {
     return StreamBackfillAllMongodbExcludedObjects(
-      databases:
-          Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabase>(
-              map['databases'],
-              (value) =>
-                  StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      databases: pulumi.Input.decodeList<
+              StreamBackfillAllMongodbExcludedObjectsDatabase>(
+          map['databases'],
+          (value) => StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

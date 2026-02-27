@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../uptime_check_config_http_check_accepted_response_status_code/uptime_check_config_http_check_accepted_response_status_code.dart';
 import '../uptime_check_config_http_check_auth_info/uptime_check_config_http_check_auth_info.dart';
 import '../uptime_check_config_http_check_ping_config/uptime_check_config_http_check_ping_config.dart';
@@ -79,7 +79,7 @@ class UptimeCheckConfigHttpCheck {
     final map = <String, dynamic>{};
     final acceptedResponseStatusCodesValue = acceptedResponseStatusCodes;
     if (acceptedResponseStatusCodesValue != null) {
-      map['acceptedResponseStatusCodes'] = Input.encodeList<
+      map['acceptedResponseStatusCodes'] = pulumi.Input.encodeList<
               UptimeCheckConfigHttpCheckAcceptedResponseStatusCode,
               Map<String, dynamic>>(
           acceptedResponseStatusCodesValue, (value) => value.toMap());
@@ -144,7 +144,7 @@ class UptimeCheckConfigHttpCheck {
     return UptimeCheckConfigHttpCheck(
       acceptedResponseStatusCodes: map['acceptedResponseStatusCodes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UptimeCheckConfigHttpCheckAcceptedResponseStatusCode>(
               map['acceptedResponseStatusCodes'],
               (value) =>

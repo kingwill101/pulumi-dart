@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_database_instances_instance/get_database_instances_instance.dart';
 
 /// Result data returned by getDatabaseInstances.
@@ -34,9 +34,8 @@ class GetDatabaseInstancesResult {
       map['databaseVersion'] = databaseVersionValue;
     }
     map['id'] = id;
-    map['instances'] =
-        Input.encodeList<GetDatabaseInstancesInstance, Map<String, dynamic>>(
-            instances, (value) => value.toMap());
+    map['instances'] = pulumi.Input.encodeList<GetDatabaseInstancesInstance,
+        Map<String, dynamic>>(instances, (value) => value.toMap());
     final projectValue = project;
     if (projectValue != null) {
       map['project'] = projectValue;
@@ -66,7 +65,7 @@ class GetDatabaseInstancesResult {
           ? null
           : map['databaseVersion'] as String,
       id: map['id'] as String,
-      instances: Input.decodeList<GetDatabaseInstancesInstance>(
+      instances: pulumi.Input.decodeList<GetDatabaseInstancesInstance>(
           map['instances'],
           (value) => GetDatabaseInstancesInstance.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backend_service_backend/backend_service_backend.dart';
 import '../backend_service_cdn_policy/backend_service_cdn_policy.dart';
 import '../backend_service_circuit_breakers/backend_service_circuit_breakers.dart';
@@ -131,34 +131,34 @@ import 'backend_service_args.dart';
 /// ```sh
 /// $ pulumi import gcp:compute/backendService:BackendService default {{name}}
 /// ```
-class BackendService extends CustomResource {
+class BackendService extends pulumi.CustomResource {
   /// Lifetime of cookies in seconds if session_affinity is
   /// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
   /// only until the end of the browser session (or equivalent). The
   /// maximum allowed value for TTL is one day.
   /// When the load balancing scheme is INTERNAL, this field is not used.
-  late final Output<int?> affinityCookieTtlSec;
+  late final pulumi.Output<int?> affinityCookieTtlSec;
 
   /// The set of backends that serve this BackendService.
   /// Structure is documented below.
-  late final Output<List<BackendServiceBackend>?> backends;
+  late final pulumi.Output<List<BackendServiceBackend>?> backends;
 
   /// Cloud CDN configuration for this BackendService.
   /// Structure is documented below.
-  late final Output<BackendServiceCdnPolicy> cdnPolicy;
+  late final pulumi.Output<BackendServiceCdnPolicy> cdnPolicy;
 
   /// Settings controlling the volume of connections to a backend service. This field
   /// is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  late final Output<BackendServiceCircuitBreakers?> circuitBreakers;
+  late final pulumi.Output<BackendServiceCircuitBreakers?> circuitBreakers;
 
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
   /// Possible values are: `AUTOMATIC`, `DISABLED`.
-  late final Output<String?> compressionMode;
+  late final pulumi.Output<String?> compressionMode;
 
   /// Time for which instance will be drained (not accept new
   /// connections, but still work to finish started).
-  late final Output<int?> connectionDrainingTimeoutSec;
+  late final pulumi.Output<int?> connectionDrainingTimeoutSec;
 
   /// Consistent Hash-based load balancing can be used to provide soft session
   /// affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -169,36 +169,36 @@ class BackendService extends CustomResource {
   /// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is
   /// set to MAGLEV or RING_HASH.
   /// Structure is documented below.
-  late final Output<BackendServiceConsistentHash?> consistentHash;
+  late final pulumi.Output<BackendServiceConsistentHash?> consistentHash;
 
   /// Creation timestamp in RFC3339 text format.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// Structure is documented below.
-  late final Output<List<BackendServiceCustomMetric>?> customMetrics;
+  late final pulumi.Output<List<BackendServiceCustomMetric>?> customMetrics;
 
   /// Headers that the HTTP/S load balancer should add to proxied
   /// requests.
-  late final Output<List<String>?> customRequestHeaders;
+  late final pulumi.Output<List<String>?> customRequestHeaders;
 
   /// Headers that the HTTP/S load balancer should add to proxied
   /// responses.
-  late final Output<List<String>?> customResponseHeaders;
+  late final pulumi.Output<List<String>?> customResponseHeaders;
 
   /// An optional description of this resource.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
-  late final Output<BackendServiceDynamicForwarding?> dynamicForwarding;
+  late final pulumi.Output<BackendServiceDynamicForwarding?> dynamicForwarding;
 
   /// The resource URL for the edge security policy associated with this backend service.
-  late final Output<String?> edgeSecurityPolicy;
+  late final pulumi.Output<String?> edgeSecurityPolicy;
 
   /// If true, enable Cloud CDN for this BackendService.
-  late final Output<bool?> enableCdn;
+  late final pulumi.Output<bool?> enableCdn;
 
   /// Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
   /// TEST_ALL_TRAFFIC.
@@ -211,7 +211,7 @@ class BackendService extends CustomResource {
   /// the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic
   /// back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
   /// Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
-  late final Output<String?> externalManagedMigrationState;
+  late final pulumi.Output<String?> externalManagedMigrationState;
 
   /// Determines the fraction of requests that should be processed by the Global external
   /// Application Load Balancer.
@@ -220,14 +220,14 @@ class BackendService extends CustomResource {
   /// see: Session Affinity.
   /// This value can only be set if the loadBalancingScheme in the backend service is set to
   /// EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
-  late final Output<double?> externalManagedMigrationTestingPercentage;
+  late final pulumi.Output<double?> externalManagedMigrationTestingPercentage;
 
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The unique identifier for the resource. This identifier is defined by the server.
-  late final Output<int> generatedId;
+  late final pulumi.Output<int> generatedId;
 
   /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
   /// for health checking this BackendService. Currently at most one health
@@ -235,16 +235,16 @@ class BackendService extends CustomResource {
   /// A health check must be specified unless the backend service uses an internet
   /// or serverless NEG as a backend.
   /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-  late final Output<String?> healthChecks;
+  late final pulumi.Output<String?> healthChecks;
 
   /// Settings for enabling Cloud Identity Aware Proxy.
   /// If OAuth client is not set, the Google-managed OAuth client is used.
   /// Structure is documented below.
-  late final Output<BackendServiceIap> iap;
+  late final pulumi.Output<BackendServiceIap> iap;
 
   /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
   /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
-  late final Output<String?> ipAddressSelectionPolicy;
+  late final pulumi.Output<String?> ipAddressSelectionPolicy;
 
   /// Indicates whether the backend service will be used with internal or
   /// external load balancing. A backend service created for one type of
@@ -252,7 +252,7 @@ class BackendService extends CustomResource {
   /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
   /// Default value is `EXTERNAL`.
   /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-  late final Output<String?> loadBalancingScheme;
+  late final pulumi.Output<String?> loadBalancingScheme;
 
   /// A list of locality load balancing policies to be used in order of
   /// preference. Either the policy or the customPolicy field should be set.
@@ -261,7 +261,8 @@ class BackendService extends CustomResource {
   /// by a URL Map that is referenced by a target gRPC proxy that has the
   /// validateForProxyless field set to true.
   /// Structure is documented below.
-  late final Output<List<BackendServiceLocalityLbPolicy>?> localityLbPolicies;
+  late final pulumi.Output<List<BackendServiceLocalityLbPolicy>?>
+      localityLbPolicies;
 
   /// The load balancing algorithm used within the scope of the locality.
   /// The possible values are:
@@ -315,12 +316,12 @@ class BackendService extends CustomResource {
   /// by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
-  late final Output<String?> localityLbPolicy;
+  late final pulumi.Output<String?> localityLbPolicy;
 
   /// This field denotes the logging options for the load balancer traffic served by this backend service.
   /// If logging is enabled, logs will be exported to Stackdriver.
   /// Structure is documented below.
-  late final Output<BackendServiceLogConfig> logConfig;
+  late final pulumi.Output<BackendServiceLogConfig> logConfig;
 
   /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
   /// beginning of the stream until the response has been completely processed, including all retries. A stream that
@@ -329,7 +330,7 @@ class BackendService extends CustomResource {
   /// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
   /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  late final Output<BackendServiceMaxStreamDuration?> maxStreamDuration;
+  late final pulumi.Output<BackendServiceMaxStreamDuration?> maxStreamDuration;
 
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -338,31 +339,31 @@ class BackendService extends CustomResource {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configures traffic steering properties of internal passthrough Network Load Balancers.
   /// Structure is documented below.
-  late final Output<BackendServiceNetworkPassThroughLbTrafficPolicy?>
+  late final pulumi.Output<BackendServiceNetworkPassThroughLbTrafficPolicy?>
       networkPassThroughLbTrafficPolicy;
 
   /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
   /// Applicable backend service types can be a global backend service with the
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
   /// Structure is documented below.
-  late final Output<BackendServiceOutlierDetection?> outlierDetection;
+  late final pulumi.Output<BackendServiceOutlierDetection?> outlierDetection;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  late final Output<BackendServiceParams?> params;
+  late final pulumi.Output<BackendServiceParams?> params;
 
   /// Name of backend port. The same name should appear in the instance
   /// groups referenced by this service. Required when the load balancing
   /// scheme is EXTERNAL.
-  late final Output<String> portName;
+  late final pulumi.Output<String> portName;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// The protocol this BackendService uses to communicate with backends.
   /// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
@@ -370,54 +371,54 @@ class BackendService extends CustomResource {
   /// for more information. Must be set to GRPC when the backend service is referenced
   /// by a URL map that is bound to target gRPC proxy.
   /// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
-  late final Output<String> protocol;
+  late final pulumi.Output<String> protocol;
 
   /// The security policy associated with this backend service.
-  late final Output<String?> securityPolicy;
+  late final pulumi.Output<String?> securityPolicy;
 
   /// The security settings that apply to this backend service. This field is applicable to either
   /// a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
   /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
   /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  late final Output<BackendServiceSecuritySettings?> securitySettings;
+  late final pulumi.Output<BackendServiceSecuritySettings?> securitySettings;
 
   /// The URI of the created resource.
-  late final Output<String> selfLink;
+  late final pulumi.Output<String> selfLink;
 
   /// URL to networkservices.ServiceLbPolicy resource.
   /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
-  late final Output<String?> serviceLbPolicy;
+  late final pulumi.Output<String?> serviceLbPolicy;
 
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
   /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
-  late final Output<String> sessionAffinity;
+  late final pulumi.Output<String> sessionAffinity;
 
   /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
   /// Structure is documented below.
-  late final Output<BackendServiceStrongSessionAffinityCookie?>
+  late final pulumi.Output<BackendServiceStrongSessionAffinityCookie?>
       strongSessionAffinityCookie;
 
   /// The backend service timeout has a different meaning depending on the type of load balancer.
   /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
   /// The default is 30 seconds.
   /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
-  late final Output<int> timeoutSec;
+  late final pulumi.Output<int> timeoutSec;
 
   /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
   /// Structure is documented below.
-  late final Output<BackendServiceTlsSettings?> tlsSettings;
+  late final pulumi.Output<BackendServiceTlsSettings?> tlsSettings;
 
   BackendService(
     String name, {
     BackendServiceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'gcp:compute/backendService:BackendService',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
     this.backends = registerOutput<List<BackendServiceBackend>?>('backends');

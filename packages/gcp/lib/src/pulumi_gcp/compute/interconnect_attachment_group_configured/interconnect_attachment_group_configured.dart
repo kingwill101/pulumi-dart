@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../interconnect_attachment_group_configured_availability_sla/interconnect_attachment_group_configured_availability_sla.dart';
 
 class InterconnectAttachmentGroupConfigured {
@@ -19,7 +19,7 @@ class InterconnectAttachmentGroupConfigured {
     final map = <String, dynamic>{};
     final availabilitySlasValue = availabilitySlas;
     if (availabilitySlasValue != null) {
-      map['availabilitySlas'] = Input.encodeList<
+      map['availabilitySlas'] = pulumi.Input.encodeList<
               InterconnectAttachmentGroupConfiguredAvailabilitySla,
               Map<String, dynamic>>(
           availabilitySlasValue, (value) => value.toMap());
@@ -32,7 +32,7 @@ class InterconnectAttachmentGroupConfigured {
     return InterconnectAttachmentGroupConfigured(
       availabilitySlas: map['availabilitySlas'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InterconnectAttachmentGroupConfiguredAvailabilitySla>(
               map['availabilitySlas'],
               (value) =>
