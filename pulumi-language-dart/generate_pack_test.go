@@ -1096,6 +1096,44 @@ func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
 	assert.Contains(t, content, "runtimeType_: map['runtimeType'] as String")
 }
 
+func TestGeneratePackageSanitizesDocCommentMarkup(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:index:Widget": {
+				"description": "Widget <span pulumi-lang-nodejs=\"sample.Widget\">sample.Widget</span> resource.\n\n<!--Start PulumiCodeChooser -->\nExample:\nconst widget = new sample.Widget(\"w\");\n<!--End PulumiCodeChooser -->",
+				"inputProperties": {
+					"value": {
+						"type": "string",
+						"description": "A <span pulumi-lang-nodejs=\"value\">value</span> field."
+					}
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.NotContains(t, content, "pulumi-lang-nodejs")
+	assert.NotContains(t, content, "<span")
+	assert.NotContains(t, content, "</span>")
+	assert.NotContains(t, content, "Start PulumiCodeChooser")
+	assert.NotContains(t, content, "End PulumiCodeChooser")
+	assert.Contains(t, content, "Widget sample.Widget resource.")
+	assert.Contains(t, content, "A value field.")
+	assert.Contains(t, content, "/// const widget = new sample.Widget(\"w\");")
+}
+
 func TestGeneratePackageEmitsConfigClass(t *testing.T) {
 	t.Parallel()
 

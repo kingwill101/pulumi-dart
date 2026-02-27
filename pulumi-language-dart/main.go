@@ -29,6 +29,7 @@ import (
 	"os/exec"
 	"os/signal"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -3259,11 +3260,24 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 	b.WriteString(fmt.Sprintf("final config = %s();\n\n", configSpec.ClassName))
 }
 
-func writeDartDocComment(b *strings.Builder, indent, comment string) {
+var (
+	pulumiCodeChooserMarkerPattern = regexp.MustCompile(`(?i)<!--\s*(Start|End)\s+PulumiCodeChooser\s*-->`)
+	htmlSpanTagPattern             = regexp.MustCompile(`(?i)</?span\b[^>]*>`)
+)
+
+func sanitizeDartDocComment(comment string) string {
 	// Normalize CRLF/CR from upstream docs to avoid embedding raw carriage
 	// returns that can break Dart parser/formatter behavior.
 	comment = strings.ReplaceAll(comment, "\r", "")
-	comment = strings.TrimSpace(comment)
+	// Strip Pulumi code chooser markers while preserving enclosed markdown content.
+	comment = pulumiCodeChooserMarkerPattern.ReplaceAllString(comment, "")
+	// Remove pulumi-lang span wrappers while keeping inner text.
+	comment = htmlSpanTagPattern.ReplaceAllString(comment, "")
+	return strings.TrimSpace(comment)
+}
+
+func writeDartDocComment(b *strings.Builder, indent, comment string) {
+	comment = sanitizeDartDocComment(comment)
 	if comment == "" {
 		return
 	}
