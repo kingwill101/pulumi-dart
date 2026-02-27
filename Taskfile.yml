@@ -224,7 +224,11 @@ tasks:
         export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}"
 
         echo "Generating Dart SDK for ${PACKAGE}..."
-        (cd "${PROJECT_DIR}" && pulumi package add "${SCHEMA_PATH}")
+        PACKAGE_ADD_OUTPUT="$(cd "${PROJECT_DIR}" && pulumi package add "${SCHEMA_PATH}" 2>&1)"
+        printf '%s\n' "${PACKAGE_ADD_OUTPUT}"
+        if printf '%s\n' "${PACKAGE_ADD_OUTPUT}" | grep -q "reference to provider resource '/resources/pulumi:providers:"; then
+          echo "Note: provider-resource deprecation warnings are currently emitted by upstream package-add schema processing and are non-blocking for Dart SDK generation." >&2
+        fi
 
         if [ "${PRESERVE_EXAMPLES}" = "true" ] && [ -d "${OUTPUT_DIR}/example" ]; then
           EXAMPLE_BACKUP_DIR="$(mktemp -d)"
