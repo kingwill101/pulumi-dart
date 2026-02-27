@@ -68,6 +68,7 @@ Current validation snapshot (2026-02-27):
 - `task smoke:preview PACKAGE=random|aws|gcp`: **PASS**.
 - `task verify:terraform` (opt-in): **PASS** (`terraform@6.0.1`, analyze 0 issues, smoke preview pass).
 - Known warning class during generation for some schemas (`gcp`, `aws`, `random`): upstream schema emits deprecated provider-reference warnings (`/resources/pulumi:providers:<pkg>` vs `#/provider`); generation succeeds and this does not currently block SDK output.
+- `go test ./... -run TestParameterizedDart -count=1 -v` (from `integration_tests`): **PASS** after aligning tests with generated package naming/layout (`lib/<pkg>.dart`, `lib/src/<pkg>/sdk.dart`) and dynamic import rewrite in fixture sources.
 
 Current behavior in Dart language host:
 
@@ -75,6 +76,8 @@ Current behavior in Dart language host:
 - typed generation now covers resources/functions, named object/enum types, config getters, and typed args/results.
 - nested collection mappings for named refs are generated for `List<T>` / `Map<String, T>` in args/results/config.
 - schema binding path uses Pulumi `schema.BindSpec` when `loader_target` is provided, with permissive raw-schema fallback when loader resolution is unavailable.
+- generated Dart doc comments now sanitize Pulumi HTML wrappers/markers (`<span pulumi-lang-*>`, `<!--Start/End PulumiCodeChooser -->`) while preserving readable markdown content.
+- host-side schema pre-processing normalizes deprecated provider `$ref` values (`/resources/pulumi:providers:<pkg>` -> `#/provider`) before bind/parse.
 
 Evidence:
 
