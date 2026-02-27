@@ -83,6 +83,11 @@ abstract class Resource {
     if (_name.isEmpty) {
       throw ArgumentError("'name' cannot be empty.");
     }
+    if (options.id != null && !custom) {
+      throw ArgumentError(
+        'Cannot read an existing resource unless it has a custom provider',
+      );
+    }
 
     // Initialize all Output properties
     completionSources = OutputCompletionSource.initializeOutputs(this);
@@ -175,7 +180,7 @@ abstract class Resource {
       }
     }
 
-    _protect = options.protect ?? false;
+    _protect = options.protect ?? _protect;
     _provider = custom ? effectiveProvider : null;
     _version = options.version;
     _pluginDownloadURL = options.pluginDownloadURL;
@@ -419,6 +424,7 @@ abstract class Resource {
   }
 
   bool get isCustom => _custom;
+  bool get isProtected => _protect;
 
   String getResourceType() => _type;
 
@@ -461,6 +467,7 @@ ResourceOptions _copyResourceOptionsWithProvider(
   ProviderResource? provider,
 ) {
   return ResourceOptions(
+    id: options.id,
     parent: options.parent,
     dependsOn: options.dependsOn,
     protect: options.protect,
@@ -473,6 +480,7 @@ ResourceOptions _copyResourceOptionsWithProvider(
     deletedWith: options.deletedWith,
     additionalSecretOutputs: options.additionalSecretOutputs,
     ignoreChanges: options.ignoreChanges,
+    replaceOnChanges: options.replaceOnChanges,
     version: options.version,
     pluginDownloadURL: options.pluginDownloadURL,
     replacementTrigger: options.replacementTrigger,

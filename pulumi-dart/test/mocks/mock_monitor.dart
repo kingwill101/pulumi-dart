@@ -17,6 +17,8 @@ class MockMonitor implements mon.Monitor {
 
   MockMonitor(this._mocks);
 
+  Iterable<String> get registeredResourceUrns => _registeredResources.keys;
+
   @override
   ResourceMonitorClient get client =>
       throw StateError('MockMonitor.client is not used by this harness');

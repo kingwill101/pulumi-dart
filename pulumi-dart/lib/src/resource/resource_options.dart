@@ -1,4 +1,5 @@
 import 'package:pulumi/src/alias.dart';
+import 'package:pulumi/src/input.dart';
 
 import 'provider_resource.dart';
 import 'resource.dart';
@@ -14,6 +15,7 @@ class CustomTimeouts {
 }
 
 class ResourceOptions {
+  final Input<String>? id;
   final Resource? parent;
   final List<Resource>? dependsOn;
   final bool? protect;
@@ -26,6 +28,7 @@ class ResourceOptions {
   final Resource? deletedWith;
   final List<String>? additionalSecretOutputs;
   final List<String>? ignoreChanges;
+  final List<String>? replaceOnChanges;
   final String? version;
   final String? pluginDownloadURL;
   final dynamic replacementTrigger;
@@ -34,6 +37,7 @@ class ResourceOptions {
   final ResourceHookBinding? hooks;
 
   const ResourceOptions({
+    this.id,
     this.parent,
     this.dependsOn,
     this.protect,
@@ -46,6 +50,7 @@ class ResourceOptions {
     this.deletedWith,
     this.additionalSecretOutputs,
     this.ignoreChanges,
+    this.replaceOnChanges,
     this.version,
     this.pluginDownloadURL,
     this.replacementTrigger,
@@ -63,6 +68,7 @@ class ResourceOptions {
     var options2 = createComponentResourceOptionsCopy(this);
 
     return ResourceOptions(
+      id: options.id ?? id,
       parent: options.parent ?? parent,
       dependsOn: [...?dependsOn, ...?options.dependsOn],
       protect: options.protect ?? protect,
@@ -86,6 +92,7 @@ class ResourceOptions {
         ...?options.additionalSecretOutputs,
       ],
       ignoreChanges: [...?ignoreChanges, ...?options.ignoreChanges],
+      replaceOnChanges: [...?replaceOnChanges, ...?options.replaceOnChanges],
       version: options.version ?? version,
       pluginDownloadURL: options.pluginDownloadURL ?? pluginDownloadURL,
       replacementTrigger: options.replacementTrigger ?? replacementTrigger,
@@ -131,6 +138,7 @@ List<ProviderResource> mergeProviders(
 
 ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
   return ResourceOptions(
+    id: options.id,
     parent: options.parent,
     dependsOn: options.dependsOn != null ? List.from(options.dependsOn!) : null,
     protect: options.protect,
@@ -149,6 +157,9 @@ ResourceOptions createComponentResourceOptionsCopy(ResourceOptions options) {
         ? List.from(options.additionalSecretOutputs!)
         : null,
     ignoreChanges: options.ignoreChanges,
+    replaceOnChanges: options.replaceOnChanges != null
+        ? List.from(options.replaceOnChanges!)
+        : null,
     replacementTrigger: options.replacementTrigger,
     hooks: options.hooks == null
         ? null

@@ -14,6 +14,7 @@ vars:
   PRESERVE_EXAMPLES: "true"
   FORMAT_GENERATED: "true"
   STRICT_FORMAT: "false"
+  ANALYZE_FAIL_ON_ISSUES: "false"
   COVERAGE_LCOV: ""
   DART_COVERAGE_BASELINE: "29.27"
   DAY1_PROVIDERS: "gcp gcp-global-cloudrun google-native"
@@ -108,6 +109,11 @@ tasks:
     desc: Compare Dart integration test surface against upstream Go/Node/Python tests
     cmds:
       - ./scripts/parity_audit.sh
+
+  parity:audit:sdk:
+    desc: Compare Dart core test surface against upstream NodeJS/Python SDK test topics
+    cmds:
+      - ./scripts/sdk_parity_audit.sh
 
   check-tools:
     desc: Verify required tooling for SDK generation
@@ -355,8 +361,10 @@ tasks:
         PACKAGE="{{.PACKAGE}}"
         SDK_DIR="{{.PACKAGES_DIR}}/${PACKAGE}"
         REPORT_PATH="{{.ANALYSIS_DIR}}/${PACKAGE}.analyze.machine.txt"
+        REPORT_EXIT_PATH="${REPORT_PATH}.exitcode"
         OVERRIDES_PATH="${SDK_DIR}/pubspec_overrides.yaml"
         ORIGINAL_OVERRIDES=""
+        ANALYZE_FAIL_ON_ISSUES="{{.ANALYZE_FAIL_ON_ISSUES}}"
 
         if [ ! -f "${SDK_DIR}/pubspec.yaml" ]; then
           echo "SDK not found at ${SDK_DIR}" >&2
@@ -388,18 +396,29 @@ tasks:
         mkdir -p "{{.ANALYSIS_DIR}}"
         (
           cd "${SDK_DIR}" && \
-          dart pub get && \
-          dart analyze --format machine . > "${REPORT_PATH}" || true
+          dart pub get
+          set +e
+          dart analyze --format machine . > "${REPORT_PATH}"
+          ANALYZE_EXIT="$?"
+          set -e
+          printf '%s\n' "${ANALYZE_EXIT}" > "${REPORT_EXIT_PATH}"
         )
 
         TOTAL="$(grep -cE '^(ERROR|WARNING|INFO)\\|' "${REPORT_PATH}" || true)"
+        ANALYZE_EXIT="$(cat "${REPORT_EXIT_PATH}" 2>/dev/null || printf '0')"
         echo "Analysis report: ${REPORT_PATH}"
+        echo "Analyzer exit code: ${ANALYZE_EXIT}"
         echo "Total issues: ${TOTAL}"
         echo "Top issue codes:"
         awk -F'|' '/^(ERROR|WARNING|INFO)\|/ { counts[$3]++ } END { for (code in counts) print counts[code], code }' "${REPORT_PATH}" \
           | sort -nr \
           | head -n 20 \
           | awk '{ printf "  %s %s\n", $1, $2 }'
+
+        if [ "${ANALYZE_FAIL_ON_ISSUES}" = "true" ] && [ "${TOTAL}" -gt 0 ]; then
+          echo "Analyzer strict mode: failing because issues were found in ${PACKAGE}." >&2
+          exit 1
+        fi
 
   analyze:gcp:
     desc: Analyze generated Dart SDK for Pulumi GCP
@@ -472,7 +491,7 @@ tasks:
       - |
         set -eu
         for provider in random aws gcp; do
-          task "analyze:${provider}"
+          task "analyze:${provider}" ANALYZE_FAIL_ON_ISSUES=true
         done
       - task: smoke:preview:matrix
 

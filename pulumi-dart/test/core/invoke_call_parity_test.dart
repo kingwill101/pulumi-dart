@@ -147,7 +147,10 @@ void main() {
         final request = monitor.capturedInvokeRequest;
         expect(request, isNotNull);
         expect(request!.tok, equals('test:index:getThing'));
-        expect(request.provider, equals(await provider.urn.getValue()));
+        expect(
+          request.provider,
+          equals(await ProviderResource.register(provider)),
+        );
         expect(request.version, equals('1.2.3'));
         expect(request.pluginDownloadURL, equals('https://example.com/plugin'));
         expect(request.acceptResources, isTrue);
@@ -297,7 +300,10 @@ void main() {
         expect(result, equals({'ok': 'value'}));
         final request = monitor.capturedCallRequest;
         expect(request, isNotNull);
-        expect(request!.provider, equals(await optionsProvider.urn.getValue()));
+        expect(
+          request!.provider,
+          equals(await ProviderResource.register(optionsProvider)),
+        );
         expect(request.version, equals('9.9.9'));
         expect(
           request.pluginDownloadURL,
@@ -333,7 +339,10 @@ void main() {
 
       final request = monitor.capturedCallRequest;
       expect(request, isNotNull);
-      expect(request!.provider, equals(await selfProvider.urn.getValue()));
+      expect(
+        request!.provider,
+        equals(await ProviderResource.register(selfProvider)),
+      );
     });
 
     test('call includes packageRef when registerPackage succeeds', () async {

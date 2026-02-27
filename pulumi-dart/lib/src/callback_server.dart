@@ -455,6 +455,9 @@ class CallbackServer implements ICallbackServer {
         ignoreChanges: protoOpts.ignoreChanges.isEmpty
             ? null
             : List<String>.from(protoOpts.ignoreChanges),
+        replaceOnChanges: protoOpts.replaceOnChanges.isEmpty
+            ? null
+            : List<String>.from(protoOpts.replaceOnChanges),
         replacementTrigger: replacementTrigger,
       );
     }
@@ -486,6 +489,9 @@ class CallbackServer implements ICallbackServer {
       ignoreChanges: protoOpts.ignoreChanges.isEmpty
           ? null
           : List<String>.from(protoOpts.ignoreChanges),
+      replaceOnChanges: protoOpts.replaceOnChanges.isEmpty
+          ? null
+          : List<String>.from(protoOpts.replaceOnChanges),
       replacementTrigger: replacementTrigger,
     );
   }
@@ -531,6 +537,9 @@ class CallbackServer implements ICallbackServer {
     }
     if (options.ignoreChanges != null) {
       proto.ignoreChanges.addAll(options.ignoreChanges!);
+    }
+    if (options.replaceOnChanges != null) {
+      proto.replaceOnChanges.addAll(options.replaceOnChanges!);
     }
     if (options.pluginDownloadURL != null) {
       proto.pluginDownloadUrl = options.pluginDownloadURL!;

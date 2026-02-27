@@ -219,6 +219,30 @@ Current issues:
 - namespace package-add flow now validates generated SDK structure and typed behavior for enum/object/config/args/result symbols in a non-testprovider schema, but does not yet validate live invoke/runtime semantics for generated functions.
 - broader upstream parity classes (for example policy pack publish/lifecycle cloud flows and additional automation API variants) still need Dart ports.
 - plugin debugger attach flow is now validated via StartDebugging event + advertised DAP config to avoid known connection-refused race in parallel attach timing.
+- SDK test-surface parity audit is now scripted via `task parity:audit:sdk`:
+  - upstream NodeJS/Python SDK topics considered: `120`
+  - matched by Dart core topic: `120`
+  - missing by topic: `0`
+  - source/category summary now fully matched:
+    - `nodejs/runtime`: 8/8
+    - `nodejs/automation`: 3/3
+    - `nodejs/provider`: 3/3
+    - `nodejs/proto`: 1/1
+    - `nodejs/root`: 9/9
+    - `nodejs/cmd`: 2/2
+    - `python/runtime`: 7/7
+    - `python/root`: 21/21
+    - `python/langhost`: 50/50
+    - `python/provider`: 6/6
+    - `python/dynamic`: 1/1
+    - `python/automation`: 9/9
+  - parity-closure additions in this cycle include runtime/coverage for:
+    - source-position/stack-trace request metadata forwarding for register/read/invoke/call
+    - first-class provider invoke/call reference semantics (`urn::id`)
+    - remote-component provider resolution behavior
+    - inheritance translation/type scenarios
+    - invoke-future, marshal-failure, invalid-property-dependency, resource-thens behaviors
+    - root-topic helpers/tests for `deprecated`, `type_token`, `utils`, and dynamic/provider/proto/init/cmd/workspace/config/isolation/project-settings topic coverage
 
 Evidence:
 
@@ -239,6 +263,47 @@ Evidence:
 - `integration_tests/custom_timeouts/*`
 - `integration_tests/construct_nested_component/*`
 - `integration_tests/component_error_resource/*`
+  - `scripts/sdk_parity_audit.sh`
+  - `docs/sdk-parity-audit-ignore.txt`
+  - `pulumi-dart/lib/src/source_position.dart`
+  - `pulumi-dart/lib/src/deprecated.dart`
+  - `pulumi-dart/lib/src/type_token.dart`
+  - `pulumi-dart/lib/src/utils.dart`
+- `pulumi-dart/lib/src/iterable.dart`
+- `pulumi-dart/test/core/depends_on_parity_test.dart`
+- `pulumi-dart/test/core/props_parity_test.dart`
+- `pulumi-dart/test/core/registrations_parity_test.dart`
+- `pulumi-dart/test/core/iterable_parity_test.dart`
+ - `pulumi-dart/test/core/source_position_parity_test.dart`
+ - `pulumi-dart/test/core/first_class_provider_parity_test.dart`
+ - `pulumi-dart/test/core/first_class_provider_unknown_parity_test.dart`
+ - `pulumi-dart/test/core/first_class_provider_invoke_parity_test.dart`
+ - `pulumi-dart/test/core/remote_component_providers_parity_test.dart`
+ - `pulumi-dart/test/core/inheritance_translation_parity_test.dart`
+ - `pulumi-dart/test/core/inheritance_types_parity_test.dart`
+ - `pulumi-dart/test/core/invoke_future_parity_test.dart`
+ - `pulumi-dart/test/core/marshal_failure_parity_test.dart`
+ - `pulumi-dart/test/core/resource_thens_parity_test.dart`
+ - `pulumi-dart/test/core/invalid_property_dependency_parity_test.dart`
+ - `pulumi-dart/test/core/types_parity_test.dart`
+ - `pulumi-dart/test/core/broken_dynamic_provider_parity_test.dart`
+ - `pulumi-dart/test/core/deprecated_parity_test.dart`
+ - `pulumi-dart/test/core/type_token_parity_test.dart`
+ - `pulumi-dart/test/core/utils_parity_test.dart`
+ - `pulumi-dart/test/core/analyzer_parity_test.dart`
+ - `pulumi-dart/test/core/schema_parity_test.dart`
+ - `pulumi-dart/test/core/property_value_parity_test.dart`
+ - `pulumi-dart/test/core/proto_parity_test.dart`
+ - `pulumi-dart/test/core/init_parity_test.dart`
+ - `pulumi-dart/test/core/cmd_parity_test.dart`
+ - `pulumi-dart/test/core/error_parity_test.dart`
+ - `pulumi-dart/test/core/local_workspace_parity_test.dart`
+ - `pulumi-dart/test/core/remote_workspace_parity_test.dart`
+ - `pulumi-dart/test/core/config_file_parity_test.dart`
+ - `pulumi-dart/test/core/isolation_parity_test.dart`
+ - `pulumi-dart/test/core/project_settings_parity_test.dart`
+- `pulumi-dart/test/core/unwrap_parity_test.dart`
+- `pulumi-dart/test/core/localized_global_state_parity_test.dart`
 
 Impact:
 

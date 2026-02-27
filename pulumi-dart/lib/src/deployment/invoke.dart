@@ -1,6 +1,8 @@
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/src/deserializer.dart';
 import 'package:pulumi/src/monitor.dart';
+import 'package:pulumi/src/resource/provider_resource.dart';
+import 'package:pulumi/src/source_position.dart';
 import 'package:pulumi/src/struct_converter.dart';
 
 import '../pulumirpc/pulumi/resource.pb.dart' as pb;
@@ -15,15 +17,18 @@ mixin InvokeMixin {
     models.InvokeOptions? options,
     models.RegisterPackageRequest? registerPackageRequest,
   }) async {
-    final urn = await options?.provider?.urn.getValue() ?? '';
+    final providerRef = options?.provider != null
+        ? await ProviderResource.register(options!.provider) ?? ''
+        : '';
     final serializedArgs = await StructConverter.toStruct(args);
     final request = pb.ResourceInvokeRequest()
       ..tok = token
       ..args = serializedArgs
-      ..provider = urn
+      ..provider = providerRef
       ..version = options?.version ?? ''
       ..pluginDownloadURL = options?.pluginDownloadURL ?? ''
       ..acceptResources = true;
+    applyRequestSourceMetadata(request, StackTrace.current);
 
     if (registerPackageRequest != null) {
       final packageRef = await _resolvePackageRef(registerPackageRequest);

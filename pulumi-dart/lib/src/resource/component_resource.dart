@@ -49,6 +49,7 @@ class ComponentResource extends Resource {
 
 class ComponentResourceOptions extends ResourceOptions {
   ComponentResourceOptions({
+    super.id,
     super.parent,
     super.dependsOn,
     super.protect,
@@ -65,6 +66,7 @@ class ComponentResourceOptions extends ResourceOptions {
     super.deletedWith,
     super.additionalSecretOutputs,
     super.ignoreChanges,
+    super.replaceOnChanges,
     List<ResourceTransform>? resourceTransforms,
     super.hooks,
   }) : super(

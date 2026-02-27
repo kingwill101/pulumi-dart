@@ -17,6 +17,7 @@ import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:pulumi/src/resource/resource_hooks.dart';
 import 'package:pulumi/src/resource/resource_transformation.dart';
 import 'package:pulumi/src/serializer.dart';
+import 'package:pulumi/src/source_position.dart';
 import 'package:pulumi/src/struct_converter.dart';
 
 import '../engine.dart';
@@ -155,7 +156,6 @@ class DeploymentImpl extends Deployment
   final String _stackName;
 
   Stack? _stack;
-  late final Output<String> _stackUrn;
 
   @override
   final monitorpkg.Monitor monitor;
@@ -174,9 +174,6 @@ class DeploymentImpl extends Deployment
        _stackName = stackName,
        _isDryRun = isDryRun {
     _logger = EngineLogger(this, engine);
-    _stackUrn = Output.create(
-      'urn:pulumi:$stackName::$projectName::pulumi:pulumi:Stack::$projectName-$stackName',
-    );
     initializeConfig();
   }
 
@@ -357,6 +354,15 @@ class DeploymentImpl extends Deployment
     required ResourceOptions opts,
     models.RegisterPackageRequest? registerPackageRequest,
   }) async {
+    if (resource.isCustom && opts.id != null) {
+      await _readResource(
+        resource: resource as CustomResource,
+        args: args,
+        opts: opts,
+      );
+      return;
+    }
+
     final serializedProps = <String, dynamic>{};
     final propertyDependencies =
         <String, RegisterResourceRequest_PropertyDependencies>{};
@@ -392,10 +398,11 @@ class DeploymentImpl extends Deployment
       ..custom = resource.isCustom
       ..remote = remote
       ..object = serializedStruct
-      ..protect = opts.protect ?? false
+      ..protect = resource.isProtected
       ..acceptSecrets = true
       ..acceptResources = true
       ..supportsPartialValues = true;
+    applyRequestSourceMetadata(request, StackTrace.current);
 
     request.propertyDependencies.addAll(propertyDependencies);
 
@@ -410,11 +417,23 @@ class DeploymentImpl extends Deployment
 
     if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
       final deps = <String>[];
+      final seenDeps = <String>{};
       for (final dep in opts.dependsOn!) {
-        deps.add(await dep.urn.getValue());
+        final transitivelyReferencedUrns =
+            await Serializer.getAllTransitivelyReferencedResourceUrns({dep});
+        for (final urn in transitivelyReferencedUrns) {
+          if (seenDeps.add(urn)) {
+            deps.add(urn);
+          }
+        }
       }
       request.dependencies.addAll(deps);
     }
+
+    final typeComponents = resource.getResourceType().split(':');
+    final resourcePackage = typeComponents.length == 3
+        ? typeComponents[0]
+        : null;
 
     if (opts.provider != null) {
       final providerRef = await ProviderResource.register(opts.provider) ?? '';
@@ -422,6 +441,9 @@ class DeploymentImpl extends Deployment
         request.provider = providerRef;
       } else {
         request.providers[opts.provider!.package] = providerRef;
+        if (remote && opts.provider!.package == resourcePackage) {
+          request.provider = providerRef;
+        }
       }
     }
 
@@ -429,6 +451,13 @@ class DeploymentImpl extends Deployment
       for (final provider in opts.providers) {
         request.providers[provider.package] =
             await ProviderResource.register(provider) ?? '';
+      }
+    }
+
+    if (remote && request.provider.isEmpty && resourcePackage != null) {
+      final packageProvider = request.providers[resourcePackage];
+      if (packageProvider != null && packageProvider.isNotEmpty) {
+        request.provider = packageProvider;
       }
     }
 
@@ -443,9 +472,19 @@ class DeploymentImpl extends Deployment
     if (opts.version != null) {
       request.version = opts.version!;
     }
-    final validatedIgnoreChanges = _validateIgnoreChanges(opts.ignoreChanges);
+    final validatedIgnoreChanges = _validatePropertyPaths(
+      opts.ignoreChanges,
+      optionName: 'ignoreChanges',
+    );
     if (validatedIgnoreChanges.isNotEmpty) {
       request.ignoreChanges.addAll(validatedIgnoreChanges);
+    }
+    final validatedReplaceOnChanges = _validatePropertyPaths(
+      opts.replaceOnChanges,
+      optionName: 'replaceOnChanges',
+    );
+    if (validatedReplaceOnChanges.isNotEmpty) {
+      request.replaceOnChanges.addAll(validatedReplaceOnChanges);
     }
     if (opts.pluginDownloadURL != null) {
       request.pluginDownloadURL = opts.pluginDownloadURL!;
@@ -522,6 +561,96 @@ class DeploymentImpl extends Deployment
     }
   }
 
+  Future<void> _readResource({
+    required CustomResource resource,
+    required Inputs args,
+    required ResourceOptions opts,
+  }) async {
+    final serializedProps = <String, dynamic>{};
+    final dependencyUrns = <String>{};
+
+    for (final entry in args.entries) {
+      final serializer = Serializer();
+      final serialized = await serializer.serializeAsync(
+        'resource:${resource.getResourceName()}.${entry.key}',
+        entry.value,
+        true,
+      );
+      if (serialized == null) {
+        continue;
+      }
+
+      serializedProps[entry.key] = serialized;
+
+      final urns = await Serializer.getAllTransitivelyReferencedResourceUrns(
+        serializer.dependentResources,
+      );
+      dependencyUrns.addAll(urns);
+    }
+
+    if (opts.dependsOn != null && opts.dependsOn!.isNotEmpty) {
+      for (final dep in opts.dependsOn!) {
+        dependencyUrns.addAll(
+          await Serializer.getAllTransitivelyReferencedResourceUrns({dep}),
+        );
+      }
+    }
+
+    final idData = await opts.id!.toOutput().getData();
+    final readId = idData.value;
+    if (!idData.isKnown || readId == null || readId.isEmpty) {
+      throw ArgumentError(
+        'Cannot read resource "${resource.getResourceName()}" with an unknown or empty id.',
+      );
+    }
+
+    final request = ReadResourceRequest()
+      ..type = resource.getResourceType()
+      ..name = resource.getResourceName()
+      ..id = readId
+      ..properties = await StructConverter.toStruct(serializedProps)
+      ..acceptSecrets = true
+      ..acceptResources = true;
+    applyRequestSourceMetadata(request, StackTrace.current);
+
+    if (dependencyUrns.isNotEmpty) {
+      final sorted = dependencyUrns.toList()..sort();
+      request.dependencies.addAll(sorted);
+    }
+
+    if (opts.parent != null) {
+      request.parent = await opts.parent!.urn.getValue();
+    }
+    if (opts.provider != null) {
+      final providerRef = await ProviderResource.register(opts.provider);
+      if (providerRef != null) {
+        request.provider = providerRef;
+      }
+    }
+    if (opts.version != null) {
+      request.version = opts.version!;
+    }
+    if (opts.pluginDownloadURL != null) {
+      request.pluginDownloadURL = opts.pluginDownloadURL!;
+    }
+    if (opts.additionalSecretOutputs != null &&
+        opts.additionalSecretOutputs!.isNotEmpty) {
+      request.additionalSecretOutputs.addAll(opts.additionalSecretOutputs!);
+    }
+
+    ReadResourceResponse response;
+    try {
+      response = await monitor.readResource(resource, request);
+    } catch (error) {
+      resource.failOutputs(error);
+      rethrow;
+    }
+
+    resource.resolveUrn(response.urn);
+    resource.resolveOutputs(response.properties);
+    resource.resolveId(readId, isKnown: true);
+  }
+
   Future<String?> _resolvePackageRef(
     models.RegisterPackageRequest request,
   ) async {
@@ -529,23 +658,26 @@ class DeploymentImpl extends Deployment
     return response.ref;
   }
 
-  List<String> _validateIgnoreChanges(List<String>? ignoreChanges) {
-    if (ignoreChanges == null || ignoreChanges.isEmpty) {
+  List<String> _validatePropertyPaths(
+    List<String>? paths, {
+    required String optionName,
+  }) {
+    if (paths == null || paths.isEmpty) {
       return const <String>[];
     }
 
     final validated = <String>[];
-    for (var i = 0; i < ignoreChanges.length; i++) {
-      final rawPath = ignoreChanges[i];
+    for (var i = 0; i < paths.length; i++) {
+      final rawPath = paths[i];
       final path = rawPath.trim();
       if (path.isEmpty) {
         throw ArgumentError(
-          'ignoreChanges[$i] must be a non-empty property path.',
+          '$optionName[$i] must be a non-empty property path.',
         );
       }
       if (path.startsWith('.') || path.endsWith('.') || path.contains('..')) {
         throw ArgumentError(
-          'ignoreChanges[$i] contains an invalid property path: "$rawPath".',
+          '$optionName[$i] contains an invalid property path: "$rawPath".',
         );
       }
       validated.add(path);

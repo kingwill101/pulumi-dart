@@ -1,0 +1,3 @@
+# Upstream SDK test topic names intentionally not yet ported to pulumi-dart core tests.
+# One exact topic name per line (see scripts/sdk_parity_audit.sh).
+

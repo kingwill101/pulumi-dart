@@ -5,6 +5,7 @@ library;
 
 export 'src/output.dart';
 export 'src/output_helpers.dart';
+export 'src/iterable.dart';
 export 'src/input.dart';
 export 'src/input_collections.dart';
 export 'src/input_union.dart';
@@ -16,10 +17,14 @@ export 'src/asset_archive.dart';
 export 'src/config.dart';
 export 'src/deployment/deployment.dart';
 export 'src/deployment/stack.dart';
+export 'src/deprecated.dart';
 
 export 'src/engine.dart';
 export 'src/engine_logger.dart';
 export 'src/monitor.dart';
+export 'src/type_token.dart';
+export 'src/urn.dart';
+export 'src/utils.dart';
 
 export 'src/resource/resource.dart';
 export 'src/resource/resource_options.dart';

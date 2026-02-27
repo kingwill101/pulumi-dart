@@ -4,18 +4,18 @@ import 'package:pulumi/src/deployment/models.dart' as models;
 import 'package:pulumi/src/output.dart';
 
 import '../input.dart';
-import 'provider_resource.dart';
 import 'resource.dart';
 import 'resource_options.dart';
 import 'resource_transformation.dart';
 
 class CustomResourceOptions extends ResourceOptions {
   CustomResourceOptions({
+    super.id,
     super.parent,
     super.dependsOn,
     super.protect,
     super.provider,
-    List<ProviderResource>? providers,
+    super.providers,
     List<ResourceTransformation>? transformations,
     List<ResourceTransform>? resourceTransforms,
     super.hooks,
@@ -29,8 +29,8 @@ class CustomResourceOptions extends ResourceOptions {
     super.deletedWith,
     super.additionalSecretOutputs,
     super.ignoreChanges,
+    super.replaceOnChanges,
   }) : super(
-         providers: providers,
          resourceTransformations: transformations ?? [],
          resourceTransforms: resourceTransforms ?? [],
        );

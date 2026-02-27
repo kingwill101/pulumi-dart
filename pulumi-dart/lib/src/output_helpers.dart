@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'input.dart';
+import 'input_args.dart';
 import 'output.dart';
 import 'resource/resource.dart';
 
@@ -32,6 +33,11 @@ Output<dynamic> jsonParse(dynamic value) {
   return output(value).apply((resolved) => jsonDecode(resolved as String));
 }
 
+Future<String> runtimeToJson(dynamic value) async {
+  final resolved = await _resolveOutputData(value);
+  return jsonEncode(resolved.value);
+}
+
 (Output<T>, void Function(Output<T>)) deferredOutput<T>() {
   final completer = Completer<OutputData<T>>();
   final result = Output<T>(completer.future);
@@ -56,16 +62,37 @@ Output<dynamic> jsonParse(dynamic value) {
 
 Future<OutputData<dynamic>> _resolveOutputData(dynamic value) async {
   if (value is Output) {
-    return value.getData();
+    final outputData = await value.getData();
+    if (!outputData.isKnown) {
+      return OutputData<dynamic>(
+        value: null,
+        isKnown: false,
+        isSecret: outputData.isSecret,
+        resources: outputData.resources,
+      );
+    }
+
+    final nestedData = await _resolveOutputData(outputData.value);
+    return OutputData<dynamic>(
+      value: nestedData.value,
+      isKnown: nestedData.isKnown,
+      isSecret: outputData.isSecret || nestedData.isSecret,
+      resources: {...outputData.resources, ...nestedData.resources},
+    );
   }
 
   if (value is Input) {
-    return value.toOutput().getData();
+    return _resolveOutputData(value.toOutput());
   }
 
   if (value is Future) {
     final resolved = await value;
     return _resolveOutputData(resolved);
+  }
+
+  if (value is InputArgs) {
+    final dictionary = await value.toDictionary();
+    return _resolveOutputData(dictionary);
   }
 
   if (value is Map) {

@@ -26,6 +26,7 @@ import '../mocks/mock_engine.dart';
 
 class _FakeMonitor implements monitorpkg.Monitor {
   RegisterResourceRequest? capturedRegisterResourceRequest;
+  final List<RegisterResourceRequest> capturedRegisterResourceRequests = [];
   RegisterPackageRequest? capturedRegisterPackageRequest;
   Object? registerPackageError;
   Object? registerResourceError;
@@ -84,6 +85,7 @@ class _FakeMonitor implements monitorpkg.Monitor {
     RegisterResourceRequest request,
   ) async {
     capturedRegisterResourceRequest = request;
+    capturedRegisterResourceRequests.add(request);
     if (registerResourceError != null) {
       throw registerResourceError!;
     }
@@ -136,6 +138,39 @@ class _TransformEnabledResource extends CustomResource {
 class _ComponentWithProvider extends ComponentResource {
   _ComponentWithProvider(String name, ComponentResourceOptions options)
     : super('pkg:index:ComponentWithProvider', name, const {}, options);
+}
+
+class _DependsOnLeafResource extends CustomResource {
+  _DependsOnLeafResource(String name, CustomResourceOptions options)
+    : super('pkg:index:DependsOnLeaf', name, const {}, options);
+}
+
+class _DependsOnNestedComponent extends ComponentResource {
+  _DependsOnNestedComponent(
+    String name,
+    int depth, {
+    ComponentResourceOptions? options,
+  }) : super(
+         'pkg:index:DependsOnComponent',
+         '$name-$depth',
+         {'depth': Input.fromValue(depth)},
+         options ?? ComponentResourceOptions(),
+       ) {
+    if (depth > 0) {
+      _DependsOnNestedComponent(
+        name,
+        depth - 1,
+        options: ComponentResourceOptions(parent: this),
+      );
+    } else {
+      _DependsOnLeafResource('$name-leaf', CustomResourceOptions(parent: this));
+    }
+  }
+}
+
+class _DependsOnTargetResource extends CustomResource {
+  _DependsOnTargetResource(String name, CustomResourceOptions options)
+    : super('pkg:index:DependsOnTarget', name, const {}, options);
 }
 
 void main() {
@@ -342,6 +377,31 @@ void main() {
           request.propertyDependencies['withDep']!.urns,
           equals([await propertyDependency.urn.getValue()]),
         );
+      },
+    );
+
+    test(
+      'dependsOn includes transitive child resource urns for component dependencies',
+      () async {
+        final componentDependency = _DependsOnNestedComponent('dep', 3);
+        _DependsOnTargetResource(
+          'target',
+          CustomResourceOptions(dependsOn: [componentDependency]),
+        );
+
+        await deployment.registerOutputs();
+
+        final requests = monitor.capturedRegisterResourceRequests;
+        final leafRequest = requests.firstWhere(
+          (request) => request.type == 'pkg:index:DependsOnLeaf',
+        );
+        final targetRequest = requests.firstWhere(
+          (request) => request.type == 'pkg:index:DependsOnTarget',
+        );
+
+        final expectedLeafUrn =
+            'urn:pulumi:stack::project::${leafRequest.type}::${leafRequest.name}';
+        expect(targetRequest.dependencies, contains(expectedLeafUrn));
       },
     );
 
