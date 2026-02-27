@@ -61,11 +61,12 @@ Covered capabilities:
 
 Status: **In Progress**
 
-Current validation snapshot (2026-02-26):
+Current validation snapshot (2026-02-27):
 
 - `task generate:all`: **PASS** (gcp, gcp-global-cloudrun, google-native, aws, awsx, random).
 - `task analyze:random`, `task analyze:aws`, `task analyze:gcp`: **0 issues** each.
 - `task smoke:preview PACKAGE=random|aws|gcp`: **PASS**.
+- `task verify:terraform` (opt-in): **PASS** (`terraform@6.0.1`, analyze 0 issues, smoke preview pass).
 - Known warning class during generation for some schemas (`gcp`, `aws`, `random`): upstream schema emits deprecated provider-reference warnings (`/resources/pulumi:providers:<pkg>` vs `#/provider`); generation succeeds and this does not currently block SDK output.
 
 Current behavior in Dart language host:
@@ -244,20 +245,20 @@ Impact:
 
 Status: **In Progress**
 
-Latest local baseline snapshot (2026-02-26):
+Latest local baseline snapshot (2026-02-27):
 
 - `task test:coverage`: **PASS**
   - artifact: `pulumi-dart/coverage/lcov.info`
-  - aggregate line coverage: `29.27%` (`LH=2470`, `LF=8438`)
+  - aggregate line coverage: `29.39%`
 - `task test:mutation:dry:coverage`: **PASS (expected dry-run non-zero behavior handled by task)**
-  - mutants found: `896`
-  - not covered by tests: `256`
+  - mutants found: `902`
+  - not covered by tests: `250`
   - report: `pulumi-dart/mutation-test-report/mutation-test-report.html`
 
 Current ratchet policy:
 
 - baseline enforcement command: `task test:coverage:ratchet`
-- baseline value: `29.27%` (non-regression floor)
+- baseline value: `29.27%` (non-regression floor, current observed `29.39%`)
 
 Priority mutation hotspots:
 

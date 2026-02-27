@@ -19,7 +19,11 @@ task generate:gcp-global-cloudrun
 task generate:google-native
 task generate:aws
 task generate:awsx
+task generate:terraform
 task generate:all
+
+# Optional heavier Terraform end-to-end verification.
+task verify:terraform
 
 # Optional generation controls:
 # - keep manually curated examples across regenerations (default true)

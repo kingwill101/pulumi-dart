@@ -34,6 +34,9 @@ consumer code can import modules with explicit aliases.
 task smoke:init PACKAGE=gcp
 task smoke:preview PACKAGE=gcp
 
+# Optional Terraform end-to-end verification (opt-in because it is heavier):
+task verify:terraform
+
 # Full generator verification matrix (generate + analyze + smoke):
 task verify:matrix
 ```
