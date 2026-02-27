@@ -36,6 +36,7 @@ tasks:
       - |
         set -eu
         cd "{{.PULUMI_DART_PATH}}"
+        rm -rf mutation-test-report
         if ! dart run mutation_test --dry mutation-test.xml; then
           echo "mutation_test dry run completed; non-zero exit is expected because no tests are executed in dry mode."
         fi
@@ -47,6 +48,7 @@ tasks:
       - |
         set -eu
         cd "{{.PULUMI_DART_PATH}}"
+        rm -rf mutation-test-report
         if ! dart run mutation_test --dry --coverage coverage/lcov.info mutation-test.xml; then
           echo "mutation_test dry run with coverage completed; non-zero exit is expected in dry mode."
         fi
@@ -80,6 +82,7 @@ tasks:
       - |
         set -eu
         cd "{{.PULUMI_DART_PATH}}"
+        rm -rf mutation-test-report
         INPUT_COVERAGE="{{.COVERAGE_LCOV}}"
         DEFAULT_COVERAGE="{{.PULUMI_DART_PATH}}/coverage/lcov.info"
         if [ -z "${INPUT_COVERAGE}" ] && [ -f "${DEFAULT_COVERAGE}" ]; then
