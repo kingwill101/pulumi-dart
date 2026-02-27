@@ -3263,6 +3263,7 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 var (
 	pulumiCodeChooserMarkerPattern = regexp.MustCompile(`(?i)<!--\s*(Start|End)\s+PulumiCodeChooser\s*-->`)
 	htmlSpanTagPattern             = regexp.MustCompile(`(?i)</?span\b[^>]*>`)
+	deprecatedProviderRefPattern   = regexp.MustCompile(`^/resources/pulumi:providers:[^/]+$`)
 )
 
 func sanitizeDartDocComment(comment string) string {
@@ -3274,6 +3275,44 @@ func sanitizeDartDocComment(comment string) string {
 	// Remove pulumi-lang span wrappers while keeping inner text.
 	comment = htmlSpanTagPattern.ReplaceAllString(comment, "")
 	return strings.TrimSpace(comment)
+}
+
+func normalizeDeprecatedProviderReferences(rawSchema string) string {
+	var decoded interface{}
+	if err := json.Unmarshal([]byte(rawSchema), &decoded); err != nil {
+		return rawSchema
+	}
+
+	normalized := rewriteDeprecatedProviderRefNodes(decoded)
+	encoded, err := json.Marshal(normalized)
+	if err != nil {
+		return rawSchema
+	}
+
+	return string(encoded)
+}
+
+func rewriteDeprecatedProviderRefNodes(node interface{}) interface{} {
+	switch current := node.(type) {
+	case map[string]interface{}:
+		for key, value := range current {
+			if key == "$ref" {
+				if ref, ok := value.(string); ok && deprecatedProviderRefPattern.MatchString(ref) {
+					current[key] = "#/provider"
+					continue
+				}
+			}
+			current[key] = rewriteDeprecatedProviderRefNodes(value)
+		}
+		return current
+	case []interface{}:
+		for i := range current {
+			current[i] = rewriteDeprecatedProviderRefNodes(current[i])
+		}
+		return current
+	default:
+		return node
+	}
 }
 
 func writeDartDocComment(b *strings.Builder, indent, comment string) {
@@ -4917,13 +4956,14 @@ func (host *dartLanguageHost) GeneratePackage(
 		spec           *packageSchema
 		rpcDiagnostics []*codegenrpc.Diagnostic
 	)
+	normalizedSchema := normalizeDeprecatedProviderReferences(req.GetSchema())
 	generatedOutputPaths := map[string]struct{}{}
 	recordGeneratedOutput := func(path string) {
 		generatedOutputPaths[filepath.Clean(path)] = struct{}{}
 	}
 
 	var packageSpec schema.PackageSpec
-	if err := json.Unmarshal([]byte(req.GetSchema()), &packageSpec); err == nil {
+	if err := json.Unmarshal([]byte(normalizedSchema), &packageSpec); err == nil {
 		var (
 			loader       schema.Loader
 			loaderCloser io.Closer
@@ -4949,7 +4989,7 @@ func (host *dartLanguageHost) GeneratePackage(
 			if diags.HasErrors() {
 				// Preserve previous parse-only behavior when no loader target is provided.
 				if loader == nil {
-					spec, err = parsePackageSchema(req.GetSchema())
+					spec, err = parsePackageSchema(normalizedSchema)
 					if err != nil {
 						return nil, err
 					}
@@ -4965,7 +5005,7 @@ func (host *dartLanguageHost) GeneratePackage(
 		} else if loader == nil {
 			// Parse-only fallback is intentionally permissive when we do not have
 			// a schema loader and cannot resolve external references.
-			spec, err = parsePackageSchema(req.GetSchema())
+			spec, err = parsePackageSchema(normalizedSchema)
 			if err != nil {
 				return nil, err
 			}
@@ -4975,7 +5015,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 	if spec == nil {
 		var err error
-		spec, err = parsePackageSchema(req.GetSchema())
+		spec, err = parsePackageSchema(normalizedSchema)
 		if err != nil {
 			return nil, err
 		}
@@ -4983,7 +5023,7 @@ func (host *dartLanguageHost) GeneratePackage(
 
 	if spec.Config != nil {
 		var rawSpec rawPackageSchema
-		if err := json.Unmarshal([]byte(req.GetSchema()), &rawSpec); err == nil {
+		if err := json.Unmarshal([]byte(normalizedSchema), &rawSpec); err == nil {
 			requiredSet := rawRequiredSet(rawSpec.Config.Required)
 			for i := range spec.Config.Properties {
 				if _, ok := requiredSet[spec.Config.Properties[i].Name]; ok {

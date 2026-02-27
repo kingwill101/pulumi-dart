@@ -4,6 +4,7 @@ import (
 	"archive/tar"
 	"compress/gzip"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/fs"
@@ -1132,6 +1133,65 @@ func TestGeneratePackageSanitizesDocCommentMarkup(t *testing.T) {
 	assert.Contains(t, content, "Widget sample.Widget resource.")
 	assert.Contains(t, content, "A value field.")
 	assert.Contains(t, content, "/// const widget = new sample.Widget(\"w\");")
+}
+
+func TestNormalizeDeprecatedProviderReferences(t *testing.T) {
+	t.Parallel()
+
+	rawSchema := `{
+		"name": "sample",
+		"resources": {
+			"sample:index:Widget": {
+				"properties": {
+					"self": { "$ref": "/resources/pulumi:providers:sample" },
+					"owner": { "$ref": "#/types/sample:index:Owner" }
+				}
+			}
+		},
+		"functions": {
+			"sample:index:getWidget": {
+				"inputs": {
+					"properties": {
+						"__self__": { "$ref": "/resources/pulumi:providers:sample" }
+					}
+				}
+			}
+		}
+	}`
+
+	normalized := normalizeDeprecatedProviderReferences(rawSchema)
+	assert.NotContains(t, normalized, `"/resources/pulumi:providers:sample"`)
+
+	var decoded interface{}
+	require.NoError(t, json.Unmarshal([]byte(normalized), &decoded))
+	refs := collectSchemaRefs(decoded)
+	assert.Contains(t, refs, "#/provider")
+	assert.Contains(t, refs, "#/types/sample:index:Owner")
+}
+
+func collectSchemaRefs(node interface{}) []string {
+	refs := []string{}
+	var walk func(interface{})
+	walk = func(current interface{}) {
+		switch typed := current.(type) {
+		case map[string]interface{}:
+			for key, value := range typed {
+				if key == "$ref" {
+					if ref, ok := value.(string); ok {
+						refs = append(refs, ref)
+					}
+					continue
+				}
+				walk(value)
+			}
+		case []interface{}:
+			for _, item := range typed {
+				walk(item)
+			}
+		}
+	}
+	walk(node)
+	return refs
 }
 
 func TestGeneratePackageEmitsConfigClass(t *testing.T) {
