@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'analysis_completed3.dart';
 import 'discovered_analysis_status2.dart';
 import 'discovered_continuous_analysis2.dart';

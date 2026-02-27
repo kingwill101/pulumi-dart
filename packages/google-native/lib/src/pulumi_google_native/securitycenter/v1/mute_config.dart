@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'mute_config_args.dart';
 
 /// Creates a mute config.

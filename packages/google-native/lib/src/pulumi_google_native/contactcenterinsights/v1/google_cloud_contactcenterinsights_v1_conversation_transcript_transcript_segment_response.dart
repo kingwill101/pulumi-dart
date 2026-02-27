@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_contactcenterinsights_v1_conversation_participant_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_transcript_transcript_segment_dialogflow_segment_metadata_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_transcript_transcript_segment_word_info_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'data_attribute_binding_args.dart';
 import 'google_cloud_dataplex_v1_data_attribute_binding_path_response.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'alert_policy_args.dart';
 import 'alert_strategy_response.dart';
 import 'condition_response8.dart';

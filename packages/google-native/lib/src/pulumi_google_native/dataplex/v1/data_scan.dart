@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'data_scan_args.dart';
 import 'google_cloud_dataplex_v1_data_profile_result_response.dart';
 import 'google_cloud_dataplex_v1_data_profile_spec_response.dart';

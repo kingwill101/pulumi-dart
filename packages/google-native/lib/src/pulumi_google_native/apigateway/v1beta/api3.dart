@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'api_args2.dart';
 
 /// Creates a new Api in a given project and location.

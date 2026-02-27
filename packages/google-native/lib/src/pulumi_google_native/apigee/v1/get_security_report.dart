@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_security_report_args.dart';
 import 'get_security_report_result.dart';
 

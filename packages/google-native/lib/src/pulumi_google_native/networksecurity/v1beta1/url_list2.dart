@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'url_list_args2.dart';
 
 /// Creates a new UrlList in a given project and location.

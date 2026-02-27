@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'accelerator_config8.dart';
 import 'container_image.dart';
 import 'instance_boot_disk_type.dart';

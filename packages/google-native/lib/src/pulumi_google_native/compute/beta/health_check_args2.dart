@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'grpchealth_check2.dart';
 import 'health_check_log_config2.dart';
 import 'health_check_type2.dart';

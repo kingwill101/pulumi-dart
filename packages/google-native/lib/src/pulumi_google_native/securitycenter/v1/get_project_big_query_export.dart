@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_project_big_query_export_args.dart';
 import 'get_project_big_query_export_result.dart';
 

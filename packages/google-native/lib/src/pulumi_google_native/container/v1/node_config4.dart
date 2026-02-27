@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'accelerator_config4.dart';
 import 'advanced_machine_features4.dart';
 import 'confidential_nodes.dart';

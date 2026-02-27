@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'connection_args3.dart';
 import 'git_hub_config_response.dart';
 import 'google_devtools_cloudbuild_v2_git_hub_enterprise_config_response.dart';

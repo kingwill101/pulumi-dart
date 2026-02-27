@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'job_args12.dart';
 import 'job_config_response.dart';
 import 'status_response28.dart';

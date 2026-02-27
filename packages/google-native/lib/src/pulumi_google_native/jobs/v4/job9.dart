@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'application_info_response2.dart';
 import 'compensation_info_response2.dart';
 import 'job_args9.dart';

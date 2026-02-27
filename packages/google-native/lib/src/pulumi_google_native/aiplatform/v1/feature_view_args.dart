@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1_feature_view_big_query_source.dart';
 import 'google_cloud_aiplatform_v1_feature_view_feature_registry_source.dart';
 import 'google_cloud_aiplatform_v1_feature_view_sync_config.dart';

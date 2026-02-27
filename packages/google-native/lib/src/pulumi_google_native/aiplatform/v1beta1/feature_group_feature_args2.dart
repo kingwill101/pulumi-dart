@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'feature_group_feature_value_type2.dart';
 import 'google_cloud_aiplatform_v1beta1_featurestore_monitoring_config.dart';
 

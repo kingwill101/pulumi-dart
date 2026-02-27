@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'aws_response.dart';
 import 'oidc_response.dart';
 import 'provider_args.dart';

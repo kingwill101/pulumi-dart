@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ordered_job_response2.dart';
 import 'template_parameter_response2.dart';
 import 'workflow_template_args2.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'encryption_config11.dart';
 import 'hive_metastore_config.dart';
 import 'maintenance_window6.dart';

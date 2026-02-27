@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_ml_v1_accelerator_config_response.dart';
 import 'google_cloud_ml_v1_auto_scaling_response.dart';
 import 'google_cloud_ml_v1_container_spec_response.dart';

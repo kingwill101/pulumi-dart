@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'default_object_access_control_project_team.dart';
 
 /// The set of arguments for DefaultObjectAccessControl.

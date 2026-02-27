@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'error_response4.dart';
 import 'execution_args6.dart';
 import 'status_response33.dart';

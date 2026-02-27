@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'allocation_policy_response.dart';
 import 'job_args.dart';
 import 'job_notification_response.dart';

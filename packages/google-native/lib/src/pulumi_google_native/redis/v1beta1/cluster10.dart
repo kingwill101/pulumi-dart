@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_args10.dart';
 import 'discovery_endpoint_response2.dart';
 import 'psc_config_response4.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'build_metadata_response3.dart';
 import 'provenance_builder_response3.dart';
 import 'resource_descriptor_response3.dart';

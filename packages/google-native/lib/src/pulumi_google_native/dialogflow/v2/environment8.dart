@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'environment_args5.dart';
 import 'google_cloud_dialogflow_v2_fulfillment_response.dart';
 import 'google_cloud_dialogflow_v2_text_to_speech_settings_response.dart';

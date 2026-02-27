@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dns_key_spec.dart';
 import 'managed_zone_dns_sec_config_non_existence.dart';
 import 'managed_zone_dns_sec_config_state.dart';

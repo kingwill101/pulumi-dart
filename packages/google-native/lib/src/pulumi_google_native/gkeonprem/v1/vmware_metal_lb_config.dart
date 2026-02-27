@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'vmware_address_pool.dart';
 
 /// Represents configuration parameters for the MetalLB load balancer.

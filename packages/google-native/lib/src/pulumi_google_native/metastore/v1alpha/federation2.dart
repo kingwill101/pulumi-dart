@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'federation_args2.dart';
 
 /// Creates a metastore federation in a project and location.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_oauth_idp_config_args.dart';
 import 'get_oauth_idp_config_result.dart';
 

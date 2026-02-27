@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'event_stream_response.dart';
 import 'logging_config_response5.dart';
 import 'notification_config_response5.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'database_args5.dart';
 import 'sql_server_database_details_response2.dart';
 

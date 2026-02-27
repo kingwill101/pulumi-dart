@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'best_effort_provisioning_response2.dart';
 import 'max_pods_constraint_response2.dart';
 import 'node_config_response5.dart';

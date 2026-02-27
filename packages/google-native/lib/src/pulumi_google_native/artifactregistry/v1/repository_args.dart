@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'docker_repository_config.dart';
 import 'maven_repository_config.dart';
 import 'remote_repository_config.dart';

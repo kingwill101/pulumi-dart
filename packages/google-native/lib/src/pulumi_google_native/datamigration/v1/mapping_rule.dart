@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conditional_column_set_value_response.dart';
 import 'convert_row_id_to_column_response.dart';
 import 'entity_move_response.dart';

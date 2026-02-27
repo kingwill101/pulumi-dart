@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ospolicy_resource_group_response2.dart';
 
 /// An OS policy defines the desired state configuration for a VM.

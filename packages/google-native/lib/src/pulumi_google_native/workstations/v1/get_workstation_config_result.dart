@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'container_response3.dart';
 import 'customer_encryption_key_response5.dart';
 import 'host_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'repository_args2.dart';
 
 /// Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.

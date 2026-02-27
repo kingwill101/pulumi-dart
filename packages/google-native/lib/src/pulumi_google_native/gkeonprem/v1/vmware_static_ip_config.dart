@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'vmware_ip_block.dart';
 
 /// Represents the network configuration required for the VMware user clusters with Static IP configurations.

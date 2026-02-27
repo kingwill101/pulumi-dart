@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'interval_response.dart';
 import 'invocation_config_response.dart';
 import 'workflow_invocation_args.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'aws_source_details2.dart';
 import 'azure_source_details2.dart';
 import 'encryption3.dart';

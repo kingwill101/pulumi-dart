@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'lun_range.dart';
 import 'nfs_export.dart';
 import 'volume_config_performance_tier.dart';

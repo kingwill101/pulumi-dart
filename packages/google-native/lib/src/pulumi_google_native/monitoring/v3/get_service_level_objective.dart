@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_service_level_objective_args.dart';
 import 'get_service_level_objective_result.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'notification_endpoint_grpc_settings_response.dart';
 import 'region_notification_endpoint_args.dart';
 

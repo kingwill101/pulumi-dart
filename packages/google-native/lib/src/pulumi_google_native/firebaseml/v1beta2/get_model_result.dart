@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'model_state_response.dart';
 import 'operation_response5.dart';
 import 'tf_lite_model_response.dart';

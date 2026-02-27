@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'debug_session_args.dart';
 
 /// Creates a debug session for a deployed API Proxy revision.

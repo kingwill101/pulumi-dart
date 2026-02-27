@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'route_ilb_route_behavior_on_unhealthy.dart';
 
 /// The set of arguments for Route.

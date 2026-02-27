@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'router_bgp2.dart';
 import 'router_bgp_peer2.dart';
 import 'router_interface2.dart';

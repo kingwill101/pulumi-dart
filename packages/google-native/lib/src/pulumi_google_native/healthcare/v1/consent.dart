@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'consent_args.dart';
 import 'google_cloud_healthcare_v1_consent_policy_response.dart';
 

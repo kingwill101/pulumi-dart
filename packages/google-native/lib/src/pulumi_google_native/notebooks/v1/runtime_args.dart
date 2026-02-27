@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'runtime_access_config.dart';
 import 'runtime_software_config.dart';
 import 'virtual_machine2.dart';

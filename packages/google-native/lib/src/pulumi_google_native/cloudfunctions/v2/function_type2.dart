@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'build_config_response.dart';
 import 'event_trigger_response2.dart';
 import 'function_args2.dart';

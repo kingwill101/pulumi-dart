@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_channel_partner_repricing_config_args.dart';
 import 'get_channel_partner_repricing_config_result.dart';
 

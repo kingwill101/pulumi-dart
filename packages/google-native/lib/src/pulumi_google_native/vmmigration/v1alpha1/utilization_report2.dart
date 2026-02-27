@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'status_response31.dart';
 import 'utilization_report_args2.dart';
 import 'vm_utilization_info_response2.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'repair_mode.dart';
 
 /// The `RepairRolloutRule` automation rule will automatically repair a failed `Rollout`.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'nfs_export_options_response2.dart';
 import 'share_args.dart';
 

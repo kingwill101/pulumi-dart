@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'scheduling_node_affinity_response5.dart';
 
 /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.

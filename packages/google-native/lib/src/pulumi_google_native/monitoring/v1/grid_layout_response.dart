@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'widget_response.dart';
 
 /// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.

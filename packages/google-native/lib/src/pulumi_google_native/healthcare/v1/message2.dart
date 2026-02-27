@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'message_args.dart';
 import 'parsed_data_response.dart';
 import 'patient_id_response.dart';

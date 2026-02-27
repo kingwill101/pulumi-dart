@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'security_policy_rule_matcher_config_layer4_config_response2.dart';
 
 class SecurityPolicyRuleMatcherConfigResponse2 {

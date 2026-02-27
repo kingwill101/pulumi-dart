@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'http_header_option_response.dart';
 
 /// The request and response header transformations that take effect before the request is passed along to the selected backendService.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'specialist_pool_args.dart';
 
 /// Creates a SpecialistPool.

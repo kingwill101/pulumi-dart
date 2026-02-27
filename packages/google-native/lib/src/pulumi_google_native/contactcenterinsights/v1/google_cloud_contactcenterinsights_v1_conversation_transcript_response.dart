@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_contactcenterinsights_v1_conversation_transcript_transcript_segment_response.dart';
 
 /// A message representing the transcript of a conversation.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'contact_settings_response.dart';
 import 'dns_settings_response.dart';
 import 'management_settings_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'certificate_response2.dart';
 import 'custom_domain_args.dart';
 import 'dns_updates_response.dart';

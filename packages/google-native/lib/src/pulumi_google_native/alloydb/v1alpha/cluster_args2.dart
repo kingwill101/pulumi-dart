@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'automated_backup_policy2.dart';
 import 'cluster_database_version2.dart';
 import 'continuous_backup_config2.dart';

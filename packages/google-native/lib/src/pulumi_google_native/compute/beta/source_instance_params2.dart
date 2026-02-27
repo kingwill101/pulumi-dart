@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'disk_instantiation_config2.dart';
 
 /// A specification of the parameters to use when creating the instance template from a source instance.

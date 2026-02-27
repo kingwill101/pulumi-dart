@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'compute_engine_disks_target_details_response2.dart';
 import 'compute_engine_target_details_response2.dart';
 import 'cutover_job_args2.dart';

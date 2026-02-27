@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_args4.dart';
 import 'cluster_config_response.dart';
 import 'encryption_config_response4.dart';

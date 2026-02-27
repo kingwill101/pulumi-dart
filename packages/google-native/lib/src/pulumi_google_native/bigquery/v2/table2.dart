@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_lake_configuration_response.dart';
 import 'clone_definition_response.dart';
 import 'clustering_response.dart';

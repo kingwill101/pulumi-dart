@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'custom_connector_args.dart';
 
 /// Creates a new CustomConnector in a given project and location.

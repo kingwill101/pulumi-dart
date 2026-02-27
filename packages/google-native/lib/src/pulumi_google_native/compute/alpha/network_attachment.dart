@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'network_attachment_args.dart';
 import 'network_attachment_connected_endpoint_response.dart';
 

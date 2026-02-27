@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'grafeas_v1_slsa_provenance_zero_two_slsa_invocation_response.dart';
 import 'grafeas_v1_slsa_provenance_zero_two_slsa_material_response.dart';
 import 'grafeas_v1_slsa_provenance_zero_two_slsa_metadata_response.dart';

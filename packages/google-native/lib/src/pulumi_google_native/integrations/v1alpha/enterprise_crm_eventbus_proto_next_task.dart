@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_eventbus_proto_combined_condition.dart';
 
 /// The task that is next in line to be executed, if the condition specified evaluated to true.

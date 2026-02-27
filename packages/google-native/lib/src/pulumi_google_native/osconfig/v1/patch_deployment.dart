@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'one_time_schedule_response.dart';
 import 'patch_config_response.dart';
 import 'patch_deployment_args.dart';

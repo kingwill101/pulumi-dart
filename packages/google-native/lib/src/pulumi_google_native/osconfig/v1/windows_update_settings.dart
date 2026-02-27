@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'windows_update_settings_classifications_item.dart';
 
 /// Windows patching is performed using the Windows Update Agent.

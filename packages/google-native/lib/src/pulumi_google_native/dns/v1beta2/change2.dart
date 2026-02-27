@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'change_args2.dart';
 import 'resource_record_set_response2.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_batch_prediction_job_args.dart';
 import 'get_batch_prediction_job_result.dart';
 

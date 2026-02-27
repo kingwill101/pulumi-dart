@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_canary_evaluation_args.dart';
 import 'get_canary_evaluation_result.dart';
 

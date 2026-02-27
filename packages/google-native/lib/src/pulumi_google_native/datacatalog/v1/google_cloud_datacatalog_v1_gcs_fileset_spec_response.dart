@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datacatalog_v1_gcs_file_spec_response.dart';
 
 /// Describes a Cloud Storage fileset entry.

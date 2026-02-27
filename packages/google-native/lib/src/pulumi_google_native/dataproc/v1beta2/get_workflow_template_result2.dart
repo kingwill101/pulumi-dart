@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ordered_job_response2.dart';
 import 'template_parameter_response2.dart';
 import 'workflow_template_placement_response2.dart';

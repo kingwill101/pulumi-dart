@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_securitycenter_v1_custom_config_response.dart';
 import 'organization_security_health_analytics_setting_custom_module_args.dart';
 

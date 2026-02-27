@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'target_vpn_gateway_args2.dart';
 
 /// Creates a target VPN gateway in the specified project and region using the data included in the request.

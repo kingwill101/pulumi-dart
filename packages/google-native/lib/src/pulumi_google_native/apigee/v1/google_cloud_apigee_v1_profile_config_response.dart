@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_profile_config_category_response.dart';
 
 /// ProfileConfig defines a set of categories and policies which will be used to compute security score.

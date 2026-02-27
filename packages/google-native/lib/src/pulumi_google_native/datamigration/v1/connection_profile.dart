@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'alloy_db_connection_profile_response.dart';
 import 'cloud_sql_connection_profile_response.dart';
 import 'connection_profile_args.dart';

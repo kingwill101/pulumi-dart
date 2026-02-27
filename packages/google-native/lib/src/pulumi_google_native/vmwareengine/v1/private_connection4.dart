@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'private_connection_args4.dart';
 
 /// Creates a new private connection that can be used for accessing private Clouds.

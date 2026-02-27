@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'anthos_cluster.dart';
 import 'cloud_run_location.dart';
 import 'execution_config.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'feature_group_feature_args.dart';
 import 'google_cloud_aiplatform_v1_feature_monitoring_stats_anomaly_response.dart';
 

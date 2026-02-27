@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'sfdc_channel_args.dart';
 
 /// Creates an sfdc channel record. Store the sfdc channel in Spanner. Returns the sfdc channel.

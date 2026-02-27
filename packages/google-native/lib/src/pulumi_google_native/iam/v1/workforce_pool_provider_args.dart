@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_iam_admin_v1_workforce_pool_provider_oidc.dart';
 import 'google_iam_admin_v1_workforce_pool_provider_saml.dart';
 

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_privacy_dlp_v2_pub_sub_condition_response.dart';
 
 /// An expression, consisting of an operator and conditions.

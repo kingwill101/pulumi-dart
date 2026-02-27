@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ospolicy_assignment_instance_filter_inventory.dart';
 import 'ospolicy_assignment_label_set.dart';
 

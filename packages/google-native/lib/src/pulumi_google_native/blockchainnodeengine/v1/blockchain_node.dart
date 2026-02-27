@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'blockchain_node_args.dart';
 import 'connection_info_response.dart';
 import 'ethereum_details_response.dart';

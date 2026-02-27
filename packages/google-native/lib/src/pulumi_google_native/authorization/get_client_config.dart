@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_client_config_result.dart';
 
 /// Use this function to access the current configuration of the native Google provider.

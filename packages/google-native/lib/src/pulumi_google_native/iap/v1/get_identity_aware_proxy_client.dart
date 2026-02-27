@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_identity_aware_proxy_client_args.dart';
 import 'get_identity_aware_proxy_client_result.dart';
 

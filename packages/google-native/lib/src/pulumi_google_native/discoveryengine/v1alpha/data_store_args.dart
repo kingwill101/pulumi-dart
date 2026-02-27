@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'data_store_content_config.dart';
 import 'data_store_industry_vertical.dart';
 import 'data_store_solution_types_item.dart';

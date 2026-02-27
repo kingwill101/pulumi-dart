@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'replica_response.dart';
 
 /// A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas

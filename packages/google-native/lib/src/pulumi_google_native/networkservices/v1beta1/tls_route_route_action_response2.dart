@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'tls_route_route_destination_response2.dart';
 
 /// The specifications for routing traffic and applying associated policies.

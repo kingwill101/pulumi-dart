@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_organization_event_threat_detection_setting_custom_module_args.dart';
 import 'get_organization_event_threat_detection_setting_custom_module_result.dart';
 

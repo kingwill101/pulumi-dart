@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'capacity_commitment_plan2.dart';
 import 'capacity_commitment_renewal_plan2.dart';
 

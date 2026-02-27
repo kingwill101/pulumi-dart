@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_retail_v2_search_request_dynamic_facet_spec_response.dart';
 import 'google_cloud_retail_v2_search_request_personalization_spec_response.dart';
 import 'serving_config_args.dart';

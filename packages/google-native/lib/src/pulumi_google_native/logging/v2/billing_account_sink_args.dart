@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_query_options.dart';
 import 'billing_account_sink_output_version_format.dart';
 import 'log_exclusion.dart';

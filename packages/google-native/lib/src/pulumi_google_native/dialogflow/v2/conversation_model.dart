@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conversation_model_args.dart';
 import 'google_cloud_dialogflow_v2_article_suggestion_model_metadata_response.dart';
 import 'google_cloud_dialogflow_v2_input_dataset_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'node_group_args2.dart';
 import 'node_group_autoscaling_policy_response2.dart';
 import 'node_group_maintenance_window_response2.dart';

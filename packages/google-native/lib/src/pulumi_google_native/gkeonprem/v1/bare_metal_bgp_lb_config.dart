@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bare_metal_bgp_peer_config.dart';
 import 'bare_metal_load_balancer_address_pool.dart';
 import 'bare_metal_load_balancer_node_pool_config.dart';

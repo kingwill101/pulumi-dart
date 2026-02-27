@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conversion_workspace_args.dart';
 import 'database_engine_info_response.dart';
 

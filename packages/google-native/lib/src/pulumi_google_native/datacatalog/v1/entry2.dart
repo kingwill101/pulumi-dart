@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'entry_args2.dart';
 import 'google_cloud_datacatalog_v1_big_query_date_sharded_spec_response.dart';
 import 'google_cloud_datacatalog_v1_big_query_table_spec_response.dart';

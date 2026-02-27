@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datacatalog_v1_system_timestamps_response.dart';
 import 'google_cloud_datacatalog_v1_taxonomy_service_response.dart';
 import 'taxonomy_args.dart';

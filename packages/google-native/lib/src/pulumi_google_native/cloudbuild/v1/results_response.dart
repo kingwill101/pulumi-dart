@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'built_image_response.dart';
 import 'time_span_response.dart';
 import 'uploaded_maven_artifact_response.dart';

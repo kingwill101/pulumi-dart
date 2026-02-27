@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'instance_args20.dart';
 import 'maintenance_policy_response3.dart';
 import 'maintenance_schedule_response4.dart';

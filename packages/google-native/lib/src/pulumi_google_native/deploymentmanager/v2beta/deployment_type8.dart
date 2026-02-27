@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'deployment_args4.dart';
 import 'deployment_label_entry_response3.dart';
 import 'deployment_update_response3.dart';

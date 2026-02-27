@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'managed_zone_forwarding_config_name_server_target.dart';
 
 class ManagedZoneForwardingConfig {

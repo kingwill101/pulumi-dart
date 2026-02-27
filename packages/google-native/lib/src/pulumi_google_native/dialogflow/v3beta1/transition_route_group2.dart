@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dialogflow_cx_v3beta1_transition_route_response.dart';
 import 'transition_route_group_args2.dart';
 

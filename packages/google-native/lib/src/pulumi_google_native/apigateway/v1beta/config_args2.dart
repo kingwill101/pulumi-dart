@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'apigateway_api_config_file2.dart';
 import 'apigateway_api_config_grpc_service_definition2.dart';
 import 'apigateway_api_config_open_api_document2.dart';

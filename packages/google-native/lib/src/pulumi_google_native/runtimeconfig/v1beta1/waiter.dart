@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'end_condition_response.dart';
 import 'status_response25.dart';
 import 'waiter_args.dart';

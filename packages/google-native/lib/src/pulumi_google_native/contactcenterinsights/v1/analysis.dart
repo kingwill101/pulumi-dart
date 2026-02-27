@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'analysis_args.dart';
 import 'google_cloud_contactcenterinsights_v1_analysis_result_response.dart';
 import 'google_cloud_contactcenterinsights_v1_annotator_selector_response.dart';

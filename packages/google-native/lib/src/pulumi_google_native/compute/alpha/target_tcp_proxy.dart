@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'target_tcp_proxy_args.dart';
 
 /// Creates a TargetTcpProxy resource in the specified project using the data included in the request.

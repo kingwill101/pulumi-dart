@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'resource_condition_response.dart';
 
 /// ResourceStatus describes why a cluster or node pool has a certain status. (e.g., ERROR or DEGRADED).

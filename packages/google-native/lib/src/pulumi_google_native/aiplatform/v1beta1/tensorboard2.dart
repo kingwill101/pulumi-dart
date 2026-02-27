@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'tensorboard_args2.dart';
 

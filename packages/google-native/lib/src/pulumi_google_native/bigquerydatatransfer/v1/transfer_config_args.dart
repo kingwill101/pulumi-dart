@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'email_preferences.dart';
 import 'encryption_configuration2.dart';
 import 'schedule_options.dart';

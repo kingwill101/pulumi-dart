@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'endpoint_args.dart';
 import 'google_cloud_aiplatform_v1_deployed_model_response.dart';
 import 'google_cloud_aiplatform_v1_encryption_spec_response.dart';

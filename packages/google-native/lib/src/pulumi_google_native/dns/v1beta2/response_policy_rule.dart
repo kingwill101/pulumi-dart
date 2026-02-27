@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'response_policy_rule_args.dart';
 import 'response_policy_rule_local_data_response2.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_tag_template_args2.dart';
 import 'get_tag_template_result2.dart';
 

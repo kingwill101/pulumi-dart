@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'sole_tenant_node_type_response.dart';
 
 /// Preferences concerning Sole Tenancy nodes and VMs.

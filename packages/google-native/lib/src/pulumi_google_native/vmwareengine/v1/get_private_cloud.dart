@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_private_cloud_args.dart';
 import 'get_private_cloud_result.dart';
 

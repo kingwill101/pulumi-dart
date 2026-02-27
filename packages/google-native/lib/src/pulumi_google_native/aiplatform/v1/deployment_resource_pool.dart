@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'deployment_resource_pool_args.dart';
 import 'google_cloud_aiplatform_v1_dedicated_resources_response.dart';
 

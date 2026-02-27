@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_eventbus_proto_cloud_scheduler_config_response.dart';
 import 'enterprise_crm_eventbus_proto_coordinate_response.dart';
 import 'enterprise_crm_eventbus_proto_next_task_response.dart';

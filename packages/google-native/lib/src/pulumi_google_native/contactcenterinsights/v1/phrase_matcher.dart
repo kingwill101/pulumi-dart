@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_group_response.dart';
 import 'phrase_matcher_args.dart';
 

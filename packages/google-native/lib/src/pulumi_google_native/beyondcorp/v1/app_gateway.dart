@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'allocated_connection_response.dart';
 import 'app_gateway_args.dart';
 

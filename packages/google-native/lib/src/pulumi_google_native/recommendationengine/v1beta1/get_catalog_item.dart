@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_catalog_item_args.dart';
 import 'get_catalog_item_result.dart';
 

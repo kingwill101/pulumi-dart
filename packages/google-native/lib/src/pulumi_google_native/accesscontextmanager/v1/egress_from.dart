@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'egress_from_identity_type.dart';
 import 'egress_from_source_restriction.dart';
 import 'egress_source.dart';

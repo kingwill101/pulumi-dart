@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'interconnect_attachment_configuration_constraints_bgp_peer_asnrange_response3.dart';
 
 class InterconnectAttachmentConfigurationConstraintsResponse3 {

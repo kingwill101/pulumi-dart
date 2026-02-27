@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'control_search_solution_use_case_item.dart';
 import 'control_solution_types_item.dart';
 import 'google_cloud_retail_v2_rule.dart';

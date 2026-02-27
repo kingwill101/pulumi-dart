@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_query_dataset_source2.dart';
 import 'data_provider2.dart';
 import 'listing_categories_item2.dart';

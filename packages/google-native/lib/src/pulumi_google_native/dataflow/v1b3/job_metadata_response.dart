@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_query_iodetails_response.dart';
 import 'big_table_iodetails_response.dart';
 import 'datastore_iodetails_response.dart';

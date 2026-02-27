@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_security_report_metadata_response.dart';
 import 'google_cloud_apigee_v1_security_report_result_metadata_response.dart';
 import 'security_report_args.dart';

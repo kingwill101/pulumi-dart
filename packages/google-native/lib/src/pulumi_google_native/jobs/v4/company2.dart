@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'company_args2.dart';
 import 'company_derived_info_response2.dart';
 

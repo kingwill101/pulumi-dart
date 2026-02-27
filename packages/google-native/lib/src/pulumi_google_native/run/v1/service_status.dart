@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'addressable.dart';
 import 'google_cloud_run_v1_condition.dart';
 import 'traffic_target.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'agent_pool_args.dart';
 import 'bandwidth_limit_response.dart';
 

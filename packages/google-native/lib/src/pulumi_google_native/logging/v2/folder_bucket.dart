@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cmek_settings_response.dart';
 import 'folder_bucket_args.dart';
 import 'index_config_response.dart';

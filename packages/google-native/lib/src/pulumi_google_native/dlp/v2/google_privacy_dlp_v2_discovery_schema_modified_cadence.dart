@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_privacy_dlp_v2_discovery_schema_modified_cadence_frequency.dart';
 import 'google_privacy_dlp_v2_discovery_schema_modified_cadence_types_item.dart';
 

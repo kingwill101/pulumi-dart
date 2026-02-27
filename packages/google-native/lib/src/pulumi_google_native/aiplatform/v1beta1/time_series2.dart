@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1beta1_tensorboard_time_series_metadata_response.dart';
 import 'time_series_args2.dart';
 

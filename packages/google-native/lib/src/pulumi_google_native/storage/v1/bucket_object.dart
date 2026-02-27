@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bucket_object_args.dart';
 import 'bucket_object_customer_encryption_response.dart';
 import 'bucket_object_owner_response.dart';

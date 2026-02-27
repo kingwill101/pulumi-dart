@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'endpoint_args5.dart';
 
 /// Creates an endpoint, and returns the new endpoint.

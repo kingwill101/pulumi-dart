@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'backup_schedule_args.dart';
 import 'google_firestore_admin_v1_weekly_recurrence_response.dart';
 

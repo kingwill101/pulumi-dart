@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import '../../iam/v1/condition8.dart';
 import 'organization_environment_iam_member_args.dart';
 

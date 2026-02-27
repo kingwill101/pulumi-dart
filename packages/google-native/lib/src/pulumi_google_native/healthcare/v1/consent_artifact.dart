@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'consent_artifact_args.dart';
 import 'image_response.dart';
 import 'signature_response3.dart';

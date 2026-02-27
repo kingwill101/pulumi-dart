@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'backfill_all_strategy.dart';
 import 'destination_config2.dart';
 import 'source_config2.dart';

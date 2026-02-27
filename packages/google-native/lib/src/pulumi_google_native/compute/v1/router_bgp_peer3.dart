@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'router_advertised_ip_range3.dart';
 import 'router_bgp_peer_advertise_mode3.dart';
 import 'router_bgp_peer_advertised_groups_item3.dart';

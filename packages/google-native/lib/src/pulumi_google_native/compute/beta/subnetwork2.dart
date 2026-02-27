@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'subnetwork_args2.dart';
 import 'subnetwork_log_config_response2.dart';
 import 'subnetwork_secondary_range_response2.dart';

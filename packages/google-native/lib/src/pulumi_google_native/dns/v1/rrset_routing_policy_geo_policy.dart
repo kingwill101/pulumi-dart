@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'rrset_routing_policy_geo_policy_geo_policy_item.dart';
 
 /// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.

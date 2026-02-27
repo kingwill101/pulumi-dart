@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'identity_service_auth_method_response.dart';
 
 /// **Anthos Identity Service**: Configuration for a single Membership.

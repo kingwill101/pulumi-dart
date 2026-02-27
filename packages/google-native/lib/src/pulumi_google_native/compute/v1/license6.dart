@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'license_args3.dart';
 import 'license_resource_requirements_response3.dart';
 

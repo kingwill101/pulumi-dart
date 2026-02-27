@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'resource_policy_group_placement_policy2.dart';
 import 'resource_policy_instance_schedule_policy2.dart';
 import 'resource_policy_snapshot_schedule_policy2.dart';

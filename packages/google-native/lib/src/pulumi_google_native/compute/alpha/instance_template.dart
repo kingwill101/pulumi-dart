@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'instance_properties_response.dart';
 import 'instance_template_args.dart';
 import 'source_instance_params_response.dart';

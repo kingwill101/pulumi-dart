@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'customer_encryption_key_response.dart';
 import 'deprecation_status_response.dart';
 import 'guest_os_feature_response.dart';

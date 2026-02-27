@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authorized_orgs_desc_asset_type.dart';
 import 'authorized_orgs_desc_authorization_direction.dart';
 import 'authorized_orgs_desc_authorization_type.dart';

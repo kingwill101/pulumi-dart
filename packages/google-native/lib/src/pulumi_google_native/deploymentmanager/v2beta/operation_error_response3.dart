@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'operation_error_errors_item_response3.dart';
 
 /// [Output Only] If errors are generated during processing of the operation, this field will be populated.

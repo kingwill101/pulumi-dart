@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_eventbus_proto_task_metadata_admin_response.dart';
 
 /// TaskMetadata are attributes that are associated to every common Task we have.

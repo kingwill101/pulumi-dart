@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'client_connection_config3.dart';
 import 'instance_availability_type3.dart';
 import 'instance_instance_type3.dart';

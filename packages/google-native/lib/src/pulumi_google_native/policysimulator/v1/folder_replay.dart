@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'folder_replay_args.dart';
 import 'google_cloud_policysimulator_v1_replay_config_response.dart';
 import 'google_cloud_policysimulator_v1_replay_results_summary_response.dart';

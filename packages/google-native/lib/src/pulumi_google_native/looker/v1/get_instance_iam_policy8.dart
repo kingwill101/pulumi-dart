@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_instance_iam_policy_args8.dart';
 import 'get_instance_iam_policy_result8.dart';
 

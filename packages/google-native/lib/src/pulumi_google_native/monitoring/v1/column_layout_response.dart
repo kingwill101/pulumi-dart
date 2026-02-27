@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'column_response.dart';
 
 /// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.

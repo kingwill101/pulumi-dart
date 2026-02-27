@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'forwarding_rule_service_directory_registration_response2.dart';
 import 'global_forwarding_rule_args2.dart';
 import 'metadata_filter_response2.dart';

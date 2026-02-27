@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_integrations_v1alpha_event_parameter_response.dart';
 
 /// The configuration for mocking of a task during test execution Next available id: 4

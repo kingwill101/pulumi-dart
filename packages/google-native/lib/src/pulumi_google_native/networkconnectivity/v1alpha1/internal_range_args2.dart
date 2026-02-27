@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'internal_range_overlaps_item2.dart';
 import 'internal_range_peering2.dart';
 import 'internal_range_usage2.dart';

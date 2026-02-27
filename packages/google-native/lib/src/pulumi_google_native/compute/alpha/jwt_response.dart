@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'jwt_header_response.dart';
 
 /// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.

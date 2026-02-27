@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'forward_ssh_tunnel_connectivity3.dart';
 import 'gcs_profile2.dart';
 import 'mysql_profile2.dart';

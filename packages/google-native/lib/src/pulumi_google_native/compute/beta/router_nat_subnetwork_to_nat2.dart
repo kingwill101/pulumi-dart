@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'router_nat_subnetwork_to_nat_source_ip_ranges_to_nat_item2.dart';
 
 /// Defines the IP ranges that want to use NAT for a subnetwork.

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'access_config2.dart';
 import 'alias_ip_range2.dart';
 import 'network_interface_nic_type2.dart';

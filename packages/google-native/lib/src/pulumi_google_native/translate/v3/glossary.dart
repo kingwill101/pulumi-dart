@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'glossary_args.dart';
 import 'glossary_input_config_response.dart';
 import 'language_code_pair_response.dart';

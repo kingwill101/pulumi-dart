@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bucket_options_response.dart';
 import 'metric_args.dart';
 import 'metric_descriptor_response.dart';

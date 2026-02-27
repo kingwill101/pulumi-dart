@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_folder_bucket_link_args.dart';
 import 'get_folder_bucket_link_result.dart';
 

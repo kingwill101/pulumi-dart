@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ekm_connection_args.dart';
 import 'service_resolver_response.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_client_token_result.dart';
 
 /// Use this function to get an Google authentication token for the current login context.

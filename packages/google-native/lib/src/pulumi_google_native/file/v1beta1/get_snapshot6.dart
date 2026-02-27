@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_snapshot_args6.dart';
 import 'get_snapshot_result6.dart';
 

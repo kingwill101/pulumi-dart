@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'report_summary_machine_series_allocation_response2.dart';
 
 /// A set of findings that applies to assets of type Virtual/Physical Machine.

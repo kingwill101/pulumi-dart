@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'budget_args.dart';
 import 'google_cloud_billing_budgets_v1_budget_amount_response.dart';
 import 'google_cloud_billing_budgets_v1_filter_response.dart';

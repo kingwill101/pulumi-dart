@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_entity_type_args6.dart';
 import 'get_entity_type_result6.dart';
 

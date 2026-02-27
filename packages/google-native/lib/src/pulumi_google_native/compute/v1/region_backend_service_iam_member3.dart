@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import '../../iam/v1/condition8.dart';
 import 'region_backend_service_iam_member_args3.dart';
 

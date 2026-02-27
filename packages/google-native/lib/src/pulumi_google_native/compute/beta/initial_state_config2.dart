@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'file_content_buffer2.dart';
 
 /// Initial State for shielded instance, these are public keys which are safe to store in public

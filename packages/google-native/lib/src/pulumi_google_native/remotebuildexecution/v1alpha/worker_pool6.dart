@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_devtools_remotebuildexecution_admin_v1alpha_autoscale_response.dart';
 import 'google_devtools_remotebuildexecution_admin_v1alpha_worker_config_response.dart';
 import 'worker_pool_args5.dart';

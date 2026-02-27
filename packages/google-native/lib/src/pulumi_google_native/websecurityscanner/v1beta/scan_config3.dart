@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authentication_response4.dart';
 import 'scan_config_args3.dart';
 import 'scan_run_response2.dart';

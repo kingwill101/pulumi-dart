@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'acl_entry2.dart';
 import 'ip_configuration_ssl_mode2.dart';
 import 'psc_config6.dart';

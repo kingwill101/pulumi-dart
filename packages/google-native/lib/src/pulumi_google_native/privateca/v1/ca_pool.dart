@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ca_pool_args.dart';
 import 'issuance_policy_response.dart';
 import 'publishing_options_response.dart';

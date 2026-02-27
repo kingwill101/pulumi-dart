@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attestor_args.dart';
 import 'user_owned_grafeas_note_response.dart';
 

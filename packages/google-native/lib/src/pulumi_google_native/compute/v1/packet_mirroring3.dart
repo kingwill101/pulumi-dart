@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'packet_mirroring_args3.dart';
 import 'packet_mirroring_filter_response3.dart';
 import 'packet_mirroring_forwarding_rule_info_response3.dart';

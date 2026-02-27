@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'clone_job_args2.dart';
 import 'clone_step_response2.dart';
 import 'compute_engine_disks_target_details_response2.dart';

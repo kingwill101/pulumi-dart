@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_identitytoolkit_admin_v2_multi_factor_auth_config_enabled_providers_item.dart';
 import 'google_cloud_identitytoolkit_admin_v2_multi_factor_auth_config_state.dart';
 import 'google_cloud_identitytoolkit_admin_v2_provider_config.dart';

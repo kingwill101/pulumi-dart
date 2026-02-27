@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'network_endpoint_response.dart';
 import 'node_args.dart';
 import 'scheduling_config_response.dart';

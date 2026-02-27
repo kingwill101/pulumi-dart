@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'duration_response.dart';
 import 'scheduling_graceful_shutdown_response.dart';
 import 'scheduling_node_affinity_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'firewall_policy_association_response2.dart';
 import 'firewall_policy_rule_response2.dart';
 import 'network_firewall_policy_args2.dart';

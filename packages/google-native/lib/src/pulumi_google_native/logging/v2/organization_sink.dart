@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_query_options_response.dart';
 import 'log_exclusion_response.dart';
 import 'organization_sink_args.dart';

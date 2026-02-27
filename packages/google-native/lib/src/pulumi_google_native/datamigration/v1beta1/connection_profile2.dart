@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cloud_sql_connection_profile_response2.dart';
 import 'connection_profile_args2.dart';
 import 'my_sql_connection_profile_response2.dart';

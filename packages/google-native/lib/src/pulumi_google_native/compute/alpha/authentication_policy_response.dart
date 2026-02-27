@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'origin_authentication_method_response.dart';
 import 'peer_authentication_method_response.dart';
 import 'tls_context_response.dart';

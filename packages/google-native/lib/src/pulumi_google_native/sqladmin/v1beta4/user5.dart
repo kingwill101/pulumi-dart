@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'sql_server_user_details_response2.dart';
 import 'user_args5.dart';
 import 'user_password_validation_policy_response2.dart';

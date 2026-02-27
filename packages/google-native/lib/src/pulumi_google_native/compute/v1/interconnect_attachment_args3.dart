@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'interconnect_attachment_bandwidth3.dart';
 import 'interconnect_attachment_edge_availability_domain3.dart';
 import 'interconnect_attachment_encryption3.dart';

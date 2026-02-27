@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'app_engine_routing3.dart';
 import 'http_target3.dart';
 import 'rate_limits.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hadoop_job_response2.dart';
 import 'hive_job_response2.dart';
 import 'job_args7.dart';

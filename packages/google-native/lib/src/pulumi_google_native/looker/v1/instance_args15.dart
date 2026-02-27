@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'admin_settings.dart';
 import 'custom_domain.dart';
 import 'deny_maintenance_period.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'column_settings.dart';
 import 'table_data_set.dart';
 import 'time_series_table_metric_visualization.dart';

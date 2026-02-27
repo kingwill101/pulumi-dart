@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'network_edge_security_service_args.dart';
 
 /// Creates a new service in the specified project using the data included in the request.

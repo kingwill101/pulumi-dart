@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_run_v2_binary_authorization_response.dart';
 import 'google_cloud_run_v2_condition_response.dart';
 import 'google_cloud_run_v2_execution_reference_response.dart';

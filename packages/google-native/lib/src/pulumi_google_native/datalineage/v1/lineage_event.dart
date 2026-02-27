@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datacatalog_lineage_v1_event_link_response.dart';
 import 'lineage_event_args.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'replication_response.dart';
 import 'rotation_response.dart';
 import 'secret_args.dart';

@@ -1,0 +1,25 @@
+library module_cloudresourcemanager_v2beta1;
+
+export 'v2beta1/audit_config20.dart';
+export 'v2beta1/audit_config_response20.dart';
+export 'v2beta1/audit_log_config20.dart';
+export 'v2beta1/audit_log_config_log_type20.dart';
+export 'v2beta1/audit_log_config_response20.dart';
+export 'v2beta1/binding27.dart';
+export 'v2beta1/binding_response27.dart';
+export 'v2beta1/expr29.dart';
+export 'v2beta1/expr_response29.dart';
+export 'v2beta1/folder2.dart';
+export 'v2beta1/folder_args2.dart';
+export 'v2beta1/folder_iam_binding2.dart';
+export 'v2beta1/folder_iam_binding_args2.dart';
+export 'v2beta1/folder_iam_member2.dart';
+export 'v2beta1/folder_iam_member_args2.dart';
+export 'v2beta1/folder_iam_policy2.dart';
+export 'v2beta1/folder_iam_policy_args2.dart';
+export 'v2beta1/get_folder2.dart';
+export 'v2beta1/get_folder_args2.dart';
+export 'v2beta1/get_folder_iam_policy2.dart';
+export 'v2beta1/get_folder_iam_policy_args2.dart';
+export 'v2beta1/get_folder_iam_policy_result2.dart';
+export 'v2beta1/get_folder_result2.dart';

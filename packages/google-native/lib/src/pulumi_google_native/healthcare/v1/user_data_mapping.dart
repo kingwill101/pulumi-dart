@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attribute_response.dart';
 import 'user_data_mapping_args.dart';
 

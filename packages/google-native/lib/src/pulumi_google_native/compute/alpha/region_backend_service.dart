@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'backend_response.dart';
 import 'backend_service_cdn_policy_response.dart';
 import 'backend_service_connection_tracking_policy_response.dart';

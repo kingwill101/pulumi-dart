@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'app_engine_http_queue.dart';
 import 'http_target5.dart';
 import 'queue_type.dart';

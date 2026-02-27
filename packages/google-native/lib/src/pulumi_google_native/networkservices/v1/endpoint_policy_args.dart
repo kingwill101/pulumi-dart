@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'endpoint_matcher.dart';
 import 'endpoint_policy_type.dart';
 import 'traffic_port_selector.dart';

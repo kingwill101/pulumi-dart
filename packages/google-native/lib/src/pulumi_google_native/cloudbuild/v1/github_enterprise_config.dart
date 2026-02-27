@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'git_hub_enterprise_secrets_response.dart';
 import 'github_enterprise_config_args.dart';
 

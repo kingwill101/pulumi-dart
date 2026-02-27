@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'certificate_map_entry_args.dart';
 
 /// Creates a new CertificateMapEntry in a given project and location.

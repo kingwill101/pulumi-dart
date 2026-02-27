@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dialogflow_cx_v3beta1_intent_training_phrase_part.dart';
 
 /// Represents an example that the agent is trained on to identify the intent.

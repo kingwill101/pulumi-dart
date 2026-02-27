@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'table_constraints_foreign_keys_item_column_references_item_response.dart';
 import 'table_constraints_foreign_keys_item_referenced_table_response.dart';
 

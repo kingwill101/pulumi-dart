@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'security_policy_rule_rate_limit_options_enforce_on_key_config_response3.dart';
 import 'security_policy_rule_rate_limit_options_threshold_response3.dart';
 import 'security_policy_rule_redirect_options_response3.dart';

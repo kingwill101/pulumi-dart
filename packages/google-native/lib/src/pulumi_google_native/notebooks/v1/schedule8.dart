@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'execution_response.dart';
 import 'execution_template_response.dart';
 import 'schedule_args3.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'http_route_args2.dart';
 import 'http_route_route_rule_response2.dart';
 

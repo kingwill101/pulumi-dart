@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_organization_notification_config_args.dart';
 import 'get_organization_notification_config_result.dart';
 

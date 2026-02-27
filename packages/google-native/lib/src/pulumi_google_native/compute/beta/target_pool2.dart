@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'target_pool_args2.dart';
 
 /// Creates a target pool in the specified project and region using the data included in the request.

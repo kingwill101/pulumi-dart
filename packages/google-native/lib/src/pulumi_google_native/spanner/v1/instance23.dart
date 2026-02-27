@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'autoscaling_config_response3.dart';
 import 'free_instance_metadata_response.dart';
 import 'instance_args23.dart';

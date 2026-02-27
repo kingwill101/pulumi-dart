@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'database_app_engine_integration_mode.dart';
 import 'database_concurrency_mode.dart';
 import 'database_delete_protection_state.dart';

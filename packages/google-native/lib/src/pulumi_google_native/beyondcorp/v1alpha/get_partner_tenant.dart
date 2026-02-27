@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_partner_tenant_args.dart';
 import 'get_partner_tenant_result.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_memcache_v1beta2_maintenance_policy_response.dart';
 import 'instance_args17.dart';
 import 'instance_message_response2.dart';

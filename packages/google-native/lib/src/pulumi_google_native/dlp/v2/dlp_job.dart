@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dlp_job_args.dart';
 import 'google_privacy_dlp_v2_action_details_response.dart';
 import 'google_privacy_dlp_v2_analyze_data_source_risk_details_response.dart';

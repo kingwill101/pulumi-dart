@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'binding_response64.dart';
 import 'vmware_cluster_vmware_node_pool_iam_policy_args.dart';
 

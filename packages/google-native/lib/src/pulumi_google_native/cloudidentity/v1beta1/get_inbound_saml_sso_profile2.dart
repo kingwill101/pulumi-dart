@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_inbound_saml_sso_profile_args2.dart';
 import 'get_inbound_saml_sso_profile_result2.dart';
 

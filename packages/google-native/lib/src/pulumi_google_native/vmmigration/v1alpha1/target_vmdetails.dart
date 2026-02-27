@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'compute_scheduling2.dart';
 import 'network_interface7.dart';
 import 'target_vmdetails_disk_type.dart';

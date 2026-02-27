@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1beta1_study_spec_convex_automated_stopping_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_study_spec_convex_stop_config_response.dart';
 import 'google_cloud_aiplatform_v1beta1_study_spec_decay_curve_automated_stopping_spec_response.dart';

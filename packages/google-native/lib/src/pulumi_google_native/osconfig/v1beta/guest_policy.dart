@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'assignment_response.dart';
 import 'guest_policy_args.dart';
 import 'package_repository_response.dart';

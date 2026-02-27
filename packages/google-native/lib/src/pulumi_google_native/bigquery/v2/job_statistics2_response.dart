@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bi_engine_statistics_response.dart';
 import 'big_query_model_training_response.dart';
 import 'dataset_reference_response.dart';

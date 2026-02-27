@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'target_attribute.dart';
 
 /// AutomationResourceSelector contains the information to select the resources to which an Automation is going to be applied.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hmac_key_args.dart';
 
 /// Creates a new HMAC key for the specified service account.

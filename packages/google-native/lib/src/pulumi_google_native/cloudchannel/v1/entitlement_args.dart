@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_channel_v1_association_info.dart';
 import 'google_cloud_channel_v1_commitment_settings.dart';
 import 'google_cloud_channel_v1_parameter.dart';

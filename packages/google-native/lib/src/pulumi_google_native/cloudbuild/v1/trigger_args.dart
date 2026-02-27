@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'approval_config.dart';
 import 'bitbucket_server_trigger_config.dart';
 import 'build.dart';

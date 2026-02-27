@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'target_instance_args3.dart';
 
 /// Creates a TargetInstance resource in the specified project and zone using the data included in the request.

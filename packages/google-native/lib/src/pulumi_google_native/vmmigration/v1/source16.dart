@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'aws_source_details_response.dart';
 import 'azure_source_details_response.dart';
 import 'encryption_response2.dart';

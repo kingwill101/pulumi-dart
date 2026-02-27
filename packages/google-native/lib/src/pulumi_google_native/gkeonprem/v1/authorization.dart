@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_user.dart';
 
 /// Authorization defines the On-Prem cluster authorization configuration to bootstrap onto the admin cluster.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'backup_config_response.dart';
 import 'backup_plan_args.dart';
 import 'retention_policy_response.dart';

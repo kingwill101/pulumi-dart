@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'container_image_response.dart';
 import 'environment_args9.dart';
 import 'vm_image_response.dart';

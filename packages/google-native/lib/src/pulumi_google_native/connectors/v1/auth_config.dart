@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'auth_config_auth_type.dart';
 import 'config_variable.dart';
 import 'oauth2_auth_code_flow.dart';

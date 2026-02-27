@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'external_access_rule_args.dart';
 import 'ip_range_response.dart';
 

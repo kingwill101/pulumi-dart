@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_uptime_check_config_args.dart';
 import 'get_uptime_check_config_result.dart';
 

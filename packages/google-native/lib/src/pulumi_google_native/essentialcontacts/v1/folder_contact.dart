@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'folder_contact_args.dart';
 
 /// Adds a new contact for a resource.

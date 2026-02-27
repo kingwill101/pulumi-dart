@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'duration.dart';
 import 'scheduling_graceful_shutdown.dart';
 import 'scheduling_instance_termination_action.dart';

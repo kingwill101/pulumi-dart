@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attestor_public_key_response.dart';
 
 /// An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.

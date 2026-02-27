@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_ssh_public_key_args3.dart';
 import 'get_ssh_public_key_result3.dart';
 

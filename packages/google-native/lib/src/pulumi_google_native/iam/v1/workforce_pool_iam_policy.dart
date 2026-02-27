@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'audit_config_response48.dart';
 import 'binding_response67.dart';
 import 'workforce_pool_iam_policy_args.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_privacy_dlp_v2_action_details_response.dart';
 import 'google_privacy_dlp_v2_analyze_data_source_risk_details_response.dart';
 import 'google_privacy_dlp_v2_error_response.dart';

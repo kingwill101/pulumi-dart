@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'android_robo_test_robo_mode.dart';
 import 'app_bundle.dart';
 import 'file_reference.dart';

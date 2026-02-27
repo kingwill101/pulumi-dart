@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'accelerator2.dart';
 import 'gce_confidential_instance_config2.dart';
 import 'gce_shielded_instance_config2.dart';

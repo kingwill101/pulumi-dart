@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'network_peering_args.dart';
 
 /// Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource.

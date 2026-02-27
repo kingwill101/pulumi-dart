@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'consent_config_response.dart';
 import 'fhir_notification_config_response2.dart';
 import 'fhir_store_args2.dart';

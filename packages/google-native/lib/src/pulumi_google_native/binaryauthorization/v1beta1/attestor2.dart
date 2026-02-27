@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attestor_args2.dart';
 import 'user_owned_drydock_note_response.dart';
 

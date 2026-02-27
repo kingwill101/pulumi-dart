@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'folder_bucket_view_args.dart';
 
 /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.

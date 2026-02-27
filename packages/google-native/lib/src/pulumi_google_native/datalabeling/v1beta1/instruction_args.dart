@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datalabeling_v1beta1_csv_instruction.dart';
 import 'google_cloud_datalabeling_v1beta1_pdf_instruction.dart';
 import 'instruction_data_type.dart';

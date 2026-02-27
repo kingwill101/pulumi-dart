@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conversation_args4.dart';
 import 'google_cloud_discoveryengine_v1alpha_conversation_message_response.dart';
 

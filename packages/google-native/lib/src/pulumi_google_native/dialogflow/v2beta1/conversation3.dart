@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conversation_args3.dart';
 import 'google_cloud_dialogflow_v2beta1_conversation_phone_number_response.dart';
 

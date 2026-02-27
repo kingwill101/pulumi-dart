@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'parsed_data_response2.dart';
 import 'patient_id_response2.dart';
 import 'schematized_data_response2.dart';

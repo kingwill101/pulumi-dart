@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import '../../iam/v1/condition8.dart';
 import 'workstation_cluster_workstation_config_iam_binding_args2.dart';
 

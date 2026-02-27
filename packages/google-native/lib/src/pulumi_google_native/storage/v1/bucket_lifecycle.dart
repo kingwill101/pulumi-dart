@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bucket_lifecycle_rule_item.dart';
 
 /// The bucket's lifecycle configuration. See lifecycle management for more information.

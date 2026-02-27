@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'git_lab_config_args.dart';
 import 'git_lab_enterprise_config_response.dart';
 import 'git_lab_repository_id_response.dart';

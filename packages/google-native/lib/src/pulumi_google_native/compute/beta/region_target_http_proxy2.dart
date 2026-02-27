@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'region_target_http_proxy_args2.dart';
 
 /// Creates a TargetHttpProxy resource in the specified project and region using the data included in the request.

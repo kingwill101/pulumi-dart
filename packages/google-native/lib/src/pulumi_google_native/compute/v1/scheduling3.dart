@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'duration3.dart';
 import 'scheduling_instance_termination_action3.dart';
 import 'scheduling_node_affinity3.dart';

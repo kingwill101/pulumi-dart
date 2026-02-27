@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_default_object_access_control_args.dart';
 import 'get_default_object_access_control_result.dart';
 

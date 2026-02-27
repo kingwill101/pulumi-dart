@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'error_response2.dart';
 import 'private_connection_args3.dart';
 import 'vpc_peering_config_response3.dart';

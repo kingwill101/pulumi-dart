@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_devtools_remotebuildexecution_admin_v1alpha_autoscale.dart';
 import 'google_devtools_remotebuildexecution_admin_v1alpha_worker_config.dart';
 

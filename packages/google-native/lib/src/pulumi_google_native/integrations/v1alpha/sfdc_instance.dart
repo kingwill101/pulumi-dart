@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'sfdc_instance_args.dart';
 
 /// Creates an sfdc instance record. Store the sfdc instance in Spanner. Returns the sfdc instance.

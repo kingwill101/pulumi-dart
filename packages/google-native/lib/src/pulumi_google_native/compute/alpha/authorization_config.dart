@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'rbac_policy.dart';
 
 /// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.

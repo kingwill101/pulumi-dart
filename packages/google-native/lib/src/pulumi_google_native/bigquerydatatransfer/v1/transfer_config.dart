@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'email_preferences_response.dart';
 import 'encryption_configuration_response2.dart';
 import 'schedule_options_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'annotation_args.dart';
 import 'annotation_source_response.dart';
 import 'image_annotation_response.dart';

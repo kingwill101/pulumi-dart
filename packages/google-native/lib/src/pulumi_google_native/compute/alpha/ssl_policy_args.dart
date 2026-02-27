@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'server_tls_settings.dart';
 import 'ssl_policy_min_tls_version.dart';
 import 'ssl_policy_profile.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'logging_server_args.dart';
 
 /// Create a new logging server for a given private cloud.

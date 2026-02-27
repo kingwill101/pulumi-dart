@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_custom_connector_args.dart';
 import 'get_custom_connector_result.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_privacy_dlp_v2_deidentify_config_response.dart';
 import 'organizations_deidentify_template_args.dart';
 

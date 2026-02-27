@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_region_notification_endpoint_args2.dart';
 import 'get_region_notification_endpoint_result2.dart';
 

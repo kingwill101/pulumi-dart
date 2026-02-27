@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_contentwarehouse_v1_enum_type_options.dart';
 import 'google_cloud_contentwarehouse_v1_property_definition_retrieval_importance.dart';
 import 'google_cloud_contentwarehouse_v1_property_definition_schema_source.dart';

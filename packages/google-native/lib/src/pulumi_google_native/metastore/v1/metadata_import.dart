@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'database_dump_response.dart';
 import 'metadata_import_args.dart';
 

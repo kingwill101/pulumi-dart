@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'object_id_response.dart';
 
 /// Describes a set of X.509 extensions that may be part of some certificate issuance controls.

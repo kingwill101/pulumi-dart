@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'firewall_policy_rule_direction3.dart';
 import 'firewall_policy_rule_matcher3.dart';
 import 'firewall_policy_rule_secure_tag3.dart';

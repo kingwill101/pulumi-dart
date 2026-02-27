@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'delivery_config_response.dart';
 import 'export_config_response.dart';
 import 'subscription_args6.dart';

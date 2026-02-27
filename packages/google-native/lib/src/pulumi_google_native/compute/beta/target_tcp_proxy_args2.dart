@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'target_tcp_proxy_proxy_header2.dart';
 
 /// The set of arguments for TargetTcpProxy.

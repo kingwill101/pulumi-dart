@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'egress_policy.dart';
 import 'ingress_policy.dart';
 import 'vpc_accessible_services.dart';

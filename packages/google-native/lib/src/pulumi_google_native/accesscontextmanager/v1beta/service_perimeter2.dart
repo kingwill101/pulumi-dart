@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'service_perimeter_args2.dart';
 import 'service_perimeter_config_response2.dart';
 

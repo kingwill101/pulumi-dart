@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'admin_settings_response.dart';
 import 'custom_domain_response.dart';
 import 'deny_maintenance_period_response.dart';

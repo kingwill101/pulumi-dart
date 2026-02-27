@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_firestore_admin_v1_index_field.dart';
 import 'index_api_scope.dart';
 import 'index_query_scope.dart';

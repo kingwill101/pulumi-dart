@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datacatalog_v1_column_schema_looker_column_spec_response.dart';
 
 /// A column within a schema. Columns can be nested inside other columns.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'os_policy_assignment_args2.dart';
 import 'ospolicy_assignment_instance_filter_response2.dart';
 import 'ospolicy_assignment_rollout_response2.dart';

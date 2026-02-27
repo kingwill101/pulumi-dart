@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'namespace_args5.dart';
 
 /// Creates a namespace, and returns the new namespace.

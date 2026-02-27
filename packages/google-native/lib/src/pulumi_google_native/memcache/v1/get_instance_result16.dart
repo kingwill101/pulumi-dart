@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_memcache_v1_maintenance_policy_response.dart';
 import 'instance_message_response.dart';
 import 'maintenance_schedule_response2.dart';

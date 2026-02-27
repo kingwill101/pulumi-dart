@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'addons_config_response2.dart';
 import 'authenticator_groups_config_response2.dart';
 import 'autopilot_response2.dart';

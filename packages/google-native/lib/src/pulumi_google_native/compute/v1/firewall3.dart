@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'firewall_allowed_item_response3.dart';
 import 'firewall_args3.dart';
 import 'firewall_denied_item_response3.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'accelerator_config_response.dart';
 import 'allocation_specific_skuallocation_allocated_instance_properties_reserved_disk_response.dart';
 

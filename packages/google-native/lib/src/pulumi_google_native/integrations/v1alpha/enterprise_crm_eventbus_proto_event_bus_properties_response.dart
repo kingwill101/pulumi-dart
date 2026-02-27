@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_eventbus_proto_property_entry_response.dart';
 
 /// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.

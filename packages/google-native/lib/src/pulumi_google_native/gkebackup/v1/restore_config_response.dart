@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_resource_restore_scope_response.dart';
 import 'namespaced_names_response.dart';
 import 'namespaces_response.dart';

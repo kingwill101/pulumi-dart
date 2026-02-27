@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder.dart';
 import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_invocation.dart';
 import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_material.dart';

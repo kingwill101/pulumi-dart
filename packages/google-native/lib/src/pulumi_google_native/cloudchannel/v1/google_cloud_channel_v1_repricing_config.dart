@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_channel_v1_conditional_override.dart';
 import 'google_cloud_channel_v1_repricing_adjustment.dart';
 import 'google_cloud_channel_v1_repricing_config_entitlement_granularity.dart';

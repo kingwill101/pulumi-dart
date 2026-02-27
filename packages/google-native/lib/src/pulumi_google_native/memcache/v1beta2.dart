@@ -1,0 +1,24 @@
+library module_memcache_v1beta2;
+
+export 'v1beta2/get_instance17.dart';
+export 'v1beta2/get_instance_args17.dart';
+export 'v1beta2/get_instance_result17.dart';
+export 'v1beta2/google_cloud_memcache_v1beta2_maintenance_policy.dart';
+export 'v1beta2/google_cloud_memcache_v1beta2_maintenance_policy_response.dart';
+export 'v1beta2/instance17.dart';
+export 'v1beta2/instance_args17.dart';
+export 'v1beta2/instance_memcache_version2.dart';
+export 'v1beta2/instance_message2.dart';
+export 'v1beta2/instance_message_code2.dart';
+export 'v1beta2/instance_message_response2.dart';
+export 'v1beta2/maintenance_schedule_response3.dart';
+export 'v1beta2/memcache_parameters2.dart';
+export 'v1beta2/memcache_parameters_response2.dart';
+export 'v1beta2/node_config7.dart';
+export 'v1beta2/node_config_response7.dart';
+export 'v1beta2/node_response5.dart';
+export 'v1beta2/time_of_day3.dart';
+export 'v1beta2/time_of_day_response3.dart';
+export 'v1beta2/weekly_maintenance_window2.dart';
+export 'v1beta2/weekly_maintenance_window_day2.dart';
+export 'v1beta2/weekly_maintenance_window_response2.dart';

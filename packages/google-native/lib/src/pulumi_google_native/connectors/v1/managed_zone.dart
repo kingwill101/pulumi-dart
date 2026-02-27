@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'managed_zone_args.dart';
 
 /// Creates a new ManagedZone in a given project and location.

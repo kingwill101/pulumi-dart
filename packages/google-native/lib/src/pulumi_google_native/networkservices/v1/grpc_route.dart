@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'grpc_route_args.dart';
 import 'grpc_route_route_rule_response.dart';
 

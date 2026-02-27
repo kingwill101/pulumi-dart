@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'storage_pool_capacity_provisioning_type.dart';
 import 'storage_pool_performance_provisioning_type.dart';
 

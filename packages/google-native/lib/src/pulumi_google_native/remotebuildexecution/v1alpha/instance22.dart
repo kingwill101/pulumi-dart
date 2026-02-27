@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_devtools_remotebuildexecution_admin_v1alpha_feature_policy_response.dart';
 import 'instance_args22.dart';
 

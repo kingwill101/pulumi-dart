@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conversation_medium.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_call_metadata.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_data_source.dart';

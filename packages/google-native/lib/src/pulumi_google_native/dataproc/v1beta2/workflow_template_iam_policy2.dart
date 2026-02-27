@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'binding_response47.dart';
 import 'workflow_template_iam_policy_args2.dart';
 

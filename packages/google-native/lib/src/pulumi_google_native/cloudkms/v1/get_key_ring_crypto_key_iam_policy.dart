@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_key_ring_crypto_key_iam_policy_args.dart';
 import 'get_key_ring_crypto_key_iam_policy_result.dart';
 

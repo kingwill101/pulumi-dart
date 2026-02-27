@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'managed_zone_cloud_logging_config2.dart';
 import 'managed_zone_dns_sec_config2.dart';
 import 'managed_zone_forwarding_config2.dart';

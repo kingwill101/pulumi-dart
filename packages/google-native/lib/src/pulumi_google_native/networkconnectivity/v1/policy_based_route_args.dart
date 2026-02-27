@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'filter4.dart';
 import 'interconnect_attachment.dart';
 import 'policy_based_route_next_hop_other_routes.dart';

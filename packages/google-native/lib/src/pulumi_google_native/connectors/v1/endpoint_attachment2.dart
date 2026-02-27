@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'endpoint_attachment_args2.dart';
 
 /// Creates a new EndpointAttachment in a given project and location.

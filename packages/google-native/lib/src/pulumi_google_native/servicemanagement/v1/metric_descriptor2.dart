@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'label_descriptor3.dart';
 import 'metric_descriptor_launch_stage3.dart';
 import 'metric_descriptor_metadata3.dart';

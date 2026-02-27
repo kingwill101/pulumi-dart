@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'internal_range_args.dart';
 
 /// Creates a new internal range in a given project and location.

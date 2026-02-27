@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_identitytoolkit_admin_v2_password_policy_version_response.dart';
 
 /// The configuration for the password policy on the project.

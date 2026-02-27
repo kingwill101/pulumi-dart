@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_contactcenterinsights_v1_issue_assignment_response.dart';
 
 /// Issue Modeling result on a conversation.

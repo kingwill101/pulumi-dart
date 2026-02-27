@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'basic_perf_sample_series_response.dart';
 import 'perf_sample_series_args.dart';
 

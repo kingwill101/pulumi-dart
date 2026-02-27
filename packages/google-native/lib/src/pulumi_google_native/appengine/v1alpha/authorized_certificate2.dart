@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authorized_certificate_args2.dart';
 import 'certificate_raw_data_response2.dart';
 import 'managed_certificate_response2.dart';

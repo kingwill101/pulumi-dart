@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_scope_rbac_role_binding_args.dart';
 import 'get_scope_rbac_role_binding_result.dart';
 

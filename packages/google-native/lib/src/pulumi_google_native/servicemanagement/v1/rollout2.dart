@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'rollout_args2.dart';
 import 'traffic_percent_strategy_response.dart';
 

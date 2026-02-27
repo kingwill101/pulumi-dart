@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_metadata_schema_args2.dart';
 import 'get_metadata_schema_result2.dart';
 

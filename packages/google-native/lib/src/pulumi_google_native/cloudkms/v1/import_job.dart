@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'import_job_args.dart';
 import 'key_operation_attestation_response.dart';
 import 'wrapping_public_key_response.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'fhir_notification_config_response.dart';
 import 'notification_config_response3.dart';
 import 'stream_config_response.dart';

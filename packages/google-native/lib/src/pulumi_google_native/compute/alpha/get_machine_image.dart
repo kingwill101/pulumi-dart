@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_machine_image_args.dart';
 import 'get_machine_image_result.dart';
 

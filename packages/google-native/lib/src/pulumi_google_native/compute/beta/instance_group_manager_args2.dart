@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'distribution_policy2.dart';
 import 'instance_group_manager_all_instances_config2.dart';
 import 'instance_group_manager_auto_healing_policy2.dart';

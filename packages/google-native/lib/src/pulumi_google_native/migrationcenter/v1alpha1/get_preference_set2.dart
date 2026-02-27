@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_preference_set_args2.dart';
 import 'get_preference_set_result2.dart';
 

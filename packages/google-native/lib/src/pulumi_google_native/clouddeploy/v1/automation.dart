@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'automation_args.dart';
 import 'automation_resource_selector_response.dart';
 import 'automation_rule_response.dart';

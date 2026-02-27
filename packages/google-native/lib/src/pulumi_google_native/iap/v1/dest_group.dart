@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dest_group_args.dart';
 
 /// Creates a new TunnelDestGroup.

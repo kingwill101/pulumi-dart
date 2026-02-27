@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'security_policy_rule_preconfigured_waf_config_exclusion_response.dart';
 
 class SecurityPolicyRulePreconfiguredWafConfigResponse {

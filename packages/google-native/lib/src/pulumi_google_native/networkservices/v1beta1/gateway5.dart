@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'gateway_args4.dart';
 
 /// Creates a new Gateway in a given project and location.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_organization_replay_args3.dart';
 import 'get_organization_replay_result3.dart';
 

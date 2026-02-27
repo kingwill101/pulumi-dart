@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'available_updates_response.dart';
 import 'datacenter_connector_args.dart';
 import 'status_response30.dart';

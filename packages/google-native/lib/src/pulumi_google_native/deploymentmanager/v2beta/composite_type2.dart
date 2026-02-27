@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'composite_type_args2.dart';
 import 'composite_type_label_entry_response2.dart';
 import 'operation_response4.dart';

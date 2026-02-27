@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'audit_config_response70.dart';
 import 'binding_response102.dart';
 import 'workstation_cluster_workstation_config_workstation_iam_policy_args.dart';

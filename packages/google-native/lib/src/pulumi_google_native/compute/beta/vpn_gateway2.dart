@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'vpn_gateway_args2.dart';
 import 'vpn_gateway_vpn_gateway_interface_response2.dart';
 

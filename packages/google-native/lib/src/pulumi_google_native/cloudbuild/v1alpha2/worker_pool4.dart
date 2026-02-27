@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'network_config_response7.dart';
 import 'worker_config_response3.dart';
 import 'worker_pool_args3.dart';

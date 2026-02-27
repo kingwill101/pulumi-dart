@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'endpoint_attachment_args.dart';
 
 /// Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.

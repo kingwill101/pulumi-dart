@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_ml_v1_prediction_input_response.dart';
 import 'google_cloud_ml_v1_prediction_output_response.dart';
 import 'google_cloud_ml_v1_training_input_response.dart';

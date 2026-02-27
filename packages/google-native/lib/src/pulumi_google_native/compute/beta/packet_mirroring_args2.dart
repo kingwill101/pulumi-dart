@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'packet_mirroring_enable2.dart';
 import 'packet_mirroring_filter2.dart';
 import 'packet_mirroring_forwarding_rule_info2.dart';

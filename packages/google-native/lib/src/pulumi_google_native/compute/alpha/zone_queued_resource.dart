@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bulk_insert_instance_resource_response.dart';
 import 'queued_resource_status_response.dart';
 import 'queuing_policy_response.dart';

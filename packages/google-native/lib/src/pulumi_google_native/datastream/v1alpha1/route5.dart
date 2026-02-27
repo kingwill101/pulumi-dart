@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'route_args5.dart';
 
 /// Use this method to create a route for a private connectivity in a project and location.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hub_args2.dart';
 
 /// Creates a new Network Connectivity Center hub in the specified project.

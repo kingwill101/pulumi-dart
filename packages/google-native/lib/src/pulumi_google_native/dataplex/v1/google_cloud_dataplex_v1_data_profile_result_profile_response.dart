@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dataplex_v1_data_profile_result_profile_field_response.dart';
 
 /// Contains name, type, mode and field type specific profile information.

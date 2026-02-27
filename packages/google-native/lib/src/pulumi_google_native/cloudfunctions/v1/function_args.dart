@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'event_trigger.dart';
 import 'function_docker_registry.dart';
 import 'function_ingress_settings.dart';

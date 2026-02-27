@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_folder_replay_args.dart';
 import 'get_folder_replay_result.dart';
 

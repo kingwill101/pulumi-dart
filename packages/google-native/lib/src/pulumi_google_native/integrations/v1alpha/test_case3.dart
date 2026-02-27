@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_integrations_v1alpha_integration_parameter_response.dart';
 import 'google_cloud_integrations_v1alpha_test_task_config_response.dart';
 import 'test_case_args3.dart';

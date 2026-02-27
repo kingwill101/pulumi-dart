@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_recaptchaenterprise_v1_android_key_settings_response.dart';
 import 'google_cloud_recaptchaenterprise_v1_ioskey_settings_response.dart';
 import 'google_cloud_recaptchaenterprise_v1_testing_options_response.dart';

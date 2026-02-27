@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'v2_android_key_restrictions.dart';
 import 'v2_api_target.dart';
 import 'v2_browser_key_restrictions.dart';

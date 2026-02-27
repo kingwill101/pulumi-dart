@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'backend_bucket_cdn_policy_bypass_cache_on_request_header.dart';
 import 'backend_bucket_cdn_policy_cache_key_policy.dart';
 import 'backend_bucket_cdn_policy_cache_mode.dart';

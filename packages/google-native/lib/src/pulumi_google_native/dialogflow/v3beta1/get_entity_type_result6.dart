@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dialogflow_cx_v3beta1_entity_type_entity_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_entity_type_excluded_phrase_response.dart';
 

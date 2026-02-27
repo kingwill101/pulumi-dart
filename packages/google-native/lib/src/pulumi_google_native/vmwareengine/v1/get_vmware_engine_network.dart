@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_vmware_engine_network_args.dart';
 import 'get_vmware_engine_network_result.dart';
 

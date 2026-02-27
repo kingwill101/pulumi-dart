@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'autoscaling_config.dart';
 import 'auxiliary_node_group.dart';
 import 'dataproc_metric_config.dart';

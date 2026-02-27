@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'in_toto_provenance_response.dart';
 import 'slsa_provenance_response.dart';
 import 'slsa_provenance_zero_two_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dialogflow_v2beta1_context_response.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_followup_intent_info_response.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_response.dart';

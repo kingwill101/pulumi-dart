@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'document_args2.dart';
 import 'google_cloud_dialogflow_v2_document_reload_status_response.dart';
 

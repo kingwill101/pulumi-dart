@@ -1,3 +1,3 @@
 library pulumi_google_native_blockchainnodeengine;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/blockchainnodeengine/index.dart';
+export 'package:pulumi_google_native/src/pulumi_google_native/blockchainnodeengine.dart';

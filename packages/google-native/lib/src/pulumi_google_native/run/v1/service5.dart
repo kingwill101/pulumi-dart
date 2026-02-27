@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'object_meta_response.dart';
 import 'service_args5.dart';
 import 'service_spec_response.dart';

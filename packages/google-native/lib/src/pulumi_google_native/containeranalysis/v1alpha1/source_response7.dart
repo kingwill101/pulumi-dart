@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_devtools_containeranalysis_v1alpha1_source_context_response.dart';
 import 'repo_source_response5.dart';
 import 'storage_source_response5.dart';

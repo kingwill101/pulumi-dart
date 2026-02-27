@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'field_response.dart';
 
 /// A type definition for some HL7v2 type (incl. Segments and Datatypes).

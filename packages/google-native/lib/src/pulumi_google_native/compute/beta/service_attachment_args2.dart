@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'service_attachment_connection_preference2.dart';
 import 'service_attachment_consumer_project_limit2.dart';
 import 'service_attachment_tunneling_config2.dart';

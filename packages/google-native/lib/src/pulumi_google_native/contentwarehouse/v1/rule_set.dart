@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_contentwarehouse_v1_rule_response.dart';
 import 'rule_set_args.dart';
 

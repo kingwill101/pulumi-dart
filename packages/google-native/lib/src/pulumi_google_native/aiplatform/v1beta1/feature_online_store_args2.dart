@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1beta1_feature_online_store_bigtable.dart';
 import 'google_cloud_aiplatform_v1beta1_feature_online_store_dedicated_serving_endpoint.dart';
 import 'google_cloud_aiplatform_v1beta1_feature_online_store_embedding_management.dart';

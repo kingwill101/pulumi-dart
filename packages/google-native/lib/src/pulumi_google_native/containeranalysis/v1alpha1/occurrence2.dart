@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attestation_response.dart';
 import 'build_details_response.dart';
 import 'compliance_occurrence_response2.dart';

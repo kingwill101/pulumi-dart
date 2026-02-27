@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'peering_args.dart';
 
 /// Creates a Peering for Managed AD instance.

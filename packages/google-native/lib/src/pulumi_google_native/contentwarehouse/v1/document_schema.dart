@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'document_schema_args.dart';
 import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 

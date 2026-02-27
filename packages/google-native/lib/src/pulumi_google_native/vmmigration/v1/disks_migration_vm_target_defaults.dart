@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'boot_disk_defaults.dart';
 import 'compute_scheduling.dart';
 import 'encryption2.dart';

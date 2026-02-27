@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'autoscaling_policy_args.dart';
 import 'basic_autoscaling_algorithm_response.dart';
 import 'instance_group_autoscaling_policy_config_response.dart';

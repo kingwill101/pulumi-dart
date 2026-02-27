@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_issue_model_args.dart';
 import 'get_issue_model_result.dart';
 

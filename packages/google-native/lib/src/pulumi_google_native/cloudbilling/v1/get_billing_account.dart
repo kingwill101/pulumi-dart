@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_billing_account_args.dart';
 import 'get_billing_account_result.dart';
 

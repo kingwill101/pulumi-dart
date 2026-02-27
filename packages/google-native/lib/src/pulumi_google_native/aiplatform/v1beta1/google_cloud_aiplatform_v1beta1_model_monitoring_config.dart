@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1beta1_gcs_destination.dart';
 import 'google_cloud_aiplatform_v1beta1_model_monitoring_alert_config.dart';
 import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config.dart';

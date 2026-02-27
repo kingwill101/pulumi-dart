@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'custom_dns_response2.dart';
 import 'glue_record_response2.dart';
 import 'google_domains_dns_response2.dart';

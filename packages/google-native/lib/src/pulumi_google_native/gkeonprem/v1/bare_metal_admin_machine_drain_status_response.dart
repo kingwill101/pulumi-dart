@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bare_metal_admin_drained_machine_response.dart';
 import 'bare_metal_admin_draining_machine_response.dart';
 

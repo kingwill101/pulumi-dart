@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'by_products_response.dart';
 import 'environment_response2.dart';
 import 'grafeas_v1beta1_intoto_artifact_response.dart';

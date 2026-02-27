@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bare_metal_cluster_args.dart';
 import 'bare_metal_cluster_operations_config_response.dart';
 import 'bare_metal_cluster_upgrade_policy_response.dart';

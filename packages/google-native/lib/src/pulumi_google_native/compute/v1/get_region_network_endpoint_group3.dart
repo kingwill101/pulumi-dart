@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_region_network_endpoint_group_args3.dart';
 import 'get_region_network_endpoint_group_result3.dart';
 

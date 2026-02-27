@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_conversation_args5.dart';
 import 'get_conversation_result5.dart';
 

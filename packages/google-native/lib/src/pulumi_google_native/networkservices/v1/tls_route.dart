@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'tls_route_args.dart';
 import 'tls_route_route_rule_response.dart';
 

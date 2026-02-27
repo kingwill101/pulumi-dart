@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'spoke_state_count_response.dart';
 import 'spoke_state_reason_count_response.dart';
 import 'spoke_type_count_response.dart';

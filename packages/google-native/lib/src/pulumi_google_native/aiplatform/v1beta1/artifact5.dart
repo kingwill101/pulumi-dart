@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'artifact_args2.dart';
 
 /// Creates an Artifact associated with a MetadataStore.

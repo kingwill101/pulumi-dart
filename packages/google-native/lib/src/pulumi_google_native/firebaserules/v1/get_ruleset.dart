@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_ruleset_args.dart';
 import 'get_ruleset_result.dart';
 

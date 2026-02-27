@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'annotation_spec_set_args.dart';
 import 'google_cloud_datalabeling_v1beta1_annotation_spec_response.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dataset_access_item_response.dart';
 import 'dataset_args3.dart';
 import 'dataset_reference_response.dart';

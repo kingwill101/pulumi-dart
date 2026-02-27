@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import '../../iam/v1/condition8.dart';
 import 'dataset_fhir_store_iam_member_args2.dart';
 

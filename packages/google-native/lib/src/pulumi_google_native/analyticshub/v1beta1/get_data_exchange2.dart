@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_data_exchange_args2.dart';
 import 'get_data_exchange_result2.dart';
 

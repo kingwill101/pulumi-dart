@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_region_network_firewall_policy_iam_policy_args.dart';
 import 'get_region_network_firewall_policy_iam_policy_result.dart';
 

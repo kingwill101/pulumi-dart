@@ -1,3 +1,3 @@
 library pulumi_google_native_recaptchaenterprise;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/recaptchaenterprise/index.dart';
+export 'package:pulumi_google_native/src/pulumi_google_native/recaptchaenterprise.dart';

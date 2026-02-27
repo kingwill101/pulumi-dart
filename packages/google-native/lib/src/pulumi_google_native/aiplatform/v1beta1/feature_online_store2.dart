@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'feature_online_store_args2.dart';
 import 'google_cloud_aiplatform_v1beta1_feature_online_store_bigtable_response.dart';
 import 'google_cloud_aiplatform_v1beta1_feature_online_store_dedicated_serving_endpoint_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_workflow_template_args.dart';
 import 'get_workflow_template_result.dart';
 

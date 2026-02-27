@@ -1,0 +1,26 @@
+library module_artifactregistry_v1beta1;
+
+export 'v1beta1/binding6.dart';
+export 'v1beta1/binding_response6.dart';
+export 'v1beta1/expr7.dart';
+export 'v1beta1/expr_response7.dart';
+export 'v1beta1/get_repository2.dart';
+export 'v1beta1/get_repository_args2.dart';
+export 'v1beta1/get_repository_iam_policy2.dart';
+export 'v1beta1/get_repository_iam_policy_args2.dart';
+export 'v1beta1/get_repository_iam_policy_result2.dart';
+export 'v1beta1/get_repository_result2.dart';
+export 'v1beta1/get_tag2.dart';
+export 'v1beta1/get_tag_args2.dart';
+export 'v1beta1/get_tag_result2.dart';
+export 'v1beta1/repository2.dart';
+export 'v1beta1/repository_args2.dart';
+export 'v1beta1/repository_format2.dart';
+export 'v1beta1/repository_iam_binding2.dart';
+export 'v1beta1/repository_iam_binding_args2.dart';
+export 'v1beta1/repository_iam_member2.dart';
+export 'v1beta1/repository_iam_member_args2.dart';
+export 'v1beta1/repository_iam_policy2.dart';
+export 'v1beta1/repository_iam_policy_args2.dart';
+export 'v1beta1/tag4.dart';
+export 'v1beta1/tag_args2.dart';

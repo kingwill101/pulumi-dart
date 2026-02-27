@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_app_gateway_args2.dart';
 import 'get_app_gateway_result2.dart';
 

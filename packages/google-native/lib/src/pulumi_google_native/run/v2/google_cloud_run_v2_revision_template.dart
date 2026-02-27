@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_run_v2_container.dart';
 import 'google_cloud_run_v2_revision_scaling.dart';
 import 'google_cloud_run_v2_revision_template_execution_environment.dart';

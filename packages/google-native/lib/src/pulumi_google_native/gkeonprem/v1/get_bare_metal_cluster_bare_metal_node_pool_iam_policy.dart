@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_bare_metal_cluster_bare_metal_node_pool_iam_policy_args.dart';
 import 'get_bare_metal_cluster_bare_metal_node_pool_iam_policy_result.dart';
 

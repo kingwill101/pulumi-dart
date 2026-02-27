@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_query_dataset_source_response2.dart';
 import 'data_provider_response2.dart';
 import 'listing_args2.dart';

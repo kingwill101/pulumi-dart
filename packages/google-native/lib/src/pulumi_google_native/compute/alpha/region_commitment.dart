@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'commitment_resource_status_response.dart';
 import 'license_resource_commitment_response.dart';
 import 'region_commitment_args.dart';

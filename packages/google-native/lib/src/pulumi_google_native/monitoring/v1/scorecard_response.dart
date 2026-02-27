@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'gauge_view_response.dart';
 import 'spark_chart_view_response.dart';
 import 'threshold_response.dart';

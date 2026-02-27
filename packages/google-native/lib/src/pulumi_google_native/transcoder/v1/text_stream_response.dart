@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'text_mapping_response.dart';
 
 /// Encoding of a text stream. For example, closed captions or subtitles.

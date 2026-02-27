@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'aws_source_vm_details_response2.dart';
 import 'azure_source_vm_details_response2.dart';
 import 'clone_job_response2.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'resource_policy_weekly_cycle_day_of_week_response3.dart';
 
 /// Time window specified for weekly operations.

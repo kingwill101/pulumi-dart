@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dataset_args4.dart';
 import 'google_cloud_datalabeling_v1beta1_input_config_response.dart';
 

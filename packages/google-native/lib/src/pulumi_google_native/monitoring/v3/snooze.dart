@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'criteria_response.dart';
 import 'snooze_args.dart';
 import 'time_interval_response.dart';

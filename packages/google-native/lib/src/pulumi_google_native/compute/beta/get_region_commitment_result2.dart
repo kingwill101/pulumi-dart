@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'license_resource_commitment_response2.dart';
 import 'reservation_response2.dart';
 import 'resource_commitment_response2.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_custom_report_metric_response.dart';
 import 'google_cloud_apigee_v1_report_property_response.dart';
 import 'report_args.dart';

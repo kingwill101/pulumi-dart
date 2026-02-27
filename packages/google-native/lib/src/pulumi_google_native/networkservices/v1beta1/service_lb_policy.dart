@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'service_lb_policy_args.dart';
 import 'service_lb_policy_auto_capacity_drain_response.dart';
 import 'service_lb_policy_failover_config_response.dart';

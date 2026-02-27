@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'instance_selection.dart';
 
 /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.

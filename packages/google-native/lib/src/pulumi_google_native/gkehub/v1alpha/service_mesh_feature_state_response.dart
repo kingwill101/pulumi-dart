@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'service_mesh_analysis_message_response.dart';
 
 /// **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.

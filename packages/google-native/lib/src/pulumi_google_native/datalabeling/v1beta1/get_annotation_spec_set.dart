@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_annotation_spec_set_args.dart';
 import 'get_annotation_spec_set_result.dart';
 

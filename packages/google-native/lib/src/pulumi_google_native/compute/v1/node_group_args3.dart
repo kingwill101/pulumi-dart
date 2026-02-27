@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'node_group_autoscaling_policy3.dart';
 import 'node_group_maintenance_policy3.dart';
 import 'node_group_maintenance_window3.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'app_connection_args2.dart';
 import 'google_cloud_beyondcorp_appconnections_v1alpha_app_connection_application_endpoint_response.dart';
 import 'google_cloud_beyondcorp_appconnections_v1alpha_app_connection_gateway_response.dart';

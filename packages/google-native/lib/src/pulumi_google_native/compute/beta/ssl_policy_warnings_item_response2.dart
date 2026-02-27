@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ssl_policy_warnings_item_data_item_response2.dart';
 
 class SslPolicyWarningsItemResponse2 {

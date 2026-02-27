@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'engine_args.dart';
 import 'google_cloud_discoveryengine_v1alpha_engine_chat_engine_config_response.dart';
 import 'google_cloud_discoveryengine_v1alpha_engine_chat_engine_metadata_response.dart';

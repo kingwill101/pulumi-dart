@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'router_nat_log_config_response.dart';
 import 'router_nat_rule_response.dart';
 import 'router_nat_subnetwork_to_nat_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'gce_setup_response.dart';
 import 'instance_args19.dart';
 import 'upgrade_history_entry_response2.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bare_metal_admin_api_server_argument.dart';
 import 'bare_metal_admin_control_plane_node_pool_config.dart';
 

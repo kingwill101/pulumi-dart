@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'context_args4.dart';
 
 /// Creates a context. If the specified context already exists, overrides the context.

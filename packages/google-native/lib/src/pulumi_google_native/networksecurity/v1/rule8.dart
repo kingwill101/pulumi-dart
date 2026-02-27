@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'rule_args.dart';
 
 /// Creates a new GatewaySecurityPolicy in a given project and location.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'invocation_config_response.dart';
 import 'scheduled_execution_record_response.dart';
 import 'workflow_config_args.dart';

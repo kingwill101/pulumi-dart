@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_training_pipeline_args.dart';
 import 'get_training_pipeline_result.dart';
 

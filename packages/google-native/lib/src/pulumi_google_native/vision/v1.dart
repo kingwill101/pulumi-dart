@@ -1,0 +1,26 @@
+library module_vision_v1;
+
+export 'v1/bounding_poly2.dart';
+export 'v1/bounding_poly_response2.dart';
+export 'v1/get_product4.dart';
+export 'v1/get_product_args4.dart';
+export 'v1/get_product_result4.dart';
+export 'v1/get_product_set.dart';
+export 'v1/get_product_set_args.dart';
+export 'v1/get_product_set_result.dart';
+export 'v1/get_reference_image.dart';
+export 'v1/get_reference_image_args.dart';
+export 'v1/get_reference_image_result.dart';
+export 'v1/key_value.dart';
+export 'v1/key_value_response.dart';
+export 'v1/normalized_vertex.dart';
+export 'v1/normalized_vertex_response.dart';
+export 'v1/product7.dart';
+export 'v1/product_args4.dart';
+export 'v1/product_set.dart';
+export 'v1/product_set_args.dart';
+export 'v1/reference_image.dart';
+export 'v1/reference_image_args.dart';
+export 'v1/status_response29.dart';
+export 'v1/vertex2.dart';
+export 'v1/vertex_response2.dart';

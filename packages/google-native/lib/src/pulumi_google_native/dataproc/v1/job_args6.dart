@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'driver_scheduling_config.dart';
 import 'flink_job.dart';
 import 'hadoop_job.dart';

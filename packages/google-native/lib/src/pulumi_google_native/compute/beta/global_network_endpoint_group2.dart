@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'global_network_endpoint_group_args2.dart';
 import 'network_endpoint_group_app_engine_response2.dart';
 import 'network_endpoint_group_cloud_function_response2.dart';

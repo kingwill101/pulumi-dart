@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_eventbus_proto_teardown_response.dart';
 import 'enterprise_crm_frontends_eventbus_proto_task_config_response.dart';
 import 'enterprise_crm_frontends_eventbus_proto_trigger_config_response.dart';

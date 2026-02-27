@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'common_feature_spec_response.dart';
 import 'common_feature_state_response.dart';
 import 'common_fleet_default_member_config_spec_response.dart';

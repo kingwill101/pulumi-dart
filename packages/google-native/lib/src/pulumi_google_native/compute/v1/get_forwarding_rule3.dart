@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_forwarding_rule_args3.dart';
 import 'get_forwarding_rule_result3.dart';
 

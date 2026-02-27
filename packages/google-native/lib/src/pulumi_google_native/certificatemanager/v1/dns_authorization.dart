@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dns_authorization_args.dart';
 import 'dns_resource_record_response.dart';
 

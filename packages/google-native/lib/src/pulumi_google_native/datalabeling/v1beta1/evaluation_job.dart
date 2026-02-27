@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'evaluation_job_args.dart';
 import 'google_cloud_datalabeling_v1beta1_attempt_response.dart';
 import 'google_cloud_datalabeling_v1beta1_evaluation_job_config_response.dart';

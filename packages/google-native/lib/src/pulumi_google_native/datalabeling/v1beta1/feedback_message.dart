@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'feedback_message_args.dart';
 
 /// Create a FeedbackMessage object.

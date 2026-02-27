@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authorization_response.dart';
 import 'fleet_response3.dart';
 import 'resource_status_response4.dart';

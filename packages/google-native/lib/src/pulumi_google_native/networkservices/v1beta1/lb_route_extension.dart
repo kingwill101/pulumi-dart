@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'extension_chain_response.dart';
 import 'lb_route_extension_args.dart';
 

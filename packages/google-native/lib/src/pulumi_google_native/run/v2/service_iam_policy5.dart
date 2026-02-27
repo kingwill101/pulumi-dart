@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_iam_v1_audit_config_response12.dart';
 import 'google_iam_v1_binding_response14.dart';
 import 'service_iam_policy_args5.dart';

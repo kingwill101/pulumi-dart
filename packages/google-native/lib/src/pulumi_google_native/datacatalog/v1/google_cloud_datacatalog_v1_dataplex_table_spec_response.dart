@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datacatalog_v1_dataplex_external_table_response.dart';
 import 'google_cloud_datacatalog_v1_dataplex_spec_response.dart';
 

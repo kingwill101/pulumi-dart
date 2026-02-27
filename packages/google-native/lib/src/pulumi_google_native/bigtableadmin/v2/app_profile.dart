@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'app_profile_args.dart';
 import 'multi_cluster_routing_use_any_response.dart';
 import 'single_cluster_routing_response.dart';

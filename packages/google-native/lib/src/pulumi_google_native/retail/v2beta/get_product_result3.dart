@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_retail_v2beta_audience_response.dart';
 import 'google_cloud_retail_v2beta_color_info_response.dart';
 import 'google_cloud_retail_v2beta_fulfillment_info_response.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'grpc_route_destination.dart';
 import 'grpc_route_fault_injection_policy.dart';
 import 'grpc_route_retry_policy.dart';

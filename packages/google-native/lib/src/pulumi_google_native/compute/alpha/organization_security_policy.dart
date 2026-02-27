@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'organization_security_policy_args.dart';
 import 'security_policy_adaptive_protection_config_response.dart';
 import 'security_policy_advanced_options_config_response.dart';

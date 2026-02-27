@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'managed_zone_args2.dart';
 import 'managed_zone_cloud_logging_config_response.dart';
 import 'managed_zone_dns_sec_config_response.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'organization_security_policy_type.dart';
 import 'security_policy_adaptive_protection_config.dart';
 import 'security_policy_advanced_options_config.dart';

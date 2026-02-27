@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'sql_server_user_details2.dart';
 import 'user_dual_password_type2.dart';
 import 'user_password_validation_policy2.dart';

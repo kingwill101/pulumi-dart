@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'engine_industry_vertical.dart';
 import 'engine_solution_type.dart';
 import 'google_cloud_discoveryengine_v1alpha_engine_chat_engine_config.dart';

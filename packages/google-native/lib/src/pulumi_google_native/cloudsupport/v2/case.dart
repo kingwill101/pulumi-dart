@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'actor_response.dart';
 import 'case_args.dart';
 import 'case_classification_response.dart';

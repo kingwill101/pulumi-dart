@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'custom_error_response_policy_custom_error_response_rule.dart';
 
 /// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.

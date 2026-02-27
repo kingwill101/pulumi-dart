@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dataplex_v1_data_profile_result_profile_field_profile_info_double_field_info_response.dart';
 import 'google_cloud_dataplex_v1_data_profile_result_profile_field_profile_info_integer_field_info_response.dart';
 import 'google_cloud_dataplex_v1_data_profile_result_profile_field_profile_info_string_field_info_response.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'service_attachment_connected_endpoint_response3.dart';
 import 'service_attachment_consumer_project_limit_response3.dart';
 import 'uint128_response3.dart';

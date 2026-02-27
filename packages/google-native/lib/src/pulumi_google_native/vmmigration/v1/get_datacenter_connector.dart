@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_datacenter_connector_args.dart';
 import 'get_datacenter_connector_result.dart';
 

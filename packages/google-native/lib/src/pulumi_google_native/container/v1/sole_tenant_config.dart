@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'node_affinity.dart';
 
 /// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node pool.

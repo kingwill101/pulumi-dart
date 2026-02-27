@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_organization_partner_tenant_browser_dlp_rule_iam_policy_args.dart';
 import 'get_organization_partner_tenant_browser_dlp_rule_iam_policy_result.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'firewallpolicy_args.dart';
 import 'google_cloud_recaptchaenterprise_v1_firewall_action_response.dart';
 

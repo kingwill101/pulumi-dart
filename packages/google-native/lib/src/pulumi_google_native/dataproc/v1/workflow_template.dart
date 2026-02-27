@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dataproc_v1_workflow_template_encryption_config_response.dart';
 import 'ordered_job_response.dart';
 import 'template_parameter_response.dart';

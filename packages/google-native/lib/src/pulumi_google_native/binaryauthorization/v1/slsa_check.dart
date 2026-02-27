@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'verification_rule.dart';
 
 /// A SLSA provenance attestation check, which ensures that images are built by a trusted builder using source code from its trusted repositories only.

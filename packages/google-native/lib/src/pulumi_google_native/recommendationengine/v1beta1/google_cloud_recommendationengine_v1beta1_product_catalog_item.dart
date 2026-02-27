@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_recommendationengine_v1beta1_image.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_exact_price.dart';
 import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_price_range.dart';

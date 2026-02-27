@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_assuredworkloads_v1beta1_workload_cjissettings.dart';
 import 'google_cloud_assuredworkloads_v1beta1_workload_fedramp_high_settings.dart';
 import 'google_cloud_assuredworkloads_v1beta1_workload_fedramp_moderate_settings.dart';

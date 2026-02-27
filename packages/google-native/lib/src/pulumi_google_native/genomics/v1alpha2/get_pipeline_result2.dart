@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'docker_executor_response.dart';
 import 'pipeline_parameter_response.dart';
 import 'pipeline_resources_response.dart';

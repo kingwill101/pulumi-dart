@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'policy_binding_response4.dart';
 
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.

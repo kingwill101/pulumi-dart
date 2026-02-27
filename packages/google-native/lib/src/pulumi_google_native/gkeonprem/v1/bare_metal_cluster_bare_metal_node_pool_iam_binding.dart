@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import '../../iam/v1/condition8.dart';
 import 'bare_metal_cluster_bare_metal_node_pool_iam_binding_args.dart';
 

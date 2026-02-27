@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_hl7_v2_store_args.dart';
 import 'get_hl7_v2_store_result.dart';
 

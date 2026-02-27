@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1_feature_view_feature_registry_source_feature_group_response.dart';
 
 /// A Feature Registry source for features that need to be synced to Online Store.

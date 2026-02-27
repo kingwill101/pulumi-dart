@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authority_response3.dart';
 import 'membership_args4.dart';
 import 'membership_endpoint_response2.dart';

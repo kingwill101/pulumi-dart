@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'condition_response.dart';
 
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.

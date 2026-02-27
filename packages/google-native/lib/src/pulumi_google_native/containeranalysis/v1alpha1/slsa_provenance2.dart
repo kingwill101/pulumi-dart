@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'material2.dart';
 import 'slsa_builder2.dart';
 import 'slsa_metadata2.dart';

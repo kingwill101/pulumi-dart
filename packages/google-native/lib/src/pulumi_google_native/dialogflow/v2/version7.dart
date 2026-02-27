@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'version_args4.dart';
 
 /// Creates an agent version. The new version points to the agent instance in the "default" environment.

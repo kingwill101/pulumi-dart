@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'row_response.dart';
 
 /// A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.

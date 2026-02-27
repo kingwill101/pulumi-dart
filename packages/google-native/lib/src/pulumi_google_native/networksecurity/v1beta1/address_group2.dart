@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'address_group_args2.dart';
 
 /// Creates a new address group in a given project and location.

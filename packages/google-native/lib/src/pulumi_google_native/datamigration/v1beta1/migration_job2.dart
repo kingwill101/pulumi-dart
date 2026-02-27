@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'database_type_response2.dart';
 import 'migration_job_args2.dart';
 import 'reverse_ssh_connectivity_response2.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'organization_event_threat_detection_setting_custom_module_enablement_state.dart';
 
 /// The set of arguments for OrganizationEventThreatDetectionSettingCustomModule.

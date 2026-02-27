@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'partition_config_response.dart';
 import 'reservation_config_response.dart';
 import 'retention_config_response.dart';

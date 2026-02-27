@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'build_options_default_logs_bucket_behavior.dart';
 import 'build_options_log_streaming_option.dart';
 import 'build_options_logging.dart';

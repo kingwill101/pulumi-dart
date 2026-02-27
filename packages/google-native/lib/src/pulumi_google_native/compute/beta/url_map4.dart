@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'custom_error_response_policy_response2.dart';
 import 'host_rule_response2.dart';
 import 'http_header_action_response2.dart';

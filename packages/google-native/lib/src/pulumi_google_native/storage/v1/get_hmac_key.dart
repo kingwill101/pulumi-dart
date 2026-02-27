@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_hmac_key_args.dart';
 import 'get_hmac_key_result.dart';
 

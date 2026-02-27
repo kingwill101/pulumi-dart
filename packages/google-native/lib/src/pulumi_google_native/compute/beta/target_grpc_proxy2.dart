@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'target_grpc_proxy_args2.dart';
 
 /// Creates a TargetGrpcProxy in the specified project in the given scope using the parameters that are included in the request.

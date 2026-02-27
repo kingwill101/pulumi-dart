@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'workload_identity_pool_args.dart';
 
 /// Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.

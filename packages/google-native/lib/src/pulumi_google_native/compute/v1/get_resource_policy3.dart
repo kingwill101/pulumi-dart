@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_resource_policy_args3.dart';
 import 'get_resource_policy_result3.dart';
 

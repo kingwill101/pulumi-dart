@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'aggregation_response2.dart';
 import 'forecast_options_response.dart';
 import 'trigger_response.dart';

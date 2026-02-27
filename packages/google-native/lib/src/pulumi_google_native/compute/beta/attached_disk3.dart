@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attached_disk_initialize_params2.dart';
 import 'attached_disk_interface2.dart';
 import 'attached_disk_mode2.dart';

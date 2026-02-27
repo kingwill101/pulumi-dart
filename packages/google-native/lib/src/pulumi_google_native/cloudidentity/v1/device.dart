@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'device_args.dart';
 import 'google_apps_cloudidentity_devices_v1_android_attributes_response.dart';
 

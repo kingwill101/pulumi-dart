@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'table_field_schema_categories_response.dart';
 import 'table_field_schema_policy_tags_response.dart';
 import 'table_field_schema_range_element_type_response.dart';

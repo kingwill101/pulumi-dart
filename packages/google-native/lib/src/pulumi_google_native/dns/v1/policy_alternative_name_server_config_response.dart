@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'policy_alternative_name_server_config_target_name_server_response.dart';
 
 class PolicyAlternativeNameServerConfigResponse {

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'distribution_policy_target_shape.dart';
 import 'distribution_policy_zone_configuration.dart';
 

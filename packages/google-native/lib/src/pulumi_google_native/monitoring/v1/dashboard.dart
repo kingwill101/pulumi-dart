@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'column_layout_response.dart';
 import 'dashboard_args.dart';
 import 'dashboard_filter_response.dart';

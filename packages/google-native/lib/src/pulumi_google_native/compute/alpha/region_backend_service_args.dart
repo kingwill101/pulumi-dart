@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'backend.dart';
 import 'backend_service_cdn_policy.dart';
 import 'backend_service_connection_tracking_policy.dart';

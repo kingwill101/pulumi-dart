@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'directory_services_config_response.dart';
 import 'file_share_config_response2.dart';
 import 'instance_args13.dart';

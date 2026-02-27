@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'vpn_tunnel_args.dart';
 
 /// Creates a VpnTunnel resource in the specified project and region using the data included in the request.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hcx_response.dart';
 import 'management_cluster_response.dart';
 import 'network_config_response21.dart';

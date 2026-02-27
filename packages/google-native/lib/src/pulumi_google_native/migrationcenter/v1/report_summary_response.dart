@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'report_summary_asset_aggregate_stats_response.dart';
 import 'report_summary_group_finding_response.dart';
 

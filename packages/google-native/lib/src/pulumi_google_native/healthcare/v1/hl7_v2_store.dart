@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hl7_v2_notification_config_response.dart';
 import 'hl7_v2_store_args.dart';
 import 'parser_config_response.dart';

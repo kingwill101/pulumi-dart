@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_documentai_v1_document_page_block.dart';
 import 'google_cloud_documentai_v1_document_page_detected_barcode.dart';
 import 'google_cloud_documentai_v1_document_page_detected_language.dart';

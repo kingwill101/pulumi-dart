@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'firewall_endpoint_association_args.dart';
 
 /// Creates a new FirewallEndpointAssociation in a given project and location.

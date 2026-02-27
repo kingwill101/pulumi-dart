@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'build_artifact_response.dart';
 import 'delivery_pipeline_response.dart';
 import 'release_args.dart';

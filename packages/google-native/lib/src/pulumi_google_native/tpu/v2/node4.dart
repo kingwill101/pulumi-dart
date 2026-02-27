@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'accelerator_config_response10.dart';
 import 'attached_disk_response5.dart';
 import 'network_config_response19.dart';

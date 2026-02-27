@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dialogflow_v2_smart_reply_metrics_top_nmetrics_response.dart';
 
 /// The evaluation metrics for smart reply model.

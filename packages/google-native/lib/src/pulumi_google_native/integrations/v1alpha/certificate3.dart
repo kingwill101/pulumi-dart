@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'certificate_args2.dart';
 import 'google_cloud_integrations_v1alpha_client_certificate_response.dart';
 

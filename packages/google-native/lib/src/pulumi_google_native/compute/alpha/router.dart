@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'router_args.dart';
 import 'router_bgp_peer_response.dart';
 import 'router_bgp_response.dart';

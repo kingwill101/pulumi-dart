@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_network_edge_security_service_args2.dart';
 import 'get_network_edge_security_service_result2.dart';
 

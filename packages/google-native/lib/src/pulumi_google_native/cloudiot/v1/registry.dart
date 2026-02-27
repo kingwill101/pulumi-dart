@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'event_notification_config_response.dart';
 import 'http_config_response.dart';
 import 'mqtt_config_response.dart';

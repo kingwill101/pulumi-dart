@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'domain_mapping_args.dart';
 import 'resource_record_response.dart';
 import 'ssl_settings_response.dart';

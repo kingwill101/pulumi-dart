@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'test_issue_response.dart';
 import 'test_suite_overview_response.dart';
 import 'test_timing_response.dart';

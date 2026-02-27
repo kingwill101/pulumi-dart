@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'channel_partner_link_link_state.dart';
 
 /// The set of arguments for ChannelPartnerLink.

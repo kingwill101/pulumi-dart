@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'namespace_args3.dart';
 import 'namespace_lifecycle_state_response3.dart';
 

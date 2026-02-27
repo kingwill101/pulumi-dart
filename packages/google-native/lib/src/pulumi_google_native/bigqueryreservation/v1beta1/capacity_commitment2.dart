@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'capacity_commitment_args2.dart';
 import 'status_response2.dart';
 

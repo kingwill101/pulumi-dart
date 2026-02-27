@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'resource_record_set_args2.dart';
 import 'rrset_routing_policy_response2.dart';
 

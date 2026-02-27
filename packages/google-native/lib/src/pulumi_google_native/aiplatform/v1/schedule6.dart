@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1_create_pipeline_job_request_response.dart';
 import 'google_cloud_aiplatform_v1_schedule_run_response_response.dart';
 import 'schedule_args.dart';

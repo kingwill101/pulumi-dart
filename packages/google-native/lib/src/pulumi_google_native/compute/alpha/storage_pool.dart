@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'storage_pool_args.dart';
 import 'storage_pool_resource_status_response.dart';
 

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_documentai_v1_document_page_image_quality_scores_detected_defect_response.dart';
 
 /// Image quality scores for the page image.

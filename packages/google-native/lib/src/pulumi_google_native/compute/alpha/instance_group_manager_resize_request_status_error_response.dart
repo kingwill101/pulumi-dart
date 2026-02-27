@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'instance_group_manager_resize_request_status_error_errors_item_response.dart';
 
 /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.

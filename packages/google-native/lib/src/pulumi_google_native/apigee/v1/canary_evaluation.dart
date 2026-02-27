@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'canary_evaluation_args.dart';
 import 'google_cloud_apigee_v1_canary_evaluation_metric_labels_response.dart';
 

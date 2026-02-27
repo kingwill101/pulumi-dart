@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_managed_folder_args.dart';
 import 'get_managed_folder_result.dart';
 

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'vpn_gateway_gateway_ip_version.dart';
 import 'vpn_gateway_stack_type.dart';
 import 'vpn_gateway_vpn_gateway_interface.dart';

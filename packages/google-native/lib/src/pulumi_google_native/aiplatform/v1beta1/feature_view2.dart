@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'feature_view_args2.dart';
 import 'google_cloud_aiplatform_v1beta1_feature_view_big_query_source_response.dart';
 import 'google_cloud_aiplatform_v1beta1_feature_view_feature_registry_source_response.dart';

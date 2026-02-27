@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'build_config_response.dart';
 import 'event_trigger_response2.dart';
 import 'google_cloud_functions_v2_state_message_response.dart';

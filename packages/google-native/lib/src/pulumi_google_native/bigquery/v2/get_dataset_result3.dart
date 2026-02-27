@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dataset_access_item_response.dart';
 import 'dataset_reference_response.dart';
 import 'dataset_tags_item_response.dart';

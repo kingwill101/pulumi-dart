@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'app_engine_routing_response3.dart';
 import 'http_target_response3.dart';
 import 'queue_args.dart';

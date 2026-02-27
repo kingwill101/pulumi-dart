@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'environment_args4.dart';
 import 'google_cloud_dataplex_v1_environment_endpoints_response.dart';
 import 'google_cloud_dataplex_v1_environment_infrastructure_spec_response.dart';

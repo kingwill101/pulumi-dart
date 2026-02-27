@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_healthcare_v1beta1_deidentify_field_metadata_response.dart';
 import 'google_cloud_healthcare_v1beta1_deidentify_options_response.dart';
 

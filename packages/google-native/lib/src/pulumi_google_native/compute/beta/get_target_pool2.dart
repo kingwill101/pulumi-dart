@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_target_pool_args2.dart';
 import 'get_target_pool_result2.dart';
 

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'security_policy_rule_network_matcher_user_defined_field_match_response2.dart';
 
 /// Represents a match condition that incoming network traffic is evaluated against.

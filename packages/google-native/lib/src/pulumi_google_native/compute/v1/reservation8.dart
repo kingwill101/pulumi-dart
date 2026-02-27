@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'allocation_resource_status_response3.dart';
 import 'allocation_specific_skureservation_response3.dart';
 import 'reservation_args5.dart';

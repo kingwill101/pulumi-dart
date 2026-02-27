@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'distribution_policy_response.dart';
 import 'instance_group_manager_actions_summary_response.dart';
 import 'instance_group_manager_all_instances_config_response.dart';

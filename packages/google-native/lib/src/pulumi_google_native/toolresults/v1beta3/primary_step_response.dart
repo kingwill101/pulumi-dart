@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'individual_outcome_response.dart';
 
 /// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.

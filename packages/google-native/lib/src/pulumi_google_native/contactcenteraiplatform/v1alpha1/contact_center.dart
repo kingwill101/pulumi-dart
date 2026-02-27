@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'admin_user_response.dart';
 import 'contact_center_args.dart';
 import 'instance_config_response2.dart';

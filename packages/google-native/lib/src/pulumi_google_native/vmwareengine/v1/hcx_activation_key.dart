@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hcx_activation_key_args.dart';
 
 /// Creates a new HCX activation key in a given private cloud.

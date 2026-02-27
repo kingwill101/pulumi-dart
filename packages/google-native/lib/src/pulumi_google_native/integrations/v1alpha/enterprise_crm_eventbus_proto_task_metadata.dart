@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_eventbus_proto_task_metadata_admin.dart';
 import 'enterprise_crm_eventbus_proto_task_metadata_category.dart';
 import 'enterprise_crm_eventbus_proto_task_metadata_default_json_validation_option.dart';

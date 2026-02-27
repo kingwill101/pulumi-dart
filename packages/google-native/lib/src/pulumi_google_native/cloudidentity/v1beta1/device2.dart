@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'android_attributes_response.dart';
 import 'device_args2.dart';
 import 'endpoint_verification_specific_attributes_response.dart';

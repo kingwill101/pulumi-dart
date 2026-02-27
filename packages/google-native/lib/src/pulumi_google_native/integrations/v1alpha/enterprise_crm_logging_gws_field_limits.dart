@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_logging_gws_field_limits_log_action.dart';
 import 'enterprise_crm_logging_gws_field_limits_log_type_item.dart';
 import 'enterprise_crm_logging_gws_field_limits_shortener_type.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'info_type_transformation_response2.dart';
 
 /// Configures how to transform sensitive text `InfoTypes`.

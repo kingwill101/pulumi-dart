@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'network_endpoint_response2.dart';
 import 'scheduling_config_response2.dart';
 import 'symptom_response2.dart';

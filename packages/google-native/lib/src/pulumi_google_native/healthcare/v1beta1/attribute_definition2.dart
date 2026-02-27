@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attribute_definition_args2.dart';
 
 /// Creates a new Attribute definition in the parent consent store.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_organization_partner_tenant_proxy_config_iam_policy_args.dart';
 import 'get_organization_partner_tenant_proxy_config_iam_policy_result.dart';
 

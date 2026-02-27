@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_storage_pool_iam_policy_args.dart';
 import 'get_storage_pool_iam_policy_result.dart';
 

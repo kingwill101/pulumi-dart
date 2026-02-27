@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conditional_column_set_value.dart';
 import 'convert_row_id_to_column.dart';
 import 'entity_move.dart';

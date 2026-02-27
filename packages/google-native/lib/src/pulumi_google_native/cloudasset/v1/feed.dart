@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'expr_response16.dart';
 import 'feed_args.dart';
 import 'feed_output_config_response.dart';

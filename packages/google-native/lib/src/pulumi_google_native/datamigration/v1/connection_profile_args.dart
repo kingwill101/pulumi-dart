@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'alloy_db_connection_profile.dart';
 import 'cloud_sql_connection_profile.dart';
 import 'connection_profile_provider.dart';

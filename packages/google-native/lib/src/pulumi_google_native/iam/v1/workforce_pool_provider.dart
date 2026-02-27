@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_iam_admin_v1_workforce_pool_provider_oidc_response.dart';
 import 'google_iam_admin_v1_workforce_pool_provider_saml_response.dart';
 import 'workforce_pool_provider_args.dart';

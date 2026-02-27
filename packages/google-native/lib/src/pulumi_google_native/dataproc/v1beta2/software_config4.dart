@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'software_config_optional_components_item2.dart';
 
 /// Specifies the selection and config of software inside the cluster.

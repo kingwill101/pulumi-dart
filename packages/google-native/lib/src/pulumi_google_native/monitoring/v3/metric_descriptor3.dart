@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'label_descriptor_response2.dart';
 import 'metric_descriptor_args.dart';
 import 'metric_descriptor_metadata_response2.dart';

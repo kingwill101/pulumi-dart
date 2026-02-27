@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_policy_based_route_args.dart';
 import 'get_policy_based_route_result.dart';
 

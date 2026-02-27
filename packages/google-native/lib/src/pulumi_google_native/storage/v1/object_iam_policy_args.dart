@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'object_iam_policy_bindings_item.dart';
 
 /// The set of arguments for ObjectIamPolicy.

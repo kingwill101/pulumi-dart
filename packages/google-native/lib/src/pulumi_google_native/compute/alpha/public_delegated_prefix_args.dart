@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'public_delegated_prefix_mode.dart';
 import 'public_delegated_prefix_public_delegated_sub_prefix.dart';
 

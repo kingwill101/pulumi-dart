@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'debug_options.dart';
 import 'environment_flex_resource_scheduling_goal.dart';
 import 'worker_pool.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'management_server_args.dart';
 import 'management_uriresponse.dart';
 import 'network_config_response4.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'duration2.dart';
 import 'future_reservation_planning_status2.dart';
 import 'future_reservation_specific_skuproperties2.dart';

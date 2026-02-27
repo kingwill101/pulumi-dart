@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'folder_security_health_analytics_setting_custom_module_enablement_state.dart';
 import 'google_cloud_securitycenter_v1_custom_config.dart';
 

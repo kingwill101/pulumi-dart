@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_app_group_app_key_args.dart';
 import 'get_app_group_app_key_result.dart';
 

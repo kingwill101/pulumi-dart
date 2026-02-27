@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_card_content.dart';
 import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_carousel_card_card_width.dart';
 

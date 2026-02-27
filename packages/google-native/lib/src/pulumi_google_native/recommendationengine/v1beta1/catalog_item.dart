@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'catalog_item_args.dart';
 import 'google_cloud_recommendationengine_v1beta1_catalog_item_category_hierarchy_response.dart';
 import 'google_cloud_recommendationengine_v1beta1_feature_map_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bare_metal_node_pool_args.dart';
 import 'bare_metal_node_pool_config_response.dart';
 import 'bare_metal_node_pool_upgrade_policy_response.dart';

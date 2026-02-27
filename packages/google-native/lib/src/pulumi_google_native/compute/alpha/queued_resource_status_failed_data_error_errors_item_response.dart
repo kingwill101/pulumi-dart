@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'queued_resource_status_failed_data_error_errors_item_error_details_item_response.dart';
 
 class QueuedResourceStatusFailedDataErrorErrorsItemResponse {

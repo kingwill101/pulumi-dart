@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'api_product_quota_counter_scope.dart';
 import 'google_cloud_apigee_v1_attribute.dart';
 import 'google_cloud_apigee_v1_graph_qloperation_group.dart';

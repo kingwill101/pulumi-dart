@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'device_policy_allowed_device_management_levels_item.dart';
 import 'device_policy_allowed_encryption_statuses_item.dart';
 import 'os_constraint.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datapipelines_v1_schedule_spec_response.dart';
 import 'google_cloud_datapipelines_v1_workload_response.dart';
 import 'pipeline_args.dart';

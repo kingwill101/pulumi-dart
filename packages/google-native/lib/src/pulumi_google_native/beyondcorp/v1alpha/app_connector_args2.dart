@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_beyondcorp_appconnectors_v1alpha_app_connector_principal_info.dart';
 import 'google_cloud_beyondcorp_appconnectors_v1alpha_resource_info.dart';
 

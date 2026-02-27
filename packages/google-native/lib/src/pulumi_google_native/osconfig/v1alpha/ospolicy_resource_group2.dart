@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'ospolicy_inventory_filter2.dart';
 import 'ospolicy_osfilter.dart';
 import 'ospolicy_resource2.dart';

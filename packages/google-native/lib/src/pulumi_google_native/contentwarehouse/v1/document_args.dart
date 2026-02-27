@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'document_content_category.dart';
 import 'document_raw_document_file_type.dart';
 import 'google_cloud_contentwarehouse_v1_cloud_aidocument_option.dart';

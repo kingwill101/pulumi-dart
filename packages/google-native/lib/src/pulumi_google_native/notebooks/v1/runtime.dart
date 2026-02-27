@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'runtime_access_config_response.dart';
 import 'runtime_args.dart';
 import 'runtime_metrics_response.dart';

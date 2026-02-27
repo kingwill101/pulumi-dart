@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'apigateway_audit_config_response.dart';
 import 'apigateway_binding_response.dart';
 import 'gateway_iam_policy_args.dart';

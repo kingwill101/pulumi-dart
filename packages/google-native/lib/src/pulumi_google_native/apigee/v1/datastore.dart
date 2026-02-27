@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'datastore_args.dart';
 import 'google_cloud_apigee_v1_datastore_config_response.dart';
 

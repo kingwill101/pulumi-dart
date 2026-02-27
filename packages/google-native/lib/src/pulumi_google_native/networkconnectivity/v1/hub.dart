@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hub_args.dart';
 import 'routing_vpcresponse.dart';
 import 'spoke_summary_response.dart';

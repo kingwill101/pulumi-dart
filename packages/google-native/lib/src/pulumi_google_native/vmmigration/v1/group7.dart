@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'group_args7.dart';
 
 /// Creates a new Group in a given project and location.

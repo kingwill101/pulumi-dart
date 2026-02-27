@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_rate_range_response.dart';
 import 'google_cloud_apigee_v1_revenue_share_range_response.dart';
 import 'google_type_money_response3.dart';

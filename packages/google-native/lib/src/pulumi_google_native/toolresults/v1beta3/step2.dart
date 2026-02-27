@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'duration_response4.dart';
 import 'multi_step_response.dart';
 import 'outcome_response.dart';

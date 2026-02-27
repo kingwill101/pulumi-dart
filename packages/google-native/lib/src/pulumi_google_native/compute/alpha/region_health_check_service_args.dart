@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'region_health_check_service_health_status_aggregation_policy.dart';
 import 'region_health_check_service_health_status_aggregation_strategy.dart';
 

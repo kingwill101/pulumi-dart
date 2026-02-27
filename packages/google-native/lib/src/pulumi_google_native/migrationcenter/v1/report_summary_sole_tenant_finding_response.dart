@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'report_summary_sole_tenant_node_allocation_response.dart';
 
 /// A set of findings that applies to assets destined for Sole-Tenant nodes.

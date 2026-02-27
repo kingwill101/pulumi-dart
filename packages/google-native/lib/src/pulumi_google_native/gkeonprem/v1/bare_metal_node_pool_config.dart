@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bare_metal_kubelet_config.dart';
 import 'bare_metal_node_config.dart';
 import 'bare_metal_node_pool_config_operating_system.dart';

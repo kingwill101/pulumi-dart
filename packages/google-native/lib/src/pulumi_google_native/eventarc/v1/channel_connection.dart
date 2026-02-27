@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'channel_connection_args.dart';
 
 /// Create a new ChannelConnection in a particular project and location.

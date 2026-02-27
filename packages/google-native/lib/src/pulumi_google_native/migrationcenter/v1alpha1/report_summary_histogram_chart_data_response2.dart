@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'report_summary_histogram_chart_data_bucket_response2.dart';
 
 /// A Histogram Chart shows a distribution of values into buckets, showing a count of values which fall into a bucket.

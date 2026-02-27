@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'entity_system.dart';
 import 'entity_type.dart';
 import 'google_cloud_dataplex_v1_schema.dart';

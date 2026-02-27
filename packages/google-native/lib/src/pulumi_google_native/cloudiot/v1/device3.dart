@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'device_args3.dart';
 import 'device_config_response.dart';
 import 'device_credential_response.dart';

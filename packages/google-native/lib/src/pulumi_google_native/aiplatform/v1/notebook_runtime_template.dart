@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1_machine_spec_response.dart';
 import 'google_cloud_aiplatform_v1_network_spec_response.dart';
 import 'google_cloud_aiplatform_v1_notebook_euc_config_response.dart';

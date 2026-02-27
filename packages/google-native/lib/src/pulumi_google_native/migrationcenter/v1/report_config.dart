@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'report_config_args.dart';
 import 'report_config_group_preference_set_assignment_response.dart';
 

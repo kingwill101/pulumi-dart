@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_baremetalsolution_v2_logical_interface.dart';
 import 'instance_config_network_config.dart';
 import 'network_address.dart';

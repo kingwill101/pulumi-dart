@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'public_advertised_prefix_pdp_scope2.dart';
 import 'public_advertised_prefix_status2.dart';
 

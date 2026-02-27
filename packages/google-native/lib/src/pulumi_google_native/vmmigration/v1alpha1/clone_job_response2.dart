@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'clone_step_response2.dart';
 import 'compute_engine_disks_target_details_response2.dart';
 import 'compute_engine_target_details_response2.dart';

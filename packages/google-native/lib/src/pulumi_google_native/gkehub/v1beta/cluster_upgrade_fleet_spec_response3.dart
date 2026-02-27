@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_upgrade_gkeupgrade_override_response3.dart';
 import 'cluster_upgrade_post_conditions_response3.dart';
 

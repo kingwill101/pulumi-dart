@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_backend_bucket_iam_policy_args2.dart';
 import 'get_backend_bucket_iam_policy_result2.dart';
 

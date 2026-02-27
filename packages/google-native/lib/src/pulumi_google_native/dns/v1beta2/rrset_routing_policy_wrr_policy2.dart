@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'rrset_routing_policy_wrr_policy_wrr_policy_item2.dart';
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'execution_args.dart';
 
 /// Creates an Execution associated with a MetadataStore.

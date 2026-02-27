@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'secret_env_var2.dart';
 import 'secret_volume2.dart';
 import 'service_config_ingress_settings.dart';

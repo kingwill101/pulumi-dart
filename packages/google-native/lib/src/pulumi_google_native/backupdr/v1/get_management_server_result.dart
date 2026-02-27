@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'management_uriresponse.dart';
 import 'network_config_response4.dart';
 import 'workforce_identity_based_management_uriresponse.dart';

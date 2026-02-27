@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_target_grpc_proxy_args.dart';
 import 'get_target_grpc_proxy_result.dart';
 

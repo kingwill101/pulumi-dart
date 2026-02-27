@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authentication4.dart';
 import 'scan_config_export_to_security_command_center2.dart';
 import 'scan_config_risk_level2.dart';

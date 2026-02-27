@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'network_args2.dart';
 import 'network_peering_response2.dart';
 import 'network_routing_config_response2.dart';

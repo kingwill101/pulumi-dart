@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'filter_response4.dart';
 import 'interconnect_attachment_response.dart';
 import 'policy_based_route_args.dart';

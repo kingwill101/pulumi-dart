@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'service_lb_policy_auto_capacity_drain.dart';
 import 'service_lb_policy_failover_config.dart';
 import 'service_lb_policy_load_balancing_algorithm.dart';

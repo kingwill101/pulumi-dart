@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_ml_v1_built_in_algorithm_output_response.dart';
 import 'google_cloud_ml_v1_hyperparameter_output_hyperparameter_metric_response.dart';
 

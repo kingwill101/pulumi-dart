@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_debug_session_args.dart';
 import 'get_debug_session_result.dart';
 

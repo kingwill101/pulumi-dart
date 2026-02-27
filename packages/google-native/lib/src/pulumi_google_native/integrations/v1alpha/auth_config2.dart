@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'auth_config_args.dart';
 import 'google_cloud_integrations_v1alpha_credential_response.dart';
 

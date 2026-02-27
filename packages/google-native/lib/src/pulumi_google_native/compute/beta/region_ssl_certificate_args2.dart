@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'region_ssl_certificate_type2.dart';
 import 'ssl_certificate_managed_ssl_certificate2.dart';
 import 'ssl_certificate_self_managed_ssl_certificate2.dart';

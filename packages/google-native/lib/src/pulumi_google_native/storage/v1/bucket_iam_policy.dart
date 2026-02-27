@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bucket_iam_policy_args.dart';
 import 'bucket_iam_policy_bindings_item_response.dart';
 

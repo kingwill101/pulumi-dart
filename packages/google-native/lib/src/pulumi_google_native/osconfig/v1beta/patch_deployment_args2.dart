@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'one_time_schedule2.dart';
 import 'patch_config2.dart';
 import 'patch_instance_filter2.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'linked_interconnect_attachments_response.dart';
 import 'linked_router_appliance_instances_response.dart';
 import 'linked_vpc_network_response.dart';

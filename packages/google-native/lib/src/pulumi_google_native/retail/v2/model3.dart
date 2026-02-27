@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_retail_v2_model_model_features_config_response.dart';
 import 'google_cloud_retail_v2_model_serving_config_list_response.dart';
 import 'model_args3.dart';

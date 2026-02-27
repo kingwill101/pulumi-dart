@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cycle_step_response.dart';
 import 'migration_warning_response.dart';
 import 'status_response30.dart';

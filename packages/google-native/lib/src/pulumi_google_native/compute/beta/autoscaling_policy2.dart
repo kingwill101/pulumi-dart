@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'autoscaling_policy_cpu_utilization2.dart';
 import 'autoscaling_policy_custom_metric_utilization2.dart';
 import 'autoscaling_policy_load_balancing_utilization2.dart';

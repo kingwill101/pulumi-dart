@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hl7_v2_notification_config2.dart';
 import 'notification_config4.dart';
 import 'parser_config2.dart';

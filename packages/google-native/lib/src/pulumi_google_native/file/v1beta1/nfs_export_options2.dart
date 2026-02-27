@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'nfs_export_options_access_mode2.dart';
 import 'nfs_export_options_security_flavors_item.dart';
 import 'nfs_export_options_squash_mode2.dart';

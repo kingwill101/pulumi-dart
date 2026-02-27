@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'connectivity_test_args.dart';
 import 'endpoint_response.dart';
 import 'probing_details_response.dart';

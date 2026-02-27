@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_categorical_value_spec.dart';
 import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_conditional_parameter_spec.dart';
 import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_discrete_value_spec.dart';

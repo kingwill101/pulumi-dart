@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hadoop_job_response2.dart';
 import 'hive_job_response2.dart';
 import 'job_placement_response2.dart';

@@ -1,3 +1,3 @@
 library pulumi_google_native_firebaseappcheck;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/firebaseappcheck/index.dart';
+export 'package:pulumi_google_native/src/pulumi_google_native/firebaseappcheck.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'psc_config_response2.dart';
 import 'psc_connection_response.dart';
 import 'service_connection_policy_args.dart';

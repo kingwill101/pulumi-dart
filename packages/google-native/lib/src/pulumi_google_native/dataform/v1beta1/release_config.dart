@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'code_compilation_config_response.dart';
 import 'release_config_args.dart';
 import 'scheduled_release_record_response.dart';

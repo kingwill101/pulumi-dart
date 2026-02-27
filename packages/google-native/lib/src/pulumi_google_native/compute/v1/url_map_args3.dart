@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'host_rule3.dart';
 import 'http_header_action3.dart';
 import 'http_redirect_action3.dart';

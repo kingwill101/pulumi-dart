@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'managed_zone_private_visibility_config_gkecluster_response.dart';
 import 'managed_zone_private_visibility_config_network_response.dart';
 

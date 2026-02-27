@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_firestore_admin_v1_index_field_response.dart';
 import 'index_args4.dart';
 

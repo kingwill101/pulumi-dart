@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'interconnect_circuit_info_response3.dart';
 import 'interconnect_macsec_response3.dart';
 import 'interconnect_outage_notification_response3.dart';

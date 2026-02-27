@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'method_policy.dart';
 
 /// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com

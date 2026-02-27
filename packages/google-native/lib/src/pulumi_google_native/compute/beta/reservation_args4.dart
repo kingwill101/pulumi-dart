@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'allocation_aggregate_reservation2.dart';
 import 'allocation_specific_skureservation2.dart';
 import 'duration2.dart';

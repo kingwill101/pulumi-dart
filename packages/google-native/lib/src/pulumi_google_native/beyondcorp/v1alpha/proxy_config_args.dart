@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_beyondcorp_partnerservices_v1alpha_encryption_info.dart';
 import 'google_cloud_beyondcorp_partnerservices_v1alpha_routing_info.dart';
 import 'google_cloud_beyondcorp_partnerservices_v1alpha_transport_info.dart';

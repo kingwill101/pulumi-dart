@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'snapshot_args.dart';
 
 /// Takes a snapshot of a boot volume. Returns INVALID_ARGUMENT if called for a non-boot volume.

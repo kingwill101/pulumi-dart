@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'sole_tenancy_preferences_commitment_plan2.dart';
 import 'sole_tenancy_preferences_host_maintenance_policy2.dart';
 import 'sole_tenant_node_type2.dart';

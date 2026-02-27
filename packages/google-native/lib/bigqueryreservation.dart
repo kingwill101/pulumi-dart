@@ -1,3 +1,3 @@
 library pulumi_google_native_bigqueryreservation;
 
-export 'package:pulumi_google_native/src/pulumi_google_native/bigqueryreservation/index.dart';
+export 'package:pulumi_google_native/src/pulumi_google_native/bigqueryreservation.dart';

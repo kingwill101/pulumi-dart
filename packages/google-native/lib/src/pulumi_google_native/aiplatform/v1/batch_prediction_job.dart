@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'batch_prediction_job_args.dart';
 import 'google_cloud_aiplatform_v1_batch_dedicated_resources_response.dart';
 import 'google_cloud_aiplatform_v1_batch_prediction_job_input_config_response.dart';

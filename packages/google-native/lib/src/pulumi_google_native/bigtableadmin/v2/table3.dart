@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'change_stream_config_response.dart';
 import 'restore_info_response.dart';
 import 'table_args3.dart';

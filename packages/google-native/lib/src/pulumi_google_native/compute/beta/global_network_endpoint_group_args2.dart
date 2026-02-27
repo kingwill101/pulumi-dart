@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'global_network_endpoint_group_network_endpoint_type2.dart';
 import 'network_endpoint_group_app_engine2.dart';
 import 'network_endpoint_group_cloud_function2.dart';

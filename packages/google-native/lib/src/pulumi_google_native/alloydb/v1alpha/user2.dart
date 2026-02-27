@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'user_args2.dart';
 
 /// Creates a new User in a given project, location, and cluster.

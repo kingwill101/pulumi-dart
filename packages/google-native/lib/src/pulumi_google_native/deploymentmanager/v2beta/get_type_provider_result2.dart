@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'collection_override_response2.dart';
 import 'credential_response2.dart';
 import 'operation_response4.dart';

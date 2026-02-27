@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'driver_scheduling_config_response.dart';
 import 'flink_job_response.dart';
 import 'hadoop_job_response.dart';

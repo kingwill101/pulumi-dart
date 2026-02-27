@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'custom_job_args2.dart';
 import 'google_cloud_aiplatform_v1beta1_custom_job_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'public_advertised_prefix_public_delegated_prefix_response2.dart';
 
 /// Result data returned by getPublicAdvertisedPrefix.

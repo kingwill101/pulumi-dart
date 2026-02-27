@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'crypto_key_args.dart';
 import 'crypto_key_version_response.dart';
 import 'crypto_key_version_template_response.dart';

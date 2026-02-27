@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cloud_sql_connection_profile2.dart';
 import 'connection_profile_provider2.dart';
 import 'connection_profile_state2.dart';

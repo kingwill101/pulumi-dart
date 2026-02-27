@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_devtools_remotebuildexecution_admin_v1alpha_feature_policy.dart';
 
 /// The set of arguments for Instance.

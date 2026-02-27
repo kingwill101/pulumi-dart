@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'log_config_counter_options_custom_field_response2.dart';
 
 /// This is deprecated and has no effect. Do not use.

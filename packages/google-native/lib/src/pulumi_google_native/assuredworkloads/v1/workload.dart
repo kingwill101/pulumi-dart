@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_assuredworkloads_v1_workload_compliance_status_response.dart';
 import 'google_cloud_assuredworkloads_v1_workload_ekm_provisioning_response_response.dart';
 import 'google_cloud_assuredworkloads_v1_workload_kmssettings_response.dart';

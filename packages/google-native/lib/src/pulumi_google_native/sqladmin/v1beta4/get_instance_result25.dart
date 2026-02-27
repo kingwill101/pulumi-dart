@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'disk_encryption_configuration_response2.dart';
 import 'disk_encryption_status_response2.dart';
 import 'instance_failover_replica_response2.dart';

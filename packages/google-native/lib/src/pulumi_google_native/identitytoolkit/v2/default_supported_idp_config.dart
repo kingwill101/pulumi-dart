@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'default_supported_idp_config_args.dart';
 import 'google_cloud_identitytoolkit_admin_v2_apple_sign_in_config_response.dart';
 

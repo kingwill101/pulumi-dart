@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'destination_response2.dart';
 import 'event_filter_response4.dart';
 import 'transport_response.dart';

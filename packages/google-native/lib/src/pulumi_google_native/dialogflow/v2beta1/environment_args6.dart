@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dialogflow_v2beta1_fulfillment.dart';
 import 'google_cloud_dialogflow_v2beta1_text_to_speech_settings.dart';
 

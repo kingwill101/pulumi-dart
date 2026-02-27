@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'metadata_filter_filter_match_criteria.dart';
 import 'metadata_filter_label_match.dart';
 

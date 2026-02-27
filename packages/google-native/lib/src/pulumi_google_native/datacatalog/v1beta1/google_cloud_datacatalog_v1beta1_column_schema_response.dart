@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 
 /// Representation of a column within a schema. Columns could be nested inside other columns.
 class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {

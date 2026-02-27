@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'customer_encryption_key_response2.dart';
 import 'instance_properties_response2.dart';
 import 'machine_image_args2.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_conversion_workspace_iam_policy_args.dart';
 import 'get_conversion_workspace_iam_policy_result.dart';
 

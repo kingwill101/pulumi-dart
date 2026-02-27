@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'http_health_check_args.dart';
 
 /// Creates a HttpHealthCheck resource in the specified project using the data included in the request.

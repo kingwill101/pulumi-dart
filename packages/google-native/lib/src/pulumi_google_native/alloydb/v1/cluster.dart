@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'automated_backup_policy_response.dart';
 import 'backup_source_response.dart';
 import 'cluster_args.dart';

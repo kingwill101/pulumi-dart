@@ -1,0 +1,22 @@
+library module_websecurityscanner_v1;
+
+export 'v1/authentication2.dart';
+export 'v1/authentication_response2.dart';
+export 'v1/custom_account.dart';
+export 'v1/custom_account_response.dart';
+export 'v1/get_scan_config.dart';
+export 'v1/get_scan_config_args.dart';
+export 'v1/get_scan_config_result.dart';
+export 'v1/google_account.dart';
+export 'v1/google_account_response.dart';
+export 'v1/iap_credential.dart';
+export 'v1/iap_credential_response.dart';
+export 'v1/iap_test_service_account_info.dart';
+export 'v1/iap_test_service_account_info_response.dart';
+export 'v1/scan_config.dart';
+export 'v1/scan_config_args.dart';
+export 'v1/scan_config_export_to_security_command_center.dart';
+export 'v1/scan_config_risk_level.dart';
+export 'v1/scan_config_user_agent.dart';
+export 'v1/schedule3.dart';
+export 'v1/schedule_response3.dart';

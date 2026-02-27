@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_aiplatform_v1_execution_response.dart';
 import 'google_cloud_aiplatform_v1_pipeline_task_detail_pipeline_task_status_response.dart';
 import 'google_cloud_aiplatform_v1_pipeline_task_executor_detail_response.dart';

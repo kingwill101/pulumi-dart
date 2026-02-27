@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'folder_contact_notification_category_subscriptions_item.dart';
 import 'folder_contact_validation_state.dart';
 

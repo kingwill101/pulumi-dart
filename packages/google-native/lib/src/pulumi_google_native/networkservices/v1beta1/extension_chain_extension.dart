@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'extension_chain_extension_supported_events_item.dart';
 
 /// A single extension in the chain to execute for the matching request.

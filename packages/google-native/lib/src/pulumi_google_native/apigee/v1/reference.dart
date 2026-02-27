@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'reference_args.dart';
 
 /// Creates a Reference in the specified environment.

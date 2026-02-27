@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_identitytoolkit_admin_v2_client_permission_config_response.dart';
 import 'google_cloud_identitytoolkit_admin_v2_email_privacy_config_response.dart';
 import 'google_cloud_identitytoolkit_admin_v2_hash_config_response.dart';

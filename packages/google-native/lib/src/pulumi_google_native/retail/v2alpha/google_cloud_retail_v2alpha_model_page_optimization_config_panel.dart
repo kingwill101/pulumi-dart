@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_retail_v2alpha_model_page_optimization_config_candidate.dart';
 
 /// An individual panel with a list of ServingConfigs to consider for it.

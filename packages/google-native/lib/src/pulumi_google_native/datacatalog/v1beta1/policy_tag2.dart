@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'policy_tag_args2.dart';
 
 /// Creates a policy tag in the specified taxonomy.

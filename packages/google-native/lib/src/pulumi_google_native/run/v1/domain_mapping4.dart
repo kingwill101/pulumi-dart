@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'domain_mapping_args4.dart';
 import 'domain_mapping_spec_response.dart';
 import 'domain_mapping_status_response.dart';

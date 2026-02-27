@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'addons_config_response.dart';
 import 'authenticator_groups_config_response.dart';
 import 'autopilot_response.dart';

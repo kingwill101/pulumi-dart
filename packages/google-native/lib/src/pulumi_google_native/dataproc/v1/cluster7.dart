@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_args7.dart';
 import 'cluster_config_response2.dart';
 import 'cluster_metrics_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_event_subscription_args.dart';
 import 'get_event_subscription_result.dart';
 

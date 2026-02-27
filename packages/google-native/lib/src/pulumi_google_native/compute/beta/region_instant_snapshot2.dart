@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'instant_snapshot_resource_status_response2.dart';
 import 'region_instant_snapshot_args2.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'context_args2.dart';
 
 /// Creates a Context associated with a MetadataStore.

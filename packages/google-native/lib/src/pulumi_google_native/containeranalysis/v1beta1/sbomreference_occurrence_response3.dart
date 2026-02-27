@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'envelope_signature_response3.dart';
 import 'sbom_reference_intoto_payload_response3.dart';
 

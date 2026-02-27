@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'inbound_sso_assignment_sso_mode2.dart';
 import 'saml_sso_info2.dart';
 import 'sign_in_behavior2.dart';

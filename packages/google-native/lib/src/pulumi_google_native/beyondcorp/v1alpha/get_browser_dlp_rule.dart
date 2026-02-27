@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_browser_dlp_rule_args.dart';
 import 'get_browser_dlp_rule_result.dart';
 

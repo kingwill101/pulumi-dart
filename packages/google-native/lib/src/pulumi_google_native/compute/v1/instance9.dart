@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'accelerator_config_response3.dart';
 import 'advanced_machine_features_response3.dart';
 import 'attached_disk_response4.dart';

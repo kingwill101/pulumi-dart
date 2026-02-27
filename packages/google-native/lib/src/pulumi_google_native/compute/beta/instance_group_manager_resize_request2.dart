@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'duration_response2.dart';
 import 'instance_group_manager_resize_request_args2.dart';
 import 'instance_group_manager_resize_request_status_response2.dart';

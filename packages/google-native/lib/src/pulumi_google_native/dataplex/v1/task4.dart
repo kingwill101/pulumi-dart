@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dataplex_v1_task_execution_spec_response.dart';
 import 'google_cloud_dataplex_v1_task_execution_status_response.dart';
 import 'google_cloud_dataplex_v1_task_notebook_task_config_response.dart';

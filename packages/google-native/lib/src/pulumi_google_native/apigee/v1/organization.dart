@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_addons_config_response.dart';
 import 'google_cloud_apigee_v1_properties_response.dart';
 import 'organization_args.dart';

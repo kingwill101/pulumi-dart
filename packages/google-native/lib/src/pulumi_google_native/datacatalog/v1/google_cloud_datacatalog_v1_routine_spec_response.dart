@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_datacatalog_v1_big_query_routine_spec_response.dart';
 import 'google_cloud_datacatalog_v1_routine_spec_argument_response.dart';
 

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_certificate_map_entry_args.dart';
 import 'get_certificate_map_entry_result.dart';
 

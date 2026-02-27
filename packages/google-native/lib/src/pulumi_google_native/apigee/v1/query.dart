@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_async_query_result_response.dart';
 import 'google_cloud_apigee_v1_query_metadata_response.dart';
 import 'query_args.dart';

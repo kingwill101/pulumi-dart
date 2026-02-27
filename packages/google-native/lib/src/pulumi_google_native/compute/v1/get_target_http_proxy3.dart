@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_target_http_proxy_args3.dart';
 import 'get_target_http_proxy_result3.dart';
 

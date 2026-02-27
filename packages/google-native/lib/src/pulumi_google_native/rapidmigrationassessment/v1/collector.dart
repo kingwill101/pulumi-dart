@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'collector_args.dart';
 import 'guest_os_scan_response.dart';
 import 'vsphere_scan_response.dart';

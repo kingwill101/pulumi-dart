@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'connection_profile_args4.dart';
 import 'forward_ssh_tunnel_connectivity_response3.dart';
 import 'gcs_profile_response2.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_sfdc_channel_args.dart';
 import 'get_sfdc_channel_result.dart';
 

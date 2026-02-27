@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_documentai_v1beta3_processor_version_alias_response.dart';
 import 'processor_args2.dart';
 

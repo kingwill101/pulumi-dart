@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'binding_args2.dart';
 import 'membership_binding_lifecycle_state_response2.dart';
 

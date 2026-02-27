@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'android_device_response.dart';
 import 'device_session_args.dart';
 import 'session_state_event_response.dart';

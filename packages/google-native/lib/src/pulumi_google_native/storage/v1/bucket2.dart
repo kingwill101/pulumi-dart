@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bucket_access_control_response.dart';
 import 'bucket_args2.dart';
 import 'bucket_autoclass_response.dart';

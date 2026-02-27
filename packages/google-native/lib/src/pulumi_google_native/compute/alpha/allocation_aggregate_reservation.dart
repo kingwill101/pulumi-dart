@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'allocation_aggregate_reservation_reserved_resource_info.dart';
 import 'allocation_aggregate_reservation_vm_family.dart';
 import 'allocation_aggregate_reservation_workload_type.dart';

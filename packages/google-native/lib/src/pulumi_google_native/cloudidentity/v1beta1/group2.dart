@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dynamic_group_metadata_response2.dart';
 import 'entity_key_response2.dart';
 import 'group_args2.dart';

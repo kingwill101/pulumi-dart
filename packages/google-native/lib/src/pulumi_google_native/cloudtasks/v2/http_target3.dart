@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'header_override.dart';
 import 'http_target_http_method3.dart';
 import 'oauth_token3.dart';

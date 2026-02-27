@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_grpc_operation_config_response.dart';
 
 /// List of gRPC operation configuration details associated with Apigee API proxies.

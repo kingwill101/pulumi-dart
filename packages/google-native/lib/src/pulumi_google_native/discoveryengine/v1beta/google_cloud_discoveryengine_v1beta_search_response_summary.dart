@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_discoveryengine_v1beta_search_response_summary_safety_attributes.dart';
 import 'google_cloud_discoveryengine_v1beta_search_response_summary_summary_skipped_reasons_item.dart';
 

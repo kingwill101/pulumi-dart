@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authority3.dart';
 import 'membership_endpoint2.dart';
 import 'membership_infrastructure_type.dart';

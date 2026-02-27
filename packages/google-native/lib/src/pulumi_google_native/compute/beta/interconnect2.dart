@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'interconnect_args2.dart';
 import 'interconnect_circuit_info_response2.dart';
 import 'interconnect_macsec_response2.dart';

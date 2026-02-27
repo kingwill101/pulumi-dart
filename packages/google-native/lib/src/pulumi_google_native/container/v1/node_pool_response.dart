@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'best_effort_provisioning_response.dart';
 import 'max_pods_constraint_response.dart';
 import 'node_config_response4.dart';

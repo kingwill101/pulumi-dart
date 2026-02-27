@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'column_layout_response.dart';
 import 'dashboard_filter_response.dart';
 import 'grid_layout_response.dart';

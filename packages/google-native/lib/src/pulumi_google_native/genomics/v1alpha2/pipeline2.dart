@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'docker_executor_response.dart';
 import 'pipeline_args2.dart';
 import 'pipeline_parameter_response.dart';

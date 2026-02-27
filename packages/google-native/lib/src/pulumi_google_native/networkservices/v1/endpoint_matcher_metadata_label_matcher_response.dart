@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'endpoint_matcher_metadata_label_matcher_metadata_labels_response.dart';
 
 /// The matcher that is based on node metadata presented by xDS clients.

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'membership_rbac_role_binding_args2.dart';
 import 'rbacrole_binding_lifecycle_state_response3.dart';
 import 'role_response3.dart';

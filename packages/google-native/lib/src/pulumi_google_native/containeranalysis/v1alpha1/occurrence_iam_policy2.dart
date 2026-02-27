@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'binding_response37.dart';
 import 'occurrence_iam_policy_args2.dart';
 

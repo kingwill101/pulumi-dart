@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'autoscaling_config_response2.dart';
 import 'encryption_config_response9.dart';
 import 'endpoint_config_response2.dart';

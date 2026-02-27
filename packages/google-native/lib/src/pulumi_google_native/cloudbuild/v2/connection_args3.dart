@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'git_hub_config.dart';
 import 'google_devtools_cloudbuild_v2_git_hub_enterprise_config.dart';
 import 'google_devtools_cloudbuild_v2_git_lab_config.dart';

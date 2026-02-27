@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'contact_settings3.dart';
 import 'dns_settings3.dart';
 import 'management_settings3.dart';

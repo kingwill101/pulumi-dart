@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_query_dataset_response.dart';
 import 'billing_account_bucket_link_args.dart';
 

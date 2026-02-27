@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_external_access_rule_args.dart';
 import 'get_external_access_rule_result.dart';
 

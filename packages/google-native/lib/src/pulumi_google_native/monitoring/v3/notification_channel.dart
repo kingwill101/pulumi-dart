@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'mutation_record_response.dart';
 import 'notification_channel_args.dart';
 

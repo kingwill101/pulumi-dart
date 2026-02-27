@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'global_public_delegated_prefix_args2.dart';
 import 'public_delegated_prefix_public_delegated_sub_prefix_response2.dart';
 

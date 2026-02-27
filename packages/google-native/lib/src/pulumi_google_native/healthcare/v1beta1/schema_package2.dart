@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hl7_schema_config2.dart';
 import 'hl7_types_config2.dart';
 import 'schema_package_schematized_parsing_type2.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_authorization_mode2.dart';
 import 'cluster_transit_encryption_mode2.dart';
 import 'psc_config4.dart';

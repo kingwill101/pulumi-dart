@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_contentwarehouse_v1_action.dart';
 import 'google_cloud_contentwarehouse_v1_rule_trigger_type.dart';
 

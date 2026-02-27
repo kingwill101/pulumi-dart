@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'docker_repository_config_response.dart';
 import 'maven_repository_config_response.dart';
 import 'remote_repository_config_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'delivery_pipeline_args.dart';
 import 'pipeline_condition_response.dart';
 import 'serial_pipeline_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'certificate_authority_config_response.dart';
 import 'certificate_issuance_config_args.dart';
 

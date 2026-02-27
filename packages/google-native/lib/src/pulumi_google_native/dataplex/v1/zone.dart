@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_dataplex_v1_asset_status_response.dart';
 import 'google_cloud_dataplex_v1_zone_discovery_spec_response.dart';
 import 'google_cloud_dataplex_v1_zone_resource_spec_response.dart';

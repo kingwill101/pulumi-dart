@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'subnetwork_aggregation_interval.dart';
 import 'subnetwork_ipv6_access_type.dart';
 import 'subnetwork_log_config.dart';

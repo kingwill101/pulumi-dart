@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'big_query_config_response.dart';
 import 'cloud_storage_config_response.dart';
 import 'dead_letter_policy_response.dart';

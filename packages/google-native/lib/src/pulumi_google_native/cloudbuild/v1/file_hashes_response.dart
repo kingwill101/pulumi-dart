@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'hash_response.dart';
 
 /// Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.

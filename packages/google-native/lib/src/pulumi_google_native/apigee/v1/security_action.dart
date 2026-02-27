@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_apigee_v1_security_action_condition_config_response.dart';
 import 'google_cloud_apigee_v1_security_action_deny_response.dart';
 import 'google_cloud_apigee_v1_security_action_flag_response.dart';

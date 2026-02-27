@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'key_data_response.dart';
 import 'workforce_pool_key_args.dart';
 

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'build_artifact_response.dart';
 import 'delivery_pipeline_response.dart';
 import 'release_condition_response.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'authorization.dart';
 import 'vmware_aagconfig.dart';
 import 'vmware_auto_repair_config.dart';

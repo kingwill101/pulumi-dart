@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'instance_connect_mode.dart';
 import 'instance_read_replicas_mode.dart';
 import 'instance_suspension_reasons_item.dart';

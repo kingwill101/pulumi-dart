@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_fleet_args3.dart';
 import 'get_fleet_result3.dart';
 

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'budget_ownership_scope2.dart';
 import 'google_cloud_billing_budgets_v1beta1_all_updates_rule.dart';
 import 'google_cloud_billing_budgets_v1beta1_budget_amount.dart';

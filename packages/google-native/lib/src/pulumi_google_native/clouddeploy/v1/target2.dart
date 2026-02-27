@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'anthos_cluster_response.dart';
 import 'cloud_run_location_response.dart';
 import 'execution_config_response.dart';

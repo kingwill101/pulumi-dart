@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_datastore_admin_v1_indexed_property_response.dart';
 import 'index_args3.dart';
 

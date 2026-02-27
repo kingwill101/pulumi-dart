@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_backup_plan_backup_volume_backup_iam_policy_args.dart';
 import 'get_backup_plan_backup_volume_backup_iam_policy_result.dart';
 

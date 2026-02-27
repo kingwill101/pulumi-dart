@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'address_address_type2.dart';
 import 'address_ip_version2.dart';
 import 'address_ipv6_endpoint_type2.dart';

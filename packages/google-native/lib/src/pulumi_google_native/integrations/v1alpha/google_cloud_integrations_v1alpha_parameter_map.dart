@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_integrations_v1alpha_parameter_map_entry.dart';
 import 'google_cloud_integrations_v1alpha_parameter_map_key_type.dart';
 import 'google_cloud_integrations_v1alpha_parameter_map_value_type.dart';

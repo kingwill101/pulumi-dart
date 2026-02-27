@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'execution_report_response2.dart';
 import 'gcspayload_info_response.dart';
 import 'import_job_args3.dart';

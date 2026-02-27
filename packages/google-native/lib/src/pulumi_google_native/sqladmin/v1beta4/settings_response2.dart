@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'advanced_machine_features_response7.dart';
 import 'backup_configuration_response2.dart';
 import 'data_cache_config_response3.dart';

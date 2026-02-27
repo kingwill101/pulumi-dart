@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'service_binding_args2.dart';
 
 /// Creates a new ServiceBinding in a given project and location.

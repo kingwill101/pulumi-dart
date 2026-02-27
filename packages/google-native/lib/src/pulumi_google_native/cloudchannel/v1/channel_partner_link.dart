@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'channel_partner_link_args.dart';
 import 'google_cloud_channel_v1_cloud_identity_info_response.dart';
 

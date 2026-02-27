@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'maven_repository_config_response2.dart';
 import 'repository_args3.dart';
 

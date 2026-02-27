@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'cluster_config_response2.dart';
 import 'cluster_metrics_response.dart';
 import 'cluster_status_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'guaranteed_response.dart';
 import 'queued_resource_args.dart';
 import 'queued_resource_state_response.dart';

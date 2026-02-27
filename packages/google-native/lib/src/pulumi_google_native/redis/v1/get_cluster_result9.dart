@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'discovery_endpoint_response.dart';
 import 'psc_config_response3.dart';
 import 'psc_connection_response2.dart';

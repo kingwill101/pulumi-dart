@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_orgpolicy_v2_alternate_policy_spec_response.dart';
 import 'google_cloud_orgpolicy_v2_policy_spec_response.dart';
 import 'policy_args4.dart';

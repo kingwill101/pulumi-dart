@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'interconnect_attachment_args.dart';
 import 'interconnect_attachment_configuration_constraints_response.dart';
 import 'interconnect_attachment_partner_metadata_response.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_management_dns_zone_binding_args.dart';
 import 'get_management_dns_zone_binding_result.dart';
 

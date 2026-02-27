@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'scan_run_error_trace.dart';
 import 'scan_run_execution_state2.dart';
 import 'scan_run_result_state2.dart';

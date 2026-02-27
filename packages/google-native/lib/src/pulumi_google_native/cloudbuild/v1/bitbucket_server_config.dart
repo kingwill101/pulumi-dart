@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bitbucket_server_config_args.dart';
 import 'bitbucket_server_repository_id_response.dart';
 import 'bitbucket_server_secrets_response.dart';

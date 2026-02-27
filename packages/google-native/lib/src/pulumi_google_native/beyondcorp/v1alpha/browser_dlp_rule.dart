@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'browser_dlp_rule_args.dart';
 import 'google_cloud_beyondcorp_partnerservices_v1alpha_group_response.dart';
 import 'google_cloud_beyondcorp_partnerservices_v1alpha_rule_setting_response.dart';

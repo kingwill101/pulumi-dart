@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'key_ring_args.dart';
 
 /// Create a new KeyRing in a given Project and Location.

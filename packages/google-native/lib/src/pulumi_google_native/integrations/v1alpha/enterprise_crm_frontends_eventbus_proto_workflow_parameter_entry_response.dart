@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'enterprise_crm_eventbus_proto_attributes_response.dart';
 import 'enterprise_crm_eventbus_proto_node_identifier_response.dart';
 import 'enterprise_crm_frontends_eventbus_proto_parameter_value_type_response.dart';

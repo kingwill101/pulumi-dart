@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'entitlement_args.dart';
 import 'google_cloud_channel_v1_association_info_response.dart';
 import 'google_cloud_channel_v1_commitment_settings_response.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'forwarding_rule_service_directory_registration3.dart';
 import 'global_forwarding_rule_ip_protocol3.dart';
 import 'global_forwarding_rule_ip_version3.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'app_profile_priority.dart';
 import 'multi_cluster_routing_use_any.dart';
 import 'single_cluster_routing.dart';

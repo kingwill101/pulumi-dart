@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'customer_encryption_key_response2.dart';
 import 'disk_async_replication_response2.dart';
 import 'disk_params_response2.dart';

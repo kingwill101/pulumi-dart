@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'grpchealth_check_response.dart';
 import 'health_check_args.dart';
 import 'health_check_log_config_response.dart';

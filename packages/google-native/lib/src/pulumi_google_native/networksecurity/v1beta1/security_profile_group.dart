@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'security_profile_group_args.dart';
 
 /// Creates a new SecurityProfileGroup in a given organization and location.

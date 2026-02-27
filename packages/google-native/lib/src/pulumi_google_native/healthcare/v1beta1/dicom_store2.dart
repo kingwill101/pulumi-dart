@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'dicom_store_args2.dart';
 import 'google_cloud_healthcare_v1beta1_dicom_stream_config_response.dart';
 import 'notification_config_response4.dart';

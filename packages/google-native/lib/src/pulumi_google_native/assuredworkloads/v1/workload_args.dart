@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_assuredworkloads_v1_workload_kmssettings.dart';
 import 'google_cloud_assuredworkloads_v1_workload_partner_permissions.dart';
 import 'google_cloud_assuredworkloads_v1_workload_resource_settings.dart';

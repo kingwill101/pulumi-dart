@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'git_remote_settings_response.dart';
 import 'repository_args5.dart';
 import 'workspace_compilation_overrides_response.dart';

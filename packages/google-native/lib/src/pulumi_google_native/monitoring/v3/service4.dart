@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'app_engine_response.dart';
 import 'basic_service_response.dart';
 import 'cloud_endpoints_response.dart';

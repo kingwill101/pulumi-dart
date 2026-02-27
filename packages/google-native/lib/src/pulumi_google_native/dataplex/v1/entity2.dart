@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'entity_args2.dart';
 import 'google_cloud_dataplex_v1_entity_compatibility_status_response.dart';
 import 'google_cloud_dataplex_v1_schema_response.dart';

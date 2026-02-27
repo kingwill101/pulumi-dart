@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_gcp_user_access_binding_args.dart';
 import 'get_gcp_user_access_binding_result.dart';
 

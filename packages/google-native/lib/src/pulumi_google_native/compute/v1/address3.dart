@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'address_args3.dart';
 
 /// Creates an address resource in the specified project by using the data included in the request.

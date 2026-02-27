@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'batch_args.dart';
 import 'environment_config_response3.dart';
 import 'py_spark_batch_response.dart';

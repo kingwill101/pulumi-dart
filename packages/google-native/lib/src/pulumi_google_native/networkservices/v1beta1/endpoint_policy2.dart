@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'endpoint_matcher_response2.dart';
 import 'endpoint_policy_args2.dart';
 import 'traffic_port_selector_response2.dart';

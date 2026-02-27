@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'default_cluster_config_response.dart';
 import 'fleet_args.dart';
 import 'fleet_lifecycle_state_response.dart';

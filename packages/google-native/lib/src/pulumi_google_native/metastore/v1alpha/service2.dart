@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'encryption_config_response12.dart';
 import 'hive_metastore_config_response2.dart';
 import 'maintenance_window_response7.dart';

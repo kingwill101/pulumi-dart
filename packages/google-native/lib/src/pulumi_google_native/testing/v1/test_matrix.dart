@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'client_info_response.dart';
 import 'environment_matrix_response.dart';
 import 'result_storage_response.dart';

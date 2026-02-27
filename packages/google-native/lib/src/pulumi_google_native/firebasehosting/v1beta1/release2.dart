@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'acting_user_response.dart';
 import 'release_args2.dart';
 import 'version_response6.dart';

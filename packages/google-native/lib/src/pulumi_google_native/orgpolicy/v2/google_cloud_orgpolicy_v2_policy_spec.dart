@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'google_cloud_orgpolicy_v2_policy_spec_policy_rule.dart';
 
 /// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.

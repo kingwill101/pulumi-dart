@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'attestor_iam_policy_args2.dart';
 import 'binding_response14.dart';
 

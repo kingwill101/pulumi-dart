@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'bounding_poly_response2.dart';
 import 'reference_image_args.dart';
 

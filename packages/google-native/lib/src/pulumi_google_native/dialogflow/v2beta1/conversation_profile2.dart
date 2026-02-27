@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'conversation_profile_args2.dart';
 import 'google_cloud_dialogflow_v2beta1_automated_agent_config_response.dart';
 import 'google_cloud_dialogflow_v2beta1_human_agent_assistant_config_response.dart';
