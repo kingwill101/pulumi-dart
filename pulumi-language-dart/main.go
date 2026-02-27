@@ -3263,6 +3263,7 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 var (
 	pulumiCodeChooserMarkerPattern = regexp.MustCompile(`(?i)<!--\s*(Start|End)\s+PulumiCodeChooser\s*-->`)
 	pulumiCodeChooserBlockPattern  = regexp.MustCompile(`(?is)<!--\s*Start\s+PulumiCodeChooser\s*-->.*?<!--\s*End\s+PulumiCodeChooser\s*-->`)
+	exampleUsageHeaderPattern      = regexp.MustCompile(`(?i)^##\s+Example Usage\s*$`)
 	htmlSpanTagPattern             = regexp.MustCompile(`(?i)</?span\b[^>]*>`)
 	deprecatedProviderRefPattern   = regexp.MustCompile(`^/resources/pulumi:providers:[^/]+$`)
 )
@@ -3278,7 +3279,22 @@ func sanitizeDartDocComment(comment string) string {
 	comment = pulumiCodeChooserMarkerPattern.ReplaceAllString(comment, "")
 	// Remove pulumi-lang span wrappers while keeping inner text.
 	comment = htmlSpanTagPattern.ReplaceAllString(comment, "")
-	return strings.TrimSpace(comment)
+	comment = strings.TrimSpace(comment)
+
+	lines := strings.Split(comment, "\n")
+	trimmed := make([]string, len(lines))
+	copy(trimmed, lines)
+	for len(trimmed) > 0 && strings.TrimSpace(trimmed[len(trimmed)-1]) == "" {
+		trimmed = trimmed[:len(trimmed)-1]
+	}
+	for len(trimmed) > 0 && exampleUsageHeaderPattern.MatchString(strings.TrimSpace(trimmed[len(trimmed)-1])) {
+		trimmed = trimmed[:len(trimmed)-1]
+		for len(trimmed) > 0 && strings.TrimSpace(trimmed[len(trimmed)-1]) == "" {
+			trimmed = trimmed[:len(trimmed)-1]
+		}
+	}
+
+	return strings.TrimSpace(strings.Join(trimmed, "\n"))
 }
 
 func normalizeDeprecatedProviderReferences(rawSchema string) string {

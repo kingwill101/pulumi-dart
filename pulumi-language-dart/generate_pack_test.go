@@ -1130,6 +1130,7 @@ func TestGeneratePackageSanitizesDocCommentMarkup(t *testing.T) {
 	assert.NotContains(t, content, "</span>")
 	assert.NotContains(t, content, "Start PulumiCodeChooser")
 	assert.NotContains(t, content, "End PulumiCodeChooser")
+	assert.NotContains(t, content, "## Example Usage")
 	assert.NotContains(t, content, "Example:")
 	assert.NotContains(t, content, "const widget = new sample.Widget(\"w\");")
 	assert.Contains(t, content, "Widget sample.Widget resource.")
