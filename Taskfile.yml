@@ -310,6 +310,13 @@ tasks:
         vars:
           PACKAGE: random
 
+  generate:terraform:
+    desc: Generate Dart SDK for Pulumi Terraform
+    cmds:
+      - task: generate:provider
+        vars:
+          PACKAGE: terraform
+
   generate:all:
     desc: Generate all configured provider SDKs for Dart
     cmds:
@@ -427,11 +434,27 @@ tasks:
         vars:
           PACKAGE: random
 
+  analyze:terraform:
+    desc: Analyze generated Dart SDK for Pulumi Terraform
+    cmds:
+      - task: analyze-package
+        vars:
+          PACKAGE: terraform
+
   verify:gcp:
     desc: Generate and analyze Pulumi GCP Dart SDK
     cmds:
       - task: generate:gcp
       - task: analyze:gcp
+
+  verify:terraform:
+    desc: Generate, analyze, and smoke-preview Pulumi Terraform Dart SDK
+    cmds:
+      - task: generate:terraform
+      - task: analyze:terraform
+      - task: smoke:preview
+        vars:
+          PACKAGE: terraform
 
   verify:matrix:
     desc: Generate all providers, analyze random/aws/gcp, then run smoke previews for random/aws/gcp
