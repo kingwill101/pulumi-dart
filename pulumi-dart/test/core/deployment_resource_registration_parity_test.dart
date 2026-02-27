@@ -29,6 +29,9 @@ class _FakeMonitor implements monitorpkg.Monitor {
   RegisterPackageRequest? capturedRegisterPackageRequest;
   Object? registerPackageError;
   String registerPackageRef = 'pkg-ref-default';
+  bool supportsFeatureValue = true;
+  Object? supportsFeatureError;
+  final List<String> requestedFeatures = [];
 
   @override
   ResourceMonitorClient get client =>
@@ -38,7 +41,11 @@ class _FakeMonitor implements monitorpkg.Monitor {
   Future<monitorpkg.SupportsFeatureResponse> supportsFeature(
     monitorpkg.SupportsFeatureRequest request,
   ) async {
-    return monitorpkg.SupportsFeatureResponse(true);
+    requestedFeatures.add(request.id);
+    if (supportsFeatureError != null) {
+      throw supportsFeatureError!;
+    }
+    return monitorpkg.SupportsFeatureResponse(supportsFeatureValue);
   }
 
   @override
@@ -102,6 +109,29 @@ class _PackageBackedResource extends CustomResource {
          options ?? CustomResourceOptions(),
          registerPackageRequest: registerPackageRequest,
        );
+}
+
+class _RichOptionsResource extends CustomResource {
+  _RichOptionsResource(
+    String name, {
+    required CustomResourceOptions options,
+    required Resource dependencyForProperty,
+  }) : super('pkg:index:RichOptions', name, {
+         'plain': Input.fromValue('value'),
+         'withDep': Input.fromValue(dependencyForProperty),
+       }, options);
+}
+
+class _TransformEnabledResource extends CustomResource {
+  _TransformEnabledResource(
+    String name, {
+    required CustomResourceOptions options,
+  }) : super('pkg:index:TransformEnabled', name, const {}, options);
+}
+
+class _ComponentWithProvider extends ComponentResource {
+  _ComponentWithProvider(String name, ComponentResourceOptions options)
+    : super('pkg:index:ComponentWithProvider', name, const {}, options);
 }
 
 void main() {
@@ -183,5 +213,254 @@ void main() {
       );
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
+
+    test(
+      'maps rich resource options and dependencies into register request',
+      () async {
+        final parent = DependencyResource(
+          'urn:pulumi:stack::project::pkg:index:Parent::parent',
+        );
+        final depA = DependencyResource(
+          'urn:pulumi:stack::project::pkg:index:Dep::a',
+        );
+        final depB = DependencyResource(
+          'urn:pulumi:stack::project::pkg:index:Dep::b',
+        );
+        final deletedWith = DependencyResource(
+          'urn:pulumi:stack::project::pkg:index:DeletedWith::d',
+        );
+
+        final providerPrimary = ProviderResource.reference(
+          'pkg',
+          'urn:pulumi:stack::project::pulumi:providers:pkg::primary',
+          id: 'primary-id',
+        );
+        final providerSecondary = ProviderResource.reference(
+          'other',
+          'urn:pulumi:stack::project::pulumi:providers:other::secondary',
+          id: 'secondary-id',
+        );
+        final propertyDependency = ProviderResource.reference(
+          'dep',
+          'urn:pulumi:stack::project::pulumi:providers:dep::property',
+          id: 'property-id',
+        );
+
+        _RichOptionsResource(
+          'rich',
+          dependencyForProperty: propertyDependency,
+          options: CustomResourceOptions(
+            parent: parent,
+            dependsOn: [depB, depA],
+            protect: true,
+            provider: providerPrimary,
+            providers: [providerSecondary],
+            aliases: [Alias(name: Input.fromValue('legacy-name'))],
+            version: '2.3.4',
+            pluginDownloadURL: 'https://example.com/plugin.tgz',
+            customTimeouts: const CustomTimeouts(
+              create: '1m',
+              update: '2m',
+              delete: '3m',
+            ),
+            deleteBeforeReplace: true,
+            retainOnDelete: true,
+            deletedWith: deletedWith,
+            additionalSecretOutputs: ['secretA', 'secretB'],
+            ignoreChanges: [' plain ', 'nested.value'],
+            replacementTrigger: {'reason': 'rotation'},
+          ),
+        );
+
+        await deployment.registerOutputs();
+
+        final request = monitor.capturedRegisterResourceRequest;
+        expect(request, isNotNull);
+        expect(request!.type, 'pkg:index:RichOptions');
+        expect(request.name, 'rich');
+        expect(request.custom, isTrue);
+        expect(request.parent, await parent.urn.getValue());
+        expect(
+          request.dependencies,
+          equals([await depB.urn.getValue(), await depA.urn.getValue()]),
+        );
+        expect(request.protect, isTrue);
+        expect(
+          request.provider,
+          equals(await ProviderResource.register(providerPrimary)),
+        );
+        expect(
+          request.providers['other'],
+          equals(await ProviderResource.register(providerSecondary)),
+        );
+        expect(request.aliases, hasLength(1));
+        expect(request.aliasSpecs, isTrue);
+        expect(request.version, '2.3.4');
+        expect(request.pluginDownloadURL, 'https://example.com/plugin.tgz');
+        expect(request.deleteBeforeReplace, isTrue);
+        expect(request.deleteBeforeReplaceDefined, isTrue);
+        expect(request.customTimeouts.create_1, '1m');
+        expect(request.customTimeouts.update, '2m');
+        expect(request.customTimeouts.delete, '3m');
+        expect(request.retainOnDelete, isTrue);
+        expect(request.deletedWith, await deletedWith.urn.getValue());
+        expect(request.additionalSecretOutputs, ['secretA', 'secretB']);
+        expect(request.ignoreChanges, ['plain', 'nested.value']);
+        expect(request.replacementTrigger.hasStructValue(), isTrue);
+        expect(
+          request.replacementTrigger.structValue.fields['reason']?.stringValue,
+          'rotation',
+        );
+        expect(request.propertyDependencies, contains('withDep'));
+        expect(
+          request.propertyDependencies['withDep']!.urns,
+          equals([await propertyDependency.urn.getValue()]),
+        );
+      },
+    );
+
+    test(
+      'component resource maps singular provider into providers map',
+      () async {
+        final provider = ProviderResource.reference(
+          'pkg',
+          'urn:pulumi:stack::project::pulumi:providers:pkg::component',
+          id: 'provider-id',
+        );
+
+        _ComponentWithProvider(
+          'cmp',
+          ComponentResourceOptions(provider: provider),
+        );
+
+        await deployment.registerOutputs();
+
+        final request = monitor.capturedRegisterResourceRequest;
+        expect(request, isNotNull);
+        expect(request!.custom, isFalse);
+        expect(request.provider, isEmpty);
+        expect(
+          request.providers['pkg'],
+          equals(await ProviderResource.register(provider)),
+        );
+      },
+    );
+
+    test('rejects ignoreChanges path starting with dot', () async {
+      _PackageBackedResource(
+        'thing',
+        registerPackageRequest: deployment_models.RegisterPackageRequest(
+          name: 'pulumi-pkg',
+          version: '1.0.0',
+        ),
+        options: CustomResourceOptions(ignoreChanges: ['.bad']),
+      );
+
+      await expectLater(
+        deployment.registerOutputs(),
+        throwsA(isA<ArgumentError>()),
+      );
+      expect(monitor.capturedRegisterResourceRequest, isNull);
+    });
+
+    test('rejects ignoreChanges path ending with dot', () async {
+      _PackageBackedResource(
+        'thing',
+        registerPackageRequest: deployment_models.RegisterPackageRequest(
+          name: 'pulumi-pkg',
+          version: '1.0.0',
+        ),
+        options: CustomResourceOptions(ignoreChanges: ['bad.']),
+      );
+
+      await expectLater(
+        deployment.registerOutputs(),
+        throwsA(isA<ArgumentError>()),
+      );
+      expect(monitor.capturedRegisterResourceRequest, isNull);
+    });
+
+    test('rejects ignoreChanges path containing empty segments', () async {
+      _PackageBackedResource(
+        'thing',
+        registerPackageRequest: deployment_models.RegisterPackageRequest(
+          name: 'pulumi-pkg',
+          version: '1.0.0',
+        ),
+        options: CustomResourceOptions(ignoreChanges: ['bad..path']),
+      );
+
+      await expectLater(
+        deployment.registerOutputs(),
+        throwsA(isA<ArgumentError>()),
+      );
+      expect(monitor.capturedRegisterResourceRequest, isNull);
+    });
+
+    test(
+      'resource transform registration fails with parity message when transforms unsupported',
+      () async {
+        monitor.supportsFeatureValue = false;
+
+        _TransformEnabledResource(
+          'transforming',
+          options: CustomResourceOptions(
+            resourceTransforms: [
+              (
+                ResourceTransformArgs args, [
+                CancellationToken? cancellationToken,
+              ]) async => null,
+            ],
+          ),
+        );
+
+        await expectLater(
+          deployment.registerOutputs(),
+          throwsA(
+            isA<Exception>().having(
+              (e) => e.toString(),
+              'message',
+              contains('does not support transforms'),
+            ),
+          ),
+        );
+        expect(monitor.requestedFeatures, equals(['transforms']));
+        expect(monitor.capturedRegisterResourceRequest, isNull);
+      },
+    );
+
+    test(
+      'resource transform registration fails with parity message when supportsFeature is unimplemented',
+      () async {
+        monitor.supportsFeatureError = GrpcError.unimplemented(
+          'supportsFeature RPC unavailable',
+        );
+
+        _TransformEnabledResource(
+          'transforming',
+          options: CustomResourceOptions(
+            resourceTransforms: [
+              (
+                ResourceTransformArgs args, [
+                CancellationToken? cancellationToken,
+              ]) async => null,
+            ],
+          ),
+        );
+
+        await expectLater(
+          deployment.registerOutputs(),
+          throwsA(
+            isA<Exception>().having(
+              (e) => e.toString(),
+              'message',
+              contains('does not support transforms'),
+            ),
+          ),
+        );
+        expect(monitor.requestedFeatures, equals(['transforms']));
+        expect(monitor.capturedRegisterResourceRequest, isNull);
+      },
+    );
   });
 }
