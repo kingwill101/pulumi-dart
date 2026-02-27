@@ -28,6 +28,7 @@ class _FakeMonitor implements monitorpkg.Monitor {
   RegisterResourceRequest? capturedRegisterResourceRequest;
   RegisterPackageRequest? capturedRegisterPackageRequest;
   Object? registerPackageError;
+  Object? registerResourceError;
   String registerPackageRef = 'pkg-ref-default';
   bool supportsFeatureValue = true;
   Object? supportsFeatureError;
@@ -83,6 +84,9 @@ class _FakeMonitor implements monitorpkg.Monitor {
     RegisterResourceRequest request,
   ) async {
     capturedRegisterResourceRequest = request;
+    if (registerResourceError != null) {
+      throw registerResourceError!;
+    }
     return RegisterResourceResponse()
       ..urn = 'urn:pulumi:stack::project::${request.type}::${request.name}'
       ..id = '${request.name}-id'
@@ -196,6 +200,28 @@ void main() {
       await expectLater(deployment.registerOutputs(), throwsStateError);
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
+
+    test(
+      'resource registration failures fail pending outputs before rethrow',
+      () async {
+        monitor.registerResourceError = Exception('register resource failed');
+
+        final resource = _PackageBackedResource(
+          'thing',
+          registerPackageRequest: deployment_models.RegisterPackageRequest(
+            name: 'pulumi-pkg',
+            version: '1.0.0',
+          ),
+        );
+        final pending = resource.registerOutput<String>('status');
+
+        await expectLater(
+          deployment.registerOutputs(),
+          throwsA(isA<Exception>()),
+        );
+        await expectLater(pending.getData(), throwsA(isA<Exception>()));
+      },
+    );
 
     test('rejects invalid ignoreChanges paths before resource RPC', () async {
       _PackageBackedResource(
