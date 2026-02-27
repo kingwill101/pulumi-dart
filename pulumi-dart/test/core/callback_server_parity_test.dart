@@ -272,6 +272,44 @@ void main() {
     );
 
     test(
+      'resource hook callback maps oldInputs and newOutputs when present',
+      () async {
+        ResourceHookArgs? captured;
+        await callbackServer.registerResourceHook(
+          ResourceHook('hookMappedFull', (args) async {
+            captured = args;
+          }),
+        );
+        final registration = monitorService.resourceHookRequests.single;
+
+        final request = pulumirpc.ResourceHookRequest()
+          ..urn = 'urn:pulumi:stack::project::pkg:index:Res::name'
+          ..id = 'res-id'
+          ..name = 'name'
+          ..type = 'pkg:index:Res'
+          ..oldInputs = await StructConverter.toStruct({'before': 1})
+          ..newOutputs = await StructConverter.toStruct({'after': 2});
+
+        final callbackChannel = _channelForTarget(registration.callback.target);
+        final callbacksClient = CallbacksClient(callbackChannel);
+        final invokeResponse = await callbacksClient.invoke(
+          CallbackInvokeRequest()
+            ..token = registration.callback.token
+            ..request = request.writeToBuffer(),
+        );
+        await callbackChannel.shutdown();
+
+        final hookResponse = pulumirpc.ResourceHookResponse.fromBuffer(
+          invokeResponse.response,
+        );
+        expect(hookResponse.error, isEmpty);
+        expect(captured, isNotNull);
+        expect(captured!.oldInputs, equals({'before': 1}));
+        expect(captured!.newOutputs, equals({'after': 2}));
+      },
+    );
+
+    test(
       'resource hook callback returns error text when handler throws',
       () async {
         await callbackServer.registerResourceHook(
@@ -417,7 +455,8 @@ void main() {
                 ..type = 'pkg:index:LegacySpec'
                 ..stack = 'dev'
                 ..project = 'proj'
-                ..noParent = true),
+                ..parentUrn =
+                    'urn:pulumi:dev::proj::pkg:index:Parent::legacy-parent'),
           )
           ..version = '1.2.3'
           ..pluginDownloadUrl = 'https://example.com/provider.tgz'
@@ -488,6 +527,11 @@ void main() {
         );
         expect(capturedOptions.aliases, hasLength(2));
         expect(capturedOptions.aliases!.first.urn, isNotNull);
+        expect(capturedOptions.aliases![1].parentUrn, isNotNull);
+        expect(
+          await capturedOptions.aliases![1].parentUrn!.toOutput().getValue(),
+          equals('urn:pulumi:dev::proj::pkg:index:Parent::legacy-parent'),
+        );
         expect(capturedOptions.version, equals('1.2.3'));
         expect(
           capturedOptions.pluginDownloadURL,
@@ -555,44 +599,66 @@ void main() {
       },
     );
 
-    test('resource transform null result preserves request payload', () async {
-      final callback = await callbackServer.registerTransform((
-        args, [
-        cancellationToken,
-      ]) async {
-        return null;
-      });
+    test(
+      'resource transform null result preserves payload and maps component options',
+      () async {
+        ResourceTransformArgs? captured;
+        final callback = await callbackServer.registerTransform((
+          args, [
+          cancellationToken,
+        ]) async {
+          captured = args;
+          return null;
+        });
 
-      final requestOptions = TransformResourceOptions()
-        ..version = '2.0.0'
-        ..pluginDownloadUrl = 'https://example.com/null.tgz';
-      final request = TransformRequest()
-        ..name = 'res-null'
-        ..type = 'pkg:index:Res'
-        ..custom = false
-        ..properties = await StructConverter.toStruct({'original': 'value'})
-        ..options = requestOptions;
+        final requestOptions = TransformResourceOptions()
+          ..deleteBeforeReplace = true
+          ..retainOnDelete = true
+          ..additionalSecretOutputs.add('componentSecret')
+          ..ignoreChanges.add('component.field')
+          ..version = '2.0.0'
+          ..pluginDownloadUrl = 'https://example.com/null.tgz';
+        final request = TransformRequest()
+          ..name = 'res-null'
+          ..type = 'pkg:index:Res'
+          ..custom = false
+          ..parent = 'urn:pulumi:dev::proj::pkg:index:Parent::component-parent'
+          ..properties = await StructConverter.toStruct({'original': 'value'})
+          ..options = requestOptions;
 
-      final callbackChannel = _channelForTarget(callback.target);
-      final callbacksClient = CallbacksClient(callbackChannel);
-      final invokeResponse = await callbacksClient.invoke(
-        CallbackInvokeRequest()
-          ..token = callback.token
-          ..request = request.writeToBuffer(),
-      );
-      await callbackChannel.shutdown();
+        final callbackChannel = _channelForTarget(callback.target);
+        final callbacksClient = CallbacksClient(callbackChannel);
+        final invokeResponse = await callbacksClient.invoke(
+          CallbackInvokeRequest()
+            ..token = callback.token
+            ..request = request.writeToBuffer(),
+        );
+        await callbackChannel.shutdown();
 
-      final response = TransformResponse.fromBuffer(invokeResponse.response);
-      expect(
-        StructConverter.fromStruct(response.properties),
-        equals({'original': 'value'}),
-      );
-      expect(response.options.version, equals('2.0.0'));
-      expect(
-        response.options.pluginDownloadUrl,
-        equals('https://example.com/null.tgz'),
-      );
-    });
+        expect(captured, isNotNull);
+        expect(captured!.options, isA<ComponentResourceOptions>());
+        final options = captured!.options as ComponentResourceOptions;
+        expect(
+          await options.parent!.urn.getValue(),
+          equals('urn:pulumi:dev::proj::pkg:index:Parent::component-parent'),
+        );
+        expect(options.deleteBeforeReplace, isTrue);
+        expect(options.retainOnDelete, isTrue);
+        expect(options.additionalSecretOutputs, equals(['componentSecret']));
+        expect(options.ignoreChanges, equals(['component.field']));
+
+        final response = TransformResponse.fromBuffer(invokeResponse.response);
+        expect(
+          StructConverter.fromStruct(response.properties),
+          equals({'original': 'value'}),
+        );
+        expect(response.options.version, equals('2.0.0'));
+        expect(
+          response.options.pluginDownloadUrl,
+          equals('https://example.com/null.tgz'),
+        );
+      },
+    );
 
     test(
       'invoke transform null result preserves payload and error hook maps fields',
@@ -676,6 +742,97 @@ void main() {
         expect(capturedErrorHookArgs!.newInputs, equals({'new': true}));
         expect(capturedErrorHookArgs!.oldInputs, equals({'old': true}));
         expect(capturedErrorHookArgs!.oldOutputs, equals({'out': true}));
+      },
+    );
+
+    test(
+      'invoke transform maps non-null result args and invoke options',
+      () async {
+        final providerUrn =
+            'urn:pulumi:dev::proj::pulumi:providers:aws::result_6_0_0';
+        final callback = await callbackServer.registerStackInvokeTransformAsync(
+          (args) async {
+            return InvokeTransformResult(
+              args: {
+                'nextName': Input.fromValue('updated'),
+                'count': Input.fromValue(2),
+              },
+              opts: InvokeOptions(
+                provider: ProviderResource.reference(
+                  'aws',
+                  providerUrn,
+                  id: 'provider-id',
+                ),
+                version: '6.0.0',
+                pluginDownloadURL: 'https://example.com/result-invoke.tgz',
+              ),
+            );
+          },
+        );
+
+        final callbackChannel = _channelForTarget(callback.target);
+        final callbacksClient = CallbacksClient(callbackChannel);
+        final request = TransformInvokeRequest()
+          ..token = 'pkg:index:getThing'
+          ..args = await StructConverter.toStruct({'name': 'example'})
+          ..options = (TransformInvokeOptions()
+            ..version = '3.0.0'
+            ..pluginDownloadUrl = 'https://example.com/input-invoke.tgz');
+
+        final responseRaw = await callbacksClient.invoke(
+          CallbackInvokeRequest()
+            ..token = callback.token
+            ..request = request.writeToBuffer(),
+        );
+        await callbackChannel.shutdown();
+
+        final response = TransformInvokeResponse.fromBuffer(
+          responseRaw.response,
+        );
+        expect(
+          StructConverter.fromStruct(response.args),
+          equals({'nextName': 'updated', 'count': 2}),
+        );
+        expect(response.options.version, equals('6.0.0'));
+        expect(
+          response.options.pluginDownloadUrl,
+          equals('https://example.com/result-invoke.tgz'),
+        );
+        expect(response.options.provider, equals('$providerUrn::provider-id'));
+      },
+    );
+
+    test(
+      'invoke transform request without args passes empty mapped args',
+      () async {
+        InvokeTransformArgs? captured;
+        final callback = await callbackServer.registerStackInvokeTransformAsync(
+          (args) async {
+            captured = args;
+            return null;
+          },
+        );
+
+        final callbackChannel = _channelForTarget(callback.target);
+        final callbacksClient = CallbacksClient(callbackChannel);
+        final responseRaw = await callbacksClient.invoke(
+          CallbackInvokeRequest()
+            ..token = callback.token
+            ..request =
+                (TransformInvokeRequest()..token = 'pkg:index:getNoArgs')
+                    .writeToBuffer(),
+        );
+        await callbackChannel.shutdown();
+
+        final response = TransformInvokeResponse.fromBuffer(
+          responseRaw.response,
+        );
+        expect(captured, isNotNull);
+        expect(captured!.args, isEmpty);
+        expect(
+          StructConverter.fromStruct(response.args),
+          equals(<String, dynamic>{}),
+        );
       },
     );
 
