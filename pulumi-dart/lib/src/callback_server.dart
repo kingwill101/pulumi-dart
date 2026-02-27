@@ -642,12 +642,7 @@ class CallbackServer implements ICallbackServer {
   Inputs _toInputs(Map<String, dynamic> args) {
     final result = <String, Input<dynamic>>{};
     for (final entry in args.entries) {
-      final value = entry.value;
-      if (value is Input<dynamic>) {
-        result[entry.key] = value;
-      } else {
-        result[entry.key] = Input.fromValue(value);
-      }
+      result[entry.key] = Input.fromValue(entry.value);
     }
     return result;
   }

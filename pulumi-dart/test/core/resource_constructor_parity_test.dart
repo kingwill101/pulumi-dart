@@ -160,5 +160,34 @@ void main() {
       final capturedOpts = captured.single as ResourceOptions;
       expect(identical(capturedOpts.parent, inferredParent), isTrue);
     });
+
+    test(
+      'resource constructor wires newDependency closure to DependencyResource',
+      () async {
+        final parent = DependencyResource(
+          'urn:pulumi:stack::project::pkg:type::root',
+        );
+        _ValidComponent('dependency-factory', {
+          'value': 1,
+        }, ComponentResourceOptions(parent: parent));
+
+        final captured = verify(
+          mockDeployment.readOrRegisterResource(
+            resource: anyNamed('resource'),
+            remote: anyNamed('remote'),
+            newDependency: captureAnyNamed('newDependency'),
+            args: anyNamed('args'),
+            opts: anyNamed('opts'),
+            registerPackageRequest: anyNamed('registerPackageRequest'),
+          ),
+        ).captured;
+
+        final factory = captured.single as Resource Function(String);
+        final dependencyUrn = 'urn:pulumi:stack::project::pkg:type::dep';
+        final dependency = factory(dependencyUrn);
+        expect(dependency, isA<DependencyResource>());
+        expect(await dependency.urn.getValue(), dependencyUrn);
+      },
+    );
   });
 }
