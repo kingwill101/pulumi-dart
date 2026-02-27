@@ -14,6 +14,15 @@ class _RawResource extends Resource {
     : super(type, name, false, const {}, const ResourceOptions());
 }
 
+class _RawResourceWithOptions extends Resource {
+  _RawResourceWithOptions(
+    String type,
+    String name,
+    ResourceOptions options, {
+    Inputs props = const {},
+  }) : super(type, name, false, props, options);
+}
+
 class _LateOutputResource extends CustomResource {
   _LateOutputResource(String name)
     : super('sample:index:LateOutput', name, const {}, CustomResourceOptions());
@@ -66,6 +75,15 @@ void main() {
       resource.failOutputs(StateError('boom'));
 
       final output = resource.createOutput<String>('late');
+      await expectLater(output.getValue(), throwsA(isA<Exception>()));
+    });
+
+    test('failOutputs propagates to outputs already registered', () async {
+      final resource = _LateOutputResource('late');
+      final output = resource.createOutput<String>('late');
+
+      resource.failOutputs(StateError('boom'));
+
       await expectLater(output.getValue(), throwsA(isA<Exception>()));
     });
 
@@ -149,6 +167,77 @@ void main() {
       },
     );
 
+    test(
+      'serializeProperties covers null/input/secret output/primitive branches',
+      () async {
+        final properties = await resource.serializeProperties({
+          'nullField': null,
+          'inputField': Input.fromValue('input-value'),
+          'secretField': Output.createSecret(Output.create('secret')),
+          'intField': 7,
+          'doubleField': 7.5,
+          'stringField': 'hello',
+          'boolField': true,
+        });
+
+        expect(
+          properties.fields['nullField']!.nullValue,
+          equals(NullValue.NULL_VALUE),
+        );
+        expect(properties.fields['inputField']!.stringValue, equals('input-value'));
+
+        final secretStruct = properties.fields['secretField']!.structValue;
+        expect(
+          secretStruct.fields[Constants.specialSigKey]!.stringValue,
+          Constants.specialSecretSig,
+        );
+        expect(secretStruct.fields[Constants.valueName]!.stringValue, 'secret');
+
+        expect(properties.fields['intField']!.numberValue, equals(7));
+        expect(properties.fields['doubleField']!.numberValue, equals(7.5));
+        expect(properties.fields['stringField']!.stringValue, equals('hello'));
+        expect(properties.fields['boolField']!.boolValue, isTrue);
+      },
+    );
+
+    test(
+      'serializeProperties preserves known nested map/list and fallback string conversion',
+      () async {
+        final properties = await resource.serializeProperties({
+          'outerMap': {
+            'innerMap': {'k': 'v'},
+          },
+          'outerList': [
+            [1, 2, 3],
+          ],
+          'fallback': DateTime.utc(2024, 1, 1),
+        });
+
+        expect(properties.fields['outerMap']!.hasStructValue(), isTrue);
+        expect(
+          properties
+              .fields['outerMap']!
+              .structValue
+              .fields['innerMap']!
+              .structValue
+              .fields['k']!
+              .stringValue,
+          equals('v'),
+        );
+
+        expect(properties.fields['outerList']!.hasListValue(), isTrue);
+        expect(
+          properties.fields['outerList']!.listValue.values.single.listValue.values,
+          hasLength(3),
+        );
+
+        expect(
+          properties.fields['fallback']!.stringValue,
+          equals('2024-01-01 00:00:00.000Z'),
+        );
+      },
+    );
+
     test('serializeProperties emits resource references with urn/id', () async {
       final provider = ProviderResource.reference(
         'test',
@@ -191,4 +280,5 @@ void main() {
       },
     );
   });
+
 }
