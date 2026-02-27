@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RandomUuid.
 class RandomUuidArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>>? keepers;
 
   RandomUuidArgs({
     this.keepers,
@@ -22,7 +22,8 @@ class RandomUuidArgs {
 
   factory RandomUuidArgs.fromMap(Map<String, dynamic> map) {
     return RandomUuidArgs(
-      keepers: Input.asOptionalInput<Map<String, String>>(map['keepers']),
+      keepers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['keepers']),
     );
   }
 }

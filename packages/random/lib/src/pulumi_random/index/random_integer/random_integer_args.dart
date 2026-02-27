@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RandomInteger.
 class RandomIntegerArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>>? keepers;
 
   /// The maximum inclusive value of the range.
-  final Input<int> max;
+  final pulumi.Input<int> max;
 
   /// The minimum inclusive value of the range.
-  final Input<int> min;
+  final pulumi.Input<int> min;
 
   /// A custom seed to always produce the same value.
-  final Input<String>? seed;
+  final pulumi.Input<String>? seed;
 
   RandomIntegerArgs({
     this.keepers,
@@ -40,10 +40,11 @@ class RandomIntegerArgs {
 
   factory RandomIntegerArgs.fromMap(Map<String, dynamic> map) {
     return RandomIntegerArgs(
-      keepers: Input.asOptionalInput<Map<String, String>>(map['keepers']),
-      max: Input.asInput<int>(map['max']),
-      min: Input.asInput<int>(map['min']),
-      seed: Input.asOptionalInput<String>(map['seed']),
+      keepers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['keepers']),
+      max: pulumi.Input.asInput<int>(map['max']),
+      min: pulumi.Input.asInput<int>(map['min']),
+      seed: pulumi.Input.asOptionalInput<String>(map['seed']),
     );
   }
 }

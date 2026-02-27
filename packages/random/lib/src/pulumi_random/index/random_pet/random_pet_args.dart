@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RandomPet.
 class RandomPetArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>>? keepers;
 
   /// The length (in words) of the pet name. Defaults to 2
-  final Input<int>? length;
+  final pulumi.Input<int>? length;
 
   /// A string to prefix the name with.
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// The character to separate words in the pet name. Defaults to "-"
-  final Input<String>? separator;
+  final pulumi.Input<String>? separator;
 
   RandomPetArgs({
     this.keepers,
@@ -46,10 +46,11 @@ class RandomPetArgs {
 
   factory RandomPetArgs.fromMap(Map<String, dynamic> map) {
     return RandomPetArgs(
-      keepers: Input.asOptionalInput<Map<String, String>>(map['keepers']),
-      length: Input.asOptionalInput<int>(map['length']),
-      prefix: Input.asOptionalInput<String>(map['prefix']),
-      separator: Input.asOptionalInput<String>(map['separator']),
+      keepers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['keepers']),
+      length: pulumi.Input.asOptionalInput<int>(map['length']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
+      separator: pulumi.Input.asOptionalInput<String>(map['separator']),
     );
   }
 }

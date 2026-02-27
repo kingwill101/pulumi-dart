@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'random_uuid_args.dart';
 
 /// ## Example Usage
@@ -18,22 +18,22 @@ import 'random_uuid_args.dart';
 /// ```sh
 /// $ pulumi import random:index/randomUuid:RandomUuid main aabbccdd-eeff-0011-2233-445566778899
 /// ```
-class RandomUuid extends CustomResource {
+class RandomUuid extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  late final Output<Map<String, String>?> keepers;
+  late final pulumi.Output<Map<String, String>?> keepers;
 
   /// The generated uuid presented in string format.
-  late final Output<String> result;
+  late final pulumi.Output<String> result;
 
   RandomUuid(
     String name, {
     RandomUuidArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'random:index/randomUuid:RandomUuid',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.keepers = registerOutput<Map<String, String>?>('keepers');
     this.result = registerOutput<String>('result');

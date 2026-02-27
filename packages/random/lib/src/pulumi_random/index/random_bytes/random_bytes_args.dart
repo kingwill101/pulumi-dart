@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RandomBytes.
 class RandomBytesArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>>? keepers;
 
   /// The number of bytes requested. The minimum value for length is 1.
-  final Input<int> length;
+  final pulumi.Input<int> length;
 
   RandomBytesArgs({
     this.keepers,
@@ -27,8 +27,9 @@ class RandomBytesArgs {
 
   factory RandomBytesArgs.fromMap(Map<String, dynamic> map) {
     return RandomBytesArgs(
-      keepers: Input.asOptionalInput<Map<String, String>>(map['keepers']),
-      length: Input.asInput<int>(map['length']),
+      keepers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['keepers']),
+      length: pulumi.Input.asInput<int>(map['length']),
     );
   }
 }

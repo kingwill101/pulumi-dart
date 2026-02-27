@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RandomId.
 class RandomIdArgs {
   /// The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness.
-  final Input<int> byteLength;
+  final pulumi.Input<int> byteLength;
 
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>>? keepers;
 
   /// Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   RandomIdArgs({
     required this.byteLength,
@@ -35,9 +35,10 @@ class RandomIdArgs {
 
   factory RandomIdArgs.fromMap(Map<String, dynamic> map) {
     return RandomIdArgs(
-      byteLength: Input.asInput<int>(map['byteLength']),
-      keepers: Input.asOptionalInput<Map<String, String>>(map['keepers']),
-      prefix: Input.asOptionalInput<String>(map['prefix']),
+      byteLength: pulumi.Input.asInput<int>(map['byteLength']),
+      keepers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['keepers']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
     );
   }
 }

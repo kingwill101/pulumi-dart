@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'random_integer_args.dart';
 
 /// The resource `random.RandomInteger` generates random values from a given range, described by the `min` and `max` attributes of a given resource.
@@ -24,31 +24,31 @@ import 'random_integer_args.dart';
 /// ```sh
 /// $ pulumi import random:index/randomInteger:RandomInteger priority 15390,1,50000
 /// ```
-class RandomInteger extends CustomResource {
+class RandomInteger extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  late final Output<Map<String, String>?> keepers;
+  late final pulumi.Output<Map<String, String>?> keepers;
 
   /// The maximum inclusive value of the range.
-  late final Output<int> max;
+  late final pulumi.Output<int> max;
 
   /// The minimum inclusive value of the range.
-  late final Output<int> min;
+  late final pulumi.Output<int> min;
 
   /// The random integer result.
-  late final Output<int> result;
+  late final pulumi.Output<int> result;
 
   /// A custom seed to always produce the same value.
-  late final Output<String?> seed;
+  late final pulumi.Output<String?> seed;
 
   RandomInteger(
     String name, {
     RandomIntegerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'random:index/randomInteger:RandomInteger',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.keepers = registerOutput<Map<String, String>?>('keepers');
     this.max = registerOutput<int>('max');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'random_uuid7_args.dart';
 
 /// The resource `random.RandomUuid7` generates a random version 7 uuid string that is intended to be used as a unique identifier for other resources.
@@ -22,22 +22,22 @@ import 'random_uuid7_args.dart';
 /// ```sh
 /// $ pulumi import random:index/randomUuid7:RandomUuid7 main 0197ad85-fe6e-7e92-a2f5-7550daa83030
 /// ```
-class RandomUuid7 extends CustomResource {
+class RandomUuid7 extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  late final Output<Map<String, String>?> keepers;
+  late final pulumi.Output<Map<String, String>?> keepers;
 
   /// The generated uuid presented in string format.
-  late final Output<String> result;
+  late final pulumi.Output<String> result;
 
   RandomUuid7(
     String name, {
     RandomUuid7Args? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'random:index/randomUuid7:RandomUuid7',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.keepers = registerOutput<Map<String, String>?>('keepers');
     this.result = registerOutput<String>('result');

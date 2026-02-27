@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RandomShuffle.
 class RandomShuffleArgs {
   /// The list of strings to shuffle.
-  final Input<List<String>> inputs;
+  final pulumi.Input<List<String>> inputs;
 
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>>? keepers;
 
   /// The number of results to return. Defaults to the number of items in the `input` list. If fewer items are requested, some elements will be excluded from the result. If more items are requested, items will be repeated in the result but not more frequently than the number of items in the input list.
-  final Input<int>? resultCount;
+  final pulumi.Input<int>? resultCount;
 
   /// Arbitrary string with which to seed the random number generator, in order to produce less-volatile permutations of the list.
-  final Input<String>? seed;
+  final pulumi.Input<String>? seed;
 
   RandomShuffleArgs({
     required this.inputs,
@@ -43,10 +43,11 @@ class RandomShuffleArgs {
 
   factory RandomShuffleArgs.fromMap(Map<String, dynamic> map) {
     return RandomShuffleArgs(
-      inputs: Input.asInput<List<String>>(map['inputs']),
-      keepers: Input.asOptionalInput<Map<String, String>>(map['keepers']),
-      resultCount: Input.asOptionalInput<int>(map['resultCount']),
-      seed: Input.asOptionalInput<String>(map['seed']),
+      inputs: pulumi.Input.asInput<List<String>>(map['inputs']),
+      keepers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['keepers']),
+      resultCount: pulumi.Input.asOptionalInput<int>(map['resultCount']),
+      seed: pulumi.Input.asOptionalInput<String>(map['seed']),
     );
   }
 }

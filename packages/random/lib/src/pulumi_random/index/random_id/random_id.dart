@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'random_id_args.dart';
 
 /// The resource `random.RandomId` generates random numbers that are intended to be
@@ -41,37 +41,37 @@ import 'random_id_args.dart';
 /// ```sh
 /// $ pulumi import random:index/randomId:RandomId server my-prefix-,p-9hUg
 /// ```
-class RandomId extends CustomResource {
+class RandomId extends pulumi.CustomResource {
   /// The generated id presented in base64 without additional transformations.
-  late final Output<String> b64Std;
+  late final pulumi.Output<String> b64Std;
 
   /// The generated id presented in base64, using the URL-friendly character set: case-sensitive letters, digits and the characters `_` and `-`.
-  late final Output<String> b64Url;
+  late final pulumi.Output<String> b64Url;
 
   /// The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness.
-  late final Output<int> byteLength;
+  late final pulumi.Output<int> byteLength;
 
   /// The generated id presented in non-padded decimal digits.
-  late final Output<String> dec;
+  late final pulumi.Output<String> dec;
 
   /// The generated id presented in padded hexadecimal digits. This result will always be twice as long as the requested byte length.
-  late final Output<String> hex;
+  late final pulumi.Output<String> hex;
 
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  late final Output<Map<String, String>?> keepers;
+  late final pulumi.Output<Map<String, String>?> keepers;
 
   /// Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
-  late final Output<String?> prefix;
+  late final pulumi.Output<String?> prefix;
 
   RandomId(
     String name, {
     RandomIdArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'random:index/randomId:RandomId',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.b64Std = registerOutput<String>('b64Std');
     this.b64Url = registerOutput<String>('b64Url');
