@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/callback.pb.dart' as callbackpb;
@@ -17,6 +18,9 @@ class _TransformRegistrationMonitorService extends ResourceMonitorServiceBase {
   final List<String> supportsFeatureRequests = [];
   final List<callbackpb.Callback> stackTransformRequests = [];
   final List<callbackpb.Callback> stackInvokeTransformRequests = [];
+  final List<pulumirpc.RegisterResourceRequest> registerResourceRequests = [];
+  final List<pulumirpc.RegisterResourceHookRequest> resourceHookRequests = [];
+  final List<pulumirpc.RegisterErrorHookRequest> errorHookRequests = [];
 
   _TransformRegistrationMonitorService({required this.featureSupport});
 
@@ -59,7 +63,11 @@ class _TransformRegistrationMonitorService extends ResourceMonitorServiceBase {
     ServiceCall call,
     pulumirpc.RegisterResourceRequest request,
   ) async {
-    throw GrpcError.unimplemented('registerResource not used');
+    registerResourceRequests.add(request);
+    return pulumirpc.RegisterResourceResponse()
+      ..urn = 'urn:pulumi:stack::project::${request.type}::${request.name}'
+      ..id = '${request.name}-id'
+      ..object = Struct();
   }
 
   @override
@@ -93,6 +101,7 @@ class _TransformRegistrationMonitorService extends ResourceMonitorServiceBase {
     ServiceCall call,
     pulumirpc.RegisterResourceHookRequest request,
   ) async {
+    resourceHookRequests.add(request);
     return Empty();
   }
 
@@ -101,6 +110,7 @@ class _TransformRegistrationMonitorService extends ResourceMonitorServiceBase {
     ServiceCall call,
     pulumirpc.RegisterErrorHookRequest request,
   ) async {
+    errorHookRequests.add(request);
     return Empty();
   }
 
@@ -119,6 +129,11 @@ class _TransformRegistrationMonitorService extends ResourceMonitorServiceBase {
   ) async {
     return Empty();
   }
+}
+
+class _HookAndTransformResource extends CustomResource {
+  _HookAndTransformResource(String name, CustomResourceOptions options)
+    : super('pkg:index:HookAndTransform', name, const {}, options);
 }
 
 void main() {
@@ -209,6 +224,83 @@ void main() {
           monitorService.stackInvokeTransformRequests[0].token,
           isNotEmpty,
         );
+      },
+    );
+
+    test(
+      'registerResourceTransform fails with parity message when transforms are unsupported',
+      () async {
+        monitorService.featureSupport['transforms'] = false;
+
+        await expectLater(
+          deployment.registerResourceTransform((
+            args, [
+            cancellationToken,
+          ]) async {
+            return null;
+          }),
+          throwsA(
+            isA<Exception>().having(
+              (e) => e.toString(),
+              'message',
+              contains('does not support transforms'),
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'registerInvokeTransform fails with parity message when invoke transforms are unsupported',
+      () async {
+        monitorService.featureSupport['invokeTransforms'] = false;
+
+        await expectLater(
+          deployment.registerInvokeTransform((args) async => null),
+          throwsA(
+            isA<Exception>().having(
+              (e) => e.toString(),
+              'message',
+              contains('does not support invoke transforms'),
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'resource registration wires hook callbacks and transform callbacks',
+      () async {
+        _HookAndTransformResource(
+          'hooked',
+          CustomResourceOptions(
+            hooks: ResourceHookBinding(
+              beforeCreate: [ResourceHook('before-create', (args) async {})],
+              onError: [ErrorHook('on-error', (args) async => false)],
+            ),
+            resourceTransforms: [(args, [cancellationToken]) async => null],
+          ),
+        );
+
+        await deployment.registerOutputs();
+
+        expect(monitorService.registerResourceRequests, hasLength(1));
+        final request = monitorService.registerResourceRequests.single;
+        expect(request.transforms, hasLength(1));
+        expect(request.hooks.beforeCreate, equals(['before-create']));
+        expect(request.hooks.afterCreate, isEmpty);
+        expect(request.hooks.beforeUpdate, isEmpty);
+        expect(request.hooks.afterUpdate, isEmpty);
+        expect(request.hooks.beforeDelete, isEmpty);
+        expect(request.hooks.afterDelete, isEmpty);
+        expect(request.hooks.onError, equals(['on-error']));
+        expect(monitorService.resourceHookRequests, hasLength(1));
+        expect(
+          monitorService.resourceHookRequests.single.name,
+          'before-create',
+        );
+        expect(monitorService.errorHookRequests, hasLength(1));
+        expect(monitorService.errorHookRequests.single.name, 'on-error');
       },
     );
   });
