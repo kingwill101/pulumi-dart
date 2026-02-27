@@ -75,8 +75,30 @@ class DynamicResourceArgs extends InputArgs {
   );
 }
 
+class RequiredResourceArgs extends InputArgs {
+  Input<String>? requiredValue;
+
+  @override
+  Map<String, InputInfo> get inputInfos => {
+    'requiredValue': InputInfo(
+      const InputInfoArg(name: 'requiredValue', isRequired: true),
+      'requiredValue',
+      String,
+      (dynamic obj) => (obj as RequiredResourceArgs).requiredValue,
+    ),
+  };
+}
+
 void main() {
   group('resource args tests', () {
+    test('validateMember is a no-op extension point', () {
+      final args = ComplexResourceArgs1();
+      expect(
+        () => args.validateMember(String, 'ComplexResourceArgs1.s'),
+        returnsNormally,
+      );
+    });
+
     test('complex resource args 1 null values', () async {
       var args = ComplexResourceArgs1();
       var dictionary = await args.toDictionary();
@@ -192,6 +214,50 @@ void main() {
 
       expect(mapData.isSecret, isTrue);
       expect(mapData.value, equals('{"k1":1,"k2":2}'));
+    });
+
+    test('required input validation throws when value is missing', () async {
+      final args = RequiredResourceArgs();
+      await expectLater(args.toDictionary(), throwsA(isA<ArgumentError>()));
+    });
+
+    test('convertToJson handles direct non-input values', () async {
+      final args = DynamicResourceArgs();
+      final jsonInput = await args.convertToJson('ctx', {
+        'array': [true, false],
+        'map': {'count': 3},
+      });
+
+      expect(jsonInput, isNotNull);
+      expect(
+        await jsonInput!.toOutput().getValue(),
+        equals('{"array":[true,false],"map":{"count":3}}'),
+      );
+    });
+
+    test('convertToJson handles direct Output values', () async {
+      final args = DynamicResourceArgs();
+      final jsonInput = await args.convertToJson(
+        'ctx',
+        Output.create({
+          'enabled': true,
+          'ports': [80, 443],
+        }),
+      );
+
+      expect(jsonInput, isNotNull);
+      expect(
+        await jsonInput!.toOutput().getValue(),
+        equals('{"enabled":true,"ports":[80,443]}'),
+      );
+    });
+
+    test('convertToJson throws for unsupported JSON value types', () async {
+      final args = DynamicResourceArgs();
+      await expectLater(
+        args.convertToJson('ctx', {'bad': DateTime.utc(2026, 1, 1)}),
+        throwsA(isA<ArgumentError>()),
+      );
     });
   });
 }
