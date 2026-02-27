@@ -5,13 +5,9 @@ import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/deployment/call.dart';
 import 'package:pulumi/src/deployment/invoke.dart';
 import 'package:pulumi/src/deployment/models.dart' as deployment_models;
-import 'package:pulumi/src/monitor.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
     show
-        CallResponse,
-        CheckFailure,
-        InvokeResponse,
         ReadResourceRequest,
         ReadResourceResponse,
         RegisterPackageRequest,

@@ -5,7 +5,6 @@ import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/engine_logger.dart';
 import 'package:pulumi/src/log.dart' as runtime_log;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/settings.dart';
@@ -359,7 +358,7 @@ void main() {
           await runtime_log.error('error-no-engine');
         },
         zoneSpecification: ZoneSpecification(
-          print: (_, __, ___, line) => lines.add(line),
+          print: (_, _, _, line) => lines.add(line),
         ),
       );
 
@@ -409,7 +408,7 @@ void main() {
           );
         },
         zoneSpecification: ZoneSpecification(
-          print: (_, __, ___, line) => lines.add(line),
+          print: (_, _, _, line) => lines.add(line),
         ),
       );
 

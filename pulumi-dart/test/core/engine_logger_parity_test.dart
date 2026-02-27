@@ -2,17 +2,16 @@ import 'dart:async';
 
 import 'package:mockito/mockito.dart';
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi/src/engine_logger.dart';
 import 'package:test/test.dart';
 
 import '../mocks/mocks.mocks.dart';
 
 class _RecordingEngine implements Engine {
   final List<LogRequest> requests = [];
-  Duration delay;
+  Duration delay = Duration.zero;
   Object? throwOnLog;
 
-  _RecordingEngine({this.delay = Duration.zero});
+  _RecordingEngine();
 
   @override
   Future<void> log(LogRequest request) async {

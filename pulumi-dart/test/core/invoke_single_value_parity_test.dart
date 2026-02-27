@@ -5,8 +5,6 @@ import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
     show
-        CallResponse,
-        InvokeResponse,
         ReadResourceRequest,
         ReadResourceResponse,
         RegisterPackageRequest,

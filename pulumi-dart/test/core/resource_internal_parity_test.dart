@@ -2,9 +2,6 @@ import 'package:mockito/mockito.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/constants.dart';
-import 'package:pulumi/src/resource/dependency_resource.dart';
-import 'package:pulumi/src/resource/provider_resource.dart';
-import 'package:pulumi/src/resource/resource.dart';
 import 'package:test/test.dart';
 
 import '../mocks/mocks.mocks.dart';
@@ -12,15 +9,6 @@ import '../mocks/mocks.mocks.dart';
 class _RawResource extends Resource {
   _RawResource(String type, String name)
     : super(type, name, false, const {}, const ResourceOptions());
-}
-
-class _RawResourceWithOptions extends Resource {
-  _RawResourceWithOptions(
-    String type,
-    String name,
-    ResourceOptions options, {
-    Inputs props = const {},
-  }) : super(type, name, false, props, options);
 }
 
 class _LateOutputResource extends CustomResource {
@@ -184,7 +172,10 @@ void main() {
           properties.fields['nullField']!.nullValue,
           equals(NullValue.NULL_VALUE),
         );
-        expect(properties.fields['inputField']!.stringValue, equals('input-value'));
+        expect(
+          properties.fields['inputField']!.stringValue,
+          equals('input-value'),
+        );
 
         final secretStruct = properties.fields['secretField']!.structValue;
         expect(
@@ -227,7 +218,13 @@ void main() {
 
         expect(properties.fields['outerList']!.hasListValue(), isTrue);
         expect(
-          properties.fields['outerList']!.listValue.values.single.listValue.values,
+          properties
+              .fields['outerList']!
+              .listValue
+              .values
+              .single
+              .listValue
+              .values,
           hasLength(3),
         );
 
@@ -280,5 +277,4 @@ void main() {
       },
     );
   });
-
 }

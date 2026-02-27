@@ -7,8 +7,6 @@ import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
     show
-        CallResponse,
-        InvokeResponse,
         ReadResourceRequest,
         ReadResourceResponse,
         RegisterPackageRequest,
@@ -19,7 +17,6 @@ import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
         ResourceCallRequest,
         ResourceInvokeRequest,
         ResourceMonitorClient;
-import 'package:pulumi/src/resource/resource.dart';
 import 'package:test/test.dart';
 
 import '../mocks/mock_engine.dart';
